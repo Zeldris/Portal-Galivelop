@@ -64,6 +64,19 @@ No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la po
 
 Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
 
+## Añadir o actualizar a alguien del equipo
+
+La página **Equipo** (`/equipo`) sale de [`src/data/equipo.json`](src/data/equipo.json). Cada persona:
+
+- `id` (para el enlace `/equipo#<id>`), `nombre`, `orden`.
+- `rol` y `bio` en los tres idiomas.
+- `proyectos`: slugs de los proyectos en los que participa.
+- `redes`: lista de `{ "tipo": …, "url": … }` con `tipo` uno de `linkedin`, `github`, `web`,
+  `correo`, `x`, `instagram`, `youtube` o `discord` (para `correo`, la dirección sin `mailto:`).
+- `foto` (opcional): ruta en `public/`; sin ella se muestran las iniciales.
+
+En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su tarjeta.
+
 ## Desarrollo
 
 ```bash

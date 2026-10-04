@@ -21,6 +21,7 @@ export function Pie() {
               {p.nombre}
             </Link>
           ))}
+          <Link to="/equipo">{t('nav.equipo')}</Link>
         </nav>
         <div className="pie-redes">
           <a href={MARCA.discord} target="_blank" rel="noreferrer" aria-label="Discord" title="Discord">

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "alvaro-garcia-grana",
+    "nombre": "Álvaro García Graña",
+    "orden": 1,
+    "rol": {
+      "es": "Fundador · Desarrollo full stack",
+      "gl": "Fundador · Desenvolvemento full stack",
+      "en": "Founder · Full-stack development"
+    },
+    "bio": {
+      "es": "Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir. Desarrollador full stack senior, creador de Tarkor y parte del equipo de toVeriAI.",
+      "gl": "Fundou Galivelop para dar forma a proxectos ambiciosos e abrilos a quen queira aprender e construír. Desenvolvedor full stack sénior, creador de Tarkor e parte do equipo de toVeriAI.",
+      "en": "Founded Galivelop to shape ambitious projects and open them up to anyone who wants to learn and build. Senior full-stack developer, creator of Tarkor and part of the toVeriAI team."
+    },
+    "proyectos": ["tarkor", "toveriai"],
+    "redes": [
+      { "tipo": "linkedin", "url": "https://www.linkedin.com/in/%C3%A1lvaro-garc%C3%ADa-gra%C3%B1a-b4538117b" }
+    ]
+  },
+  {
+    "id": "raquel-c",
+    "nombre": "Raquel C.",
+    "orden": 2,
+    "rol": {
+      "es": "Autora de toVeriAI · Desarrollo web",
+      "gl": "Autora de toVeriAI · Desenvolvemento web",
+      "en": "toVeriAI author · Web development"
+    },
+    "bio": {
+      "es": "Creó toVeriAI como Trabajo de Fin de Ciclo del Grado Superior en Desarrollo de Aplicaciones Web, y hoy el proyecto está en producción en toveriai.com.",
+      "gl": "Creou toVeriAI como Traballo de Fin de Ciclo do Grao Superior en Desenvolvemento de Aplicacións Web, e hoxe o proxecto está en produción en toveriai.com.",
+      "en": "Created toVeriAI as a final project for a Higher Vocational Degree in Web Application Development, and the project is now live at toveriai.com."
+    },
+    "proyectos": ["toveriai"],
+    "redes": []
+  }
+]

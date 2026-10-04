@@ -27,6 +27,7 @@ export function Cabecera() {
           <Link to="/#proyectos" onClick={() => setMenuAbierto(false)}>{t('nav.proyectos')}</Link>
           <Link to="/#lineas" onClick={() => setMenuAbierto(false)}>{t('nav.lineas')}</Link>
           <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>{t('nav.sobre')}</Link>
+          <Link to="/equipo" onClick={() => setMenuAbierto(false)}>{t('nav.equipo')}</Link>
           <Link to="/#participa" onClick={() => setMenuAbierto(false)}>{t('nav.contacto')}</Link>
         </nav>
         <div className="cabecera-ajustes">

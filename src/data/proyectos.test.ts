@@ -91,3 +91,20 @@ describe('formularios', () => {
     expect(decodeURIComponent(c.mailto.split('&body=')[1])).toBe(c.cuerpo);
   });
 });
+
+describe('equipo', () => {
+  it('cada persona tiene textos en los tres idiomas, proyectos existentes y redes válidas', async () => {
+    const { equipo, REDES } = await import('./equipo');
+    expect(equipo.length).toBeGreaterThan(0);
+    expect(new Set(equipo.map((p) => p.id)).size).toBe(equipo.length);
+    for (const p of equipo) {
+      expect(textosIncompletos({ rol: p.rol, bio: p.bio }, p.id)).toEqual([]);
+      expect(p.proyectos.filter((s) => !proyectos.some((x) => x.slug === s))).toEqual([]);
+      for (const r of p.redes) {
+        expect(REDES).toContain(r.tipo);
+        if (r.tipo !== 'correo') expect(r.url).toMatch(/^https:\/\//);
+      }
+      if (p.foto) expect(existsSync(join(PUBLIC, p.foto))).toBe(true);
+    }
+  });
+});

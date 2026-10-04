@@ -163,6 +163,15 @@ const es = {
   'discord.texto': 'Es el sitio para conocernos, seguir el día a día de los proyectos, preguntar dudas y lanzar ideas antes de formalizarlas.',
   'discord.boton': 'Entrar en Discord',
 
+  'nav.equipo': 'Equipo',
+  'equipo.titulo': 'Equipo',
+  'equipo.intro': 'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.',
+  'equipo.proyectos': 'Proyectos',
+  'equipo.redes': 'Perfiles de {nombre}',
+  'equipo.unete.titulo': '¿Quieres aparecer aquí?',
+  'equipo.unete.texto': 'Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar.',
+  'equipo.ver': 'Ver en el equipo',
+
   'pie.hecho': 'Hecho en Galicia',
   'pie.derechos': 'Todos los derechos reservados.',
 
@@ -339,6 +348,15 @@ const gl: Record<Clave, string> = {
   'discord.texto': 'É o sitio para coñecernos, seguir o día a día dos proxectos, preguntar dúbidas e lanzar ideas antes de formalizalas.',
   'discord.boton': 'Entrar en Discord',
 
+  'nav.equipo': 'Equipo',
+  'equipo.titulo': 'Equipo',
+  'equipo.intro': 'As persoas que fan Galivelop. Cada unha co seu camiño, todas con ganas de construír e aprender.',
+  'equipo.proyectos': 'Proxectos',
+  'equipo.redes': 'Perfís de {nombre}',
+  'equipo.unete.titulo': 'Queres aparecer aquí?',
+  'equipo.unete.texto': 'Quen se suma ao obradoiro pasa a formar parte do equipo. Cóntanos quen es e en que che gustaría participar.',
+  'equipo.ver': 'Ver no equipo',
+
   'pie.hecho': 'Feito en Galicia',
   'pie.derechos': 'Todos os dereitos reservados.',
 
@@ -512,6 +530,15 @@ const en: Record<Clave, string> = {
   'discord.titulo': 'Join the community on Discord',
   'discord.texto': 'It is the place to meet us, follow the projects day to day, ask questions and float ideas before making them formal.',
   'discord.boton': 'Join on Discord',
+
+  'nav.equipo': 'Team',
+  'equipo.titulo': 'Team',
+  'equipo.intro': 'The people who make Galivelop. Each with their own path, all eager to build and learn.',
+  'equipo.proyectos': 'Projects',
+  'equipo.redes': '{nombre} online',
+  'equipo.unete.titulo': 'Want to be on this page?',
+  'equipo.unete.texto': 'Everyone who joins the workshop becomes part of the team. Tell us who you are and what you would like to work on.',
+  'equipo.ver': 'See in the team',
 
   'pie.hecho': 'Made in Galicia',
   'pie.derechos': 'All rights reserved.',

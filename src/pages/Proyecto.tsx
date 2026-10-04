@@ -6,6 +6,7 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { Plegable } from '../components/Plegable';
+import { buscarPersona, iniciales } from '../data/equipo';
 import type { Linea } from '../data/lineas';
 import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
@@ -269,21 +270,31 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           {secciones.includes('equipo') && (
             <Plegable {...plegable('equipo')}>
               <ul className="equipo">
-                {p.equipo.map((m) => (
-                  <li key={m.nombre}>
-                    <span className="avatar" aria-hidden="true">
-                      {m.nombre
-                        .split(' ')
-                        .slice(0, 2)
-                        .map((x) => x[0])
-                        .join('')}
-                    </span>
-                    <div>
-                      <p className="equipo-nombre">{m.nombre}</p>
-                      <p className="equipo-rol">{tx(m.rol)}</p>
-                    </div>
-                  </li>
-                ))}
+                {p.equipo.map((m) => {
+                  const persona = buscarPersona(m.nombre);
+                  const contenido = (
+                    <>
+                      <span className="avatar" aria-hidden="true">
+                        {iniciales(m.nombre)}
+                      </span>
+                      <div>
+                        <p className="equipo-nombre">{m.nombre}</p>
+                        <p className="equipo-rol">{tx(m.rol)}</p>
+                      </div>
+                    </>
+                  );
+                  return (
+                    <li key={m.nombre}>
+                      {persona ? (
+                        <Link to={`/equipo#${persona.id}`} className="equipo-enlace" title={t('equipo.ver')}>
+                          {contenido}
+                        </Link>
+                      ) : (
+                        contenido
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </Plegable>
           )}
