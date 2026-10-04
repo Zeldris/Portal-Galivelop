@@ -28,9 +28,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Pendiente
 
-1. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
+1. Mejorar los textos del portal y de las fichas (pedido 2026-10-04; la v1 se queda como está por ahora).
+2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-2. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
+3. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
 
 ## Comprobar el estado
 
