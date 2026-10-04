@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
-| **En `main`** | Todo publicado el 2026-10-04 (confirmación expresa): taller, formularios, correo cordproinf@gmail.com, revisión de contenidos y Discord. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-04): taller, formularios, correo cordproinf@gmail.com, contenidos, Discord, logo GV, Equipo y toVeriAI como producto de Raquel. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 15/15. `npm run build` correcto |
 
 ## Hecho
@@ -37,12 +37,12 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   (campo `aprendizajes`).
 - ✅ Discord de la comunidad (https://discord.gg/8vyjW3VrN) en Participa y en el pie (src/data/marca.ts).
 - ✅ toVeriAI tratado como producto de Raquel (fundadora y creadora): sin menciones a su origen académico (2026-10-04).
-- ✅ Página Equipo (`/equipo`, datos en `src/data/equipo.json`) con Álvaro y Raquel; LinkedIn de Álvaro. En la rama; pendiente de confirmar el paso a `main`.
+- ✅ Página Equipo (`/equipo`, datos en `src/data/equipo.json`) con Álvaro y Raquel y sus LinkedIn.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
 
-1. Equipo: LinkedIn de Raquel y redes sociales que se vayan pasando (en `src/data/equipo.json`).
+1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
 3. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).

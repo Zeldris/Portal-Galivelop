@@ -41,6 +41,11 @@
     "proyectos": [
       "toveriai"
     ],
-    "redes": []
+    "redes": [
+      {
+        "tipo": "linkedin",
+        "url": "https://www.linkedin.com/in/raquel-comesa%C3%B1a-carrera-1646ba195"
+      }
+    ]
   }
 ]
