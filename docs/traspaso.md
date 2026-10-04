@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
-| **En `main`** | Solo el commit inicial. El portal está en la rama de trabajo, pendiente de confirmar el paso a `main` |
+| **En `main`** | Portal completo, subido el 2026-10-04 con confirmación expresa. Pages con Source «GitHub Actions»: https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 11/11. `npm run build` correcto |
 
 ## Hecho
@@ -28,11 +28,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Pendiente
 
-1. Activar Pages: Settings → Pages → Source → **GitHub Actions** (una vez, en GitHub).
-2. Confirmar paso a `main` (eso publica el portal).
-3. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
+1. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-4. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
+2. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
 
 ## Comprobar el estado
 
