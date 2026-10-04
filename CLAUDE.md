@@ -1,7 +1,7 @@
 # Instrucciones para Claude en este repositorio
 
 Portal público de la marca **Galivelop** (Galicia + Develop), publicado en GitHub Pages. Cómo
-funciona, cómo añadir un proyecto y cómo se publica: [`README.md`](README.md).
+funciona, cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarrollo.md).
 
 ## Al empezar cualquier sesión
 

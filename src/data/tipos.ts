@@ -1,5 +1,5 @@
 // Modelo de datos de un proyecto. Cada proyecto vive en src/data/proyectos/<slug>.json
-// y sus imágenes en public/proyectos/<slug>/. Ver README.md, «Añadir un proyecto».
+// y sus imágenes en public/proyectos/<slug>/. Ver docs/desarrollo.md, «Añadir o actualizar un proyecto».
 
 export const IDIOMAS = ['es', 'gl', 'en'] as const;
 export type Idioma = (typeof IDIOMAS)[number];

@@ -1,105 +1,107 @@
-# Galivelop
+<p align="center">
+  <img src="public/marca/gv-logo.svg" alt="Galivelop" width="96" height="96">
+</p>
 
-**Galicia + Develop.** Portal de Galivelop, un taller donde creamos, investigamos, innovamos y
-aprendemos. Expone cada proyecto tal y como está (sin venderlo) y abre la puerta a quien quiera
-saber más o participar.
+<h1 align="center">Galivelop</h1>
 
-Se publica con GitHub Pages en **https://zeldris.github.io/Portal-Galivelop/**.
+<p align="center">
+  <strong>Taller independiente de software</strong><br>
+  Hacemos reales los proyectos que parecen imposibles.
+</p>
+
+<p align="center">
+  <a href="https://zeldris.github.io/Portal-Galivelop/"><strong>Visitar el portal →</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://discord.gg/8vyjW3VrN">Discord</a>
+  &nbsp;·&nbsp;
+  <a href="mailto:cordproinf@gmail.com">cordproinf@gmail.com</a>
+</p>
+
+<p align="center">
+  <a href="#galego">Galego</a> · <a href="#english">English</a>
+</p>
+
+---
 
 ![Galivelop](public/marca/galivelop-social.png)
 
-## Qué hay
+## Qué es Galivelop
 
-- **Portada:** presentación del taller, proyectos con filtro por estado (publicado, en desarrollo,
-  en diseño), «El taller» y «Participa» (cómo colaborar, proponer o aprender).
-- **Página de cada proyecto** (`/proyectos/<slug>`, también desde el submenú «Proyectos» de la
-  cabecera): cabecera con estado y enlace público, cifras, galería con vista a pantalla completa,
-  índice «En esta página» y secciones plegables: el proyecto, qué lo hace distinto, cómo funciona,
-  apartados propios (p. ej. el mundo de Tarkor o las dimensiones del IMI), ficha técnica, hoja de
-  ruta, lo que estamos aprendiendo, decisiones de diseño, novedades y equipo.
-- **Participa:** formularios para proponer un proyecto (`/participa/proponer`) y para unirse al
-  taller (`/participa/unirse`, con `?proyecto=<slug>` o `?modo=aprender` para preseleccionar).
-  Como la web es estática, preparan un correo a `cordproinf@gmail.com` (asunto
-  `[Galivelop] Propuesta: …` o `[Galivelop] Unirse al taller: …`, siempre en castellano) que se
-  envía desde la aplicación de correo de quien lo rellena; si no se abre, se puede copiar.
-- **Idiomas:** castellano, gallego e inglés (detecta el del navegador y recuerda la elección).
-- **Tema** claro y oscuro.
+Galivelop es un taller donde creamos, investigamos y aprendemos construyendo software ambicioso:
+desde un mundo de fantasía que vive por su cuenta hasta una herramienta que mide la credibilidad de
+las noticias.
 
-El código de los proyectos no se enlaza: el portal describe cada uno y lleva solo a su versión
-pública (web, descarga…) cuando la hay.
+No es un escaparate. No nos mueve el beneficio económico, sino crecer y llevar a término proyectos
+complejos. Por eso el portal no vende: enseña cada proyecto tal y como está, con sus avances y sus
+pendientes, y deja la puerta abierta a quien quiera saber más o sumarse.
 
-## Marca
+El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
 
-- Logo: monograma **GV** en `public/marca/gv-logo.svg` (también como componente en
-  `src/components/Logo.tsx`). El travesaño de la G se prolonga hasta el brazo de la V.
-- Colores: el azul celeste y el blanco de la bandera gallega, sin su composición:
-  `#1AA6DF` (celeste), `#0083C1` (celeste intenso), `#FFFFFF`.
-- Tipografías: Sora (títulos) e Inter (texto), servidas desde el propio sitio.
-- `node tools/generar-marca.mjs` regenera `gv-logo-512.png` y la imagen para redes
-  (`galivelop-social.png`) a partir del SVG (instrucciones en el propio archivo).
+## Proyectos
 
-## Añadir o actualizar un proyecto
+| | Proyecto | Estado | |
+|---|---|---|---|
+| <img src="public/proyectos/tarkor/portada-mini.webp" width="140" alt=""> | **Tarkor**<br>RPG narrativo por texto con una IA local como directora de juego. Las facciones, la economía y la fauna evolucionan solas mientras levantas tu propio reino. | 🟡 En desarrollo (alpha) · abierto a colaboración | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/tarkor) |
+| <img src="public/proyectos/toveriai/portada-mini.webp" width="140" alt=""> | **toVeriAI**<br>Plataforma web que analiza noticias, enlaces y capturas con IA y devuelve un índice de credibilidad de 0 a 100 que explica qué falla y dónde. | 🟢 Publicado en [toveriai.com](https://www.toveriai.com) · proyecto privado | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/toveriai) |
 
-1. Crea `src/data/proyectos/<slug>.json`. Lo más rápido es copiar uno existente
-   ([`tarkor.json`](src/data/proyectos/tarkor.json) o [`toveriai.json`](src/data/proyectos/toveriai.json)).
-   El formato está descrito en [`src/data/tipos.ts`](src/data/tipos.ts).
-2. Pon sus imágenes en `public/proyectos/<slug>/`, en WebP: cada imagen con su versión grande
-   (unos 1600 px de ancho) y una `-mini` (unos 720 px) para miniaturas y tarjetas.
-3. Todo texto visible va en los tres idiomas: `{ "es": "…", "gl": "…", "en": "…" }`.
-4. Detalles útiles:
-   - `estado`: `publicado`, `desarrollo` o `diseno`.
-   - `colaboracion`: `abierta` (se puede participar) o `privada` (solo se aceptan propuestas e
-     interesados; hoy, solo toVeriAI).
-   - `cabecera`: `"captura"` si la portada es una captura de web o app (se enmarca en una ventana);
-     sin el campo, la portada se usa de fondo.
-   - `hitos[].estado`: `hecho`, `curso` o `pendiente`. El porcentaje de avance sale de ahí.
-   - `caracteristicas[].icono`: uno de los nombres de [`src/components/Icono.tsx`](src/components/Icono.tsx).
-   - `lineas`: líneas de trabajo del taller a las que pertenece (`ia-local`, `mundos`,
-     `informacion`, `producto`; ver [`src/data/lineas.ts`](src/data/lineas.ts)).
-   - `descripcion`: tres párrafos, como un caso de estudio: el reto, el enfoque y dónde está hoy.
-   - `aprendizajes`: lo que el proyecto nos está obligando a aprender.
-   - `pasos`: «Cómo funciona», los pasos del uso principal (un turno, un análisis…).
-   - `apartados`: secciones propias del proyecto, cada una con `id`, `titulo`, `intro` opcional e
-     `items` (`nombre`, `texto` y un `valor` corto opcional, igual en todos los idiomas).
-   - `contacto`: correo propio del proyecto (opcional); aparece en su ficha y en «Contacto».
-   - Las secciones que dejes vacías (`[]`) no se muestran.
-5. `npm run check`: los tests avisan si falta un texto en algún idioma, una imagen o un icono.
+Cada proyecto tiene su página en el portal: qué es, cómo funciona, galería, ficha técnica, hoja de
+ruta y lo que estamos aprendiendo con él.
 
-No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la portada.
+## Líneas de trabajo
 
-Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
+- **IA local y responsable**: modelos que funcionan en el equipo de cada persona, sin cuentas ni
+  costes por uso.
+- **Mundos que viven solos**: facciones, economía y ecosistemas simulados que avanzan aunque nadie
+  mire.
+- **Información verificable**: métricas que explican por qué un contenido merece más o menos
+  confianza, en lugar de dictar veredictos.
+- **Del prototipo al producto**: interfaz, servidor, datos, pruebas y despliegue.
 
-## Añadir o actualizar a alguien del equipo
+## Cómo trabajamos
 
-La página **Equipo** (`/equipo`) sale de [`src/data/equipo.json`](src/data/equipo.json). Cada persona:
+1. **Elegimos problemas que importan.** Proyectos que aportan imaginación o atacan un problema real.
+2. **Trabajamos en el límite de lo que sabemos.** Cada proyecto nos obliga a aprender algo nuevo.
+3. **Enseñamos el proceso, no solo el resultado.** Estado real, hojas de ruta y decisiones explicadas.
+4. **Aprendemos con generosidad.** Compartimos lo que sabemos y aprendemos de quien llega.
 
-- `id` (para el enlace `/equipo#<id>`), `nombre`, `orden`.
-- `rol` y `bio` en los tres idiomas.
-- `proyectos`: slugs de los proyectos en los que participa.
-- `redes`: lista de `{ "tipo": …, "url": … }` con `tipo` uno de `linkedin`, `github`, `web`,
-  `correo`, `x`, `instagram`, `youtube` o `discord` (para `correo`, la dirección sin `mailto:`).
-- `foto` (opcional): ruta en `public/`; sin ella se muestran las iniciales.
+## Participa
 
-En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su tarjeta.
+Galivelop crece con las personas que se suman. No pedimos experiencia previa: pedimos ganas de
+construir, de aprender y de hacerlo en equipo.
 
-## Desarrollo
+- **Únete al taller** y colabora en un proyecto abierto o aprende construyendo algo real:
+  [formulario](https://zeldris.github.io/Portal-Galivelop/participa/unirse).
+- **Propón un proyecto** que parezca demasiado grande para hacerlo en solitario:
+  [formulario](https://zeldris.github.io/Portal-Galivelop/participa/proponer).
+- **Entra en la comunidad** en [Discord](https://discord.gg/8vyjW3VrN) o escríbenos a
+  [cordproinf@gmail.com](mailto:cordproinf@gmail.com).
 
-```bash
-npm install
-npm run dev      # http://localhost:5173/Portal-Galivelop/
-npm run check    # tipos + tests
-npm run build    # genera dist/ (con 404.html para las rutas en GitHub Pages)
-```
+## Equipo
 
-React 19 + Vite + TypeScript, React Router y lucide para los iconos. Sin backend: todo es estático.
+- **Álvaro García Graña**: fundador de Galivelop, desarrollo full stack.
+  [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-garc%C3%ADa-gra%C3%B1a-b4538117b)
+- **Raquel C.**: fundadora de toVeriAI.
+  [LinkedIn](https://www.linkedin.com/in/raquel-comesa%C3%B1a-carrera-1646ba195)
 
-## Publicación
+Quien se suma al taller pasa a formar parte del [equipo](https://zeldris.github.io/Portal-Galivelop/equipo).
 
-Cada push a `main` ejecuta [`.github/workflows/pages.yml`](.github/workflows/pages.yml): comprueba,
-construye y publica en GitHub Pages. Hace falta, una sola vez, ir a **Settings → Pages → Build and
-deployment → Source** y elegir **GitHub Actions**.
+---
 
-Con un dominio propio, construir con `BASE_PATH=/` (ver [`vite.config.ts`](vite.config.ts)) y añadir
-el dominio en Settings → Pages.
+## Galego
 
-© Galivelop. Todos los derechos reservados.
+**Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
+software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
+a credibilidade das novas. O portal non vende: amosa cada proxecto tal e como está e deixa a porta
+aberta a quen queira participar. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+
+## English
+
+**Galivelop is an independent software workshop.** We create, research and learn by building
+ambitious software, from a fantasy world that lives on its own to a tool that measures the
+credibility of the news. The portal does not sell: it shows each project as it is and keeps the door
+open to anyone who wants to take part. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+
+---
+
+<sub>Este repositorio contiene el código del portal. Para desarrollarlo o añadir proyectos, consulta
+la [guía técnica](docs/desarrollo.md). © Galivelop. Todos los derechos reservados.</sub>

@@ -1,7 +1,7 @@
 import datos from './equipo.json';
 import type { Texto } from './tipos';
 
-// Personas del taller. Para añadir a alguien: una entrada más en equipo.json (ver README).
+// Personas del taller. Para añadir a alguien: una entrada más en equipo.json (ver docs/desarrollo.md).
 export const REDES = ['linkedin', 'github', 'web', 'correo', 'x', 'instagram', 'youtube', 'discord'] as const;
 export type Red = (typeof REDES)[number];
 
