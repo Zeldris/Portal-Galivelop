@@ -1,5 +1,6 @@
-import { ArrowDown, FlaskConical, GraduationCap, HeartHandshake, Lightbulb, Lock, Mail, Rocket, Sparkles, Users } from 'lucide-react';
+import { ArrowDown, ArrowRight, FlaskConical, GraduationCap, HeartHandshake, Lightbulb, Lock, Mail, Rocket, Sparkles, Users } from 'lucide-react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGD } from '../components/Logo';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
@@ -142,19 +143,34 @@ export function Inicio() {
           <p>{t('contacto.texto')}</p>
           <ul className="vias">
             <li>
-              <Users aria-hidden="true" />
-              <h3>{t('via1.titulo')}</h3>
-              <p>{t('via1.texto')}</p>
+              <Link to="/participa/unirse" className="via">
+                <Users aria-hidden="true" />
+                <h3>{t('via1.titulo')}</h3>
+                <p>{t('via1.texto')}</p>
+                <span className="via-ir">
+                  {t('form.ir')} <ArrowRight size={16} />
+                </span>
+              </Link>
             </li>
             <li>
-              <Rocket aria-hidden="true" />
-              <h3>{t('via2.titulo')}</h3>
-              <p>{t('via2.texto')}</p>
+              <Link to="/participa/proponer" className="via">
+                <Rocket aria-hidden="true" />
+                <h3>{t('via2.titulo')}</h3>
+                <p>{t('via2.texto')}</p>
+                <span className="via-ir">
+                  {t('form.ir')} <ArrowRight size={16} />
+                </span>
+              </Link>
             </li>
             <li>
-              <Lightbulb aria-hidden="true" />
-              <h3>{t('via3.titulo')}</h3>
-              <p>{t('via3.texto')}</p>
+              <Link to="/participa/unirse?modo=aprender" className="via">
+                <Lightbulb aria-hidden="true" />
+                <h3>{t('via3.titulo')}</h3>
+                <p>{t('via3.texto')}</p>
+                <span className="via-ir">
+                  {t('form.ir')} <ArrowRight size={16} />
+                </span>
+              </Link>
             </li>
           </ul>
           {privados.map((p) => (
@@ -163,16 +179,23 @@ export function Inicio() {
             </p>
           ))}
           <div className="contacto-botones">
-            <a className="boton boton-primario" href={`mailto:${MARCA.correo}`}>
-              <Mail size={18} /> {t('contacto.correo')}
-            </a>
-            <a className="boton boton-secundario" href={MARCA.github} target="_blank" rel="noreferrer">
-              <IconoGitHub /> {t('contacto.github')}
-            </a>
+            <Link className="boton boton-primario" to="/participa/unirse">
+              <Users size={18} /> {t('unir.titulo')}
+            </Link>
+            <Link className="boton boton-secundario" to="/participa/proponer">
+              <Rocket size={18} /> {t('prop.titulo')}
+            </Link>
           </div>
-          <a className="contacto-correo" href={`mailto:${MARCA.correo}`}>
-            {MARCA.correo}
-          </a>
+          <p className="contacto-otros">
+            {t('contacto.otros')}{' '}
+            <a href={`mailto:${MARCA.correo}`}>
+              <Mail size={15} /> {MARCA.correo}
+            </a>{' '}
+            ·{' '}
+            <a href={MARCA.github} target="_blank" rel="noreferrer">
+              <IconoGitHub tamano={15} /> GitHub
+            </a>
+          </p>
           {conContacto.length > 0 && (
             <div className="contacto-proyectos">
               <h3>{t('contacto.porProyecto')}</h3>

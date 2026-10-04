@@ -15,6 +15,11 @@ Se publica con GitHub Pages en **https://zeldris.github.io/Portal-Galivelop/**.
 - **Ficha de cada proyecto** (`/proyectos/<slug>`): cabecera con estado y enlace público, cifras,
   galería con vista a pantalla completa y secciones plegables: descripción, características, ficha
   técnica, estado y hoja de ruta, novedades, decisiones de diseño y equipo.
+- **Participa:** formularios para proponer un proyecto (`/participa/proponer`) y para unirse al
+  taller (`/participa/unirse`, con `?proyecto=<slug>` o `?modo=aprender` para preseleccionar).
+  Como la web es estática, preparan un correo a `cordproinf@gmail.com` (asunto
+  `[Galivelop] Propuesta: …` o `[Galivelop] Unirse al taller: …`, siempre en castellano) que se
+  envía desde la aplicación de correo de quien lo rellena; si no se abre, se puede copiar.
 - **Idiomas:** castellano, gallego e inglés (detecta el del navegador y recuerda la elección).
 - **Tema** claro y oscuro.
 
@@ -53,7 +58,7 @@ pública (web, descarga…) cuando la hay.
 
 No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la portada.
 
-Correo y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
+Correo (recibe los formularios) y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
 
 ## Desarrollo
 

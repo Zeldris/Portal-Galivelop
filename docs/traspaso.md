@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Portal completo, subido el 2026-10-04 con confirmación expresa. Pages con Source «GitHub Actions»: https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 11/11. `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 12/12. `npm run build` correcto |
 
 ## Hecho
 
@@ -23,10 +23,13 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Revisión móvil (360, 390 y 768 px, claro/oscuro, tres idiomas): sin desbordes; menú
   desplegable bajo 760 px, cifras y tarjetas compactas, galería ampliada opaca y con deslizar.
 - ✅ Equipo confirmado (Tarkor: solo Álvaro; toVeriAI: Raquel C. y Álvaro) y contacto:
-  alvarogarciagrana@gmail.com (marca) y web.admin.toveriai@gmail.com (toVeriAI).
+  cordproinf@gmail.com (marca; sustituye al personal desde 2026-10-04) y web.admin.toveriai@gmail.com (toVeriAI).
 - ✅ Nuevo mensaje de marca (2026-10-04): Galivelop como taller abierto (crear, investigar,
   innovar, aprender), «El taller», «Participa», y colaboración por proyecto (Tarkor abierto,
   toVeriAI privado). En la rama; pendiente de confirmar el paso a `main`.
+- ✅ Formularios «Propón un proyecto» y «Únete al taller» (correo preparado con mailto, en
+  castellano, a cordproinf@gmail.com). Correo personal retirado de la web. En la rama; pendiente
+  de confirmar el paso a `main`.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente

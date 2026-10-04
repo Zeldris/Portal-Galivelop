@@ -1970,7 +1970,7 @@ button {
   border: 1px solid var(--borde);
 }
 
-.vias svg {
+.via > svg:first-child {
   width: 44px;
   height: 44px;
   padding: 10px;
@@ -2050,4 +2050,239 @@ button {
   .participar .boton {
     justify-self: start;
   }
+}
+
+/* ---------- Vías de participación como enlaces ---------- */
+
+.vias li {
+  padding: 0;
+}
+
+.via {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 22px;
+  border-radius: inherit;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color var(--transicion), transform var(--transicion);
+}
+
+.vias li:has(.via:hover) {
+  border-color: var(--celeste);
+}
+
+.via:hover {
+  transform: translateY(-2px);
+}
+
+.via-ir {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--enlace);
+}
+
+.contacto p.contacto-otros {
+  margin-top: 6px;
+  font-size: 0.92rem;
+}
+
+.contacto-otros a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+/* ---------- Formularios ---------- */
+
+.formulario-contenedor {
+  max-width: 760px;
+}
+
+.volver-oscuro {
+  color: var(--texto-2);
+  margin-bottom: 28px;
+}
+
+.volver-oscuro:hover {
+  color: var(--texto);
+}
+
+.formulario-pagina h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.formulario-intro {
+  color: var(--texto-2);
+  font-size: 1.05rem;
+  margin: 12px 0 32px;
+  max-width: 62ch;
+}
+
+.formulario {
+  display: grid;
+  gap: 20px;
+  padding: clamp(20px, 4vw, 32px);
+  border-radius: var(--radio);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.campos-fila {
+  display: grid;
+  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 20px;
+}
+
+.campo {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.campo-etiqueta {
+  font-weight: 600;
+  font-size: 0.93rem;
+  padding: 0;
+  margin-bottom: 2px;
+}
+
+.campo-opcional {
+  font-weight: 400;
+  color: var(--texto-3);
+}
+
+.campo-ayuda {
+  font-size: 0.83rem;
+  color: var(--texto-3);
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--texto);
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  padding: 11px 14px;
+  transition: border-color var(--transicion), box-shadow var(--transicion);
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+  outline: none;
+  border-color: var(--celeste);
+  box-shadow: 0 0 0 3px var(--brillo);
+}
+
+.opciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.opcion {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color var(--transicion), background var(--transicion);
+}
+
+.opcion:has(input:checked) {
+  border-color: var(--celeste);
+  background: var(--brillo);
+}
+
+.campo .opcion input {
+  width: auto;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+  accent-color: var(--celeste-intenso);
+  margin: 0;
+}
+
+.formulario-nota {
+  font-size: 0.85rem;
+  color: var(--texto-3);
+}
+
+.formulario .boton {
+  justify-self: start;
+  border: 0;
+  cursor: pointer;
+}
+
+.formulario-listo {
+  margin-top: 24px;
+  padding: 24px;
+  border-radius: var(--radio);
+  border: 1px solid var(--celeste);
+  background: var(--superficie);
+}
+
+.formulario-listo h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.15rem;
+  color: var(--enlace);
+}
+
+.formulario-listo p {
+  color: var(--texto-2);
+  margin: 6px 0 14px;
+}
+
+.formulario-listo pre {
+  margin: 0;
+  padding: 16px;
+  max-height: 280px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: var(--fuente-texto);
+  font-size: 0.88rem;
+  background: var(--fondo);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+}
+
+.formulario-listo-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.formulario-listo-botones .boton {
+  cursor: pointer;
 }

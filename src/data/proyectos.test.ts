@@ -71,3 +71,17 @@ describe('fechas', () => {
     expect(formatearFecha('2026-10-04', 'en')).toBe('4 October 2026');
   });
 });
+
+describe('formularios', () => {
+  it('componen el correo solo con los campos rellenos y codificado para mailto', async () => {
+    const { componerCorreo } = await import('../components/Formulario');
+    const c = componerCorreo('taller@ejemplo.com', '[Galivelop] Propuesta: Faro', [
+      ['Nombre', 'Ana'],
+      ['Enlace', '  '],
+      ['Descripción', 'Una idea\ncon dos líneas'],
+    ]);
+    expect(c.cuerpo).toBe('Nombre: Ana\n\nDescripción:\nUna idea\ncon dos líneas');
+    expect(c.mailto.startsWith('mailto:taller@ejemplo.com?subject=%5BGalivelop%5D%20Propuesta')).toBe(true);
+    expect(decodeURIComponent(c.mailto.split('&body=')[1])).toBe(c.cuerpo);
+  });
+});

@@ -6,7 +6,6 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { Plegable } from '../components/Plegable';
-import { MARCA } from '../data/marca';
 import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
@@ -276,12 +275,12 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             <h2>{t(`participa.${p.colaboracion}.titulo`, { nombre: p.nombre })}</h2>
             <p>{t(`participa.${p.colaboracion}.texto`)}</p>
           </div>
-          <a
+          <Link
             className="boton boton-primario"
-            href={`mailto:${p.colaboracion === 'privada' && p.contacto ? p.contacto : MARCA.correo}?subject=${encodeURIComponent(`${p.nombre} · Galivelop`)}`}
+            to={p.colaboracion === 'abierta' ? `/participa/unirse?proyecto=${p.slug}` : '/participa/proponer'}
           >
             <Mail size={16} /> {t(`participa.${p.colaboracion}.boton`)}
-          </a>
+          </Link>
         </aside>
 
         <footer className="proyecto-pie">

@@ -4,7 +4,9 @@ import { Cabecera } from './components/Cabecera';
 import { Pie } from './components/Pie';
 import { Inicio } from './pages/Inicio';
 import { NoEncontrado } from './pages/NoEncontrado';
+import { Proponer } from './pages/Proponer';
 import { Proyecto } from './pages/Proyecto';
+import { Unirse } from './pages/Unirse';
 
 /** Al cambiar de página, sube arriba; si la ruta trae #ancla, baja hasta ella. */
 function Desplazamiento() {
@@ -28,6 +30,8 @@ export function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/proyectos/:slug" element={<Proyecto />} />
+          <Route path="/participa/proponer" element={<Proponer />} />
+          <Route path="/participa/unirse" element={<Unirse />} />
           <Route path="*" element={<NoEncontrado />} />
         </Routes>
       </main>
