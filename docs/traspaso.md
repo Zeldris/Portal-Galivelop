@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
-| **En `main`** | Portal completo, subido el 2026-10-04 con confirmación expresa. Pages con Source «GitHub Actions»: https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | Todo publicado el 2026-10-04 (confirmación expresa): taller, formularios, correo cordproinf@gmail.com, revisión de contenidos y Discord. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 14/14. `npm run build` correcto |
 
 ## Hecho
@@ -26,16 +26,15 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   cordproinf@gmail.com (marca; sustituye al personal desde 2026-10-04) y web.admin.toveriai@gmail.com (toVeriAI).
 - ✅ Nuevo mensaje de marca (2026-10-04): Galivelop como taller abierto (crear, investigar,
   innovar, aprender), «El taller», «Participa», y colaboración por proyecto (Tarkor abierto,
-  toVeriAI privado). En la rama; pendiente de confirmar el paso a `main`.
+  toVeriAI privado).
 - ✅ Formularios «Propón un proyecto» y «Únete al taller» (correo preparado con mailto, en
-  castellano, a cordproinf@gmail.com). Correo personal retirado de la web. En la rama; pendiente
-  de confirmar el paso a `main`.
+  castellano, a cordproinf@gmail.com). Correo personal retirado de la web.
 - ✅ Revisión completa de contenidos (2026-10-04) con referencias de estudios y laboratorios
   independientes (Ink & Switch: líneas de investigación; Recurse Center: principios y «para quién
   es»; casos de estudio reto → enfoque → estado → aprendizajes): sección «Líneas de trabajo»
   (src/data/lineas.ts + campo `lineas`), «Cómo trabajamos» con cuatro principios, «Es para ti si…»
   y «Cómo funciona» en Participa, fichas reescritas y nueva sección «Lo que estamos aprendiendo»
-  (campo `aprendizajes`). En la rama; pendiente de confirmar el paso a `main`.
+  (campo `aprendizajes`).
 - ✅ Discord de la comunidad (https://discord.gg/8vyjW3VrN) en Participa y en el pie (src/data/marca.ts).
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
