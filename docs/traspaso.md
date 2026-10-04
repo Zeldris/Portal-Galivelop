@@ -14,7 +14,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 ## Hecho
 
 - ✅ Análisis de los repos (World-Maker-Fantasy, Instalador-WMF-Tarkor, VeriNews_AI).
-- ✅ Logo GD (azul celeste y blanco), favicon, PNG 512 e imagen para redes.
+- ✅ Logo GV (antes GD; azul celeste y blanco), favicon, PNG 512 e imagen para redes.
 - ✅ Portal en React + Vite: portada, fichas con galería y secciones plegables, tres idiomas,
   tema claro/oscuro, 404 para rutas en Pages.
 - ✅ Fichas de **Tarkor** (juego + instalador como un solo proyecto; 17 imágenes: ilustraciones

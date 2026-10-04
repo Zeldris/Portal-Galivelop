@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MarcaGD } from '../components/Logo';
+import { MarcaGV } from '../components/Logo';
 import { useIdioma } from '../i18n/Idioma';
 
 export function NoEncontrado() {
@@ -7,7 +7,7 @@ export function NoEncontrado() {
   return (
     <section className="seccion no-encontrado">
       <div className="contenedor">
-        <MarcaGD tamano={64} />
+        <MarcaGV tamano={64} />
         <h1>{t('error.titulo')}</h1>
         <p>{t('error.texto')}</p>
         <Link to="/" className="boton boton-primario">

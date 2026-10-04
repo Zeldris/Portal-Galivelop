@@ -28,12 +28,12 @@ pública (web, descarga…) cuando la hay.
 
 ## Marca
 
-- Logo: monograma **GD** en `public/marca/gd-logo.svg` (también como componente en
-  `src/components/Logo.tsx`). La G y la D comparten el trazo horizontal.
+- Logo: monograma **GV** en `public/marca/gv-logo.svg` (también como componente en
+  `src/components/Logo.tsx`). El travesaño de la G se prolonga hasta el brazo de la V.
 - Colores: el azul celeste y el blanco de la bandera gallega, sin su composición:
   `#1AA6DF` (celeste), `#0083C1` (celeste intenso), `#FFFFFF`.
 - Tipografías: Sora (títulos) e Inter (texto), servidas desde el propio sitio.
-- `node tools/generar-marca.mjs` regenera `gd-logo-512.png` y la imagen para redes
+- `node tools/generar-marca.mjs` regenera `gv-logo-512.png` y la imagen para redes
   (`galivelop-social.png`) a partir del SVG (instrucciones en el propio archivo).
 
 ## Añadir o actualizar un proyecto

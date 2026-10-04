@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
-import { MarcaGD } from '../components/Logo';
+import { MarcaGV } from '../components/Logo';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
 import { MARCA } from '../data/marca';
@@ -73,7 +73,7 @@ export function Inicio() {
               </div>
             ))}
             <div className="collage-marca">
-              <MarcaGD tamano={84} />
+              <MarcaGV tamano={84} />
             </div>
           </div>
         </div>
@@ -165,7 +165,7 @@ export function Inicio() {
 
       <section id="participa" className="seccion seccion-alterna">
         <div className="contenedor contacto">
-          <MarcaGD tamano={56} />
+          <MarcaGV tamano={56} />
           <h2>{t('contacto.titulo')}</h2>
           <p>{t('contacto.texto')}</p>
           <ul className="vias">
