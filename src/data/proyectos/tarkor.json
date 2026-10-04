@@ -1,0 +1,393 @@
+{
+  "slug": "tarkor",
+  "nombre": "Tarkor",
+  "orden": 1,
+  "estado": "desarrollo",
+  "acento": "#E0703A",
+  "actualizado": "2026-10-04",
+  "categoria": {
+    "es": "Videojuego · RPG narrativo con IA",
+    "gl": "Videoxogo · RPG narrativo con IA",
+    "en": "Video game · AI narrative RPG"
+  },
+  "lema": {
+    "es": "Un juego de rol donde el mundo sigue vivo aunque tú no hagas nada.",
+    "gl": "Un xogo de rol onde o mundo segue vivo aínda que ti non fagas nada.",
+    "en": "A role-playing game where the world keeps living even when you do nothing."
+  },
+  "resumen": {
+    "es": "RPG narrativo por texto con una IA local como directora de juego. Facciones, economía, fauna y clima evolucionan por su cuenta mientras gobiernas tu reino en las tierras de Berig.",
+    "gl": "RPG narrativo por texto cunha IA local como directora de xogo. Faccións, economía, fauna e clima evolucionan pola súa conta mentres gobernas o teu reino nas terras de Berig.",
+    "en": "Text-based narrative RPG with a local AI as game master. Factions, economy, wildlife and weather evolve on their own while you rule your kingdom in the lands of Berig."
+  },
+  "fase": {
+    "es": "Alpha · hito 0.2 «Facciones vivas» en curso",
+    "gl": "Alpha · fito 0.2 «Faccións vivas» en curso",
+    "en": "Alpha · milestone 0.2 “Living factions” in progress"
+  },
+  "etiquetas": ["IA local", "React", "TypeScript", "Fastify", "PostgreSQL", "Ollama", "Tauri", "Rust"],
+  "portada": {
+    "src": "proyectos/tarkor/portada.webp",
+    "mini": "proyectos/tarkor/portada-mini.webp",
+    "ancho": 1600,
+    "alto": 640,
+    "alt": {
+      "es": "Los Pilares Rotos, torres de roca roja unidas por puentes colgantes en Las Llanuras",
+      "gl": "Os Piares Rotos, torres de rocha vermella unidas por pontes colgantes nas Chairas",
+      "en": "The Broken Pillars, red rock towers joined by rope bridges in the Plains"
+    }
+  },
+  "enlaces": [],
+  "galeria": [
+    {
+      "src": "proyectos/tarkor/portada.webp",
+      "mini": "proyectos/tarkor/portada-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Los Pilares Rotos, uno de los lugares de Las Llanuras",
+        "gl": "Os Piares Rotos, un dos lugares das Chairas",
+        "en": "The Broken Pillars, one of the locations in the Plains"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/interfaz-mapa-zona.webp",
+      "mini": "proyectos/tarkor/interfaz-mapa-zona-mini.webp",
+      "ancho": 966, "alto": 725,
+      "alt": {
+        "es": "Interfaz del juego: mapa de zona con el jugador, fauna, puntos de interés y salidas a otras zonas",
+        "gl": "Interface do xogo: mapa de zona co xogador, fauna, puntos de interese e saídas a outras zonas",
+        "en": "Game interface: zone map with the player, wildlife, points of interest and exits to other zones"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/orcos-llanuras.webp",
+      "mini": "proyectos/tarkor/orcos-llanuras-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Guerrera orca de Las Llanuras cargando con su hacha",
+        "gl": "Guerreira orca das Chairas cargando co seu machado",
+        "en": "Orc warrior of the Plains charging with her axe"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/mapa-campamento-serhu.webp",
+      "mini": "proyectos/tarkor/mapa-campamento-serhu-mini.webp",
+      "ancho": 1448, "alto": 1086,
+      "alt": {
+        "es": "Mapa ilustrado del campamento del clan Serhu",
+        "gl": "Mapa ilustrado do campamento do clan Serhu",
+        "en": "Illustrated map of the Serhu clan camp"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/gargantua-de-ceniza.webp",
+      "mini": "proyectos/tarkor/gargantua-de-ceniza-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Gargantúas de ceniza, fauna acorazada de Las Llanuras",
+        "gl": "Gargantúas de cinza, fauna acoirazada das Chairas",
+        "en": "Ash gargantuas, armoured wildlife of the Plains"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/orcos-cristal-helado.webp",
+      "mini": "proyectos/tarkor/orcos-cristal-helado-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Orca de Cristal Helado bajo una aurora",
+        "gl": "Orca de Cristal Xeado baixo unha aurora",
+        "en": "Frozen Crystal orc under an aurora"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/osario-de-la-manada.webp",
+      "mini": "proyectos/tarkor/osario-de-la-manada-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "El Osario de la Manada, un arco de costillas gigantes en el desierto",
+        "gl": "O Osario da Manda, un arco de costelas xigantes no deserto",
+        "en": "The Herd's Ossuary, an arch of giant ribs in the desert"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/clan-serhu.webp",
+      "mini": "proyectos/tarkor/clan-serhu-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Estandarte del clan Serhu, una de las facciones",
+        "gl": "Estandarte do clan Serhu, unha das faccións",
+        "en": "Banner of the Serhu clan, one of the factions"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/nabieus-cienaga.webp",
+      "mini": "proyectos/tarkor/nabieus-cienaga-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Nabieu de la Ciénaga Troncal con su farol",
+        "gl": "Nabieu da Braña Troncal co seu farol",
+        "en": "Nabieu of the Trunk Swamp carrying a lantern"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/agujas-iman.webp",
+      "mini": "proyectos/tarkor/agujas-iman-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Las Agujas Imán, rocas que flotan sobre la llanura",
+        "gl": "As Agullas Imán, rochas que flotan sobre a chaira",
+        "en": "The Magnet Spires, rocks floating above the plain"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/cruzavientos.webp",
+      "mini": "proyectos/tarkor/cruzavientos-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Cruzavientos, ave rapaz de las agujas de piedra",
+        "gl": "Cruzaventos, ave rapaz das agullas de pedra",
+        "en": "Windcrosser, a raptor of the stone spires"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/goirntes-meseta.webp",
+      "mini": "proyectos/tarkor/goirntes-meseta-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Goirnte de la Meseta del Orden ante su ciudad",
+        "gl": "Goirnte da Meseta da Orde diante da súa cidade",
+        "en": "Goirnte of the Plateau of Order before their city"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/mapa-pilares-rotos.webp",
+      "mini": "proyectos/tarkor/mapa-pilares-rotos-mini.webp",
+      "ancho": 1448, "alto": 1086,
+      "alt": {
+        "es": "Mapa ilustrado de los Pilares Rotos",
+        "gl": "Mapa ilustrado dos Piares Rotos",
+        "en": "Illustrated map of the Broken Pillars"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/choza-orca.webp",
+      "mini": "proyectos/tarkor/choza-orca-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Choza orca de hueso y madera, primera construcción del reino",
+        "gl": "Choza orca de óso e madeira, primeira construción do reino",
+        "en": "Orc hut of bone and wood, the kingdom's first building"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/nuente.webp",
+      "mini": "proyectos/tarkor/nuente-mini.webp",
+      "ancho": 1600, "alto": 640,
+      "alt": {
+        "es": "Nuente, criatura alada de ojos luminosos",
+        "gl": "Nuente, criatura alada de ollos luminosos",
+        "en": "Nuente, a winged creature with glowing eyes"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/instalador-perfil.webp",
+      "mini": "proyectos/tarkor/instalador-perfil-mini.webp",
+      "ancho": 1100, "alto": 660,
+      "alt": {
+        "es": "Instalador: elección del perfil de IA según la memoria del equipo",
+        "gl": "Instalador: elección do perfil de IA segundo a memoria do equipo",
+        "en": "Installer: choosing the AI profile based on the computer's memory"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/instalador-que-se-instala.webp",
+      "mini": "proyectos/tarkor/instalador-que-se-instala-mini.webp",
+      "ancho": 1100, "alto": 660,
+      "alt": {
+        "es": "Instalador: qué se instala y qué no hace Tarkor nunca",
+        "gl": "Instalador: que se instala e que non fai Tarkor nunca",
+        "en": "Installer: what gets installed and what Tarkor never does"
+      }
+    }
+  ],
+  "descripcion": [
+    {
+      "es": "Tarkor es un juego de rol narrativo por texto en el que una inteligencia artificial hace de directora de juego. La diferencia con otros juegos de este tipo es que el mundo no es un decorado que aparece cuando lo miras: tiene su propio pulso. Las facciones deciden y actúan, la economía se mueve, la fauna se desplaza y el clima cambia, y todo eso puede alcanzarte en cualquier momento.",
+      "gl": "Tarkor é un xogo de rol narrativo por texto no que unha intelixencia artificial fai de directora de xogo. A diferenza con outros xogos deste tipo é que o mundo non é un decorado que aparece cando o miras: ten o seu propio pulso. As faccións deciden e actúan, a economía móvese, a fauna desprázase e o clima cambia, e todo iso pode alcanzarte en calquera momento.",
+      "en": "Tarkor is a text-based narrative role-playing game in which an artificial intelligence acts as game master. What sets it apart is that the world is not a backdrop that appears when you look at it: it has a pulse of its own. Factions decide and act, the economy shifts, wildlife roams and the weather changes, and any of it can catch up with you at any moment."
+    },
+    {
+      "es": "La experiencia buscada es la de una partida de rol de mesa con un buen máster. Juegas en las tierras de Berig: exploras zonas ilustradas, cazas, aprendes oficios, combates con tiradas visibles y fundas y gobiernas tu propio reino mientras el resto del mundo sigue su curso.",
+      "gl": "A experiencia que se busca é a dunha partida de rol de mesa cun bo máster. Xogas nas terras de Berig: exploras zonas ilustradas, cazas, aprendes oficios, combates con tiradas visibles e fundas e gobernas o teu propio reino mentres o resto do mundo segue o seu curso.",
+      "en": "The goal is to feel like a tabletop session with a great game master. You play in the lands of Berig: explore illustrated zones, hunt, learn trades, fight with visible dice rolls, and found and rule your own kingdom while the rest of the world goes on."
+    },
+    {
+      "es": "Toda la IA funciona en tu propio equipo, sin servidores ni cuentas. Para que cualquiera pueda jugar sin instalar nada a mano, Tarkor tendrá un instalador de escritorio para Windows y Linux (Steam Deck incluida) que analiza el equipo, recomienda un perfil de IA y lo deja todo listo.",
+      "gl": "Toda a IA funciona no teu propio equipo, sen servidores nin contas. Para que calquera poida xogar sen instalar nada a man, Tarkor terá un instalador de escritorio para Windows e Linux (Steam Deck incluída) que analiza o equipo, recomenda un perfil de IA e déixao todo listo.",
+      "en": "All of the AI runs on your own computer, with no servers or accounts. So that anyone can play without installing anything by hand, Tarkor will ship a desktop installer for Windows and Linux (Steam Deck included) that analyses the machine, recommends an AI profile and sets everything up."
+    }
+  ],
+  "caracteristicas": [
+    {
+      "icono": "globe",
+      "titulo": { "es": "Un mundo que vive solo", "gl": "Un mundo que vive só", "en": "A world that lives on its own" },
+      "texto": {
+        "es": "Facciones, mercado, producción y población avanzan cada día de juego, juegues o no.",
+        "gl": "Faccións, mercado, produción e poboación avanzan cada día de xogo, xogues ou non.",
+        "en": "Factions, markets, production and population advance every in-game day, whether you play or not."
+      }
+    },
+    {
+      "icono": "sparkles",
+      "titulo": { "es": "IA como directora de juego", "gl": "IA como directora de xogo", "en": "AI as game master" },
+      "texto": {
+        "es": "Un narrador y un cronista con modelos de lenguaje locales cuentan cada partida.",
+        "gl": "Un narrador e un cronista con modelos de linguaxe locais contan cada partida.",
+        "en": "A narrator and a chronicler built on local language models tell every playthrough."
+      }
+    },
+    {
+      "icono": "crown",
+      "titulo": { "es": "Tu propio reino", "gl": "O teu propio reino", "en": "Your own kingdom" },
+      "texto": {
+        "es": "Funda un asentamiento, construye, organiza la producción y cuida a tus súbditos.",
+        "gl": "Funda un asentamento, constrúe, organiza a produción e coida dos teus súbditos.",
+        "en": "Found a settlement, build, organise production and look after your subjects."
+      }
+    },
+    {
+      "icono": "map",
+      "titulo": { "es": "Zonas ilustradas", "gl": "Zonas ilustradas", "en": "Illustrated zones" },
+      "texto": {
+        "es": "Mapas a mano con fauna, puntos de interés y rutas entre regiones.",
+        "gl": "Mapas feitos a man con fauna, puntos de interese e rutas entre rexións.",
+        "en": "Hand-crafted maps with wildlife, points of interest and routes between regions."
+      }
+    },
+    {
+      "icono": "dices",
+      "titulo": { "es": "Reglas de rol de mesa", "gl": "Regras de rol de mesa", "en": "Tabletop rules" },
+      "texto": {
+        "es": "Tiradas visibles, combate, oficios, caza y progresión por niveles.",
+        "gl": "Tiradas visibles, combate, oficios, caza e progresión por niveis.",
+        "en": "Visible dice rolls, combat, trades, hunting and level progression."
+      }
+    },
+    {
+      "icono": "shield",
+      "titulo": { "es": "Privado por diseño", "gl": "Privado por deseño", "en": "Private by design" },
+      "texto": {
+        "es": "Sin cuentas, sin telemetría y sin conexión durante la partida: todo se queda en tu equipo.",
+        "gl": "Sen contas, sen telemetría e sen conexión durante a partida: todo queda no teu equipo.",
+        "en": "No accounts, no telemetry and no connection while playing: everything stays on your machine."
+      }
+    }
+  ],
+  "ficha": [
+    { "capa": { "es": "Interfaz", "gl": "Interface", "en": "Frontend" }, "tecnologias": ["React 19", "TypeScript", "Vite", "Tailwind CSS 4", "React Router"] },
+    { "capa": { "es": "Motor del juego", "gl": "Motor do xogo", "en": "Game engine" }, "tecnologias": ["Node.js", "Fastify", "TypeScript", "Prisma"] },
+    { "capa": { "es": "Datos", "gl": "Datos", "en": "Data" }, "tecnologias": ["PostgreSQL + pgvector", "SQLite (versión de escritorio)"] },
+    { "capa": { "es": "Inteligencia artificial", "gl": "Intelixencia artificial", "en": "Artificial intelligence" }, "tecnologias": ["Ollama", "Modelos de lenguaje locales", "Narrador y cronista con modelos propios"] },
+    { "capa": { "es": "Instalador", "gl": "Instalador", "en": "Installer" }, "tecnologias": ["Tauri v2", "Rust", "NSIS (Windows)", "AppImage (Linux)"] },
+    { "capa": { "es": "Calidad", "gl": "Calidade", "en": "Quality" }, "tecnologias": ["Vitest", "oxlint", "Integración continua en GitHub Actions"] }
+  ],
+  "hitos": [
+    { "version": "0.0", "estado": "hecho",
+      "nombre": { "es": "Alpha 0", "gl": "Alpha 0", "en": "Alpha 0" },
+      "detalle": { "es": "Reino, zona, caza, oficios, tiradas visibles, economía y expediciones de facción.", "gl": "Reino, zona, caza, oficios, tiradas visibles, economía e expedicións de facción.", "en": "Kingdom, zones, hunting, trades, visible rolls, economy and faction expeditions." } },
+    { "version": "0.1", "estado": "curso",
+      "nombre": { "es": "Llanuras estable", "gl": "Chairas estable", "en": "Stable Plains" },
+      "detalle": { "es": "Una partida completa en Las Llanuras sin nada que rompa el juego.", "gl": "Unha partida completa nas Chairas sen nada que rompa o xogo.", "en": "A full playthrough of the Plains with nothing game-breaking." } },
+    { "version": "0.2", "estado": "curso",
+      "nombre": { "es": "Facciones vivas", "gl": "Faccións vivas", "en": "Living factions" },
+      "detalle": { "es": "Las facciones sobreviven, deciden y actúan solas; cada partida tiene su propio mundo.", "gl": "As faccións sobreviven, deciden e actúan soas; cada partida ten o seu propio mundo.", "en": "Factions survive, decide and act on their own; every save has its own world." } },
+    { "version": "0.3", "estado": "pendiente",
+      "nombre": { "es": "Reino profundo", "gl": "Reino profundo", "en": "Deep kingdom" },
+      "detalle": { "es": "Población que llega, forma familia y trabaja; ganadería y defensa.", "gl": "Poboación que chega, forma familia e traballa; gandaría e defensa.", "en": "Settlers who arrive, start families and work; livestock and defence." } },
+    { "version": "0.4", "estado": "pendiente",
+      "nombre": { "es": "Berig abierto: Cristal Helado", "gl": "Berig aberto: Cristal Xeado", "en": "Open Berig: Frozen Crystal" } },
+    { "version": "0.5", "estado": "pendiente",
+      "nombre": { "es": "Ciénaga Troncal", "gl": "Braña Troncal", "en": "Trunk Swamp" } },
+    { "version": "0.6", "estado": "pendiente",
+      "nombre": { "es": "Margen Silencioso y Meseta del Orden", "gl": "Marxe Silenciosa e Meseta da Orde", "en": "Silent Margin and Plateau of Order" } },
+    { "version": "0.7", "estado": "pendiente",
+      "nombre": { "es": "Personaje propio", "gl": "Personaxe propia", "en": "Your own character" },
+      "detalle": { "es": "Crear un personaje desde cero con cualquier raza de Berig.", "gl": "Crear unha personaxe desde cero con calquera raza de Berig.", "en": "Create a character from scratch with any race of Berig." } },
+    { "version": "0.8", "estado": "pendiente",
+      "nombre": { "es": "Beta de Berig", "gl": "Beta de Berig", "en": "Berig beta" },
+      "detalle": { "es": "Instalador público, rendimiento en la Steam Deck y narrador local afinado.", "gl": "Instalador público, rendemento na Steam Deck e narrador local afinado.", "en": "Public installer, Steam Deck performance and a fine-tuned local narrator." } },
+    { "version": "1.0", "estado": "pendiente",
+      "nombre": { "es": "Vaelira", "gl": "Vaelira", "en": "Vaelira" },
+      "detalle": { "es": "Primera gran expansión del mundo.", "gl": "Primeira gran expansión do mundo.", "en": "The world's first major expansion." } }
+  ],
+  "novedades": [
+    {
+      "fecha": "2026-10-03",
+      "texto": {
+        "es": "Mundo por partida: cada partida empieza a tener su propia copia del mundo vivo, con su población y sus facciones.",
+        "gl": "Mundo por partida: cada partida empeza a ter a súa propia copia do mundo vivo, coa súa poboación e as súas faccións.",
+        "en": "World per save: every save now starts getting its own copy of the living world, with its own population and factions."
+      }
+    },
+    {
+      "fecha": "2026-10-02",
+      "texto": {
+        "es": "Nuevo menú de configuración y de pausa, atajos de teclado reasignables y notificaciones animadas.",
+        "gl": "Novo menú de configuración e de pausa, atallos de teclado reasignables e notificacións animadas.",
+        "en": "New settings and pause menu, rebindable keyboard shortcuts and animated notifications."
+      }
+    },
+    {
+      "fecha": "2026-10-02",
+      "texto": {
+        "es": "Noticias del mundo: el jugador ve las relaciones y la agenda de las facciones a medida que cambian.",
+        "gl": "Novas do mundo: o xogador ve as relacións e a axenda das faccións a medida que cambian.",
+        "en": "World news: players see faction relations and agendas as they change."
+      }
+    },
+    {
+      "fecha": "2026-09-28",
+      "texto": {
+        "es": "Instalador: asistente de primer arranque, detección del equipo, perfiles de IA y motor de IA integrado funcionando de punta a punta.",
+        "gl": "Instalador: asistente de primeiro arranque, detección do equipo, perfís de IA e motor de IA integrado funcionando de punta a punta.",
+        "en": "Installer: first-run wizard, hardware detection, AI profiles and a bundled AI engine working end to end."
+      }
+    }
+  ],
+  "cifras": [
+    { "valor": "+3.300", "etiqueta": { "es": "tests automáticos", "gl": "tests automáticos", "en": "automated tests" } },
+    { "valor": "+120", "etiqueta": { "es": "ilustraciones del mundo", "gl": "ilustracións do mundo", "en": "world illustrations" } },
+    { "valor": "5", "etiqueta": { "es": "regiones en Berig", "gl": "rexións en Berig", "en": "regions in Berig" } },
+    { "valor": "100 %", "etiqueta": { "es": "IA en tu equipo", "gl": "IA no teu equipo", "en": "AI on your machine" } }
+  ],
+  "decisiones": [
+    {
+      "titulo": { "es": "IA local en lugar de una API de pago", "gl": "IA local en vez dunha API de pago", "en": "Local AI instead of a paid API" },
+      "texto": {
+        "es": "El narrador corre con Ollama en el equipo del jugador: sin costes por partida, sin depender de terceros y sin que tus partidas salgan de casa.",
+        "gl": "O narrador corre con Ollama no equipo do xogador: sen custos por partida, sen depender de terceiros e sen que as túas partidas saian da casa.",
+        "en": "The narrator runs on Ollama on the player's machine: no per-session costs, no third-party dependency and your games never leave home."
+      }
+    },
+    {
+      "titulo": { "es": "El mundo, en reglas; la IA, en la narración", "gl": "O mundo, en regras; a IA, na narración", "en": "Rules run the world; AI tells the story" },
+      "texto": {
+        "es": "La economía, las facciones y las tiradas son sistemas deterministas y comprobables. La IA cuenta lo que pasa, pero no decide los números, así el juego es justo y coherente.",
+        "gl": "A economía, as faccións e as tiradas son sistemas deterministas e comprobables. A IA conta o que pasa, pero non decide os números, así o xogo é xusto e coherente.",
+        "en": "Economy, factions and dice are deterministic, testable systems. The AI narrates what happens but doesn't decide the numbers, keeping the game fair and consistent."
+      }
+    },
+    {
+      "titulo": { "es": "Perfiles según tu equipo", "gl": "Perfís segundo o teu equipo", "en": "Profiles that fit your hardware" },
+      "texto": {
+        "es": "El instalador mide memoria, procesador y gráfica, y propone un perfil (de Mínimo a Ultra) para que el juego vaya fluido desde una Steam Deck hasta un PC potente.",
+        "gl": "O instalador mide memoria, procesador e gráfica, e propón un perfil (de Mínimo a Ultra) para que o xogo vaia fluído desde unha Steam Deck ata un PC potente.",
+        "en": "The installer measures memory, CPU and GPU and suggests a profile (from Minimum to Ultra) so the game runs smoothly from a Steam Deck to a high-end PC."
+      }
+    }
+  ],
+  "equipo": [
+    { "nombre": "Álvaro García Graña", "rol": { "es": "Dirección del proyecto y diseño del mundo", "gl": "Dirección do proxecto e deseño do mundo", "en": "Project lead and world design" } },
+    { "nombre": "Raquel Carrera", "rol": { "es": "Desarrollo", "gl": "Desenvolvemento", "en": "Development" } }
+  ]
+}

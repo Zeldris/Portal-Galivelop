@@ -1,0 +1,301 @@
+{
+  "slug": "toveriai",
+  "nombre": "toVeriAI",
+  "orden": 2,
+  "estado": "publicado",
+  "acento": "#2F7A55",
+  "icono": "proyectos/toveriai/icono.png",
+  "actualizado": "2026-10-04",
+  "categoria": {
+    "es": "Plataforma web · Verificación de noticias con IA",
+    "gl": "Plataforma web · Verificación de novas con IA",
+    "en": "Web platform · AI news verification"
+  },
+  "lema": {
+    "es": "La verdad no es binaria: un índice de credibilidad para cualquier noticia.",
+    "gl": "A verdade non é binaria: un índice de credibilidade para calquera nova.",
+    "en": "Truth isn't binary: a credibility index for any news story."
+  },
+  "resumen": {
+    "es": "Analiza textos, enlaces e imágenes de noticias con inteligencia artificial y devuelve un Índice de Métricas Interpretativas (IMI) de 0 a 100, desglosado en hasta nueve dimensiones.",
+    "gl": "Analiza textos, ligazóns e imaxes de novas con intelixencia artificial e devolve un Índice de Métricas Interpretativas (IMI) de 0 a 100, desagregado en ata nove dimensións.",
+    "en": "Analyses news text, links and images with artificial intelligence and returns an Interpretive Metrics Index (IMI) from 0 to 100, broken down into up to nine dimensions."
+  },
+  "fase": {
+    "es": "En producción · Premium y VeriAI en beta",
+    "gl": "En produción · Premium e VeriAI en beta",
+    "en": "Live · Premium and VeriAI in beta"
+  },
+  "etiquetas": ["IA", "React", "Spring Boot", "Java", "MySQL", "Ollama"],
+  "portada": {
+    "src": "proyectos/toveriai/portada.webp",
+    "mini": "proyectos/toveriai/portada-mini.webp",
+    "ancho": 1440,
+    "alto": 900,
+    "alt": {
+      "es": "Portada de toVeriAI: «La verdad no es binaria»",
+      "gl": "Portada de toVeriAI: «A verdade non é binaria»",
+      "en": "toVeriAI home page: “Truth isn't binary”"
+    }
+  },
+  "enlaces": [
+    {
+      "tipo": "web",
+      "url": "https://www.toveriai.com",
+      "etiqueta": { "es": "Visitar toveriai.com", "gl": "Visitar toveriai.com", "en": "Visit toveriai.com" }
+    }
+  ],
+  "galeria": [
+    {
+      "src": "proyectos/toveriai/resultado.webp",
+      "mini": "proyectos/toveriai/resultado-mini.webp",
+      "ancho": 1440, "alto": 1290,
+      "alt": {
+        "es": "Resultado de un análisis (datos de ejemplo): índice IMI, fragmentos marcados en el texto y detalle por dimensión",
+        "gl": "Resultado dunha análise (datos de exemplo): índice IMI, fragmentos marcados no texto e detalle por dimensión",
+        "en": "Analysis result (sample data): IMI score, highlighted fragments in the text and per-dimension breakdown"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/portada.webp",
+      "mini": "proyectos/toveriai/portada-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "Página de inicio de toVeriAI",
+        "gl": "Páxina de inicio de toVeriAI",
+        "en": "toVeriAI home page"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/movil.webp",
+      "mini": "proyectos/toveriai/movil-mini.webp",
+      "ancho": 1400, "alto": 1446,
+      "alt": {
+        "es": "toVeriAI en el móvil: inicio y resultado de un análisis",
+        "gl": "toVeriAI no móbil: inicio e resultado dunha análise",
+        "en": "toVeriAI on mobile: home and an analysis result"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/analizar.webp",
+      "mini": "proyectos/toveriai/analizar-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "Pantalla de análisis: texto, URL o imagen",
+        "gl": "Pantalla de análise: texto, URL ou imaxe",
+        "en": "Analysis screen: text, URL or image"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/dimensiones.webp",
+      "mini": "proyectos/toveriai/dimensiones-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "Las dimensiones de credibilidad del índice IMI",
+        "gl": "As dimensións de credibilidade do índice IMI",
+        "en": "The credibility dimensions behind the IMI score"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/escala-imi.webp",
+      "mini": "proyectos/toveriai/escala-imi-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "Cómo leer el índice IMI: tramos de credibilidad baja, moderada y alta",
+        "gl": "Como ler o índice IMI: tramos de credibilidade baixa, moderada e alta",
+        "en": "How to read the IMI score: low, moderate and high credibility ranges"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/veriai.webp",
+      "mini": "proyectos/toveriai/veriai-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "VeriAI, el modelo propio de la plataforma",
+        "gl": "VeriAI, o modelo propio da plataforma",
+        "en": "VeriAI, the platform's own model"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/como-funciona.webp",
+      "mini": "proyectos/toveriai/como-funciona-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "Cómo funciona toVeriAI en tres pasos",
+        "gl": "Como funciona toVeriAI en tres pasos",
+        "en": "How toVeriAI works in three steps"
+      }
+    },
+    {
+      "src": "proyectos/toveriai/precios.webp",
+      "mini": "proyectos/toveriai/precios-mini.webp",
+      "ancho": 1440, "alto": 900,
+      "alt": {
+        "es": "Planes: sin cuenta, registrado y Premium",
+        "gl": "Plans: sen conta, rexistrado e Premium",
+        "en": "Plans: anonymous, registered and Premium"
+      }
+    }
+  ],
+  "descripcion": [
+    {
+      "es": "toVeriAI es una plataforma web que analiza la credibilidad de noticias con inteligencia artificial. No pone etiquetas de «verdadero» o «falso»: evalúa el texto en varias dimensiones independientes y genera el IMI (Índice de Métricas Interpretativas), una puntuación de 0 a 100 que explica por qué una noticia merece más o menos confianza.",
+      "gl": "toVeriAI é unha plataforma web que analiza a credibilidade das novas con intelixencia artificial. Non pon etiquetas de «verdadeiro» ou «falso»: avalía o texto en varias dimensións independentes e xera o IMI (Índice de Métricas Interpretativas), unha puntuación de 0 a 100 que explica por que unha nova merece máis ou menos confianza.",
+      "en": "toVeriAI is a web platform that analyses the credibility of news with artificial intelligence. It doesn't label stories as “true” or “false”: it evaluates the text across several independent dimensions and produces the IMI (Interpretive Metrics Index), a 0–100 score that explains why a story deserves more or less trust."
+    },
+    {
+      "es": "Se puede analizar texto pegado, una URL o capturas de pantalla. El resultado marca sobre el propio texto los fragmentos problemáticos, detalla cada dimensión y cierra con un resumen interpretativo. La metodología parte del marco de NewsGuard, complementado con criterios de IFCN y The Trust Project.",
+      "gl": "Pódese analizar texto pegado, unha URL ou capturas de pantalla. O resultado marca sobre o propio texto os fragmentos problemáticos, detalla cada dimensión e pecha cun resumo interpretativo. A metodoloxía parte do marco de NewsGuard, complementado con criterios de IFCN e The Trust Project.",
+      "en": "You can analyse pasted text, a URL or screenshots. The result highlights problematic fragments directly in the text, details each dimension and ends with an interpretive summary. The methodology builds on the NewsGuard framework, complemented by IFCN and The Trust Project criteria."
+    },
+    {
+      "es": "Nació como Trabajo de Fin de Ciclo del Grado Superior en Desarrollo de Aplicaciones Web y hoy está publicada en toveriai.com, con uso anónimo gratuito, cuentas con historial y estadísticas, y un plan Premium en beta.",
+      "gl": "Naceu como Traballo de Fin de Ciclo do Grao Superior en Desenvolvemento de Aplicacións Web e hoxe está publicada en toveriai.com, con uso anónimo gratuíto, contas con historial e estatísticas, e un plan Premium en beta.",
+      "en": "It started as a final project for a Higher Vocational Degree in Web Application Development and is now live at toveriai.com, with free anonymous use, accounts with history and statistics, and a Premium plan in beta."
+    }
+  ],
+  "caracteristicas": [
+    {
+      "icono": "gauge",
+      "titulo": { "es": "Índice IMI de 0 a 100", "gl": "Índice IMI de 0 a 100", "en": "IMI score from 0 to 100" },
+      "texto": {
+        "es": "Siete dimensiones de contenido y dos de transparencia del medio, ponderadas según su peso.",
+        "gl": "Sete dimensións de contido e dúas de transparencia do medio, ponderadas segundo o seu peso.",
+        "en": "Seven content dimensions plus two on media transparency, each weighted by importance."
+      }
+    },
+    {
+      "icono": "highlighter",
+      "titulo": { "es": "Fragmentos señalados", "gl": "Fragmentos sinalados", "en": "Highlighted fragments" },
+      "texto": {
+        "es": "Las alertas se marcan sobre el propio texto, por categoría, para ver dónde está el problema.",
+        "gl": "As alertas márcanse sobre o propio texto, por categoría, para ver onde está o problema.",
+        "en": "Alerts are marked in the text itself, by category, so you can see where the problem is."
+      }
+    },
+    {
+      "icono": "image",
+      "titulo": { "es": "Texto, URL o imagen", "gl": "Texto, URL ou imaxe", "en": "Text, URL or image" },
+      "texto": {
+        "es": "Pega una noticia, enlaza un artículo o sube capturas de redes sociales.",
+        "gl": "Pega unha nova, ligazón a un artigo ou sobe capturas de redes sociais.",
+        "en": "Paste a story, link an article or upload social media screenshots."
+      }
+    },
+    {
+      "icono": "languages",
+      "titulo": { "es": "Cinco idiomas", "gl": "Cinco idiomas", "en": "Five languages" },
+      "texto": {
+        "es": "Castellano, gallego, catalán, euskera e inglés, tanto en la interfaz como en los análisis.",
+        "gl": "Castelán, galego, catalán, éuscaro e inglés, tanto na interface como nas análises.",
+        "en": "Spanish, Galician, Catalan, Basque and English, in both the interface and the analyses."
+      }
+    },
+    {
+      "icono": "chart",
+      "titulo": { "es": "Historial y estadísticas", "gl": "Historial e estatísticas", "en": "History and statistics" },
+      "texto": {
+        "es": "Cuentas con historial, estadísticas personales, seguimiento de fuentes y un feed público de análisis destacados.",
+        "gl": "Contas con historial, estatísticas persoais, seguimento de fontes e un feed público de análises destacadas.",
+        "en": "Accounts with history, personal statistics, source tracking and a public feed of featured analyses."
+      }
+    },
+    {
+      "icono": "cpu",
+      "titulo": { "es": "VeriAI, modelo propio", "gl": "VeriAI, modelo propio", "en": "VeriAI, an in-house model" },
+      "texto": {
+        "es": "Un modelo local que aprende comparando sus resultados con los de los proveedores en la nube.",
+        "gl": "Un modelo local que aprende comparando os seus resultados cos dos provedores na nube.",
+        "en": "A local model that learns by comparing its results with those of cloud providers."
+      }
+    }
+  ],
+  "ficha": [
+    { "capa": { "es": "Interfaz", "gl": "Interface", "en": "Frontend" }, "tecnologias": ["React 19", "Vite", "React Router", "Recharts", "UnoCSS", "i18n propio (5 idiomas)"] },
+    { "capa": { "es": "Servidor", "gl": "Servidor", "en": "Backend" }, "tecnologias": ["Java 17", "Spring Boot 3", "Spring Security + JWT", "Spring Data JPA / Hibernate", "Maven"] },
+    { "capa": { "es": "Datos", "gl": "Datos", "en": "Data" }, "tecnologias": ["MySQL 8"] },
+    { "capa": { "es": "Inteligencia artificial", "gl": "Intelixencia artificial", "en": "Artificial intelligence" }, "tecnologias": ["Rotación de proveedores: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare", "VeriAI sobre Ollama"] },
+    { "capa": { "es": "Despliegue", "gl": "Despregamento", "en": "Deployment" }, "tecnologias": ["Docker", "Render (API)", "Vercel (web)", "Cloudflare"] },
+    { "capa": { "es": "Acceso", "gl": "Acceso", "en": "Access" }, "tecnologias": ["Email y contraseña", "Inicio de sesión con Google"] }
+  ],
+  "hitos": [
+    { "estado": "hecho",
+      "nombre": { "es": "Trabajo de Fin de Ciclo", "gl": "Traballo de Fin de Ciclo", "en": "Final degree project" },
+      "detalle": { "es": "Grado Superior en Desarrollo de Aplicaciones Web, IES Fernando Wirtz Suárez.", "gl": "Grao Superior en Desenvolvemento de Aplicacións Web, IES Fernando Wirtz Suárez.", "en": "Higher Vocational Degree in Web Application Development, IES Fernando Wirtz Suárez." } },
+    { "estado": "hecho",
+      "nombre": { "es": "Publicación en toveriai.com", "gl": "Publicación en toveriai.com", "en": "Launch at toveriai.com" } },
+    { "estado": "hecho",
+      "nombre": { "es": "Análisis de URL e imágenes", "gl": "Análise de URL e imaxes", "en": "URL and image analysis" },
+      "detalle": { "es": "Nueve dimensiones en modo URL y varias capturas por análisis.", "gl": "Nove dimensións en modo URL e varias capturas por análise.", "en": "Nine dimensions in URL mode and multiple screenshots per analysis." } },
+    { "estado": "hecho",
+      "nombre": { "es": "Cuentas, historial y feed público", "gl": "Contas, historial e feed público", "en": "Accounts, history and public feed" } },
+    { "estado": "curso",
+      "nombre": { "es": "Premium (beta)", "gl": "Premium (beta)", "en": "Premium (beta)" },
+      "detalle": { "es": "Análisis ilimitados, informes en PDF y tarjetas y sellos para compartir.", "gl": "Análises ilimitadas, informes en PDF e tarxetas e selos para compartir.", "en": "Unlimited analyses, PDF reports and shareable cards and seals." } },
+    { "estado": "curso",
+      "nombre": { "es": "VeriAI, modelo propio", "gl": "VeriAI, modelo propio", "en": "VeriAI in-house model" },
+      "detalle": { "es": "Entrenamiento con el dataset que generan los análisis de la plataforma.", "gl": "Adestramento co dataset que xeran as análises da plataforma.", "en": "Training on the dataset produced by the platform's analyses." } }
+  ],
+  "novedades": [
+    {
+      "fecha": "2026-07-16",
+      "texto": {
+        "es": "El análisis de imagen acepta varias capturas por análisis, leídas en orden.",
+        "gl": "A análise de imaxe acepta varias capturas por análise, lidas en orde.",
+        "en": "Image analysis now accepts several screenshots per analysis, read in order."
+      }
+    },
+    {
+      "fecha": "2026-07-16",
+      "texto": {
+        "es": "Filtro de contenido no analizable para texto, URL e imagen.",
+        "gl": "Filtro de contido non analizable para texto, URL e imaxe.",
+        "en": "Filter for non-analysable content in text, URL and image modes."
+      }
+    },
+    {
+      "fecha": "2026-07-15",
+      "texto": {
+        "es": "Inicio de sesión con Google y revisión completa de la arquitectura.",
+        "gl": "Inicio de sesión con Google e revisión completa da arquitectura.",
+        "en": "Google sign-in and a full architecture review."
+      }
+    }
+  ],
+  "cifras": [
+    { "valor": "0–100", "etiqueta": { "es": "índice IMI", "gl": "índice IMI", "en": "IMI score" } },
+    { "valor": "9", "etiqueta": { "es": "dimensiones de análisis", "gl": "dimensións de análise", "en": "analysis dimensions" } },
+    { "valor": "5", "etiqueta": { "es": "idiomas", "gl": "idiomas", "en": "languages" } },
+    { "valor": "6", "etiqueta": { "es": "proveedores de IA en rotación", "gl": "provedores de IA en rotación", "en": "AI providers in rotation" } }
+  ],
+  "decisiones": [
+    {
+      "titulo": { "es": "Métricas, no veredictos", "gl": "Métricas, non veredictos", "en": "Metrics, not verdicts" },
+      "texto": {
+        "es": "En lugar de decir si algo es verdad o mentira, el índice explica qué falla y dónde, para que el lector saque sus propias conclusiones.",
+        "gl": "En vez de dicir se algo é verdade ou mentira, o índice explica que falla e onde, para que o lector saque as súas propias conclusións.",
+        "en": "Instead of declaring something true or false, the score explains what is wrong and where, so readers can draw their own conclusions."
+      }
+    },
+    {
+      "titulo": { "es": "Rotación de proveedores de IA", "gl": "Rotación de provedores de IA", "en": "Rotating AI providers" },
+      "texto": {
+        "es": "Varios proveedores se alternan con control de cuota y alertas, así el servicio sigue funcionando aunque uno falle o se agote.",
+        "gl": "Varios provedores altérnanse con control de cota e alertas, así o servizo segue funcionando aínda que un falle ou se esgote.",
+        "en": "Several providers take turns with quota control and alerts, so the service keeps working even if one fails or runs out."
+      }
+    },
+    {
+      "titulo": { "es": "Un modelo propio que aprende de la nube", "gl": "Un modelo propio que aprende da nube", "en": "An in-house model that learns from the cloud" },
+      "texto": {
+        "es": "Cada análisis se repite en segundo plano con VeriAI; las diferencias forman el dataset con el que se entrena la siguiente versión.",
+        "gl": "Cada análise repítese en segundo plano con VeriAI; as diferenzas forman o dataset co que se adestra a seguinte versión.",
+        "en": "Every analysis is re-run in the background with VeriAI; the differences become the dataset used to train the next version."
+      }
+    }
+  ],
+  "equipo": [
+    { "nombre": "Raquel C.", "rol": { "es": "Autora del proyecto", "gl": "Autora do proxecto", "en": "Project author" } },
+    { "nombre": "Álvaro García Graña", "rol": { "es": "Desarrollo full stack", "gl": "Desenvolvemento full stack", "en": "Full-stack development" } }
+  ]
+}
