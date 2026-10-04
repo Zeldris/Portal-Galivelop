@@ -20,7 +20,7 @@ await social.setContent(`
   <img src="${dataSvg}" width="220" height="220" style="filter:drop-shadow(0 24px 40px rgba(0,131,193,.5))">
   <div>
     <div style="font-size:96px;font-weight:800;letter-spacing:-4px"><span style="color:#1aa6df">Gali</span>velop</div>
-    <div style="font-size:34px;color:#9fb4c4;margin-top:8px">Software con raíces gallegas</div>
+    <div style="font-size:30px;color:#9fb4c4;margin-top:8px">Taller de creación, investigación y aprendizaje</div>
   </div>
 </body>`);
 await social.screenshot({ path: 'public/marca/galivelop-social.png' });

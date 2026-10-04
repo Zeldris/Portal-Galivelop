@@ -2,6 +2,7 @@
   "slug": "tarkor",
   "nombre": "Tarkor",
   "orden": 1,
+  "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
   "actualizado": "2026-10-04",

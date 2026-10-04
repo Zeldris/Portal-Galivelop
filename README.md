@@ -1,7 +1,8 @@
 # Galivelop
 
-**Galicia + Develop.** Portal público de la marca Galivelop: todos nuestros desarrollos, publicados
-y en marcha, en un solo sitio.
+**Galicia + Develop.** Portal de Galivelop, un taller donde creamos, investigamos, innovamos y
+aprendemos. Expone cada proyecto tal y como está (sin venderlo) y abre la puerta a quien quiera
+saber más o participar.
 
 Se publica con GitHub Pages en **https://zeldris.github.io/Portal-Galivelop/**.
 
@@ -9,8 +10,8 @@ Se publica con GitHub Pages en **https://zeldris.github.io/Portal-Galivelop/**.
 
 ## Qué hay
 
-- **Portada:** presentación de la marca, proyectos con filtro por estado (publicado, en desarrollo,
-  en diseño), «Qué es Galivelop» y contacto.
+- **Portada:** presentación del taller, proyectos con filtro por estado (publicado, en desarrollo,
+  en diseño), «El taller» y «Participa» (cómo colaborar, proponer o aprender).
 - **Ficha de cada proyecto** (`/proyectos/<slug>`): cabecera con estado y enlace público, cifras,
   galería con vista a pantalla completa y secciones plegables: descripción, características, ficha
   técnica, estado y hoja de ruta, novedades, decisiones de diseño y equipo.
@@ -40,6 +41,8 @@ pública (web, descarga…) cuando la hay.
 3. Todo texto visible va en los tres idiomas: `{ "es": "…", "gl": "…", "en": "…" }`.
 4. Detalles útiles:
    - `estado`: `publicado`, `desarrollo` o `diseno`.
+   - `colaboracion`: `abierta` (se puede participar) o `privada` (solo se aceptan propuestas e
+     interesados; hoy, solo toVeriAI).
    - `cabecera`: `"captura"` si la portada es una captura de web o app (se enmarca en una ventana);
      sin el campo, la portada se usa de fondo.
    - `hitos[].estado`: `hecho`, `curso` o `pendiente`. El porcentaje de avance sale de ahí.

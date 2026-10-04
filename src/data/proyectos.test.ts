@@ -45,6 +45,7 @@ describe('proyectos', () => {
 
       it('usa un estado y fechas válidos', () => {
         expect(['publicado', 'desarrollo', 'diseno']).toContain(p.estado);
+        expect(['abierta', 'privada']).toContain(p.colaboracion);
         for (const f of [p.actualizado, ...p.novedades.map((n) => n.fecha)]) {
           expect(f).toMatch(/^\d{4}-\d{2}-\d{2}$/);
         }

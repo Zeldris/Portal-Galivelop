@@ -18,5 +18,8 @@ funciona, cómo añadir un proyecto y cómo se publica: [`README.md`](README.md)
 - A `main` solo se sube con confirmación expresa (y `main` es lo que se publica).
 - Todo texto visible, en **castellano, gallego e inglés**. `npm run check` lo comprueba.
 - No se enlaza el código de los proyectos (sus repos son privados): solo su versión pública.
+- Mensaje de la marca (2026-10-04): Galivelop es un **taller** (crear, investigar, innovar,
+  aprender), abierto a colaborar y sin ánimo de vender en la web: expone los proyectos. Galicia es
+  solo una mención (el nombre), no la base del mensaje.
 - Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
 - Al sacar información de otro repo (Tarkor, toVeriAI…), solo se lee: nunca se modifica desde aquí.

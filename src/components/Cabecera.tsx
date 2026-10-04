@@ -26,7 +26,7 @@ export function Cabecera() {
         <nav id="menu-principal" className={`cabecera-nav${menuAbierto ? ' abierta' : ''}`} aria-label={t('nav.menu')}>
           <Link to="/#proyectos" onClick={() => setMenuAbierto(false)}>{t('nav.proyectos')}</Link>
           <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>{t('nav.sobre')}</Link>
-          <Link to="/#contacto" onClick={() => setMenuAbierto(false)}>{t('nav.contacto')}</Link>
+          <Link to="/#participa" onClick={() => setMenuAbierto(false)}>{t('nav.contacto')}</Link>
         </nav>
         <div className="cabecera-ajustes">
           <div className="idiomas" role="group" aria-label={t('idioma.etiqueta')}>

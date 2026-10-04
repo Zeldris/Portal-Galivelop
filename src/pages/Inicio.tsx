@@ -1,4 +1,4 @@
-import { ArrowDown, Compass, Layers, Mail, Sparkles } from 'lucide-react';
+import { ArrowDown, FlaskConical, GraduationCap, HeartHandshake, Lightbulb, Lock, Mail, Rocket, Sparkles, Users } from 'lucide-react';
 import { useState } from 'react';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGD } from '../components/Logo';
@@ -15,6 +15,7 @@ export function Inicio() {
   const [filtro, setFiltro] = useState<EstadoProyecto | 'todos'>('todos');
 
   const conContacto = proyectos.filter((p) => p.contacto);
+  const privados = proyectos.filter((p) => p.colaboracion === 'privada');
   const visibles = proyectos.filter((p) => filtro === 'todos' || p.estado === filtro);
   const cuenta = (e: EstadoProyecto) => proyectos.filter((p) => p.estado === e).length;
   // El collage de la portada toma una imagen de cada proyecto (hasta tres).
@@ -35,7 +36,7 @@ export function Inicio() {
               <a href="#proyectos" className="boton boton-primario">
                 {t('hero.cta.proyectos')} <ArrowDown size={18} />
               </a>
-              <a href="#sobre" className="boton boton-secundario">
+              <a href="#participa" className="boton boton-secundario">
                 {t('hero.cta.sobre')}
               </a>
             </div>
@@ -100,37 +101,67 @@ export function Inicio() {
         <div className="contenedor sobre-rejilla">
           <div>
             <h2>{t('sobre.titulo')}</h2>
-            <p className="sobre-nombre" aria-hidden="true">
-              <span>Gali</span>cia + De<span>velop</span>
-            </p>
             <p>{t('sobre.texto1')}</p>
             <p>{t('sobre.texto2')}</p>
+            <p className="sobre-nombre">
+              <span className="sobre-marca" aria-hidden="true">
+                <b>Gali</b>cia + De<b>velop</b>
+              </span>
+              {t('sobre.nombre')}
+            </p>
           </div>
           <ul className="valores">
             <li>
-              <Layers aria-hidden="true" />
+              <Sparkles aria-hidden="true" />
               <h3>{t('valor1.titulo')}</h3>
               <p>{t('valor1.texto')}</p>
             </li>
             <li>
-              <Sparkles aria-hidden="true" />
+              <FlaskConical aria-hidden="true" />
               <h3>{t('valor2.titulo')}</h3>
               <p>{t('valor2.texto')}</p>
             </li>
             <li>
-              <Compass aria-hidden="true" />
+              <GraduationCap aria-hidden="true" />
               <h3>{t('valor3.titulo')}</h3>
               <p>{t('valor3.texto')}</p>
+            </li>
+            <li>
+              <HeartHandshake aria-hidden="true" />
+              <h3>{t('valor4.titulo')}</h3>
+              <p>{t('valor4.texto')}</p>
             </li>
           </ul>
         </div>
       </section>
 
-      <section id="contacto" className="seccion">
+      <section id="participa" className="seccion">
         <div className="contenedor contacto">
           <MarcaGD tamano={56} />
           <h2>{t('contacto.titulo')}</h2>
           <p>{t('contacto.texto')}</p>
+          <ul className="vias">
+            <li>
+              <Users aria-hidden="true" />
+              <h3>{t('via1.titulo')}</h3>
+              <p>{t('via1.texto')}</p>
+            </li>
+            <li>
+              <Rocket aria-hidden="true" />
+              <h3>{t('via2.titulo')}</h3>
+              <p>{t('via2.texto')}</p>
+            </li>
+            <li>
+              <Lightbulb aria-hidden="true" />
+              <h3>{t('via3.titulo')}</h3>
+              <p>{t('via3.texto')}</p>
+            </li>
+          </ul>
+          {privados.map((p) => (
+            <p key={p.slug} className="nota-privado">
+              <Lock size={16} aria-hidden="true" /> {t('participa.privado', { nombre: p.nombre })}
+            </p>
+          ))}
           <div className="contacto-botones">
             <a className="boton boton-primario" href={`mailto:${MARCA.correo}`}>
               <Mail size={18} /> {t('contacto.correo')}

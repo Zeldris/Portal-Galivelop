@@ -41,6 +41,11 @@ export interface Proyecto {
    * "captura" (capturas de una web o app) la enmarca en una ventana sobre un fondo de color.
    */
   cabecera?: 'ilustracion' | 'captura';
+  /**
+   * "abierta": se puede colaborar en el proyecto. "privada": no se colabora en su desarrollo,
+   * pero se aceptan propuestas e interesados.
+   */
+  colaboracion: 'abierta' | 'privada';
   /** Correo de contacto propio del proyecto, opcional. */
   contacto?: string;
   /** Fecha de la última actualización de la ficha (AAAA-MM-DD). */

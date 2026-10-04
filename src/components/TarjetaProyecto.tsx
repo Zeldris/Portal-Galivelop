@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { progreso, ruta } from '../data/proyectos';
 import type { Proyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
+import { EtiquetaColaboracion } from './Colaboracion';
 import { EstadoEtiqueta } from './EstadoEtiqueta';
 
 export function TarjetaProyecto({ proyecto: p }: { proyecto: Proyecto }) {
@@ -23,6 +24,7 @@ export function TarjetaProyecto({ proyecto: p }: { proyecto: Proyecto }) {
             {p.nombre}
           </Link>
         </h3>
+        <EtiquetaColaboracion colaboracion={p.colaboracion} />
         <p className="tarjeta-resumen">{tx(p.resumen)}</p>
         <ul className="chips" aria-label={t('sec.ficha')}>
           {p.etiquetas.slice(0, 5).map((e) => (

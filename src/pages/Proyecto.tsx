@@ -1,10 +1,12 @@
-import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail, Users } from 'lucide-react';
 import { useEffect, useState, type CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { Plegable } from '../components/Plegable';
+import { MARCA } from '../data/marca';
 import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
@@ -78,6 +80,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             <p className="proyecto-lema">{tx(p.lema)}</p>
             <div className="proyecto-meta">
               <EstadoEtiqueta estado={p.estado} />
+              <EtiquetaColaboracion colaboracion={p.colaboracion} />
               <span className="proyecto-fase">{tx(p.fase)}</span>
             </div>
             <div className="proyecto-acciones">
@@ -264,6 +267,22 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             </Plegable>
           )}
         </div>
+
+        <aside className={`participar participar-${p.colaboracion}`}>
+          <span className="participar-icono" aria-hidden="true">
+            {p.colaboracion === 'abierta' ? <Users size={24} /> : <Lock size={24} />}
+          </span>
+          <div>
+            <h2>{t(`participa.${p.colaboracion}.titulo`, { nombre: p.nombre })}</h2>
+            <p>{t(`participa.${p.colaboracion}.texto`)}</p>
+          </div>
+          <a
+            className="boton boton-primario"
+            href={`mailto:${p.colaboracion === 'privada' && p.contacto ? p.contacto : MARCA.correo}?subject=${encodeURIComponent(`${p.nombre} · Galivelop`)}`}
+          >
+            <Mail size={16} /> {t(`participa.${p.colaboracion}.boton`)}
+          </a>
+        </aside>
 
         <footer className="proyecto-pie">
           <p>
