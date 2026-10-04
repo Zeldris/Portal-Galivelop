@@ -52,6 +52,10 @@ pública (web, descarga…) cuando la hay.
      sin el campo, la portada se usa de fondo.
    - `hitos[].estado`: `hecho`, `curso` o `pendiente`. El porcentaje de avance sale de ahí.
    - `caracteristicas[].icono`: uno de los nombres de [`src/components/Icono.tsx`](src/components/Icono.tsx).
+   - `lineas`: líneas de trabajo del taller a las que pertenece (`ia-local`, `mundos`,
+     `informacion`, `producto`; ver [`src/data/lineas.ts`](src/data/lineas.ts)).
+   - `descripcion`: tres párrafos, como un caso de estudio: el reto, el enfoque y dónde está hoy.
+   - `aprendizajes`: lo que el proyecto nos está obligando a aprender.
    - `contacto`: correo propio del proyecto (opcional); aparece en su ficha y en «Contacto».
    - Las secciones que dejes vacías (`[]`) no se muestran.
 5. `npm run check`: los tests avisan si falta un texto en algún idioma, una imagen o un icono.

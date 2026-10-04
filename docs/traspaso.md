@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Portal completo, subido el 2026-10-04 con confirmación expresa. Pages con Source «GitHub Actions»: https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 12/12. `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 14/14. `npm run build` correcto |
 
 ## Hecho
 
@@ -30,14 +30,19 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Formularios «Propón un proyecto» y «Únete al taller» (correo preparado con mailto, en
   castellano, a cordproinf@gmail.com). Correo personal retirado de la web. En la rama; pendiente
   de confirmar el paso a `main`.
+- ✅ Revisión completa de contenidos (2026-10-04) con referencias de estudios y laboratorios
+  independientes (Ink & Switch: líneas de investigación; Recurse Center: principios y «para quién
+  es»; casos de estudio reto → enfoque → estado → aprendizajes): sección «Líneas de trabajo»
+  (src/data/lineas.ts + campo `lineas`), «Cómo trabajamos» con cuatro principios, «Es para ti si…»
+  y «Cómo funciona» en Participa, fichas reescritas y nueva sección «Lo que estamos aprendiendo»
+  (campo `aprendizajes`). En la rama; pendiente de confirmar el paso a `main`.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
 
-1. Revisar el resto de textos de las fichas de proyecto con el nuevo enfoque de taller, si se quiere.
-2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
+1. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-3. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
+2. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
 
 ## Comprobar el estado
 

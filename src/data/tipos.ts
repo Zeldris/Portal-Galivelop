@@ -59,7 +59,12 @@ export interface Proyecto {
   portada: Imagen;
   enlaces: Enlace[];
   galeria: Imagen[];
+  /** Párrafos de «El proyecto»: el reto, el enfoque y dónde está hoy. */
   descripcion: Texto[];
+  /** Líneas de trabajo del taller a las que pertenece (ids de src/data/lineas.ts). */
+  lineas: string[];
+  /** «Lo que estamos aprendiendo»: retos técnicos o de producto que el proyecto nos obliga a resolver. */
+  aprendizajes: Texto[];
   caracteristicas: { icono: string; titulo: Texto; texto: Texto }[];
   ficha: { capa: Texto; tecnologias: string[] }[];
   hitos: { version?: string; nombre: Texto; estado: EstadoHito; detalle?: Texto }[];

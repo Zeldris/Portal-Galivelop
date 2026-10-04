@@ -1,15 +1,23 @@
-import { ArrowDown, ArrowRight, FlaskConical, GraduationCap, HeartHandshake, Lightbulb, Lock, Mail, Rocket, Sparkles, Users } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, Rocket, ShieldCheck, Target, Users, type LucideIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGD } from '../components/Logo';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
+import { LINEAS, type Linea } from '../data/lineas';
 import { MARCA } from '../data/marca';
 import { proyectos, ruta } from '../data/proyectos';
 import type { EstadoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
+const ICONO_LINEA: Record<Linea, LucideIcon> = { 'ia-local': Cpu, mundos: Globe, informacion: ShieldCheck, producto: Layers };
+const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
+  [Target, 'valor1'],
+  [FlaskConical, 'valor2'],
+  [Eye, 'valor3'],
+  [HeartHandshake, 'valor4'],
+];
 
 export function Inicio() {
   const { t } = useIdioma();
@@ -98,7 +106,38 @@ export function Inicio() {
         </div>
       </section>
 
-      <section id="sobre" className="seccion seccion-alterna">
+      <section id="lineas" className="seccion seccion-alterna">
+        <div className="contenedor">
+          <header className="seccion-cabecera">
+            <div>
+              <h2>{t('lineas.titulo')}</h2>
+              <p>{t('lineas.texto')}</p>
+            </div>
+          </header>
+          <ul className="lineas">
+            {LINEAS.map((l) => {
+              const IconoLinea = ICONO_LINEA[l];
+              const suyos = proyectos.filter((p) => p.lineas.includes(l));
+              return (
+                <li key={l}>
+                  <IconoLinea aria-hidden="true" />
+                  <h3>{t(`linea.${l}.titulo`)}</h3>
+                  <p>{t(`linea.${l}.texto`)}</p>
+                  <ul className="lineas-proyectos">
+                    {suyos.map((p) => (
+                      <li key={p.slug}>
+                        <Link to={`/proyectos/${p.slug}`}>{p.nombre}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      <section id="sobre" className="seccion">
         <div className="contenedor sobre-rejilla">
           <div>
             <h2>{t('sobre.titulo')}</h2>
@@ -111,32 +150,19 @@ export function Inicio() {
               {t('sobre.nombre')}
             </p>
           </div>
-          <ul className="valores">
-            <li>
-              <Sparkles aria-hidden="true" />
-              <h3>{t('valor1.titulo')}</h3>
-              <p>{t('valor1.texto')}</p>
-            </li>
-            <li>
-              <FlaskConical aria-hidden="true" />
-              <h3>{t('valor2.titulo')}</h3>
-              <p>{t('valor2.texto')}</p>
-            </li>
-            <li>
-              <GraduationCap aria-hidden="true" />
-              <h3>{t('valor3.titulo')}</h3>
-              <p>{t('valor3.texto')}</p>
-            </li>
-            <li>
-              <HeartHandshake aria-hidden="true" />
-              <h3>{t('valor4.titulo')}</h3>
-              <p>{t('valor4.texto')}</p>
-            </li>
-          </ul>
+          <ol className="valores">
+            {PRINCIPIOS.map(([IconoPrincipio, v]) => (
+              <li key={v}>
+                <IconoPrincipio aria-hidden="true" />
+                <h3>{t(`${v}.titulo`)}</h3>
+                <p>{t(`${v}.texto`)}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <section id="participa" className="seccion">
+      <section id="participa" className="seccion seccion-alterna">
         <div className="contenedor contacto">
           <MarcaGD tamano={56} />
           <h2>{t('contacto.titulo')}</h2>
@@ -173,6 +199,26 @@ export function Inicio() {
               </Link>
             </li>
           </ul>
+          <div className="participa-guia">
+            <div>
+              <h3>{t('paraquien.titulo')}</h3>
+              <ul className="lista-check">
+                {(['paraquien.1', 'paraquien.2', 'paraquien.3', 'paraquien.4'] as const).map((k) => (
+                  <li key={k}>
+                    <Check size={18} aria-hidden="true" /> {t(k)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3>{t('pasos.titulo')}</h3>
+              <ol className="pasos">
+                {(['paso.1', 'paso.2', 'paso.3', 'paso.4'] as const).map((k) => (
+                  <li key={k}>{t(k)}</li>
+                ))}
+              </ol>
+            </div>
+          </div>
           {privados.map((p) => (
             <p key={p.slug} className="nota-privado">
               <Lock size={16} aria-hidden="true" /> {t('participa.privado', { nombre: p.nombre })}

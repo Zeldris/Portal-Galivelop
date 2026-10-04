@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail, Sparkles, Users } from 'lucide-react';
 import { useEffect, useState, type CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { EtiquetaColaboracion } from '../components/Colaboracion';
@@ -6,12 +6,13 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { Plegable } from '../components/Plegable';
+import type { Linea } from '../data/lineas';
 import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
 
-const SECCIONES = ['descripcion', 'caracteristicas', 'ficha', 'hitos', 'novedades', 'decisiones', 'equipo'] as const;
+const SECCIONES = ['descripcion', 'caracteristicas', 'ficha', 'hitos', 'aprendizajes', 'decisiones', 'novedades', 'equipo'] as const;
 type Seccion = (typeof SECCIONES)[number];
 const ABIERTAS_AL_ENTRAR: Seccion[] = ['descripcion', 'caracteristicas'];
 
@@ -155,6 +156,14 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                   <p key={i}>{tx(d)}</p>
                 ))}
               </div>
+              <p className="proyecto-lineas">
+                <span>{t('lineas.titulo')}:</span>
+                {p.lineas.map((l) => (
+                  <Link key={l} to="/#lineas" className="chip-enlace">
+                    {t(`linea.${l as Linea}.titulo`)}
+                  </Link>
+                ))}
+              </p>
             </Plegable>
           )}
 
@@ -225,6 +234,19 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                   <li key={i}>
                     <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
                     <p>{tx(n.texto)}</p>
+                  </li>
+                ))}
+              </ul>
+            </Plegable>
+          )}
+
+          {secciones.includes('aprendizajes') && (
+            <Plegable {...plegable('aprendizajes')}>
+              <ul className="aprendizajes">
+                {p.aprendizajes.map((a) => (
+                  <li key={tx(a)}>
+                    <Sparkles size={18} aria-hidden="true" />
+                    <span>{tx(a)}</span>
                   </li>
                 ))}
               </ul>

@@ -479,9 +479,10 @@ button {
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-size: clamp(2.2rem, 5vw, 3.7rem);
   font-weight: 700;
   margin: 18px 0 20px;
+  text-wrap: balance;
 }
 
 .destacado {
@@ -2285,4 +2286,192 @@ button {
 
 .formulario-listo-botones .boton {
   cursor: pointer;
+}
+
+/* ---------- Líneas de trabajo ---------- */
+
+.lineas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+}
+
+.lineas > li {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border-radius: var(--radio);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.lineas > li > svg {
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border-radius: 12px;
+  color: var(--celeste);
+  background: var(--brillo);
+  margin-bottom: 14px;
+}
+
+.lineas h3 {
+  font-size: 1.08rem;
+  margin-bottom: 6px;
+}
+
+.lineas > li > p {
+  color: var(--texto-2);
+  font-size: 0.94rem;
+}
+
+.lineas-proyectos {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: auto 0 0;
+  padding: 16px 0 0;
+}
+
+.lineas-proyectos a,
+.chip-enlace {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--enlace);
+  border: 1px solid color-mix(in srgb, var(--celeste) 40%, transparent);
+  background: var(--brillo);
+}
+
+.lineas-proyectos a:hover,
+.chip-enlace:hover {
+  border-color: var(--celeste);
+}
+
+/* ---------- Participa: para quién y cómo funciona ---------- */
+
+.participa-guia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  text-align: left;
+}
+
+.participa-guia > div {
+  padding: 24px;
+  border-radius: var(--radio);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.participa-guia h3 {
+  font-size: 1.08rem;
+  margin-bottom: 12px;
+}
+
+.lista-check,
+.pasos {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  color: var(--texto-2);
+  font-size: 0.95rem;
+}
+
+.lista-check {
+  list-style: none;
+}
+
+.lista-check li {
+  display: flex;
+  gap: 10px;
+}
+
+.lista-check svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--celeste);
+}
+
+.pasos {
+  list-style: none;
+  counter-reset: paso;
+}
+
+.pasos li {
+  display: flex;
+  gap: 12px;
+  counter-increment: paso;
+}
+
+.pasos li::before {
+  content: counter(paso);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  font-family: var(--fuente-titulos);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--blanco);
+  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
+}
+
+@media (max-width: 760px) {
+  .participa-guia {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Ficha: líneas y aprendizajes ---------- */
+
+.proyecto-lineas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde);
+}
+
+.proyecto-lineas > span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.aprendizajes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.aprendizajes li {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radio-sm);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+}
+
+.aprendizajes svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--acento-proyecto, var(--celeste));
 }

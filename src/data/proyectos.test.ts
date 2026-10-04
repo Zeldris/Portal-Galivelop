@@ -5,6 +5,7 @@ import { proyectos } from './proyectos';
 import { IDIOMAS } from './tipos';
 import { textos } from '../i18n/textos';
 import { NOMBRES_ICONOS } from '../components/Icono';
+import { LINEAS } from './lineas';
 
 const PUBLIC = join(__dirname, '../../public');
 
@@ -41,6 +42,11 @@ describe('proyectos', () => {
 
       it('solo usa iconos que existen en components/Icono.tsx', () => {
         expect(p.caracteristicas.map((c) => c.icono).filter((i) => !NOMBRES_ICONOS.includes(i))).toEqual([]);
+      });
+
+      it('pertenece a líneas de trabajo que existen', () => {
+        expect(p.lineas.length).toBeGreaterThan(0);
+        expect(p.lineas.filter((l) => !(LINEAS as readonly string[]).includes(l))).toEqual([]);
       });
 
       it('usa un estado y fechas válidos', () => {
