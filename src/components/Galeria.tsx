@@ -17,8 +17,12 @@ export function Galeria({ imagenes }: { imagenes: Imagen[] }) {
 
   // Mantiene visible la miniatura activa.
   useEffect(() => {
-    const activa = miniaturas.current?.children[actual] as HTMLElement | undefined;
-    activa?.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+    // Solo se desplaza la tira de miniaturas, nunca la página.
+    const tira = miniaturas.current;
+    const activa = tira?.children[actual] as HTMLElement | undefined;
+    if (tira && activa) {
+      tira.scrollTo({ left: activa.offsetLeft - (tira.clientWidth - activa.clientWidth) / 2, behavior: 'smooth' });
+    }
   }, [actual]);
 
   if (total === 0) return null;
@@ -52,6 +56,7 @@ export function Galeria({ imagenes }: { imagenes: Imagen[] }) {
   return (
     <div className="galeria" onKeyDown={teclado}>
       <div className="galeria-escenario" onTouchStart={tocar} onTouchEnd={soltar}>
+        <img key={`fondo-${imagen.src}`} src={ruta(imagen.mini)} alt="" className="galeria-fondo" aria-hidden="true" />
         <img
           key={imagen.src}
           src={ruta(imagen.src)}

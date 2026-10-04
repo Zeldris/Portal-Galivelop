@@ -61,3 +61,12 @@ describe('textos de la interfaz', () => {
     expect(Object.keys(textos.en).sort()).toEqual(claves);
   });
 });
+
+describe('fechas', () => {
+  it('se escriben en el idioma elegido sin depender de Intl', async () => {
+    const { formatearFecha } = await import('../i18n/Idioma');
+    expect(formatearFecha('2026-07-16', 'gl')).toBe('16 de xullo de 2026');
+    expect(formatearFecha('2026-10-04', 'es')).toBe('4 de octubre de 2026');
+    expect(formatearFecha('2026-10-04', 'en')).toBe('4 October 2026');
+  });
+});

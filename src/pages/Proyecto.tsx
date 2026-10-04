@@ -34,6 +34,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const [abiertas, setAbiertas] = useState<Set<Seccion>>(() => new Set(ABIERTAS_AL_ENTRAR));
   const todasAbiertas = secciones.every((s) => abiertas.has(s));
   const avance = progreso(p);
+  const modoCabecera = p.cabecera ?? 'ilustracion';
   const indice = proyectos.findIndex((x) => x.slug === p.slug);
   const siguiente = proyectos.length > 1 ? proyectos[(indice + 1) % proyectos.length] : undefined;
 
@@ -62,35 +63,47 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
   return (
     <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
-      <header className="proyecto-cabecera">
-        <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />
+      <header className={`proyecto-cabecera cabecera-${modoCabecera}`}>
+        {modoCabecera === 'ilustracion' && <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />}
         <div className="contenedor proyecto-cabecera-contenido">
-          <Link to="/#proyectos" className="volver">
-            <ArrowLeft size={16} /> {t('proyecto.volver')}
-          </Link>
-          <p className="tarjeta-categoria">{tx(p.categoria)}</p>
-          <h1>
-            {p.icono && <img src={ruta(p.icono)} alt="" className="proyecto-icono" />}
-            {p.nombre}
-          </h1>
-          <p className="proyecto-lema">{tx(p.lema)}</p>
-          <div className="proyecto-meta">
-            <EstadoEtiqueta estado={p.estado} />
-            <span className="proyecto-fase">{tx(p.fase)}</span>
+          <div className="proyecto-cabecera-texto">
+            <Link to="/#proyectos" className="volver">
+              <ArrowLeft size={16} /> {t('proyecto.volver')}
+            </Link>
+            <p className="tarjeta-categoria">{tx(p.categoria)}</p>
+            <h1>
+              {p.icono && <img src={ruta(p.icono)} alt="" className="proyecto-icono" />}
+              {p.nombre}
+            </h1>
+            <p className="proyecto-lema">{tx(p.lema)}</p>
+            <div className="proyecto-meta">
+              <EstadoEtiqueta estado={p.estado} />
+              <span className="proyecto-fase">{tx(p.fase)}</span>
+            </div>
+            <div className="proyecto-acciones">
+              {p.enlaces.length > 0 ? (
+                p.enlaces.map((e) => (
+                  <a key={e.url} className="boton boton-primario" href={e.url} target="_blank" rel="noreferrer">
+                    {tx(e.etiqueta)} <ExternalLink size={16} />
+                  </a>
+                ))
+              ) : (
+                <span className="sin-enlace">
+                  <Lock size={16} /> {t('proyecto.sinEnlace')}
+                </span>
+              )}
+            </div>
           </div>
-          <div className="proyecto-acciones">
-            {p.enlaces.length > 0 ? (
-              p.enlaces.map((e) => (
-                <a key={e.url} className="boton boton-primario" href={e.url} target="_blank" rel="noreferrer">
-                  {tx(e.etiqueta)} <ExternalLink size={16} />
-                </a>
-              ))
-            ) : (
-              <span className="sin-enlace">
-                <Lock size={16} /> {t('proyecto.sinEnlace')}
+          {modoCabecera === 'captura' && (
+            <figure className="ventana" aria-hidden="true">
+              <span className="ventana-barra">
+                <i />
+                <i />
+                <i />
               </span>
-            )}
-          </div>
+              <img src={ruta(p.portada.src)} alt="" />
+            </figure>
+          )}
         </div>
       </header>
 

@@ -1665,3 +1665,83 @@ button {
 .no-encontrado p {
   color: var(--texto-2);
 }
+
+/* Cabecera de ficha con captura enmarcada (proyectos web o app) */
+
+.cabecera-captura {
+  align-items: center;
+  background:
+    radial-gradient(70% 90% at 80% 30%, color-mix(in srgb, var(--acento-proyecto) 45%, transparent), transparent 70%),
+    linear-gradient(135deg, #06121c, color-mix(in srgb, var(--acento-proyecto) 30%, #06121c));
+}
+
+.cabecera-captura::before {
+  background: linear-gradient(180deg, transparent 70%, var(--fondo) 100%);
+}
+
+:root[data-tema='claro'] .cabecera-captura::before {
+  background: linear-gradient(180deg, transparent 75%, rgb(6 18 28 / 0.4) 100%);
+}
+
+.cabecera-captura .proyecto-cabecera-contenido {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: clamp(28px, 5vw, 60px);
+  align-items: center;
+}
+
+.cabecera-captura .volver {
+  margin-bottom: 40px;
+}
+
+.ventana {
+  margin: 0 0 40px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 70px -25px rgb(0 0 0 / 0.75);
+  transform: perspective(1400px) rotateY(-6deg) rotateX(2deg);
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.ventana:hover {
+  transform: none;
+}
+
+.ventana-barra {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+  background: #e8eef2;
+}
+
+.ventana-barra i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c3ced6;
+}
+
+@media (max-width: 860px) {
+  .cabecera-captura .proyecto-cabecera-contenido {
+    grid-template-columns: 1fr;
+  }
+  .ventana {
+    transform: none;
+  }
+}
+
+/* Relleno desenfocado para imágenes que no llenan el carrusel */
+
+.galeria-fondo {
+  position: absolute;
+  inset: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  object-fit: cover;
+  filter: blur(28px) brightness(0.55) saturate(1.2);
+}
+
+.galeria-imagen {
+  position: relative;
+}

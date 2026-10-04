@@ -19,6 +19,19 @@ function idiomaInicial(): Idioma {
   return 'es';
 }
 
+// Meses a mano: no todos los navegadores traen los datos de Intl para el gallego.
+const MESES: Record<Idioma, string[]> = {
+  es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
+  gl: ['xaneiro', 'febreiro', 'marzo', 'abril', 'maio', 'xuño', 'xullo', 'agosto', 'setembro', 'outubro', 'novembro', 'decembro'],
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+};
+
+export function formatearFecha(iso: string, idioma: Idioma): string {
+  const [a, m, d] = iso.split('-').map(Number);
+  const mes = MESES[idioma][m - 1];
+  return idioma === 'en' ? `${d} ${mes} ${a}` : `${d} de ${mes} de ${a}`;
+}
+
 interface ContextoIdioma {
   idioma: Idioma;
   cambiarIdioma: (i: Idioma) => void;
@@ -49,15 +62,13 @@ export function ProveedorIdioma({ children }: { children: ReactNode }) {
   }, []);
 
   const valor = useMemo<ContextoIdioma>(() => {
-    const locale = { es: 'es-ES', gl: 'gl-ES', en: 'en-GB' }[idioma];
-    const formato = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
     return {
       idioma,
       cambiarIdioma,
       t: (clave, vars) =>
         textos[idioma][clave].replace(/\{(\w+)\}/g, (_, v: string) => String(vars?.[v] ?? `{${v}}`)),
       tx: (texto) => texto[idioma],
-      fecha: (iso) => formato.format(new Date(`${iso}T00:00:00Z`)),
+      fecha: (iso) => formatearFecha(iso, idioma),
     };
   }, [idioma, cambiarIdioma]);
 

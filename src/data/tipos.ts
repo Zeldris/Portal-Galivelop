@@ -36,6 +36,11 @@ export interface Proyecto {
   acento: string;
   /** Icono o logo del proyecto (ruta en public/), opcional. */
   icono?: string;
+  /**
+   * Cómo se usa la portada en la cabecera de la ficha: "ilustracion" (por defecto) la pone de fondo;
+   * "captura" (capturas de una web o app) la enmarca en una ventana sobre un fondo de color.
+   */
+  cabecera?: 'ilustracion' | 'captura';
   /** Fecha de la última actualización de la ficha (AAAA-MM-DD). */
   actualizado: string;
   categoria: Texto;
