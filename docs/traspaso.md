@@ -22,17 +22,17 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   (9 capturas sacadas del frontend en local; el resultado de análisis usa datos de ejemplo).
 - ✅ Revisión móvil (360, 390 y 768 px, claro/oscuro, tres idiomas): sin desbordes; menú
   desplegable bajo 760 px, cifras y tarjetas compactas, galería ampliada opaca y con deslizar.
+- ✅ Equipo confirmado (Tarkor: solo Álvaro; toVeriAI: Raquel C. y Álvaro) y contacto:
+  alvarogarciagrana@gmail.com (marca) y web.admin.toveriai@gmail.com (toVeriAI).
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
 
 1. Activar Pages: Settings → Pages → Source → **GitHub Actions** (una vez, en GitHub).
 2. Confirmar paso a `main` (eso publica el portal).
-3. Revisar con quien lleva la marca: equipo y roles de cada proyecto, y un correo de
-   contacto (ahora solo hay enlace a GitHub).
-4. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
+3. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-5. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
+4. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
 
 ## Comprobar el estado
 

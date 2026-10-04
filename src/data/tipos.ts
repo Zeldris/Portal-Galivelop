@@ -41,6 +41,8 @@ export interface Proyecto {
    * "captura" (capturas de una web o app) la enmarca en una ventana sobre un fondo de color.
    */
   cabecera?: 'ilustracion' | 'captura';
+  /** Correo de contacto propio del proyecto, opcional. */
+  contacto?: string;
   /** Fecha de la última actualización de la ficha (AAAA-MM-DD). */
   actualizado: string;
   categoria: Texto;

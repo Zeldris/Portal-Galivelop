@@ -70,6 +70,9 @@ const es = {
   'contacto.texto':
     '¿Te interesa alguno de los proyectos, quieres colaborar o tienes una idea? Escríbenos y te respondemos.',
   'contacto.github': 'Galivelop en GitHub',
+  'contacto.correo': 'Escríbenos',
+  'contacto.porProyecto': 'Contacto de cada proyecto',
+  'proyecto.contactar': 'Contactar',
 
   'pie.hecho': 'Hecho en Galicia',
   'pie.derechos': 'Todos los derechos reservados.',
@@ -154,6 +157,9 @@ const gl: Record<Clave, string> = {
   'contacto.texto':
     'Interésache algún dos proxectos, queres colaborar ou tes unha idea? Escríbenos e respondémosche.',
   'contacto.github': 'Galivelop en GitHub',
+  'contacto.correo': 'Escríbenos',
+  'contacto.porProyecto': 'Contacto de cada proxecto',
+  'proyecto.contactar': 'Contactar',
 
   'pie.hecho': 'Feito en Galicia',
   'pie.derechos': 'Todos os dereitos reservados.',
@@ -235,6 +241,9 @@ const en: Record<Clave, string> = {
   'contacto.titulo': "Let's talk",
   'contacto.texto': 'Interested in a project, want to collaborate or have an idea? Get in touch and we will get back to you.',
   'contacto.github': 'Galivelop on GitHub',
+  'contacto.correo': 'Email us',
+  'contacto.porProyecto': 'Project contacts',
+  'proyecto.contactar': 'Contact',
 
   'pie.hecho': 'Made in Galicia',
   'pie.derechos': 'All rights reserved.',

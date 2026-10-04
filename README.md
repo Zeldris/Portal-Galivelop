@@ -44,10 +44,13 @@ pública (web, descarga…) cuando la hay.
      sin el campo, la portada se usa de fondo.
    - `hitos[].estado`: `hecho`, `curso` o `pendiente`. El porcentaje de avance sale de ahí.
    - `caracteristicas[].icono`: uno de los nombres de [`src/components/Icono.tsx`](src/components/Icono.tsx).
+   - `contacto`: correo propio del proyecto (opcional); aparece en su ficha y en «Contacto».
    - Las secciones que dejes vacías (`[]`) no se muestran.
 5. `npm run check`: los tests avisan si falta un texto en algún idioma, una imagen o un icono.
 
 No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la portada.
+
+Correo y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
 
 ## Desarrollo
 

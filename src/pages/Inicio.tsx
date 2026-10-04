@@ -1,19 +1,20 @@
-import { ArrowDown, Compass, Layers, Sparkles } from 'lucide-react';
+import { ArrowDown, Compass, Layers, Mail, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGD } from '../components/Logo';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
+import { MARCA } from '../data/marca';
 import { proyectos, ruta } from '../data/proyectos';
 import type { EstadoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
-const GITHUB = 'https://github.com/Zeldris';
 
 export function Inicio() {
   const { t } = useIdioma();
   const [filtro, setFiltro] = useState<EstadoProyecto | 'todos'>('todos');
 
+  const conContacto = proyectos.filter((p) => p.contacto);
   const visibles = proyectos.filter((p) => filtro === 'todos' || p.estado === filtro);
   const cuenta = (e: EstadoProyecto) => proyectos.filter((p) => p.estado === e).length;
   // El collage de la portada toma una imagen de cada proyecto (hasta tres).
@@ -130,9 +131,30 @@ export function Inicio() {
           <MarcaGD tamano={56} />
           <h2>{t('contacto.titulo')}</h2>
           <p>{t('contacto.texto')}</p>
-          <a className="boton boton-primario" href={GITHUB} target="_blank" rel="noreferrer">
-            <IconoGitHub /> {t('contacto.github')}
+          <div className="contacto-botones">
+            <a className="boton boton-primario" href={`mailto:${MARCA.correo}`}>
+              <Mail size={18} /> {t('contacto.correo')}
+            </a>
+            <a className="boton boton-secundario" href={MARCA.github} target="_blank" rel="noreferrer">
+              <IconoGitHub /> {t('contacto.github')}
+            </a>
+          </div>
+          <a className="contacto-correo" href={`mailto:${MARCA.correo}`}>
+            {MARCA.correo}
           </a>
+          {conContacto.length > 0 && (
+            <div className="contacto-proyectos">
+              <h3>{t('contacto.porProyecto')}</h3>
+              <ul>
+                {conContacto.map((p) => (
+                  <li key={p.slug}>
+                    <span>{p.nombre}</span>
+                    <a href={`mailto:${p.contacto}`}>{p.contacto}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
     </>

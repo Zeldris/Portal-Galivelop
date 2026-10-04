@@ -387,7 +387,6 @@
     }
   ],
   "equipo": [
-    { "nombre": "Álvaro García Graña", "rol": { "es": "Dirección del proyecto y diseño del mundo", "gl": "Dirección do proxecto e deseño do mundo", "en": "Project lead and world design" } },
-    { "nombre": "Raquel Carrera", "rol": { "es": "Desarrollo", "gl": "Desenvolvemento", "en": "Development" } }
+    { "nombre": "Álvaro García Graña", "rol": { "es": "Creador: diseño del juego y del mundo, y desarrollo", "gl": "Creador: deseño do xogo e do mundo, e desenvolvemento", "en": "Creator: game and world design, and development" } }
   ]
 }

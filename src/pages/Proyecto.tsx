@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail } from 'lucide-react';
 import { useEffect, useState, type CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
@@ -91,6 +91,11 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                 <span className="sin-enlace">
                   <Lock size={16} /> {t('proyecto.sinEnlace')}
                 </span>
+              )}
+              {p.contacto && (
+                <a className="boton boton-cristal" href={`mailto:${p.contacto}`}>
+                  <Mail size={16} /> {t('proyecto.contactar')}
+                </a>
               )}
             </div>
           </div>
