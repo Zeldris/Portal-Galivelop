@@ -8,6 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
+| **Push** | ⚠️ Bloqueado (403): la app de Claude para GitHub no tiene acceso de escritura a `Zeldris/Portal-Galivelop`. Los commits están solo en local hasta que se dé acceso |
 | **En `main`** | Solo el commit inicial. El portal está en la rama de trabajo, pendiente de confirmar el paso a `main` |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 11/11. `npm run build` correcto |
 
@@ -20,6 +21,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Fichas de **Tarkor** (juego + instalador como un solo proyecto; 17 imágenes: ilustraciones
   de `backend/uploads`, captura del mapa de zona y del asistente del instalador) y **toVeriAI**
   (9 capturas sacadas del frontend en local; el resultado de análisis usa datos de ejemplo).
+- ✅ Revisión móvil (360, 390 y 768 px, claro/oscuro, tres idiomas): sin desbordes; menú
+  desplegable bajo 760 px, cifras y tarjetas compactas, galería ampliada opaca y con deslizar.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
