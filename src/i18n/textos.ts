@@ -159,6 +159,10 @@ const es = {
 
   'sobre.nombre': 'El nombre une Galicia, de donde venimos, y Develop, lo que hacemos.',
 
+  'discord.titulo': 'Únete a la comunidad en Discord',
+  'discord.texto': 'Es el sitio para conocernos, seguir el día a día de los proyectos, preguntar dudas y lanzar ideas antes de formalizarlas.',
+  'discord.boton': 'Entrar en Discord',
+
   'pie.hecho': 'Hecho en Galicia',
   'pie.derechos': 'Todos los derechos reservados.',
 
@@ -331,6 +335,10 @@ const gl: Record<Clave, string> = {
 
   'sobre.nombre': 'O nome une Galicia, de onde vimos, e Develop, o que facemos.',
 
+  'discord.titulo': 'Únete á comunidade en Discord',
+  'discord.texto': 'É o sitio para coñecernos, seguir o día a día dos proxectos, preguntar dúbidas e lanzar ideas antes de formalizalas.',
+  'discord.boton': 'Entrar en Discord',
+
   'pie.hecho': 'Feito en Galicia',
   'pie.derechos': 'Todos os dereitos reservados.',
 
@@ -500,6 +508,10 @@ const en: Record<Clave, string> = {
   'sec.aprendizajes': 'What we are learning',
 
   'sobre.nombre': 'The name joins Galicia, where we come from, and Develop, what we do.',
+
+  'discord.titulo': 'Join the community on Discord',
+  'discord.texto': 'It is the place to meet us, follow the projects day to day, ask questions and float ideas before making them formal.',
+  'discord.boton': 'Join on Discord',
 
   'pie.hecho': 'Made in Galicia',
   'pie.derechos': 'All rights reserved.',

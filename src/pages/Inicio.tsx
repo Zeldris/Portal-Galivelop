@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, Rocket, ShieldCheck, Target, Users, type LucideIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGD } from '../components/Logo';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
@@ -219,6 +220,16 @@ export function Inicio() {
               </ol>
             </div>
           </div>
+          <a className="discord" href={MARCA.discord} target="_blank" rel="noreferrer">
+            <span className="discord-icono">
+              <IconoDiscord tamano={28} />
+            </span>
+            <span className="discord-texto">
+              <strong>{t('discord.titulo')}</strong>
+              <span>{t('discord.texto')}</span>
+            </span>
+            <span className="boton boton-discord">{t('discord.boton')}</span>
+          </a>
           {privados.map((p) => (
             <p key={p.slug} className="nota-privado">
               <Lock size={16} aria-hidden="true" /> {t('participa.privado', { nombre: p.nombre })}
@@ -236,6 +247,10 @@ export function Inicio() {
             {t('contacto.otros')}{' '}
             <a href={`mailto:${MARCA.correo}`}>
               <Mail size={15} /> {MARCA.correo}
+            </a>{' '}
+            ·{' '}
+            <a href={MARCA.discord} target="_blank" rel="noreferrer">
+              <IconoDiscord tamano={15} /> Discord
             </a>{' '}
             ·{' '}
             <a href={MARCA.github} target="_blank" rel="noreferrer">

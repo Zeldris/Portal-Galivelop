@@ -2,4 +2,5 @@
 export const MARCA = {
   correo: 'cordproinf@gmail.com',
   github: 'https://github.com/Zeldris',
+  discord: 'https://discord.gg/8vyjW3VrN',
 };

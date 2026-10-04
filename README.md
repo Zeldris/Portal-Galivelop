@@ -62,7 +62,7 @@ pública (web, descarga…) cuando la hay.
 
 No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la portada.
 
-Correo (recibe los formularios) y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
+Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.ts`](src/data/marca.ts).
 
 ## Desarrollo
 

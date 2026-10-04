@@ -36,6 +36,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   (src/data/lineas.ts + campo `lineas`), «Cómo trabajamos» con cuatro principios, «Es para ti si…»
   y «Cómo funciona» en Participa, fichas reescritas y nueva sección «Lo que estamos aprendiendo»
   (campo `aprendizajes`). En la rama; pendiente de confirmar el paso a `main`.
+- ✅ Discord de la comunidad (https://discord.gg/8vyjW3VrN) en Participa y en el pie (src/data/marca.ts).
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
