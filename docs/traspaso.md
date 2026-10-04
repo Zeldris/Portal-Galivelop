@@ -36,6 +36,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   y «Cómo funciona» en Participa, fichas reescritas y nueva sección «Lo que estamos aprendiendo»
   (campo `aprendizajes`).
 - ✅ Discord de la comunidad (https://discord.gg/8vyjW3VrN) en Participa y en el pie (src/data/marca.ts).
+- ✅ toVeriAI tratado como producto de Raquel (fundadora y creadora): sin menciones a su origen académico (2026-10-04).
 - ✅ Página Equipo (`/equipo`, datos en `src/data/equipo.json`) con Álvaro y Raquel; LinkedIn de Álvaro. En la rama; pendiente de confirmar el paso a `main`.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 

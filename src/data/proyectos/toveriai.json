@@ -172,9 +172,9 @@
       "en": "toVeriAI analyses the text across seven content dimensions, plus two about the outlet when a link is analysed, and combines them into the IMI (Interpretive Metrics Index). It highlights problematic fragments in the text itself and ends with a summary that explains the result. The methodology builds on NewsGuard and is completed with IFCN and The Trust Project criteria."
     },
     {
-      "es": "Nació como Trabajo de Fin de Ciclo del Grado Superior en Desarrollo de Aplicaciones Web y hoy está en producción en toveriai.com: cinco idiomas, uso gratuito sin cuenta, cuentas con historial y estadísticas, y un plan Premium en beta. En paralelo entrenamos VeriAI, un modelo propio que aprende de cada análisis.",
-      "gl": "Naceu como Traballo de Fin de Ciclo do Grao Superior en Desenvolvemento de Aplicacións Web e hoxe está en produción en toveriai.com: cinco idiomas, uso gratuíto sen conta, contas con historial e estatísticas, e un plan Premium en beta. En paralelo adestramos VeriAI, un modelo propio que aprende de cada análise.",
-      "en": "It began as a final project for a Higher Vocational Degree in Web Application Development and is now live at toveriai.com: five languages, free use without an account, accounts with history and statistics, and a Premium plan in beta. Alongside it we are training VeriAI, an in-house model that learns from every analysis."
+      "es": "toVeriAI está en producción en toveriai.com: cinco idiomas, uso gratuito sin cuenta, cuentas con historial y estadísticas, y un plan Premium en beta. En paralelo se entrena VeriAI, un modelo propio que aprende de cada análisis.",
+      "gl": "toVeriAI está en produción en toveriai.com: cinco idiomas, uso gratuíto sen conta, contas con historial e estatísticas, e un plan Premium en beta. En paralelo adéstrase VeriAI, un modelo propio que aprende de cada análise.",
+      "en": "toVeriAI is live at toveriai.com: five languages, free use without an account, accounts with history and statistics, and a Premium plan in beta. Alongside it, VeriAI is being trained: an in-house model that learns from every analysis."
     }
   ],
   "lineas": [
@@ -364,14 +364,14 @@
     {
       "estado": "hecho",
       "nombre": {
-        "es": "Trabajo de Fin de Ciclo",
-        "gl": "Traballo de Fin de Ciclo",
-        "en": "Final degree project"
+        "es": "Primera versión: análisis de texto",
+        "gl": "Primeira versión: análise de texto",
+        "en": "First version: text analysis"
       },
       "detalle": {
-        "es": "Grado Superior en Desarrollo de Aplicaciones Web, IES Fernando Wirtz Suárez.",
-        "gl": "Grao Superior en Desenvolvemento de Aplicacións Web, IES Fernando Wirtz Suárez.",
-        "en": "Higher Vocational Degree in Web Application Development, IES Fernando Wirtz Suárez."
+        "es": "Siete dimensiones de contenido combinadas en el índice IMI de 0 a 100.",
+        "gl": "Sete dimensións de contido combinadas no índice IMI de 0 a 100.",
+        "en": "Seven content dimensions combined into the 0–100 IMI score."
       }
     },
     {
@@ -532,9 +532,9 @@
     {
       "nombre": "Raquel C.",
       "rol": {
-        "es": "Autora del proyecto",
-        "gl": "Autora do proxecto",
-        "en": "Project author"
+        "es": "Fundadora y creadora",
+        "gl": "Fundadora e creadora",
+        "en": "Founder and creator"
       }
     },
     {
