@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { IDIOMAS } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { Logo } from './Logo';
+import { MenuProyectos } from './MenuProyectos';
 import { useTema } from './Tema';
 
 export function Cabecera() {
@@ -24,7 +25,7 @@ export function Cabecera() {
           <Logo />
         </Link>
         <nav id="menu-principal" className={`cabecera-nav${menuAbierto ? ' abierta' : ''}`} aria-label={t('nav.menu')}>
-          <Link to="/#proyectos" onClick={() => setMenuAbierto(false)}>{t('nav.proyectos')}</Link>
+          <MenuProyectos alNavegar={() => setMenuAbierto(false)} />
           <Link to="/#lineas" onClick={() => setMenuAbierto(false)}>{t('nav.lineas')}</Link>
           <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>{t('nav.sobre')}</Link>
           <Link to="/equipo" onClick={() => setMenuAbierto(false)}>{t('nav.equipo')}</Link>

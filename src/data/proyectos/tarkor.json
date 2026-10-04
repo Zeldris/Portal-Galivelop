@@ -7,9 +7,9 @@
   "acento": "#E0703A",
   "actualizado": "2026-10-04",
   "categoria": {
-    "es": "Videojuego · RPG narrativo con IA",
-    "gl": "Videoxogo · RPG narrativo con IA",
-    "en": "Video game · AI narrative RPG"
+    "es": "Videojuego · RPG narrativo con IA local",
+    "gl": "Videoxogo · RPG narrativo con IA local",
+    "en": "Video game · Narrative RPG with local AI"
   },
   "lema": {
     "es": "Un RPG narrativo donde el mundo sigue adelante aunque tú te detengas.",
@@ -290,22 +290,22 @@
         "en": "A world that lives on its own"
       },
       "texto": {
-        "es": "Facciones, mercado, producción y población avanzan cada día de juego, juegues o no.",
-        "gl": "Faccións, mercado, produción e poboación avanzan cada día de xogo, xogues ou non.",
-        "en": "Factions, markets, production and population advance every in-game day, whether you play or not."
+        "es": "Un reloj de ficción hace avanzar facciones, mercado, producción y población. El hambre, el clima y las estaciones también cuentan.",
+        "gl": "Un reloxo de ficción fai avanzar faccións, mercado, produción e poboación. A fame, o clima e as estacións tamén contan.",
+        "en": "A fiction clock moves factions, markets, production and population forward. Hunger, weather and the seasons matter too."
       }
     },
     {
       "icono": "sparkles",
       "titulo": {
-        "es": "IA como directora de juego",
-        "gl": "IA como directora de xogo",
-        "en": "AI as game master"
+        "es": "El motor decide, la IA narra",
+        "gl": "O motor decide, a IA narra",
+        "en": "The engine decides, the AI narrates"
       },
       "texto": {
-        "es": "Un narrador y un cronista con modelos de lenguaje locales cuentan cada partida.",
-        "gl": "Un narrador e un cronista con modelos de linguaxe locais contan cada partida.",
-        "en": "A narrator and a chronicler built on local language models tell every playthrough."
+        "es": "Tiradas, daño y economía los calcula el motor. El narrador solo cuenta lo que ya ha pasado, y el sistema corta lo que invente.",
+        "gl": "Tiradas, dano e economía calcúaos o motor. O narrador só conta o que xa pasou, e o sistema corta o que invente.",
+        "en": "Dice, damage and economy are computed by the engine. The narrator only tells what has already happened, and the system cuts anything it makes up."
       }
     },
     {
@@ -316,9 +316,22 @@
         "en": "Your own kingdom"
       },
       "texto": {
-        "es": "Funda un asentamiento, construye, organiza la producción y cuida a tus súbditos.",
-        "gl": "Funda un asentamento, constrúe, organiza a produción e coida dos teus súbditos.",
-        "en": "Found a settlement, build, organise production and look after your subjects."
+        "es": "Funda un asentamiento, construye, organiza la producción y mantén a tu gente con comida, bebida y ánimo.",
+        "gl": "Funda un asentamento, constrúe, organiza a produción e mantén a túa xente con comida, bebida e ánimo.",
+        "en": "Found a settlement, build, organise production and keep your people fed, watered and in good spirits."
+      }
+    },
+    {
+      "icono": "dices",
+      "titulo": {
+        "es": "Rol de mesa de verdad",
+        "gl": "Rol de mesa de verdade",
+        "en": "Real tabletop rules"
+      },
+      "texto": {
+        "es": "Nueve clases con especialización a nivel 10, siete escuelas de magia y combates contra varios enemigos con iniciativa individual.",
+        "gl": "Nove clases con especialización ao nivel 10, sete escolas de maxia e combates contra varios inimigos con iniciativa individual.",
+        "en": "Nine classes with a specialisation at level 10, seven schools of magic and fights against several enemies with individual initiative."
       }
     },
     {
@@ -329,22 +342,9 @@
         "en": "Illustrated zones"
       },
       "texto": {
-        "es": "Mapas a mano con fauna, puntos de interés y rutas entre regiones.",
-        "gl": "Mapas feitos a man con fauna, puntos de interese e rutas entre rexións.",
-        "en": "Hand-crafted maps with wildlife, points of interest and routes between regions."
-      }
-    },
-    {
-      "icono": "dices",
-      "titulo": {
-        "es": "Reglas de rol de mesa",
-        "gl": "Regras de rol de mesa",
-        "en": "Tabletop rules"
-      },
-      "texto": {
-        "es": "Tiradas visibles, combate, oficios, caza y progresión por niveles.",
-        "gl": "Tiradas visibles, combate, oficios, caza e progresión por niveis.",
-        "en": "Visible dice rolls, combat, trades, hunting and level progression."
+        "es": "Cada lugar tiene su mapa, con fauna, puntos de interés y rutas. Los encuentros dependen de la población real de cada especie.",
+        "gl": "Cada lugar ten o seu mapa, con fauna, puntos de interese e rutas. Os encontros dependen da poboación real de cada especie.",
+        "en": "Every place has its own map with wildlife, points of interest and routes. Encounters depend on each species’ actual population."
       }
     },
     {
@@ -361,6 +361,163 @@
       }
     }
   ],
+  "pasos": [
+    {
+      "titulo": {
+        "es": "Escribes lo que haces",
+        "gl": "Escribes o que fas",
+        "en": "You write what you do"
+      },
+      "texto": {
+        "es": "En lenguaje natural, como en una mesa de rol: «sigo las huellas hacia el norte».",
+        "gl": "En linguaxe natural, como nunha mesa de rol: «sigo as pegadas cara ao norte».",
+        "en": "In plain language, as at a tabletop: “I follow the tracks north”."
+      }
+    },
+    {
+      "titulo": {
+        "es": "El motor la interpreta",
+        "gl": "O motor interprétaa",
+        "en": "The engine interprets it"
+      },
+      "texto": {
+        "es": "Comprueba que encaja con el mundo y, si hace falta, un modelo pequeño decide qué atributo se pone a prueba, con qué dificultad y cuánto tiempo lleva.",
+        "gl": "Comproba que encaixa co mundo e, se fai falta, un modelo pequeno decide que atributo se pon a proba, con que dificultade e canto tempo leva.",
+        "en": "It checks that the action fits the world and, if needed, a small model decides which attribute is tested, how hard it is and how long it takes."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Se tiran los dados",
+        "gl": "Tíranse os dados",
+        "en": "The dice are rolled"
+      },
+      "texto": {
+        "es": "La tirada es visible y el resultado lo fija el motor: daño, botín, experiencia, inventario.",
+        "gl": "A tirada é visible e o resultado fíxao o motor: dano, botín, experiencia, inventario.",
+        "en": "The roll is visible and the engine sets the outcome: damage, loot, experience, inventory."
+      }
+    },
+    {
+      "titulo": {
+        "es": "El narrador lo cuenta",
+        "gl": "O narrador cóntao",
+        "en": "The narrator tells it"
+      },
+      "texto": {
+        "es": "Un modelo local narra lo ocurrido con el tono del mundo, y el sistema valida su texto antes de aplicarlo.",
+        "gl": "Un modelo local narra o acontecido co ton do mundo, e o sistema valida o seu texto antes de aplicalo.",
+        "en": "A local model narrates what happened in the world’s tone, and the system validates its text before applying it."
+      }
+    },
+    {
+      "titulo": {
+        "es": "El mundo sigue",
+        "gl": "O mundo segue",
+        "en": "The world moves on"
+      },
+      "texto": {
+        "es": "Mientras tanto, el reloj avanza: las facciones deciden, la población crece, el clima cambia y tu reino produce.",
+        "gl": "Mentres tanto, o reloxo avanza: as faccións deciden, a poboación medra, o clima cambia e o teu reino produce.",
+        "en": "Meanwhile the clock ticks on: factions decide, populations grow, the weather changes and your kingdom produces."
+      }
+    }
+  ],
+  "apartados": [
+    {
+      "id": "mundo",
+      "titulo": {
+        "es": "El mundo: Helek Sirik",
+        "gl": "O mundo: Helek Sirik",
+        "en": "The world: Helek Sirik"
+      },
+      "intro": {
+        "es": "Un mundo épico y trágico, con dos continentes y ocho razas nacidas de las Semillas que lo crearon. Es tan pequeño que en todo Berig viven menos de diez mil almas: cada muerte deja cicatriz. El número de cada región indica el hito en el que será jugable.",
+        "gl": "Un mundo épico e tráxico, con dous continentes e oito razas nadas das Sementes que o crearon. É tan pequeno que en todo Berig viven menos de dez mil almas: cada morte deixa cicatriz. O número de cada rexión indica o fito no que será xogable.",
+        "en": "An epic, tragic world with two continents and eight races born from the Seeds that created it. It is so small that fewer than ten thousand souls live in all of Berig: every death leaves a scar. Each region’s number shows the milestone in which it becomes playable."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Llanuras del Viento Rojo",
+            "gl": "Chairas do Vento Vermello",
+            "en": "Red Wind Plains"
+          },
+          "valor": "0.1",
+          "texto": {
+            "es": "Desierto rojo de clanes orcos, tormentas de arena y fauna acorazada. Aquí empieza la partida.",
+            "gl": "Deserto vermello de clans orcos, tormentas de area e fauna acoirazada. Aquí comeza a partida.",
+            "en": "Red desert of orc clans, sandstorms and armoured wildlife. This is where the game begins."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Cristal Helado",
+            "gl": "Cristal Xeado",
+            "en": "Frozen Crystal"
+          },
+          "valor": "0.4",
+          "texto": {
+            "es": "Tundra y picos de hielo bajo la aurora, territorio de un clan orco y de minerales que solo existen allí.",
+            "gl": "Tundra e picos de xeo baixo a aurora, territorio dun clan orco e de minerais que só existen alí.",
+            "en": "Tundra and ice peaks under the aurora, home to an orc clan and to minerals found nowhere else."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ciénaga Troncal",
+            "gl": "Braña Troncal",
+            "en": "Trunk Swamp"
+          },
+          "valor": "0.5",
+          "texto": {
+            "es": "Pantano de pilotes, turba y bruma, con sus propios oficios y maestros.",
+            "gl": "Braña de estacas, turba e brétema, cos seus propios oficios e mestres.",
+            "en": "A swamp of stilts, peat and haze, with its own trades and masters."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Margen Silencioso",
+            "gl": "Marxe Silenciosa",
+            "en": "Silent Margin"
+          },
+          "valor": "0.6",
+          "texto": {
+            "es": "Selva de madera negra donde el sonido entra y no vuelve a salir; tierra de nabieus y faerus.",
+            "gl": "Selva de madeira negra onde o son entra e non volve saír; terra de nabieus e faerus.",
+            "en": "A black-wood forest where sound goes in and never comes back; land of the nabieus and faerus."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Meseta del Orden",
+            "gl": "Meseta da Orde",
+            "en": "Plateau of Order"
+          },
+          "valor": "0.6",
+          "texto": {
+            "es": "Ciudades de los goirntes, la mejor metalurgia del mundo y una ley que no tolera nada a medias.",
+            "gl": "Cidades dos goirntes, a mellor metalurxia do mundo e unha lei que non tolera nada a medias.",
+            "en": "Cities of the goirntes, the finest metalwork in the world and a law that tolerates nothing half-done."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Vaelira",
+            "gl": "Vaelira",
+            "en": "Vaelira"
+          },
+          "valor": "1.0",
+          "texto": {
+            "es": "El segundo continente, con otras cuatro razas: la primera gran expansión.",
+            "gl": "O segundo continente, con outras catro razas: a primeira gran expansión.",
+            "en": "The second continent, with four more races: the first major expansion."
+          }
+        }
+      ]
+    }
+  ],
   "ficha": [
     {
       "capa": {
@@ -372,8 +529,7 @@
         "React 19",
         "TypeScript",
         "Vite",
-        "Tailwind CSS 4",
-        "React Router"
+        "Tailwind CSS 4"
       ]
     },
     {
@@ -384,9 +540,9 @@
       },
       "tecnologias": [
         "Node.js",
-        "Fastify",
+        "Fastify 5",
         "TypeScript",
-        "Prisma"
+        "Prisma 6"
       ]
     },
     {
@@ -408,8 +564,9 @@
       },
       "tecnologias": [
         "Ollama",
-        "Modelos de lenguaje locales",
-        "Narrador y cronista con modelos propios"
+        "Narrador: Llama 3.1 8B afinado",
+        "Clasificador y cronista: Qwen 2.5 1.5B",
+        "RAG de lore con embeddings"
       ]
     },
     {
@@ -433,8 +590,9 @@
       },
       "tecnologias": [
         "Vitest",
+        "Testing Library",
         "oxlint",
-        "Integración continua en GitHub Actions"
+        "GitHub Actions"
       ]
     }
   ],
@@ -609,11 +767,11 @@
       }
     },
     {
-      "valor": "+120",
+      "valor": "8",
       "etiqueta": {
-        "es": "ilustraciones del mundo",
-        "gl": "ilustracións do mundo",
-        "en": "world illustrations"
+        "es": "razas en el mundo",
+        "gl": "razas no mundo",
+        "en": "races in the world"
       }
     },
     {
@@ -622,6 +780,14 @@
         "es": "regiones en Berig",
         "gl": "rexións en Berig",
         "en": "regions in Berig"
+      }
+    },
+    {
+      "valor": "26",
+      "etiqueta": {
+        "es": "familias de fauna y flora",
+        "gl": "familias de fauna e flora",
+        "en": "wildlife and plant families"
       }
     },
     {

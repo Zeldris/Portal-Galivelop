@@ -2703,3 +2703,309 @@ button {
 .equipo li:has(.equipo-enlace:hover) {
   border-color: var(--celeste);
 }
+
+/* ---------- Submenú de proyectos ---------- */
+
+.submenu {
+  position: relative;
+}
+
+.submenu-boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--texto-2);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: color var(--transicion), background var(--transicion);
+}
+
+.submenu-boton:hover,
+.submenu.abierto .submenu-boton,
+.submenu-boton.actual {
+  color: var(--texto);
+  background: var(--superficie-2);
+}
+
+.submenu-boton svg {
+  transition: transform var(--transicion);
+}
+
+.submenu.abierto .submenu-boton svg {
+  transform: rotate(180deg);
+}
+
+.submenu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  width: 460px;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: var(--radio);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--transicion), transform var(--transicion), visibility var(--transicion);
+  z-index: 60;
+}
+
+/* Puente invisible para no perder el hover al bajar al panel. */
+.submenu-panel::before {
+  content: '';
+  position: absolute;
+  inset: -10px 0 auto;
+  height: 10px;
+}
+
+.submenu.abierto .submenu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.submenu-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.cabecera-nav .submenu-proyecto {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radio-sm);
+  color: var(--texto);
+}
+
+.cabecera-nav .submenu-proyecto:hover,
+.cabecera-nav .submenu-proyecto[aria-current='page'] {
+  background: var(--superficie-2);
+}
+
+.submenu-proyecto img {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.submenu-texto {
+  display: grid;
+  min-width: 0;
+}
+
+.submenu-texto strong {
+  font-family: var(--fuente-titulos);
+  font-size: 0.98rem;
+}
+
+.submenu-texto span {
+  font-size: 0.78rem;
+  color: var(--texto-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.submenu-proyecto .estado {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+}
+
+.cabecera-nav .submenu-todos {
+  display: block;
+  margin-top: 6px;
+  padding: 10px 8px 4px;
+  border-top: 1px solid var(--borde);
+  border-radius: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--enlace);
+}
+
+.cabecera-nav .submenu-todos:hover {
+  background: none;
+  color: var(--texto);
+}
+
+@media (max-width: 760px) {
+  .submenu-boton {
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border-radius: var(--radio-sm);
+  }
+  .submenu-boton svg {
+    display: none;
+  }
+  /* En el menú móvil el submenú va siempre abierto, dentro del flujo. */
+  .submenu-panel,
+  .submenu.abierto .submenu-panel {
+    position: static;
+    translate: none;
+    width: auto;
+    margin: 0 0 4px 8px;
+    padding: 4px 0 4px 8px;
+    border: 0;
+    border-left: 2px solid var(--borde);
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .cabecera-nav .submenu-proyecto {
+    grid-template-columns: 44px 1fr;
+    padding: 8px;
+  }
+  .submenu-proyecto img {
+    width: 44px;
+    height: 32px;
+  }
+  .submenu-proyecto .estado {
+    display: none;
+  }
+}
+
+/* ---------- Ficha: índice, pasos y apartados ---------- */
+
+.indice-ficha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.indice-ficha button {
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-2);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color var(--transicion), color var(--transicion);
+}
+
+.indice-ficha button:hover {
+  border-color: var(--acento-proyecto, var(--celeste));
+  color: var(--texto);
+}
+
+.indice-ficha + .plegables-barra {
+  margin-top: 14px;
+}
+
+.pasos-ficha {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 14px;
+  counter-reset: paso;
+}
+
+.pasos-ficha li {
+  position: relative;
+  padding: 20px;
+  padding-top: 56px;
+  border-radius: var(--radio-sm);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  counter-increment: paso;
+}
+
+.pasos-ficha li::before {
+  content: counter(paso);
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--blanco);
+  background: var(--acento-proyecto, var(--celeste));
+}
+
+.pasos-ficha h3 {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.pasos-ficha p {
+  color: var(--texto-2);
+  font-size: 0.92rem;
+}
+
+.apartado-intro {
+  color: var(--texto-2);
+  max-width: 75ch;
+  margin-bottom: 18px;
+}
+
+.apartado-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 12px;
+}
+
+.apartado-items li {
+  padding: 16px 18px;
+  border-radius: var(--radio-sm);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+}
+
+.apartado-cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.apartado-cabecera h3 {
+  font-size: 1rem;
+}
+
+.apartado-valor {
+  flex: none;
+  font-family: var(--fuente-titulos);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: var(--acento-proyecto, var(--celeste));
+  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 15%, transparent);
+}
+
+.apartado-items p {
+  color: var(--texto-2);
+  font-size: 0.92rem;
+}

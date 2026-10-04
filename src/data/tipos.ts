@@ -66,6 +66,19 @@ export interface Proyecto {
   /** «Lo que estamos aprendiendo»: retos técnicos o de producto que el proyecto nos obliga a resolver. */
   aprendizajes: Texto[];
   caracteristicas: { icono: string; titulo: Texto; texto: Texto }[];
+  /** «Cómo funciona»: pasos del uso principal (un turno, un análisis…). */
+  pasos: { titulo: Texto; texto: Texto }[];
+  /**
+   * Apartados propios del proyecto (el mundo de un juego, la metodología de una herramienta…).
+   * Cada uno se muestra como una sección plegable con una lista de elementos.
+   */
+  apartados: {
+    id: string;
+    titulo: Texto;
+    intro?: Texto;
+    /** `valor`: dato corto e igual en todos los idiomas (p. ej. «26 %» o «0.4»). */
+    items: { nombre: Texto; valor?: string; texto: Texto }[];
+  }[];
   ficha: { capa: Texto; tecnologias: string[] }[];
   hitos: { version?: string; nombre: Texto; estado: EstadoHito; detalle?: Texto }[];
   novedades: { fecha: string; texto: Texto }[];

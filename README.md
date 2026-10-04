@@ -12,9 +12,11 @@ Se publica con GitHub Pages en **https://zeldris.github.io/Portal-Galivelop/**.
 
 - **Portada:** presentación del taller, proyectos con filtro por estado (publicado, en desarrollo,
   en diseño), «El taller» y «Participa» (cómo colaborar, proponer o aprender).
-- **Ficha de cada proyecto** (`/proyectos/<slug>`): cabecera con estado y enlace público, cifras,
-  galería con vista a pantalla completa y secciones plegables: descripción, características, ficha
-  técnica, estado y hoja de ruta, novedades, decisiones de diseño y equipo.
+- **Página de cada proyecto** (`/proyectos/<slug>`, también desde el submenú «Proyectos» de la
+  cabecera): cabecera con estado y enlace público, cifras, galería con vista a pantalla completa,
+  índice «En esta página» y secciones plegables: el proyecto, qué lo hace distinto, cómo funciona,
+  apartados propios (p. ej. el mundo de Tarkor o las dimensiones del IMI), ficha técnica, hoja de
+  ruta, lo que estamos aprendiendo, decisiones de diseño, novedades y equipo.
 - **Participa:** formularios para proponer un proyecto (`/participa/proponer`) y para unirse al
   taller (`/participa/unirse`, con `?proyecto=<slug>` o `?modo=aprender` para preseleccionar).
   Como la web es estática, preparan un correo a `cordproinf@gmail.com` (asunto
@@ -56,6 +58,9 @@ pública (web, descarga…) cuando la hay.
      `informacion`, `producto`; ver [`src/data/lineas.ts`](src/data/lineas.ts)).
    - `descripcion`: tres párrafos, como un caso de estudio: el reto, el enfoque y dónde está hoy.
    - `aprendizajes`: lo que el proyecto nos está obligando a aprender.
+   - `pasos`: «Cómo funciona», los pasos del uso principal (un turno, un análisis…).
+   - `apartados`: secciones propias del proyecto, cada una con `id`, `titulo`, `intro` opcional e
+     `items` (`nombre`, `texto` y un `valor` corto opcional, igual en todos los idiomas).
    - `contacto`: correo propio del proyecto (opcional); aparece en su ficha y en «Contacto».
    - Las secciones que dejes vacías (`[]`) no se muestran.
 5. `npm run check`: los tests avisan si falta un texto en algún idioma, una imagen o un icono.

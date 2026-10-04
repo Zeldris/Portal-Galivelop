@@ -13,15 +13,25 @@ import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
 
-const SECCIONES = ['descripcion', 'caracteristicas', 'ficha', 'hitos', 'aprendizajes', 'decisiones', 'novedades', 'equipo'] as const;
-type Seccion = (typeof SECCIONES)[number];
-const ABIERTAS_AL_ENTRAR: Seccion[] = ['descripcion', 'caracteristicas'];
+// Orden de la ficha, como un caso de estudio: qué es, qué lo hace distinto, cómo funciona, su mundo o
+// metodología (apartados propios), cómo está hecho, dónde está y qué estamos aprendiendo.
+const FIJAS_ANTES = ['descripcion', 'caracteristicas', 'pasos'] as const;
+const FIJAS_DESPUES = ['ficha', 'hitos', 'aprendizajes', 'decisiones', 'novedades', 'equipo'] as const;
+type Fija = (typeof FIJAS_ANTES)[number] | (typeof FIJAS_DESPUES)[number];
+/** Id de sección: una fija o `ap-<id>` para los apartados propios del proyecto. */
+type Seccion = Fija | `ap-${string}`;
+const ABIERTAS_AL_ENTRAR: Seccion[] = ['descripcion', 'caracteristicas', 'pasos'];
 
 const ICONO_HITO: Record<EstadoHito, typeof Check> = { hecho: Check, curso: LoaderCircle, pendiente: CircleDashed };
 
 /** Secciones con contenido en este proyecto (las vacías no se muestran). */
 function seccionesDe(p: TipoProyecto): Seccion[] {
-  return SECCIONES.filter((s) => p[s].length > 0);
+  const conContenido = (s: Fija) => p[s].length > 0;
+  return [
+    ...FIJAS_ANTES.filter(conContenido),
+    ...p.apartados.map((a) => `ap-${a.id}` as const),
+    ...FIJAS_DESPUES.filter(conContenido),
+  ];
 }
 
 export function Proyecto() {
@@ -56,9 +66,23 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
       return nuevo;
     });
 
+  const tituloDe = (s: Seccion) => {
+    if (s.startsWith('ap-')) {
+      const apartado = p.apartados.find((a) => `ap-${a.id}` === s);
+      return apartado ? tx(apartado.titulo) : s;
+    }
+    return t(`sec.${s as Fija}`);
+  };
+
+  /** Abre una sección y baja hasta ella (índice de la ficha). */
+  const irA = (s: Seccion) => {
+    cambiar(s, true);
+    requestAnimationFrame(() => document.getElementById(s)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  };
+
   const plegable = (s: Seccion, extra?: string) => ({
     id: s,
-    titulo: t(`sec.${s}`),
+    titulo: tituloDe(s),
     abierto: abiertas.has(s),
     alCambiar: (a: boolean) => cambiar(s, a),
     extra,
@@ -139,6 +163,14 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           <Galeria imagenes={p.galeria} />
         </section>
 
+        <nav className="indice-ficha" aria-label={t('proyecto.indice')}>
+          {secciones.map((sec) => (
+            <button key={sec} type="button" onClick={() => irA(sec)} aria-current={abiertas.has(sec) || undefined}>
+              {tituloDe(sec)}
+            </button>
+          ))}
+        </nav>
+
         <div className="plegables-barra">
           <button
             type="button"
@@ -183,6 +215,36 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
               </ul>
             </Plegable>
           )}
+
+          {secciones.includes('pasos') && (
+            <Plegable {...plegable('pasos', String(p.pasos.length))}>
+              <ol className="pasos-ficha">
+                {p.pasos.map((paso) => (
+                  <li key={tx(paso.titulo)}>
+                    <h3>{tx(paso.titulo)}</h3>
+                    <p>{tx(paso.texto)}</p>
+                  </li>
+                ))}
+              </ol>
+            </Plegable>
+          )}
+
+          {p.apartados.map((a) => (
+            <Plegable key={a.id} {...plegable(`ap-${a.id}`, String(a.items.length))}>
+              {a.intro && <p className="apartado-intro">{tx(a.intro)}</p>}
+              <ul className="apartado-items">
+                {a.items.map((item) => (
+                  <li key={tx(item.nombre)}>
+                    <div className="apartado-cabecera">
+                      <h3>{tx(item.nombre)}</h3>
+                      {item.valor && <span className="apartado-valor">{item.valor}</span>}
+                    </div>
+                    <p>{tx(item.texto)}</p>
+                  </li>
+                ))}
+              </ul>
+            </Plegable>
+          ))}
 
           {secciones.includes('ficha') && (
             <Plegable {...plegable('ficha')}>

@@ -213,9 +213,9 @@
         "en": "IMI score from 0 to 100"
       },
       "texto": {
-        "es": "Siete dimensiones de contenido y dos de transparencia del medio, ponderadas según su peso.",
-        "gl": "Sete dimensións de contido e dúas de transparencia do medio, ponderadas segundo o seu peso.",
-        "en": "Seven content dimensions plus two on media transparency, each weighted by importance."
+        "es": "Parte de 100 y descuenta por cada alerta según el peso de su dimensión. Por encima de 70, credibilidad alta; por debajo de 40, baja.",
+        "gl": "Parte de 100 e desconta por cada alerta segundo o peso da súa dimensión. Por riba de 70, credibilidade alta; por baixo de 40, baixa.",
+        "en": "It starts at 100 and deducts for each alert according to its dimension’s weight. Above 70, high credibility; below 40, low."
       }
     },
     {
@@ -226,22 +226,22 @@
         "en": "Highlighted fragments"
       },
       "texto": {
-        "es": "Las alertas se marcan sobre el propio texto, por categoría, para ver dónde está el problema.",
-        "gl": "As alertas márcanse sobre o propio texto, por categoría, para ver onde está o problema.",
-        "en": "Alerts are marked in the text itself, by category, so you can see where the problem is."
+        "es": "Cada alerta se marca sobre el propio texto, con su categoría, para ver exactamente dónde está el problema.",
+        "gl": "Cada alerta márcase sobre o propio texto, coa súa categoría, para ver exactamente onde está o problema.",
+        "en": "Every alert is marked in the text itself, with its category, so you can see exactly where the problem is."
       }
     },
     {
       "icono": "image",
       "titulo": {
-        "es": "Texto, URL o imagen",
-        "gl": "Texto, URL ou imaxe",
-        "en": "Text, URL or image"
+        "es": "Texto, enlace o captura",
+        "gl": "Texto, ligazón ou captura",
+        "en": "Text, link or screenshot"
       },
       "texto": {
-        "es": "Pega una noticia, enlaza un artículo o sube capturas de redes sociales.",
-        "gl": "Pega unha nova, ligazón a un artigo ou sobe capturas de redes sociais.",
-        "en": "Paste a story, link an article or upload social media screenshots."
+        "es": "Con un enlace, también revisa el sitio del medio para evaluar su transparencia y la autoría. Las capturas sirven para redes sociales.",
+        "gl": "Cunha ligazón, tamén revisa o sitio do medio para avaliar a súa transparencia e a autoría. As capturas serven para redes sociais.",
+        "en": "With a link it also checks the outlet’s website to assess its transparency and authorship. Screenshots work for social media."
       }
     },
     {
@@ -260,14 +260,14 @@
     {
       "icono": "chart",
       "titulo": {
-        "es": "Historial y estadísticas",
-        "gl": "Historial e estatísticas",
-        "en": "History and statistics"
+        "es": "Comunidad y seguimiento de medios",
+        "gl": "Comunidade e seguimento de medios",
+        "en": "Community and outlet tracking"
       },
       "texto": {
-        "es": "Cuentas con historial, estadísticas personales, seguimiento de fuentes y un feed público de análisis destacados.",
-        "gl": "Contas con historial, estatísticas persoais, seguimento de fontes e un feed público de análises destacadas.",
-        "en": "Accounts with history, personal statistics, source tracking and a public feed of featured analyses."
+        "es": "Feed público revisado con votos por dimensión, ranking de medios y aviso si la fiabilidad media de un medio que sigues cambia.",
+        "gl": "Feed público revisado con votos por dimensión, ranking de medios e aviso se a fiabilidade media dun medio que segues cambia.",
+        "en": "A moderated public feed with per-dimension votes, an outlet ranking and alerts when the average reliability of an outlet you follow changes."
       }
     },
     {
@@ -278,10 +278,194 @@
         "en": "VeriAI, an in-house model"
       },
       "texto": {
-        "es": "Un modelo local que aprende comparando sus resultados con los de los proveedores en la nube.",
-        "gl": "Un modelo local que aprende comparando os seus resultados cos dos provedores na nube.",
-        "en": "A local model that learns by comparing its results with those of cloud providers."
+        "es": "Un modelo local que repite cada análisis en segundo plano y aprende de las diferencias con los proveedores en la nube.",
+        "gl": "Un modelo local que repite cada análise en segundo plano e aprende das diferenzas cos provedores na nube.",
+        "en": "A local model that re-runs every analysis in the background and learns from the differences with cloud providers."
       }
+    }
+  ],
+  "pasos": [
+    {
+      "titulo": {
+        "es": "Envías el contenido",
+        "gl": "Envías o contido",
+        "en": "You submit the content"
+      },
+      "texto": {
+        "es": "Texto, enlace o capturas. Un filtro previo descarta lo que no se puede analizar, como textos demasiado cortos.",
+        "gl": "Texto, ligazón ou capturas. Un filtro previo descarta o que non se pode analizar, como textos demasiado curtos.",
+        "en": "Text, a link or screenshots. A first filter discards what cannot be analysed, such as texts that are too short."
+      }
+    },
+    {
+      "titulo": {
+        "es": "La IA identifica el tipo de texto",
+        "gl": "A IA identifica o tipo de texto",
+        "en": "The AI identifies the type of text"
+      },
+      "texto": {
+        "es": "Noticia, comunicado oficial, publicación en redes o contenido sin autoría: las reglas cambian según el caso.",
+        "gl": "Nova, comunicado oficial, publicación en redes ou contido sen autoría: as regras cambian segundo o caso.",
+        "en": "News story, official statement, social media post or unsigned content: the rules change for each case."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Analiza cada dimensión",
+        "gl": "Analiza cada dimensión",
+        "en": "It analyses each dimension"
+      },
+      "texto": {
+        "es": "Hasta nueve, cada una con sus alertas y los fragmentos concretos que las provocan.",
+        "gl": "Ata nove, cada unha coas súas alertas e os fragmentos concretos que as provocan.",
+        "en": "Up to nine, each with its alerts and the specific fragments that trigger them."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Calcula el IMI y lo explica",
+        "gl": "Calcula o IMI e explícao",
+        "en": "It calculates and explains the IMI"
+      },
+      "texto": {
+        "es": "Devuelve la puntuación de 0 a 100, el detalle por dimensión y un resumen que guía la lectura crítica.",
+        "gl": "Devolve a puntuación de 0 a 100, o detalle por dimensión e un resumo que guía a lectura crítica.",
+        "en": "It returns the 0–100 score, the per-dimension breakdown and a summary that guides critical reading."
+      }
+    }
+  ],
+  "apartados": [
+    {
+      "id": "dimensiones",
+      "titulo": {
+        "es": "Las dimensiones del IMI",
+        "gl": "As dimensións do IMI",
+        "en": "The IMI dimensions"
+      },
+      "intro": {
+        "es": "Los pesos parten del marco de NewsGuard, completado con IFCN y The Trust Project. Con texto o capturas se usan las siete dimensiones de contenido; con un enlace se suman dos de transparencia, que pesan un 15 % del total.",
+        "gl": "Os pesos parten do marco de NewsGuard, completado con IFCN e The Trust Project. Con texto ou capturas úsanse as sete dimensións de contido; cunha ligazón súmanse dúas de transparencia, que pesan un 15 % do total.",
+        "en": "The weights build on the NewsGuard framework, completed with IFCN and The Trust Project. Text and screenshots use the seven content dimensions; a link adds two transparency dimensions worth 15% of the total."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Verificación factual",
+            "gl": "Verificación factual",
+            "en": "Factual verification"
+          },
+          "valor": "26 %",
+          "texto": {
+            "es": "Si hay afirmaciones falsas, inverificables o engañosas. Escribir bien no equivale a ser veraz.",
+            "gl": "Se hai afirmacións falsas, inverificables ou enganosas. Escribir ben non equivale a ser veraz.",
+            "en": "Whether there are false, unverifiable or misleading claims. Writing well is not the same as being truthful."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Consistencia interna",
+            "gl": "Consistencia interna",
+            "en": "Internal consistency"
+          },
+          "valor": "24 %",
+          "texto": {
+            "es": "Contradicciones, saltos lógicos o un titular que no se corresponde con el cuerpo.",
+            "gl": "Contradicións, saltos lóxicos ou un titular que non se corresponde co corpo.",
+            "en": "Contradictions, logical leaps or a headline that does not match the body."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Fuentes",
+            "gl": "Fontes",
+            "en": "Sources"
+          },
+          "valor": "15 %",
+          "texto": {
+            "es": "Trazabilidad: una fuente con nombre y cargo frente a «según expertos» o «fuentes cercanas».",
+            "gl": "Trazabilidade: unha fonte con nome e cargo fronte a «segundo expertos» ou «fontes próximas».",
+            "en": "Traceability: a source with a name and position versus “experts say” or “sources close to”."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Sesgo",
+            "gl": "Nesgo",
+            "en": "Bias"
+          },
+          "valor": "12 %",
+          "texto": {
+            "es": "El encuadre que da el propio periodista y las perspectivas que omite.",
+            "gl": "O encadre que dá o propio xornalista e as perspectivas que omite.",
+            "en": "The framing chosen by the journalist and the perspectives left out."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Tono",
+            "gl": "Ton",
+            "en": "Tone"
+          },
+          "valor": "12 %",
+          "texto": {
+            "es": "Si el texto informa o persuade: alarmismo, catastrofismo o búsqueda de indignación.",
+            "gl": "Se o texto informa ou persuade: alarmismo, catastrofismo ou procura de indignación.",
+            "en": "Whether the text informs or persuades: alarmism, doom-mongering or outrage-seeking."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Semántica",
+            "gl": "Semántica",
+            "en": "Semantics"
+          },
+          "valor": "6 %",
+          "texto": {
+            "es": "Términos cargados, eufemismos o hipérboles en la voz del autor, no en las citas.",
+            "gl": "Termos cargados, eufemismos ou hipérboles na voz do autor, non nas citas.",
+            "en": "Loaded terms, euphemisms or hyperbole in the author’s own voice, not in quotes."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Cifras",
+            "gl": "Cifras",
+            "en": "Figures"
+          },
+          "valor": "5 %",
+          "texto": {
+            "es": "Datos y estadísticas con fuente y contexto.",
+            "gl": "Datos e estatísticas con fonte e contexto.",
+            "en": "Data and statistics with a source and context."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Transparencia del medio",
+            "gl": "Transparencia do medio",
+            "en": "Outlet transparency"
+          },
+          "valor": "URL",
+          "texto": {
+            "es": "Solo con enlace: si el medio dice quién lo posee y cómo se financia.",
+            "gl": "Só con ligazón: se o medio di quen o posúe e como se financia.",
+            "en": "Link mode only: whether the outlet says who owns it and how it is funded."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Autoría",
+            "gl": "Autoría",
+            "en": "Authorship"
+          },
+          "valor": "URL",
+          "texto": {
+            "es": "Solo con enlace: si el artículo lo firma una persona identificable.",
+            "gl": "Só con ligazón: se o artigo o asina unha persoa identificable.",
+            "en": "Link mode only: whether the article is signed by an identifiable person."
+          }
+        }
+      ]
     }
   ],
   "ficha": [
@@ -471,6 +655,14 @@
         "es": "dimensiones de análisis",
         "gl": "dimensións de análise",
         "en": "analysis dimensions"
+      }
+    },
+    {
+      "valor": "3",
+      "etiqueta": {
+        "es": "formas de analizar: texto, enlace o captura",
+        "gl": "formas de analizar: texto, ligazón ou captura",
+        "en": "ways to analyse: text, link or screenshot"
       }
     },
     {

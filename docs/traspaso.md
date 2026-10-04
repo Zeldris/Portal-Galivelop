@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-04 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-04): taller, formularios, correo cordproinf@gmail.com, contenidos, Discord, logo GV, Equipo y toVeriAI como producto de Raquel. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 15/15. `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
 
 ## Hecho
 
@@ -38,6 +38,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Discord de la comunidad (https://discord.gg/8vyjW3VrN) en Participa y en el pie (src/data/marca.ts).
 - ✅ toVeriAI tratado como producto de Raquel (fundadora y creadora): sin menciones a su origen académico (2026-10-04).
 - ✅ Página Equipo (`/equipo`, datos en `src/data/equipo.json`) con Álvaro y Raquel y sus LinkedIn.
+- ✅ Fichas ampliadas tras releer los repos: «Cómo funciona» (`pasos`), apartados propios (`apartados`: mundo de Helek Sirik en Tarkor, dimensiones del IMI con sus pesos en toVeriAI), características y cifras más precisas, índice «En esta página» y submenú «Proyectos» en la cabecera. En la rama; pendiente de confirmar el paso a `main`.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente

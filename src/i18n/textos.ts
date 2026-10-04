@@ -172,6 +172,10 @@ const es = {
   'equipo.unete.texto': 'Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar.',
   'equipo.ver': 'Ver en el equipo',
 
+  'sec.pasos': 'Cómo funciona',
+  'proyecto.indice': 'En esta página',
+  'nav.proyectos.todos': 'Todos los proyectos',
+
   'pie.hecho': 'Hecho en Galicia',
   'pie.derechos': 'Todos los derechos reservados.',
 
@@ -357,6 +361,10 @@ const gl: Record<Clave, string> = {
   'equipo.unete.texto': 'Quen se suma ao obradoiro pasa a formar parte do equipo. Cóntanos quen es e en que che gustaría participar.',
   'equipo.ver': 'Ver no equipo',
 
+  'sec.pasos': 'Como funciona',
+  'proyecto.indice': 'Nesta páxina',
+  'nav.proyectos.todos': 'Todos os proxectos',
+
   'pie.hecho': 'Feito en Galicia',
   'pie.derechos': 'Todos os dereitos reservados.',
 
@@ -539,6 +547,10 @@ const en: Record<Clave, string> = {
   'equipo.unete.titulo': 'Want to be on this page?',
   'equipo.unete.texto': 'Everyone who joins the workshop becomes part of the team. Tell us who you are and what you would like to work on.',
   'equipo.ver': 'See in the team',
+
+  'sec.pasos': 'How it works',
+  'proyecto.indice': 'On this page',
+  'nav.proyectos.todos': 'All projects',
 
   'pie.hecho': 'Made in Galicia',
   'pie.derechos': 'All rights reserved.',

@@ -44,6 +44,11 @@ describe('proyectos', () => {
         expect(p.caracteristicas.map((c) => c.icono).filter((i) => !NOMBRES_ICONOS.includes(i))).toEqual([]);
       });
 
+      it('sus apartados tienen ids únicos y elementos', () => {
+        expect(new Set(p.apartados.map((a) => a.id)).size).toBe(p.apartados.length);
+        for (const a of p.apartados) expect(a.items.length).toBeGreaterThan(0);
+      });
+
       it('pertenece a líneas de trabajo que existen', () => {
         expect(p.lineas.length).toBeGreaterThan(0);
         expect(p.lineas.filter((l) => !(LINEAS as readonly string[]).includes(l))).toEqual([]);
