@@ -127,14 +127,14 @@
       }
     },
     {
-      "src": "proyectos/tarkor/nabieus-cienaga.webp",
-      "mini": "proyectos/tarkor/nabieus-cienaga-mini.webp",
+      "src": "proyectos/tarkor/nabieus-margen.webp",
+      "mini": "proyectos/tarkor/nabieus-margen-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Nabieu de la Ciénaga Troncal: silenciosos, observadores y alquimistas",
-        "gl": "Nabieu da Braña Troncal: silenciosos, observadores e alquimistas",
-        "en": "Nabieu of the Trunk Swamp: silent, watchful alchemists"
+        "es": "Nabieu del Margen Silencioso, la selva de madera negra donde el sonido no vuelve",
+        "gl": "Nabieu da Marxe Silenciosa, a selva de madeira negra onde o son non volve",
+        "en": "Nabieu of the Silent Margin, the black-wood forest where sound never returns"
       }
     },
     {
