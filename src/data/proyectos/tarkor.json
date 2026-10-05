@@ -61,14 +61,14 @@
       }
     },
     {
-      "src": "proyectos/tarkor/mapa-pilares-rotos.webp",
-      "mini": "proyectos/tarkor/mapa-pilares-rotos-mini.webp",
-      "ancho": 1448,
-      "alto": 1086,
+      "src": "proyectos/tarkor/orcos-llanuras.webp",
+      "mini": "proyectos/tarkor/orcos-llanuras-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
       "alt": {
-        "es": "Mapa de zona: el Paso de los Pilares Rotos, restos de un antiguo reino unidos por puentes",
-        "gl": "Mapa de zona: o Paso dos Piares Rotos, restos dun antigo reino unidos por pontes",
-        "en": "Zone map: the Broken Pillars Pass, remains of an ancient kingdom joined by bridges"
+        "es": "Guerrera orca de las Llanuras del Viento Rojo cargando con su hacha",
+        "gl": "Guerreira orca das Chairas do Vento Vermello cargando co seu machado",
+        "en": "Orc warrior of the Red Wind Plains charging with her axe"
       }
     },
     {
@@ -94,36 +94,25 @@
       }
     },
     {
-      "src": "proyectos/tarkor/nuente.webp",
-      "mini": "proyectos/tarkor/nuente-mini.webp",
+      "src": "proyectos/tarkor/goirntes-meseta.webp",
+      "mini": "proyectos/tarkor/goirntes-meseta-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Nuente: bestia nocturna con cuerpo de rana, alas de murciélago y cabeza de búho",
-        "gl": "Nuente: besta nocturna con corpo de ra, ás de morcego e cabeza de moucho",
-        "en": "Nuente: a nocturnal beast with a frog’s body, bat wings and an owl-like head"
+        "es": "Goirnte de la Meseta del Orden, maestros herreros de piel casi mineral",
+        "gl": "Goirnte da Meseta da Orde, mestres ferreiros de pel case mineral",
+        "en": "Goirnte of the Plateau of Order, master smiths with near-mineral skin"
       }
     },
     {
-      "src": "proyectos/tarkor/mapa-campamento-serhu.webp",
-      "mini": "proyectos/tarkor/mapa-campamento-serhu-mini.webp",
-      "ancho": 1448,
-      "alto": 1086,
-      "alt": {
-        "es": "Mapa de zona: Karot Veku, el campamento del clan Serhu",
-        "gl": "Mapa de zona: Karot Veku, o campamento do clan Serhu",
-        "en": "Zone map: Karot Veku, the Serhu clan camp"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/cruzavientos.webp",
-      "mini": "proyectos/tarkor/cruzavientos-mini.webp",
+      "src": "proyectos/tarkor/rondador-de-brasas.webp",
+      "mini": "proyectos/tarkor/rondador-de-brasas-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Cruzavientos: ave planeadora que anuncia las tormentas de arena",
-        "gl": "Cruzaventos: ave planadora que anuncia as tormentas de area",
-        "en": "Windcrosser: a gliding bird that heralds sandstorms"
+        "es": "Rondador de Brasas: carroñero nocturno de pelaje ceniciento y ojos dorados",
+        "gl": "Rondador de Brasas: preeiro nocturno de pelame cincento e ollos dourados",
+        "en": "Ember Prowler: a nocturnal scavenger with ash-grey fur and golden eyes"
       }
     },
     {
@@ -135,6 +124,17 @@
         "es": "Cardo Brújula: su fibra imantada señala siempre el mismo rumbo, incluso en plena tormenta",
         "gl": "Cardo Compás: a súa fibra imantada sinala sempre o mesmo rumbo, mesmo en plena tormenta",
         "en": "Compass Thistle: its magnetised fibre always points the same way, even in a storm"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/nabieus-cienaga.webp",
+      "mini": "proyectos/tarkor/nabieus-cienaga-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Nabieu de la Ciénaga Troncal: silenciosos, observadores y alquimistas",
+        "gl": "Nabieu da Braña Troncal: silenciosos, observadores e alquimistas",
+        "en": "Nabieu of the Trunk Swamp: silent, watchful alchemists"
       }
     },
     {
@@ -160,14 +160,14 @@
       }
     },
     {
-      "src": "proyectos/tarkor/mapa-hondonada-del-eco.webp",
-      "mini": "proyectos/tarkor/mapa-hondonada-del-eco-mini.webp",
-      "ancho": 1448,
-      "alto": 1086,
+      "src": "proyectos/tarkor/faerus-frontera-norte.webp",
+      "mini": "proyectos/tarkor/faerus-frontera-norte-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
       "alt": {
-        "es": "Mapa de zona: la Hondonada del Eco, refugio de día y peligro de noche",
-        "gl": "Mapa de zona: a Fondonada do Eco, refuxio de día e perigo de noite",
-        "en": "Zone map: the Echo Hollow, a shelter by day and a danger by night"
+        "es": "Cazadora faerus: piel de pelo como hojas finas e instinto de cazadora",
+        "gl": "Cazadora faerus: pel de pelo coma follas finas e instinto de cazadora",
+        "en": "Faerus huntress: fur like fine leaves and a hunter’s instinct"
       }
     },
     {
@@ -193,6 +193,17 @@
       }
     },
     {
+      "src": "proyectos/tarkor/murgol.webp",
+      "mini": "proyectos/tarkor/murgol-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Múrgoles: el ganado lanudo de los clanes orcos, de cornamenta ramificada",
+        "gl": "Múrgoles: o gando lanudo dos clans orcos, de cornamenta ramificada",
+        "en": "Murgols: the woolly cattle of the orc clans, with branching antlers"
+      }
+    },
+    {
       "src": "proyectos/tarkor/cuernahoja.webp",
       "mini": "proyectos/tarkor/cuernahoja-mini.webp",
       "ancho": 1600,
@@ -201,17 +212,6 @@
         "es": "Cuernahojas: manadas de gacelas de cuernos largos en las llanuras rojas",
         "gl": "Cornafollas: mandas de gacelas de cornos longos nas chairas vermellas",
         "en": "Leafhorns: herds of long-horned gazelles on the red plains"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/mapa-pozo-cauce-viejo.webp",
-      "mini": "proyectos/tarkor/mapa-pozo-cauce-viejo-mini.webp",
-      "ancho": 1448,
-      "alto": 1086,
-      "alt": {
-        "es": "Mapa de zona: el Pozo de Cauce Viejo, un oasis en mitad del desierto",
-        "gl": "Mapa de zona: o Pozo do Leito Vello, un oasis no medio do deserto",
-        "en": "Zone map: the Old Riverbed Well, an oasis in the middle of the desert"
       }
     },
     {
