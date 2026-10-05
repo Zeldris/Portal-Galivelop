@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-04",
+  "actualizado": "2026-10-05",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -50,135 +50,14 @@
   "enlaces": [],
   "galeria": [
     {
-      "src": "proyectos/tarkor/portada.webp",
-      "mini": "proyectos/tarkor/portada-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Los Pilares Rotos, uno de los lugares de Las Llanuras",
-        "gl": "Os Piares Rotos, un dos lugares das Chairas",
-        "en": "The Broken Pillars, one of the locations in the Plains"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/interfaz-mapa-zona.webp",
-      "mini": "proyectos/tarkor/interfaz-mapa-zona-mini.webp",
-      "ancho": 966,
-      "alto": 725,
-      "alt": {
-        "es": "Interfaz del juego: mapa de zona con el jugador, fauna, puntos de interés y salidas a otras zonas",
-        "gl": "Interface do xogo: mapa de zona co xogador, fauna, puntos de interese e saídas a outras zonas",
-        "en": "Game interface: zone map with the player, wildlife, points of interest and exits to other zones"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/orcos-llanuras.webp",
-      "mini": "proyectos/tarkor/orcos-llanuras-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Guerrera orca de Las Llanuras cargando con su hacha",
-        "gl": "Guerreira orca das Chairas cargando co seu machado",
-        "en": "Orc warrior of the Plains charging with her axe"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/mapa-campamento-serhu.webp",
-      "mini": "proyectos/tarkor/mapa-campamento-serhu-mini.webp",
-      "ancho": 1448,
-      "alto": 1086,
-      "alt": {
-        "es": "Mapa ilustrado del campamento del clan Serhu",
-        "gl": "Mapa ilustrado do campamento do clan Serhu",
-        "en": "Illustrated map of the Serhu clan camp"
-      }
-    },
-    {
       "src": "proyectos/tarkor/gargantua-de-ceniza.webp",
       "mini": "proyectos/tarkor/gargantua-de-ceniza-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Gargantúas de ceniza, fauna acorazada de Las Llanuras",
-        "gl": "Gargantúas de cinza, fauna acoirazada das Chairas",
-        "en": "Ash gargantuas, armoured wildlife of the Plains"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/orcos-cristal-helado.webp",
-      "mini": "proyectos/tarkor/orcos-cristal-helado-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Orca de Cristal Helado bajo una aurora",
-        "gl": "Orca de Cristal Xeado baixo unha aurora",
-        "en": "Frozen Crystal orc under an aurora"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/osario-de-la-manada.webp",
-      "mini": "proyectos/tarkor/osario-de-la-manada-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "El Osario de la Manada, un arco de costillas gigantes en el desierto",
-        "gl": "O Osario da Manda, un arco de costelas xigantes no deserto",
-        "en": "The Herd's Ossuary, an arch of giant ribs in the desert"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/clan-serhu.webp",
-      "mini": "proyectos/tarkor/clan-serhu-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Estandarte del clan Serhu, una de las facciones",
-        "gl": "Estandarte do clan Serhu, unha das faccións",
-        "en": "Banner of the Serhu clan, one of the factions"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/nabieus-cienaga.webp",
-      "mini": "proyectos/tarkor/nabieus-cienaga-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Nabieu de la Ciénaga Troncal con su farol",
-        "gl": "Nabieu da Braña Troncal co seu farol",
-        "en": "Nabieu of the Trunk Swamp carrying a lantern"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/agujas-iman.webp",
-      "mini": "proyectos/tarkor/agujas-iman-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Las Agujas Imán, rocas que flotan sobre la llanura",
-        "gl": "As Agullas Imán, rochas que flotan sobre a chaira",
-        "en": "The Magnet Spires, rocks floating above the plain"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/cruzavientos.webp",
-      "mini": "proyectos/tarkor/cruzavientos-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Cruzavientos, ave rapaz de las agujas de piedra",
-        "gl": "Cruzaventos, ave rapaz das agullas de pedra",
-        "en": "Windcrosser, a raptor of the stone spires"
-      }
-    },
-    {
-      "src": "proyectos/tarkor/goirntes-meseta.webp",
-      "mini": "proyectos/tarkor/goirntes-meseta-mini.webp",
-      "ancho": 1600,
-      "alto": 640,
-      "alt": {
-        "es": "Goirnte de la Meseta del Orden ante su ciudad",
-        "gl": "Goirnte da Meseta da Orde diante da súa cidade",
-        "en": "Goirnte of the Plateau of Order before their city"
+        "es": "Gargantúas de Ceniza: reptiles herbívoros del tamaño de una casa, con placas óseas volcánicas",
+        "gl": "Gargantúas de Cinza: réptiles herbívoros do tamaño dunha casa, con placas óseas volcánicas",
+        "en": "Ash Gargantuas: house-sized herbivorous reptiles with volcanic bony plates"
       }
     },
     {
@@ -187,20 +66,31 @@
       "ancho": 1448,
       "alto": 1086,
       "alt": {
-        "es": "Mapa ilustrado de los Pilares Rotos",
-        "gl": "Mapa ilustrado dos Piares Rotos",
-        "en": "Illustrated map of the Broken Pillars"
+        "es": "Mapa de zona: el Paso de los Pilares Rotos, restos de un antiguo reino unidos por puentes",
+        "gl": "Mapa de zona: o Paso dos Piares Rotos, restos dun antigo reino unidos por pontes",
+        "en": "Zone map: the Broken Pillars Pass, remains of an ancient kingdom joined by bridges"
       }
     },
     {
-      "src": "proyectos/tarkor/choza-orca.webp",
-      "mini": "proyectos/tarkor/choza-orca-mini.webp",
+      "src": "proyectos/tarkor/gistera-koh.webp",
+      "mini": "proyectos/tarkor/gistera-koh-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Choza orca de hueso y madera, primera construcción del reino",
-        "gl": "Choza orca de óso e madeira, primeira construción do reino",
-        "en": "Orc hut of bone and wood, the kingdom's first building"
+        "es": "Gistera Koh, una de las primeras personas que te encuentras en Las Llanuras",
+        "gl": "Gistera Koh, unha das primeiras persoas que atopas nas Chairas",
+        "en": "Gistera Koh, one of the first people you meet in the Plains"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/raiz-de-fuego.webp",
+      "mini": "proyectos/tarkor/raiz-de-fuego-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Raíz de Fuego: enredadera volcánica que acumula calor y libera gas inflamable",
+        "gl": "Raíz de Lume: trepadeira volcánica que acumula calor e libera gas inflamable",
+        "en": "Fire Root: a volcanic vine that stores heat and releases flammable gas"
       }
     },
     {
@@ -209,31 +99,130 @@
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Nuente, criatura alada de ojos luminosos",
-        "gl": "Nuente, criatura alada de ollos luminosos",
-        "en": "Nuente, a winged creature with glowing eyes"
+        "es": "Nuente: bestia nocturna con cuerpo de rana, alas de murciélago y cabeza de búho",
+        "gl": "Nuente: besta nocturna con corpo de ra, ás de morcego e cabeza de moucho",
+        "en": "Nuente: a nocturnal beast with a frog’s body, bat wings and an owl-like head"
       }
     },
     {
-      "src": "proyectos/tarkor/instalador-perfil.webp",
-      "mini": "proyectos/tarkor/instalador-perfil-mini.webp",
-      "ancho": 1100,
-      "alto": 660,
+      "src": "proyectos/tarkor/mapa-campamento-serhu.webp",
+      "mini": "proyectos/tarkor/mapa-campamento-serhu-mini.webp",
+      "ancho": 1448,
+      "alto": 1086,
       "alt": {
-        "es": "Instalador: elección del perfil de IA según la memoria del equipo",
-        "gl": "Instalador: elección do perfil de IA segundo a memoria do equipo",
-        "en": "Installer: choosing the AI profile based on the computer's memory"
+        "es": "Mapa de zona: Karot Veku, el campamento del clan Serhu",
+        "gl": "Mapa de zona: Karot Veku, o campamento do clan Serhu",
+        "en": "Zone map: Karot Veku, the Serhu clan camp"
       }
     },
     {
-      "src": "proyectos/tarkor/instalador-que-se-instala.webp",
-      "mini": "proyectos/tarkor/instalador-que-se-instala-mini.webp",
-      "ancho": 1100,
-      "alto": 660,
+      "src": "proyectos/tarkor/cruzavientos.webp",
+      "mini": "proyectos/tarkor/cruzavientos-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
       "alt": {
-        "es": "Instalador: qué se instala y qué no hace Tarkor nunca",
-        "gl": "Instalador: que se instala e que non fai Tarkor nunca",
-        "en": "Installer: what gets installed and what Tarkor never does"
+        "es": "Cruzavientos: ave planeadora que anuncia las tormentas de arena",
+        "gl": "Cruzaventos: ave planadora que anuncia as tormentas de area",
+        "en": "Windcrosser: a gliding bird that heralds sandstorms"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/cardo-brujula.webp",
+      "mini": "proyectos/tarkor/cardo-brujula-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Cardo Brújula: su fibra imantada señala siempre el mismo rumbo, incluso en plena tormenta",
+        "gl": "Cardo Compás: a súa fibra imantada sinala sempre o mesmo rumbo, mesmo en plena tormenta",
+        "en": "Compass Thistle: its magnetised fibre always points the same way, even in a storm"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/orco-enfurecido.webp",
+      "mini": "proyectos/tarkor/orco-enfurecido-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "El Orco Enfurecido de la Hondonada del Eco, objetivo de una de las primeras misiones",
+        "gl": "O Orco Enfurecido da Fondonada do Eco, obxectivo dunha das primeiras misións",
+        "en": "The Enraged Orc of the Echo Hollow, target of one of the first quests"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/negueo-turquesa.webp",
+      "mini": "proyectos/tarkor/negueo-turquesa-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Negueo Turquesa: pez carroñero con dientes de piraña",
+        "gl": "Negueo Turquesa: peixe preeiro con dentes de piraña",
+        "en": "Turquoise Negueo: a scavenger fish with piranha teeth"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/mapa-hondonada-del-eco.webp",
+      "mini": "proyectos/tarkor/mapa-hondonada-del-eco-mini.webp",
+      "ancho": 1448,
+      "alto": 1086,
+      "alt": {
+        "es": "Mapa de zona: la Hondonada del Eco, refugio de día y peligro de noche",
+        "gl": "Mapa de zona: a Fondonada do Eco, refuxio de día e perigo de noite",
+        "en": "Zone map: the Echo Hollow, a shelter by day and a danger by night"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/salamandra-de-escoria.webp",
+      "mini": "proyectos/tarkor/salamandra-de-escoria-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Salamandra de Escoria: reptil con escamas de escoria volcánica que arden con vetas de lava",
+        "gl": "Salamántiga de Escoura: réptil con escamas de escoura volcánica que arden con vetas de lava",
+        "en": "Slag Salamander: a reptile with volcanic slag scales that glow with lava veins"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/flor-de-ceniza.webp",
+      "mini": "proyectos/tarkor/flor-de-ceniza-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Flor de Ceniza: crece en suelo volcánico y alivia el dolor de los heridos",
+        "gl": "Flor de Cinza: medra en chan volcánico e alivia a dor dos feridos",
+        "en": "Ash Flower: it grows in volcanic soil and soothes the pain of the wounded"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/cuernahoja.webp",
+      "mini": "proyectos/tarkor/cuernahoja-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Cuernahojas: manadas de gacelas de cuernos largos en las llanuras rojas",
+        "gl": "Cornafollas: mandas de gacelas de cornos longos nas chairas vermellas",
+        "en": "Leafhorns: herds of long-horned gazelles on the red plains"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/mapa-pozo-cauce-viejo.webp",
+      "mini": "proyectos/tarkor/mapa-pozo-cauce-viejo-mini.webp",
+      "ancho": 1448,
+      "alto": 1086,
+      "alt": {
+        "es": "Mapa de zona: el Pozo de Cauce Viejo, un oasis en mitad del desierto",
+        "gl": "Mapa de zona: o Pozo do Leito Vello, un oasis no medio do deserto",
+        "en": "Zone map: the Old Riverbed Well, an oasis in the middle of the desert"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/espina-del-viento.webp",
+      "mini": "proyectos/tarkor/espina-del-viento-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Espina del Viento: se entierra en la arena y ataca durante las tormentas",
+        "gl": "Espiña do Vento: enterrase na area e ataca durante as tormentas",
+        "en": "Wind Thorn: it buries itself in the sand and strikes during storms"
       }
     }
   ],

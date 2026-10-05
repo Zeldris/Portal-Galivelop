@@ -40,6 +40,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Página Equipo (`/equipo`, datos en `src/data/equipo.json`) con Álvaro y Raquel y sus LinkedIn.
 - ✅ Fichas ampliadas tras releer los repos: «Cómo funciona» (`pasos`), apartados propios (`apartados`: mundo de Helek Sirik en Tarkor, dimensiones del IMI con sus pesos en toVeriAI), características y cifras más precisas, índice «En esta página» y submenú «Proyectos» en la cabecera.
 - ✅ README convertido en presentación pública de Galivelop; la guía técnica pasa a `docs/desarrollo.md` (2026-10-04), publicado en `main`.
+- ✅ Galería de Tarkor rehecha solo con zona, NPC, fauna y flora (16 imágenes; 2026-10-05). En la rama; pendiente de confirmar el paso a `main`.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
@@ -47,7 +48,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-3. Capturas reales de partida de Tarkor (la interfaz del juego solo tiene la del mapa de zona).
+3. Si se quieren capturas de la interfaz de Tarkor, irían aparte de la galería (que es solo arte del mundo).
 
 ## Comprobar el estado
 
