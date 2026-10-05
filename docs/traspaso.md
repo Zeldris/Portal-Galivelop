@@ -40,7 +40,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Página Equipo (`/equipo`, datos en `src/data/equipo.json`) con Álvaro y Raquel y sus LinkedIn.
 - ✅ Fichas ampliadas tras releer los repos: «Cómo funciona» (`pasos`), apartados propios (`apartados`: mundo de Helek Sirik en Tarkor, dimensiones del IMI con sus pesos en toVeriAI), características y cifras más precisas, índice «En esta página» y submenú «Proyectos» en la cabecera.
 - ✅ README convertido en presentación pública de Galivelop; la guía técnica pasa a `docs/desarrollo.md` (2026-10-04), publicado en `main`.
-- ✅ Galería de Tarkor (2026-10-05): 4 razas (orcos de las Llanuras, goirntes, nabieus del Margen Silencioso, faerus), 2 NPC, 7 de fauna y 3 de flora; sin mapas de zona, Nuente ni Cruzavientos. En la rama; pendiente de confirmar el paso a `main`.
+- ✅ Galería de Tarkor (2026-10-05): 4 razas (orcos de las Llanuras, goirntes, nabieus del Margen Silencioso, faerus), 2 NPC, 7 de fauna y 3 de flora; sin mapas de zona, Nuente ni Cruzavientos. Publicada en `main`.
 - ✅ Workflows: `pages.yml` (publica al subir a `main`) y `comprobar.yml` (ramas y PR).
 
 ## Pendiente
