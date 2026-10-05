@@ -14,7 +14,7 @@
   &nbsp;·&nbsp;
   <a href="https://discord.gg/8vyjW3VrN">Discord</a>
   &nbsp;·&nbsp;
-  <a href="mailto:cordproinf@gmail.com">cordproinf@gmail.com</a>
+  <a href="mailto:alvarogarciagrana@gmail.com">alvarogarciagrana@gmail.com</a>
 </p>
 
 <p align="center">
@@ -74,7 +74,7 @@ construir, de aprender y de hacerlo en equipo.
 - **Propón un proyecto** que parezca demasiado grande para hacerlo en solitario:
   [formulario](https://zeldris.github.io/Portal-Galivelop/participa/proponer).
 - **Entra en la comunidad** en [Discord](https://discord.gg/8vyjW3VrN) o escríbenos a
-  [cordproinf@gmail.com](mailto:cordproinf@gmail.com).
+  [alvarogarciagrana@gmail.com](mailto:alvarogarciagrana@gmail.com).
 
 ## Equipo
 

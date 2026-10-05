@@ -23,12 +23,12 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 - ✅ Revisión móvil (360, 390 y 768 px, claro/oscuro, tres idiomas): sin desbordes; menú
   desplegable bajo 760 px, cifras y tarjetas compactas, galería ampliada opaca y con deslizar.
 - ✅ Equipo confirmado (Tarkor: solo Álvaro; toVeriAI: Raquel C. y Álvaro) y contacto:
-  cordproinf@gmail.com (marca; sustituye al personal desde 2026-10-04) y web.admin.toveriai@gmail.com (toVeriAI).
+  alvarogarciagrana@gmail.com (marca; vuelve a ser el correo de gestión desde 2026-10-05) y web.admin.toveriai@gmail.com (toVeriAI).
 - ✅ Nuevo mensaje de marca (2026-10-04): Galivelop como taller abierto (crear, investigar,
   innovar, aprender), «El taller», «Participa», y colaboración por proyecto (Tarkor abierto,
   toVeriAI privado).
 - ✅ Formularios «Propón un proyecto» y «Únete al taller» (correo preparado con mailto, en
-  castellano, a cordproinf@gmail.com). Correo personal retirado de la web.
+  castellano, a alvarogarciagrana@gmail.com). El correo de gestión vuelve a ser alvarogarciagrana@gmail.com (2026-10-05).
 - ✅ Revisión completa de contenidos (2026-10-04) con referencias de estudios y laboratorios
   independientes (Ink & Switch: líneas de investigación; Recurse Center: principios y «para quién
   es»; casos de estudio reto → enfoque → estado → aprendizajes): sección «Líneas de trabajo»

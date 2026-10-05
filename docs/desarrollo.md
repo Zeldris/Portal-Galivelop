@@ -14,7 +14,7 @@ La presentación pública está en el [README](../README.md).
   ruta, lo que estamos aprendiendo, decisiones de diseño, novedades y equipo.
 - **Participa:** formularios para proponer un proyecto (`/participa/proponer`) y para unirse al
   taller (`/participa/unirse`, con `?proyecto=<slug>` o `?modo=aprender` para preseleccionar).
-  Como la web es estática, preparan un correo a `cordproinf@gmail.com` (asunto
+  Como la web es estática, preparan un correo a `alvarogarciagrana@gmail.com` (asunto
   `[Galivelop] Propuesta: …` o `[Galivelop] Unirse al taller: …`, siempre en castellano) que se
   envía desde la aplicación de correo de quien lo rellena; si no se abre, se puede copiar.
 - **Idiomas:** castellano, gallego e inglés (detecta el del navegador y recuerda la elección).
