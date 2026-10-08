@@ -30,6 +30,9 @@ pública (web, descarga…) cuando la hay.
 - Colores: el azul celeste y el blanco de la bandera gallega, sin su composición:
   `#1AA6DF` (celeste), `#0083C1` (celeste intenso), `#FFFFFF`.
 - Tipografías: Sora (títulos) e Inter (texto), servidas desde el propio sitio.
+- Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630, captura de la
+  portada), declarada en `index.html` con URL absolutas (X y otras redes no aceptan rutas relativas).
+  Si cambia la portada o la dirección del portal, rehacer la captura y actualizar esas URL.
 - `node tools/generar-marca.mjs` regenera `gv-logo-512.png` y la imagen para redes
   (`galivelop-social.png`) a partir del SVG (instrucciones en el propio archivo).
 
