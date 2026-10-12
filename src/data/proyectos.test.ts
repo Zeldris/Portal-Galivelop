@@ -35,7 +35,7 @@ describe('proyectos', () => {
       });
 
       it('todas sus imágenes existen en public/', () => {
-        const imagenes = [p.portada, ...p.galeria].flatMap((i) => [i.src, i.mini]);
+        const imagenes = [p.portada, ...p.galeria, ...p.capturas].flatMap((i) => [i.src, i.mini]);
         if (p.icono) imagenes.push(p.icono);
         expect(imagenes.filter((src) => !existsSync(join(PUBLIC, src)))).toEqual([]);
       });

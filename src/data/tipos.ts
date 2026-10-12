@@ -59,6 +59,8 @@ export interface Proyecto {
   portada: Imagen;
   enlaces: Enlace[];
   galeria: Imagen[];
+  /** Capturas reales del producto (la interfaz del juego, de la web…), en su propia sección. */
+  capturas: Imagen[];
   /** Párrafos de «El proyecto»: el reto, el enfoque y dónde está hoy. */
   descripcion: Texto[];
   /** Líneas de trabajo del taller a las que pertenece (ids de src/data/lineas.ts). */

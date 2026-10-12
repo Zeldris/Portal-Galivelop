@@ -226,6 +226,52 @@
       }
     }
   ],
+  "capturas": [
+    {
+      "src": "proyectos/tarkor/juego-combate.webp",
+      "mini": "proyectos/tarkor/juego-combate-mini.webp",
+      "ancho": 1280,
+      "alto": 720,
+      "alt": {
+        "es": "Combate contra un guchapo: el diario narra cada golpe y el panel muestra el resultado",
+        "gl": "Combate contra un guchapo: o diario narra cada golpe e o panel amosa o resultado",
+        "en": "Fighting a guchapo: the journal narrates every blow and the panel shows the outcome"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/juego-mapa-pozo.webp",
+      "mini": "proyectos/tarkor/juego-mapa-pozo-mini.webp",
+      "ancho": 1280,
+      "alto": 720,
+      "alt": {
+        "es": "Mapa de zona de El Pozo de Cauce Viejo, con la fauna y los recursos del territorio",
+        "gl": "Mapa de zona de O Pozo de Cauce Vello, coa fauna e os recursos do territorio",
+        "en": "Zone map of the Old Riverbed Well, with the territory’s wildlife and resources"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/juego-mapa-hondonada.webp",
+      "mini": "proyectos/tarkor/juego-mapa-hondonada-mini.webp",
+      "ancho": 1280,
+      "alto": 720,
+      "alt": {
+        "es": "La Hondonada del Eco: lo que aún no has descubierto aparece como «???»",
+        "gl": "A Hondonada do Eco: o que aínda non descubriches aparece como «???»",
+        "en": "The Echo Hollow: whatever you have not discovered yet shows up as “???”"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/juego-reino.webp",
+      "mini": "proyectos/tarkor/juego-reino-mini.webp",
+      "ancho": 1280,
+      "alto": 720,
+      "alt": {
+        "es": "Habilidades de reino: campamento, ayuntamiento y jaulas para la fauna capturada",
+        "gl": "Habilidades de reino: campamento, concello e gaiolas para a fauna capturada",
+        "en": "Kingdom skills: camp, town hall and cages for captured wildlife"
+      }
+    }
+  ],
   "descripcion": [
     {
       "es": "Los juegos narrativos con IA suelen reaccionar solo a lo que escribe el jugador: el mundo es un decorado que aparece cuando lo miras. Tarkor parte de la pregunta contraria: ¿y si el mundo tuviera vida propia, cada partida contara su propia historia y jugar se pareciera a una mesa de rol con un buen máster?",

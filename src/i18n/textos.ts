@@ -36,6 +36,7 @@ const es = {
 
   'sec.galeria': 'Galería',
   'sec.descripcion': 'El proyecto',
+  'sec.capturas': 'Capturas',
   'sec.caracteristicas': 'Qué lo hace distinto',
   'sec.ficha': 'Ficha técnica',
   'sec.hitos': 'Hoja de ruta',
@@ -225,6 +226,7 @@ const gl: Record<Clave, string> = {
 
   'sec.galeria': 'Galería',
   'sec.descripcion': 'O proxecto',
+  'sec.capturas': 'Capturas',
   'sec.caracteristicas': 'Que o fai distinto',
   'sec.ficha': 'Ficha técnica',
   'sec.hitos': 'Folla de ruta',
@@ -412,6 +414,7 @@ const en: Record<Clave, string> = {
 
   'sec.galeria': 'Gallery',
   'sec.descripcion': 'The project',
+  'sec.capturas': 'Screenshots',
   'sec.caracteristicas': 'What makes it different',
   'sec.ficha': 'Tech stack',
   'sec.hitos': 'Roadmap',

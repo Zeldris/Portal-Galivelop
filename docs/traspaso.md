@@ -13,6 +13,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Hecho
 
+- ✅ Sección «Capturas» (2026-10-12): campo `capturas` en cada proyecto, galería aparte de la de
+  arte. Tarkor con 4 capturas del juego que pasó el usuario (combate, dos mapas de zona y
+  habilidades de reino) en `public/proyectos/tarkor/juego-*.webp`.
 - ✅ Ficha de **Tarkor** revisada a fondo (2026-10-12) con datos contrastados en World-Maker-Fantasy
   (`main`, bitácora del 2026-10-11): hito 0.3 «Reino profundo» en curso, +3.900 tests, 8 rasgos
   (mundo vivo, Libro de Sucesos, NPC que recuerdan, reino por generaciones, conflicto, rol de mesa…),
@@ -56,7 +59,6 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-3. Si se quieren capturas de la interfaz de Tarkor, irían aparte de la galería (que es solo arte del mundo).
 
 ## Comprobar el estado
 
