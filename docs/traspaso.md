@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-12 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-12), incluida la ficha de Tarkor revisada (hito 0.3). https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-12), incluida la ficha de Tarkor revisada (hito 0.3) sin juegos de referencia. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
 
 ## Hecho
@@ -18,7 +18,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   (mundo vivo, Libro de Sucesos, NPC que recuerdan, reino por generaciones, conflicto, rol de mesa…),
   hitos 0.1–0.3 con su estado real, novedades hasta el 2026-10-12 e instalador en pausa (falta
   empaquetar para la beta 0.8). Iconos nuevos: `book`, `swords`, `users`.
-  Quitado el apartado «Juegos que nos inspiran» a petición del usuario (2026-10-12).
+  Quitado el apartado «Juegos que nos inspiran» a petición del usuario (2026-10-12),
+  y sin menciones a los juegos de referencia en ninguna parte de la ficha.
 - ✅ Análisis de los repos (World-Maker-Fantasy, Instalador-WMF-Tarkor, VeriNews_AI).
 - ✅ Logo GV (antes GD; azul celeste y blanco), favicon, PNG 512 e imagen para redes.
 - ✅ Portal en React + Vite: portada, fichas con galería y secciones plegables, tres idiomas,

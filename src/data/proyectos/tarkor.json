@@ -233,9 +233,9 @@
       "en": "AI narrative games usually react only to what the player types: the world is a backdrop that appears when you look at it. Tarkor starts from the opposite question: what if the world had a life of its own, every playthrough told its own story and playing felt like a tabletop game with a great game master?"
     },
     {
-      "es": "La respuesta separa dos capas. Debajo, una simulación inspirada en X4 Foundations: facciones con economía, población, caravanas y ejércitos que deciden según su propio estado, nunca por temporizadores. Todo lo que ocurre queda apuntado en un Libro de Sucesos con su causa, y de ahí nacen los rumores, las consecuencias que llegan días después y la memoria de los personajes. Encima, un narrador con modelos de lenguaje locales lo cuenta, pero nunca decide los números.",
-      "gl": "A resposta separa dúas capas. Debaixo, unha simulación inspirada en X4 Foundations: faccións con economía, poboación, caravanas e exércitos que deciden segundo o seu propio estado, nunca por temporizadores. Todo o que acontece queda apuntado nun Libro de Sucesos coa súa causa, e de aí nacen os rumores, as consecuencias que chegan días despois e a memoria das personaxes. Enriba, un narrador con modelos de linguaxe locais cóntao, pero nunca decide os números.",
-      "en": "The answer splits it into two layers. Underneath, a simulation inspired by X4 Foundations: factions with economies, populations, caravans and armies that decide based on their own state, never on timers. Everything that happens is recorded in a Book of Events along with its cause, and from it come rumours, consequences that arrive days later and the characters’ memories. On top, a narrator built on local language models tells the story, but never decides the numbers."
+      "es": "La respuesta separa dos capas. Debajo, una simulación de mundo vivo: facciones con economía, población, caravanas y ejércitos que deciden según su propio estado, nunca por temporizadores. Todo lo que ocurre queda apuntado en un Libro de Sucesos con su causa, y de ahí nacen los rumores, las consecuencias que llegan días después y la memoria de los personajes. Encima, un narrador con modelos de lenguaje locales lo cuenta, pero nunca decide los números.",
+      "gl": "A resposta separa dúas capas. Debaixo, unha simulación de mundo vivo: faccións con economía, poboación, caravanas e exércitos que deciden segundo o seu propio estado, nunca por temporizadores. Todo o que acontece queda apuntado nun Libro de Sucesos coa súa causa, e de aí nacen os rumores, as consecuencias que chegan días despois e a memoria das personaxes. Enriba, un narrador con modelos de linguaxe locais cóntao, pero nunca decide os números.",
+      "en": "The answer splits it into two layers. Underneath, a living-world simulation: factions with economies, populations, caravans and armies that decide based on their own state, never on timers. Everything that happens is recorded in a Book of Events along with its cause, and from it come rumours, consequences that arrive days later and the characters’ memories. On top, a narrator built on local language models tells the story, but never decides the numbers."
     },
     {
       "es": "Hoy Tarkor está en alpha, en pleno hito 0.3. Las Llanuras del Viento Rojo son la región jugable, y en ellas tu reino ya tiene súbditos con nombre que forman familia, ganado, partidas de caza y una defensa con empalizadas y torres frente a bandidos y facciones en guerra. El resto de Berig llegará región a región. El instalador de escritorio para Windows y Linux, Steam Deck incluida, ya tiene su asistente y su motor de IA; falta empaquetar el juego para la beta.",
@@ -877,9 +877,9 @@
         "en": "Nothing on a fixed loop"
       },
       "texto": {
-        "es": "Ningún suceso sale de un temporizador: cada asalto, caravana o crisis nace del estado del mundo, como en X4. Y en un mundo tan pequeño nada se apaga del todo: todo se regula.",
-        "gl": "Ningún suceso sae dun temporizador: cada asalto, caravana ou crise nace do estado do mundo, como en X4. E nun mundo tan pequeno nada se apaga de todo: todo se regula.",
-        "en": "No event comes from a timer: every raid, caravan or crisis is born from the state of the world, as in X4. And in such a small world nothing shuts down completely: everything is regulated."
+        "es": "Ningún suceso sale de un temporizador: cada asalto, caravana o crisis nace del estado del mundo. Y en un mundo tan pequeño nada se apaga del todo: todo se regula.",
+        "gl": "Ningún suceso sae dun temporizador: cada asalto, caravana ou crise nace do estado do mundo. E nun mundo tan pequeno nada se apaga de todo: todo se regula.",
+        "en": "No event comes from a timer: every raid, caravan or crisis is born from the state of the world. And in such a small world nothing shuts down completely: everything is regulated."
       }
     },
     {
