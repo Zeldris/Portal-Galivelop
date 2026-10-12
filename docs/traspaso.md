@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-12 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-04), incluidas las fichas ampliadas y el submenú «Proyectos». https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-12), incluida la ficha de Tarkor revisada (hito 0.3). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
 
 ## Hecho
