@@ -41,7 +41,7 @@ El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
 
 | | Proyecto | Estado | |
 |---|---|---|---|
-| <img src="public/proyectos/tarkor/portada-mini.webp" width="140" alt=""> | **Tarkor**<br>RPG narrativo por texto con una IA local como directora de juego. Las facciones, la economía y la fauna evolucionan solas mientras levantas tu propio reino. | 🟡 En desarrollo (alpha) · abierto a colaboración | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/tarkor) |
+| <img src="public/proyectos/tarkor/portada-mini.webp" width="140" alt=""> | **Tarkor**<br>RPG narrativo por texto con una IA local como directora de juego. Facciones que comercian y hacen la guerra, personajes que recuerdan y un reino que crece por generaciones: el mundo sigue aunque no juegues. | 🟡 En desarrollo (alpha) · abierto a colaboración | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/tarkor) |
 | <img src="public/proyectos/toveriai/portada-mini.webp" width="140" alt=""> | **toVeriAI**<br>Plataforma web que analiza noticias, enlaces y capturas con IA y devuelve un índice de credibilidad de 0 a 100 que explica qué falla y dónde. | 🟢 Publicado en [toveriai.com](https://www.toveriai.com) · proyecto privado | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/toveriai) |
 
 Cada proyecto tiene su página en el portal: qué es, cómo funciona, galería, ficha técnica, hoja de

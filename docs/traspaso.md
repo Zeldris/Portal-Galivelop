@@ -6,13 +6,19 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-04 |
+| **Actualizado** | 2026-10-12 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-04), incluidas las fichas ampliadas y el submenú «Proyectos». https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
 
 ## Hecho
 
+- ✅ Ficha de **Tarkor** revisada a fondo (2026-10-12) con datos contrastados en World-Maker-Fantasy
+  (`main`, bitácora del 2026-10-11): hito 0.3 «Reino profundo» en curso, +3.900 tests, 8 rasgos
+  (mundo vivo, Libro de Sucesos, NPC que recuerdan, reino por generaciones, conflicto, rol de mesa…),
+  apartado «Juegos que nos inspiran» (X4, BG3, Dwarf Fortress, RimWorld, Shadow of Mordor, CK3),
+  hitos 0.1–0.3 con su estado real, novedades hasta el 2026-10-12 e instalador en pausa (falta
+  empaquetar para la beta 0.8). Iconos nuevos: `book`, `swords`, `users`.
 - ✅ Análisis de los repos (World-Maker-Fantasy, Instalador-WMF-Tarkor, VeriNews_AI).
 - ✅ Logo GV (antes GD; azul celeste y blanco), favicon, PNG 512 e imagen para redes.
 - ✅ Portal en React + Vite: portada, fichas con galería y secciones plegables, tres idiomas,

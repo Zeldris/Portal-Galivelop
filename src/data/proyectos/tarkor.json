@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-05",
+  "actualizado": "2026-10-12",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -17,24 +17,24 @@
     "en": "A narrative RPG where the world moves on even when you stop."
   },
   "resumen": {
-    "es": "Un juego de rol por texto con una IA local como directora de juego. Las facciones, la economía y la fauna de Berig evolucionan solas mientras levantas y gobiernas tu propio reino.",
-    "gl": "Un xogo de rol por texto cunha IA local como directora de xogo. As faccións, a economía e a fauna de Berig evolucionan soas mentres levantas e gobernas o teu propio reino.",
-    "en": "A text-based role-playing game with a local AI as game master. Berig’s factions, economy and wildlife evolve on their own while you build and rule your own kingdom."
+    "es": "Juego de rol por texto con una IA local como directora de juego. Facciones que comercian, cazan y hacen la guerra, personajes que recuerdan lo que les hiciste y un reino que crece generación tras generación: el mundo sigue su curso, juegues o no.",
+    "gl": "Xogo de rol por texto cunha IA local como directora de xogo. Faccións que comercian, cazan e fan a guerra, personaxes que lembran o que lles fixeches e un reino que medra xeración tras xeración: o mundo segue o seu curso, xogues ou non.",
+    "en": "A text-based role-playing game with a local AI as game master. Factions that trade, hunt and wage war, characters who remember what you did to them and a kingdom that grows generation after generation: the world goes on, whether you play or not."
   },
   "fase": {
-    "es": "Alpha · hito 0.2 «Facciones vivas» en curso",
-    "gl": "Alpha · fito 0.2 «Faccións vivas» en curso",
-    "en": "Alpha · milestone 0.2 “Living factions” in progress"
+    "es": "Alpha · hito 0.3 «Reino profundo» en curso",
+    "gl": "Alpha · fito 0.3 «Reino profundo» en curso",
+    "en": "Alpha · milestone 0.3 “Deep kingdom” in progress"
   },
   "etiquetas": [
     "IA local",
+    "Simulación",
     "React",
     "TypeScript",
     "Fastify",
     "PostgreSQL",
     "Ollama",
-    "Tauri",
-    "Rust"
+    "Tauri"
   ],
   "portada": {
     "src": "proyectos/tarkor/portada.webp",
@@ -228,19 +228,19 @@
   ],
   "descripcion": [
     {
-      "es": "Los juegos narrativos con IA suelen reaccionar solo a lo que escribe el jugador: el mundo es un decorado que aparece cuando lo miras. Tarkor parte de la pregunta contraria: ¿qué pasa si el mundo tiene vida propia y cada partida se parece a una mesa de rol con un buen máster?",
-      "gl": "Os xogos narrativos con IA adoitan reaccionar só ao que escribe o xogador: o mundo é un decorado que aparece cando o miras. Tarkor parte da pregunta contraria: que pasa se o mundo ten vida propia e cada partida se parece a unha mesa de rol cun bo máster?",
-      "en": "AI narrative games usually react only to what the player types: the world is a backdrop that appears when you look at it. Tarkor starts from the opposite question: what if the world had a life of its own and every session felt like a tabletop game with a great game master?"
+      "es": "Los juegos narrativos con IA suelen reaccionar solo a lo que escribe el jugador: el mundo es un decorado que aparece cuando lo miras. Tarkor parte de la pregunta contraria: ¿y si el mundo tuviera vida propia, cada partida contara su propia historia y jugar se pareciera a una mesa de rol con un buen máster?",
+      "gl": "Os xogos narrativos con IA adoitan reaccionar só ao que escribe o xogador: o mundo é un decorado que aparece cando o miras. Tarkor parte da pregunta contraria: e se o mundo tivese vida propia, cada partida contase a súa propia historia e xogar se parecese a unha mesa de rol cun bo máster?",
+      "en": "AI narrative games usually react only to what the player types: the world is a backdrop that appears when you look at it. Tarkor starts from the opposite question: what if the world had a life of its own, every playthrough told its own story and playing felt like a tabletop game with a great game master?"
     },
     {
-      "es": "La respuesta separa dos capas. Las reglas del mundo (facciones, mercado, producción, población y tiradas) son sistemas deterministas y comprobables que avanzan cada día de juego. Sobre ellas, un narrador y un cronista con modelos de lenguaje locales cuentan lo que ocurre. Juegas en las tierras de Berig: exploras zonas ilustradas, cazas, aprendes oficios, combates y fundas tu propio reino.",
-      "gl": "A resposta separa dúas capas. As regras do mundo (faccións, mercado, produción, poboación e tiradas) son sistemas deterministas e comprobables que avanzan cada día de xogo. Sobre elas, un narrador e un cronista con modelos de linguaxe locais contan o que acontece. Xogas nas terras de Berig: exploras zonas ilustradas, cazas, aprendes oficios, combates e fundas o teu propio reino.",
-      "en": "The answer splits it into two layers. The world’s rules (factions, market, production, population and dice) are deterministic, testable systems that advance every in-game day. On top of them, a narrator and a chronicler built on local language models tell what happens. You play in the lands of Berig: explore illustrated zones, hunt, learn trades, fight and found your own kingdom."
+      "es": "La respuesta separa dos capas. Debajo, una simulación inspirada en X4 Foundations: facciones con economía, población, caravanas y ejércitos que deciden según su propio estado, nunca por temporizadores. Todo lo que ocurre queda apuntado en un Libro de Sucesos con su causa, y de ahí nacen los rumores, las consecuencias que llegan días después y la memoria de los personajes. Encima, un narrador con modelos de lenguaje locales lo cuenta, pero nunca decide los números.",
+      "gl": "A resposta separa dúas capas. Debaixo, unha simulación inspirada en X4 Foundations: faccións con economía, poboación, caravanas e exércitos que deciden segundo o seu propio estado, nunca por temporizadores. Todo o que acontece queda apuntado nun Libro de Sucesos coa súa causa, e de aí nacen os rumores, as consecuencias que chegan días despois e a memoria das personaxes. Enriba, un narrador con modelos de linguaxe locais cóntao, pero nunca decide os números.",
+      "en": "The answer splits it into two layers. Underneath, a simulation inspired by X4 Foundations: factions with economies, populations, caravans and armies that decide based on their own state, never on timers. Everything that happens is recorded in a Book of Events along with its cause, and from it come rumours, consequences that arrive days later and the characters’ memories. On top, a narrator built on local language models tells the story, but never decides the numbers."
     },
     {
-      "es": "Hoy Tarkor está en alpha y avanza hito a hito hacia una beta jugable de Berig. En paralelo se construye su instalador de escritorio para Windows y Linux, Steam Deck incluida: analiza el equipo, propone un perfil de IA y lo deja todo listo para jugar sin conexión, sin cuentas y sin servidores.",
-      "gl": "Hoxe Tarkor está en alpha e avanza fito a fito cara a unha beta xogable de Berig. En paralelo constrúese o seu instalador de escritorio para Windows e Linux, Steam Deck incluída: analiza o equipo, propón un perfil de IA e déixao todo listo para xogar sen conexión, sen contas e sen servidores.",
-      "en": "Today Tarkor is in alpha and moving milestone by milestone towards a playable Berig beta. Alongside it, its desktop installer for Windows and Linux, Steam Deck included, is being built: it analyses the machine, suggests an AI profile and sets everything up to play offline, with no accounts and no servers."
+      "es": "Hoy Tarkor está en alpha, en pleno hito 0.3. Las Llanuras del Viento Rojo son la región jugable, y en ellas tu reino ya tiene súbditos con nombre que forman familia, ganado, partidas de caza y una defensa con empalizadas y torres frente a bandidos y facciones en guerra. El resto de Berig llegará región a región. El instalador de escritorio para Windows y Linux, Steam Deck incluida, ya tiene su asistente y su motor de IA; falta empaquetar el juego para la beta.",
+      "gl": "Hoxe Tarkor está en alpha, en pleno fito 0.3. As Chairas do Vento Vermello son a rexión xogable, e nelas o teu reino xa ten súbditos con nome que forman familia, gando, partidas de caza e unha defensa con empalizadas e torres fronte a bandidos e faccións en guerra. O resto de Berig chegará rexión a rexión. O instalador de escritorio para Windows e Linux, Steam Deck incluída, xa ten o seu asistente e o seu motor de IA; falta empaquetar o xogo para a beta.",
+      "en": "Today Tarkor is in alpha, in the middle of milestone 0.3. The Red Wind Plains are the playable region, and there your kingdom already has named subjects who start families, livestock, hunting parties and defences with palisades and towers against bandits and warring factions. The rest of Berig will arrive region by region. The desktop installer for Windows and Linux, Steam Deck included, already has its setup wizard and AI engine; what remains is packaging the game for the beta."
     }
   ],
   "lineas": [
@@ -255,9 +255,14 @@
       "en": "Separating simulation from narration: AI tells the story, but the numbers are decided by rules that can be tested."
     },
     {
-      "es": "Conseguir que modelos de lenguaje locales respondan con fluidez incluso en una Steam Deck.",
-      "gl": "Conseguir que modelos de linguaxe locais respondan con fluidez mesmo nunha Steam Deck.",
-      "en": "Getting local language models to respond smoothly even on a Steam Deck."
+      "es": "Dar memoria al narrador sin saturarlo: elegir qué recordar por importancia, relevancia y lo reciente que es.",
+      "gl": "Dar memoria ao narrador sen saturalo: escoller que lembrar por importancia, relevancia e o recente que é.",
+      "en": "Giving the narrator memory without overloading it: choosing what to remember by importance, relevance and recency."
+    },
+    {
+      "es": "Regular un mundo de bolsillo para que nada se apague ni se desborde: poblaciones, economías y guerras que se equilibran solas.",
+      "gl": "Regular un mundo de peto para que nada se apague nin se desborde: poboacións, economías e guerras que se equilibran soas.",
+      "en": "Regulating a pocket world so nothing dies out or spirals: populations, economies and wars that balance themselves."
     },
     {
       "es": "Dar a cada partida su propia copia del mundo vivo sin multiplicar el coste.",
@@ -265,23 +270,75 @@
       "en": "Giving every save its own copy of the living world without multiplying the cost."
     },
     {
-      "es": "Empaquetar servidor, base de datos y motor de IA en una aplicación de escritorio que cualquiera pueda instalar.",
-      "gl": "Empaquetar servidor, base de datos e motor de IA nunha aplicación de escritorio que calquera poida instalar.",
-      "en": "Packaging a server, a database and an AI engine into a desktop app anyone can install."
+      "es": "Conseguir que modelos de lenguaje locales respondan con fluidez incluso en una Steam Deck.",
+      "gl": "Conseguir que modelos de linguaxe locais respondan con fluidez mesmo nunha Steam Deck.",
+      "en": "Getting local language models to respond smoothly even on a Steam Deck."
     }
   ],
   "caracteristicas": [
     {
       "icono": "globe",
       "titulo": {
-        "es": "Un mundo que vive solo",
-        "gl": "Un mundo que vive só",
-        "en": "A world that lives on its own"
+        "es": "Un mundo de bolsillo que vive solo",
+        "gl": "Un mundo de peto que vive só",
+        "en": "A pocket world that lives on its own"
       },
       "texto": {
-        "es": "Un reloj de ficción hace avanzar facciones, mercado, producción y población. El hambre, el clima y las estaciones también cuentan.",
-        "gl": "Un reloxo de ficción fai avanzar faccións, mercado, produción e poboación. A fame, o clima e as estacións tamén contan.",
-        "en": "A fiction clock moves factions, markets, production and population forward. Hunger, weather and the seasons matter too."
+        "es": "Las facciones comercian, cazan, construyen y hacen la guerra según su estado. Caravanas y viajeros recorren rutas reales por el mapa.",
+        "gl": "As faccións comercian, cazan, constrúen e fan a guerra segundo o seu estado. Caravanas e viaxeiros percorren rutas reais polo mapa.",
+        "en": "Factions trade, hunt, build and wage war according to their state. Caravans and travellers follow real routes across the map."
+      }
+    },
+    {
+      "icono": "book",
+      "titulo": {
+        "es": "Todo deja rastro",
+        "gl": "Todo deixa rastro",
+        "en": "Everything leaves a trace"
+      },
+      "texto": {
+        "es": "Cada suceso queda apuntado con su causa. Los rumores viajan de región en región y las consecuencias llegan días después: venganzas, refugiados, sucesiones.",
+        "gl": "Cada suceso queda apuntado coa súa causa. Os rumores viaxan de rexión en rexión e as consecuencias chegan días despois: vinganzas, refuxiados, sucesións.",
+        "en": "Every event is recorded with its cause. Rumours travel from region to region and consequences arrive days later: revenge, refugees, successions."
+      }
+    },
+    {
+      "icono": "users",
+      "titulo": {
+        "es": "Personajes que recuerdan",
+        "gl": "Personaxes que lembran",
+        "en": "Characters who remember"
+      },
+      "texto": {
+        "es": "Los NPC guardan recuerdos de lo que les hiciste y te aprueban o no según sus valores. Un enemigo que sobrevive vuelve cambiado.",
+        "gl": "Os NPC gardan lembranzas do que lles fixeches e apróbante ou non segundo os seus valores. Un inimigo que sobrevive volve cambiado.",
+        "en": "NPCs keep memories of what you did to them and approve of you or not according to their values. An enemy who survives comes back changed."
+      }
+    },
+    {
+      "icono": "crown",
+      "titulo": {
+        "es": "Un reino que crece por generaciones",
+        "gl": "Un reino que medra por xeracións",
+        "en": "A kingdom that grows over generations"
+      },
+      "texto": {
+        "es": "Súbditos con nombre que llegan, forman pareja, tienen hijos y trabajan en su oficio. Ganadería, comida por tareas y linajes que dejan huella.",
+        "gl": "Súbditos con nome que chegan, forman parella, teñen fillos e traballan no seu oficio. Gandaría, comida por tarefas e liñaxes que deixan pegada.",
+        "en": "Named subjects who arrive, pair up, have children and work at their trade. Livestock, food from labour and lineages that leave their mark."
+      }
+    },
+    {
+      "icono": "swords",
+      "titulo": {
+        "es": "Conflicto con consecuencias",
+        "gl": "Conflito con consecuencias",
+        "en": "Conflict with consequences"
+      },
+      "texto": {
+        "es": "Empalizadas, torres de vigía y milicia frente a campamentos de bandidos y facciones en guerra. Una guerra se calma con tributo o se responde con un contraataque.",
+        "gl": "Empalizadas, torres de vixía e milicia fronte a campamentos de bandidos e faccións en guerra. Unha guerra acálmase con tributo ou respóndese cun contraataque.",
+        "en": "Palisades, watchtowers and militia against bandit camps and warring factions. A war can be calmed with tribute or answered with a counter-attack."
       }
     },
     {
@@ -298,19 +355,6 @@
       }
     },
     {
-      "icono": "crown",
-      "titulo": {
-        "es": "Tu propio reino",
-        "gl": "O teu propio reino",
-        "en": "Your own kingdom"
-      },
-      "texto": {
-        "es": "Funda un asentamiento, construye, organiza la producción y mantén a tu gente con comida, bebida y ánimo.",
-        "gl": "Funda un asentamento, constrúe, organiza a produción e mantén a túa xente con comida, bebida e ánimo.",
-        "en": "Found a settlement, build, organise production and keep your people fed, watered and in good spirits."
-      }
-    },
-    {
       "icono": "dices",
       "titulo": {
         "es": "Rol de mesa de verdad",
@@ -318,22 +362,9 @@
         "en": "Real tabletop rules"
       },
       "texto": {
-        "es": "Nueve clases con especialización a nivel 10, siete escuelas de magia y combates contra varios enemigos con iniciativa individual.",
-        "gl": "Nove clases con especialización ao nivel 10, sete escolas de maxia e combates contra varios inimigos con iniciativa individual.",
-        "en": "Nine classes with a specialisation at level 10, seven schools of magic and fights against several enemies with individual initiative."
-      }
-    },
-    {
-      "icono": "map",
-      "titulo": {
-        "es": "Zonas ilustradas",
-        "gl": "Zonas ilustradas",
-        "en": "Illustrated zones"
-      },
-      "texto": {
-        "es": "Cada lugar tiene su mapa, con fauna, puntos de interés y rutas. Los encuentros dependen de la población real de cada especie.",
-        "gl": "Cada lugar ten o seu mapa, con fauna, puntos de interese e rutas. Os encontros dependen da poboación real de cada especie.",
-        "en": "Every place has its own map with wildlife, points of interest and routes. Encounters depend on each species’ actual population."
+        "es": "Tiradas visibles, ocho clases con especialización a nivel 10, combate contra varios enemigos con iniciativa individual, caza y oficios.",
+        "gl": "Tiradas visibles, oito clases con especialización ao nivel 10, combate contra varios inimigos con iniciativa individual, caza e oficios.",
+        "en": "Visible dice rolls, eight classes with a specialisation at level 10, fights against several enemies with individual initiative, hunting and trades."
       }
     },
     {
@@ -344,9 +375,9 @@
         "en": "Private by design"
       },
       "texto": {
-        "es": "Sin cuentas, sin telemetría y sin conexión durante la partida: todo se queda en tu equipo.",
-        "gl": "Sen contas, sen telemetría e sen conexión durante a partida: todo queda no teu equipo.",
-        "en": "No accounts, no telemetry and no connection while playing: everything stays on your machine."
+        "es": "Sin cuentas, sin telemetría y sin conexión durante la partida: toda la IA funciona en tu equipo.",
+        "gl": "Sen contas, sen telemetría e sen conexión durante a partida: toda a IA funciona no teu equipo.",
+        "en": "No accounts, no telemetry and no connection while playing: all the AI runs on your machine."
       }
     }
   ],
@@ -406,9 +437,9 @@
         "en": "The world moves on"
       },
       "texto": {
-        "es": "Mientras tanto, el reloj avanza: las facciones deciden, la población crece, el clima cambia y tu reino produce.",
-        "gl": "Mentres tanto, o reloxo avanza: as faccións deciden, a poboación medra, o clima cambia e o teu reino produce.",
-        "en": "Meanwhile the clock ticks on: factions decide, populations grow, the weather changes and your kingdom produces."
+        "es": "El reloj de ficción avanza: las facciones deciden, tu reino produce y el Libro de Sucesos lo apunta todo. Lo que hiciste volverá como rumor o como consecuencia.",
+        "gl": "O reloxo de ficción avanza: as faccións deciden, o teu reino produce e o Libro de Sucesos apúntao todo. O que fixeches volverá como rumor ou como consecuencia.",
+        "en": "The fiction clock ticks on: factions decide, your kingdom produces and the Book of Events records it all. What you did will come back as a rumour or a consequence."
       }
     }
   ],
@@ -505,6 +536,93 @@
           }
         }
       ]
+    },
+    {
+      "id": "inspiracion",
+      "titulo": {
+        "es": "Juegos que nos inspiran",
+        "gl": "Xogos que nos inspiran",
+        "en": "Games that inspire us"
+      },
+      "intro": {
+        "es": "Cada sistema se contrasta con los juegos que mejor lo resuelven antes de diseñarlo. Estos son los que más han marcado el camino.",
+        "gl": "Cada sistema contrástase cos xogos que mellor o resolven antes de deseñalo. Estes son os que máis marcaron o camiño.",
+        "en": "Every system is checked against the games that solve it best before it is designed. These are the ones that have shaped the path the most."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "X4 Foundations",
+            "gl": "X4 Foundations",
+            "en": "X4 Foundations"
+          },
+          "texto": {
+            "es": "Facciones que comercian, construyen y luchan por reglas y estado, sin una IA «pensando». Es la referencia principal del mundo vivo.",
+            "gl": "Faccións que comercian, constrúen e loitan por regras e estado, sen unha IA «pensando». É a referencia principal do mundo vivo.",
+            "en": "Factions that trade, build and fight through rules and state, with no AI “thinking”. It is the main reference for the living world."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Baldur’s Gate 3",
+            "gl": "Baldur’s Gate 3",
+            "en": "Baldur’s Gate 3"
+          },
+          "texto": {
+            "es": "Reacciones a cada suceso, consecuencias que aparecen mucho después y aprobación de los compañeros según sus valores.",
+            "gl": "Reaccións a cada suceso, consecuencias que aparecen moito despois e aprobación dos compañeiros segundo os seus valores.",
+            "en": "Reactions to every event, consequences that surface much later and companion approval based on their values."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Dwarf Fortress",
+            "gl": "Dwarf Fortress",
+            "en": "Dwarf Fortress"
+          },
+          "texto": {
+            "es": "Cada suceso del mundo queda registrado y su historia permanece oculta hasta que alguien la descubre.",
+            "gl": "Cada suceso do mundo queda rexistrado e a súa historia permanece oculta ata que alguén a descobre.",
+            "en": "Every world event is recorded and its history stays hidden until someone uncovers it."
+          }
+        },
+        {
+          "nombre": {
+            "es": "RimWorld",
+            "gl": "RimWorld",
+            "en": "RimWorld"
+          },
+          "texto": {
+            "es": "Un narrador de fondo que elige sucesos con pesos, pausas y un presupuesto de tensión.",
+            "gl": "Un narrador de fondo que escolle sucesos con pesos, pausas e un orzamento de tensión.",
+            "en": "A background storyteller that picks events with weights, cooldowns and a tension budget."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Shadow of Mordor",
+            "gl": "Shadow of Mordor",
+            "en": "Shadow of Mordor"
+          },
+          "texto": {
+            "es": "Como su sistema Némesis: los enemigos recuerdan lo que les hiciste y vuelven cambiados.",
+            "gl": "Coma o seu sistema Némesis: os inimigos lembran o que lles fixeches e volven cambiados.",
+            "en": "Like its Nemesis system: enemies remember what you did to them and come back changed."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Crusader Kings 3",
+            "gl": "Crusader Kings 3",
+            "en": "Crusader Kings 3"
+          },
+          "texto": {
+            "es": "Sucesos con condiciones que se encadenan en historias más largas.",
+            "gl": "Sucesos con condicións que se encadean en historias máis longas.",
+            "en": "Conditional events that chain into longer stories."
+          }
+        }
+      ]
     }
   ],
   "ficha": [
@@ -542,7 +660,7 @@
       },
       "tecnologias": [
         "PostgreSQL + pgvector",
-        "SQLite (versión de escritorio)"
+        "SQLite"
       ]
     },
     {
@@ -553,9 +671,10 @@
       },
       "tecnologias": [
         "Ollama",
-        "Narrador: Llama 3.1 8B afinado",
-        "Clasificador y cronista: Qwen 2.5 1.5B",
-        "RAG de lore con embeddings"
+        "Llama 3.1 8B",
+        "Qwen 2.5 1.5B",
+        "Qwen 3.5 4B",
+        "nomic-embed-text"
       ]
     },
     {
@@ -580,6 +699,7 @@
       "tecnologias": [
         "Vitest",
         "Testing Library",
+        "Playwright",
         "oxlint",
         "GitHub Actions"
       ]
@@ -609,9 +729,9 @@
         "en": "Stable Plains"
       },
       "detalle": {
-        "es": "Una partida completa en Las Llanuras sin nada que rompa el juego.",
-        "gl": "Unha partida completa nas Chairas sen nada que rompa o xogo.",
-        "en": "A full playthrough of the Plains with nothing game-breaking."
+        "es": "Casi cerrado: falta medir el rendimiento en la Steam Deck y la pasada de juego final.",
+        "gl": "Case pechado: falta medir o rendemento na Steam Deck e a pasada de xogo final.",
+        "en": "Almost done: Steam Deck performance measurements and the final playthrough remain."
       }
     },
     {
@@ -623,23 +743,23 @@
         "en": "Living factions"
       },
       "detalle": {
-        "es": "Las facciones sobreviven, deciden y actúan solas; cada partida tiene su propio mundo.",
-        "gl": "As faccións sobreviven, deciden e actúan soas; cada partida ten o seu propio mundo.",
-        "en": "Factions survive, decide and act on their own; every save has its own world."
+        "es": "Hecho lo principal: Libro de Sucesos, un mundo propio por partida, motor de sucesos, rumores y leyendas. Quedan decisiones de diseño pendientes.",
+        "gl": "Feito o principal: Libro de Sucesos, un mundo propio por partida, motor de sucesos, rumores e lendas. Quedan decisións de deseño pendentes.",
+        "en": "The core is done: Book of Events, a world of its own per save, event engine, rumours and legends. Some design decisions remain."
       }
     },
     {
       "version": "0.3",
-      "estado": "pendiente",
+      "estado": "curso",
       "nombre": {
         "es": "Reino profundo",
         "gl": "Reino profundo",
         "en": "Deep kingdom"
       },
       "detalle": {
-        "es": "Población que llega, forma familia y trabaja; ganadería y defensa.",
-        "gl": "Poboación que chega, forma familia e traballa; gandaría e defensa.",
-        "en": "Settlers who arrive, start families and work; livestock and defence."
+        "es": "Hechos personajes que recuerdan, memoria del narrador, población por generaciones, economía, ganadería y conflicto. Falta hablar y comerciar en persona con los NPC.",
+        "gl": "Feitos personaxes que lembran, memoria do narrador, poboación por xeracións, economía, gandaría e conflito. Falta falar e comerciar en persoa cos NPC.",
+        "en": "Done: characters who remember, narrator memory, generational population, economy, livestock and conflict. Talking and trading in person with NPCs remains."
       }
     },
     {
@@ -714,41 +834,65 @@
   ],
   "novedades": [
     {
-      "fecha": "2026-10-03",
+      "fecha": "2026-10-12",
       "texto": {
-        "es": "Mundo por partida: cada partida empieza a tener su propia copia del mundo vivo, con su población y sus facciones.",
-        "gl": "Mundo por partida: cada partida empeza a ter a súa propia copia do mundo vivo, coa súa poboación e as súas faccións.",
-        "en": "World per save: every save now starts getting its own copy of the living world, with its own population and factions."
+        "es": "Ronda de pruebas jugando el hito 0.3: decenas de problemas encontrados y corregidos.",
+        "gl": "Rolda de probas xogando o fito 0.3: decenas de problemas atopados e corrixidos.",
+        "en": "Play-testing round for milestone 0.3: dozens of issues found and fixed."
       }
     },
     {
-      "fecha": "2026-10-02",
+      "fecha": "2026-10-08",
       "texto": {
-        "es": "Nuevo menú de configuración y de pausa, atajos de teclado reasignables y notificaciones animadas.",
-        "gl": "Novo menú de configuración e de pausa, atallos de teclado reasignables e notificacións animadas.",
-        "en": "New settings and pause menu, rebindable keyboard shortcuts and animated notifications."
+        "es": "Guerras contra tu reino: las facciones mandan ejércitos, y tú puedes pagar tributo o contraatacar. Los asaltos dependen del estado del mundo.",
+        "gl": "Guerras contra o teu reino: as faccións mandan exércitos, e ti podes pagar tributo ou contraatacar. Os asaltos dependen do estado do mundo.",
+        "en": "Wars against your kingdom: factions send armies, and you can pay tribute or counter-attack. Raids depend on the state of the world."
       }
     },
     {
-      "fecha": "2026-10-02",
+      "fecha": "2026-10-07",
       "texto": {
-        "es": "Noticias del mundo: el jugador ve las relaciones y la agenda de las facciones a medida que cambian.",
-        "gl": "Novas do mundo: o xogador ve as relacións e a axenda das faccións a medida que cambian.",
-        "en": "World news: players see faction relations and agendas as they change."
+        "es": "Defensa del asentamiento con empalizada, torre de vigía y milicia, y campamentos de bandidos que crecen y asaltan caravanas.",
+        "gl": "Defensa do asentamento con empalizada, torre de vixía e milicia, e campamentos de bandidos que medran e asaltan caravanas.",
+        "en": "Settlement defence with palisade, watchtower and militia, and bandit camps that grow and raid caravans."
       }
     },
     {
-      "fecha": "2026-09-28",
+      "fecha": "2026-10-07",
       "texto": {
-        "es": "Instalador: asistente de primer arranque, detección del equipo, perfiles de IA y motor de IA integrado funcionando de punta a punta.",
-        "gl": "Instalador: asistente de primeiro arranque, detección do equipo, perfís de IA e motor de IA integrado funcionando de punta a punta.",
-        "en": "Installer: first-run wizard, hardware detection, AI profiles and a bundled AI engine working end to end."
+        "es": "Todo viaja de verdad: viajeros y partidas de caza recorren rutas reales por el mapa de Berig.",
+        "gl": "Todo viaxa de verdade: viaxeiros e partidas de caza percorren rutas reais polo mapa de Berig.",
+        "en": "Everything really travels: travellers and hunting parties follow real routes across the map of Berig."
+      }
+    },
+    {
+      "fecha": "2026-10-06",
+      "texto": {
+        "es": "Súbditos como personas: llegan, forman pareja, tienen hijos y dejan linaje. Llegan la ganadería y la economía de supervivencia.",
+        "gl": "Súbditos como persoas: chegan, forman parella, teñen fillos e deixan liñaxe. Chegan a gandaría e a economía de supervivencia.",
+        "en": "Subjects as people: they arrive, pair up, have children and leave a lineage. Livestock and a survival economy arrive too."
+      }
+    },
+    {
+      "fecha": "2026-10-06",
+      "texto": {
+        "es": "Personajes que recuerdan lo que les hiciste y un narrador que nunca olvida lo importante.",
+        "gl": "Personaxes que lembran o que lles fixeches e un narrador que nunca esquece o importante.",
+        "en": "Characters who remember what you did to them and a narrator that never forgets what matters."
+      }
+    },
+    {
+      "fecha": "2026-10-05",
+      "texto": {
+        "es": "Rumores y leyendas: lo que pasa en el mundo se propaga de región en región hasta llegar a ti.",
+        "gl": "Rumores e lendas: o que pasa no mundo propágase de rexión en rexión ata chegar a ti.",
+        "en": "Rumours and legends: what happens in the world spreads from region to region until it reaches you."
       }
     }
   ],
   "cifras": [
     {
-      "valor": "+3.300",
+      "valor": "+3.900",
       "etiqueta": {
         "es": "tests automáticos",
         "gl": "tests automáticos",
@@ -811,6 +955,30 @@
         "es": "La economía, las facciones y las tiradas son sistemas deterministas y comprobables. La IA cuenta lo que pasa, pero no decide los números, así el juego es justo y coherente.",
         "gl": "A economía, as faccións e as tiradas son sistemas deterministas e comprobables. A IA conta o que pasa, pero non decide os números, así o xogo é xusto e coherente.",
         "en": "Economy, factions and dice are deterministic, testable systems. The AI narrates what happens but doesn't decide the numbers, keeping the game fair and consistent."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Nada en bucle fijo",
+        "gl": "Nada en bucle fixo",
+        "en": "Nothing on a fixed loop"
+      },
+      "texto": {
+        "es": "Ningún suceso sale de un temporizador: cada asalto, caravana o crisis nace del estado del mundo, como en X4. Y en un mundo tan pequeño nada se apaga del todo: todo se regula.",
+        "gl": "Ningún suceso sae dun temporizador: cada asalto, caravana ou crise nace do estado do mundo, como en X4. E nun mundo tan pequeno nada se apaga de todo: todo se regula.",
+        "en": "No event comes from a timer: every raid, caravan or crisis is born from the state of the world, as in X4. And in such a small world nothing shuts down completely: everything is regulated."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Sin IA no se rompe nada",
+        "gl": "Sen IA non se rompe nada",
+        "en": "Nothing breaks without AI"
+      },
+      "texto": {
+        "es": "Cada tarea de la IA tiene una alternativa con plantillas: si el modelo no responde, el mundo sigue evolucionando y la crónica se sigue escribiendo.",
+        "gl": "Cada tarefa da IA ten unha alternativa con modelos: se o modelo non responde, o mundo segue evolucionando e a crónica segue escribíndose.",
+        "en": "Every AI task has a template fallback: if the model does not respond, the world keeps evolving and the chronicle keeps being written."
       }
     },
     {

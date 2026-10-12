@@ -1,10 +1,11 @@
 import {
-  BarChart3, Cpu, Crown, Dices, Gauge, Globe, Highlighter, Image, Languages, Map,
-  ShieldCheck, Sparkles, type LucideIcon,
+  BarChart3, BookOpen, Cpu, Crown, Dices, Gauge, Globe, Highlighter, Image, Languages, Map,
+  ShieldCheck, Sparkles, Swords, Users, type LucideIcon,
 } from 'lucide-react';
 
 // Iconos que pueden usar las características de un proyecto (campo "icono" del .json).
 const ICONOS: Record<string, LucideIcon> = {
+  book: BookOpen,
   chart: BarChart3,
   cpu: Cpu,
   crown: Crown,
@@ -17,6 +18,8 @@ const ICONOS: Record<string, LucideIcon> = {
   map: Map,
   shield: ShieldCheck,
   sparkles: Sparkles,
+  swords: Swords,
+  users: Users,
 };
 
 export const NOMBRES_ICONOS = Object.keys(ICONOS);
