@@ -13,6 +13,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Hecho
 
+- ✅ Arreglo móvil (2026-10-12): la galería de «Capturas» dentro de un plegable ensanchaba la
+  columna (`.plegables` con `minmax(0, 1fr)`); la cabecera se adapta al texto agrandado del móvil
+  (cortes en `em`: menú hamburguesa bajo 53,75em y solo el símbolo GV bajo 22,6em). Comprobado de
+  320 a 1280 px con letra de 16, 20 y 24 px. Publicado en `main`.
 - ✅ Sección «Capturas» (2026-10-12): campo `capturas` en cada proyecto, galería aparte de la de
   arte. Tarkor con 4 capturas del juego que pasó el usuario (combate, dos mapas de zona y
   habilidades de reino) en `public/proyectos/tarkor/juego-*.webp`.

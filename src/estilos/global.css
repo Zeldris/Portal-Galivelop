@@ -261,7 +261,19 @@ button {
   display: none;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 62.5em) {
+  .cabecera-fila {
+    gap: 12px;
+  }
+  .cabecera-nav {
+    gap: 2px;
+  }
+  .cabecera-nav a {
+    padding: 8px 9px;
+  }
+}
+
+@media (max-width: 53.75em) {
   .cabecera-fila {
     gap: 12px;
   }
@@ -295,9 +307,20 @@ button {
   }
 }
 
+/* Con poco ancho (o el texto del móvil agrandado) el logo queda solo en el símbolo GV. */
+@media (max-width: 22.6em) {
+  .cabecera .logo-texto {
+    display: none;
+  }
+}
+
 @media (max-width: 380px) {
   .logo-texto {
     font-size: 1.15rem;
+  }
+  .cabecera-fila,
+  .cabecera-ajustes {
+    gap: 6px;
   }
   .idiomas button {
     padding: 4px 8px;
@@ -1333,6 +1356,8 @@ button {
 
 .plegables {
   display: grid;
+  /* minmax(0, 1fr): una galería dentro de un plegable no ensancha la columna en móvil. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
 }
 
@@ -2842,7 +2867,7 @@ button {
   color: var(--texto);
 }
 
-@media (max-width: 760px) {
+@media (max-width: 53.75em) {
   .submenu-boton {
     width: 100%;
     justify-content: space-between;
