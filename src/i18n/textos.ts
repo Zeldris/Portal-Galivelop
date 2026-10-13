@@ -36,7 +36,6 @@ const es = {
 
   'sec.galeria': 'Galería',
   'sec.descripcion': 'El proyecto',
-  'sec.capturas': 'Capturas',
   'sec.caracteristicas': 'Qué lo hace distinto',
   'sec.ficha': 'Ficha técnica',
   'sec.hitos': 'Hoja de ruta',
@@ -52,6 +51,10 @@ const es = {
   'galeria.siguiente': 'Imagen siguiente',
   'galeria.ampliar': 'Ampliar imagen',
   'galeria.cerrar': 'Cerrar',
+  'galeria.pausar': 'Pausar la rotación de imágenes',
+  'galeria.reanudar': 'Reanudar la rotación de imágenes',
+  'galeria.grupo.capturas': 'Capturas',
+  'galeria.grupo.arte': 'Ilustraciones',
   'galeria.posicion': 'Imagen {n} de {total}',
 
   'sobre.titulo': 'Cómo trabajamos',
@@ -226,7 +229,6 @@ const gl: Record<Clave, string> = {
 
   'sec.galeria': 'Galería',
   'sec.descripcion': 'O proxecto',
-  'sec.capturas': 'Capturas',
   'sec.caracteristicas': 'Que o fai distinto',
   'sec.ficha': 'Ficha técnica',
   'sec.hitos': 'Folla de ruta',
@@ -242,6 +244,10 @@ const gl: Record<Clave, string> = {
   'galeria.siguiente': 'Imaxe seguinte',
   'galeria.ampliar': 'Ampliar imaxe',
   'galeria.cerrar': 'Pechar',
+  'galeria.pausar': 'Pausar a rotación de imaxes',
+  'galeria.reanudar': 'Retomar a rotación de imaxes',
+  'galeria.grupo.capturas': 'Capturas',
+  'galeria.grupo.arte': 'Ilustracións',
   'galeria.posicion': 'Imaxe {n} de {total}',
 
   'sobre.titulo': 'Como traballamos',
@@ -414,7 +420,6 @@ const en: Record<Clave, string> = {
 
   'sec.galeria': 'Gallery',
   'sec.descripcion': 'The project',
-  'sec.capturas': 'Screenshots',
   'sec.caracteristicas': 'What makes it different',
   'sec.ficha': 'Tech stack',
   'sec.hitos': 'Roadmap',
@@ -430,6 +435,10 @@ const en: Record<Clave, string> = {
   'galeria.siguiente': 'Next image',
   'galeria.ampliar': 'Enlarge image',
   'galeria.cerrar': 'Close',
+  'galeria.pausar': 'Pause the image rotation',
+  'galeria.reanudar': 'Resume the image rotation',
+  'galeria.grupo.capturas': 'Screenshots',
+  'galeria.grupo.arte': 'Artwork',
   'galeria.posicion': 'Image {n} of {total}',
 
   'sobre.titulo': 'How we work',

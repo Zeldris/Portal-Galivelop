@@ -50,8 +50,10 @@ pública (web, descarga…) cuando la hay.
      interesados; hoy, solo toVeriAI).
    - `cabecera`: `"captura"` si la portada es una captura de web o app (se enmarca en una ventana);
      sin el campo, la portada se usa de fondo.
-   - `galeria`: arte o ilustraciones (arriba de la ficha). `capturas`: capturas reales de la
-     interfaz, en su propia sección «Capturas» (vacía `[]` si no hay; entonces no se muestra).
+   - `galeria` (ilustraciones) y `capturas` (capturas reales de la interfaz; `[]` si no hay) se
+     muestran juntas en la galería de arriba: primero las capturas, luego las ilustraciones, con una
+     pestaña por grupo si hay los dos. Rota sola cada 6 s en bucle; al usarla a mano se para y
+     vuelve a rotar tras 3 minutos sin tocarla (`src/components/Galeria.tsx`).
    - `hitos[].estado`: `hecho`, `curso` o `pendiente`. El porcentaje de avance sale de ahí.
    - `caracteristicas[].icono`: uno de los nombres de [`src/components/Icono.tsx`](../src/components/Icono.tsx).
    - `lineas`: líneas de trabajo del taller a las que pertenece (`ia-local`, `mundos`,

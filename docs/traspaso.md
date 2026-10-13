@@ -13,6 +13,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Hecho
 
+- ✅ Galería única (2026-10-13): capturas e ilustraciones juntas arriba, con pestañas «Capturas» e
+  «Ilustraciones» que marcan el grupo actual; rotación automática cada 6 s en bucle (pasa de un
+  grupo a otro), se para al usarla a mano y vuelve tras 3 min; botón de pausa con barra de
+  progreso, sin rotar fuera de pantalla, con la pestaña oculta ni con «reducir movimiento».
+  Quitada la sección plegable «Capturas».
 - ✅ Arreglo móvil (2026-10-12): la galería de «Capturas» dentro de un plegable ensanchaba la
   columna (`.plegables` con `minmax(0, 1fr)`); la cabecera se adapta al texto agrandado del móvil
   (cortes en `em`: menú hamburguesa bajo 53,75em y solo el símbolo GV bajo 22,6em). Comprobado de

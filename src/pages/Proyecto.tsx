@@ -13,14 +13,14 @@ import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
 
-// Orden de la ficha, como un caso de estudio: qué es, qué lo hace distinto, cómo funciona, capturas, su mundo o
+// Orden de la ficha, como un caso de estudio: qué es, qué lo hace distinto, cómo funciona, su mundo o
 // metodología (apartados propios), cómo está hecho, dónde está y qué estamos aprendiendo.
-const FIJAS_ANTES = ['descripcion', 'caracteristicas', 'pasos', 'capturas'] as const;
+const FIJAS_ANTES = ['descripcion', 'caracteristicas', 'pasos'] as const;
 const FIJAS_DESPUES = ['ficha', 'hitos', 'aprendizajes', 'decisiones', 'novedades', 'equipo'] as const;
 type Fija = (typeof FIJAS_ANTES)[number] | (typeof FIJAS_DESPUES)[number];
 /** Id de sección: una fija o `ap-<id>` para los apartados propios del proyecto. */
 type Seccion = Fija | `ap-${string}`;
-const ABIERTAS_AL_ENTRAR: Seccion[] = ['descripcion', 'caracteristicas', 'pasos', 'capturas'];
+const ABIERTAS_AL_ENTRAR: Seccion[] = ['descripcion', 'caracteristicas', 'pasos'];
 
 const ICONO_HITO: Record<EstadoHito, typeof Check> = { hecho: Check, curso: LoaderCircle, pendiente: CircleDashed };
 
@@ -160,7 +160,12 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         )}
 
         <section aria-label={t('sec.galeria')} className="proyecto-galeria">
-          <Galeria imagenes={p.galeria} />
+          <Galeria
+            grupos={[
+              { id: 'capturas', etiqueta: t('galeria.grupo.capturas'), imagenes: p.capturas },
+              { id: 'arte', etiqueta: t('galeria.grupo.arte'), imagenes: p.galeria },
+            ]}
+          />
         </section>
 
         <nav className="indice-ficha" aria-label={t('proyecto.indice')}>
@@ -226,12 +231,6 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                   </li>
                 ))}
               </ol>
-            </Plegable>
-          )}
-
-          {secciones.includes('capturas') && (
-            <Plegable {...plegable('capturas', String(p.capturas.length))}>
-              <Galeria imagenes={p.capturas} />
             </Plegable>
           )}
 

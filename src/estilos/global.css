@@ -1160,6 +1160,108 @@ button {
 
 /* ---------- Galería ---------- */
 
+.galeria-grupos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.galeria-grupo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-2);
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: color var(--transicion), background var(--transicion), border-color var(--transicion);
+}
+
+.galeria-grupo:hover {
+  color: var(--texto);
+  border-color: var(--acento-proyecto, var(--celeste));
+}
+
+.galeria-grupo[aria-pressed='true'] {
+  color: var(--blanco);
+  background: var(--acento-proyecto, var(--celeste-intenso));
+  border-color: var(--acento-proyecto, var(--celeste-intenso));
+}
+
+.galeria-grupo-total {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 0.12);
+}
+
+.galeria-grupo[aria-pressed='true'] .galeria-grupo-total {
+  background: rgb(255 255 255 / 0.22);
+}
+
+.galeria-pausa {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  background: rgb(6 18 28 / 0.6);
+  color: var(--blanco);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background var(--transicion);
+}
+
+.galeria-pausa:hover {
+  background: var(--celeste-intenso);
+}
+
+.galeria-progreso {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgb(255 255 255 / 0.12);
+}
+
+.galeria-progreso span {
+  display: block;
+  height: 100%;
+  background: var(--acento-proyecto, var(--celeste));
+  transform-origin: left;
+  animation: galeria-avance linear forwards;
+}
+
+@keyframes galeria-avance {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.galeria-separador {
+  flex: none;
+  align-self: stretch;
+  width: 2px;
+  margin: 6px 4px;
+  border-radius: 2px;
+  background: var(--borde);
+}
+
 .galeria-escenario {
   position: relative;
   aspect-ratio: 16 / 9;
