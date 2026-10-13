@@ -16,10 +16,13 @@ funciona, cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](d
 - Commits en español: primera línea con qué cambia, cuerpo con qué queda y estado de los tests,
   última línea `Siguiente: <paso>`.
 - A `main` solo se sube con confirmación expresa (y `main` es lo que se publica).
-- **Publicación semanal** (decisión del usuario, 2026-10-13): la web se actualiza solo los
-  **domingos o lunes**, con el trabajo de la semana. Entre semana los cambios se acumulan en la
-  rama de trabajo (commit + push como siempre) y se apuntan en la bitácora, en «Para la próxima
-  publicación»; el domingo o lunes se repasa esa lista, se pide confirmación y se sube todo a `main`.
+- **Publicación semanal** (decisión y consentimiento del usuario, 2026-10-13): la web se actualiza
+  los **domingos por la noche**. Una tarea programada de Claude («Tarkor semanal») revisa el avance
+  de Tarkor, actualiza su ficha y sube la rama de trabajo a `main` **sin pedir confirmación** (el
+  usuario lo autorizó para esa tarea). Debe gastar los mínimos tokens: leer solo la bitácora del
+  juego y los commits desde la última fecha de `actualizado`. Por eso la rama de trabajo tiene que
+  estar siempre publicable; entre semana, lo hecho se apunta en «Para la próxima publicación» de la
+  bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación expresa.
 - Todo texto visible, en **castellano, gallego e inglés**. `npm run check` lo comprueba.
 - No se enlaza el código de los proyectos (sus repos son privados): solo su versión pública.
 - Mensaje de la marca (2026-10-04): Galivelop es un **taller** (crear, investigar, innovar,

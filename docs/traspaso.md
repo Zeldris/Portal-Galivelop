@@ -13,19 +13,15 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Para la próxima publicación
 
-La web se publica solo los domingos o lunes con el trabajo de la semana (ver `CLAUDE.md`).
+La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - (nada pendiente de la web: `main` al día a 2026-10-13)
 
-⚠️ **Pendiente de confirmación del usuario** (2026-10-13): `.github/workflows/publicacion-semanal.yml`
-(publicar cada domingo a las 23:00 llevando la rama a `main` sin pedir confirmación) y el
-`workflow_call` de `pages.yml` están en la rama pero **no deben llegar a `main`** hasta que el
-usuario confirme que quiere la publicación automática (alternativa propuesta: solo un aviso el
-domingo). Mientras no esté en `main`, no se ejecuta.
-
 ## Hecho
 
+- ✅ Tarea programada «Tarkor semanal» (2026-10-13): cada domingo revisa Tarkor, actualiza la ficha
+  y publica en `main` (consentimiento del usuario). Descartado el flujo de GitHub Actions equivalente.
 - ✅ Vista ampliada a pantalla completa (2026-10-13): la imagen ocupa toda la pantalla con el pie
   encima; usa la pantalla completa del navegador (oculta su barra en el móvil) y en táctiles gira
   a horizontal las imágenes apaisadas (Android; en iPhone basta con girar el móvil). Salir de la
