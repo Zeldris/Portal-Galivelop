@@ -16,7 +16,13 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica solo los domingos o lunes con el trabajo de la semana (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- (nada pendiente: `main` al día a 2026-10-13)
+- (nada pendiente de la web: `main` al día a 2026-10-13)
+
+⚠️ **Pendiente de confirmación del usuario** (2026-10-13): `.github/workflows/publicacion-semanal.yml`
+(publicar cada domingo a las 23:00 llevando la rama a `main` sin pedir confirmación) y el
+`workflow_call` de `pages.yml` están en la rama pero **no deben llegar a `main`** hasta que el
+usuario confirme que quiere la publicación automática (alternativa propuesta: solo un aviso el
+domingo). Mientras no esté en `main`, no se ejecuta.
 
 ## Hecho
 

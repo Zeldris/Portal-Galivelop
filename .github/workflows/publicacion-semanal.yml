@@ -1,0 +1,100 @@
+name: Publicación semanal
+
+# Cada domingo a las 23:00 (hora de Galicia) lleva la rama de trabajo a main y publica la web.
+# GitHub programa en UTC: se lanza a las 21:00 y a las 22:00 UTC y solo actúa la ejecución que ya es
+# domingo a las 23:00 o más tarde en Europe/Madrid (horario de verano o de invierno). Si la rama no
+# tiene nada nuevo, no hace nada; si main tiene commits que no están en la rama, o los tests fallan,
+# no publica y la ejecución queda en rojo (GitHub avisa por correo).
+on:
+  schedule:
+    - cron: '0 21 * * 0'
+    - cron: '0 22 * * 0'
+  workflow_dispatch:
+
+env:
+  RAMA: claude/galivelop-dev-portal-1h89ci
+
+concurrency:
+  group: publicacion-semanal
+  cancel-in-progress: false
+
+jobs:
+  llevar-a-main:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      publicar: ${{ steps.subir.outputs.publicar }}
+      sha: ${{ steps.subir.outputs.sha }}
+    steps:
+      - name: ¿Es domingo a las 23:00 en Galicia?
+        id: hora
+        run: |
+          dia=$(TZ=Europe/Madrid date +%u)
+          hora=$(TZ=Europe/Madrid date +%H)
+          echo "Hora en Galicia: día $dia, $hora h"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || { [ "$dia" = 7 ] && [ "$hora" -ge 23 ]; } || [ "$dia" = 1 ]; then
+            echo "seguir=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Todavía no son las 23:00 del domingo en Galicia: esta ejecución no hace nada."
+            echo "seguir=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.hora.outputs.seguir == 'true'
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: ¿Hay algo nuevo en la rama de trabajo?
+        id: cambios
+        if: steps.hora.outputs.seguir == 'true'
+        run: |
+          git fetch origin "$RAMA"
+          if git merge-base --is-ancestor "origin/$RAMA" origin/main; then
+            echo "La rama de trabajo no tiene nada nuevo: no se publica."
+            echo "hay=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if ! git merge-base --is-ancestor origin/main "origin/$RAMA"; then
+            echo "::error::main tiene commits que no están en $RAMA. Hay que traerlos a la rama antes de publicar."
+            exit 1
+          fi
+          echo "Commits que se publican:"
+          git log --oneline "origin/main..origin/$RAMA"
+          git checkout -q "origin/$RAMA"
+          echo "hay=true" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.cambios.outputs.hay == 'true'
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.cambios.outputs.hay == 'true'
+        run: npm ci
+      - name: Comprobar tipos y tests
+        if: steps.cambios.outputs.hay == 'true'
+        run: npm run check
+      - name: Construir
+        if: steps.cambios.outputs.hay == 'true'
+        run: npm run build
+
+      - name: Llevar la rama a main
+        id: subir
+        if: steps.cambios.outputs.hay == 'true'
+        run: |
+          git push origin "origin/$RAMA:refs/heads/main"
+          echo "publicar=true" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse "origin/$RAMA")" >> "$GITHUB_OUTPUT"
+
+  # Un push hecho con el token del flujo no lanza pages.yml por sí solo: se llama aquí.
+  publicar:
+    needs: llevar-a-main
+    if: needs.llevar-a-main.outputs.publicar == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
+    with:
+      ref: ${{ needs.llevar-a-main.outputs.sha }}
