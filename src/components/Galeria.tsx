@@ -16,6 +16,29 @@ const INTERVALO = 6000;
 /** Tras usar la galería a mano, la rotación vuelve sola pasado este tiempo sin tocarla. */
 const PAUSA_POR_USO = 3 * 60 * 1000;
 
+type OrientacionBloqueable = ScreenOrientation & { lock?: (o: string) => Promise<void> };
+
+/**
+ * Vista ampliada a pantalla completa de verdad (oculta la barra del navegador en el móvil) y, en
+ * pantallas táctiles, girada a horizontal si la imagen es apaisada. Si el navegador no lo permite
+ * (p. ej. Safari en iPhone), se queda en la vista ampliada normal.
+ */
+function pantallaCompleta(el: HTMLElement | null, imagen: Imagen) {
+  if (!el?.requestFullscreen || document.fullscreenElement) return;
+  el.requestFullscreen({ navigationUI: 'hide' })
+    .then(() => {
+      const tactil = window.matchMedia?.('(pointer: coarse)').matches;
+      const orientacion = screen.orientation as OrientacionBloqueable | undefined;
+      if (tactil && imagen.ancho > imagen.alto) return orientacion?.lock?.('landscape');
+    })
+    .catch(() => {});
+}
+
+function salirDePantallaCompleta() {
+  screen.orientation?.unlock?.();
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+}
+
 const prefiereMenosMovimiento = () =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
@@ -66,6 +89,15 @@ export function Galeria({ grupos }: { grupos: GrupoGaleria[] }) {
     const cambio = () => setPestanaActiva(!document.hidden);
     document.addEventListener('visibilitychange', cambio);
     return () => document.removeEventListener('visibilitychange', cambio);
+  }, []);
+
+  // Si se sale de la pantalla completa (atrás en el móvil, Esc), se cierra también la vista ampliada.
+  useEffect(() => {
+    const cambio = () => {
+      if (!document.fullscreenElement && dialogo.current?.open) dialogo.current.close();
+    };
+    document.addEventListener('fullscreenchange', cambio);
+    return () => document.removeEventListener('fullscreenchange', cambio);
   }, []);
 
   // Fin de la pausa por uso: vuelve a renderizar cuando toca reanudar.
@@ -184,6 +216,7 @@ export function Galeria({ grupos }: { grupos: GrupoGaleria[] }) {
             usarAMano();
             setAmpliada(true);
             dialogo.current?.showModal();
+            pantallaCompleta(dialogo.current, imagen);
           }}
           aria-label={t('galeria.ampliar')}
         >
@@ -225,6 +258,7 @@ export function Galeria({ grupos }: { grupos: GrupoGaleria[] }) {
         ref={dialogo}
         className="galeria-dialogo"
         onClose={() => {
+          salirDePantallaCompleta();
           setAmpliada(false);
           usarAMano();
         }}

@@ -13,6 +13,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 ## Hecho
 
+- ✅ Vista ampliada a pantalla completa (2026-10-13): la imagen ocupa toda la pantalla con el pie
+  encima; usa la pantalla completa del navegador (oculta su barra en el móvil) y en táctiles gira
+  a horizontal las imágenes apaisadas (Android; en iPhone basta con girar el móvil). Salir de la
+  pantalla completa cierra la vista ampliada. Publicado en `main`.
 - ✅ Galería única (2026-10-13): capturas e ilustraciones juntas arriba, con pestañas «Capturas» e
   «Ilustraciones» que marcan el grupo actual; rotación automática cada 6 s en bucle (pasa de un
   grupo a otro), se para al usarla a mano y vuelve tras 3 min; botón de pausa con barra de
