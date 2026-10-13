@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-12 |
+| **Actualizado** | 2026-10-13 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-12), incluida la sección «Capturas» de Tarkor. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
   (cortes en `em`: menú hamburguesa bajo 53,75em y solo el símbolo GV bajo 22,6em). Comprobado de
   320 a 1280 px con letra de 16, 20 y 24 px. Publicado en `main`.
 - ✅ Sección «Capturas» (2026-10-12): campo `capturas` en cada proyecto, galería aparte de la de
-  arte. Tarkor con 4 capturas del juego que pasó el usuario (combate, dos mapas de zona y
+  arte. Tarkor con 5 capturas del juego que pasó el usuario (combate, tres mapas de zona y
   habilidades de reino) en `public/proyectos/tarkor/juego-*.webp`.
 - ✅ Ficha de **Tarkor** revisada a fondo (2026-10-12) con datos contrastados en World-Maker-Fantasy
   (`main`, bitácora del 2026-10-11): hito 0.3 «Reino profundo» en curso, +3.900 tests, 8 rasgos

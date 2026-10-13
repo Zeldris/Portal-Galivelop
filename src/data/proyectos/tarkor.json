@@ -261,6 +261,17 @@
       }
     },
     {
+      "src": "proyectos/tarkor/juego-mapa-pilares.webp",
+      "mini": "proyectos/tarkor/juego-mapa-pilares-mini.webp",
+      "ancho": 1366,
+      "alto": 768,
+      "alt": {
+        "es": "Paso de los Pilares Rotos: pasarelas colgantes entre pilares de roca, con fauna y recursos aún por descubrir",
+        "gl": "Paso dos Piares Rotos: pasarelas colgantes entre piares de rocha, con fauna e recursos aínda por descubrir",
+        "en": "Broken Pillars Pass: hanging walkways between rock pillars, with wildlife and resources yet to be discovered"
+      }
+    },
+    {
       "src": "proyectos/tarkor/juego-reino.webp",
       "mini": "proyectos/tarkor/juego-reino-mini.webp",
       "ancho": 1280,
