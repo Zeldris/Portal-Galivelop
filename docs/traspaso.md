@@ -11,6 +11,13 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-13), incluida la galería única con rotación automática. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
 
+## Para la próxima publicación
+
+La web se publica solo los domingos o lunes con el trabajo de la semana (ver `CLAUDE.md`).
+Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- (nada pendiente: `main` al día a 2026-10-13)
+
 ## Hecho
 
 - ✅ Vista ampliada a pantalla completa (2026-10-13): la imagen ocupa toda la pantalla con el pie
