@@ -20,7 +20,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
-- ✅ Tarea programada «Tarkor semanal» (2026-10-13): cada domingo revisa Tarkor, actualiza la ficha
+- ✅ Tarea programada «Tarkor semanal» (2026-10-13; `trig_012hEySn87yUmW8zcoeSvzYm`, domingos 22:46
+  Europe/Madrid, en la sesión dedicada «Tarkor semanal (portal)», `session_0153sKUm2ZLwd6cFbMATVqfa`,
+  con los dos repos): cada domingo revisa Tarkor, actualiza la ficha
   y publica en `main` (consentimiento del usuario). Descartado el flujo de GitHub Actions equivalente.
 - ✅ Vista ampliada a pantalla completa (2026-10-13): la imagen ocupa toda la pantalla con el pie
   encima; usa la pantalla completa del navegador (oculta su barra en el móvil) y en táctiles gira
