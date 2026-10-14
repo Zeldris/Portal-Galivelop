@@ -105,3 +105,9 @@ Con un dominio propio, construir con `BASE_PATH=/` (ver [`vite.config.ts`](../vi
 el dominio en Settings → Pages.
 
 © Galivelop. Todos los derechos reservados.
+
+## SEO
+
+Tras `vite build`, [`scripts/paginas-estaticas.mjs`](../scripts/paginas-estaticas.mjs) crea una página
+HTML por ruta (portada, cada proyecto, equipo y participa) con su título, descripción, canónica y
+vista previa, y genera `sitemap.xml` y `robots.txt`. Una ruta nueva se añade en ese script.
