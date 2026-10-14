@@ -1,22 +1,42 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react';
 import { IDIOMAS, type Idioma, type Texto } from '../data/tipos';
 import { textos, type Clave } from './textos';
 
 const CLAVE_GUARDADA = 'galivelop.idioma';
 
-function idiomaInicial(): Idioma {
+const BASE = import.meta.env.BASE_URL;
+
+/** Idioma que marca la dirección: /gl/… y /en/…; sin prefijo, castellano. */
+export function idiomaDeRuta(pathname: string): Idioma | null {
+  const resto = pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname.replace(/^\//, '');
+  const prefijo = resto.split('/')[0];
+  return prefijo === 'gl' || prefijo === 'en' ? prefijo : null;
+}
+
+/** Base del router para un idioma (el castellano va sin prefijo). */
+export function baseDeIdioma(i: Idioma): string {
+  return i === 'es' ? BASE : `${BASE}${i}/`;
+}
+
+/** Idioma al entrar: el de la dirección; sin prefijo, el elegido antes por la persona o castellano. */
+export function idiomaInicial(): Idioma {
+  const deRuta = idiomaDeRuta(location.pathname);
+  if (deRuta) return deRuta;
   try {
     const guardado = localStorage.getItem(CLAVE_GUARDADA);
     if (guardado && (IDIOMAS as readonly string[]).includes(guardado)) return guardado as Idioma;
   } catch {
-    // Sin acceso a localStorage (modo privado, etc.): se usa el idioma del navegador.
-  }
-  for (const preferido of navigator.languages ?? [navigator.language]) {
-    const base = preferido.slice(0, 2).toLowerCase();
-    if (base === 'gl' || base === 'es') return base;
-    if (base === 'en') return 'en';
+    // Sin acceso a localStorage (modo privado, etc.).
   }
   return 'es';
+}
+
+export function guardarIdioma(i: Idioma) {
+  try {
+    localStorage.setItem(CLAVE_GUARDADA, i);
+  } catch {
+    // Se mantiene solo durante la visita.
+  }
 }
 
 // Meses a mano: no todos los navegadores traen los datos de Intl para el gallego.
@@ -45,21 +65,18 @@ interface ContextoIdioma {
 
 const Contexto = createContext<ContextoIdioma | null>(null);
 
-export function ProveedorIdioma({ children }: { children: ReactNode }) {
-  const [idioma, setIdioma] = useState<Idioma>(idiomaInicial);
-
+export function ProveedorIdioma({
+  idioma,
+  cambiarIdioma,
+  children,
+}: {
+  idioma: Idioma;
+  cambiarIdioma: (i: Idioma) => void;
+  children: ReactNode;
+}) {
   useEffect(() => {
     document.documentElement.lang = idioma;
   }, [idioma]);
-
-  const cambiarIdioma = useCallback((i: Idioma) => {
-    setIdioma(i);
-    try {
-      localStorage.setItem(CLAVE_GUARDADA, i);
-    } catch {
-      // Se mantiene solo durante la visita.
-    }
-  }, []);
 
   const valor = useMemo<ContextoIdioma>(() => {
     return {

@@ -20,10 +20,13 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ Direcciones por idioma (2026-10-14): castellano sin prefijo, gallego en `/gl/…` e inglés en
+  `/en/…` (`src/main.tsx` + `src/i18n/Idioma.tsx`); el selector cambia la dirección y la página.
+  18 páginas estáticas con `hreflang` y `x-default`; sitemap con las 18. Publicado en `main`.
 - ✅ SEO (2026-10-14): `scripts/paginas-estaticas.mjs` (tras el build) crea una página HTML real por
   ruta (sin el 404 de Pages) con título, descripción, canónica y vista previa propias, más
-  `sitemap.xml` y `robots.txt`. Publicado en `main` (confirmación del usuario). Pendiente: URL por
-  idioma (`/gl/`, `/en/`) con hreflang; «About» del repo (descripción, web y topics) lo pone el usuario.
+  `sitemap.xml` y `robots.txt`. Publicado en `main` (confirmación del usuario). Pendiente: «About» del
+  repo (descripción, web y topics) lo pone el usuario (el proxy no deja cambiar ajustes del repo).
 - ✅ Tarea programada «Tarkor semanal» (2026-10-13; `trig_012hEySn87yUmW8zcoeSvzYm`, domingos 22:46
   Europe/Madrid, en la sesión dedicada «Tarkor semanal (portal)», `session_0153sKUm2ZLwd6cFbMATVqfa`,
   con los dos repos): cada domingo revisa Tarkor, actualiza la ficha
