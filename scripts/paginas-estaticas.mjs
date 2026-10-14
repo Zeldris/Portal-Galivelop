@@ -39,8 +39,41 @@ for (const idioma of IDIOMAS) {
       descripcion: p.resumen[idioma],
       imagen: `${SITIO}/${p.portada.src}`,
       fecha: p.actualizado,
+      proyecto: p,
     });
   }
+}
+
+const ORG = { '@type': 'Organization', name: 'Galivelop', url: `${SITIO}/`, logo: `${SITIO}/marca/gv-logo-512.png`, email: 'alvarogarciagrana@gmail.com', sameAs: ['https://discord.gg/8vyjW3VrN', 'https://github.com/Zeldris'] };
+const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication' };
+
+/** Texto de la página en HTML simple (lo sustituye React al cargar; lo leen buscadores sin JS). */
+function cuerpo(pg) {
+  const enlaces = proyectos.map((p) => `<li><a href="${urlDe(pg.idioma, `proyectos/${p.slug}`)}">${esc(p.nombre)}</a>: ${esc(p.lema[pg.idioma])}</li>`).join('');
+  const p = pg.proyecto;
+  if (!p) return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
+  const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
+  return `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
+}
+
+function datos(pg, url) {
+  const p = pg.proyecto;
+  if (!p) return { '@context': 'https://schema.org', '@graph': [ORG, { '@type': 'WebSite', name: 'Galivelop', url: urlDe(pg.idioma, ''), inLanguage: pg.idioma, publisher: { '@type': 'Organization', name: 'Galivelop' } }] };
+  return {
+    '@context': 'https://schema.org',
+    '@type': TIPO[p.slug] ?? 'CreativeWork',
+    name: p.nombre,
+    description: p.resumen[pg.idioma],
+    url,
+    image: `${SITIO}/${p.portada.src}`,
+    inLanguage: pg.idioma,
+    dateModified: p.actualizado,
+    keywords: p.etiquetas.join(', '),
+    ...(TIPO[p.slug] === 'WebApplication' ? { applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web' } : {}),
+    ...(TIPO[p.slug] === 'VideoGame' ? { genre: 'RPG', gamePlatform: ['Windows', 'Linux', 'Steam Deck'] } : {}),
+    ...(p.enlaces[0] ? { sameAs: p.enlaces.map((e) => e.url) } : {}),
+    creator: ORG,
+  };
 }
 
 for (const pg of paginas) {
@@ -64,6 +97,9 @@ for (const pg of paginas) {
       .replace(/(name="twitter:image" content=")[^"]*/, `$1${pg.imagen}`)
       .replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, '');
   }
+  html = html
+    .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${cuerpo(pg)}</div>`);
   const dir = `dist/${prefijo(pg.idioma)}${pg.ruta}`.replace(/\/$/, '');
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}/index.html`, html);
@@ -76,5 +112,11 @@ writeFileSync(
     .map((pg) => `  <url><loc>${urlDe(pg.idioma, pg.ruta)}</loc><lastmod>${pg.fecha ?? hoy}</lastmod></url>`)
     .join('\n')}\n</urlset>\n`,
 );
+writeFileSync(
+  'dist/llms.txt',
+  `# Galivelop\n\n> ${FIJAS[''].es[1]}\n\n## Proyectos\n\n${proyectos
+    .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
+    .join('\n')}\n\n## Más\n\n- [Equipo](${urlDe('es', 'equipo')})\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);
-console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml y robots.txt`);
+console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml, robots.txt y llms.txt`);

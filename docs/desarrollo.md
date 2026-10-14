@@ -111,4 +111,5 @@ el dominio en Settings → Pages.
 Cada idioma tiene su dirección: castellano sin prefijo, gallego en `/gl/…` e inglés en `/en/…`.
 Tras `vite build`, [`scripts/paginas-estaticas.mjs`](../scripts/paginas-estaticas.mjs) crea una página
 HTML por ruta e idioma (con `hreflang`) (portada, cada proyecto, equipo y participa) con su título, descripción, canónica y
-vista previa, y genera `sitemap.xml` y `robots.txt`. Una ruta nueva se añade en ese script.
+vista previa, con su texto en HTML para buscadores sin JavaScript y datos
+estructurados schema.org, y genera `sitemap.xml`, `robots.txt` y `llms.txt`. Una ruta nueva se añade en ese script.

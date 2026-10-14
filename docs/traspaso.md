@@ -20,6 +20,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ SEO extra (2026-10-14): cada página estática lleva su texto en HTML (lo leen buscadores e IA
+  sin JavaScript; React lo sustituye al cargar), datos estructurados schema.org (Organization,
+  WebSite, VideoGame para Tarkor, WebApplication para toVeriAI) y `llms.txt`. Publicado en `main`.
 - ✅ Direcciones por idioma (2026-10-14): castellano sin prefijo, gallego en `/gl/…` e inglés en
   `/en/…` (`src/main.tsx` + `src/i18n/Idioma.tsx`); el selector cambia la dirección y la página.
   18 páginas estáticas con `hreflang` y `x-default`; sitemap con las 18. Publicado en `main`.
