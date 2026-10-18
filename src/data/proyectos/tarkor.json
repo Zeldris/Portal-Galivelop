@@ -835,9 +835,9 @@
             "en": "Warrior"
           },
           "texto": {
-            "es": "Cualquier raza. Cuerpo a cuerpo, para aguantar o para golpear. Berserker, Guardián, Lancero, Especialista.",
-            "gl": "Calquera raza. Corpo a corpo, para aguantar ou para golpear. Berserker, Gardián, Lanceiro, Especialista.",
-            "en": "Any race. Melee, to tank or to hit hard. Berserker, Guardian, Lancer, Specialist."
+            "es": "Cualquier raza. Cuerpo a cuerpo, para aguantar o para golpear. Especializaciones: Berserker, Guardián, Lancero, Especialista.",
+            "gl": "Calquera raza. Corpo a corpo, para aguantar ou para golpear. Especializacións: Berserker, Gardián, Lanceiro, Especialista.",
+            "en": "Any race. Melee, to tank or to hit hard. Specialisations: Berserker, Guardian, Lancer, Specialist."
           }
         },
         {
@@ -847,9 +847,9 @@
             "en": "Hunter"
           },
           "texto": {
-            "es": "Cualquier raza. El superviviente; el Domador controla bestias. Domador, Supervivencia, Tirador, Instintivo. Es la clase con la que empieza Gorhorn.",
-            "gl": "Calquera raza. O sobrevivente; o Domador controla bestas. Domador, Supervivencia, Tirador, Instintivo. É a clase coa que comeza Gorhorn.",
-            "en": "Any race. The survivor; the Tamer controls beasts. Tamer, Survival, Marksman, Instinctive. Gorhorn starts as one."
+            "es": "Cualquier raza. El superviviente; es la clase con la que empieza Gorhorn. Especializaciones: Domador (controla bestias), Supervivencia, Tirador, Instintivo.",
+            "gl": "Calquera raza. O sobrevivente; é a clase coa que comeza Gorhorn. Especializacións: Domador (controla bestas), Supervivencia, Tirador, Instintivo.",
+            "en": "Any race. The survivor; Gorhorn starts as one. Specialisations: Tamer (controls beasts), Survival, Marksman, Instinctive."
           }
         },
         {
@@ -859,9 +859,9 @@
             "en": "Archer"
           },
           "texto": {
-            "es": "Cualquier raza. El tirador. Maestro arquero, Maestro ballestero.",
-            "gl": "Calquera raza. O tirador. Mestre arqueiro, Mestre besteiro.",
-            "en": "Any race. The marksman. Master archer, Master crossbowman."
+            "es": "Cualquier raza. El tirador. Especializaciones: Maestro arquero, Maestro ballestero.",
+            "gl": "Calquera raza. O tirador. Especializacións: Mestre arqueiro, Mestre besteiro.",
+            "en": "Any race. The marksman. Specialisations: Master archer, Master crossbowman."
           }
         },
         {
@@ -871,9 +871,9 @@
             "en": "Assassin"
           },
           "texto": {
-            "es": "Cualquier raza. Precisión, veneno y movilidad. Maestro asesino, Tóxico, Danzante, Selecto.",
-            "gl": "Calquera raza. Precisión, veleno e mobilidade. Mestre asasino, Tóxico, Danzante, Selecto.",
-            "en": "Any race. Precision, poison and mobility. Master assassin, Toxic, Dancer, Elite."
+            "es": "Cualquier raza. Precisión, veneno y movilidad. Especializaciones: Maestro asesino, Tóxico, Danzante, Selecto.",
+            "gl": "Calquera raza. Precisión, veleno e mobilidade. Especializacións: Mestre asasino, Tóxico, Danzante, Selecto.",
+            "en": "Any race. Precision, poison and mobility. Specialisations: Master assassin, Toxic, Dancer, Elite."
           }
         },
         {
@@ -883,9 +883,9 @@
             "en": "Shaman"
           },
           "texto": {
-            "es": "Solo orcos. Magia a través de tótems y runas. Totémico, Rúnico, Convocador, Opresor.",
-            "gl": "Só orcos. Maxia a través de tótems e runas. Totémico, Rúnico, Convocador, Opresor.",
-            "en": "Orcs only. Magic through totems and runes. Totemic, Runic, Summoner, Oppressor."
+            "es": "Solo orcos. Magia a través de tótems y runas. Especializaciones: Totémico, Rúnico, Convocador, Opresor.",
+            "gl": "Só orcos. Maxia a través de tótems e runas. Especializacións: Totémico, Rúnico, Convocador, Opresor.",
+            "en": "Orcs only. Magic through totems and runes. Specialisations: Totemic, Runic, Summoner, Oppressor."
           }
         },
         {
@@ -895,9 +895,9 @@
             "en": "Knight"
           },
           "texto": {
-            "es": "Solo goirntes. Disciplina militar y defensa. Del Orden, Del Valor, Del Dolor.",
-            "gl": "Só goirntes. Disciplina militar e defensa. Da Orde, Do Valor, Da Dor.",
-            "en": "Goirntes only. Military discipline and defence. Of Order, Of Valour, Of Pain."
+            "es": "Solo goirntes. Disciplina militar y defensa. Especializaciones: Del Orden, Del Valor, Del Dolor.",
+            "gl": "Só goirntes. Disciplina militar e defensa. Especializacións: Da Orde, Do Valor, Da Dor.",
+            "en": "Goirntes only. Military discipline and defence. Specialisations: Of Order, Of Valour, Of Pain."
           }
         },
         {
@@ -907,9 +907,9 @@
             "en": "Reaper"
           },
           "texto": {
-            "es": "Solo nabieus. Succión de vida, debilidades y remates. Parca, Maldito, Ilustrado, Transmutador.",
-            "gl": "Só nabieus. Succión de vida, debilidades e remates. Parca, Maldito, Ilustrado, Transmutador.",
-            "en": "Nabieus only. Life drain, weaknesses and finishing blows. Grim, Cursed, Enlightened, Transmuter."
+            "es": "Solo nabieus. Succión de vida, debilidades y remates. Especializaciones: Parca, Maldito, Ilustrado, Transmutador.",
+            "gl": "Só nabieus. Succión de vida, debilidades e remates. Especializacións: Parca, Maldito, Ilustrado, Transmutador.",
+            "en": "Nabieus only. Life drain, weaknesses and finishing blows. Specialisations: Grim, Cursed, Enlightened, Transmuter."
           }
         },
         {
@@ -919,9 +919,9 @@
             "en": "Druid"
           },
           "texto": {
-            "es": "Solo faerus. Se transforma en fauna del Margen; el Aullador invoca a Vaeth. Cambiaformas, Aullador, Salvaje, Adaptado.",
-            "gl": "Só faerus. Transfórmase en fauna da Marxe; o Ouveador invoca a Vaeth. Cambiaformas, Ouveador, Salvaxe, Adaptado.",
-            "en": "Faerus only. Shapeshifts into Margin wildlife; the Howler summons Vaeth. Shapeshifter, Howler, Wild, Adapted."
+            "es": "Solo faerus. Se transforma en fauna del Margen. Especializaciones: Cambiaformas, Aullador (invoca a Vaeth), Salvaje, Adaptado.",
+            "gl": "Só faerus. Transfórmase en fauna da Marxe. Especializacións: Cambiaformas, Ouveador (invoca a Vaeth), Salvaxe, Adaptado.",
+            "en": "Faerus only. Shapeshifts into Margin wildlife. Specialisations: Shapeshifter, Howler (summons Vaeth), Wild, Adapted."
           }
         },
         {
@@ -931,9 +931,9 @@
             "en": "Mage"
           },
           "texto": {
-            "es": "Cualquier raza salvo los orcos. Siete escuelas y doce ramas de Semilla. En desarrollo: aún no tiene habilidades jugables.",
-            "gl": "Calquera raza agás os orcos. Sete escolas e doce ramas de Semente. En desenvolvemento: aínda non ten habilidades xogables.",
-            "en": "Any race except orcs. Seven schools and twelve Seed branches. In development: no playable abilities yet."
+            "es": "Cualquier raza salvo los orcos. Siete escuelas y doce ramas de Semilla; en desarrollo, aún sin habilidades jugables. Especializaciones: Poder de la magia, Poder de la Semilla.",
+            "gl": "Calquera raza agás os orcos. Sete escolas e doce ramas de Semente; en desenvolvemento, aínda sen habilidades xogables. Especializacións: Poder da maxia, Poder da Semente.",
+            "en": "Any race except orcs. Seven schools and twelve Seed branches; in development, no playable abilities yet. Specialisations: Power of magic, Power of the Seed."
           }
         }
       ]
