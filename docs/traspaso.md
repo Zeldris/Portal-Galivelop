@@ -20,6 +20,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ Novedades de Tarkor al día (2026-10-18): 4 nuevas del 15 al 18 de octubre (arte, testigos y montura, edificios y mapa, ronda de pruebas). Publicado en `main`.
+
 - ✅ Arte de Tarkor (2026-10-18): 151 imágenes del banco de World-Maker-Fantasy en
   `public/proyectos/tarkor/arte/` (WebP 1600/720; mapas 1200/480). Carrusel con 24 seleccionadas;
   tarjetas con imagen (campo `imagen` en los elementos de los apartados) en Mundo, Lugares,

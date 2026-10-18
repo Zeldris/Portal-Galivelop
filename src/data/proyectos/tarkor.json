@@ -3964,6 +3964,38 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-10-18",
+      "texto": {
+        "es": "Más de 150 imágenes nuevas: criaturas, lugares, pueblos y los mapas de cada zona, ya en esta página.",
+        "gl": "Máis de 150 imaxes novas: criaturas, lugares, pobos e os mapas de cada zona, xa nesta páxina.",
+        "en": "Over 150 new images: creatures, places, peoples and every zone map, now on this page."
+      }
+    },
+    {
+      "fecha": "2026-10-17",
+      "texto": {
+        "es": "Testigos: lo que haces lo ve quien está cerca, y una muerte sin testigos no llega a saberse. Además, viajes directos con montura y el ganado del clan.",
+        "gl": "Testemuñas: o que fas véo quen está preto, e unha morte sen testemuñas non chega a saberse. Ademais, viaxes directas con montura e o gando do clan.",
+        "en": "Witnesses: whoever is nearby sees what you do, and a death with no witnesses never gets known. Plus direct travel on a mount and the clan’s livestock."
+      }
+    },
+    {
+      "fecha": "2026-10-17",
+      "texto": {
+        "es": "Los edificios tienen ficha propia y menú para hablar con quien los lleva, y las rutas del mapa de zona ya rodean los muros.",
+        "gl": "Os edificios teñen ficha propia e menú para falar con quen os leva, e as rutas do mapa de zona xa rodean os muros.",
+        "en": "Buildings get their own sheet and a menu to talk to whoever runs them, and zone map routes now go around walls."
+      }
+    },
+    {
+      "fecha": "2026-10-15",
+      "texto": {
+        "es": "Ronda de pruebas jugando: las tiradas explican contra qué se tira, aprender un oficio dice qué se enseña y mejoran el mapa de zona y la energía.",
+        "gl": "Rolda de probas xogando: as tiradas explican contra que se tira, aprender un oficio di que se ensina e melloran o mapa de zona e a enerxía.",
+        "en": "Play-testing round: rolls explain what you roll against, learning a trade says what is taught, and the zone map and energy improve."
+      }
+    },
+    {
       "fecha": "2026-10-12",
       "texto": {
         "es": "Ronda de pruebas jugando el hito 0.3: decenas de problemas encontrados y corregidos.",
@@ -3993,30 +4025,6 @@
         "es": "Todo viaja de verdad: viajeros y partidas de caza recorren rutas reales por el mapa de Berig.",
         "gl": "Todo viaxa de verdade: viaxeiros e partidas de caza percorren rutas reais polo mapa de Berig.",
         "en": "Everything really travels: travellers and hunting parties follow real routes across the map of Berig."
-      }
-    },
-    {
-      "fecha": "2026-10-06",
-      "texto": {
-        "es": "Súbditos como personas: llegan, forman pareja, tienen hijos y dejan linaje. Llegan la ganadería y la economía de supervivencia.",
-        "gl": "Súbditos como persoas: chegan, forman parella, teñen fillos e deixan liñaxe. Chegan a gandaría e a economía de supervivencia.",
-        "en": "Subjects as people: they arrive, pair up, have children and leave a lineage. Livestock and a survival economy arrive too."
-      }
-    },
-    {
-      "fecha": "2026-10-06",
-      "texto": {
-        "es": "Personajes que recuerdan lo que les hiciste y un narrador que nunca olvida lo importante.",
-        "gl": "Personaxes que lembran o que lles fixeches e un narrador que nunca esquece o importante.",
-        "en": "Characters who remember what you did to them and a narrator that never forgets what matters."
-      }
-    },
-    {
-      "fecha": "2026-10-05",
-      "texto": {
-        "es": "Rumores y leyendas: lo que pasa en el mundo se propaga de región en región hasta llegar a ti.",
-        "gl": "Rumores e lendas: o que pasa no mundo propágase de rexión en rexión ata chegar a ti.",
-        "en": "Rumours and legends: what happens in the world spreads from region to region until it reaches you."
       }
     }
   ],
