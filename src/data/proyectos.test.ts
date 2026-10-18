@@ -35,7 +35,11 @@ describe('proyectos', () => {
       });
 
       it('todas sus imágenes existen en public/', () => {
-        const imagenes = [p.portada, ...p.galeria, ...p.capturas].flatMap((i) => [i.src, i.mini]);
+        const deApartados = p.apartados.flatMap((a) => [
+          ...a.items.flatMap((i) => (i.imagen ? [i.imagen] : [])),
+          ...(a.grupos ?? []).flatMap((g) => g.imagenes),
+        ]);
+        const imagenes = [p.portada, ...p.galeria, ...p.capturas, ...deApartados].flatMap((i) => [i.src, i.mini]);
         if (p.icono) imagenes.push(p.icono);
         expect(imagenes.filter((src) => !existsSync(join(PUBLIC, src)))).toEqual([]);
       });
@@ -46,7 +50,7 @@ describe('proyectos', () => {
 
       it('sus apartados tienen ids únicos y elementos', () => {
         expect(new Set(p.apartados.map((a) => a.id)).size).toBe(p.apartados.length);
-        for (const a of p.apartados) expect(a.items.length).toBeGreaterThan(0);
+        for (const a of p.apartados) expect(a.items.length + (a.grupos ?? []).length).toBeGreaterThan(0);
         // `valor` es un dato corto igual en todos los idiomas: si fuera un objeto, React no lo puede pintar.
         for (const a of p.apartados) for (const i of a.items) if (i.valor !== undefined) expect(typeof i.valor).toBe('string');
       });

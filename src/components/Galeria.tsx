@@ -48,7 +48,7 @@ const prefiereMenosMovimiento = () =>
  * está la imagen actual (pulsarlas salta al principio del grupo). Rota sola en bucle; al usarla a
  * mano se para y vuelve a rotar tras PAUSA_POR_USO sin tocarla. El botón de pausa la para del todo.
  */
-export function Galeria({ grupos }: { grupos: GrupoGaleria[] }) {
+export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rotar?: boolean }) {
   const { t, tx } = useIdioma();
   const conImagenes = grupos.filter((g) => g.imagenes.length > 0);
   const lista = conImagenes.flatMap((g, gi) => g.imagenes.map((imagen) => ({ imagen, grupo: gi })));
@@ -57,7 +57,7 @@ export function Galeria({ grupos }: { grupos: GrupoGaleria[] }) {
 
   const [actual, setActual] = useState(0);
   // Pausa pedida con el botón: no se reanuda sola.
-  const [pausada, setPausada] = useState(prefiereMenosMovimiento);
+  const [pausada, setPausada] = useState(() => !rotar || prefiereMenosMovimiento());
   // Pausa por uso a mano: hasta esta marca de tiempo.
   const [usoHasta, setUsoHasta] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -199,7 +199,7 @@ export function Galeria({ grupos }: { grupos: GrupoGaleria[] }) {
           className="galeria-imagen"
         />
         {total > 1 && controles}
-        {total > 1 && (
+        {total > 1 && rotar && (
           <button
             type="button"
             className="galeria-pausa"

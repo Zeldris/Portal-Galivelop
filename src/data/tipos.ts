@@ -79,7 +79,9 @@ export interface Proyecto {
     titulo: Texto;
     intro?: Texto;
     /** `valor`: dato corto e igual en todos los idiomas (p. ej. «26 %» o «0.4»). */
-    items: { nombre: Texto; valor?: string; texto: Texto }[];
+    items: { nombre: Texto; valor?: string; texto: Texto; imagen?: Imagen }[];
+    /** Galería propia del apartado, por grupos con pestañas (p. ej. «Arte del mundo»). No rota sola. */
+    grupos?: { id: string; etiqueta: Texto; imagenes: Imagen[] }[];
   }[];
   ficha: { capa: Texto; tecnologias: string[] }[];
   hitos: { version?: string; nombre: Texto; estado: EstadoHito; detalle?: Texto }[];

@@ -3157,3 +3157,36 @@ button {
   color: var(--texto-2);
   font-size: 0.92rem;
 }
+
+/* Tarjeta con imagen: la imagen ocupa la cabecera de la tarjeta, de borde a borde. */
+.apartado-items li.con-imagen {
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.tarjeta-imagen {
+  display: block;
+  width: calc(100% + 36px);
+  margin: 0 -18px 14px;
+  padding: 0;
+  border: 0;
+  aspect-ratio: 5 / 2;
+  background: #03090f;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.tarjeta-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.tarjeta-imagen:hover img {
+  transform: scale(1.04);
+}
+
+.apartado-intro + .galeria {
+  margin-bottom: 18px;
+}

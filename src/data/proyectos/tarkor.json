@@ -50,179 +50,267 @@
   "enlaces": [],
   "galeria": [
     {
-      "src": "proyectos/tarkor/gargantua-de-ceniza.webp",
-      "mini": "proyectos/tarkor/gargantua-de-ceniza-mini.webp",
+      "src": "proyectos/tarkor/arte/fauna-gargantua-de-ceniza.webp",
+      "mini": "proyectos/tarkor/arte/fauna-gargantua-de-ceniza-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Gargantúas de Ceniza: reptiles herbívoros del tamaño de una casa, con placas óseas volcánicas",
-        "gl": "Gargantúas de Cinza: réptiles herbívoros do tamaño dunha casa, con placas óseas volcánicas",
-        "en": "Ash Gargantuas: house-sized herbivorous reptiles with volcanic bony plates"
+        "es": "Gargantúa de Ceniza: reptiles herbívoros del tamaño de una casa",
+        "gl": "Gargantúa de Cinza: réptiles herbívoros do tamaño dunha casa",
+        "en": "Ash Gargantua: house-sized herbivorous reptiles"
       }
     },
     {
-      "src": "proyectos/tarkor/orcos-llanuras.webp",
-      "mini": "proyectos/tarkor/orcos-llanuras-mini.webp",
+      "src": "proyectos/tarkor/arte/raza-orcos-llanuras-hembra.webp",
+      "mini": "proyectos/tarkor/arte/raza-orcos-llanuras-hembra-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Guerrera orca de las Llanuras del Viento Rojo cargando con su hacha",
-        "gl": "Guerreira orca das Chairas do Vento Vermello cargando co seu machado",
-        "en": "Orc warrior of the Red Wind Plains charging with her axe"
+        "es": "Guerrera orca de las Llanuras del Viento Rojo",
+        "gl": "Guerreira orca das Chairas do Vento Vermello",
+        "en": "Orc warrior of the Red Wind Plains"
       }
     },
     {
-      "src": "proyectos/tarkor/gistera-koh.webp",
-      "mini": "proyectos/tarkor/gistera-koh-mini.webp",
+      "src": "proyectos/tarkor/arte/location-pilares-rotos.webp",
+      "mini": "proyectos/tarkor/arte/location-pilares-rotos-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Gistera Koh, una de las primeras personas que te encuentras en Las Llanuras",
-        "gl": "Gistera Koh, unha das primeiras persoas que atopas nas Chairas",
-        "en": "Gistera Koh, one of the first people you meet in the Plains"
+        "es": "Los Pilares Rotos, unidos por puentes colgantes",
+        "gl": "Os Piares Rotos, unidos por pontes colgantes",
+        "en": "The Broken Pillars, joined by hanging bridges"
       }
     },
     {
-      "src": "proyectos/tarkor/raiz-de-fuego.webp",
-      "mini": "proyectos/tarkor/raiz-de-fuego-mini.webp",
+      "src": "proyectos/tarkor/arte/fauna-kirelon-arenoso.webp",
+      "mini": "proyectos/tarkor/arte/fauna-kirelon-arenoso-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Raíz de Fuego: enredadera volcánica que acumula calor y libera gas inflamable",
-        "gl": "Raíz de Lume: trepadeira volcánica que acumula calor e libera gas inflamable",
-        "en": "Fire Root: a volcanic vine that stores heat and releases flammable gas"
+        "es": "Kirelon Arenoso, el cazador nocturno de la Hondonada",
+        "gl": "Kirelon Areento, o cazador nocturno da Hondonada",
+        "en": "Sand Kirelon, the night hunter of the Hollow"
       }
     },
     {
-      "src": "proyectos/tarkor/goirntes-meseta.webp",
-      "mini": "proyectos/tarkor/goirntes-meseta-mini.webp",
+      "src": "proyectos/tarkor/arte/raza-goirntes-meseta-hembra.webp",
+      "mini": "proyectos/tarkor/arte/raza-goirntes-meseta-hembra-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Goirnte de la Meseta del Orden, maestros herreros de piel casi mineral",
-        "gl": "Goirnte da Meseta da Orde, mestres ferreiros de pel case mineral",
-        "en": "Goirnte of the Plateau of Order, master smiths with near-mineral skin"
+        "es": "Goirnte de la Meseta del Orden",
+        "gl": "Goirnte da Meseta da Orde",
+        "en": "Goirnte of the Plateau of Order"
       }
     },
     {
-      "src": "proyectos/tarkor/rondador-de-brasas.webp",
-      "mini": "proyectos/tarkor/rondador-de-brasas-mini.webp",
+      "src": "proyectos/tarkor/arte/location-campamento-serhu.webp",
+      "mini": "proyectos/tarkor/arte/location-campamento-serhu-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Rondador de Brasas: carroñero nocturno de pelaje ceniciento y ojos dorados",
-        "gl": "Rondador de Brasas: preeiro nocturno de pelame cincento e ollos dourados",
-        "en": "Ember Prowler: a nocturnal scavenger with ash-grey fur and golden eyes"
+        "es": "Karot Veku, el asentamiento del Clan Serhu",
+        "gl": "Karot Veku, o asentamento do Clan Serhu",
+        "en": "Karot Veku, the Serhu Clan settlement"
       }
     },
     {
-      "src": "proyectos/tarkor/cardo-brujula.webp",
-      "mini": "proyectos/tarkor/cardo-brujula-mini.webp",
+      "src": "proyectos/tarkor/arte/fauna-ferike.webp",
+      "mini": "proyectos/tarkor/arte/fauna-ferike-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Cardo Brújula: su fibra imantada señala siempre el mismo rumbo, incluso en plena tormenta",
-        "gl": "Cardo Compás: a súa fibra imantada sinala sempre o mesmo rumbo, mesmo en plena tormenta",
-        "en": "Compass Thistle: its magnetised fibre always points the same way, even in a storm"
+        "es": "Ferike, el mayor peligro conocido del borde de la selva",
+        "gl": "Ferike, o maior perigo coñecido do bordo da selva",
+        "en": "Ferike, the greatest known danger at the jungle’s edge"
       }
     },
     {
-      "src": "proyectos/tarkor/nabieus-margen.webp",
-      "mini": "proyectos/tarkor/nabieus-margen-mini.webp",
+      "src": "proyectos/tarkor/arte/raza-nabieus-cienaga-troncal-hembra.webp",
+      "mini": "proyectos/tarkor/arte/raza-nabieus-cienaga-troncal-hembra-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Nabieu del Margen Silencioso, la selva de madera negra donde el sonido no vuelve",
-        "gl": "Nabieu da Marxe Silenciosa, a selva de madeira negra onde o son non volve",
-        "en": "Nabieu of the Silent Margin, the black-wood forest where sound never returns"
+        "es": "Nabieu de la Ciénaga Troncal",
+        "gl": "Nabieu da Braña Troncal",
+        "en": "Nabieu of the Trunk Swamp"
       }
     },
     {
-      "src": "proyectos/tarkor/orco-enfurecido.webp",
-      "mini": "proyectos/tarkor/orco-enfurecido-mini.webp",
+      "src": "proyectos/tarkor/arte/location-osario-de-la-manada.webp",
+      "mini": "proyectos/tarkor/arte/location-osario-de-la-manada-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "El Orco Enfurecido de la Hondonada del Eco, objetivo de una de las primeras misiones",
-        "gl": "O Orco Enfurecido da Fondonada do Eco, obxectivo dunha das primeiras misións",
-        "en": "The Enraged Orc of the Echo Hollow, target of one of the first quests"
+        "es": "El Osario de la Manada",
+        "gl": "O Osario da Manada",
+        "en": "The Herd Ossuary"
       }
     },
     {
-      "src": "proyectos/tarkor/negueo-turquesa.webp",
-      "mini": "proyectos/tarkor/negueo-turquesa-mini.webp",
+      "src": "proyectos/tarkor/arte/fauna-cruzavientos.webp",
+      "mini": "proyectos/tarkor/arte/fauna-cruzavientos-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Negueo Turquesa: pez carroñero con dientes de piraña",
-        "gl": "Negueo Turquesa: peixe preeiro con dentes de piraña",
-        "en": "Turquoise Negueo: a scavenger fish with piranha teeth"
+        "es": "Cruzavientos sobre las cumbres de los Pilares Rotos",
+        "gl": "Cruzaventos sobre os cumios dos Piares Rotos",
+        "en": "Windcrosser over the Broken Pillars"
       }
     },
     {
-      "src": "proyectos/tarkor/faerus-frontera-norte.webp",
-      "mini": "proyectos/tarkor/faerus-frontera-norte-mini.webp",
+      "src": "proyectos/tarkor/arte/npc-gistera-koh.webp",
+      "mini": "proyectos/tarkor/arte/npc-gistera-koh-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Cazadora faerus: piel de pelo como hojas finas e instinto de cazadora",
-        "gl": "Cazadora faerus: pel de pelo coma follas finas e instinto de cazadora",
-        "en": "Faerus huntress: fur like fine leaves and a hunter’s instinct"
+        "es": "Gistera Koh",
+        "gl": "Gistera Koh",
+        "en": "Gistera Koh"
       }
     },
     {
-      "src": "proyectos/tarkor/salamandra-de-escoria.webp",
-      "mini": "proyectos/tarkor/salamandra-de-escoria-mini.webp",
+      "src": "proyectos/tarkor/arte/fauna-guchapo.webp",
+      "mini": "proyectos/tarkor/arte/fauna-guchapo-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Salamandra de Escoria: reptil con escamas de escoria volcánica que arden con vetas de lava",
-        "gl": "Salamántiga de Escoura: réptil con escamas de escoura volcánica que arden con vetas de lava",
-        "en": "Slag Salamander: a reptile with volcanic slag scales that glow with lava veins"
+        "es": "Guchapo, el sapo gigante del Pozo de Cauce Viejo",
+        "gl": "Guchapo, o sapo xigante do Pozo de Cauce Vello",
+        "en": "Guchapo, the giant toad of the Old Riverbed Well"
       }
     },
     {
-      "src": "proyectos/tarkor/flor-de-ceniza.webp",
-      "mini": "proyectos/tarkor/flor-de-ceniza-mini.webp",
+      "src": "proyectos/tarkor/arte/raza-faerus-frontera-norte-hembra.webp",
+      "mini": "proyectos/tarkor/arte/raza-faerus-frontera-norte-hembra-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Flor de Ceniza: crece en suelo volcánico y alivia el dolor de los heridos",
-        "gl": "Flor de Cinza: medra en chan volcánico e alivia a dor dos feridos",
-        "en": "Ash Flower: it grows in volcanic soil and soothes the pain of the wounded"
+        "es": "Arquera faerus",
+        "gl": "Arqueira faerus",
+        "en": "Faerus archer"
       }
     },
     {
-      "src": "proyectos/tarkor/murgol.webp",
-      "mini": "proyectos/tarkor/murgol-mini.webp",
+      "src": "proyectos/tarkor/arte/location-hondonada-del-eco.webp",
+      "mini": "proyectos/tarkor/arte/location-hondonada-del-eco-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Múrgoles: el ganado lanudo de los clanes orcos, de cornamenta ramificada",
-        "gl": "Múrgoles: o gando lanudo dos clans orcos, de cornamenta ramificada",
-        "en": "Murgols: the woolly cattle of the orc clans, with branching antlers"
+        "es": "La Hondonada del Eco",
+        "gl": "A Hondonada do Eco",
+        "en": "The Echo Hollow"
       }
     },
     {
-      "src": "proyectos/tarkor/cuernahoja.webp",
-      "mini": "proyectos/tarkor/cuernahoja-mini.webp",
+      "src": "proyectos/tarkor/arte/fauna-murgol.webp",
+      "mini": "proyectos/tarkor/arte/fauna-murgol-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Cuernahojas: manadas de gacelas de cuernos largos en las llanuras rojas",
-        "gl": "Cornafollas: mandas de gacelas de cornos longos nas chairas vermellas",
-        "en": "Leafhorns: herds of long-horned gazelles on the red plains"
+        "es": "Múrgol, el ganado lanudo de los clanes",
+        "gl": "Múrgol, o gando lanudo dos clans",
+        "en": "Múrgol, the clans’ woolly livestock"
       }
     },
     {
-      "src": "proyectos/tarkor/espina-del-viento.webp",
-      "mini": "proyectos/tarkor/espina-del-viento-mini.webp",
+      "src": "proyectos/tarkor/arte/faction-clan-serhu-2.webp",
+      "mini": "proyectos/tarkor/arte/faction-clan-serhu-2-mini.webp",
       "ancho": 1600,
       "alto": 640,
       "alt": {
-        "es": "Espina del Viento: se entierra en la arena y ataca durante las tormentas",
-        "gl": "Espiña do Vento: enterrase na area e ataca durante as tormentas",
-        "en": "Wind Thorn: it buries itself in the sand and strikes during storms"
+        "es": "El estandarte del Clan Serhu",
+        "gl": "O estandarte do Clan Serhu",
+        "en": "The Serhu Clan banner"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/raza-orcos-cristal-helado-hembra.webp",
+      "mini": "proyectos/tarkor/arte/raza-orcos-cristal-helado-hembra-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Orca del Cristal Helado bajo la aurora",
+        "gl": "Orca do Cristal Xeado baixo a aurora",
+        "en": "Frozen Crystal orc under the aurora"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/fauna-nuente.webp",
+      "mini": "proyectos/tarkor/arte/fauna-nuente-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Nuente, el depredador que ve el magnetismo",
+        "gl": "Nuente, o predador que ve o magnetismo",
+        "en": "Nuente, the predator that sees magnetism"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/location-cataratas-madre-fango.webp",
+      "mini": "proyectos/tarkor/arte/location-cataratas-madre-fango-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Cataratas de la Madre Fango",
+        "gl": "Fervenzas da Nai Lama",
+        "en": "The Mother Mud Falls"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/fauna-towrgu.webp",
+      "mini": "proyectos/tarkor/arte/fauna-towrgu-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Towrgu, depredador de la Sabana Alta",
+        "gl": "Towrgu, predador da Sabana Alta",
+        "en": "Towrgu, predator of the High Savannah"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/npc-orco-enfurecido-hondonada.webp",
+      "mini": "proyectos/tarkor/arte/npc-orco-enfurecido-hondonada-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "El Orco Enfurecido de la Hondonada",
+        "gl": "O Orco Enfurecido da Hondonada",
+        "en": "The Enraged Orc of the Hollow"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/location-tuneles-musgosos.webp",
+      "mini": "proyectos/tarkor/arte/location-tuneles-musgosos-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Túneles Musgosos del Margen Silencioso",
+        "gl": "Túneles Musgosos da Marxe Silenciosa",
+        "en": "Mossy Tunnels of the Silent Margin"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/fauna-rondador-de-brasas.webp",
+      "mini": "proyectos/tarkor/arte/fauna-rondador-de-brasas-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Rondador de Brasas, carroñero nocturno",
+        "gl": "Roldador de Brasas, preeiro nocturno",
+        "en": "Ember Prowler, a night scavenger"
+      }
+    },
+    {
+      "src": "proyectos/tarkor/arte/location-restos-de-maktor.webp",
+      "mini": "proyectos/tarkor/arte/location-restos-de-maktor-mini.webp",
+      "ancho": 1600,
+      "alto": 640,
+      "alt": {
+        "es": "Los Restos de Maktor, la aldea arrasada de Gorhorn",
+        "gl": "Os Restos de Maktor, a aldea arrasada de Gorhorn",
+        "en": "The Maktor Ruins, Gorhorn’s razed village"
       }
     }
   ],
@@ -525,7 +613,18 @@
             "gl": "Estepa vermella e arxilosa, sabanas, volcáns e costa, con tormentas de area magnética. Aquí está Karot Veku, o asentamento do Clan Serhu cos seus 12 Mestres de oficio.",
             "en": "Red clay steppe, savannahs, volcanoes and coast, with magnetic sandstorms. Home to Karot Veku, the Serhu Clan settlement with its 12 Trade Masters."
           },
-          "valor": "0.1"
+          "valor": "0.1",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-sabana-alta-colmillar.webp",
+            "mini": "proyectos/tarkor/arte/location-sabana-alta-colmillar-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Llanuras del Viento Rojo",
+              "gl": "Chairas do Vento Vermello",
+              "en": "Red Wind Plains"
+            }
+          }
         },
         {
           "nombre": {
@@ -538,7 +637,18 @@
             "gl": "Tundra e picos de xeo baixo a aurora, con minerais que non existen noutra parte.",
             "en": "Tundra and ice peaks under the aurora, with minerals found nowhere else."
           },
-          "valor": "0.4"
+          "valor": "0.4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-orcos-cristal-helado-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-orcos-cristal-helado-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Cristal Helado",
+              "gl": "Cristal Xeado",
+              "en": "Frozen Crystal"
+            }
+          }
         },
         {
           "nombre": {
@@ -551,7 +661,18 @@
             "gl": "Pantano de pilotes, turba e brétema.",
             "en": "A swamp of stilts, peat and haze."
           },
-          "valor": "0.5"
+          "valor": "0.5",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-marismas-lodo-negro.webp",
+            "mini": "proyectos/tarkor/arte/location-marismas-lodo-negro-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Ciénaga Troncal",
+              "gl": "Braña Troncal",
+              "en": "Trunk Swamp"
+            }
+          }
         },
         {
           "nombre": {
@@ -564,7 +685,18 @@
             "gl": "Selva de madeira negra onde o son entra e non volve.",
             "en": "A black-wood jungle where sound goes in and never comes back."
           },
-          "valor": "0.6"
+          "valor": "0.6",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-tuneles-musgosos.webp",
+            "mini": "proyectos/tarkor/arte/location-tuneles-musgosos-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Margen Silencioso",
+              "gl": "Marxe Silenciosa",
+              "en": "Silent Margin"
+            }
+          }
         },
         {
           "nombre": {
@@ -577,7 +709,18 @@
             "gl": "Cidades goirntes e a mellor metalurxia do mundo.",
             "en": "Goirnte cities and the finest metalwork in the world."
           },
-          "valor": "0.6"
+          "valor": "0.6",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-goirntes-meseta-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-goirntes-meseta-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Meseta del Orden",
+              "gl": "Meseta da Orde",
+              "en": "Plateau of Order"
+            }
+          }
         },
         {
           "nombre": {
@@ -591,6 +734,343 @@
             "en": "The second continent, beyond the Mist of the Strait, with four more races: the first major expansion."
           },
           "valor": "1.0"
+        }
+      ]
+    },
+    {
+      "id": "lugares",
+      "titulo": {
+        "es": "Lugares de las Llanuras",
+        "gl": "Lugares das Chairas",
+        "en": "Places of the Plains"
+      },
+      "intro": {
+        "es": "Las Llanuras del Viento Rojo son la región jugable: 72 lugares unidos por 35 rutas. Estos son algunos de los más importantes.",
+        "gl": "As Chairas do Vento Vermello son a rexión xogable: 72 lugares unidos por 35 rutas. Estes son algúns dos máis importantes.",
+        "en": "The Red Wind Plains are the playable region: 72 places joined by 35 routes. These are some of the most important."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Karot Veku",
+            "gl": "Karot Veku",
+            "en": "Karot Veku"
+          },
+          "texto": {
+            "es": "«Colmillo Ceniza», el asentamiento del Clan Serhu: el salón Ketg’sedsar y los 12 Maestros de oficio.",
+            "gl": "«Cairo Cinza», o asentamento do Clan Serhu: o salón Ketg’sedsar e os 12 Mestres de oficio.",
+            "en": "“Ash Fang”, the Serhu Clan settlement: the Ketg’sedsar hall and the 12 Trade Masters."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-campamento-serhu.webp",
+            "mini": "proyectos/tarkor/arte/location-campamento-serhu-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Karot Veku",
+              "gl": "Karot Veku",
+              "en": "Karot Veku"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "La Hondonada del Eco",
+            "gl": "A Hondonada do Eco",
+            "en": "The Echo Hollow"
+          },
+          "texto": {
+            "es": "Cuevas y refugio contra las tormentas. De noche caza el Kirelon Arenoso.",
+            "gl": "Covas e refuxio contra as tormentas. De noite caza o Kirelon Areento.",
+            "en": "Caves and shelter from the storms. At night the Sand Kirelon hunts."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-hondonada-del-eco.webp",
+            "mini": "proyectos/tarkor/arte/location-hondonada-del-eco-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "La Hondonada del Eco",
+              "gl": "A Hondonada do Eco",
+              "en": "The Echo Hollow"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Los Pilares Rotos",
+            "gl": "Os Piares Rotos",
+            "en": "The Broken Pillars"
+          },
+          "texto": {
+            "es": "Torres de roca roja, restos Nabierus, unidas por puentes colgantes.",
+            "gl": "Torres de rocha vermella, restos Nabierus, unidas por pontes colgantes.",
+            "en": "Red rock towers, Nabierus remains, joined by hanging bridges."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-pilares-rotos.webp",
+            "mini": "proyectos/tarkor/arte/location-pilares-rotos-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los Pilares Rotos",
+              "gl": "Os Piares Rotos",
+              "en": "The Broken Pillars"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "El Pozo de Cauce Viejo",
+            "gl": "O Pozo de Cauce Vello",
+            "en": "The Old Riverbed Well"
+          },
+          "texto": {
+            "es": "Agua permanente en mitad de la estepa.",
+            "gl": "Auga permanente no medio da estepa.",
+            "en": "Permanent water in the middle of the steppe."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-pozo-cauce-viejo.webp",
+            "mini": "proyectos/tarkor/arte/location-pozo-cauce-viejo-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "El Pozo de Cauce Viejo",
+              "gl": "O Pozo de Cauce Vello",
+              "en": "The Old Riverbed Well"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Los Manaderos",
+            "gl": "Os Manadeiros",
+            "en": "The Springs"
+          },
+          "texto": {
+            "es": "Charcas donde nacen los Corredores de Cauce; cazar sus crías ofende.",
+            "gl": "Charcas onde nacen os Corredores de Cauce; cazar as súas crías ofende.",
+            "en": "Pools where Riverbed Runners are born; hunting their young gives offence."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-manaderos.webp",
+            "mini": "proyectos/tarkor/arte/location-manaderos-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los Manaderos",
+              "gl": "Os Manadeiros",
+              "en": "The Springs"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Las Agujas Imán",
+            "gl": "As Agullas Imán",
+            "en": "The Magnet Spires"
+          },
+          "texto": {
+            "es": "Rocas imantadas que desorientan a quien se acerca.",
+            "gl": "Rochas imantadas que desorientan a quen se achega.",
+            "en": "Magnetised rocks that disorient anyone who comes near."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-agujas-iman.webp",
+            "mini": "proyectos/tarkor/arte/location-agujas-iman-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Las Agujas Imán",
+              "gl": "As Agullas Imán",
+              "en": "The Magnet Spires"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "El Osario de la Manada",
+            "gl": "O Osario da Manada",
+            "en": "The Herd Ossuary"
+          },
+          "texto": {
+            "es": "El esqueleto de una Gargantúa en mitad del llano.",
+            "gl": "O esqueleto dunha Gargantúa no medio da chaira.",
+            "en": "The skeleton of a Gargantua in the middle of the plain."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-osario-de-la-manada.webp",
+            "mini": "proyectos/tarkor/arte/location-osario-de-la-manada-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "El Osario de la Manada",
+              "gl": "O Osario da Manada",
+              "en": "The Herd Ossuary"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "El Cruce de las Cenizas",
+            "gl": "O Cruce das Cinzas",
+            "en": "The Ash Crossing"
+          },
+          "texto": {
+            "es": "La única puerta al Margen Silencioso.",
+            "gl": "A única porta á Marxe Silenciosa.",
+            "en": "The only gateway to the Silent Margin."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-cruce-de-las-cenizas.webp",
+            "mini": "proyectos/tarkor/arte/location-cruce-de-las-cenizas-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "El Cruce de las Cenizas",
+              "gl": "O Cruce das Cinzas",
+              "en": "The Ash Crossing"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Los Restos de Maktor",
+            "gl": "Os Restos de Maktor",
+            "en": "The Maktor Ruins"
+          },
+          "texto": {
+            "es": "La aldea arrasada de Gorhorn.",
+            "gl": "A aldea arrasada de Gorhorn.",
+            "en": "Gorhorn’s razed village."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-restos-de-maktor.webp",
+            "mini": "proyectos/tarkor/arte/location-restos-de-maktor-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los Restos de Maktor",
+              "gl": "Os Restos de Maktor",
+              "en": "The Maktor Ruins"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Kegi",
+            "gl": "Kegi",
+            "en": "Kegi"
+          },
+          "texto": {
+            "es": "El hogar de los Faerus del Feg Ger, al sur de las Llanuras.",
+            "gl": "O fogar dos Faerus do Feg Ger, ao sur das Chairas.",
+            "en": "Home of the Feg Ger Faerus, in the southern Plains."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-yegr-kegi.webp",
+            "mini": "proyectos/tarkor/arte/location-yegr-kegi-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Kegi",
+              "gl": "Kegi",
+              "en": "Kegi"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "La Playa de Ceniza Blanca",
+            "gl": "A Praia de Cinza Branca",
+            "en": "The White Ash Beach"
+          },
+          "texto": {
+            "es": "Costa de arena clara y aguas turquesa.",
+            "gl": "Costa de area clara e augas turquesa.",
+            "en": "A coast of pale sand and turquoise water."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-playa-de-ceniza-blanca.webp",
+            "mini": "proyectos/tarkor/arte/location-playa-de-ceniza-blanca-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "La Playa de Ceniza Blanca",
+              "gl": "A Praia de Cinza Branca",
+              "en": "The White Ash Beach"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Los Acantilados Partidos",
+            "gl": "Os Cantís Partidos",
+            "en": "The Split Cliffs"
+          },
+          "texto": {
+            "es": "Cornisas sobre el mar donde anidan las Celubias.",
+            "gl": "Cornixas sobre o mar onde aniñan as Celubias.",
+            "en": "Ledges over the sea where Celubias nest."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-acantilados-partidos.webp",
+            "mini": "proyectos/tarkor/arte/location-acantilados-partidos-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los Acantilados Partidos",
+              "gl": "Os Cantís Partidos",
+              "en": "The Split Cliffs"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "La Sabana Alta",
+            "gl": "A Sabana Alta",
+            "en": "The High Savannah"
+          },
+          "texto": {
+            "es": "Hierba roja y piedras erguidas: el territorio del Towrgu.",
+            "gl": "Herba vermella e pedras erguidas: o territorio do Towrgu.",
+            "en": "Red grass and standing stones: Towrgu territory."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-sabana-alta-colmillar.webp",
+            "mini": "proyectos/tarkor/arte/location-sabana-alta-colmillar-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "La Sabana Alta",
+              "gl": "A Sabana Alta",
+              "en": "The High Savannah"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Los Pastos de la Deriva",
+            "gl": "Os Pastos da Deriva",
+            "en": "The Drift Pastures"
+          },
+          "texto": {
+            "es": "Pastos abiertos donde pacen las manadas.",
+            "gl": "Pastos abertos onde pacen as manadas.",
+            "en": "Open pastures where the herds graze."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-pastos-de-la-deriva.webp",
+            "mini": "proyectos/tarkor/arte/location-pastos-de-la-deriva-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los Pastos de la Deriva",
+              "gl": "Os Pastos da Deriva",
+              "en": "The Drift Pastures"
+            }
+          }
         }
       ]
     },
@@ -617,6 +1097,17 @@
             "es": "Cuatro clanes de honor y fuerza: no mienten, pero callan. Gobierna una Terk’ikar y dirige la guerra un Kort’ikar. No lanzan magia en crudo: la canalizan con tótems y runas. Clase exclusiva: Chamán.",
             "gl": "Catro clans de honra e forza: non menten, pero calan. Goberna unha Terk’ikar e dirixe a guerra un Kort’ikar. Non lanzan maxia en cru: canalízana con tótems e runas. Clase exclusiva: Chamán.",
             "en": "Four clans of honour and strength: they never lie, but they keep silent. A Terk’ikar rules and a Kort’ikar leads in war. They do not cast raw magic: they channel it through totems and runes. Exclusive class: Shaman."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-orcos-llanuras-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-orcos-llanuras-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Orcos",
+              "gl": "Orcos",
+              "en": "Orcs"
+            }
           }
         },
         {
@@ -629,6 +1120,17 @@
             "es": "Piel gris casi mineral que brilla al concentrarse, castas de función y leyes grabadas en obeliscos. Su tabú: lo inacabado. Clase exclusiva: Caballero.",
             "gl": "Pel gris case mineral que brilla ao concentrarse, castas de función e leis gravadas en obeliscos. O seu tabú: o inacabado. Clase exclusiva: Cabaleiro.",
             "en": "Grey, almost mineral skin that glows when they focus, castes by function and laws carved in obelisks. Their taboo: anything unfinished. Exclusive class: Knight."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-goirntes-meseta-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-goirntes-meseta-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Goirntes",
+              "gl": "Goirntes",
+              "en": "Goirntes"
+            }
           }
         },
         {
@@ -641,6 +1143,17 @@
             "es": "Piel que atrapa la luz y voz casi inaudible; sus silencios tienen gramática. Deciden en cónclave con la palma en el suelo. Su tabú: levantar la voz. Clase exclusiva: Segador.",
             "gl": "Pel que atrapa a luz e voz case inaudible; os seus silencios teñen gramática. Deciden en cónclave coa palma no chan. O seu tabú: erguer a voz. Clase exclusiva: Segador.",
             "en": "Skin that traps light and an almost inaudible voice; their silences have grammar. They decide in conclave with palms on the ground. Their taboo: raising one’s voice. Exclusive class: Reaper."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-nabieus-cienaga-troncal-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-nabieus-cienaga-troncal-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Nabieus",
+              "gl": "Nabieus",
+              "en": "Nabieus"
+            }
           }
         },
         {
@@ -653,6 +1166,17 @@
             "es": "«Pelo» de hojas finas, a dos o cuatro patas, y un olfato que lee el miedo. La manada es su única institución. Su tabú: abandonar a un herido. Clase exclusiva: Druida.",
             "gl": "«Pelo» de follas finas, a dúas ou catro patas, e un olfacto que le o medo. A manada é a súa única institución. O seu tabú: abandonar un ferido. Clase exclusiva: Druida.",
             "en": "“Hair” of fine leaves, walking on two or four legs, and a sense of smell that reads fear. The pack is their only institution. Their taboo: abandoning the wounded. Exclusive class: Druid."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-faerus-frontera-norte-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-faerus-frontera-norte-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Faerus",
+              "gl": "Faerus",
+              "en": "Faerus"
+            }
           }
         },
         {
@@ -694,7 +1218,18 @@
             "gl": "Goirntes radicais da Meseta; arman os Serhu contra os demais clans e os Faerus.",
             "en": "Radical Goirntes of the Plateau; they arm the Serhu against the other clans and the Faerus."
           },
-          "valor": "~1.600"
+          "valor": "~1.600",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-goirntes-frontera-norte-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-goirntes-frontera-norte-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Concordia de Hierro",
+              "gl": "Concordia de Ferro",
+              "en": "Iron Concord"
+            }
+          }
         },
         {
           "nombre": {
@@ -707,7 +1242,18 @@
             "gl": "Orcos das Chairas, en Karot Veku. Traizoaron dúas veces os Maktor.",
             "en": "Orcs of the Plains, at Karot Veku. They betrayed the Maktor twice."
           },
-          "valor": "~800"
+          "valor": "~800",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/faction-clan-serhu-2.webp",
+            "mini": "proyectos/tarkor/arte/faction-clan-serhu-2-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Clan Serhu",
+              "gl": "Clan Serhu",
+              "en": "Serhu Clan"
+            }
+          }
         },
         {
           "nombre": {
@@ -720,7 +1266,18 @@
             "gl": "Nabieus da Marxe, co seu portavoz do cónclave.",
             "en": "Nabieus of the Margin, with their conclave speaker."
           },
-          "valor": "~1.500"
+          "valor": "~1.500",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-nabieus-margen-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-nabieus-margen-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Keseg Sael",
+              "gl": "Keseg Sael",
+              "en": "Keseg Sael"
+            }
+          }
         },
         {
           "nombre": {
@@ -733,7 +1290,18 @@
             "gl": "Faerus da Marxe, en Hashma, guiados por quen ocupa o Jakut.",
             "en": "Faerus of the Margin, in Hashma, led by whoever holds the Jakut."
           },
-          "valor": "~850"
+          "valor": "~850",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-faerus-margen-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-faerus-margen-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Feg Tusha",
+              "gl": "Feg Tusha",
+              "en": "Feg Tusha"
+            }
+          }
         },
         {
           "nombre": {
@@ -746,7 +1314,18 @@
             "gl": "Orcos da Braña.",
             "en": "Orcs of the Swamp."
           },
-          "valor": "~600"
+          "valor": "~600",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-orcos-cienaga-troncal-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-orcos-cienaga-troncal-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Clan Goshg",
+              "gl": "Clan Goshg",
+              "en": "Goshg Clan"
+            }
+          }
         },
         {
           "nombre": {
@@ -759,7 +1338,18 @@
             "gl": "Nabieus da Braña, guiados pola súa cazadora maior.",
             "en": "Nabieus of the Swamp, led by their head huntress."
           },
-          "valor": "~500"
+          "valor": "~500",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-nabieus-cienaga-troncal-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-nabieus-cienaga-troncal-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Keseg Prisilke",
+              "gl": "Keseg Prisilke",
+              "en": "Keseg Prisilke"
+            }
+          }
         },
         {
           "nombre": {
@@ -772,7 +1362,18 @@
             "gl": "Orcos do Cristal Xeado.",
             "en": "Orcs of the Frozen Crystal."
           },
-          "valor": "~400"
+          "valor": "~400",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-orcos-cristal-helado-macho.webp",
+            "mini": "proyectos/tarkor/arte/raza-orcos-cristal-helado-macho-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Clan Helsig",
+              "gl": "Clan Helsig",
+              "en": "Helsig Clan"
+            }
+          }
         },
         {
           "nombre": {
@@ -785,7 +1386,18 @@
             "gl": "Goirntes moderados da Meseta.",
             "en": "Moderate Goirntes of the Plateau."
           },
-          "valor": "~300"
+          "valor": "~300",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-goirntes-frontera-norte-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-goirntes-frontera-norte-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los del Obelisco",
+              "gl": "Os do Obelisco",
+              "en": "Those of the Obelisk"
+            }
+          }
         },
         {
           "nombre": {
@@ -798,7 +1410,18 @@
             "gl": "Faerus do sur das Chairas, en Kegi. O Pacto da Primeira Peza úneos aos Maktor.",
             "en": "Faerus of the southern Plains, at Kegi. The Pact of the First Piece binds them to the Maktor."
           },
-          "valor": "~200"
+          "valor": "~200",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/raza-faerus-frontera-norte-hembra.webp",
+            "mini": "proyectos/tarkor/arte/raza-faerus-frontera-norte-hembra-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Feg Ger",
+              "gl": "Feg Ger",
+              "en": "Feg Ger"
+            }
+          }
         },
         {
           "nombre": {
@@ -811,7 +1434,114 @@
             "gl": "Aniquilado no ano 4.000 mentres os Serhu miraban. Só queda Gorhorn, que quere restaurar o seu nome.",
             "en": "Wiped out in the year 4,000 while the Serhu looked on. Only Gorhorn is left, seeking to restore its name."
           },
-          "valor": "1"
+          "valor": "1",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/location-restos-de-maktor.webp",
+            "mini": "proyectos/tarkor/arte/location-restos-de-maktor-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Clan Maktor",
+              "gl": "Clan Maktor",
+              "en": "Maktor Clan"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "personajes",
+      "titulo": {
+        "es": "Personajes",
+        "gl": "Personaxes",
+        "en": "Characters"
+      },
+      "intro": {
+        "es": "El catálogo tiene 75 NPC, cada uno con memoria, valores y relaciones. Estos son los primeros que conocerás.",
+        "gl": "O catálogo ten 75 NPC, cada un con memoria, valores e relacións. Estes son os primeiros que coñecerás.",
+        "en": "The catalogue has 75 NPCs, each with memory, values and relationships. These are the first you will meet."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Gorhorn",
+            "gl": "Gorhorn",
+            "en": "Gorhorn"
+          },
+          "texto": {
+            "es": "Orco de 20 años, el último del Clan Maktor y tu personaje. Empieza como Cazador y quiere restaurar el nombre de su clan.",
+            "gl": "Orco de 20 anos, o último do Clan Maktor e a túa personaxe. Comeza como Cazador e quere restaurar o nome do seu clan.",
+            "en": "A 20-year-old orc, the last of the Maktor Clan and your character. He starts as a Hunter and seeks to restore his clan’s name."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Gistera Koh",
+            "gl": "Gistera Koh",
+            "en": "Gistera Koh"
+          },
+          "texto": {
+            "es": "Una de las primeras personas que encuentras en las Llanuras.",
+            "gl": "Unha das primeiras persoas que atopas nas Chairas.",
+            "en": "One of the first people you meet on the Plains."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/npc-gistera-koh.webp",
+            "mini": "proyectos/tarkor/arte/npc-gistera-koh-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Gistera Koh",
+              "gl": "Gistera Koh",
+              "en": "Gistera Koh"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "El Orco Enfurecido",
+            "gl": "O Orco Enfurecido",
+            "en": "The Enraged Orc"
+          },
+          "texto": {
+            "es": "Acecha en la Hondonada del Eco y es el objetivo de una de las primeras misiones.",
+            "gl": "Axexa na Hondonada do Eco e é o obxectivo dunha das primeiras misións.",
+            "en": "He lurks in the Echo Hollow and is the target of one of the first quests."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/npc-orco-enfurecido-hondonada.webp",
+            "mini": "proyectos/tarkor/arte/npc-orco-enfurecido-hondonada-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "El Orco Enfurecido",
+              "gl": "O Orco Enfurecido",
+              "en": "The Enraged Orc"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Los Maestros de oficio",
+            "gl": "Os Mestres de oficio",
+            "en": "The Trade Masters"
+          },
+          "texto": {
+            "es": "Doce maestros Serhu en Karot Veku que enseñan los oficios y dan trabajo.",
+            "gl": "Doce mestres Serhu en Karot Veku que ensinan os oficios e dan traballo.",
+            "en": "Twelve Serhu masters in Karot Veku who teach the trades and offer work."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/faction-clan-serhu.webp",
+            "mini": "proyectos/tarkor/arte/faction-clan-serhu-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Los Maestros de oficio",
+              "gl": "Os Mestres de oficio",
+              "en": "The Trade Masters"
+            }
+          }
         }
       ]
     },
@@ -946,9 +1676,9 @@
         "en": "Bestiary"
       },
       "intro": {
-        "es": "53 especies de fauna en 13 familias (37 en las Llanuras jugables), con cinco temperamentos, de amigable a enemigo, y grupos con población real que se agota y se repone. El número es su rango de nivel.",
-        "gl": "53 especies de fauna en 13 familias (37 nas Chairas xogables), con cinco temperamentos, de amigable a inimigo, e grupos con poboación real que se esgota e se repón. O número é o seu rango de nivel.",
-        "en": "53 wildlife species in 13 families (37 in the playable Plains), with five temperaments, from friendly to hostile, and groups with a real population that runs out and recovers. The number is their level range."
+        "es": "53 especies de fauna en 13 familias (37 en las Llanuras jugables), con cinco temperamentos, de amigable a enemigo, y grupos con población real que se agota y se repone. El número es su rango de nivel; las especies del Margen, la Ciénaga y el Cristal Helado llegarán con sus regiones.",
+        "gl": "53 especies de fauna en 13 familias (37 nas Chairas xogables), con cinco temperamentos, de amigable a inimigo, e grupos con poboación real que se esgota e se repón. O número é o seu rango de nivel; as especies da Marxe, a Braña e o Cristal Xeado chegarán coas súas rexións.",
+        "en": "53 wildlife species in 13 families (37 in the playable Plains), with five temperaments, from friendly to hostile, and groups with a real population that runs out and recovers. The number is their level range; species from the Margin, the Swamp and the Frozen Crystal will arrive with their regions."
       },
       "items": [
         {
@@ -962,7 +1692,18 @@
             "gl": "Réptil herbívoro do tamaño dunha casa, con placas óseas volcánicas. Agresivo.",
             "en": "A house-sized herbivorous reptile with volcanic bony plates. Aggressive."
           },
-          "valor": "6-12"
+          "valor": "6-12",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-gargantua-de-ceniza.webp",
+            "mini": "proyectos/tarkor/arte/fauna-gargantua-de-ceniza-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Gargantúa de Ceniza",
+              "gl": "Gargantúa de Cinza",
+              "en": "Ash Gargantua"
+            }
+          }
         },
         {
           "nombre": {
@@ -975,7 +1716,18 @@
             "gl": "O maior perigo coñecido, no bordo da selva. Agresivo.",
             "en": "The greatest known danger, at the edge of the jungle. Aggressive."
           },
-          "valor": "10-16"
+          "valor": "10-16",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-ferike.webp",
+            "mini": "proyectos/tarkor/arte/fauna-ferike-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Ferike",
+              "gl": "Ferike",
+              "en": "Ferike"
+            }
+          }
         },
         {
           "nombre": {
@@ -988,7 +1740,18 @@
             "gl": "Axexa de noite na Hondonada do Eco. Agresivo.",
             "en": "Stalks the Echo Hollow at night. Aggressive."
           },
-          "valor": "8-14"
+          "valor": "8-14",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-kirelon-arenoso.webp",
+            "mini": "proyectos/tarkor/arte/fauna-kirelon-arenoso-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Kirelon Arenoso",
+              "gl": "Kirelon Areento",
+              "en": "Sand Kirelon"
+            }
+          }
         },
         {
           "nombre": {
@@ -1001,7 +1764,18 @@
             "gl": "Aniña nos cumios dos Piares Rotos. Agresivo.",
             "en": "Nests on the peaks of the Broken Pillars. Aggressive."
           },
-          "valor": "5-10"
+          "valor": "5-10",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-cruzavientos.webp",
+            "mini": "proyectos/tarkor/arte/fauna-cruzavientos-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Cruzavientos",
+              "gl": "Cruzaventos",
+              "en": "Windcrosser"
+            }
+          }
         },
         {
           "nombre": {
@@ -1014,7 +1788,18 @@
             "gl": "Predador da Sabana Alta.",
             "en": "Predator of the High Savannah."
           },
-          "valor": "4-12"
+          "valor": "4-12",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-towrgu.webp",
+            "mini": "proyectos/tarkor/arte/fauna-towrgu-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Towrgu",
+              "gl": "Towrgu",
+              "en": "Towrgu"
+            }
+          }
         },
         {
           "nombre": {
@@ -1027,7 +1812,18 @@
             "gl": "Preeiro nocturno de ollos dourados.",
             "en": "A golden-eyed night scavenger."
           },
-          "valor": "2-6"
+          "valor": "2-6",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-rondador-de-brasas.webp",
+            "mini": "proyectos/tarkor/arte/fauna-rondador-de-brasas-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Rondador de Brasas",
+              "gl": "Roldador de Brasas",
+              "en": "Ember Prowler"
+            }
+          }
         },
         {
           "nombre": {
@@ -1040,7 +1836,18 @@
             "gl": "Escamas de escoura con veas de lava.",
             "en": "Slag scales veined with lava."
           },
-          "valor": "3-4"
+          "valor": "3-4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-salamandra-de-escoria.webp",
+            "mini": "proyectos/tarkor/arte/fauna-salamandra-de-escoria-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Salamandra de Escoria",
+              "gl": "Salamántiga de Escoura",
+              "en": "Slag Salamander"
+            }
+          }
         },
         {
           "nombre": {
@@ -1053,7 +1860,18 @@
             "gl": "Gando lanudo dos clans, de cornamenta ramificada.",
             "en": "Woolly clan livestock with branching antlers."
           },
-          "valor": "1-5"
+          "valor": "1-5",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-murgol.webp",
+            "mini": "proyectos/tarkor/arte/fauna-murgol-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Múrgol",
+              "gl": "Múrgol",
+              "en": "Múrgol"
+            }
+          }
         },
         {
           "nombre": {
@@ -1066,7 +1884,18 @@
             "gl": "Manadas de gacelas de cornos longos.",
             "en": "Herds of long-horned gazelles."
           },
-          "valor": "2-5"
+          "valor": "2-5",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-cuernahoja.webp",
+            "mini": "proyectos/tarkor/arte/fauna-cuernahoja-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Cuernahoja",
+              "gl": "Cornafolla",
+              "en": "Leafhorn"
+            }
+          }
         },
         {
           "nombre": {
@@ -1079,7 +1908,18 @@
             "gl": "Presa sagrada dos orcos: cazar as súas crías ofende.",
             "en": "Sacred prey of the orcs: hunting their young gives offence."
           },
-          "valor": "1-2"
+          "valor": "1-2",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-corredor-de-cauce.webp",
+            "mini": "proyectos/tarkor/arte/fauna-corredor-de-cauce-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Corredor de Cauce",
+              "gl": "Corredor de Cauce",
+              "en": "Riverbed Runner"
+            }
+          }
         },
         {
           "nombre": {
@@ -1092,7 +1932,544 @@
             "gl": "Peixe preeiro con dentes de piraña.",
             "en": "A scavenger fish with piranha teeth."
           },
-          "valor": "1-2"
+          "valor": "1-2",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-negueo-turquesa.webp",
+            "mini": "proyectos/tarkor/arte/fauna-negueo-turquesa-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Negueo Turquesa",
+              "gl": "Negueo Turquesa",
+              "en": "Turquoise Negueo"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Guchapo",
+            "gl": "Guchapo",
+            "en": "Guchapo"
+          },
+          "texto": {
+            "es": "Sapo gigante de las charcas del Pozo de Cauce Viejo. Cauteloso.",
+            "gl": "Sapo xigante das charcas do Pozo de Cauce Vello. Cauteloso.",
+            "en": "A giant toad from the pools of the Old Riverbed Well. Wary."
+          },
+          "valor": "2-4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-guchapo.webp",
+            "mini": "proyectos/tarkor/arte/fauna-guchapo-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Guchapo",
+              "gl": "Guchapo",
+              "en": "Guchapo"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Aullador Rojo",
+            "gl": "Ouveador Vermello",
+            "en": "Red Howler"
+          },
+          "texto": {
+            "es": "Caza en jaurías de 4 a 6 tras los Corredores en migración. Cauteloso.",
+            "gl": "Caza en xaurías de 4 a 6 tras os Corredores en migración. Cauteloso.",
+            "en": "Hunts in packs of 4 to 6 behind migrating Runners. Wary."
+          },
+          "valor": "1-4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-aullador-rojo.webp",
+            "mini": "proyectos/tarkor/arte/fauna-aullador-rojo-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Aullador Rojo",
+              "gl": "Ouveador Vermello",
+              "en": "Red Howler"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Canizor",
+            "gl": "Canizor",
+            "en": "Canizor"
+          },
+          "texto": {
+            "es": "Fiera solitaria y domable, ligada al Clan Maktor. Cauteloso.",
+            "gl": "Fera solitaria e domable, ligada ao Clan Maktor. Cauteloso.",
+            "en": "A solitary, tameable beast tied to the Maktor Clan. Wary."
+          },
+          "valor": "1-4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-canizor.webp",
+            "mini": "proyectos/tarkor/arte/fauna-canizor-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Canizor",
+              "gl": "Canizor",
+              "en": "Canizor"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Coracelo",
+            "gl": "Coracelo",
+            "en": "Coracelo"
+          },
+          "texto": {
+            "es": "Roedor que construye madrigueras fortificadas en la Sabana Alta. Cauteloso.",
+            "gl": "Roedor que constrúe tobeiras fortificadas na Sabana Alta. Cauteloso.",
+            "en": "A rodent that builds fortified burrows in the High Savannah. Wary."
+          },
+          "valor": "2-8",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-coracelo.webp",
+            "mini": "proyectos/tarkor/arte/fauna-coracelo-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Coracelo",
+              "gl": "Coracelo",
+              "en": "Coracelo"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Corretolvas",
+            "gl": "Corretolvas",
+            "en": "Corretolvas"
+          },
+          "texto": {
+            "es": "Ave corredora de caza menor. Inofensiva.",
+            "gl": "Ave corredora de caza menor. Inofensiva.",
+            "en": "A running bird, small game. Harmless."
+          },
+          "valor": "1",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-corretolvas.webp",
+            "mini": "proyectos/tarkor/arte/fauna-corretolvas-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Corretolvas",
+              "gl": "Corretolvas",
+              "en": "Corretolvas"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Imanio",
+            "gl": "Imanio",
+            "en": "Imanio"
+          },
+          "texto": {
+            "es": "Insecto cubierto de rocas imantadas de las Agujas Imán. Cauteloso.",
+            "gl": "Insecto cuberto de rochas imantadas das Agullas Imán. Cauteloso.",
+            "en": "An insect covered in magnetised rocks from the Magnet Spires. Wary."
+          },
+          "valor": "3-6",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-imanio.webp",
+            "mini": "proyectos/tarkor/arte/fauna-imanio-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Imanio",
+              "gl": "Imanio",
+              "en": "Imanio"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Nuente",
+            "gl": "Nuente",
+            "en": "Nuente"
+          },
+          "texto": {
+            "es": "Depredador nocturno que ve el magnetismo, en las Agujas Imán. Cauteloso.",
+            "gl": "Predador nocturno que ve o magnetismo, nas Agullas Imán. Cauteloso.",
+            "en": "A night predator that sees magnetism, in the Magnet Spires. Wary."
+          },
+          "valor": "5-9",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-nuente.webp",
+            "mini": "proyectos/tarkor/arte/fauna-nuente-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Nuente",
+              "gl": "Nuente",
+              "en": "Nuente"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Miruina",
+            "gl": "Miruina",
+            "en": "Miruina"
+          },
+          "texto": {
+            "es": "Roedor nocturno y nadador de los Manaderos que caza Jushas en manada. Agresivo.",
+            "gl": "Roedor nocturno e nadador dos Manadeiros que caza Jushas en manada. Agresivo.",
+            "en": "A nocturnal swimming rodent of the Springs that hunts Jushas in packs. Aggressive."
+          },
+          "valor": "4-8",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-miruina.webp",
+            "mini": "proyectos/tarkor/arte/fauna-miruina-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Miruina",
+              "gl": "Miruina",
+              "en": "Miruina"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Jusha Esmeralda",
+            "gl": "Jusha Esmeralda",
+            "en": "Emerald Jusha"
+          },
+          "texto": {
+            "es": "Pez de las charcas profundas de los Manaderos. Inofensivo.",
+            "gl": "Peixe das charcas profundas dos Manadeiros. Inofensivo.",
+            "en": "A fish from the deep pools of the Springs. Harmless."
+          },
+          "valor": "1-2",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-jusha-esmeralda.webp",
+            "mini": "proyectos/tarkor/arte/fauna-jusha-esmeralda-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Jusha Esmeralda",
+              "gl": "Jusha Esmeralda",
+              "en": "Emerald Jusha"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Celubia Pálida",
+            "gl": "Celubia Pálida",
+            "en": "Pale Celubia"
+          },
+          "texto": {
+            "es": "Ave marina de presa que anida en los Acantilados Partidos. Agresiva.",
+            "gl": "Ave mariña de presa que aniña nos Cantís Partidos. Agresiva.",
+            "en": "A seabird of prey nesting on the Split Cliffs. Aggressive."
+          },
+          "valor": "2-4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-celubia-palida.webp",
+            "mini": "proyectos/tarkor/arte/fauna-celubia-palida-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Celubia Pálida",
+              "gl": "Celubia Pálida",
+              "en": "Pale Celubia"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Terkash",
+            "gl": "Terkash",
+            "en": "Terkash"
+          },
+          "texto": {
+            "es": "Crustáceo de las grietas profundas de los Acantilados Partidos. Agresivo.",
+            "gl": "Crustáceo das gretas profundas dos Cantís Partidos. Agresivo.",
+            "en": "A crustacean from the deep cracks of the Split Cliffs. Aggressive."
+          },
+          "valor": "2-4",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-terkash.webp",
+            "mini": "proyectos/tarkor/arte/fauna-terkash-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Terkash",
+              "gl": "Terkash",
+              "en": "Terkash"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Rugoconcha",
+            "gl": "Rugocuncha",
+            "en": "Wrinkleshell"
+          },
+          "texto": {
+            "es": "Caracol de mar de la costa de la Playa de Ceniza Blanca.",
+            "gl": "Caracol de mar da costa da Praia de Cinza Branca.",
+            "en": "A sea snail from the White Ash Beach coast."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-bulco-de-arena.webp",
+            "mini": "proyectos/tarkor/arte/fauna-bulco-de-arena-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Rugoconcha",
+              "gl": "Rugocuncha",
+              "en": "Wrinkleshell"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Negueo Solar",
+            "gl": "Negueo Solar",
+            "en": "Solar Negueo"
+          },
+          "texto": {
+            "es": "Variante dorada del Negueo, en la costa de Ceniza Blanca. Cauteloso.",
+            "gl": "Variante dourada do Negueo, na costa de Cinza Branca. Cauteloso.",
+            "en": "A golden Negueo variant from the White Ash coast. Wary."
+          },
+          "valor": "1-2",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-negueo-solar.webp",
+            "mini": "proyectos/tarkor/arte/fauna-negueo-solar-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Negueo Solar",
+              "gl": "Negueo Solar",
+              "en": "Solar Negueo"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Zense Ceniza",
+            "gl": "Zense Cinza",
+            "en": "Ash Zense"
+          },
+          "texto": {
+            "es": "Carroñero alado: donde vuela, algo ha muerto. Cauteloso.",
+            "gl": "Preeiro alado: onde voa, algo morreu. Cauteloso.",
+            "en": "A winged scavenger: where it flies, something has died. Wary."
+          },
+          "valor": "1-3",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-zense-ceniza.webp",
+            "mini": "proyectos/tarkor/arte/fauna-zense-ceniza-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Zense Ceniza",
+              "gl": "Zense Cinza",
+              "en": "Ash Zense"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ruptidar",
+            "gl": "Ruptidar",
+            "en": "Ruptidar"
+          },
+          "texto": {
+            "es": "Limpiador de arena sin amenaza, en cualquier zona arenosa. Inofensivo.",
+            "gl": "Limpador de area sen ameaza, en calquera zona areenta. Inofensivo.",
+            "en": "A harmless sand cleaner found in any sandy area. Harmless."
+          },
+          "valor": "1",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-ruptidar.webp",
+            "mini": "proyectos/tarkor/arte/fauna-ruptidar-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Ruptidar",
+              "gl": "Ruptidar",
+              "en": "Ruptidar"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Espina del Viento",
+            "gl": "Espiña do Vento",
+            "en": "Wind Thorn"
+          },
+          "texto": {
+            "es": "Peligro ambiental: se entierra y ataca durante las tormentas.",
+            "gl": "Perigo ambiental: entérrase e ataca durante as tormentas.",
+            "en": "An environmental hazard: it burrows and strikes during storms."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-espina-del-viento.webp",
+            "mini": "proyectos/tarkor/arte/fauna-espina-del-viento-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Espina del Viento",
+              "gl": "Espiña do Vento",
+              "en": "Wind Thorn"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Tragalodo",
+            "gl": "Tragalodo",
+            "en": "Mudswallower"
+          },
+          "texto": {
+            "es": "Reptil acorazado del agua baja de la Ciénaga Troncal. Agresivo.",
+            "gl": "Réptil acoirazado da auga baixa da Braña Troncal. Agresivo.",
+            "en": "An armoured reptile of the Trunk Swamp shallows. Aggressive."
+          },
+          "valor": "8-14",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-tragalodo.webp",
+            "mini": "proyectos/tarkor/arte/fauna-tragalodo-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Tragalodo",
+              "gl": "Tragalodo",
+              "en": "Mudswallower"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Nievon",
+            "gl": "Nievon",
+            "en": "Nievon"
+          },
+          "texto": {
+            "es": "Felino de emboscada del Cristal Helado. Agresivo.",
+            "gl": "Felino de emboscada do Cristal Xeado. Agresivo.",
+            "en": "An ambush feline of the Frozen Crystal. Aggressive."
+          },
+          "valor": "5-11",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-nievon.webp",
+            "mini": "proyectos/tarkor/arte/fauna-nievon-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Nievon",
+              "gl": "Nievon",
+              "en": "Nievon"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Hetris",
+            "gl": "Hetris",
+            "en": "Hetris"
+          },
+          "texto": {
+            "es": "Felino-simio del dosel alto del Margen Silencioso. Agresivo.",
+            "gl": "Felino-simio do dosel alto da Marxe Silenciosa. Agresivo.",
+            "en": "A feline-ape of the Silent Margin’s high canopy. Aggressive."
+          },
+          "valor": "4-9",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-hetris.webp",
+            "mini": "proyectos/tarkor/arte/fauna-hetris-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Hetris",
+              "gl": "Hetris",
+              "en": "Hetris"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Mekiosi",
+            "gl": "Mekiosi",
+            "en": "Mekiosi"
+          },
+          "texto": {
+            "es": "Bestia de emboscada del suelo del Margen Silencioso. Agresiva.",
+            "gl": "Besta de emboscada do chan da Marxe Silenciosa. Agresiva.",
+            "en": "An ambush beast of the Silent Margin’s floor. Aggressive."
+          },
+          "valor": "7-13",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-mekiosi.webp",
+            "mini": "proyectos/tarkor/arte/fauna-mekiosi-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Mekiosi",
+              "gl": "Mekiosi",
+              "en": "Mekiosi"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Morvasa",
+            "gl": "Morvasa",
+            "en": "Morvasa"
+          },
+          "texto": {
+            "es": "Serpiente de agua de las Aguas Sordas, en el Margen Silencioso. Cautelosa.",
+            "gl": "Serpe de auga das Augas Xordas, na Marxe Silenciosa. Cautelosa.",
+            "en": "A water serpent of the Deaf Waters, in the Silent Margin. Wary."
+          },
+          "valor": "3-6",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-morvasa.webp",
+            "mini": "proyectos/tarkor/arte/fauna-morvasa-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Morvasa",
+              "gl": "Morvasa",
+              "en": "Morvasa"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Vistue",
+            "gl": "Vistue",
+            "en": "Vistue"
+          },
+          "texto": {
+            "es": "Corredor de manada del Margen Silencioso. Agresivo.",
+            "gl": "Corredor de manada da Marxe Silenciosa. Agresivo.",
+            "en": "A pack runner of the Silent Margin. Aggressive."
+          },
+          "valor": "3-7",
+          "imagen": {
+            "src": "proyectos/tarkor/arte/fauna-vistue.webp",
+            "mini": "proyectos/tarkor/arte/fauna-vistue-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Vistue",
+              "gl": "Vistue",
+              "en": "Vistue"
+            }
+          }
         }
       ]
     },
@@ -1119,6 +2496,17 @@
             "es": "Su fibra imantada señala siempre el mismo rumbo.",
             "gl": "A súa fibra imantada sinala sempre o mesmo rumbo.",
             "en": "Its magnetised fibre always points the same way."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/flora-cardo-brujula.webp",
+            "mini": "proyectos/tarkor/arte/flora-cardo-brujula-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Cardo Brújula",
+              "gl": "Cardo Compás",
+              "en": "Compass Thistle"
+            }
           }
         },
         {
@@ -1131,6 +2519,17 @@
             "es": "Acumula calor y libera gas inflamable: explosivo e iniciador de fuego.",
             "gl": "Acumula calor e libera gas inflamable: explosivo e iniciador de lume.",
             "en": "Stores heat and releases flammable gas: an explosive and fire starter."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/flora-raiz-de-fuego.webp",
+            "mini": "proyectos/tarkor/arte/flora-raiz-de-fuego-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Raíz de Fuego",
+              "gl": "Raíz de Lume",
+              "en": "Fire Root"
+            }
           }
         },
         {
@@ -1143,6 +2542,17 @@
             "es": "Adormece el dolor.",
             "gl": "Adormece a dor.",
             "en": "Numbs pain."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/flora-flor-de-ceniza.webp",
+            "mini": "proyectos/tarkor/arte/flora-flor-de-ceniza-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Flor de Ceniza",
+              "gl": "Flor de Cinza",
+              "en": "Ash Flower"
+            }
           }
         },
         {
@@ -1155,6 +2565,63 @@
             "es": "Corta hemorragias.",
             "gl": "Corta hemorraxias.",
             "en": "Stops bleeding."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/flora-salvia-del-polvo.webp",
+            "mini": "proyectos/tarkor/arte/flora-salvia-del-polvo-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Salvia del Polvo",
+              "gl": "Salvia do Po",
+              "en": "Dust Sage"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Hielo Sílice",
+            "gl": "Xeo Sílice",
+            "en": "Silica Ice"
+          },
+          "texto": {
+            "es": "Cristal del Cristal Helado con el que se forjan filos únicos.",
+            "gl": "Cristal do Cristal Xeado co que se forxan fíos únicos.",
+            "en": "A crystal from the Frozen Crystal used to forge unique blades."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/flora-hielo-silice.webp",
+            "mini": "proyectos/tarkor/arte/flora-hielo-silice-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Hielo Sílice",
+              "gl": "Xeo Sílice",
+              "en": "Silica Ice"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Arena Imán",
+            "gl": "Area Imán",
+            "en": "Magnet Sand"
+          },
+          "texto": {
+            "es": "Arena imantada de las tormentas que se recoge para la orientación y la forja.",
+            "gl": "Area imantada das tormentas que se recolle para a orientación e a forxa.",
+            "en": "Magnetised storm sand gathered for navigation and forging."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/flora-arena-iman.webp",
+            "mini": "proyectos/tarkor/arte/flora-arena-iman-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Arena Imán",
+              "gl": "Area Imán",
+              "en": "Magnet Sand"
+            }
           }
         },
         {
@@ -1180,6 +2647,1028 @@
             "gl": "Madeira nobre dos cumios, de tier 6.",
             "en": "Noble wood from the peaks, tier 6."
           }
+        }
+      ]
+    },
+    {
+      "id": "reino",
+      "titulo": {
+        "es": "El reino",
+        "gl": "O reino",
+        "en": "The kingdom"
+      },
+      "intro": {
+        "es": "Empiezas con un campamento y lo conviertes en un reino que crece por generaciones.",
+        "gl": "Comezas cun campamento e convérteslo nun reino que medra por xeracións.",
+        "en": "You start with a camp and turn it into a kingdom that grows over generations."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Campamento base",
+            "gl": "Campamento base",
+            "en": "Base camp"
+          },
+          "texto": {
+            "es": "El primer paso: un refugio y una hoguera en mitad de las Llanuras.",
+            "gl": "O primeiro paso: un refuxio e unha fogueira no medio das Chairas.",
+            "en": "The first step: a shelter and a fire in the middle of the Plains."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/construccion-campamento-base-orco-llanuras.webp",
+            "mini": "proyectos/tarkor/arte/construccion-campamento-base-orco-llanuras-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Campamento base",
+              "gl": "Campamento base",
+              "en": "Base camp"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Choza y Ayuntamiento",
+            "gl": "Choza e Concello",
+            "en": "Hut and town hall"
+          },
+          "texto": {
+            "es": "Chozas para tus súbditos y un Ayuntamiento de tres niveles para el que solo hacen falta materiales.",
+            "gl": "Chozas para os teus súbditos e un Concello de tres niveis para o que só fan falta materiais.",
+            "en": "Huts for your subjects and a three-level town hall that only needs materials."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/construccion-choza-basica-orco-llanuras.webp",
+            "mini": "proyectos/tarkor/arte/construccion-choza-basica-orco-llanuras-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Choza y Ayuntamiento",
+              "gl": "Choza e Concello",
+              "en": "Hut and town hall"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Tótem del Clan Maktor",
+            "gl": "Tótem do Clan Maktor",
+            "en": "Maktor Clan totem"
+          },
+          "texto": {
+            "es": "El símbolo de tu clan, que vuelve a levantarse.",
+            "gl": "O símbolo do teu clan, que volve erguerse.",
+            "en": "The symbol of your clan, raised once more."
+          },
+          "imagen": {
+            "src": "proyectos/tarkor/arte/item-totem-maktor.webp",
+            "mini": "proyectos/tarkor/arte/item-totem-maktor-mini.webp",
+            "ancho": 1600,
+            "alto": 640,
+            "alt": {
+              "es": "Tótem del Clan Maktor",
+              "gl": "Tótem do Clan Maktor",
+              "en": "Maktor Clan totem"
+            }
+          }
+        },
+        {
+          "nombre": {
+            "es": "Súbditos y linajes",
+            "gl": "Súbditos e liñaxes",
+            "en": "Subjects and lineages"
+          },
+          "texto": {
+            "es": "Llegan, forman pareja, tienen hijos y trabajan en su oficio; comen según la tarea que hacen.",
+            "gl": "Chegan, forman parella, teñen fillos e traballan no seu oficio; comen segundo a tarefa que fan.",
+            "en": "They arrive, pair up, have children and work at their trade; they eat according to their task."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ganadería y compañeros",
+            "gl": "Gandaría e compañeiros",
+            "en": "Livestock and companions"
+          },
+          "texto": {
+            "es": "Jaulas de tres niveles para la fauna capturada, ganado y compañeros que te aprueban o no según sus valores.",
+            "gl": "Gaiolas de tres niveis para a fauna capturada, gando e compañeiros que te aproban ou non segundo os seus valores.",
+            "en": "Three-level cages for captured wildlife, livestock and companions who approve of you or not by their values."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Defensa y guerra",
+            "gl": "Defensa e guerra",
+            "en": "Defence and war"
+          },
+          "texto": {
+            "es": "Empalizada, torre de vigía y milicia frente a bandidos; ante un ejército, tributo o contraataque. El Cuartel Avanzado se convierte en Cuartel de Guerra o en Puesto Comercial.",
+            "gl": "Empalizada, torre de vixía e milicia fronte a bandidos; ante un exército, tributo ou contraataque. O Cuartel Avanzado convértese en Cuartel de Guerra ou en Posto Comercial.",
+            "en": "Palisade, watchtower and militia against bandits; against an army, tribute or counter-attack. The Forward Barracks becomes a War Barracks or a Trading Post."
+          }
+        }
+      ]
+    },
+    {
+      "id": "arte",
+      "titulo": {
+        "es": "Arte del mundo",
+        "gl": "Arte do mundo",
+        "en": "World art"
+      },
+      "intro": {
+        "es": "Todo el arte del juego: lugares, pueblos, objetos y los mapas de cada zona. Es arte en desarrollo y puede cambiar en la versión final.",
+        "gl": "Toda a arte do xogo: lugares, pobos, obxectos e os mapas de cada zona. É arte en desenvolvemento e pode cambiar na versión final.",
+        "en": "All the game’s art: places, peoples, items and the map of every zone. It is work-in-progress art and may change in the final version."
+      },
+      "items": [],
+      "grupos": [
+        {
+          "id": "mapa-mundo",
+          "etiqueta": {
+            "es": "Mapa de Helek Sirik",
+            "gl": "Mapa de Helek Sirik",
+            "en": "Map of Helek Sirik"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/tarkor/arte/mapa-mundo-berig.webp",
+              "mini": "proyectos/tarkor/arte/mapa-mundo-berig-mini.webp",
+              "ancho": 1600,
+              "alto": 1200,
+              "alt": {
+                "es": "Mapa de Helek Sirik: Vaelira al oeste y Berig al este, con sus cinco regiones",
+                "gl": "Mapa de Helek Sirik: Vaelira ao oeste e Berig ao leste, coas súas cinco rexións",
+                "en": "Map of Helek Sirik: Vaelira to the west and Berig to the east, with its five regions"
+              }
+            }
+          ]
+        },
+        {
+          "id": "lugares",
+          "etiqueta": {
+            "es": "Lugares",
+            "gl": "Lugares",
+            "en": "Places"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/tarkor/arte/location-campo-yermo.webp",
+              "mini": "proyectos/tarkor/arte/location-campo-yermo-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Campo yermo",
+                "gl": "Campo yermo",
+                "en": "Campo yermo"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-cataratas-madre-fango.webp",
+              "mini": "proyectos/tarkor/arte/location-cataratas-madre-fango-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Cataratas madre fango",
+                "gl": "Cataratas madre fango",
+                "en": "Cataratas madre fango"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-cumbre-bruma-negra.webp",
+              "mini": "proyectos/tarkor/arte/location-cumbre-bruma-negra-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Cumbre bruma negra",
+                "gl": "Cumbre bruma negra",
+                "en": "Cumbre bruma negra"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-desembocadura-callada.webp",
+              "mini": "proyectos/tarkor/arte/location-desembocadura-callada-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Desembocadura callada",
+                "gl": "Desembocadura callada",
+                "en": "Desembocadura callada"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-dunas-ahogadas.webp",
+              "mini": "proyectos/tarkor/arte/location-dunas-ahogadas-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Dunas ahogadas",
+                "gl": "Dunas ahogadas",
+                "en": "Dunas ahogadas"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-filo-de-las-brasas.webp",
+              "mini": "proyectos/tarkor/arte/location-filo-de-las-brasas-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Filo de las brasas",
+                "gl": "Filo de las brasas",
+                "en": "Filo de las brasas"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-fosa-horadada.webp",
+              "mini": "proyectos/tarkor/arte/location-fosa-horadada-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Fosa horadada",
+                "gl": "Fosa horadada",
+                "en": "Fosa horadada"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-fumarolas-negras.webp",
+              "mini": "proyectos/tarkor/arte/location-fumarolas-negras-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Fumarolas negras",
+                "gl": "Fumarolas negras",
+                "en": "Fumarolas negras"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-grieta-cantora.webp",
+              "mini": "proyectos/tarkor/arte/location-grieta-cantora-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Grieta cantora",
+                "gl": "Grieta cantora",
+                "en": "Grieta cantora"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-laberinto-de-canones.webp",
+              "mini": "proyectos/tarkor/arte/location-laberinto-de-canones-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Laberinto de canones",
+                "gl": "Laberinto de canones",
+                "en": "Laberinto de canones"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-oasis-de-chudos-rojos.webp",
+              "mini": "proyectos/tarkor/arte/location-oasis-de-chudos-rojos-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Oasis de chudos rojos",
+                "gl": "Oasis de chudos rojos",
+                "en": "Oasis de chudos rojos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-paso-de-los-huesos.webp",
+              "mini": "proyectos/tarkor/arte/location-paso-de-los-huesos-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Paso de los huesos",
+                "gl": "Paso de los huesos",
+                "en": "Paso de los huesos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-pozas-de-marea.webp",
+              "mini": "proyectos/tarkor/arte/location-pozas-de-marea-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Pozas de marea",
+                "gl": "Pozas de marea",
+                "en": "Pozas de marea"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-raices-madre-fango.webp",
+              "mini": "proyectos/tarkor/arte/location-raices-madre-fango-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Raices madre fango",
+                "gl": "Raices madre fango",
+                "en": "Raices madre fango"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-trepaderes-humededos.webp",
+              "mini": "proyectos/tarkor/arte/location-trepaderes-humededos-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Trepaderes humededos",
+                "gl": "Trepaderes humededos",
+                "en": "Trepaderes humededos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-tumulos-del-honor.webp",
+              "mini": "proyectos/tarkor/arte/location-tumulos-del-honor-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Tumulos del honor",
+                "gl": "Tumulos del honor",
+                "en": "Tumulos del honor"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/location-vientre-del-engano.webp",
+              "mini": "proyectos/tarkor/arte/location-vientre-del-engano-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Vientre del engano",
+                "gl": "Vientre del engano",
+                "en": "Vientre del engano"
+              }
+            }
+          ]
+        },
+        {
+          "id": "pueblos",
+          "etiqueta": {
+            "es": "Pueblos",
+            "gl": "Pobos",
+            "en": "Peoples"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/tarkor/arte/raza-faerus-margen-hembra.webp",
+              "mini": "proyectos/tarkor/arte/raza-faerus-margen-hembra-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Faerus margen hembra",
+                "gl": "Faerus margen hembra",
+                "en": "Faerus margen hembra"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/raza-nabieus-margen-macho.webp",
+              "mini": "proyectos/tarkor/arte/raza-nabieus-margen-macho-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Nabieus margen macho",
+                "gl": "Nabieus margen macho",
+                "en": "Nabieus margen macho"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/raza-orcos-cienaga-troncal-macho.webp",
+              "mini": "proyectos/tarkor/arte/raza-orcos-cienaga-troncal-macho-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Orcos cienaga troncal macho",
+                "gl": "Orcos cienaga troncal macho",
+                "en": "Orcos cienaga troncal macho"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/raza-orcos-llanuras-hembra.webp",
+              "mini": "proyectos/tarkor/arte/raza-orcos-llanuras-hembra-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Orcos llanuras hembra",
+                "gl": "Orcos llanuras hembra",
+                "en": "Orcos llanuras hembra"
+              }
+            }
+          ]
+        },
+        {
+          "id": "objetos",
+          "etiqueta": {
+            "es": "Objetos",
+            "gl": "Obxectos",
+            "en": "Items"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/tarkor/arte/item-aguja-cardo-brujula.webp",
+              "mini": "proyectos/tarkor/arte/item-aguja-cardo-brujula-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Aguja cardo brujula",
+                "gl": "Aguja cardo brujula",
+                "en": "Aguja cardo brujula"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-amuleto-hueso.webp",
+              "mini": "proyectos/tarkor/arte/item-amuleto-hueso-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Amuleto hueso",
+                "gl": "Amuleto hueso",
+                "en": "Amuleto hueso"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-arnes-cuero.webp",
+              "mini": "proyectos/tarkor/arte/item-arnes-cuero-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Arnes cuero",
+                "gl": "Arnes cuero",
+                "en": "Arnes cuero"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-ascuas-raiz-fuego.webp",
+              "mini": "proyectos/tarkor/arte/item-ascuas-raiz-fuego-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Ascuas raiz fuego",
+                "gl": "Ascuas raiz fuego",
+                "en": "Ascuas raiz fuego"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-capa-piel-gargantua.webp",
+              "mini": "proyectos/tarkor/arte/item-capa-piel-gargantua-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Capa piel gargantua",
+                "gl": "Capa piel gargantua",
+                "en": "Capa piel gargantua"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-cataplasma-salvia-polvo.webp",
+              "mini": "proyectos/tarkor/arte/item-cataplasma-salvia-polvo-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Cataplasma salvia polvo",
+                "gl": "Cataplasma salvia polvo",
+                "en": "Cataplasma salvia polvo"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-cuchillo-corto.webp",
+              "mini": "proyectos/tarkor/arte/item-cuchillo-corto-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Cuchillo corto",
+                "gl": "Cuchillo corto",
+                "en": "Cuchillo corto"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-cuchillo-hielo-silice.webp",
+              "mini": "proyectos/tarkor/arte/item-cuchillo-hielo-silice-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Cuchillo hielo silice",
+                "gl": "Cuchillo hielo silice",
+                "en": "Cuchillo hielo silice"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-esquirla-celeste-caida.webp",
+              "mini": "proyectos/tarkor/arte/item-esquirla-celeste-caida-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Esquirla celeste caida",
+                "gl": "Esquirla celeste caida",
+                "en": "Esquirla celeste caida"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-hacha-guerra-maktor-rota.webp",
+              "mini": "proyectos/tarkor/arte/item-hacha-guerra-maktor-rota-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Hacha guerra maktor rota",
+                "gl": "Hacha guerra maktor rota",
+                "en": "Hacha guerra maktor rota"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-infusion-petalos-flor-ceniza.webp",
+              "mini": "proyectos/tarkor/arte/item-infusion-petalos-flor-ceniza-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Infusion petalos flor ceniza",
+                "gl": "Infusion petalos flor ceniza",
+                "en": "Infusion petalos flor ceniza"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-manojo-salvia-polvo.webp",
+              "mini": "proyectos/tarkor/arte/item-manojo-salvia-polvo-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Manojo salvia polvo",
+                "gl": "Manojo salvia polvo",
+                "en": "Manojo salvia polvo"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-mapa-de-las-llanuras.webp",
+              "mini": "proyectos/tarkor/arte/item-mapa-de-las-llanuras-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Mapa de las llanuras",
+                "gl": "Mapa de las llanuras",
+                "en": "Mapa de las llanuras"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-maza-orca.webp",
+              "mini": "proyectos/tarkor/arte/item-maza-orca-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Maza orca",
+                "gl": "Maza orca",
+                "en": "Maza orca"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-odre-agua.webp",
+              "mini": "proyectos/tarkor/arte/item-odre-agua-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Odre agua",
+                "gl": "Odre agua",
+                "en": "Odre agua"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-pantalones-piel.webp",
+              "mini": "proyectos/tarkor/arte/item-pantalones-piel-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Pantalones piel",
+                "gl": "Pantalones piel",
+                "en": "Pantalones piel"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-racion-viaje.webp",
+              "mini": "proyectos/tarkor/arte/item-racion-viaje-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Racion viaje",
+                "gl": "Racion viaje",
+                "en": "Racion viaje"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-saquito-arena-iman.webp",
+              "mini": "proyectos/tarkor/arte/item-saquito-arena-iman-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Saquito arena iman",
+                "gl": "Saquito arena iman",
+                "en": "Saquito arena iman"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/item-vendaje-improvisado-orcos-llanuras.webp",
+              "mini": "proyectos/tarkor/arte/item-vendaje-improvisado-orcos-llanuras-mini.webp",
+              "ancho": 1600,
+              "alto": 640,
+              "alt": {
+                "es": "Vendaje improvisado orcos llanuras",
+                "gl": "Vendaje improvisado orcos llanuras",
+                "en": "Vendaje improvisado orcos llanuras"
+              }
+            }
+          ]
+        },
+        {
+          "id": "mapas",
+          "etiqueta": {
+            "es": "Mapas de zona",
+            "gl": "Mapas de zona",
+            "en": "Zone maps"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/tarkor/arte/mapa-acantilados-partidos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-acantilados-partidos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Acantilados partidos",
+                "gl": "Acantilados partidos",
+                "en": "Acantilados partidos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-campamento-serhu.webp",
+              "mini": "proyectos/tarkor/arte/mapa-campamento-serhu-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Campamento serhu",
+                "gl": "Campamento serhu",
+                "en": "Campamento serhu"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-campamento-serhu-interior.webp",
+              "mini": "proyectos/tarkor/arte/mapa-campamento-serhu-interior-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Campamento serhu interior",
+                "gl": "Campamento serhu interior",
+                "en": "Campamento serhu interior"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-campo-yermo.webp",
+              "mini": "proyectos/tarkor/arte/mapa-campo-yermo-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Campo yermo",
+                "gl": "Campo yermo",
+                "en": "Campo yermo"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-cataratas-madre-fango.webp",
+              "mini": "proyectos/tarkor/arte/mapa-cataratas-madre-fango-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Cataratas madre fango",
+                "gl": "Cataratas madre fango",
+                "en": "Cataratas madre fango"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-cruce-de-las-cenizas.webp",
+              "mini": "proyectos/tarkor/arte/mapa-cruce-de-las-cenizas-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Cruce de las cenizas",
+                "gl": "Cruce de las cenizas",
+                "en": "Cruce de las cenizas"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-cumbre-bruma-negra.webp",
+              "mini": "proyectos/tarkor/arte/mapa-cumbre-bruma-negra-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Cumbre bruma negra",
+                "gl": "Cumbre bruma negra",
+                "en": "Cumbre bruma negra"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-desembocadura-callada.webp",
+              "mini": "proyectos/tarkor/arte/mapa-desembocadura-callada-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Desembocadura callada",
+                "gl": "Desembocadura callada",
+                "en": "Desembocadura callada"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-desfiladero-esmeralda.webp",
+              "mini": "proyectos/tarkor/arte/mapa-desfiladero-esmeralda-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Desfiladero esmeralda",
+                "gl": "Desfiladero esmeralda",
+                "en": "Desfiladero esmeralda"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-dunas-ahogadas.webp",
+              "mini": "proyectos/tarkor/arte/mapa-dunas-ahogadas-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Dunas ahogadas",
+                "gl": "Dunas ahogadas",
+                "en": "Dunas ahogadas"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-embarcadero-de-ceniza.webp",
+              "mini": "proyectos/tarkor/arte/mapa-embarcadero-de-ceniza-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Embarcadero de ceniza",
+                "gl": "Embarcadero de ceniza",
+                "en": "Embarcadero de ceniza"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-filo-de-las-brasas.webp",
+              "mini": "proyectos/tarkor/arte/mapa-filo-de-las-brasas-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Filo de las brasas",
+                "gl": "Filo de las brasas",
+                "en": "Filo de las brasas"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-fosa-horadada.webp",
+              "mini": "proyectos/tarkor/arte/mapa-fosa-horadada-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Fosa horadada",
+                "gl": "Fosa horadada",
+                "en": "Fosa horadada"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-fumarolas-negras.webp",
+              "mini": "proyectos/tarkor/arte/mapa-fumarolas-negras-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Fumarolas negras",
+                "gl": "Fumarolas negras",
+                "en": "Fumarolas negras"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-grieta-cantora.webp",
+              "mini": "proyectos/tarkor/arte/mapa-grieta-cantora-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Grieta cantora",
+                "gl": "Grieta cantora",
+                "en": "Grieta cantora"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-hondonada-del-eco.webp",
+              "mini": "proyectos/tarkor/arte/mapa-hondonada-del-eco-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Hondonada del eco",
+                "gl": "Hondonada del eco",
+                "en": "Hondonada del eco"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-jakut-ger-interior.webp",
+              "mini": "proyectos/tarkor/arte/mapa-jakut-ger-interior-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Jakut ger interior",
+                "gl": "Jakut ger interior",
+                "en": "Jakut ger interior"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-laberinto-de-canones.webp",
+              "mini": "proyectos/tarkor/arte/mapa-laberinto-de-canones-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Laberinto de canones",
+                "gl": "Laberinto de canones",
+                "en": "Laberinto de canones"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-manaderos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-manaderos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Manaderos",
+                "gl": "Manaderos",
+                "en": "Manaderos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-marismas-lodo-negro.webp",
+              "mini": "proyectos/tarkor/arte/mapa-marismas-lodo-negro-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Marismas lodo negro",
+                "gl": "Marismas lodo negro",
+                "en": "Marismas lodo negro"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-oasis-de-chudos-rojos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-oasis-de-chudos-rojos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Oasis de chudos rojos",
+                "gl": "Oasis de chudos rojos",
+                "en": "Oasis de chudos rojos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-paso-de-los-huesos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-paso-de-los-huesos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Paso de los huesos",
+                "gl": "Paso de los huesos",
+                "en": "Paso de los huesos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-pastos-de-la-deriva.webp",
+              "mini": "proyectos/tarkor/arte/mapa-pastos-de-la-deriva-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Pastos de la deriva",
+                "gl": "Pastos de la deriva",
+                "en": "Pastos de la deriva"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-pilares-rotos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-pilares-rotos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Pilares rotos",
+                "gl": "Pilares rotos",
+                "en": "Pilares rotos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-playa-de-ceniza-blanca.webp",
+              "mini": "proyectos/tarkor/arte/mapa-playa-de-ceniza-blanca-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Playa de ceniza blanca",
+                "gl": "Playa de ceniza blanca",
+                "en": "Playa de ceniza blanca"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-pozas-de-marea.webp",
+              "mini": "proyectos/tarkor/arte/mapa-pozas-de-marea-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Pozas de marea",
+                "gl": "Pozas de marea",
+                "en": "Pozas de marea"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-pozo-cauce-viejo.webp",
+              "mini": "proyectos/tarkor/arte/mapa-pozo-cauce-viejo-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Pozo cauce viejo",
+                "gl": "Pozo cauce viejo",
+                "en": "Pozo cauce viejo"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-raices-madre-fango.webp",
+              "mini": "proyectos/tarkor/arte/mapa-raices-madre-fango-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Raices madre fango",
+                "gl": "Raices madre fango",
+                "en": "Raices madre fango"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-restos-de-maktor.webp",
+              "mini": "proyectos/tarkor/arte/mapa-restos-de-maktor-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Restos de maktor",
+                "gl": "Restos de maktor",
+                "en": "Restos de maktor"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-sabana-alta-colmillar.webp",
+              "mini": "proyectos/tarkor/arte/mapa-sabana-alta-colmillar-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Sabana alta colmillar",
+                "gl": "Sabana alta colmillar",
+                "en": "Sabana alta colmillar"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-trepaderes-humededos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-trepaderes-humededos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Trepaderes humededos",
+                "gl": "Trepaderes humededos",
+                "en": "Trepaderes humededos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-tumulos-del-honor.webp",
+              "mini": "proyectos/tarkor/arte/mapa-tumulos-del-honor-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Tumulos del honor",
+                "gl": "Tumulos del honor",
+                "en": "Tumulos del honor"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-tuneles-musgosos.webp",
+              "mini": "proyectos/tarkor/arte/mapa-tuneles-musgosos-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Tuneles musgosos",
+                "gl": "Tuneles musgosos",
+                "en": "Tuneles musgosos"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-vientre-del-engano.webp",
+              "mini": "proyectos/tarkor/arte/mapa-vientre-del-engano-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Vientre del engano",
+                "gl": "Vientre del engano",
+                "en": "Vientre del engano"
+              }
+            },
+            {
+              "src": "proyectos/tarkor/arte/mapa-yegr-kegi.webp",
+              "mini": "proyectos/tarkor/arte/mapa-yegr-kegi-mini.webp",
+              "ancho": 1200,
+              "alto": 900,
+              "alt": {
+                "es": "Yegr kegi",
+                "gl": "Yegr kegi",
+                "en": "Yegr kegi"
+              }
+            }
+          ]
         }
       ]
     },

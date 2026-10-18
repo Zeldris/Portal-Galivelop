@@ -20,6 +20,12 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ Arte de Tarkor (2026-10-18): 151 imágenes del banco de World-Maker-Fantasy en
+  `public/proyectos/tarkor/arte/` (WebP 1600/720; mapas 1200/480). Carrusel con 24 seleccionadas;
+  tarjetas con imagen (campo `imagen` en los elementos de los apartados) en Mundo, Lugares,
+  Razas, Facciones, Personajes, Bestiario (33 especies), Flora y El reino; apartado «Arte del mundo»
+  con galería por pestañas (campo `grupos`, sin rotación). Descartados: versiones «verano»
+  (idénticas), quio y recursos sueltos. Borradas las imágenes antiguas sin uso.
 - ✅ Revisión semanal (2026-10-18): `tarkor-contenido-web.md` sin cambios desde la ficha rehecha hoy; Tarkor sin tocar, rama publicada en `main`.
 - ✅ Tarea «Tarkor semanal» con instrucciones nuevas (2026-10-18): sincroniza todas las secciones de la
   ficha con `tarkor-contenido-web.md` (y añade elementos nuevos), sin nombrar juegos de referencia.

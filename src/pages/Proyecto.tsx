@@ -5,6 +5,7 @@ import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
+import { ImagenAmpliable } from '../components/ImagenAmpliable';
 import { Plegable } from '../components/Plegable';
 import { buscarPersona, iniciales } from '../data/equipo';
 import type { Linea } from '../data/lineas';
@@ -235,11 +236,15 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           )}
 
           {p.apartados.map((a) => (
-            <Plegable key={a.id} {...plegable(`ap-${a.id}`, String(a.items.length))}>
+            <Plegable key={a.id} {...plegable(`ap-${a.id}`, String(a.items.length || a.grupos?.reduce((n, g) => n + g.imagenes.length, 0) || ''))}>
               {a.intro && <p className="apartado-intro">{tx(a.intro)}</p>}
+              {a.grupos && (
+                <Galeria grupos={a.grupos.map((g) => ({ id: g.id, etiqueta: tx(g.etiqueta), imagenes: g.imagenes }))} rotar={false} />
+              )}
               <ul className="apartado-items">
                 {a.items.map((item) => (
-                  <li key={tx(item.nombre)}>
+                  <li key={tx(item.nombre)} className={item.imagen ? 'con-imagen' : undefined}>
+                    {item.imagen && <ImagenAmpliable imagen={item.imagen} />}
                     <div className="apartado-cabecera">
                       <h3>{tx(item.nombre)}</h3>
                       {item.valor && <span className="apartado-valor">{item.valor}</span>}
