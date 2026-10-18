@@ -47,6 +47,8 @@ describe('proyectos', () => {
       it('sus apartados tienen ids únicos y elementos', () => {
         expect(new Set(p.apartados.map((a) => a.id)).size).toBe(p.apartados.length);
         for (const a of p.apartados) expect(a.items.length).toBeGreaterThan(0);
+        // `valor` es un dato corto igual en todos los idiomas: si fuera un objeto, React no lo puede pintar.
+        for (const a of p.apartados) for (const i of a.items) if (i.valor !== undefined) expect(typeof i.valor).toBe('string');
       });
 
       it('pertenece a líneas de trabajo que existen', () => {

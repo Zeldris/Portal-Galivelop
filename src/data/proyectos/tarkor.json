@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-12",
+  "actualizado": "2026-10-18",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -17,14 +17,14 @@
     "en": "A narrative RPG where the world moves on even when you stop."
   },
   "resumen": {
-    "es": "Juego de rol por texto con una IA local como directora de juego. Facciones que comercian, cazan y hacen la guerra, personajes que recuerdan lo que les hiciste y un reino que crece generación tras generación: el mundo sigue su curso, juegues o no.",
-    "gl": "Xogo de rol por texto cunha IA local como directora de xogo. Faccións que comercian, cazan e fan a guerra, personaxes que lembran o que lles fixeches e un reino que medra xeración tras xeración: o mundo segue o seu curso, xogues ou non.",
-    "en": "A text-based role-playing game with a local AI as game master. Factions that trade, hunt and wage war, characters who remember what you did to them and a kingdom that grows generation after generation: the world goes on, whether you play or not."
+    "es": "Juego de rol por texto con una IA local como directora de juego, en un mundo de bolsillo donde las facciones, la fauna y tu reino viven por su cuenta. Escribes lo que haces, el motor lo resuelve con tiradas visibles y un narrador lo cuenta.",
+    "gl": "Xogo de rol por texto cunha IA local como directora de xogo, nun mundo de peto onde as faccións, a fauna e o teu reino viven pola súa conta. Escribes o que fas, o motor resólveo con tiradas visibles e un narrador cóntao.",
+    "en": "A text-based role-playing game with a local AI as game master, in a pocket world where factions, wildlife and your kingdom live on their own. You write what you do, the engine resolves it with visible dice rolls and a narrator tells the story."
   },
   "fase": {
-    "es": "Alpha · hito 0.3 «Reino profundo» en curso",
-    "gl": "Alpha · fito 0.3 «Reino profundo» en curso",
-    "en": "Alpha · milestone 0.3 “Deep kingdom” in progress"
+    "es": "Alpha · hito 0.3 «Reino profundo»: ronda de pruebas jugando",
+    "gl": "Alpha · fito 0.3 «Reino profundo»: rolda de probas xogando",
+    "en": "Alpha · milestone 0.3 “Deep kingdom”: play-testing round"
   },
   "etiquetas": [
     "IA local",
@@ -285,19 +285,19 @@
   ],
   "descripcion": [
     {
-      "es": "Los juegos narrativos con IA suelen reaccionar solo a lo que escribe el jugador: el mundo es un decorado que aparece cuando lo miras. Tarkor parte de la pregunta contraria: ¿y si el mundo tuviera vida propia, cada partida contara su propia historia y jugar se pareciera a una mesa de rol con un buen máster?",
-      "gl": "Os xogos narrativos con IA adoitan reaccionar só ao que escribe o xogador: o mundo é un decorado que aparece cando o miras. Tarkor parte da pregunta contraria: e se o mundo tivese vida propia, cada partida contase a súa propia historia e xogar se parecese a unha mesa de rol cun bo máster?",
-      "en": "AI narrative games usually react only to what the player types: the world is a backdrop that appears when you look at it. Tarkor starts from the opposite question: what if the world had a life of its own, every playthrough told its own story and playing felt like a tabletop game with a great game master?"
+      "es": "Escribes lo que hace tu personaje, como en una mesa de rol. El motor decide con tiradas visibles qué ocurre y un narrador con modelos de lenguaje locales lo cuenta. Mientras tanto, el mundo sigue: las facciones comercian, cazan y hacen la guerra, los rumores viajan de región en región, los personajes recuerdan lo que les hiciste y tu reino crece generación tras generación.",
+      "gl": "Escribes o que fai a túa personaxe, coma nunha mesa de rol. O motor decide con tiradas visibles que acontece e un narrador con modelos de linguaxe locais cóntao. Mentres tanto, o mundo segue: as faccións comercian, cazan e fan a guerra, os rumores viaxan de rexión en rexión, as personaxes lembran o que lles fixeches e o teu reino medra xeración tras xeración.",
+      "en": "You write what your character does, as at a tabletop game. The engine decides what happens with visible dice rolls and a narrator built on local language models tells it. Meanwhile the world goes on: factions trade, hunt and wage war, rumours travel from region to region, characters remember what you did to them and your kingdom grows generation after generation."
     },
     {
-      "es": "La respuesta separa dos capas. Debajo, una simulación de mundo vivo: facciones con economía, población, caravanas y ejércitos que deciden según su propio estado, nunca por temporizadores. Todo lo que ocurre queda apuntado en un Libro de Sucesos con su causa, y de ahí nacen los rumores, las consecuencias que llegan días después y la memoria de los personajes. Encima, un narrador con modelos de lenguaje locales lo cuenta, pero nunca decide los números.",
-      "gl": "A resposta separa dúas capas. Debaixo, unha simulación de mundo vivo: faccións con economía, poboación, caravanas e exércitos que deciden segundo o seu propio estado, nunca por temporizadores. Todo o que acontece queda apuntado nun Libro de Sucesos coa súa causa, e de aí nacen os rumores, as consecuencias que chegan días despois e a memoria das personaxes. Enriba, un narrador con modelos de linguaxe locais cóntao, pero nunca decide os números.",
-      "en": "The answer splits it into two layers. Underneath, a living-world simulation: factions with economies, populations, caravans and armies that decide based on their own state, never on timers. Everything that happens is recorded in a Book of Events along with its cause, and from it come rumours, consequences that arrive days later and the characters’ memories. On top, a narrator built on local language models tells the story, but never decides the numbers."
+      "es": "Juegas a Gorhorn, el último superviviente del Clan Maktor, en Berig: un continente sin humanos y con menos de diez mil almas, donde cada muerte deja cicatriz. Debajo hay una simulación con reglas deterministas que se pueden probar; encima, una IA que solo narra lo que ya ha pasado. Todo lo que ocurre queda en un Libro de Sucesos con su causa, y de ahí nacen los rumores, las leyendas y las consecuencias que llegan días después.",
+      "gl": "Xogas con Gorhorn, o último sobrevivente do Clan Maktor, en Berig: un continente sen humanos e con menos de dez mil almas, onde cada morte deixa cicatriz. Debaixo hai unha simulación con regras deterministas que se poden probar; enriba, unha IA que só narra o que xa pasou. Todo o que acontece queda nun Libro de Sucesos coa súa causa, e de aí nacen os rumores, as lendas e as consecuencias que chegan días despois.",
+      "en": "You play Gorhorn, the last survivor of the Maktor Clan, in Berig: a continent with no humans and fewer than ten thousand souls, where every death leaves a scar. Underneath runs a simulation with deterministic, testable rules; on top, an AI that only narrates what has already happened. Everything is recorded in a Book of Events with its cause, and from it come rumours, legends and consequences that arrive days later."
     },
     {
-      "es": "Hoy Tarkor está en alpha, en pleno hito 0.3. Las Llanuras del Viento Rojo son la región jugable, y en ellas tu reino ya tiene súbditos con nombre que forman familia, ganado, partidas de caza y una defensa con empalizadas y torres frente a bandidos y facciones en guerra. El resto de Berig llegará región a región. El instalador de escritorio para Windows y Linux, Steam Deck incluida, ya tiene su asistente y su motor de IA; falta empaquetar el juego para la beta.",
-      "gl": "Hoxe Tarkor está en alpha, en pleno fito 0.3. As Chairas do Vento Vermello son a rexión xogable, e nelas o teu reino xa ten súbditos con nome que forman familia, gando, partidas de caza e unha defensa con empalizadas e torres fronte a bandidos e faccións en guerra. O resto de Berig chegará rexión a rexión. O instalador de escritorio para Windows e Linux, Steam Deck incluída, xa ten o seu asistente e o seu motor de IA; falta empaquetar o xogo para a beta.",
-      "en": "Today Tarkor is in alpha, in the middle of milestone 0.3. The Red Wind Plains are the playable region, and there your kingdom already has named subjects who start families, livestock, hunting parties and defences with palisades and towers against bandits and warring factions. The rest of Berig will arrive region by region. The desktop installer for Windows and Linux, Steam Deck included, already has its setup wizard and AI engine; what remains is packaging the game for the beta."
+      "es": "Hoy Tarkor está en alpha: las Llanuras del Viento Rojo son la región jugable y el hito 0.3 «Reino profundo» está en una ronda de pruebas jugando. El resto de Berig llegará región a región, y la beta traerá el instalador público para Windows y Linux, con la Steam Deck como objetivo de rendimiento.",
+      "gl": "Hoxe Tarkor está en alpha: as Chairas do Vento Vermello son a rexión xogable e o fito 0.3 «Reino profundo» está nunha rolda de probas xogando. O resto de Berig chegará rexión a rexión, e a beta traerá o instalador público para Windows e Linux, coa Steam Deck como obxectivo de rendemento.",
+      "en": "Today Tarkor is in alpha: the Red Wind Plains are the playable region and milestone 0.3 “Deep kingdom” is in a play-testing round. The rest of Berig will arrive region by region, and the beta will bring the public installer for Windows and Linux, with the Steam Deck as the performance target."
     }
   ],
   "lineas": [
@@ -336,14 +336,14 @@
     {
       "icono": "globe",
       "titulo": {
-        "es": "Un mundo de bolsillo que vive solo",
-        "gl": "Un mundo de peto que vive só",
-        "en": "A pocket world that lives on its own"
+        "es": "Un mundo que vive solo",
+        "gl": "Un mundo que vive só",
+        "en": "A world that lives on its own"
       },
       "texto": {
-        "es": "Las facciones comercian, cazan, construyen y hacen la guerra según su estado. Caravanas y viajeros recorren rutas reales por el mapa.",
-        "gl": "As faccións comercian, cazan, constrúen e fan a guerra segundo o seu estado. Caravanas e viaxeiros percorren rutas reais polo mapa.",
-        "en": "Factions trade, hunt, build and wage war according to their state. Caravans and travellers follow real routes across the map."
+        "es": "9 facciones con población, economía, expediciones, caravanas y ejércitos. Deciden según su propio estado, nunca por temporizadores.",
+        "gl": "9 faccións con poboación, economía, expedicións, caravanas e exércitos. Deciden segundo o seu propio estado, nunca por temporizadores.",
+        "en": "9 factions with population, economy, expeditions, caravans and armies. They decide based on their own state, never on timers."
       }
     },
     {
@@ -354,9 +354,9 @@
         "en": "Everything leaves a trace"
       },
       "texto": {
-        "es": "Cada suceso queda apuntado con su causa. Los rumores viajan de región en región y las consecuencias llegan días después: venganzas, refugiados, sucesiones.",
-        "gl": "Cada suceso queda apuntado coa súa causa. Os rumores viaxan de rexión en rexión e as consecuencias chegan días despois: vinganzas, refuxiados, sucesións.",
-        "en": "Every event is recorded with its cause. Rumours travel from region to region and consequences arrive days later: revenge, refugees, successions."
+        "es": "Cada suceso se apunta con su causa. De ahí nacen rumores que viajan entre regiones, leyendas y consecuencias que llegan días después: venganzas, refugiados, sucesiones.",
+        "gl": "Cada suceso apúntase coa súa causa. De aí nacen rumores que viaxan entre rexións, lendas e consecuencias que chegan días despois: vinganzas, refuxiados, sucesións.",
+        "en": "Every event is recorded with its cause. From it come rumours that travel between regions, legends and consequences that arrive days later: revenge, refugees, successions."
       }
     },
     {
@@ -367,35 +367,22 @@
         "en": "Characters who remember"
       },
       "texto": {
-        "es": "Los NPC guardan recuerdos de lo que les hiciste y te aprueban o no según sus valores. Un enemigo que sobrevive vuelve cambiado.",
-        "gl": "Os NPC gardan lembranzas do que lles fixeches e apróbante ou non segundo os seus valores. Un inimigo que sobrevive volve cambiado.",
-        "en": "NPCs keep memories of what you did to them and approve of you or not according to their values. An enemy who survives comes back changed."
+        "es": "Los NPC guardan recuerdos de lo que les hiciste y te aprueban o no según los valores de su pueblo. Un enemigo que sobrevive puede volver cambiado.",
+        "gl": "Os NPC gardan lembranzas do que lles fixeches e apróbante ou non segundo os valores do seu pobo. Un inimigo que sobrevive pode volver cambiado.",
+        "en": "NPCs keep memories of what you did to them and approve of you or not according to their people’s values. An enemy who survives may come back changed."
       }
     },
     {
       "icono": "crown",
       "titulo": {
-        "es": "Un reino que crece por generaciones",
-        "gl": "Un reino que medra por xeracións",
-        "en": "A kingdom that grows over generations"
+        "es": "Un reino por generaciones",
+        "gl": "Un reino por xeracións",
+        "en": "A kingdom over generations"
       },
       "texto": {
-        "es": "Súbditos con nombre que llegan, forman pareja, tienen hijos y trabajan en su oficio. Ganadería, comida por tareas y linajes que dejan huella.",
-        "gl": "Súbditos con nome que chegan, forman parella, teñen fillos e traballan no seu oficio. Gandaría, comida por tarefas e liñaxes que deixan pegada.",
-        "en": "Named subjects who arrive, pair up, have children and work at their trade. Livestock, food from labour and lineages that leave their mark."
-      }
-    },
-    {
-      "icono": "swords",
-      "titulo": {
-        "es": "Conflicto con consecuencias",
-        "gl": "Conflito con consecuencias",
-        "en": "Conflict with consequences"
-      },
-      "texto": {
-        "es": "Empalizadas, torres de vigía y milicia frente a campamentos de bandidos y facciones en guerra. Una guerra se calma con tributo o se responde con un contraataque.",
-        "gl": "Empalizadas, torres de vixía e milicia fronte a campamentos de bandidos e faccións en guerra. Unha guerra acálmase con tributo ou respóndese cun contraataque.",
-        "en": "Palisades, watchtowers and militia against bandit camps and warring factions. A war can be calmed with tribute or answered with a counter-attack."
+        "es": "Súbditos con nombre que forman pareja, tienen hijos y dejan linaje. Ganadería, comida por tareas, defensa frente a bandidos y guerras con tributo o contraataque.",
+        "gl": "Súbditos con nome que forman parella, teñen fillos e deixan liñaxe. Gandaría, comida por tarefas, defensa fronte a bandidos e guerras con tributo ou contraataque.",
+        "en": "Named subjects who pair up, have children and leave a lineage. Livestock, food from labour, defence against bandits and wars settled by tribute or counter-attack."
       }
     },
     {
@@ -406,9 +393,9 @@
         "en": "The engine decides, the AI narrates"
       },
       "texto": {
-        "es": "Tiradas, daño y economía los calcula el motor. El narrador solo cuenta lo que ya ha pasado, y el sistema corta lo que invente.",
-        "gl": "Tiradas, dano e economía calcúaos o motor. O narrador só conta o que xa pasou, e o sistema corta o que invente.",
-        "en": "Dice, damage and economy are computed by the engine. The narrator only tells what has already happened, and the system cuts anything it makes up."
+        "es": "Tiradas, daño, experiencia y economía son reglas deterministas que se pueden probar. El narrador solo cuenta lo que ya pasó, y el sistema corta lo que invente.",
+        "gl": "Tiradas, dano, experiencia e economía son regras deterministas que se poden probar. O narrador só conta o que xa pasou, e o sistema corta o que invente.",
+        "en": "Dice, damage, experience and economy are deterministic, testable rules. The narrator only tells what has already happened, and the system cuts anything it makes up."
       }
     },
     {
@@ -419,9 +406,22 @@
         "en": "Real tabletop rules"
       },
       "texto": {
-        "es": "Tiradas visibles, ocho clases con especialización a nivel 10, combate contra varios enemigos con iniciativa individual, caza y oficios.",
-        "gl": "Tiradas visibles, oito clases con especialización ao nivel 10, combate contra varios inimigos con iniciativa individual, caza e oficios.",
-        "en": "Visible dice rolls, eight classes with a specialisation at level 10, fights against several enemies with individual initiative, hunting and trades."
+        "es": "Un d20 visible con tiradas enfrentadas, 9 clases con 31 especializaciones, combate de grupo con iniciativa individual (hasta 4 por bando), caza, desuello y 12 oficios.",
+        "gl": "Un d20 visible con tiradas enfrontadas, 9 clases con 31 especializacións, combate de grupo con iniciativa individual (ata 4 por bando), caza, esfolado e 12 oficios.",
+        "en": "A visible d20 with opposed rolls, 9 classes with 31 specialisations, group combat with individual initiative (up to 4 per side), hunting, skinning and 12 trades."
+      }
+    },
+    {
+      "icono": "map",
+      "titulo": {
+        "es": "Exploración con niebla de guerra",
+        "gl": "Exploración con néboa de guerra",
+        "en": "Exploration with fog of war"
+      },
+      "texto": {
+        "es": "Mapa de zona por casillas donde lo que aún no conoces aparece como «???». Fauna de día y de noche, cuatro estaciones y tormentas de arena magnética.",
+        "gl": "Mapa de zona por casas onde o que aínda non coñeces aparece como «???». Fauna de día e de noite, catro estacións e tormentas de area magnética.",
+        "en": "A tile-based zone map where what you have not discovered yet shows up as “???”. Day and night wildlife, four seasons and magnetic sandstorms."
       }
     },
     {
@@ -446,20 +446,20 @@
         "en": "You write what you do"
       },
       "texto": {
-        "es": "En lenguaje natural, como en una mesa de rol: «sigo las huellas hacia el norte».",
-        "gl": "En linguaxe natural, como nunha mesa de rol: «sigo as pegadas cara ao norte».",
-        "en": "In plain language, as at a tabletop: “I follow the tracks north”."
+        "es": "En lenguaje natural, como en una mesa de rol: «sigo las huellas hacia el norte». También hay botones para moverte, cazar, hablar o huir.",
+        "gl": "En linguaxe natural, coma nunha mesa de rol: «sigo as pegadas cara ao norte». Tamén hai botóns para moverte, cazar, falar ou fuxir.",
+        "en": "In plain language, as at a tabletop: “I follow the tracks north”. There are also buttons to move, hunt, talk or flee."
       }
     },
     {
       "titulo": {
-        "es": "El motor la interpreta",
-        "gl": "O motor interprétaa",
+        "es": "El motor lo interpreta",
+        "gl": "O motor interprétao",
         "en": "The engine interprets it"
       },
       "texto": {
-        "es": "Comprueba que encaja con el mundo y, si hace falta, un modelo pequeño decide qué atributo se pone a prueba, con qué dificultad y cuánto tiempo lleva.",
-        "gl": "Comproba que encaixa co mundo e, se fai falta, un modelo pequeno decide que atributo se pon a proba, con que dificultade e canto tempo leva.",
+        "es": "Comprueba que la acción encaja con el mundo y, si hace falta, un modelo pequeño decide qué atributo se pone a prueba, con qué dificultad y cuánto tiempo lleva.",
+        "gl": "Comproba que a acción encaixa co mundo e, se fai falta, un modelo pequeno decide que atributo se pon a proba, con que dificultade e canto tempo leva.",
         "en": "It checks that the action fits the world and, if needed, a small model decides which attribute is tested, how hard it is and how long it takes."
       }
     },
@@ -470,9 +470,9 @@
         "en": "The dice are rolled"
       },
       "texto": {
-        "es": "La tirada es visible y el resultado lo fija el motor: daño, botín, experiencia, inventario.",
-        "gl": "A tirada é visible e o resultado fíxao o motor: dano, botín, experiencia, inventario.",
-        "en": "The roll is visible and the engine sets the outcome: damage, loot, experience, inventory."
+        "es": "La tirada se ve en pantalla y el motor fija el resultado: daño, botín, experiencia e inventario.",
+        "gl": "A tirada vese na pantalla e o motor fixa o resultado: dano, botín, experiencia e inventario.",
+        "en": "The roll is shown on screen and the engine sets the outcome: damage, loot, experience and inventory."
       }
     },
     {
@@ -482,8 +482,8 @@
         "en": "The narrator tells it"
       },
       "texto": {
-        "es": "Un modelo local narra lo ocurrido con el tono del mundo, y el sistema valida su texto antes de aplicarlo.",
-        "gl": "Un modelo local narra o acontecido co ton do mundo, e o sistema valida o seu texto antes de aplicalo.",
+        "es": "Un modelo local narra lo que ha pasado con el tono del mundo, y el sistema valida su texto antes de aplicarlo.",
+        "gl": "Un modelo local narra o que pasou co ton do mundo, e o sistema valida o seu texto antes de aplicalo.",
         "en": "A local model narrates what happened in the world’s tone, and the system validates its text before applying it."
       }
     },
@@ -494,9 +494,9 @@
         "en": "The world moves on"
       },
       "texto": {
-        "es": "El reloj de ficción avanza: las facciones deciden, tu reino produce y el Libro de Sucesos lo apunta todo. Lo que hiciste volverá como rumor o como consecuencia.",
-        "gl": "O reloxo de ficción avanza: as faccións deciden, o teu reino produce e o Libro de Sucesos apúntao todo. O que fixeches volverá como rumor ou como consecuencia.",
-        "en": "The fiction clock ticks on: factions decide, your kingdom produces and the Book of Events records it all. What you did will come back as a rumour or a consequence."
+        "es": "El reloj de ficción avanza: las facciones deciden, tu reino produce y el Libro de Sucesos lo apunta todo.",
+        "gl": "O reloxo de ficción avanza: as faccións deciden, o teu reino produce e o Libro de Sucesos apúntao todo.",
+        "en": "The fiction clock ticks on: factions decide, your kingdom produces and the Book of Events records it all."
       }
     }
   ],
@@ -509,9 +509,9 @@
         "en": "The world: Helek Sirik"
       },
       "intro": {
-        "es": "Un mundo épico y trágico, con dos continentes y ocho razas nacidas de las Semillas que lo crearon. Es tan pequeño que en todo Berig viven menos de diez mil almas: cada muerte deja cicatriz. El número de cada región indica el hito en el que será jugable.",
-        "gl": "Un mundo épico e tráxico, con dous continentes e oito razas nadas das Sementes que o crearon. É tan pequeno que en todo Berig viven menos de dez mil almas: cada morte deixa cicatriz. O número de cada rexión indica o fito no que será xogable.",
-        "en": "An epic, tragic world with two continents and eight races born from the Seeds that created it. It is so small that fewer than ten thousand souls live in all of Berig: every death leaves a scar. Each region’s number shows the milestone in which it becomes playable."
+        "es": "Fantasía épica y trágica con base científica: todo fenómeno tiene causa física, nada es magia sin mecanismo. Hay dos continentes; se juega en Berig, donde viven entre 8.000 y 10.000 almas y la moneda es el Goirno. La partida empieza en el año 4.010, poco después de El Detonante. El número de cada región indica el hito en el que será jugable.",
+        "gl": "Fantasía épica e tráxica con base científica: todo fenómeno ten causa física, nada é maxia sen mecanismo. Hai dous continentes; xógase en Berig, onde viven entre 8.000 e 10.000 almas e a moeda é o Goirno. A partida comeza no ano 4.010, pouco despois do Detonante. O número de cada rexión indica o fito no que será xogable.",
+        "en": "Epic, tragic fantasy with a scientific basis: every phenomenon has a physical cause, nothing is magic without a mechanism. There are two continents; you play in Berig, home to 8,000 to 10,000 souls, where the currency is the Goirno. The game starts in the year 4,010, shortly after the Trigger. Each region’s number shows the milestone in which it becomes playable."
       },
       "items": [
         {
@@ -520,12 +520,12 @@
             "gl": "Chairas do Vento Vermello",
             "en": "Red Wind Plains"
           },
-          "valor": "0.1",
           "texto": {
-            "es": "Desierto rojo de clanes orcos, tormentas de arena y fauna acorazada. Aquí empieza la partida.",
-            "gl": "Deserto vermello de clans orcos, tormentas de area e fauna acoirazada. Aquí comeza a partida.",
-            "en": "Red desert of orc clans, sandstorms and armoured wildlife. This is where the game begins."
-          }
+            "es": "Estepa roja y arcillosa, sabanas, volcanes y costa, con tormentas de arena magnética. Aquí está Karot Veku, el asentamiento del Clan Serhu con sus 12 Maestros de oficio.",
+            "gl": "Estepa vermella e arxilosa, sabanas, volcáns e costa, con tormentas de area magnética. Aquí está Karot Veku, o asentamento do Clan Serhu cos seus 12 Mestres de oficio.",
+            "en": "Red clay steppe, savannahs, volcanoes and coast, with magnetic sandstorms. Home to Karot Veku, the Serhu Clan settlement with its 12 Trade Masters."
+          },
+          "valor": "0.1"
         },
         {
           "nombre": {
@@ -533,12 +533,12 @@
             "gl": "Cristal Xeado",
             "en": "Frozen Crystal"
           },
-          "valor": "0.4",
           "texto": {
-            "es": "Tundra y picos de hielo bajo la aurora, territorio de un clan orco y de minerales que solo existen allí.",
-            "gl": "Tundra e picos de xeo baixo a aurora, territorio dun clan orco e de minerais que só existen alí.",
-            "en": "Tundra and ice peaks under the aurora, home to an orc clan and to minerals found nowhere else."
-          }
+            "es": "Tundra y picos de hielo bajo la aurora, con minerales que no existen en otra parte.",
+            "gl": "Tundra e picos de xeo baixo a aurora, con minerais que non existen noutra parte.",
+            "en": "Tundra and ice peaks under the aurora, with minerals found nowhere else."
+          },
+          "valor": "0.4"
         },
         {
           "nombre": {
@@ -546,12 +546,12 @@
             "gl": "Braña Troncal",
             "en": "Trunk Swamp"
           },
-          "valor": "0.5",
           "texto": {
-            "es": "Pantano de pilotes, turba y bruma, con sus propios oficios y maestros.",
-            "gl": "Braña de estacas, turba e brétema, cos seus propios oficios e mestres.",
-            "en": "A swamp of stilts, peat and haze, with its own trades and masters."
-          }
+            "es": "Pantano de pilotes, turba y bruma.",
+            "gl": "Pantano de pilotes, turba e brétema.",
+            "en": "A swamp of stilts, peat and haze."
+          },
+          "valor": "0.5"
         },
         {
           "nombre": {
@@ -559,12 +559,12 @@
             "gl": "Marxe Silenciosa",
             "en": "Silent Margin"
           },
-          "valor": "0.6",
           "texto": {
-            "es": "Selva de madera negra donde el sonido entra y no vuelve a salir; tierra de nabieus y faerus.",
-            "gl": "Selva de madeira negra onde o son entra e non volve saír; terra de nabieus e faerus.",
-            "en": "A black-wood forest where sound goes in and never comes back; land of the nabieus and faerus."
-          }
+            "es": "Selva de madera negra donde el sonido entra y no vuelve.",
+            "gl": "Selva de madeira negra onde o son entra e non volve.",
+            "en": "A black-wood jungle where sound goes in and never comes back."
+          },
+          "valor": "0.6"
         },
         {
           "nombre": {
@@ -572,12 +572,12 @@
             "gl": "Meseta da Orde",
             "en": "Plateau of Order"
           },
-          "valor": "0.6",
           "texto": {
-            "es": "Ciudades de los goirntes, la mejor metalurgia del mundo y una ley que no tolera nada a medias.",
-            "gl": "Cidades dos goirntes, a mellor metalurxia do mundo e unha lei que non tolera nada a medias.",
-            "en": "Cities of the goirntes, the finest metalwork in the world and a law that tolerates nothing half-done."
-          }
+            "es": "Ciudades goirntes y la mejor metalurgia del mundo.",
+            "gl": "Cidades goirntes e a mellor metalurxia do mundo.",
+            "en": "Goirnte cities and the finest metalwork in the world."
+          },
+          "valor": "0.6"
         },
         {
           "nombre": {
@@ -585,11 +585,682 @@
             "gl": "Vaelira",
             "en": "Vaelira"
           },
-          "valor": "1.0",
           "texto": {
-            "es": "El segundo continente, con otras cuatro razas: la primera gran expansión.",
-            "gl": "O segundo continente, con outras catro razas: a primeira gran expansión.",
-            "en": "The second continent, with four more races: the first major expansion."
+            "es": "El segundo continente, al otro lado de la Niebla del Estrecho, con otras cuatro razas: la primera gran expansión.",
+            "gl": "O segundo continente, ao outro lado da Néboa do Estreito, con outras catro razas: a primeira gran expansión.",
+            "en": "The second continent, beyond the Mist of the Strait, with four more races: the first major expansion."
+          },
+          "valor": "1.0"
+        }
+      ]
+    },
+    {
+      "id": "razas",
+      "titulo": {
+        "es": "Razas",
+        "gl": "Razas",
+        "en": "Races"
+      },
+      "intro": {
+        "es": "En Berig no hay humanos. Cada raza nació de una de las Semillas que crearon el mundo, salvo los orcos, nacidos de la magia salvaje del Estallido. Cada una tiene una clase exclusiva.",
+        "gl": "En Berig non hai humanos. Cada raza naceu dunha das Sementes que crearon o mundo, agás os orcos, nados da maxia salvaxe do Estalido. Cada unha ten unha clase exclusiva.",
+        "en": "There are no humans in Berig. Each race was born from one of the Seeds that created the world, except the orcs, born from the wild magic of the Blast. Each has an exclusive class."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Orcos",
+            "gl": "Orcos",
+            "en": "Orcs"
+          },
+          "texto": {
+            "es": "Cuatro clanes de honor y fuerza: no mienten, pero callan. Gobierna una Terk’ikar y dirige la guerra un Kort’ikar. No lanzan magia en crudo: la canalizan con tótems y runas. Clase exclusiva: Chamán.",
+            "gl": "Catro clans de honra e forza: non menten, pero calan. Goberna unha Terk’ikar e dirixe a guerra un Kort’ikar. Non lanzan maxia en cru: canalízana con tótems e runas. Clase exclusiva: Chamán.",
+            "en": "Four clans of honour and strength: they never lie, but they keep silent. A Terk’ikar rules and a Kort’ikar leads in war. They do not cast raw magic: they channel it through totems and runes. Exclusive class: Shaman."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Goirntes",
+            "gl": "Goirntes",
+            "en": "Goirntes"
+          },
+          "texto": {
+            "es": "Piel gris casi mineral que brilla al concentrarse, castas de función y leyes grabadas en obeliscos. Su tabú: lo inacabado. Clase exclusiva: Caballero.",
+            "gl": "Pel gris case mineral que brilla ao concentrarse, castas de función e leis gravadas en obeliscos. O seu tabú: o inacabado. Clase exclusiva: Cabaleiro.",
+            "en": "Grey, almost mineral skin that glows when they focus, castes by function and laws carved in obelisks. Their taboo: anything unfinished. Exclusive class: Knight."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Nabieus",
+            "gl": "Nabieus",
+            "en": "Nabieus"
+          },
+          "texto": {
+            "es": "Piel que atrapa la luz y voz casi inaudible; sus silencios tienen gramática. Deciden en cónclave con la palma en el suelo. Su tabú: levantar la voz. Clase exclusiva: Segador.",
+            "gl": "Pel que atrapa a luz e voz case inaudible; os seus silencios teñen gramática. Deciden en cónclave coa palma no chan. O seu tabú: erguer a voz. Clase exclusiva: Segador.",
+            "en": "Skin that traps light and an almost inaudible voice; their silences have grammar. They decide in conclave with palms on the ground. Their taboo: raising one’s voice. Exclusive class: Reaper."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Faerus",
+            "gl": "Faerus",
+            "en": "Faerus"
+          },
+          "texto": {
+            "es": "«Pelo» de hojas finas, a dos o cuatro patas, y un olfato que lee el miedo. La manada es su única institución. Su tabú: abandonar a un herido. Clase exclusiva: Druida.",
+            "gl": "«Pelo» de follas finas, a dúas ou catro patas, e un olfacto que le o medo. A manada é a súa única institución. O seu tabú: abandonar un ferido. Clase exclusiva: Druida.",
+            "en": "“Hair” of fine leaves, walking on two or four legs, and a sense of smell that reads fear. The pack is their only institution. Their taboo: abandoning the wounded. Exclusive class: Druid."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Razas de Vaelira",
+            "gl": "Razas de Vaelira",
+            "en": "Races of Vaelira"
+          },
+          "texto": {
+            "es": "Kelife, Jusaly, Kalisar e Ilvenar: piel cristalina, vegetal, de azabache y de pergamino que registra. Llegarán con la primera gran expansión.",
+            "gl": "Kelife, Jusaly, Kalisar e Ilvenar: pel cristalina, vexetal, de acibeche e de pergamiño que rexistra. Chegarán coa primeira gran expansión.",
+            "en": "Kelife, Jusaly, Kalisar and Ilvenar: crystalline, plant-like, jet-black and record-keeping parchment skin. They will arrive with the first major expansion."
+          },
+          "valor": "1.0"
+        }
+      ]
+    },
+    {
+      "id": "facciones",
+      "titulo": {
+        "es": "Facciones",
+        "gl": "Faccións",
+        "en": "Factions"
+      },
+      "intro": {
+        "es": "Nueve facciones vivas y una aniquilada, cada una con su población, sus líderes y sus rencores. Berig está además en guerra con Vaelira desde El Detonante. El número es su población.",
+        "gl": "Nove faccións vivas e unha aniquilada, cada unha coa súa poboación, os seus líderes e os seus rancores. Berig está ademais en guerra con Vaelira desde o Detonante. O número é a súa poboación.",
+        "en": "Nine living factions and one wiped out, each with its own population, leaders and grudges. Berig has also been at war with Vaelira since the Trigger. The number is their population."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Concordia de Hierro",
+            "gl": "Concordia de Ferro",
+            "en": "Iron Concord"
+          },
+          "texto": {
+            "es": "Goirntes radicales de la Meseta; arman a los Serhu contra los demás clanes y los Faerus.",
+            "gl": "Goirntes radicais da Meseta; arman os Serhu contra os demais clans e os Faerus.",
+            "en": "Radical Goirntes of the Plateau; they arm the Serhu against the other clans and the Faerus."
+          },
+          "valor": "~1.600"
+        },
+        {
+          "nombre": {
+            "es": "Clan Serhu",
+            "gl": "Clan Serhu",
+            "en": "Serhu Clan"
+          },
+          "texto": {
+            "es": "Orcos de las Llanuras, en Karot Veku. Traicionaron dos veces a los Maktor.",
+            "gl": "Orcos das Chairas, en Karot Veku. Traizoaron dúas veces os Maktor.",
+            "en": "Orcs of the Plains, at Karot Veku. They betrayed the Maktor twice."
+          },
+          "valor": "~800"
+        },
+        {
+          "nombre": {
+            "es": "Keseg Sael",
+            "gl": "Keseg Sael",
+            "en": "Keseg Sael"
+          },
+          "texto": {
+            "es": "Nabieus del Margen, con su portavoz del cónclave.",
+            "gl": "Nabieus da Marxe, co seu portavoz do cónclave.",
+            "en": "Nabieus of the Margin, with their conclave speaker."
+          },
+          "valor": "~1.500"
+        },
+        {
+          "nombre": {
+            "es": "Feg Tusha",
+            "gl": "Feg Tusha",
+            "en": "Feg Tusha"
+          },
+          "texto": {
+            "es": "Faerus del Margen, en Hashma, guiados por quien ocupa el Jakut.",
+            "gl": "Faerus da Marxe, en Hashma, guiados por quen ocupa o Jakut.",
+            "en": "Faerus of the Margin, in Hashma, led by whoever holds the Jakut."
+          },
+          "valor": "~850"
+        },
+        {
+          "nombre": {
+            "es": "Clan Goshg",
+            "gl": "Clan Goshg",
+            "en": "Goshg Clan"
+          },
+          "texto": {
+            "es": "Orcos de la Ciénaga.",
+            "gl": "Orcos da Braña.",
+            "en": "Orcs of the Swamp."
+          },
+          "valor": "~600"
+        },
+        {
+          "nombre": {
+            "es": "Keseg Prisilke",
+            "gl": "Keseg Prisilke",
+            "en": "Keseg Prisilke"
+          },
+          "texto": {
+            "es": "Nabieus de la Ciénaga, guiados por su cazadora mayor.",
+            "gl": "Nabieus da Braña, guiados pola súa cazadora maior.",
+            "en": "Nabieus of the Swamp, led by their head huntress."
+          },
+          "valor": "~500"
+        },
+        {
+          "nombre": {
+            "es": "Clan Helsig",
+            "gl": "Clan Helsig",
+            "en": "Helsig Clan"
+          },
+          "texto": {
+            "es": "Orcos del Cristal Helado.",
+            "gl": "Orcos do Cristal Xeado.",
+            "en": "Orcs of the Frozen Crystal."
+          },
+          "valor": "~400"
+        },
+        {
+          "nombre": {
+            "es": "Los del Obelisco",
+            "gl": "Os do Obelisco",
+            "en": "Those of the Obelisk"
+          },
+          "texto": {
+            "es": "Goirntes moderados de la Meseta.",
+            "gl": "Goirntes moderados da Meseta.",
+            "en": "Moderate Goirntes of the Plateau."
+          },
+          "valor": "~300"
+        },
+        {
+          "nombre": {
+            "es": "Feg Ger",
+            "gl": "Feg Ger",
+            "en": "Feg Ger"
+          },
+          "texto": {
+            "es": "Faerus del sur de las Llanuras, en Kegi. El Pacto de la Primera Pieza los une a los Maktor.",
+            "gl": "Faerus do sur das Chairas, en Kegi. O Pacto da Primeira Peza úneos aos Maktor.",
+            "en": "Faerus of the southern Plains, at Kegi. The Pact of the First Piece binds them to the Maktor."
+          },
+          "valor": "~200"
+        },
+        {
+          "nombre": {
+            "es": "Clan Maktor",
+            "gl": "Clan Maktor",
+            "en": "Maktor Clan"
+          },
+          "texto": {
+            "es": "Aniquilado en el año 4.000 mientras los Serhu miraban. Solo queda Gorhorn, que quiere restaurar su nombre.",
+            "gl": "Aniquilado no ano 4.000 mentres os Serhu miraban. Só queda Gorhorn, que quere restaurar o seu nome.",
+            "en": "Wiped out in the year 4,000 while the Serhu looked on. Only Gorhorn is left, seeking to restore its name."
+          },
+          "valor": "1"
+        }
+      ]
+    },
+    {
+      "id": "clases",
+      "titulo": {
+        "es": "Clases",
+        "gl": "Clases",
+        "en": "Classes"
+      },
+      "intro": {
+        "es": "Nueve clases y 31 especializaciones, que se eligen a nivel 10; ocho clases son jugables hoy. Siete atributos, niveles del 1 al 40, 23 tipos de arma y 245 objetos con rareza del 1 al 9. Los oficios suben de nivel por separado.",
+        "gl": "Nove clases e 31 especializacións, que se escollen ao nivel 10; oito clases son xogables hoxe. Sete atributos, niveis do 1 ao 40, 23 tipos de arma e 245 obxectos con rareza do 1 ao 9. Os oficios soben de nivel por separado.",
+        "en": "Nine classes and 31 specialisations, chosen at level 10; eight classes are playable today. Seven attributes, levels 1 to 40, 23 weapon types and 245 items with rarity tiers 1 to 9. Trades level up separately."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Guerrero",
+            "gl": "Guerreiro",
+            "en": "Warrior"
+          },
+          "texto": {
+            "es": "Cualquier raza. Cuerpo a cuerpo, para aguantar o para golpear. Berserker, Guardián, Lancero, Especialista.",
+            "gl": "Calquera raza. Corpo a corpo, para aguantar ou para golpear. Berserker, Gardián, Lanceiro, Especialista.",
+            "en": "Any race. Melee, to tank or to hit hard. Berserker, Guardian, Lancer, Specialist."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Cazador",
+            "gl": "Cazador",
+            "en": "Hunter"
+          },
+          "texto": {
+            "es": "Cualquier raza. El superviviente; el Domador controla bestias. Domador, Supervivencia, Tirador, Instintivo. Es la clase con la que empieza Gorhorn.",
+            "gl": "Calquera raza. O sobrevivente; o Domador controla bestas. Domador, Supervivencia, Tirador, Instintivo. É a clase coa que comeza Gorhorn.",
+            "en": "Any race. The survivor; the Tamer controls beasts. Tamer, Survival, Marksman, Instinctive. Gorhorn starts as one."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Arquero",
+            "gl": "Arqueiro",
+            "en": "Archer"
+          },
+          "texto": {
+            "es": "Cualquier raza. El tirador. Maestro arquero, Maestro ballestero.",
+            "gl": "Calquera raza. O tirador. Mestre arqueiro, Mestre besteiro.",
+            "en": "Any race. The marksman. Master archer, Master crossbowman."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Asesino",
+            "gl": "Asasino",
+            "en": "Assassin"
+          },
+          "texto": {
+            "es": "Cualquier raza. Precisión, veneno y movilidad. Maestro asesino, Tóxico, Danzante, Selecto.",
+            "gl": "Calquera raza. Precisión, veleno e mobilidade. Mestre asasino, Tóxico, Danzante, Selecto.",
+            "en": "Any race. Precision, poison and mobility. Master assassin, Toxic, Dancer, Elite."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Chamán",
+            "gl": "Chamán",
+            "en": "Shaman"
+          },
+          "texto": {
+            "es": "Solo orcos. Magia a través de tótems y runas. Totémico, Rúnico, Convocador, Opresor.",
+            "gl": "Só orcos. Maxia a través de tótems e runas. Totémico, Rúnico, Convocador, Opresor.",
+            "en": "Orcs only. Magic through totems and runes. Totemic, Runic, Summoner, Oppressor."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Caballero",
+            "gl": "Cabaleiro",
+            "en": "Knight"
+          },
+          "texto": {
+            "es": "Solo goirntes. Disciplina militar y defensa. Del Orden, Del Valor, Del Dolor.",
+            "gl": "Só goirntes. Disciplina militar e defensa. Da Orde, Do Valor, Da Dor.",
+            "en": "Goirntes only. Military discipline and defence. Of Order, Of Valour, Of Pain."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Segador",
+            "gl": "Segador",
+            "en": "Reaper"
+          },
+          "texto": {
+            "es": "Solo nabieus. Succión de vida, debilidades y remates. Parca, Maldito, Ilustrado, Transmutador.",
+            "gl": "Só nabieus. Succión de vida, debilidades e remates. Parca, Maldito, Ilustrado, Transmutador.",
+            "en": "Nabieus only. Life drain, weaknesses and finishing blows. Grim, Cursed, Enlightened, Transmuter."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Druida",
+            "gl": "Druida",
+            "en": "Druid"
+          },
+          "texto": {
+            "es": "Solo faerus. Se transforma en fauna del Margen; el Aullador invoca a Vaeth. Cambiaformas, Aullador, Salvaje, Adaptado.",
+            "gl": "Só faerus. Transfórmase en fauna da Marxe; o Ouveador invoca a Vaeth. Cambiaformas, Ouveador, Salvaxe, Adaptado.",
+            "en": "Faerus only. Shapeshifts into Margin wildlife; the Howler summons Vaeth. Shapeshifter, Howler, Wild, Adapted."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Mago",
+            "gl": "Mago",
+            "en": "Mage"
+          },
+          "texto": {
+            "es": "Cualquier raza salvo los orcos. Siete escuelas y doce ramas de Semilla. En desarrollo: aún no tiene habilidades jugables.",
+            "gl": "Calquera raza agás os orcos. Sete escolas e doce ramas de Semente. En desenvolvemento: aínda non ten habilidades xogables.",
+            "en": "Any race except orcs. Seven schools and twelve Seed branches. In development: no playable abilities yet."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bestiario",
+      "titulo": {
+        "es": "Bestiario",
+        "gl": "Bestiario",
+        "en": "Bestiary"
+      },
+      "intro": {
+        "es": "53 especies de fauna en 13 familias (37 en las Llanuras jugables), con cinco temperamentos, de amigable a enemigo, y grupos con población real que se agota y se repone. El número es su rango de nivel.",
+        "gl": "53 especies de fauna en 13 familias (37 nas Chairas xogables), con cinco temperamentos, de amigable a inimigo, e grupos con poboación real que se esgota e se repón. O número é o seu rango de nivel.",
+        "en": "53 wildlife species in 13 families (37 in the playable Plains), with five temperaments, from friendly to hostile, and groups with a real population that runs out and recovers. The number is their level range."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Gargantúa de Ceniza",
+            "gl": "Gargantúa de Cinza",
+            "en": "Ash Gargantua"
+          },
+          "texto": {
+            "es": "Reptil herbívoro del tamaño de una casa, con placas óseas volcánicas. Agresivo.",
+            "gl": "Réptil herbívoro do tamaño dunha casa, con placas óseas volcánicas. Agresivo.",
+            "en": "A house-sized herbivorous reptile with volcanic bony plates. Aggressive."
+          },
+          "valor": "6-12"
+        },
+        {
+          "nombre": {
+            "es": "Ferike",
+            "gl": "Ferike",
+            "en": "Ferike"
+          },
+          "texto": {
+            "es": "El mayor peligro conocido, en el borde de la selva. Agresivo.",
+            "gl": "O maior perigo coñecido, no bordo da selva. Agresivo.",
+            "en": "The greatest known danger, at the edge of the jungle. Aggressive."
+          },
+          "valor": "10-16"
+        },
+        {
+          "nombre": {
+            "es": "Kirelon Arenoso",
+            "gl": "Kirelon Areento",
+            "en": "Sand Kirelon"
+          },
+          "texto": {
+            "es": "Acecha de noche en la Hondonada del Eco. Agresivo.",
+            "gl": "Axexa de noite na Hondonada do Eco. Agresivo.",
+            "en": "Stalks the Echo Hollow at night. Aggressive."
+          },
+          "valor": "8-14"
+        },
+        {
+          "nombre": {
+            "es": "Cruzavientos",
+            "gl": "Cruzaventos",
+            "en": "Windcrosser"
+          },
+          "texto": {
+            "es": "Anida en las cumbres de los Pilares Rotos. Agresivo.",
+            "gl": "Aniña nos cumios dos Piares Rotos. Agresivo.",
+            "en": "Nests on the peaks of the Broken Pillars. Aggressive."
+          },
+          "valor": "5-10"
+        },
+        {
+          "nombre": {
+            "es": "Towrgu",
+            "gl": "Towrgu",
+            "en": "Towrgu"
+          },
+          "texto": {
+            "es": "Depredador de la Sabana Alta.",
+            "gl": "Predador da Sabana Alta.",
+            "en": "Predator of the High Savannah."
+          },
+          "valor": "4-12"
+        },
+        {
+          "nombre": {
+            "es": "Rondador de Brasas",
+            "gl": "Roldador de Brasas",
+            "en": "Ember Prowler"
+          },
+          "texto": {
+            "es": "Carroñero nocturno de ojos dorados.",
+            "gl": "Preeiro nocturno de ollos dourados.",
+            "en": "A golden-eyed night scavenger."
+          },
+          "valor": "2-6"
+        },
+        {
+          "nombre": {
+            "es": "Salamandra de Escoria",
+            "gl": "Salamántiga de Escoura",
+            "en": "Slag Salamander"
+          },
+          "texto": {
+            "es": "Escamas de escoria con vetas de lava.",
+            "gl": "Escamas de escoura con veas de lava.",
+            "en": "Slag scales veined with lava."
+          },
+          "valor": "3-4"
+        },
+        {
+          "nombre": {
+            "es": "Múrgol",
+            "gl": "Múrgol",
+            "en": "Múrgol"
+          },
+          "texto": {
+            "es": "Ganado lanudo de los clanes, de cornamenta ramificada.",
+            "gl": "Gando lanudo dos clans, de cornamenta ramificada.",
+            "en": "Woolly clan livestock with branching antlers."
+          },
+          "valor": "1-5"
+        },
+        {
+          "nombre": {
+            "es": "Cuernahoja",
+            "gl": "Cornafolla",
+            "en": "Leafhorn"
+          },
+          "texto": {
+            "es": "Manadas de gacelas de cuernos largos.",
+            "gl": "Manadas de gacelas de cornos longos.",
+            "en": "Herds of long-horned gazelles."
+          },
+          "valor": "2-5"
+        },
+        {
+          "nombre": {
+            "es": "Corredor de Cauce",
+            "gl": "Corredor de Cauce",
+            "en": "Riverbed Runner"
+          },
+          "texto": {
+            "es": "Presa sagrada de los orcos: cazar sus crías ofende.",
+            "gl": "Presa sagrada dos orcos: cazar as súas crías ofende.",
+            "en": "Sacred prey of the orcs: hunting their young gives offence."
+          },
+          "valor": "1-2"
+        },
+        {
+          "nombre": {
+            "es": "Negueo Turquesa",
+            "gl": "Negueo Turquesa",
+            "en": "Turquoise Negueo"
+          },
+          "texto": {
+            "es": "Pez carroñero con dientes de piraña.",
+            "gl": "Peixe preeiro con dentes de piraña.",
+            "en": "A scavenger fish with piranha teeth."
+          },
+          "valor": "1-2"
+        }
+      ]
+    },
+    {
+      "id": "flora",
+      "titulo": {
+        "es": "Flora y oficios",
+        "gl": "Flora e oficios",
+        "en": "Flora and trades"
+      },
+      "intro": {
+        "es": "13 familias de flora y 161 fuentes de recurso. Los 12 Maestros Serhu enseñan los oficios: herrero, curtidor, peletero, desollador, domador, carpintero, sastre, herborista, primeros auxilios, alquimista, cocinero y pescador.",
+        "gl": "13 familias de flora e 161 fontes de recurso. Os 12 Mestres Serhu ensinan os oficios: ferreiro, curtidor, peleteiro, esfolador, domador, carpinteiro, xastre, herborista, primeiros auxilios, alquimista, cociñeiro e pescador.",
+        "en": "13 plant families and 161 resource sources. The 12 Serhu Masters teach the trades: blacksmith, tanner, furrier, skinner, tamer, carpenter, tailor, herbalist, first aid, alchemist, cook and fisher."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Cardo Brújula",
+            "gl": "Cardo Compás",
+            "en": "Compass Thistle"
+          },
+          "texto": {
+            "es": "Su fibra imantada señala siempre el mismo rumbo.",
+            "gl": "A súa fibra imantada sinala sempre o mesmo rumbo.",
+            "en": "Its magnetised fibre always points the same way."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Raíz de Fuego",
+            "gl": "Raíz de Lume",
+            "en": "Fire Root"
+          },
+          "texto": {
+            "es": "Acumula calor y libera gas inflamable: explosivo e iniciador de fuego.",
+            "gl": "Acumula calor e libera gas inflamable: explosivo e iniciador de lume.",
+            "en": "Stores heat and releases flammable gas: an explosive and fire starter."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Flor de Ceniza",
+            "gl": "Flor de Cinza",
+            "en": "Ash Flower"
+          },
+          "texto": {
+            "es": "Adormece el dolor.",
+            "gl": "Adormece a dor.",
+            "en": "Numbs pain."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Salvia del Polvo",
+            "gl": "Salvia do Po",
+            "en": "Dust Sage"
+          },
+          "texto": {
+            "es": "Corta hemorragias.",
+            "gl": "Corta hemorraxias.",
+            "en": "Stops bleeding."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Telda",
+            "gl": "Telda",
+            "en": "Telda"
+          },
+          "texto": {
+            "es": "La madera básica.",
+            "gl": "A madeira básica.",
+            "en": "The basic wood."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Lucre Blanco",
+            "gl": "Lucre Branco",
+            "en": "White Lucre"
+          },
+          "texto": {
+            "es": "Madera noble de las cumbres, de tier 6.",
+            "gl": "Madeira nobre dos cumios, de tier 6.",
+            "en": "Noble wood from the peaks, tier 6."
+          }
+        }
+      ]
+    },
+    {
+      "id": "preguntas",
+      "titulo": {
+        "es": "Preguntas frecuentes",
+        "gl": "Preguntas frecuentes",
+        "en": "FAQ"
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "¿Necesita conexión a internet?",
+            "gl": "Precisa conexión a internet?",
+            "en": "Does it need an internet connection?"
+          },
+          "texto": {
+            "es": "No. Toda la IA funciona en tu equipo, sin cuentas ni telemetría.",
+            "gl": "Non. Toda a IA funciona no teu equipo, sen contas nin telemetría.",
+            "en": "No. All the AI runs on your machine, with no accounts or telemetry."
+          }
+        },
+        {
+          "nombre": {
+            "es": "¿Qué equipo hace falta?",
+            "gl": "Que equipo fai falta?",
+            "en": "What hardware do I need?"
+          },
+          "texto": {
+            "es": "El instalador mide la memoria, el procesador y la gráfica y propone un perfil, de Mínimo a Ultra. La Steam Deck es el objetivo de rendimiento.",
+            "gl": "O instalador mide a memoria, o procesador e a gráfica e propón un perfil, de Mínimo a Ultra. A Steam Deck é o obxectivo de rendemento.",
+            "en": "The installer measures memory, CPU and GPU and suggests a profile, from Minimum to Ultra. The Steam Deck is the performance target."
+          }
+        },
+        {
+          "nombre": {
+            "es": "¿En qué plataformas y en qué idioma?",
+            "gl": "En que plataformas e en que idioma?",
+            "en": "Which platforms and language?"
+          },
+          "texto": {
+            "es": "Windows y Linux, Steam Deck incluida. El juego está en español.",
+            "gl": "Windows e Linux, Steam Deck incluída. O xogo está en español.",
+            "en": "Windows and Linux, Steam Deck included. The game is in Spanish."
+          }
+        },
+        {
+          "nombre": {
+            "es": "¿Cuándo se podrá jugar?",
+            "gl": "Cando se poderá xogar?",
+            "en": "When can I play it?"
+          },
+          "texto": {
+            "es": "Está en alpha. La beta pública, con el instalador, llegará en el hito 0.8; aún sin fecha.",
+            "gl": "Está en alpha. A beta pública, co instalador, chegará no fito 0.8; aínda sen data.",
+            "en": "It is in alpha. The public beta, with the installer, will come with milestone 0.8; no date yet."
+          }
+        },
+        {
+          "nombre": {
+            "es": "¿Qué pasa si muero?",
+            "gl": "Que pasa se morro?",
+            "en": "What happens if I die?"
+          },
+          "texto": {
+            "es": "Una entidad misteriosa te devuelve a un punto de descanso. Según la dificultad hay un límite de muertes: sin límite, 4 o 2.",
+            "gl": "Unha entidade misteriosa devólvete a un punto de descanso. Segundo a dificultade hai un límite de mortes: sen límite, 4 ou 2.",
+            "en": "A mysterious entity returns you to a resting point. Depending on difficulty there is a death limit: none, 4 or 2."
+          }
+        },
+        {
+          "nombre": {
+            "es": "¿Puedo colaborar?",
+            "gl": "Podo colaborar?",
+            "en": "Can I contribute?"
+          },
+          "texto": {
+            "es": "Sí: el proyecto está abierto a colaboración. Escríbenos desde «Participa».",
+            "gl": "Si: o proxecto está aberto á colaboración. Escríbenos desde «Participa».",
+            "en": "Yes: the project is open to contributions. Write to us from “Get involved”."
           }
         }
       ]
@@ -629,8 +1300,8 @@
         "en": "Data"
       },
       "tecnologias": [
-        "PostgreSQL + pgvector",
-        "SQLite"
+        "PostgreSQL",
+        "pgvector"
       ]
     },
     {
@@ -713,9 +1384,9 @@
         "en": "Living factions"
       },
       "detalle": {
-        "es": "Hecho lo principal: Libro de Sucesos, un mundo propio por partida, motor de sucesos, rumores y leyendas. Quedan decisiones de diseño pendientes.",
-        "gl": "Feito o principal: Libro de Sucesos, un mundo propio por partida, motor de sucesos, rumores e lendas. Quedan decisións de deseño pendentes.",
-        "en": "The core is done: Book of Events, a world of its own per save, event engine, rumours and legends. Some design decisions remain."
+        "es": "Lo principal hecho: Libro de Sucesos, un mundo propio por partida, rumores y leyendas.",
+        "gl": "O principal feito: Libro de Sucesos, un mundo propio por partida, rumores e lendas.",
+        "en": "The core is done: Book of Events, a world of its own per save, rumours and legends."
       }
     },
     {
@@ -727,9 +1398,9 @@
         "en": "Deep kingdom"
       },
       "detalle": {
-        "es": "Hechos personajes que recuerdan, memoria del narrador, población por generaciones, economía, ganadería y conflicto. Falta hablar y comerciar en persona con los NPC.",
-        "gl": "Feitos personaxes que lembran, memoria do narrador, poboación por xeracións, economía, gandaría e conflito. Falta falar e comerciar en persoa cos NPC.",
-        "en": "Done: characters who remember, narrator memory, generational population, economy, livestock and conflict. Talking and trading in person with NPCs remains."
+        "es": "En curso: memoria, generaciones, economía, ganadería y conflicto hechos. Ahora, una ronda de pruebas jugando antes de seguir.",
+        "gl": "En curso: memoria, xeracións, economía, gandaría e conflito feitos. Agora, unha rolda de probas xogando antes de seguir.",
+        "en": "In progress: memory, generations, economy, livestock and conflict done. Now a play-testing round before moving on."
       }
     },
     {
@@ -862,7 +1533,7 @@
   ],
   "cifras": [
     {
-      "valor": "+3.900",
+      "valor": "+4.200",
       "etiqueta": {
         "es": "tests automáticos",
         "gl": "tests automáticos",
@@ -870,27 +1541,35 @@
       }
     },
     {
-      "valor": "8",
+      "valor": "9",
       "etiqueta": {
-        "es": "razas en el mundo",
-        "gl": "razas no mundo",
-        "en": "races in the world"
+        "es": "facciones vivas",
+        "gl": "faccións vivas",
+        "en": "living factions"
       }
     },
     {
-      "valor": "5",
+      "valor": "9 · 31",
       "etiqueta": {
-        "es": "regiones en Berig",
-        "gl": "rexións en Berig",
-        "en": "regions in Berig"
+        "es": "clases y especializaciones",
+        "gl": "clases e especializacións",
+        "en": "classes and specialisations"
       }
     },
     {
-      "valor": "26",
+      "valor": "53",
       "etiqueta": {
-        "es": "familias de fauna y flora",
-        "gl": "familias de fauna e flora",
-        "en": "wildlife and plant families"
+        "es": "especies de fauna",
+        "gl": "especies de fauna",
+        "en": "wildlife species"
+      }
+    },
+    {
+      "valor": "245",
+      "etiqueta": {
+        "es": "objetos",
+        "gl": "obxectos",
+        "en": "items"
       }
     },
     {

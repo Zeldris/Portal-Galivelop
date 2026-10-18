@@ -20,6 +20,10 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ Ficha de Tarkor rehecha (2026-10-18) desde `World-Maker-Fantasy/docs/producto/tarkor-contenido-web.md`:
+  8 pilares con cifras, turno, apartados Mundo, Razas, Facciones, Clases, Bestiario, Flora y oficios y
+  Preguntas frecuentes; cifras corregidas (9 clases · 31 especializaciones, +4.200 tests). Sin nombrar
+  juegos de referencia (decisión del usuario). Verificación de Google movida a `public/`. Publicado en `main`.
 - ✅ SEO extra (2026-10-14): cada página estática lleva su texto en HTML (lo leen buscadores e IA
   sin JavaScript; React lo sustituye al cargar), datos estructurados schema.org (Organization,
   WebSite, VideoGame para Tarkor, WebApplication para toVeriAI) y `llms.txt`. Publicado en `main`.
