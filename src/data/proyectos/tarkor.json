@@ -369,6 +369,17 @@
         "gl": "Habilidades de reino: campamento, concello e gaiolas para a fauna capturada",
         "en": "Kingdom skills: camp, town hall and cages for captured wildlife"
       }
+    },
+    {
+      "src": "proyectos/tarkor/juego-reino-gestion.webp",
+      "mini": "proyectos/tarkor/juego-reino-gestion-mini.webp",
+      "ancho": 1280,
+      "alto": 720,
+      "alt": {
+        "es": "Gestión del reino: población, felicidad, comida, bebida y tesoro, con pestañas para edificios, producción, corrales, defensa, súbditos y diplomacia",
+        "gl": "Xestión do reino: poboación, felicidade, comida, bebida e tesouro, con lapelas para edificios, produción, cortes, defensa, súbditos e diplomacia",
+        "en": "Kingdom management: population, happiness, food, drink and treasury, with tabs for buildings, production, pens, defence, subjects and diplomacy"
+      }
     }
   ],
   "descripcion": [
