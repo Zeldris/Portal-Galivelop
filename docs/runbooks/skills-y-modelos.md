@@ -13,7 +13,8 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
 
 1. **Empezar:** cargar `selector`, clasificar la tarea con su tabla y decir en una línea qué skill y qué modelo
    pide. Antes, traer `main` a la rama de trabajo (`git fetch origin main` y, si trae commits, `git merge
-   origin/main`): la tarea semanal y el usuario también suben a `main`.
+   origin/main`): la tarea semanal y el usuario también suben a `main`. `npm run check` incluye
+   `tools/qa/tests/test-ganchos.sh` (sintaxis de los ganchos y la regla de subida a `main`).
    **Puntos de `/clear`:** la compactación automática (200k) es la red; el corte limpio es un `/clear` tras subir
    a `main` o al cerrar un bloque grande. Antes de recomendarlo, todo con commit y push y la bitácora al día;
    Claude lo dice en una línea («Punto de `/clear`: todo subido (`<commit>`)») y no puede lanzarlo. Tras un

@@ -36,3 +36,15 @@ criterio.
 - Nada desborda en horizontal a 320-390 px, ni con el texto agrandado (cortes en `em` en la cabecera).
 - Los botones solo con icono llevan `aria-label`; lo que se mueve solo (la galería) se puede pausar y respeta
   «reducir movimiento».
+
+## Ganchos y scripts
+
+Retro del 2026-10-21: las dos revisiones del flujo traído de Tarkor hallaron 29 fallos en los ganchos.
+
+- La raíz del repo se saca de la ruta del script (`$(dirname "$0")`), no de `$CLAUDE_PROJECT_DIR` ni del directorio
+  actual: en la nube la sesión puede arrancar en `/home/user`.
+- Un gancho de subida comprueba el commit que se sube, no la carpeta de trabajo, y falla cerrado cuando le falta un
+  dato (un commit que no tiene, una API que no responde).
+- Lo traído de otro repo se adapta a cómo trabaja el portal: aquí se sube directo a `main`, no por PR, y la marca de
+  revisión va en el repo (`docs/registros/revisado.txt`) para que la vea la tarea semanal.
+- Un cambio en `.githooks/`, `.claude/hooks/` o `tools/qa/` lleva su caso en `tools/qa/tests/test-ganchos.sh`.

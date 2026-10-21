@@ -16,7 +16,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Flujo de trabajo traído de Tarkor (2026-10-21): solo entorno de Claude, no cambia la web.
+- (nada pendiente: `main` al día a 2026-10-21)
 
 ## Hecho
 
@@ -28,7 +28,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   con `npm run check`) y `tools/qa/revisado.sh`. No se traen `opt-ai`, `scout-updates` ni las rondas de pruebas.
   Dos rondas de `/code-review` (14 y 15 hallazgos, arreglados): el `pre-push` comprueba el commit que se sube y, en
   una subida a `main` con código, exige la marca de revisión, que va en el repo (`docs/registros/revisado.txt`)
-  para que la tarea semanal pueda publicar contenido.
+  para que la tarea semanal pueda publicar contenido. Retro aplicada: test de los ganchos en `npm run check`
+  (`tools/qa/tests/test-ganchos.sh`), regla «Ganchos y scripts» en `REVIEW.md` y fila «Traer algo de otro repo» en el
+  `selector`. `/opt-tokens`: la sesión iba a ~681k de contexto por llamada; `/clear` tras subir a `main`. Publicado en `main`.
 - ✅ Captura de la gestión del reino (2026-10-19) en «Capturas», tras las habilidades de reino.
 
 - ✅ Novedades de Tarkor al día (2026-10-18): 4 nuevas del 15 al 18 de octubre (arte, testigos y montura, edificios y mapa, ronda de pruebas). Publicado en `main`.

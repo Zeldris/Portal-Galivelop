@@ -14,6 +14,7 @@ Al empezar una tarea, clasifícala con la tabla y actúa según su fila. Flujo c
 | Fallo visible (se ve mal en móvil, un error en consola, un test rojo) | `diagnosing-bugs` | grande si no es obvio; medio (Sonnet) si la causa se ve a la primera | — |
 | Cambio de varios componentes, rutas, build o SEO (`scripts/paginas-estaticas.mjs`, `main.tsx`, `Idioma.tsx`) | — | grande | ligero para buscar usos |
 | Contenido de un proyecto (textos, imágenes, novedades) a partir de su repo | — | medio | ligero para leer el repo del proyecto y devolver un resumen |
+| Traer algo de otro repo (un flujo, skills, documentos) | `orchestrate-dealer` | grande para decidir qué se adapta | ligero (`Explore`) que lea el otro repo y devuelva un resumen con rutas; la principal no lee los archivos enteros |
 | Cambio acotado (un componente, un estilo, un texto en tres idiomas) | — | medio | — |
 | Cambio mecánico (docs, bitácora, renombrar, convertir imágenes) | — | medio o ligero | ligero |
 | Revisar lo que va a `main` | `/code-review` (de serie) y `pr` para el resumen | grande | — |

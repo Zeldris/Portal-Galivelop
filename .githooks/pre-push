@@ -13,7 +13,8 @@ for linea in "${refs[@]}"; do
   [ "$sha_local" = "$cero" ] && continue          # borrar una rama
   case "$ref_local" in refs/tags/*) continue ;; esac
   # Se comprueba el commit que se sube, no la carpeta de trabajo.
-  if [ "$comprobado" != "$sha_local" ]; then
+  # PREPUSH_SIN_CHECK=1 solo lo usa tools/qa/tests/test-ganchos.sh, para probar la regla de main sin repetir los tests.
+  if [ -z "${PREPUSH_SIN_CHECK:-}" ] && [ "$comprobado" != "$sha_local" ]; then
     echo "pre-push: npm run check de ${sha_local:0:7}…"
     if [ "$sha_local" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain)" ]; then
       dir="$raiz"
