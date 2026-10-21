@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-21 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-13), incluida la galería única con rotación automática. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos; pide bash y git). `npm run build` correcto |
 
 ## Para la próxima publicación
 
