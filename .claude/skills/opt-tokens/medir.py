@@ -57,6 +57,8 @@ def momento_desde(valor):
 def ruta_por_defecto():
     proyecto = re.sub(r'[^A-Za-z0-9]', '-', raiz_del_proyecto())
     candidatos = glob.glob(os.path.expanduser(f'~/.claude/projects/{proyecto}/*.jsonl'))
+    if not candidatos:  # en la nube la sesión arranca en /home/user: su registro va en otra carpeta
+        candidatos = glob.glob(os.path.expanduser('~/.claude/projects/*/*.jsonl'))
     if not candidatos:
         sys.exit(f'No hay sesiones en ~/.claude/projects/{proyecto}/ (usa --sesion)')
     return max(candidatos, key=os.path.getmtime)

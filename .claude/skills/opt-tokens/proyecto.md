@@ -24,4 +24,4 @@ Lo propio de este proyecto para la skill. En otro proyecto, este archivo se rees
 
 En la nube, la sesión arranca en `/home/user` y su registro queda en `~/.claude/projects/-home-user/`, no en la
 carpeta del portal: `python3 .claude/skills/opt-tokens/medir.py --sesion "$(ls -t ~/.claude/projects/-home-user/*.jsonl | head -1)"`.
-Lo mismo para `tools/qa/recuperar.py` (`--sesion`).
+`medir.py` y `tools/qa/recuperar.py` ya lo buscan solos si no hay registro en la carpeta del portal.

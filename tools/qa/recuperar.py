@@ -28,6 +28,8 @@ def ruta_por_defecto():
     # Igual que `ruta_por_defecto` de .claude/skills/opt-tokens/medir.py, con la raíz del repo como proyecto.
     proyecto = re.sub(r'[^A-Za-z0-9]', '-', os.environ.get('CLAUDE_PROJECT_DIR') or RAIZ)
     candidatos = glob.glob(os.path.expanduser(f'~/.claude/projects/{proyecto}/*.jsonl'))
+    if not candidatos:  # en la nube la sesión arranca en /home/user: su registro va en otra carpeta
+        candidatos = glob.glob(os.path.expanduser('~/.claude/projects/*/*.jsonl'))
     return max(candidatos, key=os.path.getmtime) if candidatos else None
 
 
@@ -107,7 +109,7 @@ def estado(ruta):
         for titulo in ('## Para la próxima publicación', '## Pendiente'):
             if titulo in texto:
                 trozo = texto.split(titulo, 1)[1].split('\n## ', 1)[0]
-                lineas = [l.strip() for l in trozo.splitlines() if l.strip().startswith(('-', '1', '2', '3', '4', '5'))]
+                lineas = [l.strip() for l in trozo.splitlines() if re.match(r'\s*(-|\d+\.)\s', l)]
                 print(f'- Bitácora, {titulo[3:]}: ' + (' · '.join(lineas[:5]) if lineas else 'nada'))
     # Sin el strip de `git()`: el espacio inicial de « M ruta» es parte del formato.
     cambios = subprocess.run(['git', '-C', RAIZ, 'status', '--short'], capture_output=True, text=True).stdout.splitlines()

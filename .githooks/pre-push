@@ -1,13 +1,47 @@
 #!/bin/bash
-# Traído de Tarkor (QA-13): no se sube nada que no tipa o no pasa los tests. Lo activa
-# `.claude/hooks/session-start.sh` (core.hooksPath). La web se publica desde `main`, así que esto también protege
-# la publicación. Saltarlo solo para un `WIP:` con tests en rojo: `git push --no-verify`.
-set -euo pipefail
-cd "$(git rev-parse --show-toplevel)"
-echo "pre-push: npm run check (tsc y tests)…"
-npm run --silent check > /tmp/pre-push-check.log 2>&1 || {
-  grep -E "error|FAIL|✗|Expected|Received" /tmp/pre-push-check.log | head -30
-  echo "pre-push: en rojo (detalle en /tmp/pre-push-check.log)"
-  exit 1
-}
+# Traído de Tarkor (QA-13): no se sube nada que no tipa o no pasa los tests, y a `main` (que es la web publicada)
+# no llega código sin revisar. Lo activa `.claude/hooks/session-start.sh` (core.hooksPath); a mano:
+# `git config core.hooksPath .githooks`. Saltarlo solo para un `WIP:` con tests en rojo: `git push --no-verify`.
+set -uo pipefail
+raiz="$(git rev-parse --show-toplevel)"
+cd "$raiz"
+cero=0000000000000000000000000000000000000000
+# Solo cuenta el contenido: datos de proyectos, imágenes y documentos. Todo lo demás es código.
+contenido='^(src/data/|public/|docs/|README\.md$|CLAUDE\.md$|GLOSSARY\.md$|REVIEW\.md$)'
+comprobado=""
+while read -r ref_local sha_local ref_remota sha_remota; do
+  [ "$sha_local" = "$cero" ] && continue          # borrar una rama
+  case "$ref_local" in refs/tags/*) continue ;; esac
+  # Comprobar el commit que se sube, no la carpeta de trabajo (puede tener cambios sin commit).
+  if [ "$comprobado" != "$sha_local" ]; then
+    echo "pre-push: npm run check de ${sha_local:0:7}…"
+    if [ "$sha_local" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain --untracked-files=no)" ]; then
+      dir="$raiz"
+    else
+      dir="$(mktemp -d)"; git worktree add -q --detach "$dir" "$sha_local"; ln -s "$raiz/node_modules" "$dir/node_modules"
+    fi
+    (cd "$dir" && npm run --silent check > /tmp/pre-push-check.log 2>&1)
+    ok=$?
+    [ "$dir" != "$raiz" ] && git worktree remove --force "$dir"
+    if [ $ok -ne 0 ]; then
+      grep -E "error|FAIL|✗|Expected|Received" /tmp/pre-push-check.log | head -30 || true
+      echo "pre-push: en rojo (detalle en /tmp/pre-push-check.log)"
+      exit 1
+    fi
+    comprobado="$sha_local"
+  fi
+  # A main: si trae cambios de código, tiene que estar revisado (tools/qa/revisado.sh) en ese mismo commit.
+  if [ "$ref_remota" = "refs/heads/main" ]; then
+    base="$sha_remota"; [ "$base" = "$cero" ] && base="$(git rev-list --max-parents=0 "$sha_local" | tail -1)"
+    codigo="$(git diff --name-only "$base" "$sha_local" | grep -Ev "$contenido" || true)"
+    if [ -n "$codigo" ]; then
+      marca="$(cat .claude/revision-main.sha 2>/dev/null || true)"
+      if [ "$marca" != "$sha_local" ]; then
+        echo "pre-push: esta subida a main trae código sin revisar:"; echo "$codigo" | head -10 | sed 's/^/  /'
+        echo "Antes: /code-review del diff contra origin/main, arreglos subidos y bash tools/qa/revisado.sh (CLAUDE.md)."
+        exit 1
+      fi
+    fi
+  fi
+done
 echo "pre-push: todo en verde."

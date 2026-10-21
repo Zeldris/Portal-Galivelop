@@ -118,4 +118,5 @@ estructurados schema.org, y genera `sitemap.xml`, `robots.txt` y `llms.txt`. Una
 
 Skills, selector de modelo, revisión antes de `main` y retro: [`docs/runbooks/skills-y-modelos.md`](runbooks/skills-y-modelos.md).
 Criterio de revisión: [`REVIEW.md`](../REVIEW.md). Ganchos: `.claude/settings.json` (al empezar la sesión y antes de un PR a
-`main`) y `.githooks/pre-push` (`npm run check` antes de subir; lo activa el gancho de sesión).
+`main`) y `.githooks/pre-push` (`npm run check` del commit que se sube y, en una subida a `main` con cambios de código, la marca
+de `tools/qa/revisado.sh`). Lo activa el gancho de sesión; para subir a mano: `git config core.hooksPath .githooks`.
