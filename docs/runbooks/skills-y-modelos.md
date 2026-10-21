@@ -34,7 +34,7 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
      que encuentre. Si el cambio es grande, después `/opt-tokens` y `retro`: sus propuestas se presentan al
      usuario y solo lo que confirme se aplica. Luego `bash tools/qa/revisado.sh` y el resumen con `pr`.
    - Si se trabaja con PR en vez de subir directo, el gancho `revision-antes-de-main.sh` no deja crearlo ni
-     fusionarlo sin la marca de `revisado.sh` del mismo commit, ni fusionarlo con el CI sin terminar en verde.
+     fusionarlo sin esa misma marca, ni fusionarlo con el CI sin terminar en verde.
    Al contárselo al usuario, el destino con su nombre: «en la rama de trabajo, no en `main`» o «en `main`».
 
 ## Skills

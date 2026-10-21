@@ -29,7 +29,7 @@ def ruta_por_defecto():
     proyecto = re.sub(r'[^A-Za-z0-9]', '-', os.environ.get('CLAUDE_PROJECT_DIR') or RAIZ)
     candidatos = glob.glob(os.path.expanduser(f'~/.claude/projects/{proyecto}/*.jsonl'))
     if not candidatos:  # en la nube la sesión arranca en /home/user: su registro va en otra carpeta
-        candidatos = glob.glob(os.path.expanduser('~/.claude/projects/*/*.jsonl'))
+        candidatos = glob.glob(os.path.expanduser('~/.claude/projects/-home-user/*.jsonl'))
     return max(candidatos, key=os.path.getmtime) if candidatos else None
 
 

@@ -26,9 +26,13 @@ if herramienta.endswith('create_pull_request'):
     if datos.get('base') != 'main':
         sys.exit(0)
     # La cabeza es la de la rama del PR en GitHub, no la de este checkout.
-    rama = datos.get('head', '')
-    git('fetch', '-q', 'origin', rama)
-    cabeza = git('rev-parse', f'origin/{rama}') or f'(no encuentro origin/{rama})'
+    rama = (datos.get('head') or '').split(':')[-1]   # admite «dueño:rama»
+    if rama:
+        git('fetch', '-q', 'origin', f'refs/heads/{rama}:refs/remotes/origin/{rama}')
+    cabeza = git('rev-parse', '--verify', '-q', f'origin/{rama}') if rama else ''
+    if not cabeza:
+        print(f'Bloqueado: no encuentro la rama del PR (origin/{rama}).', file=sys.stderr)
+        sys.exit(2)
 else:
     info = gh(f"{repo}/pulls/{datos.get('pullNumber')}") or {}
     try:
@@ -39,8 +43,8 @@ else:
         print('Bloqueado: no se pudo consultar el PR.', file=sys.stderr)
         sys.exit(2)
     corridas = (gh(f"{repo}/commits/{cabeza}/check-runs?per_page=100") or {}).get('check_runs')
-    estados = (gh(f"{repo}/commits/{cabeza}/status") or {}).get('statuses') or []
-    if corridas is None:
+    estados = (gh(f"{repo}/commits/{cabeza}/status") or {}).get('statuses')
+    if corridas is None or estados is None:
         pendiente = ['no se pudieron leer las comprobaciones']
     elif not corridas and not estados:
         pendiente = ['el CI aún no ha empezado']
@@ -52,12 +56,14 @@ else:
         print(f'Bloqueado: el CI del PR no está en verde ({"; ".join(pendiente)}). Espera al aviso del PR y fusiona '
               'con todo en verde.', file=sys.stderr)
         sys.exit(2)
-try:
-    marca = open(f'{raiz}/.claude/revision-main.sha').read().strip()
-except OSError:
-    marca = ''
-if marca and marca == cabeza:
-    sys.exit(0)
+# La marca viaja en el repo (docs/registros/revisado.txt): vale si es antecesora de la cabeza y desde ella solo
+# ha cambiado contenido (tools/qa/es-codigo.sh).
+marca = git('show', f'{cabeza}:docs/registros/revisado.txt').strip()
+if marca and subprocess.run(['git', '-C', raiz, 'merge-base', '--is-ancestor', marca, cabeza]).returncode == 0:
+    codigo = subprocess.run(['bash', f'{raiz}/tools/qa/es-codigo.sh', marca, cabeza], capture_output=True,
+                            text=True, cwd=raiz).stdout.strip()
+    if not codigo:
+        sys.exit(0)
 print(f'Bloqueado: antes de un PR a main, `/code-review` del diff contra main, arreglar lo que encuentre, subirlo y '
       f'marcar con `bash tools/qa/revisado.sh` (marca: {marca or "ninguna"}, commit: {cabeza}). Resumen con la skill `pr`.',
       file=sys.stderr)

@@ -4,23 +4,25 @@
 # `git config core.hooksPath .githooks`. Saltarlo solo para un `WIP:` con tests en rojo: `git push --no-verify`.
 set -uo pipefail
 raiz="$(git rev-parse --show-toplevel)"
-cd "$raiz"
+cd "$raiz" || exit 1
 cero=0000000000000000000000000000000000000000
-# Solo cuenta el contenido: datos de proyectos, imágenes y documentos. Todo lo demás es código.
-contenido='^(src/data/|public/|docs/|README\.md$|CLAUDE\.md$|GLOSSARY\.md$|REVIEW\.md$)'
+mapfile -t refs                                 # las refs, antes de lanzar nada que pueda leer la entrada
 comprobado=""
-while read -r ref_local sha_local ref_remota sha_remota; do
+for linea in "${refs[@]}"; do
+  read -r ref_local sha_local ref_remota sha_remota <<< "$linea"
   [ "$sha_local" = "$cero" ] && continue          # borrar una rama
   case "$ref_local" in refs/tags/*) continue ;; esac
-  # Comprobar el commit que se sube, no la carpeta de trabajo (puede tener cambios sin commit).
+  # Se comprueba el commit que se sube, no la carpeta de trabajo.
   if [ "$comprobado" != "$sha_local" ]; then
     echo "pre-push: npm run check de ${sha_local:0:7}…"
-    if [ "$sha_local" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain --untracked-files=no)" ]; then
+    if [ "$sha_local" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain)" ]; then
       dir="$raiz"
     else
-      dir="$(mktemp -d)"; git worktree add -q --detach "$dir" "$sha_local"; ln -s "$raiz/node_modules" "$dir/node_modules"
+      dir="$(mktemp -d)"
+      git worktree add -q --detach "$dir" "$sha_local" || { rmdir "$dir"; echo "pre-push: no pude preparar el commit ${sha_local:0:7}"; exit 1; }
+      ln -s "$raiz/node_modules" "$dir/node_modules"
     fi
-    (cd "$dir" && npm run --silent check > /tmp/pre-push-check.log 2>&1)
+    (cd "$dir" && npm run --silent check > /tmp/pre-push-check.log 2>&1 < /dev/null)
     ok=$?
     [ "$dir" != "$raiz" ] && git worktree remove --force "$dir"
     if [ $ok -ne 0 ]; then
@@ -30,13 +32,20 @@ while read -r ref_local sha_local ref_remota sha_remota; do
     fi
     comprobado="$sha_local"
   fi
-  # A main: si trae cambios de código, tiene que estar revisado (tools/qa/revisado.sh) en ese mismo commit.
+  # A main: el código que trae tiene que estar revisado. Vale la marca de docs/registros/revisado.txt (en el commit
+  # que se sube) si es antecesora y desde ella solo ha cambiado contenido.
   if [ "$ref_remota" = "refs/heads/main" ]; then
-    base="$sha_remota"; [ "$base" = "$cero" ] && base="$(git rev-list --max-parents=0 "$sha_local" | tail -1)"
-    codigo="$(git diff --name-only "$base" "$sha_local" | grep -Ev "$contenido" || true)"
+    base=""
+    if [ "$sha_remota" != "$cero" ]; then
+      git cat-file -e "$sha_remota" 2>/dev/null || git fetch -q origin main
+      git cat-file -e "$sha_remota" 2>/dev/null || { echo "pre-push: no tengo el main remoto (${sha_remota:0:7}); git fetch origin main"; exit 1; }
+      base="$sha_remota"
+    fi
+    codigo="$(bash tools/qa/es-codigo.sh "$base" "$sha_local")"
     if [ -n "$codigo" ]; then
-      marca="$(cat .claude/revision-main.sha 2>/dev/null || true)"
-      if [ "$marca" != "$sha_local" ]; then
+      marca="$(git show "$sha_local:docs/registros/revisado.txt" 2>/dev/null | tr -d '[:space:]')"
+      if [ -z "$marca" ] || ! git merge-base --is-ancestor "$marca" "$sha_local" 2>/dev/null \
+         || [ -n "$(bash tools/qa/es-codigo.sh "$marca" "$sha_local")" ]; then
         echo "pre-push: esta subida a main trae código sin revisar:"; echo "$codigo" | head -10 | sed 's/^/  /'
         echo "Antes: /code-review del diff contra origin/main, arreglos subidos y bash tools/qa/revisado.sh (CLAUDE.md)."
         exit 1

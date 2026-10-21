@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-13 |
+| **Actualizado** | 2026-10-21 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-13), incluida la galería única con rotación automática. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17. `npm run build` correcto |
@@ -26,6 +26,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   portal), runbook `docs/runbooks/skills-y-modelos.md`, `REVIEW.md`, `GLOSSARY.md`, ganchos (`.claude/settings.json`:
   sesión, compactación con `tools/qa/recuperar.py --estado` y revisión antes de un PR a `main`; `.githooks/pre-push`
   con `npm run check`) y `tools/qa/revisado.sh`. No se traen `opt-ai`, `scout-updates` ni las rondas de pruebas.
+  Dos rondas de `/code-review` (14 y 15 hallazgos, arreglados): el `pre-push` comprueba el commit que se sube y, en
+  una subida a `main` con código, exige la marca de revisión, que va en el repo (`docs/registros/revisado.txt`)
+  para que la tarea semanal pueda publicar contenido.
 - ✅ Captura de la gestión del reino (2026-10-19) en «Capturas», tras las habilidades de reino.
 
 - ✅ Novedades de Tarkor al día (2026-10-18): 4 nuevas del 15 al 18 de octubre (arte, testigos y montura, edificios y mapa, ronda de pruebas). Publicado en `main`.
