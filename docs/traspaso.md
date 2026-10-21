@@ -122,6 +122,10 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
+3. **Ficha de Galivelop-workflow, preparada y oculta** (2026-10-21) en la rama `claude/ficha-galivelop-workflow`
+   (no en la de trabajo, para que la tarea semanal no la publique): ficha en diseño, portada propia y línea de
+   trabajo nueva «Método de trabajo con IA». Se une a la rama de trabajo en la Fase 8 del plan de ese repo o
+   cuando el usuario lo confirme; antes, traer esta rama (`git merge`) y poner al día fase, hitos y novedades.
 
 ## Comprobar el estado
 
