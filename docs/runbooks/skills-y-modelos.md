@@ -7,6 +7,11 @@ pequeña: sin roadmap con hitos ni rondas de pruebas jugando.
 **`.claude/skills/`, `.claude/hooks/` y `.claude/settings.json` están versionados**; el resto de `.claude/` es
 local y está en el `.gitignore`. Si una skill no está cargada, se sigue su descripción de aquí.
 
+**Créditos:** once de las skills son de [Matt Pocock](https://github.com/mattpocock)
+([mattpocock/skills](https://github.com/mattpocock/skills), MIT); buena parte de este flujo la hemos aprendido gracias a
+su trabajo. Su mención y su licencia se conservan siempre que se copien o adapten (ver
+[`.claude/skills/README.md`](../../.claude/skills/README.md#agradecimiento)).
+
 ## El flujo de una tarea
 
 Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-with-docs` solo lo lanza el usuario.
