@@ -8,6 +8,11 @@ funciona, cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](d
 1. Lee [`docs/traspaso.md`](docs/traspaso.md): estado, pendientes y siguiente paso.
 2. `git fetch` de la rama de trabajo y comprueba que el último commit coincide con la bitácora.
 3. `npm ci && npm run check` en verde antes de tocar nada.
+4. Trae `main` a la rama (`git fetch origin main` y, si trae commits, `git merge origin/main`, nunca rebase): la
+   tarea semanal y el usuario también suben a `main`.
+5. Aplica el `selector` (qué skill y qué modelo pide la tarea) y sigue el flujo de
+   [`docs/runbooks/skills-y-modelos.md`](docs/runbooks/skills-y-modelos.md): diseño, fallos, revisión antes de
+   `main` ([`REVIEW.md`](REVIEW.md)), retro. Vocabulario: [`GLOSSARY.md`](GLOSSARY.md).
 
 ## Reglas
 
@@ -16,6 +21,10 @@ funciona, cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](d
 - Commits en español: primera línea con qué cambia, cuerpo con qué queda y estado de los tests,
   última línea `Siguiente: <paso>`.
 - A `main` solo se sube con confirmación expresa (y `main` es lo que se publica).
+- Antes de subir código a `main` (no solo contenido): `/code-review` del diff contra `origin/main` y sus
+  arreglos; si el cambio es grande, también `/opt-tokens` y `/retro` (paso 5 del runbook).
+- Tras una llamada interrumpida o rechazada, `git status` y `git diff` antes de repetirla: el cambio puede
+  haberse guardado o subido ya.
 - **Publicación semanal** (decisión y consentimiento del usuario, 2026-10-13): la web se actualiza
   los **domingos por la noche**. Una tarea programada de Claude («Tarkor semanal») revisa el avance
   de Tarkor, actualiza su ficha y sube la rama de trabajo a `main` **sin pedir confirmación** (el

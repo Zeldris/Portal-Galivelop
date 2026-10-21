@@ -3,3 +3,9 @@ dist
 *.local
 .DS_Store
 *.tsbuildinfo
+
+# Claude Code: se versionan las skills, los ganchos y los ajustes; el resto de .claude/ es local.
+.claude/*
+!.claude/skills/
+!.claude/hooks/
+!.claude/settings.json

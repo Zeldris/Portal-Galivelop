@@ -113,3 +113,9 @@ Tras `vite build`, [`scripts/paginas-estaticas.mjs`](../scripts/paginas-estatica
 HTML por ruta e idioma (con `hreflang`) (portada, cada proyecto, equipo y participa) con su título, descripción, canónica y
 vista previa, con su texto en HTML para buscadores sin JavaScript y datos
 estructurados schema.org, y genera `sitemap.xml`, `robots.txt` y `llms.txt`. Una ruta nueva se añade en ese script.
+
+## Flujo de trabajo con Claude
+
+Skills, selector de modelo, revisión antes de `main` y retro: [`docs/runbooks/skills-y-modelos.md`](runbooks/skills-y-modelos.md).
+Criterio de revisión: [`REVIEW.md`](../REVIEW.md). Ganchos: `.claude/settings.json` (al empezar la sesión y antes de un PR a
+`main`) y `.githooks/pre-push` (`npm run check` antes de subir; lo activa el gancho de sesión).
