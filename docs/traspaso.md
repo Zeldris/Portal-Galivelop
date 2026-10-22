@@ -18,7 +18,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- (nada pendiente: `main` al día a 2026-10-22)
+- `og:image` y `twitter:image` de cada ficha con `?v=<actualizado>` (la vista previa de Discord se quedaba con el
+  diagrama antiguo). Es código: pide `/code-review` y marca antes de `main`.
 
 ## Hecho
 
