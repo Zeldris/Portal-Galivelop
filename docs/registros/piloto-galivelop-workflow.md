@@ -30,7 +30,11 @@ tres fases antes de `main`.
    `LICENSE-mattpocock-skills`, `.github/workflows/pages.yml`, `REVIEW.md` y `GLOSSARY.md` (ampliados a mano).
 4. `*.gw-nuevo`: 14 skills y `pre-push` aceptados (sustitución autorizada); `CLAUDE.md` y `comprobar.yml` fusionados
    a mano, **pendientes de revisar con el usuario**.
-5. `doctor.py`: sin FAIL (un WARN de sesión, ver F11). `npm run check` en verde. `pre-commit --rango` sobre toda la
+5. **Paso 6 (protección):** commit de prueba en `src/main.tsx` y `git push --dry-run origin HEAD:main`: rechazado
+   por el `pre-push` («code changed after the review mark (897b1ff)»). El push real lo paró antes el modo automático
+   (F15); `main` sigue en `e3f3058` y el commit de prueba se quitó con `git reset --hard HEAD~1` sin subirlo. La
+   subida normal de la rama pasó el `pre-push` («pushing 1 commit(s)», check en verde).
+6. `doctor.py`: sin FAIL (un WARN de sesión, ver F11). `npm run check` en verde. `pre-commit --rango` sobre toda la
    historia del portal: sin falsos positivos.
 
 ## Fricciones y fallos
@@ -80,6 +84,12 @@ tres fases antes de `main`.
   `.claude/gw/schema/` y `.claude/gw.json` (sin el esquema, `config.py` falla y todos los casos dan 1 por el motivo
   equivocado: el test tiene que comprobar el mensaje, no solo el código de salida).
 
+- **F15 · El paso 6 pide un push real a la rama protegida.** El modo automático de Claude Code lo bloquea como
+  «Production Deploy»; `git push --dry-run` ejecuta igual el `pre-push` y prueba lo mismo sin riesgo de subir nada
+  si el gancho fallara.
+- **F16 · El mensaje esperado del paso 6 no es el de un proyecto existente.** `aplicar.md` espera «the pushed
+  commit has no review mark», pero el portal ya tenía marca y el rechazo dice «code changed after the review mark».
+
 ## For Galivelop-workflow
 
 - **F1:** en `aplicar.md` §0 y en `problemas.md`, cómo leer el flujo en la nube sin que pase a ser la carpeta de
@@ -106,5 +116,7 @@ tres fases antes de `main`.
 - **F12:** con `REVIEW.md` o `GLOSSARY.md` ya existentes, `aplicar.py` imprime el `diff --no-index` con la plantilla
   (sin escribir nada) para que el agente pase lo que falte.
 - **F13:** quitar `.claude/hooks/` de la plantilla de `CLAUDE.md` (o decir `.claude/gw/scripts/`).
+- **F15/F16:** el paso 6 de `aplicar.md` con `git push --dry-run origin HEAD:<protectedBranch>` (el gancho corre
+  igual y no hay riesgo de subir si fallara), y los dos mensajes posibles: sin marca o con código después de la marca.
 - **F14:** un `es-codigo.sh --explicar <ruta>...` (código o contenido y qué regex casa) y un ejemplo de test de
   `content` en `docs/es/patrones.md` para proyectos con tareas que publican solas.

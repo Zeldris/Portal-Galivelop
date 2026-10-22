@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
-| **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL. Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
+| **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL y prueba del paso 6 hecha (subida a `main` sin marca rechazada, con `--dry-run`). Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
 | **Siguiente paso** | Revisar con el usuario las propuestas `*.gw-nuevo` ya fusionadas (`CLAUDE.md` y `.github/workflows/comprobar.yml`) y `requireRetro: false`; luego las tres fases antes de `main` (`/code-review` del diff contra `origin/main`, `/opt-tokens` + `/retro`, `revisado.sh`) y, con su confirmación, merge a la rama de trabajo y subida a `main` |
 | **En `main`** | Publicado hasta la retro del flujo de Tarkor (2026-10-21). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal; pide bash, git y python3). `npm run build` correcto |
@@ -32,8 +32,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   `tools/qa/{es-codigo.sh,revisado.sh,recuperar.py}` (ahora en `.claude/gw/scripts/`); `opt-tokens/proyecto.md` →
   `.claude/gw/opt-tokens.md`. `CLAUDE.md` = `@AGENTS.md` + lo de Claude; las reglas del portal, en «Reglas del
   proyecto» de `AGENTS.md`. `comprobar.yml` del flujo + Node y build. `.gitignore` deja versionar `.claude/gw*` y
-  quita `__pycache__` del repo. `test-ganchos.sh` reescrito para el gancho del flujo. Falta: revisar con el usuario,
-  las tres fases y la subida.
+  quita `__pycache__` del repo. `test-ganchos.sh` reescrito para el gancho del flujo. Paso 6: `git push --dry-run origin HEAD:main`
+  con un commit de código de prueba, rechazado por el `pre-push`; commit quitado sin subir. Falta: revisar con el
+  usuario, las tres fases y la subida.
 - ✅ Créditos a Matt Pocock (2026-10-21, petición del usuario): mención al final de cada una de sus 11 skills,
   apartado «Agradecimiento» en `.claude/skills/README.md` (hemos aprendido esta forma de trabajar gracias a su
   trabajo) y nota en el runbook. Cambia `.claude/`, así que lleva `/code-review` y marca de revisado.
