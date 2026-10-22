@@ -37,7 +37,8 @@ for (const idioma of IDIOMAS) {
       ruta: `proyectos/${p.slug}`,
       titulo: `${p.nombre} · ${p.lema[idioma].replace(/\.$/, '')} · Galivelop`,
       descripcion: p.resumen[idioma],
-      imagen: `${SITIO}/${p.portada.src}`,
+      // ?v= cambia con la ficha: las redes (Discord, X…) guardan la vista previa por la dirección de la imagen.
+      imagen: `${SITIO}/${p.portada.src}?v=${p.actualizado}`,
       fecha: p.actualizado,
       proyecto: p,
     });
