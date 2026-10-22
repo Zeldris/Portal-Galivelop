@@ -124,6 +124,15 @@ Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7
 - **F23 · El gancho de PR corre en cada llamada a Bash** (`^Bash$`), también con `pushToProtected: direct`, y bloquea si
   `python3` falla aunque el comando no tenga que ver con un PR.
 
+## Fase 2: `/opt-tokens` y `/retro` (2026-10-22)
+
+- **F24 · La `retro` del flujo no la puede lanzar Claude.** Trae `disable-model-invocation: true`, pero `AGENTS.md`
+  (fase 2), el `selector` («Claude runs it») y `revisado.sh` con `requireRetro` cuentan con que la lance el agente. La
+  del portal sí se podía. Hay que pedir al usuario que escriba `/retro`.
+- **F25 · Aplicar el flujo cuesta leerlo entero en la sesión principal.** `/opt-tokens` de esta sesión: 62 llamadas,
+  171k de contexto medio, techo 237k (la ventana de 200k no se aplicó, F11); lo que más arrastra son `aplicar.md`,
+  `config.md`, las plantillas y los scripts leídos para decidir (~30k tokens que viajan en cada llamada posterior).
+
 ## For Galivelop-workflow
 
 - **F1:** en `aplicar.md` §0 y en `problemas.md`, cómo leer el flujo en la nube sin que pase a ser la carpeta de
@@ -162,5 +171,10 @@ Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7
 - **F22:** `session-start.sh` reinstala también si falta la carpeta de dependencias (`node_modules`, `.venv`).
 - **F23:** el gancho `PreToolUse` en `Bash` solo con `pushToProtected: pr`, o salir antes de lanzar `python3` cuando el
   comando no nombra `gh`.
+- **F24:** quitar `disable-model-invocation` de la `retro` del flujo (o cambiar `AGENTS.md`, el `selector` y
+  `revisado.sh` para que digan que la lanza el usuario).
+- **F25:** un resumen para agentes de lo que hay que decidir al aplicar a un proyecto existente (una página con las
+  claves, los valores por defecto que suelen chocar y qué archivos del proyecto se tocan), o `aplicar.py --explain`,
+  para no leer guía, config, plantillas y scripts enteros.
 - **F14:** un `es-codigo.sh --explicar <ruta>...` (código o contenido y qué regex casa) y un ejemplo de test de
   `content` en `docs/es/patrones.md` para proyectos con tareas que publican solas.
