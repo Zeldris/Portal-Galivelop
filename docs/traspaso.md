@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
 | **Tarea en curso** | Ninguna |
-| **Siguiente paso** | Esperar el aviso del usuario: cuando el repo de Galivelop-workflow acabe de actualizarse, actualizar otra vez la ficha de Galivelop-workflow (`CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` ya está en el entorno, comprobado el 2026-10-22) |
+| **Siguiente paso** | Esperar el aviso del usuario: cuando el repo de Galivelop-workflow acabe de actualizarse, planear con él y actualizar la ficha de Galivelop-workflow con la info completa (ver «Pendiente: ficha de Galivelop-workflow») (`CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` ya está en el entorno, comprobado el 2026-10-22) |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -19,6 +19,20 @@ La web se publica los domingos por la noche con la tarea programada «Tarkor sem
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - (nada pendiente: `main` al día a 2026-10-22)
+
+## Pendiente: ficha de Galivelop-workflow
+
+Revisión del 2026-10-22 (petición del usuario); se planea y se hace cuando el repo del flujo acabe de actualizarse:
+
+- Las skills propias del usuario no salen en la web (solo las doce de Matt Pocock): `selector`,
+  `orchestrate-dealer`, `opt-tokens`, `gw-init`, `gw-update`, `gw-doctor` y las opcionales `opt-ai` y
+  `scout-updates`. Idea: apartado «Skills» con una tarjeta por skill y una que agrupe las de Matt Pocock.
+- Falta una explicación breve del flujo de una tarea (los `pasos` cuentan el ciclo de vida del flujo, no la tarea).
+  Idea: apartado de 5-6 pasos de una línea.
+- El diagrama (`public/proyectos/galivelop-workflow/portada.webp`, sin fuente en el repo) no muestra `opt-tokens`,
+  las tres fases antes de `main`, los ganchos ni `gw-init`/`gw-update`/`gw-doctor`. Idea: rehacerlo en SVG
+  versionado y exportar a webp.
+- Los textos de las skills salen del repo del flujo (solo lectura). Todo en es/gl/en; sin cambiar rutas.
 
 ## Hecho
 
