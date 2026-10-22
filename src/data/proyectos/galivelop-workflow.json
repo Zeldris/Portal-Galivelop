@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · fase 5 de 10",
-    "gl": "En desenvolvemento · fase 5 de 10",
-    "en": "In development · phase 5 of 10"
+    "es": "En desarrollo · fase 5: piloto",
+    "gl": "En desenvolvemento · fase 5: piloto",
+    "en": "In development · phase 5: pilot"
   },
   "etiquetas": [
     "Claude Code",
@@ -61,9 +61,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, portando las skills. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, portando as skills. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, porting the skills. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la primera versión (0.1.0) probándose en este mismo portal. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa primeira versión (0.1.0) probándose neste mesmo portal. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with the first version (0.1.0) being tried out on this very portal. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
     }
   ],
   "lineas": [
@@ -280,9 +280,9 @@
     {
       "version": "6",
       "nombre": {
-        "es": "Pilotos en otros proyectos del taller",
-        "gl": "Pilotos noutros proxectos do taller",
-        "en": "Pilots on other workshop projects"
+        "es": "Pilotos en otros tres proyectos del taller",
+        "gl": "Pilotos noutros tres proxectos do taller",
+        "en": "Pilots on three more workshop projects"
       },
       "estado": "pendiente"
     },
@@ -343,8 +343,8 @@
     {
       "fecha": "2026-10-21",
       "texto": {
-        "es": "Fases 0 y 1 cerradas: verificación, esqueleto del repositorio y comprobaciones automáticas en Linux y macOS. Empieza el porte de las skills.",
-        "gl": "Fases 0 e 1 pechadas: verificación, esqueleto do repositorio e comprobacións automáticas en Linux e macOS. Comeza o porte das skills.",
+        "es": "Fases 0 y 1 cerradas: verificación, esqueleto del repositorio y comprobaciones automáticas en Linux y macOS. Empieza la adaptación de las skills.",
+        "gl": "Fases 0 e 1 pechadas: verificación, esqueleto do repositorio e comprobacións automáticas en Linux e macOS. Comeza a adaptación das skills.",
         "en": "Phases 0 and 1 done: verification, repository skeleton and automated checks on Linux and macOS. Porting the skills begins."
       }
     },
@@ -424,7 +424,7 @@
       "titulo": {
         "es": "Público solo tras el rodaje",
         "gl": "Público só tras a rodaxe",
-        "en": "Public only after break-in"
+        "en": "Public only after the run-in"
       },
       "texto": {
         "es": "Se abre cuando haya funcionado al menos cuatro semanas en tres proyectos de tecnologías distintas.",

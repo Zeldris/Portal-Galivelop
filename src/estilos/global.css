@@ -2447,6 +2447,13 @@ button {
   gap: 16px;
 }
 
+/* Cinco líneas de trabajo: en escritorio, todas en una fila (con 250 px de mínimo la quinta quedaba sola). */
+@media (min-width: 72em) {
+  .lineas {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
 .lineas > li {
   display: flex;
   flex-direction: column;

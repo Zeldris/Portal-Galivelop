@@ -45,7 +45,7 @@ for (const idioma of IDIOMAS) {
 }
 
 const ORG = { '@type': 'Organization', name: 'Galivelop', url: `${SITIO}/`, logo: `${SITIO}/marca/gv-logo-512.png`, email: 'alvarogarciagrana@gmail.com', sameAs: ['https://discord.gg/8vyjW3VrN', 'https://github.com/Zeldris'] };
-const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication' };
+const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication', 'galivelop-workflow': 'SoftwareApplication' };
 
 /** Texto de la página en HTML simple (lo sustituye React al cargar; lo leen buscadores sin JS). */
 function cuerpo(pg) {
@@ -71,6 +71,7 @@ function datos(pg, url) {
     keywords: p.etiquetas.join(', '),
     ...(TIPO[p.slug] === 'WebApplication' ? { applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web' } : {}),
     ...(TIPO[p.slug] === 'VideoGame' ? { genre: 'RPG', gamePlatform: ['Windows', 'Linux', 'Steam Deck'] } : {}),
+    ...(TIPO[p.slug] === 'SoftwareApplication' ? { applicationCategory: 'DeveloperApplication', operatingSystem: ['Linux', 'macOS', 'Windows'] } : {}),
     ...(p.enlaces[0] ? { sameAs: p.enlaces.map((e) => e.url) } : {}),
     creator: ORG,
   };

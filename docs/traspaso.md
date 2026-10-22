@@ -7,9 +7,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | | |
 |---|---|
 | **Actualizado** | 2026-10-22 |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
-| **Tarea en curso** | Ninguna. Piloto de Galivelop-workflow v0.1.0 cerrado y publicado (fricciones para el flujo en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md)) |
-| **Siguiente paso** | Publicar la ficha de Galivelop-workflow (en curso, rama de trabajo). El usuario añade `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en el entorno de la nube |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Esta sesión: `claude/publicar-ficha-workflow` (sale de ella; vuelve por fast-forward o merge al publicar) |
+| **Tarea en curso** | Publicar la ficha de Galivelop-workflow (rama `claude/publicar-ficha-workflow`): ficha al día y `/code-review` contra `main` hecho (11 hallazgos arreglados); falta revisar los arreglos, marca, merge a la rama de trabajo y subida a `main` (confirmada por el usuario) |
+| **Siguiente paso** | `revisado.sh` en `claude/publicar-ficha-workflow`, fast-forward de la rama de trabajo y `git push origin HEAD:main`. El usuario añade `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en el entorno de la nube |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluidos el piloto de Galivelop-workflow y los créditos a Matt Pocock. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -18,17 +18,21 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- (nada pendiente: `main` al día a 2026-10-22)
+- Ficha de Galivelop-workflow (en `claude/publicar-ficha-workflow`, aún no en la rama de trabajo): ficha, línea «Método de
+  trabajo con IA» (con rejilla de cinco en escritorio), Álvaro en el equipo del proyecto, schema.org `SoftwareApplication`
+  y fila en el README.
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
-- ✅ Ficha de **Galivelop-workflow** publicada (2026-10-22, petición del usuario): traída de
+- 🚧 Ficha de **Galivelop-workflow** (2026-10-22, petición del usuario; se publica hoy): traída de
   `claude/ficha-galivelop-workflow`, al día con el flujo (fases 0-4 hechas, fase 5 = piloto en este portal, en curso;
   dos novedades del 2026-10-22; doce skills de Matt Pocock), línea de trabajo «Método de trabajo con IA» y fila en el
-  README. Capturas en escritorio y móvil sin desborde (es y gl). `/code-review` y marca antes de `main`.
+  README. Capturas en escritorio y móvil sin desborde (es y gl). `/code-review` contra `main`: 11 hallazgos
+  arreglados (descripción y fase coherentes con la hoja de ruta, Álvaro en el equipo, schema.org, rejilla de líneas,
+  «run-in», «adaptación» en gallego, README sin datos copiados). Falta: marca y subida.
 - ✅ Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
   (es; bitácora `docs/traspaso.md`; `npm ci`; `npm run check`; `main` directo; marca en `docs/registros/revisado.txt`;
   `content` acotado en la fase 1: `^docs/`, `^src/data/`, imágenes de `^public/`, los cinco `.md` de la raíz y los
