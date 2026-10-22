@@ -117,6 +117,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   usuario, salvo la tarea semanal (abajo). Diferencia con el flujo: `/opt-tokens` y `/retro` (fase 2) solo cuando el
   cambio de código es grande (componentes, estilos, scripts de build, ganchos); un cambio pequeño de código pasa
   por la fase 1 y la 3. Por eso `requireRetro` está a `false` en `.claude/gw.json`.
+  La `retro` del flujo no la puede lanzar el agente (F24 del piloto): al cerrar la fase 1 de un cambio grande,
+  pídele al usuario que escriba `/retro` (se quita esta línea cuando el flujo lo resuelva).
 - **Publicación semanal** (decisión y consentimiento del usuario, 2026-10-13): la web se actualiza los **domingos por
   la noche**. La tarea programada «Tarkor semanal» revisa el avance de Tarkor, actualiza su ficha y sube la rama de
   trabajo (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea).

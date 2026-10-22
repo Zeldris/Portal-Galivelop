@@ -16,6 +16,18 @@ for f in "$raiz"/.claude/gw/scripts/*.py "$raiz"/.claude/skills/*/scripts/*.py; 
 done
 python3 "$raiz/.claude/gw/scripts/config.py" --root "$raiz" validate > /dev/null \
   || { echo "test-ganchos: .claude/gw.json no es válido"; fallos=1; }
+# `content` y `reviewMark` fijados aquí (retro 2026-10-22): el pre-push los lee del commit que se sube, así que un
+# commit que los amplía se saltaría la marca (F18 del piloto). Cambiarlos obliga a tocar este test, que es código.
+content_fijado='["^docs/", "^src/data/", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]'
+content_real="$(python3 -c 'import json, sys; print(json.dumps(json.load(open(sys.argv[1]))["content"]))' "$raiz/.claude/gw.json" 2>/dev/null)"
+[ "$content_real" = "$content_fijado" ] || { echo "test-ganchos: content de .claude/gw.json cambió; si es a propósito, cámbialo también aquí: $content_real"; fallos=1; }
+marca_real="$(python3 "$raiz/.claude/gw/scripts/config.py" --root "$raiz" get reviewMark 2>/dev/null)"
+[ "$marca_real" = "docs/registros/revisado.txt" ] || { echo "test-ganchos: reviewMark cambió ($marca_real)"; fallos=1; }
+# Lo versionado del flujo no puede estar en el .gitignore (F3 del piloto: .claude/* ocultaba .claude/gw.json).
+for f in .claude/gw.json .claude/gw/scripts/config.py .claude/gw/schema/gw.schema.json .claude/skills/retro/SKILL.md \
+         .claude/settings.json .githooks/pre-push .githooks/pre-commit; do
+  git -C "$raiz" check-ignore -q --no-index "$f" && { echo "test-ganchos: $f está en el .gitignore y no se subiría"; fallos=1; }
+done
 tmp="$(mktemp -d)" || exit 1
 trap 'rm -rf "$tmp"' EXIT
 export GIT_CONFIG_GLOBAL=/dev/null GIT_CONFIG_NOSYSTEM=1
@@ -60,6 +72,7 @@ export PATH="$tmp/r/bin:$PATH"
 sha() { git rev-parse "$1^{commit}"; }
 caso() {  # caso <nombre> <sale 0|1> <sha local> <sha remoto> [<motivo esperado en la salida>]
   local salida r
+  if [ "$2" = 1 ] && [ -z "${5:-}" ]; then echo "test-ganchos: «$1» espera un rechazo sin decir el motivo"; fallos=1; return; fi
   salida="$(echo "refs/heads/x $3 refs/heads/main $4" | bash .githooks/pre-push origin 2>&1)"; r=$?
   [ "$r" = "$2" ] || { echo "test-ganchos: «$1» salió $r y se esperaba $2"; echo "$salida" | tail -n 3; fallos=1; return; }
   if [ -n "${5:-}" ] && ! printf '%s\n' "$salida" | grep -q -- "$5"; then
@@ -91,7 +104,8 @@ cp "$raiz/.githooks/pre-commit" .githooks/
 git checkout -q semana 2>/dev/null
 echo '{"novedades": [{"fecha": "2026-10-25", "texto": {"es": "Arte nuevo", "gl": "Arte novo", "en": "New art"}}]}' > src/data/a.json
 echo img2 > public/otra.webp; echo "- Revisión semanal: 1 novedad." >> docs/d.md; git add -A
-CLAUDECODE=1 bash .githooks/pre-commit > /dev/null 2>&1 || { echo "test-ganchos: el pre-commit rechaza un commit de la tarea semanal"; fallos=1; }
+salida="$(CLAUDECODE=1 bash .githooks/pre-commit 2>&1)" \
+  || { echo "test-ganchos: el pre-commit rechaza un commit de la tarea semanal:"; echo "$salida" | tail -n 5; fallos=1; }
 git reset -q --hard
 [ $fallos = 0 ] && echo "test-ganchos: ganchos en verde (sintaxis, config, content, pre-commit y regla de main)."
 exit $fallos

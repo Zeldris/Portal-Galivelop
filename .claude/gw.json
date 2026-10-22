@@ -36,8 +36,8 @@
         "subagentModel": "light"
       },
       {
-        "case": "Contenido de un proyecto (textos, imágenes, novedades) a partir de su repo, que solo se lee",
-        "skill": "none",
+        "case": "Contenido de un proyecto (textos, imágenes, novedades) a partir de su repo, que solo se lee (un subagente ligero lo lee y resume con rutas)",
+        "skill": "orchestrate-dealer",
         "sessionModel": "medium",
         "subagentModel": "light"
       },

@@ -11,8 +11,8 @@ existentes».
 
 1. `aplicar.py --init --language es --log docs/traspaso.md --install "npm ci" --check-command "npm run check"
    --protected-branch main --push-to-protected direct --review-mark docs/registros/revisado.txt` con `content`
-   = `^docs/`, `\.md$`, `^\.claude/skills/`, `^src/data/`, `^public/` (los dos últimos, para que la tarea semanal
-   publique sola). A mano en `.claude/gw.json`: `visibleLanguages`, `selector.cases`, `designReferences`,
+   = `^docs/`, `\.md$`, `^\.claude/skills/`, `^src/data/`, `^public/` (acotado en la fase 1, abajo; `src/data/` y
+   las imágenes de `public/`, para que la tarea semanal publique sola). A mano en `.claude/gw.json`: `visibleLanguages`, `selector.cases`, `designReferences`,
    `requireRetro: false`.
 2. Copia anterior del flujo (traída de Tarkor el 2026-10-21) sustituida, tras comprobar que el flujo hace lo mismo:
    | Antes | Ahora | Comprobación |
@@ -126,6 +126,11 @@ Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7
 
 ## Fase 2: `/opt-tokens` y `/retro` (2026-10-22)
 
+- **F26 · El prompt de una tarea programada solo se cambia desde su conversación.** La retro propuso limitar la tarea
+  semanal a rutas de contenido; `update_trigger` desde la sesión de trabajo lo rechaza («only from the conversation
+  the routine posts into»). Las tareas que forman parte del flujo de un proyecto (publicar sola) no se pueden
+  mantener desde la sesión que aplica el flujo.
+
 - **F24 · La `retro` del flujo no la puede lanzar Claude.** Trae `disable-model-invocation: true`, pero `AGENTS.md`
   (fase 2), el `selector` («Claude runs it») y `revisado.sh` con `requireRetro` cuentan con que la lance el agente. La
   del portal sí se podía. Hay que pedir al usuario que escriba `/retro`.
@@ -180,5 +185,8 @@ nube (la pone el usuario), «Hecho» de la bitácora limitado a 10 entradas, y F
 - **F25:** un resumen para agentes de lo que hay que decidir al aplicar a un proyecto existente (una página con las
   claves, los valores por defecto que suelen chocar y qué archivos del proyecto se tocan), o `aplicar.py --explain`,
   para no leer guía, config, plantillas y scripts enteros.
+- **F26:** en `docs/es/patrones.md` (tareas programadas que suben a la rama protegida): guardar su prompt en el repo
+  (p. ej. `docs/runbooks/tarea-<nombre>.md`) y que el prompt real solo diga «sigue ese archivo», para que se cambie
+  con un commit revisado y no desde la conversación de la tarea.
 - **F14:** un `es-codigo.sh --explicar <ruta>...` (código o contenido y qué regex casa) y un ejemplo de test de
   `content` en `docs/es/patrones.md` para proyectos con tareas que publican solas.

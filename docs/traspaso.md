@@ -9,9 +9,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
 | **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL y prueba del paso 6 hecha (subida a `main` sin marca rechazada, con `--dry-run`). Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
-| **Siguiente paso** | Fase 1 hecha (10 hallazgos: 5 arreglados aquí, 5 del flujo en el registro del piloto). Fase 2: `/opt-tokens` aplicado (el usuario aceptó las 3 propuestas); `/retro` en curso (la pidió el usuario). Luego `/opt-tokens` + `/retro` (cambio grande), `revisado.sh`; luego, con confirmación del usuario, merge a la rama de trabajo y subida a `main` |
+| **Siguiente paso** | Fases 1 y 2 hechas (code review arreglado; `/opt-tokens` y `/retro` aplicados, el usuario aprobó todo). Fase 3: `/code-review` de los commits de la fase 2, `revisado.sh` y, con confirmación del usuario, merge a la rama de trabajo y subida a `main` |
 | **En `main`** | Publicado hasta la retro del flujo de Tarkor (2026-10-21). https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido y el `pre-commit`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
@@ -28,7 +28,8 @@ opt-tokens, 2026-10-22).
 
 - 🚧 Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
   (es; bitácora `docs/traspaso.md`; `npm ci`; `npm run check`; `main` directo; marca en `docs/registros/revisado.txt`;
-  `content` = `^docs/`, `\.md$`, `^\.claude/skills/`, `^src/data/`, `^public/`), más `visibleLanguages` es/gl/en,
+  `content` acotado en la fase 1: `^docs/`, `^src/data/`, imágenes de `^public/`, los cinco `.md` de la raíz y los
+  `.md` de las skills), más `visibleLanguages` es/gl/en,
   filas del portal en `selector.cases`, `designReferences` y `requireRetro: false` (regla del portal: retro solo en
   cambios grandes). Sustituidos por los del flujo: las 14 skills (las notas «En este repositorio» pasan a `AGENTS.md`),
   `.githooks/pre-push` (+ `pre-commit` nuevo), los ganchos de `.claude/settings.json` (`.claude/hooks/` borrado) y
@@ -81,6 +82,10 @@ Datos fijos que salían en entradas antiguas:
 
 ## Pendiente
 
+0. **Prompt de «Tarkor semanal»** (retro del piloto, propuesta 2, aprobada): limitarla a `src/data/`, `public/` y
+   `docs/`. Solo se cambia desde la conversación de la tarea; el texto está en
+   `docs/registros/retro-2026-10-22-piloto-galivelop-workflow.md`. Hasta entonces, el `pre-push` ya rechaza código sin
+   revisar en `main`.
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.

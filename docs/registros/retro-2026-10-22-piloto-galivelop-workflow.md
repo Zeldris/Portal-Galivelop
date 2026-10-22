@@ -4,7 +4,9 @@
 desde `84b27d1` hasta `7dfa637` (5 commits del piloto; 72 archivos, +4681/−987 contra `origin/main`) y la bitácora.
 Fricciones de detalle: [`piloto-galivelop-workflow.md`](piloto-galivelop-workflow.md) (F1-F25); aquí no se repiten.
 
-**Estado:** pendiente de decisión del usuario
+**Estado:** aplicadas todas las propuestas (decisión del usuario, 2026-10-22): 1 y 3-8 en el portal; la 2 (prompt de la tarea
+programada) solo se puede cambiar desde la conversación de la tarea: pendiente de que el usuario la pida allí, con el
+texto de abajo y las del flujo en «For Galivelop-workflow», abajo, para `gw-harvest`.
 
 ## Qué fue bien
 
@@ -78,6 +80,15 @@ Por gravedad.
    entrada 🚧 del piloto en «Hecho» y el punto 1 de «Qué se hizo» citan el `content` de antes de la fase 1
    (`\.md$`, `^\.claude/skills/`, `^public/`); poner el actual o remitir a «Fase 1». La celda «Siguiente paso» repite
    `/opt-tokens` y `/retro` dos veces. (La sesión principal está editando la bitácora: lo aplica ella.)
+
+## Texto para la propuesta 2 (pendiente)
+
+Añadir al principio de «Reglas:» del prompt de «Tarkor semanal», en la sesión «Tarkor semanal (portal)»:
+
+> SOLO cambias archivos de src/data/, public/ (imágenes) y docs/; si para hacer la revisión hiciera falta tocar
+> cualquier otra ruta (src/ fuera de src/data/, .claude/, .githooks/, scripts, package.json…), no la toques ni
+> publiques ese cambio: apúntalo en «Para la próxima publicación» de docs/traspaso.md y dilo en la respuesta (el
+> pre-push rechaza en main el código sin revisar).
 
 ## For Galivelop-workflow
 
