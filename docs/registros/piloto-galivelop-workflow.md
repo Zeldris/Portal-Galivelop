@@ -133,6 +133,10 @@ Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7
   171k de contexto medio, techo 237k (la ventana de 200k no se aplicó, F11); lo que más arrastra son `aplicar.md`,
   `config.md`, las plantillas y los scripts leídos para decidir (~30k tokens que viajan en cada llamada posterior).
 
+Propuestas de `/opt-tokens` aceptadas por el usuario (2026-10-22): la variable de compactación en el entorno de la
+nube (la pone el usuario), «Hecho» de la bitácora limitado a 10 entradas, y F25 para el flujo. Apuntadas en
+`.claude/gw/opt-tokens.md`.
+
 ## For Galivelop-workflow
 
 - **F1:** en `aplicar.md` §0 y en `problemas.md`, cómo leer el flujo en la nube sin que pase a ser la carpeta de
