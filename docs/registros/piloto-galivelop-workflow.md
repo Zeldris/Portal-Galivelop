@@ -4,8 +4,8 @@
 existente). Guía seguida: `Galivelop-workflow/docs/es/aplicar.md` (rama `main`, `603ca36`), apartado «Proyectos
 existentes».
 
-**Estado:** flujo aplicado y comprobado en la rama; pendiente de revisar con el usuario las fusiones a mano y de las
-tres fases antes de `main`.
+**Estado:** flujo aplicado y comprobado en la rama; fusiones a mano aprobadas por el usuario (2026-10-22: `CLAUDE.md`,
+`comprobar.yml` y `requireRetro: false`); pendientes las tres fases antes de `main`.
 
 ## Qué se hizo
 
@@ -29,7 +29,7 @@ tres fases antes de `main`.
    del portal, con 3 casos de la tarea semanal), `tools/generar-marca.mjs`, `.claude/skills/README.md`,
    `LICENSE-mattpocock-skills`, `.github/workflows/pages.yml`, `REVIEW.md` y `GLOSSARY.md` (ampliados a mano).
 4. `*.gw-nuevo`: 14 skills y `pre-push` aceptados (sustitución autorizada); `CLAUDE.md` y `comprobar.yml` fusionados
-   a mano, **pendientes de revisar con el usuario**.
+   a mano y aprobados por el usuario (2026-10-22).
 5. **Paso 6 (protección):** commit de prueba en `src/main.tsx` y `git push --dry-run origin HEAD:main`: rechazado
    por el `pre-push` («code changed after the review mark (897b1ff)»). El push real lo paró antes el modo automático
    (F15); `main` sigue en `e3f3058` y el commit de prueba se quitó con `git reset --hard HEAD~1` sin subirlo. La
