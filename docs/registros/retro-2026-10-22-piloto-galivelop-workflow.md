@@ -5,8 +5,7 @@ desde `84b27d1` hasta `7dfa637` (5 commits del piloto; 72 archivos, +4681/−987
 Fricciones de detalle: [`piloto-galivelop-workflow.md`](piloto-galivelop-workflow.md) (F1-F26); aquí no se repiten.
 
 **Estado:** aplicadas todas las propuestas (decisión del usuario, 2026-10-22): 1 y 3-8 en el portal; la 2 (prompt de la tarea
-programada) solo se puede cambiar desde la conversación de la tarea: pendiente de que el usuario la pida allí, con el
-texto de abajo y las del flujo en «For Galivelop-workflow», abajo, para `gw-harvest`.
+programada) se aplicó desde la conversación de la tarea (2026-10-22 11:47), con el texto de abajo y las del flujo en «For Galivelop-workflow», abajo, para `gw-harvest`.
 
 ## Qué fue bien
 
@@ -82,7 +81,7 @@ Por gravedad.
    (`\.md$`, `^\.claude/skills/`, `^public/`); poner el actual o remitir a «Fase 1». La celda «Siguiente paso» repite
    `/opt-tokens` y `/retro` dos veces. (La sesión principal está editando la bitácora: lo aplica ella.)
 
-## Texto para la propuesta 2 (pendiente)
+## Texto de la propuesta 2 (aplicado)
 
 Añadir al principio de «Reglas:» del prompt de «Tarkor semanal», en la sesión «Tarkor semanal (portal)»:
 

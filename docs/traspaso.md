@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
 | **Tarea en curso** | Ninguna. Piloto de Galivelop-workflow v0.1.0 cerrado y publicado (fricciones para el flujo en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md)) |
-| **Siguiente paso** | Que el usuario añada el límite de rutas al prompt de «Tarkor semanal» desde su conversación (Pendiente 0) y la variable de compactación en el entorno de la nube; la próxima revisión semanal ya corre con el flujo nuevo |
+| **Siguiente paso** | Publicar la ficha de Galivelop-workflow (en curso, rama de trabajo). El usuario añade `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en el entorno de la nube |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluidos el piloto de Galivelop-workflow y los créditos a Matt Pocock. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -84,10 +84,6 @@ Datos fijos que salían en entradas antiguas:
 
 - «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
   repo; pendiente desde el SEO del 2026-10-14).
-0. **Prompt de «Tarkor semanal»** (retro del piloto, propuesta 2, aprobada): limitarla a `src/data/`, `public/` y
-   `docs/`. Solo se cambia desde la conversación de la tarea; el texto está en
-   `docs/registros/retro-2026-10-22-piloto-galivelop-workflow.md`. Hasta entonces, el `pre-push` ya rechaza código sin
-   revisar en `main`.
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
