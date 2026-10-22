@@ -8,7 +8,12 @@ const SITIO = 'https://zeldris.github.io/Portal-Galivelop';
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
 const imagenDe = (src) => `${SITIO}/${src}?v=${createHash('sha1').update(readFileSync(`public/${src}`)).digest('hex').slice(0, 8)}`;
 const IMAGEN = imagenDe('marca/galivelop-portal.jpg');
+const conImagen = (html, url) => html
+  .replace(/(property="og:image" content=")[^"]*/, `$1${url}`)
+  .replace(/(name="twitter:image" content=")[^"]*/, `$1${url}`);
 const base = readFileSync('dist/index.html', 'utf8');
+// El 404 es copia de la portada sin páginas estáticas: solo necesita la imagen versionada.
+writeFileSync('dist/404.html', conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 const proyectos = readdirSync('src/data/proyectos')
@@ -35,12 +40,13 @@ for (const idioma of IDIOMAS) {
     paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN });
   }
   for (const p of proyectos) {
+    p.imagen ??= imagenDe(p.portada.src);
     paginas.push({
       idioma,
       ruta: `proyectos/${p.slug}`,
       titulo: `${p.nombre} · ${p.lema[idioma].replace(/\.$/, '')} · Galivelop`,
       descripcion: p.resumen[idioma],
-      imagen: imagenDe(p.portada.src),
+      imagen: p.imagen,
       fecha: p.actualizado,
       proyecto: p,
     });
@@ -95,13 +101,13 @@ for (const pg of paginas) {
   for (const k of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
     html = html.replace(new RegExp(`(${k} content=")[^"]*`), `$1${esc(pg.descripcion)}`);
   }
-  html = html
-    .replace(/(property="og:image" content=")[^"]*/, `$1${pg.imagen}`)
-    .replace(/(name="twitter:image" content=")[^"]*/, `$1${pg.imagen}`);
+  html = conImagen(html, pg.imagen);
   if (pg.proyecto) {
+    const alt = esc(pg.proyecto.portada.alt[pg.idioma]);
     html = html
       .replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, '')
-      .replace(/(property="og:image:alt" content=")[^"]*/, `$1${esc(pg.proyecto.portada.alt[pg.idioma])}`);
+      .replace(/(property="og:image:alt" content=")[^"]*/, `$1${alt}`)
+      .replace(/(name="twitter:image:alt" content=")[^"]*/, `$1${alt}`);
   }
   html = html
     .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)

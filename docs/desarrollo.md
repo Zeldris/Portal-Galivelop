@@ -32,7 +32,9 @@ pública (web, descarga…) cuando la hay.
 - Tipografías: Sora (títulos) e Inter (texto), servidas desde el propio sitio.
 - Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630, captura de la
   portada), declarada en `index.html` con URL absolutas (X y otras redes no aceptan rutas relativas).
-  Si cambia la portada o la dirección del portal, rehacer la captura y actualizar esas URL.
+  Si cambia la portada, rehacer la captura y nada más: `scripts/paginas-estaticas.mjs` pone en cada página la
+  imagen que toca (la de la ficha en las fichas) con `?v=<hash de la imagen>`, para que las redes (Discord, X…)
+  no se queden con la vista previa antigua. Si cambia la dirección del portal, actualizar esas URL y `SITIO`.
 - `node tools/generar-marca.mjs` regenera `gv-logo-512.png` y la imagen para redes
   (`galivelop-social.png`) a partir del SVG (instrucciones en el propio archivo).
 

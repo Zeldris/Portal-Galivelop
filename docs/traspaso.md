@@ -20,7 +20,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Vista previa en redes: `og:image`, `twitter:image` y el `image` del JSON-LD llevan `?v=<hash de la imagen>` en
   todas las páginas (Discord se quedaba con el diagrama antiguo), y `og:image:alt` de cada ficha es el `alt` de su
-  portada (antes, el de la portada general). Es código: `/code-review` hecho, falta marca y subida.
+  portada (antes, el de la portada general); también `twitter:image:alt` y el `404.html`. Publicado en `main`.
   **Pendiente de comprobar a mano (usuario, Discord):** un mensaje nuevo con el enlace de la ficha muestra el
   diagrama nuevo; el mensaje ya enviado no se actualiza.
 
