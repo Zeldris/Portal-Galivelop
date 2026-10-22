@@ -18,17 +18,18 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Vista previa en redes: `og:image`, `twitter:image` y el `image` del JSON-LD llevan `?v=<hash de la imagen>` en
-  todas las páginas (Discord se quedaba con el diagrama antiguo), y `og:image:alt` de cada ficha es el `alt` de su
-  portada (antes, el de la portada general); también `twitter:image:alt` y el `404.html`. Publicado en `main`.
-  **Pendiente de comprobar a mano (usuario, Discord):** un mensaje nuevo con el enlace de la ficha muestra el
-  diagrama nuevo; el mensaje ya enviado no se actualiza.
+- Vista previa en redes con `?v=` (ver «Hecho»): revisada y con marca, falta subirla a `main`.
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
+- ✅ Vista previa en redes (2026-10-22): `og:image`, `twitter:image` y el JSON-LD llevan `?v=<hash de la imagen>`
+  en todas las páginas y el 404 (Discord se quedaba con el diagrama antiguo de Galivelop-workflow); `og:image:alt` y
+  `twitter:image:alt` de cada ficha, con el `alt` de su portada. Dos `/code-review` y marca. **Falta subirlo a `main`**
+  (espera la confirmación del usuario). **Pendiente de comprobar a mano (usuario, Discord):** un mensaje nuevo con el enlace
+  muestra el diagrama nuevo; el mensaje ya enviado no se actualiza.
 - ✅ Ficha de **Galivelop-workflow** a la v0.2.0 (2026-10-22, petición del usuario: destacar lo propio y dar su
   sitio a lo de Matt Pocock), en `ccr-47f8fddd-o5ek6p`: apartados «Skills propias» (las 9, con sus scripts),
   «Ganchos y scripts propios» (8 piezas) y «Skills de Matt Pocock» (las 12, MIT; `pr` con el crédito a Dex Horthy);
@@ -85,8 +86,6 @@ opt-tokens, 2026-10-22).
   (idénticas), quio y recursos sueltos. Borradas las imágenes antiguas sin uso. Pies de foto de «Arte del mundo» traducidos.
   Publicado en `main` (confirmación del usuario).
 - ✅ Revisión semanal (2026-10-18): `tarkor-contenido-web.md` sin cambios desde la ficha rehecha hoy; Tarkor sin tocar, rama publicada en `main`.
-- ✅ Tarea «Tarkor semanal» con instrucciones nuevas (2026-10-18): sincroniza todas las secciones de la
-  ficha con `tarkor-contenido-web.md` (y añade elementos nuevos), sin nombrar juegos de referencia.
 
 Datos fijos que salían en entradas antiguas:
 
