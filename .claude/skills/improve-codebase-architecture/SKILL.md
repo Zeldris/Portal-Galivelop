@@ -2,10 +2,13 @@
 name: improve-codebase-architecture
 description: Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
 disable-model-invocation: true
+license: MIT (see LICENSE-mattpocock-skills)
+metadata:
+  version: "0.1.0"
+  source: "mattpocock/skills@5beb35b"
 ---
 
-> **En este repositorio (portal Galivelop):** el informe y las propuestas, en español; cada candidata
-> aceptada entra en la bitácora (`docs/traspaso.md`, «Pendiente»).
+> Original skill by Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills), MIT).
 
 # Improve Codebase Architecture
 
@@ -72,7 +75,3 @@ Side effects happen inline as decisions crystallize; call the Skill tool with "d
 - **Sharpening a fuzzy term during the conversation?** Update `GLOSSARY.md` right there.
 - **User rejects the candidate with a load-bearing reason?** Offer an ADR, framed as: _"Want me to record this as an ADR so future architecture reviews don't re-suggest it?"_ Only offer when the reason would actually be needed by a future explorer to avoid re-suggesting the same thing; skip ephemeral reasons ("not worth it right now") and self-evident ones.
 - **Want to explore alternative interfaces for the deepened module?** Call the Skill tool with "codebase-design" and use its design-it-twice parallel sub-agent pattern.
-
----
-
-By [Matt Pocock](https://github.com/mattpocock), from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, see `../LICENSE-mattpocock-skills`). We learned to work this way thanks to his work.

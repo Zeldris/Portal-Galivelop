@@ -1,12 +1,13 @@
 ---
 name: prototype
 description: Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
+license: MIT (see LICENSE-mattpocock-skills)
+metadata:
+  version: "0.1.0"
+  source: "mattpocock/skills@5beb35b"
 ---
 
-> **En este repositorio (portal Galivelop):** en español. Se usa sobre todo la rama de UI: variantes de
-> una sección, de la galería o de una tarjeta para que el usuario elija. Si la sesión tiene la herramienta
-> `Artifact`, publícalo y pon el enlace (el usuario lo abre desde el móvil); si no, envíaselo con
-> `SendUserFile`. Las variantes se borran al elegir; el veredicto va a la bitácora.
+> Original skill by Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills), MIT).
 
 # Prototype
 
@@ -30,6 +31,14 @@ The two branches produce very different artifacts, so getting this wrong wastes 
 5. **Surface the state.** After every action (logic) or on every variant switch (UI), print or render the full relevant state so the user can see what changed.
 6. **Capture it when done.** Fold any validated decision into the real code, then capture the prototype itself as a **primary source**: commit it to a throwaway branch, out of main, and leave a context pointer to that branch on the implementation issue. Capture the answer too (the verdict and the question it settled) in the issue or a commit. The main branch keeps only the validated decision.
 
----
+## In a Galivelop-workflow project
 
-By [Matt Pocock](https://github.com/mattpocock), from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, see `../LICENSE-mattpocock-skills`). We learned to work this way thanks to his work.
+This section is the only change to the upstream skill.
+
+- **Deliver where the user can open it**, often from a phone: if the agent has a tool to publish a page (for example
+  Claude's Artifact tool), publish the prototype and put the link in the round; otherwise send the file (for example
+  with a send-file tool) or give the one command that starts it.
+- Keep a logic prototype in a throwaway folder or branch as the upstream text says; delete UI variants once one is
+  chosen.
+- Write the verdict (question, answer, what was decided) to the project's plan or to the log (`log` in
+  `.claude/gw.json`) in the same commit.

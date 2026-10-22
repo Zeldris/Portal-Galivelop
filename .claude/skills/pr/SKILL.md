@@ -1,7 +1,10 @@
 ---
 name: pr
 description: "Use when writing a PR body."
+license: MIT (see LICENSE-mattpocock-skills)
 metadata:
+  version: "0.1.0"
+  source: "mattpocock/skills@5beb35b"
   credits:
     skill: show-me
     author: Dex Horthy
@@ -9,12 +12,7 @@ metadata:
     url: "https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md"
 ---
 
-> **En este repositorio (portal Galivelop):** se usa para la descripción de un PR a `main` o, si se sube
-> directo, para el resumen que se le da al usuario. Todo en español. **Evidencia:** los números de `npm run check`
-> (tsc y vitest), el build (páginas estáticas generadas) y, para cambios visibles, una captura antes/después en
-> escritorio y móvil. **Peligro:** `main` es la web publicada: un cambio de rutas, del script de páginas estáticas o
-> de `index.html` afecta al SEO y a los enlaces ya compartidos. Al final, las líneas de atribución que pida la
-> sesión.
+> Original skill by Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills), MIT).
 
 Use this template for writing the PR body:
 
@@ -175,7 +173,3 @@ Execution-based evidence is A-tier. Test results, console output. Show the exact
 Describe whether it's a one-way or two-way door. You can walk back through two-way doors, but not one-way doors. A PR that is cheap to roll back is lower risk. Changes that involve destructive actions or hard-to-reverse decisions are one-way doors.
 
 The blast radius is the potential impact or scope of the changes introduced by this PR. Consider all possibilities. Examples are layout shift, breakages for consumers, mobile responsiveness, etc.
-
----
-
-By [Matt Pocock](https://github.com/mattpocock), from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, see `../LICENSE-mattpocock-skills`). We learned to work this way thanks to his work.

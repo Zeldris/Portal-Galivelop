@@ -1,19 +1,13 @@
 ---
 name: grilling
 description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
+license: MIT (see LICENSE-mattpocock-skills)
+metadata:
+  version: "0.1.0"
+  source: "mattpocock/skills@5beb35b"
 ---
 
-> **En este repositorio (portal Galivelop):** las rondas, en español. Lo decidido se apunta en la
-> bitácora (`docs/traspaso.md`) o en la guía (`docs/desarrollo.md`), como pide `CLAUDE.md`. Se respeta el
-> mensaje de la marca (taller, sin ánimo de vender) y las reglas de `CLAUDE.md` (tres idiomas, sin enlaces al
-> código de los proyectos, sin nombrar juegos de referencia de Tarkor).
->
-> **Referencias:** para decisiones de contenido o de diseño de la web, busca cómo lo resuelven portfolios de
-> estudios y talleres independientes y páginas de producto de juegos (con `WebSearch`), y cita de dónde sale cada
-> recomendación.
->
-> **Prototipo:** si una pregunta pide ver variantes de una pantalla, llama a la herramienta Skill con `prototype`
-> y pon el enlace en esa pregunta.
+> Original skill by Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills), MIT).
 
 Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.
 
@@ -33,12 +27,18 @@ Format a round like so:
 ➡️ <your recommended answer>
 ```
 
+Word each question so "yes" accepts your recommended answer.
+
 Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a _later_ round, not this one.
 
 Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
 
 The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.
 
----
+## In a Galivelop-workflow project
 
-By [Matt Pocock](https://github.com/mattpocock), from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, see `../LICENSE-mattpocock-skills`). We learned to work this way thanks to his work.
+This section is the only change to the upstream skill.
+
+- If `.claude/gw.json` lists `designReferences` (products, frameworks or standards the project measures itself
+  against), contrast each recommended answer with them and say which reference it comes from. Without the key, skip
+  this.

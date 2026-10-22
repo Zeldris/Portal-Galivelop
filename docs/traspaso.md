@@ -6,20 +6,34 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-21 |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-13), incluida la galería única con rotación automática. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos; pide bash y git). `npm run build` correcto |
+| **Actualizado** | 2026-10-22 |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
+| **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL. Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
+| **Siguiente paso** | Revisar con el usuario las propuestas `*.gw-nuevo` ya fusionadas (`CLAUDE.md` y `.github/workflows/comprobar.yml`) y `requireRetro: false`; luego las tres fases antes de `main` (`/code-review` del diff contra `origin/main`, `/opt-tokens` + `/retro`, `revisado.sh`) y, con su confirmación, merge a la rama de trabajo y subida a `main` |
+| **En `main`** | Publicado hasta la retro del flujo de Tarkor (2026-10-21). https://zeldris.github.io/Portal-Galivelop/ |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal; pide bash, git y python3). `npm run build` correcto |
 
 ## Para la próxima publicación
 
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- (nada pendiente: `main` al día a 2026-10-21)
+- Créditos a Matt Pocock (`897b1ff`, con su marca `5771884`): en la rama de trabajo, aún no en `main` (la bitácora decía
+  «nada pendiente», pero esos commits no estaban publicados; se publican el domingo con la tarea semanal).
 
 ## Hecho
 
+- 🚧 Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
+  (es; bitácora `docs/traspaso.md`; `npm ci`; `npm run check`; `main` directo; marca en `docs/registros/revisado.txt`;
+  `content` = `^docs/`, `\.md$`, `^\.claude/skills/`, `^src/data/`, `^public/`), más `visibleLanguages` es/gl/en,
+  filas del portal en `selector.cases`, `designReferences` y `requireRetro: false` (regla del portal: retro solo en
+  cambios grandes). Sustituidos por los del flujo: las 14 skills (las notas «En este repositorio» pasan a `AGENTS.md`),
+  `.githooks/pre-push` (+ `pre-commit` nuevo), los ganchos de `.claude/settings.json` (`.claude/hooks/` borrado) y
+  `tools/qa/{es-codigo.sh,revisado.sh,recuperar.py}` (ahora en `.claude/gw/scripts/`); `opt-tokens/proyecto.md` →
+  `.claude/gw/opt-tokens.md`. `CLAUDE.md` = `@AGENTS.md` + lo de Claude; las reglas del portal, en «Reglas del
+  proyecto» de `AGENTS.md`. `comprobar.yml` del flujo + Node y build. `.gitignore` deja versionar `.claude/gw*` y
+  quita `__pycache__` del repo. `test-ganchos.sh` reescrito para el gancho del flujo. Falta: revisar con el usuario,
+  las tres fases y la subida.
 - ✅ Créditos a Matt Pocock (2026-10-21, petición del usuario): mención al final de cada una de sus 11 skills,
   apartado «Agradecimiento» en `.claude/skills/README.md` (hemos aprendido esta forma de trabajar gracias a su
   trabajo) y nota en el runbook. Cambia `.claude/`, así que lleva `/code-review` y marca de revisado.

@@ -1,0 +1,65 @@
+{
+  "$schema": "gw/schema/gw.schema.json",
+  "version": "0.1.0",
+  "language": "es",
+  "visibleLanguages": [
+    "es",
+    "gl",
+    "en"
+  ],
+  "log": "docs/traspaso.md",
+  "logRows": false,
+  "protectedBranch": "main",
+  "pushToProtected": "direct",
+  "install": [
+    "npm ci"
+  ],
+  "check": [
+    "npm run check"
+  ],
+  "reviewMark": "docs/registros/revisado.txt",
+  "requireRetro": false,
+  "content": [
+    "^docs/",
+    "\\.md$",
+    "^\\.claude/skills/",
+    "^src/data/",
+    "^public/"
+  ],
+  "roadmap": false,
+  "selector": {
+    "cases": [
+      {
+        "case": "Cambio de varios componentes, rutas, build o SEO (scripts/paginas-estaticas.mjs, src/main.tsx, src/i18n/Idioma.tsx, index.html): afecta a la web publicada y a enlaces ya indexados",
+        "skill": "none",
+        "sessionModel": "large",
+        "subagentModel": "light"
+      },
+      {
+        "case": "Contenido de un proyecto (textos, imágenes, novedades) a partir de su repo, que solo se lee",
+        "skill": "none",
+        "sessionModel": "medium",
+        "subagentModel": "light"
+      },
+      {
+        "case": "Cambio acotado: un componente, un estilo o un texto visible (en es, gl y en)",
+        "skill": "none",
+        "sessionModel": "medium",
+        "subagentModel": "none"
+      }
+    ]
+  },
+  "designReferences": [
+    "Portfolios de estudios y talleres independientes (Ink & Switch, Recurse Center)",
+    "Páginas de producto de juegos independientes",
+    "WCAG 2.2 (móvil de 320 px, texto agrandado, reducir movimiento)"
+  ],
+  "protectedPaths": [],
+  "staleRefs": [],
+  "relatedTests": {
+    "fast": [],
+    "slow": []
+  },
+  "plan": [],
+  "taskId": "[A-Z]{2,5}-\\d+"
+}

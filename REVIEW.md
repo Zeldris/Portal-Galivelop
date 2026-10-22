@@ -39,12 +39,17 @@ criterio.
 
 ## Ganchos y scripts
 
-Retro del 2026-10-21: las dos revisiones del flujo traído de Tarkor hallaron 29 fallos en los ganchos.
+Retro del 2026-10-21: las dos revisiones del flujo traído de Tarkor hallaron 29 fallos en los ganchos. Desde el
+2026-10-22 los ganchos y scripts son los de Galivelop-workflow (`.githooks/`, `.claude/gw/scripts/`): no se editan
+aquí, se proponen en el repo del flujo; lo del portal es su configuración (`.claude/gw.json`) y su test.
 
 - La raíz del repo se saca de la ruta del script (`$(dirname "$0")`), no de `$CLAUDE_PROJECT_DIR` ni del directorio
   actual: en la nube la sesión puede arrancar en `/home/user`.
 - Un gancho de subida comprueba el commit que se sube, no la carpeta de trabajo, y falla cerrado cuando le falta un
   dato (un commit que no tiene, una API que no responde).
+- Los scripts de shell corren en bash 3.2 (macOS): nada de `mapfile` ni arrays asociativos.
 - Lo traído de otro repo se adapta a cómo trabaja el portal: aquí se sube directo a `main`, no por PR, y la marca de
-  revisión va en el repo (`docs/registros/revisado.txt`) para que la vea la tarea semanal.
-- Un cambio en `.githooks/`, `.claude/hooks/` o `tools/qa/` lleva su caso en `tools/qa/tests/test-ganchos.sh`.
+  revisión va en el repo (`docs/registros/revisado.txt`) para que la vea la tarea semanal. Se comprueba contra los
+  contratos de **este** repo (rutas, formatos, claves de configuración), no contra los del original.
+- Un cambio en `.claude/gw.json` (sobre todo `content`, `check` o `reviewMark`) o en `.githooks/` lleva su caso en
+  `tools/qa/tests/test-ganchos.sh`: `content` decide qué puede publicar sola la tarea semanal.

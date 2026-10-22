@@ -1,20 +1,16 @@
 ---
 name: retro
-description: "Conduct a retrospective on a coding session. Use before creating each PR to main (after /code-review), or when a phase or milestone closes."
+description: "Conduct a retrospective on a coding session."
+disable-model-invocation: true
+license: MIT (see LICENSE-mattpocock-skills)
+metadata:
+  version: "0.1.0"
+  source: "mattpocock/skills@5beb35b"
 ---
 
-> **En este repositorio (portal Galivelop):** la lanza Claude antes de subir a `main` un cambio grande de
-> código (componentes, estilos, scripts de build), tras el `/code-review` y `/opt-tokens`, y cuando el usuario la
-> pide con `/retro`. Lo que se revisa es lo que va a entrar en `main`: sus commits y la bitácora. Las propuestas, en
-> español, se presentan al usuario; solo lo que confirme se aplica, y lo que quede para más tarde va a «Pendiente»
-> de la bitácora (`docs/traspaso.md`).
->
-> **Las skills propias, también:** cada retro mira cómo rindieron las skills del proyecto (`.claude/skills/`:
-> `selector`, `orchestrate-dealer`, `opt-tokens`, `pr`, esta misma) y el `/code-review`, y propone mejorarlas donde
-> fallaron o se quedaron cortas. Antes de proponer, lee la tabla de [`.claude/skills/README.md`](../README.md): si
-> lo que falló es de una skill, la propuesta cambia esa skill en vez de añadir una regla suelta a `CLAUDE.md`.
+> Original skill by Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills), MIT).
 
-A phase has closed, so it is time for a **retrospective**. You are suggesting improvements to the coding agent's **environment** to improve future runs.
+The user has asked for a **retrospective**. You are suggesting improvements to the coding agent's **environment** to improve future runs.
 
 ## Steps
 
@@ -53,6 +49,18 @@ You have access to several files in the repo:
 - Docs: use docs as references files, pointed to by other files. Look for existing docs before writing new ones.
 - Skills: use skills for docs (since their description goes into the agent's context window), or for user-invoked commands. Follow the advice in the `writing-for-agents` skill.
 
----
+## In a Galivelop-workflow project
 
-By [Matt Pocock](https://github.com/mattpocock), from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, see `../LICENSE-mattpocock-skills`). We learned to work this way thanks to his work.
+This section is the only change to the upstream skill.
+
+- The reviewer's standards file is `REVIEW.md`, not `CODING_STANDARDS.md`; the hand-off log path is `log` in `.claude/gw.json`.
+- Save the retro as a dated file next to the log (for example `docs/registros/retro-YYYY-MM-DD-<topic>.md`) with a `**Estado:**`/`**Status:**` line; `revisado.sh` may require one when `requireRetro` is set.
+- Sort each candidate into one of two outlets and say which:
+  - **Project-specific** (paths, stack, domain rules): propose the patch in this repo.
+  - **General** (would help any project using the workflow: a skill, a hook, a template, a rule in `AGENTS.md`): propose it **to the workflow itself** as an issue or PR on the `Galivelop-workflow` repository, or leave it in the retro file under a `## For Galivelop-workflow` heading so `gw-harvest` collects it. Do not patch the copied workflow files locally; local edits drift and are overwritten by the next update.
+- **Review the project's own skills too.** Look at how `selector`, `orchestrate-dealer`, `opt-tokens`, `pr`, the code
+  review and this retro performed; read the skill list before proposing. When a skill failed, the proposal changes
+  that skill (or proposes the change to the workflow), not a loose new rule in `AGENTS.md`/`CLAUDE.md`.
+- **Present the retro before the PR**, even when the user said "merge directly": that skips waiting for reviews, not
+  the retro. Its `**Estado:**`/`**Status:**` line records what the user decided (applied, rejected, deferred), not just
+  "done"; `revisado.sh` checks it when `requireRetro` is set.

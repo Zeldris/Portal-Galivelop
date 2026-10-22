@@ -1,11 +1,13 @@
 ---
 name: domain-modeling
 description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.
+license: MIT (see LICENSE-mattpocock-skills)
+metadata:
+  version: "0.1.0"
+  source: "mattpocock/skills@5beb35b"
 ---
 
-> **En este repositorio (portal Galivelop):** el glosario y los ADR, en español. `GLOSSARY.md` (raíz) es el
-> vocabulario del portal (proyecto, ficha, apartado, línea de trabajo…); los términos del juego Tarkor viven en su
-> repositorio y aquí solo se enlazan. ADR en `docs/adr/`.
+> Original skill by Matt Pocock ([mattpocock/skills](https://github.com/mattpocock/skills), MIT).
 
 # Domain Modeling
 
@@ -76,7 +78,3 @@ Only offer to create an ADR when all three are true:
 3. **The result of a real trade-off**: there were genuine alternatives and you picked one for specific reasons
 
 If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
-
----
-
-By [Matt Pocock](https://github.com/mattpocock), from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT, see `../LICENSE-mattpocock-skills`). We learned to work this way thanks to his work.

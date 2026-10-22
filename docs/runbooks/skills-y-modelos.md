@@ -1,13 +1,16 @@
 # Skills y selector de modelo
 
-**Para qué:** qué skills usa Claude en el portal, cuándo, y con qué modelo conviene cada tipo de tarea. Traído
-del flujo de trabajo de Tarkor (World-Maker-Fantasy) a petición del usuario (2026-10-21) y adaptado a una web
-pequeña: sin roadmap con hitos ni rondas de pruebas jugando.
+**Para qué:** qué skills usa Claude en el portal, cuándo, y con qué modelo conviene cada tipo de tarea. Desde el
+2026-10-22 el flujo es **Galivelop-workflow v0.1.0** (piloto, `docs/registros/piloto-galivelop-workflow.md`): sus
+reglas generales están en [`AGENTS.md`](../../AGENTS.md); aquí, cómo se usan en una web pequeña (sin roadmap con
+hitos ni rondas de pruebas jugando).
 
-**`.claude/skills/`, `.claude/hooks/` y `.claude/settings.json` están versionados**; el resto de `.claude/` es
+**Versionado:** `.claude/skills/` y `.claude/gw/` (copias del flujo: no se editan aquí, se actualizan con
+`/gw-update`), `.claude/gw.json` (la configuración del portal) y `.claude/settings.json`; el resto de `.claude/` es
 local y está en el `.gitignore`. Si una skill no está cargada, se sigue su descripción de aquí.
+`python3 .claude/gw/scripts/doctor.py` dice si el flujo está bien montado.
 
-**Créditos:** once de las skills son de [Matt Pocock](https://github.com/mattpocock)
+**Créditos:** doce de las skills son de [Matt Pocock](https://github.com/mattpocock)
 ([mattpocock/skills](https://github.com/mattpocock/skills), MIT); buena parte de este flujo la hemos aprendido gracias a
 su trabajo. Su mención y su licencia se conservan siempre que se copien o adapten (ver
 [`.claude/skills/README.md`](../../.claude/skills/README.md#agradecimiento)).
@@ -19,12 +22,13 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
 1. **Empezar:** cargar `selector`, clasificar la tarea con su tabla y decir en una línea qué skill y qué modelo
    pide. Antes, traer `main` a la rama de trabajo (`git fetch origin main` y, si trae commits, `git merge
    origin/main`): la tarea semanal y el usuario también suben a `main`. `npm run check` incluye
-   `tools/qa/tests/test-ganchos.sh` (sintaxis de los ganchos y la regla de subida a `main`).
+   `tools/qa/tests/test-ganchos.sh` (sintaxis de los ganchos y scripts del flujo, `.claude/gw.json` válido y la
+   regla de subida a `main` con el `content` del portal, casos de la tarea semanal incluidos).
    **Puntos de `/clear`:** la compactación automática (200k) es la red; el corte limpio es un `/clear` tras subir
    a `main` o al cerrar un bloque grande. Antes de recomendarlo, todo con commit y push y la bitácora al día;
    Claude lo dice en una línea («Punto de `/clear`: todo subido (`<commit>`)») y no puede lanzarlo. Tras un
-   `/clear` o una compactación, el gancho de `SessionStart` pone el estado (`tools/qa/recuperar.py --estado`); un
-   detalle de antes se busca con `python3 tools/qa/recuperar.py "<regex>"`.
+   `/clear` o una compactación, el gancho de `SessionStart` pone el estado (`.claude/gw/scripts/recuperar.py --estado`);
+   un detalle de antes se busca con `python3 .claude/gw/scripts/recuperar.py --buscar "<regex>"`.
 2. **Si hay diseño o una decisión abierta:** `grilling` + `domain-modeling` (o `/grill-with-docs`). Variantes de
    pantalla, con `prototype` (rama de UI). Lo decidido, a la bitácora; los términos, a `GLOSSARY.md`; lo difícil
    de revertir (rutas, estructura de datos de los proyectos), a `docs/adr/`.
@@ -38,8 +42,8 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
    - Cambio de código (componentes, estilos, `scripts/`, `main.tsx`, rutas): `git fetch origin main` y
      `/code-review` del diff contra `origin/main` con el criterio de [`REVIEW.md`](../../REVIEW.md); se arregla lo
      que encuentre. Si el cambio es grande, después `/opt-tokens` y `retro`: sus propuestas se presentan al
-     usuario y solo lo que confirme se aplica. Luego `bash tools/qa/revisado.sh` y el resumen con `pr`.
-   - Si se trabaja con PR en vez de subir directo, el gancho `revision-antes-de-main.sh` no deja crearlo ni
+     usuario y solo lo que confirme se aplica. Luego `bash .claude/gw/scripts/revisado.sh` y el resumen con `pr`.
+   - Si se trabaja con PR en vez de subir directo, el gancho `.claude/gw/scripts/revision-antes-de-main.sh` no deja crearlo ni
      fusionarlo sin esa misma marca, ni fusionarlo con el CI sin terminar en verde.
    Al contárselo al usuario, el destino con su nombre: «en la rama de trabajo, no en `main`» o «en `main`».
 
@@ -47,15 +51,15 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
 
 | Skill | Se invoca | Cuándo, en el portal |
 |---|---|---|
-| `selector` (propia) | sola, al empezar | Siempre, al arrancar una tarea, un fallo o un diseño |
-| `orchestrate-dealer` (propia) | Claude, en tareas de varios pasos con lecturas largas | Repasar el repo de un proyecto, un banco de imágenes, revisar muchas páginas |
+| `selector` (del flujo; filas del portal en `selector.cases` de `.claude/gw.json`) | sola, al empezar | Siempre, al arrancar una tarea, un fallo o un diseño |
+| `orchestrate-dealer` (del flujo) | Claude, en tareas de varios pasos con lecturas largas | Repasar el repo de un proyecto, un banco de imágenes, revisar muchas páginas |
 | `/grill-with-docs` | el usuario | Antes de diseñar algo grande: un proyecto nuevo en el portal, una sección nueva, la marca |
 | `grilling` | Claude, en una decisión abierta | La entrevista en sí, por rondas con respuesta recomendada |
 | `domain-modeling` | por debajo de la anterior | `GLOSSARY.md` y `docs/adr/` |
 | `diagnosing-bugs` | sola ante un fallo | Algo que se ve mal o falla: primero reproducirlo (Playwright, un test) |
 | `/improve-codebase-architecture` | el usuario o de vez en cuando | Candidatos: `Proyecto.tsx`, `Galeria.tsx`, `global.css` |
 | `codebase-design` | por debajo de la anterior | — |
-| `opt-tokens` | Claude antes de subir un cambio grande, o el usuario | Medir el gasto de la sesión (`medir.py`) y proponer cómo gastar menos |
+| `opt-tokens` | Claude antes de subir un cambio grande, o el usuario | Medir el gasto de la sesión (`scripts/medir.py`; notas del portal en `.claude/gw/opt-tokens.md`) y proponer cómo gastar menos |
 | `retro` | Claude tras un cambio grande, o el usuario con `/retro` | Mejoras del entorno: comprobaciones, instrucciones, herramientas |
 | `writing-for-agents` | sola | Al tocar `CLAUDE.md`, la bitácora, el prompt de la tarea semanal o una skill |
 | `prototype` | Claude, en una ronda de diseño | Variantes de una sección o tarjeta para elegir; se publica como Artifact |

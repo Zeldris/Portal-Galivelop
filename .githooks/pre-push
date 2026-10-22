@@ -1,56 +1,185 @@
-#!/bin/bash
-# Traído de Tarkor (QA-13): no se sube nada que no tipa o no pasa los tests, y a `main` (que es la web publicada)
-# no llega código sin revisar. Lo activa `.claude/hooks/session-start.sh` (core.hooksPath); a mano:
-# `git config core.hooksPath .githooks`. Saltarlo solo para un `WIP:` con tests en rojo: `git push --no-verify`.
+#!/usr/bin/env bash
+# galivelop-workflow v0.1.0
+# Git pre-push hook (copied into projects as .githooks/pre-push; enable with: git config core.hooksPath .githooks).
+#   - Says which commits each ref pushes, or that it pushes nothing new.
+#   - Refuses conflict markers and added *.rej / *.orig files in what is pushed.
+#   - Reads .claude/gw.json as each pushed commit has it (never the working tree's); a pushed commit without a valid
+#     one is refused.
+#   - Runs every `check` command of that config on the commit being pushed (a temporary worktree when it is not
+#     the clean working copy).
+#   - To the protected branch, in both pushToProtected modes (with `pr` the PR hook also guards PRs): code needs the
+#     review mark (scripts/revisado.sh) to name an ancestor with no code after it. Fails closed when a commit is
+#     missing (shallow clones included).
+#   - Then calls prepush-ramas.sh <changed-file> <pushed-file> and tests-relacionados.sh <changed-file> <checkout-dir>
+#     (the folder where the last pushed commit is checked out) from the workflow's scripts folder whenever they exist
+#     (run with bash, executable or not), with git's ref lines on stdin.
+# Skipping it (git push --no-verify) is only for a WIP: commit with red tests.
+# Bash 3.2 compatible. Root from this hook's path, never from $CLAUDE_PROJECT_DIR or the current directory.
 set -uo pipefail
-raiz="$(git rev-parse --show-toplevel)"
-cd "$raiz" || exit 1
-cero=0000000000000000000000000000000000000000
-mapfile -t refs                                 # las refs, antes de lanzar nada que pueda leer la entrada
-comprobado=""
-for linea in "${refs[@]}"; do
-  read -r ref_local sha_local ref_remota sha_remota <<< "$linea"
-  [ "$sha_local" = "$cero" ] && continue          # borrar una rama
-  case "$ref_local" in refs/tags/*) continue ;; esac
-  # Se comprueba el commit que se sube, no la carpeta de trabajo.
-  if [ "$comprobado" != "$sha_local" ]; then
-    echo "pre-push: npm run check de ${sha_local:0:7}…"
-    if [ "$sha_local" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain)" ]; then
-      dir="$raiz"
-    else
-      dir="$(mktemp -d)"
-      git worktree add -q --detach "$dir" "$sha_local" || { rmdir "$dir"; echo "pre-push: no pude preparar el commit ${sha_local:0:7}"; exit 1; }
-      ln -s "$raiz/node_modules" "$dir/node_modules"
-    fi
-    (cd "$dir" && npm run --silent check > /tmp/pre-push-check.log 2>&1 < /dev/null)
-    ok=$?
-    [ "$dir" != "$raiz" ] && git worktree remove --force "$dir"
-    if [ $ok -ne 0 ]; then
-      grep -E "error|FAIL|✗|Expected|Received" /tmp/pre-push-check.log | head -30 || true
-      echo "pre-push: en rojo (detalle en /tmp/pre-push-check.log)"
-      exit 1
-    fi
-    comprobado="$sha_local"
+zero=0000000000000000000000000000000000000000
+remote="${1:-origin}"
+
+# Git's ref lines come on stdin: save them before anything else can read it.
+work="$(mktemp -d "${TMPDIR:-/tmp}/gw-pre-push.XXXXXX")" || { echo "pre-push: cannot create a temp dir; free space in ${TMPDIR:-/tmp} and retry: git push" >&2; exit 1; }
+worktree=""
+cleanup() {
+  if [ -n "$worktree" ]; then git -C "$root" worktree remove --force "$worktree" >/dev/null 2>&1; rm -rf "$worktree"; fi
+  rm -rf "$work"
+}
+trap cleanup EXIT
+cat > "$work/input"
+: > "$work/changed"
+: > "$work/pushed"
+
+hookdir="$(cd "$(dirname "$0")" && pwd)"
+root="$(git -C "$hookdir" rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "pre-push: $hookdir is not inside a git work tree; point git at the project's hooks: git config core.hooksPath .githooks" >&2; exit 1; }
+cd "$root" || exit 1
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE
+if [ -d "$root/.claude/gw/scripts" ]; then scripts="$root/.claude/gw/scripts"; else scripts="$root/scripts"; fi
+config="$scripts/config.py"
+fail() {  # fail <message lines...>: the last line is the command that fixes it
+  for line in "$@"; do echo "pre-push: $line" >&2; done
+  echo "pre-push: (only a WIP: commit may skip this hook: git push --no-verify)" >&2
+  exit 1
+}
+cfg_at() {  # cfg_at <sha> <key>: the key as the pushed commit's .claude/gw.json has it
+  python3 "$config" --root "$root" --rev "$1" get "$2" \
+    || fail "cannot read '$2' from .claude/gw.json in the pushed commit ${1:0:7}; commit a valid one and push again: python3 $config --root $root --rev ${1:0:7} validate"
+}
+[ -f "$config" ] || fail "the workflow scripts are missing ($config); reinstall them: /gw-update"
+protected=""
+shallow="$(git rev-parse --is-shallow-repository 2>/dev/null || echo false)"
+fetch_hint() {
+  if [ "$shallow" = "true" ]; then echo "git fetch --deepen=200 $remote $protected"; else echo "git fetch $remote $protected"; fi
+}
+
+checkdir=""
+run_checks() {  # run_checks <sha>: every check command on that commit, in $checkdir (kept for tests-relacionados.sh)
+  local sha="$1" dir
+  if [ -n "$worktree" ]; then
+    git worktree remove --force "$worktree" >/dev/null 2>&1; rm -rf "$worktree"; worktree=""
   fi
-  # A main: el código que trae tiene que estar revisado. Vale la marca de docs/registros/revisado.txt (en el commit
-  # que se sube) si es antecesora y desde ella solo ha cambiado contenido.
-  if [ "$ref_remota" = "refs/heads/main" ]; then
-    base=""
-    if [ "$sha_remota" != "$cero" ]; then
-      git cat-file -e "$sha_remota" 2>/dev/null || git fetch -q origin main
-      git cat-file -e "$sha_remota" 2>/dev/null || { echo "pre-push: no tengo el main remoto (${sha_remota:0:7}); git fetch origin main"; exit 1; }
-      base="$sha_remota"
+  if [ "$sha" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain)" ]; then
+    dir="$root"
+  else
+    worktree="$(mktemp -d "${TMPDIR:-/tmp}/gw-pre-push-wt.XXXXXX")" || fail "cannot create a temp dir; free space and retry: git push"
+    rmdir "$worktree"
+    git worktree add -q --detach "$worktree" "$sha" >/dev/null 2>&1 \
+      || { worktree=""; fail "cannot check out ${sha:0:7} in a temporary worktree; clean stale ones and retry: git worktree prune && git push"; }
+    for shared in node_modules .venv; do
+      if [ -e "$root/$shared" ] && [ ! -e "$worktree/$shared" ]; then ln -s "$root/$shared" "$worktree/$shared"; fi
+    done
+    dir="$worktree"
+  fi
+  checkdir="$dir"
+  local cmd n=0 log
+  while IFS= read -r cmd; do
+    [ -n "$cmd" ] || continue
+    n=$((n + 1))
+    log="${TMPDIR:-/tmp}/gw-pre-push-check-$n.log"
+    echo "pre-push: check '$cmd' on ${sha:0:7}…"
+    if ! (cd "$dir" && bash -c "$cmd") > "$log" 2>&1 < /dev/null; then
+      tail -n 30 "$log" >&2
+      fail "check failed on ${sha:0:7}: '$cmd' (full log: $log)" "fix it, commit and push again; reproduce with: $cmd"
     fi
-    codigo="$(bash tools/qa/es-codigo.sh "$base" "$sha_local")"
-    if [ -n "$codigo" ]; then
-      marca="$(git show "$sha_local:docs/registros/revisado.txt" 2>/dev/null | tr -d '[:space:]')"
-      if [ -z "$marca" ] || ! git merge-base --is-ancestor "$marca" "$sha_local" 2>/dev/null \
-         || [ -n "$(bash tools/qa/es-codigo.sh "$marca" "$sha_local")" ]; then
-        echo "pre-push: esta subida a main trae código sin revisar:"; echo "$codigo" | head -10 | sed 's/^/  /'
-        echo "Antes: /code-review del diff contra origin/main, arreglos subidos y bash tools/qa/revisado.sh (CLAUDE.md)."
-        exit 1
+  done <<<"$checks"
+}
+
+checked=""
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -n "${local_sha:-}" ] || continue
+  [ "$local_sha" = "$zero" ] && continue                  # deleting a ref
+  case "$local_ref" in refs/tags/*) continue ;; esac
+  case "$remote_ref" in refs/tags/*) continue ;; esac
+  git cat-file -e "$local_sha^{commit}" 2>/dev/null || fail "commit ${local_sha:0:7} is not in this clone; fetch it and retry: git fetch $remote"
+  checks="$(cfg_at "$local_sha" check)" || exit 1
+  protected="$(cfg_at "$local_sha" protectedBranch)" || exit 1
+  mark_file="$(cfg_at "$local_sha" reviewMark)" || exit 1
+
+  # What this push adds: commits no remote-tracking ref (nor the remote's current tip) already has.
+  known=""
+  if [ "$remote_sha" != "$zero" ] && git cat-file -e "$remote_sha^{commit}" 2>/dev/null; then known="$remote_sha"; fi
+  # shellcheck disable=SC2086  # $known is one sha or nothing
+  new="$(git rev-list --reverse "$local_sha" --not --remotes $known)" || fail "cannot list the commits of ${local_sha:0:7}; fetch and retry: git fetch $remote"
+  if [ -z "$new" ]; then
+    echo "pre-push: nothing new to push to $remote_ref (every commit of ${local_sha:0:7} is already on the remote; did you commit?)"
+  else
+    count="$(printf '%s\n' "$new" | grep -c .)"
+    echo "pre-push: pushing $count commit(s) to $remote_ref:"
+    # shellcheck disable=SC2086  # one sha per word
+    git log --no-walk=unsorted --format='  %h %s' $new | head -n 20
+    [ "$count" -gt 20 ] && echo "  … and $((count - 20)) more"
+    printf '%s\n' "$new" >> "$work/pushed"
+    # shellcheck disable=SC2086
+    files="$(git log -m --format= --name-only --no-renames "$local_sha" --not --remotes $known | sort -u)"
+    printf '%s\n' "$files" | grep . >> "$work/changed"
+
+    # Leftovers of a merge or a patch: conflict markers and *.rej / *.orig files in the pushed commit.
+    leftovers="$(printf '%s\n' "$files" | grep -E '\.(rej|orig)$' | while IFS= read -r f; do
+      git cat-file -e "$local_sha:$f" 2>/dev/null && echo "$f"; done)"
+    if [ -n "$leftovers" ]; then
+      printf '  %s\n' "$leftovers" >&2
+      first="$(printf '%s\n' "$leftovers" | head -n 1)"
+      fail "the push adds *.rej / *.orig leftovers (above); remove them and commit: git rm -- '$first' && git commit"
+    fi
+    markers=""
+    [ -z "$files" ] || markers="$(printf '%s\n' "$files" | grep . | tr '\n' '\0' | xargs -0 git grep -n -I -E '^(<<<<<<< |>>>>>>> )' "$local_sha" -- 2>/dev/null | head -n 10)"
+    if [ -n "$markers" ]; then
+      printf '  %s\n' "$markers" >&2
+      fail "the push has conflict markers (above); resolve them and commit: git commit -a"
+    fi
+  fi
+
+  if [ "$checked" != "$local_sha" ]; then
+    run_checks "$local_sha"
+    checked="$local_sha"
+  fi
+
+  # To the protected branch: code must be reviewed up to the mark, whatever pushToProtected says (a direct push
+  # skips the PR hook that guards the `pr` mode).
+  if [ "$remote_ref" = "refs/heads/$protected" ]; then
+    base=""
+    if [ "$remote_sha" != "$zero" ]; then
+      git cat-file -e "$remote_sha^{commit}" 2>/dev/null || git fetch -q "$remote" "$protected" >/dev/null 2>&1
+      git cat-file -e "$remote_sha^{commit}" 2>/dev/null \
+        || fail "the remote $protected is at ${remote_sha:0:7}, which this clone does not have; fetch it and push again: $(fetch_hint)"
+      base="$remote_sha"
+    fi
+    code="$(bash "$scripts/es-codigo.sh" --rev "$local_sha" "$base" "$local_sha")" || fail "cannot tell code from content; fix the error above and push again: $(fetch_hint)"
+    if [ -n "$code" ]; then
+      mark="$(git show "$local_sha:$mark_file" 2>/dev/null | tr -d '[:space:]')"
+      reason=""
+      if [ -z "$mark" ]; then
+        reason="the pushed commit has no review mark ($mark_file)"
+      elif ! git rev-parse -q --verify "$mark^{commit}" >/dev/null 2>&1; then
+        reason="the review mark ($mark_file) names ${mark:0:12}, which is not a commit in this clone"
+      elif ! git merge-base --is-ancestor "$mark" "$local_sha" 2>/dev/null; then
+        reason="the review mark (${mark:0:7}) is not an ancestor of ${local_sha:0:7}"
+      else
+        after="$(bash "$scripts/es-codigo.sh" --rev "$local_sha" "$mark" "$local_sha")" || fail "cannot tell code from content; fix the error above and push again: $(fetch_hint)"
+        [ -z "$after" ] || { reason="code changed after the review mark (${mark:0:7})"; code="$after"; }
+      fi
+      if [ -n "$reason" ]; then
+        printf '%s\n' "$code" | head -n 10 | sed 's/^/  /' >&2
+        if [ "$shallow" = "true" ]; then
+          fail "$reason; this push to $protected brings unreviewed code (above)." \
+               "this clone is shallow, so the mark may be beyond its history; deepen it and push again: $(fetch_hint)"
+        fi
+        fail "$reason; this push to $protected brings unreviewed code (above)." \
+             "run /code-review of the diff against $remote/$protected, push the fixes, then mark and push: bash $scripts/revisado.sh && git push"
       fi
     fi
   fi
-done
-echo "pre-push: todo en verde."
+done < "$work/input"
+
+# Hook points for the optional per-project scripts, with git's ref lines on stdin. Present means run (with bash, so
+# a lost exec bit cannot switch a check off).
+sort -u -o "$work/changed" "$work/changed"
+if [ -f "$scripts/prepush-ramas.sh" ]; then
+  bash "$scripts/prepush-ramas.sh" "$work/changed" "$work/pushed" < "$work/input" || fail "prepush-ramas.sh refused the push; fix what it reports and push again: git push"
+fi
+if [ -f "$scripts/tests-relacionados.sh" ] && [ -n "$checkdir" ]; then
+  bash "$scripts/tests-relacionados.sh" "$work/changed" "$checkdir" < "$work/input" || fail "the related tests failed; fix them, commit and push again: git push"
+fi
+echo "pre-push: all green."

@@ -117,6 +117,8 @@ estructurados schema.org, y genera `sitemap.xml`, `robots.txt` y `llms.txt`. Una
 ## Flujo de trabajo con Claude
 
 Skills, selector de modelo, revisión antes de `main` y retro: [`docs/runbooks/skills-y-modelos.md`](runbooks/skills-y-modelos.md).
-Criterio de revisión: [`REVIEW.md`](../REVIEW.md). Ganchos: `.claude/settings.json` (al empezar la sesión y antes de un PR a
-`main`) y `.githooks/pre-push` (`npm run check` del commit que se sube y, en una subida a `main` con cambios de código, la marca
-de `tools/qa/revisado.sh` en `docs/registros/revisado.txt`). Lo activa el gancho de sesión; para subir a mano: `git config core.hooksPath .githooks`.
+Criterio de revisión: [`REVIEW.md`](../REVIEW.md). El flujo es Galivelop-workflow (configuración en `.claude/gw.json`,
+scripts en `.claude/gw/scripts/`). Ganchos: `.claude/settings.json` (al empezar la sesión y antes de un PR a `main`),
+`.githooks/pre-commit` (sin secretos) y `.githooks/pre-push` (`npm run check` del commit que se sube y, en una subida a
+`main` con cambios de código, la marca de `.claude/gw/scripts/revisado.sh` en `docs/registros/revisado.txt`). Lo activa
+el gancho de sesión; para subir a mano: `git config core.hooksPath .githooks`.

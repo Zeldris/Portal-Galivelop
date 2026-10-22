@@ -1,38 +1,71 @@
 ---
 name: selector
-description: Elegir skill y modelo para la tarea que empieza en el portal Galivelop. Usar al empezar cada tarea, al recibir un fallo o una petición de diseño, y cuando el usuario pregunte qué flujo o modelo conviene.
+description: Pick the skill and models for the task that is starting. Use at the start of every task, when a bug or a design request arrives, before reviewing a diff for the protected branch, when a block or phase closes, and whenever the user asks which workflow or model fits.
+license: MIT
+compatibility: Claude Code or any Agent Skills agent; reads .claude/gw.json when present
+metadata:
+  version: "0.1.0"
+  source: "Galivelop workshop; generalised from the Tarkor, installer and portal selectors"
 ---
 
-# Selector de skill y modelo
+# Selector
 
-Al empezar una tarea, clasifícala con la tabla y actúa según su fila. Flujo completo, guía y motivos:
-[`docs/runbooks/skills-y-modelos.md`](../../../docs/runbooks/skills-y-modelos.md).
+Classify the task with the table, then act on its row. Reply in the project's `language` (`.claude/gw.json`).
 
-| Caso | Skill | Modelo de la sesión | Subagentes |
+| Case | Skill(s) | Session model | Subagent model |
 |---|---|---|---|
-| Diseño nuevo o decisión abierta (sección nueva, estructura de una ficha, marca, algo que pide decidir al usuario) | `grilling` + `domain-modeling` (o `/grill-with-docs` si lo lanza el usuario); `prototype` si hay que ver variantes de pantalla | grande (Opus) | búsquedas con `Explore` en ligero (Haiku) |
-| Fallo visible (se ve mal en móvil, un error en consola, un test rojo) | `diagnosing-bugs` | grande si no es obvio; medio (Sonnet) si la causa se ve a la primera | — |
-| Cambio de varios componentes, rutas, build o SEO (`scripts/paginas-estaticas.mjs`, `main.tsx`, `Idioma.tsx`) | — | grande | ligero para buscar usos |
-| Contenido de un proyecto (textos, imágenes, novedades) a partir de su repo | — | medio | ligero para leer el repo del proyecto y devolver un resumen |
-| Traer algo de otro repo (un flujo, skills, documentos) | `orchestrate-dealer` | grande para decidir qué se adapta | ligero (`Explore`) que lea el otro repo y devuelva un resumen con rutas; la principal no lee los archivos enteros |
-| Cambio acotado (un componente, un estilo, un texto en tres idiomas) | — | medio | — |
-| Cambio mecánico (docs, bitácora, renombrar, convertir imágenes) | — | medio o ligero | ligero |
-| Revisar lo que va a `main` | `/code-review` (de serie) y `pr` para el resumen | grande | — |
-| Cierre de un bloque grande de trabajo | `retro` (la lanza Claude; las propuestas las confirma el usuario); de vez en cuando, `/improve-codebase-architecture` | grande | — |
-| Escribir `CLAUDE.md`, skills o documentos para agentes | `writing-for-agents` | medio | — |
+| Design: new feature, open decision, architecture, UX, anything the user must decide | `grilling` + `domain-modeling`; `prototype` when numbers, rules or screens need trying | large (Opus) | light (Haiku) for `Explore` searches |
+| Bug, red or flaky test, something visibly broken | `diagnosing-bugs` | large if the cause is not obvious; medium (Sonnet) if it shows at first sight | none |
+| Large change: several systems, data, migration, concurrency, build or routing | the project's plan for it | large | light, to find usages |
+| Scoped change: one component, one adjustment, one test, one small endpoint | none | medium | none |
+| Mechanical: docs, log, renames, adapting tests to a new signature, converting files | none | medium or light | light |
+| Bring something from another repo (a workflow, skills, documents) | `orchestrate-dealer` | large, to decide what to adapt | light `Explore` that reads the other repo and returns a summary with paths; the main session never reads the files whole |
+| Review before the protected branch | `/code-review`, then `pr` for the description | large | none |
+| Closing a block or phase | `retro` (Claude runs it, the user confirms its proposals); now and then `improve-codebase-architecture` | large | none |
+| Writing for agents (`AGENTS.md`, `CLAUDE.md`, skills, docs agents read) | `writing-for-agents` | medium | none |
 
-Reglas:
+Use a skill only if it exists in this repo's `skills/` (or `.claude/skills/`) or the project declares it; otherwise
+do the case without it and say so.
 
-- El modelo de la sesión lo elige el usuario (`/model`); no se puede cambiar desde dentro. Si la fila pide otro
-  distinto del actual, dilo en **una línea** al empezar y sigue; no esperes respuesta salvo riesgo alto (borrar
-  contenido publicado, cambiar rutas que ya están indexadas).
-- A un subagente se le pone el modelo de la columna «Subagentes» con el parámetro `model`. Solo se delegan
-  búsquedas, lecturas largas o tareas mecánicas; el diseño y las decisiones se quedan en la sesión principal.
-- Con el plan cerrado y escrito, la implementación acotada puede ir a un subagente `sonnet`; la sesión principal
-  revisa su diff antes del commit.
-- **Escalera de subagentes:** `sonnet` con esfuerzo `low` → `sonnet` `medium` → `opus` `medium` → `opus` `high`.
-  Se empieza por el peldaño más bajo que encaje y, si el subagente no cierra el encargo, el siguiente intento sube
-  uno. Dos fallos del mismo encargo: se para y se le cuenta al usuario.
-- **Sesión directora:** una tarea de varios pasos con lecturas largas (repasar el repo de un proyecto, un banco de
-  imágenes) se lleva con `orchestrate-dealer`.
-- En la duda entre dos filas, la de más riesgo.
+## Rules
+
+- **The user picks the session model** (`/model`); an agent cannot switch it. State in **one line** which model and
+  skill the case calls for ("large model and `diagnosing-bugs`") and carry on. Wait for an answer only when the risk is
+  high: data migration, deleting, rewriting published content.
+- **Subagent model:** pass the table's subagent column as the `model` parameter. Delegate searches, long reads and
+  mechanical work; design and decisions stay in the main session.
+- **Closed plan, scoped implementation:** goes to a `sonnet` subagent and the main session reviews its diff before
+  the commit. Anything of more than one step runs through `orchestrate-dealer`.
+- **Subagent ladder:** `sonnet low` → `sonnet medium` → `opus medium` → `opus high`. Start at the lowest rung that
+  fits; when a subagent does not finish its brief, the next attempt climbs one rung. **Two failures at one rung: stop
+  and ask the user.** A subagent that never starts (tool error) is retried on the same rung and does not count as a
+  failure. Unattended long work that closes nothing in a batch stops and writes the state to the log.
+- **When in doubt between two rows, take the one with higher risk.**
+- **Compaction budget:** at the start of a task, estimate how many compactions it should need (0–5) and write it in
+  the log next to the count the session already has (`recuperar.py --estado` prints it). Going over the budget is the
+  signal to deal more work out with `orchestrate-dealer`, not to keep going.
+- **Design references:** if `.claude/gw.json` lists `designReferences`, design rows contrast each proposal with them
+  and name the source (see `grilling`).
+- Decisions reached in a design session go to the project's plan or log (`log` in the config); glossary terms to
+  `GLOSSARY.md`; decisions hard to reverse to `docs/adr/`.
+
+## Project rows: `selector.cases`
+
+`.claude/gw.json` may add rows under `selector.cases`. Read them at the start and treat them like the table above,
+matching them before the generic rows. Shape of one entry:
+
+```json
+{ "selector": { "cases": [
+  { "case": "Change to the installer's process spawning",
+    "skill": "diagnosing-bugs",
+    "sessionModel": "large",
+    "subagentModel": "sonnet medium" }
+] } }
+```
+
+- `case`: when the row applies, in one sentence a task can be matched against.
+- `skill`: skill name(s) or `none`.
+- `sessionModel`: `large`, `medium` or `light` (or a model name).
+- `subagentModel`: a rung of the ladder, a model name, or `none`.
+
+A project row overrides the generic row it overlaps; the rules above apply to both.

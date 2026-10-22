@@ -1,19 +1,56 @@
+# galivelop-workflow v0.1.0
+# The project's check in CI: each `install` command, then each `check` command of .claude/gw.json, on every push
+# outside the protected branch and on every pull request. On a pull request it also runs the BASE branch's copy of
+# .githooks/pre-commit over the PR's commits, so a pull request cannot weaken the check that reviews it.
+# Add the toolchain setup your commands need (setup-node, setup-java, rust-toolchain...) before "Install".
 name: Comprobar
 
 on:
-  pull_request:
   push:
     branches-ignore: [main]
+  pull_request:
+
+permissions:
+  contents: read
 
 jobs:
-  comprobar:
+  check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # Portal: Node para npm ci / npm run check, y el build de la web tras el check.
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run check
-      - run: npm run build
+      - name: Install
+        run: |
+          cmds="$(python3 .claude/gw/scripts/config.py get install)"
+          while IFS= read -r cmd; do
+            [ -n "$cmd" ] || continue
+            echo "== $cmd"
+            bash -c "$cmd"
+          done <<<"$cmds"
+      - name: Check
+        run: |
+          cmds="$(python3 .claude/gw/scripts/config.py get check)"
+          while IFS= read -r cmd; do
+            [ -n "$cmd" ] || continue
+            echo "== $cmd"
+            bash -c "$cmd"
+          done <<<"$cmds"
+      - name: Build
+        run: npm run build
+      - name: Base branch's pre-commit over the pull request
+        if: github.event_name == 'pull_request'
+        run: |
+          base="origin/$GITHUB_BASE_REF"
+          if ! git cat-file -e "$base:.githooks/pre-commit" 2>/dev/null; then
+            echo "the base branch has no .githooks/pre-commit yet; skipped"
+            exit 0
+          fi
+          mkdir -p .gw-ci
+          git show "$base:.githooks/pre-commit" > .gw-ci/pre-commit
+          bash .gw-ci/pre-commit --rango "$(git merge-base "$base" HEAD)..HEAD"
