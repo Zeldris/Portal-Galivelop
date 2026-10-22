@@ -2,7 +2,7 @@
 
 **Fecha:** 2026-10-22 · **Rama:** `claude/piloto-galivelop-workflow` · **Revisado:** `git log origin/main..HEAD`
 desde `84b27d1` hasta `7dfa637` (5 commits del piloto; 72 archivos, +4681/−987 contra `origin/main`) y la bitácora.
-Fricciones de detalle: [`piloto-galivelop-workflow.md`](piloto-galivelop-workflow.md) (F1-F25); aquí no se repiten.
+Fricciones de detalle: [`piloto-galivelop-workflow.md`](piloto-galivelop-workflow.md) (F1-F26); aquí no se repiten.
 
 **Estado:** aplicadas todas las propuestas (decisión del usuario, 2026-10-22): 1 y 3-8 en el portal; la 2 (prompt de la tarea
 programada) solo se puede cambiar desde la conversación de la tarea: pendiente de que el usuario la pida allí, con el
@@ -56,7 +56,8 @@ texto de abajo y las del flujo en «For Galivelop-workflow», abajo, para `gw-ha
 
 Por gravedad.
 
-1. **Proyecto · fijar `content` y `reviewMark` en el test** (`tools/qa/tests/test-ganchos.sh`). Comparar el `content`
+1. **Proyecto · fijar `content`, `check`, `reviewMark`, `protectedBranch` y `pushToProtected` en el test** (ampliado
+   en la fase 3: solo frena un cambio accidental; uno deliberado que toque también el test pasa, y eso es F18) (`tools/qa/tests/test-ganchos.sh`). Comparar el `content`
    y el `reviewMark` de `.claude/gw.json` con una copia literal en el test; si difieren, el check falla. Mitiga F18
    mientras el flujo no lo arregle: `npm run check` corre en el `pre-push`, así que un commit que amplíe `content`
    (también de la tarea semanal) se para, y cambiarlo a propósito obliga a tocar el test, que se ve en el diff.
@@ -92,7 +93,7 @@ Añadir al principio de «Reglas:» del prompt de «Tarkor semanal», en la sesi
 
 ## For Galivelop-workflow
 
-Solo lo nuevo; lo demás ya está en «For Galivelop-workflow» del registro del piloto (F1-F25).
+Solo lo nuevo; lo demás ya está en «For Galivelop-workflow» del registro del piloto (F1-F26).
 
 - **`gw-init` reparte la lectura del flujo** (amplía F1 y F25): la skill (y `aplicar.md` §0) manda leer el repo del
   flujo con un subagente ligero vía `orchestrate-dealer`, que devuelve la tabla de decisiones del paso 1 y los

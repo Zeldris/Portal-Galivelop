@@ -17,6 +17,8 @@ criterio.
 - En Tarkor, ningún juego de referencia (X4, D&D, BG3, Medieval Dynasty…) ni identificadores internos del
   juego (`QA-27`, `P164`, `CR-69`…), aunque vengan en sus documentos o commits.
 - Lo marcado 🗺️ en el contenido de Tarkor no se presenta como jugable.
+- toVeriAI es producto de Raquel (fundadora y creadora): sin menciones a su origen académico (decisión del
+  usuario, 2026-10-04).
 
 ## Un dato, un sitio
 

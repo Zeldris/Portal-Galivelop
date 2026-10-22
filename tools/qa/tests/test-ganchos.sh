@@ -16,17 +16,26 @@ for f in "$raiz"/.claude/gw/scripts/*.py "$raiz"/.claude/skills/*/scripts/*.py; 
 done
 python3 "$raiz/.claude/gw/scripts/config.py" --root "$raiz" validate > /dev/null \
   || { echo "test-ganchos: .claude/gw.json no es válido"; fallos=1; }
-# `content` y `reviewMark` fijados aquí (retro 2026-10-22): el pre-push los lee del commit que se sube, así que un
-# commit que los amplía se saltaría la marca (F18 del piloto). Cambiarlos obliga a tocar este test, que es código.
-content_fijado='["^docs/", "^src/data/", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]'
-content_real="$(python3 -c 'import json, sys; print(json.dumps(json.load(open(sys.argv[1]))["content"]))' "$raiz/.claude/gw.json" 2>/dev/null)"
-[ "$content_real" = "$content_fijado" ] || { echo "test-ganchos: content de .claude/gw.json cambió; si es a propósito, cámbialo también aquí: $content_real"; fallos=1; }
-marca_real="$(python3 "$raiz/.claude/gw/scripts/config.py" --root "$raiz" get reviewMark 2>/dev/null)"
-[ "$marca_real" = "docs/registros/revisado.txt" ] || { echo "test-ganchos: reviewMark cambió ($marca_real)"; fallos=1; }
-# Lo versionado del flujo no puede estar en el .gitignore (F3 del piloto: .claude/* ocultaba .claude/gw.json).
-for f in .claude/gw.json .claude/gw/scripts/config.py .claude/gw/schema/gw.schema.json .claude/skills/retro/SKILL.md \
-         .claude/settings.json .githooks/pre-push .githooks/pre-commit; do
-  git -C "$raiz" check-ignore -q --no-index "$f" && { echo "test-ganchos: $f está en el .gitignore y no se subiría"; fallos=1; }
+# Claves de .claude/gw.json que el pre-push lee del commit que se sube, fijadas aquí (retro 2026-10-22, F18 del
+# piloto): frena un cambio accidental (que ampliaría lo que llega a main sin marca o cambiaría qué se comprueba), no
+# uno deliberado que toque también este test; eso lo arregla el flujo (F18). Si se cambian a propósito, aquí también.
+cfg() { python3 "$raiz/.claude/gw/scripts/config.py" --root "$raiz" get "$@"; }
+fijar() {  # fijar <clave> <valor esperado> [--json]
+  local real; real="$(cfg "$1" ${3:-})" || { echo "test-ganchos: no pude leer $1 de .claude/gw.json"; fallos=1; return; }
+  [ "$real" = "$2" ] || { echo "test-ganchos: $1 de .claude/gw.json cambió; si es a propósito, cámbialo también aquí: $real"; fallos=1; }
+}
+fijar content '["^docs/", "^src/data/", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]' --json
+fijar check '["npm run check"]' --json
+fijar reviewMark docs/registros/revisado.txt
+fijar protectedBranch main
+fijar pushToProtected direct
+# Lo versionado del flujo y de este test no puede estar en el .gitignore del repo (F3 del piloto: .claude/* ocultaba
+# .claude/gw.json). Solo el .gitignore del repo: el global de cada equipo no cuenta.
+for f in .claude/gw.json .claude/gw/scripts/config.py .claude/gw/scripts/es-codigo.sh .claude/gw/scripts/revisado.sh \
+         .claude/gw/schema/gw.schema.json .claude/skills/retro/SKILL.md .claude/settings.json .githooks/pre-push \
+         .githooks/pre-commit .github/workflows/comprobar.yml tools/qa/tests/test-ganchos.sh; do
+  git -C "$raiz" -c core.excludesFile=/dev/null check-ignore -q --no-index "$f" \
+    && { echo "test-ganchos: $f está en el .gitignore y no se subiría"; fallos=1; }
 done
 tmp="$(mktemp -d)" || exit 1
 trap 'rm -rf "$tmp"' EXIT

@@ -123,7 +123,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   la noche**. La tarea programada «Tarkor semanal» revisa el avance de Tarkor, actualiza su ficha y sube la rama de
   trabajo (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea).
   Gasta los mínimos tokens: lee solo la bitácora del juego y los commits desde la última fecha de `actualizado`.
-  Solo toca contenido (`src/data/`, `public/`, `docs/`), así que no necesita revisión mientras la marca de
+  Solo toca contenido (`src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
+  `content`; cualquier otro archivo es código y el `pre-push` lo rechaza en `main`), así que no necesita revisión mientras la marca de
   `docs/registros/revisado.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y
   todo código que entre en ella lleva su `/code-review` y su marca antes del domingo. Entre semana, lo hecho se
   apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación.

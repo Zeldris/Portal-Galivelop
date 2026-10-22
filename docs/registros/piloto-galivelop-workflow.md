@@ -110,7 +110,8 @@ existentes».
 Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7, 8 y 10.
 
 - **F18 · Un commit puede ampliar `content` para saltarse la marca** (hallazgo 1, el más grave). `pre-push` y
-  `es-codigo.sh` leen `content` del commit que se sube: un commit que añade `".*"` y toca código pasa a `main` sin
+  `es-codigo.sh` leen `content` (y `pre-push` también `check`, `protectedBranch` y `reviewMark`) del commit que se
+  sube: cambiar `check` a `true` o `protectedBranch` a otro nombre también se salta la regla; un commit que añade `".*"` y toca código pasa a `main` sin
   marca, y con la tarea semanal publicando sola nadie lo vería. El gancho antiguo del portal tenía la lista fija.
 - **F19 · El `content` por defecto exime código:** `^\.claude/skills/` cubre scripts (`medir.py`) y `\.md$`, las
   instrucciones de los agentes en cualquier carpeta.
@@ -126,21 +127,30 @@ Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7
 
 ## Fase 2: `/opt-tokens` y `/retro` (2026-10-22)
 
-- **F26 · El prompt de una tarea programada solo se cambia desde su conversación.** La retro propuso limitar la tarea
-  semanal a rutas de contenido; `update_trigger` desde la sesión de trabajo lo rechaza («only from the conversation
-  the routine posts into»). Las tareas que forman parte del flujo de un proyecto (publicar sola) no se pueden
-  mantener desde la sesión que aplica el flujo.
-
 - **F24 · La `retro` del flujo no la puede lanzar Claude.** Trae `disable-model-invocation: true`, pero `AGENTS.md`
   (fase 2), el `selector` («Claude runs it») y `revisado.sh` con `requireRetro` cuentan con que la lance el agente. La
   del portal sí se podía. Hay que pedir al usuario que escriba `/retro`.
 - **F25 · Aplicar el flujo cuesta leerlo entero en la sesión principal.** `/opt-tokens` de esta sesión: 62 llamadas,
   171k de contexto medio, techo 237k (la ventana de 200k no se aplicó, F11); lo que más arrastra son `aplicar.md`,
   `config.md`, las plantillas y los scripts leídos para decidir (~30k tokens que viajan en cada llamada posterior).
+- **F26 · El prompt de una tarea programada solo se cambia desde su conversación.** La retro propuso limitar la tarea
+  semanal a rutas de contenido; `update_trigger` desde la sesión de trabajo lo rechaza («only from the conversation
+  the routine posts into»). Las tareas que forman parte del flujo de un proyecto (publicar sola) no se pueden
+  mantener desde la sesión que aplica el flujo.
+
 
 Propuestas de `/opt-tokens` aceptadas por el usuario (2026-10-22): la variable de compactación en el entorno de la
 nube (la pone el usuario), «Hecho» de la bitácora limitado a 10 entradas, y F25 para el flujo. Apuntadas en
 `.claude/gw/opt-tokens.md`.
+
+## Fase 3: `/code-review` de los commits de la fase 2 (2026-10-22)
+
+11 hallazgos, todos arreglados: el pin del test cubre también `check`, `protectedBranch` y `pushToProtected` y lee
+con `config.py` (y su comentario ya no promete más de lo que da: frena un cambio accidental, no uno deliberado que
+toque también el test; F18 ampliado con eso); `check-ignore` solo con el `.gitignore` del repo y con los scripts de
+la marca, el CI y el propio test; `AGENTS.md` dice qué de `public/` es contenido (la tarea semanal); dos datos que
+el recorte de «Hecho» había perdido, recuperados (el «About» del repo, a «Pendiente»; toVeriAI sin origen académico,
+a `REVIEW.md`); retro con F1-F26 y el registro ordenado.
 
 ## For Galivelop-workflow
 
@@ -168,10 +178,12 @@ nube (la pone el usuario), «Hecho» de la bitácora limitado a 10 entradas, y F
 - **F12:** con `REVIEW.md` o `GLOSSARY.md` ya existentes, `aplicar.py` imprime el `diff --no-index` con la plantilla
   (sin escribir nada) para que el agente pase lo que falte.
 - **F13:** quitar `.claude/hooks/` de la plantilla de `CLAUDE.md` (o decir `.claude/gw/scripts/`).
+- **F14:** un `es-codigo.sh --explicar <ruta>...` (código o contenido y qué regex casa) y un ejemplo de test de
+  `content` en `docs/es/patrones.md` para proyectos con tareas que publican solas.
 - **F15/F16:** el paso 6 de `aplicar.md` con `git push --dry-run origin HEAD:<protectedBranch>` (el gancho corre
   igual y no hay riesgo de subir si fallara), y los dos mensajes posibles: sin marca o con código después de la marca.
 - **F17:** `recuperar.py --estado` con la entrada estándar en una terminal (`sys.stdin.isatty()`) no la lee.
-- **F18:** `pre-push` y el gancho de PR leen `content` y `reviewMark` del commit **remoto** de la rama protegida (la base),
+- **F18:** `pre-push` y el gancho de PR leen `content`, `check`, `protectedBranch` y `reviewMark` del commit **remoto** de la rama protegida (la base),
   no del que se sube, y un cambio en `.claude/gw.json` cuenta siempre como código; con su caso en los tests.
 - **F19:** `content` por defecto sin `^\.claude/skills/` entero (solo `.md` de las skills) y con `\.md$` limitado a la
   documentación (`^docs/`, README), no a `AGENTS.md`/`CLAUDE.md` en cualquier carpeta; avisarlo en `aplicar.md` §1.
@@ -188,5 +200,3 @@ nube (la pone el usuario), «Hecho» de la bitácora limitado a 10 entradas, y F
 - **F26:** en `docs/es/patrones.md` (tareas programadas que suben a la rama protegida): guardar su prompt en el repo
   (p. ej. `docs/runbooks/tarea-<nombre>.md`) y que el prompt real solo diga «sigue ese archivo», para que se cambie
   con un commit revisado y no desde la conversación de la tarea.
-- **F14:** un `es-codigo.sh --explicar <ruta>...` (código o contenido y qué regex casa) y un ejemplo de test de
-  `content` en `docs/es/patrones.md` para proyectos con tareas que publican solas.

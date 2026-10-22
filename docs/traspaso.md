@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
 | **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL y prueba del paso 6 hecha (subida a `main` sin marca rechazada, con `--dry-run`). Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
-| **Siguiente paso** | Fases 1 y 2 hechas (code review arreglado; `/opt-tokens` y `/retro` aplicados, el usuario aprobó todo). Fase 3: `/code-review` de los commits de la fase 2, `revisado.sh` y, con confirmación del usuario, merge a la rama de trabajo y subida a `main` |
+| **Siguiente paso** | Fases 1-3 hechas salvo la marca: `bash .claude/gw/scripts/revisado.sh` y push; luego, con confirmación del usuario, merge a `claude/galivelop-dev-portal-1h89ci` y subida a `main` |
 | **En `main`** | Publicado hasta la retro del flujo de Tarkor (2026-10-21). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -82,6 +82,8 @@ Datos fijos que salían en entradas antiguas:
 
 ## Pendiente
 
+- «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
+  repo; pendiente desde el SEO del 2026-10-14).
 0. **Prompt de «Tarkor semanal»** (retro del piloto, propuesta 2, aprobada): limitarla a `src/data/`, `public/` y
    `docs/`. Solo se cambia desde la conversación de la tarea; el texto está en
    `docs/registros/retro-2026-10-22-piloto-galivelop-workflow.md`. Hasta entonces, el `pre-push` ya rechaza código sin
