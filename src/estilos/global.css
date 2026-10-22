@@ -2447,10 +2447,11 @@ button {
   gap: 16px;
 }
 
-/* Cinco líneas de trabajo: en escritorio, todas en una fila (con 250 px de mínimo la quinta quedaba sola). */
-@media (min-width: 72em) {
+/* En escritorio, todas las líneas de trabajo en una fila (--lineas lo pone Inicio.tsx con LINEAS.length): con el
+   mínimo de 250 px, la última quedaba sola en otra fila. Desde 67.5em caben cinco de ~200 px. */
+@media (min-width: 67.5em) {
   .lineas {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(var(--lineas, 4), minmax(0, 1fr));
   }
 }
 

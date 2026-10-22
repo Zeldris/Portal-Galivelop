@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, Rocket, ShieldCheck, Target, Users, Workflow, type LucideIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
@@ -115,7 +115,7 @@ export function Inicio() {
               <p>{t('lineas.texto')}</p>
             </div>
           </header>
-          <ul className="lineas">
+          <ul className="lineas" style={{ '--lineas': LINEAS.length } as CSSProperties}>
             {LINEAS.map((l) => {
               const IconoLinea = ICONO_LINEA[l];
               const suyos = proyectos.filter((p) => p.lineas.includes(l));

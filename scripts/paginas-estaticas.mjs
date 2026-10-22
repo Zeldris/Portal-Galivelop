@@ -71,7 +71,7 @@ function datos(pg, url) {
     keywords: p.etiquetas.join(', '),
     ...(TIPO[p.slug] === 'WebApplication' ? { applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web' } : {}),
     ...(TIPO[p.slug] === 'VideoGame' ? { genre: 'RPG', gamePlatform: ['Windows', 'Linux', 'Steam Deck'] } : {}),
-    ...(TIPO[p.slug] === 'SoftwareApplication' ? { applicationCategory: 'DeveloperApplication', operatingSystem: ['Linux', 'macOS', 'Windows'] } : {}),
+    ...(TIPO[p.slug] === 'SoftwareApplication' ? { applicationCategory: 'DeveloperApplication', operatingSystem: ['Linux', 'macOS'] } : {}),
     ...(p.enlaces[0] ? { sameAs: p.enlaces.map((e) => e.url) } : {}),
     creator: ORG,
   };
