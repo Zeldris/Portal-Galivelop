@@ -7,9 +7,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | | |
 |---|---|
 | **Actualizado** | 2026-10-22 |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Esta sesión trabaja en `ccr-47f8fddd-o5ek6p` (ficha 0.2.0), sin traer aún a la rama de trabajo |
 | **Tarea en curso** | Ninguna |
-| **Siguiente paso** | Esperar el aviso del usuario: cuando el repo de Galivelop-workflow acabe de actualizarse, planear con él y actualizar la ficha de Galivelop-workflow con la info completa (ver «Pendiente: ficha de Galivelop-workflow») (`CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` ya está en el entorno, comprobado el 2026-10-22) |
+| **Siguiente paso** | Que el usuario revise la ficha de Galivelop-workflow v0.2.0 (rama `ccr-47f8fddd-o5ek6p`); con su visto bueno, `git merge` a `claude/galivelop-dev-portal-1h89ci` y, si confirma, a `main` (solo contenido: datos, imágenes y `docs/`, sin revisión). Aparte, cuando lo pida: `/gw-update` del portal de la copia 0.1.0 del flujo a la 0.2.0 (código: revisión y marca) |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -18,27 +18,22 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- (nada pendiente: `main` al día a 2026-10-22)
-
-## Pendiente: ficha de Galivelop-workflow
-
-Revisión del 2026-10-22 (petición del usuario); se planea y se hace cuando el repo del flujo acabe de actualizarse:
-
-- Las skills propias del usuario no salen en la web (solo las doce de Matt Pocock): `selector`,
-  `orchestrate-dealer`, `opt-tokens`, `gw-init`, `gw-update`, `gw-doctor` y las opcionales `opt-ai` y
-  `scout-updates`. Idea: apartado «Skills» con una tarjeta por skill y una que agrupe las de Matt Pocock.
-- Falta una explicación breve del flujo de una tarea (los `pasos` cuentan el ciclo de vida del flujo, no la tarea).
-  Idea: apartado de 5-6 pasos de una línea.
-- El diagrama (`public/proyectos/galivelop-workflow/portada.webp`, sin fuente en el repo) no muestra `opt-tokens`,
-  las tres fases antes de `main`, los ganchos ni `gw-init`/`gw-update`/`gw-doctor`. Idea: rehacerlo en SVG
-  versionado y exportar a webp.
-- Los textos de las skills salen del repo del flujo (solo lectura). Todo en es/gl/en; sin cambiar rutas.
+- Ficha de Galivelop-workflow a la v0.2.0, con diagrama nuevo (en `ccr-47f8fddd-o5ek6p`; traerla antes a esta rama)
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
+- ✅ Ficha de **Galivelop-workflow** a la v0.2.0 (2026-10-22, petición del usuario: destacar lo propio y dar su
+  sitio a lo de Matt Pocock), en `ccr-47f8fddd-o5ek6p`: apartados «Skills propias» (las 9, con sus scripts),
+  «Ganchos y scripts propios» (8 piezas) y «Skills de Matt Pocock» (las 12, MIT; `pr` con el crédito a Dex Horthy);
+  «Cómo funciona» pasa a ser el flujo de una tarea en 8 pasos; 6 características, cifras 9/12, decisión «Lo
+  comprobable, con scripts», novedad de la 0.2.0 y párrafo de lo propio frente a lo reutilizado. Diagrama nuevo
+  con fuente en `docs/diagramas/galivelop-workflow.svg` (exportado con Chromium a `portada.webp` 1600x1000 y
+  `portada-mini.webp` 720x450): las dos filas de la tarea con las tres fases, el bucle `gw-harvest → vX.Y.Z →
+  gw-update` y una leyenda por origen (galivelop / mattpocock/skills / Claude Code). Capturas es/gl en móvil y
+  escritorio sin desbordes. Textos sacados del repo del flujo en la v0.2.0 (`01d1a75`), solo leído.
 - ✅ Ficha de **Galivelop-workflow** publicada (2026-10-22, petición del usuario): traída de
   `claude/ficha-galivelop-workflow`, al día con el flujo (fases 0-4 hechas, fase 5 = piloto en este portal, en curso;
   dos novedades del 2026-10-22; doce skills de Matt Pocock), línea de trabajo «Método de trabajo con IA» y fila en el
@@ -87,10 +82,6 @@ opt-tokens, 2026-10-22).
 - ✅ Revisión semanal (2026-10-18): `tarkor-contenido-web.md` sin cambios desde la ficha rehecha hoy; Tarkor sin tocar, rama publicada en `main`.
 - ✅ Tarea «Tarkor semanal» con instrucciones nuevas (2026-10-18): sincroniza todas las secciones de la
   ficha con `tarkor-contenido-web.md` (y añade elementos nuevos), sin nombrar juegos de referencia.
-- ✅ Ficha de Tarkor rehecha (2026-10-18) desde `World-Maker-Fantasy/docs/producto/tarkor-contenido-web.md`:
-  8 pilares con cifras, turno, apartados Mundo, Razas, Facciones, Clases, Bestiario, Flora y oficios y
-  Preguntas frecuentes; cifras corregidas (9 clases · 31 especializaciones, +4.200 tests). Sin nombrar
-  juegos de referencia (decisión del usuario). Verificación de Google movida a `public/`. Publicado en `main`.
 
 Datos fijos que salían en entradas antiguas:
 

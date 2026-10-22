@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · fase 5: piloto",
-    "gl": "En desenvolvemento · fase 5: piloto",
-    "en": "In development · phase 5: pilot"
+    "es": "En desarrollo · v0.2.0 · fase 5: piloto",
+    "gl": "En desenvolvemento · v0.2.0 · fase 5: piloto",
+    "en": "In development · v0.2.0 · phase 5: pilot"
   },
   "etiquetas": [
     "Claude Code",
@@ -41,9 +41,9 @@
     "ancho": 1600,
     "alto": 1000,
     "alt": {
-      "es": "Esquema del flujo: selector, trabajo, commit y push, revisión y main; la retro vuelve al principio y la bitácora pasa el relevo entre sesiones",
-      "gl": "Esquema do fluxo: selector, traballo, commit e push, revisión e main; a retro volve ao principio e a bitácora pasa o relevo entre sesións",
-      "en": "Workflow diagram: selector, work, commit and push, review and main; the retro loops back and the handoff log passes the baton between sessions"
+      "es": "Esquema del flujo de una tarea: bitácora, selector, orchestrate-dealer, commit y push con sus ganchos, /code-review, /opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
+      "gl": "Esquema do fluxo dunha tarefa: bitácora, selector, orchestrate-dealer, commit e push cos seus ganchos, /code-review, /opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
+      "en": "Diagram of a task’s flow: log, selector, orchestrate-dealer, commit and push with their hooks, /code-review, /opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
     }
   },
   "enlaces": [],
@@ -61,9 +61,14 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la primera versión (0.1.0) probándose en este mismo portal. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa primeira versión (0.1.0) probándose neste mesmo portal. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with the first version (0.1.0) being tried out on this very portal. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.2.0, que ya recoge lo aprendido en el primer piloto, en este mismo portal. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.2.0, que xa recolle o aprendido no primeiro piloto, neste mesmo portal. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.2.0, which already takes in what we learned from the first pilot, on this very portal. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+    },
+    {
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las nueve skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye doce skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as nove skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe doce skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the nine skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes twelve skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
     }
   ],
   "lineas": [
@@ -97,12 +102,12 @@
       "titulo": {
         "es": "Relevos sin pérdidas",
         "gl": "Relevos sen perdas",
-        "en": "Lossless handoffs"
+        "en": "Handoffs without losses"
       },
       "texto": {
-        "es": "Bitácora al día y commit + push en cada punto estable: la sesión siguiente, o la otra cuenta, sigue sin preguntar por dónde iba.",
-        "gl": "Bitácora ao día e commit + push en cada punto estable: a sesión seguinte, ou a outra conta, segue sen preguntar por onde ía.",
-        "en": "An up-to-date log and commit + push at every stable point: the next session, or the other account, carries on without asking where things stood."
+        "es": "Bitácora al día en el mismo commit que el trabajo y commit + push en cada punto estable. Al abrir sesión, o tras limpiar el contexto, un gancho devuelve dónde se quedó: la siguiente sesión sigue sin preguntar.",
+        "gl": "Bitácora ao día no mesmo commit que o traballo e commit + push en cada punto estable. Ao abrir sesión, ou tras limpar o contexto, un gancho devolve onde quedou: a seguinte sesión segue sen preguntar.",
+        "en": "A log kept up to date in the same commit as the work, and commit + push at every stable point. When a session opens, or after the context is cleared, a hook returns where things stood: the next session carries on without asking."
       }
     },
     {
@@ -113,9 +118,9 @@
         "en": "Choose before starting"
       },
       "texto": {
-        "es": "Un selector decide qué skill y qué modelo pide cada tarea, y una escalera de subagentes reparte lo mecánico a modelos más baratos.",
-        "gl": "Un selector decide que skill e que modelo pide cada tarefa, e unha escaleira de subaxentes reparte o mecánico a modelos máis baratos.",
-        "en": "A selector decides which skill and model each task needs, and a ladder of subagents hands mechanical work to cheaper models."
+        "es": "La skill selector decide qué skill y qué modelo pide cada tarea, y orchestrate-dealer reparte lo mecánico a subagentes de contexto limpio con el modelo más barato que lo haga bien.",
+        "gl": "A skill selector decide que skill e que modelo pide cada tarefa, e orchestrate-dealer reparte o mecánico a subaxentes de contexto limpo co modelo máis barato que o faga ben.",
+        "en": "The selector skill decides which skill and model each task calls for, and orchestrate-dealer hands the mechanical work to clean-context subagents on the cheapest model that does it well."
       }
     },
     {
@@ -126,9 +131,9 @@
         "en": "Nothing unreviewed reaches main"
       },
       "texto": {
-        "es": "Revisión del diff, marca de revisado en el repositorio y ganchos de git que no dejan publicar código sin ella ni con las pruebas en rojo.",
-        "gl": "Revisión do diff, marca de revisado no repositorio e ganchos de git que non deixan publicar código sen ela nin coas probas en vermello.",
-        "en": "Diff review, a reviewed marker in the repository and git hooks that block publishing code without it or with failing tests."
+        "es": "Tres fases antes de publicar y una marca de revisado en el repositorio. Los ganchos de git no dejan subir código sin ella ni con las pruebas en rojo, y buscan secretos antes de cada commit.",
+        "gl": "Tres fases antes de publicar e unha marca de revisado no repositorio. Os ganchos de git non deixan subir código sen ela nin coas probas en vermello, e buscan segredos antes de cada commit.",
+        "en": "Three phases before publishing and a review mark in the repository. Git hooks won’t push code without it or with failing tests, and they scan for secrets before every commit."
       }
     },
     {
@@ -139,51 +144,540 @@
         "en": "Fewer tokens, same quality"
       },
       "texto": {
-        "es": "Orquestación con subagentes de contexto limpio, recuperación tras limpiar el contexto y retrospectivas que miden el gasto y proponen mejoras.",
-        "gl": "Orquestración con subaxentes de contexto limpo, recuperación tras limpar o contexto e retrospectivas que miden o gasto e propoñen melloras.",
-        "en": "Orchestration with clean-context subagents, recovery after clearing the context, and retrospectives that measure spend and suggest improvements."
+        "es": "Subagentes de contexto limpio, compactación acotada y la skill opt-tokens, que mide en qué se fue el gasto y propone recortes que no empeoren el resultado.",
+        "gl": "Subaxentes de contexto limpo, compactación acoutada e a skill opt-tokens, que mide en que se foi o gasto e propón recortes que non empeoren o resultado.",
+        "en": "Clean-context subagents, capped compaction and the opt-tokens skill, which measures where the spend went and proposes cuts that don’t make the result worse."
+      }
+    },
+    {
+      "icono": "book",
+      "titulo": {
+        "es": "Para cualquier proyecto",
+        "gl": "Para calquera proxecto",
+        "en": "For any project"
+      },
+      "texto": {
+        "es": "Cada proyecto declara lo suyo (idioma, check, rama protegida, qué es contenido) en un archivo pequeño; gw-init aplica el flujo y gw-doctor dice qué falta, con la orden que lo arregla.",
+        "gl": "Cada proxecto declara o seu (idioma, check, rama protexida, que é contido) nun ficheiro pequeno; gw-init aplica o fluxo e gw-doctor di que falta, coa orde que o arranxa.",
+        "en": "Each project declares its own settings (language, check, protected branch, what counts as content) in a small file; gw-init applies the workflow and gw-doctor says what’s missing, with the command that fixes it."
+      }
+    },
+    {
+      "icono": "sparkles",
+      "titulo": {
+        "es": "Mejora con cada proyecto",
+        "gl": "Mellora con cada proxecto",
+        "en": "Improves with every project"
+      },
+      "texto": {
+        "es": "gw-harvest recoge lo que cada proyecto cambia o inventa; lo bueno vuelve como versión nueva y gw-update la lleva a todos, enseñando antes los cambios.",
+        "gl": "gw-harvest recolle o que cada proxecto cambia ou inventa; o bo volve como versión nova e gw-update lévaa a todos, amosando antes os cambios.",
+        "en": "gw-harvest gathers what each project changes or invents; the good parts come back as a new version and gw-update brings it to every project, showing the changes first."
       }
     }
   ],
   "pasos": [
     {
       "titulo": {
-        "es": "Aplicar el flujo",
-        "gl": "Aplicar o fluxo",
-        "en": "Apply the workflow"
+        "es": "1. Retomar",
+        "gl": "1. Retomar",
+        "en": "1. Pick up"
       },
       "texto": {
-        "es": "Un agente lee el repositorio y copia al proyecto las reglas, skills, scripts y ganchos, con su versión, sin pisar lo que ya existe.",
-        "gl": "Un axente le o repositorio e copia ao proxecto as regras, skills, scripts e ganchos, coa súa versión, sen pisar o que xa existe.",
-        "en": "An agent reads the repository and copies the rules, skills, scripts and hooks into the project, with their version, without overwriting what is already there."
+        "es": "La sesión lee la bitácora, comprueba que el último commit coincide y pasa el check: sabe por dónde iba sin preguntar.",
+        "gl": "A sesión le a bitácora, comproba que o último commit coincide e pasa o check: sabe por onde ía sen preguntar.",
+        "en": "The session reads the log, checks that the last commit matches and runs the check: it knows where things stood without asking."
       }
     },
     {
       "titulo": {
-        "es": "Trabajar por relevos",
-        "gl": "Traballar por relevos",
-        "en": "Work in relays"
+        "es": "2. Elegir",
+        "gl": "2. Escoller",
+        "en": "2. Choose"
       },
       "texto": {
-        "es": "Cada sesión lee la bitácora, sigue por el siguiente paso y sube cada punto estable; los ganchos impiden publicar sin revisión ni con las pruebas en rojo.",
-        "gl": "Cada sesión le a bitácora, segue polo seguinte paso e sobe cada punto estable; os ganchos impiden publicar sen revisión nin coas probas en vermello.",
-        "en": "Each session reads the log, carries on with the next step and pushes every stable point; hooks block publishing without review or with failing tests."
+        "es": "selector dice qué skill y qué modelo pide la tarea, y si es de riesgo y hay que esperar a la persona.",
+        "gl": "selector di que skill e que modelo pide a tarefa, e se é de risco e hai que agardar pola persoa.",
+        "en": "selector says which skill and model the task calls for, and whether it’s risky enough to wait for the person."
       }
     },
     {
       "titulo": {
-        "es": "Recoger mejoras",
-        "gl": "Recoller melloras",
-        "en": "Harvest improvements"
+        "es": "3. Pensar, si hace falta",
+        "gl": "3. Pensar, se cómpre",
+        "en": "3. Think, if needed"
       },
       "texto": {
-        "es": "Las retrospectivas y una revisión de los proyectos que usan el flujo traen sus mejoras de vuelta como versión nueva para todos.",
-        "gl": "As retrospectivas e unha revisión dos proxectos que usan o fluxo traen as súas melloras de volta como versión nova para todos.",
-        "en": "Retrospectives and a sweep of the projects using the workflow bring their improvements back as a new version for everyone."
+        "es": "Para un plan, un error difícil o una duda de diseño entran las skills de Matt Pocock: grilling, research, prototype, diagnosing-bugs…",
+        "gl": "Para un plan, un erro difícil ou unha dúbida de deseño entran as skills de Matt Pocock: grilling, research, prototype, diagnosing-bugs…",
+        "en": "For a plan, a hard bug or a design question, Matt Pocock’s skills step in: grilling, research, prototype, diagnosing-bugs…"
+      }
+    },
+    {
+      "titulo": {
+        "es": "4. Trabajar y subir",
+        "gl": "4. Traballar e subir",
+        "en": "4. Work and push"
+      },
+      "texto": {
+        "es": "orchestrate-dealer reparte lo mecánico a subagentes y revisa lo que vuelve. Commit + push en cada punto estable, con la bitácora en el mismo commit; los ganchos pasan el check y buscan secretos.",
+        "gl": "orchestrate-dealer reparte o mecánico a subaxentes e revisa o que volve. Commit + push en cada punto estable, coa bitácora no mesmo commit; os ganchos pasan o check e buscan segredos.",
+        "en": "orchestrate-dealer hands the mechanical work to subagents and reviews what comes back. Commit + push at every stable point, with the log in the same commit; the hooks run the check and scan for secrets."
+      }
+    },
+    {
+      "titulo": {
+        "es": "5. Revisar el código",
+        "gl": "5. Revisar o código",
+        "en": "5. Review the code"
+      },
+      "texto": {
+        "es": "Fase 1 antes de publicar: revisión de todo el diff contra la rama protegida, con el criterio escrito del proyecto. Se arregla y se sube.",
+        "gl": "Fase 1 antes de publicar: revisión de todo o diff contra a rama protexida, co criterio escrito do proxecto. Arránxase e súbese.",
+        "en": "Phase 1 before publishing: a review of the whole diff against the protected branch, using the project’s written criteria. Fixes are made and pushed."
+      }
+    },
+    {
+      "titulo": {
+        "es": "6. Mejorar el entorno",
+        "gl": "6. Mellorar o contorno",
+        "en": "6. Improve the setup"
+      },
+      "texto": {
+        "es": "Fase 2: opt-tokens mide el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma.",
+        "gl": "Fase 2: opt-tokens mide o gasto e a retro propón cambios. As propostas preséntanse á persoa e só se aplica o que confirma.",
+        "en": "Phase 2: opt-tokens measures the spend and the retro proposes changes. The proposals are shown to the person and only what they confirm is applied."
+      }
+    },
+    {
+      "titulo": {
+        "es": "7. Publicar",
+        "gl": "7. Publicar",
+        "en": "7. Publish"
+      },
+      "texto": {
+        "es": "Fase 3: un script deja la marca de revisado del commit y, con la confirmación de la persona, se sube. Sin la marca, el gancho lo rechaza.",
+        "gl": "Fase 3: un script deixa a marca de revisado do commit e, coa confirmación da persoa, súbese. Sen a marca, o gancho rexeitao.",
+        "en": "Phase 3: a script records the commit’s review mark and, once the person confirms, it’s pushed. Without the mark, the hook rejects it."
+      }
+    },
+    {
+      "titulo": {
+        "es": "8. Devolver lo aprendido",
+        "gl": "8. Devolver o aprendido",
+        "en": "8. Give back what was learned"
+      },
+      "texto": {
+        "es": "gw-harvest recoge las mejoras de los proyectos, salen en una versión nueva del flujo y gw-update la lleva a cada uno.",
+        "gl": "gw-harvest recolle as melloras dos proxectos, saen nunha versión nova do fluxo e gw-update lévaa a cada un.",
+        "en": "gw-harvest gathers the projects’ improvements, they ship in a new version of the workflow and gw-update brings it to each project."
       }
     }
   ],
-  "apartados": [],
+  "apartados": [
+    {
+      "id": "skills-propias",
+      "titulo": {
+        "es": "Skills propias",
+        "gl": "Skills propias",
+        "en": "Our own skills"
+      },
+      "intro": {
+        "es": "Las nueve skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las cinco primeras sirven en el trabajo diario (dos son opcionales); las gw-, para llevar el flujo a cada proyecto y mantenerlo al día.",
+        "gl": "As nove skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As cinco primeiras serven no traballo diario (dúas son opcionais); as gw-, para levar o fluxo a cada proxecto e mantelo ao día.",
+        "en": "The nine skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first five serve day-to-day work (two are optional); the gw- ones bring the workflow to each project and keep it up to date."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "selector",
+            "gl": "selector",
+            "en": "selector"
+          },
+          "texto": {
+            "es": "Al empezar cada tarea decide qué skill y qué modelo pide. El de la sesión lo elige la persona; para los subagentes, el más barato que haga bien el trabajo. Cada proyecto añade sus propios casos.",
+            "gl": "Ao comezar cada tarefa decide que skill e que modelo pide. O da sesión escólleo a persoa; para os subaxentes, o máis barato que faga ben o traballo. Cada proxecto engade os seus propios casos.",
+            "en": "At the start of each task it decides which skill and model it calls for. The person picks the session’s model; subagents get the cheapest one that does the job well. Each project adds its own cases."
+          }
+        },
+        {
+          "nombre": {
+            "es": "orchestrate-dealer",
+            "gl": "orchestrate-dealer",
+            "en": "orchestrate-dealer"
+          },
+          "texto": {
+            "es": "Convierte la sesión principal en orquestadora: planea, decide y revisa, y reparte el trabajo en tandas pequeñas a subagentes de contexto limpio. Así trabaja horas sin vaciar el contexto, y todo el código que vuelve se revisa.",
+            "gl": "Converte a sesión principal en orquestadora: planea, decide e revisa, e reparte o traballo en tandas pequenas a subaxentes de contexto limpo. Así traballa horas sen baleirar o contexto, e todo o código que volve revísase.",
+            "en": "Turns the main session into an orchestrator: it plans, decides and reviews, and deals the work out in small batches to clean-context subagents. That way it works for hours without clearing the context, and every piece of code that comes back is reviewed."
+          }
+        },
+        {
+          "nombre": {
+            "es": "opt-tokens",
+            "gl": "opt-tokens",
+            "en": "opt-tokens"
+          },
+          "valor": "medir.py",
+          "texto": {
+            "es": "Mide en qué se fueron los tokens de una sesión y propone cambios del entorno que los recorten sin empeorar el resultado. Va antes de la retro, al cerrar cada cambio grande.",
+            "gl": "Mide en que se foron os tokens dunha sesión e propón cambios do contorno que os recorten sen empeorar o resultado. Vai antes da retro, ao pechar cada cambio grande.",
+            "en": "Measures where a session’s tokens went and proposes setup changes that cut them without making the result worse. It runs before the retro, when each big change closes."
+          }
+        },
+        {
+          "nombre": {
+            "es": "opt-ai",
+            "gl": "opt-ai",
+            "en": "opt-ai"
+          },
+          "valor": "medir.py",
+          "texto": {
+            "es": "Opcional, para proyectos con modelos de IA locales (Ollama, LM Studio, llama.cpp, vLLM o un RAG): mide latencia, calidad y configuración por tipo de máquina y propone cambios sin aplicarlos.",
+            "gl": "Opcional, para proxectos con modelos de IA locais (Ollama, LM Studio, llama.cpp, vLLM ou un RAG): mide latencia, calidade e configuración por tipo de máquina e propón cambios sen aplicalos.",
+            "en": "Optional, for projects with local AI models (Ollama, LM Studio, llama.cpp, vLLM or a RAG pipeline): measures latency, quality and configuration per machine type and proposes changes without applying them."
+          }
+        },
+        {
+          "nombre": {
+            "es": "scout-updates",
+            "gl": "scout-updates",
+            "en": "scout-updates"
+          },
+          "texto": {
+            "es": "Opcional: hace inventario de dependencias, entornos, imágenes, acciones de CI y modelos de IA, busca novedades en fuentes primarias y propone las migraciones que encajan con el proyecto. Solo cuando se pide.",
+            "gl": "Opcional: fai inventario de dependencias, contornos, imaxes, accións de CI e modelos de IA, busca novidades en fontes primarias e propón as migracións que encaixan co proxecto. Só cando se pide.",
+            "en": "Optional: inventories dependencies, runtimes, images, CI actions and AI models, looks for updates in primary sources and proposes the migrations that fit the project. Only when asked."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-init",
+            "gl": "gw-init",
+            "en": "gw-init"
+          },
+          "texto": {
+            "es": "Aplica el flujo a un proyecto nuevo o existente siguiendo la guía del repositorio, sin pisar lo que ya hay.",
+            "gl": "Aplica o fluxo a un proxecto novo ou existente seguindo a guía do repositorio, sen pisar o que xa hai.",
+            "en": "Applies the workflow to a new or existing project by following the repository’s guide, without overwriting what’s already there."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-update",
+            "gl": "gw-update",
+            "en": "gw-update"
+          },
+          "texto": {
+            "es": "Lleva la copia del flujo de un proyecto a la última versión: enseña los cambios y aplica solo lo que la persona confirma.",
+            "gl": "Leva a copia do fluxo dun proxecto á última versión: amosa os cambios e aplica só o que a persoa confirma.",
+            "en": "Brings a project’s copy of the workflow up to the latest version: it shows the changes and applies only what the person confirms."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-doctor",
+            "gl": "gw-doctor",
+            "en": "gw-doctor"
+          },
+          "texto": {
+            "es": "Comprueba que el flujo está bien montado y explica cada fallo con la orden que lo arregla.",
+            "gl": "Comproba que o fluxo está ben montado e explica cada fallo coa orde que o arranxa.",
+            "en": "Checks that the workflow is set up correctly and explains every failure with the command that fixes it."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-harvest",
+            "gl": "gw-harvest",
+            "en": "gw-harvest"
+          },
+          "texto": {
+            "es": "Recoge, como propuestas, lo que los proyectos cambiaron o inventaron sobre el flujo desde la última vez: de ahí sale cada versión nueva.",
+            "gl": "Recolle, como propostas, o que os proxectos cambiaron ou inventaron sobre o fluxo desde a última vez: de aí sae cada versión nova.",
+            "en": "Gathers, as proposals, what the projects changed or invented in the workflow since last time: every new version comes from there."
+          }
+        }
+      ]
+    },
+    {
+      "id": "piezas",
+      "titulo": {
+        "es": "Ganchos y scripts propios",
+        "gl": "Ganchos e scripts propios",
+        "en": "Our own hooks and scripts"
+      },
+      "intro": {
+        "es": "Lo que se puede comprobar no lo decide un agente: lo comprueba un script. Estas piezas hacen cumplir las reglas aunque el agente se equivoque.",
+        "gl": "O que se pode comprobar non o decide un axente: compróbao un script. Estas pezas fan cumprir as regras aínda que o axente se equivoque.",
+        "en": "Whatever can be checked isn’t left to an agent’s judgement: a script checks it. These pieces enforce the rules even when the agent gets it wrong."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "pre-push",
+            "gl": "pre-push",
+            "en": "pre-push"
+          },
+          "valor": "Git hook",
+          "texto": {
+            "es": "Pasa el check sobre el commit que se sube y no deja llevar código a la rama protegida sin la marca de revisión de ese mismo commit. Juzga con la configuración de la rama remota, para que no se pueda esquivar cambiándola en la misma subida.",
+            "gl": "Pasa o check sobre o commit que se sube e non deixa levar código á rama protexida sen a marca de revisión dese mesmo commit. Xulga coa configuración da rama remota, para que non se poida esquivar cambiándoa na mesma subida.",
+            "en": "Runs the check on the commit being pushed and won’t let code reach the protected branch without that same commit’s review mark. It judges by the remote branch’s configuration, so it can’t be dodged by changing it in the same push."
+          }
+        },
+        {
+          "nombre": {
+            "es": "pre-commit",
+            "gl": "pre-commit",
+            "en": "pre-commit"
+          },
+          "valor": "Git hook",
+          "texto": {
+            "es": "Busca secretos antes de cada commit y protege las rutas que el proyecto marca.",
+            "gl": "Busca segredos antes de cada commit e protexe as rutas que o proxecto marca.",
+            "en": "Scans for secrets before every commit and protects the paths the project marks."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Gancho de pull request",
+            "gl": "Gancho de pull request",
+            "en": "Pull request hook"
+          },
+          "valor": "Claude Code",
+          "texto": {
+            "es": "Pide la misma marca de revisión antes de crear o fusionar un pull request hacia la rama protegida, en los proyectos que publican así.",
+            "gl": "Pide a mesma marca de revisión antes de crear ou fusionar un pull request cara á rama protexida, nos proxectos que publican así.",
+            "en": "Asks for the same review mark before a pull request into the protected branch is created or merged, in projects that publish that way."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Marca de revisado",
+            "gl": "Marca de revisado",
+            "en": "Review mark"
+          },
+          "valor": "revisado.sh",
+          "texto": {
+            "es": "Tras las tres fases, un script deja escrito en el repositorio qué commit se revisó; si el proyecto lo pide, exige antes una retro decidida.",
+            "gl": "Tras as tres fases, un script deixa escrito no repositorio que commit se revisou; se o proxecto o pide, esixe antes unha retro decidida.",
+            "en": "After the three phases, a script writes into the repository which commit was reviewed; if the project asks for it, it first requires a decided retro."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Arranque y recuperación",
+            "gl": "Arranque e recuperación",
+            "en": "Start-up and recovery"
+          },
+          "valor": "recuperar.py",
+          "texto": {
+            "es": "Al abrir sesión o tras limpiar el contexto, devuelve el estado de la bitácora, los últimos commits y la configuración que importa; también busca un detalle perdido.",
+            "gl": "Ao abrir sesión ou tras limpar o contexto, devolve o estado da bitácora, os últimos commits e a configuración que importa; tamén busca un detalle perdido.",
+            "en": "When a session opens or after the context is cleared, it returns the log’s state, the latest commits and the settings that matter; it can also search for a lost detail."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Aplicar y diagnosticar",
+            "gl": "Aplicar e diagnosticar",
+            "en": "Apply and diagnose"
+          },
+          "valor": "aplicar.py · doctor.py",
+          "texto": {
+            "es": "Aplican, actualizan y revisan el flujo de forma determinista, y avisan de lo que falta (por ejemplo, una sesión en la nube sin el tope de compactación). Las skills gw- se apoyan en ellos.",
+            "gl": "Aplican, actualizan e revisan o fluxo de forma determinista, e avisan do que falta (por exemplo, unha sesión na nube sen o tope de compactación). As skills gw- apóianse neles.",
+            "en": "They apply, update and check the workflow deterministically, and flag what’s missing (for example, a cloud session without the compaction cap). The gw- skills build on them."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Configuración por proyecto",
+            "gl": "Configuración por proxecto",
+            "en": "Per-project settings"
+          },
+          "valor": "gw.json",
+          "texto": {
+            "es": "Un archivo pequeño con lo que cambia de un proyecto a otro (idioma, bitácora, check, rama protegida, qué es contenido), validado con un esquema y leído por un solo script.",
+            "gl": "Un ficheiro pequeno co que cambia dun proxecto a outro (idioma, bitácora, check, rama protexida, que é contido), validado cun esquema e lido por un só script.",
+            "en": "A small file with what changes from one project to another (language, log, check, protected branch, what counts as content), validated against a schema and read by a single script."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Plantillas",
+            "gl": "Modelos de partida",
+            "en": "Templates"
+          },
+          "texto": {
+            "es": "AGENTS.md, CLAUDE.md, bitácora, criterio de revisión, glosario y CI, en castellano e inglés, para empezar un proyecto con el flujo.",
+            "gl": "AGENTS.md, CLAUDE.md, bitácora, criterio de revisión, glosario e CI, en castelán e inglés, para comezar un proxecto co fluxo.",
+            "en": "AGENTS.md, CLAUDE.md, the log, review criteria, glossary and CI, in Spanish and English, to start a project on the workflow."
+          }
+        }
+      ]
+    },
+    {
+      "id": "matt-pocock",
+      "titulo": {
+        "es": "Skills de Matt Pocock",
+        "gl": "Skills de Matt Pocock",
+        "en": "Skills by Matt Pocock"
+      },
+      "intro": {
+        "es": "Doce skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
+        "gl": "Doce skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
+        "en": "Twelve skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "grilling",
+            "gl": "grilling",
+            "en": "grilling"
+          },
+          "texto": {
+            "es": "Interroga sin descanso un plan o una idea hasta encontrarle los huecos.",
+            "gl": "Interroga sen descanso un plan ou unha idea ata atoparlle os ocos.",
+            "en": "Relentlessly grills a plan or an idea until its gaps show."
+          }
+        },
+        {
+          "nombre": {
+            "es": "grill-with-docs",
+            "gl": "grill-with-docs",
+            "en": "grill-with-docs"
+          },
+          "texto": {
+            "es": "El mismo interrogatorio, dejando por escrito el glosario y las decisiones según se toman.",
+            "gl": "O mesmo interrogatorio, deixando por escrito o glosario e as decisións segundo se toman.",
+            "en": "The same grilling, writing down the glossary and the decisions as they’re made."
+          }
+        },
+        {
+          "nombre": {
+            "es": "domain-modeling",
+            "gl": "domain-modeling",
+            "en": "domain-modeling"
+          },
+          "texto": {
+            "es": "Construye y afina el modelo del dominio: glosario y registro de decisiones.",
+            "gl": "Constrúe e afina o modelo do dominio: glosario e rexistro de decisións.",
+            "en": "Builds and sharpens the domain model: glossary and decision records."
+          }
+        },
+        {
+          "nombre": {
+            "es": "research",
+            "gl": "research",
+            "en": "research"
+          },
+          "texto": {
+            "es": "Investiga una pregunta en fuentes primarias y deja las conclusiones en un archivo del repositorio.",
+            "gl": "Investiga unha pregunta en fontes primarias e deixa as conclusións nun ficheiro do repositorio.",
+            "en": "Researches a question in primary sources and leaves the findings in a file in the repository."
+          }
+        },
+        {
+          "nombre": {
+            "es": "prototype",
+            "gl": "prototype",
+            "en": "prototype"
+          },
+          "texto": {
+            "es": "Un prototipo desechable para responder una pregunta de lógica o de interfaz.",
+            "gl": "Un prototipo desbotable para responder unha pregunta de lóxica ou de interface.",
+            "en": "A throwaway prototype to answer a question about logic or a user interface."
+          }
+        },
+        {
+          "nombre": {
+            "es": "diagnosing-bugs",
+            "gl": "diagnosing-bugs",
+            "en": "diagnosing-bugs"
+          },
+          "texto": {
+            "es": "Un bucle de diagnóstico para errores difíciles y pérdidas de rendimiento.",
+            "gl": "Un bucle de diagnóstico para erros difíciles e perdas de rendemento.",
+            "en": "A diagnosis loop for hard bugs and performance regressions."
+          }
+        },
+        {
+          "nombre": {
+            "es": "codebase-design",
+            "gl": "codebase-design",
+            "en": "codebase-design"
+          },
+          "texto": {
+            "es": "Vocabulario común para diseñar módulos profundos: interfaces pequeñas que esconden mucho.",
+            "gl": "Vocabulario común para deseñar módulos profundos: interfaces pequenas que agochan moito.",
+            "en": "A shared vocabulary for designing deep modules: small interfaces that hide a lot."
+          }
+        },
+        {
+          "nombre": {
+            "es": "improve-codebase-architecture",
+            "gl": "improve-codebase-architecture",
+            "en": "improve-codebase-architecture"
+          },
+          "texto": {
+            "es": "Busca dónde profundizar los módulos de un proyecto, lo presenta en un informe y lo discute.",
+            "gl": "Busca onde afondar nos módulos dun proxecto, preséntao nun informe e discúteo.",
+            "en": "Looks for where a project’s modules could be deepened, presents it in a report and talks it through."
+          }
+        },
+        {
+          "nombre": {
+            "es": "retro",
+            "gl": "retro",
+            "en": "retro"
+          },
+          "texto": {
+            "es": "La retrospectiva antes de publicar: qué cambiar en el entorno para la próxima vez.",
+            "gl": "A retrospectiva antes de publicar: que cambiar no contorno para a próxima vez.",
+            "en": "The retrospective before publishing: what to change in the setup for next time."
+          }
+        },
+        {
+          "nombre": {
+            "es": "pr",
+            "gl": "pr",
+            "en": "pr"
+          },
+          "texto": {
+            "es": "Escribe la descripción de un pull request. Su resumen visual viene de la skill show-me de Dex Horthy (HumanLayer), con su mención.",
+            "gl": "Escribe a descrición dun pull request. O seu resumo visual vén da skill show-me de Dex Horthy (HumanLayer), coa súa mención.",
+            "en": "Writes a pull request description. Its visual summary comes from Dex Horthy’s show-me skill (HumanLayer), with his credit."
+          }
+        },
+        {
+          "nombre": {
+            "es": "writing-for-agents",
+            "gl": "writing-for-agents",
+            "en": "writing-for-agents"
+          },
+          "texto": {
+            "es": "Cómo escribir para agentes: skills, AGENTS.md y CLAUDE.md.",
+            "gl": "Como escribir para axentes: skills, AGENTS.md e CLAUDE.md.",
+            "en": "How to write for agents: skills, AGENTS.md and CLAUDE.md."
+          }
+        },
+        {
+          "nombre": {
+            "es": "to-questionnaire",
+            "gl": "to-questionnaire",
+            "en": "to-questionnaire"
+          },
+          "texto": {
+            "es": "Convierte una decisión que no se puede cerrar en un cuestionario para otra persona.",
+            "gl": "Converte unha decisión que non se pode pechar nun cuestionario para outra persoa.",
+            "en": "Turns a decision that can’t be settled into a questionnaire for someone else to fill in."
+          }
+        }
+      ]
+    }
+  ],
   "ficha": [
     {
       "capa": {
@@ -275,7 +769,12 @@
         "gl": "Piloto neste portal",
         "en": "Pilot on this portal"
       },
-      "estado": "curso"
+      "estado": "curso",
+      "detalle": {
+        "es": "Publicado en el portal; sus mejoras ya están en la versión 0.2.0.",
+        "gl": "Publicado no portal; as súas melloras xa están na versión 0.2.0.",
+        "en": "Live on the portal; its improvements are already in version 0.2.0."
+      }
     },
     {
       "version": "6",
@@ -327,6 +826,14 @@
     {
       "fecha": "2026-10-22",
       "texto": {
+        "es": "Versión 0.2.0: entran las mejoras del piloto en este portal y de Tarkor. Los ganchos juzgan la rama protegida con su propia configuración, la recuperación ya no se cuelga y el diagnóstico avisa de más problemas, como una sesión en la nube sin tope de compactación.",
+        "gl": "Versión 0.2.0: entran as melloras do piloto neste portal e de Tarkor. Os ganchos xulgan a rama protexida coa súa propia configuración, a recuperación xa non se colga e o diagnóstico avisa de máis problemas, como unha sesión na nube sen tope de compactación.",
+        "en": "Version 0.2.0: the improvements from the pilot on this portal and from Tarkor are in. The hooks judge the protected branch by its own settings, recovery no longer hangs and the diagnosis flags more problems, such as a cloud session without a compaction cap."
+      }
+    },
+    {
+      "fecha": "2026-10-22",
+      "texto": {
         "es": "Primer piloto: este portal ya trabaja con el flujo. Lo aplicamos a un proyecto real, probamos que nada llega a la web sin revisión y apuntamos 26 fricciones para mejorarlo.",
         "gl": "Primeiro piloto: este portal xa traballa co fluxo. Aplicámolo a un proxecto real, comprobamos que nada chega á web sen revisión e anotamos 26 friccións para melloralo.",
         "en": "First pilot: this portal now runs on the workflow. We applied it to a real project, checked that nothing reaches the site without review and logged 26 points of friction to improve it."
@@ -358,6 +865,22 @@
     }
   ],
   "cifras": [
+    {
+      "valor": "9",
+      "etiqueta": {
+        "es": "skills propias",
+        "gl": "skills propias",
+        "en": "skills of our own"
+      }
+    },
+    {
+      "valor": "12",
+      "etiqueta": {
+        "es": "skills de Matt Pocock",
+        "gl": "skills de Matt Pocock",
+        "en": "skills by Matt Pocock"
+      }
+    },
     {
       "valor": "2",
       "etiqueta": {
@@ -391,9 +914,21 @@
         "en": "Thanks to Matt Pocock"
       },
       "texto": {
-        "es": "Doce de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT) y llevan su mención en cada archivo. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo.",
-        "gl": "Doce das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT) e levan a súa mención en cada ficheiro. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo.",
-        "en": "Twelve of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence) and credit him in every file. Much of this way of working with agents we learned thanks to his work."
+        "es": "Doce de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
+        "gl": "Doce das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
+        "en": "Twelve of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Lo comprobable, con scripts",
+        "gl": "O comprobable, con scripts",
+        "en": "What can be checked, by scripts"
+      },
+      "texto": {
+        "es": "Las reglas que se pueden comprobar las hace cumplir un gancho o un script, no la opinión de un agente; las skills se quedan con lo que pide criterio. Si una regla se sigue rompiendo, se convierte en comprobación.",
+        "gl": "As regras que se poden comprobar fainas cumprir un gancho ou un script, non a opinión dun axente; as skills quedan co que pide criterio. Se unha regra se segue rompendo, convértese en comprobación.",
+        "en": "Rules that can be checked are enforced by a hook or a script, not by an agent’s opinion; skills keep what needs judgement. If a rule keeps getting broken, it becomes a check."
       }
     },
     {
