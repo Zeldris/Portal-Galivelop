@@ -25,6 +25,10 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
+- ✅ Ficha de **Galivelop-workflow** publicada (2026-10-22, petición del usuario): traída de
+  `claude/ficha-galivelop-workflow`, al día con el flujo (fases 0-4 hechas, fase 5 = piloto en este portal, en curso;
+  dos novedades del 2026-10-22; doce skills de Matt Pocock), línea de trabajo «Método de trabajo con IA» y fila en el
+  README. Capturas en escritorio y móvil sin desborde (es y gl). `/code-review` y marca antes de `main`.
 - ✅ Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
   (es; bitácora `docs/traspaso.md`; `npm ci`; `npm run check`; `main` directo; marca en `docs/registros/revisado.txt`;
   `content` acotado en la fase 1: `^docs/`, `^src/data/`, imágenes de `^public/`, los cinco `.md` de la raíz y los
@@ -69,9 +73,6 @@ opt-tokens, 2026-10-22).
   8 pilares con cifras, turno, apartados Mundo, Razas, Facciones, Clases, Bestiario, Flora y oficios y
   Preguntas frecuentes; cifras corregidas (9 clases · 31 especializaciones, +4.200 tests). Sin nombrar
   juegos de referencia (decisión del usuario). Verificación de Google movida a `public/`. Publicado en `main`.
-- ✅ SEO extra (2026-10-14): cada página estática lleva su texto en HTML (lo leen buscadores e IA
-  sin JavaScript; React lo sustituye al cargar), datos estructurados schema.org (Organization,
-  WebSite, VideoGame para Tarkor, WebApplication para toVeriAI) y `llms.txt`. Publicado en `main`.
 
 Datos fijos que salían en entradas antiguas:
 
@@ -87,10 +88,6 @@ Datos fijos que salían en entradas antiguas:
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-3. **Ficha de Galivelop-workflow, preparada y oculta** (2026-10-21) en la rama `claude/ficha-galivelop-workflow`
-   (no en la de trabajo, para que la tarea semanal no la publique): ficha en diseño, portada propia y línea de
-   trabajo nueva «Método de trabajo con IA». Se une a la rama de trabajo en la Fase 8 del plan de ese repo o
-   cuando el usuario lo confirme; antes, traer esta rama (`git merge`) y poner al día fase, hitos y novedades.
 
 ## Comprobar el estado
 

@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "captura",
-  "actualizado": "2026-10-21",
+  "actualizado": "2026-10-22",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · fase 2 de 10",
-    "gl": "En desenvolvemento · fase 2 de 10",
-    "en": "In development · phase 2 of 10"
+    "es": "En desarrollo · fase 5 de 10",
+    "gl": "En desenvolvemento · fase 5 de 10",
+    "en": "In development · phase 5 of 10"
   },
   "etiquetas": [
     "Claude Code",
@@ -248,7 +248,7 @@
         "gl": "Skills",
         "en": "Skills"
       },
-      "estado": "curso"
+      "estado": "hecho"
     },
     {
       "version": "3",
@@ -257,7 +257,7 @@
         "gl": "Ganchos e scripts",
         "en": "Hooks and scripts"
       },
-      "estado": "pendiente"
+      "estado": "hecho"
     },
     {
       "version": "4",
@@ -266,7 +266,7 @@
         "gl": "Modelos e aplicación",
         "en": "Templates and apply"
       },
-      "estado": "pendiente"
+      "estado": "hecho"
     },
     {
       "version": "5",
@@ -275,7 +275,7 @@
         "gl": "Piloto neste portal",
         "en": "Pilot on this portal"
       },
-      "estado": "pendiente"
+      "estado": "curso"
     },
     {
       "version": "6",
@@ -324,6 +324,22 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-10-22",
+      "texto": {
+        "es": "Primer piloto: este portal ya trabaja con el flujo. Lo aplicamos a un proyecto real, probamos que nada llega a la web sin revisión y apuntamos 26 fricciones para mejorarlo.",
+        "gl": "Primeiro piloto: este portal xa traballa co fluxo. Aplicámolo a un proxecto real, comprobamos que nada chega á web sen revisión e anotamos 26 friccións para melloralo.",
+        "en": "First pilot: this portal now runs on the workflow. We applied it to a real project, checked that nothing reaches the site without review and logged 26 points of friction to improve it."
+      }
+    },
+    {
+      "fecha": "2026-10-22",
+      "texto": {
+        "es": "Fases 2 a 4 cerradas: skills, ganchos y scripts (comprobados en Linux y macOS), plantillas y aplicación automática a un proyecto. Primera versión, 0.1.0.",
+        "gl": "Fases 2 a 4 pechadas: skills, ganchos e scripts (comprobados en Linux e macOS), modelos e aplicación automática a un proxecto. Primeira versión, 0.1.0.",
+        "en": "Phases 2 to 4 done: skills, hooks and scripts (checked on Linux and macOS), templates and automatic setup in a project. First version, 0.1.0."
+      }
+    },
     {
       "fecha": "2026-10-21",
       "texto": {

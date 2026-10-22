@@ -43,6 +43,7 @@ El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
 |---|---|---|---|
 | <img src="public/proyectos/tarkor/portada-mini.webp" width="140" alt=""> | **Tarkor**<br>RPG narrativo por texto con una IA local como directora de juego. Facciones que comercian y hacen la guerra, personajes que recuerdan y un reino que crece por generaciones: el mundo sigue aunque no juegues. | 🟡 En desarrollo (alpha) · abierto a colaboración | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/tarkor) |
 | <img src="public/proyectos/toveriai/portada-mini.webp" width="140" alt=""> | **toVeriAI**<br>Plataforma web que analiza noticias, enlaces y capturas con IA y devuelve un índice de credibilidad de 0 a 100 que explica qué falla y dónde. | 🟢 Publicado en [toveriai.com](https://www.toveriai.com) · proyecto privado | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/toveriai) |
+| <img src="public/proyectos/galivelop-workflow/portada-mini.webp" width="140" alt=""> | **Galivelop-workflow**<br>Nuestra forma de trabajar con agentes de IA, empaquetada para cualquier proyecto: relevos entre sesiones sin perder nada, revisión obligatoria antes de publicar y menos tokens sin perder calidad. | 🟡 En desarrollo (fase 5 de 10) · proyecto privado | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow) |
 
 Cada proyecto tiene su página en el portal: qué es, cómo funciona, galería, ficha técnica, hoja de
 ruta y lo que estamos aprendiendo con él.
@@ -56,6 +57,8 @@ ruta y lo que estamos aprendiendo con él.
 - **Información verificable**: métricas que explican por qué un contenido merece más o menos
   confianza, en lugar de dictar veredictos.
 - **Del prototipo al producto**: interfaz, servidor, datos, pruebas y despliegue.
+- **Método de trabajo con IA**: cómo trabajar semanas con agentes de IA sin perder el hilo (relevos, revisión y
+  gasto medido) y compartir lo que funciona.
 
 ## Cómo trabajamos
 
