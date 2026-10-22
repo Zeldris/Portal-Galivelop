@@ -9,11 +9,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
 | **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL y prueba del paso 6 hecha (subida a `main` sin marca rechazada, con `--dry-run`). Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
-| **Siguiente paso** | Tres fases antes de `main`: `/code-review` del diff contra `origin/main` y arreglos, `/opt-tokens` + `/retro` (cambio grande), `revisado.sh`; luego, con confirmación del usuario, merge a la rama de trabajo y subida a `main` |
+| **Siguiente paso** | Fase 1 hecha (10 hallazgos: 5 arreglados aquí, 5 del flujo en el registro del piloto). Fase 2: `/opt-tokens` + `/retro` (cambio grande), `revisado.sh`; luego, con confirmación del usuario, merge a la rama de trabajo y subida a `main` |
 | **En `main`** | Publicado hasta la retro del flujo de Tarkor (2026-10-21). https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido y el `pre-commit`; pide bash, git y python3). `npm run build` correcto |
 
-## Para la próxima publicación
+### Para la próxima publicación
 
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.

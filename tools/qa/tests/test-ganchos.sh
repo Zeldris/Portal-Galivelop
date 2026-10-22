@@ -44,6 +44,14 @@ unset CLAUDECODE
   echo w > src/otro.ts; git add -A; git commit -qm codigo-otra
   mkdir -p docs/registros; git rev-parse codigo > docs/registros/revisado.txt; git add -A; git commit -qm marca-ajena; git tag marca-ajena
   echo basura > docs/registros/revisado.txt; git commit -qam marca-basura; git tag marca-basura
+  # Qué es código y qué contenido con el `content` del portal (una ruta por regla).
+  git checkout -q -b rama-tipos base
+  mkdir -p .claude/skills/x/scripts public
+  for f in .claude/skills/x/SKILL.md .claude/skills/x/scripts/a.py public/a.html public/b.webp public/c.png AGENTS.md \
+           CLAUDE.md README.md docs/x.md src/data/p.json src/x.md .claude/gw/opt-tokens.md package.json; do
+    echo t > "$f"
+  done
+  git add -A; git commit -qm tipos; git tag tipos
   git checkout -q -b flujo marcado
   echo '# cambio' >> .claude/gw/scripts/es-codigo.sh; git commit -qam flujo; git tag cambio-flujo
 ) || { echo "test-ganchos: no pude montar el repo de prueba"; exit 1; }
@@ -70,5 +78,20 @@ caso "tarea semanal desde la base"         0 "$(sha semana)"         "$B"
 caso "script del flujo tras la marca"      1 "$(sha cambio-flujo)"   "$(sha marcado)" "code changed after the review mark"
 caso "main nuevo (remoto vacío)"           1 "$(sha codigo)"         0000000000000000000000000000000000000000 "has no review mark"
 caso "main remoto desconocido"             1 "$(sha marcado)"        1111111111111111111111111111111111111111 "which this clone does not have"
-[ $fallos = 0 ] && echo "test-ganchos: ganchos en verde (sintaxis, config y regla de main)."
+# es-codigo.sh: exactamente estos son código entre base y tipos.
+esperado=".claude/gw/opt-tokens.md
+.claude/skills/x/scripts/a.py
+package.json
+public/a.html
+src/x.md"
+obtenido="$(bash .claude/gw/scripts/es-codigo.sh "$B" "$(sha tipos)" | sort)"
+[ "$obtenido" = "$esperado" ] || { echo "test-ganchos: es-codigo.sh clasifica mal; código:"; echo "$obtenido" | sed 's/^/  /'; fallos=1; }
+# pre-commit (como agente) sobre un commit tipo de la tarea semanal: ficha, imagen y bitácora pasan.
+cp "$raiz/.githooks/pre-commit" .githooks/
+git checkout -q semana 2>/dev/null
+echo '{"novedades": [{"fecha": "2026-10-25", "texto": {"es": "Arte nuevo", "gl": "Arte novo", "en": "New art"}}]}' > src/data/a.json
+echo img2 > public/otra.webp; echo "- Revisión semanal: 1 novedad." >> docs/d.md; git add -A
+CLAUDECODE=1 bash .githooks/pre-commit > /dev/null 2>&1 || { echo "test-ganchos: el pre-commit rechaza un commit de la tarea semanal"; fallos=1; }
+git reset -q --hard
+[ $fallos = 0 ] && echo "test-ganchos: ganchos en verde (sintaxis, config, content, pre-commit y regla de main)."
 exit $fallos

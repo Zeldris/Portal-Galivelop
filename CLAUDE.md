@@ -14,5 +14,5 @@
   `/clear`, el gancho de inicio corre `python3 .claude/gw/scripts/recuperar.py --estado`, que devuelve el estado de
   la bitácora y los últimos commits; un detalle perdido se busca con
   `python3 .claude/gw/scripts/recuperar.py --buscar "<texto>"`. Lo que tenga que sobrevivir va a `docs/traspaso.md`.
-- **El modo automático** puede pedir permiso para editar `.claude/settings.json`, `.claude/hooks/` y `.githooks/`:
+- **El modo automático** puede pedir permiso para editar `.claude/settings.json`, `.claude/gw/` y `.githooks/`:
   pregunta al usuario antes de tocarlos, o deja que haga él el cambio.

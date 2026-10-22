@@ -4,7 +4,7 @@
 existente). Guía seguida: `Galivelop-workflow/docs/es/aplicar.md` (rama `main`, `603ca36`), apartado «Proyectos
 existentes».
 
-**Estado:** flujo aplicado y comprobado en la rama; fusiones a mano aprobadas por el usuario (2026-10-22: `CLAUDE.md`,
+**Estado:** flujo aplicado y comprobado en la rama; fase 1 (`/code-review`) hecha y arreglada; fusiones a mano aprobadas por el usuario (2026-10-22: `CLAUDE.md`,
 `comprobar.yml` y `requireRetro: false`); pendientes las tres fases antes de `main`.
 
 ## Qué se hizo
@@ -90,6 +90,40 @@ existentes».
 - **F16 · El mensaje esperado del paso 6 no es el de un proyecto existente.** `aplicar.md` espera «the pushed
   commit has no review mark», pero el portal ya tenía marca y el rechazo dice «code changed after the review mark».
 
+- **F17 · `recuperar.py --estado` se cuelga a mano.** Sin entrada estándar espera el JSON del gancho; `CLAUDE.md`
+  dice que se corra y en una terminal no termina (con `</dev/null` sí).
+
+## Fase 1: `/code-review` del diff contra `origin/main` (2026-10-22)
+
+10 hallazgos. Arreglados en el portal:
+
+- `content` acotado (hallazgos 2, 3 y 5): fuera `\.md$` y `^\.claude/skills/` del todo (cubrían `medir.py`, los
+  `agents/*.yaml` y `.claude/gw/opt-tokens.md`) y `^public/` solo para imágenes (`public/` acaba tal cual en la web,
+  HTML incluido). Ahora: `^docs/`, `^src/data/`, `^public/.*\.(webp|png|jpe?g|svg|ico)$`, los cinco `.md` de la raíz
+  (`README`, `GLOSSARY`, `REVIEW`, `CLAUDE`, `AGENTS`) y `^\.claude/skills/.*\.md$`.
+- Casos nuevos en `test-ganchos.sh` (hallazgo 4): qué es código y qué contenido con ese `content` (una ruta por regla;
+  comprobado que falla con el `content` de antes) y el `pre-commit` como agente sobre un commit tipo de la tarea semanal.
+- «Para la próxima publicación» pasa a subsección de «Estado actual» de la bitácora (hallazgo 6): `recuperar.py
+  --estado` solo devuelve la primera sección.
+- `CLAUDE.md.gw-nuevo` se había colado en el commit (hallazgo 9): borrado. `CLAUDE.md` ya no nombra `.claude/hooks/`.
+
+Del flujo (no se tocan sus scripts aquí; van abajo, F18-F23): hallazgos 1, 6, 7, 8 y 10.
+
+- **F18 · Un commit puede ampliar `content` para saltarse la marca** (hallazgo 1, el más grave). `pre-push` y
+  `es-codigo.sh` leen `content` del commit que se sube: un commit que añade `".*"` y toca código pasa a `main` sin
+  marca, y con la tarea semanal publicando sola nadie lo vería. El gancho antiguo del portal tenía la lista fija.
+- **F19 · El `content` por defecto exime código:** `^\.claude/skills/` cubre scripts (`medir.py`) y `\.md$`, las
+  instrucciones de los agentes en cualquier carpeta.
+- **F20 · `recuperar.py --estado` devuelve solo la primera sección** de la bitácora (el gancho antiguo del portal
+  mostraba también lo pendiente de publicar).
+- **F21 · Marcadores de conflicto solo en commits nuevos:** subir a la rama protegida commits ya en otra rama remota
+  (la tarea semanal: `git push origin <rama>:main`) se salta la búsqueda de marcadores y de `*.rej`/`*.orig`.
+- **F22 · `session-start.sh` decide reinstalar solo por el sello de `.git`**, no por si existe `node_modules`; si se
+  borra `node_modules` y queda el sello, no reinstala. (En la tarea semanal no afecta: contenedor nuevo y `npm ci` en
+  su prompt.)
+- **F23 · El gancho de PR corre en cada llamada a Bash** (`^Bash$`), también con `pushToProtected: direct`, y bloquea si
+  `python3` falla aunque el comando no tenga que ver con un PR.
+
 ## For Galivelop-workflow
 
 - **F1:** en `aplicar.md` §0 y en `problemas.md`, cómo leer el flujo en la nube sin que pase a ser la carpeta de
@@ -118,5 +152,15 @@ existentes».
 - **F13:** quitar `.claude/hooks/` de la plantilla de `CLAUDE.md` (o decir `.claude/gw/scripts/`).
 - **F15/F16:** el paso 6 de `aplicar.md` con `git push --dry-run origin HEAD:<protectedBranch>` (el gancho corre
   igual y no hay riesgo de subir si fallara), y los dos mensajes posibles: sin marca o con código después de la marca.
+- **F17:** `recuperar.py --estado` con la entrada estándar en una terminal (`sys.stdin.isatty()`) no la lee.
+- **F18:** `pre-push` y el gancho de PR leen `content` y `reviewMark` del commit **remoto** de la rama protegida (la base),
+  no del que se sube, y un cambio en `.claude/gw.json` cuenta siempre como código; con su caso en los tests.
+- **F19:** `content` por defecto sin `^\.claude/skills/` entero (solo `.md` de las skills) y con `\.md$` limitado a la
+  documentación (`^docs/`, README), no a `AGENTS.md`/`CLAUDE.md` en cualquier carpeta; avisarlo en `aplicar.md` §1.
+- **F20:** `--estado` con las secciones que diga la config (p. ej. `logSections`), o la primera y la de pendientes.
+- **F21:** al subir a la rama protegida, buscar marcadores y restos en `base..local`, no solo en lo nuevo.
+- **F22:** `session-start.sh` reinstala también si falta la carpeta de dependencias (`node_modules`, `.venv`).
+- **F23:** el gancho `PreToolUse` en `Bash` solo con `pushToProtected: pr`, o salir antes de lanzar `python3` cuando el
+  comando no nombra `gh`.
 - **F14:** un `es-codigo.sh --explicar <ruta>...` (código o contenido y qué regex casa) y un ejemplo de test de
   `content` en `docs/es/patrones.md` para proyectos con tareas que publican solas.

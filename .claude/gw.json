@@ -21,10 +21,10 @@
   "requireRetro": false,
   "content": [
     "^docs/",
-    "\\.md$",
-    "^\\.claude/skills/",
     "^src/data/",
-    "^public/"
+    "^public/.*\\.(webp|png|jpe?g|svg|ico)$",
+    "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$",
+    "^\\.claude/skills/.*\\.md$"
   ],
   "roadmap": false,
   "selector": {
