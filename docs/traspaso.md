@@ -7,10 +7,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | | |
 |---|---|
 | **Actualizado** | 2026-10-22 |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Esta sesión trabaja en `ccr-47f8fddd-o5ek6p` (ficha 0.2.0), sin traer aún a la rama de trabajo |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
 | **Tarea en curso** | Ninguna |
-| **Siguiente paso** | Que el usuario revise la ficha de Galivelop-workflow v0.2.0 (rama `ccr-47f8fddd-o5ek6p`); con su visto bueno, `git merge` a `claude/galivelop-dev-portal-1h89ci` y, si confirma, a `main` (solo contenido: datos, imágenes y `docs/`, sin revisión). Aparte, cuando lo pida: `/gw-update` del portal de la copia 0.1.0 del flujo a la 0.2.0 (código: revisión y marca) |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow. https://zeldris.github.io/Portal-Galivelop/ |
+| **Siguiente paso** | Esperar instrucciones. Propuesta pendiente: `/gw-update` del portal de la copia 0.1.0 del flujo a la 0.2.0 (código: revisión y marca) |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow v0.2.0. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Ficha de Galivelop-workflow a la v0.2.0, con diagrama nuevo (en `ccr-47f8fddd-o5ek6p`; traerla antes a esta rama)
+- (nada pendiente: `main` al día a 2026-10-22)
 
 ## Hecho
 
@@ -33,7 +33,8 @@ opt-tokens, 2026-10-22).
   con fuente en `docs/diagramas/galivelop-workflow.svg` (exportado con Chromium a `portada.webp` 1600x1000 y
   `portada-mini.webp` 720x450): las dos filas de la tarea con las tres fases, el bucle `gw-harvest → vX.Y.Z →
   gw-update` y una leyenda por origen (galivelop / mattpocock/skills / Claude Code). Capturas es/gl en móvil y
-  escritorio sin desbordes. Textos sacados del repo del flujo en la v0.2.0 (`01d1a75`), solo leído.
+  escritorio sin desbordes. Textos sacados del repo del flujo en la v0.2.0 (`01d1a75`), solo leído. Traída a la rama de trabajo y
+  publicada en `main` con confirmación expresa del usuario (solo contenido).
 - ✅ Ficha de **Galivelop-workflow** publicada (2026-10-22, petición del usuario): traída de
   `claude/ficha-galivelop-workflow`, al día con el flujo (fases 0-4 hechas, fase 5 = piloto en este portal, en curso;
   dos novedades del 2026-10-22; doce skills de Matt Pocock), línea de trabajo «Método de trabajo con IA» y fila en el
