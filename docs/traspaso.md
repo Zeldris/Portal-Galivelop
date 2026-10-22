@@ -9,9 +9,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
 | **Tarea en curso** | Ninguna |
-| **Siguiente paso** | El usuario añade `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en el entorno de la nube; la próxima revisión semanal ya corre con el flujo nuevo |
+| **Siguiente paso** | Esperar el aviso del usuario: cuando el repo de Galivelop-workflow acabe de actualizarse, actualizar otra vez la ficha de Galivelop-workflow (`CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` ya está en el entorno, comprobado el 2026-10-22) |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
