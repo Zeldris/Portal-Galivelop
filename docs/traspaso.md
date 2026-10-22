@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-22 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal). Piloto del flujo en `claude/piloto-galivelop-workflow` (sale de ella; vuelve por merge cuando el usuario lo confirme) |
-| **Tarea en curso** | Piloto de **Galivelop-workflow v0.1.0** (Fase 5 del plan del flujo), rama `claude/piloto-galivelop-workflow`: flujo aplicado con `aplicar.py`, copia anterior sustituida, `doctor.py` sin FAIL y prueba del paso 6 hecha (subida a `main` sin marca rechazada, con `--dry-run`). Fricciones en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md) |
-| **Siguiente paso** | Fases 1-3 hechas salvo la marca: `bash .claude/gw/scripts/revisado.sh` y push; luego, con confirmación del usuario, merge a `claude/galivelop-dev-portal-1h89ci` y subida a `main` |
-| **En `main`** | Publicado hasta la retro del flujo de Tarkor (2026-10-21). https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna. Piloto de Galivelop-workflow v0.1.0 cerrado y publicado (fricciones para el flujo en [`registros/piloto-galivelop-workflow.md`](registros/piloto-galivelop-workflow.md)) |
+| **Siguiente paso** | Que el usuario añada el límite de rutas al prompt de «Tarkor semanal» desde su conversación (Pendiente 0) y la variable de compactación en el entorno de la nube; la próxima revisión semanal ya corre con el flujo nuevo |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluidos el piloto de Galivelop-workflow y los créditos a Matt Pocock. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 17/17 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
@@ -18,15 +18,14 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Créditos a Matt Pocock (`897b1ff`, con su marca `5771884`): en la rama de trabajo, aún no en `main` (la bitácora decía
-  «nada pendiente», pero esos commits no estaban publicados; se publican el domingo con la tarea semanal).
+- (nada pendiente: `main` al día a 2026-10-22)
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
-- 🚧 Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
+- ✅ Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
   (es; bitácora `docs/traspaso.md`; `npm ci`; `npm run check`; `main` directo; marca en `docs/registros/revisado.txt`;
   `content` acotado en la fase 1: `^docs/`, `^src/data/`, imágenes de `^public/`, los cinco `.md` de la raíz y los
   `.md` de las skills), más `visibleLanguages` es/gl/en,
@@ -38,7 +37,8 @@ opt-tokens, 2026-10-22).
   proyecto» de `AGENTS.md`. `comprobar.yml` del flujo + Node y build. `.gitignore` deja versionar `.claude/gw*` y
   quita `__pycache__` del repo. `test-ganchos.sh` reescrito para el gancho del flujo. Paso 6: `git push --dry-run origin HEAD:main`
   con un commit de código de prueba, rechazado por el `pre-push`; commit quitado sin subir. El usuario aprobó (2026-10-22) la fusión de
-  `CLAUDE.md`, la de `comprobar.yml` y `requireRetro: false`. Falta: las tres fases y la subida.
+  `CLAUDE.md`, la de `comprobar.yml` y `requireRetro: false`. Tres fases hechas (dos `/code-review`, 10 y 11 hallazgos arreglados; `/opt-tokens` y `/retro` aplicados), marca `1a284bd` y
+  publicado en `main` con la rama de trabajo al día (confirmación del usuario).
 - ✅ Créditos a Matt Pocock (2026-10-21, petición del usuario): mención al final de cada una de sus 11 skills,
   apartado «Agradecimiento» en `.claude/skills/README.md` (hemos aprendido esta forma de trabajar gracias a su
   trabajo) y nota en el runbook. Cambia `.claude/`, así que lleva `/code-review` y marca de revisado.
