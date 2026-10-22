@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, Rocket, ShieldCheck, Target, Users, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, Rocket, ShieldCheck, Target, Users, Workflow, type LucideIcon } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoDiscord } from '../components/IconoDiscord';
@@ -12,7 +12,7 @@ import type { EstadoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
-const ICONO_LINEA: Record<Linea, LucideIcon> = { 'ia-local': Cpu, mundos: Globe, informacion: ShieldCheck, producto: Layers };
+const ICONO_LINEA: Record<Linea, LucideIcon> = { 'ia-local': Cpu, mundos: Globe, informacion: ShieldCheck, producto: Layers, metodo: Workflow };
 const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
   [Target, 'valor1'],
   [FlaskConical, 'valor2'],

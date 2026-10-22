@@ -1,0 +1,442 @@
+{
+  "slug": "galivelop-workflow",
+  "nombre": "Galivelop-workflow",
+  "orden": 3,
+  "colaboracion": "privada",
+  "estado": "desarrollo",
+  "acento": "#3D6FD9",
+  "cabecera": "captura",
+  "actualizado": "2026-10-21",
+  "categoria": {
+    "es": "Herramienta · Flujo de trabajo para agentes de IA",
+    "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
+    "en": "Tool · Workflow for AI coding agents"
+  },
+  "lema": {
+    "es": "Lo que no está subido no existe: nuestra forma de trabajar con IA, empaquetada para cualquier proyecto.",
+    "gl": "O que non está subido non existe: a nosa forma de traballar con IA, empaquetada para calquera proxecto.",
+    "en": "If it isn’t pushed, it doesn’t exist: the way we work with AI, packaged for any project."
+  },
+  "resumen": {
+    "es": "Un flujo de trabajo versionado para programar con agentes de IA: relevos entre sesiones sin perder nada, elegir skill y modelo antes de empezar, revisión obligatoria antes de publicar y menos tokens sin perder calidad.",
+    "gl": "Un fluxo de traballo versionado para programar con axentes de IA: relevos entre sesións sen perder nada, escoller skill e modelo antes de comezar, revisión obrigatoria antes de publicar e menos tokens sen perder calidade.",
+    "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
+  },
+  "fase": {
+    "es": "En desarrollo · fase 2 de 10",
+    "gl": "En desenvolvemento · fase 2 de 10",
+    "en": "In development · phase 2 of 10"
+  },
+  "etiquetas": [
+    "Claude Code",
+    "AGENTS.md",
+    "Agent Skills",
+    "Bash",
+    "Python",
+    "Git hooks"
+  ],
+  "portada": {
+    "src": "proyectos/galivelop-workflow/portada.webp",
+    "mini": "proyectos/galivelop-workflow/portada-mini.webp",
+    "ancho": 1600,
+    "alto": 1000,
+    "alt": {
+      "es": "Esquema del flujo: selector, trabajo, commit y push, revisión y main; la retro vuelve al principio y la bitácora pasa el relevo entre sesiones",
+      "gl": "Esquema do fluxo: selector, traballo, commit e push, revisión e main; a retro volve ao principio e a bitácora pasa o relevo entre sesións",
+      "en": "Workflow diagram: selector, work, commit and push, review and main; the retro loops back and the handoff log passes the baton between sessions"
+    }
+  },
+  "enlaces": [],
+  "galeria": [],
+  "capturas": [],
+  "descripcion": [
+    {
+      "es": "Trabajar con un agente de IA durante semanas tiene un problema poco visible: cada sesión puede acabarse en cualquier momento (sin tokens, con el contenedor reciclado o con el relevo de otra cuenta) y lo que no quedó escrito se pierde. Además, cada proyecto acaba inventando sus propias reglas y copiándolas a mano, y las copias divergen.",
+      "gl": "Traballar cun axente de IA durante semanas ten un problema pouco visible: cada sesión pode rematar en calquera momento (sen tokens, co contedor reciclado ou co relevo doutra conta) e o que non quedou escrito pérdese. Ademais, cada proxecto acaba inventando as súas propias regras e copiándoas á man, e as copias diverxen.",
+      "en": "Working with an AI agent for weeks has a hidden problem: any session can end at any moment (out of tokens, container recycled, another account taking over) and whatever wasn’t written down is lost. On top of that, every project ends up inventing its own rules and copying them by hand, and the copies drift apart."
+    },
+    {
+      "es": "Galivelop-workflow saca ese método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona, y lo convierte en un repositorio versionado: reglas en AGENTS.md (un estándar abierto que entiende cualquier agente), skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos los proyectos, y cada uno declara lo suyo en un pequeño archivo de configuración.",
+      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do taller, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e modelos nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
+      "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
+    },
+    {
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, portando las skills. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, portando as skills. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, porting the skills. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+    }
+  ],
+  "lineas": [
+    "metodo"
+  ],
+  "aprendizajes": [
+    {
+      "es": "Escribir el estado en archivos, no en la conversación: una bitácora al día vale más que la mejor memoria de una sesión.",
+      "gl": "Escribir o estado en ficheiros, non na conversa: unha bitácora ao día vale máis ca a mellor memoria dunha sesión.",
+      "en": "Keeping state in files, not in the conversation: an up-to-date handoff log beats the best memory any session can have."
+    },
+    {
+      "es": "Que los ganchos fallen cerrados: si a una comprobación le falta un dato, es mejor bloquear que dejar pasar algo sin revisar.",
+      "gl": "Que os ganchos fallen pechados: se a unha comprobación lle falta un dato, é mellor bloquear que deixar pasar algo sen revisar.",
+      "en": "Making hooks fail closed: if a check is missing data, blocking is better than letting something unreviewed through."
+    },
+    {
+      "es": "Ahorrar tokens sin perder calidad: medir dónde se gastan antes de recortar, porque un ahorro que empeora el resultado no es ahorro.",
+      "gl": "Aforrar tokens sen perder calidade: medir onde se gastan antes de recortar, porque un aforro que empeora o resultado non é aforro.",
+      "en": "Saving tokens without losing quality: measuring where they go before cutting, because savings that hurt the result aren’t savings."
+    },
+    {
+      "es": "Generalizar sin perder lo que funciona: separar lo que es de cada proyecto de lo que sirve para cualquiera.",
+      "gl": "Xeneralizar sen perder o que funciona: separar o que é de cada proxecto do que serve para calquera.",
+      "en": "Generalising without losing what works: separating what belongs to each project from what serves everyone."
+    }
+  ],
+  "caracteristicas": [
+    {
+      "icono": "users",
+      "titulo": {
+        "es": "Relevos sin pérdidas",
+        "gl": "Relevos sen perdas",
+        "en": "Lossless handoffs"
+      },
+      "texto": {
+        "es": "Bitácora al día y commit + push en cada punto estable: la sesión siguiente, o la otra cuenta, sigue sin preguntar por dónde iba.",
+        "gl": "Bitácora ao día e commit + push en cada punto estable: a sesión seguinte, ou a outra conta, segue sen preguntar por onde ía.",
+        "en": "An up-to-date log and commit + push at every stable point: the next session, or the other account, carries on without asking where things stood."
+      }
+    },
+    {
+      "icono": "cpu",
+      "titulo": {
+        "es": "Elegir antes de empezar",
+        "gl": "Escoller antes de comezar",
+        "en": "Choose before starting"
+      },
+      "texto": {
+        "es": "Un selector decide qué skill y qué modelo pide cada tarea, y una escalera de subagentes reparte lo mecánico a modelos más baratos.",
+        "gl": "Un selector decide que skill e que modelo pide cada tarefa, e unha escaleira de subaxentes reparte o mecánico a modelos máis baratos.",
+        "en": "A selector decides which skill and model each task needs, and a ladder of subagents hands mechanical work to cheaper models."
+      }
+    },
+    {
+      "icono": "shield",
+      "titulo": {
+        "es": "Nada sin revisar llega a main",
+        "gl": "Nada sen revisar chega a main",
+        "en": "Nothing unreviewed reaches main"
+      },
+      "texto": {
+        "es": "Revisión del diff, marca de revisado en el repositorio y ganchos de git que no dejan publicar código sin ella ni con las pruebas en rojo.",
+        "gl": "Revisión do diff, marca de revisado no repositorio e ganchos de git que non deixan publicar código sen ela nin coas probas en vermello.",
+        "en": "Diff review, a reviewed marker in the repository and git hooks that block publishing code without it or with failing tests."
+      }
+    },
+    {
+      "icono": "gauge",
+      "titulo": {
+        "es": "Pocos tokens, misma calidad",
+        "gl": "Poucos tokens, mesma calidade",
+        "en": "Fewer tokens, same quality"
+      },
+      "texto": {
+        "es": "Orquestación con subagentes de contexto limpio, recuperación tras limpiar el contexto y retrospectivas que miden el gasto y proponen mejoras.",
+        "gl": "Orquestración con subaxentes de contexto limpo, recuperación tras limpar o contexto e retrospectivas que miden o gasto e propoñen melloras.",
+        "en": "Orchestration with clean-context subagents, recovery after clearing the context, and retrospectives that measure spend and suggest improvements."
+      }
+    }
+  ],
+  "pasos": [
+    {
+      "titulo": {
+        "es": "Aplicar el flujo",
+        "gl": "Aplicar o fluxo",
+        "en": "Apply the workflow"
+      },
+      "texto": {
+        "es": "Un agente lee el repositorio y copia al proyecto las reglas, skills, scripts y ganchos, con su versión, sin pisar lo que ya existe.",
+        "gl": "Un axente le o repositorio e copia ao proxecto as regras, skills, scripts e ganchos, coa súa versión, sen pisar o que xa existe.",
+        "en": "An agent reads the repository and copies the rules, skills, scripts and hooks into the project, with their version, without overwriting what is already there."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Trabajar por relevos",
+        "gl": "Traballar por relevos",
+        "en": "Work in relays"
+      },
+      "texto": {
+        "es": "Cada sesión lee la bitácora, sigue por el siguiente paso y sube cada punto estable; los ganchos impiden publicar sin revisión ni con las pruebas en rojo.",
+        "gl": "Cada sesión le a bitácora, segue polo seguinte paso e sobe cada punto estable; os ganchos impiden publicar sen revisión nin coas probas en vermello.",
+        "en": "Each session reads the log, carries on with the next step and pushes every stable point; hooks block publishing without review or with failing tests."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Recoger mejoras",
+        "gl": "Recoller melloras",
+        "en": "Harvest improvements"
+      },
+      "texto": {
+        "es": "Las retrospectivas y una revisión de los proyectos que usan el flujo traen sus mejoras de vuelta como versión nueva para todos.",
+        "gl": "As retrospectivas e unha revisión dos proxectos que usan o fluxo traen as súas melloras de volta como versión nova para todos.",
+        "en": "Retrospectives and a sweep of the projects using the workflow bring their improvements back as a new version for everyone."
+      }
+    }
+  ],
+  "apartados": [],
+  "ficha": [
+    {
+      "capa": {
+        "es": "Reglas y skills",
+        "gl": "Regras e skills",
+        "en": "Rules and skills"
+      },
+      "tecnologias": [
+        "AGENTS.md",
+        "Agent Skills",
+        "Claude Code"
+      ]
+    },
+    {
+      "capa": {
+        "es": "Ganchos y scripts",
+        "gl": "Ganchos e scripts",
+        "en": "Hooks and scripts"
+      },
+      "tecnologias": [
+        "Bash",
+        "Python",
+        "Git hooks"
+      ]
+    },
+    {
+      "capa": {
+        "es": "Calidad",
+        "gl": "Calidade",
+        "en": "Quality"
+      },
+      "tecnologias": [
+        "GitHub Actions",
+        "ShellCheck",
+        "JSON Schema"
+      ]
+    }
+  ],
+  "hitos": [
+    {
+      "version": "0",
+      "nombre": {
+        "es": "Verificar",
+        "gl": "Verificar",
+        "en": "Verify"
+      },
+      "estado": "hecho"
+    },
+    {
+      "version": "1",
+      "nombre": {
+        "es": "Esqueleto",
+        "gl": "Esqueleto",
+        "en": "Skeleton"
+      },
+      "estado": "hecho"
+    },
+    {
+      "version": "2",
+      "nombre": {
+        "es": "Skills",
+        "gl": "Skills",
+        "en": "Skills"
+      },
+      "estado": "curso"
+    },
+    {
+      "version": "3",
+      "nombre": {
+        "es": "Ganchos y scripts",
+        "gl": "Ganchos e scripts",
+        "en": "Hooks and scripts"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "4",
+      "nombre": {
+        "es": "Plantillas y aplicación",
+        "gl": "Modelos e aplicación",
+        "en": "Templates and apply"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "5",
+      "nombre": {
+        "es": "Piloto en este portal",
+        "gl": "Piloto neste portal",
+        "en": "Pilot on this portal"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "6",
+      "nombre": {
+        "es": "Pilotos en otros proyectos del taller",
+        "gl": "Pilotos noutros proxectos do taller",
+        "en": "Pilots on other workshop projects"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "7",
+      "nombre": {
+        "es": "Rodaje de la etapa 1",
+        "gl": "Rodaxe da etapa 1",
+        "en": "Stage 1 run-in"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "8",
+      "nombre": {
+        "es": "Instalador sin IA (etapa 2)",
+        "gl": "Instalador sen IA (etapa 2)",
+        "en": "Installer without AI (stage 2)"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "9",
+      "nombre": {
+        "es": "Plugin y npm",
+        "gl": "Plugin e npm",
+        "en": "Plugin and npm"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "10",
+      "nombre": {
+        "es": "Público (1.0)",
+        "gl": "Público (1.0)",
+        "en": "Public (1.0)"
+      },
+      "estado": "pendiente"
+    }
+  ],
+  "novedades": [
+    {
+      "fecha": "2026-10-21",
+      "texto": {
+        "es": "Fases 0 y 1 cerradas: verificación, esqueleto del repositorio y comprobaciones automáticas en Linux y macOS. Empieza el porte de las skills.",
+        "gl": "Fases 0 e 1 pechadas: verificación, esqueleto do repositorio e comprobacións automáticas en Linux e macOS. Comeza o porte das skills.",
+        "en": "Phases 0 and 1 done: verification, repository skeleton and automated checks on Linux and macOS. Porting the skills begins."
+      }
+    },
+    {
+      "fecha": "2026-10-21",
+      "texto": {
+        "es": "Plan por fases escrito y repositorio creado.",
+        "gl": "Plan por fases escrito e repositorio creado.",
+        "en": "Phased plan written and repository created."
+      }
+    }
+  ],
+  "cifras": [
+    {
+      "valor": "2",
+      "etiqueta": {
+        "es": "etapas",
+        "gl": "etapas",
+        "en": "stages"
+      }
+    },
+    {
+      "valor": "11",
+      "etiqueta": {
+        "es": "fases hasta la 1.0",
+        "gl": "fases ata a 1.0",
+        "en": "phases to 1.0"
+      }
+    },
+    {
+      "valor": "4",
+      "etiqueta": {
+        "es": "proyectos piloto",
+        "gl": "proxectos piloto",
+        "en": "pilot projects"
+      }
+    }
+  ],
+  "decisiones": [
+    {
+      "titulo": {
+        "es": "Gracias a Matt Pocock",
+        "gl": "Grazas a Matt Pocock",
+        "en": "Thanks to Matt Pocock"
+      },
+      "texto": {
+        "es": "Once de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT) y llevan su mención en cada archivo. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo.",
+        "gl": "Once das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT) e levan a súa mención en cada ficheiro. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo.",
+        "en": "Eleven of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence) and credit him in every file. Much of this way of working with agents we learned thanks to his work."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Copia en el repositorio, no plugin",
+        "gl": "Copia no repositorio, non plugin",
+        "en": "A copy in the repository, not a plugin"
+      },
+      "texto": {
+        "es": "El flujo se copia a cada proyecto con su versión: funciona en cualquier entorno, también en la nube, que no carga plugins declarados en el repositorio. El plugin queda como vía opcional.",
+        "gl": "O fluxo cópiase a cada proxecto coa súa versión: funciona en calquera contorno, tamén na nube, que non carga plugins declarados no repositorio. O plugin queda como vía opcional.",
+        "en": "The workflow is copied into each project with its version: it works anywhere, including the cloud, which doesn’t load plugins declared in a repository. The plugin stays as an optional path."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Reglas en AGENTS.md",
+        "gl": "Regras en AGENTS.md",
+        "en": "Rules in AGENTS.md"
+      },
+      "texto": {
+        "es": "Las reglas viven en un estándar abierto que entiende cualquier agente, no solo Claude Code.",
+        "gl": "As regras viven nun estándar aberto que entende calquera axente, non só Claude Code.",
+        "en": "The rules live in an open standard any agent understands, not just Claude Code."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Público solo tras el rodaje",
+        "gl": "Público só tras a rodaxe",
+        "en": "Public only after break-in"
+      },
+      "texto": {
+        "es": "Se abre cuando haya funcionado al menos cuatro semanas en tres proyectos de tecnologías distintas.",
+        "gl": "Ábrese cando funcionase polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
+        "en": "It opens once it has worked for at least four weeks on three projects built with different technologies."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Skills en inglés, documentación en dos idiomas",
+        "gl": "Skills en inglés, documentación en dous idiomas",
+        "en": "Skills in English, docs in two languages"
+      },
+      "texto": {
+        "es": "Las skills se cargan en el contexto del agente: una sola versión cuesta la mitad. La documentación para personas va en castellano e inglés.",
+        "gl": "As skills cárganse no contexto do axente: unha soa versión custa a metade. A documentación para persoas vai en castelán e inglés.",
+        "en": "Skills are loaded into the agent’s context, so a single version costs half as much. Docs for people come in Spanish and English."
+      }
+    }
+  ],
+  "equipo": [
+    {
+      "nombre": "Álvaro García Graña",
+      "rol": {
+        "es": "Creador: diseño del flujo y desarrollo",
+        "gl": "Creador: deseño do fluxo e desenvolvemento",
+        "en": "Creator: workflow design and development"
+      }
+    }
+  ]
+}
