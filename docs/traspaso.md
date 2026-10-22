@@ -18,8 +18,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- `og:image` y `twitter:image` de cada ficha con `?v=<actualizado>` (la vista previa de Discord se quedaba con el
-  diagrama antiguo). Es código: pide `/code-review` y marca antes de `main`.
+- Vista previa en redes: `og:image`, `twitter:image` y el `image` del JSON-LD llevan `?v=<hash de la imagen>` en
+  todas las páginas (Discord se quedaba con el diagrama antiguo), y `og:image:alt` de cada ficha es el `alt` de su
+  portada (antes, el de la portada general). Es código: `/code-review` hecho, falta marca y subida.
+  **Pendiente de comprobar a mano (usuario, Discord):** un mensaje nuevo con el enlace de la ficha muestra el
+  diagrama nuevo; el mensaje ya enviado no se actualiza.
 
 ## Hecho
 

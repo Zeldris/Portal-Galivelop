@@ -1,10 +1,13 @@
 // Tras `vite build`: crea una página HTML real por ruta e idioma (castellano sin prefijo, /gl/, /en/) (sin el 404 de GitHub Pages), con su título,
 // descripción, canónica y vista previa para redes, y genera sitemap.xml y robots.txt.
 // Si cambia la dirección del portal, actualizar SITIO.
+import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 
 const SITIO = 'https://zeldris.github.io/Portal-Galivelop';
-const IMAGEN = `${SITIO}/marca/galivelop-portal.jpg`;
+// ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
+const imagenDe = (src) => `${SITIO}/${src}?v=${createHash('sha1').update(readFileSync(`public/${src}`)).digest('hex').slice(0, 8)}`;
+const IMAGEN = imagenDe('marca/galivelop-portal.jpg');
 const base = readFileSync('dist/index.html', 'utf8');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
@@ -37,8 +40,7 @@ for (const idioma of IDIOMAS) {
       ruta: `proyectos/${p.slug}`,
       titulo: `${p.nombre} · ${p.lema[idioma].replace(/\.$/, '')} · Galivelop`,
       descripcion: p.resumen[idioma],
-      // ?v= cambia con la ficha: las redes (Discord, X…) guardan la vista previa por la dirección de la imagen.
-      imagen: `${SITIO}/${p.portada.src}?v=${p.actualizado}`,
+      imagen: imagenDe(p.portada.src),
       fecha: p.actualizado,
       proyecto: p,
     });
@@ -66,7 +68,7 @@ function datos(pg, url) {
     name: p.nombre,
     description: p.resumen[pg.idioma],
     url,
-    image: `${SITIO}/${p.portada.src}`,
+    image: pg.imagen,
     inLanguage: pg.idioma,
     dateModified: p.actualizado,
     keywords: p.etiquetas.join(', '),
@@ -93,11 +95,13 @@ for (const pg of paginas) {
   for (const k of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
     html = html.replace(new RegExp(`(${k} content=")[^"]*`), `$1${esc(pg.descripcion)}`);
   }
-  if (pg.imagen !== IMAGEN) {
+  html = html
+    .replace(/(property="og:image" content=")[^"]*/, `$1${pg.imagen}`)
+    .replace(/(name="twitter:image" content=")[^"]*/, `$1${pg.imagen}`);
+  if (pg.proyecto) {
     html = html
-      .replace(/(property="og:image" content=")[^"]*/, `$1${pg.imagen}`)
-      .replace(/(name="twitter:image" content=")[^"]*/, `$1${pg.imagen}`)
-      .replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, '');
+      .replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, '')
+      .replace(/(property="og:image:alt" content=")[^"]*/, `$1${esc(pg.proyecto.portada.alt[pg.idioma])}`);
   }
   html = html
     .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
