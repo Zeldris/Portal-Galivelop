@@ -7,9 +7,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | | |
 |---|---|
 | **Actualizado** | 2026-10-23 |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | Flujo Galivelop-workflow 0.3.0 aplicado en `ccr-47f8fddd-o5ek6p` (rama de esta sesión); revisado (fase 1, sin arreglos en el portal); falta la marca y traerlo por merge a la rama de trabajo antes del domingo. Ficha de Galivelop-workflow ya en la 0.3.0; desde aquí las fichas las pone al día la tarea «Proyectos semanal» |
-| **Siguiente paso** | `revisado.sh` y merge de `ccr-47f8fddd-o5ek6p` en `claude/galivelop-dev-portal-1h89ci`; la próxima revisión semanal, el domingo 2026-10-25 |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
+| **Tarea en curso** | Ninguna. Flujo 0.3.0 y ficha de Galivelop-workflow a la 0.3.0 revisados (marca `d685270`) y ya en la rama de trabajo; los publica la tarea semanal o una subida a `main` con confirmación |
+| **Siguiente paso** | Revisión semanal del domingo 2026-10-25 (publica la rama de trabajo); desde ahí las fichas las mantiene la tarea |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): orden de proyectos, flujo 0.2.0 y tarea semanal para todos los proyectos. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -18,9 +18,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Flujo Galivelop-workflow 0.3.0 (código: en `ccr-47f8fddd-o5ek6p`, revisado el 2026-10-23 con su
-  marca; entra en la rama de trabajo por merge).
-- Ficha de Galivelop-workflow a la 0.3.0 (contenido, en `ccr-47f8fddd-o5ek6p`): fase 7 de rodaje, pilotos en Tarkor
+- Flujo Galivelop-workflow 0.3.0 (código: revisado el 2026-10-23 con su marca, ya en la rama de
+  trabajo).
+- Ficha de Galivelop-workflow a la 0.3.0 (contenido): fase 7 de rodaje, pilotos en Tarkor
   y su instalador hechos y novedad del 2026-10-23. Desde aquí la ficha la mantiene la tarea semanal.
 
 ## Hecho
