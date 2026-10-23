@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-18",
+  "actualizado": "2026-10-23",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3975,6 +3975,38 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-10-22",
+      "texto": {
+        "es": "Casa de obras: una cola de obras y reparaciones que llevan tus constructores, y un Almacén con topes de comida y agua que explica de dónde sale la comida de cada día.",
+        "gl": "Casa de obras: unha cola de obras e reparacións que levan os teus construtores, e un Almacén con topes de comida e auga que explica de onde sae a comida de cada día.",
+        "en": "Works house: a queue of builds and repairs carried out by your builders, and a Storehouse with food and water caps that explains where each day's food comes from."
+      }
+    },
+    {
+      "fecha": "2026-10-22",
+      "texto": {
+        "es": "Vasallaje con cuota semanal: si un vasallo paga solo una parte, sus patrullas salen en proporción. Los bandidos esperan siete días entre asaltos al Reino y la milicia defiende la Capital.",
+        "gl": "Vasalaxe con cota semanal: se un vasalo paga só unha parte, as súas patrullas saen en proporción. Os bandidos agardan sete días entre asaltos ao Reino e a milicia defende a Capital.",
+        "en": "Vassalage with a weekly quota: if a vassal pays only part of it, its patrols go out in proportion. Bandits wait seven days between raids on the Kingdom and the militia defends the Capital."
+      }
+    },
+    {
+      "fecha": "2026-10-21",
+      "texto": {
+        "es": "Los edificios dañados se reparan pagando su coste, las partidas de caza salen armadas y cuentan su vuelta, y la deuda de los vasallos se ve en Diplomacia.",
+        "gl": "Os edificios danados repáranse pagando o seu custo, as partidas de caza saen armadas e contan a súa volta, e a débeda dos vasalos vese en Diplomacia.",
+        "en": "Damaged buildings are repaired by paying their cost, hunting parties head out armed and report on their return, and vassals' debt shows up in Diplomacy."
+      }
+    },
+    {
+      "fecha": "2026-10-21",
+      "texto": {
+        "es": "Ronda de pruebas jugando: más de veinte tandas por el mundo, el combate, la muerte y el Reino, arreglando lo que salía al momento.",
+        "gl": "Rolda de probas xogando: máis de vinte tandas polo mundo, o combate, a morte e o Reino, arranxando o que saía no momento.",
+        "en": "Play-testing round: over twenty batches across the world, combat, death and the Kingdom, fixing whatever came up on the spot."
+      }
+    },
+    {
       "fecha": "2026-10-18",
       "texto": {
         "es": "Más de 150 imágenes nuevas: criaturas, lugares, pueblos y los mapas de cada zona, ya en esta página.",
@@ -4004,38 +4036,6 @@
         "es": "Ronda de pruebas jugando: las tiradas explican contra qué se tira, aprender un oficio dice qué se enseña y mejoran el mapa de zona y la energía.",
         "gl": "Rolda de probas xogando: as tiradas explican contra que se tira, aprender un oficio di que se ensina e melloran o mapa de zona e a enerxía.",
         "en": "Play-testing round: rolls explain what you roll against, learning a trade says what is taught, and the zone map and energy improve."
-      }
-    },
-    {
-      "fecha": "2026-10-12",
-      "texto": {
-        "es": "Ronda de pruebas jugando el hito 0.3: decenas de problemas encontrados y corregidos.",
-        "gl": "Rolda de probas xogando o fito 0.3: decenas de problemas atopados e corrixidos.",
-        "en": "Play-testing round for milestone 0.3: dozens of issues found and fixed."
-      }
-    },
-    {
-      "fecha": "2026-10-08",
-      "texto": {
-        "es": "Guerras contra tu reino: las facciones mandan ejércitos, y tú puedes pagar tributo o contraatacar. Los asaltos dependen del estado del mundo.",
-        "gl": "Guerras contra o teu reino: as faccións mandan exércitos, e ti podes pagar tributo ou contraatacar. Os asaltos dependen do estado do mundo.",
-        "en": "Wars against your kingdom: factions send armies, and you can pay tribute or counter-attack. Raids depend on the state of the world."
-      }
-    },
-    {
-      "fecha": "2026-10-07",
-      "texto": {
-        "es": "Defensa del asentamiento con empalizada, torre de vigía y milicia, y campamentos de bandidos que crecen y asaltan caravanas.",
-        "gl": "Defensa do asentamento con empalizada, torre de vixía e milicia, e campamentos de bandidos que medran e asaltan caravanas.",
-        "en": "Settlement defence with palisade, watchtower and militia, and bandit camps that grow and raid caravans."
-      }
-    },
-    {
-      "fecha": "2026-10-07",
-      "texto": {
-        "es": "Todo viaja de verdad: viajeros y partidas de caza recorren rutas reales por el mapa de Berig.",
-        "gl": "Todo viaxa de verdade: viaxeiros e partidas de caza percorren rutas reais polo mapa de Berig.",
-        "en": "Everything really travels: travellers and hunting parties follow real routes across the map of Berig."
       }
     }
   ],

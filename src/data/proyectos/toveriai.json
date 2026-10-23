@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-10-04",
+  "actualizado": "2026-10-23",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -616,6 +616,22 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-07-17",
+      "texto": {
+        "es": "Al iniciar sesión, con contraseña o con Google, vuelves a la página donde estabas.",
+        "gl": "Ao iniciar sesión, con contrasinal ou con Google, volves á páxina onde estabas.",
+        "en": "Signing in, with a password or with Google, takes you back to the page you were on."
+      }
+    },
+    {
+      "fecha": "2026-07-16",
+      "texto": {
+        "es": "La racha de verificación se ve más: sección propia en el perfil y aviso tras cada análisis del bonus de un análisis extra cada 3 días.",
+        "gl": "A racha de verificación vese máis: sección propia no perfil e aviso tras cada análise do bonus dunha análise extra cada 3 días.",
+        "en": "Your verification streak is easier to see: its own section in your profile and, after each analysis, a reminder of the bonus of one extra analysis every 3 days."
+      }
+    },
     {
       "fecha": "2026-07-16",
       "texto": {

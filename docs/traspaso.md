@@ -25,6 +25,7 @@ Nada pendiente de publicar.
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
+- ✅ Revisión semanal (2026-10-23): Tarkor, 4 novedades (Casa de obras y Almacén, vasallaje con cuota y asaltos, reparar edificios y caza, ronda de pruebas), textos e imágenes sin cambios (lo del 18 ya estaba); toVeriAI, 2 novedades (racha más visible, volver a la página al iniciar sesión), fase e hitos sin cambios; Galivelop-workflow sin cambios (v0.3.0 ya en la ficha). Publicado en `main`.
 - ✅ Flujo Galivelop-workflow 0.3.0 (2026-10-23, confirmación del usuario), publicado en `main` con su revisión y marca:
   `aplicar.py --update` (14 scripts, esquema, 19 skills, `test_medir.py` nuevo, `pre-commit`, `pre-push` y
   `comprobar.yml`); `AGENTS.md` y `CLAUDE.md` fusionados a mano («la persona», `.claude/gw/scripts/`), la regla de
@@ -89,14 +90,6 @@ opt-tokens, 2026-10-22).
   (`tools/qa/tests/test-ganchos.sh`), regla «Ganchos y scripts» en `REVIEW.md` y fila «Traer algo de otro repo» en el
   `selector`. `/opt-tokens`: la sesión iba a ~681k de contexto por llamada; `/clear` tras subir a `main`. Publicado en `main`.
 - ✅ Captura de la gestión del reino (2026-10-19) en «Capturas», tras las habilidades de reino.
-- ✅ Novedades de Tarkor al día (2026-10-18): 4 nuevas del 15 al 18 de octubre (arte, testigos y montura, edificios y mapa, ronda de pruebas). Publicado en `main`.
-- ✅ Arte de Tarkor (2026-10-18): 151 imágenes del banco de World-Maker-Fantasy en
-  `public/proyectos/tarkor/arte/` (WebP 1600/720; mapas 1200/480). Carrusel con 24 seleccionadas;
-  tarjetas con imagen (campo `imagen` en los elementos de los apartados) en Mundo, Lugares,
-  Razas, Facciones, Personajes, Bestiario (33 especies), Flora y El reino; apartado «Arte del mundo»
-  con galería por pestañas (campo `grupos`, sin rotación). Descartados: versiones «verano»
-  (idénticas), quio y recursos sueltos. Borradas las imágenes antiguas sin uso. Pies de foto de «Arte del mundo» traducidos.
-  Publicado en `main` (confirmación del usuario).
 
 Datos fijos que salían en entradas antiguas:
 
