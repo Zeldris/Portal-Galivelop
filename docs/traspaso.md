@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | En `ccr-47f8fddd-o5ek6p` (2026-10-23): orden de proyectos y flujo 0.2.0 hechos; tarea renombrada a «Proyectos semanal»; su texto nuevo (todas las fichas), en `docs/runbooks/tarea-semanal.md`, lo pega el usuario en la conversación de la tarea (desde otra sesión no se puede cambiar); falta `/code-review` contra `main`, marca y subida a `main` (confirmada por el usuario) |
-| **Siguiente paso** | `/code-review --max-findings all` contra `origin/main`, `revisado.sh` y subida a `main` |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow v0.2.0. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna. Las fichas las pone al día la tarea «Proyectos semanal»; su texto nuevo (`docs/runbooks/tarea-semanal.md`) lo tiene que pegar el usuario en la conversación de la tarea |
+| **Siguiente paso** | Comprobar que el usuario pegó el texto de la tarea; la próxima revisión semanal, el domingo 2026-10-25 |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): orden de proyectos, flujo 0.2.0 y tarea semanal para todos los proyectos. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
@@ -18,20 +18,16 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- El último proyecto añadido sale el primero (`orden` descendente; test en `src/data/proyectos.test.ts`).
-- Flujo Galivelop-workflow 0.2.0 (`/gw-update` desde la etiqueta `v0.2.0`): scripts, skills, ganchos y CI. El CI
-  conserva lo del portal (Node 22 con caché y el paso de build). Fuera la línea de F24 (la `retro` ya la lanza el
-  agente) y la de F17 (`--estado` ya no se cuelga).
-- Tarea semanal → «Proyectos semanal»: actualiza las fichas de todos los proyectos (decisión del usuario,
-  2026-10-23); `AGENTS.md`, `GLOSSARY.md` y `.claude/gw/opt-tokens.md` al día. Su texto, en
-  `docs/runbooks/tarea-semanal.md` (lo pega el usuario en la conversación de la tarea).
-- Revisión (fase 1): `content` cubre solo los `.json` de `src/data/` (los `.ts` son código; caso en
-  `test-ganchos.sh`); las páginas estáticas y `llms.txt`, en el mismo orden que el portal.
+Nada pendiente.
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
+
+- ✅ Orden, flujo 0.2.0 y tarea semanal (2026-10-23): publicado en `main` (confirmación expresa) el orden de proyectos (el último añadido, el primero, también
+  en páginas estáticas), el flujo Galivelop-workflow 0.2.0 y la tarea «Proyectos semanal» para todas las fichas;
+  `content` ya no cubre los `.ts` de `src/data/`.
 
 - ✅ Vista previa en redes (2026-10-22): `og:image`, `twitter:image` y el JSON-LD llevan `?v=<hash de la imagen>`
   en todas las páginas y el 404 (Discord se quedaba con el diagrama antiguo de Galivelop-workflow); `og:image:alt` y
@@ -99,8 +95,6 @@ Datos fijos que salían en entradas antiguas:
 
 - Tarea «Proyectos semanal» (antes «Tarkor semanal»; texto en `docs/runbooks/tarea-semanal.md`): `trig_012hEySn87yUmW8zcoeSvzYm`, domingos 22:46 Europe/Madrid, en la sesión «Tarkor semanal
   (portal)» (`session_0153sKUm2ZLwd6cFbMATVqfa`).
-- Contacto: alvarogarciagrana@gmail.com (marca y gestión) y web.admin.toveriai@gmail.com (toVeriAI). Equipo: Tarkor,
-  solo Álvaro; toVeriAI, Raquel C. (fundadora) y Álvaro. Discord: https://discord.gg/8vyjW3VrN.
 
 ## Pendiente
 
