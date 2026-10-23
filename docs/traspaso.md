@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna. Flujo 0.3.0 y ficha de Galivelop-workflow a la 0.3.0 revisados (marca `d685270`) y ya en la rama de trabajo; los publica la tarea semanal o una subida a `main` con confirmación |
+| **Tarea en curso** | Ninguna |
 | **Siguiente paso** | Revisión semanal del domingo 2026-10-25 (publica la rama de trabajo); desde ahí las fichas las mantiene la tarea |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): orden de proyectos, flujo 0.2.0 y tarea semanal para todos los proyectos. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): flujo Galivelop-workflow 0.3.0 y ficha de Galivelop-workflow a la 0.3.0. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
@@ -18,17 +18,14 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Flujo Galivelop-workflow 0.3.0 (código: revisado el 2026-10-23 con su marca, ya en la rama de
-  trabajo).
-- Ficha de Galivelop-workflow a la 0.3.0 (contenido): fase 7 de rodaje, pilotos en Tarkor
-  y su instalador hechos y novedad del 2026-10-23. Desde aquí la ficha la mantiene la tarea semanal.
+Nada pendiente de publicar.
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
-- ✅ Flujo Galivelop-workflow 0.3.0 (2026-10-23, confirmación del usuario), en `ccr-47f8fddd-o5ek6p`:
+- ✅ Flujo Galivelop-workflow 0.3.0 (2026-10-23, confirmación del usuario), publicado en `main` con su revisión y marca:
   `aplicar.py --update` (14 scripts, esquema, 19 skills, `test_medir.py` nuevo, `pre-commit`, `pre-push` y
   `comprobar.yml`); `AGENTS.md` y `CLAUDE.md` fusionados a mano («la persona», `.claude/gw/scripts/`), la regla de
   carpetas en `/tmp` por usuario en `REVIEW.md`, marcas a 0.3.0 en `GLOSSARY.md` y `.claude/gw/opt-tokens.md` y
