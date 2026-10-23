@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | Flujo Galivelop-workflow 0.3.0 aplicado en `ccr-47f8fddd-o5ek6p` (rama de esta sesión); falta su `/code-review`, la marca y traerlo por merge a la rama de trabajo antes del domingo. Ficha de Galivelop-workflow ya en la 0.3.0; desde aquí las fichas las pone al día la tarea «Proyectos semanal» |
-| **Siguiente paso** | `/code-review --max-findings all` del flujo 0.3.0 contra `origin/main`, `revisado.sh` y merge de `ccr-47f8fddd-o5ek6p` en `claude/galivelop-dev-portal-1h89ci`; la próxima revisión semanal, el domingo 2026-10-25 |
+| **Tarea en curso** | Flujo Galivelop-workflow 0.3.0 aplicado en `ccr-47f8fddd-o5ek6p` (rama de esta sesión); revisado (fase 1, sin arreglos en el portal); falta la marca y traerlo por merge a la rama de trabajo antes del domingo. Ficha de Galivelop-workflow ya en la 0.3.0; desde aquí las fichas las pone al día la tarea «Proyectos semanal» |
+| **Siguiente paso** | `revisado.sh` y merge de `ccr-47f8fddd-o5ek6p` en `claude/galivelop-dev-portal-1h89ci`; la próxima revisión semanal, el domingo 2026-10-25 |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): orden de proyectos, flujo 0.2.0 y tarea semanal para todos los proyectos. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -18,8 +18,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Flujo Galivelop-workflow 0.3.0 (código: aún en `ccr-47f8fddd-o5ek6p`, sin revisión ni marca; no entra en la
-  rama de trabajo hasta tenerlas).
+- Flujo Galivelop-workflow 0.3.0 (código: en `ccr-47f8fddd-o5ek6p`, revisado el 2026-10-23 con su
+  marca; entra en la rama de trabajo por merge).
 - Ficha de Galivelop-workflow a la 0.3.0 (contenido, en `ccr-47f8fddd-o5ek6p`): fase 7 de rodaje, pilotos en Tarkor
   y su instalador hechos y novedad del 2026-10-23. Desde aquí la ficha la mantiene la tarea semanal.
 
@@ -119,6 +119,15 @@ Datos fijos que salían en entradas antiguas:
   la entrada del gancho y puede tomar el transcript de otra sesión.
 - Propuesta para el flujo: en la plantilla de `CLAUDE.md` 0.3.0, «El modelo de la sesión la elige la persona»
   debería ser «lo elige».
+- Revisión del flujo 0.3.0 (2026-10-23, `/code-review --max-findings all`): nada grave o medio en el portal. Leves:
+  `test_medir.py` (llega con la skill `opt-tokens`) no lo corre `npm run check`; `AGENTS.md` cita `opt-ai`, opcional
+  y no instalada (solo aplica con medidas de IA local). Propuestas para el flujo (código suyo, no se edita aquí):
+  `bitacora.py closed` ya no cuenta `- [x] **ID**` ni viñetas simples; `pre-push` con `worktreeDir` dentro del
+  repo, `checkWrapper` que limpia el entorno, entrecomillado del wrapper repetido en `pre-push`/`fusionar.sh`/`config.py`
+  y worktrees huérfanos con pid reutilizado; `revision-antes-de-main.sh` sondea `gh api` en cada llamada y bloquea
+  cambios de título o base en PR cerrados; `enlaces-md.py` con symlinks hacia fuera; `config.py` acepta `cwd` fuera
+  del repo en `relatedTests`; `doctor.py` duplica avisos del glosario por mayúsculas y da por bueno `npm run check`
+  citado en un comentario; `session-start.sh` deja vivo el watchdog del `setup`.
 - «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
   repo; pendiente desde el SEO del 2026-10-14).
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
