@@ -15,6 +15,9 @@ export interface Etapa {
 
 /** Perfil profesional ampliado, opcional: solo para quien quiera contarlo. */
 export interface Perfil {
+  /** Versión breve para la tarjeta de cada proyecto: una línea y unas pocas tecnologías. */
+  resumen?: Texto;
+  destacadas?: string[];
   ubicacion?: Texto;
   trayectoria?: Etapa[];
   formacion?: Etapa[];

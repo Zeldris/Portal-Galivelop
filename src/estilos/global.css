@@ -3015,6 +3015,33 @@ button {
   border-color: var(--celeste);
 }
 
+img.avatar {
+  object-fit: cover;
+}
+
+.equipo-resumen {
+  font-size: 0.82rem;
+  color: var(--texto-3);
+  margin-top: 2px;
+}
+
+.equipo .equipo-destacadas {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.equipo .equipo-destacadas li {
+  padding: 1px 8px;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: var(--brillo);
+}
+
 /* ---------- Submenú de proyectos ---------- */
 
 .submenu {

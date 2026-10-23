@@ -26,6 +26,18 @@
     ],
     "foto": "equipo/alvaro-garcia-grana.webp",
     "perfil": {
+      "resumen": {
+        "es": "Full stack desde 2017, hoy sénior en Orienteed",
+        "gl": "Full stack desde 2017, hoxe sénior en Orienteed",
+        "en": "Full stack since 2017, now senior at Orienteed"
+      },
+      "destacadas": [
+        "React",
+        "TypeScript",
+        "Java",
+        "Spring",
+        "Claude Code"
+      ],
       "ubicacion": {
         "es": "A Coruña, Galicia",
         "gl": "A Coruña, Galicia",

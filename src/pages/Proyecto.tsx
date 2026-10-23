@@ -344,14 +344,27 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
               <ul className="equipo">
                 {p.equipo.map((m) => {
                   const persona = buscarPersona(m.nombre);
+                  const perfil = persona?.perfil;
                   const contenido = (
                     <>
-                      <span className="avatar" aria-hidden="true">
-                        {iniciales(m.nombre)}
-                      </span>
+                      {persona?.foto ? (
+                        <img src={ruta(persona.foto)} alt="" className="avatar" />
+                      ) : (
+                        <span className="avatar" aria-hidden="true">
+                          {iniciales(m.nombre)}
+                        </span>
+                      )}
                       <div>
                         <p className="equipo-nombre">{m.nombre}</p>
                         <p className="equipo-rol">{tx(m.rol)}</p>
+                        {perfil?.resumen && <p className="equipo-resumen">{tx(perfil.resumen)}</p>}
+                        {perfil?.destacadas && (
+                          <ul className="equipo-destacadas">
+                            {perfil.destacadas.map((x) => (
+                              <li key={x}>{x}</li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </>
                   );

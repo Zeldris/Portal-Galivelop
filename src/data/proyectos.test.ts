@@ -129,6 +129,8 @@ describe('equipo', () => {
         expect(etapa.desde).toMatch(/^\d{4}-(0[1-9]|1[0-2])$/);
         if (etapa.hasta) expect(etapa.hasta >= etapa.desde).toBe(true);
       }
+      const todas = (p.perfil?.tecnologias ?? []).flatMap((g) => g.lista);
+      expect((p.perfil?.destacadas ?? []).filter((x) => !todas.includes(x))).toEqual([]);
       expect(p.proyectos.filter((s) => !proyectos.some((x) => x.slug === s))).toEqual([]);
       for (const r of p.redes) {
         expect(REDES).toContain(r.tipo);

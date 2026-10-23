@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- **Ficha ampliada de Álvaro** (código: necesita `/code-review` y marca antes de `main`; está solo en `ccr-47f8fddd-o5ek6p`, no en la rama de la tarea semanal): campo opcional `perfil` en `Persona` (ubicación, trayectoria, formación, tecnologías por grupos, idiomas y fortalezas), foto en `public/equipo/`, `formatearMes` en `Idioma.tsx` y la tarjeta a toda la fila con dos columnas.
+- **Ficha ampliada de Álvaro** (código: necesita `/code-review` y marca antes de `main`; está solo en `ccr-47f8fddd-o5ek6p`, no en la rama de la tarea semanal): campo opcional `perfil` en `Persona` (ubicación, trayectoria, formación, tecnologías por grupos, idiomas y fortalezas), foto en `public/equipo/`, `formatearMes` en `Idioma.tsx` y la tarjeta a toda la fila con dos columnas. En la sección «Equipo» de cada proyecto, versión breve: foto, `perfil.resumen` y `perfil.destacadas`.
 
 ## Hecho
 
