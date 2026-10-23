@@ -4,7 +4,7 @@ description: Pick the skill and models for the task that is starting. Use at the
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; reads .claude/gw.json when present
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   source: "Galivelop workshop; generalised from the Tarkor, installer and portal selectors"
 ---
 
@@ -20,6 +20,7 @@ Classify the task with the table, then act on its row. Reply in the project's `l
 | Scoped change: one component, one adjustment, one test, one small endpoint | none | medium | none |
 | Mechanical: docs, log, renames, adapting tests to a new signature, converting files | none | medium or light | light |
 | Bring something from another repo (a workflow, skills, documents) | `orchestrate-dealer` | large, to decide what to adapt | light `Explore` that reads the other repo and returns a summary with paths; the main session never reads the files whole |
+| Apply or update the workflow (`gw-init`, `gw-update`, `gw-doctor`) | `orchestrate-dealer` | large, to decide | light, to read the workflow's guide and scripts and return the decisions with paths |
 | Review before the protected branch | `/code-review`, then `pr` for the description | large | none |
 | Closing a block or phase | `retro` (Claude runs it, the user confirms its proposals); now and then `improve-codebase-architecture` | large | none |
 | Writing for agents (`AGENTS.md`, `CLAUDE.md`, skills, docs agents read) | `writing-for-agents` | medium | none |
@@ -35,7 +36,7 @@ do the case without it and say so.
 - **Subagent model:** pass the table's subagent column as the `model` parameter. Delegate searches, long reads and
   mechanical work; design and decisions stay in the main session.
 - **Closed plan, scoped implementation:** goes to a `sonnet` subagent and the main session reviews its diff before
-  the commit. Anything of more than one step runs through `orchestrate-dealer`.
+  the commit. The fixes from a review are a closed plan too (`sonnet`); `opus` only to debug something non-obvious. Anything of more than one step runs through `orchestrate-dealer`.
 - **Subagent ladder:** `sonnet low` → `sonnet medium` → `opus medium` → `opus high`. Start at the lowest rung that
   fits; when a subagent does not finish its brief, the next attempt climbs one rung. **Two failures at one rung: stop
   and ask the user.** A subagent that never starts (tool error) is retried on the same rung and does not count as a

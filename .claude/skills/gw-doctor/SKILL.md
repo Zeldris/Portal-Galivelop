@@ -5,7 +5,7 @@ disable-model-invocation: true
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; git and python3 3.8+; reads .claude/gw.json
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   source: "Galivelop workshop"
 ---
 

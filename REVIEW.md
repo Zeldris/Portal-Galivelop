@@ -1,3 +1,4 @@
+<!-- galivelop-workflow v0.2.0 -->
 # Guía de revisión
 
 Lo que el revisor (`/code-review`) comprueba en cada diff del portal, además de los fallos de siempre. Lo

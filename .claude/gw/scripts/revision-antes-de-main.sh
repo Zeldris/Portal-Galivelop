@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 # Claude Code PreToolUse hook: no pull request reaches the protected branch without /code-review of the same code,
 # and none is merged with CI not green (plan §5.2). Reads the hook JSON (tool_name, tool_input) on stdin.
 #   - Create: mcp__github__create_pull_request, mcp__github__update_pull_request that sets `base` to the protected
 #     branch, and `gh pr create` typed in Bash (no --base = the default branch, taken as protected). The PR head is
 #     the branch on GitHub, read with `git ls-remote origin` (never the local HEAD; nothing written under refs/).
 #     Its commit must carry the config's `reviewMark` naming an ancestor with no code after it (es-codigo.sh). A head
-#     that brings no code against the protected branch needs no mark.
+#     that brings no code against the protected branch needs no mark. The base is protected when the working tree's
+#     config or the base's own tip on origin names it so; `content` and `reviewMark` come from that tip's config (the
+#     PR head's only when the base has none yet), so a PR cannot relax the rule that judges it.
 #   - Merge: mcp__github__merge_pull_request, mcp__github__enable_pr_auto_merge, and in Bash `gh pr merge` (also
 #     `gh -R o/r pr merge`, inside `bash -c`/`eval`, after `xargs`) and `gh api` PUT on repos/<o>/<r>/pulls/<n>/merge
 #     (-R/--repo and GH_REPO= name the repo). Same mark rule on the PR head, plus CI green: every check-run completed with success/neutral/skipped and every
@@ -397,30 +399,70 @@ def ci_problems(repo, sha):
 
 
 # ---- the rules ---------------------------------------------------------------------------------------------------
-def es_codigo(root, scripts, a, b):
-    r = run(["bash", os.path.join(scripts, "es-codigo.sh"), a, b], cwd=root)
+def es_codigo(root, scripts, a, b, rev):
+    r = run(["bash", os.path.join(scripts, "es-codigo.sh"), "--rev", rev, a, b], cwd=root)
     if r.returncode != 0:
         block(f"cannot tell code from content: {r.stderr.strip()[:400]}",
               f"fix the error above and retry: git -C {root} fetch origin")
     return [line for line in r.stdout.splitlines() if line.strip()]
 
 
-def check_mark(cfg, root, scripts, head, refs, what):
-    protected, mark_file = cfg["protectedBranch"], cfg["reviewMark"]
-    fix = (f"run /code-review of the diff against origin/{protected}, push the fixes, then mark and push: "
-           f"bash {os.path.join(scripts, 'revisado.sh')} && git push")
+_configs = {}
+
+
+def config_at(root, rev, strict=True):
+    """The config as commit `rev` has it, or None when that commit has no .claude/gw.json. An invalid one blocks, or
+    with strict=False is None too (it names no protected branch). Loaded once per commit."""
+    import config  # on sys.path since project()
+    if rev not in _configs:
+        if git(root, "cat-file", "-e", f"{rev}:.claude/gw.json").returncode != 0:
+            _configs[rev] = (None, None)
+        else:
+            try:
+                _configs[rev] = (config.load(root, rev=rev), None)
+            except config.ConfigError as exc:
+                _configs[rev] = (None, exc)
+    cfg, error = _configs[rev]
+    if error is not None and strict:
+        block(f"cannot read the config of {rev[:12]}: {error}",
+              f"fix it on that branch and retry: python3 {os.path.join(HERE, 'config.py')} --rev {rev[:12]} validate")
+    return cfg
+
+
+def protected_tip(cfg, root, base):
+    """The origin tip of `base` when the PR goes to a protected branch, as the working tree's config or that tip's own
+    config names it (a PR cannot unprotect its base by renaming protectedBranch); None when the base is not protected.
+    Returns (protected, tip): tip is None for a protected branch not on origin yet."""
+    tip = remote_sha(root, base)
+    if base == cfg["protectedBranch"]:
+        return True, tip
+    if tip and ensure(root, tip, [base]):
+        remote = config_at(root, tip, strict=False)  # an invalid one there must not block a PR to an open branch
+        if remote is not None and remote["protectedBranch"] == base:
+            return True, tip
+    return False, tip
+
+
+def check_mark(cfg, root, scripts, head, refs, what, protected, tip):
     if not ensure(root, head, refs):
         block(f"the PR head {head[:12]} ({what}) is not in this clone and could not be fetched from origin.",
               f"fetch it and retry: git -C {root} fetch origin {refs[0] if refs else ''}".rstrip())
-    tip = remote_sha(root, protected)
-    base = ""
+    base, policy = "", head
     if tip:
         if not ensure(root, tip, [protected]):
             block(f"origin/{protected} is at {tip[:12]}, which this clone cannot fetch.",
                   f"fetch it and retry: git -C {root} fetch origin {protected}")
         mb = git(root, "merge-base", tip, head)
         base = mb.stdout.strip() if mb.returncode == 0 else ""
-    code = es_codigo(root, scripts, base, head)
+        if config_at(root, tip) is not None:
+            policy = tip  # what is content and where the mark lives: the protected branch decides, not the PR
+    if policy == head and config_at(root, head) is None:
+        block(f"neither origin/{protected} nor the PR head {head[:12]} ({what}) has a .claude/gw.json.",
+              "commit a valid one on the PR branch and retry: git add .claude/gw.json && git commit && git push")
+    mark_file = config_at(root, policy)["reviewMark"]
+    fix = (f"run /code-review of the diff against origin/{protected}, push the fixes, then mark and push: "
+           f"bash {os.path.join(scripts, 'revisado.sh')} && git push")
+    code = es_codigo(root, scripts, base, head, policy)
     if not code:
         return  # only content against the protected branch: no review needed
     mark = "".join(git(root, "show", f"{head}:{mark_file}").stdout.split())
@@ -431,7 +473,7 @@ def check_mark(cfg, root, scripts, head, refs, what):
     elif git(root, "merge-base", "--is-ancestor", mark, head).returncode != 0:
         reason = f"the review mark ({mark[:12]}) is not an ancestor of the PR head {head[:12]} ({what})"
     else:
-        after = es_codigo(root, scripts, mark, head)
+        after = es_codigo(root, scripts, mark, head, policy)
         if not after:
             return
         reason, code = f"code changed after the review mark ({mark[:12]}) on the PR head {head[:12]} ({what})", after
@@ -457,9 +499,11 @@ def need_repo(action, root):
 
 
 def handle(action, cfg, root, scripts):
-    protected = cfg["protectedBranch"]
-    if action["kind"] in ("create", "retarget") and action["base"] and action["base"] != protected:
-        return
+    if action["kind"] in ("create", "retarget"):
+        protected = action["base"] or cfg["protectedBranch"]  # no base: the default branch, guarded as protected
+        guarded, tip = protected_tip(cfg, root, protected)
+        if not guarded:
+            return
     if action["kind"] == "create":
         branch = action["head"]
         if not branch:
@@ -468,7 +512,7 @@ def handle(action, cfg, root, scripts):
                 block(f"{action['how']}: no --head given and the checkout is not on a branch.",
                       "switch to the PR branch and retry: git switch <branch>")
         sha, branch = head_from_branch(root, branch, action["how"])
-        check_mark(cfg, root, scripts, sha, [branch], f"origin/{branch}")
+        check_mark(cfg, root, scripts, sha, [branch], f"origin/{branch}", protected, tip)
         return
     repo = need_repo(action, root)
     number = action["number"]
@@ -486,10 +530,13 @@ def handle(action, cfg, root, scripts):
     if number is None:
         block(f"{action['how']} without a PR number; cannot check it.", "pass pullNumber and retry")
     info = pr_info(repo, number)
-    if action["kind"] == "merge" and info["base"] != protected:
-        return
+    if action["kind"] == "merge":
+        protected = info["base"]
+        guarded, tip = protected_tip(cfg, root, protected)
+        if not guarded:
+            return
     refs = [info["ref"], f"refs/pull/{number}/head"]
-    check_mark(cfg, root, scripts, info["sha"], refs, f"PR #{number}")
+    check_mark(cfg, root, scripts, info["sha"], refs, f"PR #{number}", protected, tip)
     if action["kind"] != "merge":
         return
     try:

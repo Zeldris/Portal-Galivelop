@@ -1,8 +1,9 @@
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 # The project's check in CI: each `install` command, then each `check` command of .claude/gw.json, on every push
 # outside the protected branch and on every pull request. On a pull request it also runs the BASE branch's copy of
 # .githooks/pre-commit over the PR's commits, so a pull request cannot weaken the check that reviews it.
-# Add the toolchain setup your commands need (setup-node, setup-java, rust-toolchain...) before "Install".
+# Node, Python and Java are set up when package.json, pyproject.toml / requirements*.txt or pom.xml / build.gradle*
+# exist (so this file stays the workflow's, untouched); another toolchain (rust-toolchain...) goes before "Install".
 name: Comprobar
 
 on:
@@ -20,11 +21,21 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      # Portal: Node para npm ci / npm run check, y el build de la web tras el check.
+      # Portal: Node 22 como pages.yml, con caché de npm.
       - uses: actions/setup-node@v4
+        if: hashFiles('package.json') != ''
         with:
           node-version: 22
           cache: npm
+      - uses: actions/setup-python@v5
+        if: hashFiles('pyproject.toml', 'requirements*.txt') != ''
+        with:
+          python-version: "3.x"
+      - uses: actions/setup-java@v4
+        if: hashFiles('pom.xml', 'build.gradle', 'build.gradle.kts') != ''
+        with:
+          distribution: temurin
+          java-version: "21"
       - name: Install
         run: |
           cmds="$(python3 .claude/gw/scripts/config.py get install)"
@@ -41,6 +52,7 @@ jobs:
             echo "== $cmd"
             bash -c "$cmd"
           done <<<"$cmds"
+      # Portal: el build de la web tras el check.
       - name: Build
         run: npm run build
       - name: Base branch's pre-commit over the pull request

@@ -1,9 +1,9 @@
-<!-- galivelop-workflow v0.1.0 -->
+<!-- galivelop-workflow v0.2.0 -->
 # Portal-Galivelop — instrucciones para agentes
 
 Este proyecto se trabaja por relevos: una sesión puede acabarse en cualquier momento (tokens, contenedor, cambio de
 cuenta) y la siguiente tiene que seguir **sin perder nada y sin preguntar por dónde iba**. Todo lo de este archivo
-existe para eso. El flujo es Galivelop-workflow v0.1.0; sus scripts están en `.claude/gw/scripts/`, sus skills
+existe para eso. El flujo es Galivelop-workflow v0.2.0; sus scripts están en `.claude/gw/scripts/`, sus skills
 en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.claude/gw/scripts/config.py`).
 
 ## Al empezar cualquier sesión
@@ -52,6 +52,8 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
   el equipo del usuario): se apunta como pendiente en el plan, con quién lo comprueba y dónde.
 - Un test nuevo tiene que fallar sin su arreglo: `bash .claude/gw/scripts/rojo-sin-arreglo.sh "<orden del test>"
   <archivo-del-arreglo>...`.
+- Un test que espera un fallo comprueba **el motivo** (el mensaje o la causa), no solo el código de salida: si no,
+  pasa también cuando falla por otra razón.
 - `python3 .claude/gw/scripts/doctor.py` dice si el flujo está bien montado, con la orden que arregla cada problema.
 
 ## Mensajes de commit
@@ -82,8 +84,9 @@ Nunca sobre trabajo ya fusionado.
 
 1. **Código:** `git fetch origin main` y revisión del diff contra `origin/main` con
    todos los hallazgos (en Claude Code, `/code-review --max-findings all`), con el criterio de `REVIEW.md`. Arreglos
-   con commit y subidos. Solo el código necesita revisión: lo que casa con `content` de `.claude/gw.json` es
-   contenido.
+   con commit y subidos: lo grave o medio y lo que el propio arreglo rompe; lo leve se apunta como pendiente en la
+   bitácora y no vuelve a revisarse en ese PR. Solo el código necesita revisión: lo que casa con `content` de
+   `.claude/gw.json` es contenido.
 2. **Entorno:** la skill `opt-tokens` y luego `retro` (más `opt-ai` si hubo medidas con un modelo de IA local). Sus
    propuestas se **presentan al usuario**; lo que confirme se aplica en la rama. Una retro escrita sin presentarla no
    vale.
@@ -117,12 +120,13 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   usuario, salvo la tarea semanal (abajo). Diferencia con el flujo: `/opt-tokens` y `/retro` (fase 2) solo cuando el
   cambio de código es grande (componentes, estilos, scripts de build, ganchos); un cambio pequeño de código pasa
   por la fase 1 y la 3. Por eso `requireRetro` está a `false` en `.claude/gw.json`.
-  La `retro` del flujo no la puede lanzar el agente (F24 del piloto): al cerrar la fase 1 de un cambio grande,
-  pídele al usuario que escriba `/retro` (se quita esta línea cuando el flujo lo resuelva).
 - **Publicación semanal** (decisión y consentimiento del usuario, 2026-10-13): la web se actualiza los **domingos por
-  la noche**. La tarea programada «Tarkor semanal» revisa el avance de Tarkor, actualiza su ficha y sube la rama de
-  trabajo (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea).
-  Gasta los mínimos tokens: lee solo la bitácora del juego y los commits desde la última fecha de `actualizado`.
+  la noche**. La tarea programada «Proyectos semanal» revisa el avance de **cada proyecto** (Tarkor, toVeriAI,
+  Galivelop-workflow y los que se añadan), actualiza sus fichas y sube la rama de trabajo
+  (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea; desde el
+  2026-10-23, por decisión del usuario, las fichas las pone al día ella y no las sesiones). Gasta los mínimos tokens:
+  de cada proyecto lee solo su bitácora o su CHANGELOG y los commits desde la última fecha de `actualizado`.
+  Un proyecto nuevo se añade a mano (código y ficha, con su revisión); desde ahí lo mantiene la tarea.
   Solo toca contenido (`src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
   `content`; cualquier otro archivo es código y el `pre-push` lo rechaza en `main`), así que no necesita revisión mientras la marca de
   `docs/registros/revisado.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y

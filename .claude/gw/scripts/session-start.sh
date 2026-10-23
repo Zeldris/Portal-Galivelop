@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 # Claude Code SessionStart hook (startup|resume|clear): leaves the project ready to work. Idempotent.
 #   - git hooks: sets core.hooksPath to .githooks when it is unset and .githooks exists; when another hook manager
 #     owns the hooks (core.hooksPath elsewhere, or hooks installed in .git/hooks), it says how to chain the

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 """Hand-off log rules, for projects with `"logRows": true` in .claude/gw.json (a no-op otherwise).
 
 The log (config `log`) has a state table with one row per branch, labelled "<anything> · `<branch>`" (for example

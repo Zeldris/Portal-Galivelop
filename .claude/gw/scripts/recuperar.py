@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 """Get back what a compaction or a /clear dropped, without reading the whole session transcript.
 
   recuperar.py --estado         what the SessionStart hook (clear|compact) puts back into the context: the log's
@@ -22,6 +22,7 @@ import argparse
 import json
 import os
 import re
+import select
 import subprocess
 import sys
 
@@ -151,6 +152,28 @@ def row_for_branch(text, branch):
     return None
 
 
+def named_section(text, heading):
+    """The '#'-heading section whose title is heading (case and trailing colon ignored), up to the next heading of the
+    same or a higher level; None when the log has none."""
+    lines = text.splitlines()
+    want = heading.strip().rstrip(":").lower()
+    for i, line in enumerate(lines):
+        m = re.match(r"^(#{1,6})\s+(.*?)\s*:?\s*$", line)
+        if m and m.group(2).lower() == want:
+            level, out = len(m.group(1)), [line]
+            for nxt in lines[i + 1:]:
+                h = re.match(r"^(#{1,6})\s", nxt)
+                if h and len(h.group(1)) <= level:
+                    break
+                out.append(nxt)
+            while out and not out[-1].strip():
+                out.pop()
+            if len(out) > LOG_LINES:
+                out = out[:LOG_LINES] + ["… (trimmed; the rest is in the log)"]
+            return out
+    return None
+
+
 def first_section(text):
     """The log's first section (from the first '## ' heading or table to the next '## '), ~25 lines."""
     lines = text.splitlines()
@@ -183,7 +206,27 @@ def log_state(root, branch):
         if row is None:
             return [f"- Log ({cfg['log']}): no row for branch `{branch}`; add your '… · `{branch}`' row to the log"]
         return [f"- Log ({cfg['log']}), row for `{branch}`: {row}"]
-    return [f"- Log ({cfg['log']}), first section:"] + ["  " + l if l else "" for l in first_section(text)]
+    def indented(lines):
+        return ["  " + l if l else "" for l in lines]
+    wanted = cfg.get("logSections") or []
+    if wanted:
+        out = []
+        for heading in wanted:
+            section = named_section(text, heading)
+            if section is None:
+                out.append(f"- Log ({cfg['log']}): no section '{heading}' (logSections in .claude/gw.json); fix the "
+                           f"heading or the key")
+            else:
+                out += [f"- Log ({cfg['log']}), section '{heading}':"] + indented(section)
+        return out
+    first = first_section(text)
+    out = [f"- Log ({cfg['log']}), first section:"] + indented(first)
+    for heading in ("Pendiente", "Pending"):
+        section = named_section(text, heading)
+        if section is not None and section[0] not in first:
+            out += [f"- Log ({cfg['log']}), section '{heading}':"] + indented(section)
+            break
+    return out
 
 
 def state(root, transcript):
@@ -218,9 +261,16 @@ def state(root, transcript):
           f"{script_command(root)}{session} --buscar '<text>'; never read the transcript whole.")
 
 
-def hook_transcript():
-    """The transcript_path Claude Code passes to a hook on stdin."""
+def hook_transcript(wait=1.0):
+    """The transcript_path Claude Code passes to a hook on stdin. Read only when data arrives within `wait` seconds:
+    an agent's Bash tool or `cmd | recuperar.py` leaves stdin open with nothing on it, and --estado must not hang."""
     if sys.stdin is None or sys.stdin.isatty():
+        return None
+    try:
+        ready, _, _ = select.select([sys.stdin], [], [], wait)
+    except (OSError, ValueError, TypeError):  # no select on this stream (Windows pipes, a closed stdin)
+        return None
+    if not ready:
         return None
     try:
         data = json.loads(sys.stdin.read() or "{}")
@@ -243,6 +293,8 @@ def main(argv=None):
         try:
             root = config.find_root(args.root)
             state(root, args.sesion or hook_transcript())
+        except BrokenPipeError:
+            raise
         except Exception as exc:  # fail open: the hook must never break the session
             print(f"recuperar.py --estado could not finish ({exc}); run it by hand to see why: "
                   f"python3 {os.path.abspath(__file__)} --estado")
@@ -262,4 +314,10 @@ def main(argv=None):
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    try:
+        code = main()
+        sys.stdout.flush()
+    except BrokenPipeError:  # `--estado | head`: the reader left; say nothing more and exit 0
+        os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
+        code = 0
+    sys.exit(code)

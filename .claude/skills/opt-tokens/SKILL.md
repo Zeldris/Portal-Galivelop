@@ -4,7 +4,7 @@ description: Token-spend retrospective: measures where a session's tokens went a
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; git; python3 for scripts/medir.py (standard library only)
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   source: "Galivelop workshop; generalised from the Tarkor, installer, portal and VeriNews opt-tokens"
 ---
 
@@ -44,7 +44,9 @@ retries and redone work.
    "use or improve it", not as a new rule; what a skill itself spent (its loaded `SKILL.md`) is measured like any
    other context.
 3. **Hunt the waste**, heaviest first:
-   - **Long context.** Every call rereads the whole history (at cache price, but whole). If the average is high:
+   - **Long context.** Every call rereads the whole history (at cache price, but whole). If the main session's average
+     context passed ~150k (the `orchestrate-dealer` threshold), say so in the report and list the big reads
+     (`BY FILE`, `BY TOOL`) a subagent should have made. If the average is high:
      close tasks with a written handover and start fresh (`/clear`), or compact at task boundaries
      (`/compact <what to keep>`), instead of stretching one session.
    - **Number of calls.** With a long context each call costs the average context. Steps that belong together
@@ -54,7 +56,8 @@ retries and redone work.
      that returns what matters, `grep`/`head`, a hook that trims test output) or send it to a subagent that returns
      the summary.
    - **Files re-read** (`BY FILE`): a big file read many times wants a pointer in a map or a tool that returns the
-     part needed.
+     part needed. Subagents reading the whole log is the usual case: their brief should point to
+     `recuperar.py --estado` (their row), not to the log file.
    - **Images.** A screenshot costs what hundreds of text lines do. If one served a non-visual purpose, improve the
      text tool so it gives that next time.
    - **Rediscovering the known.** Exploring what a document, a skill or a saved scenario already says: write it once

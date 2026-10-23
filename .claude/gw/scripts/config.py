@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 """The only reader of a project's .claude/gw.json (one fact, one place).
 
 Validates the config against schema/gw.schema.json (a stdlib validator for the subset the schema uses) and fills the

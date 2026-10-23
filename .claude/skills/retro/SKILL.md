@@ -1,10 +1,9 @@
 ---
 name: retro
-description: "Conduct a retrospective on a coding session."
-disable-model-invocation: true
+description: "Conduct a retrospective on a coding session. Use before each push or PR to the protected branch (after /code-review and /opt-tokens), when a phase or milestone closes, or when the user asks for a retro."
 license: MIT (see LICENSE-mattpocock-skills)
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   source: "mattpocock/skills@5beb35b"
 ---
 

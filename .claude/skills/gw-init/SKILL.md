@@ -5,14 +5,19 @@ disable-model-invocation: true
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; git, bash and python3 3.8+; the Galivelop-workflow repo cloned or added to the session
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
   source: "Galivelop workshop"
 ---
 
 # gw-init
 
 A thin wrapper: the procedure lives in the workflow repo's guide, `docs/en/apply.md` (Spanish: `docs/es/aplicar.md`).
-Read that guide whole, then follow it step by step. This skill only fixes where to find things and what to confirm.
+Follow it step by step. This skill only fixes where to find things and what to confirm.
+
+**Read the workflow with a subagent** (`orchestrate-dealer`, light model): it reads the guide and the project's build
+files and returns the step-1 decision table, each candidate value with its source path, and the conflicts with the
+project (existing `CLAUDE.md`, hook managers, a red check). The main session decides from that summary and never
+reads the workflow's guides or scripts whole.
 Reply to the user in the language they use; the project's `language` is decided in step 3.
 
 ## 1. Find the workflow repo
@@ -55,7 +60,7 @@ Done when every fact has an answer the user confirmed.
    Repeat `--install`, `--check-command` and `--content` once per value. Add `--with opt-ai` or
    `--with scout-updates` when chosen. Existing projects: read "Existing projects" in the guide first (hook
    managers, existing `CLAUDE.md`, red check, existing log).
-2. Auto mode may ask permission to edit `.claude/settings.json` and `.githooks/`. Tell the user before running, and
+2. Auto mode may ask permission to edit `.claude/settings.json`, `.claude/gw/scripts/` and `.githooks/`. Tell the user before running, and
    after a refused call run `git status` and `git diff` before repeating it.
 3. Review every `*.gw-nuevo` with the user (guide, step 3). Merge `AGENTS.md` and `CLAUDE.md` blocks by hand; keep
    the `galivelop-workflow` marker line. Delete each `.gw-nuevo` once merged.

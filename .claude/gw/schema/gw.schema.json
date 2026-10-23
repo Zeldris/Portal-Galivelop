@@ -1,5 +1,5 @@
 {
-  "$comment": "galivelop-workflow v0.1.0",
+  "$comment": "galivelop-workflow v0.2.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/zeldris/Galivelop-workflow/main/schema/gw.schema.json",
   "title": "Galivelop-workflow project config (.claude/gw.json)",
@@ -134,6 +134,15 @@
           }
         }
       }
+    },
+    "logSections": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": [],
+      "description": "Headings of the log sections recuperar.py --estado shows after a compaction or /clear (without logRows). Empty: the first section and the one named Pendiente/Pending."
     },
     "designReferences": {
       "type": "array",

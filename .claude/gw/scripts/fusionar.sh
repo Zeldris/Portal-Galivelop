@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.1.0
+# galivelop-workflow v0.2.0
 # Merges a subagent's branch into the current one (merge, never rebase: branches are pushed), runs the config's
 # `check` commands on the result and, if they pass, cleans up the subagent's worktree and branch.
 #   bash fusionar.sh <branch> "<merge message>" [--reviewed]

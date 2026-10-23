@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | En `ccr-47f8fddd-o5ek6p` (2026-10-23): el último proyecto añadido sale el primero (hecho); falta `/gw-update` 0.1.0 → 0.2.0, la tarea semanal para todos los proyectos, la revisión y la subida a `main` (confirmada por el usuario) |
-| **Siguiente paso** | Esperar instrucciones. Propuesta pendiente: `/gw-update` del portal de la copia 0.1.0 del flujo a la 0.2.0 (código: revisión y marca) |
+| **Tarea en curso** | En `ccr-47f8fddd-o5ek6p` (2026-10-23): orden de proyectos y flujo 0.2.0 hechos; falta pasar la tarea semanal a «Proyectos semanal» (todas las fichas), `/code-review` contra `main`, marca y subida a `main` (confirmada por el usuario) |
+| **Siguiente paso** | Actualizar el prompt de la tarea programada a «Proyectos semanal»; luego `/code-review --max-findings all` contra `origin/main`, `revisado.sh` y subida a `main` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow v0.2.0. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -19,6 +19,11 @@ La web se publica los domingos por la noche con la tarea programada «Tarkor sem
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - El último proyecto añadido sale el primero (`orden` descendente; test en `src/data/proyectos.test.ts`).
+- Flujo Galivelop-workflow 0.2.0 (`/gw-update` desde la etiqueta `v0.2.0`): scripts, skills, ganchos y CI. El CI
+  conserva lo del portal (Node 22 con caché y el paso de build). Fuera la línea de F24 (la `retro` ya la lanza el
+  agente) y la de F17 (`--estado` ya no se cuelga).
+- Tarea semanal → «Proyectos semanal»: actualiza las fichas de todos los proyectos (decisión del usuario,
+  2026-10-23); `AGENTS.md`, `GLOSSARY.md` y `.claude/gw/opt-tokens.md` al día.
 
 ## Hecho
 
@@ -96,6 +101,9 @@ Datos fijos que salían en entradas antiguas:
 
 ## Pendiente
 
+- Propuesta para el flujo (próxima recogida): `aplicar.py --update` sustituyó `comprobar.yml` como «copia anterior»
+  y se llevó el build y Node 22 del portal sin avisar; se repusieron a mano. Un sitio en el CI para los pasos propios
+  del proyecto evitaría perderlos en cada actualización.
 - «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
   repo; pendiente desde el SEO del 2026-10-14).
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
