@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | Flujo Galivelop-workflow 0.3.0 aplicado en `ccr-47f8fddd-o5ek6p` (rama de esta sesión); falta su `/code-review`, la marca y traerlo por merge a la rama de trabajo antes del domingo. Las fichas las pone al día la tarea «Proyectos semanal» |
+| **Tarea en curso** | Flujo Galivelop-workflow 0.3.0 aplicado en `ccr-47f8fddd-o5ek6p` (rama de esta sesión); falta su `/code-review`, la marca y traerlo por merge a la rama de trabajo antes del domingo. Ficha de Galivelop-workflow ya en la 0.3.0; desde aquí las fichas las pone al día la tarea «Proyectos semanal» |
 | **Siguiente paso** | `/code-review --max-findings all` del flujo 0.3.0 contra `origin/main`, `revisado.sh` y merge de `ccr-47f8fddd-o5ek6p` en `claude/galivelop-dev-portal-1h89ci`; la próxima revisión semanal, el domingo 2026-10-25 |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): orden de proyectos, flujo 0.2.0 y tarea semanal para todos los proyectos. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
@@ -20,6 +20,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Flujo Galivelop-workflow 0.3.0 (código: aún en `ccr-47f8fddd-o5ek6p`, sin revisión ni marca; no entra en la
   rama de trabajo hasta tenerlas).
+- Ficha de Galivelop-workflow a la 0.3.0 (contenido, en `ccr-47f8fddd-o5ek6p`): fase 7 de rodaje, pilotos en Tarkor
+  y su instalador hechos y novedad del 2026-10-23. Desde aquí la ficha la mantiene la tarea semanal.
 
 ## Hecho
 
@@ -32,6 +34,8 @@ opt-tokens, 2026-10-22).
   carpetas en `/tmp` por usuario en `REVIEW.md`, marcas a 0.3.0 en `GLOSSARY.md` y `.claude/gw/opt-tokens.md` y
   `version` 0.3.0. En `comprobar.yml` se repusieron Node 22 con caché de npm y el build del portal (los volvió a
   quitar el `--update`); por eso `aplicar.py --check` sigue avisando de ese archivo. `doctor.py` sin FAIL.
+  Después, la ficha de Galivelop-workflow a la 0.3.0 (fase 7, hitos y novedad en los tres idiomas; la última que
+  ponen al día las sesiones) y en `AGENTS.md` la regla de la tarea semanal dice que manda desde esa ficha.
 - ✅ Orden, flujo 0.2.0 y tarea semanal (2026-10-23): publicado en `main` (confirmación expresa) el orden de proyectos (el último añadido, el primero, también
   en páginas estáticas), el flujo Galivelop-workflow 0.2.0 y la tarea «Proyectos semanal» para todas las fichas;
   `content` ya no cubre los `.ts` de `src/data/`.

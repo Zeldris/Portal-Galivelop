@@ -124,7 +124,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   la noche**. La tarea programada «Proyectos semanal» revisa el avance de **cada proyecto** (Tarkor, toVeriAI,
   Galivelop-workflow y los que se añadan), actualiza sus fichas y sube la rama de trabajo
   (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea; desde el
-  2026-10-23, por decisión del usuario, las fichas las pone al día ella y no las sesiones). Gasta los mínimos tokens:
+  2026-10-23, con la ficha de Galivelop-workflow ya en la 0.3.0, por decisión del usuario, las fichas las pone al
+  día ella y no las sesiones). Gasta los mínimos tokens:
   de cada proyecto lee solo su bitácora o su CHANGELOG y los commits desde la última fecha de `actualizado`.
   Un proyecto nuevo se añade a mano (código y ficha, con su revisión) junto con su bloque en
   [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md), que el usuario pega en la conversación de la tarea

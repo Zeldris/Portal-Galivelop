@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "captura",
-  "actualizado": "2026-10-22",
+  "actualizado": "2026-10-23",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · v0.2.0 · fase 5: piloto",
-    "gl": "En desenvolvemento · v0.2.0 · fase 5: piloto",
-    "en": "In development · v0.2.0 · phase 5: pilot"
+    "es": "En desarrollo · v0.3.0 · fase 7: rodaje",
+    "gl": "En desenvolvemento · v0.3.0 · fase 7: rodaxe",
+    "en": "In development · v0.3.0 · phase 7: run-in"
   },
   "etiquetas": [
     "Claude Code",
@@ -61,9 +61,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.2.0, que ya recoge lo aprendido en el primer piloto, en este mismo portal. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.2.0, que xa recolle o aprendido no primeiro piloto, neste mesmo portal. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.2.0, which already takes in what we learned from the first pilot, on this very portal. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.3.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.3.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.3.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
     },
     {
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las nueve skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye doce skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
@@ -769,21 +769,16 @@
         "gl": "Piloto neste portal",
         "en": "Pilot on this portal"
       },
-      "estado": "curso",
-      "detalle": {
-        "es": "Publicado en el portal; sus mejoras ya están en la versión 0.2.0.",
-        "gl": "Publicado no portal; as súas melloras xa están na versión 0.2.0.",
-        "en": "Live on the portal; its improvements are already in version 0.2.0."
-      }
+      "estado": "hecho"
     },
     {
       "version": "6",
       "nombre": {
-        "es": "Pilotos en otros tres proyectos del taller",
-        "gl": "Pilotos noutros tres proxectos do taller",
-        "en": "Pilots on three more workshop projects"
+        "es": "Pilotos en Tarkor y su instalador",
+        "gl": "Pilotos en Tarkor e no seu instalador",
+        "en": "Pilots on Tarkor and its installer"
       },
-      "estado": "pendiente"
+      "estado": "hecho"
     },
     {
       "version": "7",
@@ -792,7 +787,12 @@
         "gl": "Rodaxe da etapa 1",
         "en": "Stage 1 run-in"
       },
-      "estado": "pendiente"
+      "estado": "curso",
+      "detalle": {
+        "es": "Empieza con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador.",
+        "gl": "Comeza coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador.",
+        "en": "It starts with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us."
+      }
     },
     {
       "version": "8",
@@ -823,6 +823,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-10-23",
+      "texto": {
+        "es": "Versión 0.3.0: entran las mejoras de los pilotos en Tarkor y en su instalador. El diagnóstico detecta más fallos de montaje, el gancho de subida trabaja en una carpeta privada para cada usuario, la sesión en la nube puede preparar su entorno con un tiempo máximo y hay claves nuevas para adaptar el flujo a cada proyecto. Empieza el rodaje de la etapa 1.",
+        "gl": "Versión 0.3.0: entran as melloras dos pilotos en Tarkor e no seu instalador. O diagnóstico detecta máis fallos de montaxe, o gancho de subida traballa nun cartafol privado para cada usuario, a sesión na nube pode preparar o seu contorno cun tempo máximo e hai claves novas para adaptar o fluxo a cada proxecto. Comeza a rodaxe da etapa 1.",
+        "en": "Version 0.3.0: the improvements from the pilots on Tarkor and its installer are in. The diagnosis catches more setup problems, the push hook works in a private folder for each user, a cloud session can prepare its environment with a time limit, and new keys adapt the workflow to each project. The stage 1 run-in begins."
+      }
+    },
     {
       "fecha": "2026-10-22",
       "texto": {
