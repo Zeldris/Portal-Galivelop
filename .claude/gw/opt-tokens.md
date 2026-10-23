@@ -1,7 +1,7 @@
-<!-- galivelop-workflow v0.2.0 -->
+<!-- galivelop-workflow v0.3.0 -->
 # opt-tokens — notas del proyecto
 
-Las lee la skill `opt-tokens` antes de proponer nada, y se actualizan cuando el usuario aprueba un cambio. El flujo
+Las lee la skill `opt-tokens` antes de proponer nada, y se actualizan cuando la persona aprueba un cambio. El flujo
 las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/skills/opt-tokens/proyecto.md`.)
 
 ## Herramientas que ya ahorran

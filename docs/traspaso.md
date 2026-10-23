@@ -8,23 +8,30 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | Ninguna. Las fichas las pone al día la tarea «Proyectos semanal»; su texto nuevo (`docs/runbooks/tarea-semanal.md`) lo tiene que pegar el usuario en la conversación de la tarea |
-| **Siguiente paso** | Comprobar que el usuario pegó el texto de la tarea; la próxima revisión semanal, el domingo 2026-10-25 |
+| **Tarea en curso** | Flujo Galivelop-workflow 0.3.0 aplicado en `ccr-47f8fddd-o5ek6p` (rama de esta sesión); falta su `/code-review`, la marca y traerlo por merge a la rama de trabajo antes del domingo. Las fichas las pone al día la tarea «Proyectos semanal» |
+| **Siguiente paso** | `/code-review --max-findings all` del flujo 0.3.0 contra `origin/main`, `revisado.sh` y merge de `ccr-47f8fddd-o5ek6p` en `claude/galivelop-dev-portal-1h89ci`; la próxima revisión semanal, el domingo 2026-10-25 |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): orden de proyectos, flujo 0.2.0 y tarea semanal para todos los proyectos. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-Nada pendiente.
+- Flujo Galivelop-workflow 0.3.0 (código: aún en `ccr-47f8fddd-o5ek6p`, sin revisión ni marca; no entra en la
+  rama de trabajo hasta tenerlas).
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
+- ✅ Flujo Galivelop-workflow 0.3.0 (2026-10-23, confirmación del usuario), en `ccr-47f8fddd-o5ek6p`:
+  `aplicar.py --update` (14 scripts, esquema, 19 skills, `test_medir.py` nuevo, `pre-commit`, `pre-push` y
+  `comprobar.yml`); `AGENTS.md` y `CLAUDE.md` fusionados a mano («la persona», `.claude/gw/scripts/`), la regla de
+  carpetas en `/tmp` por usuario en `REVIEW.md`, marcas a 0.3.0 en `GLOSSARY.md` y `.claude/gw/opt-tokens.md` y
+  `version` 0.3.0. En `comprobar.yml` se repusieron Node 22 con caché de npm y el build del portal (los volvió a
+  quitar el `--update`); por eso `aplicar.py --check` sigue avisando de ese archivo. `doctor.py` sin FAIL.
 - ✅ Orden, flujo 0.2.0 y tarea semanal (2026-10-23): publicado en `main` (confirmación expresa) el orden de proyectos (el último añadido, el primero, también
   en páginas estáticas), el flujo Galivelop-workflow 0.2.0 y la tarea «Proyectos semanal» para todas las fichas;
   `content` ya no cubre los `.ts` de `src/data/`.
@@ -89,7 +96,6 @@ opt-tokens, 2026-10-22).
   con galería por pestañas (campo `grupos`, sin rotación). Descartados: versiones «verano»
   (idénticas), quio y recursos sueltos. Borradas las imágenes antiguas sin uso. Pies de foto de «Arte del mundo» traducidos.
   Publicado en `main` (confirmación del usuario).
-- ✅ Revisión semanal (2026-10-18): `tarkor-contenido-web.md` sin cambios desde la ficha rehecha hoy; Tarkor sin tocar, rama publicada en `main`.
 
 Datos fijos que salían en entradas antiguas:
 
@@ -99,13 +105,16 @@ Datos fijos que salían en entradas antiguas:
 ## Pendiente
 
 - Propuesta para el flujo (próxima recogida): `aplicar.py --update` sustituyó `comprobar.yml` como «copia anterior»
-  y se llevó el build y Node 22 del portal sin avisar; se repusieron a mano. Un sitio en el CI para los pasos propios
+  y se llevó el build y Node 22 del portal sin avisar; se repusieron a mano. **Pasó otra vez en la 0.3.0**: el
+  simulacro lo dio como «update» y no como «propose», aunque tenía cambios locales. Un sitio en el CI para los pasos propios
   del proyecto evitaría perderlos en cada actualización.
 - Propuesta para el flujo, hallazgos de la revisión del 2026-10-23 en sus scripts (aquí no se editan):
   `pre-push` y `revision-antes-de-main.sh` leen la política de la punta de `main` y, si esa config está rota, ni el
   arreglo puede subir; los dos dejan pasar sin comprobar la marca si no pueden traer la punta remota (deberían fallar
   cerrados); los cambios del `pre-push` 0.2.0 no traen caso en el test del proyecto; `recuperar.py` solo espera 1 s
   la entrada del gancho y puede tomar el transcript de otra sesión.
+- Propuesta para el flujo: en la plantilla de `CLAUDE.md` 0.3.0, «El modelo de la sesión la elige la persona»
+  debería ser «lo elige».
 - «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
   repo; pendiente desde el SEO del 2026-10-14).
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).

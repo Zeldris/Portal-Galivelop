@@ -1,4 +1,4 @@
-<!-- galivelop-workflow v0.2.0 -->
+<!-- galivelop-workflow v0.3.0 -->
 # Guía de revisión
 
 Lo que el revisor (`/code-review`) comprueba en cada diff del portal, además de los fallos de siempre. Lo
@@ -51,6 +51,8 @@ aquí, se proponen en el repo del flujo; lo del portal es su configuración (`.c
 - Un gancho de subida comprueba el commit que se sube, no la carpeta de trabajo, y falla cerrado cuando le falta un
   dato (un commit que no tiene, una API que no responde).
 - Los scripts de shell corren en bash 3.2 (macOS): nada de `mapfile` ni arrays asociativos.
+- Una carpeta con nombre fijo en un directorio compartido (`$TMPDIR`, `/tmp`) es por usuario, se crea con permisos 700
+  y se rechaza si ya existe como symlink o de otro usuario; los archivos sueltos, con `mktemp`.
 - Lo traído de otro repo se adapta a cómo trabaja el portal: aquí se sube directo a `main`, no por PR, y la marca de
   revisión va en el repo (`docs/registros/revisado.txt`) para que la vea la tarea semanal. Se comprueba contra los
   contratos de **este** repo (rutas, formatos, claves de configuración), no contra los del original.

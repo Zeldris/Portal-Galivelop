@@ -1,9 +1,9 @@
-<!-- galivelop-workflow v0.2.0 -->
+<!-- galivelop-workflow v0.3.0 -->
 # Portal-Galivelop — instrucciones para agentes
 
 Este proyecto se trabaja por relevos: una sesión puede acabarse en cualquier momento (tokens, contenedor, cambio de
 cuenta) y la siguiente tiene que seguir **sin perder nada y sin preguntar por dónde iba**. Todo lo de este archivo
-existe para eso. El flujo es Galivelop-workflow v0.2.0; sus scripts están en `.claude/gw/scripts/`, sus skills
+existe para eso. El flujo es Galivelop-workflow v0.3.0; sus scripts están en `.claude/gw/scripts/`, sus skills
 en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.claude/gw/scripts/config.py`).
 
 ## Al empezar cualquier sesión
@@ -11,13 +11,13 @@ en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.cla
 1. Lee la bitácora, `docs/traspaso.md`: rama, tarea en curso, qué falta y siguiente paso.
 2. `git fetch origin <rama>` y comprueba que el último commit coincide con lo que dice la bitácora.
 3. Comprueba que el check está en verde antes de tocar nada: `npm run check`.
-4. Sigue por el **siguiente paso** de la bitácora, salvo que el usuario pida otra cosa.
+4. Sigue por el **siguiente paso** de la bitácora, salvo que la persona pida otra cosa.
 5. Al empezar cada tarea, trae la rama protegida: `git fetch origin main` y, si trae commits,
    `git merge origin/main` (merge, nunca rebase: las ramas están subidas). Si el conflicto toca la
-   misma lógica por los dos lados, se para y se consulta al usuario.
+   misma lógica por los dos lados, se para y se consulta a la persona.
 6. **La sesión se abre con el repo como carpeta de trabajo.** Abierta en otra (una que contiene varios repos, la
    carpeta personal), no carga `.claude/settings.json`: ni el tope de compactación, ni el gancho de inicio, ni el que
-   vigila la subida a la rama protegida. Si pasa, dilo al usuario para que la reabra desde el repo; mientras tanto,
+   vigila la subida a la rama protegida. Si pasa, dilo a la persona para que la reabra desde el repo; mientras tanto,
    `git config core.hooksPath .githooks` antes del primer commit y, antes de subir a `main` o de crear
    o fusionar un pull request, comprueba a mano lo que comprobaría ese gancho: la marca de revisión del mismo commit y
    el CI en verde.
@@ -36,11 +36,11 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
 - Push a la rama de trabajo (`git push -u origin <rama>`); si falla por red, reintentar con espera 2, 4, 8 y 16 s.
 - **Tras una llamada interrumpida o rechazada, `git status` y `git diff` antes de repetirla**: el cambio puede
   haberse guardado, o incluso subido, y repetirlo lo duplica.
-- Si el usuario dice que se para, se para: se sube lo que haya, se deja la bitácora al día y no se sigue con nada más.
+- Si la persona dice que se para, se para: se sube lo que haya, se deja la bitácora al día y no se sigue con nada más.
 - **Al cerrar una fase** (o una tarea grande), con la bitácora al día, se recomienda `/clear` antes de la siguiente: el contexto
   largo es casi todo el gasto, y la bitácora basta para retomar.
 - **Al cerrar cada bloque o fase, mira el CI de la última subida.** Un CI que no arranca (sin cuota, sin runners)
-  cuenta como rojo: se dice al usuario y no se da nada por comprobado en el CI.
+  cuenta como rojo: se dice a la persona y no se da nada por comprobado en el CI.
 
 ## Comprobar
 
@@ -49,7 +49,7 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
 - **Lo comprobable lo hace un script**, no un agente: las skills y guías solo deciden lo que exige criterio. Si una
   regla se sigue rompiendo, se convierte en una comprobación.
 - **Lo que depende de una máquina concreta no se da por probado con tests** (otro sistema operativo, un dispositivo,
-  el equipo del usuario): se apunta como pendiente en el plan, con quién lo comprueba y dónde.
+  el equipo de la persona): se apunta como pendiente en el plan, con quién lo comprueba y dónde.
 - Un test nuevo tiene que fallar sin su arreglo: `bash .claude/gw/scripts/rojo-sin-arreglo.sh "<orden del test>"
   <archivo-del-arreglo>...`.
 - Un test que espera un fallo comprueba **el motivo** (el mensaje o la causa), no solo el código de salida: si no,
@@ -70,11 +70,11 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
   usa otra sesión, crea `claude/<tema>` desde ella y escribe solo en tu parte de la bitácora. Lo tuyo vuelve por
   `git merge` antes de ir a `main`.
 - Merge, nunca rebase: las ramas están subidas.
-- **A `main` solo con confirmación del usuario**, y se apunta en la bitácora. Según `pushToProtected`
+- **A `main` solo con confirmación de la persona**, y se apunta en la bitácora. Según `pushToProtected`
   de `.claude/gw.json`, se sube directo (`direct`: `.githooks/pre-push` pide la marca de revisión) o por pull request
   (`pr`: un gancho de Claude Code pide la marca antes de crearlo o fusionarlo; un push directo la sigue pidiendo).
-- **Se fusiona solo con el CI en verde**, también cuando el usuario dice «fusiona directamente»: eso quita esperar a
-  más revisiones, nunca el CI ni la retro presentada al usuario.
+- **Se fusiona solo con el CI en verde**, también cuando la persona dice «fusiona directamente»: eso quita esperar a
+  más revisiones, nunca el CI ni la retro presentada a la persona.
 - La rama de un subagente vuelve con `bash .claude/gw/scripts/fusionar.sh <rama> "<mensaje>"`, que corre el check y
   limpia su worktree.
 
@@ -88,7 +88,7 @@ Nunca sobre trabajo ya fusionado.
    bitácora y no vuelve a revisarse en ese PR. Solo el código necesita revisión: lo que casa con `content` de
    `.claude/gw.json` es contenido.
 2. **Entorno:** la skill `opt-tokens` y luego `retro` (más `opt-ai` si hubo medidas con un modelo de IA local). Sus
-   propuestas se **presentan al usuario**; lo que confirme se aplica en la rama. Una retro escrita sin presentarla no
+   propuestas se **presentan a la persona**; lo que confirme se aplica en la rama. Una retro escrita sin presentarla no
    vale.
 3. **Cierre:** si la fase 2 trajo código, revisión solo de esos commits y sus arreglos; luego
    `bash .claude/gw/scripts/revisado.sh` (escribe la marca de revisión, `docs/registros/revisado.txt`, y hace su commit) y
