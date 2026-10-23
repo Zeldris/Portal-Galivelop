@@ -52,6 +52,14 @@ export function formatearFecha(iso: string, idioma: Idioma): string {
   return idioma === 'en' ? `${d} ${mes} ${a}` : `${d} de ${mes} de ${a}`;
 }
 
+/** Mes AAAA-MM con el mes abreviado si es largo («mar. 2021», «Mar 2021», «maio 2020»). */
+export function formatearMes(iso: string, idioma: Idioma): string {
+  const [a, m] = iso.split('-').map(Number);
+  const mes = MESES[idioma][m - 1];
+  if (mes.length <= 4) return `${mes} ${a}`;
+  return `${mes.slice(0, 3)}${idioma === 'en' ? '' : '.'} ${a}`;
+}
+
 interface ContextoIdioma {
   idioma: Idioma;
   cambiarIdioma: (i: Idioma) => void;

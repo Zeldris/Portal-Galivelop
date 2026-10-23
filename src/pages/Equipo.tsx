@@ -1,10 +1,10 @@
-import { ArrowRight, Users } from 'lucide-react';
+import { ArrowRight, MapPin, Users } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoRed, nombreRed } from '../components/IconoRed';
-import { equipo, iniciales } from '../data/equipo';
+import { equipo, iniciales, type Etapa, type Perfil } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
-import { useIdioma } from '../i18n/Idioma';
+import { formatearMes, useIdioma } from '../i18n/Idioma';
 
 export function Equipo() {
   const { t, tx } = useIdioma();
@@ -28,7 +28,7 @@ export function Equipo() {
 
         <ul className="personas">
           {equipo.map((p) => (
-            <li key={p.id} id={p.id} className="persona">
+            <li key={p.id} id={p.id} className={p.perfil ? 'persona persona-amplia' : 'persona'}>
               <div className="persona-cabecera">
                 {p.foto ? (
                   <img src={ruta(p.foto)} alt="" className="persona-foto" />
@@ -40,9 +40,15 @@ export function Equipo() {
                 <div>
                   <h2>{p.nombre}</h2>
                   <p className="persona-rol">{tx(p.rol)}</p>
+                  {p.perfil?.ubicacion && (
+                    <p className="persona-ubicacion">
+                      <MapPin size={14} aria-hidden="true" /> {tx(p.perfil.ubicacion)}
+                    </p>
+                  )}
                 </div>
               </div>
               <p className="persona-bio">{tx(p.bio)}</p>
+              {p.perfil && <PerfilAmpliado perfil={p.perfil} />}
               {p.proyectos.length > 0 && (
                 <div className="persona-proyectos">
                   <span>{t('equipo.proyectos')}:</span>
@@ -88,6 +94,81 @@ export function Equipo() {
           </li>
         </ul>
       </div>
+    </section>
+  );
+}
+
+function PerfilAmpliado({ perfil }: { perfil: Perfil }) {
+  const { t, tx } = useIdioma();
+  return (
+    <div className="perfil">
+      <div className="perfil-columna">
+        {perfil.trayectoria && <Etapas titulo={t('equipo.trayectoria')} etapas={perfil.trayectoria} />}
+        {perfil.formacion && <Etapas titulo={t('equipo.formacion')} etapas={perfil.formacion} />}
+      </div>
+      <div className="perfil-columna">
+        {perfil.tecnologias && (
+          <section>
+            <h3>{t('equipo.tecnologias')}</h3>
+            <dl className="perfil-tecnologias">
+              {perfil.tecnologias.map((g) => (
+                <div key={g.grupo.es}>
+                  <dt>{tx(g.grupo)}</dt>
+                  <dd>
+                    <ul>
+                      {g.lista.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+        {perfil.idiomas && (
+          <section>
+            <h3>{t('equipo.idiomas')}</h3>
+            <ul className="perfil-idiomas">
+              {perfil.idiomas.map((i) => (
+                <li key={i.idioma.es}>
+                  <strong>{tx(i.idioma)}</strong> {tx(i.nivel)}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {perfil.fortalezas && (
+          <section>
+            <h3>{t('equipo.fortalezas')}</h3>
+            <ul className="perfil-fortalezas">
+              {perfil.fortalezas.map((f) => (
+                <li key={f.es}>{tx(f)}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Etapas({ titulo, etapas }: { titulo: string; etapas: Etapa[] }) {
+  const { t, tx, idioma } = useIdioma();
+  return (
+    <section>
+      <h3>{titulo}</h3>
+      <ol className="perfil-etapas">
+        {etapas.map((e) => (
+          <li key={`${e.lugar}-${e.desde}`} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
+            <strong>{tx(e.titulo)}</strong>
+            <span>{e.lugar}</span>
+            <span className="perfil-fechas">
+              {formatearMes(e.desde, idioma)} – {e.hasta ? formatearMes(e.hasta, idioma) : t('equipo.actualidad')}
+            </span>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 }

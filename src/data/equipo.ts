@@ -5,6 +5,24 @@ import type { Texto } from './tipos';
 export const REDES = ['linkedin', 'github', 'web', 'correo', 'x', 'instagram', 'youtube', 'discord'] as const;
 export type Red = (typeof REDES)[number];
 
+/** Una etapa de la trayectoria o de la formación; meses en AAAA-MM, sin `hasta` si sigue. */
+export interface Etapa {
+  titulo: Texto;
+  lugar: string;
+  desde: string;
+  hasta?: string;
+}
+
+/** Perfil profesional ampliado, opcional: solo para quien quiera contarlo. */
+export interface Perfil {
+  ubicacion?: Texto;
+  trayectoria?: Etapa[];
+  formacion?: Etapa[];
+  tecnologias?: { grupo: Texto; lista: string[] }[];
+  idiomas?: { idioma: Texto; nivel: Texto }[];
+  fortalezas?: Texto[];
+}
+
 export interface Persona {
   /** Identificador para el ancla /equipo#<id>. */
   id: string;
@@ -17,6 +35,7 @@ export interface Persona {
   redes: { tipo: Red; url: string }[];
   /** Foto opcional (ruta en public/); sin ella se muestran las iniciales. */
   foto?: string;
+  perfil?: Perfil;
 }
 
 export const equipo: Persona[] = (datos as Persona[]).slice().sort((a, b) => a.orden - b.orden);

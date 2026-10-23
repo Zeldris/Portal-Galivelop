@@ -2831,6 +2831,161 @@ button {
   border-color: var(--celeste);
 }
 
+/* Perfil ampliado: ocupa toda la fila y reparte el detalle en dos columnas. */
+.persona-amplia {
+  grid-column: 1 / -1;
+}
+
+.persona-amplia .persona-foto {
+  width: 88px;
+  height: 88px;
+  border-radius: 24px;
+}
+
+.persona-amplia .persona-bio {
+  max-width: 72ch;
+}
+
+.persona-ubicacion {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--texto-3);
+}
+
+.perfil {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 22px 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--borde);
+}
+
+.perfil-columna {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.perfil h3 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  margin-bottom: 12px;
+}
+
+.perfil ul,
+.perfil ol,
+.perfil dl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.perfil-etapas li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0 0 14px 22px;
+  border-left: 2px solid var(--borde);
+  margin-left: 5px;
+}
+
+.perfil-etapas li:last-child {
+  padding-bottom: 0;
+  border-left-color: transparent;
+}
+
+.perfil-etapas li::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--superficie);
+  border: 2px solid var(--celeste);
+}
+
+.perfil-etapas .perfil-etapa-actual::before {
+  background: var(--celeste);
+  box-shadow: 0 0 0 4px var(--brillo);
+}
+
+.perfil-etapas strong {
+  font-size: 0.97rem;
+  line-height: 1.35;
+}
+
+.perfil-etapas span {
+  font-size: 0.9rem;
+  color: var(--texto-2);
+}
+
+.perfil-etapas .perfil-fechas {
+  font-size: 0.82rem;
+  color: var(--texto-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.perfil-tecnologias {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perfil-tecnologias dt {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-2);
+  margin-bottom: 6px;
+}
+
+.perfil-tecnologias dd {
+  margin: 0;
+}
+
+.perfil-tecnologias ul,
+.perfil-fortalezas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.perfil-tecnologias li,
+.perfil-fortalezas li {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  background: var(--brillo);
+  color: var(--texto);
+}
+
+.perfil-fortalezas li {
+  background: transparent;
+  border: 1px solid var(--celeste);
+}
+
+.perfil-idiomas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.92rem;
+  color: var(--texto-2);
+}
+
+.perfil-idiomas strong {
+  color: var(--texto);
+  margin-right: 4px;
+}
+
 .persona-unete {
   align-items: flex-start;
   border-style: dashed;

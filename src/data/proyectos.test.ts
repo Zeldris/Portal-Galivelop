@@ -93,6 +93,15 @@ describe('fechas', () => {
     expect(formatearFecha('2026-10-04', 'es')).toBe('4 de octubre de 2026');
     expect(formatearFecha('2026-10-04', 'en')).toBe('4 October 2026');
   });
+
+  it('los meses de la trayectoria se abrevian solo si son largos', async () => {
+    const { formatearMes } = await import('../i18n/Idioma');
+    expect(formatearMes('2021-03', 'es')).toBe('mar. 2021');
+    expect(formatearMes('2017-07', 'gl')).toBe('xul. 2017');
+    expect(formatearMes('2019-10', 'en')).toBe('Oct 2019');
+    expect(formatearMes('2019-05', 'en')).toBe('May 2019');
+    expect(formatearMes('2020-05', 'gl')).toBe('maio 2020');
+  });
 });
 
 describe('formularios', () => {
@@ -115,7 +124,11 @@ describe('equipo', () => {
     expect(equipo.length).toBeGreaterThan(0);
     expect(new Set(equipo.map((p) => p.id)).size).toBe(equipo.length);
     for (const p of equipo) {
-      expect(textosIncompletos({ rol: p.rol, bio: p.bio }, p.id)).toEqual([]);
+      expect(textosIncompletos({ rol: p.rol, bio: p.bio, perfil: p.perfil }, p.id)).toEqual([]);
+      for (const etapa of [...(p.perfil?.trayectoria ?? []), ...(p.perfil?.formacion ?? [])]) {
+        expect(etapa.desde).toMatch(/^\d{4}-(0[1-9]|1[0-2])$/);
+        if (etapa.hasta) expect(etapa.hasta >= etapa.desde).toBe(true);
+      }
       expect(p.proyectos.filter((s) => !proyectos.some((x) => x.slug === s))).toEqual([]);
       for (const r of p.redes) {
         expect(REDES).toContain(r.tipo);

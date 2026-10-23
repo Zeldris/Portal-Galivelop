@@ -9,9 +9,9 @@
       "en": "Founder · Full-stack development"
     },
     "bio": {
-      "es": "Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir. Desarrollador full stack senior, creador de Tarkor y de Galivelop-workflow, y parte del equipo de toVeriAI.",
-      "gl": "Fundou Galivelop para dar forma a proxectos ambiciosos e abrilos a quen queira aprender e construír. Desenvolvedor full stack sénior, creador de Tarkor e de Galivelop-workflow, e parte do equipo de toVeriAI.",
-      "en": "Founded Galivelop to shape ambitious projects and open them up to anyone who wants to learn and build. Senior full-stack developer, creator of Tarkor and Galivelop-workflow, and part of the toVeriAI team."
+      "es": "Desarrollador full stack desde 2017 y, desde 2023, sénior en Orienteed. Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir: creó Tarkor y Galivelop-workflow, y forma parte del equipo de toVeriAI. Le mueven el aprendizaje continuo y adaptarse a lo que cambia, hoy también con la IA en el día a día del desarrollo.",
+      "gl": "Desenvolvedor full stack desde 2017 e, desde 2023, sénior en Orienteed. Fundou Galivelop para darlles forma a proxectos ambiciosos e abrilos a quen queira aprender e construír: creou Tarkor e Galivelop-workflow, e forma parte do equipo de toVeriAI. Móveno a aprendizaxe continua e adaptarse ao que cambia, hoxe tamén coa IA no día a día do desenvolvemento.",
+      "en": "Full-stack developer since 2017 and, since 2023, senior developer at Orienteed. He founded Galivelop to shape ambitious projects and open them to anyone who wants to learn and build: he created Tarkor and Galivelop-workflow, and is part of the toVeriAI team. He is driven by continuous learning and by adapting to change, now also with AI in everyday development."
     },
     "proyectos": [
       "tarkor",
@@ -23,7 +23,229 @@
         "tipo": "linkedin",
         "url": "https://www.linkedin.com/in/%C3%A1lvaro-garc%C3%ADa-gra%C3%B1a-b4538117b"
       }
-    ]
+    ],
+    "foto": "equipo/alvaro-garcia-grana.webp",
+    "perfil": {
+      "ubicacion": {
+        "es": "A Coruña, Galicia",
+        "gl": "A Coruña, Galicia",
+        "en": "A Coruña, Galicia, Spain"
+      },
+      "trayectoria": [
+        {
+          "titulo": {
+            "es": "Desarrollador de software full stack sénior",
+            "gl": "Desenvolvedor de software full stack sénior",
+            "en": "Senior full-stack software developer"
+          },
+          "lugar": "Orienteed",
+          "desde": "2023-02"
+        },
+        {
+          "titulo": {
+            "es": "Desarrollador de software full stack",
+            "gl": "Desenvolvedor de software full stack",
+            "en": "Full-stack software developer"
+          },
+          "lugar": "Orienteed",
+          "desde": "2021-03",
+          "hasta": "2023-02"
+        },
+        {
+          "titulo": {
+            "es": "Desarrollador web full stack",
+            "gl": "Desenvolvedor web full stack",
+            "en": "Full-stack web developer"
+          },
+          "lugar": "Plexus Tech",
+          "desde": "2020-03",
+          "hasta": "2021-03"
+        },
+        {
+          "titulo": {
+            "es": "Desarrollador web full stack",
+            "gl": "Desenvolvedor web full stack",
+            "en": "Full-stack web developer"
+          },
+          "lugar": "Servicio Móvil",
+          "desde": "2018-06",
+          "hasta": "2020-03"
+        },
+        {
+          "titulo": {
+            "es": "Desarrollador web full stack",
+            "gl": "Desenvolvedor web full stack",
+            "en": "Full-stack web developer"
+          },
+          "lugar": "Grupo ALUMAN",
+          "desde": "2017-06",
+          "hasta": "2017-09"
+        }
+      ],
+      "formacion": [
+        {
+          "titulo": {
+            "es": "Formación profesional",
+            "gl": "Formación profesional",
+            "en": "Vocational training"
+          },
+          "lugar": "Chios Formación",
+          "desde": "2017-01",
+          "hasta": "2018-01"
+        },
+        {
+          "titulo": {
+            "es": "Formación profesional",
+            "gl": "Formación profesional",
+            "en": "Vocational training"
+          },
+          "lugar": "Chios Formación",
+          "desde": "2014-01",
+          "hasta": "2016-01"
+        }
+      ],
+      "tecnologias": [
+        {
+          "grupo": {
+            "es": "Frontend",
+            "gl": "Frontend",
+            "en": "Frontend"
+          },
+          "lista": [
+            "React",
+            "Angular 2+",
+            "AngularJS",
+            "Vue",
+            "TypeScript",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Bootstrap",
+            "jQuery"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Backend",
+            "gl": "Backend",
+            "en": "Backend"
+          },
+          "lista": [
+            "Java",
+            "Spring",
+            "Hibernate",
+            "Maven",
+            "Groovy",
+            "JSP",
+            "C#",
+            ".NET",
+            "ASP.NET",
+            "Node.js",
+            "PHP",
+            "Python",
+            "GraphQL",
+            "Magento",
+            "XML",
+            "SoapUI"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Bases de datos",
+            "gl": "Bases de datos",
+            "en": "Databases"
+          },
+          "lista": [
+            "PostgreSQL",
+            "MySQL",
+            "Oracle",
+            "SQL Server",
+            "MongoDB",
+            "SQL"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "IA en el desarrollo",
+            "gl": "IA no desenvolvemento",
+            "en": "AI in development"
+          },
+          "lista": [
+            "Claude Code",
+            "OpenCode",
+            "Ollama"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Herramientas",
+            "gl": "Ferramentas",
+            "en": "Tooling"
+          },
+          "lista": [
+            "Git",
+            "Docker",
+            "Linux",
+            "Microsoft 365"
+          ]
+        }
+      ],
+      "idiomas": [
+        {
+          "idioma": {
+            "es": "Gallego",
+            "gl": "Galego",
+            "en": "Galician"
+          },
+          "nivel": {
+            "es": "Nativo",
+            "gl": "Nativo",
+            "en": "Native"
+          }
+        },
+        {
+          "idioma": {
+            "es": "Castellano",
+            "gl": "Castelán",
+            "en": "Spanish"
+          },
+          "nivel": {
+            "es": "Nativo",
+            "gl": "Nativo",
+            "en": "Native"
+          }
+        },
+        {
+          "idioma": {
+            "es": "Inglés",
+            "gl": "Inglés",
+            "en": "English"
+          },
+          "nivel": {
+            "es": "Intermedio",
+            "gl": "Intermedio",
+            "en": "Intermediate"
+          }
+        }
+      ],
+      "fortalezas": [
+        {
+          "es": "Aprendizaje continuo",
+          "gl": "Aprendizaxe continua",
+          "en": "Continuous learning"
+        },
+        {
+          "es": "Autonomía para aprender",
+          "gl": "Autonomía para aprender",
+          "en": "Self-directed learning"
+        },
+        {
+          "es": "Adaptabilidad al cambio",
+          "gl": "Adaptabilidade ao cambio",
+          "en": "Adaptability to change"
+        }
+      ]
+    }
   },
   {
     "id": "raquel-c",
