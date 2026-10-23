@@ -5,7 +5,7 @@
   "colaboracion": "privada",
   "estado": "desarrollo",
   "acento": "#3D6FD9",
-  "cabecera": "captura",
+  "cabecera": "color",
   "actualizado": "2026-10-23",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
@@ -47,7 +47,85 @@
     }
   },
   "enlaces": [],
-  "galeria": [],
+  "galeria": [
+    {
+      "src": "proyectos/galivelop-workflow/portada.webp",
+      "mini": "proyectos/galivelop-workflow/portada-mini.webp",
+      "ancho": 1600,
+      "alto": 1000,
+      "alt": {
+        "es": "Esquema del flujo de una tarea: bitácora, selector, orchestrate-dealer, commit y push con sus ganchos, /code-review, /opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
+        "gl": "Esquema do fluxo dunha tarefa: bitácora, selector, orchestrate-dealer, commit e push cos seus ganchos, /code-review, /opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
+        "en": "Diagram of a task’s flow: log, selector, orchestrate-dealer, commit and push with their hooks, /code-review, /opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
+      }
+    },
+    {
+      "src": "proyectos/galivelop-workflow/arquitectura.webp",
+      "mini": "proyectos/galivelop-workflow/arquitectura-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Arquitectura en seis capas: reglas, skills, ganchos, scripts, estado en git y CI. De arriba abajo, de lo que decide el agente con criterio a lo que impone un script.",
+        "gl": "Arquitectura en seis capas: regras, skills, ganchos, scripts, estado en git e CI. De arriba abaixo, do que decide o axente con criterio ao que impón un script.",
+        "en": "Architecture in six layers: rules, skills, hooks, scripts, state in git and CI. From top to bottom, from what the agent decides by judgement to what a script enforces."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-workflow/sesion.webp",
+      "mini": "proyectos/galivelop-workflow/sesion-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recuperar.py devuelve el estado. Git es la memoria.",
+        "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recuperar.py devolve o estado. Git é a memoria.",
+        "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recuperar.py restores the state. Git is the memory."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-workflow/pre-push.webp",
+      "mini": "proyectos/galivelop-workflow/pre-push-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Gancho pre-push: ocho comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
+        "gl": "Gancho pre-push: oito comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
+        "en": "pre-push hook: eight checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-workflow/fases.webp",
+      "mini": "proyectos/galivelop-workflow/fases-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Tres fases antes de la rama protegida: revisión de código, entorno (opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
+        "gl": "Tres fases antes da rama protexida: revisión de código, contorno (opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
+        "en": "Three phases before the protected branch: code review, environment (opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-workflow/subagentes.webp",
+      "mini": "proyectos/galivelop-workflow/subagentes-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Orquestador y subagentes: la sesión principal reparte encargos, cada subagente trabaja con contexto limpio y devuelve un resumen de 15 líneas como máximo. Debajo, la escalera de modelos.",
+        "gl": "Orquestador e subaxentes: a sesión principal reparte encargos, cada subaxente traballa con contexto limpo e devolve un resumo de 15 liñas como máximo. Debaixo, a escaleira de modelos.",
+        "en": "Orchestrator and workers: the main session hands out briefs, each subagent works with a clean context and returns a summary of at most 15 lines. Below, the model ladder."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-workflow/versiones.webp",
+      "mini": "proyectos/galivelop-workflow/versiones-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Ciclo de versiones: el flujo se publica, se aplica a cada proyecto sin pisar lo adaptado allí, y lo que mejora en los proyectos vuelve como propuesta para la versión siguiente.",
+        "gl": "Ciclo de versións: o fluxo publícase, aplícase a cada proxecto sen pisar o adaptado alí, e o que mellora nos proxectos volve como proposta para a versión seguinte.",
+        "en": "Release loop: the workflow is released and applied to each project without overwriting local changes, and what improves in the projects comes back as a proposal for the next version."
+      }
+    }
+  ],
   "capturas": [],
   "descripcion": [
     {

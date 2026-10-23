@@ -1870,18 +1870,21 @@ button {
 
 /* Cabecera de ficha con captura enmarcada (proyectos web o app) */
 
-.cabecera-captura {
+.cabecera-captura,
+.cabecera-color {
   align-items: center;
   background:
     radial-gradient(70% 90% at 80% 30%, color-mix(in srgb, var(--acento-proyecto) 45%, transparent), transparent 70%),
     linear-gradient(135deg, #06121c, color-mix(in srgb, var(--acento-proyecto) 30%, #06121c));
 }
 
-.cabecera-captura::before {
+.cabecera-captura::before,
+.cabecera-color::before {
   background: linear-gradient(180deg, transparent 70%, var(--fondo) 100%);
 }
 
-:root[data-tema='claro'] .cabecera-captura::before {
+:root[data-tema='claro'] .cabecera-captura::before,
+:root[data-tema='claro'] .cabecera-color::before {
   background: linear-gradient(180deg, transparent 75%, rgb(6 18 28 / 0.4) 100%);
 }
 
@@ -1892,7 +1895,8 @@ button {
   align-items: center;
 }
 
-.cabecera-captura .volver {
+.cabecera-captura .volver,
+.cabecera-color .volver {
   margin-bottom: 40px;
 }
 

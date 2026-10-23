@@ -38,9 +38,10 @@ export interface Proyecto {
   icono?: string;
   /**
    * Cómo se usa la portada en la cabecera de la ficha: "ilustracion" (por defecto) la pone de fondo;
-   * "captura" (capturas de una web o app) la enmarca en una ventana sobre un fondo de color.
+   * "captura" (capturas de una web o app) la enmarca en una ventana sobre un fondo de color;
+   * "color" deja solo el fondo de color y las imágenes van en la galería de debajo.
    */
-  cabecera?: 'ilustracion' | 'captura';
+  cabecera?: 'ilustracion' | 'captura' | 'color';
   /**
    * "abierta": se puede colaborar en el proyecto. "privada": no se colabora en su desarrollo,
    * pero se aceptan propuestas e interesados.
