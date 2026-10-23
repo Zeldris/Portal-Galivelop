@@ -1801,7 +1801,7 @@ button {
   gap: 12px;
 }
 
-.equipo li {
+.equipo > li {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -3011,12 +3011,18 @@ button {
   text-decoration: none;
 }
 
-.equipo li:has(.equipo-enlace:hover) {
+.equipo > li:has(.equipo-enlace:hover) {
   border-color: var(--celeste);
 }
 
 img.avatar {
   object-fit: cover;
+}
+
+/* Con resumen y tecnologías la tarjeta crece: la foto, alineada con el nombre. */
+.equipo > li:has(.equipo-destacadas),
+.equipo > li:has(.equipo-destacadas) .equipo-enlace {
+  align-items: flex-start;
 }
 
 .equipo-resumen {
@@ -3036,7 +3042,6 @@ img.avatar {
 
 .equipo .equipo-destacadas li {
   padding: 1px 8px;
-  border: none;
   border-radius: 999px;
   font-size: 0.75rem;
   background: var(--brillo);

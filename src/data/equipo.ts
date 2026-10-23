@@ -41,6 +41,12 @@ export interface Persona {
   perfil?: Perfil;
 }
 
+/** Si el perfil trae algo para la ficha completa de /equipo (y no solo la versión breve). */
+export function tienePerfilAmpliado(p: Persona): boolean {
+  const x = p.perfil;
+  return !!x && [x.trayectoria, x.formacion, x.tecnologias, x.idiomas, x.fortalezas].some((l) => l && l.length > 0);
+}
+
 export const equipo: Persona[] = (datos as Persona[]).slice().sort((a, b) => a.orden - b.orden);
 
 export function buscarPersona(nombre: string): Persona | undefined {

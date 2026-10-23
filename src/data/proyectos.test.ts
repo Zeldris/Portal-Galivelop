@@ -101,6 +101,9 @@ describe('fechas', () => {
     expect(formatearMes('2019-10', 'en')).toBe('Oct 2019');
     expect(formatearMes('2019-05', 'en')).toBe('May 2019');
     expect(formatearMes('2020-05', 'gl')).toBe('maio 2020');
+    // Un mes mal escrito no rompe la página: se muestra tal cual.
+    expect(formatearMes('2021-13', 'es')).toBe('2021-13');
+    expect(formatearMes('2023', 'es')).toBe('2023');
   });
 });
 
@@ -126,8 +129,12 @@ describe('equipo', () => {
     for (const p of equipo) {
       expect(textosIncompletos({ rol: p.rol, bio: p.bio, perfil: p.perfil }, p.id)).toEqual([]);
       for (const etapa of [...(p.perfil?.trayectoria ?? []), ...(p.perfil?.formacion ?? [])]) {
-        expect(etapa.desde).toMatch(/^\d{4}-(0[1-9]|1[0-2])$/);
-        if (etapa.hasta) expect(etapa.hasta >= etapa.desde).toBe(true);
+        const mes = /^\d{4}-(0[1-9]|1[0-2])$/;
+        expect(etapa.desde).toMatch(mes);
+        if (etapa.hasta !== undefined) {
+          expect(etapa.hasta).toMatch(mes);
+          expect(etapa.hasta >= etapa.desde).toBe(true);
+        }
       }
       const todas = (p.perfil?.tecnologias ?? []).flatMap((g) => g.lista);
       expect((p.perfil?.destacadas ?? []).filter((x) => !todas.includes(x))).toEqual([]);

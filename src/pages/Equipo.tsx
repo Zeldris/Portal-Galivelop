@@ -2,7 +2,7 @@ import { ArrowRight, MapPin, Users } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoRed, nombreRed } from '../components/IconoRed';
-import { equipo, iniciales, type Etapa, type Perfil } from '../data/equipo';
+import { equipo, iniciales, tienePerfilAmpliado, type Etapa, type Perfil } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { formatearMes, useIdioma } from '../i18n/Idioma';
 
@@ -28,10 +28,10 @@ export function Equipo() {
 
         <ul className="personas">
           {equipo.map((p) => (
-            <li key={p.id} id={p.id} className={p.perfil ? 'persona persona-amplia' : 'persona'}>
+            <li key={p.id} id={p.id} className={tienePerfilAmpliado(p) ? 'persona persona-amplia' : 'persona'}>
               <div className="persona-cabecera">
                 {p.foto ? (
-                  <img src={ruta(p.foto)} alt="" className="persona-foto" />
+                  <img src={ruta(p.foto)} alt="" className="persona-foto" width={88} height={88} />
                 ) : (
                   <span className="persona-foto persona-iniciales" aria-hidden="true">
                     {iniciales(p.nombre)}
@@ -48,7 +48,7 @@ export function Equipo() {
                 </div>
               </div>
               <p className="persona-bio">{tx(p.bio)}</p>
-              {p.perfil && <PerfilAmpliado perfil={p.perfil} />}
+              {p.perfil && tienePerfilAmpliado(p) && <PerfilAmpliado perfil={p.perfil} />}
               {p.proyectos.length > 0 && (
                 <div className="persona-proyectos">
                   <span>{t('equipo.proyectos')}:</span>
@@ -103,11 +103,11 @@ function PerfilAmpliado({ perfil }: { perfil: Perfil }) {
   return (
     <div className="perfil">
       <div className="perfil-columna">
-        {perfil.trayectoria && <Etapas titulo={t('equipo.trayectoria')} etapas={perfil.trayectoria} />}
-        {perfil.formacion && <Etapas titulo={t('equipo.formacion')} etapas={perfil.formacion} />}
+        {!!perfil.trayectoria?.length && <Etapas titulo={t('equipo.trayectoria')} etapas={perfil.trayectoria} />}
+        {!!perfil.formacion?.length && <Etapas titulo={t('equipo.formacion')} etapas={perfil.formacion} />}
       </div>
       <div className="perfil-columna">
-        {perfil.tecnologias && (
+        {!!perfil.tecnologias?.length && (
           <section>
             <h3>{t('equipo.tecnologias')}</h3>
             <dl className="perfil-tecnologias">
@@ -126,7 +126,7 @@ function PerfilAmpliado({ perfil }: { perfil: Perfil }) {
             </dl>
           </section>
         )}
-        {perfil.idiomas && (
+        {!!perfil.idiomas?.length && (
           <section>
             <h3>{t('equipo.idiomas')}</h3>
             <ul className="perfil-idiomas">
@@ -138,7 +138,7 @@ function PerfilAmpliado({ perfil }: { perfil: Perfil }) {
             </ul>
           </section>
         )}
-        {perfil.fortalezas && (
+        {!!perfil.fortalezas?.length && (
           <section>
             <h3>{t('equipo.fortalezas')}</h3>
             <ul className="perfil-fortalezas">

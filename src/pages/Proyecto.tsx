@@ -348,7 +348,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                   const contenido = (
                     <>
                       {persona?.foto ? (
-                        <img src={ruta(persona.foto)} alt="" className="avatar" />
+                        <img src={ruta(persona.foto)} alt="" className="avatar" width={44} height={44} loading="lazy" />
                       ) : (
                         <span className="avatar" aria-hidden="true">
                           {iniciales(m.nombre)}
@@ -358,7 +358,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                         <p className="equipo-nombre">{m.nombre}</p>
                         <p className="equipo-rol">{tx(m.rol)}</p>
                         {perfil?.resumen && <p className="equipo-resumen">{tx(perfil.resumen)}</p>}
-                        {perfil?.destacadas && (
+                        {!!perfil?.destacadas?.length && (
                           <ul className="equipo-destacadas">
                             {perfil.destacadas.map((x) => (
                               <li key={x}>{x}</li>

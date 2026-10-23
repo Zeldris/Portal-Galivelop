@@ -56,6 +56,7 @@ export function formatearFecha(iso: string, idioma: Idioma): string {
 export function formatearMes(iso: string, idioma: Idioma): string {
   const [a, m] = iso.split('-').map(Number);
   const mes = MESES[idioma][m - 1];
+  if (!mes) return iso;
   if (mes.length <= 4) return `${mes} ${a}`;
   return `${mes.slice(0, 3)}${idioma === 'en' ? '' : '.'} ${a}`;
 }

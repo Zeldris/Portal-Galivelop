@@ -11,7 +11,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Tarea en curso** | Ficha ampliada de Álvaro en `/equipo` (rama `ccr-47f8fddd-o5ek6p`): hecha y en verde, a falta de que la persona la vea y mande el resto de datos (URL de GitHub y otros enlaces) |
 | **Siguiente paso** | Con el visto bueno de la persona: `/code-review --max-findings all`, marca y subida a `main` de la ficha de Álvaro. Luego, revisión semanal del domingo 2026-10-25 (publica la rama de trabajo); desde ahí las fichas las mantiene la tarea |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): flujo Galivelop-workflow 0.3.0 y ficha técnica de Galivelop-workflow (seis diagramas y cuatro apartados nuevos); la rama de trabajo, igualada con `main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 25/25 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
@@ -97,6 +97,8 @@ Datos fijos que salían en entradas antiguas:
   (portal)» (`session_0153sKUm2ZLwd6cFbMATVqfa`).
 
 ## Pendiente
+
+- Leve, de la revisión de la ficha de Álvaro: `formatearMes` abrevia «septiembre» como «sep.» (la RAE da «sept.»); las dos etapas de formación de Chios salen iguales hasta saber qué ciclo es cada una (y los enlaces de GitHub y demás, cuando la persona los pase).
 
 - Propuesta para el flujo (próxima recogida): `aplicar.py --update` sustituyó `comprobar.yml` como «copia anterior»
   y se llevó el build y Node 22 del portal sin avisar; se repusieron a mano. **Pasó otra vez en la 0.3.0**: el
