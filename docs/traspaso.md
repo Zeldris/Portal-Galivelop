@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-22 |
+| **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
 | **Tarea en curso** | Ninguna |
 | **Siguiente paso** | Esperar instrucciones. Propuesta pendiente: `/gw-update` del portal de la copia 0.1.0 del flujo a la 0.2.0 (código: revisión y marca) |
@@ -101,6 +101,10 @@ Datos fijos que salían en entradas antiguas:
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
+3. **Con la actualización al flujo v0.3.0** (pedido por el usuario, 2026-10-23): el proyecto añadido el último se
+   muestra el primero. Hoy `src/data/proyectos.ts` ordena por `orden` ascendente (Tarkor 1, …, Galivelop-workflow
+   3), así que lo nuevo sale al final. Cambiarlo para que el más reciente vaya delante (p. ej. orden descendente o
+   por fecha de alta) y ajustar el test y cómo añadir un proyecto en `docs/desarrollo.md`.
 
 ## Comprobar el estado
 
