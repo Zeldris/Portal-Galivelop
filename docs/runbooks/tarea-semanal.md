@@ -1,0 +1,38 @@
+# Tarea semanal «Proyectos semanal»
+
+Texto de la tarea programada que cada domingo por la noche pone al día las fichas de todos los proyectos y publica
+la rama de trabajo en `main` (ver «Publicación semanal» en [`AGENTS.md`](../../AGENTS.md)). La tarea solo se puede
+cambiar desde su propia conversación: si este texto cambia, se pega allí.
+
+```text
+Revisión semanal de las fichas de TODOS los proyectos del portal (autorizada por Álvaro: publicar en main sin pedir confirmación; desde el 2026-10-23 las fichas las pone al día esta tarea, no las sesiones de trabajo). Gasta los mínimos tokens: no explores código, no hagas capturas de la web, no uses subagentes. Los repos de los proyectos se leen y NUNCA se modifican; si falta alguno en /home/user, añádelo con add_repo (lectura) y clónalo.
+
+1. Portal: git fetch origin claude/galivelop-dev-portal-1h89ci main; git checkout claude/galivelop-dev-portal-1h89ci && git pull --ff-only; si origin/main tiene commits que no están en la rama, git merge origin/main.
+2. Para CADA ficha de src/data/proyectos/*.json, con sus fechas de referencia: F = campo "actualizado"; N = fecha de la novedad más reciente (novedades[0].fecha). Revisa siempre NOVEDADES, TEXTOS e IMÁGENES según su bloque de abajo. NOVEDADES (todas las semanas): los commits desde N + 1 día (git log --since=<N + 1 día> --format='%ad %s' --date=short <rama> | grep -viE 'merge pull|bitácora|^.{11}wip' | head -80); agrupa lo que interese a un usuario o visitante (funciones nuevas, cambios que se notan, contenido, arte, versiones publicadas; no detalles internos, refactors, retros ni code-reviews) y escribe de 1 a 4 novedades nuevas, cada una con la fecha del día de sus commits, al principio de "novedades" (máx. 8; quita las más antiguas). Si de verdad no hay nada visible desde N, no añadas ninguna. Si cambiaste algo de una ficha, pon su "actualizado" = hoy; si no, no la toques. Si hay una ficha sin bloque aquí, no la toques y dilo en la respuesta.
+
+── TARKOR (tarkor.json; World-Maker-Fantasy, rama origin/main) ──
+- Textos: docs/producto/tarkor-contenido-web.md. Avance: commits de main y la cabecera de docs/registros/traspaso.md (fase, hito y tests; cifra de tests con «+», redondeada a la centena inferior).
+- Imágenes: backend/uploads/images/{fauna,flora,raza,npc,faction,construccion,item,location,zona} y frontend/src/assets/maps/helek-sirik-berig.png.
+- La ficha refleja TODAS las secciones del md: resumen y descripción (§2), caracteristicas = pilares (§3), pasos (§4), apartados mundo (§5), lugares (§5), razas (§6), facciones (§7, valor = población), personajes (§7), clases (§8: «quién puede elegirla. identidad. Especializaciones: …»), bestiario (§12, valor = rango de nivel), flora (§11-12), reino (§13), arte (galería por pestañas en "grupos"), preguntas (FAQ), cifras (§15), ficha (§17), hitos (§16), decisiones (§18), aprendizajes (§19). Si el md añade una sección o un elemento nuevo, añádelo al apartado que toque o como apartado nuevo.
+- TEXTOS: git log --since=F origin/main -- docs/producto/tarkor-contenido-web.md; si cambió, lee solo el diff y aplícalo.
+- IMÁGENES: git log --since=F --name-status --format= origin/main -- backend/uploads/images frontend/src/assets/maps (A nueva, M modificada, D borrada, R renombrada). Ignora los -thumbnail, las versiones -dia-verano (duplicadas) y .gitkeep. Mira una imagen solo si hace falta para decidir dónde va.
+  · Conviértelas con Python PIL a WebP en public/proyectos/tarkor/arte/ con nombre <carpeta>-<slug>.webp (slug sin -banner, -dia-primavera ni -macho; en raza se conserva -macho/-hembra; zona → mapa-<slug>). Banners: 1600×640 (quality 82) + <nombre>-mini.webp 720×288 (quality 76). Mapas de zona: 1200×900 + mini 480×360. Mapa del mundo: 1600×1200 + mini 720×540.
+  · Modificada: sobrescribe el WebP del mismo nombre. Borrada o renombrada: quita o renombra la del portal y su referencia.
+  · Nueva: fauna → tarjeta del bestiario (si la especie no está, añádela con nivel, familia, temperamento y una línea de descripción sacados de backend/src/scripts/worldCatalog.ts buscando su slug); location → lugares o mundo si encaja, si no el grupo «lugares» de arte; raza → razas/facciones o el grupo «pueblos» de arte; npc → personajes; faction → facciones; construccion → reino; flora → flora; item → grupo «objetos» de arte; zona → grupo «mapas» de arte. Formato: {"src","mini","ancho","alto","alt":{es,gl,en}}, con rutas «proyectos/tarkor/arte/…».
+  · El carrusel (galeria) solo se toca si una imagen nueva es claramente mejor que alguna de las 24 actuales (máximo 24).
+- Nunca nombres juegos de referencia (X4, D&D, BG3, Medieval Dynasty, Bellwright, Manor Lords…) aunque el md o los commits los citen; lo marcado 🗺️ no se presenta como jugable.
+
+── GALIVELOP-WORKFLOW (galivelop-workflow.json; repo Zeldris/Galivelop-workflow) ──
+- git fetch origin --tags. Versión publicada = la etiqueta vX.Y.Z más alta. Si hay una etiqueta nueva desde F, lee SOLO su entrada «### ES» de CHANGELOG.md (git show vX.Y.Z:CHANGELOG.md) y actualiza la versión allí donde la ficha la nombre (lema, resumen, fase, ficha, cifras, hitos) y añade una novedad con lo que gana quien usa el flujo.
+- Commits para NOVEDADES: los de la rama por defecto (origin/HEAD) y la cabecera de docs/traspaso.md para la fase en curso (actualiza "fase" e "hitos" si cambiaron).
+- Sin imágenes nuevas salvo que el usuario las pida.
+
+── TOVERIAI (toveriai.json; repo raquelccarreraA/VeriNews_AI) ──
+- Commits para NOVEDADES: los de su rama por defecto (origin/HEAD); para fase e hitos, la cabecera de su bitácora si existe (docs/traspaso.md) o, si no, el README. Solo novedades, "fase" e "hitos" (y "cifras" si la bitácora da números): no reescribas descripción ni apartados ni toques imágenes. Lo que se publique tiene que ser cierto en https://www.toveriai.com (no anuncies lo que no está en producción).
+
+Reglas para todas las fichas: SOLO cambias archivos de src/data/, public/ (solo imágenes webp, png, jpg, svg o ico) y docs/; si hiciera falta tocar cualquier otra ruta (src/ fuera de src/data/, .claude/, .githooks/, scripts, package.json…), no la toques ni publiques ese cambio: apúntalo en «Para la próxima publicación» de docs/traspaso.md y dilo en la respuesta (el pre-push rechaza en main el código sin revisar). "valor" siempre es texto igual en los 3 idiomas (nunca un objeto); todo texto visible, pies de foto incluidos, en castellano, gallego e inglés; nunca enlaces a código ni identificadores internos (QA-27, P164, CR-69, F24…); no cambies "orden" (el último añadido sale primero).
+
+3. npm ci && npm run check (el test comprueba que existen todas las imágenes referenciadas). Si falla, corrige tu cambio o deshazlo; nunca publiques algo roto.
+4. docs/traspaso.md: vacía «Para la próxima publicación», salvo lo que no se haya podido publicar, y añade una línea al principio de «Hecho» (por proyecto: novedades añadidas, textos e imágenes cambiadas). Commit en español (última línea «Siguiente: próxima revisión semanal»), git push origin claude/galivelop-dev-portal-1h89ci y git push origin HEAD:main (nunca rebase ni force).
+5. Responde en 4 líneas como máximo: qué cambió en cada proyecto y si se publicó.
+```

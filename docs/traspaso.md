@@ -8,14 +8,14 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | En `ccr-47f8fddd-o5ek6p` (2026-10-23): orden de proyectos y flujo 0.2.0 hechos; falta pasar la tarea semanal a «Proyectos semanal» (todas las fichas), `/code-review` contra `main`, marca y subida a `main` (confirmada por el usuario) |
-| **Siguiente paso** | Actualizar el prompt de la tarea programada a «Proyectos semanal»; luego `/code-review --max-findings all` contra `origin/main`, `revisado.sh` y subida a `main` |
+| **Tarea en curso** | En `ccr-47f8fddd-o5ek6p` (2026-10-23): orden de proyectos y flujo 0.2.0 hechos; tarea renombrada a «Proyectos semanal»; su texto nuevo (todas las fichas), en `docs/runbooks/tarea-semanal.md`, lo pega el usuario en la conversación de la tarea (desde otra sesión no se puede cambiar); falta `/code-review` contra `main`, marca y subida a `main` (confirmada por el usuario) |
+| **Siguiente paso** | `/code-review --max-findings all` contra `origin/main`, `revisado.sh` y subida a `main` |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow v0.2.0. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
-La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
+La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - El último proyecto añadido sale el primero (`orden` descendente; test en `src/data/proyectos.test.ts`).
@@ -94,7 +94,7 @@ opt-tokens, 2026-10-22).
 
 Datos fijos que salían en entradas antiguas:
 
-- Tarea «Tarkor semanal»: `trig_012hEySn87yUmW8zcoeSvzYm`, domingos 22:46 Europe/Madrid, en la sesión «Tarkor semanal
+- Tarea «Proyectos semanal» (antes «Tarkor semanal»; texto en `docs/runbooks/tarea-semanal.md`): `trig_012hEySn87yUmW8zcoeSvzYm`, domingos 22:46 Europe/Madrid, en la sesión «Tarkor semanal
   (portal)» (`session_0153sKUm2ZLwd6cFbMATVqfa`).
 - Contacto: alvarogarciagrana@gmail.com (marca y gestión) y web.admin.toveriai@gmail.com (toVeriAI). Equipo: Tarkor,
   solo Álvaro; toVeriAI, Raquel C. (fundadora) y Álvaro. Discord: https://discord.gg/8vyjW3VrN.
