@@ -126,8 +126,10 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea; desde el
   2026-10-23, por decisión del usuario, las fichas las pone al día ella y no las sesiones). Gasta los mínimos tokens:
   de cada proyecto lee solo su bitácora o su CHANGELOG y los commits desde la última fecha de `actualizado`.
-  Un proyecto nuevo se añade a mano (código y ficha, con su revisión); desde ahí lo mantiene la tarea.
-  Solo toca contenido (`src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
+  Un proyecto nuevo se añade a mano (código y ficha, con su revisión) junto con su bloque en
+  [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md), que el usuario pega en la conversación de la tarea
+  (desde otra sesión no se puede cambiar); desde ahí lo mantiene la tarea.
+  Solo toca contenido (los `.json` de `src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
   `content`; cualquier otro archivo es código y el `pre-push` lo rechaza en `main`), así que no necesita revisión mientras la marca de
   `docs/registros/revisado.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y
   todo código que entre en ella lleva su `/code-review` y su marca antes del domingo. Entre semana, lo hecho se

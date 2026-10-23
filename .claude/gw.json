@@ -21,7 +21,7 @@
   "requireRetro": false,
   "content": [
     "^docs/",
-    "^src/data/",
+    "^src/data/.*\\.json$",
     "^public/.*\\.(webp|png|jpe?g|svg|ico)$",
     "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$",
     "^\\.claude/skills/.*\\.md$"

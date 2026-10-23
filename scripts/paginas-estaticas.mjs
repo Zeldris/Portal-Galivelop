@@ -16,9 +16,11 @@ const base = readFileSync('dist/index.html', 'utf8');
 writeFileSync('dist/404.html', conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
+// En el mismo orden que src/data/proyectos.ts: el último añadido (mayor `orden`), el primero.
 const proyectos = readdirSync('src/data/proyectos')
   .filter((f) => f.endsWith('.json'))
-  .map((f) => JSON.parse(readFileSync(`src/data/proyectos/${f}`, 'utf8')));
+  .map((f) => JSON.parse(readFileSync(`src/data/proyectos/${f}`, 'utf8')))
+  .sort((a, b) => b.orden - a.orden);
 
 const IDIOMAS = ['es', 'gl', 'en'];
 const prefijo = (i) => (i === 'es' ? '' : `${i}/`);

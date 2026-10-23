@@ -24,7 +24,7 @@ fijar() {  # fijar <clave> <valor esperado> [--json]
   local real; real="$(cfg "$1" ${3:-})" || { echo "test-ganchos: no pude leer $1 de .claude/gw.json"; fallos=1; return; }
   [ "$real" = "$2" ] || { echo "test-ganchos: $1 de .claude/gw.json cambió; si es a propósito, cámbialo también aquí: $real"; fallos=1; }
 }
-fijar content '["^docs/", "^src/data/", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]' --json
+fijar content '["^docs/", "^src/data/.*\\.json$", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]' --json
 fijar check '["npm run check"]' --json
 fijar reviewMark docs/registros/revisado.txt
 fijar protectedBranch main
@@ -69,7 +69,7 @@ unset CLAUDECODE
   git checkout -q -b rama-tipos base
   mkdir -p .claude/skills/x/scripts public
   for f in .claude/skills/x/SKILL.md .claude/skills/x/scripts/a.py public/a.html public/b.webp public/c.png AGENTS.md \
-           CLAUDE.md README.md docs/x.md src/data/p.json src/x.md .claude/gw/opt-tokens.md package.json; do
+           CLAUDE.md README.md docs/x.md src/data/p.json src/data/p.ts src/x.md .claude/gw/opt-tokens.md package.json; do
     echo t > "$f"
   done
   git add -A; git commit -qm tipos; git tag tipos
@@ -105,6 +105,7 @@ esperado=".claude/gw/opt-tokens.md
 .claude/skills/x/scripts/a.py
 package.json
 public/a.html
+src/data/p.ts
 src/x.md"
 obtenido="$(bash .claude/gw/scripts/es-codigo.sh "$B" "$(sha tipos)" | sort)"
 [ "$obtenido" = "$esperado" ] || { echo "test-ganchos: es-codigo.sh clasifica mal; código:"; echo "$obtenido" | sed 's/^/  /'; fallos=1; }

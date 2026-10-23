@@ -23,7 +23,10 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   conserva lo del portal (Node 22 con caché y el paso de build). Fuera la línea de F24 (la `retro` ya la lanza el
   agente) y la de F17 (`--estado` ya no se cuelga).
 - Tarea semanal → «Proyectos semanal»: actualiza las fichas de todos los proyectos (decisión del usuario,
-  2026-10-23); `AGENTS.md`, `GLOSSARY.md` y `.claude/gw/opt-tokens.md` al día.
+  2026-10-23); `AGENTS.md`, `GLOSSARY.md` y `.claude/gw/opt-tokens.md` al día. Su texto, en
+  `docs/runbooks/tarea-semanal.md` (lo pega el usuario en la conversación de la tarea).
+- Revisión (fase 1): `content` cubre solo los `.json` de `src/data/` (los `.ts` son código; caso en
+  `test-ganchos.sh`); las páginas estáticas y `llms.txt`, en el mismo orden que el portal.
 
 ## Hecho
 
@@ -104,6 +107,11 @@ Datos fijos que salían en entradas antiguas:
 - Propuesta para el flujo (próxima recogida): `aplicar.py --update` sustituyó `comprobar.yml` como «copia anterior»
   y se llevó el build y Node 22 del portal sin avisar; se repusieron a mano. Un sitio en el CI para los pasos propios
   del proyecto evitaría perderlos en cada actualización.
+- Propuesta para el flujo, hallazgos de la revisión del 2026-10-23 en sus scripts (aquí no se editan):
+  `pre-push` y `revision-antes-de-main.sh` leen la política de la punta de `main` y, si esa config está rota, ni el
+  arreglo puede subir; los dos dejan pasar sin comprobar la marca si no pueden traer la punta remota (deberían fallar
+  cerrados); los cambios del `pre-push` 0.2.0 no traen caso en el test del proyecto; `recuperar.py` solo espera 1 s
+  la entrada del gancho y puede tomar el transcript de otra sesión.
 - «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
   repo; pendiente desde el SEO del 2026-10-14).
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
