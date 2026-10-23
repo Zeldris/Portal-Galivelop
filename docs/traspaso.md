@@ -105,6 +105,9 @@ Datos fijos que salían en entradas antiguas:
 
 ## Pendiente
 
+- **La tarea «Proyectos semanal» sigue con el texto antiguo (solo Tarkor)** (visto el 2026-10-23): hay que pegar el
+  bloque de `docs/runbooks/tarea-semanal.md` en la conversación de la tarea antes del domingo 2026-10-25; desde otra
+  sesión `update_trigger` lo rechaza. Lo hace el usuario.
 - Propuesta para el flujo (próxima recogida): `aplicar.py --update` sustituyó `comprobar.yml` como «copia anterior»
   y se llevó el build y Node 22 del portal sin avisar; se repusieron a mano. **Pasó otra vez en la 0.3.0**: el
   simulacro lo dio como «update» y no como «propose», aunque tenía cambios locales. Un sitio en el CI para los pasos propios
