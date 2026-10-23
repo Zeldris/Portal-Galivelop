@@ -29,7 +29,7 @@ export interface Enlace {
 export interface Proyecto {
   slug: string;
   nombre: string;
-  /** Orden en la portada (menor primero). */
+  /** Orden de alta: el siguiente número libre. En el portal sale primero el mayor (el último añadido). */
   orden: number;
   estado: EstadoProyecto;
   /** Color de acento propio del proyecto (hex). */

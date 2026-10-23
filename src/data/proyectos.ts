@@ -1,11 +1,11 @@
 import type { EstadoHito, Proyecto } from './tipos';
 
-// Cualquier .json de src/data/proyectos/ entra solo en el portal.
+// Cualquier .json de src/data/proyectos/ entra solo en el portal; el último añadido (mayor `orden`), el primero.
 const modulos = import.meta.glob<{ default: Proyecto }>('./proyectos/*.json', { eager: true });
 
 export const proyectos: Proyecto[] = Object.values(modulos)
   .map((m) => m.default)
-  .sort((a, b) => a.orden - b.orden);
+  .sort((a, b) => b.orden - a.orden);
 
 export function buscarProyecto(slug: string | undefined): Proyecto | undefined {
   return proyectos.find((p) => p.slug === slug);

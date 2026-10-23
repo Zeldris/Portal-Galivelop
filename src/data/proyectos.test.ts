@@ -28,6 +28,12 @@ describe('proyectos', () => {
     expect(new Set(proyectos.map((p) => p.slug)).size).toBe(proyectos.length);
   });
 
+  it('el último añadido (mayor orden) sale el primero y los órdenes no se repiten', () => {
+    const ordenes = proyectos.map((p) => p.orden);
+    expect(new Set(ordenes).size).toBe(ordenes.length);
+    expect(ordenes).toEqual([...ordenes].sort((a, b) => b - a));
+  });
+
   for (const p of proyectos) {
     describe(p.slug, () => {
       it('tiene todos los textos en castellano, gallego e inglés', () => {

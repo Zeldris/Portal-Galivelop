@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal) |
-| **Tarea en curso** | Ninguna |
+| **Tarea en curso** | En `ccr-47f8fddd-o5ek6p` (2026-10-23): el último proyecto añadido sale el primero (hecho); falta `/gw-update` 0.1.0 → 0.2.0, la tarea semanal para todos los proyectos, la revisión y la subida a `main` (confirmada por el usuario) |
 | **Siguiente paso** | Esperar instrucciones. Propuesta pendiente: `/gw-update` del portal de la copia 0.1.0 del flujo a la 0.2.0 (código: revisión y marca) |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-22), incluida la ficha de Galivelop-workflow v0.2.0. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 23/23 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Tarkor semanal» (ver `CLAUDE.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- (nada pendiente: `main` al día a 2026-10-22)
+- El último proyecto añadido sale el primero (`orden` descendente; test en `src/data/proyectos.test.ts`).
 
 ## Hecho
 
@@ -101,10 +101,6 @@ Datos fijos que salían en entradas antiguas:
 1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
 2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
    el estado si procede.
-3. **Con la actualización al flujo v0.3.0** (pedido por el usuario, 2026-10-23): el proyecto añadido el último se
-   muestra el primero. Hoy `src/data/proyectos.ts` ordena por `orden` ascendente (Tarkor 1, …, Galivelop-workflow
-   3), así que lo nuevo sale al final. Cambiarlo para que el más reciente vaya delante (p. ej. orden descendente o
-   por fecha de alta) y ajustar el test y cómo añadir un proyecto en `docs/desarrollo.md`.
 
 ## Comprobar el estado
 

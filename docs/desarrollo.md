@@ -47,6 +47,8 @@ pública (web, descarga…) cuando la hay.
    (unos 1600 px de ancho) y una `-mini` (unos 720 px) para miniaturas y tarjetas.
 3. Todo texto visible va en los tres idiomas: `{ "es": "…", "gl": "…", "en": "…" }`.
 4. Detalles útiles:
+   - `orden`: el siguiente número libre (el mayor de los existentes más uno). El portal muestra
+     primero el último añadido, el de mayor `orden`.
    - `estado`: `publicado`, `desarrollo` o `diseno`.
    - `colaboracion`: `abierta` (se puede participar) o `privada` (solo se aceptan propuestas e
      interesados; hoy, solo toVeriAI).
