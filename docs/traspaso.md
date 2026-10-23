@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-23 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna |
+| **Tarea en curso** | Ninguna (ficha técnica del flujo hecha en `ccr-47f8fddd-o5ek6p`; falta llevarla a la rama de trabajo con `git merge` para que la publique el domingo) |
 | **Siguiente paso** | Revisión semanal del domingo 2026-10-25 (publica la rama de trabajo); desde ahí las fichas las mantiene la tarea |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): flujo Galivelop-workflow 0.3.0 y ficha de Galivelop-workflow a la 0.3.0. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 24/24 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
@@ -18,13 +18,18 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos por la noche con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-Nada pendiente de publicar.
+- Ficha de Galivelop-workflow más técnica (2026-10-23, petición del usuario): seis diagramas (arquitectura, relevo de
+  sesiones, `pre-push`, tres fases, subagentes, versiones) y apartados nuevos «Qué se impone y qué se aconseja»,
+  «Qué fallo evita cada pieza», «Un archivo de configuración» y «Cuándo encaja y qué cuesta»; cifra de 461 pruebas,
+  capa Plataformas y un aprendizaje con lo medido en los pilotos. Solo contenido. Investigación en
+  `docs/investigacion/presentacion-de-flujos.md`.
 
 ## Hecho
 
 Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
 opt-tokens, 2026-10-22).
 
+- ✅ Ficha de Galivelop-workflow más técnica (2026-10-23): seis diagramas y cuatro apartados nuevos; en «Para la próxima publicación».
 - ✅ Revisión semanal (2026-10-23): Tarkor, 4 novedades (Casa de obras y Almacén, vasallaje con cuota y asaltos, reparar edificios y caza, ronda de pruebas), textos e imágenes sin cambios (lo del 18 ya estaba); toVeriAI, 2 novedades (racha más visible, volver a la página al iniciar sesión), fase e hitos sin cambios; Galivelop-workflow sin cambios (v0.3.0 ya en la ficha). Publicado en `main`.
 - ✅ Flujo Galivelop-workflow 0.3.0 (2026-10-23, confirmación del usuario), publicado en `main` con su revisión y marca:
   `aplicar.py --update` (14 scripts, esquema, 19 skills, `test_medir.py` nuevo, `pre-commit`, `pre-push` y
@@ -89,7 +94,6 @@ opt-tokens, 2026-10-22).
   para que la tarea semanal pueda publicar contenido. Retro aplicada: test de los ganchos en `npm run check`
   (`tools/qa/tests/test-ganchos.sh`), regla «Ganchos y scripts» en `REVIEW.md` y fila «Traer algo de otro repo» en el
   `selector`. `/opt-tokens`: la sesión iba a ~681k de contexto por llamada; `/clear` tras subir a `main`. Publicado en `main`.
-- ✅ Captura de la gestión del reino (2026-10-19) en «Capturas», tras las habilidades de reino.
 
 Datos fijos que salían en entradas antiguas:
 

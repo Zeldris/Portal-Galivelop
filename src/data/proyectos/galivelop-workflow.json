@@ -94,6 +94,11 @@
       "es": "Generalizar sin perder lo que funciona: separar lo que es de cada proyecto de lo que sirve para cualquiera.",
       "gl": "Xeneralizar sen perder o que funciona: separar o que é de cada proxecto do que serve para calquera.",
       "en": "Generalising without losing what works: separating what belongs to each project from what serves everyone."
+    },
+    {
+      "es": "Medir antes de recortar: en un piloto, una sola sesión larga se llevó el 70 % de los tokens. De ahí salieron el tope de compactación y el reparto a subagentes, no de una intuición.",
+      "gl": "Medir antes de recortar: nun piloto, unha soa sesión longa levou o 70 % dos tokens. De aí saíron o tope de compactación e o reparto a subaxentes, non dunha intuición.",
+      "en": "Measuring before cutting: in one pilot, a single long session took 70% of the tokens. The compaction cap and handing work to subagents came from that, not from a hunch."
     }
   ],
   "caracteristicas": [
@@ -275,6 +280,386 @@
     }
   ],
   "apartados": [
+    {
+      "id": "diagramas",
+      "titulo": {
+        "es": "Cómo funciona, en diagramas",
+        "gl": "Como funciona, en diagramas",
+        "en": "How it works, in diagrams"
+      },
+      "intro": {
+        "es": "Seis diagramas de las partes del flujo, con los nombres reales de archivos, ganchos y órdenes. Siguen el estilo de las guías de Anthropic sobre agentes: un diagrama por patrón, con lo que hace cada pieza.",
+        "gl": "Seis diagramas das partes do fluxo, cos nomes reais de ficheiros, ganchos e ordes. Seguen o estilo das guías de Anthropic sobre axentes: un diagrama por patrón, co que fai cada peza.",
+        "en": "Six diagrams of the parts of the workflow, using the real names of files, hooks and commands. They follow the style of Anthropic’s guides on agents: one diagram per pattern, showing what each piece does."
+      },
+      "items": [],
+      "grupos": [
+        {
+          "id": "arquitectura",
+          "etiqueta": {
+            "es": "Arquitectura",
+            "gl": "Arquitectura",
+            "en": "Architecture"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-workflow/arquitectura.webp",
+              "mini": "proyectos/galivelop-workflow/arquitectura-mini.webp",
+              "ancho": 1600,
+              "alto": 900,
+              "alt": {
+                "es": "Arquitectura en seis capas: reglas, skills, ganchos, scripts, estado en git y CI. De arriba abajo, de lo que decide el agente con criterio a lo que impone un script.",
+                "gl": "Arquitectura en seis capas: regras, skills, ganchos, scripts, estado en git e CI. De arriba abaixo, do que decide o axente con criterio ao que impón un script.",
+                "en": "Architecture in six layers: rules, skills, hooks, scripts, state in git and CI. From top to bottom, from what the agent decides by judgement to what a script enforces."
+              }
+            }
+          ]
+        },
+        {
+          "id": "sesion",
+          "etiqueta": {
+            "es": "Relevo de sesiones",
+            "gl": "Relevo de sesións",
+            "en": "Session relay"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-workflow/sesion.webp",
+              "mini": "proyectos/galivelop-workflow/sesion-mini.webp",
+              "ancho": 1600,
+              "alto": 900,
+              "alt": {
+                "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recuperar.py devuelve el estado. Git es la memoria.",
+                "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recuperar.py devolve o estado. Git é a memoria.",
+                "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recuperar.py restores the state. Git is the memory."
+              }
+            }
+          ]
+        },
+        {
+          "id": "pre-push",
+          "etiqueta": {
+            "es": "Gancho pre-push",
+            "gl": "Gancho pre-push",
+            "en": "pre-push hook"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-workflow/pre-push.webp",
+              "mini": "proyectos/galivelop-workflow/pre-push-mini.webp",
+              "ancho": 1600,
+              "alto": 900,
+              "alt": {
+                "es": "Gancho pre-push: ocho comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
+                "gl": "Gancho pre-push: oito comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
+                "en": "pre-push hook: eight checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
+              }
+            }
+          ]
+        },
+        {
+          "id": "fases",
+          "etiqueta": {
+            "es": "Tres fases antes de main",
+            "gl": "Tres fases antes de main",
+            "en": "Three phases before main"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-workflow/fases.webp",
+              "mini": "proyectos/galivelop-workflow/fases-mini.webp",
+              "ancho": 1600,
+              "alto": 900,
+              "alt": {
+                "es": "Tres fases antes de la rama protegida: revisión de código, entorno (opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
+                "gl": "Tres fases antes da rama protexida: revisión de código, contorno (opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
+                "en": "Three phases before the protected branch: code review, environment (opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
+              }
+            }
+          ]
+        },
+        {
+          "id": "subagentes",
+          "etiqueta": {
+            "es": "Orquestador y subagentes",
+            "gl": "Orquestador e subaxentes",
+            "en": "Orchestrator and workers"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-workflow/subagentes.webp",
+              "mini": "proyectos/galivelop-workflow/subagentes-mini.webp",
+              "ancho": 1600,
+              "alto": 900,
+              "alt": {
+                "es": "Orquestador y subagentes: la sesión principal reparte encargos, cada subagente trabaja con contexto limpio y devuelve un resumen de 15 líneas como máximo. Debajo, la escalera de modelos.",
+                "gl": "Orquestador e subaxentes: a sesión principal reparte encargos, cada subaxente traballa con contexto limpo e devolve un resumo de 15 liñas como máximo. Debaixo, a escaleira de modelos.",
+                "en": "Orchestrator and workers: the main session hands out briefs, each subagent works with a clean context and returns a summary of at most 15 lines. Below, the model ladder."
+              }
+            }
+          ]
+        },
+        {
+          "id": "versiones",
+          "etiqueta": {
+            "es": "Ciclo de versiones",
+            "gl": "Ciclo de versións",
+            "en": "Release loop"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-workflow/versiones.webp",
+              "mini": "proyectos/galivelop-workflow/versiones-mini.webp",
+              "ancho": 1600,
+              "alto": 900,
+              "alt": {
+                "es": "Ciclo de versiones: el flujo se publica, se aplica a cada proyecto sin pisar lo adaptado allí, y lo que mejora en los proyectos vuelve como propuesta para la versión siguiente.",
+                "gl": "Ciclo de versións: o fluxo publícase, aplícase a cada proxecto sen pisar o adaptado alí, e o que mellora nos proxectos volve como proposta para a versión seguinte.",
+                "en": "Release loop: the workflow is released and applied to each project without overwriting local changes, and what improves in the projects comes back as a proposal for the next version."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "garantias",
+      "titulo": {
+        "es": "Qué se impone y qué se aconseja",
+        "gl": "Que se impón e que se aconsella",
+        "en": "What is enforced and what is advised"
+      },
+      "intro": {
+        "es": "Anthropic distingue entre un gancho, que se ejecuta siempre, y una instrucción, que el agente puede saltarse. El flujo lo aplica así: lo comprobable lo hace un script, y las skills se quedan con lo que pide criterio. El valor es el código de salida con que se para cada pieza.",
+        "gl": "Anthropic distingue entre un gancho, que se executa sempre, e unha instrución, que o axente pode saltar. O fluxo aplícao así: o comprobable faino un script, e as skills quedan co que pide criterio. O valor é o código de saída co que se para cada peza.",
+        "en": "Anthropic distinguishes between a hook, which always runs, and an instruction, which the agent can skip. The workflow applies it like this: whatever can be checked is done by a script, and the skills keep what needs judgement. The value is the exit code each piece stops with."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "pre-push",
+            "gl": "pre-push",
+            "en": "pre-push"
+          },
+          "valor": "exit 1",
+          "texto": {
+            "es": "Bloquea. Pasa el check sobre el commit que se sube, en un worktree temporal; busca restos de conflictos (<<<<<<<, *.rej, *.orig) y, en la rama protegida, exige la marca de revisión si la subida trae código.",
+            "gl": "Bloquea. Pasa o check sobre o commit que se sube, nun worktree temporal; busca restos de conflitos (<<<<<<<, *.rej, *.orig) e, na rama protexida, esixe a marca de revisión se a subida trae código.",
+            "en": "Blocks. Runs the check on the pushed commit in a temporary worktree, looks for conflict leftovers (<<<<<<<, *.rej, *.orig) and, on the protected branch, requires the review mark if the push contains code."
+          }
+        },
+        {
+          "nombre": {
+            "es": "pre-commit",
+            "gl": "pre-commit",
+            "en": "pre-commit"
+          },
+          "valor": "exit 1",
+          "texto": {
+            "es": "Bloquea. Rechaza archivos de secretos (.env, .pem, claves privadas) y patrones de claves conocidos (AWS, GitHub, Slack, Google, Anthropic…). Una línea concreta se exime con gw-allow-secret.",
+            "gl": "Bloquea. Rexeita ficheiros de segredos (.env, .pem, chaves privadas) e patróns de chaves coñecidos (AWS, GitHub, Slack, Google, Anthropic…). Unha liña concreta exímese con gw-allow-secret.",
+            "en": "Blocks. Rejects secret files (.env, .pem, private keys) and known key patterns (AWS, GitHub, Slack, Google, Anthropic…). A specific line can be exempted with gw-allow-secret."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Gancho de pull request",
+            "gl": "Gancho de pull request",
+            "en": "Pull request hook"
+          },
+          "valor": "exit 2",
+          "texto": {
+            "es": "Bloquea. Si se llega a la rama protegida por pull request, crearlo exige la marca de revisión; fusionarlo, además, el CI en verde. Un CI que no informa no cuenta como verde.",
+            "gl": "Bloquea. Se se chega á rama protexida por pull request, crealo esixe a marca de revisión; fusionalo, ademais, o CI en verde. Un CI que non informa non conta como verde.",
+            "en": "Blocks. If the protected branch is reached by pull request, creating one requires the review mark; merging it also requires green CI. A CI that reports nothing does not count as green."
+          }
+        },
+        {
+          "nombre": {
+            "es": "config.py",
+            "gl": "config.py",
+            "en": "config.py"
+          },
+          "valor": "exit 2",
+          "texto": {
+            "es": "Falla cerrado. Es lo único que lee .claude/gw.json; si falta una clave obligatoria o el JSON no es válido, sale con error y nada sigue con valores supuestos.",
+            "gl": "Falla pechado. É o único que le .claude/gw.json; se falta unha clave obrigatoria ou o JSON non é válido, sae con erro e nada segue con valores supostos.",
+            "en": "Fails closed. It is the only reader of .claude/gw.json; if a required key is missing or the JSON is invalid, it exits with an error and nothing continues on guessed values."
+          }
+        },
+        {
+          "nombre": {
+            "es": "CI",
+            "gl": "CI",
+            "en": "CI"
+          },
+          "valor": "✗ / ✓",
+          "texto": {
+            "es": "Bloquea la fusión. Corre la misma comprobación en Linux y macOS en cada subida y en cada pull request. Un CI que no arranca (sin cuota, sin runners) cuenta como rojo.",
+            "gl": "Bloquea a fusión. Corre a mesma comprobación en Linux e macOS en cada subida e en cada pull request. Un CI que non arranca (sen cota, sen runners) conta como vermello.",
+            "en": "Blocks the merge. Runs the same check on Linux and macOS on every push and every pull request. A CI that does not start (no quota, no runners) counts as red."
+          }
+        },
+        {
+          "nombre": {
+            "es": "SessionStart",
+            "gl": "SessionStart",
+            "en": "SessionStart"
+          },
+          "valor": "exit 0",
+          "texto": {
+            "es": "Falla abierto. Activa los ganchos de git y, en la nube, instala las dependencias; si algo falla avisa, pero no impide trabajar.",
+            "gl": "Falla aberto. Activa os ganchos de git e, na nube, instala as dependencias; se algo falla avisa, pero non impide traballar.",
+            "en": "Fails open. Turns on the git hooks and, in the cloud, installs dependencies; if something fails it warns, but does not stop the work."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Skills y reglas",
+            "gl": "Skills e regras",
+            "en": "Skills and rules"
+          },
+          "valor": "SKILL.md",
+          "texto": {
+            "es": "Aconsejan. selector, orchestrate-dealer, retro o las reglas de AGENTS.md deciden lo que pide criterio. Si una regla se sigue rompiendo, se convierte en un script.",
+            "gl": "Aconsellan. selector, orchestrate-dealer, retro ou as regras de AGENTS.md deciden o que pide criterio. Se unha regra se segue rompendo, convértese nun script.",
+            "en": "Advise. selector, orchestrate-dealer, retro and the rules in AGENTS.md decide what needs judgement. If a rule keeps being broken, it becomes a script."
+          }
+        }
+      ]
+    },
+    {
+      "id": "fallos",
+      "titulo": {
+        "es": "Qué fallo evita cada pieza",
+        "gl": "Que fallo evita cada peza",
+        "en": "What failure each piece prevents"
+      },
+      "intro": {
+        "es": "Cada pieza existe por un fallo concreto que vimos en los proyectos piloto. A la izquierda, el fallo; a la derecha, la pieza que lo evita.",
+        "gl": "Cada peza existe por un fallo concreto que vimos nos proxectos piloto. Á esquerda, o fallo; á dereita, a peza que o evita.",
+        "en": "Each piece exists because of a specific failure we saw in the pilot projects. On the left, the failure; on the right, the piece that prevents it."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "La sesión se acaba a mitad de tarea",
+            "gl": "A sesión acábase a metade de tarefa",
+            "en": "The session ends mid-task"
+          },
+          "valor": "traspaso.md",
+          "texto": {
+            "es": "La bitácora dice rama, tarea, qué falta y siguiente paso, y cada commit acaba con «Siguiente:». La sesión nueva retoma sin preguntar por dónde iba.",
+            "gl": "A bitácora di rama, tarefa, que falta e seguinte paso, e cada commit remata con «Siguiente:». A sesión nova retoma sen preguntar por onde ía.",
+            "en": "The handoff log states branch, task, what is left and the next step, and every commit ends with “Siguiente:”. The new session resumes without asking where things were."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Tras compactar, el agente olvida por dónde iba",
+            "gl": "Tras compactar, o axente esquece por onde ía",
+            "en": "After compaction, the agent forgets where it was"
+          },
+          "valor": "recuperar.py",
+          "texto": {
+            "es": "Tras /compact o /clear, un gancho devuelve el estado de la bitácora, los archivos sin subir y los últimos commits; --buscar encuentra un detalle perdido de la conversación.",
+            "gl": "Tras /compact ou /clear, un gancho devolve o estado da bitácora, os ficheiros sen subir e os últimos commits; --buscar atopa un detalle perdido da conversa.",
+            "en": "After /compact or /clear, a hook restores the log state, uncommitted files and the latest commits; --buscar finds a detail lost from the conversation."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Llega código sin revisar a lo publicado",
+            "gl": "Chega código sen revisar ao publicado",
+            "en": "Unreviewed code reaches what is published"
+          },
+          "valor": "revisado.txt",
+          "texto": {
+            "es": "pre-push exige que el último commit con código esté cubierto por la marca de revisión. El contenido (textos, imágenes) pasa sin ella, y así se puede publicar sin repetir revisiones.",
+            "gl": "pre-push esixe que o último commit con código estea cuberto pola marca de revisión. O contido (textos, imaxes) pasa sen ela, e así pódese publicar sen repetir revisións.",
+            "en": "pre-push requires the last commit with code to be covered by the review mark. Content (texts, images) goes through without it, so publishing does not repeat reviews."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Un commit cambia las reglas que lo juzgan",
+            "gl": "Un commit cambia as regras que o xulgan",
+            "en": "A commit changes the rules that judge it"
+          },
+          "valor": "remote tip",
+          "texto": {
+            "es": "La política de la rama protegida se lee de la punta remota, no del commit que se sube, y los archivos del propio flujo cuentan siempre como código.",
+            "gl": "A política da rama protexida lese da punta remota, non do commit que se sube, e os ficheiros do propio fluxo contan sempre como código.",
+            "en": "The protected-branch policy is read from the remote tip, not from the pushed commit, and the workflow’s own files always count as code."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Una clave acaba en el historial",
+            "gl": "Unha chave acaba no historial",
+            "en": "A key ends up in the history"
+          },
+          "valor": "pre-commit",
+          "texto": {
+            "es": "pre-commit para el commit antes de que exista: un secreto subido hay que darlo por filtrado aunque se borre después.",
+            "gl": "pre-commit para o commit antes de que exista: un segredo subido hai que dalo por filtrado aínda que se borre despois.",
+            "en": "pre-commit stops the commit before it exists: a pushed secret has to be treated as leaked even if it is deleted later."
+          }
+        },
+        {
+          "nombre": {
+            "es": "El contexto crece y cada llamada cuesta más",
+            "gl": "O contexto medra e cada chamada custa máis",
+            "en": "Context grows and every call costs more"
+          },
+          "valor": "orchestrate-dealer",
+          "texto": {
+            "es": "En un piloto, una sesión de 157 llamadas con 191k de contexto medio se llevó el 70 % del gasto. Desde entonces: compactación a 200k y subagentes de contexto limpio con unas 35 llamadas como máximo.",
+            "gl": "Nun piloto, unha sesión de 157 chamadas con 191k de contexto medio levou o 70 % do gasto. Desde entón: compactación a 200k e subaxentes de contexto limpo cunhas 35 chamadas como máximo.",
+            "en": "In one pilot, a session of 157 calls at a 191k average context took 70% of the spend. Since then: compaction at 200k and clean-context subagents with about 35 calls at most."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Se usa el modelo más caro para todo",
+            "gl": "Úsase o modelo máis caro para todo",
+            "en": "The most expensive model is used for everything"
+          },
+          "valor": "selector",
+          "texto": {
+            "es": "Cada tarea empieza diciendo qué skill y qué modelo pide. Los subagentes empiezan en el escalón más barato que haga bien el trabajo y solo suben tras un fallo; dos fallos en el mismo escalón, se para y se pregunta.",
+            "gl": "Cada tarefa comeza dicindo que skill e que modelo pide. Os subaxentes comezan no chanzo máis barato que faga ben o traballo e só soben tras un fallo; dous fallos no mesmo chanzo, párase e pregúntase.",
+            "en": "Every task starts by stating which skill and model it needs. Subagents start on the cheapest step that does the job well and only move up after a failure; two failures on the same step, stop and ask."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Una actualización pisa lo adaptado",
+            "gl": "Unha actualización pisa o adaptado",
+            "en": "An update overwrites local changes"
+          },
+          "valor": "*.gw-nuevo",
+          "texto": {
+            "es": "aplicar.py nunca sobrescribe un archivo cambiado en el proyecto: deja la versión nueva al lado para comparar. Nunca borra ni hace commit, y repetirlo no cambia nada.",
+            "gl": "aplicar.py nunca sobrescribe un ficheiro cambiado no proxecto: deixa a versión nova ao lado para comparar. Nunca borra nin fai commit, e repetilo non cambia nada.",
+            "en": "aplicar.py never overwrites a file changed in the project: it leaves the new version beside it to compare. It never deletes or commits, and running it again changes nothing."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Lo que aprende un proyecto no llega a los demás",
+            "gl": "O que aprende un proxecto non chega aos demais",
+            "en": "What one project learns never reaches the others"
+          },
+          "valor": "gw-harvest",
+          "texto": {
+            "es": "recoger.py junta diferencias, skills nuevas y notas de las retros en propuestas; lo que se aprueba entra en la versión siguiente del flujo.",
+            "gl": "recoger.py xunta diferenzas, skills novas e notas das retros en propostas; o que se aproba entra na versión seguinte do fluxo.",
+            "en": "recoger.py gathers diffs, new skills and retro notes into proposals; what gets approved goes into the next version of the workflow."
+          }
+        }
+      ]
+    },
     {
       "id": "skills-propias",
       "titulo": {
@@ -676,6 +1061,244 @@
           }
         }
       ]
+    },
+    {
+      "id": "configuracion",
+      "titulo": {
+        "es": "Un archivo de configuración",
+        "gl": "Un ficheiro de configuración",
+        "en": "One configuration file"
+      },
+      "intro": {
+        "es": "Lo que cambia de un proyecto a otro está en .claude/gw.json. Solo lo lee config.py, y falla cerrado si falta una clave obligatoria. Las principales, con un valor de ejemplo:",
+        "gl": "O que cambia dun proxecto a outro está en .claude/gw.json. Só o le config.py, e falla pechado se falta unha clave obrigatoria. As principais, cun valor de exemplo:",
+        "en": "Whatever changes from one project to another lives in .claude/gw.json. Only config.py reads it, and it fails closed if a required key is missing. The main keys, with an example value:"
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "protectedBranch",
+            "gl": "protectedBranch",
+            "en": "protectedBranch"
+          },
+          "valor": "main",
+          "texto": {
+            "es": "La rama protegida: la que no recibe código sin revisión.",
+            "gl": "A rama protexida: a que non recibe código sen revisión.",
+            "en": "The protected branch: the one that gets no unreviewed code."
+          }
+        },
+        {
+          "nombre": {
+            "es": "pushToProtected",
+            "gl": "pushToProtected",
+            "en": "pushToProtected"
+          },
+          "valor": "direct | pr",
+          "texto": {
+            "es": "Cómo se llega a ella: subida directa (la vigila pre-push) o pull request (la vigilan el gancho de PR y el CI).",
+            "gl": "Como se chega a ela: subida directa (vixíaa pre-push) ou pull request (vixíana o gancho de PR e o CI).",
+            "en": "How it is reached: direct push (guarded by pre-push) or pull request (guarded by the PR hook and CI)."
+          }
+        },
+        {
+          "nombre": {
+            "es": "check",
+            "gl": "check",
+            "en": "check"
+          },
+          "valor": "npm run check",
+          "texto": {
+            "es": "La comprobación del proyecto; la corren pre-push y el CI.",
+            "gl": "A comprobación do proxecto; córrena pre-push e o CI.",
+            "en": "The project’s check; pre-push and CI run it."
+          }
+        },
+        {
+          "nombre": {
+            "es": "content",
+            "gl": "content",
+            "en": "content"
+          },
+          "valor": "regex[]",
+          "texto": {
+            "es": "Qué archivos son contenido y no necesitan revisión. Los del propio flujo (.claude/gw/, .githooks/, gw.json) son siempre código.",
+            "gl": "Que ficheiros son contido e non precisan revisión. Os do propio fluxo (.claude/gw/, .githooks/, gw.json) son sempre código.",
+            "en": "Which files are content and need no review. The workflow’s own files (.claude/gw/, .githooks/, gw.json) are always code."
+          }
+        },
+        {
+          "nombre": {
+            "es": "reviewMark",
+            "gl": "reviewMark",
+            "en": "reviewMark"
+          },
+          "valor": "docs/registros/revisado.txt",
+          "texto": {
+            "es": "Dónde se guarda la marca de revisión: el commit revisado.",
+            "gl": "Onde se garda a marca de revisión: o commit revisado.",
+            "en": "Where the review mark is stored: the reviewed commit."
+          }
+        },
+        {
+          "nombre": {
+            "es": "log",
+            "gl": "log",
+            "en": "log"
+          },
+          "valor": "docs/traspaso.md",
+          "texto": {
+            "es": "La bitácora; logRows limita cuántas filas guarda para que leerla siga siendo barato.",
+            "gl": "A bitácora; logRows limita cantas filas garda para que lela siga sendo barato.",
+            "en": "The handoff log; logRows caps how many rows it keeps so reading it stays cheap."
+          }
+        },
+        {
+          "nombre": {
+            "es": "requireRetro",
+            "gl": "requireRetro",
+            "en": "requireRetro"
+          },
+          "valor": "true | false",
+          "texto": {
+            "es": "Si la marca de revisión exige antes una retro con todas sus propuestas resueltas.",
+            "gl": "Se a marca de revisión esixe antes unha retro con todas as súas propostas resoltas.",
+            "en": "Whether the review mark first requires a retro with all its proposals resolved."
+          }
+        },
+        {
+          "nombre": {
+            "es": "protectedPaths",
+            "gl": "protectedPaths",
+            "en": "protectedPaths"
+          },
+          "valor": "glob[]",
+          "texto": {
+            "es": "Rutas que un agente no puede tocar en un commit sin que lo haga la persona.",
+            "gl": "Rutas que un axente non pode tocar nun commit sen que o faga a persoa.",
+            "en": "Paths an agent cannot change in a commit unless the person does it."
+          }
+        },
+        {
+          "nombre": {
+            "es": "selector.cases",
+            "gl": "selector.cases",
+            "en": "selector.cases"
+          },
+          "valor": "[ … ]",
+          "texto": {
+            "es": "Filas propias del proyecto para la skill selector: qué caso pide qué skill y qué modelo.",
+            "gl": "Filas propias do proxecto para a skill selector: que caso pide que skill e que modelo.",
+            "en": "The project’s own rows for the selector skill: which case calls for which skill and model."
+          }
+        },
+        {
+          "nombre": {
+            "es": "visibleLanguages",
+            "gl": "visibleLanguages",
+            "en": "visibleLanguages"
+          },
+          "valor": "es · gl · en",
+          "texto": {
+            "es": "Idiomas en que debe estar todo texto visible; en este portal, npm run check lo comprueba.",
+            "gl": "Idiomas nos que debe estar todo texto visible; neste portal, npm run check compróbao.",
+            "en": "Languages every visible text must be in; on this portal, npm run check enforces it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "cuando-encaja",
+      "titulo": {
+        "es": "Cuándo encaja y qué cuesta",
+        "gl": "Cando encaixa e que custa",
+        "en": "When it fits and what it costs"
+      },
+      "intro": {
+        "es": "Como en la guía de Anthropic sobre agentes: cada patrón con cuándo usarlo y lo que cuesta.",
+        "gl": "Como na guía de Anthropic sobre axentes: cada patrón con cando usalo e o que custa.",
+        "en": "As in Anthropic’s guide on agents: each pattern with when to use it and what it costs."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Encaja",
+            "gl": "Encaixa",
+            "en": "Fits"
+          },
+          "valor": "✓",
+          "texto": {
+            "es": "Proyectos largos trabajados por relevos con agentes de IA, con una rama publicada que tiene que estar siempre bien, y una persona que decide mientras los agentes ejecutan.",
+            "gl": "Proxectos longos traballados por relevos con axentes de IA, cunha rama publicada que ten que estar sempre ben, e unha persoa que decide mentres os axentes executan.",
+            "en": "Long projects worked in relays with AI agents, with a published branch that must always be sound, and one person who decides while the agents execute."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Encaja",
+            "gl": "Encaixa",
+            "en": "Fits"
+          },
+          "valor": "✓",
+          "texto": {
+            "es": "Varios proyectos que quieren compartir la misma forma de trabajar y mejorarla juntos.",
+            "gl": "Varios proxectos que queren compartir a mesma forma de traballar e mellorala xuntos.",
+            "en": "Several projects that want to share the same way of working and improve it together."
+          }
+        },
+        {
+          "nombre": {
+            "es": "No encaja",
+            "gl": "Non encaixa",
+            "en": "Does not fit"
+          },
+          "valor": "✗",
+          "texto": {
+            "es": "Un script de una tarde o un prototipo para tirar: la bitácora, la marca y las fases cuestan más que lo que protegen.",
+            "gl": "Un script dunha tarde ou un prototipo para tirar: a bitácora, a marca e as fases custan máis do que protexen.",
+            "en": "An afternoon script or a throwaway prototype: the log, the mark and the phases cost more than they protect."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Coste",
+            "gl": "Custo",
+            "en": "Cost"
+          },
+          "valor": "52-57k",
+          "texto": {
+            "es": "Cada subagente arranca con unos 52-57k tokens antes de hacer nada: repartir solo compensa en tareas de más de un paso.",
+            "gl": "Cada subaxente arrinca con uns 52-57k tokens antes de facer nada: repartir só compensa en tarefas de máis dun paso.",
+            "en": "Each subagent starts at about 52–57k tokens before doing anything: handing out work only pays off on tasks of more than one step."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Requisitos",
+            "gl": "Requisitos",
+            "en": "Requirements"
+          },
+          "valor": "bash 3.2",
+          "texto": {
+            "es": "git, bash 3.2 o superior y Python 3, en Linux o macOS. Los ganchos de sesión y las skills son de Claude Code; las reglas de AGENTS.md sirven a cualquier agente.",
+            "gl": "git, bash 3.2 ou superior e Python 3, en Linux ou macOS. Os ganchos de sesión e as skills son de Claude Code; as regras de AGENTS.md serven a calquera axente.",
+            "en": "git, bash 3.2 or later and Python 3, on Linux or macOS. The session hooks and skills are for Claude Code; the rules in AGENTS.md work with any agent."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Lo que aún no sabemos",
+            "gl": "O que aínda non sabemos",
+            "en": "What we do not know yet"
+          },
+          "valor": "~30 %",
+          "texto": {
+            "es": "Hay pocas medidas: cuatro pilotos, y cifras como el ~30 % de ahorro por compactar a 200k son estimaciones, no medidas.",
+            "gl": "Hai poucas medidas: catro pilotos, e cifras como o ~30 % de aforro por compactar a 200k son estimacións, non medidas.",
+            "en": "There are few measurements: four pilots, and figures like the ~30% saving from compacting at 200k are estimates, not measurements."
+          }
+        }
+      ]
     }
   ],
   "ficha": [
@@ -713,6 +1336,19 @@
         "GitHub Actions",
         "ShellCheck",
         "JSON Schema"
+      ]
+    },
+    {
+      "capa": {
+        "es": "Plataformas",
+        "gl": "Plataformas",
+        "en": "Platforms"
+      },
+      "tecnologias": [
+        "Linux",
+        "macOS",
+        "bash 3.2",
+        "Python 3"
       ]
     }
   ],
@@ -890,11 +1526,11 @@
       }
     },
     {
-      "valor": "2",
+      "valor": "461",
       "etiqueta": {
-        "es": "etapas",
-        "gl": "etapas",
-        "en": "stages"
+        "es": "pruebas automáticas",
+        "gl": "probas automáticas",
+        "en": "automated tests"
       }
     },
     {

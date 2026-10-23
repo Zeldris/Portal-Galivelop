@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<!-- Fuente de un diagrama de la ficha de Galivelop-workflow. Se exporta a public/proyectos/galivelop-workflow/
+     <nombre>.webp (1600x900) y <nombre>-mini.webp (720x405) con Chromium. Fuentes: Inter y DejaVu Sans Mono. -->
+<defs>
+  <radialGradient id="fondo" cx="0.1" cy="0" r="0.9">
+    <stop offset="0" stop-color="#0e2a42"/><stop offset="0.6" stop-color="#08151f"/><stop offset="1" stop-color="#06121b"/>
+  </radialGradient>
+  <pattern id="rejilla" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.025"/>
+  </pattern>
+  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#38b6e8"/></marker>
+  <marker id="fg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a9bb0"/></marker>
+  <marker id="fo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4cc38a"/></marker>
+  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f0716a"/></marker>
+  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f2b34a"/></marker>
+</defs>
+<style>
+  .t { font-family: Inter, sans-serif; font-weight: 800; }
+  .s { font-family: Inter, sans-serif; font-weight: 600; }
+  .m { font-family: 'DejaVu Sans Mono', monospace; }
+</style>
+<rect width="1600" height="900" fill="url(#fondo)"/>
+<rect width="1600" height="900" fill="url(#rejilla)"/>
+<text x="80" y="92" class="t" font-size="46" fill="#eef6fb" text-anchor="start">release loop</text>
+<text x="82" y="132" class="m" font-size="20" fill="#8a9bb0" text-anchor="start">improve once, reach every project · local customisations are never overwritten</text>
+<rect x="600" y="180" width="400" height="170" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="620" y="198" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="620" y="238" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">galivelop-workflow</text>
+<text x="620" y="268" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">vX.Y.Z · plugin.json</text>
+<text x="620" y="292" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">CHANGELOG · 461 tests</text>
+<text x="620" y="316" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">Linux + macOS CI</text>
+<rect x="1120" y="400" width="400" height="190" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="1140" y="418" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="1140" y="458" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">aplicar.py --update</text>
+<text x="1140" y="488" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">/gw-update: diff first,</text>
+<text x="1140" y="512" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">person confirms</text>
+<text x="1140" y="536" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">local edit → *.gw-nuevo</text>
+<text x="1140" y="560" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">then doctor.py</text>
+<rect x="600" y="640" width="400" height="190" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="620" y="658" width="30" height="5" rx="2.5" fill="#8a9bb0"/>
+<text x="620" y="698" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">projects</text>
+<text x="620" y="728" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">.claude/gw/ · .githooks/</text>
+<text x="620" y="752" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">.claude/gw.json (own keys)</text>
+<text x="620" y="776" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">own skills, own retros</text>
+<rect x="80" y="400" width="400" height="190" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="100" y="418" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="100" y="458" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">recoger.py</text>
+<text x="100" y="488" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">/gw-harvest: diffs, new</text>
+<text x="100" y="512" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">skills, retro notes</text>
+<text x="100" y="536" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">→ docs/propuestas/*.md</text>
+<text x="100" y="560" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">person approves</text>
+<path d="M1000 265C1200 265 1320 300 1320 392" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M1320 590C1320 700 1200 735 1008 735" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M600 735C400 735 280 700 280 598" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M280 400C280 300 400 265 592 265" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<text x="1295" y="372" class="m" font-size="18" fill="#38b6e8" font-weight="bold" text-anchor="end">release</text>
+<text x="1295" y="620" class="m" font-size="18" fill="#38b6e8" font-weight="bold" text-anchor="end">apply</text>
+<text x="305" y="620" class="m" font-size="18" fill="#38b6e8" font-weight="bold" text-anchor="start">harvest</text>
+<text x="305" y="372" class="m" font-size="18" fill="#38b6e8" font-weight="bold" text-anchor="start">version.py --release</text>
+<text x="800" y="470" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="middle">gw-init</text>
+<text x="800" y="500" class="m" font-size="16" fill="#8a9bb0" text-anchor="middle">aplicar.py --init</text>
+<text x="800" y="540" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="middle">gw-doctor</text>
+<text x="800" y="570" class="m" font-size="16" fill="#8a9bb0" text-anchor="middle">OK · WARN · FAIL + fix</text>
+<path d="M800 580V632" fill="none" stroke="#8a9bb0" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#fg)"/>
+<path d="M800 358V448" stroke="#8a9bb0" stroke-width="2" stroke-dasharray="7 6"/>
+</svg>

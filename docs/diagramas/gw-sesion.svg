@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<!-- Fuente de un diagrama de la ficha de Galivelop-workflow. Se exporta a public/proyectos/galivelop-workflow/
+     <nombre>.webp (1600x900) y <nombre>-mini.webp (720x405) con Chromium. Fuentes: Inter y DejaVu Sans Mono. -->
+<defs>
+  <radialGradient id="fondo" cx="0.1" cy="0" r="0.9">
+    <stop offset="0" stop-color="#0e2a42"/><stop offset="0.6" stop-color="#08151f"/><stop offset="1" stop-color="#06121b"/>
+  </radialGradient>
+  <pattern id="rejilla" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.025"/>
+  </pattern>
+  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#38b6e8"/></marker>
+  <marker id="fg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a9bb0"/></marker>
+  <marker id="fo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4cc38a"/></marker>
+  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f0716a"/></marker>
+  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f2b34a"/></marker>
+</defs>
+<style>
+  .t { font-family: Inter, sans-serif; font-weight: 800; }
+  .s { font-family: Inter, sans-serif; font-weight: 600; }
+  .m { font-family: 'DejaVu Sans Mono', monospace; }
+</style>
+<rect width="1600" height="900" fill="url(#fondo)"/>
+<rect width="1600" height="900" fill="url(#rejilla)"/>
+<text x="80" y="92" class="t" font-size="46" fill="#eef6fb" text-anchor="start">session relay</text>
+<text x="82" y="132" class="m" font-size="20" fill="#8a9bb0" text-anchor="start">a session can end at any moment · the next one resumes from git, not from memory</text>
+<rect x="80" y="190" width="300" height="150" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="100" y="208" width="30" height="5" rx="2.5" fill="#8a9bb0"/>
+<text x="100" y="248" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">SessionStart</text>
+<text x="100" y="278" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">startup · resume</text>
+<text x="100" y="302" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">clear · compact</text>
+<rect x="450" y="190" width="330" height="150" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="470" y="208" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="470" y="248" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">session-start.sh</text>
+<text x="470" y="278" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">core.hooksPath</text>
+<text x="470" y="302" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">cloud: install + setup</text>
+<text x="470" y="326" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">timeout 900 s</text>
+<rect x="850" y="190" width="300" height="150" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="870" y="208" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="870" y="248" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">resume</text>
+<text x="870" y="278" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">read traspaso.md</text>
+<text x="870" y="302" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">git fetch · check</text>
+<rect x="1220" y="190" width="300" height="330" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="1240" y="208" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="1240" y="248" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">work</text>
+<rect x="1240" y="290" width="105" height="38" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="1254" y="311" class="m" font-size="16" fill="#eef6fb" text-anchor="start">selector</text>
+<rect x="1240" y="340" width="115" height="38" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="1254" y="361" class="m" font-size="16" fill="#eef6fb" text-anchor="start">dealer ×n</text>
+<rect x="1240" y="390" width="144" height="38" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="1254" y="411" class="m" font-size="16" fill="#eef6fb" text-anchor="start">commit + log</text>
+<rect x="1240" y="440" width="124" height="38" rx="10" fill="#8a9bb0" fill-opacity="0.12" stroke="#8a9bb0" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="1254" y="461" class="m" font-size="16" fill="#eef6fb" text-anchor="start">pre-commit</text>
+<path d="M380 265H442" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M780 265H842" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M1150 265H1212" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<rect x="850" y="420" width="300" height="150" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="870" y="438" width="30" height="5" rx="2.5" fill="#8a9bb0"/>
+<text x="870" y="478" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">/compact · /clear</text>
+<text x="870" y="508" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">context window</text>
+<text x="870" y="532" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">200k cap</text>
+<rect x="450" y="420" width="330" height="150" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="470" y="438" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="470" y="478" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">recuperar.py</text>
+<text x="470" y="508" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">--estado: log row,</text>
+<text x="470" y="532" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">uncommitted, last 5</text>
+<text x="470" y="556" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">commits, compactions</text>
+<path d="M1220 495H1158" fill="none" stroke="#8a9bb0" stroke-width="2.5" marker-end="url(#fg)"/>
+<path d="M850 495H788" fill="none" stroke="#8a9bb0" stroke-width="2.5" marker-end="url(#fg)"/>
+<path d="M615 420C615 380 1000 380 1205 400" fill="none" stroke="#38b6e8" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#fa)"/>
+<text x="800" y="372" class="m" font-size="15" fill="#8a9bb0" text-anchor="middle">back to work, same step</text>
+<rect x="80" y="660" width="1440" height="150" rx="18" fill="#0b2120" stroke="#4cc38a" stroke-opacity="0.6" stroke-width="2"/>
+<text x="110" y="712" class="m" font-size="26" fill="#eef6fb" font-weight="bold" text-anchor="start">git = memory</text>
+<text x="110" y="748" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">origin/&lt;branch&gt;  ·  docs/traspaso.md (state, next step)  ·  commits end with “Siguiente: …”</text>
+<text x="110" y="782" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">push at every stable point · never more than 30–45 min unpushed · WIP: commits if red</text>
+<path d="M1370 520V652" fill="none" stroke="#4cc38a" stroke-width="2.5" marker-end="url(#fo)"/>
+<text x="1385" y="600" class="m" font-size="18" fill="#4cc38a" font-weight="bold" text-anchor="start">push</text>
+<path d="M200 660V348" fill="none" stroke="#4cc38a" stroke-width="2.5" marker-end="url(#fo)"/>
+<text x="215" y="580" class="m" font-size="18" fill="#4cc38a" font-weight="bold" text-anchor="start">next session</text>
+<text x="215" y="604" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">tokens · container</text>
+<text x="215" y="626" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">· account change</text>
+</svg>

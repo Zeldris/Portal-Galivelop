@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<!-- Fuente de un diagrama de la ficha de Galivelop-workflow. Se exporta a public/proyectos/galivelop-workflow/
+     <nombre>.webp (1600x900) y <nombre>-mini.webp (720x405) con Chromium. Fuentes: Inter y DejaVu Sans Mono. -->
+<defs>
+  <radialGradient id="fondo" cx="0.1" cy="0" r="0.9">
+    <stop offset="0" stop-color="#0e2a42"/><stop offset="0.6" stop-color="#08151f"/><stop offset="1" stop-color="#06121b"/>
+  </radialGradient>
+  <pattern id="rejilla" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.025"/>
+  </pattern>
+  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#38b6e8"/></marker>
+  <marker id="fg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a9bb0"/></marker>
+  <marker id="fo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4cc38a"/></marker>
+  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f0716a"/></marker>
+  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f2b34a"/></marker>
+</defs>
+<style>
+  .t { font-family: Inter, sans-serif; font-weight: 800; }
+  .s { font-family: Inter, sans-serif; font-weight: 600; }
+  .m { font-family: 'DejaVu Sans Mono', monospace; }
+</style>
+<rect width="1600" height="900" fill="url(#fondo)"/>
+<rect width="1600" height="900" fill="url(#rejilla)"/>
+<text x="80" y="92" class="t" font-size="46" fill="#eef6fb" text-anchor="start">orchestrator · workers</text>
+<text x="82" y="132" class="m" font-size="20" fill="#8a9bb0" text-anchor="start">the main session plans, decides and reviews · clean-context subagents do the mechanical work</text>
+<rect x="80" y="190" width="380" height="160" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="100" y="208" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="100" y="248" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">/selector</text>
+<text x="100" y="278" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">task → skill + model</text>
+<text x="100" y="302" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">risk → wait for person</text>
+<rect x="80" y="400" width="380" height="250" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="100" y="418" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="100" y="458" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">main session</text>
+<text x="100" y="488" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">large model</text>
+<text x="100" y="512" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">plans · decides</text>
+<text x="100" y="536" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">reviews every diff</text>
+<text x="100" y="560" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">talks to the person</text>
+<path d="M270 350V392" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<rect x="700" y="200" width="400" height="130" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="720" y="218" width="30" height="5" rx="2.5" fill="#8a9bb0"/>
+<text x="720" y="258" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">subagent 1</text>
+<text x="720" y="288" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">clean context · worktree</text>
+<text x="720" y="311" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">≤ ~35 tool calls</text>
+<path d="M460 430C580 430 580 265 692 265" fill="none" stroke="#38b6e8" stroke-width="2" marker-end="url(#fa)"/>
+<rect x="700" y="355" width="400" height="130" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="720" y="373" width="30" height="5" rx="2.5" fill="#8a9bb0"/>
+<text x="720" y="413" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">subagent 2</text>
+<text x="720" y="443" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">clean context · worktree</text>
+<text x="720" y="466" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">≤ ~35 tool calls</text>
+<path d="M460 470C580 470 580 420 692 420" fill="none" stroke="#38b6e8" stroke-width="2" marker-end="url(#fa)"/>
+<rect x="700" y="510" width="400" height="130" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="720" y="528" width="30" height="5" rx="2.5" fill="#8a9bb0"/>
+<text x="720" y="568" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">subagent 3</text>
+<text x="720" y="598" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">clean context · worktree</text>
+<text x="720" y="621" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">≤ ~35 tool calls</text>
+<path d="M460 510C580 510 580 575 692 575" fill="none" stroke="#38b6e8" stroke-width="2" marker-end="url(#fa)"/>
+<text x="535" y="500" class="m" font-size="18" fill="#38b6e8" font-weight="bold" text-anchor="start">brief</text>
+<text x="470" y="700" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">brief = goal · paths · “done when” · check · do-not · reply format</text>
+<rect x="1180" y="200" width="340" height="150" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="1200" y="218" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="1200" y="258" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">reply ≤ 15 lines</text>
+<text x="1200" y="288" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">DONE · COMMIT</text>
+<text x="1200" y="312" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">MISSING · QUESTIONS</text>
+<rect x="1180" y="400" width="340" height="170" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
+<rect x="1200" y="418" width="30" height="5" rx="2.5" fill="#38b6e8"/>
+<text x="1200" y="458" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">review + merge</text>
+<text x="1200" y="488" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">short /code-review</text>
+<text x="1200" y="512" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">fusionar.sh &lt;branch&gt;</text>
+<text x="1200" y="536" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">→ main session decides</text>
+<path d="M1100 265C1140 265 1140 275 1172 275" fill="none" stroke="#8a9bb0" stroke-width="2" marker-end="url(#fg)"/>
+<path d="M1100 420C1140 420 1140 275 1172 275" fill="none" stroke="#8a9bb0" stroke-width="2" marker-end="url(#fg)"/>
+<path d="M1100 575C1140 575 1140 275 1172 275" fill="none" stroke="#8a9bb0" stroke-width="2" marker-end="url(#fg)"/>
+<path d="M1350 350V392" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
+<text x="80" y="760" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="start">model ladder</text>
+<rect x="260" y="734" width="130" height="39" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="274" y="756" class="m" font-size="17" fill="#eef6fb" text-anchor="start">sonnet low</text>
+<path d="M396.34000000000003 754H430.34000000000003" fill="none" stroke="#8a9bb0" stroke-width="2" marker-end="url(#fg)"/>
+<rect x="438.34000000000003" y="734" width="161" height="39" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="452.34000000000003" y="756" class="m" font-size="17" fill="#eef6fb" text-anchor="start">sonnet medium</text>
+<path d="M605.3820000000001 754H639.3820000000001" fill="none" stroke="#8a9bb0" stroke-width="2" marker-end="url(#fg)"/>
+<rect x="647.3820000000001" y="734" width="141" height="39" rx="10" fill="#f2b34a" fill-opacity="0.12" stroke="#f2b34a" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="661.3820000000001" y="756" class="m" font-size="17" fill="#eef6fb" text-anchor="start">opus medium</text>
+<path d="M793.9560000000001 754H827.9560000000001" fill="none" stroke="#8a9bb0" stroke-width="2" marker-end="url(#fg)"/>
+<rect x="835.9560000000001" y="734" width="120" height="39" rx="10" fill="#f2b34a" fill-opacity="0.12" stroke="#f2b34a" stroke-opacity="0.6" stroke-width="1.5"/>
+<text x="849.9560000000001" y="756" class="m" font-size="17" fill="#eef6fb" text-anchor="start">opus high</text>
+<text x="80" y="820" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">start at the cheapest step that fits · one failure → one step up · two failures on a step → stop and ask</text>
+<text x="80" y="850" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">context over ~150k → write the handoff and recommend /clear</text>
+</svg>
