@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
 | **Tarea en curso** | Ninguna: muro terminado y publicado |
-| **Siguiente paso** | La persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"` y la tarea lleve el paso 2b |
+| **Siguiente paso** | Esperar el aviso de la persona (2026-10-25, en 1-2 h, quizá antes de la publicación del domingo) sobre los repos nuevos (ver «Pendiente»); además, la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"` y la tarea lleve el paso 2b |
 | **En `main`** | Todo publicado: muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 37/37 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -70,6 +70,15 @@ opt-tokens, 2026-10-22).
   como las de los otros proyectos. Publicada en `main` con su marca.
 
 ## Pendiente
+
+- **Repos nuevos como proyectos** (2026-10-25, a petición de la persona): evaluados `Zeldris/galivelop-image-generator`
+  (18 commits; plan F0-F5 con D1-D27 y F0 «esqueleto» hecha: esquemas, textos es/en y tests; aún no genera imágenes;
+  servicio local con stable-diffusion.cpp, Steam Deck de referencia, piloto con WMF), `Zeldris/galivelop-developer`
+  y `Zeldris/galivelop-voice-generator` (solo el flujo instalado, README vacío). Recomendación dada: ficha de
+  image-generator al llegar a F2 (genera de verdad) y las otras dos cuando tengan código propio. La persona avisará
+  (está trabajando en ellos) y decide entonces; una ficha nueva lleva código, revisión y su bloque en
+  `docs/runbooks/tarea-semanal.md`. Fuera, por decisión de la persona: `Zeldris/Zeldris` (README de perfil) y
+  `raquelccarreraA/Labs-Log-Detective`.
 
 - Leve, de la revisión de fase 3 del muro (2026-10-25): `npm run medir` reutiliza cualquier servidor que ya responda
   en 4173 sin comprobar que sirve el `dist/` actual; parar el servidor con `process.kill(-pid)` y lanzar `npx` sin
