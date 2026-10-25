@@ -864,6 +864,98 @@ button {
   white-space: nowrap;
 }
 
+/* ---------- Próximamente: proyectos sin ficha todavía ---------- */
+
+.proximamente {
+  margin-top: 48px;
+}
+
+.proximamente header {
+  margin-bottom: 20px;
+}
+
+.proximamente h3 {
+  font-size: 1.35rem;
+}
+
+.proximamente header p {
+  color: var(--texto-2);
+  margin-top: 6px;
+}
+
+.rejilla-proximos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 16px;
+}
+
+/* Atenuada y sin hover: no se puede abrir. El texto mantiene su contraste. */
+.tarjeta-proxima {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: var(--radio);
+  border: 1px dashed var(--borde);
+  background: color-mix(in srgb, var(--superficie) 55%, transparent);
+  cursor: default;
+}
+
+.proxima-cabeza {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.proxima-icono {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--acento-proyecto);
+  background: color-mix(in srgb, var(--acento-proyecto) 14%, transparent);
+  filter: saturate(0.7);
+}
+
+.proxima-etiqueta {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+}
+
+.tarjeta-proxima h4 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0;
+  color: var(--texto-2);
+}
+
+.proxima-lema {
+  color: var(--texto-2);
+  font-size: 0.92rem;
+}
+
+.tarjeta-proxima .tarjeta-fase {
+  flex: 0;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--borde);
+  font-size: 0.82rem;
+}
+
+.tarjeta-proxima .barra > span {
+  filter: saturate(0.6);
+}
+
 /* ---------- Sobre Galivelop ---------- */
 
 .sobre-rejilla {

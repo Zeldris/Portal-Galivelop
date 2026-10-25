@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGV } from '../components/Logo';
+import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
 import { MARCA } from '../data/marca';
+import { proximos } from '../data/proximamente';
 import { proyectos, ruta } from '../data/proyectos';
 import type { EstadoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
@@ -112,6 +114,19 @@ export function Inicio() {
             </div>
           ) : (
             <p className="vacio">{t('filtro.vacio')}</p>
+          )}
+          {filtro === 'todos' && proximos.length > 0 && (
+            <section className="proximamente" aria-labelledby="proximamente-titulo">
+              <header>
+                <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
+                <p>{t('proximamente.texto')}</p>
+              </header>
+              <div className="rejilla-proximos">
+                {proximos.map((p) => (
+                  <TarjetaProxima key={p.slug} proximo={p} />
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </section>

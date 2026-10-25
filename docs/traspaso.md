@@ -8,17 +8,17 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna: muro terminado y publicado |
-| **Siguiente paso** | Repos nuevos revisados el 2026-10-25: sin ficha nueva hasta que tengan algo visible (ver «Pendiente»). Pendiente de la persona: la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"`, el flujo cree `web.md` y la tarea lleve el paso 2b (ver «Pendiente») |
+| **Tarea en curso** | «Próximamente» en el inicio (rama `ccr-47f8fddd-o5ek6p`): fila atenuada, sin enlace, con Galivelop Image Generator (2 de 6 fases), Voice Generator (1 de 8) y Developer (1 de 6); datos en `src/data/proximamente.json`. Hecho y comprobado (check, build, capturas en escritorio, claro y móvil); falta la revisión |
+| **Siguiente paso** | «Próximamente»: `/code-review --max-findings all` contra `origin/main`, arreglos, fase 2 (opt-tokens y retro, por llevar componente y estilos), `revisado.sh` y confirmación de la persona para subir a `main`. Antes: repos nuevos revisados el 2026-10-25: sin ficha nueva hasta que tengan algo visible (ver «Pendiente»). Pendiente de la persona: la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"`, el flujo cree `web.md` y la tarea lleve el paso 2b (ver «Pendiente») |
 | **En `main`** | Todo publicado: muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 37/37 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 47/47 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-Nada pendiente de publicar.
+- «Próximamente» en el inicio (código: componente `TarjetaProxima`, sección en `Inicio.tsx`, estilos, iconos `audio` y `code`, 4 textos por idioma y su test). Aún sin revisar: no entra en `main` sin `/code-review`, marca y confirmación de la persona. Está solo en `ccr-47f8fddd-o5ek6p`, no en la rama de la tarea semanal.
 
 ## Hecho
 

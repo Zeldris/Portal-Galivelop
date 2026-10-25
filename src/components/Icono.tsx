@@ -1,12 +1,14 @@
 import {
-  BarChart3, BookOpen, Cpu, Crown, Dices, Gauge, Globe, Highlighter, Image, Languages, Map,
+  AudioLines, BarChart3, BookOpen, CodeXml, Cpu, Crown, Dices, Gauge, Globe, Highlighter, Image, Languages, Map,
   ShieldCheck, Sparkles, Swords, Users, type LucideIcon,
 } from 'lucide-react';
 
-// Iconos que pueden usar las características de un proyecto (campo "icono" del .json).
+// Iconos que pueden usar las características de un proyecto (campo "icono" del .json) y los de «Próximamente».
 const ICONOS: Record<string, LucideIcon> = {
+  audio: AudioLines,
   book: BookOpen,
   chart: BarChart3,
+  code: CodeXml,
   cpu: Cpu,
   crown: Crown,
   dices: Dices,
