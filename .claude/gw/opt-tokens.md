@@ -27,6 +27,13 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Subagentes con plan cerrado, en el modelo barato** (2026-10-25): aplicar estilos o textos ya decididos, hacer
   capturas o lotes manuales va con la fila de `selector` del modelo barato; la sesión principal revisa el diff y las
   capturas por sección. En el rediseño, 6 de 8 subagentes usaron el grande (4,3M de entrada).
+- **CI en una llamada** (2026-10-25): `list_workflow_runs` con `perPage: 1` y la rama (`branch`), solo al cerrar un
+  bloque y no otra vez hasta el siguiente push (la sesión del 2026-10-25 hizo 28 llamadas, 575k arrastrados).
+- **Tareas programadas de una vez** (2026-10-25): `get_trigger` y `update_trigger` devuelven el prompt entero (~4k);
+  se prepara el texto completo y se cambia con un solo `update_trigger`, sin `get_trigger` para comprobar (la
+  respuesta ya lo trae). 10 llamadas arrastraron ~525k.
+- **`/clear` al llegar a `main`** (2026-10-25): una sesión encadenó varias tareas sin `/clear` (605 llamadas, 18
+  compactaciones, 115k de contexto medio); tras cada subida a `main`, `/clear` y retomar desde la bitácora.
 
 ## Costes conocidos
 
@@ -52,6 +59,8 @@ carpeta del portal. `medir.py` y `recuperar.py` lo buscan también en las carpet
 
 ## Referencias medidas
 
+- 2026-10-25, sesión larga (repos nuevos, tarea semanal, muro, «Próximamente»): 605 llamadas, 115k de contexto medio
+  (suelo 96k, techo 141k), 18 compactaciones; 12 subagentes, 8,1M de entrada. Solo «Próximamente»: 51 llamadas, 124k.
 - 2026-10-25, rediseño del front: 394 llamadas, 112k de contexto medio (suelo 94k, techo 141k), 10 compactaciones;
   8 subagentes, 5,4M de entrada.
 - 2026-10-22, piloto de Galivelop-workflow: 62 llamadas, 171k de contexto medio, suelo 71k, techo 237k, sin
