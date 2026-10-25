@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Rediseño de experiencia de usuario (petición de la persona, 2026-10-25), en `ccr-47f8fddd-o5ek6p`: ficha con «De un vistazo», barra fija de grupos y apartados en hoja; inicio más compacto (5,2 pantallas en escritorio y 8,6 en móvil, antes 6,2 y 11,4). Fase 1 (`/code-review --max-findings all`, 8 de 11 arreglados) y fase 2 hechas: retro `docs/registros/retro-2026-10-25-rediseno.md`, todo aprobado y aplicado (`npm run medir`, `leerAncla()`, plurales en plantilla `{n:uno|varios}`, reglas en `REVIEW.md` y notas en `.claude/gw/opt-tokens.md`). Revisión de la fase 2 hecha (7 hallazgos: Playwright sin instalar avisa con la orden, rutas por defecto completas, etiqueta de ruta, test de todas las plantillas y de `decodeURIComponent` suelto; el de los ternarios queda como criterio en `REVIEW.md`). **Falta:** `revisado.sh`, subir a `main` (confirmado por la persona, 2026-10-25) e igualar la rama de trabajo |
-| **Siguiente paso** | Revisar los commits de la fase 2, `revisado.sh`, subir a `main` e igualar `claude/galivelop-dev-portal-1h89ci` con `main` (merge) para que la tarea semanal no deshaga el rediseño |
-| **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): flujo Galivelop-workflow 0.3.0 y ficha técnica de Galivelop-workflow (seis diagramas y cuatro apartados nuevos); ficha ampliada de Álvaro; la rama de trabajo, igualada con `main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna. Rediseño de experiencia de usuario (2026-10-25) publicado en `main` con confirmación de la persona, tras sus tres fases (revisión, retro `docs/registros/retro-2026-10-25-rediseno.md` aplicada entera, revisión de la fase 2 y marca) |
+| **Siguiente paso** | Lo que pida la persona; si no, «Pendiente». La tarea semanal sigue publicando `claude/galivelop-dev-portal-1h89ci`, ya igualada con `main` |
+| **En `main`** | Todo publicado: rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 32/32 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
@@ -22,6 +22,7 @@ Nada pendiente de publicar.
 
 ## Hecho
 
+- ✅ 2026-10-25 · Rediseño de experiencia de usuario: ficha con «De un vistazo», barra fija de grupos y apartados en hoja; inicio en 3 columnas y más corto (móvil de 11,4 a 8,6 pantallas). Revisado (fase 1, 8 arreglos; fase 3, 7), retro aplicada y publicado en `main` con confirmación de la persona.
 - ✅ Ficha de Galivelop-workflow: la cabecera ya no enmarca el primer diagrama (modo `cabecera: "color"`, nuevo) y los 7 diagramas van en la galería de debajo, como Tarkor.
 - ✅ 2026-10-23 · Ficha ampliada de Álvaro en `/equipo` (trayectoria, formación, tecnologías, idiomas, fortalezas y foto) y versión breve en las tarjetas de equipo de cada proyecto; revisada (`/code-review`, arreglos en `d00b261`) y publicada en `main` con confirmación de la persona.
 
@@ -65,39 +66,6 @@ opt-tokens, 2026-10-22).
   «run-in», «adaptación» en gallego); segunda revisión: 7 más (rejilla según el número de líneas, solo Linux y macOS en
   schema.org, vista previa en redes con el proyecto, «Adapting» en inglés). La fila del README repite el resumen a mano,
   como las de los otros proyectos. Publicada en `main` con su marca.
-- ✅ Piloto de Galivelop-workflow v0.1.0 (2026-10-22, rama `claude/piloto-galivelop-workflow`): `aplicar.py --init`
-  (es; bitácora `docs/traspaso.md`; `npm ci`; `npm run check`; `main` directo; marca en `docs/registros/revisado.txt`;
-  `content` acotado en la fase 1: `^docs/`, `^src/data/`, imágenes de `^public/`, los cinco `.md` de la raíz y los
-  `.md` de las skills), más `visibleLanguages` es/gl/en,
-  filas del portal en `selector.cases`, `designReferences` y `requireRetro: false` (regla del portal: retro solo en
-  cambios grandes). Sustituidos por los del flujo: las 14 skills (las notas «En este repositorio» pasan a `AGENTS.md`),
-  `.githooks/pre-push` (+ `pre-commit` nuevo), los ganchos de `.claude/settings.json` (`.claude/hooks/` borrado) y
-  `tools/qa/{es-codigo.sh,revisado.sh,recuperar.py}` (ahora en `.claude/gw/scripts/`); `opt-tokens/proyecto.md` →
-  `.claude/gw/opt-tokens.md`. `CLAUDE.md` = `@AGENTS.md` + lo de Claude; las reglas del portal, en «Reglas del
-  proyecto» de `AGENTS.md`. `comprobar.yml` del flujo + Node y build. `.gitignore` deja versionar `.claude/gw*` y
-  quita `__pycache__` del repo. `test-ganchos.sh` reescrito para el gancho del flujo. Paso 6: `git push --dry-run origin HEAD:main`
-  con un commit de código de prueba, rechazado por el `pre-push`; commit quitado sin subir. El usuario aprobó (2026-10-22) la fusión de
-  `CLAUDE.md`, la de `comprobar.yml` y `requireRetro: false`. Tres fases hechas (dos `/code-review`, 10 y 11 hallazgos arreglados; `/opt-tokens` y `/retro` aplicados), marca `1a284bd` y
-  publicado en `main` con la rama de trabajo al día (confirmación del usuario).
-- ✅ Créditos a Matt Pocock (2026-10-21, petición del usuario): mención al final de cada una de sus 11 skills,
-  apartado «Agradecimiento» en `.claude/skills/README.md` (hemos aprendido esta forma de trabajar gracias a su
-  trabajo) y nota en el runbook. Cambia `.claude/`, así que lleva `/code-review` y marca de revisado.
-- ✅ Flujo de trabajo de Tarkor en el portal (2026-10-21): skills en `.claude/skills/` (selector y
-  orchestrate-dealer reescritas; grilling, grill-with-docs, domain-modeling, diagnosing-bugs, codebase-design,
-  improve-codebase-architecture, retro, writing-for-agents, pr, prototype, research y opt-tokens con su nota del
-  portal), runbook `docs/runbooks/skills-y-modelos.md`, `REVIEW.md`, `GLOSSARY.md`, ganchos (`.claude/settings.json`:
-  sesión, compactación con `tools/qa/recuperar.py --estado` y revisión antes de un PR a `main`; `.githooks/pre-push`
-  con `npm run check`) y `tools/qa/revisado.sh`. No se traen `opt-ai`, `scout-updates` ni las rondas de pruebas.
-  Dos rondas de `/code-review` (14 y 15 hallazgos, arreglados): el `pre-push` comprueba el commit que se sube y, en
-  una subida a `main` con código, exige la marca de revisión, que va en el repo (`docs/registros/revisado.txt`)
-  para que la tarea semanal pueda publicar contenido. Retro aplicada: test de los ganchos en `npm run check`
-  (`tools/qa/tests/test-ganchos.sh`), regla «Ganchos y scripts» en `REVIEW.md` y fila «Traer algo de otro repo» en el
-  `selector`. `/opt-tokens`: la sesión iba a ~681k de contexto por llamada; `/clear` tras subir a `main`. Publicado en `main`.
-
-Datos fijos que salían en entradas antiguas:
-
-- Tarea «Proyectos semanal» (antes «Tarkor semanal»; texto en `docs/runbooks/tarea-semanal.md`): `trig_012hEySn87yUmW8zcoeSvzYm`, domingos 22:46 Europe/Madrid, en la sesión «Tarkor semanal
-  (portal)» (`session_0153sKUm2ZLwd6cFbMATVqfa`).
 
 ## Pendiente
 
