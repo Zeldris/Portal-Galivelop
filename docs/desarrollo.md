@@ -132,7 +132,7 @@ skill `gw-media-content` del flujo). De cada pieza lee solo su `web.md`, que lle
 }
 ```
 
-- Se publica solo con `"estado": "listo"` y `fecha` de hoy o anterior; cualquier otro estado (o sin él) se ignora.
+- Se publica solo con `"estado": "listo"` y `fecha` de hoy o anterior (una con fecha futura sale el domingo en que ya toque); cualquier otro estado (o sin él) se ignora.
 - `texto` es la novedad de la ficha (como hasta ahora). Con `muro`, además, una publicación: `titulo` y `cuerpo`
   de ahí, `texto` como entradilla.
 - `archivo` es relativo a la carpeta de la pieza; a su lado tiene que estar su `-mini`. Con versiones por idioma, la

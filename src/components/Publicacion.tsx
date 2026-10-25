@@ -13,7 +13,7 @@ function ImagenMuro({ imagen }: { imagen: ImagenPublicacion }) {
   const v = versionDe(imagen, idioma);
   return (
     <>
-      <button type="button" className="publicacion-imagen" onClick={() => dialogo.current?.showModal()} aria-label={t('galeria.ampliar')}>
+      <button type="button" className="publicacion-imagen" onClick={() => dialogo.current?.showModal()} aria-label={`${t('galeria.ampliar')}: ${tx(imagen.alt)}`}>
         <img src={ruta(v.mini)} alt={tx(imagen.alt)} loading="lazy" width={imagen.ancho} height={imagen.alto} />
       </button>
       <dialog ref={dialogo} className="galeria-dialogo" onClick={(e) => e.target === dialogo.current && dialogo.current.close()}>

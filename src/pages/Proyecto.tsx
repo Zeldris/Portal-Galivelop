@@ -421,9 +421,11 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                       </li>
                     ))}
                   </ul>
-                  <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
-                    {t('muro.verTodas', { n: deMuro.length })} <ArrowRight size={15} aria-hidden="true" />
-                  </Link>
+                  {deMuro.length > PUBLICACIONES_EN_FICHA && (
+                    <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
+                      {t('muro.verTodas', { n: deMuro.length })} <ArrowRight size={15} aria-hidden="true" />
+                    </Link>
+                  )}
                 </div>
               )}
             </div>

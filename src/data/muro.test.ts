@@ -61,6 +61,11 @@ describe('muro', () => {
         expect(textos.filter(incompleto)).toEqual([]);
       });
 
+      it('cada imagen trae su ancho y alto (evitan saltos al cargar)', () => {
+        const sinMedidas = (p.imagenes ?? []).filter((i) => !(Number.isInteger(i.ancho) && i.ancho > 0 && Number.isInteger(i.alto) && i.alto > 0));
+        expect(sinMedidas.map((i) => i.src)).toEqual([]);
+      });
+
       it('todas sus imágenes existen en public/ y están en su carpeta', () => {
         const rutas = (p.imagenes ?? []).flatMap((i) => [i, ...Object.values(i.porIdioma ?? {})]).flatMap((v) => [v.src, v.mini]);
         expect(rutas.filter((src) => !src.startsWith(`proyectos/${p.proyecto}/muro/${p.pieza}/`))).toEqual([]);

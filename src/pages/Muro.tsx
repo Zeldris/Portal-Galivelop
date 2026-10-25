@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Publicacion } from '../components/Publicacion';
-import { publicaciones } from '../data/muro';
+import { publicaciones, publicacionesDe } from '../data/muro';
 import { proyectos } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
 /** El muro: lo que publica cada proyecto, lo más reciente primero, con filtro por proyecto (?proyecto=<slug>). */
 export function Muro() {
   const { t } = useIdioma();
-  const [parametros, setParametros] = useSearchParams();
-  const conPublicaciones = proyectos.filter((p) => publicaciones.some((x) => x.proyecto === p.slug));
+  const [parametros] = useSearchParams();
+  const navegar = useNavigate();
+  const { hash } = useLocation();
+  const conPublicaciones = proyectos.filter((p) => publicacionesDe(p.slug).length > 0);
   const pedido = parametros.get('proyecto');
   const filtro = conPublicaciones.some((p) => p.slug === pedido) ? pedido : null;
   const visibles = publicaciones.filter((p) => !filtro || p.proyecto === filtro);
-  const cuenta = (slug: string) => publicaciones.filter((p) => p.proyecto === slug).length;
 
   useEffect(() => {
     document.title = `${t('muro.titulo')} · Galivelop`;
@@ -22,9 +23,9 @@ export function Muro() {
     };
   }, [t]);
 
-  /** Cambia el filtro sin perder el resto de la dirección ni llenar el historial. */
+  /** Cambia el filtro sin llenar el historial; conserva el ancla para que la página no vuelva arriba (`Desplazamiento`). */
   const filtrar = (slug: string | null) =>
-    setParametros(slug ? { proyecto: slug } : {}, { replace: true, preventScrollReset: true });
+    navegar({ search: slug ? `?proyecto=${slug}` : '', hash }, { replace: true, preventScrollReset: true });
 
   return (
     <section className="seccion muro">
@@ -45,7 +46,7 @@ export function Muro() {
             {conPublicaciones.map((p) => (
               <button key={p.slug} type="button" aria-pressed={filtro === p.slug} onClick={() => filtrar(p.slug)}>
                 {p.nombre}
-                <span className="filtro-cuenta">{cuenta(p.slug)}</span>
+                <span className="filtro-cuenta">{publicacionesDe(p.slug).length}</span>
               </button>
             ))}
           </div>
