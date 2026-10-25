@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna: «Próximamente» publicado en `main` (2026-10-25) |
+| **Tarea en curso** | Ninguna: revisión especial de todos los repos publicada en `main` (2026-10-25) |
 | **Siguiente paso** | `/clear`. Pendiente de la persona: pegar de nuevo el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (ahora el paso 2 trae la historia de los clones superficiales antes de los `git log --since`; desde otra sesión no se puede); la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"` y el flujo cree `web.md` (ver «Pendiente») |
-| **En `main`** | Todo publicado: «Próximamente» en el inicio (2026-10-25, confirmación de la persona); muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | Todo publicado: revisión especial de los repos (fichas de Galivelop-workflow y Tarkor, 2026-10-25, confirmación de la persona); «Próximamente» en el inicio (2026-10-25, confirmación de la persona); muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 49/49 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
@@ -20,6 +20,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ 2026-10-25 · Revisión especial de todos los repos y publicación (a petición de la persona, «ocasión especial»): Galivelop-workflow, novedad de la 0.4.0 en preparación (rama `ccr-6dfbc880-ddr41g`, sin publicar; cosecha al empezar cada versión, skills de contenido para redes y `wait-what`, ganchos más seguros, CI que no arranca) y detalle del hito 7; Tarkor, novedad de la enciclopedia revisada con el canon (las herramientas de voces e imágenes con IA local son internas, no salen); toVeriAI, «Próximamente» y muro sin cambios (ningún `web.md` listo). Las propuestas P1/P3/P4 del portal ya están aplicadas en esa rama del flujo. Publicado en `main` con confirmación de la persona; la rama de la tarea, igualada con `main`.
 - ✅ 2026-10-25 · Comprobada la revisión semanal del mismo día (`b92a8a1`): cada proyecto cuadra con sus repos (Tarkor: la novedad sale de las tandas 22-27 del 10-23 y lo del 10-24 y 10-25 es interno; Galivelop-workflow sin etiqueta nueva tras la v0.3.0; toVeriAI sin novedades públicas desde el 07-17; «Próximamente» igual que los planes y bitácoras de cada repo; ningún `web.md` listo). CI «Comprobar» y «Publicar en GitHub Pages» en verde. Al recortar «Hecho» se perdió la comprobación manual de Discord: repuesta en «Pendiente».
 - ✅ 2026-10-25 · Runbook de la tarea semanal (a petición de la persona): en el paso 2, antes de los `git log --since`, si el clon del proyecto es superficial, `git fetch --shallow-since=<un día antes de la fecha más antigua de N y F>` (o `--unshallow`), para que no salgan como nuevos commits o archivos antiguos. Publicado en `main` con confirmación de la persona (solo documentos); falta pegarlo en la conversación de la tarea.
 - ✅ 2026-10-25 · Revisión semanal: Tarkor con una novedad (ronda de pruebas del mundo vivo cerrada, 2026-10-23); Galivelop-workflow (sigue en la v0.3.0), toVeriAI y «Próximamente» (2/6, 1/8, 1/6) sin cambios; muro sin publicaciones (ninguna pieza con `estado: "listo"`). Publicado en `main`.
@@ -29,19 +30,6 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 - ✅ 2026-10-25 · Rediseño de experiencia de usuario: ficha con «De un vistazo», barra fija de grupos y apartados en hoja; inicio en 3 columnas y más corto (móvil de 11,4 a 8,6 pantallas). Revisado (fase 1, 8 arreglos; fase 3, 7), retro aplicada y publicado en `main` con confirmación de la persona.
 - ✅ Ficha de Galivelop-workflow: la cabecera ya no enmarca el primer diagrama (modo `cabecera: "color"`, nuevo) y los 7 diagramas van en la galería de debajo, como Tarkor.
 - ✅ 2026-10-23 · Ficha ampliada de Álvaro en `/equipo` (trayectoria, formación, tecnologías, idiomas, fortalezas y foto) y versión breve en las tarjetas de equipo de cada proyecto; revisada (`/code-review`, arreglos en `d00b261`) y publicada en `main` con confirmación de la persona.
-- ✅ Ficha de Galivelop-workflow más técnica (2026-10-23): seis diagramas y cuatro apartados nuevos. Publicado en `main` (confirmación del usuario).
-- ✅ Revisión semanal (2026-10-23): Tarkor, 4 novedades (Casa de obras y Almacén, vasallaje con cuota y asaltos, reparar edificios y caza, ronda de pruebas), textos e imágenes sin cambios (lo del 18 ya estaba); toVeriAI, 2 novedades (racha más visible, volver a la página al iniciar sesión), fase e hitos sin cambios; Galivelop-workflow sin cambios (v0.3.0 ya en la ficha). Publicado en `main`.
-- ✅ Flujo Galivelop-workflow 0.3.0 (2026-10-23, confirmación del usuario), publicado en `main` con su revisión y marca:
-  `aplicar.py --update` (14 scripts, esquema, 19 skills, `test_medir.py` nuevo, `pre-commit`, `pre-push` y
-  `comprobar.yml`); `AGENTS.md` y `CLAUDE.md` fusionados a mano («la persona», `.claude/gw/scripts/`), la regla de
-  carpetas en `/tmp` por usuario en `REVIEW.md`, marcas a 0.3.0 en `GLOSSARY.md` y `.claude/gw/opt-tokens.md` y
-  `version` 0.3.0. En `comprobar.yml` se repusieron Node 22 con caché de npm y el build del portal (los volvió a
-  quitar el `--update`); por eso `aplicar.py --check` sigue avisando de ese archivo. `doctor.py` sin FAIL.
-  Después, la ficha de Galivelop-workflow a la 0.3.0 (fase 7, hitos y novedad en los tres idiomas; la última que
-  ponen al día las sesiones) y en `AGENTS.md` la regla de la tarea semanal dice que manda desde esa ficha.
-
-Las 10 últimas; al añadir una, se borra la más antigua (lo anterior está en `git log -- docs/traspaso.md`;
-opt-tokens, 2026-10-22).
 
 ## Pendiente
 

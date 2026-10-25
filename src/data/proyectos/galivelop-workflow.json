@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "color",
-  "actualizado": "2026-10-23",
+  "actualizado": "2026-10-25",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -1503,9 +1503,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Empieza con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador.",
-        "gl": "Comeza coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador.",
-        "en": "It starts with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us."
+        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0, en preparación, suma lo aprendido en el portal y en los proyectos nuevos.",
+        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0, en preparación, suma o aprendido no portal e nos proxectos novos.",
+        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0, in preparation, adds what the portal and the new projects taught us."
       }
     },
     {
@@ -1537,6 +1537,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-10-25",
+      "texto": {
+        "es": "Versión 0.4.0, en preparación (prevista hacia el 30 de octubre): cada versión empezará recogiendo lo aprendido en los proyectos, llegan dos skills para preparar contenido para redes a partir del trabajo hecho y otra para pararse a revisar lo que no cuadra, y los ganchos son más seguros: comprueban que la bitácora va en el mismo commit, detectan caracteres invisibles y ya no se quedan colgados. Si el CI no arranca, el check en local solo vale con la confirmación de la persona.",
+        "gl": "Versión 0.4.0, en preparación (prevista cara ao 30 de outubro): cada versión comezará recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
+        "en": "Version 0.4.0, in preparation (due around 30 October): each version will start by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn't add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn't start, a local check only counts with the person's confirmation."
+      }
+    },
     {
       "fecha": "2026-10-23",
       "texto": {

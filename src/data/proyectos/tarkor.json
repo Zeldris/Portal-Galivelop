@@ -3975,6 +3975,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-10-25",
+      "texto": {
+        "es": "Enciclopedia revisada y alineada con el canon del mundo: fichas de combate y sistemas, objetos y recetas, lugares, facciones, fauna y flora. La Ciénaga Troncal, el Cristal Helado y la Meseta del Orden ganan fauna, población e historia propias, y ocho habilidades que se llamaban igual tienen ya nombres distintos.",
+        "gl": "Enciclopedia revisada e aliñada co canon do mundo: fichas de combate e sistemas, obxectos e receitas, lugares, faccións, fauna e flora. A Braña Troncal, o Cristal Xeado e a Meseta da Orde gañan fauna, poboación e historia propias, e oito habilidades que se chamaban igual teñen xa nomes distintos.",
+        "en": "Encyclopedia reviewed and aligned with the world's canon: combat sheets and systems, items and recipes, places, factions, fauna and flora. The Trunk Swamp, the Frozen Crystal and the Plateau of Order gain their own fauna, population and history, and eight skills that shared a name now have distinct ones."
+      }
+    },
+    {
       "fecha": "2026-10-23",
       "texto": {
         "es": "Ronda de pruebas del mundo vivo, cerrada: comprobados jugando el combate en grupo, comer y beber para recuperar energía, los caminos cortados que interrumpen el viaje, los maestros de oficio, el ganado y la espera entre asaltos al Reino.",
@@ -4028,14 +4036,6 @@
         "es": "Testigos: lo que haces lo ve quien está cerca, y una muerte sin testigos no llega a saberse. Además, viajes directos con montura y el ganado del clan.",
         "gl": "Testemuñas: o que fas véo quen está preto, e unha morte sen testemuñas non chega a saberse. Ademais, viaxes directas con montura e o gando do clan.",
         "en": "Witnesses: whoever is nearby sees what you do, and a death with no witnesses never gets known. Plus direct travel on a mount and the clan’s livestock."
-      }
-    },
-    {
-      "fecha": "2026-10-17",
-      "texto": {
-        "es": "Los edificios tienen ficha propia y menú para hablar con quien los lleva, y las rutas del mapa de zona ya rodean los muros.",
-        "gl": "Os edificios teñen ficha propia e menú para falar con quen os leva, e as rutas do mapa de zona xa rodean os muros.",
-        "en": "Buildings get their own sheet and a menu to talk to whoever runs them, and zone map routes now go around walls."
       }
     }
   ],
