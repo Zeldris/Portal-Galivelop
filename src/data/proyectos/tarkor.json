@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-23",
+  "actualizado": "2026-10-25",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3975,6 +3975,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-10-23",
+      "texto": {
+        "es": "Ronda de pruebas del mundo vivo, cerrada: comprobados jugando el combate en grupo, comer y beber para recuperar energía, los caminos cortados que interrumpen el viaje, los maestros de oficio, el ganado y la espera entre asaltos al Reino.",
+        "gl": "Rolda de probas do mundo vivo, pechada: comprobados xogando o combate en grupo, comer e beber para recuperar enerxía, os camiños cortados que interrompen a viaxe, os mestres de oficio, o gando e a espera entre asaltos ao Reino.",
+        "en": "Living-world play-testing round, finished: tested by playing group combat, eating and drinking to recover energy, cut roads that interrupt travel, trade masters, livestock and the wait between raids on the Kingdom."
+      }
+    },
+    {
       "fecha": "2026-10-22",
       "texto": {
         "es": "Casa de obras: una cola de obras y reparaciones que llevan tus constructores, y un Almacén con topes de comida y agua que explica de dónde sale la comida de cada día.",
@@ -4028,14 +4036,6 @@
         "es": "Los edificios tienen ficha propia y menú para hablar con quien los lleva, y las rutas del mapa de zona ya rodean los muros.",
         "gl": "Os edificios teñen ficha propia e menú para falar con quen os leva, e as rutas do mapa de zona xa rodean os muros.",
         "en": "Buildings get their own sheet and a menu to talk to whoever runs them, and zone map routes now go around walls."
-      }
-    },
-    {
-      "fecha": "2026-10-15",
-      "texto": {
-        "es": "Ronda de pruebas jugando: las tiradas explican contra qué se tira, aprender un oficio dice qué se enseña y mejoran el mapa de zona y la energía.",
-        "gl": "Rolda de probas xogando: as tiradas explican contra que se tira, aprender un oficio di que se ensina e melloran o mapa de zona e a enerxía.",
-        "en": "Play-testing round: rolls explain what you roll against, learning a trade says what is taught, and the zone map and energy improve."
       }
     }
   ],
