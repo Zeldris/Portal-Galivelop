@@ -1,6 +1,6 @@
 # Tarea semanal «Proyectos semanal»
 
-Texto de la tarea programada que cada domingo por la noche pone al día las fichas de todos los proyectos y publica
+Texto de la tarea programada que cada domingo a las 20:45 (hora de Madrid; desde el 2026-10-25, antes a las 22:46) pone al día las fichas de todos los proyectos y publica
 la rama de trabajo en `main` (ver «Publicación semanal» en [`AGENTS.md`](../../AGENTS.md)). La tarea solo se puede
 cambiar desde su propia conversación: si este texto cambia, se pega allí.
 
