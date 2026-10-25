@@ -7,6 +7,7 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { buscarPersona, iniciales } from '../data/equipo';
+import { idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
 import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
@@ -18,6 +19,8 @@ import { NoEncontrado } from './NoEncontrado';
 // qué punto está. Arriba, «De un vistazo» adelanta lo que más se busca: la fase, el avance y lo último.
 type Grupo = 'resumen' | 'galeria' | 'afondo' | 'tecnica' | 'avance';
 const NOVEDADES_VISIBLES = 3;
+/** Publicaciones del muro que se adelantan en la ficha; el resto, en /muro. */
+const PUBLICACIONES_EN_FICHA = 3;
 
 const ICONO_HITO: Record<EstadoHito, typeof Check> = { hecho: Check, curso: LoaderCircle, pendiente: CircleDashed };
 
@@ -28,7 +31,7 @@ function gruposDe(p: TipoProyecto): Grupo[] {
     galeria: p.capturas.length + p.galeria.length > 0,
     afondo: p.apartados.length > 0,
     tecnica: p.ficha.length + p.aprendizajes.length + p.decisiones.length > 0,
-    avance: p.hitos.length + p.novedades.length + p.equipo.length > 0,
+    avance: p.hitos.length + p.novedades.length + p.equipo.length + publicacionesDe(p.slug).length > 0,
   };
   return (Object.keys(hay) as Grupo[]).filter((g) => hay[g]);
 }
@@ -101,6 +104,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const hechos = p.hitos.filter((h) => h.estado === 'hecho').length;
   const proximo = p.hitos.find((h) => h.estado === 'curso') ?? p.hitos.find((h) => h.estado === 'pendiente');
   const ultima = p.novedades[0];
+  const deMuro = publicacionesDe(p.slug);
   const modoCabecera = p.cabecera ?? 'ilustracion';
   const indice = proyectos.findIndex((x) => x.slug === p.slug);
   const siguiente = proyectos.length > 1 ? proyectos[(indice + 1) % proyectos.length] : undefined;
@@ -399,6 +403,27 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                       {todasNovedades ? t('novedades.menos') : t('novedades.todas', { n: p.novedades.length })}
                     </button>
                   )}
+                </div>
+              )}
+              {deMuro.length > 0 && (
+                <div id="publicaciones" className="bloque">
+                  <h3 className="bloque-titulo">{t('sec.publicaciones')}</h3>
+                  <ul className="novedades publicaciones-ficha">
+                    {deMuro.slice(0, PUBLICACIONES_EN_FICHA).map((x) => (
+                      <li key={x.pieza}>
+                        <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
+                        <div>
+                          <Link to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`} className="publicacion-enlace">
+                            {tx(x.titulo)}
+                          </Link>
+                          <p>{tx(x.texto)}</p>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
+                    {t('muro.verTodas', { n: deMuro.length })} <ArrowRight size={15} aria-hidden="true" />
+                  </Link>
                 </div>
               )}
             </div>

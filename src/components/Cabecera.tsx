@@ -1,6 +1,7 @@
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { publicaciones } from '../data/muro';
 import { IDIOMAS } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { Logo } from './Logo';
@@ -28,6 +29,8 @@ export function Cabecera() {
           <MenuProyectos alNavegar={() => setMenuAbierto(false)} />
           <Link to="/#lineas" onClick={() => setMenuAbierto(false)}>{t('nav.lineas')}</Link>
           <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>{t('nav.sobre')}</Link>
+          {/* El muro sale en el menú en cuanto tiene alguna publicación. */}
+          {publicaciones.length > 0 && <Link to="/muro" onClick={() => setMenuAbierto(false)}>{t('nav.muro')}</Link>}
           <Link to="/equipo" onClick={() => setMenuAbierto(false)}>{t('nav.equipo')}</Link>
           <Link to="/#participa" onClick={() => setMenuAbierto(false)}>{t('nav.contacto')}</Link>
         </nav>

@@ -93,3 +93,28 @@ export interface Apartado {
   /** Galería propia del apartado, por grupos con pestañas (p. ej. «Arte del mundo»). No rota sola. */
   grupos?: { id: string; etiqueta: Texto; imagenes: Imagen[] }[];
 }
+
+/** Imagen de una publicación del muro: puede tener otra versión por idioma (p. ej. una tarjeta con texto en inglés). */
+export interface ImagenPublicacion extends Imagen {
+  /** Versión para un idioma; el que no la tenga usa `src`/`mini` (la versión en castellano). */
+  porIdioma?: Partial<Record<Idioma, { src: string; mini: string }>>;
+}
+
+/**
+ * Publicación del muro. Cada una vive en src/data/muro/<proyecto>/<pieza>.json y sus imágenes en
+ * public/proyectos/<proyecto>/muro/<pieza>/. Sale del `web.md` de una pieza de `docs/difusion/` del proyecto
+ * marcada como lista; ver docs/desarrollo.md, «El muro».
+ */
+export interface Publicacion {
+  /** Slug del proyecto (el de src/data/proyectos/<slug>.json). */
+  proyecto: string;
+  /** Carpeta de la pieza dentro de docs/difusion/ del proyecto, con «/» cambiada por «-». Igual al nombre del archivo. */
+  pieza: string;
+  fecha: string;
+  titulo: Texto;
+  /** Entradilla: una o dos frases. */
+  texto: Texto;
+  /** Párrafos que siguen a la entradilla, opcionales. */
+  cuerpo?: Texto[];
+  imagenes?: ImagenPublicacion[];
+}

@@ -8,10 +8,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna. Rediseño de experiencia de usuario (2026-10-25) publicado en `main` con confirmación de la persona, tras sus tres fases (revisión, retro `docs/registros/retro-2026-10-25-rediseno.md` aplicada entera, revisión de la fase 2 y marca) |
-| **Siguiente paso** | Lo que pida la persona; si no, «Pendiente». La tarea semanal sigue publicando `claude/galivelop-dev-portal-1h89ci`, ya igualada con `main` |
+| **Tarea en curso** | Muro (`/muro`, publicaciones de `docs/difusion` de cada proyecto): código y contrato hechos en `ccr-47f8fddd-o5ek6p`, **sin revisar**; no entra en `claude/galivelop-dev-portal-1h89ci` ni en `main` sin `/code-review --max-findings all` y marca |
+| **Siguiente paso** | Con el visto bueno de la persona: fase 1 (`/code-review --max-findings all` contra `origin/main`) del muro, fase 3 (`revisado.sh`) y llevarlo a `main`; pegar el paso 2b de `docs/runbooks/tarea-semanal.md` en la conversación de la tarea |
 | **En `main`** | Todo publicado: rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 32/32 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 35/35 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
@@ -22,6 +22,7 @@ Nada pendiente de publicar.
 
 ## Hecho
 
+- ✅ 2026-10-25 · Muro: página `/muro` con filtro por proyecto y ancla por publicación, las 3 últimas en cada ficha, página estática y `llms.txt`; se oculta sin publicaciones. Contrato de `docs/difusion/**/web.md` (`estado: "listo"`, bloque `muro`) en «El muro» de `docs/desarrollo.md` y paso 2b de la tarea semanal. Probado con piezas de ejemplo (escritorio y móvil) que luego se quitaron. Sin revisar.
 - ✅ 2026-10-25 · Tarea «Proyectos semanal» movida de las 22:46 a las 20:45 de los domingos (Europe/Madrid), a petición de la persona.
 - ✅ 2026-10-25 · Rediseño de experiencia de usuario: ficha con «De un vistazo», barra fija de grupos y apartados en hoja; inicio en 3 columnas y más corto (móvil de 11,4 a 8,6 pantallas). Revisado (fase 1, 8 arreglos; fase 3, 7), retro aplicada y publicado en `main` con confirmación de la persona.
 - ✅ Ficha de Galivelop-workflow: la cabecera ya no enmarca el primer diagrama (modo `cabecera: "color"`, nuevo) y los 7 diagramas van en la galería de debajo, como Tarkor.
@@ -69,6 +70,11 @@ opt-tokens, 2026-10-22).
   como las de los otros proyectos. Publicada en `main` con su marca.
 
 ## Pendiente
+
+- Propuesta para el flujo (próxima recogida), del muro (2026-10-25): la skill `gw-media-content` debería dejar en
+  cada pieza un `web.md` con el bloque JSON de «El muro» de `docs/desarrollo.md`, **con `estado`** (hoy el de
+  Tarkor no lo trae y la tarea no publicaría nada); y unificar la carpeta de las piezas (Tarkor usa
+  `AAAA-MM-DD-tema/`, la skill `AAAA-MM-DD/NN-tema/`; el portal acepta las dos).
 
 - Leve, de la revisión del rediseño (2026-10-25): abrir un apartado cambia el `#ap-…` con `replaceState`, así que el botón Atrás del móvil sale de la ficha en vez de cerrar la hoja (valorar `pushState` y cerrar con `popstate`); el límite de 160 px de la barra de grupos (`NavFicha`) está fijo y no sigue a la altura real de la cabecera y la barra.
 

@@ -92,6 +92,54 @@ La página **Equipo** (`/equipo`) sale de [`src/data/equipo.json`](../src/data/e
 
 En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su tarjeta.
 
+## El muro
+
+`/muro` es una sección tipo red social: publicaciones de todos los proyectos, de la más reciente a la más antigua,
+con un filtro por proyecto (`/muro?proyecto=<slug>`) y un ancla por publicación (`#<slug>-<pieza>`). Cada ficha
+muestra sus 3 últimas con un enlace al muro filtrado. Sin publicaciones, ni el enlace del menú ni la página
+estática existen.
+
+- **Datos:** `src/data/muro/<slug>/<pieza>.json`, con el formato `Publicacion` de
+  [`src/data/tipos.ts`](../src/data/tipos.ts): `proyecto`, `pieza`, `fecha`, `titulo`, `texto` (la entradilla),
+  `cuerpo` (párrafos, opcional) e `imagenes` (opcional). Todo texto, en los tres idiomas.
+- **Imágenes:** en `public/proyectos/<slug>/muro/<pieza>/`, WebP grande (unos 1600 px) y `-mini` (unos 720 px). Una
+  imagen con texto dentro puede tener versión por idioma en `porIdioma` (`{ "en": { "src", "mini" } }`); sin ella, se
+  usa la de `src`/`mini`.
+- **`pieza`:** la ruta de la pieza dentro de `docs/difusion/` del proyecto con las `/` cambiadas por `-`
+  (`2026-10-20-mapa-del-mundo`, o `2026-10-20-01-mapa` si la carpeta es `2026-10-20/01-mapa/`). Es también el
+  nombre del archivo, y `npm run check` comprueba que casan.
+- Código: [`src/pages/Muro.tsx`](../src/pages/Muro.tsx), [`src/components/Publicacion.tsx`](../src/components/Publicacion.tsx)
+  y [`src/data/muro.ts`](../src/data/muro.ts); la página estática, en `scripts/paginas-estaticas.mjs`.
+
+### De dónde salen: `docs/difusion` de cada proyecto
+
+Las publicaciones las escribe la tarea semanal a partir de la carpeta de difusión de cada proyecto (la rellena la
+skill `gw-media-content` del flujo). De cada pieza lee solo su `web.md`, que lleva un bloque JSON:
+
+```json
+{
+  "estado": "listo",
+  "fecha": "AAAA-MM-DD",
+  "texto": { "es": "…", "gl": "…", "en": "…" },
+  "muro": {
+    "titulo": { "es": "…", "gl": "…", "en": "…" },
+    "cuerpo": [{ "es": "…", "gl": "…", "en": "…" }],
+    "imagenes": [
+      { "archivo": "medios/mapa.webp", "alt": { "es": "…", "gl": "…", "en": "…" } },
+      { "archivo": { "es": "medios/tarjeta.es.webp", "en": "medios/tarjeta.en.webp" }, "alt": { "es": "…", "gl": "…", "en": "…" } }
+    ]
+  }
+}
+```
+
+- Se publica solo con `"estado": "listo"` y `fecha` de hoy o anterior; cualquier otro estado (o sin él) se ignora.
+- `texto` es la novedad de la ficha (como hasta ahora). Con `muro`, además, una publicación: `titulo` y `cuerpo`
+  de ahí, `texto` como entradilla.
+- `archivo` es relativo a la carpeta de la pieza; a su lado tiene que estar su `-mini`. Con versiones por idioma, la
+  de `es` va en `src`/`mini` y las demás en `porIdioma`.
+- Una pieza que ya tiene su archivo en `src/data/muro/` no se vuelve a publicar; si su `web.md` cambia, se
+  actualiza el mismo archivo.
+
 ## Desarrollo
 
 ```bash

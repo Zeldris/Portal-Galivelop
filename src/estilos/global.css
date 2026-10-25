@@ -3850,3 +3850,133 @@ body:has(dialog[open]) {
     padding-top: 10px;
   }
 }
+
+/* Muro: publicaciones de los proyectos, una columna como en una red social. */
+.muro-contenedor {
+  max-width: 760px;
+  display: grid;
+  gap: 24px;
+}
+
+.muro-lista {
+  display: grid;
+  gap: 20px;
+}
+
+.publicacion {
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--acento-proyecto, var(--celeste));
+  border-radius: var(--radio);
+  background: var(--superficie);
+  scroll-margin-top: 96px;
+}
+
+.publicacion:target {
+  border-color: var(--acento-proyecto, var(--celeste));
+}
+
+.publicacion-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.publicacion-autor {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.publicacion-autor img {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.publicacion-autor:hover {
+  color: var(--enlace);
+}
+
+.publicacion-cabecera time {
+  color: var(--texto-3);
+}
+
+.publicacion .publicacion-titulo {
+  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.publicacion p {
+  margin: 0;
+  color: var(--texto-2);
+}
+
+.publicacion .publicacion-entradilla {
+  color: var(--texto);
+}
+
+.publicacion-imagenes {
+  display: grid;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.publicacion-imagenes-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.publicacion-imagenes-3 {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.publicacion-imagen {
+  padding: 0;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  overflow: hidden;
+  background: var(--superficie-2);
+  cursor: zoom-in;
+}
+
+.publicacion-imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.publicaciones-ficha .publicacion-enlace {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.publicaciones-ficha .publicacion-enlace:hover {
+  color: var(--enlace);
+}
+
+@media (max-width: 640px) {
+  .publicacion {
+    padding: 18px;
+  }
+
+  .publicacion-imagenes-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Una sola imagen se ve entera, con su proporción. */
+.publicacion-imagenes-1 img {
+  aspect-ratio: auto;
+}

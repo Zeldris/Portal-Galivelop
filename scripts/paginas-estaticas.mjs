@@ -22,6 +22,12 @@ const proyectos = readdirSync('src/data/proyectos')
   .map((f) => JSON.parse(readFileSync(`src/data/proyectos/${f}`, 'utf8')))
   .sort((a, b) => b.orden - a.orden);
 
+// Publicaciones del muro (src/data/muro/<proyecto>/<pieza>.json), la más reciente primero, como src/data/muro.ts.
+const publicaciones = readdirSync('src/data/muro', { withFileTypes: true })
+  .filter((d) => d.isDirectory())
+  .flatMap((d) => readdirSync(`src/data/muro/${d.name}`).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`src/data/muro/${d.name}/${f}`, 'utf8'))))
+  .sort((a, b) => b.fecha.localeCompare(a.fecha) || b.pieza.localeCompare(a.pieza));
+
 const IDIOMAS = ['es', 'gl', 'en'];
 const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
@@ -35,11 +41,19 @@ const FIJAS = {
   'participa/proponer': { es: ['Propón un proyecto · Galivelop'], gl: ['Propón un proxecto · Galivelop'], en: ['Propose a project · Galivelop'] },
   'participa/unirse': { es: ['Únete al taller · Galivelop'], gl: ['Únete ao obradoiro · Galivelop'], en: ['Join the workshop · Galivelop'] },
 };
+// El muro solo tiene página (y entra en el sitemap) cuando ya hay alguna publicación.
+if (publicaciones.length > 0) {
+  FIJAS.muro = {
+    es: ['Muro · Galivelop', 'Lo que cuenta cada proyecto de Galivelop mientras avanza: pruebas, decisiones, imágenes y lo aprendido.'],
+    gl: ['Muro · Galivelop', 'O que conta cada proxecto de Galivelop mentres avanza: probas, decisións, imaxes e o aprendido.'],
+    en: ['Feed · Galivelop', 'What each Galivelop project shares as it moves forward: tests, decisions, images and lessons learnt.'],
+  };
+}
 
 const paginas = [];
 for (const idioma of IDIOMAS) {
   for (const [ruta, t] of Object.entries(FIJAS)) {
-    paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN });
+    paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN, ...(ruta === 'muro' ? { fecha: publicaciones[0].fecha } : {}) });
   }
   for (const p of proyectos) {
     p.imagen ??= imagenDe(p.portada.src);
@@ -62,6 +76,11 @@ const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication', 'galivelop-workf
 function cuerpo(pg) {
   const enlaces = proyectos.map((p) => `<li><a href="${urlDe(pg.idioma, `proyectos/${p.slug}`)}">${esc(p.nombre)}</a>: ${esc(p.lema[pg.idioma])}</li>`).join('');
   const p = pg.proyecto;
+  if (pg.ruta === 'muro') {
+    const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
+    const posts = publicaciones.map((x) => `<article><h2>${esc(x.titulo[pg.idioma])}</h2><p>${esc(nombre(x.proyecto))} · ${x.fecha}</p><p>${esc(x.texto[pg.idioma])}</p>${(x.cuerpo ?? []).map((c) => `<p>${esc(c[pg.idioma])}</p>`).join('')}</article>`).join('');
+    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p>${posts}<ul>${enlaces}</ul></main>`;
+  }
   if (!p) return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
   const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
   return `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
@@ -130,7 +149,7 @@ writeFileSync(
   'dist/llms.txt',
   `# Galivelop\n\n> ${FIJAS[''].es[1]}\n\n## Proyectos\n\n${proyectos
     .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
-    .join('\n')}\n\n## Más\n\n- [Equipo](${urlDe('es', 'equipo')})\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);
 console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml, robots.txt y llms.txt`);
