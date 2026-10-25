@@ -7,6 +7,7 @@ import { Icono } from './Icono';
 export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
   const { t, tx } = useIdioma();
   const avance = Math.round((p.fases.hechas / p.fases.total) * 100);
+  const fases = t('proximamente.fases', { hechas: p.fases.hechas, total: p.fases.total });
   return (
     <article className="tarjeta-proxima" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
       <div className="proxima-cabeza">
@@ -18,12 +19,13 @@ export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
       <h4>{p.nombre}</h4>
       <p className="proxima-lema">{tx(p.lema)}</p>
       <div className="tarjeta-fase">
-        <span>{t('proximamente.fases', { hechas: p.fases.hechas, total: p.fases.total })}</span>
+        <span>{fases}</span>
         <div
           className="barra"
           role="progressbar"
-          aria-label={t('proyecto.avance')}
+          aria-label={`${t('proyecto.avance')} · ${p.nombre}`}
           aria-valuenow={avance}
+          aria-valuetext={fases}
           aria-valuemin={0}
           aria-valuemax={100}
         >

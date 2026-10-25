@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { NOMBRES_ICONOS } from '../components/Icono';
 import { proximos } from './proximamente';
 import { proyectos } from './proyectos';
-import { IDIOMAS } from './tipos';
+import { textosIncompletos } from './textosIncompletos';
 
 describe('próximamente', () => {
   it('los slugs no se repiten ni coinciden con los de un proyecto con ficha', () => {
@@ -14,11 +14,10 @@ describe('próximamente', () => {
 
   for (const p of proximos) {
     describe(p.slug, () => {
-      it('tiene sus textos en castellano, gallego e inglés', () => {
-        const faltan = (['lema', 'siguiente'] as const).flatMap((campo) =>
-          IDIOMAS.filter((l) => typeof p[campo]?.[l] !== 'string' || !p[campo][l].trim()).map((l) => `${campo}.${l}`),
-        );
-        expect(faltan).toEqual([]);
+      it('tiene slug y nombre, y sus textos en castellano, gallego e inglés', () => {
+        expect(p.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+        expect(p.nombre?.trim()).toBeTruthy();
+        expect(textosIncompletos({ lema: p.lema ?? {}, siguiente: p.siguiente ?? {} }, p.slug)).toEqual([]);
       });
 
       it('usa un icono que existe y un color hex', () => {

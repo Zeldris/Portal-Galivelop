@@ -1,6 +1,6 @@
 [
   {
-    "slug": "image-generator",
+    "slug": "galivelop-image-generator",
     "nombre": "Galivelop Image Generator",
     "acento": "#7C5CD6",
     "icono": "image",
@@ -17,7 +17,7 @@
     }
   },
   {
-    "slug": "voice-generator",
+    "slug": "galivelop-voice-generator",
     "nombre": "Galivelop Voice Generator",
     "acento": "#C9467A",
     "icono": "audio",
@@ -34,7 +34,7 @@
     }
   },
   {
-    "slug": "developer",
+    "slug": "galivelop-developer",
     "nombre": "Galivelop Developer",
     "acento": "#0E9A93",
     "icono": "code",

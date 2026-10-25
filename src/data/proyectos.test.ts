@@ -2,25 +2,12 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { proyectos } from './proyectos';
-import { IDIOMAS } from './tipos';
+import { textosIncompletos } from './textosIncompletos';
 import { textos } from '../i18n/textos';
 import { NOMBRES_ICONOS } from '../components/Icono';
 import { LINEAS } from './lineas';
 
 const PUBLIC = join(__dirname, '../../public');
-
-/** Recorre un valor y devuelve las rutas de todo objeto con forma de Texto incompleto. */
-function textosIncompletos(valor: unknown, camino = ''): string[] {
-  if (Array.isArray(valor)) return valor.flatMap((v, i) => textosIncompletos(v, `${camino}[${i}]`));
-  if (valor && typeof valor === 'object') {
-    const o = valor as Record<string, unknown>;
-    if ('es' in o || 'gl' in o || 'en' in o) {
-      return IDIOMAS.filter((l) => typeof o[l] !== 'string' || !(o[l] as string).trim()).map((l) => `${camino}.${l}`);
-    }
-    return Object.entries(o).flatMap(([k, v]) => textosIncompletos(v, `${camino}.${k}`));
-  }
-  return [];
-}
 
 describe('proyectos', () => {
   it('hay al menos un proyecto y los slugs no se repiten', () => {
