@@ -10,6 +10,24 @@ const MURO = join(__dirname, 'muro');
 
 const incompleto = (t: Texto | undefined) => !t || IDIOMAS.some((l) => typeof t[l] !== 'string' || !t[l].trim());
 
+/** Lo que falla en una publicación, con su motivo; `existe` dice si una ruta de imagen está en public/. */
+function problemas(p: Publicacion, existe: (src: string) => boolean): string[] {
+  const fallos: string[] = [];
+  if (!proyectos.some((x) => x.slug === p.proyecto)) fallos.push(`proyecto desconocido: ${p.proyecto}`);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(p.fecha)) fallos.push(`fecha no es AAAA-MM-DD: ${p.fecha}`);
+  if (!/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/.test(p.pieza)) fallos.push(`pieza no es AAAA-MM-DD-tema: ${p.pieza}`);
+  const imagenes = p.imagenes ?? [];
+  const sinIdiomas = [p.titulo, p.texto, ...(p.cuerpo ?? []), ...imagenes.map((i) => i.alt)].filter(incompleto).length;
+  if (sinIdiomas) fallos.push(`textos sin los tres idiomas: ${sinIdiomas}`);
+  const medida = (n: number) => Number.isInteger(n) && n > 0;
+  for (const i of imagenes) if (!medida(i.ancho) || !medida(i.alto)) fallos.push(`imagen sin ancho o alto: ${i.src}`);
+  const carpeta = `proyectos/${p.proyecto}/muro/${p.pieza}/`;
+  const rutas = imagenes.flatMap((i) => [i, ...Object.values(i.porIdioma ?? {})]).flatMap((v) => [v.src, v.mini]);
+  for (const src of rutas) if (!src.startsWith(carpeta)) fallos.push(`imagen fuera de ${carpeta}: ${src}`);
+  for (const src of rutas) if (!existe(src)) fallos.push(`imagen que no está en public/: ${src}`);
+  return fallos;
+}
+
 const ejemplo = (pieza: string, fecha: string): Publicacion => ({
   proyecto: 'tarkor',
   pieza,
@@ -51,26 +69,37 @@ describe('muro', () => {
     expect(publicaciones.length).toBe(archivos.length);
   });
 
+  // Las reglas de una publicación, aparte de los datos: hoy no hay ninguna y la primera la escribe la tarea semanal,
+  // así que se prueban también con un ejemplo bueno y uno malo.
+  it('las reglas aceptan una publicación bien hecha', () => {
+    const imagen = { src: 'proyectos/tarkor/muro/2026-10-20-a/m.webp', mini: 'proyectos/tarkor/muro/2026-10-20-a/m-mini.webp', ancho: 1600, alto: 900, alt: { es: 'a', gl: 'a', en: 'a' } };
+    expect(problemas({ ...ejemplo('2026-10-20-a', '2026-10-20'), imagenes: [imagen] }, () => true)).toEqual([]);
+  });
+
+  it('las reglas rechazan cada fallo con su motivo', () => {
+    const mala = {
+      ...ejemplo('2026-10-20-a', '20-10-2026'),
+      proyecto: 'no-existe',
+      pieza: 'Mapa',
+      titulo: { es: 't', gl: '', en: 't' },
+      imagenes: [{ src: 'proyectos/otro/m.webp', mini: 'proyectos/otro/m-mini.webp', ancho: 0, alto: 900, alt: { es: 'a', gl: 'a', en: 'a' } }],
+    } as Publicacion;
+    expect(problemas(mala, () => false)).toEqual([
+      'proyecto desconocido: no-existe',
+      'fecha no es AAAA-MM-DD: 20-10-2026',
+      'pieza no es AAAA-MM-DD-tema: Mapa',
+      'textos sin los tres idiomas: 1',
+      'imagen sin ancho o alto: proyectos/otro/m.webp',
+      'imagen fuera de proyectos/no-existe/muro/Mapa/: proyectos/otro/m.webp',
+      'imagen fuera de proyectos/no-existe/muro/Mapa/: proyectos/otro/m-mini.webp',
+      'imagen que no está en public/: proyectos/otro/m.webp',
+      'imagen que no está en public/: proyectos/otro/m-mini.webp',
+    ]);
+  });
+
   for (const p of publicaciones) {
-    describe(`${p.proyecto}/${p.pieza}`, () => {
-      it('es de un proyecto que existe, con fecha válida y textos en los tres idiomas', () => {
-        expect(proyectos.some((x) => x.slug === p.proyecto)).toBe(true);
-        expect(p.fecha).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-        expect(p.pieza).toMatch(/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/);
-        const textos = [p.titulo, p.texto, ...(p.cuerpo ?? []), ...(p.imagenes ?? []).map((i) => i.alt)];
-        expect(textos.filter(incompleto)).toEqual([]);
-      });
-
-      it('cada imagen trae su ancho y alto (evitan saltos al cargar)', () => {
-        const sinMedidas = (p.imagenes ?? []).filter((i) => !(Number.isInteger(i.ancho) && i.ancho > 0 && Number.isInteger(i.alto) && i.alto > 0));
-        expect(sinMedidas.map((i) => i.src)).toEqual([]);
-      });
-
-      it('todas sus imágenes existen en public/ y están en su carpeta', () => {
-        const rutas = (p.imagenes ?? []).flatMap((i) => [i, ...Object.values(i.porIdioma ?? {})]).flatMap((v) => [v.src, v.mini]);
-        expect(rutas.filter((src) => !src.startsWith(`proyectos/${p.proyecto}/muro/${p.pieza}/`))).toEqual([]);
-        expect(rutas.filter((src) => !existsSync(join(PUBLIC, src)))).toEqual([]);
-      });
+    it(`${p.proyecto}/${p.pieza} cumple las reglas`, () => {
+      expect(problemas(p, (src) => existsSync(join(PUBLIC, src)))).toEqual([]);
     });
   }
 });

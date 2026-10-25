@@ -22,7 +22,7 @@ Nada pendiente de publicar.
 
 ## Hecho
 
-- ✅ 2026-10-25 · Muro: página `/muro` con filtro por proyecto y ancla por publicación, las 3 últimas en cada ficha, página estática y `llms.txt`; se oculta sin publicaciones. Contrato de `docs/difusion/**/web.md` (`estado: "listo"`, bloque `muro`) en «El muro» de `docs/desarrollo.md` y paso 2b de la tarea semanal. Probado con piezas de ejemplo (escritorio y móvil, menú sin desbordes de 320 a 1400 px) que luego se quitaron. Revisado (fase 1, 9 arreglos).
+- ✅ 2026-10-25 · Muro: página `/muro` con filtro por proyecto y ancla por publicación, las 3 últimas en cada ficha, página estática y `llms.txt`; se oculta sin publicaciones. Contrato de `docs/difusion/**/web.md` (`estado: "listo"`, bloque `muro`) en «El muro» de `docs/desarrollo.md` y paso 2b de la tarea semanal. Probado con piezas de ejemplo (escritorio y móvil, menú sin desbordes de 320 a 1400 px) que luego se quitaron. Revisado (fase 1, 9 arreglos); retro `docs/registros/retro-2026-10-25-muro.md` aplicada entera (`npm run medir` arranca su servidor, reglas del muro probadas con ejemplo).
 - ✅ 2026-10-25 · Tarea «Proyectos semanal» movida de las 22:46 a las 20:45 de los domingos (Europe/Madrid), a petición de la persona.
 - ✅ 2026-10-25 · Rediseño de experiencia de usuario: ficha con «De un vistazo», barra fija de grupos y apartados en hoja; inicio en 3 columnas y más corto (móvil de 11,4 a 8,6 pantallas). Revisado (fase 1, 8 arreglos; fase 3, 7), retro aplicada y publicado en `main` con confirmación de la persona.
 - ✅ Ficha de Galivelop-workflow: la cabecera ya no enmarca el primer diagrama (modo `cabecera: "color"`, nuevo) y los 7 diagramas van en la galería de debajo, como Tarkor.

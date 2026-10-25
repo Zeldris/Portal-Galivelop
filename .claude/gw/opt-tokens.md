@@ -18,8 +18,8 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Datos de Tarkor desde el catálogo** (`backend/src/scripts/worldCatalog.ts`) con `grep`/regex por `slug`, sin
   leer el archivo entero (más de 12.000 líneas).
 - **Bitácora corta:** «Hecho» guarda solo las 10 últimas entradas (2026-10-22; se leía 8 veces por sesión).
-- **Medir páginas en texto** (2026-10-25): `npm run medir` (`tools/qa/medir-paginas.cjs`, con `vite preview` en
-  marcha) da alto, pantallas, desbordamiento y errores de consola por página en escritorio y móvil. Las capturas,
+- **Medir páginas en texto** (2026-10-25): `npm run medir` (`tools/qa/medir-paginas.cjs`, tras `npm run build`;
+  arranca y para él mismo `vite preview`, desde la retro del muro) da alto, pantallas, desbordamiento y errores de consola por página en escritorio y móvil. Las capturas,
   solo para juzgar el aspecto (el rediseño leyó 39, muchas solo para medir).
 - **Bitácora por partes** (2026-10-25): `recuperar.py --estado`, o `sed -n '/^## Pendiente/,/^## /p'
   docs/traspaso.md` para una sección; entera solo al empezar (el rediseño la leyó 66 veces, 415k arrastrados).
