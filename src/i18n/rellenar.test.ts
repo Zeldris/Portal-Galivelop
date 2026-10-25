@@ -20,6 +20,22 @@ describe('rellenar', () => {
       expect(hitos).not.toMatch(/hitos|fitos|milestones/);
       const elementos = rellenar(textos[idioma]['afondo.elementos'], { n: 1 });
       expect(elementos).not.toMatch(/elementos|items/);
+      const imagenes = rellenar(textos[idioma]['afondo.imagenes'], { n: 1 });
+      expect(imagenes).not.toMatch(/imágenes|imaxes|images/);
+    }
+  });
+
+  it('toda plantilla queda sin marcas y usa las mismas variables en los tres idiomas', () => {
+    const variables = (plantilla: string) => [...plantilla.matchAll(/\{(\w+)/g)].map((m) => m[1]).sort().join(',');
+    for (const clave of Object.keys(textos.es) as (keyof typeof textos.es)[]) {
+      const deEs = variables(textos.es[clave]);
+      for (const idioma of ['es', 'gl', 'en'] as const) {
+        const plantilla = textos[idioma][clave];
+        expect(variables(plantilla), `${idioma} ${clave}`).toBe(deEs);
+        const vars = Object.fromEntries(deEs.split(',').filter(Boolean).map((v) => [v, 2]));
+        // Una marca mal escrita ({n:elemento} sin «|plural») no se sustituye y saldría en la página.
+        expect(rellenar(plantilla, vars), `${idioma} ${clave}`).not.toMatch(/\{\w+[:}]/);
+      }
     }
   });
 });

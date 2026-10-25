@@ -46,7 +46,8 @@ criterio.
   (`.apartado-items .tarjeta-imagen`), o las reglas de uno deforman el otro (pasó con `.tarjeta-imagen`, 2026-10-25).
 - Un texto con número usa el plural de la plantilla (`{n} {n:elemento|elementos}`, ver `src/i18n/rellenar.ts`), no
   un ternario con dos claves en el componente.
-- El `#ancla` de la URL se lee con `leerAncla()` (`src/utils/ancla.ts`), nunca con `decodeURIComponent` suelto.
+- El `#ancla` de la URL se lee con `leerAncla()` (`src/utils/ancla.ts`); un `decodeURIComponent` suelto en `src/` ya
+  lo rechaza `src/utils/ancla.test.ts`, y las marcas de plural mal escritas, `src/i18n/rellenar.test.ts`.
 
 ## Ganchos y scripts
 
