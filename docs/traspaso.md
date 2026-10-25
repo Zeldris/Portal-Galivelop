@@ -11,7 +11,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Tarea en curso** | Muro (`/muro`, publicaciones de `docs/difusion` de cada proyecto): código y contrato hechos y revisados (fase 1: 12 hallazgos, 9 arreglados y 3 leves en «Pendiente»); va a `main` con confirmación de la persona |
 | **Siguiente paso** | Con el visto bueno de la persona: fase 1 (`/code-review --max-findings all` contra `origin/main`) del muro, fase 3 (`revisado.sh`) y llevarlo a `main`; pegar el paso 2b de `docs/runbooks/tarea-semanal.md` en la conversación de la tarea |
 | **En `main`** | Todo publicado: rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, vitest 35/35 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
+| **Tests** | `npm run check`: tsc 0 errores, vitest 37/37 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
 ### Para la próxima publicación
 
@@ -70,6 +70,10 @@ opt-tokens, 2026-10-22).
   como las de los otros proyectos. Publicada en `main` con su marca.
 
 ## Pendiente
+
+- Leve, de la revisión de fase 3 del muro (2026-10-25): `npm run medir` reutiliza cualquier servidor que ya responda
+  en 4173 sin comprobar que sirve el `dist/` actual; parar el servidor con `process.kill(-pid)` y lanzar `npx` sin
+  shell no valen en Windows (sin probar allí; lo comprobaría la persona en su equipo si lo usa).
 
 - Leve, de la revisión del muro (2026-10-25): `scripts/paginas-estaticas.mjs` repite a mano el título y la
   entradilla del muro de `src/i18n/textos.ts` y la lectura y el orden de `src/data/muro.ts` (sin test que los ate);

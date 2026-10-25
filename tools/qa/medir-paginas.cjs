@@ -31,7 +31,7 @@ const VENTANAS = [
   ['movil', 390, 844],
 ];
 
-const responde = () => fetch(BASE).then((r) => r.ok, () => false);
+const responde = () => fetch(BASE, { signal: AbortSignal.timeout(2000) }).then((r) => r.ok, () => false);
 
 /** Arranca `vite preview` si hace falta; devuelve el proceso para pararlo al final (o null si ya había servidor). */
 async function servidor() {
@@ -40,13 +40,24 @@ async function servidor() {
     console.error('medir-paginas: dist/ is missing. Run: npm run build');
     process.exit(2);
   }
-  const hijo = spawn('npx', ['vite', 'preview', '--port', '4173', '--strictPort'], { cwd: RAIZ, stdio: 'ignore', detached: true });
-  for (let i = 0; i < 60; i++) {
+  // `vista` se guarda ya aquí para que Ctrl+C lo pare también mientras arranca.
+  const hijo = (vista = spawn('npx', ['vite', 'preview', '--port', '4173', '--strictPort'], {
+    cwd: RAIZ,
+    stdio: ['ignore', 'ignore', 'pipe'],
+    detached: true,
+  }));
+  let salida = '';
+  hijo.stderr.on('data', (d) => (salida += d));
+  let fallo = null;
+  hijo.on('error', (e) => (fallo = e.message));
+  hijo.on('exit', (codigo) => (fallo ??= `exited with code ${codigo}`));
+  for (let i = 0; i < 60 && !fallo; i++) {
     if (await responde()) return hijo;
     await new Promise((r) => setTimeout(r, 250));
   }
   parar(hijo);
-  console.error('medir-paginas: vite preview did not start on port 4173. Run: npx vite preview --port 4173');
+  console.error(`medir-paginas: vite preview did not start on port 4173 (${fallo ?? 'timeout'}). ${salida.trim()}`);
+  console.error('Free port 4173 or run: npx vite preview --port 4173');
   process.exit(2);
 }
 
@@ -60,8 +71,14 @@ const parar = (hijo) => {
 };
 
 let vista = null;
+for (const senal of ['SIGINT', 'SIGTERM']) {
+  process.on(senal, () => {
+    if (vista) parar(vista);
+    process.exit(130);
+  });
+}
 (async () => {
-  vista = await servidor();
+  await servidor();
   const navegador = await chromium.launch();
   let fallos = 0;
   console.log('ruta\tventana\talto_px\tpantallas\tdesborda_x\terrores');

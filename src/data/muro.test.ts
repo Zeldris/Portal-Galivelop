@@ -17,14 +17,29 @@ function problemas(p: Publicacion, existe: (src: string) => boolean): string[] {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(p.fecha)) fallos.push(`fecha no es AAAA-MM-DD: ${p.fecha}`);
   if (!/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/.test(p.pieza)) fallos.push(`pieza no es AAAA-MM-DD-tema: ${p.pieza}`);
   const imagenes = p.imagenes ?? [];
-  const sinIdiomas = [p.titulo, p.texto, ...(p.cuerpo ?? []), ...imagenes.map((i) => i.alt)].filter(incompleto).length;
-  if (sinIdiomas) fallos.push(`textos sin los tres idiomas: ${sinIdiomas}`);
+  const textos: [string, Texto | undefined][] = [
+    ['titulo', p.titulo],
+    ['texto', p.texto],
+    ...(p.cuerpo ?? []).map((t, n): [string, Texto] => [`cuerpo[${n}]`, t]),
+    ...imagenes.map((i): [string, Texto] => [`alt de ${i.src}`, i.alt]),
+  ];
+  const sinIdiomas = textos.filter(([, t]) => incompleto(t)).map(([nombre]) => nombre);
+  if (sinIdiomas.length) fallos.push(`textos sin los tres idiomas: ${sinIdiomas.join(', ')}`);
   const medida = (n: number) => Number.isInteger(n) && n > 0;
   for (const i of imagenes) if (!medida(i.ancho) || !medida(i.alto)) fallos.push(`imagen sin ancho o alto: ${i.src}`);
   const carpeta = `proyectos/${p.proyecto}/muro/${p.pieza}/`;
-  const rutas = imagenes.flatMap((i) => [i, ...Object.values(i.porIdioma ?? {})]).flatMap((v) => [v.src, v.mini]);
-  for (const src of rutas) if (!src.startsWith(carpeta)) fallos.push(`imagen fuera de ${carpeta}: ${src}`);
-  for (const src of rutas) if (!existe(src)) fallos.push(`imagen que no está en public/: ${src}`);
+  for (const i of imagenes) {
+    for (const v of [i, ...Object.values(i.porIdioma ?? {})]) {
+      for (const src of [v.src, v.mini] as unknown[]) {
+        if (typeof src !== 'string') {
+          fallos.push(`imagen sin src o mini: ${i.src}`);
+          continue;
+        }
+        if (!src.startsWith(carpeta)) fallos.push(`imagen fuera de ${carpeta}: ${src}`);
+        if (!existe(src)) fallos.push(`imagen que no está en public/: ${src}`);
+      }
+    }
+  }
   return fallos;
 }
 
@@ -82,18 +97,31 @@ describe('muro', () => {
       proyecto: 'no-existe',
       pieza: 'Mapa',
       titulo: { es: 't', gl: '', en: 't' },
-      imagenes: [{ src: 'proyectos/otro/m.webp', mini: 'proyectos/otro/m-mini.webp', ancho: 0, alto: 900, alt: { es: 'a', gl: 'a', en: 'a' } }],
+      cuerpo: [{ es: 'c', gl: 'c', en: 'c' }, { es: 'c', gl: 'c' }],
+      imagenes: [
+        {
+          src: 'proyectos/otro/m.webp',
+          mini: 'proyectos/otro/m-mini.webp',
+          ancho: 0,
+          alto: 900,
+          alt: { es: 'a', gl: 'a', en: 'a' },
+          porIdioma: { en: { src: 'proyectos/otro/m.en.webp' } },
+        },
+      ],
     } as Publicacion;
     expect(problemas(mala, () => false)).toEqual([
       'proyecto desconocido: no-existe',
       'fecha no es AAAA-MM-DD: 20-10-2026',
       'pieza no es AAAA-MM-DD-tema: Mapa',
-      'textos sin los tres idiomas: 1',
+      'textos sin los tres idiomas: titulo, cuerpo[1]',
       'imagen sin ancho o alto: proyectos/otro/m.webp',
       'imagen fuera de proyectos/no-existe/muro/Mapa/: proyectos/otro/m.webp',
-      'imagen fuera de proyectos/no-existe/muro/Mapa/: proyectos/otro/m-mini.webp',
       'imagen que no está en public/: proyectos/otro/m.webp',
+      'imagen fuera de proyectos/no-existe/muro/Mapa/: proyectos/otro/m-mini.webp',
       'imagen que no está en public/: proyectos/otro/m-mini.webp',
+      'imagen fuera de proyectos/no-existe/muro/Mapa/: proyectos/otro/m.en.webp',
+      'imagen que no está en public/: proyectos/otro/m.en.webp',
+      'imagen sin src o mini: proyectos/otro/m.webp',
     ]);
   });
 
