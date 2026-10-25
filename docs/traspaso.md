@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
 | **Tarea en curso** | Ninguna: muro terminado y publicado |
-| **Siguiente paso** | Esperar el aviso de la persona (2026-10-25, en 1-2 h, quizá antes de la publicación del domingo) sobre los repos nuevos (ver «Pendiente»); además, la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"` y la tarea lleve el paso 2b |
+| **Siguiente paso** | Esperar el aviso de la persona (2026-10-25, en 1-2 h, quizá antes de la publicación del domingo) sobre los repos nuevos (ver «Pendiente»); además, la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"`, el flujo cree `web.md` y la tarea lleve el paso 2b (ver «Pendiente») |
 | **En `main`** | Todo publicado: muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 37/37 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -70,6 +70,16 @@ opt-tokens, 2026-10-22).
   como las de los otros proyectos. Publicada en `main` con su marca.
 
 ## Pendiente
+
+- **Carpeta nueva de difusión** (2026-10-25): `gw-media-content` del flujo 0.4.0 guarda las piezas en
+  `docs/difusion/AAAA-MM-DD/NN-tema/` (imágenes en `medios/`) en vez de `docs/difusion/AAAA-MM-DD-tema/`. **El portal no
+  necesita cambios:** el `git grep … -- 'docs/difusion/**/web.md'` del paso 2b encuentra las dos formas (probado en un
+  repo de prueba); la `pieza` sale `2026-10-25-01-mapa-del-mundo`, que acepta `src/data/muro.test.ts` (ya ordena
+  `NN` del mismo día); `archivo` relativo a la pieza (`medios/…`) con su `-mini` al lado, como genera `render.mjs`
+  (también `<nombre>.en-mini.webp`). Las piezas planas siguen igual. Pendiente **fuera del portal**: (1) que
+  Galivelop-workflow cree `web.md` con el bloque JSON (en curso; en la rama `ccr-6dfbc880-ddr41g` la plantilla aún no
+  lo trae); (2) la persona pega el paso 2b de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos
+  semanal» (lo hace ella). Con el flujo cerrado, comprobar aquí que una pieza nueva llega al muro.
 
 - **Repos nuevos como proyectos** (2026-10-25, a petición de la persona): evaluados `Zeldris/galivelop-image-generator`
   (18 commits; plan F0-F5 con D1-D27 y F0 «esqueleto» hecha: esquemas, textos es/en y tests; aún no genera imágenes;
