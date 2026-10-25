@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react';
 import { IDIOMAS, type Idioma, type Texto } from '../data/tipos';
+import { rellenar } from './rellenar';
 import { textos, type Clave } from './textos';
 
 const CLAVE_GUARDADA = 'galivelop.idioma';
@@ -91,8 +92,7 @@ export function ProveedorIdioma({
     return {
       idioma,
       cambiarIdioma,
-      t: (clave, vars) =>
-        textos[idioma][clave].replace(/\{(\w+)\}/g, (_, v: string) => String(vars?.[v] ?? `{${v}}`)),
+      t: (clave, vars) => rellenar(textos[idioma][clave], vars),
       tx: (texto) => texto[idioma],
       fecha: (iso) => formatearFecha(iso, idioma),
     };

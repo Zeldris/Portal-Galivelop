@@ -18,6 +18,14 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Datos de Tarkor desde el catálogo** (`backend/src/scripts/worldCatalog.ts`) con `grep`/regex por `slug`, sin
   leer el archivo entero (más de 12.000 líneas).
 - **Bitácora corta:** «Hecho» guarda solo las 10 últimas entradas (2026-10-22; se leía 8 veces por sesión).
+- **Medir páginas en texto** (2026-10-25): `npm run medir` (`tools/qa/medir-paginas.cjs`, con `vite preview` en
+  marcha) da alto, pantallas, desbordamiento y errores de consola por página en escritorio y móvil. Las capturas,
+  solo para juzgar el aspecto (el rediseño leyó 39, muchas solo para medir).
+- **Bitácora por partes** (2026-10-25): `recuperar.py --estado`, o `sed -n '/^## Pendiente/,/^## /p'
+  docs/traspaso.md` para una sección; entera solo al empezar (el rediseño la leyó 66 veces, 415k arrastrados).
+- **Subagentes con plan cerrado, en el modelo barato** (2026-10-25): aplicar estilos o textos ya decididos, hacer
+  capturas o lotes manuales va con la fila de `selector` del modelo barato; la sesión principal revisa el diff y las
+  capturas por sección. En el rediseño, 6 de 8 subagentes usaron el grande (4,3M de entrada).
 
 ## Costes conocidos
 
@@ -25,6 +33,8 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   scripts, ~30k tokens arrastrados en cada llamada): con `orchestrate-dealer`, un subagente lee y resume con rutas.
 - **Capturas de pantalla** para revisar cambios visuales: necesarias, pero mejor por sección y a 1280 px.
 - **Salida de `npm run check`**: filtrar con `grep -E "Tests|error"`.
+- **`src/estilos/global.css`** (más de 2.800 líneas): `grep -n '<selector>'` y `sed -n` del rango, nunca entero
+  (el rediseño lo leyó 32 veces, 210k arrastrados).
 
 ## Ajustes en vigor
 
@@ -41,6 +51,8 @@ carpeta del portal. `medir.py` y `recuperar.py` lo buscan también en las carpet
 
 ## Referencias medidas
 
+- 2026-10-25, rediseño del front: 394 llamadas, 112k de contexto medio (suelo 94k, techo 141k), 10 compactaciones;
+  8 subagentes, 5,4M de entrada.
 - 2026-10-22, piloto de Galivelop-workflow: 62 llamadas, 171k de contexto medio, suelo 71k, techo 237k, sin
   compactar (la ventana de 200k no se aplicó).
 - 2026-10-21, sesión del flujo traído de Tarkor: ~681k de contexto medio por llamada antes del `/clear`.

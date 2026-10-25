@@ -40,6 +40,14 @@ criterio.
 - Los botones solo con icono llevan `aria-label`; lo que se mueve solo (la galería) se puede pausar y respeta
   «reducir movimiento».
 
+## Estilos y textos
+
+- Una clase de `src/estilos/global.css` que usan dos componentes va acotada por su contenedor
+  (`.apartado-items .tarjeta-imagen`), o las reglas de uno deforman el otro (pasó con `.tarjeta-imagen`, 2026-10-25).
+- Un texto con número usa el plural de la plantilla (`{n} {n:elemento|elementos}`, ver `src/i18n/rellenar.ts`), no
+  un ternario con dos claves en el componente.
+- El `#ancla` de la URL se lee con `leerAncla()` (`src/utils/ancla.ts`), nunca con `decodeURIComponent` suelto.
+
 ## Ganchos y scripts
 
 Retro del 2026-10-21: las dos revisiones del flujo traído de Tarkor hallaron 29 fallos en los ganchos. Desde el

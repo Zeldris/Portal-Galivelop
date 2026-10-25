@@ -4,7 +4,8 @@ Revisado: commits `e7b5238`, `9a6455e`, `c8ccca2` y la bitácora. Medida de gast
 --hours 0`: 394 llamadas, contexto medio 112k (suelo 94k, techo 141k), 10 compactaciones; subagentes 68 llamadas,
 5,4M de entrada (4,3M en el modelo grande).
 
-Propuestas presentadas a la persona; su decisión va en la línea de estado al final.
+**Estado:** aprobadas y aplicadas todas (T1-T4, R1-R3) por decisión de la persona, 2026-10-25; G1 queda para la
+recogida del flujo (`gw-harvest`).
 
 ## Gasto (opt-tokens), de más a menos ahorro
 

@@ -8,19 +8,14 @@ import { NoEncontrado } from './pages/NoEncontrado';
 import { Proponer } from './pages/Proponer';
 import { Proyecto } from './pages/Proyecto';
 import { Unirse } from './pages/Unirse';
+import { leerAncla } from './utils/ancla';
 
 /** Al cambiar de página, sube arriba; si la ruta trae #ancla, baja hasta ella. */
 function Desplazamiento() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
     if (hash) {
-      let id = hash.slice(1);
-      try {
-        id = decodeURIComponent(id);
-      } catch {
-        // Un #ancla cortada (p. ej. #%E0%A4%A) se busca tal cual en vez de tumbar la página.
-      }
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(leerAncla(hash))?.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.scrollTo(0, 0);
     }
