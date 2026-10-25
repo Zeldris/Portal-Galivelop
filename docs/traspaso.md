@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
 | **Tarea en curso** | Ninguna: muro terminado y publicado |
-| **Siguiente paso** | Esperar el aviso de la persona (2026-10-25, en 1-2 h, quizá antes de la publicación del domingo) sobre los repos nuevos (ver «Pendiente»); además, la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"`, el flujo cree `web.md` y la tarea lleve el paso 2b (ver «Pendiente») |
+| **Siguiente paso** | Repos nuevos revisados el 2026-10-25: sin ficha nueva hasta que tengan algo visible (ver «Pendiente»). Pendiente de la persona: la persona pega el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (desde otra sesión no se puede); luego, lo que pida; la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"`, el flujo cree `web.md` y la tarea lleve el paso 2b (ver «Pendiente») |
 | **En `main`** | Todo publicado: muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 37/37 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -89,6 +89,12 @@ opt-tokens, 2026-10-22).
   (está trabajando en ellos) y decide entonces; una ficha nueva lleva código, revisión y su bloque en
   `docs/runbooks/tarea-semanal.md`. Fuera, por decisión de la persona: `Zeldris/Zeldris` (README de perfil) y
   `raquelccarreraA/Labs-Log-Detective`.
+  **Revisión de las 20:05 del 2026-10-25** (antes de la tarea semanal): image-generator con **F1 (núcleo) en `main`**:
+  proyectos, pedidos, cola, entrega y CLI `python3 -m gimg`, pero solo con motor de prueba (`FakeEngine`), sin generar
+  imágenes todavía (F2); developer con **F0 cerrada en `main`** (CLI `gdev` con subcomandos vacíos, esquemas, plan
+  D1-D23); voice-generator con **diseño (D1-D17, F0-F7) y F0 esqueleto en `main`**. Ninguno tiene aún algo que un
+  visitante pueda ver o probar, y ninguno tiene la skill de contenido para redes: **hoy no se añade ninguna ficha**. Se
+  mantiene la recomendación (image-generator al cerrar F2; developer y voice-generator con su primera función real).
 
 - Leve, de la revisión de fase 3 del muro (2026-10-25): `npm run medir` reutiliza cualquier servidor que ya responda
   en 4173 sin comprobar que sirve el `dist/` actual; parar el servidor con `process.kill(-pid)` y lanzar `npx` sin
