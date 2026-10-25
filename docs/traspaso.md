@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
 | **Tarea en curso** | Ninguna: «Próximamente» publicado en `main` (2026-10-25) |
-| **Siguiente paso** | `/clear`. Pendiente de la persona: pegar de nuevo el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (ahora lleva el paso 2b y el bloque PRÓXIMAMENTE; desde otra sesión no se puede); la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"`, el flujo cree `web.md` y la tarea lleve el paso 2b (ver «Pendiente») |
+| **Siguiente paso** | `/clear`. El prompt de «Proyectos semanal» ya lleva el paso 2b y el bloque PRÓXIMAMENTE (lo usó la ejecución del 2026-10-25); la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"` y el flujo cree `web.md` (ver «Pendiente») |
 | **En `main`** | Todo publicado: «Próximamente» en el inicio (2026-10-25, confirmación de la persona); muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 49/49 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
@@ -20,6 +20,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ 2026-10-25 · Comprobada la revisión semanal del mismo día (`b92a8a1`): cada proyecto cuadra con sus repos (Tarkor: la novedad sale de las tandas 22-27 del 10-23 y lo del 10-24 y 10-25 es interno; Galivelop-workflow sin etiqueta nueva tras la v0.3.0; toVeriAI sin novedades públicas desde el 07-17; «Próximamente» igual que los planes y bitácoras de cada repo; ningún `web.md` listo). CI «Comprobar» y «Publicar en GitHub Pages» en verde. Al recortar «Hecho» se perdió la comprobación manual de Discord: repuesta en «Pendiente».
 - ✅ 2026-10-25 · Revisión semanal: Tarkor con una novedad (ronda de pruebas del mundo vivo cerrada, 2026-10-23); Galivelop-workflow (sigue en la v0.3.0), toVeriAI y «Próximamente» (2/6, 1/8, 1/6) sin cambios; muro sin publicaciones (ninguna pieza con `estado: "listo"`). Publicado en `main`.
 - ✅ 2026-10-25 · «Próximamente» en el inicio: Galivelop Image Generator (2 de 6 fases), Voice Generator (1 de 8) y Developer (1 de 6), atenuados, sin enlace ni página propia; datos en `src/data/proximamente.json`, que pone al día la tarea semanal (bloque PRÓXIMAMENTE). Revisado (fase 1, 6 arreglos; 2 leves en «Pendiente»), retro `docs/registros/retro-2026-10-25-proximamente.md` aprobada entera (test `src/data/tarea-semanal.test.ts`, notas de gasto) y fase 3 sin hallazgos graves ni medios. Publicado en `main` con confirmación de la persona; la tarea semanal lo trae al fusionar `origin/main`.
 - ✅ 2026-10-25 · Muro: página `/muro` con filtro por proyecto y ancla por publicación, las 3 últimas en cada ficha, página estática y `llms.txt`; se oculta sin publicaciones. Contrato de `docs/difusion/**/web.md` (`estado: "listo"`, bloque `muro`) en «El muro» de `docs/desarrollo.md` y paso 2b de la tarea semanal. Probado con piezas de ejemplo (escritorio y móvil, menú sin desbordes de 320 a 1400 px) que luego se quitaron. Revisado (fase 1, 9 arreglos); retro `docs/registros/retro-2026-10-25-muro.md` aplicada entera (`npm run medir` arranca su servidor, reglas del muro probadas con ejemplo); fase 3 con 4 arreglos en `medir` y en las reglas, 2 leves en «Pendiente». Publicado en `main` con confirmación de la persona; la rama de la tarea, igualada con `main`. El prompt de «Proyectos semanal» solo se cambia desde su propia conversación: falta que la persona pegue allí el bloque de `docs/runbooks/tarea-semanal.md`.
@@ -43,6 +44,9 @@ opt-tokens, 2026-10-22).
 
 ## Pendiente
 
+- **Vista previa en redes, comprobar a mano** (de 2026-10-22; la persona, en Discord): un mensaje nuevo con el enlace
+  del portal muestra el diagrama nuevo de Galivelop-workflow (el ya enviado no se actualiza). Se perdió de la vista al
+  recortar «Hecho» en la revisión semanal del 2026-10-25.
 - **«Próximamente», leves de la revisión** (2026-10-25): (a) la fila se oculta con un filtro de línea activo (los filtros
   solo salen con 5 fichas o más); (b) la barra de avance está repetida en `TarjetaProyecto`, `Proyecto.tsx` y
   `TarjetaProxima`: pasarla a un componente `<Barra>`.
@@ -51,10 +55,9 @@ opt-tokens, 2026-10-22).
   necesita cambios:** el `git grep … -- 'docs/difusion/**/web.md'` del paso 2b encuentra las dos formas (probado en un
   repo de prueba); la `pieza` sale `2026-10-25-01-mapa-del-mundo`, que acepta `src/data/muro.test.ts` (ya ordena
   `NN` del mismo día); `archivo` relativo a la pieza (`medios/…`) con su `-mini` al lado, como genera `render.mjs`
-  (también `<nombre>.en-mini.webp`). Las piezas planas siguen igual. Pendiente **fuera del portal**: (1) que
+  (también `<nombre>.en-mini.webp`). Las piezas planas siguen igual. Pendiente **fuera del portal**: que
   Galivelop-workflow cree `web.md` con el bloque JSON (en curso; en la rama `ccr-6dfbc880-ddr41g` la plantilla aún no
-  lo trae); (2) la persona pega el paso 2b de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos
-  semanal» (lo hace ella). Con el flujo cerrado, comprobar aquí que una pieza nueva llega al muro.
+  lo trae). El paso 2b ya está en el prompt de «Proyectos semanal» (lo usó la ejecución del 2026-10-25). Con el flujo cerrado, comprobar aquí que una pieza nueva llega al muro.
 
 - **Repos nuevos como proyectos** (2026-10-25, a petición de la persona): evaluados `Zeldris/galivelop-image-generator`
   (18 commits; plan F0-F5 con D1-D27 y F0 «esqueleto» hecha: esquemas, textos es/en y tests; aún no genera imágenes;
