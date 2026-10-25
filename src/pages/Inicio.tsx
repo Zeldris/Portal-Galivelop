@@ -12,6 +12,8 @@ import type { EstadoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
+/** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
+const FILTRAR_DESDE = 5;
 const ICONO_LINEA: Record<Linea, LucideIcon> = { 'ia-local': Cpu, mundos: Globe, informacion: ShieldCheck, producto: Layers, metodo: Workflow };
 const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
   [Target, 'valor1'],
@@ -21,7 +23,7 @@ const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
 ];
 
 export function Inicio() {
-  const { t } = useIdioma();
+  const { t, idioma } = useIdioma();
   const [filtro, setFiltro] = useState<EstadoProyecto | 'todos'>('todos');
 
   const conContacto = proyectos.filter((p) => p.contacto);
@@ -86,6 +88,7 @@ export function Inicio() {
               <h2>{t('proyectos.titulo')}</h2>
               <p>{t('proyectos.texto')}</p>
             </div>
+            {proyectos.length >= FILTRAR_DESDE && (
             <div className="filtros" role="group" aria-label={t('proyectos.titulo')}>
               {FILTROS.filter((f) => f === 'todos' || cuenta(f) > 0).map((f) => (
                 <button key={f} type="button" aria-pressed={filtro === f} onClick={() => setFiltro(f)}>
@@ -94,6 +97,7 @@ export function Inicio() {
                 </button>
               ))}
             </div>
+            )}
           </header>
           {visibles.length > 0 ? (
             <div className="rejilla-proyectos">
@@ -230,19 +234,16 @@ export function Inicio() {
             </span>
             <span className="boton boton-discord">{t('discord.boton')}</span>
           </a>
-          {privados.map((p) => (
-            <p key={p.slug} className="nota-privado">
-              <Lock size={16} aria-hidden="true" /> {t('participa.privado', { nombre: p.nombre })}
+          {privados.length > 0 && (
+            <p className="nota-privado">
+              <Lock size={16} aria-hidden="true" />{' '}
+              {privados.length === 1
+                ? t('participa.privado', { nombre: privados[0].nombre })
+                : t('participa.privados', {
+                    nombres: new Intl.ListFormat(idioma, { type: 'conjunction' }).format(privados.map((p) => p.nombre)),
+                  })}
             </p>
-          ))}
-          <div className="contacto-botones">
-            <Link className="boton boton-primario" to="/participa/unirse">
-              <Users size={18} /> {t('unir.titulo')}
-            </Link>
-            <Link className="boton boton-secundario" to="/participa/proponer">
-              <Rocket size={18} /> {t('prop.titulo')}
-            </Link>
-          </div>
+          )}
           <p className="contacto-otros">
             {t('contacto.otros')}{' '}
             <a href={`mailto:${MARCA.correo}`}>

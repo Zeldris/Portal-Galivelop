@@ -827,6 +827,12 @@ button {
 .tarjeta-resumen {
   color: var(--texto-2);
   font-size: 0.97rem;
+  /* El resumen completo está en la ficha: aquí basta para saber qué es. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
 }
 
 .tarjeta-pie {
@@ -3235,7 +3241,7 @@ img.avatar {
   overflow: hidden;
 }
 
-.tarjeta-imagen {
+.apartado-items .tarjeta-imagen {
   display: block;
   width: calc(100% + 36px);
   margin: 0 -18px 14px;
@@ -3247,14 +3253,14 @@ img.avatar {
   overflow: hidden;
 }
 
-.tarjeta-imagen img {
+.apartado-items .tarjeta-imagen img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 400ms ease;
 }
 
-.tarjeta-imagen:hover img {
+.apartado-items .tarjeta-imagen:hover img {
   transform: scale(1.04);
 }
 
@@ -3760,5 +3766,87 @@ body:has(dialog[open]) {
   }
   .hoja-cuerpo {
     padding: 16px;
+  }
+}
+
+/* ---------- Inicio: proyectos de un vistazo y bloques compactos en móvil ---------- */
+
+/* Tres proyectos en una fila en escritorio. */
+.rejilla-proyectos {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+
+@media (max-width: 700px) {
+  /* El collage repite las imágenes de las tarjetas que vienen justo después. */
+  .hero-collage {
+    display: none;
+  }
+  .lineas,
+  .valores,
+  .vias {
+    gap: 8px;
+  }
+  .lineas > li,
+  .valores li,
+  .via {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: 14px;
+    align-content: start;
+    padding: 16px;
+  }
+  .lineas > li > *,
+  .valores li > *,
+  .via > * {
+    grid-column: 2;
+  }
+  .lineas > li > svg,
+  .valores svg,
+  .via > svg:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    margin: 0;
+    border-radius: 10px;
+  }
+  .lineas h3,
+  .valores h3,
+  .vias h3 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+  .lineas > li > p,
+  .valores p,
+  .contacto .vias p {
+    font-size: 0.88rem;
+  }
+  .lineas-proyectos {
+    padding-top: 10px;
+  }
+  .via-ir {
+    margin-top: 8px;
+  }
+  .participa-guia > div {
+    padding: 18px;
+  }
+  /* Tarjeta de proyecto: lo esencial (qué es, en qué punto está) sin tener que bajar tres pantallas. */
+  .tarjeta-imagen {
+    aspect-ratio: 16 / 6;
+  }
+  .tarjeta-cuerpo {
+    gap: 8px;
+  }
+  .tarjeta-resumen {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    font-size: 0.92rem;
+  }
+  .tarjeta .chips {
+    display: none;
+  }
+  .tarjeta-pie {
+    padding-top: 10px;
   }
 }
