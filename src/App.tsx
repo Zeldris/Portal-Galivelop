@@ -14,7 +14,13 @@ function Desplazamiento() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
     if (hash) {
-      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: 'smooth' });
+      let id = hash.slice(1);
+      try {
+        id = decodeURIComponent(id);
+      } catch {
+        // Un #ancla cortada (p. ej. #%E0%A4%A) se busca tal cual en vez de tumbar la página.
+      }
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     } else {
       window.scrollTo(0, 0);
     }

@@ -22,6 +22,11 @@ const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
   [HeartHandshake, 'valor4'],
 ];
 
+/** «A, B y C» en el idioma de la página; sin Intl.ListFormat (navegadores viejos), con comas. */
+function listar(nombres: string[], idioma: string) {
+  return typeof Intl.ListFormat === 'function' ? new Intl.ListFormat(idioma, { type: 'conjunction' }).format(nombres) : nombres.join(', ');
+}
+
 export function Inicio() {
   const { t, idioma } = useIdioma();
   const [filtro, setFiltro] = useState<EstadoProyecto | 'todos'>('todos');
@@ -239,9 +244,7 @@ export function Inicio() {
               <Lock size={16} aria-hidden="true" />{' '}
               {privados.length === 1
                 ? t('participa.privado', { nombre: privados[0].nombre })
-                : t('participa.privados', {
-                    nombres: new Intl.ListFormat(idioma, { type: 'conjunction' }).format(privados.map((p) => p.nombre)),
-                  })}
+                : t('participa.privados', { nombres: listar(privados.map((p) => p.nombre), idioma) })}
             </p>
           )}
           <p className="contacto-otros">

@@ -38,26 +38,35 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
   const { t } = useIdioma();
   const [activo, setActivo] = useState<Grupo>(grupos[0].id);
   const barra = useRef<HTMLElement>(null);
+  // Las escuchas dependen de qué grupos hay, no del array (que es nuevo en cada render de la ficha).
+  const ids = grupos.map((g) => g.id).join(' ');
 
   useEffect(() => {
-    // Activo: el último grupo cuyo inicio ya ha pasado la franja de arriba de la pantalla.
+    const lista = ids.split(' ') as Grupo[];
+    let pendiente = 0;
+    // Activo: el último grupo cuyo inicio ya ha pasado la franja de arriba de la pantalla. Una medida por fotograma.
     const actualizar = () => {
+      pendiente = 0;
       const limite = 160;
-      let elegido = grupos[0].id;
-      for (const g of grupos) {
-        const el = document.getElementById(g.id);
-        if (el && el.getBoundingClientRect().top <= limite) elegido = g.id;
+      let elegido = lista[0];
+      for (const id of lista) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= limite) elegido = id;
       }
       setActivo(elegido);
     };
-    actualizar();
-    window.addEventListener('scroll', actualizar, { passive: true });
-    window.addEventListener('resize', actualizar);
-    return () => {
-      window.removeEventListener('scroll', actualizar);
-      window.removeEventListener('resize', actualizar);
+    const programar = () => {
+      if (!pendiente) pendiente = requestAnimationFrame(actualizar);
     };
-  }, [grupos]);
+    actualizar();
+    window.addEventListener('scroll', programar, { passive: true });
+    window.addEventListener('resize', programar);
+    return () => {
+      cancelAnimationFrame(pendiente);
+      window.removeEventListener('scroll', programar);
+      window.removeEventListener('resize', programar);
+    };
+  }, [ids]);
 
   // En móvil la barra se desliza de lado: el grupo activo queda siempre a la vista.
   useEffect(() => {
@@ -163,6 +172,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           <div className="vistazo-ahora">
             <p className="vistazo-etiqueta">{t('vistazo.ahora')}</p>
             <p className="vistazo-fase">{tx(p.fase)}</p>
+            {p.hitos.length > 0 && (
             <div className="vistazo-avance">
               <span
                 className="barra"
@@ -176,6 +186,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
               </span>
               <strong>{avance} %</strong>
             </div>
+            )}
             {p.hitos.length > 0 && (
               <p className="vistazo-nota">{t('vistazo.hitos', { hechos: hechos, total: p.hitos.length })}</p>
             )}

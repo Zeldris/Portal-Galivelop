@@ -36,7 +36,13 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
   // Entrar con #ap-<id> (o cambiarlo desde un enlace) abre ese apartado.
   useEffect(() => {
     const desdeAncla = () => {
-      const i = apartados.findIndex((a) => `#${anclaDe(a)}` === decodeURIComponent(window.location.hash));
+      let ancla = window.location.hash;
+      try {
+        ancla = decodeURIComponent(ancla);
+      } catch {
+        // Un enlace cortado (#%E0%A4%A) no abre nada, pero tampoco tumba la ficha.
+      }
+      const i = apartados.findIndex((a) => `#${anclaDe(a)}` === ancla);
       if (i >= 0) abrir(i);
     };
     desdeAncla();
@@ -65,7 +71,7 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                 )}
                 <span className="mosaico-texto">
                   <strong>{tx(ap.titulo)}</strong>
-                  {n > 0 && <span>{t(ap.items.length ? 'afondo.elementos' : 'afondo.imagenes', { n })}</span>}
+                  {n > 0 && <span>{t(ap.items.length ? (n === 1 ? 'afondo.elemento' : 'afondo.elementos') : n === 1 ? 'afondo.imagen' : 'afondo.imagenes', { n })}</span>}
                 </span>
                 <ArrowRight className="mosaico-flecha" size={18} aria-hidden="true" />
               </button>
@@ -78,7 +84,9 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
         ref={hoja}
         className="hoja"
         aria-labelledby="hoja-titulo"
-        onClose={() => {
+        onClose={(e) => {
+          // React también pasa aquí el cierre de los diálogos de dentro (la imagen ampliada): esos no cierran la hoja.
+          if (e.target !== e.currentTarget) return;
           setActual(null);
           ponerAncla('');
         }}

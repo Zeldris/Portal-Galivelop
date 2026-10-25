@@ -8,10 +8,14 @@ La presentación pública está en el [README](../README.md).
 - **Portada:** presentación del taller, proyectos con filtro por estado (publicado, en desarrollo,
   en diseño), «El taller» y «Participa» (cómo colaborar, proponer o aprender).
 - **Página de cada proyecto** (`/proyectos/<slug>`, también desde el submenú «Proyectos» de la
-  cabecera): cabecera con estado y enlace público, cifras, galería con vista a pantalla completa,
-  índice «En esta página» y secciones plegables: el proyecto, qué lo hace distinto, cómo funciona,
-  apartados propios (p. ej. el mundo de Tarkor o las dimensiones del IMI), ficha técnica, hoja de
-  ruta, lo que estamos aprendiendo, decisiones de diseño, novedades y equipo.
+  cabecera): cabecera con estado y enlace público; «De un vistazo» (fase, avance, siguiente hito,
+  última novedad y cifras); una barra fija que marca el grupo que se lee y lleva a cada uno; y los
+  grupos, todo a la vista: **Resumen** (el proyecto, qué lo hace distinto, cómo funciona),
+  **Galería** (capturas e ilustraciones, a pantalla completa), **A fondo** (los apartados propios,
+  p. ej. el mundo de Tarkor o las dimensiones del IMI, como mosaico: cada uno se abre en una hoja
+  encima de la página, con flechas entre temas y enlace propio `#ap-<id>`), **Cómo está hecho**
+  (ficha técnica, lo que estamos aprendiendo, decisiones de diseño) y **Avance** (hoja de ruta,
+  novedades y equipo). Un grupo sin contenido no sale.
 - **Participa:** formularios para proponer un proyecto (`/participa/proponer`) y para unirse al
   taller (`/participa/unirse`, con `?proyecto=<slug>` o `?modo=aprender` para preseleccionar).
   Como la web es estática, preparan un correo a `alvarogarciagrana@gmail.com` (asunto
