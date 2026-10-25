@@ -73,21 +73,23 @@ export interface Proyecto {
   pasos: { titulo: Texto; texto: Texto }[];
   /**
    * Apartados propios del proyecto (el mundo de un juego, la metodología de una herramienta…).
-   * Cada uno se muestra como una sección plegable con una lista de elementos.
+   * Se muestran como mosaico en «A fondo»; cada uno se abre en una hoja con su lista de elementos.
    */
-  apartados: {
-    id: string;
-    titulo: Texto;
-    intro?: Texto;
-    /** `valor`: dato corto e igual en todos los idiomas (p. ej. «26 %» o «0.4»). */
-    items: { nombre: Texto; valor?: string; texto: Texto; imagen?: Imagen }[];
-    /** Galería propia del apartado, por grupos con pestañas (p. ej. «Arte del mundo»). No rota sola. */
-    grupos?: { id: string; etiqueta: Texto; imagenes: Imagen[] }[];
-  }[];
+  apartados: Apartado[];
   ficha: { capa: Texto; tecnologias: string[] }[];
   hitos: { version?: string; nombre: Texto; estado: EstadoHito; detalle?: Texto }[];
   novedades: { fecha: string; texto: Texto }[];
   cifras: { valor: string; etiqueta: Texto }[];
   decisiones: { titulo: Texto; texto: Texto }[];
   equipo: { nombre: string; rol: Texto }[];
+}
+
+export interface Apartado {
+  id: string;
+  titulo: Texto;
+  intro?: Texto;
+  /** `valor`: dato corto e igual en todos los idiomas (p. ej. «26 %» o «0.4»). */
+  items: { nombre: Texto; valor?: string; texto: Texto; imagen?: Imagen }[];
+  /** Galería propia del apartado, por grupos con pestañas (p. ej. «Arte del mundo»). No rota sola. */
+  grupos?: { id: string; etiqueta: Texto; imagenes: Imagen[] }[];
 }

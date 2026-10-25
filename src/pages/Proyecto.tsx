@@ -1,12 +1,11 @@
 import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail, Sparkles, Users } from 'lucide-react';
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Apartados } from '../components/Apartados';
 import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
-import { ImagenAmpliable } from '../components/ImagenAmpliable';
-import { Plegable } from '../components/Plegable';
 import { buscarPersona, iniciales } from '../data/equipo';
 import type { Linea } from '../data/lineas';
 import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
@@ -14,25 +13,68 @@ import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
 
-// Orden de la ficha, como un caso de estudio: qué es, qué lo hace distinto, cómo funciona, su mundo o
-// metodología (apartados propios), cómo está hecho, dónde está y qué estamos aprendiendo.
-const FIJAS_ANTES = ['descripcion', 'caracteristicas', 'pasos'] as const;
-const FIJAS_DESPUES = ['ficha', 'hitos', 'aprendizajes', 'decisiones', 'novedades', 'equipo'] as const;
-type Fija = (typeof FIJAS_ANTES)[number] | (typeof FIJAS_DESPUES)[number];
-/** Id de sección: una fija o `ap-<id>` para los apartados propios del proyecto. */
-type Seccion = Fija | `ap-${string}`;
-const ABIERTAS_AL_ENTRAR: Seccion[] = ['descripcion', 'caracteristicas', 'pasos'];
+// La ficha se lee de arriba abajo en cinco grupos, como un caso de estudio: qué es y qué lo hace distinto
+// (resumen), cómo se ve (galería), su mundo o su metodología (a fondo, los apartados propios), cómo está hecho y en
+// qué punto está. Arriba, «De un vistazo» adelanta lo que más se busca: la fase, el avance y lo último.
+type Grupo = 'resumen' | 'galeria' | 'afondo' | 'tecnica' | 'avance';
+const NOVEDADES_VISIBLES = 3;
 
 const ICONO_HITO: Record<EstadoHito, typeof Check> = { hecho: Check, curso: LoaderCircle, pendiente: CircleDashed };
 
-/** Secciones con contenido en este proyecto (las vacías no se muestran). */
-function seccionesDe(p: TipoProyecto): Seccion[] {
-  const conContenido = (s: Fija) => p[s].length > 0;
-  return [
-    ...FIJAS_ANTES.filter(conContenido),
-    ...p.apartados.map((a) => `ap-${a.id}` as const),
-    ...FIJAS_DESPUES.filter(conContenido),
-  ];
+/** Grupos con contenido en este proyecto (los vacíos no se muestran). */
+function gruposDe(p: TipoProyecto): Grupo[] {
+  const hay: Record<Grupo, boolean> = {
+    resumen: true,
+    galeria: p.capturas.length + p.galeria.length > 0,
+    afondo: p.apartados.length > 0,
+    tecnica: p.ficha.length + p.aprendizajes.length + p.decisiones.length > 0,
+    avance: p.hitos.length + p.novedades.length + p.equipo.length > 0,
+  };
+  return (Object.keys(hay) as Grupo[]).filter((g) => hay[g]);
+}
+
+/** Barra fija con los grupos de la ficha; marca el que se está leyendo. */
+function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
+  const { t } = useIdioma();
+  const [activo, setActivo] = useState<Grupo>(grupos[0].id);
+  const barra = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Activo: el último grupo cuyo inicio ya ha pasado la franja de arriba de la pantalla.
+    const actualizar = () => {
+      const limite = 160;
+      let elegido = grupos[0].id;
+      for (const g of grupos) {
+        const el = document.getElementById(g.id);
+        if (el && el.getBoundingClientRect().top <= limite) elegido = g.id;
+      }
+      setActivo(elegido);
+    };
+    actualizar();
+    window.addEventListener('scroll', actualizar, { passive: true });
+    window.addEventListener('resize', actualizar);
+    return () => {
+      window.removeEventListener('scroll', actualizar);
+      window.removeEventListener('resize', actualizar);
+    };
+  }, [grupos]);
+
+  // En móvil la barra se desliza de lado: el grupo activo queda siempre a la vista.
+  useEffect(() => {
+    const caja = barra.current;
+    const boton = caja?.querySelector<HTMLElement>('[aria-current="true"]');
+    if (caja && boton) caja.scrollTo({ left: boton.offsetLeft - 16, behavior: 'smooth' });
+  }, [activo]);
+
+  return (
+    <nav className="nav-ficha" aria-label={t('proyecto.indice')} ref={barra}>
+      {grupos.map((g) => (
+        <a key={g.id} href={`#${g.id}`} aria-current={activo === g.id ? 'true' : undefined}>
+          {g.titulo}
+        </a>
+      ))}
+    </nav>
+  );
 }
 
 export function Proyecto() {
@@ -44,10 +86,12 @@ export function Proyecto() {
 
 function FichaProyecto({ p }: { p: TipoProyecto }) {
   const { t, tx, fecha } = useIdioma();
-  const secciones = seccionesDe(p);
-  const [abiertas, setAbiertas] = useState<Set<Seccion>>(() => new Set(ABIERTAS_AL_ENTRAR));
-  const todasAbiertas = secciones.every((s) => abiertas.has(s));
+  const grupos = gruposDe(p);
+  const [todasNovedades, setTodasNovedades] = useState(false);
   const avance = progreso(p);
+  const hechos = p.hitos.filter((h) => h.estado === 'hecho').length;
+  const proximo = p.hitos.find((h) => h.estado === 'curso') ?? p.hitos.find((h) => h.estado === 'pendiente');
+  const ultima = p.novedades[0];
   const modoCabecera = p.cabecera ?? 'ilustracion';
   const indice = proyectos.findIndex((x) => x.slug === p.slug);
   const siguiente = proyectos.length > 1 ? proyectos[(indice + 1) % proyectos.length] : undefined;
@@ -59,35 +103,8 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
     };
   }, [p.nombre]);
 
-  const cambiar = (s: Seccion, abierta: boolean) =>
-    setAbiertas((prev) => {
-      const nuevo = new Set(prev);
-      if (abierta) nuevo.add(s);
-      else nuevo.delete(s);
-      return nuevo;
-    });
-
-  const tituloDe = (s: Seccion) => {
-    if (s.startsWith('ap-')) {
-      const apartado = p.apartados.find((a) => `ap-${a.id}` === s);
-      return apartado ? tx(apartado.titulo) : s;
-    }
-    return t(`sec.${s as Fija}`);
-  };
-
-  /** Abre una sección y baja hasta ella (índice de la ficha). */
-  const irA = (s: Seccion) => {
-    cambiar(s, true);
-    requestAnimationFrame(() => document.getElementById(s)?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
-  };
-
-  const plegable = (s: Seccion, extra?: string) => ({
-    id: s,
-    titulo: tituloDe(s),
-    abierto: abiertas.has(s),
-    alCambiar: (a: boolean) => cambiar(s, a),
-    extra,
-  });
+  /** «Ver las N novedades»: las despliega todas antes de bajar hasta ellas. */
+  const verNovedades = () => setTodasNovedades(true);
 
   return (
     <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
@@ -142,248 +159,285 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
       </header>
 
       <div className="contenedor proyecto-cuerpo">
-        {p.cifras.length > 0 && (
-          <ul className="cifras">
-            {p.cifras.map((c) => (
-              <li key={c.valor + tx(c.etiqueta)}>
-                <strong>{c.valor}</strong>
-                <span>{tx(c.etiqueta)}</span>
-              </li>
-            ))}
-            <li className="cifras-avance">
-              <strong>{avance} %</strong>
-              <span>{t('proyecto.avance')}</span>
-              <span className="barra" aria-hidden="true">
+        <section className="vistazo" aria-label={t('vistazo.titulo')}>
+          <div className="vistazo-ahora">
+            <p className="vistazo-etiqueta">{t('vistazo.ahora')}</p>
+            <p className="vistazo-fase">{tx(p.fase)}</p>
+            <div className="vistazo-avance">
+              <span
+                className="barra"
+                role="progressbar"
+                aria-label={t('proyecto.avance')}
+                aria-valuenow={avance}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              >
                 <span style={{ width: `${avance}%` }} />
               </span>
-            </li>
-          </ul>
-        )}
-
-        <section aria-label={t('sec.galeria')} className="proyecto-galeria">
-          <Galeria
-            grupos={[
-              { id: 'capturas', etiqueta: t('galeria.grupo.capturas'), imagenes: p.capturas },
-              { id: 'arte', etiqueta: t('galeria.grupo.arte'), imagenes: p.galeria },
-            ]}
-          />
+              <strong>{avance} %</strong>
+            </div>
+            {p.hitos.length > 0 && (
+              <p className="vistazo-nota">{t('vistazo.hitos', { hechos: hechos, total: p.hitos.length })}</p>
+            )}
+            {proximo && (
+              <p className="vistazo-proximo">
+                <span>{t('vistazo.siguiente')}</span>
+                <strong>
+                  {proximo.version && <span className="hito-version">{proximo.version}</span>}
+                  {tx(proximo.nombre)}
+                </strong>
+              </p>
+            )}
+          </div>
+          {ultima && (
+            <div className="vistazo-novedad">
+              <p className="vistazo-etiqueta">
+                {t('vistazo.ultima')} · <time dateTime={ultima.fecha}>{fecha(ultima.fecha)}</time>
+              </p>
+              <p className="vistazo-texto">{tx(ultima.texto)}</p>
+              {p.novedades.length > 1 && (
+                <a href="#novedades" className="vistazo-mas" onClick={verNovedades}>
+                  {t('novedades.todas', { n: p.novedades.length })} <ArrowRight size={15} aria-hidden="true" />
+                </a>
+              )}
+            </div>
+          )}
+          {p.cifras.length > 0 && (
+            <ul className="cifras">
+              {p.cifras.map((c) => (
+                <li key={c.valor + tx(c.etiqueta)}>
+                  <strong>{c.valor}</strong>
+                  <span>{tx(c.etiqueta)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </section>
 
-        <nav className="indice-ficha" aria-label={t('proyecto.indice')}>
-          {secciones.map((sec) => (
-            <button key={sec} type="button" onClick={() => irA(sec)} aria-current={abiertas.has(sec) || undefined}>
-              {tituloDe(sec)}
-            </button>
-          ))}
-        </nav>
+        <NavFicha grupos={grupos.map((g) => ({ id: g, titulo: g === 'galeria' ? t('sec.galeria') : t(`grupo.${g}`) }))} />
 
-        <div className="plegables-barra">
-          <button
-            type="button"
-            className="boton-texto"
-            onClick={() => setAbiertas(todasAbiertas ? new Set() : new Set(secciones))}
-          >
-            {todasAbiertas ? t('proyecto.contraer') : t('proyecto.expandir')}
-          </button>
-        </div>
-
-        <div className="plegables">
-          {secciones.includes('descripcion') && (
-            <Plegable {...plegable('descripcion')}>
+        <section id="resumen" className="grupo" aria-labelledby="titulo-resumen">
+          <h2 id="titulo-resumen" className="grupo-titulo">{t('grupo.resumen')}</h2>
+          {p.descripcion.length > 0 && (
+            <div id="descripcion" className="bloque">
               <div className="prosa">
                 {p.descripcion.map((d, i) => (
                   <p key={i}>{tx(d)}</p>
                 ))}
               </div>
-              <p className="proyecto-lineas">
-                <span>{t('lineas.titulo')}:</span>
-                {p.lineas.map((l) => (
-                  <Link key={l} to="/#lineas" className="chip-enlace">
-                    {t(`linea.${l as Linea}.titulo`)}
-                  </Link>
-                ))}
-              </p>
-            </Plegable>
+              {p.lineas.length > 0 && (
+                <p className="proyecto-lineas">
+                  <span>{t('lineas.titulo')}:</span>
+                  {p.lineas.map((l) => (
+                    <Link key={l} to="/#lineas" className="chip-enlace">
+                      {t(`linea.${l as Linea}.titulo`)}
+                    </Link>
+                  ))}
+                </p>
+              )}
+            </div>
           )}
-
-          {secciones.includes('caracteristicas') && (
-            <Plegable {...plegable('caracteristicas', String(p.caracteristicas.length))}>
+          {p.caracteristicas.length > 0 && (
+            <div id="caracteristicas" className="bloque">
+              <h3 className="bloque-titulo">{t('sec.caracteristicas')}</h3>
               <ul className="caracteristicas">
                 {p.caracteristicas.map((c) => (
                   <li key={tx(c.titulo)}>
                     <span className="caracteristica-icono">
                       <Icono nombre={c.icono} />
                     </span>
-                    <h3>{tx(c.titulo)}</h3>
+                    <h4>{tx(c.titulo)}</h4>
                     <p>{tx(c.texto)}</p>
                   </li>
                 ))}
               </ul>
-            </Plegable>
+            </div>
           )}
-
-          {secciones.includes('pasos') && (
-            <Plegable {...plegable('pasos', String(p.pasos.length))}>
+          {p.pasos.length > 0 && (
+            <div id="pasos" className="bloque">
+              <h3 className="bloque-titulo">{t('sec.pasos')}</h3>
               <ol className="pasos-ficha">
                 {p.pasos.map((paso) => (
                   <li key={tx(paso.titulo)}>
-                    <h3>{tx(paso.titulo)}</h3>
+                    <h4>{tx(paso.titulo)}</h4>
                     <p>{tx(paso.texto)}</p>
                   </li>
                 ))}
               </ol>
-            </Plegable>
+            </div>
           )}
+        </section>
 
-          {p.apartados.map((a) => (
-            <Plegable key={a.id} {...plegable(`ap-${a.id}`, String(a.items.length || a.grupos?.reduce((n, g) => n + g.imagenes.length, 0) || ''))}>
-              {a.intro && <p className="apartado-intro">{tx(a.intro)}</p>}
-              {a.grupos && (
-                <Galeria grupos={a.grupos.map((g) => ({ id: g.id, etiqueta: tx(g.etiqueta), imagenes: g.imagenes }))} rotar={false} />
-              )}
-              <ul className="apartado-items">
-                {a.items.map((item) => (
-                  <li key={tx(item.nombre)} className={item.imagen ? 'con-imagen' : undefined}>
-                    {item.imagen && <ImagenAmpliable imagen={item.imagen} />}
-                    <div className="apartado-cabecera">
-                      <h3>{tx(item.nombre)}</h3>
-                      {item.valor && <span className="apartado-valor">{item.valor}</span>}
-                    </div>
-                    <p>{tx(item.texto)}</p>
-                  </li>
-                ))}
-              </ul>
-            </Plegable>
-          ))}
+        {grupos.includes('galeria') && (
+          <section id="galeria" className="grupo" aria-labelledby="titulo-galeria">
+            <h2 id="titulo-galeria" className="grupo-titulo">{t('sec.galeria')}</h2>
+            <Galeria
+              grupos={[
+                { id: 'capturas', etiqueta: t('galeria.grupo.capturas'), imagenes: p.capturas },
+                { id: 'arte', etiqueta: t('galeria.grupo.arte'), imagenes: p.galeria },
+              ]}
+            />
+          </section>
+        )}
 
-          {secciones.includes('ficha') && (
-            <Plegable {...plegable('ficha')}>
-              <dl className="ficha">
-                {p.ficha.map((f) => (
-                  <div key={tx(f.capa)}>
-                    <dt>{tx(f.capa)}</dt>
-                    <dd>
-                      <ul className="chips">
-                        {f.tecnologias.map((tec) => (
-                          <li key={tec}>{tec}</li>
-                        ))}
-                      </ul>
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </Plegable>
-          )}
+        {grupos.includes('afondo') && (
+          <section id="afondo" className="grupo" aria-labelledby="titulo-afondo">
+            <h2 id="titulo-afondo" className="grupo-titulo">{t('grupo.afondo')}</h2>
+            <p className="grupo-texto">{t('afondo.texto')}</p>
+            <Apartados apartados={p.apartados} />
+          </section>
+        )}
 
-          {secciones.includes('hitos') && (
-            <Plegable {...plegable('hitos', `${avance} %`)}>
-              <ol className="hitos">
-                {p.hitos.map((h) => {
-                  const IconoHito = ICONO_HITO[h.estado];
-                  return (
-                    <li key={(h.version ?? '') + tx(h.nombre)} className={`hito hito-${h.estado}`}>
-                      <span className="hito-marca" aria-hidden="true">
-                        <IconoHito size={16} />
-                      </span>
-                      <div>
-                        <p className="hito-titulo">
-                          {h.version && <span className="hito-version">{h.version}</span>}
-                          {tx(h.nombre)}
-                          <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
-                        </p>
-                        {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
-                      </div>
-                    </li>
-                  );
-                })}
-              </ol>
-            </Plegable>
-          )}
-
-          {secciones.includes('novedades') && (
-            <Plegable {...plegable('novedades', fecha(p.novedades[0].fecha))}>
-              <ul className="novedades">
-                {p.novedades.map((n, i) => (
-                  <li key={i}>
-                    <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
-                    <p>{tx(n.texto)}</p>
-                  </li>
-                ))}
-              </ul>
-            </Plegable>
-          )}
-
-          {secciones.includes('aprendizajes') && (
-            <Plegable {...plegable('aprendizajes')}>
-              <ul className="aprendizajes">
-                {p.aprendizajes.map((a) => (
-                  <li key={tx(a)}>
-                    <Sparkles size={18} aria-hidden="true" />
-                    <span>{tx(a)}</span>
-                  </li>
-                ))}
-              </ul>
-            </Plegable>
-          )}
-
-          {secciones.includes('decisiones') && (
-            <Plegable {...plegable('decisiones')}>
-              <ul className="decisiones">
-                {p.decisiones.map((d) => (
-                  <li key={tx(d.titulo)}>
-                    <h3>{tx(d.titulo)}</h3>
-                    <p>{tx(d.texto)}</p>
-                  </li>
-                ))}
-              </ul>
-            </Plegable>
-          )}
-
-          {secciones.includes('equipo') && (
-            <Plegable {...plegable('equipo')}>
-              <ul className="equipo">
-                {p.equipo.map((m) => {
-                  const persona = buscarPersona(m.nombre);
-                  const perfil = persona?.perfil;
-                  const contenido = (
-                    <>
-                      {persona?.foto ? (
-                        <img src={ruta(persona.foto)} alt="" className="avatar" width={44} height={44} loading="lazy" />
-                      ) : (
-                        <span className="avatar" aria-hidden="true">
-                          {iniciales(m.nombre)}
-                        </span>
-                      )}
-                      <div>
-                        <p className="equipo-nombre">{m.nombre}</p>
-                        <p className="equipo-rol">{tx(m.rol)}</p>
-                        {perfil?.resumen && <p className="equipo-resumen">{tx(perfil.resumen)}</p>}
-                        {!!perfil?.destacadas?.length && (
-                          <ul className="equipo-destacadas">
-                            {perfil.destacadas.map((x) => (
-                              <li key={x}>{x}</li>
+        {grupos.includes('tecnica') && (
+          <section id="tecnica" className="grupo" aria-labelledby="titulo-tecnica">
+            <h2 id="titulo-tecnica" className="grupo-titulo">{t('grupo.tecnica')}</h2>
+            <div className="grupo-columnas">
+              {p.ficha.length > 0 && (
+                <div id="ficha" className="bloque">
+                  <h3 className="bloque-titulo">{t('sec.ficha')}</h3>
+                  <dl className="ficha">
+                    {p.ficha.map((f) => (
+                      <div key={tx(f.capa)}>
+                        <dt>{tx(f.capa)}</dt>
+                        <dd>
+                          <ul className="chips">
+                            {f.tecnologias.map((tec) => (
+                              <li key={tec}>{tec}</li>
                             ))}
                           </ul>
-                        )}
+                        </dd>
                       </div>
-                    </>
-                  );
-                  return (
-                    <li key={m.nombre}>
-                      {persona ? (
-                        <Link to={`/equipo#${persona.id}`} className="equipo-enlace" title={t('equipo.ver')}>
-                          {contenido}
-                        </Link>
-                      ) : (
-                        contenido
-                      )}
+                    ))}
+                  </dl>
+                </div>
+              )}
+              {p.aprendizajes.length > 0 && (
+                <div id="aprendizajes" className="bloque">
+                  <h3 className="bloque-titulo">{t('sec.aprendizajes')}</h3>
+                  <ul className="aprendizajes">
+                    {p.aprendizajes.map((a) => (
+                      <li key={tx(a)}>
+                        <Sparkles size={18} aria-hidden="true" />
+                        <span>{tx(a)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            {p.decisiones.length > 0 && (
+              <div id="decisiones" className="bloque">
+                <h3 className="bloque-titulo">{t('sec.decisiones')}</h3>
+                <ul className="decisiones">
+                  {p.decisiones.map((d) => (
+                    <li key={tx(d.titulo)}>
+                      <h4>{tx(d.titulo)}</h4>
+                      <p>{tx(d.texto)}</p>
                     </li>
-                  );
-                })}
-              </ul>
-            </Plegable>
-          )}
-        </div>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+        )}
+
+        {grupos.includes('avance') && (
+          <section id="avance" className="grupo" aria-labelledby="titulo-avance">
+            <h2 id="titulo-avance" className="grupo-titulo">{t('grupo.avance')}</h2>
+            <div className="grupo-columnas">
+              {p.hitos.length > 0 && (
+                <div id="hitos" className="bloque">
+                  <h3 className="bloque-titulo">
+                    {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
+                  </h3>
+                  <ol className="hitos">
+                    {p.hitos.map((h) => {
+                      const IconoHito = ICONO_HITO[h.estado];
+                      return (
+                        <li key={(h.version ?? '') + tx(h.nombre)} className={`hito hito-${h.estado}`}>
+                          <span className="hito-marca" aria-hidden="true">
+                            <IconoHito size={16} />
+                          </span>
+                          <div>
+                            <p className="hito-titulo">
+                              {h.version && <span className="hito-version">{h.version}</span>}
+                              {tx(h.nombre)}
+                              <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
+                            </p>
+                            {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+              )}
+              {p.novedades.length > 0 && (
+                <div id="novedades" className="bloque">
+                  <h3 className="bloque-titulo">{t('sec.novedades')}</h3>
+                  <ul className="novedades">
+                    {(todasNovedades ? p.novedades : p.novedades.slice(0, NOVEDADES_VISIBLES)).map((n, i) => (
+                      <li key={i}>
+                        <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
+                        <p>{tx(n.texto)}</p>
+                      </li>
+                    ))}
+                  </ul>
+                  {p.novedades.length > NOVEDADES_VISIBLES && (
+                    <button type="button" className="boton-texto" aria-expanded={todasNovedades} onClick={() => setTodasNovedades((v) => !v)}>
+                      {todasNovedades ? t('novedades.menos') : t('novedades.todas', { n: p.novedades.length })}
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+            {p.equipo.length > 0 && (
+              <div id="equipo" className="bloque">
+                <h3 className="bloque-titulo">{t('sec.equipo')}</h3>
+                <ul className="equipo">
+                  {p.equipo.map((m) => {
+                    const persona = buscarPersona(m.nombre);
+                    const perfil = persona?.perfil;
+                    const contenido = (
+                      <>
+                        {persona?.foto ? (
+                          <img src={ruta(persona.foto)} alt="" className="avatar" width={44} height={44} loading="lazy" />
+                        ) : (
+                          <span className="avatar" aria-hidden="true">
+                            {iniciales(m.nombre)}
+                          </span>
+                        )}
+                        <div>
+                          <p className="equipo-nombre">{m.nombre}</p>
+                          <p className="equipo-rol">{tx(m.rol)}</p>
+                          {perfil?.resumen && <p className="equipo-resumen">{tx(perfil.resumen)}</p>}
+                          {!!perfil?.destacadas?.length && (
+                            <ul className="equipo-destacadas">
+                              {perfil.destacadas.map((x) => (
+                                <li key={x}>{x}</li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+                      </>
+                    );
+                    return (
+                      <li key={m.nombre}>
+                        {persona ? (
+                          <Link to={`/equipo#${persona.id}`} className="equipo-enlace" title={t('equipo.ver')}>
+                            {contenido}
+                          </Link>
+                        ) : (
+                          contenido
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </section>
+        )}
 
         <aside className={`participar participar-${p.colaboracion}`}>
           <span className="participar-icono" aria-hidden="true">

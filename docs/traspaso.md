@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-23 |
+| **Actualizado** | 2026-10-25 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna |
-| **Siguiente paso** | Revisión semanal del domingo 2026-10-25 (publica la rama de trabajo); desde ahí las fichas las mantiene la tarea |
+| **Tarea en curso** | Rediseño de experiencia de usuario (petición de la persona, 2026-10-25), en `ccr-47f8fddd-o5ek6p`, sin llevar a la rama de trabajo hasta su revisión. `/gw-update` hecho: portal y flujo en 0.3.0, nada que actualizar (solo `comprobar.yml` difiere, con lo propio del portal). Plan: **ficha** con «De un vistazo» (fase, avance, siguiente hito, última novedad y cifras compactas), barra fija de 4-5 grupos con sección activa (Resumen, Galería, A fondo, Cómo está hecho, Avance) en vez de 22 plegables + índice, y los apartados como mosaico que abre una hoja encima con flechas entre temas; **inicio**: proyectos en 3 columnas sin filtros mientras haya pocos, collage oculto en móvil y «Participa» sin repeticiones. Antes: inicio 6,2 pantallas en escritorio y 11,4 en móvil; Tarkor 5,7 y 9,2 (con todo plegado). **Hecho:** ficha nueva (todo a la vista: Tarkor 7,6 y ~12 pantallas, sin abrir nada; en móvil, tarjetas en filas compactas y mosaico a dos columnas), `Plegable` borrado. **Falta:** inicio, capturas antes/después y revisión |
+| **Siguiente paso** | Rediseño: ficha de proyecto, luego inicio; capturas antes/después y `/code-review` antes de proponerlo para `main`. (La tarea semanal del domingo 2026-10-25 publica la rama de trabajo, que no lleva este rediseño) |
 | **En `main`** | Todo publicado (confirmación expresa, 2026-10-23): flujo Galivelop-workflow 0.3.0 y ficha técnica de Galivelop-workflow (seis diagramas y cuatro apartados nuevos); ficha ampliada de Álvaro; la rama de trabajo, igualada con `main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 25/25 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
 
