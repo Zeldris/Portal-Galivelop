@@ -43,6 +43,7 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
   const barra = useRef<HTMLElement>(null);
   // Las escuchas dependen de qué grupos hay, no del array (que es nuevo en cada render de la ficha).
   const ids = grupos.map((g) => g.id).join(' ');
+  const titulos = grupos.map((g) => g.titulo).join('|');
 
   useEffect(() => {
     const lista = ids.split(' ') as Grupo[];
@@ -77,6 +78,27 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
     const boton = caja?.querySelector<HTMLElement>('[aria-current="true"]');
     if (caja && boton) caja.scrollTo({ left: boton.offsetLeft - 16, behavior: 'smooth' });
   }, [activo]);
+
+  // Si la barra no cabe, marca a qué lado quedan grupos ocultos (el CSS pone un degradado en ese borde).
+  useEffect(() => {
+    const caja = barra.current;
+    if (!caja) return;
+    const medir = () => {
+      const lados = [];
+      if (caja.scrollLeft > 2) lados.push('izquierda');
+      if (caja.scrollLeft + caja.clientWidth < caja.scrollWidth - 2) lados.push('derecha');
+      caja.dataset.mas = lados.join(' ');
+    };
+    medir();
+    // Las fuentes web cambian el ancho de las pestañas al cargar.
+    document.fonts?.ready.then(medir);
+    caja.addEventListener('scroll', medir, { passive: true });
+    window.addEventListener('resize', medir);
+    return () => {
+      caja.removeEventListener('scroll', medir);
+      window.removeEventListener('resize', medir);
+    };
+  }, [titulos]);
 
   return (
     <nav className="nav-ficha" aria-label={t('proyecto.indice')} ref={barra}>

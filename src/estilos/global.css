@@ -84,6 +84,11 @@ h3 {
   margin: 0;
 }
 
+/* Sin el margen del navegador: si no, los títulos de las tarjetas bajan respecto a su icono o su número. */
+h4 {
+  margin: 0;
+}
+
 p {
   margin: 0;
 }
@@ -314,7 +319,8 @@ button {
   }
 }
 
-@media (max-width: 380px) {
+/* Hasta 430px (móviles grandes incluidos) la fila de la cabecera no cabe con los huecos de escritorio. */
+@media (max-width: 26.875em) {
   .logo-texto {
     font-size: 1.15rem;
   }
@@ -775,7 +781,7 @@ button {
 
 .tarjeta-imagen .estado {
   position: absolute;
-  top: 14px;
+  bottom: 14px;
   left: 14px;
   z-index: 1;
 }
@@ -920,7 +926,7 @@ button {
 }
 
 .proxima-etiqueta {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1247,6 +1253,8 @@ button {
 .cifras span {
   font-size: 0.85rem;
   color: var(--texto-2);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .cifras .barra {
@@ -1704,10 +1712,6 @@ button {
 }
 
 .hito-titulo {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
   font-weight: 600;
   padding-top: 4px;
 }
@@ -1717,6 +1721,8 @@ button {
 }
 
 .hito-version {
+  display: inline-block;
+  margin-inline-end: 8px;
   font-family: var(--fuente-titulos);
   font-size: 0.8rem;
   padding: 1px 8px;
@@ -1726,6 +1732,8 @@ button {
 }
 
 .hito-estado {
+  margin-inline-start: 8px;
+  white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--texto-3);
@@ -1863,6 +1871,29 @@ button {
   gap: 6px;
   font-weight: 600;
   text-decoration: none;
+}
+
+/* Enlaces de texto sueltos: la zona que se toca crece hasta unos 44px de alto sin mover nada del diseño. */
+.volver,
+.siguiente,
+.vistazo-mas,
+.miembro-mas > summary,
+.miembro-pliegue > summary,
+.pie-proyectos a,
+.contacto-otros a {
+  position: relative;
+}
+
+.volver::after,
+.siguiente::after,
+.vistazo-mas::after,
+.miembro-mas > summary::after,
+.miembro-pliegue > summary::after,
+.pie-proyectos a::after,
+.contacto-otros a::after {
+  content: '';
+  position: absolute;
+  inset: -10px 0;
 }
 
 /* ---------- 404 ---------- */
@@ -2240,8 +2271,22 @@ button {
 }
 
 .contacto p.contacto-otros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
   margin-top: 6px;
   font-size: 0.92rem;
+}
+
+/* En el móvil cada enlace cae en su línea o junto a otro; los puntos sobran y quedaban al final de la línea. */
+@media (max-width: 700px) {
+  .contacto p.contacto-otros {
+    gap: 10px 18px;
+  }
+  .contacto-sep {
+    display: none;
+  }
 }
 
 .contacto-otros a {
@@ -2905,7 +2950,7 @@ img.perfil-logo {
   padding: 1px 7px;
   border: 1px solid var(--borde);
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: var(--texto-2);
@@ -3861,6 +3906,37 @@ body:has(dialog[open]) {
   display: none;
 }
 
+/* Si los grupos no caben, un degradado en el borde avisa de que hay más a ese lado (lo marca NavFicha en data-mas).
+   Los márgenes negativos compensan el ancho y el hueco de la barra: no mueven las pestañas. */
+.nav-ficha::before,
+.nav-ficha::after {
+  content: '';
+  position: sticky;
+  z-index: 1;
+  flex: none;
+  width: 32px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transicion);
+}
+
+.nav-ficha::before {
+  left: 0;
+  margin-right: -36px;
+  background: linear-gradient(to left, transparent, var(--fondo));
+}
+
+.nav-ficha::after {
+  right: 0;
+  margin-left: -36px;
+  background: linear-gradient(to right, transparent, var(--fondo));
+}
+
+.nav-ficha[data-mas~='izquierda']::before,
+.nav-ficha[data-mas~='derecha']::after {
+  opacity: 1;
+}
+
 .nav-ficha a {
   flex: none;
   padding: 8px 14px;
@@ -4009,6 +4085,8 @@ body:has(dialog[open]) {
 .mosaico-texto span {
   font-size: 0.82rem;
   color: var(--texto-2);
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
 
 .mosaico-flecha {
@@ -4191,6 +4269,13 @@ body:has(dialog[open]) {
   }
 }
 
+/* En los móviles más estrechos dos columnas cortan el nombre de cada pieza. */
+@media (max-width: 22.5em) {
+  .mosaico {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 700px) {
   .vistazo {
     grid-template-columns: minmax(0, 1fr);
@@ -4210,7 +4295,7 @@ body:has(dialog[open]) {
     padding-right: 12px;
   }
   .nav-ficha a {
-    padding: 7px 12px;
+    padding: 7px 11px;
     font-size: 0.85rem;
   }
   .grupo {

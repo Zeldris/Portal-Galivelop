@@ -278,15 +278,19 @@ export function Inicio() {
             </p>
           )}
           <p className="contacto-otros">
-            {t('contacto.otros')}{' '}
+            <span>{t('contacto.otros')}</span>
             <a href={`mailto:${MARCA.correo}`}>
               <Mail size={15} /> {MARCA.correo}
-            </a>{' '}
-            ·{' '}
+            </a>
+            <span className="contacto-sep" aria-hidden="true">
+              ·
+            </span>
             <a href={MARCA.discord} target="_blank" rel="noreferrer">
               <IconoDiscord tamano={15} /> Discord
-            </a>{' '}
-            ·{' '}
+            </a>
+            <span className="contacto-sep" aria-hidden="true">
+              ·
+            </span>
             <a href={MARCA.github} target="_blank" rel="noreferrer">
               <IconoGitHub tamano={15} /> GitHub
             </a>
