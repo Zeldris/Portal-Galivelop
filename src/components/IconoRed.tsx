@@ -1,4 +1,5 @@
-import { Globe, Link2, Mail } from 'lucide-react';
+import { Briefcase, Globe, Link2, Mail } from 'lucide-react';
+import { siReddit } from 'simple-icons';
 import type { Red } from '../data/equipo';
 import { IconoDiscord } from './IconoDiscord';
 import { IconoGitHub } from './IconoGitHub';
@@ -12,6 +13,8 @@ const NOMBRE_RED: Record<Red, string> = {
   instagram: 'Instagram',
   youtube: 'YouTube',
   discord: 'Discord',
+  reddit: 'Reddit',
+  manfred: 'Manfred',
 };
 
 export function nombreRed(red: Red): string {
@@ -27,6 +30,7 @@ const MARCAS: Partial<Record<Red, string>> = {
     'M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16ZM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0Zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88Z',
   youtube:
     'M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z',
+  reddit: siReddit.path,
 };
 
 export function IconoRed({ red, tamano = 18 }: { red: Red; tamano?: number }) {
@@ -34,6 +38,8 @@ export function IconoRed({ red, tamano = 18 }: { red: Red; tamano?: number }) {
   if (red === 'discord') return <IconoDiscord tamano={tamano} />;
   if (red === 'web') return <Globe size={tamano} aria-hidden="true" />;
   if (red === 'correo') return <Mail size={tamano} aria-hidden="true" />;
+  // Manfred no tiene logo en Simple Icons: un maletín, por ser su perfil profesional.
+  if (red === 'manfred') return <Briefcase size={tamano} aria-hidden="true" />;
   const d = MARCAS[red];
   if (!d) return <Link2 size={tamano} aria-hidden="true" />;
   return (

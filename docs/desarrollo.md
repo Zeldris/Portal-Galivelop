@@ -108,7 +108,7 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
   proyectos de otras personas, su página termina con ese texto y un botón de correo
   ([ADR 0001](adr/0001-encargos-por-miembro.md)). Sin él, la página no dice nada de colaborar.
 - `redes`: lista de `{ "tipo": …, "url": … }` con `tipo` uno de `linkedin`, `github`, `web`,
-  `correo`, `x`, `instagram`, `youtube` o `discord` (para `correo`, la dirección sin `mailto:`).
+  `correo`, `x`, `instagram`, `youtube`, `discord`, `reddit` o `manfred` (para `correo`, la dirección sin `mailto:`).
 - `foto` (opcional): ruta en `public/`; sin ella se muestran las iniciales.
 
 En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su página.

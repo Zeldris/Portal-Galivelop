@@ -27,6 +27,18 @@
       {
         "tipo": "linkedin",
         "url": "https://www.linkedin.com/in/%C3%A1lvaro-garc%C3%ADa-gra%C3%B1a-b4538117b"
+      },
+      {
+        "tipo": "github",
+        "url": "https://github.com/Zeldris"
+      },
+      {
+        "tipo": "manfred",
+        "url": "https://www.getmanfred.com/perfil/d418e5e6-2532-4126-b7a1-6a721c1b1a39"
+      },
+      {
+        "tipo": "reddit",
+        "url": "https://www.reddit.com/user/Alvaro-Garcia-Grana"
       }
     ],
     "foto": "equipo/alvaro-garcia-grana.webp",
@@ -321,6 +333,18 @@
       {
         "tipo": "linkedin",
         "url": "https://www.linkedin.com/in/raquel-comesa%C3%B1a-carrera-1646ba195"
+      },
+      {
+        "tipo": "github",
+        "url": "https://github.com/raquelccarreraA"
+      },
+      {
+        "tipo": "manfred",
+        "url": "https://www.getmanfred.com/perfil/8278a04d-7354-4f1e-b100-de4a7b292241"
+      },
+      {
+        "tipo": "correo",
+        "url": "raquel.ccarrera@gmail.com"
       }
     ],
     "foto": "equipo/raquel-c.webp",
