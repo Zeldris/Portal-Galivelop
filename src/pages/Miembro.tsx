@@ -18,8 +18,13 @@ function useMovil(): boolean {
     const mq = window.matchMedia?.(MOVIL);
     if (!mq) return;
     const cambio = () => setMovil(mq.matches);
-    mq.addEventListener('change', cambio);
-    return () => mq.removeEventListener('change', cambio);
+    // Safari < 14 solo tiene addListener/removeListener.
+    if (mq.addEventListener) {
+      mq.addEventListener('change', cambio);
+      return () => mq.removeEventListener('change', cambio);
+    }
+    mq.addListener(cambio);
+    return () => mq.removeListener(cambio);
   }, []);
   return movil;
 }
@@ -201,7 +206,7 @@ function Ficha({ p }: { p: Persona }) {
             </div>
             <a
               className="boton boton-secundario"
-              href={`mailto:${p.colabora.correo}?subject=${encodeURIComponent(t('equipo.colabora.asunto') + p.nombre)}`}
+              href={`mailto:${p.colabora.correo}?subject=${encodeURIComponent(t('equipo.colabora.asunto', { nombre: p.nombre }))}`}
             >
               <Mail size={16} /> {t('equipo.colabora.boton', { nombre })}
             </a>

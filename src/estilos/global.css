@@ -2842,7 +2842,6 @@ button {
   color: var(--texto-3);
 }
 
-
 .perfil-etapas li {
   position: relative;
   display: flex;
@@ -3073,7 +3072,7 @@ button {
   border-color: var(--celeste);
 }
 
-.miembro-proyectos span {
+.miembro-proyectos a > span {
   font-size: 0.9rem;
   color: var(--texto-2);
 }

@@ -142,8 +142,9 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   colaborar y sin ánimo de vender en la web: expone los proyectos. Galicia es solo una mención (el nombre), no la
   base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
   **Encargos por miembro** ([ADR 0001](docs/adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
-  taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice solo en
-  la página de ese miembro (`colabora`) y en una banda discreta de Participa, sin «de pago» ni distintivos.
+  taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice en la
+  página de ese miembro (`colabora`), en una banda discreta de Participa, en «Cómo trabajamos» y en el README, sin
+  «de pago» ni distintivos.
 - Al sacar información de otro repo (Tarkor, toVeriAI…), solo se lee: nunca se modifica desde aquí.
 - Riesgo alto (esperar al usuario aunque el `selector` diga seguir): borrar contenido publicado y cambiar rutas que
   ya están indexadas.

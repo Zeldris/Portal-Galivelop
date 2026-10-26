@@ -61,7 +61,11 @@ export function Equipo() {
                   })}
                 </div>
               )}
-              <Link to={`/equipo/${p.id}`} className="boton boton-primario persona-ver">
+              <Link
+                to={`/equipo/${p.id}`}
+                className="boton boton-primario persona-ver"
+                aria-label={t('equipo.verPerfilDe', { nombre: p.nombre })}
+              >
                 {t('equipo.ver')} <ArrowRight size={16} />
               </Link>
               {p.redes.length > 0 && (

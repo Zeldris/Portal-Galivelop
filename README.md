@@ -97,14 +97,14 @@ Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
 a credibilidade das novas. O portal non vende: amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar; algúns dos seus membros colaboran pola súa conta en proxectos alleos. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+aberta a quen queira participar. O obradoiro tampouco vende, pero algúns dos seus membros colaboran pola súa conta en proxectos alleos. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
 **Galivelop is an independent software workshop.** We create, research and learn by building
 ambitious software, from a fantasy world that lives on its own to a tool that measures the
 credibility of the news. The portal does not sell: it shows each project as it is and keeps the door
-open to anyone who wants to take part; some of its members work on other people's projects on their own. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+open to anyone who wants to take part. Neither does the workshop, but some of its members work on other people's projects on their own. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ---
 

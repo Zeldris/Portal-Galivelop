@@ -18,16 +18,18 @@ consultoría formada por los miembros. Hoy el único miembro con la ficha comple
   de ideas.
 - **Los encargos de pago son de cada miembro.** Quien quiera un proyecto contacta con el desarrollador; el acuerdo
   y la factura son entre ellos, no con Galivelop. El taller presenta a la persona, no intermedia.
-- **Hasta el anuncio, la web no lo menciona.** Mientras tanto, los textos dejan la vía abierta: hablan de lo que
-  el taller no vende y no descartan que sus miembros trabajen por encargo.
+- **Se dice sin vender.** Sin «de pago» ni distintivos: la página de cada miembro que colabora lo cuenta en su
+  cierre («¿Tienes un proyecto?», con su correo), y Participa, «Cómo trabajamos» y el README lo mencionan una vez,
+  separado de lo que hace el taller. (Hasta el 2026-10-26 la web no lo mencionaba.)
 
 ## Consecuencias
 
-- Los textos actuales («esta web no vende», «no nos mueve el beneficio económico») encajan: hablan del taller.
-  Al anunciarlo, «Cómo trabajamos» y el README tendrán que distinguir el taller de sus miembros.
-- Al anunciarlo (decisión de la persona), en es, gl y en:
-  - la ficha de cada miembro en `/equipo` dirá si acepta encargos y cómo contactarle directamente;
-  - «Participa» separará «sumarse al taller» de «contratar a un miembro»;
-  - aviso legal y privacidad: comprobar con fuentes primarias qué obliga la LSSI-CE a una web que presenta
-    servicios profesionales de personas (cada miembro factura por su cuenta);
-  - revisar el mensaje de la marca en `AGENTS.md` y la entrada «Taller» de `GLOSSARY.md`.
+- Los textos del taller («esta web no vende», «no nos mueve el beneficio económico») se quedan: hablan del taller.
+  «Cómo trabajamos» y el README añaden que algunos miembros colaboran por su cuenta.
+- Hecho al publicarlo (2026-10-26), en es, gl y en:
+  - cada miembro tiene su página, `/equipo/<id>`; la que tiene `colabora` cierra con cómo escribirle. En `/equipo`
+    no hay distintivo;
+  - Participa deja sus tres vías del taller y añade aparte la banda «¿Tienes un proyecto propio?»;
+  - el mensaje de la marca en `AGENTS.md` y las entradas «Encargo» y «Página de miembro» de `GLOSSARY.md`.
+- Pendiente: aviso legal y privacidad, comprobar con fuentes primarias qué obliga la LSSI-CE a una web que
+  presenta servicios profesionales de personas (cada miembro factura por su cuenta).

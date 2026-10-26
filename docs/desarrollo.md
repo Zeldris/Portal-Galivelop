@@ -88,7 +88,7 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
   `nombre`, `orden`.
 - `rol` y `bio` en los tres idiomas.
 - `proyectos`: slugs de los proyectos en los que participa.
-- `papeles` (opcional): por slug de `proyectos`, `creo` («Lo creó») o `equipo` («Forma parte del equipo»).
+- `papeles`: uno por cada slug de `proyectos` (el test lo exige), `creo` («Lo creó») o `equipo` («Forma parte del equipo»).
 - `perfil` (opcional): trayectoria, formación, tecnologías, idiomas y fortalezas; solo sale en su página.
 - `colabora` (opcional): `{ "texto": { es, gl, en }, "correo": … }`. Si el miembro colabora por su cuenta en
   proyectos de otras personas, su página termina con ese texto y un botón de correo

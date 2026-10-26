@@ -134,7 +134,7 @@ describe('equipo', () => {
     }
   });
 
-  it('cada persona tiene una ruta válida, papeles de sus proyectos y un correo para colaborar', async () => {
+  it('cada persona tiene una ruta válida, un papel por cada uno de sus proyectos y un correo para colaborar', async () => {
     const { equipo, PAPELES } = await import('./equipo');
     for (const p of equipo) {
       expect(p.id).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
@@ -142,6 +142,7 @@ describe('equipo', () => {
         expect(p.proyectos).toContain(slug);
         expect(PAPELES).toContain(papel);
       }
+      expect(Object.keys(p.papeles ?? {}).sort()).toEqual([...p.proyectos].sort());
       if (p.colabora) expect(p.colabora.correo).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]+$/);
     }
   });
