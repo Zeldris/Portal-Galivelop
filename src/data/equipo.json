@@ -637,6 +637,14 @@
           "en": "Teamwork"
         }
       ]
+    },
+    "colabora": {
+      "texto": {
+        "es": "Raquel colabora de vez en cuando en proyectos de otras personas, por su cuenta: desarrollo full stack con Java, Spring Boot y React.",
+        "gl": "Raquel colabora de cando en vez en proxectos doutras persoas, pola súa conta: desenvolvemento full stack con Java, Spring Boot e React.",
+        "en": "Raquel occasionally works on other people’s projects, independently of Galivelop: full-stack development with Java, Spring Boot and React."
+      },
+      "correo": "raquel.ccarrera@gmail.com"
     }
   }
 ]
