@@ -302,14 +302,14 @@
     "nombre": "Raquel C.",
     "orden": 2,
     "rol": {
-      "es": "Fundadora de toVeriAI",
-      "gl": "Fundadora de toVeriAI",
-      "en": "Founder of toVeriAI"
+      "es": "Fundadora de toVeriAI · Desarrollo full stack",
+      "gl": "Fundadora de toVeriAI · Desenvolvemento full stack",
+      "en": "Founder of toVeriAI · Full-stack development"
     },
     "bio": {
-      "es": "Fundadora y creadora de toVeriAI, la plataforma que analiza la credibilidad de las noticias con inteligencia artificial. Diseña y desarrolla el producto, hoy en producción en toveriai.com.",
-      "gl": "Fundadora e creadora de toVeriAI, a plataforma que analiza a credibilidade das novas con intelixencia artificial. Deseña e desenvolve o produto, hoxe en produción en toveriai.com.",
-      "en": "Founder and creator of toVeriAI, the platform that analyses the credibility of news with artificial intelligence. Designs and builds the product, now live at toveriai.com."
+      "es": "Desarrolladora full stack con Java, Spring Boot y React. Llegó a la programación desde la Educación Social, y de ahí le viene querer entender para quién construye y cuidar la comunicación con el equipo. Fundó toVeriAI, la plataforma que analiza la credibilidad de las noticias con inteligencia artificial, y la llevó de la idea a producción: tests desde el principio, seguridad con Spring Security y JWT, y decisiones con datos, como elegir los proveedores de IA probándolos con noticias falsas.",
+      "gl": "Desenvolvedora full stack con Java, Spring Boot e React. Chegou á programación desde a Educación Social, e de aí vénlle querer entender para quen constrúe e coidar a comunicación co equipo. Fundou toVeriAI, a plataforma que analiza a credibilidade das novas con intelixencia artificial, e levouna da idea á produción: tests desde o principio, seguridade con Spring Security e JWT, e decisións con datos, como escoller os provedores de IA probándoos con novas falsas.",
+      "en": "Full-stack developer working with Java, Spring Boot and React. Came to programming from social education, which shows in a wish to understand who the software is for and to communicate well with the team. Founded toVeriAI, the platform that analyses the credibility of news with artificial intelligence, and took it from idea to production: tests from day one, security with Spring Security and JWT, and data-driven decisions, such as choosing AI providers by testing them against fake news."
     },
     "proyectos": [
       "toveriai"
@@ -322,6 +322,287 @@
         "tipo": "linkedin",
         "url": "https://www.linkedin.com/in/raquel-comesa%C3%B1a-carrera-1646ba195"
       }
-    ]
+    ],
+    "foto": "equipo/raquel-c.webp",
+    "perfil": {
+      "resumen": {
+        "es": "Full stack con Java, Spring Boot y React",
+        "gl": "Full stack con Java, Spring Boot e React",
+        "en": "Full stack with Java, Spring Boot and React"
+      },
+      "destacadas": [
+        "Java",
+        "Spring Boot",
+        "React",
+        "MySQL",
+        "Docker"
+      ],
+      "ubicacion": {
+        "es": "A Coruña, Galicia",
+        "gl": "A Coruña, Galicia",
+        "en": "A Coruña, Galicia, Spain"
+      },
+      "trayectoria": [
+        {
+          "titulo": {
+            "es": "Desarrolladora de software",
+            "gl": "Desenvolvedora de software",
+            "en": "Software developer"
+          },
+          "lugar": "Seidor",
+          "desde": "2026-03",
+          "hasta": "2026-07",
+          "descripcion": {
+            "es": "En el equipo de IBM i que moderniza aplicaciones de gestión: servicios REST en RPG con SQL embebido sobre DB2 que devuelven JSON a React, y pantallas de terminal pasadas a React.",
+            "gl": "No equipo de IBM i que moderniza aplicacións de xestión: servizos REST en RPG con SQL embebido sobre DB2 que devolven JSON a React, e pantallas de terminal pasadas a React.",
+            "en": "On the IBM i team modernising business applications: REST services in RPG with embedded SQL on DB2 that return JSON to React, and green-screen terminals moved to React."
+          },
+          "negocio": [
+            "B2B"
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Desarrolladora de software",
+            "gl": "Desenvolvedora de software",
+            "en": "Software developer"
+          },
+          "lugar": "toVeriAI",
+          "desde": "2026-02",
+          "hasta": "2026-07",
+          "descripcion": {
+            "es": "Analizador de la credibilidad de las noticias, con React y Tailwind, Spring Boot y un índice propio, el IMI, para combatir la desinformación.",
+            "gl": "Analizador da credibilidade das novas, con React e Tailwind, Spring Boot e un índice propio, o IMI, para combater a desinformación.",
+            "en": "A news-credibility analyser built with React and Tailwind, Spring Boot and its own index, the IMI, to fight disinformation."
+          },
+          "negocio": [
+            "B2C"
+          ]
+        },
+        {
+          "titulo": {
+            "es": "Desarrolladora de software · ArgaQuest",
+            "gl": "Desenvolvedora de software · ArgaQuest",
+            "en": "Software developer · ArgaQuest"
+          },
+          "lugar": "IES Fernando Wirtz",
+          "desde": "2025-10",
+          "hasta": "2026-02",
+          "descripcion": {
+            "es": "Jefa de proyecto y desarrolladora de ArgaQuest, la plataforma educativa del Plan Proxecta que ganó el primer premio de Innovación Educativa de la Xunta: Java, Spring Boot, React y WebSockets, con Scrum.",
+            "gl": "Xefa de proxecto e desenvolvedora de ArgaQuest, a plataforma educativa do Plan Proxecta que gañou o primeiro premio de Innovación Educativa da Xunta: Java, Spring Boot, React e WebSockets, con Scrum.",
+            "en": "Project manager and developer of ArgaQuest, the Plan Proxecta educational platform that won the Xunta de Galicia’s first prize for Educational Innovation: Java, Spring Boot, React and WebSockets, with Scrum."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Desarrolladora de software",
+            "gl": "Desenvolvedora de software",
+            "en": "Software developer"
+          },
+          "lugar": "Seidor",
+          "desde": "2025-04",
+          "hasta": "2025-07",
+          "descripcion": {
+            "es": "Aplicaciones de gestión en IBM i (AS/400) con RPG clásico y libre: lógica de negocio y acceso a datos.",
+            "gl": "Aplicacións de xestión en IBM i (AS/400) con RPG clásico e libre: lóxica de negocio e acceso a datos.",
+            "en": "Business applications on IBM i (AS/400) in classic and free-format RPG: business logic and data access."
+          },
+          "negocio": [
+            "B2B"
+          ]
+        }
+      ],
+      "formacion": [
+        {
+          "titulo": {
+            "es": "Especialización en Inteligencia Artificial y Big Data (dual)",
+            "gl": "Especialización en Intelixencia Artificial e Big Data (dual)",
+            "en": "Specialisation in Artificial Intelligence and Big Data (dual)"
+          },
+          "lugar": "IES Fernando Wirtz",
+          "desde": "2026-10"
+        },
+        {
+          "titulo": {
+            "es": "Técnico Superior en Desarrollo de Aplicaciones Web (dual intensiva)",
+            "gl": "Técnico Superior en Desenvolvemento de Aplicacións Web (dual intensiva)",
+            "en": "Higher Technician in Web Application Development (intensive dual)"
+          },
+          "lugar": "IES Fernando Wirtz",
+          "desde": "2024-09",
+          "hasta": "2026-06"
+        },
+        {
+          "titulo": {
+            "es": "Desarrollo de software full stack",
+            "gl": "Desenvolvemento de software full stack",
+            "en": "Full-stack software development"
+          },
+          "lugar": "Tokio School",
+          "desde": "2023-07",
+          "hasta": "2025-07"
+        },
+        {
+          "titulo": {
+            "es": "Grado universitario",
+            "gl": "Grao universitario",
+            "en": "University degree"
+          },
+          "lugar": "Universidade da Coruña",
+          "desde": "2017-09",
+          "hasta": "2021-06"
+        }
+      ],
+      "tecnologias": [
+        {
+          "grupo": {
+            "es": "Frontend",
+            "gl": "Frontend",
+            "en": "Frontend"
+          },
+          "lista": [
+            "React",
+            "React Native",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Tailwind CSS",
+            "Bootstrap",
+            "jQuery",
+            "AngularJS",
+            "Vite"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Backend",
+            "gl": "Backend",
+            "en": "Backend"
+          },
+          "lista": [
+            "Java",
+            "Spring",
+            "Spring Boot",
+            "Spring Security",
+            "JWT",
+            "Hibernate",
+            "Maven",
+            "WebSockets",
+            "IBM i",
+            "RPG",
+            "JSON",
+            "XML"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Bases de datos",
+            "gl": "Bases de datos",
+            "en": "Databases"
+          },
+          "lista": [
+            "MySQL",
+            "Oracle",
+            "DB2",
+            "SQL"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Pruebas",
+            "gl": "Probas",
+            "en": "Testing"
+          },
+          "lista": [
+            "JUnit",
+            "Mockito",
+            "Vitest"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Inteligencia artificial",
+            "gl": "Intelixencia artificial",
+            "en": "Artificial intelligence"
+          },
+          "lista": [
+            "Ollama",
+            "Qwen"
+          ]
+        },
+        {
+          "grupo": {
+            "es": "Herramientas",
+            "gl": "Ferramentas",
+            "en": "Tooling"
+          },
+          "lista": [
+            "Git",
+            "GitHub",
+            "Docker",
+            "Linux",
+            "Cloudflare",
+            "Vercel",
+            "Microsoft 365"
+          ]
+        }
+      ],
+      "idiomas": [
+        {
+          "idioma": {
+            "es": "Castellano",
+            "gl": "Castelán",
+            "en": "Spanish"
+          },
+          "nivel": {
+            "es": "Nativo",
+            "gl": "Nativo",
+            "en": "Native"
+          }
+        },
+        {
+          "idioma": {
+            "es": "Gallego",
+            "gl": "Galego",
+            "en": "Galician"
+          },
+          "nivel": {
+            "es": "Nativo",
+            "gl": "Nativo",
+            "en": "Native"
+          }
+        },
+        {
+          "idioma": {
+            "es": "Inglés",
+            "gl": "Inglés",
+            "en": "English"
+          },
+          "nivel": {
+            "es": "Básico",
+            "gl": "Básico",
+            "en": "Basic"
+          }
+        }
+      ],
+      "fortalezas": [
+        {
+          "es": "Adaptabilidad al cambio",
+          "gl": "Adaptabilidade ao cambio",
+          "en": "Adaptability to change"
+        },
+        {
+          "es": "Aprendizaje continuo",
+          "gl": "Aprendizaxe continua",
+          "en": "Continuous learning"
+        },
+        {
+          "es": "Trabajo en equipo",
+          "gl": "Traballo en equipo",
+          "en": "Teamwork"
+        }
+      ]
+    }
   }
 ]
