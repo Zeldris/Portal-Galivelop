@@ -311,7 +311,7 @@
   },
   {
     "id": "raquel-c",
-    "nombre": "Raquel C.",
+    "nombre": "Raquel Comesaña Carrera",
     "orden": 2,
     "rol": {
       "es": "Fundadora de toVeriAI · Desarrollo full stack",
@@ -337,6 +337,10 @@
       {
         "tipo": "github",
         "url": "https://github.com/raquelccarreraA"
+      },
+      {
+        "tipo": "web",
+        "url": "https://toveriai.com"
       },
       {
         "tipo": "manfred",
@@ -392,6 +396,7 @@
             "en": "Software developer"
           },
           "lugar": "toVeriAI",
+          "logo": "equipo/empresas/toveriai.webp",
           "desde": "2026-02",
           "hasta": "2026-07",
           "descripcion": {
@@ -469,9 +474,9 @@
         },
         {
           "titulo": {
-            "es": "Grado universitario",
-            "gl": "Grao universitario",
-            "en": "University degree"
+            "es": "Grado en Educación Social",
+            "gl": "Grao en Educación Social",
+            "en": "Bachelor’s Degree in Social Education"
           },
           "lugar": "Universidade da Coruña",
           "desde": "2017-09",

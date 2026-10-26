@@ -83,7 +83,7 @@ construir, de aprender y de hacerlo en equipo.
 
 - **Álvaro García Graña**: fundador de Galivelop, desarrollo full stack.
   [LinkedIn](https://www.linkedin.com/in/%C3%A1lvaro-garc%C3%ADa-gra%C3%B1a-b4538117b)
-- **Raquel C.**: fundadora de toVeriAI.
+- **Raquel Comesaña Carrera**: fundadora de toVeriAI.
   [LinkedIn](https://www.linkedin.com/in/raquel-comesa%C3%B1a-carrera-1646ba195)
 
 Quien se suma al taller pasa a formar parte del [equipo](https://zeldris.github.io/Portal-Galivelop/equipo).
