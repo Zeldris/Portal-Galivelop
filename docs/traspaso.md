@@ -6,9 +6,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-25 |
+| **Actualizado** | 2026-10-26 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` |
-| **Tarea en curso** | Ninguna: revisión especial de todos los repos publicada en `main` (2026-10-25) |
+| **Tarea en curso** | Ninguna: encargos por miembro (ADR 0001) apuntados en la rama `ccr-47f8fddd-o5ek6p`, sin publicar (2026-10-26) |
 | **Siguiente paso** | `/clear`. Pendiente de la persona: pegar de nuevo el bloque ```text de `docs/runbooks/tarea-semanal.md` en la conversación de «Proyectos semanal» (ahora el paso 2 trae la historia de los clones superficiales antes de los `git log --since`; desde otra sesión no se puede); la primera publicación del muro llega cuando un proyecto marque una pieza de `docs/difusion` como `"estado": "listo"` y el flujo cree `web.md` (ver «Pendiente») |
 | **En `main`** | Todo publicado: revisión especial de los repos (fichas de Galivelop-workflow y Tarkor, 2026-10-25, confirmación de la persona); «Próximamente» en el inicio (2026-10-25, confirmación de la persona); muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, vitest 49/49 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto |
@@ -20,6 +20,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ 2026-10-26 · Encargos por miembro, a petición de la persona y **sin publicar**: el taller sigue sin vender; cada miembro podrá aceptar proyectos de pago contratados con él directamente (factura el miembro). [ADR 0001](adr/0001-encargos-por-miembro.md), nota en el mensaje de la marca de `AGENTS.md` y término «Encargo» en `GLOSSARY.md`. Ningún texto visible cambia: los actuales («esta web no vende») hablan del taller y encajan.
 - ✅ 2026-10-25 · Revisión especial de todos los repos y publicación (a petición de la persona, «ocasión especial»): Galivelop-workflow, novedad de la 0.4.0 en preparación (rama `ccr-6dfbc880-ddr41g`, sin publicar; cosecha al empezar cada versión, skills de contenido para redes y `wait-what`, ganchos más seguros, CI que no arranca) y detalle del hito 7; Tarkor, novedad de la enciclopedia revisada con el canon (las herramientas de voces e imágenes con IA local son internas, no salen); toVeriAI, «Próximamente» y muro sin cambios (ningún `web.md` listo). Las propuestas P1/P3/P4 del portal ya están aplicadas en esa rama del flujo. Publicado en `main` con confirmación de la persona; la rama de la tarea, igualada con `main`.
 - ✅ 2026-10-25 · Comprobada la revisión semanal del mismo día (`b92a8a1`): cada proyecto cuadra con sus repos (Tarkor: la novedad sale de las tandas 22-27 del 10-23 y lo del 10-24 y 10-25 es interno; Galivelop-workflow sin etiqueta nueva tras la v0.3.0; toVeriAI sin novedades públicas desde el 07-17; «Próximamente» igual que los planes y bitácoras de cada repo; ningún `web.md` listo). CI «Comprobar» y «Publicar en GitHub Pages» en verde. Al recortar «Hecho» se perdió la comprobación manual de Discord: repuesta en «Pendiente».
 - ✅ 2026-10-25 · Runbook de la tarea semanal (a petición de la persona): en el paso 2, antes de los `git log --since`, si el clon del proyecto es superficial, `git fetch --shallow-since=<un día antes de la fecha más antigua de N y F>` (o `--unshallow`), para que no salgan como nuevos commits o archivos antiguos. Publicado en `main` con confirmación de la persona (solo documentos); falta pegarlo en la conversación de la tarea.
@@ -33,6 +34,10 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
+- **Encargos por miembro, al anunciarlo** (2026-10-26, decide la persona cuándo): lo que enumera «Consecuencias» del
+  [ADR 0001](adr/0001-encargos-por-miembro.md) (textos de «Cómo trabajamos» y README, encargos en `/equipo`,
+  «Participa», aviso legal). Los cambios de `AGENTS.md` y `GLOSSARY.md` están solo en `ccr-47f8fddd-o5ek6p`: son
+  código, así que llegan a la rama de la tarea con su `/code-review` y su marca antes de ir a `main`.
 - **Vista previa en redes, comprobar a mano** (de 2026-10-22; la persona, en Discord): un mensaje nuevo con el enlace
   del portal muestra el diagrama nuevo de Galivelop-workflow (el ya enviado no se actualiza). Se perdió de la vista al
   recortar «Hecho» en la revisión semanal del 2026-10-25.

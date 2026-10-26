@@ -141,6 +141,10 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
 - Mensaje de la marca (2026-10-04): Galivelop es un **taller** (crear, investigar, innovar, aprender), abierto a
   colaborar y sin ánimo de vender en la web: expone los proyectos. Galicia es solo una mención (el nombre), no la
   base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
+  **Encargos por miembro** ([ADR 0001](docs/adr/0001-encargos-por-miembro.md), 2026-10-26, sin publicar): el
+  taller no vende, pero cada miembro podrá aceptar proyectos de pago contratados con él directamente. Hasta que la
+  persona lo anuncie, la web no lo menciona y los textos hablan de lo que el taller no vende, dejando abierto el
+  trabajo por encargo de sus miembros.
 - Al sacar información de otro repo (Tarkor, toVeriAI…), solo se lee: nunca se modifica desde aquí.
 - Riesgo alto (esperar al usuario aunque el `selector` diga seguir): borrar contenido publicado y cambiar rutas que
   ya están indexadas.
