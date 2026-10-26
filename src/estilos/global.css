@@ -2900,6 +2900,18 @@ img.perfil-logo {
   line-height: 1.35;
 }
 
+.perfil-negocio {
+  margin-left: 8px;
+  padding: 1px 7px;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--texto-2);
+  vertical-align: 2px;
+}
+
 .perfil-clientes {
   margin: -2px 0 8px;
   font-size: 0.88rem;

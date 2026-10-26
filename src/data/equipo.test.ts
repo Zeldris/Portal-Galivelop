@@ -42,12 +42,18 @@ describe('perfil de cada miembro', () => {
     expect(l.logo).toBe('a.svg');
   });
 
-  it('un sitio junta los clientes de todas sus etapas, sin repetirlos', () => {
+  it('un sitio junta los clientes y el negocio de todas sus etapas, sin repetirlos', () => {
     const [l] = agruparPorLugar([
-      { ...etapa('A', '2023-02'), clientes: ['X', 'Y'] },
-      { ...etapa('A', '2021-03', '2023-02'), clientes: ['Y', 'Z'] },
+      { ...etapa('A', '2023-02'), clientes: ['X', 'Y'], negocio: ['B2C'] },
+      { ...etapa('A', '2021-03', '2023-02'), clientes: ['Y', 'Z'], negocio: ['B2C', 'B2B'] },
     ]);
     expect(l.clientes).toEqual(['X', 'Y', 'Z']);
+    expect(l.negocio).toEqual(['B2C', 'B2B']);
+  });
+
+  it('el negocio de cada etapa es B2C o B2B', () => {
+    const etapas = equipo.flatMap((p) => p.perfil?.trayectoria ?? []);
+    expect(etapas.flatMap((e) => e.negocio ?? []).filter((n) => n !== 'B2C' && n !== 'B2B')).toEqual([]);
   });
 
   it('las etapas sin lugar (titulaciones sin centro) no se agrupan entre sí', () => {

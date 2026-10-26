@@ -97,6 +97,8 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
   - `clientes` (opcional): para quién trabajó desde esa empresa (consultorías), con su nombre comercial; sale bajo
     el nombre de la empresa, y las etapas agrupadas juntan los suyos sin repetirlos. `lugar` también es opcional:
     una titulación sin centro va sin él, con su título de encabezado y un birrete en vez del logo.
+  - `negocio` (opcional): `["B2C"]`, `["B2B"]` o los dos; sale como etiqueta junto al nombre de la empresa y, como
+    los clientes, se junta entre las etapas agrupadas. Es igual en los tres idiomas.
   - Cada tecnología lleva su icono de Simple Icons (`src/components/IconoTecnologia.tsx`). Una nueva se añade ahí,
     en `ICONOS` (si tiene logo en Simple Icons) o en `MONOGRAMAS`; el test falla si falta.
   - Las cifras de la cabecera (años, empresas, clientes, proyectos) salen solas de los datos; solo se ven las mayores que uno.

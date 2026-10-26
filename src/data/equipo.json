@@ -62,6 +62,10 @@
             "Ezpeleta",
             "PLADUR",
             "Mayoral"
+          ],
+          "negocio": [
+            "B2C",
+            "B2B"
           ]
         },
         {
@@ -85,6 +89,9 @@
           "hasta": "2021-03",
           "clientes": [
             "Luckia"
+          ],
+          "negocio": [
+            "B2C"
           ]
         },
         {
@@ -99,6 +106,9 @@
           "clientes": [
             "Inditex",
             "Sergas"
+          ],
+          "negocio": [
+            "B2C"
           ]
         },
         {
@@ -110,11 +120,9 @@
           "lugar": "Grupo ALUMAN",
           "desde": "2017-06",
           "hasta": "2017-09",
-          "descripcion": {
-            "es": "Desarrollo B2B.",
-            "gl": "Desenvolvemento B2B.",
-            "en": "B2B development."
-          }
+          "negocio": [
+            "B2B"
+          ]
         }
       ],
       "formacion": [

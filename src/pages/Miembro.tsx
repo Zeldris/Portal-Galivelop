@@ -326,7 +326,10 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
           )}
           <div>
             {/* Sin lugar (una titulación sin centro), el título de su única etapa hace de encabezado. */}
-            <h3>{l.lugar ?? tx(l.etapas[0].titulo)}</h3>
+            <h3>
+              {l.lugar ?? tx(l.etapas[0].titulo)}
+              {l.negocio.length > 0 && <span className="perfil-negocio">{l.negocio.join('/')}</span>}
+            </h3>
             {l.clientes.length > 0 && (
               <p className="perfil-clientes">
                 <span>{t('equipo.clientes')}</span> {l.clientes.join(' · ')}

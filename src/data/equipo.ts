@@ -20,7 +20,11 @@ export interface Etapa {
   logo?: string;
   /** Clientes para los que trabajó desde esa empresa (consultorías), con su nombre comercial. */
   clientes?: string[];
+  /** A quién iba dirigido lo que desarrolló: `B2C` (público), `B2B` (empresas) o los dos. */
+  negocio?: Negocio[];
 }
+
+export type Negocio = 'B2C' | 'B2B';
 
 /** Etapas seguidas en el mismo sitio, juntas bajo su nombre y su logo (como los puestos de una misma empresa). */
 export interface Lugar {
@@ -28,7 +32,14 @@ export interface Lugar {
   logo?: string;
   /** Los de todas sus etapas, sin repetir. */
   clientes: string[];
+  /** Los de todas sus etapas, sin repetir. */
+  negocio: Negocio[];
   etapas: Etapa[];
+}
+
+/** `a` con los de `b` que aún no tiene, en orden. */
+function unir<T>(a: T[], b: T[] = []): T[] {
+  return [...new Set([...a, ...b])];
 }
 
 export function agruparPorLugar(etapas: Etapa[]): Lugar[] {
@@ -38,9 +49,10 @@ export function agruparPorLugar(etapas: Etapa[]): Lugar[] {
     if (e.lugar && ultimo?.lugar === e.lugar) {
       ultimo.etapas.push(e);
       ultimo.logo ??= e.logo;
-      ultimo.clientes.push(...(e.clientes ?? []).filter((c) => !ultimo.clientes.includes(c)));
+      ultimo.clientes = unir(ultimo.clientes, e.clientes);
+      ultimo.negocio = unir(ultimo.negocio, e.negocio);
     } else {
-      lugares.push({ lugar: e.lugar, logo: e.logo, clientes: [...new Set(e.clientes)], etapas: [e] });
+      lugares.push({ lugar: e.lugar, logo: e.logo, clientes: unir([], e.clientes), negocio: unir([], e.negocio), etapas: [e] });
     }
   }
   return lugares;
