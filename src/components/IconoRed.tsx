@@ -1,7 +1,8 @@
-import { Briefcase, Globe, Link2, Mail } from 'lucide-react';
+import { Briefcase, FolderOpen, Globe, Link2, Mail } from 'lucide-react';
 import { siReddit } from 'simple-icons';
 import type { Red } from '../data/equipo';
 import { useIdioma } from '../i18n/Idioma';
+import type { Clave } from '../i18n/textos';
 import { IconoDiscord } from './IconoDiscord';
 import { IconoGitHub } from './IconoGitHub';
 
@@ -16,6 +17,7 @@ const NOMBRE_RED: Record<Red, string> = {
   discord: 'Discord',
   reddit: 'Reddit',
   manfred: 'Manfred',
+  portfolio: 'Portfolio',
 };
 
 export function nombreRed(red: Red): string {
@@ -41,6 +43,7 @@ export function IconoRed({ red, tamano = 18 }: { red: Red; tamano?: number }) {
   if (red === 'correo') return <Mail size={tamano} aria-hidden="true" />;
   // Manfred no tiene logo en Simple Icons: un maletín, por ser su perfil profesional.
   if (red === 'manfred') return <Briefcase size={tamano} aria-hidden="true" />;
+  if (red === 'portfolio') return <FolderOpen size={tamano} aria-hidden="true" />;
   const d = MARCAS[red];
   if (!d) return <Link2 size={tamano} aria-hidden="true" />;
   return (
@@ -50,14 +53,21 @@ export function IconoRed({ red, tamano = 18 }: { red: Red; tamano?: number }) {
   );
 }
 
+// Las redes cuyo nombre cambia con el idioma de la página.
+const TRADUCIDAS: Partial<Record<Red, Clave>> = {
+  correo: 'equipo.red.correo',
+  portfolio: 'equipo.red.portfolio',
+};
+
 /**
- * El enlace a una red de una persona, con su icono y su nombre. El correo se nombra en el idioma de la página y se
- * abre en la propia pestaña (un `mailto:` en una pestaña nueva la deja en blanco).
+ * El enlace a una red de una persona, con su icono y su nombre. El correo y el porfolio se nombran en el idioma de la
+ * página; el correo se abre en la propia pestaña (un `mailto:` en una pestaña nueva la deja en blanco).
  */
 export function EnlaceRed({ red }: { red: { tipo: Red; url: string } }) {
   const { t } = useIdioma();
   const correo = red.tipo === 'correo';
-  const nombre = correo ? t('equipo.red.correo') : nombreRed(red.tipo);
+  const traducido = TRADUCIDAS[red.tipo];
+  const nombre = traducido ? t(traducido) : nombreRed(red.tipo);
   return (
     <a
       href={correo ? `mailto:${red.url}` : red.url}

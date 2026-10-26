@@ -118,6 +118,7 @@ describe('equipo', () => {
       for (const etapa of [...(p.perfil?.trayectoria ?? []), ...(p.perfil?.formacion ?? [])]) {
         const mes = /^\d{4}-(0[1-9]|1[0-2])$/;
         expect(etapa.desde).toMatch(mes);
+        if (etapa.logo) expect(existsSync(join(PUBLIC, etapa.logo))).toBe(true);
         if (etapa.hasta !== undefined) {
           expect(etapa.hasta).toMatch(mes);
           expect(etapa.hasta >= etapa.desde).toBe(true);

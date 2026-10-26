@@ -339,6 +339,10 @@
         "url": "https://github.com/raquelccarreraA"
       },
       {
+        "tipo": "portfolio",
+        "url": "https://raquelccarreraa.github.io/Porfolio-raquelcarrera/"
+      },
+      {
         "tipo": "web",
         "url": "https://toveriai.com"
       },
@@ -410,11 +414,12 @@
         },
         {
           "titulo": {
-            "es": "Desarrolladora de software · ArgaQuest",
-            "gl": "Desenvolvedora de software · ArgaQuest",
-            "en": "Software developer · ArgaQuest"
+            "es": "Desarrolladora de software · IES Fernando Wirtz",
+            "gl": "Desenvolvedora de software · IES Fernando Wirtz",
+            "en": "Software developer · IES Fernando Wirtz"
           },
-          "lugar": "IES Fernando Wirtz",
+          "lugar": "ArgaQuest",
+          "logo": "equipo/empresas/argaquest.webp",
           "desde": "2025-10",
           "hasta": "2026-02",
           "descripcion": {
