@@ -101,7 +101,7 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
     los clientes, se junta entre las etapas agrupadas. Es igual en los tres idiomas.
   - Cada tecnología lleva su icono de Simple Icons (`src/components/IconoTecnologia.tsx`). Una nueva se añade ahí,
     en `ICONOS` (si tiene logo en Simple Icons) o en `MONOGRAMAS`; el test falla si falta.
-  - Las cifras de la cabecera (años, empresas, clientes, proyectos) salen solas de los datos; solo se ven las mayores que uno.
+  - Las cifras de la cabecera (años, empresas, clientes, proyectos) salen solas de los datos (los años, sumando las etapas sin huecos ni solapes); solo se ven las que no son cero.
 - `colabora` (opcional): `{ "texto": { es, gl, en }, "correo": … }`. Si el miembro colabora por su cuenta en
   proyectos de otras personas, su página termina con ese texto y un botón de correo
   ([ADR 0001](adr/0001-encargos-por-miembro.md)). Sin él, la página no dice nada de colaborar.

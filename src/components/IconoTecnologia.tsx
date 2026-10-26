@@ -80,7 +80,7 @@ const MONOGRAMAS: Record<string, string> = {
 };
 
 export function tieneIcono(nombre: string): boolean {
-  return nombre in ICONOS || nombre in MONOGRAMAS;
+  return Object.hasOwn(ICONOS, nombre) || Object.hasOwn(MONOGRAMAS, nombre);
 }
 
 /** Luminancia relativa (WCAG) de un color `RRGGBB`. */
@@ -93,21 +93,31 @@ export function luminancia(hex: string): number {
 }
 
 /**
- * Los logos casi negros no se ven en el tema oscuro, ni los muy claros en el claro: esos toman el color del texto.
- * Umbrales: en el oscuro, contraste por debajo de 3:1 (WCAG para gráficos) con el fondo; en el claro, por debajo
- * de ~2,3:1, que deja con su color de marca los verdes y celestes medios (Spring, Groovy).
+ * Luminancia del fondo de las píldoras (`var(--brillo)` sobre la superficie), en el caso que menos contrasta: en el
+ * oscuro, sobre `--superficie`; en el claro, sobre `--fondo`. Si cambian esos colores en global.css, recalcúlala.
+ */
+const FONDO_PILDORA = { oscuro: 0.0385, claro: 0.8119 };
+
+function contraste(a: number, b: number): number {
+  return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+}
+
+/**
+ * Un logo que no se distingue de su píldora toma el color del texto. En el oscuro se pide 3:1 (WCAG para gráficos);
+ * en el claro basta 2:1, porque el logo acompaña al nombre escrito (es decorativo) y así conservan su color de marca
+ * los verdes y celestes medios (Spring, Node.js, Docker).
  */
 export function tonoIcono(hex: string): 'oscuro' | 'claro' | undefined {
   const l = luminancia(hex);
-  if (l < 0.13) return 'oscuro';
-  if (l > 0.4) return 'claro';
+  if (contraste(l, FONDO_PILDORA.oscuro) < 3) return 'oscuro';
+  if (contraste(l, FONDO_PILDORA.claro) < 2) return 'claro';
   return undefined;
 }
 
 export function IconoTecnologia({ nombre }: { nombre: string }) {
-  const icono = ICONOS[nombre];
+  const icono = Object.hasOwn(ICONOS, nombre) ? ICONOS[nombre] : undefined;
   if (!icono) {
-    const monograma = MONOGRAMAS[nombre];
+    const monograma = Object.hasOwn(MONOGRAMAS, nombre) ? MONOGRAMAS[nombre] : undefined;
     return monograma ? (
       <span className="icono-tec icono-tec-monograma" aria-hidden="true">
         {monograma}

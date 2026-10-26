@@ -58,12 +58,29 @@ export function agruparPorLugar(etapas: Etapa[]): Lugar[] {
   return lugares;
 }
 
-/** Años desde la primera etapa (la más antigua) hasta `hoy`, redondeando hacia abajo. */
-export function anosDesde(etapas: Etapa[], hoy = new Date()): number {
-  if (!etapas.length) return 0;
-  const primera = etapas.map((e) => e.desde).sort()[0];
-  const [a, m] = primera.split('-').map(Number);
-  return Math.floor((hoy.getFullYear() * 12 + hoy.getMonth() + 1 - (a * 12 + m)) / 12);
+/** Meses desde el año 0 de una fecha `AAAA-MM`. */
+function meses(fecha: string): number {
+  const [a, m] = fecha.split('-').map(Number);
+  return a * 12 + m - 1;
+}
+
+/**
+ * Años completos trabajados hasta `hoy`: suma lo que duró cada etapa (la actual, hasta `hoy`) sin contar dos veces
+ * las que se solapan ni los huecos entre una y otra.
+ */
+export function anosTrabajados(etapas: Etapa[], hoy = new Date()): number {
+  const ahora = hoy.getFullYear() * 12 + hoy.getMonth();
+  const tramos = etapas
+    .map((e) => [meses(e.desde), e.hasta ? meses(e.hasta) : ahora])
+    .sort((x, y) => x[0] - y[0]);
+  let total = 0;
+  let hasta = -Infinity;
+  for (const [desde, fin] of tramos) {
+    const inicio = Math.max(desde, hasta);
+    if (fin > inicio) total += fin - inicio;
+    hasta = Math.max(hasta, fin);
+  }
+  return Math.floor(total / 12);
 }
 
 /** Perfil profesional ampliado, opcional: solo para quien quiera contarlo. */

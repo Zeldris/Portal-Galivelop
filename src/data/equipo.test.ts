@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { agruparPorLugar, anosDesde, equipo, type Etapa } from './equipo';
+import { agruparPorLugar, anosTrabajados, equipo, type Etapa } from './equipo';
 import { tieneIcono, tonoIcono } from '../components/IconoTecnologia';
 
 const PUBLIC = join(__dirname, '../../public');
@@ -62,18 +62,27 @@ describe('perfil de cada miembro', () => {
     expect(lugares.map((l) => l.etapas.length)).toEqual([1, 1]);
   });
 
-  it('cuenta los años completos desde la etapa más antigua', () => {
-    const etapas = [etapa('A', '2023-02'), etapa('B', '2017-06', '2017-09')];
-    expect(anosDesde(etapas, new Date(2026, 4, 1))).toBe(8);
-    expect(anosDesde(etapas, new Date(2026, 5, 1))).toBe(9);
-    expect(anosDesde([])).toBe(0);
+  it('cuenta los años trabajados, sin los huecos entre etapas ni los solapes', () => {
+    // 2017-06 a 2017-09 (3 meses) + 2018-06 a 2021-03 + 2020-03 a 2021-03 (solapada) + 2021-03 a hoy.
+    const etapas = [
+      etapa('A', '2021-03'),
+      etapa('B', '2020-03', '2021-03'),
+      etapa('C', '2018-06', '2021-03'),
+      etapa('D', '2017-06', '2017-09'),
+    ];
+    expect(anosTrabajados(etapas, new Date(2026, 2, 1))).toBe(8); // 7 años y 9 meses + 3 meses
+    expect(anosTrabajados(etapas, new Date(2026, 1, 1))).toBe(7);
+    expect(anosTrabajados([])).toBe(0);
   });
 
-  it('los logos casi negros o muy claros toman el color del texto', () => {
+  it('los logos que no contrastan con el fondo de la píldora toman el color del texto', () => {
     expect(tonoIcono('000000')).toBe('oscuro');
     expect(tonoIcono('512BD4')).toBe('oscuro');
     expect(tonoIcono('005FAD')).toBe('oscuro');
+    expect(tonoIcono('3178C6')).toBe('oscuro'); // TypeScript: 2,6:1 sobre la píldora del tema oscuro
     expect(tonoIcono('F7DF1E')).toBe('claro');
-    expect(tonoIcono('3178C6')).toBeUndefined();
+    expect(tonoIcono('4FC08D')).toBe('claro'); // Vue: 1,9:1 sobre la píldora del tema claro
+    expect(tonoIcono('D97757')).toBeUndefined();
+    expect(tonoIcono('6DB33F')).toBeUndefined(); // Spring conserva su verde en el claro (2,1:1)
   });
 });

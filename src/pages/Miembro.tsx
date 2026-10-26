@@ -5,7 +5,7 @@ import { IconoRed, nombreRed } from '../components/IconoRed';
 import { IconoTecnologia } from '../components/IconoTecnologia';
 import {
   agruparPorLugar,
-  anosDesde,
+  anosTrabajados,
   buscarPersonaPorId,
   iniciales,
   type Etapa,
@@ -21,7 +21,10 @@ const MOVIL = '(max-width: 640px)';
 /** Empresas de la trayectoria que se ven en móvil antes de «Ver más». */
 const LUGARES_MOVIL = 2;
 
-/** En móvil lo largo va plegado, para que el cierre de la página no quede a diez pantallas. */
+/**
+ * En móvil la trayectoria va plegada tras «Ver más», para que el cierre de la página no quede a diez pantallas.
+ * Las tecnologías no: van siempre desplegadas (petición del miembro, 2026-10-26).
+ */
 function useMovil(): boolean {
   const [movil, setMovil] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(MOVIL).matches);
   useEffect(() => {
@@ -265,22 +268,22 @@ function Grupos({ grupos }: { grupos: NonNullable<Perfil['tecnologias']> }) {
   );
 }
 
-/** Unas cifras de un vistazo, sacadas de los datos: solo las que pasan de uno. */
+/** Unas cifras de un vistazo, sacadas de los datos: las que no son cero. */
 function Cifras({ p }: { p: Persona }) {
   const { t } = useIdioma();
   const trayectoria = p.perfil?.trayectoria ?? [];
   const cifras = [
-    { n: anosDesde(trayectoria), clave: 'equipo.cifra.anos' as const },
+    { n: anosTrabajados(trayectoria), clave: 'equipo.cifra.anos' as const },
     { n: new Set(trayectoria.flatMap((e) => (e.lugar ? [e.lugar] : []))).size, clave: 'equipo.cifra.empresas' as const },
     { n: new Set(trayectoria.flatMap((e) => e.clientes ?? [])).size, clave: 'equipo.cifra.clientes' as const },
     { n: p.proyectos.length, clave: 'equipo.cifra.proyectos' as const },
-  ].filter((c) => c.n > 1);
+  ].filter((c) => c.n > 0);
   if (!cifras.length) return null;
   return (
     <ul className="miembro-cifras">
       {cifras.map((c) => (
         <li key={c.clave}>
-          <strong>{c.n}</strong> {t(c.clave)}
+          <strong>{c.n}</strong> {t(c.clave, { n: c.n })}
         </li>
       ))}
     </ul>
@@ -312,9 +315,9 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
   const { t, tx, idioma } = useIdioma();
   return (
     <ol className="perfil-lugares">
-      {lugares.map((l) => (
+      {lugares.map((l, i) => (
         <li
-          key={`${l.lugar ?? ''}-${l.etapas[0].desde}`}
+          key={`${l.lugar ?? ''}-${l.etapas[0].desde}-${i}`}
           className={l.etapas.some((e) => !e.hasta) ? 'perfil-lugar-actual' : undefined}
         >
           {l.logo ? (
@@ -328,7 +331,7 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
             {/* Sin lugar (una titulación sin centro), el título de su única etapa hace de encabezado. */}
             <h3>
               {l.lugar ?? tx(l.etapas[0].titulo)}
-              {l.negocio.length > 0 && <span className="perfil-negocio">{l.negocio.join('/')}</span>}
+              {l.negocio.length > 0 && <>{' '}<span className="perfil-negocio">{l.negocio.join('/')}</span></>}
             </h3>
             {l.clientes.length > 0 && (
               <p className="perfil-clientes">
@@ -336,8 +339,8 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
               </p>
             )}
             <ol className={l.etapas.length > 1 ? 'perfil-etapas perfil-etapas-varias' : 'perfil-etapas'}>
-              {l.etapas.map((e) => (
-                <li key={e.desde} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
+              {l.etapas.map((e, j) => (
+                <li key={`${e.desde}-${j}`} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
                   {l.lugar && <strong>{tx(e.titulo)}</strong>}
                   <span className="perfil-fechas">
                     {formatearMes(e.desde, idioma)} –{' '}
