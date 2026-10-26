@@ -1,7 +1,7 @@
 import { ArrowRight, MapPin, Users } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IconoRed, nombreRed } from '../components/IconoRed';
+import { EnlaceRed } from '../components/IconoRed';
 import { equipo, iniciales } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
@@ -72,15 +72,7 @@ export function Equipo() {
                 <ul className="persona-redes" aria-label={t('equipo.redes', { nombre: p.nombre })}>
                   {p.redes.map((r) => (
                     <li key={r.url}>
-                      <a
-                        href={r.tipo === 'correo' ? `mailto:${r.url}` : r.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        title={nombreRed(r.tipo)}
-                      >
-                        <IconoRed red={r.tipo} />
-                        <span>{nombreRed(r.tipo)}</span>
-                      </a>
+                      <EnlaceRed red={r} />
                     </li>
                   ))}
                 </ul>

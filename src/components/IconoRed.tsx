@@ -1,6 +1,7 @@
 import { Briefcase, Globe, Link2, Mail } from 'lucide-react';
 import { siReddit } from 'simple-icons';
 import type { Red } from '../data/equipo';
+import { useIdioma } from '../i18n/Idioma';
 import { IconoDiscord } from './IconoDiscord';
 import { IconoGitHub } from './IconoGitHub';
 
@@ -46,5 +47,25 @@ export function IconoRed({ red, tamano = 18 }: { red: Red; tamano?: number }) {
     <svg width={tamano} height={tamano} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d={d} />
     </svg>
+  );
+}
+
+/**
+ * El enlace a una red de una persona, con su icono y su nombre. El correo se nombra en el idioma de la página y se
+ * abre en la propia pestaña (un `mailto:` en una pestaña nueva la deja en blanco).
+ */
+export function EnlaceRed({ red }: { red: { tipo: Red; url: string } }) {
+  const { t } = useIdioma();
+  const correo = red.tipo === 'correo';
+  const nombre = correo ? t('equipo.red.correo') : nombreRed(red.tipo);
+  return (
+    <a
+      href={correo ? `mailto:${red.url}` : red.url}
+      {...(correo ? {} : { target: '_blank', rel: 'noreferrer' })}
+      title={nombre}
+    >
+      <IconoRed red={red.tipo} />
+      <span>{nombre}</span>
+    </a>
   );
 }
