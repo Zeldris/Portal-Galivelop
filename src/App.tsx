@@ -4,6 +4,7 @@ import { Cabecera } from './components/Cabecera';
 import { Pie } from './components/Pie';
 import { Equipo } from './pages/Equipo';
 import { Inicio } from './pages/Inicio';
+import { Miembro } from './pages/Miembro';
 import { Muro } from './pages/Muro';
 import { NoEncontrado } from './pages/NoEncontrado';
 import { Proponer } from './pages/Proponer';
@@ -35,6 +36,7 @@ export function App() {
           <Route path="/proyectos/:slug" element={<Proyecto />} />
           <Route path="/muro" element={<Muro />} />
           <Route path="/equipo" element={<Equipo />} />
+          <Route path="/equipo/:id" element={<Miembro />} />
           <Route path="/participa/proponer" element={<Proponer />} />
           <Route path="/participa/unirse" element={<Unirse />} />
           <Route path="*" element={<NoEncontrado />} />

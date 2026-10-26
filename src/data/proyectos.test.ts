@@ -114,7 +114,7 @@ describe('equipo', () => {
     expect(equipo.length).toBeGreaterThan(0);
     expect(new Set(equipo.map((p) => p.id)).size).toBe(equipo.length);
     for (const p of equipo) {
-      expect(textosIncompletos({ rol: p.rol, bio: p.bio, perfil: p.perfil }, p.id)).toEqual([]);
+      expect(textosIncompletos({ rol: p.rol, bio: p.bio, perfil: p.perfil, colabora: p.colabora }, p.id)).toEqual([]);
       for (const etapa of [...(p.perfil?.trayectoria ?? []), ...(p.perfil?.formacion ?? [])]) {
         const mes = /^\d{4}-(0[1-9]|1[0-2])$/;
         expect(etapa.desde).toMatch(mes);
@@ -131,6 +131,18 @@ describe('equipo', () => {
         if (r.tipo !== 'correo') expect(r.url).toMatch(/^https:\/\//);
       }
       if (p.foto) expect(existsSync(join(PUBLIC, p.foto))).toBe(true);
+    }
+  });
+
+  it('cada persona tiene una ruta válida, papeles de sus proyectos y un correo para colaborar', async () => {
+    const { equipo, PAPELES } = await import('./equipo');
+    for (const p of equipo) {
+      expect(p.id).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+      for (const [slug, papel] of Object.entries(p.papeles ?? {})) {
+        expect(p.proyectos).toContain(slug);
+        expect(PAPELES).toContain(papel);
+      }
+      if (p.colabora) expect(p.colabora.correo).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]+$/);
     }
   });
 });

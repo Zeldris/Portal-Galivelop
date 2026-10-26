@@ -26,8 +26,12 @@ export interface Perfil {
   fortalezas?: Texto[];
 }
 
+/** Papel en un proyecto: lo creó o forma parte de su equipo. */
+export const PAPELES = ['creo', 'equipo'] as const;
+export type Papel = (typeof PAPELES)[number];
+
 export interface Persona {
-  /** Identificador para el ancla /equipo#<id>. */
+  /** Identificador para su página /equipo/<id> y el ancla /equipo#<id>. */
   id: string;
   nombre: string;
   orden: number;
@@ -35,22 +39,24 @@ export interface Persona {
   bio: Texto;
   /** Slugs de los proyectos en los que participa. */
   proyectos: string[];
+  /** Papel en cada proyecto (por slug), opcional: se muestra en su página. */
+  papeles?: Partial<Record<string, Papel>>;
   redes: { tipo: Red; url: string }[];
   /** Foto opcional (ruta en public/); sin ella se muestran las iniciales. */
   foto?: string;
   perfil?: Perfil;
-}
-
-/** Si el perfil trae algo para la ficha completa de /equipo (y no solo la versión breve). */
-export function tienePerfilAmpliado(p: Persona): boolean {
-  const x = p.perfil;
-  return !!x && [x.trayectoria, x.formacion, x.tecnologias, x.idiomas, x.fortalezas].some((l) => l && l.length > 0);
+  /** Solo si colabora por su cuenta en proyectos de otras personas (ADR 0001): cierra su página. */
+  colabora?: { texto: Texto; correo: string };
 }
 
 export const equipo: Persona[] = (datos as Persona[]).slice().sort((a, b) => a.orden - b.orden);
 
 export function buscarPersona(nombre: string): Persona | undefined {
   return equipo.find((p) => p.nombre === nombre);
+}
+
+export function buscarPersonaPorId(id: string | undefined): Persona | undefined {
+  return equipo.find((p) => p.id === id);
 }
 
 export function iniciales(nombre: string): string {

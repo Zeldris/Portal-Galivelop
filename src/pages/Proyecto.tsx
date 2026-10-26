@@ -462,7 +462,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                     return (
                       <li key={m.nombre}>
                         {persona ? (
-                          <Link to={`/equipo#${persona.id}`} className="equipo-enlace" title={t('equipo.ver')}>
+                          <Link to={`/equipo/${persona.id}`} className="equipo-enlace" title={t('equipo.ver')}>
                             {contenido}
                           </Link>
                         ) : (

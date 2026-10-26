@@ -87,6 +87,8 @@ construir, de aprender y de hacerlo en equipo.
   [LinkedIn](https://www.linkedin.com/in/raquel-comesa%C3%B1a-carrera-1646ba195)
 
 Quien se suma al taller pasa a formar parte del [equipo](https://zeldris.github.io/Portal-Galivelop/equipo).
+Cada miembro tiene su página; quien colabora de vez en cuando en proyectos de otras personas lo dice en ella.
+Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 
 ---
 
@@ -95,14 +97,14 @@ Quien se suma al taller pasa a formar parte del [equipo](https://zeldris.github.
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
 a credibilidade das novas. O portal non vende: amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+aberta a quen queira participar; algúns dos seus membros colaboran pola súa conta en proxectos alleos. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
 **Galivelop is an independent software workshop.** We create, research and learn by building
 ambitious software, from a fantasy world that lives on its own to a tool that measures the
 credibility of the news. The portal does not sell: it shows each project as it is and keeps the door
-open to anyone who wants to take part. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+open to anyone who wants to take part; some of its members work on other people's projects on their own. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ---
 

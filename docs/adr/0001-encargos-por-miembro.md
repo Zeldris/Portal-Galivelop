@@ -1,7 +1,8 @@
 # 0001 · El taller no vende; cada miembro puede aceptar encargos
 
 - **Fecha:** 2026-10-26
-- **Estado:** aceptada, **sin publicar** (la web aún no lo cuenta)
+- **Estado:** aceptada y **publicada** el 2026-10-26: página de cada miembro con «¿Tienes un proyecto?» y la banda
+  «¿Tienes un proyecto propio?» de Participa (prototipo y veredicto en `docs/traspaso.md`).
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto

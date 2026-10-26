@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, Rocket, ShieldCheck, Target, Users, Workflow, type LucideIcon } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, MessageSquare, Rocket, ShieldCheck, Target, Users, Workflow, type LucideIcon } from 'lucide-react';
 import { useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoDiscord } from '../components/IconoDiscord';
@@ -168,6 +168,9 @@ export function Inicio() {
             <h2>{t('sobre.titulo')}</h2>
             <p>{t('sobre.texto1')}</p>
             <p>{t('sobre.texto2')}</p>
+            <p>
+              {t('sobre.texto3')} <Link to="/equipo">{t('sobre.verEquipo')} →</Link>
+            </p>
             <p className="sobre-nombre">
               <span className="sobre-marca" aria-hidden="true">
                 <b>Gali</b>cia + De<b>velop</b>
@@ -224,6 +227,18 @@ export function Inicio() {
               </Link>
             </li>
           </ul>
+          <aside className="proyecto-propio">
+            <span className="proyecto-propio-icono" aria-hidden="true">
+              <MessageSquare size={22} />
+            </span>
+            <div>
+              <h3>{t('proyectoPropio.titulo')}</h3>
+              <p>{t('proyectoPropio.texto')}</p>
+            </div>
+            <Link to="/equipo" className="boton boton-secundario">
+              {t('proyectoPropio.boton')} <ArrowRight size={16} />
+            </Link>
+          </aside>
           <div className="participa-guia">
             <div>
               <h3>{t('paraquien.titulo')}</h3>

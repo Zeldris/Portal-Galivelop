@@ -81,16 +81,23 @@ Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.
 
 ## Añadir o actualizar a alguien del equipo
 
-La página **Equipo** (`/equipo`) sale de [`src/data/equipo.json`](../src/data/equipo.json). Cada persona:
+La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id>`) salen de
+[`src/data/equipo.json`](../src/data/equipo.json). Cada persona:
 
-- `id` (para el enlace `/equipo#<id>`), `nombre`, `orden`.
+- `id` (la ruta `/equipo/<id>` y el anclaje `/equipo#<id>`, que siguen enlazados: no se cambia una vez publicado),
+  `nombre`, `orden`.
 - `rol` y `bio` en los tres idiomas.
 - `proyectos`: slugs de los proyectos en los que participa.
+- `papeles` (opcional): por slug de `proyectos`, `creo` («Lo creó») o `equipo` («Forma parte del equipo»).
+- `perfil` (opcional): trayectoria, formación, tecnologías, idiomas y fortalezas; solo sale en su página.
+- `colabora` (opcional): `{ "texto": { es, gl, en }, "correo": … }`. Si el miembro colabora por su cuenta en
+  proyectos de otras personas, su página termina con ese texto y un botón de correo
+  ([ADR 0001](adr/0001-encargos-por-miembro.md)). Sin él, la página no dice nada de colaborar.
 - `redes`: lista de `{ "tipo": …, "url": … }` con `tipo` uno de `linkedin`, `github`, `web`,
   `correo`, `x`, `instagram`, `youtube` o `discord` (para `correo`, la dirección sin `mailto:`).
 - `foto` (opcional): ruta en `public/`; sin ella se muestran las iniciales.
 
-En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su tarjeta.
+En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su página.
 
 ## El muro
 
@@ -166,7 +173,7 @@ el dominio en Settings → Pages.
 
 Cada idioma tiene su dirección: castellano sin prefijo, gallego en `/gl/…` e inglés en `/en/…`.
 Tras `vite build`, [`scripts/paginas-estaticas.mjs`](../scripts/paginas-estaticas.mjs) crea una página
-HTML por ruta e idioma (con `hreflang`) (portada, cada proyecto, equipo y participa) con su título, descripción, canónica y
+HTML por ruta e idioma (con `hreflang`) (portada, cada proyecto, equipo, cada miembro y participa) con su título, descripción, canónica y
 vista previa, con su texto en HTML para buscadores sin JavaScript y datos
 estructurados schema.org, y genera `sitemap.xml`, `robots.txt` y `llms.txt`. Una ruta nueva se añade en ese script.
 

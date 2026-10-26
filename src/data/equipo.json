@@ -18,6 +18,11 @@
       "toveriai",
       "galivelop-workflow"
     ],
+    "papeles": {
+      "tarkor": "creo",
+      "toveriai": "equipo",
+      "galivelop-workflow": "creo"
+    },
     "redes": [
       {
         "tipo": "linkedin",
@@ -257,6 +262,14 @@
           "en": "Adaptability to change"
         }
       ]
+    },
+    "colabora": {
+      "texto": {
+        "es": "Álvaro colabora de vez en cuando en proyectos de otras personas, por su cuenta: desarrollo full stack con React, TypeScript, Java y Spring. Si tienes uno, cuéntaselo.",
+        "gl": "Álvaro colabora de cando en vez en proxectos doutras persoas, pola súa conta: desenvolvemento full stack con React, TypeScript, Java e Spring. Se tes un, cóntallo.",
+        "en": "Álvaro occasionally works on other people’s projects, independently of Galivelop: full-stack development with React, TypeScript, Java and Spring. If you have one, get in touch."
+      },
+      "correo": "alvarogarciagrana@gmail.com"
     }
   },
   {
