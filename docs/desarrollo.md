@@ -90,6 +90,13 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
 - `proyectos`: slugs de los proyectos en los que participa.
 - `papeles`: uno por cada slug de `proyectos` (el test lo exige), `creo` («Lo creó») o `equipo` («Forma parte del equipo»).
 - `perfil` (opcional): trayectoria, formación, tecnologías, idiomas y fortalezas; solo sale en su página.
+  - Cada etapa de `trayectoria` o `formacion`: `titulo` (el puesto), `lugar`, `desde`/`hasta` (`AAAA-MM`; sin
+    `hasta`, «actualidad») y, opcionales, `descripcion` (qué hizo, en los tres idiomas) y `logo` (ruta en `public/`,
+    por ejemplo `equipo/empresas/orienteed.svg`; sin él, las iniciales del sitio). Las etapas seguidas en el mismo
+    `lugar` se agrupan bajo un solo logo, que basta poner en una de ellas. El test comprueba que el logo existe.
+  - Cada tecnología lleva su icono de Simple Icons (`src/components/IconoTecnologia.tsx`). Una nueva se añade ahí,
+    en `ICONOS` (si tiene logo en Simple Icons) o en `MONOGRAMAS`; el test falla si falta.
+  - Las cifras de la cabecera (años, empresas, proyectos) salen solas de los datos; solo se ven las mayores que uno.
 - `colabora` (opcional): `{ "texto": { es, gl, en }, "correo": … }`. Si el miembro colabora por su cuenta en
   proyectos de otras personas, su página termina con ese texto y un botón de correo
   ([ADR 0001](adr/0001-encargos-por-miembro.md)). Sin él, la página no dice nada de colaborar.

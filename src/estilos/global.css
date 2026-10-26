@@ -2842,52 +2842,114 @@ button {
   color: var(--texto-3);
 }
 
+.perfil-lugares {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.perfil-lugares > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 14px;
+}
+
+/* La línea que une los logos, de una empresa a la siguiente. */
+.perfil-lugares > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 52px;
+  bottom: -14px;
+  width: 2px;
+  background: var(--borde);
+}
+
+.perfil-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radio-sm);
+  border: 1px solid var(--borde);
+  font-family: var(--fuente-titulos);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+span.perfil-logo {
+  background: var(--superficie-2);
+  color: var(--enlace);
+}
+
+img.perfil-logo {
+  padding: 5px;
+  object-fit: contain;
+  background: var(--blanco);
+}
+
+.perfil-lugar-actual > .perfil-logo {
+  border-color: var(--celeste);
+  box-shadow: 0 0 0 4px var(--brillo);
+}
+
+.perfil-lugares h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.perfil-etapas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .perfil-etapas li {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 1px;
-  padding: 0 0 14px 22px;
-  border-left: 2px solid var(--borde);
-  margin-left: 5px;
 }
 
-.perfil-etapas li:last-child {
-  padding-bottom: 0;
-  border-left-color: transparent;
+.perfil-etapas-varias li {
+  padding-left: 16px;
 }
 
-.perfil-etapas li::before {
+.perfil-etapas-varias li::before {
   content: '';
   position: absolute;
-  left: -7px;
-  top: 4px;
-  width: 12px;
-  height: 12px;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--superficie);
   border: 2px solid var(--celeste);
+  background: var(--superficie);
 }
 
-.perfil-etapas .perfil-etapa-actual::before {
+.perfil-etapas-varias .perfil-etapa-actual::before {
   background: var(--celeste);
-  box-shadow: 0 0 0 4px var(--brillo);
 }
 
 .perfil-etapas strong {
-  font-size: 0.97rem;
+  font-size: 0.93rem;
+  font-weight: 600;
   line-height: 1.35;
-}
-
-.perfil-etapas span {
-  font-size: 0.9rem;
-  color: var(--texto-2);
 }
 
 .perfil-etapas .perfil-fechas {
   font-size: 0.82rem;
   color: var(--texto-3);
   font-variant-numeric: tabular-nums;
+}
+
+.perfil-etapas p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--texto-2);
 }
 
 .perfil-tecnologias {
@@ -2916,6 +2978,9 @@ button {
 
 .perfil-tecnologias li,
 .perfil-fortalezas li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 3px 10px;
   border-radius: 999px;
   font-size: 0.82rem;
@@ -3090,12 +3155,57 @@ button {
 }
 
 .miembro-destacadas li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 4px 12px;
   border-radius: 999px;
   font-size: 0.85rem;
   font-weight: 600;
   background: var(--brillo);
   border: 1px solid var(--celeste);
+}
+
+/* Logos de tecnologías (Simple Icons) con su color de marca; ver IconoTecnologia.tsx. */
+.icono-tec {
+  flex: none;
+  color: var(--marca);
+}
+
+:root:not([data-tema='claro']) .icono-tec-oscuro,
+:root[data-tema='claro'] .icono-tec-claro {
+  color: var(--texto);
+}
+
+.icono-tec-monograma {
+  display: inline-grid;
+  place-items: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 2px;
+  border-radius: 3px;
+  background: var(--texto-3);
+  color: var(--superficie);
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.miembro-cifras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.88rem;
+  color: var(--texto-2);
+}
+
+.miembro-cifras strong {
+  font-family: var(--fuente-titulos);
+  font-size: 1.35rem;
+  color: var(--texto);
 }
 
 .miembro-redes {
@@ -3186,7 +3296,8 @@ button {
     width: 112px;
     height: 112px;
   }
-  .miembro-datos {
+  .miembro-datos,
+  .miembro-cifras {
     justify-content: center;
   }
   .miembro-caja {

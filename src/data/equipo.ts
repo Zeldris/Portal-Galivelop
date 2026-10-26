@@ -11,6 +11,39 @@ export interface Etapa {
   lugar: string;
   desde: string;
   hasta?: string;
+  /** Qué hizo ahí, en una o dos frases. */
+  descripcion?: Texto;
+  /** Logo de la empresa o centro, en `public/` (p. ej. `equipo/empresas/orienteed.svg`); sin él, sus iniciales. */
+  logo?: string;
+}
+
+/** Etapas seguidas en el mismo sitio, juntas bajo su nombre y su logo (como los puestos de una misma empresa). */
+export interface Lugar {
+  lugar: string;
+  logo?: string;
+  etapas: Etapa[];
+}
+
+export function agruparPorLugar(etapas: Etapa[]): Lugar[] {
+  const lugares: Lugar[] = [];
+  for (const e of etapas) {
+    const ultimo = lugares[lugares.length - 1];
+    if (ultimo?.lugar === e.lugar) {
+      ultimo.etapas.push(e);
+      ultimo.logo ??= e.logo;
+    } else {
+      lugares.push({ lugar: e.lugar, logo: e.logo, etapas: [e] });
+    }
+  }
+  return lugares;
+}
+
+/** Años desde la primera etapa (la más antigua) hasta `hoy`, redondeando hacia abajo. */
+export function anosDesde(etapas: Etapa[], hoy = new Date()): number {
+  if (!etapas.length) return 0;
+  const primera = etapas.map((e) => e.desde).sort()[0];
+  const [a, m] = primera.split('-').map(Number);
+  return Math.floor((hoy.getFullYear() * 12 + hoy.getMonth() + 1 - (a * 12 + m)) / 12);
 }
 
 /** Perfil profesional ampliado, opcional: solo para quien quiera contarlo. */

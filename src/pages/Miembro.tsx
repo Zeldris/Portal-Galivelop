@@ -2,14 +2,24 @@ import { ArrowLeft, ChevronDown, Mail, MapPin } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { IconoRed, nombreRed } from '../components/IconoRed';
-import { buscarPersonaPorId, iniciales, type Etapa, type Perfil, type Persona } from '../data/equipo';
+import { IconoTecnologia } from '../components/IconoTecnologia';
+import {
+  agruparPorLugar,
+  anosDesde,
+  buscarPersonaPorId,
+  iniciales,
+  type Etapa,
+  type Lugar,
+  type Perfil,
+  type Persona,
+} from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { formatearMes, useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
 
 const MOVIL = '(max-width: 640px)';
-/** Etapas de la trayectoria que se ven en móvil antes de «Ver más». */
-const ETAPAS_MOVIL = 2;
+/** Empresas de la trayectoria que se ven en móvil antes de «Ver más». */
+const LUGARES_MOVIL = 2;
 
 /** En móvil lo largo va plegado, para que el cierre de la página no quede a diez pantallas. */
 function useMovil(): boolean {
@@ -80,6 +90,7 @@ function Ficha({ p }: { p: Persona }) {
                 {perfil.resumen && <span>{tx(perfil.resumen)}</span>}
               </p>
             )}
+            <Cifras p={p} />
           </div>
         </header>
 
@@ -116,7 +127,7 @@ function Ficha({ p }: { p: Persona }) {
             {!!perfil?.trayectoria?.length && (
               <section className="miembro-caja">
                 <h2>{t('equipo.trayectoria')}</h2>
-                <Etapas etapas={perfil.trayectoria} visibles={movil ? ETAPAS_MOVIL : undefined} />
+                <Etapas etapas={perfil.trayectoria} visibles={movil ? LUGARES_MOVIL : undefined} />
               </section>
             )}
 
@@ -134,21 +145,14 @@ function Ficha({ p }: { p: Persona }) {
                 {!!perfil.destacadas?.length && (
                   <ul className="miembro-destacadas">
                     {perfil.destacadas.map((x) => (
-                      <li key={x}>{x}</li>
+                      <li key={x}>
+                        <IconoTecnologia nombre={x} />
+                        {x}
+                      </li>
                     ))}
                   </ul>
                 )}
-                {!!perfil.tecnologias?.length &&
-                  (movil && perfil.destacadas?.length ? (
-                    <details className="miembro-mas">
-                      <summary>
-                        {t('equipo.porGrupos')} <ChevronDown size={16} aria-hidden="true" />
-                      </summary>
-                      <Grupos grupos={perfil.tecnologias} />
-                    </details>
-                  ) : (
-                    <Grupos grupos={perfil.tecnologias} />
-                  ))}
+                {!!perfil.tecnologias?.length && <Grupos grupos={perfil.tecnologias} />}
               </section>
             )}
 
@@ -248,7 +252,10 @@ function Grupos({ grupos }: { grupos: NonNullable<Perfil['tecnologias']> }) {
           <dd>
             <ul>
               {g.lista.map((x) => (
-                <li key={x}>{x}</li>
+                <li key={x}>
+                  <IconoTecnologia nombre={x} />
+                  {x}
+                </li>
               ))}
             </ul>
           </dd>
@@ -258,37 +265,79 @@ function Grupos({ grupos }: { grupos: NonNullable<Perfil['tecnologias']> }) {
   );
 }
 
-/** Etapas de trayectoria o formación; con `visibles`, el resto queda tras «Ver {n} más». */
-function Etapas({ etapas, visibles }: { etapas: Etapa[]; visibles?: number }) {
-  const corte = visibles !== undefined && etapas.length > visibles + 1 ? visibles : etapas.length;
+/** Unas cifras de un vistazo, sacadas de los datos: solo las que pasan de uno. */
+function Cifras({ p }: { p: Persona }) {
   const { t } = useIdioma();
-  const resto = etapas.slice(corte);
+  const trayectoria = p.perfil?.trayectoria ?? [];
+  const cifras = [
+    { n: anosDesde(trayectoria), clave: 'equipo.cifra.anos' as const },
+    { n: new Set(trayectoria.map((e) => e.lugar)).size, clave: 'equipo.cifra.empresas' as const },
+    { n: p.proyectos.length, clave: 'equipo.cifra.proyectos' as const },
+  ].filter((c) => c.n > 1);
+  if (!cifras.length) return null;
+  return (
+    <ul className="miembro-cifras">
+      {cifras.map((c) => (
+        <li key={c.clave}>
+          <strong>{c.n}</strong> {t(c.clave)}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Trayectoria o formación por empresa o centro; con `visibles`, el resto queda tras «Ver {n} más». */
+function Etapas({ etapas, visibles }: { etapas: Etapa[]; visibles?: number }) {
+  const lugares = agruparPorLugar(etapas);
+  const corte = visibles !== undefined && lugares.length > visibles + 1 ? visibles : lugares.length;
+  const { t } = useIdioma();
+  const resto = lugares.slice(corte);
   return (
     <>
-      <ListaEtapas etapas={etapas.slice(0, corte)} />
+      <ListaLugares lugares={lugares.slice(0, corte)} />
       {resto.length > 0 && (
         <details className="miembro-mas">
           <summary>
             {t('equipo.verMas', { n: resto.length })} <ChevronDown size={16} aria-hidden="true" />
           </summary>
-          <ListaEtapas etapas={resto} />
+          <ListaLugares lugares={resto} />
         </details>
       )}
     </>
   );
 }
 
-function ListaEtapas({ etapas }: { etapas: Etapa[] }) {
+function ListaLugares({ lugares }: { lugares: Lugar[] }) {
   const { t, tx, idioma } = useIdioma();
   return (
-    <ol className="perfil-etapas">
-      {etapas.map((e) => (
-        <li key={`${e.lugar}-${e.desde}`} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
-          <strong>{tx(e.titulo)}</strong>
-          <span>{e.lugar}</span>
-          <span className="perfil-fechas">
-            {formatearMes(e.desde, idioma)} – {e.hasta ? formatearMes(e.hasta, idioma) : t('equipo.actualidad')}
-          </span>
+    <ol className="perfil-lugares">
+      {lugares.map((l) => (
+        <li
+          key={`${l.lugar}-${l.etapas[0].desde}`}
+          className={l.etapas.some((e) => !e.hasta) ? 'perfil-lugar-actual' : undefined}
+        >
+          {l.logo ? (
+            <img src={ruta(l.logo)} alt="" className="perfil-logo" width={44} height={44} loading="lazy" />
+          ) : (
+            <span className="perfil-logo" aria-hidden="true">
+              {iniciales(l.lugar)}
+            </span>
+          )}
+          <div>
+            <h3>{l.lugar}</h3>
+            <ol className={l.etapas.length > 1 ? 'perfil-etapas perfil-etapas-varias' : 'perfil-etapas'}>
+              {l.etapas.map((e) => (
+                <li key={e.desde} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
+                  <strong>{tx(e.titulo)}</strong>
+                  <span className="perfil-fechas">
+                    {formatearMes(e.desde, idioma)} –{' '}
+                    {e.hasta ? formatearMes(e.hasta, idioma) : t('equipo.actualidad')}
+                  </span>
+                  {e.descripcion && <p>{tx(e.descripcion)}</p>}
+                </li>
+              ))}
+            </ol>
+          </div>
         </li>
       ))}
     </ol>
