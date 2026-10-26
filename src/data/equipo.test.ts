@@ -1,8 +1,8 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { agruparPorLugar, anosTrabajados, equipo, type Etapa } from './equipo';
-import { tieneIcono, tonoIcono } from '../components/IconoTecnologia';
+import { FONDO_PILDORA, luminancia, tieneIcono, tonoIcono } from '../components/IconoTecnologia';
 
 const PUBLIC = join(__dirname, '../../public');
 const etapa = (lugar: string, desde: string, hasta?: string): Etapa => ({
@@ -84,5 +84,27 @@ describe('perfil de cada miembro', () => {
     expect(tonoIcono('4FC08D')).toBe('claro'); // Vue: 1,94:1 sobre la píldora del tema claro
     expect(tonoIcono('D97757')).toBeUndefined();
     expect(tonoIcono('6DB33F')).toBeUndefined(); // Spring conserva su verde en el claro (2,20:1)
+  });
+});
+
+describe('fondo de las píldoras de tecnología', () => {
+  const css = readFileSync(join(__dirname, '../estilos/global.css'), 'utf8');
+  /** `--brillo` (un rgb con alfa) mezclado sobre `--superficie`, leídos del bloque de cada tema en global.css. */
+  function fondo(selector: string): number {
+    const bloque = css.slice(css.indexOf(selector)).split('}')[0];
+    const superficie = /--superficie:\s*#([0-9a-f]{6});/i.exec(bloque)?.[1];
+    const brillo = /--brillo:\s*rgb\((\d+) (\d+) (\d+) \/ ([\d.]+)\);/.exec(bloque);
+    if (!superficie || !brillo) throw new Error(`faltan --superficie o --brillo en ${selector}`);
+    const alfa = Number(brillo[4]);
+    const mezcla = [0, 1, 2].map((i) => {
+      const s = parseInt(superficie.slice(i * 2, i * 2 + 2), 16);
+      return Math.round(s * (1 - alfa) + Number(brillo[i + 1]) * alfa);
+    });
+    return luminancia(mezcla.map((c) => c.toString(16).padStart(2, '0')).join(''));
+  }
+
+  it('FONDO_PILDORA coincide con los tokens de global.css (si falla, recalcúlalo en IconoTecnologia.tsx)', () => {
+    expect(FONDO_PILDORA.oscuro).toBeCloseTo(fondo(":root[data-tema='oscuro']"), 3);
+    expect(FONDO_PILDORA.claro).toBeCloseTo(fondo(":root[data-tema='claro']"), 3);
   });
 });

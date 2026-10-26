@@ -37,6 +37,12 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 
 ## Costes conocidos
 
+- **Repos hermanos en `/home/user`** (2026-10-26): cada repo que se añade con `add_repo` en la sesión principal mete
+  su `CLAUDE.md`/`AGENTS.md` y su lista de skills en cada llamada (~15k con cuatro repos; suelo de 114k en la página
+  de miembro) y encarece el arranque de cada subagente (74k). Para leer otro repo, un subagente lo clona en el
+  scratchpad (`git clone --depth 50` sin `register_repo_root`) y devuelve el resumen con rutas.
+- **`src/i18n/textos.ts`** (2026-10-26, 30 lecturas y 128k arrastrados en la página de miembro): `grep -n "'<clave>'"`
+  y `sed -n` del rango, nunca entero.
 - **Leer otro repo en la sesión principal** (aplicar Galivelop-workflow, 2026-10-22: guía, config, plantillas y
   scripts, ~30k tokens arrastrados en cada llamada): con `orchestrate-dealer`, un subagente lee y resume con rutas.
 - **Capturas de pantalla** para revisar cambios visuales: necesarias, pero mejor por sección y a 1280 px.
@@ -59,6 +65,9 @@ carpeta del portal. `medir.py` y `recuperar.py` lo buscan también en las carpet
 
 ## Referencias medidas
 
+- 2026-10-26, página de miembro y encargos: 260 llamadas, 128k de contexto medio (suelo 114k, techo 141k), 17
+  compactaciones; 4 subagentes, 9,1M de entrada, 74k de arranque. La sesión entera (desde el 2026-10-25, sin `/clear`):
+  983 llamadas, 38 compactaciones.
 - 2026-10-25, sesión larga (repos nuevos, tarea semanal, muro, «Próximamente»): 605 llamadas, 115k de contexto medio
   (suelo 96k, techo 141k), 18 compactaciones; 12 subagentes, 8,1M de entrada. Solo «Próximamente»: 51 llamadas, 124k.
 - 2026-10-25, rediseño del front: 394 llamadas, 112k de contexto medio (suelo 94k, techo 141k), 10 compactaciones;

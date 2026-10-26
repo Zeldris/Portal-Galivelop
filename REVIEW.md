@@ -36,6 +36,9 @@ criterio.
 
 ## Móvil y accesibilidad
 
+- Navegadores: los del objetivo por defecto de Vite 8 (`baseline-widely-available`: Safari e iOS 16.4+, Chrome y Edge
+  111+, Firefox 114+). Una API que solo falta en versiones anteriores no es un hallazgo.
+
 - Nada desborda en horizontal a 320-390 px, ni con el texto agrandado (cortes en `em` en la cabecera).
 - Los botones solo con icono llevan `aria-label`; lo que se mueve solo (la galería) se puede pausar y respeta
   «reducir movimiento».
