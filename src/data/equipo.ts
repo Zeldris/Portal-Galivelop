@@ -85,7 +85,8 @@ export function anosTrabajados(etapas: Etapa[], hoy = new Date()): number {
 
 /** Perfil profesional ampliado, opcional: solo para quien quiera contarlo. */
 export interface Perfil {
-  /** Versión breve para la tarjeta de cada proyecto: una línea y unas pocas tecnologías. */
+  /** Versión breve para la tarjeta de cada proyecto: una línea y unas pocas tecnologías (solo ahí: la página del miembro
+   * ya las lista todas en `tecnologias`, petición del miembro, 2026-10-26). */
   resumen?: Texto;
   destacadas?: string[];
   ubicacion?: Texto;

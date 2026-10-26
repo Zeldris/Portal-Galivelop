@@ -99,6 +99,8 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
     una titulación sin centro va sin él, con su título de encabezado y un birrete en vez del logo.
   - `negocio` (opcional): `["B2C"]`, `["B2B"]` o los dos; sale como etiqueta junto al nombre de la empresa y, como
     los clientes, se junta entre las etapas agrupadas. Es igual en los tres idiomas.
+  - `perfil.destacadas`: las pocas tecnologías de la tarjeta corta del miembro en cada proyecto. En su página no
+    salen: `tecnologias` ya las lista todas, por grupos.
   - Cada tecnología lleva su icono de Simple Icons (`src/components/IconoTecnologia.tsx`). Una nueva se añade ahí,
     en `ICONOS` (si tiene logo en Simple Icons) o en `MONOGRAMAS`; el test falla si falta.
   - Las cifras de la cabecera (años, empresas, clientes, proyectos) salen solas de los datos (los años, sumando las etapas sin huecos ni solapes); solo se ven las que no son cero.

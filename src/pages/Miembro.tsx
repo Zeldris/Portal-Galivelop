@@ -142,20 +142,10 @@ function Ficha({ p }: { p: Persona }) {
           </div>
 
           <aside className="miembro-columna">
-            {(!!perfil?.destacadas?.length || !!perfil?.tecnologias?.length) && (
+            {!!perfil?.tecnologias?.length && (
               <section className="miembro-caja">
                 <h2>{t('equipo.tecnologias')}</h2>
-                {!!perfil.destacadas?.length && (
-                  <ul className="miembro-destacadas">
-                    {perfil.destacadas.map((x) => (
-                      <li key={x}>
-                        <IconoTecnologia nombre={x} />
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {!!perfil.tecnologias?.length && <Grupos grupos={perfil.tecnologias} />}
+                <Grupos grupos={perfil.tecnologias} />
               </section>
             )}
 

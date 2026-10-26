@@ -3174,24 +3174,6 @@ img.perfil-logo {
   color: var(--enlace);
 }
 
-.miembro-destacadas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.miembro-destacadas li {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  background: var(--brillo);
-  border: 1px solid var(--celeste);
-}
-
 /* Logos de tecnologías (Simple Icons) con su color de marca; ver IconoTecnologia.tsx. */
 .icono-tec {
   flex: none;

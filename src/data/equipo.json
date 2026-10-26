@@ -37,11 +37,12 @@
         "en": "Full stack since 2017, now senior at Orienteed"
       },
       "destacadas": [
-        "React",
-        "TypeScript",
         "Java",
         "Spring",
-        "Claude Code"
+        "React",
+        "Angular 2+",
+        "TypeScript",
+        "Docker"
       ],
       "ubicacion": {
         "es": "A Coruña, Galicia",
