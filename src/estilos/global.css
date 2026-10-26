@@ -321,7 +321,7 @@ button {
 
 /* Hasta 430px (móviles grandes incluidos) la fila de la cabecera no cabe con los huecos de escritorio. */
 @media (max-width: 26.875em) {
-  .logo-texto {
+  .cabecera .logo-texto {
     font-size: 1.15rem;
   }
   .cabecera-fila,
@@ -941,7 +941,6 @@ button {
   font-size: 1.15rem;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  margin: 0;
   color: var(--texto-2);
 }
 
@@ -1721,8 +1720,6 @@ button {
 }
 
 .hito-version {
-  display: inline-block;
-  margin-inline-end: 8px;
   font-family: var(--fuente-titulos);
   font-size: 0.8rem;
   padding: 1px 8px;
@@ -1731,8 +1728,14 @@ button {
   border: 1px solid var(--borde);
 }
 
+/* En la hoja de ruta la versión va en línea con el título, no sola en su línea. */
+.hito-titulo .hito-version {
+  display: inline-block;
+  margin-inline-end: 8px;
+}
+
 .hito-estado {
-  margin-inline-start: 8px;
+  margin-inline-start: 4px;
   white-space: nowrap;
   font-size: 0.75rem;
   font-weight: 500;
@@ -3907,7 +3910,9 @@ body:has(dialog[open]) {
 }
 
 /* Si los grupos no caben, un degradado en el borde avisa de que hay más a ese lado (lo marca NavFicha en data-mas).
-   Los márgenes negativos compensan el ancho y el hueco de la barra: no mueven las pestañas. */
+   Los márgenes negativos compensan el ancho y el hueco de la barra: no mueven las pestañas. La barra no lleva
+   relleno a los lados (en el móvil va en las pestañas de los extremos): el degradado pegajoso se queda dentro del
+   relleno y dejaría ver las pestañas sin difuminar entre él y el borde. */
 .nav-ficha::before,
 .nav-ficha::after {
   content: '';
@@ -4269,8 +4274,8 @@ body:has(dialog[open]) {
   }
 }
 
-/* En los móviles más estrechos dos columnas cortan el nombre de cada pieza. */
-@media (max-width: 22.5em) {
+/* Por debajo de 360px dos columnas cortan el nombre de cada pieza («configuración», «dimensiones»). */
+@media (max-width: 22.4375em) {
   .mosaico {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -4291,8 +4296,12 @@ body:has(dialog[open]) {
   .nav-ficha {
     margin-left: -16px;
     margin-right: -16px;
-    padding-left: 12px;
-    padding-right: 12px;
+  }
+  .nav-ficha a:first-of-type {
+    margin-left: 12px;
+  }
+  .nav-ficha a:last-of-type {
+    margin-right: 12px;
   }
   .nav-ficha a {
     padding: 7px 11px;

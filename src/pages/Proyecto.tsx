@@ -83,20 +83,28 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
   useEffect(() => {
     const caja = barra.current;
     if (!caja) return;
+    let marco = 0;
     const medir = () => {
+      marco = 0;
       const lados = [];
       if (caja.scrollLeft > 2) lados.push('izquierda');
       if (caja.scrollLeft + caja.clientWidth < caja.scrollWidth - 2) lados.push('derecha');
-      caja.dataset.mas = lados.join(' ');
+      const mas = lados.join(' ');
+      if (caja.dataset.mas !== mas) caja.dataset.mas = mas;
+    };
+    // Una medida por fotograma, por muchos eventos de scroll que lleguen.
+    const programar = () => {
+      if (!marco) marco = requestAnimationFrame(medir);
     };
     medir();
     // Las fuentes web cambian el ancho de las pestañas al cargar.
-    document.fonts?.ready.then(medir);
-    caja.addEventListener('scroll', medir, { passive: true });
-    window.addEventListener('resize', medir);
+    document.fonts?.ready.then(programar);
+    caja.addEventListener('scroll', programar, { passive: true });
+    window.addEventListener('resize', programar);
     return () => {
-      caja.removeEventListener('scroll', medir);
-      window.removeEventListener('resize', medir);
+      cancelAnimationFrame(marco);
+      caja.removeEventListener('scroll', programar);
+      window.removeEventListener('resize', programar);
     };
   }, [titulos]);
 
@@ -398,7 +406,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                           <div>
                             <p className="hito-titulo">
                               {h.version && <span className="hito-version">{h.version}</span>}
-                              {tx(h.nombre)}
+                              {tx(h.nombre)}{' '}
                               <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
                             </p>
                             {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
