@@ -22,8 +22,8 @@ const MOVIL = '(max-width: 640px)';
 const LUGARES_MOVIL = 2;
 
 /**
- * En móvil la trayectoria va plegada tras «Ver más», para que el cierre de la página no quede a diez pantallas.
- * Las tecnologías no: van siempre desplegadas (petición del miembro, 2026-10-26).
+ * En móvil la trayectoria, la formación, los idiomas y las fortalezas van plegados tras «Ver más», para que el cierre
+ * de la página no quede a diez pantallas. Las tecnologías no: van siempre desplegadas (petición del miembro, 2026-10-26).
  */
 function useMovil(): boolean {
   const [movil, setMovil] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(MOVIL).matches);
@@ -321,7 +321,7 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
             {/* Sin lugar (una titulación sin centro), el título de su única etapa hace de encabezado. */}
             <h3>
               {l.lugar ?? tx(l.etapas[0].titulo)}
-              {l.negocio.length > 0 && <>{' '}<span className="perfil-negocio">{l.negocio.join('/')}</span></>}
+              {l.negocio.length > 0 && <span className="perfil-negocio">{l.negocio.join('/')}</span>}
             </h3>
             {l.clientes.length > 0 && (
               <p className="perfil-clientes">

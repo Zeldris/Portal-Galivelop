@@ -79,8 +79,14 @@ const MONOGRAMAS: Record<string, string> = {
   'Microsoft 365': 'M',
 };
 
+/** Busca solo en las claves propias (un nombre como «constructor» no es una tecnología); sin `Object.hasOwn`, que
+ * Safari no tiene hasta la 15.4. */
+function buscar<T>(tabla: Record<string, T>, nombre: string): T | undefined {
+  return Object.prototype.hasOwnProperty.call(tabla, nombre) ? tabla[nombre] : undefined;
+}
+
 export function tieneIcono(nombre: string): boolean {
-  return Object.hasOwn(ICONOS, nombre) || Object.hasOwn(MONOGRAMAS, nombre);
+  return buscar(ICONOS, nombre) !== undefined || buscar(MONOGRAMAS, nombre) !== undefined;
 }
 
 /** Luminancia relativa (WCAG) de un color `RRGGBB`. */
@@ -94,9 +100,9 @@ export function luminancia(hex: string): number {
 
 /**
  * Luminancia del fondo de las píldoras (`var(--brillo)` sobre la superficie), en el caso que menos contrasta: en el
- * oscuro, sobre `--superficie`; en el claro, sobre `--fondo`. Si cambian esos colores en global.css, recalcúlala.
+ * oscuro y en el claro, sobre `--superficie`. Si cambian esos colores en global.css, recalcúlala.
  */
-const FONDO_PILDORA = { oscuro: 0.0385, claro: 0.8119 };
+const FONDO_PILDORA = { oscuro: 0.0385, claro: 0.8472 };
 
 function contraste(a: number, b: number): number {
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
@@ -115,9 +121,9 @@ export function tonoIcono(hex: string): 'oscuro' | 'claro' | undefined {
 }
 
 export function IconoTecnologia({ nombre }: { nombre: string }) {
-  const icono = Object.hasOwn(ICONOS, nombre) ? ICONOS[nombre] : undefined;
+  const icono = buscar(ICONOS, nombre);
   if (!icono) {
-    const monograma = Object.hasOwn(MONOGRAMAS, nombre) ? MONOGRAMAS[nombre] : undefined;
+    const monograma = buscar(MONOGRAMAS, nombre);
     return monograma ? (
       <span className="icono-tec icono-tec-monograma" aria-hidden="true">
         {monograma}

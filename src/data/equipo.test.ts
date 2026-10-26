@@ -81,8 +81,8 @@ describe('perfil de cada miembro', () => {
     expect(tonoIcono('005FAD')).toBe('oscuro');
     expect(tonoIcono('3178C6')).toBe('oscuro'); // TypeScript: 2,6:1 sobre la píldora del tema oscuro
     expect(tonoIcono('F7DF1E')).toBe('claro');
-    expect(tonoIcono('4FC08D')).toBe('claro'); // Vue: 1,9:1 sobre la píldora del tema claro
+    expect(tonoIcono('4FC08D')).toBe('claro'); // Vue: 1,94:1 sobre la píldora del tema claro
     expect(tonoIcono('D97757')).toBeUndefined();
-    expect(tonoIcono('6DB33F')).toBeUndefined(); // Spring conserva su verde en el claro (2,1:1)
+    expect(tonoIcono('6DB33F')).toBeUndefined(); // Spring conserva su verde en el claro (2,20:1)
   });
 });
