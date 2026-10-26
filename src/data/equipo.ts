@@ -5,22 +5,29 @@ import type { Texto } from './tipos';
 export const REDES = ['linkedin', 'github', 'web', 'correo', 'x', 'instagram', 'youtube', 'discord'] as const;
 export type Red = (typeof REDES)[number];
 
-/** Una etapa de la trayectoria o de la formación; meses en AAAA-MM, sin `hasta` si sigue. */
+/**
+ * Una etapa de la trayectoria o de la formación; meses en AAAA-MM, sin `hasta` si sigue. Sin `lugar` (una titulación
+ * sin centro), el título hace de encabezado.
+ */
 export interface Etapa {
   titulo: Texto;
-  lugar: string;
+  lugar?: string;
   desde: string;
   hasta?: string;
   /** Qué hizo ahí, en una o dos frases. */
   descripcion?: Texto;
   /** Logo de la empresa o centro, en `public/` (p. ej. `equipo/empresas/orienteed.svg`); sin él, sus iniciales. */
   logo?: string;
+  /** Clientes para los que trabajó desde esa empresa (consultorías), con su nombre comercial. */
+  clientes?: string[];
 }
 
 /** Etapas seguidas en el mismo sitio, juntas bajo su nombre y su logo (como los puestos de una misma empresa). */
 export interface Lugar {
-  lugar: string;
+  lugar?: string;
   logo?: string;
+  /** Los de todas sus etapas, sin repetir. */
+  clientes: string[];
   etapas: Etapa[];
 }
 
@@ -28,11 +35,12 @@ export function agruparPorLugar(etapas: Etapa[]): Lugar[] {
   const lugares: Lugar[] = [];
   for (const e of etapas) {
     const ultimo = lugares[lugares.length - 1];
-    if (ultimo?.lugar === e.lugar) {
+    if (e.lugar && ultimo?.lugar === e.lugar) {
       ultimo.etapas.push(e);
       ultimo.logo ??= e.logo;
+      ultimo.clientes.push(...(e.clientes ?? []).filter((c) => !ultimo.clientes.includes(c)));
     } else {
-      lugares.push({ lugar: e.lugar, logo: e.logo, etapas: [e] });
+      lugares.push({ lugar: e.lugar, logo: e.logo, clientes: [...new Set(e.clientes)], etapas: [e] });
     }
   }
   return lugares;

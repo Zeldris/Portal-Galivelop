@@ -1,4 +1,4 @@
-import { ArrowLeft, ChevronDown, Mail, MapPin } from 'lucide-react';
+import { ArrowLeft, ChevronDown, GraduationCap, Mail, MapPin } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { IconoRed, nombreRed } from '../components/IconoRed';
@@ -271,7 +271,8 @@ function Cifras({ p }: { p: Persona }) {
   const trayectoria = p.perfil?.trayectoria ?? [];
   const cifras = [
     { n: anosDesde(trayectoria), clave: 'equipo.cifra.anos' as const },
-    { n: new Set(trayectoria.map((e) => e.lugar)).size, clave: 'equipo.cifra.empresas' as const },
+    { n: new Set(trayectoria.flatMap((e) => (e.lugar ? [e.lugar] : []))).size, clave: 'equipo.cifra.empresas' as const },
+    { n: new Set(trayectoria.flatMap((e) => e.clientes ?? [])).size, clave: 'equipo.cifra.clientes' as const },
     { n: p.proyectos.length, clave: 'equipo.cifra.proyectos' as const },
   ].filter((c) => c.n > 1);
   if (!cifras.length) return null;
@@ -313,22 +314,28 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
     <ol className="perfil-lugares">
       {lugares.map((l) => (
         <li
-          key={`${l.lugar}-${l.etapas[0].desde}`}
+          key={`${l.lugar ?? ''}-${l.etapas[0].desde}`}
           className={l.etapas.some((e) => !e.hasta) ? 'perfil-lugar-actual' : undefined}
         >
           {l.logo ? (
             <img src={ruta(l.logo)} alt="" className="perfil-logo" width={44} height={44} loading="lazy" />
           ) : (
             <span className="perfil-logo" aria-hidden="true">
-              {iniciales(l.lugar)}
+              {l.lugar ? iniciales(l.lugar) : <GraduationCap size={20} />}
             </span>
           )}
           <div>
-            <h3>{l.lugar}</h3>
+            {/* Sin lugar (una titulación sin centro), el título de su única etapa hace de encabezado. */}
+            <h3>{l.lugar ?? tx(l.etapas[0].titulo)}</h3>
+            {l.clientes.length > 0 && (
+              <p className="perfil-clientes">
+                <span>{t('equipo.clientes')}</span> {l.clientes.join(' · ')}
+              </p>
+            )}
             <ol className={l.etapas.length > 1 ? 'perfil-etapas perfil-etapas-varias' : 'perfil-etapas'}>
               {l.etapas.map((e) => (
                 <li key={e.desde} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
-                  <strong>{tx(e.titulo)}</strong>
+                  {l.lugar && <strong>{tx(e.titulo)}</strong>}
                   <span className="perfil-fechas">
                     {formatearMes(e.desde, idioma)} –{' '}
                     {e.hasta ? formatearMes(e.hasta, idioma) : t('equipo.actualidad')}

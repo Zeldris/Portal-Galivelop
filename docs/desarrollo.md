@@ -94,9 +94,12 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
     `hasta`, «actualidad») y, opcionales, `descripcion` (qué hizo, en los tres idiomas) y `logo` (ruta en `public/`,
     por ejemplo `equipo/empresas/orienteed.svg`; sin él, las iniciales del sitio). Las etapas seguidas en el mismo
     `lugar` se agrupan bajo un solo logo, que basta poner en una de ellas. El test comprueba que el logo existe.
+  - `clientes` (opcional): para quién trabajó desde esa empresa (consultorías), con su nombre comercial; sale bajo
+    el nombre de la empresa, y las etapas agrupadas juntan los suyos sin repetirlos. `lugar` también es opcional:
+    una titulación sin centro va sin él, con su título de encabezado y un birrete en vez del logo.
   - Cada tecnología lleva su icono de Simple Icons (`src/components/IconoTecnologia.tsx`). Una nueva se añade ahí,
     en `ICONOS` (si tiene logo en Simple Icons) o en `MONOGRAMAS`; el test falla si falta.
-  - Las cifras de la cabecera (años, empresas, proyectos) salen solas de los datos; solo se ven las mayores que uno.
+  - Las cifras de la cabecera (años, empresas, clientes, proyectos) salen solas de los datos; solo se ven las mayores que uno.
 - `colabora` (opcional): `{ "texto": { es, gl, en }, "correo": … }`. Si el miembro colabora por su cuenta en
   proyectos de otras personas, su página termina con ese texto y un botón de correo
   ([ADR 0001](adr/0001-encargos-por-miembro.md)). Sin él, la página no dice nada de colaborar.

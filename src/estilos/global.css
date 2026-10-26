@@ -2900,6 +2900,20 @@ img.perfil-logo {
   line-height: 1.35;
 }
 
+.perfil-clientes {
+  margin: -2px 0 8px;
+  font-size: 0.88rem;
+  color: var(--texto-2);
+}
+
+.perfil-clientes span {
+  font-weight: 600;
+}
+
+.perfil-clientes span::after {
+  content: ':';
+}
+
 .perfil-etapas {
   display: flex;
   flex-direction: column;

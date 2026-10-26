@@ -56,7 +56,13 @@
             "en": "Senior full-stack software developer"
           },
           "lugar": "Orienteed",
-          "desde": "2023-02"
+          "desde": "2023-02",
+          "clientes": [
+            "Luxottica",
+            "Ezpeleta",
+            "PLADUR",
+            "Mayoral"
+          ]
         },
         {
           "titulo": {
@@ -76,7 +82,10 @@
           },
           "lugar": "Plexus Tech",
           "desde": "2020-03",
-          "hasta": "2021-03"
+          "hasta": "2021-03",
+          "clientes": [
+            "Luckia"
+          ]
         },
         {
           "titulo": {
@@ -86,7 +95,11 @@
           },
           "lugar": "Servicio Móvil",
           "desde": "2018-06",
-          "hasta": "2020-03"
+          "hasta": "2020-03",
+          "clientes": [
+            "Inditex",
+            "Sergas"
+          ]
         },
         {
           "titulo": {
@@ -96,27 +109,30 @@
           },
           "lugar": "Grupo ALUMAN",
           "desde": "2017-06",
-          "hasta": "2017-09"
+          "hasta": "2017-09",
+          "descripcion": {
+            "es": "Desarrollo B2B.",
+            "gl": "Desenvolvemento B2B.",
+            "en": "B2B development."
+          }
         }
       ],
       "formacion": [
         {
           "titulo": {
-            "es": "Formación profesional",
-            "gl": "Formación profesional",
-            "en": "Vocational training"
+            "es": "Técnico Superior en Desarrollo de Aplicaciones Web",
+            "gl": "Técnico Superior en Desenvolvemento de Aplicacións Web",
+            "en": "Higher Technician in Web Application Development"
           },
-          "lugar": "Chios Formación",
           "desde": "2017-01",
           "hasta": "2018-01"
         },
         {
           "titulo": {
-            "es": "Formación profesional",
-            "gl": "Formación profesional",
-            "en": "Vocational training"
+            "es": "Técnico Superior en Desarrollo de Aplicaciones Multiplataforma",
+            "gl": "Técnico Superior en Desenvolvemento de Aplicacións Multiplataforma",
+            "en": "Higher Technician in Multiplatform Application Development"
           },
-          "lugar": "Chios Formación",
           "desde": "2014-01",
           "hasta": "2016-01"
         }

@@ -42,6 +42,20 @@ describe('perfil de cada miembro', () => {
     expect(l.logo).toBe('a.svg');
   });
 
+  it('un sitio junta los clientes de todas sus etapas, sin repetirlos', () => {
+    const [l] = agruparPorLugar([
+      { ...etapa('A', '2023-02'), clientes: ['X', 'Y'] },
+      { ...etapa('A', '2021-03', '2023-02'), clientes: ['Y', 'Z'] },
+    ]);
+    expect(l.clientes).toEqual(['X', 'Y', 'Z']);
+  });
+
+  it('las etapas sin lugar (titulaciones sin centro) no se agrupan entre sí', () => {
+    const sinLugar = { ...etapa('A', '2017-01', '2018-01'), lugar: undefined };
+    const lugares = agruparPorLugar([sinLugar, { ...sinLugar, desde: '2014-01', hasta: '2016-01' }]);
+    expect(lugares.map((l) => l.etapas.length)).toEqual([1, 1]);
+  });
+
   it('cuenta los años completos desde la etapa más antigua', () => {
     const etapas = [etapa('A', '2023-02'), etapa('B', '2017-06', '2017-09')];
     expect(anosDesde(etapas, new Date(2026, 4, 1))).toBe(8);
