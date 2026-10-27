@@ -27,7 +27,7 @@
 <rect x="620" y="198" width="30" height="5" rx="2.5" fill="#38b6e8"/>
 <text x="620" y="238" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">galivelop-workflow</text>
 <text x="620" y="268" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">vX.Y.Z · plugin.json</text>
-<text x="620" y="292" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">CHANGELOG · 1043 tests</text>
+<text x="620" y="292" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">CHANGELOG · 1063 tests</text>
 <text x="620" y="316" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">Linux + macOS CI</text>
 <rect x="1120" y="400" width="400" height="190" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="1140" y="418" width="30" height="5" rx="2.5" fill="#38b6e8"/>

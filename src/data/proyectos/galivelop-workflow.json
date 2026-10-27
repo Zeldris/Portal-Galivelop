@@ -139,9 +139,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.4.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.4.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.4.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.4.2, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.4.2, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.4.2, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
     },
     {
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye trece skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
@@ -1700,7 +1700,7 @@
       }
     },
     {
-      "valor": "1043",
+      "valor": "1063",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",
