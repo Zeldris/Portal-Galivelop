@@ -98,7 +98,7 @@ for (const idioma of IDIOMAS) {
 }
 
 const ORG = { '@type': 'Organization', name: 'Galivelop', url: `${SITIO}/`, logo: `${SITIO}/marca/gv-logo-512.png`, email: 'alvarogarciagrana@gmail.com', sameAs: ['https://discord.gg/8vyjW3VrN', 'https://github.com/Zeldris'] };
-const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication', 'galivelop-workflow': 'SoftwareApplication' };
+const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication', 'galivelop-workflow': 'SoftwareApplication', 'galivelop-image-generator': 'SoftwareApplication' };
 
 /** Texto de la página en HTML simple (lo sustituye React al cargar; lo leen buscadores sin JS). */
 function cuerpo(pg) {

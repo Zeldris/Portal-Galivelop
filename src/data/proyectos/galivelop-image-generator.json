@@ -1,0 +1,732 @@
+{
+  "slug": "galivelop-image-generator",
+  "nombre": "Galivelop Image Generator",
+  "orden": 4,
+  "colaboracion": "abierta",
+  "estado": "desarrollo",
+  "acento": "#8B5CF6",
+  "icono": "proyectos/galivelop-image-generator/icono.png",
+  "cabecera": "color",
+  "actualizado": "2026-10-27",
+  "categoria": {
+    "es": "Servicio local de generación de imágenes",
+    "gl": "Servizo local de xeración de imaxes",
+    "en": "Local image-generation service"
+  },
+  "lema": {
+    "es": "Pide, prueba, elige.",
+    "gl": "Pide, proba, elixe.",
+    "en": "Ask, try, choose."
+  },
+  "resumen": {
+    "es": "Un servicio local de generación de imágenes con IA, uno por máquina y compartido por todos los proyectos del taller: recibe pedidos, genera intentos, deja elegir uno y lo entrega con su manifiesto. Nada sale del equipo.",
+    "gl": "Un servizo local de xeración de imaxes con IA, un por máquina e compartido por todos os proxectos do taller: recibe pedidos, xera intentos, deixa elixir un e entrégao co seu manifesto. Nada sae do equipo.",
+    "en": "A local AI image-generation service, one per machine and shared by every workshop project: it takes requests, generates attempts, lets you choose one and delivers it with its manifest. Nothing leaves the machine."
+  },
+  "fase": {
+    "es": "En desarrollo · F2 motor real: piloto de contenido",
+    "gl": "En desenvolvemento · F2 motor real: piloto de contido",
+    "en": "In development · F2 real engine: content pilot"
+  },
+  "etiquetas": [
+    "IA local",
+    "Python",
+    "stable-diffusion.cpp",
+    "FLUX.2",
+    "Vulkan",
+    "Steam Deck",
+    "CLI"
+  ],
+  "portada": {
+    "src": "proyectos/galivelop-image-generator/portada.webp",
+    "mini": "proyectos/galivelop-image-generator/portada-mini.webp",
+    "ancho": 1600,
+    "alto": 1000,
+    "alt": {
+      "es": "Portada de Galivelop Image Generator: rejilla de intentos con uno elegido",
+      "gl": "Portada de Galivelop Image Generator: reixa de intentos cun elixido",
+      "en": "Cover of Galivelop Image Generator: a grid of attempts with one chosen"
+    }
+  },
+  "enlaces": [],
+  "galeria": [],
+  "capturas": [],
+  "descripcion": [
+    {
+      "es": "Cada proyecto del taller necesita imágenes de marca: fondos para redes, piezas por formato, avatares. No queremos que esas imágenes ni sus pedidos salgan del equipo, y tampoco repetir el mismo montaje de modelos, colas y carpetas en cada repositorio.",
+      "gl": "Cada proxecto do taller necesita imaxes de marca: fondos para redes, pezas por formato, avatares. Non queremos que esas imaxes nin os seus pedidos saian do equipo, e tampouco repetir a mesma montaxe de modelos, colas e cartafoles en cada repositorio.",
+      "en": "Every workshop project needs brand images: backgrounds for social media, pieces in several formats, avatars. We don’t want those images or their requests to leave the machine, and we don’t want to repeat the same setup of models, queues and folders in every repository."
+    },
+    {
+      "es": "La respuesta es un servicio por máquina que no conoce el dominio de ningún proyecto: recibe pedidos (una clave y un perfil de imagen), genera varios intentos, deja marcar una elegida y la entrega como PNG con un manifiesto que dice qué modelo, qué parámetros y qué semilla la produjeron, para poder reproducirla. Hablará por una API HTTP local, por la orden gimg y por una interfaz web de tres pantallas.",
+      "gl": "A resposta é un servizo por máquina que non coñece o dominio de ningún proxecto: recibe pedidos (unha clave e un perfil de imaxe), xera varios intentos, deixa marcar unha elixida e entrégaa como PNG cun manifesto que di que modelo, que parámetros e que semente a produciron, para poder reproducila. Falará por unha API HTTP local, pola orde gimg e por unha interface web de tres pantallas.",
+      "en": "The answer is a service per machine that knows nothing about any project’s domain: it takes requests (a key and an image profile), generates several attempts, lets you mark one as chosen and delivers it as a PNG with a manifest recording which model, parameters and seed produced it, so it can be reproduced. It will speak through a local HTTP API, the gimg command and a three-screen web interface."
+    },
+    {
+      "es": "Hoy el núcleo está hecho (pedidos, intentos, elegida, entrega, cola y registro) y el piloto de contenido, cerrado en una Steam Deck. El motor real se está conectando al servicio, y la API, la interfaz y el piloto con Tarkor están pendientes. Todavía no genera imágenes desde el servicio y aún no se puede descargar.",
+      "gl": "Hoxe o núcleo está feito (pedidos, intentos, elixida, entrega, cola e rexistro) e o piloto de contido, pechado nunha Steam Deck. O motor real estase conectando ao servizo, e a API, a interface e o piloto con Tarkor están pendentes. Aínda non xera imaxes desde o servizo e aínda non se pode descargar.",
+      "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is being connected to the service, while the API, the interface and the pilot with Tarkor are still pending. It does not yet generate images from the service and cannot be downloaded yet."
+    }
+  ],
+  "lineas": [
+    "ia-local",
+    "producto"
+  ],
+  "aprendizajes": [
+    {
+      "es": "Nombrar en vez de comparar: el modelo pinta lo que se nombra, así que las comparaciones «como…» sobran en el pedido.",
+      "gl": "Nomear en vez de comparar: o modelo pinta o que se nomea, así que as comparacións «como…» sobran no pedido.",
+      "en": "Name instead of compare: the model paints what is named, so «like…» comparisons don’t belong in a request."
+    },
+    {
+      "es": "Un borrador pequeño antes del definitivo: cuesta en torno a una quinta parte y sirve para descartar pronto.",
+      "gl": "Un borrador pequeno antes do definitivo: custa en torno a unha quinta parte e serve para descartar axiña.",
+      "en": "A small draft before the final: it costs around a fifth and lets you discard early."
+    },
+    {
+      "es": "Medir la paleta y el contraste con un script en vez de a ojo.",
+      "gl": "Medir a paleta e o contraste cun script en vez de a ollo.",
+      "en": "Measure palette and contrast with a script rather than by eye."
+    },
+    {
+      "es": "El coste va con los píxeles, no solo con el número de pasos.",
+      "gl": "O custo vai cos píxeles, non só co número de pasos.",
+      "en": "Cost follows pixels, not just the number of steps."
+    },
+    {
+      "es": "El texto y el logo se componen después sobre la imagen; no se piden al modelo.",
+      "gl": "O texto e o logo compóñense despois sobre a imaxe; non se lle piden ao modelo.",
+      "en": "Text and logo are composed afterwards over the image; they are not asked of the model."
+    }
+  ],
+  "caracteristicas": [
+    {
+      "icono": "shield",
+      "titulo": {
+        "es": "Todo en el equipo",
+        "gl": "Todo no equipo",
+        "en": "Everything on the machine"
+      },
+      "texto": {
+        "es": "Nada sale de la máquina. El servicio solo escribe en su carpeta y en la carpeta de entrega.",
+        "gl": "Nada sae da máquina. O servizo só escribe no seu cartafol e no cartafol de entrega.",
+        "en": "Nothing leaves the machine. The service only writes to its own folder and the delivery folder."
+      }
+    },
+    {
+      "icono": "image",
+      "titulo": {
+        "es": "Intentos y una elegida",
+        "gl": "Intentos e unha elixida",
+        "en": "Attempts and one chosen"
+      },
+      "texto": {
+        "es": "Cada intento es nuevo, candidata o descartada; solo una queda elegida, y se puede deshacer.",
+        "gl": "Cada intento é novo, candidata ou descartada; só unha queda elixida, e pódese desfacer.",
+        "en": "Each attempt is new, candidate or discarded; only one is chosen, and it can be undone."
+      }
+    },
+    {
+      "icono": "code",
+      "titulo": {
+        "es": "Entrega reproducible",
+        "gl": "Entrega reproducible",
+        "en": "Reproducible delivery"
+      },
+      "texto": {
+        "es": "La elegida sale como PNG con un manifiesto: modelo, parámetros y semilla.",
+        "gl": "A elixida sae como PNG cun manifesto: modelo, parámetros e semente.",
+        "en": "The chosen one ships as a PNG with a manifest: model, parameters and seed."
+      }
+    },
+    {
+      "icono": "gauge",
+      "titulo": {
+        "es": "Cola con límites",
+        "gl": "Cola con límites",
+        "en": "Queue with limits"
+      },
+      "texto": {
+        "es": "Los pedidos van a una cola persistente con límites, y todo queda en un registro JSONL.",
+        "gl": "Os pedidos van a unha cola persistente con límites, e todo queda nun rexistro JSONL.",
+        "en": "Requests go into a persistent queue with limits, and everything is kept in a JSONL log."
+      }
+    },
+    {
+      "icono": "cpu",
+      "titulo": {
+        "es": "Python sin dependencias",
+        "gl": "Python sen dependencias",
+        "en": "Dependency-free Python"
+      },
+      "texto": {
+        "es": "Python 3 con solo la biblioteca estándar; los modelos se descargan aparte.",
+        "gl": "Python 3 con só a biblioteca estándar; os modelos descárganse á parte.",
+        "en": "Python 3 with only the standard library; models are downloaded separately."
+      }
+    }
+  ],
+  "pasos": [
+    {
+      "titulo": {
+        "es": "Registrar y pedir",
+        "gl": "Rexistrar e pedir",
+        "en": "Register and request"
+      },
+      "texto": {
+        "es": "Se registra un proyecto y se hace un pedido: una clave y un perfil de imagen con formato, tamaño y referencia.",
+        "gl": "Rexístrase un proxecto e faise un pedido: unha clave e un perfil de imaxe con formato, tamaño e referencia.",
+        "en": "A project is registered and a request is made: a key and an image profile with format, size and reference."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Generar intentos",
+        "gl": "Xerar intentos",
+        "en": "Generate attempts"
+      },
+      "texto": {
+        "es": "El servicio genera intentos; cada uno queda como nuevo, candidata o descartada.",
+        "gl": "O servizo xera intentos; cada un queda como novo, candidata ou descartada.",
+        "en": "The service generates attempts; each is left as new, candidate or discarded."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Elegir una",
+        "gl": "Elixir unha",
+        "en": "Choose one"
+      },
+      "texto": {
+        "es": "Se marca una elegida entre las candidatas. La decisión se puede deshacer.",
+        "gl": "Márcase unha elixida entre as candidatas. A decisión pódese desfacer.",
+        "en": "One of the candidates is marked as chosen. The decision can be undone."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Entregar",
+        "gl": "Entregar",
+        "en": "Deliver"
+      },
+      "texto": {
+        "es": "La elegida se entrega como PNG junto a su manifiesto, que permite reproducirla.",
+        "gl": "A elixida entrégase como PNG xunto co seu manifesto, que permite reproducila.",
+        "en": "The chosen one is delivered as a PNG along with its manifest, which makes it reproducible."
+      }
+    }
+  ],
+  "apartados": [
+    {
+      "id": "flujo",
+      "titulo": {
+        "es": "Del pedido a la entrega",
+        "gl": "Do pedido á entrega",
+        "en": "From request to delivery"
+      },
+      "intro": {
+        "es": "Lo que ya funciona en el núcleo del servicio, con un motor de pruebas mientras se conecta el real.",
+        "gl": "O que xa funciona no núcleo do servizo, cun motor de probas mentres se conecta o real.",
+        "en": "What already works in the service core, with a test engine while the real one is being connected."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Pedido",
+            "gl": "Pedido",
+            "en": "Request"
+          },
+          "texto": {
+            "es": "Una clave y un perfil de imagen (formato, tamaño, referencia). El servicio no sabe para qué proyecto es más que lo que dice el pedido.",
+            "gl": "Unha clave e un perfil de imaxe (formato, tamaño, referencia). O servizo non sabe para que proxecto é máis que o que di o pedido.",
+            "en": "A key and an image profile (format, size, reference). The service knows nothing about the project beyond what the request says."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Intentos",
+            "gl": "Intentos",
+            "en": "Attempts"
+          },
+          "texto": {
+            "es": "Cada pedido produce varios intentos con estado: nuevo, candidata o descartada.",
+            "gl": "Cada pedido produce varios intentos con estado: novo, candidata ou descartada.",
+            "en": "Each request yields several attempts with a state: new, candidate or discarded."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Elegida",
+            "gl": "Elixida",
+            "en": "Chosen"
+          },
+          "texto": {
+            "es": "Solo una por pedido. Se puede deshacer y elegir otra.",
+            "gl": "Só unha por pedido. Pódese desfacer e elixir outra.",
+            "en": "Only one per request. It can be undone and another chosen."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Entrega y manifiesto",
+            "gl": "Entrega e manifesto",
+            "en": "Delivery and manifest"
+          },
+          "texto": {
+            "es": "PNG en la carpeta de entrega, con un manifiesto JSON que anota modelo, parámetros y semilla.",
+            "gl": "PNG no cartafol de entrega, cun manifesto JSON que anota modelo, parámetros e semente.",
+            "en": "A PNG in the delivery folder, with a JSON manifest noting model, parameters and seed."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Cola y registro",
+            "gl": "Cola e rexistro",
+            "en": "Queue and log"
+          },
+          "texto": {
+            "es": "Cola persistente con límites; todo queda en un registro JSONL para poder medir.",
+            "gl": "Cola persistente con límites; todo queda nun rexistro JSONL para poder medir.",
+            "en": "A persistent queue with limits; everything goes into a JSONL log so it can be measured."
+          }
+        }
+      ]
+    },
+    {
+      "id": "piloto",
+      "titulo": {
+        "es": "Piloto de contenido",
+        "gl": "Piloto de contido",
+        "en": "Content pilot"
+      },
+      "intro": {
+        "es": "Seis rondas del 26 al 27 de octubre de 2026, en una Steam Deck con stable-diffusion.cpp sobre Vulkan y el modelo FLUX.2 klein 4B.",
+        "gl": "Seis roldas do 26 ao 27 de outubro de 2026, nunha Steam Deck con stable-diffusion.cpp sobre Vulkan e o modelo FLUX.2 klein 4B.",
+        "en": "Six rounds on 26–27 October 2026, on a Steam Deck with stable-diffusion.cpp over Vulkan and the FLUX.2 klein 4B model."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Ronda 0 · Prueba de humo",
+            "gl": "Rolda 0 · Proba de fume",
+            "en": "Round 0 · Smoke test"
+          },
+          "texto": {
+            "es": "Con la imagen social del portal. Lección: el modelo pinta lo que se nombra; fuera las comparaciones «como…».",
+            "gl": "Coa imaxe social do portal. Lección: o modelo pinta o que se nomea; fóra as comparacións «como…».",
+            "en": "With the portal’s social image. Lesson: the model paints what is named; drop the «like…» comparisons."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 1 · Fondos sociales",
+            "gl": "Rolda 1 · Fondos sociais",
+            "en": "Round 1 · Social backgrounds"
+          },
+          "texto": {
+            "es": "Fondos de imagen social para siete proyectos, dos semillas cada uno.",
+            "gl": "Fondos de imaxe social para sete proxectos, dúas sementes cada un.",
+            "en": "Social-image backgrounds for seven projects, two seeds each."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 2 · Pedir un color",
+            "gl": "Rolda 2 · Pedir unha cor",
+            "en": "Round 2 · Asking for a colour"
+          },
+          "texto": {
+            "es": "Tres formas de pedirlo (palabras, código hex, material), medidas con un script de paleta y contraste.",
+            "gl": "Tres formas de pedilo (palabras, código hex, material), medidas cun script de paleta e contraste.",
+            "en": "Three ways to ask (words, hex code, material), measured with a palette and contrast script."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 3 · Borrador y definitivo",
+            "gl": "Rolda 3 · Borrador e definitivo",
+            "en": "Round 3 · Draft and final"
+          },
+          "texto": {
+            "es": "El borrador pequeño cuesta en torno a una quinta parte y sirve para descartar pronto.",
+            "gl": "O borrador pequeno custa en torno a unha quinta parte e serve para descartar axiña.",
+            "en": "The small draft costs around a fifth and lets you discard early."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 4 · Composición",
+            "gl": "Rolda 4 · Composición",
+            "en": "Round 4 · Composition"
+          },
+          "texto": {
+            "es": "La imagen social con velo, logo y textos en SVG; contraste WCAG AA en todas.",
+            "gl": "A imaxe social con veo, logo e textos en SVG; contraste WCAG AA en todas.",
+            "en": "The social image with veil, logo and SVG text; WCAG AA contrast on all of them."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 5 · Piezas por formato",
+            "gl": "Rolda 5 · Pezas por formato",
+            "en": "Round 5 · Pieces per format"
+          },
+          "texto": {
+            "es": "Cuadrada, vertical, cabecera y avatar para todos los proyectos. El coste crece con los píxeles.",
+            "gl": "Cadrada, vertical, cabeceira e avatar para todos os proxectos. O custo medra cos píxeles.",
+            "en": "Square, vertical, header and avatar for every project. Cost grows with pixels."
+          }
+        }
+      ]
+    },
+    {
+      "id": "motor",
+      "titulo": {
+        "es": "Qué hay debajo",
+        "gl": "Que hai debaixo",
+        "en": "What’s underneath"
+      },
+      "intro": {
+        "es": "El motor real es la fase en curso: hoy el servicio funciona con un motor de pruebas.",
+        "gl": "O motor real é a fase en curso: hoxe o servizo funciona cun motor de probas.",
+        "en": "The real engine is the phase in progress: today the service runs on a test engine."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "stable-diffusion.cpp",
+            "gl": "stable-diffusion.cpp",
+            "en": "stable-diffusion.cpp"
+          },
+          "texto": {
+            "es": "El motor que se envuelve, con un perfil de máquina que ajusta cada pedido al equipo.",
+            "gl": "O motor que se envolve, cun perfil de máquina que axusta cada pedido ao equipo.",
+            "en": "The engine being wrapped, with a machine profile that fits each request to the hardware."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Vulkan",
+            "gl": "Vulkan",
+            "en": "Vulkan"
+          },
+          "texto": {
+            "es": "La vía de cálculo en la Steam Deck, sin depender de una tarjeta concreta.",
+            "gl": "A vía de cálculo na Steam Deck, sen depender dunha tarxeta concreta.",
+            "en": "The compute path on the Steam Deck, without depending on a specific card."
+          }
+        },
+        {
+          "nombre": {
+            "es": "FLUX.2 klein 4B",
+            "gl": "FLUX.2 klein 4B",
+            "en": "FLUX.2 klein 4B"
+          },
+          "texto": {
+            "es": "El modelo del piloto. Un catálogo de modelos y un instalador lo descargarán aparte.",
+            "gl": "O modelo do piloto. Un catálogo de modelos e un instalador descargarano á parte.",
+            "en": "The pilot’s model. A model catalogue and an installer will download it separately."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Modelos aparte",
+            "gl": "Modelos á parte",
+            "en": "Models kept apart"
+          },
+          "valor": "~7 GB",
+          "texto": {
+            "es": "Los modelos pesan en torno a 7 GB y viven fuera del repositorio.",
+            "gl": "Os modelos pesan en torno a 7 GB e viven fóra do repositorio.",
+            "en": "Models weigh around 7 GB and live outside the repository."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Máquina objetivo",
+            "gl": "Máquina obxectivo",
+            "en": "Target machine"
+          },
+          "texto": {
+            "es": "Primero Linux y Steam Deck. Otros sistemas quedan para después.",
+            "gl": "Primeiro Linux e Steam Deck. Outros sistemas quedan para despois.",
+            "en": "Linux and Steam Deck first. Other systems come later."
+          }
+        }
+      ]
+    }
+  ],
+  "ficha": [
+    {
+      "capa": {
+        "es": "Servicio",
+        "gl": "Servizo",
+        "en": "Service"
+      },
+      "tecnologias": [
+        "Python 3 (biblioteca estándar)",
+        "CLI gimg",
+        "API HTTP local"
+      ]
+    },
+    {
+      "capa": {
+        "es": "Motor",
+        "gl": "Motor",
+        "en": "Engine"
+      },
+      "tecnologias": [
+        "stable-diffusion.cpp",
+        "Vulkan",
+        "FLUX.2 klein 4B"
+      ]
+    },
+    {
+      "capa": {
+        "es": "Entrega",
+        "gl": "Entrega",
+        "en": "Delivery"
+      },
+      "tecnologias": [
+        "PNG + manifiesto JSON",
+        "Registro JSONL"
+      ]
+    },
+    {
+      "capa": {
+        "es": "Plataforma",
+        "gl": "Plataforma",
+        "en": "Platform"
+      },
+      "tecnologias": [
+        "Linux",
+        "Steam Deck"
+      ]
+    }
+  ],
+  "hitos": [
+    {
+      "version": "F0",
+      "nombre": {
+        "es": "Esqueleto",
+        "gl": "Esqueleto",
+        "en": "Skeleton"
+      },
+      "estado": "hecho"
+    },
+    {
+      "version": "F1",
+      "nombre": {
+        "es": "Núcleo",
+        "gl": "Núcleo",
+        "en": "Core"
+      },
+      "estado": "hecho"
+    },
+    {
+      "version": "F2",
+      "nombre": {
+        "es": "Motor real",
+        "gl": "Motor real",
+        "en": "Real engine"
+      },
+      "estado": "curso",
+      "detalle": {
+        "es": "Piloto de contenido cerrado; el motor real falta por conectar.",
+        "gl": "Piloto de contido pechado; o motor real falta por conectar.",
+        "en": "Content pilot closed; the real engine is yet to be connected."
+      }
+    },
+    {
+      "version": "F3",
+      "nombre": {
+        "es": "API y arranque bajo demanda",
+        "gl": "API e arranque baixo demanda",
+        "en": "API and on-demand start"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "F4",
+      "nombre": {
+        "es": "Interfaz de tres pantallas",
+        "gl": "Interface de tres pantallas",
+        "en": "Three-screen interface"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "F5",
+      "nombre": {
+        "es": "Piloto con Tarkor",
+        "gl": "Piloto con Tarkor",
+        "en": "Pilot with Tarkor"
+      },
+      "estado": "pendiente"
+    }
+  ],
+  "novedades": [
+    {
+      "fecha": "2026-10-27",
+      "texto": {
+        "es": "Piloto de contenido cerrado: seis rondas y piezas por formato para todos los proyectos.",
+        "gl": "Piloto de contido pechado: seis roldas e pezas por formato para todos os proxectos.",
+        "en": "Content pilot closed: six rounds and pieces per format for every project."
+      }
+    },
+    {
+      "fecha": "2026-10-26",
+      "texto": {
+        "es": "Arranca el piloto en la Steam Deck: primeras imágenes sociales y borrador frente a definitivo.",
+        "gl": "Arranca o piloto na Steam Deck: primeiras imaxes sociais e borrador fronte a definitivo.",
+        "en": "The pilot starts on the Steam Deck: first social images and draft versus final."
+      }
+    },
+    {
+      "fecha": "2026-10-25",
+      "texto": {
+        "es": "Núcleo terminado: pedidos, intentos, elegida, entrega con manifiesto y cola.",
+        "gl": "Núcleo terminado: pedidos, intentos, elixida, entrega con manifesto e cola.",
+        "en": "Core finished: requests, attempts, chosen one, delivery with manifest, and queue."
+      }
+    },
+    {
+      "fecha": "2026-10-25",
+      "texto": {
+        "es": "Diseño, biblia de marca y esqueleto del proyecto.",
+        "gl": "Deseño, biblia de marca e esqueleto do proxecto.",
+        "en": "Design, brand bible and project skeleton."
+      }
+    }
+  ],
+  "cifras": [
+    {
+      "valor": "347",
+      "etiqueta": {
+        "es": "tests automáticos",
+        "gl": "tests automáticos",
+        "en": "automated tests"
+      }
+    },
+    {
+      "valor": "6",
+      "etiqueta": {
+        "es": "rondas del piloto",
+        "gl": "roldas do piloto",
+        "en": "pilot rounds"
+      }
+    },
+    {
+      "valor": "7",
+      "etiqueta": {
+        "es": "proyectos con biblia de marca",
+        "gl": "proxectos con biblia de marca",
+        "en": "projects with a brand bible"
+      }
+    },
+    {
+      "valor": "2 / 6",
+      "etiqueta": {
+        "es": "fases hechas",
+        "gl": "fases feitas",
+        "en": "phases done"
+      }
+    }
+  ],
+  "decisiones": [
+    {
+      "titulo": {
+        "es": "Un servicio local, independiente",
+        "gl": "Un servizo local, independente",
+        "en": "A local, independent service"
+      },
+      "texto": {
+        "es": "Uno por máquina, con API, línea de órdenes y web, compartido por todos los proyectos.",
+        "gl": "Un por máquina, con API, liña de ordes e web, compartido por todos os proxectos.",
+        "en": "One per machine, with API, command line and web, shared by all projects."
+      }
+    },
+    {
+      "titulo": {
+        "es": "No conoce el dominio",
+        "gl": "Non coñece o dominio",
+        "en": "It doesn’t know the domain"
+      },
+      "texto": {
+        "es": "Recibe pedidos; cada proyecto aporta su marca y sus referencias.",
+        "gl": "Recibe pedidos; cada proxecto achega a súa marca e as súas referencias.",
+        "en": "It receives requests; each project brings its own brand and references."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Modelos fuera del repositorio",
+        "gl": "Modelos fóra do repositorio",
+        "en": "Models outside the repository"
+      },
+      "texto": {
+        "es": "Pesan en torno a 7 GB y se descargan aparte.",
+        "gl": "Pesan en torno a 7 GB e descárganse á parte.",
+        "en": "They weigh around 7 GB and are downloaded separately."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Solo biblioteca estándar",
+        "gl": "Só biblioteca estándar",
+        "en": "Standard library only"
+      },
+      "texto": {
+        "es": "Python 3 sin dependencias externas: nada que instalar para el servicio.",
+        "gl": "Python 3 sen dependencias externas: nada que instalar para o servizo.",
+        "en": "Python 3 with no external dependencies: nothing to install for the service."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Intentos y una sola elegida",
+        "gl": "Intentos e unha soa elixida",
+        "en": "Attempts and a single chosen one"
+      },
+      "texto": {
+        "es": "Los intentos tienen estado y la elegida se puede deshacer.",
+        "gl": "Os intentos teñen estado e a elixida pódese desfacer.",
+        "en": "Attempts have a state and the chosen one can be undone."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Cola persistente y arranque bajo demanda",
+        "gl": "Cola persistente e arranque baixo demanda",
+        "en": "Persistent queue and on-demand start"
+      },
+      "texto": {
+        "es": "La cola sobrevive a reinicios; el servicio arranca solo cuando hace falta, en 127.0.0.1.",
+        "gl": "A cola sobrevive a reinicios; o servizo arranca só cando fai falta, en 127.0.0.1.",
+        "en": "The queue survives restarts; the service starts only when needed, on 127.0.0.1."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Entrega en PNG con manifiesto",
+        "gl": "Entrega en PNG con manifesto",
+        "en": "PNG delivery with manifest"
+      },
+      "texto": {
+        "es": "Cada imagen entregada se puede reproducir; el registro JSONL sirve para medir.",
+        "gl": "Cada imaxe entregada pódese reproducir; o rexistro JSONL serve para medir.",
+        "en": "Every delivered image can be reproduced; the JSONL log is there to measure."
+      }
+    }
+  ],
+  "equipo": [
+    {
+      "nombre": "Álvaro García Graña",
+      "rol": {
+        "es": "Creador",
+        "gl": "Creador",
+        "en": "Creator"
+      }
+    }
+  ]
+}

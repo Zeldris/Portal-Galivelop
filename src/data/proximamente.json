@@ -1,22 +1,5 @@
 [
   {
-    "slug": "galivelop-image-generator",
-    "nombre": "Galivelop Image Generator",
-    "acento": "#7C5CD6",
-    "icono": "image",
-    "lema": {
-      "es": "Generador de imágenes con IA local, compartido entre los proyectos del taller.",
-      "gl": "Xerador de imaxes con IA local, compartido entre os proxectos do taller.",
-      "en": "Local AI image generator, shared across the workshop's projects."
-    },
-    "fases": { "hechas": 2, "total": 6 },
-    "siguiente": {
-      "es": "el motor de imágenes real",
-      "gl": "o motor de imaxes real",
-      "en": "the real image engine"
-    }
-  },
-  {
     "slug": "galivelop-voice-generator",
     "nombre": "Galivelop Voice Generator",
     "acento": "#C9467A",
@@ -26,7 +9,10 @@
       "gl": "Voces xeradas con IA local para os proxectos do taller.",
       "en": "Voices generated with local AI for the workshop's projects."
     },
-    "fases": { "hechas": 1, "total": 8 },
+    "fases": {
+      "hechas": 1,
+      "total": 8
+    },
     "siguiente": {
       "es": "el núcleo",
       "gl": "o núcleo",
@@ -43,7 +29,10 @@
       "gl": "Axente de desenvolvemento con IA local, que traballa sen depender da nube.",
       "en": "Local AI development agent that works without relying on the cloud."
     },
-    "fases": { "hechas": 1, "total": 6 },
+    "fases": {
+      "hechas": 1,
+      "total": 6
+    },
     "siguiente": {
       "es": "la instalación",
       "gl": "a instalación",

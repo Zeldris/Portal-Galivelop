@@ -4,7 +4,7 @@
   "orden": 3,
   "acento": "#7C5CD6",
   "icono": "image",
-  "proximo": "galivelop-image-generator",
+  "proyecto": "galivelop-image-generator",
   "estado": "proximamente",
   "queOfrece": {
     "es": "Generador de imágenes con IA local, pensado para producir arte y recursos de forma reproducible.",

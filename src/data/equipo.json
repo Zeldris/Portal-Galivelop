@@ -16,12 +16,14 @@
     "proyectos": [
       "tarkor",
       "toveriai",
-      "galivelop-workflow"
+      "galivelop-workflow",
+      "galivelop-image-generator"
     ],
     "papeles": {
       "tarkor": "creo",
       "toveriai": "equipo",
-      "galivelop-workflow": "creo"
+      "galivelop-workflow": "creo",
+      "galivelop-image-generator": "creo"
     },
     "redes": [
       {
