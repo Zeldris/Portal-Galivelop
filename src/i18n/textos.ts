@@ -66,7 +66,7 @@ const es = {
   'sobre.texto1':
     'Galivelop es un taller, no un escaparate. Aquí no solo se desarrolla: se investiga, se prueban ideas y se aprende en cada paso. Empezamos creando fantasía con Tarkor y hoy también trabajamos sobre un problema social real, la desinformación, con toVeriAI.',
   'sobre.texto2':
-    'Lo que nos mueve no es el beneficio económico, sino crecer y llevar a término proyectos complejos. Por eso el taller no vende: muestra cada proyecto tal y como está, con sus avances y sus pendientes, y comparte con otros desarrolladores lo que aprende: acceso a repositorios, charlas, información y sesiones de diseño o de lluvia de ideas.',
+    'Lo que nos mueve es crecer y llevar a término proyectos complejos. El taller muestra cada proyecto tal y como está, con sus avances y sus pendientes, y comparte con otros desarrolladores lo que aprende: acceso a repositorios, charlas, información y sesiones de diseño o de lluvia de ideas.',
   'sobre.texto3':
     '¿Tienes un proyecto propio? Algunos miembros del equipo colaboran de vez en cuando en proyectos de otras personas, por su cuenta y no a través de Galivelop. En la página de cada uno ves su trabajo y cómo escribirle.',
   'sobre.verEquipo': 'Ver el equipo',
@@ -101,16 +101,16 @@ const es = {
   'via3.texto':
     'Si estás empezando, el mejor sitio para aprender es un proyecto de verdad con gente que te ayuda.',
   'participa.privado':
-    '{nombre} es un proyecto privado: su desarrollo no está abierto a colaboración, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
+    'El código de {nombre} no es público, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'colab.abierta': 'Abierto a colaboración',
-  'colab.privada': 'Proyecto privado',
+  'colab.privada': 'Código privado',
   'participa.abierta.titulo': '¿Quieres participar en {nombre}?',
   'participa.abierta.texto':
     'Este proyecto está abierto: si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo.',
   'participa.abierta.boton': 'Quiero participar',
-  'participa.privada.titulo': '{nombre} es un proyecto privado',
+  'participa.privada.titulo': 'El código de {nombre} es privado',
   'participa.privada.texto':
-    'Su desarrollo no está abierto a colaboración, pero las propuestas y las ideas son bienvenidas, igual que quien quiera sumarse a Galivelop en otros proyectos.',
+    'Su código no es público, pero las propuestas y las ideas son bienvenidas, igual que quien quiera sumarse a Galivelop en otros proyectos.',
   'participa.privada.boton': 'Enviar una propuesta',
 
   'form.nombre': 'Nombre',
@@ -246,7 +246,7 @@ const es = {
     'En el taller se aprende y se comparte. Si tienes un proyecto real que quieras sacar adelante, no dudes en escribirle: juntos podéis hacerlo realidad.',
   'proyectoPropio.titulo': '¿Tienes un proyecto propio?',
   'proyectoPropio.texto':
-    'El taller no vende, pero algunos de sus miembros colaboran de vez en cuando en proyectos de otras personas, por su cuenta. Mira su trabajo y cuéntaselo a quien te encaje.',
+    'Algunos miembros del taller aceptan encargos en proyectos de otras personas, cada uno por su cuenta. Mira su trabajo y escribe a quien te encaje.',
   'proyectoPropio.boton': 'Ver el equipo',
 
   'sec.pasos': 'Cómo funciona',
@@ -307,7 +307,7 @@ const es = {
   'inicio.productos.texto':
     'Software de descarga local que nace en el taller, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'El taller',
-  'inicio.taller.texto': 'Aquí no se vende: se crea, se investiga y se aprende a la vista.',
+  'inicio.taller.texto': 'Aquí se crea, se investiga y se aprende a la vista.',
 };
 
 export type Clave = keyof typeof es;
@@ -377,7 +377,7 @@ const gl: Record<Clave, string> = {
   'sobre.texto1':
     'Galivelop é un obradoiro, non un escaparate. Aquí non só se desenvolve: investígase, próbanse ideas e apréndese en cada paso. Comezamos creando fantasía con Tarkor e hoxe tamén traballamos sobre un problema social real, a desinformación, con toVeriAI.',
   'sobre.texto2':
-    'O que nos move non é o beneficio económico, senón medrar e levar a termo proxectos complexos. Por iso o obradoiro non vende: amosa cada proxecto tal e como está, cos seus avances e os seus pendentes, e comparte con outros desenvolvedores o que aprende: acceso a repositorios, charlas, información e sesións de deseño ou de chuvia de ideas.',
+    'O que nos move é medrar e levar a termo proxectos complexos. O obradoiro amosa cada proxecto tal e como está, cos seus avances e os seus pendentes, e comparte con outros desenvolvedores o que aprende: acceso a repositorios, charlas, información e sesións de deseño ou de chuvia de ideas.',
   'sobre.texto3':
     'Tes un proxecto propio? Algúns membros do equipo colaboran de cando en vez en proxectos doutras persoas, pola súa conta e non a través de Galivelop. Na páxina de cada un ves o seu traballo e como escribirlle.',
   'sobre.verEquipo': 'Ver o equipo',
@@ -412,16 +412,16 @@ const gl: Record<Clave, string> = {
   'via3.texto':
     'Se estás comezando, o mellor sitio para aprender é un proxecto de verdade con xente que che axuda.',
   'participa.privado':
-    '{nombre} é un proxecto privado: o seu desenvolvemento non está aberto a colaboración, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
+    'O código de {nombre} non é público, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'colab.abierta': 'Aberto a colaboración',
-  'colab.privada': 'Proxecto privado',
+  'colab.privada': 'Código privado',
   'participa.abierta.titulo': 'Queres participar en {nombre}?',
   'participa.abierta.texto':
     'Este proxecto está aberto: se queres achegar, aprender ou simplemente saber máis, escríbenos e contámosche como.',
   'participa.abierta.boton': 'Quero participar',
-  'participa.privada.titulo': '{nombre} é un proxecto privado',
+  'participa.privada.titulo': 'O código de {nombre} é privado',
   'participa.privada.texto':
-    'O seu desenvolvemento non está aberto a colaboración, pero as propostas e as ideas son benvidas, igual que quen queira sumarse a Galivelop noutros proxectos.',
+    'O seu código non é público, pero as propostas e as ideas son benvidas, igual que quen queira sumarse a Galivelop noutros proxectos.',
   'participa.privada.boton': 'Enviar unha proposta',
 
   'form.nombre': 'Nome',
@@ -557,7 +557,7 @@ const gl: Record<Clave, string> = {
     'No obradoiro apréndese e compártese. Se tes un proxecto real que queiras sacar adiante, non dubides en escribirlle: xuntos podedes facelo realidade.',
   'proyectoPropio.titulo': 'Tes un proxecto propio?',
   'proyectoPropio.texto':
-    'O obradoiro non vende, pero algúns dos seus membros colaboran de cando en vez en proxectos doutras persoas, pola súa conta. Mira o seu traballo e cóntallo a quen che encaixe.',
+    'Algúns membros do obradoiro aceptan encargos en proxectos doutras persoas, cada un pola súa conta. Mira o seu traballo e escríbelle a quen che encaixe.',
   'proyectoPropio.boton': 'Ver o equipo',
 
   'sec.pasos': 'Como funciona',
@@ -618,7 +618,7 @@ const gl: Record<Clave, string> = {
   'inicio.productos.texto':
     'Software de descarga local que nace no obradoiro, e as persoas que o fan. Sen prezos na web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'O obradoiro',
-  'inicio.taller.texto': 'Aquí non se vende: créase, investígase e apréndese á vista.',
+  'inicio.taller.texto': 'Aquí créase, investígase e apréndese á vista.',
 };
 
 const en: Record<Clave, string> = {
@@ -686,7 +686,7 @@ const en: Record<Clave, string> = {
   'sobre.texto1':
     'Galivelop is a workshop, not a shop window. We don’t just develop here: we research, test ideas and learn at every step. We started by creating fantasy with Tarkor and today we also work on a real social problem, disinformation, with toVeriAI.',
   'sobre.texto2':
-    'What drives us is not profit but growing and seeing complex projects through. That is why the workshop does not sell: it shows each project as it is, with its progress and what is still pending, and shares what it learns with other developers: access to repositories, talks, information, and design or brainstorming sessions.',
+    'What drives us is growing and seeing complex projects through. The workshop shows each project as it is, with its progress and what is still pending, and shares what it learns with other developers: access to repositories, talks, information, and design or brainstorming sessions.',
   'sobre.texto3':
     'Got a project of your own? Some team members occasionally work on other people’s projects, independently rather than through Galivelop. Each one’s page shows their work and how to get in touch.',
   'sobre.verEquipo': 'Meet the team',
@@ -721,16 +721,16 @@ const en: Record<Clave, string> = {
   'via3.texto':
     'If you are starting out, the best place to learn is a real project with people who help you.',
   'participa.privado':
-    '{nombre} is a private project: its development is not open to collaboration, but we welcome project proposals and would love to meet new people who are interested.',
+    'The code of {nombre} is not public, but we welcome project proposals and would love to meet new people who are interested.',
   'colab.abierta': 'Open to collaboration',
-  'colab.privada': 'Private project',
+  'colab.privada': 'Private code',
   'participa.abierta.titulo': 'Want to get involved in {nombre}?',
   'participa.abierta.texto':
     'This project is open: if you want to contribute, learn or simply find out more, write to us and we will tell you how.',
   'participa.abierta.boton': 'I want to take part',
-  'participa.privada.titulo': '{nombre} is a private project',
+  'participa.privada.titulo': 'The code of {nombre} is private',
   'participa.privada.texto':
-    'Its development is not open to collaboration, but proposals and ideas are welcome, as is anyone who would like to join Galivelop on other projects.',
+    'Its code is not public, but proposals and ideas are welcome, as is anyone who would like to join Galivelop on other projects.',
   'participa.privada.boton': 'Send a proposal',
 
   'form.nombre': 'Name',
@@ -867,7 +867,7 @@ const en: Record<Clave, string> = {
     'The workshop is a place to learn and share. If you have a real project you want to get off the ground, don’t hesitate to get in touch: together you can make it happen.',
   'proyectoPropio.titulo': 'Got a project of your own?',
   'proyectoPropio.texto':
-    'The workshop doesn’t sell, but some of its members occasionally work on other people’s projects, independently. Look at their work and tell whoever fits about yours.',
+    'Some members of the workshop take on commissions for other people’s projects, each on their own account. Look at their work and write to whoever fits.',
   'proyectoPropio.boton': 'Meet the team',
 
   'sec.pasos': 'How it works',
@@ -928,7 +928,7 @@ const en: Record<Clave, string> = {
   'inicio.productos.texto':
     'Locally installed software born in the workshop, and the people who make it. No prices on the web: everything is arranged by email.',
   'inicio.taller.antetitulo': 'The workshop',
-  'inicio.taller.texto': 'Nothing is sold here: we create, research and learn in the open.',
+  'inicio.taller.texto': 'Here we create, research and learn in the open.',
 };
 
 export const textos = { es, gl, en };

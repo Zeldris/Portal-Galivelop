@@ -31,8 +31,8 @@ Galivelop es un taller donde creamos, investigamos y aprendemos construyendo sof
 desde un mundo de fantasía que vive por su cuenta hasta una herramienta que mide la credibilidad de
 las noticias.
 
-No es un escaparate. No nos mueve el beneficio económico, sino crecer y llevar a término proyectos
-complejos. Por eso el portal no vende: enseña cada proyecto tal y como está, con sus avances y sus
+No es un escaparate. Nos mueve crecer y llevar a término proyectos
+complejos. El portal enseña cada proyecto tal y como está, con sus avances y sus
 pendientes, y deja la puerta abierta a quien quiera saber más o sumarse.
 
 El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
@@ -97,15 +97,15 @@ Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
-a credibilidade das novas. O portal non vende: amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar. O obradoiro tampouco vende, pero algúns dos seus membros colaboran pola súa conta en proxectos alleos. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+a credibilidade das novas. O portal amosa cada proxecto tal e como está e deixa a porta
+aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
 **Galivelop is an independent software workshop.** We create, research and learn by building
 ambitious software, from a fantasy world that lives on its own to a tool that measures the
-credibility of the news. The portal does not sell: it shows each project as it is and keeps the door
-open to anyone who wants to take part. Neither does the workshop, but some of its members work on other people's projects on their own. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+credibility of the news. The portal shows each project as it is and keeps the door
+open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ---
 

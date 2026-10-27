@@ -115,6 +115,16 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
   persona decidió crearla ya con los cuatro productos como «próximamente» (sin paréntesis ni explicaciones de
   estado en los textos). La fila «Próximamente» del inicio (taller) se queda como está.
 
+### Cómo se dice (2026-10-27, decisión de la persona: «Me valen todas, adelante»)
+
+Tras revisar con otra IA cómo lee la web un posible cliente («no son proveedores»), el modelo no cambia (el taller no
+vende, cada miembro trabaja por su cuenta, Galivelop no intermedia), pero **la web lo dice en positivo**: sin
+frases que niegan («aquí no se vende», «no nos mueve el beneficio económico», «el taller no vende»), con «algunos
+miembros aceptan encargos, cada uno por su cuenta» como camino para quien quiere contratar, y «código privado» en
+vez de «proyecto privado / no abierto a colaboración». No se afirma nada que no sea cierto (ni clientes, ni casos,
+ni testimonios), y se mantiene «por su cuenta y no a través de Galivelop». Dominio y correo propios: descartados
+por ahora.
+
 ## Consecuencias (si se acepta)
 
 - La ADR 0001 queda parcialmente sustituida por esta (se anota en ella).

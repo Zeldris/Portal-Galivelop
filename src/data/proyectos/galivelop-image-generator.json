@@ -49,7 +49,162 @@
     }
   },
   "enlaces": [],
-  "galeria": [],
+  "galeria": [
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/portal-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/portal-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · Portal: fondo definitivo con el estilo elegido, una puerta de luz con anillos en el suelo.",
+        "gl": "Rolda 3 · Portal: fondo definitivo co estilo escollido, unha porta de luz con aneis no chan.",
+        "en": "Round 3 · Portal: final background in the chosen style, a doorway of light with rings on the floor."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/portal-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/portal-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · Portal: cabecera terminada con logo y lema «Software hecho en Galicia, en abierto.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Portal: cabeceira rematada con logo e lema «Software feito en Galicia, en aberto.» (peza de exemplo en castelán).",
+        "en": "Round 5 · Portal: finished header with logo and tagline “Software made in Galicia, in the open.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/toveriai-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/toveriai-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · toVeriAI: fondo definitivo con el estilo elegido, una mancha de acuarela que va del granate al verde sobre papel.",
+        "gl": "Rolda 3 · toVeriAI: fondo definitivo co estilo escollido, unha mancha de acuarela que vai do granate ao verde sobre papel.",
+        "en": "Round 3 · toVeriAI: final background in the chosen style, a watercolour stain going from maroon to green on paper."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/toveriai-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/toveriai-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · toVeriAI: cabecera terminada con logo y lema «La credibilidad no se decreta: se mide.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · toVeriAI: cabeceira rematada con logo e lema «A credibilidade non se decreta: mídese.» (peza de exemplo en castelán).",
+        "en": "Round 5 · toVeriAI: finished header with logo and tagline “Credibility isn’t decreed: it’s measured.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-workflow-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-workflow-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · Galivelop-workflow: fondo definitivo con el estilo elegido, líneas de luz que se cruzan sobre una cuadrícula oscura.",
+        "gl": "Rolda 3 · Galivelop-workflow: fondo definitivo co estilo escollido, liñas de luz que se cruzan sobre unha cuadrícula escura.",
+        "en": "Round 3 · Galivelop-workflow: final background in the chosen style, lines of light crossing over a dark grid."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-workflow-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-workflow-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · Galivelop-workflow: cabecera terminada con logo y lema «¿Y si la sesión se corta ahora mismo?» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Galivelop-workflow: cabeceira rematada con logo e lema «E se a sesión se corta agora mesmo?» (peza de exemplo en castelán).",
+        "en": "Round 5 · Galivelop-workflow: finished header with logo and tagline “What if the session cuts out right now?” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/tarkor-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · Tarkor: fondo definitivo con el estilo elegido, agujas de roca sobre una colina, con luz natural.",
+        "gl": "Rolda 3 · Tarkor: fondo definitivo co estilo escollido, agullas de rocha sobre un outeiro, con luz natural.",
+        "en": "Round 3 · Tarkor: final background in the chosen style, rock spires on a hill, in natural light."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/tarkor-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · Tarkor: cabecera terminada con logo y lema «Madera, hierro y cristal.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Tarkor: cabeceira rematada con logo e lema «Madeira, ferro e cristal.» (peza de exemplo en castelán).",
+        "en": "Round 5 · Tarkor: finished header with logo and tagline “Wood, iron and crystal.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · Galivelop Image Generator: fondo definitivo con el estilo elegido, paneles de vidrio en fila con una luz violeta.",
+        "gl": "Rolda 3 · Galivelop Image Generator: fondo definitivo co estilo escollido, paneis de vidro en fila cunha luz violeta.",
+        "en": "Round 3 · Galivelop Image Generator: final background in the chosen style, glass panels in a row with a violet light."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · Galivelop Image Generator: cabecera terminada con logo y lema «Cada elegida, con su manifiesto.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Galivelop Image Generator: cabeceira rematada con logo e lema «Cada escollida, co seu manifesto.» (peza de exemplo en castelán).",
+        "en": "Round 5 · Galivelop Image Generator: finished header with logo and tagline “Every pick, with its manifest.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-voice-generator-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-voice-generator-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · Galivelop Voice Generator: fondo definitivo con el estilo elegido, una espiral de líneas rosas que se convierte en onda.",
+        "gl": "Rolda 3 · Galivelop Voice Generator: fondo definitivo co estilo escollido, unha espiral de liñas rosas que se converte en onda.",
+        "en": "Round 3 · Galivelop Voice Generator: final background in the chosen style, a spiral of pink lines turning into a wave."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-voice-generator-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-voice-generator-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · Galivelop Voice Generator: cabecera terminada con logo y lema «Tú eliges la toma.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Galivelop Voice Generator: cabeceira rematada con logo e lema «Ti escolles a toma.» (peza de exemplo en castelán).",
+        "en": "Round 5 · Galivelop Voice Generator: finished header with logo and tagline “You pick the take.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-developer-r3.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-developer-r3-mini.webp",
+      "ancho": 1280,
+      "alto": 640,
+      "alt": {
+        "es": "Ronda 3 · Galivelop Developer: fondo definitivo con el estilo elegido, una línea de luz verde que sale de un círculo.",
+        "gl": "Rolda 3 · Galivelop Developer: fondo definitivo co estilo escollido, unha liña de luz verde que sae dun círculo.",
+        "en": "Round 3 · Galivelop Developer: final background in the chosen style, a line of green light coming out of a circle."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-developer-r5.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-developer-r5-mini.webp",
+      "ancho": 1500,
+      "alto": 500,
+      "alt": {
+        "es": "Ronda 5 · Galivelop Developer: cabecera terminada con logo y lema «Una rama acotada que vuelve revisada.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Galivelop Developer: cabeceira rematada con logo e lema «Unha rama acoutada que volve revisada.» (peza de exemplo en castelán).",
+        "en": "Round 5 · Galivelop Developer: finished header with logo and tagline “A scoped branch that comes back reviewed.” (sample piece in Spanish)."
+      }
+    }
+  ],
   "capturas": [],
   "descripcion": [
     {
