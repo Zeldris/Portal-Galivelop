@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · v0.4.1 · fase 7: rodaje",
-    "gl": "En desenvolvemento · v0.4.1 · fase 7: rodaxe",
-    "en": "In development · v0.4.1 · phase 7: run-in"
+    "es": "En desarrollo · v0.4.2 · fase 7: rodaje",
+    "gl": "En desenvolvemento · v0.4.2 · fase 7: rodaxe",
+    "en": "In development · v0.4.2 · phase 7: run-in"
   },
   "etiquetas": [
     "Claude Code",
@@ -1565,9 +1565,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos. La 0.4 es la última antes de la 1.0: desde aquí solo llevará arreglos, y es la versión del plugin que se publicará en Productos.",
-        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos. A 0.4 é a última antes da 1.0: desde aquí só levará arranxos, e é a versión do plugin que se publicará en Produtos.",
-        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us. 0.4 is the last before 1.0: from here it only gets fixes, and it is the plugin version that will be published in Products."
+        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos; la 0.4.2, del 27 de octubre, solo trae arreglos. La 0.4 es la última antes de la 1.0: desde aquí solo llevará arreglos, y es la versión del plugin que se publicará en Productos.",
+        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos; a 0.4.2, do 27 de outubro, só trae arranxos. A 0.4 é a última antes da 1.0: desde aquí só levará arranxos, e é a versión do plugin que se publicará en Produtos.",
+        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us; 0.4.2, from 27 October, brings fixes only. 0.4 is the last before 1.0: from here it only gets fixes, and it is the plugin version that will be published in Products."
       }
     },
     {
@@ -1609,6 +1609,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-10-27",
+      "texto": {
+        "es": "Publicada la 0.4.2, un parche solo de arreglos: el aviso de secretos antes de cada commit reconoce más formas de clave (también las pegadas a un proveedor de IA), la fusión de la rama de un subagente corre además los tests relacionados con lo que cambia, el mapa del código entiende más lenguajes (Java, Kotlin, C#…) y los scripts dejan de sugerir reescribir el último commit. Lo evolutivo ya va a la 1.0.0.",
+        "gl": "Publicada a 0.4.2, un parche só de arranxos: o aviso de segredos antes de cada commit recoñece máis formas de clave (tamén as pegadas a un provedor de IA), a fusión da rama dun subaxente corre ademais os tests relacionados co que cambia, o mapa do código entende máis linguaxes (Java, Kotlin, C#…) e os scripts deixan de suxerir reescribir o último commit. O evolutivo xa vai á 1.0.0.",
+        "en": "Version 0.4.2 is out, a fixes-only patch: the secrets warning before each commit recognises more kinds of key (including those tied to an AI provider), merging a subagent’s branch also runs the tests related to what changed, the code map understands more languages (Java, Kotlin, C#…) and the scripts no longer suggest rewriting the last commit. New features now go to 1.0.0."
+      }
+    },
     {
       "fecha": "2026-10-26",
       "texto": {
