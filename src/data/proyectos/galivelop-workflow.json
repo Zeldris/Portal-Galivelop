@@ -1582,9 +1582,9 @@
     {
       "version": "9",
       "nombre": {
-        "es": "Público: plugin anterior a la 1.0",
-        "gl": "Público: plugin anterior á 1.0",
-        "en": "Public: plugin before 1.0"
+        "es": "Público (plugin 0.4)",
+        "gl": "Público (plugin 0.4)",
+        "en": "Public (plugin 0.4)"
       },
       "estado": "pendiente",
       "detalle": {
@@ -1596,9 +1596,9 @@
     {
       "version": "10",
       "nombre": {
-        "es": "Producto final (1.0.0)",
-        "gl": "Produto final (1.0.0)",
-        "en": "Final product (1.0.0)"
+        "es": "Producto (1.0.0)",
+        "gl": "Produto (1.0.0)",
+        "en": "Product (1.0.0)"
       },
       "estado": "pendiente",
       "detalle": {
