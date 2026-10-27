@@ -79,24 +79,31 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
 5. **Legal**: aviso legal y privacidad (LSSI-CE; ya pendiente desde la 0001 y ahora necesario: la web oferta).
 6. Tarea semanal: bloque para las fichas de producto en `docs/runbooks/tarea-semanal.md`.
 
-## Preguntas abiertas (para la persona)
+## Decisiones de la persona (2026-10-27)
 
-1. **Nombre y lugar**: ¿«Productos», «Servicios» o «Productos y servicios»? ¿Dentro del portal (`/productos`) o un
-   sitio aparte? Propuesta: dentro, `/productos`, con la cabecera partida en Taller | Productos.
-2. **Precio**: ¿se publica algo (desde X €, suscripción de soporte) o siempre «a consultar»? Propuesta de arranque:
-   «a consultar» y un correo por producto.
-3. **Quién factura cada producto**: cada producto con un miembro responsable (hoy, Álvaro en todos). ¿Un producto
-   puede tener varios?
-4. **Workflow v1.0.0+**: ¿qué se vende exactamente? El plugin es público; ¿la oferta es el soporte, la implantación
-   en el proyecto del cliente, o también una versión con más cosas? ¿Qué incluye «soporte» (canal, tiempo de
-   respuesta)?
-5. **galivelop-developer**: ¿qué producto es?
-6. **Integrantes**: ¿se ofrecen solo los que lo pidan (`ofertado`), con qué datos (servicios, disponibilidad,
-   tarifa)? Hoy sería Álvaro; Raquel tiene `colabora` sin tarifa.
-7. **Orden de salida**: ¿se publica el catálogo con todo «próximamente» (anuncia) o solo cuando haya un producto
-   disponible (el flujo en 1.0.0)?
-8. **Nombre legal**: la web dice «cada miembro factura por su cuenta». ¿Quieres que lo diga en Productos, o basta en
-   el aviso legal?
+1. **Nombre y lugar:** «Productos», dentro del portal, `/productos`, cabecera partida en Taller | Productos.
+2. **Precio:** no se publica ningún precio. Todo lo legal o financiero se resuelve por correo con Álvaro (un solo
+   correo de contacto en Productos; no hay otro canal de momento).
+3. **Responsable:** uno por producto, el creador del proyecto; la ficha indica los colaboradores, si los hay.
+4. **Galivelop-workflow:** el plugin público se queda con todo lo cerrado antes de la v1.0.0. La **v1.0.0 es el
+   producto**: se descarga en local, trae muchas más skills, ganchos, etc., y el rodaje de todos los proyectos de
+   la marca. Soporte: por decidir con el producto (no se anuncia antes).
+5. **galivelop-developer:** agente de código local, en fase 0.
+6. **Integrantes:** cada integrante es autónomo. Galivelop solo promociona el talento que sale del taller y que
+   Álvaro decide que entre en Productos, tras hablarlo con esa persona y con su acuerdo. El taller es para
+   aprender; Productos, para promocionar.
+7. **Salida:** nunca se publica nada que no tenga forma o no siga el flujo de versiones. Un proyecto en formación
+   se puede como mucho **mencionar** como «próximamente» (sin ficha ni oferta). La v1.0.0 del flujo está lejos: no
+   se anuncia. **Hoy no hay ningún producto con forma, así que Productos no se publica todavía**: esta ADR fija el
+   diseño para cuando llegue el primero (pendiente de confirmar esta lectura con la persona).
+
+### Pendiente de cerrar
+
+- (6) Qué datos lleva un integrante promocionado en Productos: propuesta, nombre, foto, lo que ofrece (lista de
+  servicios en texto) y el correo de contacto de Galivelop (coherente con la 2); sin tarifa ni disponibilidad.
+- (7) Confirmar la lectura: Productos se crea en la web solo cuando haya un producto con forma; mientras, los
+  proyectos en formación salen solo como mención «próximamente» dentro del taller (ya existe la fila
+  «Próximamente» del inicio) y no se crea `/productos`.
 
 ## Consecuencias (si se acepta)
 
