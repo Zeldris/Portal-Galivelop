@@ -205,6 +205,9 @@ async function medirCapas(pagina) {
   return { cortes, tactiles };
 }
 
+// Hasta cinco elementos por columna; `capturas.cjs` lo reutiliza.
+const lista = (xs) => (xs.length ? xs.slice(0, 5).join(' | ') + (xs.length > 5 ? ` | +${xs.length - 5} más` : '') : '-');
+
 let vista = null;
 for (const senal of ['SIGINT', 'SIGTERM']) {
   process.on(senal, () => {
@@ -213,7 +216,7 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
   });
 }
 // `capturas.cjs` reutiliza el servidor y la medida; el barrido de abajo solo corre como orden.
-module.exports = { BASE, TACTIL, servidor, parar, medirPagina };
+module.exports = { BASE, TACTIL, VENTANAS, lista, servidor, parar, medirPagina };
 if (require.main !== module) return;
 (async () => {
   await servidor();
@@ -241,7 +244,6 @@ if (require.main !== module) return;
       const desborda = m.ancho > ancho;
       if (desborda || errores.length || m.cortes.length || m.tactiles.length) fallos++;
       // Como mucho 5 de cada también con las capas sumadas: una regla que rompe todas las hojas no llena la fila.
-      const lista = (xs) => (xs.length ? xs.slice(0, 5).join(' | ') + (xs.length > 5 ? ` | +${xs.length - 5} más` : '') : '-');
       console.log(
         [`/${ruta}`, nombre, m.alto, (m.alto / alto).toFixed(1), desborda ? `sí (${m.ancho}px)` : 'no', lista(m.cortes), lista(m.tactiles), lista(errores)].join('\t'),
       );

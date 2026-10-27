@@ -204,7 +204,7 @@ npm run dev      # http://localhost:5173/Portal-Galivelop/
 npm run check    # tipos, formato (prettier), tests y ganchos
 npm run build    # genera dist/ (con 404.html para las rutas en GitHub Pages)
 npm run medir    # tras el build: alto, desbordes, cortes y zonas táctiles de cada página, en texto
-npm run capturas -- <ruta> [selector]   # tras el build: captura de una página o sección con sus medidas
+npm run capturas -- <ruta> [selector | --menu]   # tras el build: captura de una página, sección o menú móvil, con medidas
 ```
 
 El formato lo fija `.prettierrc` (comillas simples, ancho 100); `npx prettier --write "src/**/*.{ts,tsx}"` lo arregla.

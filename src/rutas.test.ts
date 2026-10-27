@@ -17,12 +17,15 @@ describe('rutas fijas de App.tsx', () => {
 
   it('tienen página estática en FIJAS de paginas-estaticas.mjs', () => {
     const fuente = leer('scripts/paginas-estaticas.mjs');
-    const bloque = fuente.slice(
-      fuente.indexOf('const FIJAS = {'),
-      fuente.indexOf('for (const [ruta, t]'),
-    );
+    const inicio = fuente.indexOf('const FIJAS = {');
+    const fin = fuente.indexOf('for (const [ruta, t]');
+    expect(inicio, 'FIJAS en paginas-estaticas.mjs').toBeGreaterThan(-1);
+    expect(fin, 'bucle de FIJAS en paginas-estaticas.mjs').toBeGreaterThan(inicio);
+    const bloque = fuente.slice(inicio, fin);
+    // Una clave es `''`, `muro` o `'participa/proponer'`; también vale asignarla después (`FIJAS.muro =`).
+    const clave = (r: string) => (/^\w+$/.test(r) ? `'?${r}'?` : `'${r.replace(/[/.]/g, '\\$&')}'`);
     const faltan = rutasFijas.filter(
-      (r) => !new RegExp(`(^|[\\s{,])'?${r}'?\\s*:|FIJAS\\.${r}\\s*=`, 'm').test(bloque),
+      (r) => !new RegExp(`(^|[\\s{,])${clave(r)}\\s*:|FIJAS\\.${clave(r)}\\s*=`, 'm').test(bloque),
     );
     expect(faltan).toEqual([]);
   });
