@@ -1083,7 +1083,9 @@ button {
 
 .pie-proyectos {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  /* 20px entre filas: la zona táctil de cada enlace (::after) sale 10px por arriba y por abajo. */
+  gap: 20px 18px;
 }
 
 .pie-proyectos a {
