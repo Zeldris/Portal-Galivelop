@@ -2,9 +2,9 @@
   "slug": "galivelop-image-generator",
   "nombre": "Galivelop Image Generator",
   "orden": 4,
-  "colaboracion": "abierta",
+  "colaboracion": "privada",
   "estado": "desarrollo",
-  "acento": "#8B5CF6",
+  "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.png",
   "cabecera": "color",
   "actualizado": "2026-10-27",
@@ -24,9 +24,9 @@
     "en": "A local AI image-generation service, one per machine and shared by every workshop project: it takes requests, generates attempts, lets you choose one and delivers it with its manifest. Nothing leaves the machine."
   },
   "fase": {
-    "es": "En desarrollo · F2 motor real: piloto de contenido",
-    "gl": "En desenvolvemento · F2 motor real: piloto de contido",
-    "en": "In development · F2 real engine: content pilot"
+    "es": "En desarrollo · fase 2: motor real (piloto de contenido)",
+    "gl": "En desenvolvemento · fase 2: motor real (piloto de contido)",
+    "en": "In development · phase 2: real engine (content pilot)"
   },
   "etiquetas": [
     "IA local",
@@ -155,9 +155,9 @@
     {
       "icono": "cpu",
       "titulo": {
-        "es": "Python sin dependencias",
-        "gl": "Python sen dependencias",
-        "en": "Dependency-free Python"
+        "es": "Python sin librerías externas",
+        "gl": "Python sen bibliotecas externas",
+        "en": "Python with no external libraries"
       },
       "texto": {
         "es": "Python 3 con solo la biblioteca estándar; los modelos se descargan aparte.",
@@ -506,7 +506,7 @@
   ],
   "hitos": [
     {
-      "version": "F0",
+      "version": "0",
       "nombre": {
         "es": "Esqueleto",
         "gl": "Esqueleto",
@@ -515,7 +515,7 @@
       "estado": "hecho"
     },
     {
-      "version": "F1",
+      "version": "1",
       "nombre": {
         "es": "Núcleo",
         "gl": "Núcleo",
@@ -524,7 +524,7 @@
       "estado": "hecho"
     },
     {
-      "version": "F2",
+      "version": "2",
       "nombre": {
         "es": "Motor real",
         "gl": "Motor real",
@@ -538,7 +538,7 @@
       }
     },
     {
-      "version": "F3",
+      "version": "3",
       "nombre": {
         "es": "API y arranque bajo demanda",
         "gl": "API e arranque baixo demanda",
@@ -547,7 +547,7 @@
       "estado": "pendiente"
     },
     {
-      "version": "F4",
+      "version": "4",
       "nombre": {
         "es": "Interfaz de tres pantallas",
         "gl": "Interface de tres pantallas",
@@ -556,7 +556,7 @@
       "estado": "pendiente"
     },
     {
-      "version": "F5",
+      "version": "5",
       "nombre": {
         "es": "Piloto con Tarkor",
         "gl": "Piloto con Tarkor",
@@ -677,9 +677,9 @@
         "en": "Standard library only"
       },
       "texto": {
-        "es": "Python 3 sin dependencias externas: nada que instalar para el servicio.",
-        "gl": "Python 3 sen dependencias externas: nada que instalar para o servizo.",
-        "en": "Python 3 with no external dependencies: nothing to install for the service."
+        "es": "Python 3 sin librerías externas: el servicio no instala paquetes de Python (el motor y el modelo van aparte).",
+        "gl": "Python 3 sen bibliotecas externas: o servizo non instala paquetes de Python (o motor e o modelo van á parte).",
+        "en": "Python 3 with no external libraries: the service installs no Python packages (the engine and the model come separately)."
       }
     },
     {

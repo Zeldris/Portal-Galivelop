@@ -98,7 +98,13 @@ for (const idioma of IDIOMAS) {
 }
 
 const ORG = { '@type': 'Organization', name: 'Galivelop', url: `${SITIO}/`, logo: `${SITIO}/marca/gv-logo-512.png`, email: 'alvarogarciagrana@gmail.com', sameAs: ['https://discord.gg/8vyjW3VrN', 'https://github.com/Zeldris'] };
-const TIPO = { tarkor: 'VideoGame', toveriai: 'WebApplication', 'galivelop-workflow': 'SoftwareApplication', 'galivelop-image-generator': 'SoftwareApplication' };
+// Tipo de schema.org de cada proyecto y sus datos propios (plataforma, categoría): van por proyecto, no por tipo.
+const TIPO = {
+  tarkor: { '@type': 'VideoGame', genre: 'RPG', gamePlatform: ['Windows', 'Linux', 'Steam Deck'] },
+  toveriai: { '@type': 'WebApplication', applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web' },
+  'galivelop-workflow': { '@type': 'SoftwareApplication', applicationCategory: 'DeveloperApplication', operatingSystem: ['Linux', 'macOS'] },
+  'galivelop-image-generator': { '@type': 'SoftwareApplication', applicationCategory: 'MultimediaApplication', operatingSystem: 'Linux' },
+};
 
 /** Texto de la página en HTML simple (lo sustituye React al cargar; lo leen buscadores sin JS). */
 function cuerpo(pg) {
@@ -145,7 +151,8 @@ function datos(pg, url) {
   if (!p) return { '@context': 'https://schema.org', '@graph': [ORG, { '@type': 'WebSite', name: 'Galivelop', url: urlDe(pg.idioma, ''), inLanguage: pg.idioma, publisher: { '@type': 'Organization', name: 'Galivelop' } }] };
   return {
     '@context': 'https://schema.org',
-    '@type': TIPO[p.slug] ?? 'CreativeWork',
+    '@type': 'CreativeWork',
+    ...TIPO[p.slug],
     name: p.nombre,
     description: p.resumen[pg.idioma],
     url,
@@ -153,9 +160,6 @@ function datos(pg, url) {
     inLanguage: pg.idioma,
     dateModified: p.actualizado,
     keywords: p.etiquetas.join(', '),
-    ...(TIPO[p.slug] === 'WebApplication' ? { applicationCategory: 'UtilitiesApplication', operatingSystem: 'Web' } : {}),
-    ...(TIPO[p.slug] === 'VideoGame' ? { genre: 'RPG', gamePlatform: ['Windows', 'Linux', 'Steam Deck'] } : {}),
-    ...(TIPO[p.slug] === 'SoftwareApplication' ? { applicationCategory: 'DeveloperApplication', operatingSystem: ['Linux', 'macOS'] } : {}),
     ...(p.enlaces[0] ? { sameAs: p.enlaces.map((e) => e.url) } : {}),
     creator: ORG,
   };
