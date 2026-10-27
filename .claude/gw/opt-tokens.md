@@ -23,7 +23,9 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   consola por página en escritorio y móvil. Las capturas, solo para juzgar el aspecto (el rediseño leyó 39, muchas
   solo para medir). Desde el 2026-10-27 mide el móvil a 390, 360 y 320 px y da también `cortes` (texto que se sale
   de su caja) y `tactiles` (controles por debajo de 24×24 px, con la zona del `::after` sumada): encontró el mosaico
-  cortado a 360 y los botones de idioma de 28 px que el barrido con capturas no vio.
+  cortado a 360 y los botones de idioma de 28 px que el barrido con capturas no vio. Desde el segundo paso del
+  2026-10-27 abre también el menú, el submenú y cada hoja de apartado (las hojas cortadas que vio la persona en el
+  móvil no salían porque solo medía la página cerrada).
 - **Bitácora por partes** (2026-10-25): `recuperar.py --estado`, o `sed -n '/^## Pendiente/,/^## /p'
   docs/traspaso.md` para una sección; entera solo al empezar (el rediseño la leyó 66 veces, 415k arrastrados).
 - **Subagentes con plan cerrado, en el modelo barato** (2026-10-25): aplicar estilos o textos ya decididos, hacer

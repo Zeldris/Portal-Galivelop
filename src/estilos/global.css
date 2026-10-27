@@ -3730,16 +3730,22 @@ img.avatar {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 12px;
+  /* Una etiqueta larga baja a su línea en el móvil en vez de salirse de la tarjeta. */
+  flex-wrap: wrap;
+  gap: 4px 12px;
   margin-bottom: 6px;
 }
 
 .apartado-cabecera h3 {
   font-size: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .apartado-valor {
   flex: none;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   font-family: var(--fuente-titulos);
   font-size: 0.82rem;
   font-weight: 700;
@@ -4133,6 +4139,9 @@ body:has(dialog[open]) {
 .hoja-caja {
   height: 100%;
   display: grid;
+  /* La columna no crece con el título en una línea: sin esto, un título largo ensancha la hoja y todo lo de
+     dentro sale cortado por la derecha en el móvil. */
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto minmax(0, 1fr);
 }
 

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Mide en texto lo que ocupa cada página, para no gastar capturas en eso: alto en px, «pantallas» (alto / alto de
 // la ventana), desbordamiento horizontal y errores de consola, en escritorio (1280x800) y en móvil a 390, 360 y
-// 320 px. En móvil, además, el texto cortado dentro de una caja y los controles con zona táctil pequeña. Por
+// 320 px. En móvil, además, el texto cortado dentro de una caja y los controles con zona táctil pequeña, también
+// dentro de lo que solo se ve al tocar: el menú y su submenú, y cada hoja de apartado de las fichas. Por
 // defecto mide cada ruta en castellano, gallego e inglés (un texto puede caber en uno y cortarse en otro).
 // Pide Playwright, que no es dependencia del portal: en la nube ya está; en local, `npm i --no-save playwright`
 // (como tools/generar-marca.mjs). Uso, tras `npm run build`:
@@ -82,9 +83,13 @@ const parar = (hijo) => {
  * Corre en la página. En móvil busca el texto que no cabe en su caja (scrollWidth > clientWidth, salvo las cajas que
  * se desplazan a propósito) y los controles visibles con zona táctil por debajo de `tactil`; la zona cuenta el
  * `::after` absoluto con que `global.css` agranda los enlaces sueltos. Los enlaces dentro de un párrafo no cuentan
- * (WCAG 2.5.8 los exime). Devuelve como mucho 5 de cada, con un nombre corto para encontrarlos.
+ * (WCAG 2.5.8 los exime). Devuelve como mucho 5 de cada, con un nombre corto para encontrarlos. Con `raiz` (un
+ * selector), mide solo esa caja y lo que tiene dentro: una capa abierta, como la hoja de un apartado.
  */
-function medirPagina({ movil, tactil }) {
+function medirPagina({ movil, tactil, raiz }) {
+  const caja = raiz ? document.querySelector(raiz) : document.body;
+  // La propia capa cuenta: una hoja con `overflow: hidden` más estrecha que lo de dentro lo corta sin desbordar.
+  const todos = raiz ? [caja, ...caja.querySelectorAll('*')] : [...caja.querySelectorAll('*')];
   const nombre = (el) => {
     const clase = typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/)[0] : '';
     const texto = (el.textContent.trim() || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ').slice(0, 24);
@@ -100,7 +105,7 @@ function medirPagina({ movil, tactil }) {
   const tactiles = [];
   if (movil) {
     const desplaza = (el) => /auto|scroll/.test(getComputedStyle(el).overflowX);
-    const desbordan = [...document.body.querySelectorAll('*')].filter((el) => {
+    const desbordan = todos.filter((el) => {
       if (el.scrollWidth <= el.clientWidth + 1 || !el.clientWidth || !visible(el)) return false;
       if (desplaza(el) || getComputedStyle(el).textOverflow === 'ellipsis') return false;
       // Una barra que se desplaza y sale a propósito hasta el borde (las pestañas de la ficha) no corta nada.
@@ -117,7 +122,7 @@ function medirPagina({ movil, tactil }) {
       if (cortes.length >= 5) break;
       if (!desbordan.some((otro) => otro !== el && el.contains(otro))) cortes.push(`${nombre(el)} ${el.scrollWidth}>${el.clientWidth}`);
     }
-    for (const el of document.body.querySelectorAll('a[href], button, summary, input, select, textarea, [role="button"]')) {
+    for (const el of caja.querySelectorAll('a[href], button, summary, input, select, textarea, [role="button"]')) {
       if (tactiles.length >= 5) break;
       if (!visible(el) || el.closest('p')) continue;
       // Un control con etiqueta se toca también por la etiqueta.
@@ -144,6 +149,43 @@ function medirPagina({ movil, tactil }) {
   return { alto: document.documentElement.scrollHeight, ancho: document.documentElement.scrollWidth, cortes, tactiles };
 }
 
+/**
+ * En móvil, abre lo que la página esconde hasta que se toca (el menú y su submenú, cada hoja de apartado) y lo mide
+ * como la página. Devuelve los cortes y los controles pequeños con la capa delante, para saber dónde mirar.
+ */
+async function medirCapas(pagina) {
+  const cortes = [];
+  const tactiles = [];
+  const medir = async (capa, raiz) => {
+    // El ratón que se queda tras el clic activa los `:hover` (la imagen que crece un 4 %) y daría cortes que no hay.
+    await pagina.mouse.move(0, 0);
+    const m = await pagina.evaluate(medirPagina, { movil: true, tactil: TACTIL, raiz });
+    cortes.push(...m.cortes.map((c) => `[${capa}] ${c}`));
+    tactiles.push(...m.tactiles.map((c) => `[${capa}] ${c}`));
+  };
+  const menu = pagina.locator('.boton-menu');
+  if (await menu.isVisible()) {
+    await menu.click();
+    await medir('menú', '#menu-principal');
+    const sub = pagina.locator('#menu-principal .submenu-boton');
+    if (await sub.isVisible()) {
+      await sub.click();
+      await medir('submenú', '#menu-principal');
+    }
+    await menu.click();
+  }
+  const piezas = pagina.locator('.mosaico-pieza');
+  for (let i = 0, n = await piezas.count(); i < n; i++) {
+    await piezas.nth(i).click();
+    const hoja = pagina.locator('dialog.hoja[open]');
+    await hoja.waitFor();
+    await medir(`hoja ${i + 1}`, 'dialog.hoja[open]');
+    await pagina.keyboard.press('Escape');
+    await hoja.waitFor({ state: 'detached' });
+  }
+  return { cortes, tactiles };
+}
+
 let vista = null;
 for (const senal of ['SIGINT', 'SIGTERM']) {
   process.on(senal, () => {
@@ -157,7 +199,8 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
   let fallos = 0;
   console.log('ruta\tventana\talto_px\tpantallas\tdesborda_x\tcortes\ttactiles\terrores');
   for (const [nombre, ancho, alto] of VENTANAS) {
-    const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
+    // Sin animaciones (`global.css` las anula con movimiento reducido): una capa recién abierta se mide ya quieta.
+    const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto }, reducedMotion: 'reduce' });
     for (const ruta of RUTAS) {
       const errores = [];
       const alError = (m) => m.type() === 'error' && errores.push(m.text());
@@ -165,7 +208,13 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
       pagina.on('console', alError);
       pagina.on('pageerror', alFallo);
       await pagina.goto(BASE + ruta, { waitUntil: 'networkidle' });
-      const m = await pagina.evaluate(medirPagina, { movil: nombre.startsWith('movil'), tactil: TACTIL });
+      const movil = nombre.startsWith('movil');
+      const m = await pagina.evaluate(medirPagina, { movil, tactil: TACTIL });
+      if (movil) {
+        const capas = await medirCapas(pagina);
+        m.cortes.push(...capas.cortes);
+        m.tactiles.push(...capas.tactiles);
+      }
       pagina.off('console', alError);
       pagina.off('pageerror', alFallo);
       const desborda = m.ancho > ancho;
