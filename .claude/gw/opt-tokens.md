@@ -39,6 +39,16 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **`/clear` al llegar a `main`** (2026-10-25): una sesión encadenó varias tareas sin `/clear` (605 llamadas, 18
   compactaciones, 115k de contexto medio); tras cada subida a `main`, `/clear` y retomar desde la bitácora.
 
+- **Capturas con medidas** (2026-10-27): `npm run capturas -- <ruta> [selector | --menu]` (`tools/qa/capturas.cjs`,
+  tras `npm run build`) deja el PNG en `capturas/` (escritorio y móvil) y escribe alto, pantallas, desborde, cortes y
+  táctiles de lo capturado: la captura se abre una vez para juzgar el aspecto y se manda con `SendUserFile`, sin
+  releerla para medir (Productos leyó 13, 189k arrastrados).
+- **Página nueva con plan cerrado, al modelo barato** (2026-10-27): fila de `selector.cases` en `.claude/gw.json`;
+  la sesión reparte con `orchestrate-dealer` y revisa el diff y las capturas. La lista de sitios que toca una página
+  está en «Añadir una página» de `docs/desarrollo.md` (y `src/rutas.test.ts` la vigila).
+- **Formato comprobado, no juzgado** (2026-10-27): `prettier --check` en `npm run check` (`.prettierrc`); la revisión
+  no gasta hallazgos en estilo.
+
 ## Costes conocidos
 
 - **Repos hermanos en `/home/user`** (2026-10-26): cada repo que se añade con `add_repo` en la sesión principal mete
@@ -72,6 +82,10 @@ carpeta del portal. `medir.py` y `recuperar.py` lo buscan también en las carpet
 `python3 .claude/skills/opt-tokens/scripts/medir.py --sesion "$(ls -t ~/.claude/projects/-home-user/*.jsonl | head -1)"`.
 
 ## Referencias medidas
+
+- 2026-10-27, Productos y rediseño del inicio (desde 906f9f8): 81 llamadas, 125k de contexto medio (suelo 107k, techo
+  138k), 6 compactaciones; 13 capturas (189k arrastrados); un subagente en el modelo grande, 1,6M de entrada y 76k de
+  arranque (repos hermanos cargados).
 
 - 2026-10-27, ronda de móvil (fase 2, desde 305f3cf): 243 llamadas, 121k de contexto medio (suelo 102k, techo 142k),
   8 compactaciones; Bash 1,31M arrastrados, Read 912k (39 imágenes); un subagente general en el modelo grande, 2,38M

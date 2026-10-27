@@ -1,4 +1,15 @@
-import { ArrowLeft, ArrowRight, Check, CircleDashed, ExternalLink, LoaderCircle, Lock, Mail, Sparkles, Users } from 'lucide-react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  Check,
+  CircleDashed,
+  ExternalLink,
+  LoaderCircle,
+  Lock,
+  Mail,
+  Sparkles,
+  Users,
+} from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Apartados } from '../components/Apartados';
@@ -22,7 +33,11 @@ const NOVEDADES_VISIBLES = 3;
 /** Publicaciones del muro que se adelantan en la ficha; el resto, en /muro. */
 const PUBLICACIONES_EN_FICHA = 3;
 
-const ICONO_HITO: Record<EstadoHito, typeof Check> = { hecho: Check, curso: LoaderCircle, pendiente: CircleDashed };
+const ICONO_HITO: Record<EstadoHito, typeof Check> = {
+  hecho: Check,
+  curso: LoaderCircle,
+  pendiente: CircleDashed,
+};
 
 /** Grupos con contenido en este proyecto (los vacíos no se muestran). */
 function gruposDe(p: TipoProyecto): Grupo[] {
@@ -31,7 +46,8 @@ function gruposDe(p: TipoProyecto): Grupo[] {
     galeria: p.capturas.length + p.galeria.length > 0,
     afondo: p.apartados.length > 0,
     tecnica: p.ficha.length + p.aprendizajes.length + p.decisiones.length > 0,
-    avance: p.hitos.length + p.novedades.length + p.equipo.length + publicacionesDe(p.slug).length > 0,
+    avance:
+      p.hitos.length + p.novedades.length + p.equipo.length + publicacionesDe(p.slug).length > 0,
   };
   return (Object.keys(hay) as Grupo[]).filter((g) => hay[g]);
 }
@@ -132,7 +148,8 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const [todasNovedades, setTodasNovedades] = useState(false);
   const avance = progreso(p);
   const hechos = p.hitos.filter((h) => h.estado === 'hecho').length;
-  const proximo = p.hitos.find((h) => h.estado === 'curso') ?? p.hitos.find((h) => h.estado === 'pendiente');
+  const proximo =
+    p.hitos.find((h) => h.estado === 'curso') ?? p.hitos.find((h) => h.estado === 'pendiente');
   const ultima = p.novedades[0];
   const deMuro = publicacionesDe(p.slug);
   const modoCabecera = p.cabecera ?? 'ilustracion';
@@ -152,7 +169,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   return (
     <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
       <header className={`proyecto-cabecera cabecera-${modoCabecera}`}>
-        {modoCabecera === 'ilustracion' && <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />}
+        {modoCabecera === 'ilustracion' && (
+          <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />
+        )}
         <div className="contenedor proyecto-cabecera-contenido">
           <div className="proyecto-cabecera-texto">
             <Link to="/#proyectos" className="volver">
@@ -172,7 +191,13 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             <div className="proyecto-acciones">
               {p.enlaces.length > 0 ? (
                 p.enlaces.map((e) => (
-                  <a key={e.url} className="boton boton-primario" href={e.url} target="_blank" rel="noreferrer">
+                  <a
+                    key={e.url}
+                    className="boton boton-primario"
+                    href={e.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {tx(e.etiqueta)} <ExternalLink size={16} />
                   </a>
                 ))
@@ -207,22 +232,24 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             <p className="vistazo-etiqueta">{t('vistazo.ahora')}</p>
             <p className="vistazo-fase">{tx(p.fase)}</p>
             {p.hitos.length > 0 && (
-            <div className="vistazo-avance">
-              <span
-                className="barra"
-                role="progressbar"
-                aria-label={t('proyecto.avance')}
-                aria-valuenow={avance}
-                aria-valuemin={0}
-                aria-valuemax={100}
-              >
-                <span style={{ width: `${avance}%` }} />
-              </span>
-              <strong>{avance} %</strong>
-            </div>
+              <div className="vistazo-avance">
+                <span
+                  className="barra"
+                  role="progressbar"
+                  aria-label={t('proyecto.avance')}
+                  aria-valuenow={avance}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
+                >
+                  <span style={{ width: `${avance}%` }} />
+                </span>
+                <strong>{avance} %</strong>
+              </div>
             )}
             {p.hitos.length > 0 && (
-              <p className="vistazo-nota">{t('vistazo.hitos', { hechos: hechos, total: p.hitos.length })}</p>
+              <p className="vistazo-nota">
+                {t('vistazo.hitos', { hechos: hechos, total: p.hitos.length })}
+              </p>
             )}
             {proximo && (
               <p className="vistazo-proximo">
@@ -242,7 +269,8 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
               <p className="vistazo-texto">{tx(ultima.texto)}</p>
               {p.novedades.length > 1 && (
                 <a href="#novedades" className="vistazo-mas" onClick={verNovedades}>
-                  {t('novedades.todas', { n: p.novedades.length })} <ArrowRight size={15} aria-hidden="true" />
+                  {t('novedades.todas', { n: p.novedades.length })}{' '}
+                  <ArrowRight size={15} aria-hidden="true" />
                 </a>
               )}
             </div>
@@ -259,10 +287,17 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           )}
         </section>
 
-        <NavFicha grupos={grupos.map((g) => ({ id: g, titulo: g === 'galeria' ? t('sec.galeria') : t(`grupo.${g}`) }))} />
+        <NavFicha
+          grupos={grupos.map((g) => ({
+            id: g,
+            titulo: g === 'galeria' ? t('sec.galeria') : t(`grupo.${g}`),
+          }))}
+        />
 
         <section id="resumen" className="grupo" aria-labelledby="titulo-resumen">
-          <h2 id="titulo-resumen" className="grupo-titulo">{t('grupo.resumen')}</h2>
+          <h2 id="titulo-resumen" className="grupo-titulo">
+            {t('grupo.resumen')}
+          </h2>
           {p.descripcion.length > 0 && (
             <div id="descripcion" className="bloque">
               <div className="prosa">
@@ -315,7 +350,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         {grupos.includes('galeria') && (
           <section id="galeria" className="grupo" aria-labelledby="titulo-galeria">
-            <h2 id="titulo-galeria" className="grupo-titulo">{t('sec.galeria')}</h2>
+            <h2 id="titulo-galeria" className="grupo-titulo">
+              {t('sec.galeria')}
+            </h2>
             <Galeria
               grupos={[
                 { id: 'capturas', etiqueta: t('galeria.grupo.capturas'), imagenes: p.capturas },
@@ -327,7 +364,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         {grupos.includes('afondo') && (
           <section id="afondo" className="grupo" aria-labelledby="titulo-afondo">
-            <h2 id="titulo-afondo" className="grupo-titulo">{t('grupo.afondo')}</h2>
+            <h2 id="titulo-afondo" className="grupo-titulo">
+              {t('grupo.afondo')}
+            </h2>
             <p className="grupo-texto">{t('afondo.texto')}</p>
             <Apartados apartados={p.apartados} />
           </section>
@@ -335,7 +374,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         {grupos.includes('tecnica') && (
           <section id="tecnica" className="grupo" aria-labelledby="titulo-tecnica">
-            <h2 id="titulo-tecnica" className="grupo-titulo">{t('grupo.tecnica')}</h2>
+            <h2 id="titulo-tecnica" className="grupo-titulo">
+              {t('grupo.tecnica')}
+            </h2>
             <div className="grupo-columnas">
               {p.ficha.length > 0 && (
                 <div id="ficha" className="bloque">
@@ -388,7 +429,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         {grupos.includes('avance') && (
           <section id="avance" className="grupo" aria-labelledby="titulo-avance">
-            <h2 id="titulo-avance" className="grupo-titulo">{t('grupo.avance')}</h2>
+            <h2 id="titulo-avance" className="grupo-titulo">
+              {t('grupo.avance')}
+            </h2>
             <div className="grupo-columnas">
               {p.hitos.length > 0 && (
                 <div id="hitos" className="bloque">
@@ -399,7 +442,10 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                     {p.hitos.map((h) => {
                       const IconoHito = ICONO_HITO[h.estado];
                       return (
-                        <li key={(h.version ?? '') + tx(h.nombre)} className={`hito hito-${h.estado}`}>
+                        <li
+                          key={(h.version ?? '') + tx(h.nombre)}
+                          className={`hito hito-${h.estado}`}
+                        >
                           <span className="hito-marca" aria-hidden="true">
                             <IconoHito size={16} />
                           </span>
@@ -421,16 +467,25 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                 <div id="novedades" className="bloque">
                   <h3 className="bloque-titulo">{t('sec.novedades')}</h3>
                   <ul className="novedades">
-                    {(todasNovedades ? p.novedades : p.novedades.slice(0, NOVEDADES_VISIBLES)).map((n, i) => (
-                      <li key={i}>
-                        <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
-                        <p>{tx(n.texto)}</p>
-                      </li>
-                    ))}
+                    {(todasNovedades ? p.novedades : p.novedades.slice(0, NOVEDADES_VISIBLES)).map(
+                      (n, i) => (
+                        <li key={i}>
+                          <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
+                          <p>{tx(n.texto)}</p>
+                        </li>
+                      ),
+                    )}
                   </ul>
                   {p.novedades.length > NOVEDADES_VISIBLES && (
-                    <button type="button" className="boton-texto" aria-expanded={todasNovedades} onClick={() => setTodasNovedades((v) => !v)}>
-                      {todasNovedades ? t('novedades.menos') : t('novedades.todas', { n: p.novedades.length })}
+                    <button
+                      type="button"
+                      className="boton-texto"
+                      aria-expanded={todasNovedades}
+                      onClick={() => setTodasNovedades((v) => !v)}
+                    >
+                      {todasNovedades
+                        ? t('novedades.menos')
+                        : t('novedades.todas', { n: p.novedades.length })}
                     </button>
                   )}
                 </div>
@@ -443,7 +498,10 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                       <li key={x.pieza}>
                         <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
                         <div>
-                          <Link to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`} className="publicacion-enlace">
+                          <Link
+                            to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
+                            className="publicacion-enlace"
+                          >
                             {tx(x.titulo)}
                           </Link>
                           <p>{tx(x.texto)}</p>
@@ -453,7 +511,8 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                   </ul>
                   {deMuro.length > PUBLICACIONES_EN_FICHA && (
                     <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
-                      {t('muro.verTodas', { n: deMuro.length })} <ArrowRight size={15} aria-hidden="true" />
+                      {t('muro.verTodas', { n: deMuro.length })}{' '}
+                      <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   )}
                 </div>
@@ -469,7 +528,14 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                     const contenido = (
                       <>
                         {persona?.foto ? (
-                          <img src={ruta(persona.foto)} alt="" className="avatar" width={44} height={44} loading="lazy" />
+                          <img
+                            src={ruta(persona.foto)}
+                            alt=""
+                            className="avatar"
+                            width={44}
+                            height={44}
+                            loading="lazy"
+                          />
                         ) : (
                           <span className="avatar" aria-hidden="true">
                             {iniciales(m.nombre)}
@@ -478,7 +544,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                         <div>
                           <p className="equipo-nombre">{m.nombre}</p>
                           <p className="equipo-rol">{tx(m.rol)}</p>
-                          {perfil?.resumen && <p className="equipo-resumen">{tx(perfil.resumen)}</p>}
+                          {perfil?.resumen && (
+                            <p className="equipo-resumen">{tx(perfil.resumen)}</p>
+                          )}
                           {!!perfil?.destacadas?.length && (
                             <ul className="equipo-destacadas">
                               {perfil.destacadas.map((x) => (
@@ -492,7 +560,11 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                     return (
                       <li key={m.nombre}>
                         {persona ? (
-                          <Link to={`/equipo/${persona.id}`} className="equipo-enlace" title={t('equipo.ver')}>
+                          <Link
+                            to={`/equipo/${persona.id}`}
+                            className="equipo-enlace"
+                            title={t('equipo.ver')}
+                          >
                             {contenido}
                           </Link>
                         ) : (
@@ -517,7 +589,11 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           </div>
           <Link
             className="boton boton-primario"
-            to={p.colaboracion === 'abierta' ? `/participa/unirse?proyecto=${p.slug}` : '/participa/proponer'}
+            to={
+              p.colaboracion === 'abierta'
+                ? `/participa/unirse?proyecto=${p.slug}`
+                : '/participa/proponer'
+            }
           >
             <Mail size={16} /> {t(`participa.${p.colaboracion}.boton`)}
           </Link>

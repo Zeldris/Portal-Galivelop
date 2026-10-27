@@ -15,10 +15,18 @@ export interface Correo {
  * los textos largos van debajo de su etiqueta). La web es estática, así que el envío lo hace
  * la aplicación de correo de quien rellena el formulario.
  */
-export function componerCorreo(destino: string, asunto: string, campos: [string, string][]): Correo {
+export function componerCorreo(
+  destino: string,
+  asunto: string,
+  campos: [string, string][],
+): Correo {
   const cuerpo = campos
     .filter(([, valor]) => valor.trim())
-    .map(([etiqueta, valor]) => (valor.includes('\n') || valor.length > 80 ? `${etiqueta}:\n${valor.trim()}` : `${etiqueta}: ${valor.trim()}`))
+    .map(([etiqueta, valor]) =>
+      valor.includes('\n') || valor.length > 80
+        ? `${etiqueta}:\n${valor.trim()}`
+        : `${etiqueta}: ${valor.trim()}`,
+    )
     .join('\n\n');
   const mailto = `mailto:${destino}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(cuerpo)}`;
   return { asunto, cuerpo, mailto };
@@ -90,7 +98,8 @@ export function PaginaFormulario({ titulo, intro, componer, children }: Props) {
             <pre>{`${correo.asunto}\n\n${correo.cuerpo}`}</pre>
             <div className="formulario-listo-botones">
               <button type="button" className="boton boton-secundario" onClick={copiar}>
-                {copiado ? <Check size={16} /> : <Copy size={16} />} {copiado ? t('form.copiado') : t('form.copiar')}
+                {copiado ? <Check size={16} /> : <Copy size={16} />}{' '}
+                {copiado ? t('form.copiado') : t('form.copiar')}
               </button>
               <a className="boton boton-secundario" href={correo.mailto}>
                 <Mail size={16} /> {t('form.abrir')}

@@ -100,6 +100,19 @@ tres idiomas); sale en Productos con acceso a su página de miembro.
 `npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` genera la
 página estática de `/productos`.
 
+## Añadir una página
+
+Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaron dos (2026-10-27). La lista:
+
+- `src/App.tsx` (la `Route`) y su componente en `src/pages/`.
+- `src/components/Cabecera.tsx` si va en el menú (y `Pie.tsx` si va en el pie).
+- `FIJAS` de `scripts/paginas-estaticas.mjs`: título y descripción en es/gl/en (página estática, sitemap y `llms.txt`).
+- `PAGINAS` de `tools/qa/medir-paginas.cjs`, para que `npm run medir` la mida.
+- Claves en `src/i18n/textos.ts` en los tres idiomas; un componente que usan dos páginas, en `src/components/`.
+- Si cambia la portada, también las metas de `index.html` y el README.
+
+`src/rutas.test.ts` comprueba que cada ruta fija de `App.tsx` está en `FIJAS` y en `PAGINAS`.
+
 ## Añadir o actualizar a alguien del equipo
 
 La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id>`) salen de
@@ -188,9 +201,13 @@ skill `gw-media-content` del flujo). De cada pieza lee solo su `web.md`, que lle
 ```bash
 npm install
 npm run dev      # http://localhost:5173/Portal-Galivelop/
-npm run check    # tipos + tests
+npm run check    # tipos, formato (prettier), tests y ganchos
 npm run build    # genera dist/ (con 404.html para las rutas en GitHub Pages)
+npm run medir    # tras el build: alto, desbordes, cortes y zonas táctiles de cada página, en texto
+npm run capturas -- <ruta> [selector]   # tras el build: captura de una página o sección con sus medidas
 ```
+
+El formato lo fija `.prettierrc` (comillas simples, ancho 100); `npx prettier --write "src/**/*.{ts,tsx}"` lo arregla.
 
 React 19 + Vite + TypeScript, React Router y lucide para los iconos. Sin backend: todo es estático.
 

@@ -6,7 +6,9 @@ export function textosIncompletos(valor: unknown, camino = ''): string[] {
   if (valor && typeof valor === 'object') {
     const o = valor as Record<string, unknown>;
     if ('es' in o || 'gl' in o || 'en' in o) {
-      return IDIOMAS.filter((l) => typeof o[l] !== 'string' || !(o[l] as string).trim()).map((l) => `${camino}.${l}`);
+      return IDIOMAS.filter((l) => typeof o[l] !== 'string' || !(o[l] as string).trim()).map(
+        (l) => `${camino}.${l}`,
+      );
     }
     return Object.entries(o).flatMap(([k, v]) => textosIncompletos(v, `${camino}.${k}`));
   }

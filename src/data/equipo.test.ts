@@ -19,8 +19,13 @@ describe('perfil de cada miembro', () => {
   });
 
   it('los logos de empresas y centros existen en public/', () => {
-    const logos = equipo.flatMap((p) => [...(p.perfil?.trayectoria ?? []), ...(p.perfil?.formacion ?? [])]);
-    expect(logos.flatMap((e) => (e.logo ? [e.logo] : [])).filter((l) => !existsSync(join(PUBLIC, l)))).toEqual([]);
+    const logos = equipo.flatMap((p) => [
+      ...(p.perfil?.trayectoria ?? []),
+      ...(p.perfil?.formacion ?? []),
+    ]);
+    expect(
+      logos.flatMap((e) => (e.logo ? [e.logo] : [])).filter((l) => !existsSync(join(PUBLIC, l))),
+    ).toEqual([]);
   });
 
   it('agrupa las etapas seguidas en el mismo sitio, sin juntar las que vuelven más tarde', () => {
@@ -38,7 +43,10 @@ describe('perfil de cada miembro', () => {
   });
 
   it('el logo de un sitio es el de cualquiera de sus etapas', () => {
-    const [l] = agruparPorLugar([etapa('A', '2023-02'), { ...etapa('A', '2021-03', '2023-02'), logo: 'a.svg' }]);
+    const [l] = agruparPorLugar([
+      etapa('A', '2023-02'),
+      { ...etapa('A', '2021-03', '2023-02'), logo: 'a.svg' },
+    ]);
     expect(l.logo).toBe('a.svg');
   });
 
@@ -53,12 +61,17 @@ describe('perfil de cada miembro', () => {
 
   it('el negocio de cada etapa es B2C o B2B', () => {
     const etapas = equipo.flatMap((p) => p.perfil?.trayectoria ?? []);
-    expect(etapas.flatMap((e) => e.negocio ?? []).filter((n) => n !== 'B2C' && n !== 'B2B')).toEqual([]);
+    expect(
+      etapas.flatMap((e) => e.negocio ?? []).filter((n) => n !== 'B2C' && n !== 'B2B'),
+    ).toEqual([]);
   });
 
   it('las etapas sin lugar (titulaciones sin centro) no se agrupan entre sí', () => {
     const sinLugar = { ...etapa('A', '2017-01', '2018-01'), lugar: undefined };
-    const lugares = agruparPorLugar([sinLugar, { ...sinLugar, desde: '2014-01', hasta: '2016-01' }]);
+    const lugares = agruparPorLugar([
+      sinLugar,
+      { ...sinLugar, desde: '2014-01', hasta: '2016-01' },
+    ]);
     expect(lugares.map((l) => l.etapas.length)).toEqual([1, 1]);
   });
 

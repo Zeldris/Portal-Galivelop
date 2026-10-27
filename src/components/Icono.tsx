@@ -1,6 +1,22 @@
 import {
-  AudioLines, BarChart3, BookOpen, CodeXml, Cpu, Crown, Dices, Gauge, Globe, Highlighter, Image, Languages, Map,
-  ShieldCheck, Sparkles, Swords, Users, type LucideIcon,
+  AudioLines,
+  BarChart3,
+  BookOpen,
+  CodeXml,
+  Cpu,
+  Crown,
+  Dices,
+  Gauge,
+  Globe,
+  Highlighter,
+  Image,
+  Languages,
+  Map,
+  ShieldCheck,
+  Sparkles,
+  Swords,
+  Users,
+  type LucideIcon,
 } from 'lucide-react';
 
 // Iconos que pueden usar las características de un proyecto (campo "icono" del .json) y los de «Próximamente».

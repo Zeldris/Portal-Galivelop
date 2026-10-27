@@ -13,7 +13,13 @@ export function TarjetaProyecto({ proyecto: p }: { proyecto: Proyecto }) {
   return (
     <article className="tarjeta" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
       <div className="tarjeta-imagen">
-        <img src={ruta(p.portada.mini)} alt={tx(p.portada.alt)} loading="lazy" width={p.portada.ancho} height={p.portada.alto} />
+        <img
+          src={ruta(p.portada.mini)}
+          alt={tx(p.portada.alt)}
+          loading="lazy"
+          width={p.portada.ancho}
+          height={p.portada.alto}
+        />
         <EstadoEtiqueta estado={p.estado} />
       </div>
       <div className="tarjeta-cuerpo">

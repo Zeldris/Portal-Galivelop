@@ -24,10 +24,22 @@ export function Pie() {
           <Link to="/equipo">{t('nav.equipo')}</Link>
         </nav>
         <div className="pie-redes">
-          <a href={MARCA.discord} target="_blank" rel="noreferrer" aria-label="Discord" title="Discord">
+          <a
+            href={MARCA.discord}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Discord"
+            title="Discord"
+          >
             <IconoDiscord />
           </a>
-          <a href={MARCA.github} target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
+          <a
+            href={MARCA.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+          >
             <IconoGitHub />
           </a>
         </div>

@@ -1,5 +1,13 @@
 import { ChevronLeft, ChevronRight, Maximize2, Pause, Play, X } from 'lucide-react';
-import { Fragment, useCallback, useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from 'react';
+import {
+  Fragment,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type TouchEvent,
+} from 'react';
 import { ruta } from '../data/proyectos';
 import type { Imagen } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
@@ -80,11 +88,15 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
   useEffect(() => {
     const el = raiz.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
-    const obs = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { threshold: 0.35 });
+    const obs = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), {
+      threshold: 0.35,
+    });
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
-  const [pestanaActiva, setPestanaActiva] = useState(() => typeof document === 'undefined' || !document.hidden);
+  const [pestanaActiva, setPestanaActiva] = useState(
+    () => typeof document === 'undefined' || !document.hidden,
+  );
   useEffect(() => {
     const cambio = () => setPestanaActiva(!document.hidden);
     document.addEventListener('visibilitychange', cambio);
@@ -110,7 +122,8 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
   }, [usoHasta]);
 
   const enUso = usoHasta > Date.now();
-  const rotando = total > 1 && !pausada && !enUso && visible && pestanaActiva && !encima && !ampliada;
+  const rotando =
+    total > 1 && !pausada && !enUso && visible && pestanaActiva && !encima && !ampliada;
 
   useEffect(() => {
     if (!rotando) return;
@@ -123,7 +136,10 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
     const tira = miniaturas.current;
     const activa = tira?.querySelector<HTMLElement>(`[data-i="${actual}"]`);
     if (tira && activa) {
-      tira.scrollTo({ left: activa.offsetLeft - (tira.clientWidth - activa.clientWidth) / 2, behavior: 'smooth' });
+      tira.scrollTo({
+        left: activa.offsetLeft - (tira.clientWidth - activa.clientWidth) / 2,
+        behavior: 'smooth',
+      });
     }
   }, [actual]);
 
@@ -154,10 +170,20 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
 
   const controles = (
     <>
-      <button type="button" className="galeria-flecha izq" onClick={() => irAMano(actual - 1)} aria-label={t('galeria.anterior')}>
+      <button
+        type="button"
+        className="galeria-flecha izq"
+        onClick={() => irAMano(actual - 1)}
+        aria-label={t('galeria.anterior')}
+      >
         <ChevronLeft size={22} />
       </button>
-      <button type="button" className="galeria-flecha der" onClick={() => irAMano(actual + 1)} aria-label={t('galeria.siguiente')}>
+      <button
+        type="button"
+        className="galeria-flecha der"
+        onClick={() => irAMano(actual + 1)}
+        aria-label={t('galeria.siguiente')}
+      >
         <ChevronRight size={22} />
       </button>
     </>
@@ -189,7 +215,13 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
         onPointerEnter={(e) => e.pointerType === 'mouse' && setEncima(true)}
         onPointerLeave={() => setEncima(false)}
       >
-        <img key={`fondo-${imagen.src}`} src={ruta(imagen.mini)} alt="" className="galeria-fondo" aria-hidden="true" />
+        <img
+          key={`fondo-${imagen.src}`}
+          src={ruta(imagen.mini)}
+          alt=""
+          className="galeria-fondo"
+          aria-hidden="true"
+        />
         <img
           key={imagen.src}
           src={ruta(imagen.src)}
@@ -238,7 +270,9 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
         <div className="galeria-miniaturas" ref={miniaturas}>
           {lista.map((e, i) => (
             <Fragment key={e.imagen.src}>
-              {i > 0 && e.grupo !== lista[i - 1].grupo && <span className="galeria-separador" aria-hidden="true" />}
+              {i > 0 && e.grupo !== lista[i - 1].grupo && (
+                <span className="galeria-separador" aria-hidden="true" />
+              )}
               <button
                 type="button"
                 className="galeria-miniatura"
@@ -273,7 +307,12 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
           </figcaption>
         </figure>
         {total > 1 && controles}
-        <button type="button" className="galeria-cerrar" onClick={() => dialogo.current?.close()} aria-label={t('galeria.cerrar')}>
+        <button
+          type="button"
+          className="galeria-cerrar"
+          onClick={() => dialogo.current?.close()}
+          aria-label={t('galeria.cerrar')}
+        >
           <X size={22} />
         </button>
       </dialog>

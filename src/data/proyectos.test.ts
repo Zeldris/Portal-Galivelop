@@ -32,20 +32,27 @@ describe('proyectos', () => {
           ...a.items.flatMap((i) => (i.imagen ? [i.imagen] : [])),
           ...(a.grupos ?? []).flatMap((g) => g.imagenes),
         ]);
-        const imagenes = [p.portada, ...p.galeria, ...p.capturas, ...deApartados].flatMap((i) => [i.src, i.mini]);
+        const imagenes = [p.portada, ...p.galeria, ...p.capturas, ...deApartados].flatMap((i) => [
+          i.src,
+          i.mini,
+        ]);
         if (p.icono) imagenes.push(p.icono);
         expect(imagenes.filter((src) => !existsSync(join(PUBLIC, src)))).toEqual([]);
       });
 
       it('solo usa iconos que existen en components/Icono.tsx', () => {
-        expect(p.caracteristicas.map((c) => c.icono).filter((i) => !NOMBRES_ICONOS.includes(i))).toEqual([]);
+        expect(
+          p.caracteristicas.map((c) => c.icono).filter((i) => !NOMBRES_ICONOS.includes(i)),
+        ).toEqual([]);
       });
 
       it('sus apartados tienen ids únicos y elementos', () => {
         expect(new Set(p.apartados.map((a) => a.id)).size).toBe(p.apartados.length);
-        for (const a of p.apartados) expect(a.items.length + (a.grupos ?? []).length).toBeGreaterThan(0);
+        for (const a of p.apartados)
+          expect(a.items.length + (a.grupos ?? []).length).toBeGreaterThan(0);
         // `valor` es un dato corto igual en todos los idiomas: si fuera un objeto, React no lo puede pintar.
-        for (const a of p.apartados) for (const i of a.items) if (i.valor !== undefined) expect(typeof i.valor).toBe('string');
+        for (const a of p.apartados)
+          for (const i of a.items) if (i.valor !== undefined) expect(typeof i.valor).toBe('string');
       });
 
       it('pertenece a líneas de trabajo que existen', () => {
@@ -103,7 +110,9 @@ describe('formularios', () => {
       ['Descripción', 'Una idea\ncon dos líneas'],
     ]);
     expect(c.cuerpo).toBe('Nombre: Ana\n\nDescripción:\nUna idea\ncon dos líneas');
-    expect(c.mailto.startsWith('mailto:taller@ejemplo.com?subject=%5BGalivelop%5D%20Propuesta')).toBe(true);
+    expect(
+      c.mailto.startsWith('mailto:taller@ejemplo.com?subject=%5BGalivelop%5D%20Propuesta'),
+    ).toBe(true);
     expect(decodeURIComponent(c.mailto.split('&body=')[1])).toBe(c.cuerpo);
   });
 });
@@ -114,7 +123,9 @@ describe('equipo', () => {
     expect(equipo.length).toBeGreaterThan(0);
     expect(new Set(equipo.map((p) => p.id)).size).toBe(equipo.length);
     for (const p of equipo) {
-      expect(textosIncompletos({ rol: p.rol, bio: p.bio, perfil: p.perfil, colabora: p.colabora }, p.id)).toEqual([]);
+      expect(
+        textosIncompletos({ rol: p.rol, bio: p.bio, perfil: p.perfil, colabora: p.colabora }, p.id),
+      ).toEqual([]);
       for (const etapa of [...(p.perfil?.trayectoria ?? []), ...(p.perfil?.formacion ?? [])]) {
         const mes = /^\d{4}-(0[1-9]|1[0-2])$/;
         expect(etapa.desde).toMatch(mes);

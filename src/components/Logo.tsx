@@ -4,7 +4,13 @@ import { useId } from 'react';
 export function MarcaGV({ tamano = 36 }: { tamano?: number }) {
   const id = useId();
   return (
-    <svg width={tamano} height={tamano} viewBox="0 0 128 128" aria-hidden="true" className="marca-gd">
+    <svg
+      width={tamano}
+      height={tamano}
+      viewBox="0 0 128 128"
+      aria-hidden="true"
+      className="marca-gd"
+    >
       <defs>
         <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="#2BB3EA" />

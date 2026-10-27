@@ -42,6 +42,12 @@
         "subagentModel": "light"
       },
       {
+        "case": "Página o sección nueva con el plan cerrado (rutas, componentes y textos decididos en la bitácora o en una ADR): la sesión reparte con orchestrate-dealer y revisa el diff y las capturas por sección",
+        "skill": "orchestrate-dealer",
+        "sessionModel": "medium",
+        "subagentModel": "light"
+      },
+      {
         "case": "Cambio acotado: un componente, un estilo o un texto visible (en es, gl y en)",
         "skill": "none",
         "sessionModel": "medium",

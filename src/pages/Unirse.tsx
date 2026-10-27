@@ -6,14 +6,24 @@ import { proyectos } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { textos } from '../i18n/textos';
 
-const AREAS = ['codigo', 'diseno', 'ia', 'contenido', 'pruebas', 'investigacion', 'aprender'] as const;
+const AREAS = [
+  'codigo',
+  'diseno',
+  'ia',
+  'contenido',
+  'pruebas',
+  'investigacion',
+  'aprender',
+] as const;
 
 export function Unirse() {
   const { t, idioma } = useIdioma();
   const [params] = useSearchParams();
   // Solo se puede pedir unirse a proyectos abiertos.
   const abiertos = proyectos.filter((p) => p.colaboracion === 'abierta');
-  const proyectoInicial = abiertos.some((p) => p.slug === params.get('proyecto')) ? params.get('proyecto')! : 'cualquiera';
+  const proyectoInicial = abiertos.some((p) => p.slug === params.get('proyecto'))
+    ? params.get('proyecto')!
+    : 'cualquiera';
   const aprender = params.get('modo') === 'aprender';
 
   useEffect(() => {
@@ -37,7 +47,9 @@ export function Unirse() {
       componer={(d) => {
         // El correo lo lee el taller: siempre en castellano, con etiquetas cortas.
         const v = (k: string) => String(d.get(k) ?? '');
-        const areas = d.getAll('areas').map((a) => textos.es[`unir.area.${a as (typeof AREAS)[number]}`]);
+        const areas = d
+          .getAll('areas')
+          .map((a) => textos.es[`unir.area.${a as (typeof AREAS)[number]}`]);
         return componerCorreo(MARCA.correo, `[Galivelop] Unirse al taller: ${v('nombre')}`, [
           ['Nombre', v('nombre')],
           ['Correo', v('correo')],
@@ -66,7 +78,12 @@ export function Unirse() {
         <div className="opciones">
           {AREAS.map((a) => (
             <label key={a} className="opcion">
-              <input type="checkbox" name="areas" value={a} defaultChecked={aprender && a === 'aprender'} />
+              <input
+                type="checkbox"
+                name="areas"
+                value={a}
+                defaultChecked={aprender && a === 'aprender'}
+              />
               {t(`unir.area.${a}`)}
             </label>
           ))}

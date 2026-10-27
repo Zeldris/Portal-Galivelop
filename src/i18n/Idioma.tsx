@@ -9,7 +9,9 @@ const BASE = import.meta.env.BASE_URL;
 
 /** Idioma que marca la dirección: /gl/… y /en/…; sin prefijo, castellano. */
 export function idiomaDeRuta(pathname: string): Idioma | null {
-  const resto = pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname.replace(/^\//, '');
+  const resto = pathname.startsWith(BASE)
+    ? pathname.slice(BASE.length)
+    : pathname.replace(/^\//, '');
   const prefijo = resto.split('/')[0];
   return prefijo === 'gl' || prefijo === 'en' ? prefijo : null;
 }
@@ -42,9 +44,48 @@ export function guardarIdioma(i: Idioma) {
 
 // Meses a mano: no todos los navegadores traen los datos de Intl para el gallego.
 const MESES: Record<Idioma, string[]> = {
-  es: ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'],
-  gl: ['xaneiro', 'febreiro', 'marzo', 'abril', 'maio', 'xuño', 'xullo', 'agosto', 'setembro', 'outubro', 'novembro', 'decembro'],
-  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  es: [
+    'enero',
+    'febrero',
+    'marzo',
+    'abril',
+    'mayo',
+    'junio',
+    'julio',
+    'agosto',
+    'septiembre',
+    'octubre',
+    'noviembre',
+    'diciembre',
+  ],
+  gl: [
+    'xaneiro',
+    'febreiro',
+    'marzo',
+    'abril',
+    'maio',
+    'xuño',
+    'xullo',
+    'agosto',
+    'setembro',
+    'outubro',
+    'novembro',
+    'decembro',
+  ],
+  en: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 };
 
 export function formatearFecha(iso: string, idioma: Idioma): string {

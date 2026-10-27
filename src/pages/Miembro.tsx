@@ -26,7 +26,9 @@ const LUGARES_MOVIL = 2;
  * de la página no quede a diez pantallas. Las tecnologías no: van siempre desplegadas (petición del miembro, 2026-10-26).
  */
 function useMovil(): boolean {
-  const [movil, setMovil] = useState(() => typeof window !== 'undefined' && !!window.matchMedia?.(MOVIL).matches);
+  const [movil, setMovil] = useState(
+    () => typeof window !== 'undefined' && !!window.matchMedia?.(MOVIL).matches,
+  );
   useEffect(() => {
     const mq = window.matchMedia?.(MOVIL);
     if (!mq) return;
@@ -116,7 +118,9 @@ function Ficha({ p }: { p: Persona }) {
                         <Link to={`/proyectos/${slug}`}>
                           <strong>
                             {proyecto.nombre}
-                            {papel && <span className="miembro-papel"> · {t(`equipo.papel.${papel}`)}</span>}
+                            {papel && (
+                              <span className="miembro-papel"> · {t(`equipo.papel.${papel}`)}</span>
+                            )}
                           </strong>
                           <span>{tx(proyecto.lema)}</span>
                         </Link>
@@ -174,7 +178,10 @@ function Ficha({ p }: { p: Persona }) {
             {p.redes.length > 0 && (
               <section className="miembro-caja">
                 <h2>{t('equipo.contacto', { nombre })}</h2>
-                <ul className="persona-redes miembro-redes" aria-label={t('equipo.redes', { nombre: p.nombre })}>
+                <ul
+                  className="persona-redes miembro-redes"
+                  aria-label={t('equipo.redes', { nombre: p.nombre })}
+                >
                   {p.redes.map((r) => (
                     <li key={r.url}>
                       <EnlaceRed red={r} />
@@ -207,7 +214,15 @@ function Ficha({ p }: { p: Persona }) {
 }
 
 /** Una caja con título; en móvil, plegada (el título abre y cierra). */
-function Pliegue({ titulo, plegado, children }: { titulo: string; plegado: boolean; children: ReactNode }) {
+function Pliegue({
+  titulo,
+  plegado,
+  children,
+}: {
+  titulo: string;
+  plegado: boolean;
+  children: ReactNode;
+}) {
   if (!plegado) {
     return (
       <section className="miembro-caja">
@@ -256,8 +271,14 @@ function Cifras({ p }: { p: Persona }) {
   const trayectoria = p.perfil?.trayectoria ?? [];
   const cifras = [
     { n: anosTrabajados(trayectoria), clave: 'equipo.cifra.anos' as const },
-    { n: new Set(trayectoria.flatMap((e) => (e.lugar ? [e.lugar] : []))).size, clave: 'equipo.cifra.empresas' as const },
-    { n: new Set(trayectoria.flatMap((e) => e.clientes ?? [])).size, clave: 'equipo.cifra.clientes' as const },
+    {
+      n: new Set(trayectoria.flatMap((e) => (e.lugar ? [e.lugar] : []))).size,
+      clave: 'equipo.cifra.empresas' as const,
+    },
+    {
+      n: new Set(trayectoria.flatMap((e) => e.clientes ?? [])).size,
+      clave: 'equipo.cifra.clientes' as const,
+    },
     { n: p.proyectos.length, clave: 'equipo.cifra.proyectos' as const },
   ].filter((c) => c.n > 0);
   if (!cifras.length) return null;
@@ -303,7 +324,14 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
           className={l.etapas.some((e) => !e.hasta) ? 'perfil-lugar-actual' : undefined}
         >
           {l.logo ? (
-            <img src={ruta(l.logo)} alt="" className="perfil-logo" width={44} height={44} loading="lazy" />
+            <img
+              src={ruta(l.logo)}
+              alt=""
+              className="perfil-logo"
+              width={44}
+              height={44}
+              loading="lazy"
+            />
           ) : (
             <span className="perfil-logo" aria-hidden="true">
               {l.lugar ? iniciales(l.lugar) : <GraduationCap size={20} />}
@@ -313,14 +341,20 @@ function ListaLugares({ lugares }: { lugares: Lugar[] }) {
             {/* Sin lugar (una titulación sin centro), el título de su única etapa hace de encabezado. */}
             <h3>
               {l.lugar ?? tx(l.etapas[0].titulo)}
-              {l.negocio.length > 0 && <span className="perfil-negocio">{l.negocio.join('/')}</span>}
+              {l.negocio.length > 0 && (
+                <span className="perfil-negocio">{l.negocio.join('/')}</span>
+              )}
             </h3>
             {l.clientes.length > 0 && (
               <p className="perfil-clientes">
                 <span>{t('equipo.clientes')}</span> {l.clientes.join(' · ')}
               </p>
             )}
-            <ol className={l.etapas.length > 1 ? 'perfil-etapas perfil-etapas-varias' : 'perfil-etapas'}>
+            <ol
+              className={
+                l.etapas.length > 1 ? 'perfil-etapas perfil-etapas-varias' : 'perfil-etapas'
+              }
+            >
               {l.etapas.map((e, j) => (
                 <li key={`${e.desde}-${j}`} className={e.hasta ? undefined : 'perfil-etapa-actual'}>
                   {l.lugar && <strong>{tx(e.titulo)}</strong>}

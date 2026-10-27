@@ -45,6 +45,8 @@ criterio.
 
 ## Estilos y textos
 
+- Un componente que usan dos páginas vive en `src/components/`, no dentro de una de ellas (`TarjetaProducto`
+  empezó en `pages/Productos.tsx` y lo usaba el inicio, 2026-10-27).
 - Una clase de `src/estilos/global.css` que usan dos componentes va acotada por su contenedor
   (`.apartado-items .tarjeta-imagen`), o las reglas de uno deforman el otro (pasó con `.tarjeta-imagen`, 2026-10-25).
 - Un texto con número usa el plural de la plantilla (`{n} {n:elemento|elementos}`, ver `src/i18n/rellenar.ts`), no

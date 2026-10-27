@@ -1,8 +1,8 @@
 # Retro 2026-10-27 · Productos en la web (ADR 0002, fase 2) y rediseño del inicio
 
-**Estado:** presentada a la persona el 2026-10-27; lo decidido se apunta en el párrafo siguiente.
+**Estado:** aprobada y aplicada (T1-T4, R1-R5) el 2026-10-27 («Apruebo todo»).
 
-Decisiones: (por rellenar cuando la persona responda).
+Decisiones: la persona aprobó las nueve («Apruebo todo», 2026-10-27); aplicadas en `ccr-47f8fddd-o5ek6p` en el mismo commit que esta línea. R1 no reproducía `src/` (27 archivos con líneas de hasta 140), así que se formateó todo una vez en ese commit.
 
 Sesión medida desde 906f9f8 (propuesta de la ADR 0002) hasta 0703f53 (fase 1): 81 llamadas, 125k de contexto medio
 (suelo 107k, techo 138k), 6 compactaciones, 13 capturas (189k arrastrados), un subagente en el modelo grande (1,6M de

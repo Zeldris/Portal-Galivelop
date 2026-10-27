@@ -11,7 +11,8 @@ const es = {
   'hero.antetitulo': 'Marca de software: taller y Productos',
   'hero.titulo1': 'Hacemos reales',
   'hero.titulo2': 'los proyectos que parecen imposibles',
-  'hero.texto': 'Galivelop son dos cosas. El taller crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Productos es lo que sale de él: software de descarga local y los servicios de sus integrantes.',
+  'hero.texto':
+    'Galivelop son dos cosas. El taller crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Productos es lo que sale de él: software de descarga local y los servicios de sus integrantes.',
   'hero.cta.productos': 'Ver Productos',
   'hero.cta.taller': 'Conocer el taller',
   'hero.resumen.proyectos': 'proyectos',
@@ -19,11 +20,13 @@ const es = {
   'hero.resumen.desarrollo': 'en desarrollo',
 
   'proyectos.titulo': 'Proyectos',
-  'proyectos.texto': 'Cada proyecto tal y como está hoy: qué es, cómo está hecho, en qué punto se encuentra y qué viene después.',
+  'proyectos.texto':
+    'Cada proyecto tal y como está hoy: qué es, cómo está hecho, en qué punto se encuentra y qué viene después.',
   'filtro.todos': 'Todos',
   'filtro.vacio': 'No hay proyectos con este estado todavía.',
   'proximamente.titulo': 'Próximamente',
-  'proximamente.texto': 'Proyectos que están naciendo en el taller. Tendrán su ficha cuando haya algo que enseñar.',
+  'proximamente.texto':
+    'Proyectos que están naciendo en el taller. Tendrán su ficha cuando haya algo que enseñar.',
   'proximamente.fases': '{hechas} de {total} {total:fase hecha|fases hechas}',
   'proximamente.siguiente': 'Siguiente: {paso}',
   'estado.publicado': 'Publicado',
@@ -60,47 +63,62 @@ const es = {
   'galeria.posicion': 'Imagen {n} de {total}',
 
   'sobre.titulo': 'Cómo trabajamos',
-  'sobre.texto1': 'Galivelop es un taller, no un escaparate. Aquí no solo se desarrolla: se investiga, se prueban ideas y se aprende en cada paso. Empezamos creando fantasía con Tarkor y hoy también trabajamos sobre un problema social real, la desinformación, con toVeriAI.',
-  'sobre.texto2': 'Lo que nos mueve no es el beneficio económico, sino crecer y llevar a término proyectos complejos. Por eso el taller no vende: muestra cada proyecto tal y como está, con sus avances y sus pendientes, y comparte con otros desarrolladores lo que aprende: acceso a repositorios, charlas, información y sesiones de diseño o de lluvia de ideas.',
-  'sobre.texto3': '¿Tienes un proyecto propio? Algunos miembros del equipo colaboran de vez en cuando en proyectos de otras personas, por su cuenta y no a través de Galivelop. En la página de cada uno ves su trabajo y cómo escribirle.',
+  'sobre.texto1':
+    'Galivelop es un taller, no un escaparate. Aquí no solo se desarrolla: se investiga, se prueban ideas y se aprende en cada paso. Empezamos creando fantasía con Tarkor y hoy también trabajamos sobre un problema social real, la desinformación, con toVeriAI.',
+  'sobre.texto2':
+    'Lo que nos mueve no es el beneficio económico, sino crecer y llevar a término proyectos complejos. Por eso el taller no vende: muestra cada proyecto tal y como está, con sus avances y sus pendientes, y comparte con otros desarrolladores lo que aprende: acceso a repositorios, charlas, información y sesiones de diseño o de lluvia de ideas.',
+  'sobre.texto3':
+    '¿Tienes un proyecto propio? Algunos miembros del equipo colaboran de vez en cuando en proyectos de otras personas, por su cuenta y no a través de Galivelop. En la página de cada uno ves su trabajo y cómo escribirle.',
   'sobre.verEquipo': 'Ver el equipo',
   'valor1.titulo': 'Elegimos problemas que importan',
-  'valor1.texto': 'Proyectos que aportan imaginación o atacan un problema real. Si no merece el esfuerzo, no empieza.',
+  'valor1.texto':
+    'Proyectos que aportan imaginación o atacan un problema real. Si no merece el esfuerzo, no empieza.',
   'valor2.titulo': 'Trabajamos en el límite de lo que sabemos',
-  'valor2.texto': 'Cada proyecto nos obliga a aprender algo nuevo. Eso no es un riesgo: es parte del plan.',
+  'valor2.texto':
+    'Cada proyecto nos obliga a aprender algo nuevo. Eso no es un riesgo: es parte del plan.',
   'valor3.titulo': 'Enseñamos el proceso, no solo el resultado',
-  'valor3.texto': 'Estado real, hojas de ruta y decisiones explicadas. Lo que falta se cuenta igual que lo que funciona.',
+  'valor3.texto':
+    'Estado real, hojas de ruta y decisiones explicadas. Lo que falta se cuenta igual que lo que funciona.',
 
   'contacto.titulo': '¿Creamos juntos?',
-  'contacto.texto': 'Galivelop crece con las personas que se suman. No pedimos experiencia previa: pedimos ganas de construir, de aprender y de hacerlo en equipo.',
+  'contacto.texto':
+    'Galivelop crece con las personas que se suman. No pedimos experiencia previa: pedimos ganas de construir, de aprender y de hacerlo en equipo.',
   'contacto.github': 'Galivelop en GitHub',
   'contacto.correo': 'Escríbenos',
   'contacto.porProyecto': 'Contacto de cada proyecto',
   'proyecto.contactar': 'Contactar',
 
   'valor4.titulo': 'Aprendemos con generosidad',
-  'valor4.texto': 'Compartimos lo que sabemos y aprendemos de quien llega. Nadie empieza sabiéndolo todo.',
+  'valor4.texto':
+    'Compartimos lo que sabemos y aprendemos de quien llega. Nadie empieza sabiéndolo todo.',
   'via1.titulo': 'Colabora en un proyecto',
-  'via1.texto': 'Tarkor y los proyectos abiertos que vengan necesitan manos: código, arte, textos, pruebas o investigación.',
+  'via1.texto':
+    'Tarkor y los proyectos abiertos que vengan necesitan manos: código, arte, textos, pruebas o investigación.',
   'via2.titulo': 'Propón un proyecto',
-  'via2.texto': '¿Tienes un proyecto de ensueño que parece imposible? Cuéntanoslo y vemos cómo hacerlo real.',
+  'via2.texto':
+    '¿Tienes un proyecto de ensueño que parece imposible? Cuéntanoslo y vemos cómo hacerlo real.',
   'via3.titulo': 'Aprende con nosotros',
-  'via3.texto': 'Si estás empezando, el mejor sitio para aprender es un proyecto de verdad con gente que te ayuda.',
-  'participa.privado': '{nombre} es un proyecto privado: su desarrollo no está abierto a colaboración, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
+  'via3.texto':
+    'Si estás empezando, el mejor sitio para aprender es un proyecto de verdad con gente que te ayuda.',
+  'participa.privado':
+    '{nombre} es un proyecto privado: su desarrollo no está abierto a colaboración, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'colab.abierta': 'Abierto a colaboración',
   'colab.privada': 'Proyecto privado',
   'participa.abierta.titulo': '¿Quieres participar en {nombre}?',
-  'participa.abierta.texto': 'Este proyecto está abierto: si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo.',
+  'participa.abierta.texto':
+    'Este proyecto está abierto: si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo.',
   'participa.abierta.boton': 'Quiero participar',
   'participa.privada.titulo': '{nombre} es un proyecto privado',
-  'participa.privada.texto': 'Su desarrollo no está abierto a colaboración, pero las propuestas y las ideas son bienvenidas, igual que quien quiera sumarse a Galivelop en otros proyectos.',
+  'participa.privada.texto':
+    'Su desarrollo no está abierto a colaboración, pero las propuestas y las ideas son bienvenidas, igual que quien quiera sumarse a Galivelop en otros proyectos.',
   'participa.privada.boton': 'Enviar una propuesta',
 
   'form.nombre': 'Nombre',
   'form.correo': 'Tu correo',
   'form.opcional': 'opcional',
   'form.enviar': 'Preparar el correo',
-  'form.nota': 'Al enviarlo se abrirá tu aplicación de correo con el mensaje ya preparado para {correo}. Solo tienes que revisarlo y enviarlo.',
+  'form.nota':
+    'Al enviarlo se abrirá tu aplicación de correo con el mensaje ya preparado para {correo}. Solo tienes que revisarlo y enviarlo.',
   'form.listo.titulo': 'Mensaje preparado',
   'form.listo.texto': 'Si no se ha abierto tu correo, copia el mensaje y envíalo a {correo}.',
   'form.copiar': 'Copiar mensaje',
@@ -109,7 +127,8 @@ const es = {
   'form.volver': 'Volver a Participa',
   'form.ir': 'Ir al formulario',
   'prop.titulo': 'Propón un proyecto',
-  'prop.intro': '¿Tienes una idea que parece demasiado grande? Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.',
+  'prop.intro':
+    '¿Tienes una idea que parece demasiado grande? Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.',
   'prop.proyecto': 'Nombre del proyecto',
   'prop.descripcion': '¿De qué trata?',
   'prop.descripcion.ayuda': 'Qué es, qué problema resuelve o qué quieres crear.',
@@ -119,11 +138,13 @@ const es = {
   'prop.fase.prototipo': 'Hay un prototipo',
   'prop.fase.marcha': 'Ya está en marcha',
   'prop.papel': '¿Qué papel te gustaría tener?',
-  'prop.papel.ayuda': 'Por ejemplo: participar en el desarrollo, solo aportar la idea, apoyarlo de otra forma…',
+  'prop.papel.ayuda':
+    'Por ejemplo: participar en el desarrollo, solo aportar la idea, apoyarlo de otra forma…',
   'prop.enlace': 'Enlace',
   'prop.enlace.ayuda': 'Web, documento o repositorio, si lo hay.',
   'unir.titulo': 'Únete al taller',
-  'unir.intro': 'Buscamos gente con ganas de cooperar y aprender, tenga o no experiencia. Cuéntanos quién eres y cómo te gustaría participar.',
+  'unir.intro':
+    'Buscamos gente con ganas de cooperar y aprender, tenga o no experiencia. Cuéntanos quién eres y cómo te gustaría participar.',
   'unir.proyecto': '¿En qué te gustaría participar?',
   'unir.proyecto.cualquiera': 'En lo que haga falta',
   'unir.proyecto.nuevos': 'En proyectos nuevos',
@@ -146,15 +167,20 @@ const es = {
   'lineas.titulo': 'Líneas de trabajo',
   'lineas.texto': 'Los temas que investigamos y a los que vuelven todos nuestros proyectos.',
   'linea.ia-local.titulo': 'IA local y responsable',
-  'linea.ia-local.texto': 'Modelos que funcionan en el equipo de cada persona, sin cuentas ni costes por uso, y que se usan donde de verdad aportan.',
+  'linea.ia-local.texto':
+    'Modelos que funcionan en el equipo de cada persona, sin cuentas ni costes por uso, y que se usan donde de verdad aportan.',
   'linea.mundos.titulo': 'Mundos que viven solos',
-  'linea.mundos.texto': 'Facciones, economía y ecosistemas simulados que avanzan aunque nadie mire, con la IA contando lo que pasa.',
+  'linea.mundos.texto':
+    'Facciones, economía y ecosistemas simulados que avanzan aunque nadie mire, con la IA contando lo que pasa.',
   'linea.informacion.titulo': 'Información verificable',
-  'linea.informacion.texto': 'Métricas que explican por qué un contenido merece más o menos confianza, en lugar de dictar veredictos.',
+  'linea.informacion.texto':
+    'Métricas que explican por qué un contenido merece más o menos confianza, en lugar de dictar veredictos.',
   'linea.producto.titulo': 'Del prototipo al producto',
-  'linea.producto.texto': 'Interfaz, servidor, datos, pruebas y despliegue: llevar una idea hasta las manos de quien la va a usar.',
+  'linea.producto.texto':
+    'Interfaz, servidor, datos, pruebas y despliegue: llevar una idea hasta las manos de quien la va a usar.',
   'linea.metodo.titulo': 'Método de trabajo con IA',
-  'linea.metodo.texto': 'Cómo trabajar semanas con agentes de IA sin perder el hilo: relevos, revisión y gasto medido, y compartir lo que funciona.',
+  'linea.metodo.texto':
+    'Cómo trabajar semanas con agentes de IA sin perder el hilo: relevos, revisión y gasto medido, y compartir lo que funciona.',
   'paraquien.titulo': 'Es para ti si…',
   'paraquien.1': 'Quieres aprender construyendo algo real, no un ejercicio.',
   'paraquien.2': 'Tienes una idea demasiado grande para sacarla adelante en solitario.',
@@ -170,25 +196,29 @@ const es = {
   'sobre.nombre': 'El nombre une Galicia, de donde venimos, y Develop, lo que hacemos.',
 
   'discord.titulo': 'Únete a la comunidad en Discord',
-  'discord.texto': 'Es el sitio para conocernos, seguir el día a día de los proyectos, preguntar dudas y lanzar ideas antes de formalizarlas.',
+  'discord.texto':
+    'Es el sitio para conocernos, seguir el día a día de los proyectos, preguntar dudas y lanzar ideas antes de formalizarlas.',
   'discord.boton': 'Entrar en Discord',
 
   'nav.muro': 'Muro',
   'sec.publicaciones': 'Publicaciones',
   'muro.titulo': 'Muro',
-  'muro.intro': 'Lo que cuenta cada proyecto mientras avanza: pruebas, decisiones, imágenes y lo que hemos aprendido por el camino.',
+  'muro.intro':
+    'Lo que cuenta cada proyecto mientras avanza: pruebas, decisiones, imágenes y lo que hemos aprendido por el camino.',
   'muro.filtro': 'Filtrar por proyecto',
   'muro.vacio': 'Todavía no hay publicaciones.',
   'muro.verTodas': 'Ver en el muro ({n})',
   'nav.equipo': 'Equipo',
   'equipo.titulo': 'Equipo',
-  'equipo.intro': 'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.',
+  'equipo.intro':
+    'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.',
   'equipo.proyectos': 'Proyectos',
   'equipo.redes': 'Perfiles de {nombre}',
   'equipo.red.correo': 'Correo',
   'equipo.red.portfolio': 'Porfolio',
   'equipo.unete.titulo': '¿Quieres aparecer aquí?',
-  'equipo.unete.texto': 'Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar.',
+  'equipo.unete.texto':
+    'Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar.',
   'equipo.ver': 'Ver perfil',
   'equipo.verPerfilDe': 'Ver el perfil de {nombre}',
   'equipo.trayectoria': 'Trayectoria',
@@ -212,9 +242,11 @@ const es = {
   'equipo.colabora.titulo': '¿Tienes un proyecto?',
   'equipo.colabora.boton': 'Escribir a {nombre}',
   'equipo.colabora.asunto': '[Proyecto] {nombre}',
-  'equipo.colabora.nota': 'En el taller se aprende y se comparte. Si tienes un proyecto real que quieras sacar adelante, no dudes en escribirle: juntos podéis hacerlo realidad.',
+  'equipo.colabora.nota':
+    'En el taller se aprende y se comparte. Si tienes un proyecto real que quieras sacar adelante, no dudes en escribirle: juntos podéis hacerlo realidad.',
   'proyectoPropio.titulo': '¿Tienes un proyecto propio?',
-  'proyectoPropio.texto': 'El taller no vende, pero algunos de sus miembros colaboran de vez en cuando en proyectos de otras personas, por su cuenta. Mira su trabajo y cuéntaselo a quien te encaje.',
+  'proyectoPropio.texto':
+    'El taller no vende, pero algunos de sus miembros colaboran de vez en cuando en proyectos de otras personas, por su cuenta. Mira su trabajo y cuéntaselo a quien te encaje.',
   'proyectoPropio.boton': 'Ver el equipo',
 
   'sec.pasos': 'Cómo funciona',
@@ -223,7 +255,8 @@ const es = {
   'grupo.afondo': 'A fondo',
   'grupo.tecnica': 'Cómo está hecho',
   'grupo.avance': 'Avance',
-  'afondo.texto': 'Cada tema se abre encima de la página: pasa de uno a otro con las flechas sin perder tu sitio.',
+  'afondo.texto':
+    'Cada tema se abre encima de la página: pasa de uno a otro con las flechas sin perder tu sitio.',
   'afondo.elementos': '{n} {n:elemento|elementos}',
   'afondo.imagenes': '{n} {n:imagen|imágenes}',
   'apartado.anterior': 'Tema anterior',
@@ -235,7 +268,8 @@ const es = {
   'vistazo.hitos': '{hechos} de {total} {total:hito hecho|hitos hechos}',
   'novedades.todas': 'Ver las {n} novedades',
   'novedades.menos': 'Ver menos',
-  'participa.privados': '{nombres} son proyectos privados: su desarrollo no está abierto a colaboración, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
+  'participa.privados':
+    '{nombres} son proyectos privados: su desarrollo no está abierto a colaboración, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'nav.proyectos.todos': 'Todos los proyectos',
 
   'pie.hecho': 'Hecho en Galicia',
@@ -252,7 +286,8 @@ const es = {
   'nav.taller': 'Taller',
   'nav.productos': 'Productos',
   'productos.titulo': 'Productos',
-  'productos.intro': 'Software de descarga local que nace en el taller de Galivelop, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
+  'productos.intro':
+    'Software de descarga local que nace en el taller de Galivelop, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
   'productos.version': 'Versión {version}',
   'productos.responsable': 'Responsable',
   'productos.colaboradores': 'Colaboradores',
@@ -261,13 +296,16 @@ const es = {
   'productos.interesa': 'Me interesa',
   'productos.asunto': 'Me interesa {producto}',
   'productos.integrantes.titulo': 'Integrantes',
-  'productos.integrantes.texto': 'Miembros del taller que ofrecen sus servicios por su cuenta. Cada uno es autónomo.',
+  'productos.integrantes.texto':
+    'Miembros del taller que ofrecen sus servicios por su cuenta. Cada uno es autónomo.',
   'productos.contacto.titulo': '¿Te interesa algo?',
-  'productos.contacto.texto': 'Escribe a Álvaro: te cuenta cómo conseguirlo, con qué condiciones y cuándo llega lo que aún no está.',
+  'productos.contacto.texto':
+    'Escribe a Álvaro: te cuenta cómo conseguirlo, con qué condiciones y cuándo llega lo que aún no está.',
   'productos.contacto.boton': 'Escribir a Álvaro',
   'productos.contacto.asunto': 'Productos de Galivelop',
   'inicio.productos.antetitulo': 'Software y servicios',
-  'inicio.productos.texto': 'Software de descarga local que nace en el taller, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
+  'inicio.productos.texto':
+    'Software de descarga local que nace en el taller, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'El taller',
   'inicio.taller.texto': 'Aquí no se vende: se crea, se investiga y se aprende a la vista.',
 };
@@ -284,7 +322,8 @@ const gl: Record<Clave, string> = {
   'hero.antetitulo': 'Marca de software: obradoiro e Produtos',
   'hero.titulo1': 'Facemos reais',
   'hero.titulo2': 'os proxectos que semellan imposibles',
-  'hero.texto': 'Galivelop son dúas cousas. O obradoiro crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. Produtos é o que sae del: software de descarga local e os servizos dos seus integrantes.',
+  'hero.texto':
+    'Galivelop son dúas cousas. O obradoiro crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. Produtos é o que sae del: software de descarga local e os servizos dos seus integrantes.',
   'hero.cta.productos': 'Ver Produtos',
   'hero.cta.taller': 'Coñecer o obradoiro',
   'hero.resumen.proyectos': 'proxectos',
@@ -292,11 +331,13 @@ const gl: Record<Clave, string> = {
   'hero.resumen.desarrollo': 'en desenvolvemento',
 
   'proyectos.titulo': 'Proxectos',
-  'proyectos.texto': 'Cada proxecto tal e como está hoxe: que é, como está feito, en que punto se atopa e que vén despois.',
+  'proyectos.texto':
+    'Cada proxecto tal e como está hoxe: que é, como está feito, en que punto se atopa e que vén despois.',
   'filtro.todos': 'Todos',
   'filtro.vacio': 'Aínda non hai proxectos con este estado.',
   'proximamente.titulo': 'Proximamente',
-  'proximamente.texto': 'Proxectos que están nacendo no taller. Terán a súa ficha cando haxa algo que amosar.',
+  'proximamente.texto':
+    'Proxectos que están nacendo no taller. Terán a súa ficha cando haxa algo que amosar.',
   'proximamente.fases': '{hechas} de {total} {total:fase feita|fases feitas}',
   'proximamente.siguiente': 'Seguinte: {paso}',
   'estado.publicado': 'Publicado',
@@ -333,47 +374,62 @@ const gl: Record<Clave, string> = {
   'galeria.posicion': 'Imaxe {n} de {total}',
 
   'sobre.titulo': 'Como traballamos',
-  'sobre.texto1': 'Galivelop é un obradoiro, non un escaparate. Aquí non só se desenvolve: investígase, próbanse ideas e apréndese en cada paso. Comezamos creando fantasía con Tarkor e hoxe tamén traballamos sobre un problema social real, a desinformación, con toVeriAI.',
-  'sobre.texto2': 'O que nos move non é o beneficio económico, senón medrar e levar a termo proxectos complexos. Por iso o obradoiro non vende: amosa cada proxecto tal e como está, cos seus avances e os seus pendentes, e comparte con outros desenvolvedores o que aprende: acceso a repositorios, charlas, información e sesións de deseño ou de chuvia de ideas.',
-  'sobre.texto3': 'Tes un proxecto propio? Algúns membros do equipo colaboran de cando en vez en proxectos doutras persoas, pola súa conta e non a través de Galivelop. Na páxina de cada un ves o seu traballo e como escribirlle.',
+  'sobre.texto1':
+    'Galivelop é un obradoiro, non un escaparate. Aquí non só se desenvolve: investígase, próbanse ideas e apréndese en cada paso. Comezamos creando fantasía con Tarkor e hoxe tamén traballamos sobre un problema social real, a desinformación, con toVeriAI.',
+  'sobre.texto2':
+    'O que nos move non é o beneficio económico, senón medrar e levar a termo proxectos complexos. Por iso o obradoiro non vende: amosa cada proxecto tal e como está, cos seus avances e os seus pendentes, e comparte con outros desenvolvedores o que aprende: acceso a repositorios, charlas, información e sesións de deseño ou de chuvia de ideas.',
+  'sobre.texto3':
+    'Tes un proxecto propio? Algúns membros do equipo colaboran de cando en vez en proxectos doutras persoas, pola súa conta e non a través de Galivelop. Na páxina de cada un ves o seu traballo e como escribirlle.',
   'sobre.verEquipo': 'Ver o equipo',
   'valor1.titulo': 'Escollemos problemas que importan',
-  'valor1.texto': 'Proxectos que achegan imaxinación ou atacan un problema real. Se non paga o esforzo, non comeza.',
+  'valor1.texto':
+    'Proxectos que achegan imaxinación ou atacan un problema real. Se non paga o esforzo, non comeza.',
   'valor2.titulo': 'Traballamos no límite do que sabemos',
-  'valor2.texto': 'Cada proxecto obríganos a aprender algo novo. Iso non é un risco: é parte do plan.',
+  'valor2.texto':
+    'Cada proxecto obríganos a aprender algo novo. Iso non é un risco: é parte do plan.',
   'valor3.titulo': 'Amosamos o proceso, non só o resultado',
-  'valor3.texto': 'Estado real, follas de ruta e decisións explicadas. O que falta cóntase igual que o que funciona.',
+  'valor3.texto':
+    'Estado real, follas de ruta e decisións explicadas. O que falta cóntase igual que o que funciona.',
 
   'contacto.titulo': 'Creamos xuntos?',
-  'contacto.texto': 'Galivelop medra coas persoas que se suman. Non pedimos experiencia previa: pedimos ganas de construír, de aprender e de facelo en equipo.',
+  'contacto.texto':
+    'Galivelop medra coas persoas que se suman. Non pedimos experiencia previa: pedimos ganas de construír, de aprender e de facelo en equipo.',
   'contacto.github': 'Galivelop en GitHub',
   'contacto.correo': 'Escríbenos',
   'contacto.porProyecto': 'Contacto de cada proxecto',
   'proyecto.contactar': 'Contactar',
 
   'valor4.titulo': 'Aprendemos con xenerosidade',
-  'valor4.texto': 'Compartimos o que sabemos e aprendemos de quen chega. Ninguén comeza sabéndoo todo.',
+  'valor4.texto':
+    'Compartimos o que sabemos e aprendemos de quen chega. Ninguén comeza sabéndoo todo.',
   'via1.titulo': 'Colabora nun proxecto',
-  'via1.texto': 'Tarkor e os proxectos abertos que veñan precisan mans: código, arte, textos, probas ou investigación.',
+  'via1.texto':
+    'Tarkor e os proxectos abertos que veñan precisan mans: código, arte, textos, probas ou investigación.',
   'via2.titulo': 'Propón un proxecto',
-  'via2.texto': 'Tes un proxecto de soño que semella imposible? Cóntanolo e vemos como facelo real.',
+  'via2.texto':
+    'Tes un proxecto de soño que semella imposible? Cóntanolo e vemos como facelo real.',
   'via3.titulo': 'Aprende connosco',
-  'via3.texto': 'Se estás comezando, o mellor sitio para aprender é un proxecto de verdade con xente que che axuda.',
-  'participa.privado': '{nombre} é un proxecto privado: o seu desenvolvemento non está aberto a colaboración, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
+  'via3.texto':
+    'Se estás comezando, o mellor sitio para aprender é un proxecto de verdade con xente que che axuda.',
+  'participa.privado':
+    '{nombre} é un proxecto privado: o seu desenvolvemento non está aberto a colaboración, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'colab.abierta': 'Aberto a colaboración',
   'colab.privada': 'Proxecto privado',
   'participa.abierta.titulo': 'Queres participar en {nombre}?',
-  'participa.abierta.texto': 'Este proxecto está aberto: se queres achegar, aprender ou simplemente saber máis, escríbenos e contámosche como.',
+  'participa.abierta.texto':
+    'Este proxecto está aberto: se queres achegar, aprender ou simplemente saber máis, escríbenos e contámosche como.',
   'participa.abierta.boton': 'Quero participar',
   'participa.privada.titulo': '{nombre} é un proxecto privado',
-  'participa.privada.texto': 'O seu desenvolvemento non está aberto a colaboración, pero as propostas e as ideas son benvidas, igual que quen queira sumarse a Galivelop noutros proxectos.',
+  'participa.privada.texto':
+    'O seu desenvolvemento non está aberto a colaboración, pero as propostas e as ideas son benvidas, igual que quen queira sumarse a Galivelop noutros proxectos.',
   'participa.privada.boton': 'Enviar unha proposta',
 
   'form.nombre': 'Nome',
   'form.correo': 'O teu correo',
   'form.opcional': 'opcional',
   'form.enviar': 'Preparar o correo',
-  'form.nota': 'Ao envialo abrirase a túa aplicación de correo coa mensaxe xa preparada para {correo}. Só tes que revisala e enviala.',
+  'form.nota':
+    'Ao envialo abrirase a túa aplicación de correo coa mensaxe xa preparada para {correo}. Só tes que revisala e enviala.',
   'form.listo.titulo': 'Mensaxe preparada',
   'form.listo.texto': 'Se non se abriu o teu correo, copia a mensaxe e envíaa a {correo}.',
   'form.copiar': 'Copiar mensaxe',
@@ -382,7 +438,8 @@ const gl: Record<Clave, string> = {
   'form.volver': 'Volver a Participa',
   'form.ir': 'Ir ao formulario',
   'prop.titulo': 'Propón un proxecto',
-  'prop.intro': 'Tes unha idea que semella demasiado grande? Cóntanola. Lemos todas as propostas e, se encaixa no obradoiro, escribímosche para darlle forma xuntos.',
+  'prop.intro':
+    'Tes unha idea que semella demasiado grande? Cóntanola. Lemos todas as propostas e, se encaixa no obradoiro, escribímosche para darlle forma xuntos.',
   'prop.proyecto': 'Nome do proxecto',
   'prop.descripcion': 'De que trata?',
   'prop.descripcion.ayuda': 'Que é, que problema resolve ou que queres crear.',
@@ -392,11 +449,13 @@ const gl: Record<Clave, string> = {
   'prop.fase.prototipo': 'Hai un prototipo',
   'prop.fase.marcha': 'Xa está en marcha',
   'prop.papel': 'Que papel che gustaría ter?',
-  'prop.papel.ayuda': 'Por exemplo: participar no desenvolvemento, só achegar a idea, apoialo doutro xeito…',
+  'prop.papel.ayuda':
+    'Por exemplo: participar no desenvolvemento, só achegar a idea, apoialo doutro xeito…',
   'prop.enlace': 'Ligazón',
   'prop.enlace.ayuda': 'Web, documento ou repositorio, se o hai.',
   'unir.titulo': 'Únete ao obradoiro',
-  'unir.intro': 'Buscamos xente con ganas de cooperar e aprender, teña ou non experiencia. Cóntanos quen es e como che gustaría participar.',
+  'unir.intro':
+    'Buscamos xente con ganas de cooperar e aprender, teña ou non experiencia. Cóntanos quen es e como che gustaría participar.',
   'unir.proyecto': 'En que che gustaría participar?',
   'unir.proyecto.cualquiera': 'No que faga falta',
   'unir.proyecto.nuevos': 'En proxectos novos',
@@ -419,15 +478,20 @@ const gl: Record<Clave, string> = {
   'lineas.titulo': 'Liñas de traballo',
   'lineas.texto': 'Os temas que investigamos e aos que volven todos os nosos proxectos.',
   'linea.ia-local.titulo': 'IA local e responsable',
-  'linea.ia-local.texto': 'Modelos que funcionan no equipo de cada persoa, sen contas nin custos por uso, e que se empregan onde de verdade achegan.',
+  'linea.ia-local.texto':
+    'Modelos que funcionan no equipo de cada persoa, sen contas nin custos por uso, e que se empregan onde de verdade achegan.',
   'linea.mundos.titulo': 'Mundos que viven sós',
-  'linea.mundos.texto': 'Faccións, economía e ecosistemas simulados que avanzan aínda que ninguén mire, coa IA contando o que pasa.',
+  'linea.mundos.texto':
+    'Faccións, economía e ecosistemas simulados que avanzan aínda que ninguén mire, coa IA contando o que pasa.',
   'linea.informacion.titulo': 'Información verificable',
-  'linea.informacion.texto': 'Métricas que explican por que un contido merece máis ou menos confianza, en vez de ditar veredictos.',
+  'linea.informacion.texto':
+    'Métricas que explican por que un contido merece máis ou menos confianza, en vez de ditar veredictos.',
   'linea.producto.titulo': 'Do prototipo ao produto',
-  'linea.producto.texto': 'Interface, servidor, datos, probas e despregamento: levar unha idea ata as mans de quen a vai usar.',
+  'linea.producto.texto':
+    'Interface, servidor, datos, probas e despregamento: levar unha idea ata as mans de quen a vai usar.',
   'linea.metodo.titulo': 'Método de traballo con IA',
-  'linea.metodo.texto': 'Como traballar semanas con axentes de IA sen perder o fío: relevos, revisión e gasto medido, e compartir o que funciona.',
+  'linea.metodo.texto':
+    'Como traballar semanas con axentes de IA sen perder o fío: relevos, revisión e gasto medido, e compartir o que funciona.',
   'paraquien.titulo': 'É para ti se…',
   'paraquien.1': 'Queres aprender construíndo algo real, non un exercicio.',
   'paraquien.2': 'Tes unha idea demasiado grande para sacala adiante en solitario.',
@@ -443,25 +507,29 @@ const gl: Record<Clave, string> = {
   'sobre.nombre': 'O nome une Galicia, de onde vimos, e Develop, o que facemos.',
 
   'discord.titulo': 'Únete á comunidade en Discord',
-  'discord.texto': 'É o sitio para coñecernos, seguir o día a día dos proxectos, preguntar dúbidas e lanzar ideas antes de formalizalas.',
+  'discord.texto':
+    'É o sitio para coñecernos, seguir o día a día dos proxectos, preguntar dúbidas e lanzar ideas antes de formalizalas.',
   'discord.boton': 'Entrar en Discord',
 
   'nav.muro': 'Muro',
   'sec.publicaciones': 'Publicacións',
   'muro.titulo': 'Muro',
-  'muro.intro': 'O que conta cada proxecto mentres avanza: probas, decisións, imaxes e o que aprendemos polo camiño.',
+  'muro.intro':
+    'O que conta cada proxecto mentres avanza: probas, decisións, imaxes e o que aprendemos polo camiño.',
   'muro.filtro': 'Filtrar por proxecto',
   'muro.vacio': 'Aínda non hai publicacións.',
   'muro.verTodas': 'Ver no muro ({n})',
   'nav.equipo': 'Equipo',
   'equipo.titulo': 'Equipo',
-  'equipo.intro': 'As persoas que fan Galivelop. Cada unha co seu camiño, todas con ganas de construír e aprender.',
+  'equipo.intro':
+    'As persoas que fan Galivelop. Cada unha co seu camiño, todas con ganas de construír e aprender.',
   'equipo.proyectos': 'Proxectos',
   'equipo.redes': 'Perfís de {nombre}',
   'equipo.red.correo': 'Correo',
   'equipo.red.portfolio': 'Portafolio',
   'equipo.unete.titulo': 'Queres aparecer aquí?',
-  'equipo.unete.texto': 'Quen se suma ao obradoiro pasa a formar parte do equipo. Cóntanos quen es e en que che gustaría participar.',
+  'equipo.unete.texto':
+    'Quen se suma ao obradoiro pasa a formar parte do equipo. Cóntanos quen es e en que che gustaría participar.',
   'equipo.ver': 'Ver perfil',
   'equipo.verPerfilDe': 'Ver o perfil de {nombre}',
   'equipo.trayectoria': 'Traxectoria',
@@ -485,9 +553,11 @@ const gl: Record<Clave, string> = {
   'equipo.colabora.titulo': 'Tes un proxecto?',
   'equipo.colabora.boton': 'Escribir a {nombre}',
   'equipo.colabora.asunto': '[Proxecto] {nombre}',
-  'equipo.colabora.nota': 'No obradoiro apréndese e compártese. Se tes un proxecto real que queiras sacar adiante, non dubides en escribirlle: xuntos podedes facelo realidade.',
+  'equipo.colabora.nota':
+    'No obradoiro apréndese e compártese. Se tes un proxecto real que queiras sacar adiante, non dubides en escribirlle: xuntos podedes facelo realidade.',
   'proyectoPropio.titulo': 'Tes un proxecto propio?',
-  'proyectoPropio.texto': 'O obradoiro non vende, pero algúns dos seus membros colaboran de cando en vez en proxectos doutras persoas, pola súa conta. Mira o seu traballo e cóntallo a quen che encaixe.',
+  'proyectoPropio.texto':
+    'O obradoiro non vende, pero algúns dos seus membros colaboran de cando en vez en proxectos doutras persoas, pola súa conta. Mira o seu traballo e cóntallo a quen che encaixe.',
   'proyectoPropio.boton': 'Ver o equipo',
 
   'sec.pasos': 'Como funciona',
@@ -496,7 +566,8 @@ const gl: Record<Clave, string> = {
   'grupo.afondo': 'En profundidade',
   'grupo.tecnica': 'Como está feito',
   'grupo.avance': 'Avance',
-  'afondo.texto': 'Cada tema ábrese enriba da páxina: pasa dun a outro coas frechas sen perder o teu sitio.',
+  'afondo.texto':
+    'Cada tema ábrese enriba da páxina: pasa dun a outro coas frechas sen perder o teu sitio.',
   'afondo.elementos': '{n} {n:elemento|elementos}',
   'afondo.imagenes': '{n} {n:imaxe|imaxes}',
   'apartado.anterior': 'Tema anterior',
@@ -508,7 +579,8 @@ const gl: Record<Clave, string> = {
   'vistazo.hitos': '{hechos} de {total} {total:fito feito|fitos feitos}',
   'novedades.todas': 'Ver as {n} novidades',
   'novedades.menos': 'Ver menos',
-  'participa.privados': '{nombres} son proxectos privados: o seu desenvolvemento non está aberto a colaboración, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
+  'participa.privados':
+    '{nombres} son proxectos privados: o seu desenvolvemento non está aberto a colaboración, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'nav.proyectos.todos': 'Todos os proxectos',
 
   'pie.hecho': 'Feito en Galicia',
@@ -525,7 +597,8 @@ const gl: Record<Clave, string> = {
   'nav.taller': 'Obradoiro',
   'nav.productos': 'Produtos',
   'productos.titulo': 'Produtos',
-  'productos.intro': 'Software de descarga local que nace no obradoiro de Galivelop, e as persoas que o fan. Sen prezos na web: todo se trata por correo.',
+  'productos.intro':
+    'Software de descarga local que nace no obradoiro de Galivelop, e as persoas que o fan. Sen prezos na web: todo se trata por correo.',
   'productos.version': 'Versión {version}',
   'productos.responsable': 'Responsable',
   'productos.colaboradores': 'Colaboradores',
@@ -534,13 +607,16 @@ const gl: Record<Clave, string> = {
   'productos.interesa': 'Interésame',
   'productos.asunto': 'Interésame {producto}',
   'productos.integrantes.titulo': 'Integrantes',
-  'productos.integrantes.texto': 'Membros do obradoiro que ofrecen os seus servizos pola súa conta. Cada un é autónomo.',
+  'productos.integrantes.texto':
+    'Membros do obradoiro que ofrecen os seus servizos pola súa conta. Cada un é autónomo.',
   'productos.contacto.titulo': 'Interésache algo?',
-  'productos.contacto.texto': 'Escríbelle a Álvaro: cóntache como conseguilo, con que condicións e cando chega o que aínda non está.',
+  'productos.contacto.texto':
+    'Escríbelle a Álvaro: cóntache como conseguilo, con que condicións e cando chega o que aínda non está.',
   'productos.contacto.boton': 'Escribir a Álvaro',
   'productos.contacto.asunto': 'Produtos de Galivelop',
   'inicio.productos.antetitulo': 'Software e servizos',
-  'inicio.productos.texto': 'Software de descarga local que nace no obradoiro, e as persoas que o fan. Sen prezos na web: todo se trata por correo.',
+  'inicio.productos.texto':
+    'Software de descarga local que nace no obradoiro, e as persoas que o fan. Sen prezos na web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'O obradoiro',
   'inicio.taller.texto': 'Aquí non se vende: créase, investígase e apréndese á vista.',
 };
@@ -555,7 +631,8 @@ const en: Record<Clave, string> = {
   'hero.antetitulo': 'Software brand: workshop and Products',
   'hero.titulo1': 'We make seemingly',
   'hero.titulo2': 'impossible projects real',
-  'hero.texto': 'Galivelop is two things. The workshop creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. Products is what comes out of it: locally installed software and the services of its members.',
+  'hero.texto':
+    'Galivelop is two things. The workshop creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. Products is what comes out of it: locally installed software and the services of its members.',
   'hero.cta.productos': 'See Products',
   'hero.cta.taller': 'Meet the workshop',
   'hero.resumen.proyectos': 'projects',
@@ -563,11 +640,13 @@ const en: Record<Clave, string> = {
   'hero.resumen.desarrollo': 'in development',
 
   'proyectos.titulo': 'Projects',
-  'proyectos.texto': 'Every project as it stands today: what it is, how it is built, where it is at and what comes next.',
+  'proyectos.texto':
+    'Every project as it stands today: what it is, how it is built, where it is at and what comes next.',
   'filtro.todos': 'All',
   'filtro.vacio': 'No projects with this status yet.',
   'proximamente.titulo': 'Coming soon',
-  'proximamente.texto': 'Projects taking shape in the workshop. They will get their own page once there is something to show.',
+  'proximamente.texto':
+    'Projects taking shape in the workshop. They will get their own page once there is something to show.',
   'proximamente.fases': '{hechas} of {total} {total:phase done|phases done}',
   'proximamente.siguiente': 'Next: {paso}',
   'estado.publicado': 'Live',
@@ -604,47 +683,62 @@ const en: Record<Clave, string> = {
   'galeria.posicion': 'Image {n} of {total}',
 
   'sobre.titulo': 'How we work',
-  'sobre.texto1': 'Galivelop is a workshop, not a shop window. We don’t just develop here: we research, test ideas and learn at every step. We started by creating fantasy with Tarkor and today we also work on a real social problem, disinformation, with toVeriAI.',
-  'sobre.texto2': 'What drives us is not profit but growing and seeing complex projects through. That is why the workshop does not sell: it shows each project as it is, with its progress and what is still pending, and shares what it learns with other developers: access to repositories, talks, information, and design or brainstorming sessions.',
-  'sobre.texto3': 'Got a project of your own? Some team members occasionally work on other people’s projects, independently rather than through Galivelop. Each one’s page shows their work and how to get in touch.',
+  'sobre.texto1':
+    'Galivelop is a workshop, not a shop window. We don’t just develop here: we research, test ideas and learn at every step. We started by creating fantasy with Tarkor and today we also work on a real social problem, disinformation, with toVeriAI.',
+  'sobre.texto2':
+    'What drives us is not profit but growing and seeing complex projects through. That is why the workshop does not sell: it shows each project as it is, with its progress and what is still pending, and shares what it learns with other developers: access to repositories, talks, information, and design or brainstorming sessions.',
+  'sobre.texto3':
+    'Got a project of your own? Some team members occasionally work on other people’s projects, independently rather than through Galivelop. Each one’s page shows their work and how to get in touch.',
   'sobre.verEquipo': 'Meet the team',
   'valor1.titulo': 'We pick problems that matter',
-  'valor1.texto': 'Projects that bring imagination or tackle a real problem. If it is not worth the effort, it does not start.',
+  'valor1.texto':
+    'Projects that bring imagination or tackle a real problem. If it is not worth the effort, it does not start.',
   'valor2.titulo': 'We work at the edge of what we know',
-  'valor2.texto': 'Every project forces us to learn something new. That is not a risk: it is part of the plan.',
+  'valor2.texto':
+    'Every project forces us to learn something new. That is not a risk: it is part of the plan.',
   'valor3.titulo': 'We show the process, not just the result',
-  'valor3.texto': 'Real status, roadmaps and explained decisions. What is missing is told just like what works.',
+  'valor3.texto':
+    'Real status, roadmaps and explained decisions. What is missing is told just like what works.',
 
   'contacto.titulo': 'Shall we build together?',
-  'contacto.texto': 'Galivelop grows with the people who join. We don’t ask for prior experience: we ask for the will to build, to learn and to do it as a team.',
+  'contacto.texto':
+    'Galivelop grows with the people who join. We don’t ask for prior experience: we ask for the will to build, to learn and to do it as a team.',
   'contacto.github': 'Galivelop on GitHub',
   'contacto.correo': 'Email us',
   'contacto.porProyecto': 'Project contacts',
   'proyecto.contactar': 'Contact',
 
   'valor4.titulo': 'We learn generously',
-  'valor4.texto': 'We share what we know and learn from whoever joins. Nobody starts out knowing everything.',
+  'valor4.texto':
+    'We share what we know and learn from whoever joins. Nobody starts out knowing everything.',
   'via1.titulo': 'Join a project',
-  'via1.texto': 'Tarkor and the open projects still to come need hands: code, art, writing, testing or research.',
+  'via1.texto':
+    'Tarkor and the open projects still to come need hands: code, art, writing, testing or research.',
   'via2.titulo': 'Propose a project',
-  'via2.texto': 'Got a dream project that seems impossible? Tell us about it and we will see how to make it real.',
+  'via2.texto':
+    'Got a dream project that seems impossible? Tell us about it and we will see how to make it real.',
   'via3.titulo': 'Learn with us',
-  'via3.texto': 'If you are starting out, the best place to learn is a real project with people who help you.',
-  'participa.privado': '{nombre} is a private project: its development is not open to collaboration, but we welcome project proposals and would love to meet new people who are interested.',
+  'via3.texto':
+    'If you are starting out, the best place to learn is a real project with people who help you.',
+  'participa.privado':
+    '{nombre} is a private project: its development is not open to collaboration, but we welcome project proposals and would love to meet new people who are interested.',
   'colab.abierta': 'Open to collaboration',
   'colab.privada': 'Private project',
   'participa.abierta.titulo': 'Want to get involved in {nombre}?',
-  'participa.abierta.texto': 'This project is open: if you want to contribute, learn or simply find out more, write to us and we will tell you how.',
+  'participa.abierta.texto':
+    'This project is open: if you want to contribute, learn or simply find out more, write to us and we will tell you how.',
   'participa.abierta.boton': 'I want to take part',
   'participa.privada.titulo': '{nombre} is a private project',
-  'participa.privada.texto': 'Its development is not open to collaboration, but proposals and ideas are welcome, as is anyone who would like to join Galivelop on other projects.',
+  'participa.privada.texto':
+    'Its development is not open to collaboration, but proposals and ideas are welcome, as is anyone who would like to join Galivelop on other projects.',
   'participa.privada.boton': 'Send a proposal',
 
   'form.nombre': 'Name',
   'form.correo': 'Your email',
   'form.opcional': 'optional',
   'form.enviar': 'Prepare the email',
-  'form.nota': 'Submitting opens your email app with the message ready for {correo}. Just review it and send it.',
+  'form.nota':
+    'Submitting opens your email app with the message ready for {correo}. Just review it and send it.',
   'form.listo.titulo': 'Message ready',
   'form.listo.texto': 'If your email app did not open, copy the message and send it to {correo}.',
   'form.copiar': 'Copy message',
@@ -653,7 +747,8 @@ const en: Record<Clave, string> = {
   'form.volver': 'Back to Get involved',
   'form.ir': 'Go to the form',
   'prop.titulo': 'Propose a project',
-  'prop.intro': 'Got an idea that seems too big? Tell us about it. We read every proposal and, if it fits the workshop, we will get back to you to shape it together.',
+  'prop.intro':
+    'Got an idea that seems too big? Tell us about it. We read every proposal and, if it fits the workshop, we will get back to you to shape it together.',
   'prop.proyecto': 'Project name',
   'prop.descripcion': 'What is it about?',
   'prop.descripcion.ayuda': 'What it is, what problem it solves or what you want to create.',
@@ -663,11 +758,13 @@ const en: Record<Clave, string> = {
   'prop.fase.prototipo': 'There is a prototype',
   'prop.fase.marcha': 'Already under way',
   'prop.papel': 'What role would you like to have?',
-  'prop.papel.ayuda': 'For example: take part in development, just contribute the idea, support it in another way…',
+  'prop.papel.ayuda':
+    'For example: take part in development, just contribute the idea, support it in another way…',
   'prop.enlace': 'Link',
   'prop.enlace.ayuda': 'Website, document or repository, if any.',
   'unir.titulo': 'Join the workshop',
-  'unir.intro': 'We are looking for people who want to cooperate and learn, with or without experience. Tell us who you are and how you would like to take part.',
+  'unir.intro':
+    'We are looking for people who want to cooperate and learn, with or without experience. Tell us who you are and how you would like to take part.',
   'unir.proyecto': 'What would you like to join?',
   'unir.proyecto.cualquiera': 'Wherever I am needed',
   'unir.proyecto.nuevos': 'New projects',
@@ -690,15 +787,20 @@ const en: Record<Clave, string> = {
   'lineas.titulo': 'Areas of work',
   'lineas.texto': 'The themes we research and that every project comes back to.',
   'linea.ia-local.titulo': 'Local, responsible AI',
-  'linea.ia-local.texto': 'Models that run on each person’s own machine, with no accounts or per-use costs, used where they truly add value.',
+  'linea.ia-local.texto':
+    'Models that run on each person’s own machine, with no accounts or per-use costs, used where they truly add value.',
   'linea.mundos.titulo': 'Worlds that live on their own',
-  'linea.mundos.texto': 'Simulated factions, economies and ecosystems that move forward even when nobody is watching, with AI telling the story.',
+  'linea.mundos.texto':
+    'Simulated factions, economies and ecosystems that move forward even when nobody is watching, with AI telling the story.',
   'linea.informacion.titulo': 'Verifiable information',
-  'linea.informacion.texto': 'Metrics that explain why content deserves more or less trust, instead of handing down verdicts.',
+  'linea.informacion.texto':
+    'Metrics that explain why content deserves more or less trust, instead of handing down verdicts.',
   'linea.producto.titulo': 'From prototype to product',
-  'linea.producto.texto': 'Interface, server, data, testing and deployment: taking an idea all the way to the people who will use it.',
+  'linea.producto.texto':
+    'Interface, server, data, testing and deployment: taking an idea all the way to the people who will use it.',
   'linea.metodo.titulo': 'A method for working with AI',
-  'linea.metodo.texto': 'How to work with AI agents for weeks without losing the thread: handoffs, review and measured spend, and sharing what works.',
+  'linea.metodo.texto':
+    'How to work with AI agents for weeks without losing the thread: handoffs, review and measured spend, and sharing what works.',
   'paraquien.titulo': 'It’s for you if…',
   'paraquien.1': 'You want to learn by building something real, not an exercise.',
   'paraquien.2': 'You have an idea too big to pull off on your own.',
@@ -707,32 +809,37 @@ const en: Record<Clave, string> = {
   'pasos.titulo': 'How it works',
   'paso.1': 'You write to us using the form and tell us what interests you.',
   'paso.2': 'We reply and talk to see where you fit.',
-  'paso.3': 'You start with a small, well-defined task so we can get to know each other, no strings attached.',
+  'paso.3':
+    'You start with a small, well-defined task so we can get to know each other, no strings attached.',
   'paso.4': 'From there, you grow within the project at your own pace.',
   'sec.aprendizajes': 'What we are learning',
 
   'sobre.nombre': 'The name joins Galicia, where we come from, and Develop, what we do.',
 
   'discord.titulo': 'Join the community on Discord',
-  'discord.texto': 'It is the place to meet us, follow the projects day to day, ask questions and float ideas before making them formal.',
+  'discord.texto':
+    'It is the place to meet us, follow the projects day to day, ask questions and float ideas before making them formal.',
   'discord.boton': 'Join on Discord',
 
   'nav.muro': 'Feed',
   'sec.publicaciones': 'Posts',
   'muro.titulo': 'Feed',
-  'muro.intro': 'What each project shares as it moves forward: tests, decisions, images and what we have learnt along the way.',
+  'muro.intro':
+    'What each project shares as it moves forward: tests, decisions, images and what we have learnt along the way.',
   'muro.filtro': 'Filter by project',
   'muro.vacio': 'No posts yet.',
   'muro.verTodas': 'See in the feed ({n})',
   'nav.equipo': 'Team',
   'equipo.titulo': 'Team',
-  'equipo.intro': 'The people who make Galivelop. Each with their own path, all eager to build and learn.',
+  'equipo.intro':
+    'The people who make Galivelop. Each with their own path, all eager to build and learn.',
   'equipo.proyectos': 'Projects',
   'equipo.redes': '{nombre} online',
   'equipo.red.correo': 'Email',
   'equipo.red.portfolio': 'Portfolio',
   'equipo.unete.titulo': 'Want to be on this page?',
-  'equipo.unete.texto': 'Everyone who joins the workshop becomes part of the team. Tell us who you are and what you would like to work on.',
+  'equipo.unete.texto':
+    'Everyone who joins the workshop becomes part of the team. Tell us who you are and what you would like to work on.',
   'equipo.ver': 'View profile',
   'equipo.verPerfilDe': 'View {nombre}’s profile',
   'equipo.trayectoria': 'Experience',
@@ -756,9 +863,11 @@ const en: Record<Clave, string> = {
   'equipo.colabora.titulo': 'Got a project?',
   'equipo.colabora.boton': 'Email {nombre}',
   'equipo.colabora.asunto': '[Project] {nombre}',
-  'equipo.colabora.nota': 'The workshop is a place to learn and share. If you have a real project you want to get off the ground, don’t hesitate to get in touch: together you can make it happen.',
+  'equipo.colabora.nota':
+    'The workshop is a place to learn and share. If you have a real project you want to get off the ground, don’t hesitate to get in touch: together you can make it happen.',
   'proyectoPropio.titulo': 'Got a project of your own?',
-  'proyectoPropio.texto': 'The workshop doesn’t sell, but some of its members occasionally work on other people’s projects, independently. Look at their work and tell whoever fits about yours.',
+  'proyectoPropio.texto':
+    'The workshop doesn’t sell, but some of its members occasionally work on other people’s projects, independently. Look at their work and tell whoever fits about yours.',
   'proyectoPropio.boton': 'Meet the team',
 
   'sec.pasos': 'How it works',
@@ -767,7 +876,8 @@ const en: Record<Clave, string> = {
   'grupo.afondo': 'In depth',
   'grupo.tecnica': 'How it is built',
   'grupo.avance': 'Progress',
-  'afondo.texto': 'Each topic opens on top of the page: move from one to the next with the arrows without losing your place.',
+  'afondo.texto':
+    'Each topic opens on top of the page: move from one to the next with the arrows without losing your place.',
   'afondo.elementos': '{n} {n:item|items}',
   'afondo.imagenes': '{n} {n:image|images}',
   'apartado.anterior': 'Previous topic',
@@ -779,7 +889,8 @@ const en: Record<Clave, string> = {
   'vistazo.hitos': '{hechos} of {total} {total:milestone done|milestones done}',
   'novedades.todas': 'See all {n} updates',
   'novedades.menos': 'Show fewer',
-  'participa.privados': '{nombres} are private projects: their development is not open to collaboration, but we welcome project proposals and would love to meet new people who are interested.',
+  'participa.privados':
+    '{nombres} are private projects: their development is not open to collaboration, but we welcome project proposals and would love to meet new people who are interested.',
   'nav.proyectos.todos': 'All projects',
 
   'pie.hecho': 'Made in Galicia',
@@ -796,7 +907,8 @@ const en: Record<Clave, string> = {
   'nav.taller': 'Workshop',
   'nav.productos': 'Products',
   'productos.titulo': 'Products',
-  'productos.intro': 'Locally installed software born in the Galivelop workshop, and the people who make it. No prices on the site: everything is arranged by email.',
+  'productos.intro':
+    'Locally installed software born in the Galivelop workshop, and the people who make it. No prices on the site: everything is arranged by email.',
   'productos.version': 'Version {version}',
   'productos.responsable': 'Lead',
   'productos.colaboradores': 'Contributors',
@@ -805,13 +917,16 @@ const en: Record<Clave, string> = {
   'productos.interesa': 'I’m interested',
   'productos.asunto': 'I’m interested in {producto}',
   'productos.integrantes.titulo': 'Members',
-  'productos.integrantes.texto': 'Workshop members who offer their services independently. Each one is self-employed.',
+  'productos.integrantes.texto':
+    'Workshop members who offer their services independently. Each one is self-employed.',
   'productos.contacto.titulo': 'Interested in something?',
-  'productos.contacto.texto': 'Write to Álvaro: he’ll tell you how to get it, on what terms, and when what isn’t ready yet will arrive.',
+  'productos.contacto.texto':
+    'Write to Álvaro: he’ll tell you how to get it, on what terms, and when what isn’t ready yet will arrive.',
   'productos.contacto.boton': 'Write to Álvaro',
   'productos.contacto.asunto': 'Galivelop products',
   'inicio.productos.antetitulo': 'Software and services',
-  'inicio.productos.texto': 'Locally installed software born in the workshop, and the people who make it. No prices on the web: everything is arranged by email.',
+  'inicio.productos.texto':
+    'Locally installed software born in the workshop, and the people who make it. No prices on the web: everything is arranged by email.',
   'inicio.taller.antetitulo': 'The workshop',
   'inicio.taller.texto': 'Nothing is sold here: we create, research and learn in the open.',
 };

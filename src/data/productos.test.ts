@@ -26,7 +26,9 @@ describe('productos', () => {
         expect(ESTADOS_PRODUCTO).toContain(p.estado);
         expect(p.queOfrece).toBeDefined();
         expect(Array.isArray(p.servicios)).toBe(true);
-        expect(textosIncompletos({ queOfrece: p.queOfrece, servicios: p.servicios }, p.slug)).toEqual([]);
+        expect(
+          textosIncompletos({ queOfrece: p.queOfrece, servicios: p.servicios }, p.slug),
+        ).toEqual([]);
       });
 
       it('usa un icono que existe y un color hex', () => {

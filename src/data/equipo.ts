@@ -2,7 +2,19 @@ import datos from './equipo.json';
 import type { Texto } from './tipos';
 
 // Personas del taller. Para añadir a alguien: una entrada más en equipo.json (ver docs/desarrollo.md).
-export const REDES = ['linkedin', 'github', 'web', 'correo', 'x', 'instagram', 'youtube', 'discord', 'reddit', 'manfred', 'portfolio'] as const;
+export const REDES = [
+  'linkedin',
+  'github',
+  'web',
+  'correo',
+  'x',
+  'instagram',
+  'youtube',
+  'discord',
+  'reddit',
+  'manfred',
+  'portfolio',
+] as const;
 export type Red = (typeof REDES)[number];
 
 /**
@@ -52,7 +64,13 @@ export function agruparPorLugar(etapas: Etapa[]): Lugar[] {
       ultimo.clientes = unir(ultimo.clientes, e.clientes);
       ultimo.negocio = unir(ultimo.negocio, e.negocio);
     } else {
-      lugares.push({ lugar: e.lugar, logo: e.logo, clientes: unir([], e.clientes), negocio: unir([], e.negocio), etapas: [e] });
+      lugares.push({
+        lugar: e.lugar,
+        logo: e.logo,
+        clientes: unir([], e.clientes),
+        negocio: unir([], e.negocio),
+        etapas: [e],
+      });
     }
   }
   return lugares;

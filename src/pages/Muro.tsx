@@ -25,7 +25,10 @@ export function Muro() {
 
   /** Cambia el filtro sin llenar el historial; conserva el ancla para que la página no vuelva arriba (`Desplazamiento`). */
   const filtrar = (slug: string | null) =>
-    navegar({ search: slug ? `?proyecto=${slug}` : '', hash }, { replace: true, preventScrollReset: true });
+    navegar(
+      { search: slug ? `?proyecto=${slug}` : '', hash },
+      { replace: true, preventScrollReset: true },
+    );
 
   return (
     <section className="seccion muro">
@@ -44,7 +47,12 @@ export function Muro() {
               <span className="filtro-cuenta">{publicaciones.length}</span>
             </button>
             {conPublicaciones.map((p) => (
-              <button key={p.slug} type="button" aria-pressed={filtro === p.slug} onClick={() => filtrar(p.slug)}>
+              <button
+                key={p.slug}
+                type="button"
+                aria-pressed={filtro === p.slug}
+                onClick={() => filtrar(p.slug)}
+              >
                 {p.nombre}
                 <span className="filtro-cuenta">{publicacionesDe(p.slug).length}</span>
               </button>
@@ -54,7 +62,9 @@ export function Muro() {
 
         {visibles.length > 0 ? (
           <div className="muro-lista">
-            {visibles.map((p) => <Publicacion key={`${p.proyecto}/${p.pieza}`} p={p} />)}
+            {visibles.map((p) => (
+              <Publicacion key={`${p.proyecto}/${p.pieza}`} p={p} />
+            ))}
           </div>
         ) : (
           <p className="vacio">{t('muro.vacio')}</p>

@@ -8,14 +8,17 @@ import { IDIOMAS, type Publicacion, type Texto } from './tipos';
 const PUBLIC = join(__dirname, '../../public');
 const MURO = join(__dirname, 'muro');
 
-const incompleto = (t: Texto | undefined) => !t || IDIOMAS.some((l) => typeof t[l] !== 'string' || !t[l].trim());
+const incompleto = (t: Texto | undefined) =>
+  !t || IDIOMAS.some((l) => typeof t[l] !== 'string' || !t[l].trim());
 
 /** Lo que falla en una publicación, con su motivo; `existe` dice si una ruta de imagen está en public/. */
 function problemas(p: Publicacion, existe: (src: string) => boolean): string[] {
   const fallos: string[] = [];
-  if (!proyectos.some((x) => x.slug === p.proyecto)) fallos.push(`proyecto desconocido: ${p.proyecto}`);
+  if (!proyectos.some((x) => x.slug === p.proyecto))
+    fallos.push(`proyecto desconocido: ${p.proyecto}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(p.fecha)) fallos.push(`fecha no es AAAA-MM-DD: ${p.fecha}`);
-  if (!/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/.test(p.pieza)) fallos.push(`pieza no es AAAA-MM-DD-tema: ${p.pieza}`);
+  if (!/^\d{4}-\d{2}-\d{2}-[a-z0-9-]+$/.test(p.pieza))
+    fallos.push(`pieza no es AAAA-MM-DD-tema: ${p.pieza}`);
   const imagenes = p.imagenes ?? [];
   const textos: [string, Texto | undefined][] = [
     ['titulo', p.titulo],
@@ -26,7 +29,8 @@ function problemas(p: Publicacion, existe: (src: string) => boolean): string[] {
   const sinIdiomas = textos.filter(([, t]) => incompleto(t)).map(([nombre]) => nombre);
   if (sinIdiomas.length) fallos.push(`textos sin los tres idiomas: ${sinIdiomas.join(', ')}`);
   const medida = (n: number) => Number.isInteger(n) && n > 0;
-  for (const i of imagenes) if (!medida(i.ancho) || !medida(i.alto)) fallos.push(`imagen sin ancho o alto: ${i.src}`);
+  for (const i of imagenes)
+    if (!medida(i.ancho) || !medida(i.alto)) fallos.push(`imagen sin ancho o alto: ${i.src}`);
   const carpeta = `proyectos/${p.proyecto}/muro/${p.pieza}/`;
   for (const i of imagenes) {
     for (const v of [i, ...Object.values(i.porIdioma ?? {})]) {
@@ -53,8 +57,16 @@ const ejemplo = (pieza: string, fecha: string): Publicacion => ({
 
 describe('muro', () => {
   it('ordena de la más reciente a la más antigua y, el mismo día, la última pieza primero', () => {
-    const lista = ordenar([ejemplo('2026-10-01-a', '2026-10-01'), ejemplo('2026-10-23-01-b', '2026-10-23'), ejemplo('2026-10-23-02-c', '2026-10-23')]);
-    expect(lista.map((p) => p.pieza)).toEqual(['2026-10-23-02-c', '2026-10-23-01-b', '2026-10-01-a']);
+    const lista = ordenar([
+      ejemplo('2026-10-01-a', '2026-10-01'),
+      ejemplo('2026-10-23-01-b', '2026-10-23'),
+      ejemplo('2026-10-23-02-c', '2026-10-23'),
+    ]);
+    expect(lista.map((p) => p.pieza)).toEqual([
+      '2026-10-23-02-c',
+      '2026-10-23-01-b',
+      '2026-10-01-a',
+    ]);
   });
 
   it('elige la imagen del idioma y, si no la hay, la de por defecto', () => {
@@ -87,8 +99,16 @@ describe('muro', () => {
   // Las reglas de una publicación, aparte de los datos: hoy no hay ninguna y la primera la escribe la tarea semanal,
   // así que se prueban también con un ejemplo bueno y uno malo.
   it('las reglas aceptan una publicación bien hecha', () => {
-    const imagen = { src: 'proyectos/tarkor/muro/2026-10-20-a/m.webp', mini: 'proyectos/tarkor/muro/2026-10-20-a/m-mini.webp', ancho: 1600, alto: 900, alt: { es: 'a', gl: 'a', en: 'a' } };
-    expect(problemas({ ...ejemplo('2026-10-20-a', '2026-10-20'), imagenes: [imagen] }, () => true)).toEqual([]);
+    const imagen = {
+      src: 'proyectos/tarkor/muro/2026-10-20-a/m.webp',
+      mini: 'proyectos/tarkor/muro/2026-10-20-a/m-mini.webp',
+      ancho: 1600,
+      alto: 900,
+      alt: { es: 'a', gl: 'a', en: 'a' },
+    };
+    expect(
+      problemas({ ...ejemplo('2026-10-20-a', '2026-10-20'), imagenes: [imagen] }, () => true),
+    ).toEqual([]);
   });
 
   it('las reglas rechazan cada fallo con su motivo', () => {
@@ -97,7 +117,10 @@ describe('muro', () => {
       proyecto: 'no-existe',
       pieza: 'Mapa',
       titulo: { es: 't', gl: '', en: 't' },
-      cuerpo: [{ es: 'c', gl: 'c', en: 'c' }, { es: 'c', gl: 'c' }],
+      cuerpo: [
+        { es: 'c', gl: 'c', en: 'c' },
+        { es: 'c', gl: 'c' },
+      ],
       imagenes: [
         {
           src: 'proyectos/otro/m.webp',

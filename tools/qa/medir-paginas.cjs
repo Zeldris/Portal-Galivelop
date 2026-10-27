@@ -212,6 +212,9 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
     process.exit(130);
   });
 }
+// `capturas.cjs` reutiliza el servidor y la medida; el barrido de abajo solo corre como orden.
+module.exports = { BASE, TACTIL, servidor, parar, medirPagina };
+if (require.main !== module) return;
 (async () => {
   await servidor();
   const navegador = await chromium.launch();

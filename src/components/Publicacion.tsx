@@ -13,15 +13,35 @@ function ImagenMuro({ imagen }: { imagen: ImagenPublicacion }) {
   const v = versionDe(imagen, idioma);
   return (
     <>
-      <button type="button" className="publicacion-imagen" onClick={() => dialogo.current?.showModal()} aria-label={`${t('galeria.ampliar')}: ${tx(imagen.alt)}`}>
-        <img src={ruta(v.mini)} alt={tx(imagen.alt)} loading="lazy" width={imagen.ancho} height={imagen.alto} />
+      <button
+        type="button"
+        className="publicacion-imagen"
+        onClick={() => dialogo.current?.showModal()}
+        aria-label={`${t('galeria.ampliar')}: ${tx(imagen.alt)}`}
+      >
+        <img
+          src={ruta(v.mini)}
+          alt={tx(imagen.alt)}
+          loading="lazy"
+          width={imagen.ancho}
+          height={imagen.alto}
+        />
       </button>
-      <dialog ref={dialogo} className="galeria-dialogo" onClick={(e) => e.target === dialogo.current && dialogo.current.close()}>
+      <dialog
+        ref={dialogo}
+        className="galeria-dialogo"
+        onClick={(e) => e.target === dialogo.current && dialogo.current.close()}
+      >
         <figure>
           <img src={ruta(v.src)} alt={tx(imagen.alt)} loading="lazy" />
           <figcaption>{tx(imagen.alt)}</figcaption>
         </figure>
-        <button type="button" className="galeria-cerrar" onClick={() => dialogo.current?.close()} aria-label={t('galeria.cerrar')}>
+        <button
+          type="button"
+          className="galeria-cerrar"
+          onClick={() => dialogo.current?.close()}
+          aria-label={t('galeria.cerrar')}
+        >
           <X size={22} />
         </button>
       </dialog>
@@ -35,7 +55,11 @@ export function Publicacion({ p }: { p: TipoPublicacion }) {
   const proyecto = buscarProyecto(p.proyecto);
   const imagenes = p.imagenes ?? [];
   return (
-    <article id={idPublicacion(p)} className="publicacion" style={proyecto ? ({ '--acento-proyecto': proyecto.acento } as CSSProperties) : undefined}>
+    <article
+      id={idPublicacion(p)}
+      className="publicacion"
+      style={proyecto ? ({ '--acento-proyecto': proyecto.acento } as CSSProperties) : undefined}
+    >
       <header className="publicacion-cabecera">
         {proyecto && (
           <Link to={`/proyectos/${proyecto.slug}`} className="publicacion-autor">
@@ -47,10 +71,16 @@ export function Publicacion({ p }: { p: TipoPublicacion }) {
       </header>
       <h2 className="publicacion-titulo">{tx(p.titulo)}</h2>
       <p className="publicacion-entradilla">{tx(p.texto)}</p>
-      {p.cuerpo?.map((parrafo, i) => <p key={i}>{tx(parrafo)}</p>)}
+      {p.cuerpo?.map((parrafo, i) => (
+        <p key={i}>{tx(parrafo)}</p>
+      ))}
       {imagenes.length > 0 && (
-        <div className={`publicacion-imagenes publicacion-imagenes-${Math.min(imagenes.length, 3)}`}>
-          {imagenes.map((imagen, i) => <ImagenMuro key={i} imagen={imagen} />)}
+        <div
+          className={`publicacion-imagenes publicacion-imagenes-${Math.min(imagenes.length, 3)}`}
+        >
+          {imagenes.map((imagen, i) => (
+            <ImagenMuro key={i} imagen={imagen} />
+          ))}
         </div>
       )}
     </article>

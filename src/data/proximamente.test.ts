@@ -17,7 +17,9 @@ describe('próximamente', () => {
       it('tiene slug y nombre, y sus textos en castellano, gallego e inglés', () => {
         expect(p.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
         expect(p.nombre?.trim()).toBeTruthy();
-        expect(textosIncompletos({ lema: p.lema ?? {}, siguiente: p.siguiente ?? {} }, p.slug)).toEqual([]);
+        expect(
+          textosIncompletos({ lema: p.lema ?? {}, siguiente: p.siguiente ?? {} }, p.slug),
+        ).toEqual([]);
       });
 
       it('usa un icono que existe y un color hex', () => {

@@ -6,7 +6,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import type { Idioma } from './data/tipos';
 import './estilos/global.css';
-import { baseDeIdioma, guardarIdioma, idiomaDeRuta, idiomaInicial, ProveedorIdioma } from './i18n/Idioma';
+import {
+  baseDeIdioma,
+  guardarIdioma,
+  idiomaDeRuta,
+  idiomaInicial,
+  ProveedorIdioma,
+} from './i18n/Idioma';
 
 /**
  * Cada idioma tiene su dirección (castellano sin prefijo, /gl/… y /en/…) para que los buscadores
@@ -18,7 +24,11 @@ function Raiz() {
     // Sin prefijo pero con otro idioma elegido antes: se pasa a su dirección.
     if (!idiomaDeRuta(location.pathname) && inicial !== 'es') {
       const resto = location.pathname.slice(baseDeIdioma('es').length);
-      history.replaceState(null, '', baseDeIdioma(inicial) + resto + location.search + location.hash);
+      history.replaceState(
+        null,
+        '',
+        baseDeIdioma(inicial) + resto + location.search + location.hash,
+      );
     }
     return inicial;
   });

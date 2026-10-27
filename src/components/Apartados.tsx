@@ -8,7 +8,8 @@ import { Galeria } from './Galeria';
 import { ImagenAmpliable } from './ImagenAmpliable';
 
 const anclaDe = (a: Apartado) => `ap-${a.id}`;
-const portadaDe = (a: Apartado): Imagen | undefined => a.items.find((i) => i.imagen)?.imagen ?? a.grupos?.[0]?.imagenes[0];
+const portadaDe = (a: Apartado): Imagen | undefined =>
+  a.items.find((i) => i.imagen)?.imagen ?? a.grupos?.[0]?.imagenes[0];
 const imagenesDe = (a: Apartado) => a.grupos?.reduce((n, g) => n + g.imagenes.length, 0) ?? 0;
 
 /** Cambia el #ancla sin pasar por el router: la ficha no se vuelve a montar ni sube arriba. */
@@ -27,12 +28,15 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
   const cuerpo = useRef<HTMLDivElement>(null);
   const [actual, setActual] = useState<number | null>(null);
 
-  const abrir = useCallback((i: number) => {
-    setActual(i);
-    ponerAncla(anclaDe(apartados[i]));
-    if (!hoja.current?.open) hoja.current?.showModal();
-    cuerpo.current?.scrollTo(0, 0);
-  }, [apartados]);
+  const abrir = useCallback(
+    (i: number) => {
+      setActual(i);
+      ponerAncla(anclaDe(apartados[i]));
+      if (!hoja.current?.open) hoja.current?.showModal();
+      cuerpo.current?.scrollTo(0, 0);
+    },
+    [apartados],
+  );
 
   // Entrar con #ap-<id> (o cambiarlo desde un enlace) abre ese apartado.
   useEffect(() => {
@@ -57,9 +61,20 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
           const n = ap.items.length || imagenesDe(ap);
           return (
             <li key={ap.id} id={anclaDe(ap)}>
-              <button type="button" className="mosaico-pieza" onClick={() => abrir(i)} aria-haspopup="dialog">
+              <button
+                type="button"
+                className="mosaico-pieza"
+                onClick={() => abrir(i)}
+                aria-haspopup="dialog"
+              >
                 {portada ? (
-                  <img src={ruta(portada.mini)} alt="" loading="lazy" width={portada.ancho} height={portada.alto} />
+                  <img
+                    src={ruta(portada.mini)}
+                    alt=""
+                    loading="lazy"
+                    width={portada.ancho}
+                    height={portada.alto}
+                  />
                 ) : (
                   <span className="mosaico-inicial" aria-hidden="true">
                     {tx(ap.titulo).charAt(0)}
@@ -67,7 +82,11 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                 )}
                 <span className="mosaico-texto">
                   <strong>{tx(ap.titulo)}</strong>
-                  {n > 0 && <span>{t(ap.items.length ? 'afondo.elementos' : 'afondo.imagenes', { n })}</span>}
+                  {n > 0 && (
+                    <span>
+                      {t(ap.items.length ? 'afondo.elementos' : 'afondo.imagenes', { n })}
+                    </span>
+                  )}
                 </span>
                 <ArrowRight className="mosaico-flecha" size={18} aria-hidden="true" />
               </button>
@@ -116,7 +135,12 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                 >
                   <ArrowRight size={18} />
                 </button>
-                <button type="button" className="boton-icono" onClick={() => hoja.current?.close()} aria-label={t('galeria.cerrar')}>
+                <button
+                  type="button"
+                  className="boton-icono"
+                  onClick={() => hoja.current?.close()}
+                  aria-label={t('galeria.cerrar')}
+                >
                   <X size={18} />
                 </button>
               </div>
@@ -124,7 +148,15 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
             <div className="hoja-cuerpo" ref={cuerpo}>
               {a.intro && <p className="apartado-intro">{tx(a.intro)}</p>}
               {a.grupos && (
-                <Galeria key={a.id} grupos={a.grupos.map((g) => ({ id: g.id, etiqueta: tx(g.etiqueta), imagenes: g.imagenes }))} rotar={false} />
+                <Galeria
+                  key={a.id}
+                  grupos={a.grupos.map((g) => ({
+                    id: g.id,
+                    etiqueta: tx(g.etiqueta),
+                    imagenes: g.imagenes,
+                  }))}
+                  rotar={false}
+                />
               )}
               {a.items.length > 0 && (
                 <ul className="apartado-items">
@@ -141,10 +173,15 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                 </ul>
               )}
               {total > 1 && (
-                <button type="button" className="hoja-siguiente" onClick={() => abrir((actual + 1) % total)}>
+                <button
+                  type="button"
+                  className="hoja-siguiente"
+                  onClick={() => abrir((actual + 1) % total)}
+                >
                   <span>{t('apartado.siguiente')}</span>
                   <strong>
-                    {tx(apartados[(actual + 1) % total].titulo)} <ArrowRight size={16} aria-hidden="true" />
+                    {tx(apartados[(actual + 1) % total].titulo)}{' '}
+                    <ArrowRight size={16} aria-hidden="true" />
                   </strong>
                 </button>
               )}

@@ -18,9 +18,12 @@ describe('anclas en src/', () => {
   it('nadie decodifica la URL con decodeURIComponent suelto: se usa leerAncla()', () => {
     const raiz = join(__dirname, '..');
     const archivos = (readdirSync(raiz, { recursive: true }) as string[]).filter(
-      (f) => /\.tsx?$/.test(f) && !/\.test\.tsx?$/.test(f) && !f.endsWith(join('utils', 'ancla.ts')),
+      (f) =>
+        /\.tsx?$/.test(f) && !/\.test\.tsx?$/.test(f) && !f.endsWith(join('utils', 'ancla.ts')),
     );
-    const sueltos = archivos.filter((f) => readFileSync(join(raiz, f), 'utf8').includes('decodeURIComponent'));
+    const sueltos = archivos.filter((f) =>
+      readFileSync(join(raiz, f), 'utf8').includes('decodeURIComponent'),
+    );
     expect(sueltos).toEqual([]);
   });
 });

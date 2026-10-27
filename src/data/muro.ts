@@ -7,7 +7,9 @@ export const publicaciones: Publicacion[] = ordenar(Object.values(modulos).map((
 
 /** Más reciente primero; el mismo día, por orden inverso de pieza (NN-tema más alto primero). */
 export function ordenar(lista: Publicacion[]): Publicacion[] {
-  return [...lista].sort((a, b) => b.fecha.localeCompare(a.fecha) || b.pieza.localeCompare(a.pieza));
+  return [...lista].sort(
+    (a, b) => b.fecha.localeCompare(a.fecha) || b.pieza.localeCompare(a.pieza),
+  );
 }
 
 export function publicacionesDe(slug: string): Publicacion[] {
@@ -20,6 +22,9 @@ export function idPublicacion(p: Publicacion): string {
 }
 
 /** La versión de la imagen para el idioma; sin ella, la de por defecto (castellano). */
-export function versionDe(imagen: ImagenPublicacion, idioma: Idioma): { src: string; mini: string } {
+export function versionDe(
+  imagen: ImagenPublicacion,
+  idioma: Idioma,
+): { src: string; mini: string } {
   return imagen.porIdioma?.[idioma] ?? { src: imagen.src, mini: imagen.mini };
 }

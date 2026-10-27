@@ -4733,6 +4733,7 @@ body:has(dialog[open]) {
 .enlace-flecha {
   display: inline-flex;
   align-items: center;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8): en móvil se quedaba en 23 px */
   gap: 4px;
   font-size: 0.92rem;
   font-weight: 500;
