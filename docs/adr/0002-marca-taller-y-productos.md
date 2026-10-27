@@ -27,7 +27,7 @@ Productos de arranque (lo que dijo la persona el 2026-10-27):
 
 Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es `colabora` en su página).
 
-## Propuesta de diseño (para ajustar)
+## Diseño (ajustado con las decisiones de abajo)
 
 ### Vocabulario
 
@@ -39,26 +39,29 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
   conseguirlo.
 - **Servicio**: oferta que presta una persona (soporte, implantación, un encargo). Siempre tiene un miembro
   responsable, que es quien factura.
-- **Integrante ofertado**: miembro que se puede contratar; sustituye a «colabora de vez en cuando» de la 0001.
+- **Integrante promocionado**: miembro del taller que Álvaro propone para Productos y que acepta. Sustituye a
+  «colabora de vez en cuando» de la 0001 en Productos; en el taller, la 0001 sigue igual.
 
 ### Estructura de la web
 
 - Cabecera con dos bloques: **Taller** (Proyectos, Muro, Equipo, Participa) y **Productos** (catálogo, integrantes).
 - Inicio: el hero presenta la marca con las dos puertas; debajo, lo de hoy (taller) y una franja «Productos».
-- Rutas nuevas: `/productos` (catálogo) y `/productos/<slug>` (ficha de producto). Los integrantes ofertados salen en
-  el catálogo y en su página de miembro con un apartado «Servicios»; `/equipo` sigue siendo del taller.
+- Rutas nuevas: `/productos` (catálogo) y `/productos/<slug>` (ficha de producto). Los integrantes promocionados
+  salen en el catálogo (con la información relevante y siempre un enlace a su página de miembro) y en su página con
+  un apartado «Servicios»; `/equipo` sigue siendo del taller.
+- Contacto único: el correo de Galivelop (Álvaro). Sin precios ni formularios; lo legal y lo financiero, por correo.
 - Las rutas actuales no cambian (riesgo alto: ya están indexadas y enlazadas).
 - Todo en es, gl y en, como el resto.
 
 ### Datos
 
-- `src/data/productos/<slug>.json`: `proyecto` (slug de la ficha del taller, si lo hay), `estado` (`disponible` |
-  `proximamente`), `versionMinima` (p. ej. `1.0.0`), `queOfrece` (texto), `comoConseguirlo` (enlaces: instalar,
-  descargar, pedir), `servicios` (lista: nombre, `responsable` = id de miembro, cómo contactar), `precio`
-  (`a-consultar` | texto; por decidir si se publica).
-- `src/data/equipo.json`: `colabora` pasa a `servicios` (lista de lo que ofrece cada miembro) y una marca
-  `ofertado: true`.
-- Un producto en `proximamente` sale en el catálogo sin enlace de compra: «se abre con la v1.0.0».
+- `src/data/productos/<slug>.json`: `proyecto` (slug de la ficha del taller, si lo hay), `version` (la que se
+  ofrece), `queOfrece` (texto), `comoConseguirlo` (descarga local o pedirlo por correo), `responsable` (id de
+  miembro, el creador), `colaboradores` (ids), `servicios` (lista: nombre y texto). Sin campo de precio.
+- `src/data/equipo.json`: `promocionado: true` y `servicios` (lista de lo que ofrece) en quien entre en Productos;
+  `colabora` se queda para el taller (0001).
+- Solo entran productos con forma. Un proyecto en formación no tiene ficha de producto: se menciona, como mucho, en
+  la fila «Próximamente» del inicio (taller).
 
 ### Qué cambia de la ADR 0001
 
@@ -70,10 +73,9 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
 
 ### Fases propuestas
 
-1. **Decisión**: cerrar esta ADR con la persona (preguntas de abajo), actualizar la 0001, `GLOSSARY.md` y el mensaje
-   de la marca en `AGENTS.md`.
-2. **Catálogo**: tipos y datos de producto, `/productos` con las cuatro tarjetas (todas «próximamente» salvo lo que ya
-   se pueda usar), cabecera con los dos bloques, hero del inicio. Prototipo de UI con `prototype` antes de codificar.
+1. **Decisión** (hecha el 2026-10-27): esta ADR, la 0001, `GLOSSARY.md` y el mensaje de la marca en `AGENTS.md`.
+2. **Catálogo**, cuando haya el primer producto con forma: tipos y datos de producto, `/productos`, cabecera con
+   los dos bloques, hero del inicio. Prototipo de UI con `prototype` antes de codificar.
 3. **Ficha de producto** `/productos/<slug>` y enlace cruzado con la ficha del taller.
 4. **Integrantes**: apartado «Servicios» en la página de miembro y su sitio en el catálogo.
 5. **Legal**: aviso legal y privacidad (LSSI-CE; ya pendiente desde la 0001 y ahora necesario: la web oferta).
