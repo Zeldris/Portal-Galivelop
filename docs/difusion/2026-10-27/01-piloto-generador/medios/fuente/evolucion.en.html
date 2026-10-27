@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Evolución del piloto: tres rondas de la misma imagen del Portal, de izquierda a derecha. Adaptada de la
+     plantilla antes-despues.html de gw-media-content (tres paneles en vez de dos). -->
+<meta name="gw-size" content="1200x675">
+<title>Pilot evolution</title>
+<style>
+  :root {
+    --fondo: #06121c; --superficie: #0b2133; --borde: #1d3a52;
+    --texto: #eaf4fa; --tenue: #9fb8c9; --acento: #1aa6df; --acento-texto: #06121c;
+    --fuente: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", "Liberation Sans", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 675px; overflow: hidden; background: var(--fondo); color: var(--texto); font-family: var(--fuente);
+         padding: 40px 44px 30px; display: flex; flex-direction: column; }
+  .marca { font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); font-weight: 700; }
+  h1 { font-size: 38px; line-height: 1.15; margin-top: 12px; }
+  .tira { flex: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-top: 26px; min-height: 0; align-items: center; }
+  figure { display: flex; flex-direction: column; gap: 12px; }
+  .marco { border: 2px solid var(--borde); border-radius: 12px; overflow: hidden; aspect-ratio: 2 / 1; background: var(--superficie); }
+  .marco img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .marco.cabecera img { object-fit: contain; background: #0b0f1a; }
+  figcaption b { display: inline-block; padding: 4px 14px; border-radius: 999px; font-size: 18px; background: var(--superficie);
+                 border: 2px solid var(--borde); }
+  figure:last-child figcaption b { background: var(--acento); color: var(--acento-texto); border-color: var(--acento); }
+  figcaption span { display: block; margin-top: 8px; font-size: 19px; line-height: 1.3; color: var(--tenue); }
+  .pie { display: flex; justify-content: space-between; font-size: 19px; color: var(--tenue); }
+</style>
+</head>
+<body>
+  <div class="marca">Galivelop Image Generator</div>
+  <h1>The same image, round by round: from idea to finished piece</h1>
+  <div class="tira">
+    <figure><div class="marco"><img src="portal-r1.webp" alt=""></div><figcaption><b>Round 1</b><span>First background: the idea is there, but it doesn’t read as a portal.</span></figcaption></figure>
+    <figure><div class="marco"><img src="portal-r3.webp" alt=""></div><figcaption><b>Round 3</b><span>With the chosen style it is now a doorway of light.</span></figcaption></figure>
+    <figure><div class="marco cabecera"><img src="portal-r5.webp" alt=""></div><figcaption><b>Round 5</b><span>The finished header, with logo and tagline.</span></figcaption></figure>
+  </div>
+  <div class="pie"><span>Generated locally: nothing leaves the machine.</span><span>Steam Deck · FLUX.2 klein 4B</span></div>
+</body>
+</html>
