@@ -2,7 +2,8 @@
 // Mide en texto lo que ocupa cada página, para no gastar capturas en eso: alto en px, «pantallas» (alto / alto de
 // la ventana), desbordamiento horizontal y errores de consola, en escritorio (1280x800) y en móvil a 390, 360 y
 // 320 px. En móvil, además, el texto cortado dentro de una caja y los controles con zona táctil pequeña, también
-// dentro de lo que solo se ve al tocar: el menú y su submenú, y cada hoja de apartado de las fichas. Por
+// dentro de lo que solo se ve al tocar: el menú y su submenú, cada hoja de apartado de las fichas y la vista
+// ampliada de una imagen (la de la galería de la ficha y, en cada hoja, la de su galería y su primera tarjeta). Por
 // defecto mide cada ruta en castellano, gallego e inglés (un texto puede caber en uno y cortarse en otro).
 // Pide Playwright, que no es dependencia del portal: en la nube ya está; en local, `npm i --no-save playwright`
 // (como tools/generar-marca.mjs). Uso, tras `npm run build`:
@@ -150,8 +151,8 @@ function medirPagina({ movil, tactil, raiz }) {
 }
 
 /**
- * En móvil, abre lo que la página esconde hasta que se toca (el menú y su submenú, cada hoja de apartado) y lo mide
- * como la página. Devuelve los cortes y los controles pequeños con la capa delante, para saber dónde mirar.
+ * En móvil, abre lo que la página esconde hasta que se toca (el menú y su submenú, cada hoja de apartado, la vista
+ * ampliada de una imagen) y lo mide como la página. Devuelve los cortes y los controles pequeños con la capa delante, para saber dónde mirar.
  */
 async function medirCapas(pagina) {
   const cortes = [];
@@ -174,12 +175,26 @@ async function medirCapas(pagina) {
     }
     await menu.click();
   }
+  // La vista ampliada pide pantalla completa: se cierra a mano (con Esc saldría solo de la pantalla completa).
+  const ampliar = async (boton, capa) => {
+    if (!(await boton.count())) return;
+    await boton.first().click();
+    await pagina.locator('dialog.galeria-dialogo[open]').waitFor();
+    await medir(capa, 'dialog.galeria-dialogo[open]');
+    await pagina.evaluate(async () => {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      document.querySelector('dialog.galeria-dialogo[open]')?.close();
+    });
+  };
+  await ampliar(pagina.locator('main .galeria-ampliar:visible'), 'galería ampliada');
   const piezas = pagina.locator('.mosaico-pieza');
   for (let i = 0, n = await piezas.count(); i < n; i++) {
     await piezas.nth(i).click();
     const hoja = pagina.locator('dialog.hoja[open]');
     await hoja.waitFor();
     await medir(`hoja ${i + 1}`, 'dialog.hoja[open]');
+    await ampliar(hoja.locator('.galeria-ampliar'), `hoja ${i + 1}, galería ampliada`);
+    await ampliar(hoja.locator('.tarjeta-imagen'), `hoja ${i + 1}, imagen ampliada`);
     await pagina.keyboard.press('Escape');
     await hoja.waitFor({ state: 'detached' });
   }
