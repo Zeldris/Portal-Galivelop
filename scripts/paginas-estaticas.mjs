@@ -43,9 +43,9 @@ const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
 const FIJAS = {
   '': {
-    es: ['Galivelop · Taller independiente de software', 'Galivelop: un taller donde creamos, investigamos, innovamos y aprendemos. Proyectos expuestos tal y como están y abiertos a quien quiera participar.'],
-    gl: ['Galivelop · Obradoiro independente de software', 'Galivelop: un obradoiro onde creamos, investigamos, innovamos e aprendemos. Proxectos expostos tal e como están e abertos a quen queira participar.'],
-    en: ['Galivelop · Independent software workshop', 'Galivelop: a workshop where we create, research, innovate and learn. Projects shown as they are and open to anyone who wants to take part.'],
+    es: ['Galivelop · Marca de software: taller y Productos', 'Galivelop son dos cosas: el taller, que crea, investiga y aprende a la vista y con la puerta abierta, y Productos, el software de descarga local y los servicios de sus integrantes.'],
+    gl: ['Galivelop · Marca de software: obradoiro e Produtos', 'Galivelop son dúas cousas: o obradoiro, que crea, investiga e aprende á vista e coa porta aberta, e Produtos, o software de descarga local e os servizos dos seus integrantes.'],
+    en: ['Galivelop · Software brand: workshop and Products', 'Galivelop is two things: the workshop, which creates, researches and learns in the open with the door open, and Products, the locally installed software and the services of its members.'],
   },
   equipo: { es: ['Equipo · Galivelop'], gl: ['Equipo · Galivelop'], en: ['Team · Galivelop'] },
   'participa/proponer': { es: ['Propón un proyecto · Galivelop'], gl: ['Propón un proxecto · Galivelop'], en: ['Propose a project · Galivelop'] },

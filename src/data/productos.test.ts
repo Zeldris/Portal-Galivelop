@@ -24,7 +24,9 @@ describe('productos', () => {
         expect(p.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
         expect(p.nombre?.trim()).toBeTruthy();
         expect(ESTADOS_PRODUCTO).toContain(p.estado);
-        expect(textosIncompletos({ queOfrece: p.queOfrece ?? {}, servicios: p.servicios }, p.slug)).toEqual([]);
+        expect(p.queOfrece).toBeDefined();
+        expect(Array.isArray(p.servicios)).toBe(true);
+        expect(textosIncompletos({ queOfrece: p.queOfrece, servicios: p.servicios }, p.slug)).toEqual([]);
       });
 
       it('usa un icono que existe y un color hex', () => {

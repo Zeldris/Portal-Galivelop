@@ -262,17 +262,14 @@ const es = {
   'productos.asunto': 'Me interesa {producto}',
   'productos.integrantes.titulo': 'Integrantes',
   'productos.integrantes.texto': 'Miembros del taller que ofrecen sus servicios por su cuenta. Cada uno es autónomo.',
-  'productos.integrantes.perfil': 'Ver la página de {nombre}',
   'productos.contacto.titulo': '¿Te interesa algo?',
   'productos.contacto.texto': 'Escribe a Álvaro: te cuenta cómo conseguirlo, con qué condiciones y cuándo llega lo que aún no está.',
   'productos.contacto.boton': 'Escribir a Álvaro',
   'productos.contacto.asunto': 'Productos de Galivelop',
-  'inicio.productos.titulo': 'Productos',
   'inicio.productos.antetitulo': 'Software y servicios',
   'inicio.productos.texto': 'Software de descarga local que nace en el taller, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'El taller',
   'inicio.taller.texto': 'Aquí no se vende: se crea, se investiga y se aprende a la vista.',
-  'inicio.productos.boton': 'Ver Productos',
 };
 
 export type Clave = keyof typeof es;
@@ -538,17 +535,14 @@ const gl: Record<Clave, string> = {
   'productos.asunto': 'Interésame {producto}',
   'productos.integrantes.titulo': 'Integrantes',
   'productos.integrantes.texto': 'Membros do obradoiro que ofrecen os seus servizos pola súa conta. Cada un é autónomo.',
-  'productos.integrantes.perfil': 'Ver a páxina de {nombre}',
   'productos.contacto.titulo': 'Interésache algo?',
   'productos.contacto.texto': 'Escríbelle a Álvaro: cóntache como conseguilo, con que condicións e cando chega o que aínda non está.',
   'productos.contacto.boton': 'Escribir a Álvaro',
   'productos.contacto.asunto': 'Produtos de Galivelop',
-  'inicio.productos.titulo': 'Produtos',
   'inicio.productos.antetitulo': 'Software e servizos',
   'inicio.productos.texto': 'Software de descarga local que nace no obradoiro, e as persoas que o fan. Sen prezos na web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'O obradoiro',
   'inicio.taller.texto': 'Aquí non se vende: créase, investígase e apréndese á vista.',
-  'inicio.productos.boton': 'Ver Produtos',
 };
 
 const en: Record<Clave, string> = {
@@ -812,17 +806,14 @@ const en: Record<Clave, string> = {
   'productos.asunto': 'I’m interested in {producto}',
   'productos.integrantes.titulo': 'Members',
   'productos.integrantes.texto': 'Workshop members who offer their services independently. Each one is self-employed.',
-  'productos.integrantes.perfil': 'See {nombre}’s page',
   'productos.contacto.titulo': 'Interested in something?',
   'productos.contacto.texto': 'Write to Álvaro: he’ll tell you how to get it, on what terms, and when what isn’t ready yet will arrive.',
   'productos.contacto.boton': 'Write to Álvaro',
   'productos.contacto.asunto': 'Galivelop products',
-  'inicio.productos.titulo': 'Products',
   'inicio.productos.antetitulo': 'Software and services',
   'inicio.productos.texto': 'Locally installed software born in the workshop, and the people who make it. No prices on the web: everything is arranged by email.',
   'inicio.taller.antetitulo': 'The workshop',
   'inicio.taller.texto': 'Nothing is sold here: we create, research and learn in the open.',
-  'inicio.productos.boton': 'See Products',
 };
 
 export const textos = { es, gl, en };

@@ -2826,7 +2826,7 @@ button {
   background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
 }
 
-.persona h2 {
+.persona :is(h2, h3) {
   font-size: 1.3rem;
 }
 

@@ -5,8 +5,8 @@
 <h1 align="center">Galivelop</h1>
 
 <p align="center">
-  <strong>Taller independiente de software</strong><br>
-  Hacemos reales los proyectos que parecen imposibles.
+  <strong>Marca de software: taller y Productos</strong><br>
+  El taller crea, investiga y aprende a la vista; Productos es lo que sale de él.
 </p>
 
 <p align="center">
