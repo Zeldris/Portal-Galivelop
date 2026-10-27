@@ -1876,7 +1876,9 @@ button {
   text-decoration: none;
 }
 
-/* Enlaces de texto sueltos: la zona que se toca crece hasta unos 44px de alto sin mover nada del diseño. */
+/* Enlaces de texto sueltos (y los botones de idioma): la zona que se toca crece hasta unos 44px de alto sin mover
+   nada del diseño. `npm run medir` avisa en móvil de los controles que se quedan cortos. */
+.idiomas button,
 .volver,
 .siguiente,
 .vistazo-mas,
@@ -1887,6 +1889,7 @@ button {
   position: relative;
 }
 
+.idiomas button::after,
 .volver::after,
 .siguiente::after,
 .vistazo-mas::after,
@@ -4274,8 +4277,9 @@ body:has(dialog[open]) {
   }
 }
 
-/* Por debajo de 360px dos columnas cortan el nombre de cada pieza («configuración», «dimensiones»). */
-@media (max-width: 22.4375em) {
+/* Por debajo de 380px dos columnas cortan el nombre de cada pieza («configuración», «dimensiones»); `npm run medir`
+   lo mide (columna `cortes`). */
+@media (max-width: 23.6875em) {
   .mosaico {
     grid-template-columns: minmax(0, 1fr);
   }

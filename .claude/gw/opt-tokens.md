@@ -21,7 +21,9 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Medir páginas en texto** (2026-10-25): `npm run medir` (`tools/qa/medir-paginas.cjs`, tras `npm run build`;
   arranca y para él mismo `vite preview`, desde la retro del muro) da alto, pantallas, desbordamiento y errores de
   consola por página en escritorio y móvil. Las capturas, solo para juzgar el aspecto (el rediseño leyó 39, muchas
-  solo para medir).
+  solo para medir). Desde el 2026-10-27 mide el móvil a 390, 360 y 320 px y da también `cortes` (texto que se sale
+  de su caja) y `tactiles` (controles por debajo de 24×24 px, con la zona del `::after` sumada): encontró el mosaico
+  cortado a 360 y los botones de idioma de 28 px que el barrido con capturas no vio.
 - **Bitácora por partes** (2026-10-25): `recuperar.py --estado`, o `sed -n '/^## Pendiente/,/^## /p'
   docs/traspaso.md` para una sección; entera solo al empezar (el rediseño la leyó 66 veces, 415k arrastrados).
 - **Subagentes con plan cerrado, en el modelo barato** (2026-10-25): aplicar estilos o textos ya decididos, hacer
@@ -46,6 +48,10 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Leer otro repo en la sesión principal** (aplicar Galivelop-workflow, 2026-10-22: guía, config, plantillas y
   scripts, ~30k tokens arrastrados en cada llamada): con `orchestrate-dealer`, un subagente lee y resume con rutas.
 - **Capturas de pantalla** para revisar cambios visuales: necesarias, pero mejor por sección y a 1280 px.
+- **Capturas releídas** (2026-10-27, una misma captura leída 4 veces en la ronda de móvil): lo que se saca de una
+  captura se escribe en texto (medidas, qué falla y dónde) y la captura no se vuelve a abrir.
+- **Git con salida corta** (2026-10-27, un `git branch -a` con su log entró con 6k): `git status --short`,
+  `git log --oneline -N` y `git diff --stat`; el diff entero, solo del archivo que se revisa.
 - **Salida de `npm run check`**: filtrar con `grep -E "Tests|error"`.
 - **`src/estilos/global.css`** (más de 2.800 líneas): `grep -n '<selector>'` y `sed -n` del rango, nunca entero
   (el rediseño lo leyó 32 veces, 210k arrastrados).
@@ -65,6 +71,9 @@ carpeta del portal. `medir.py` y `recuperar.py` lo buscan también en las carpet
 
 ## Referencias medidas
 
+- 2026-10-27, ronda de móvil (fase 2, desde 305f3cf): 243 llamadas, 121k de contexto medio (suelo 102k, techo 142k),
+  8 compactaciones; Bash 1,31M arrastrados, Read 912k (39 imágenes); un subagente general en el modelo grande, 2,38M
+  de entrada. La sesión entera: 1.337 llamadas, 50 compactaciones.
 - 2026-10-26, página de miembro y encargos: 260 llamadas, 128k de contexto medio (suelo 114k, techo 141k), 17
   compactaciones; 4 subagentes, 9,1M de entrada, 74k de arranque. La sesión entera (desde el 2026-10-25, sin `/clear`):
   983 llamadas, 38 compactaciones.
