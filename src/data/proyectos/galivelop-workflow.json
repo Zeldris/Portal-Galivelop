@@ -1565,9 +1565,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos. La 0.4 es la última antes de la 1.0: desde aquí solo llevará arreglos.",
-        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos. A 0.4 é a última antes da 1.0: desde aquí só levará arranxos.",
-        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us. 0.4 is the last before 1.0: from here it only gets fixes."
+        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos. La 0.4 es la última antes de la 1.0: desde aquí solo llevará arreglos, y es la versión del plugin que se publicará en Productos.",
+        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos. A 0.4 é a última antes da 1.0: desde aquí só levará arranxos, e é a versión do plugin que se publicará en Produtos.",
+        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us. 0.4 is the last before 1.0: from here it only gets fixes, and it is the plugin version that will be published in Products."
       }
     },
     {
@@ -1586,7 +1586,12 @@
         "gl": "Plugin e npm",
         "en": "Plugin and npm"
       },
-      "estado": "pendiente"
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Se publica el plugin de la versión anterior a la 1.0.0 (la 0.4), de descarga local desde Productos.",
+        "gl": "Publícase o plugin da versión anterior á 1.0.0 (a 0.4), de descarga local desde Produtos.",
+        "en": "The plugin of the version before 1.0.0 (0.4) is published, as a local download from Products."
+      }
     },
     {
       "version": "10",
@@ -1595,7 +1600,12 @@
         "gl": "Público (1.0)",
         "en": "Public (1.0)"
       },
-      "estado": "pendiente"
+      "estado": "pendiente",
+      "detalle": {
+        "es": "La 1.0.0 es el producto final: se descarga cuando la versión pública anterior haya rodado.",
+        "gl": "A 1.0.0 é o produto final: descárgase cando a versión pública anterior teña rodado.",
+        "en": "1.0.0 is the final product: it becomes available once the previous public version has been run in."
+      }
     }
   ],
   "novedades": [

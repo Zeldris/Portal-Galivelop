@@ -8,9 +8,9 @@
   "estado": "proximamente",
   "version": "1.0.0",
   "queOfrece": {
-    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en todos los proyectos del taller, de descarga local.",
-    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados en todos os proxectos do obradoiro, de descarga local.",
-    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across all the workshop's projects, as a local download."
+    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en todos los proyectos del taller, de descarga local. Primero se publica el plugin de la versión anterior a la 1.0.0; el producto final es la 1.0.0.",
+    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados en todos os proxectos do obradoiro, de descarga local. Primeiro publícase o plugin da versión anterior á 1.0.0; o produto final é a 1.0.0.",
+    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across all the workshop's projects, as a local download. The plugin of the version before 1.0.0 is published first; the final product is 1.0.0."
   },
   "servicios": [
     {
