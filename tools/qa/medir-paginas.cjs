@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Mide en texto lo que ocupa cada página, para no gastar capturas en eso: alto en px, «pantallas» (alto / alto de
 // la ventana), desbordamiento horizontal y errores de consola, en escritorio (1280x800) y en móvil a 390, 360 y
-// 320 px. En móvil, además, el texto cortado dentro de una caja y los controles con zona táctil pequeña.
+// 320 px. En móvil, además, el texto cortado dentro de una caja y los controles con zona táctil pequeña. Por
+// defecto mide cada ruta en castellano, gallego e inglés (un texto puede caber en uno y cortarse en otro).
 // Pide Playwright, que no es dependencia del portal: en la nube ya está; en local, `npm i --no-save playwright`
 // (como tools/generar-marca.mjs). Uso, tras `npm run build`:
 //   npm run medir [ruta ...]        (rutas como `equipo` o `/equipo`; por defecto, todas las de abajo)
@@ -22,10 +23,11 @@ try {
 
 const BASE = process.env.BASE || 'http://localhost:4173/Portal-Galivelop/';
 const RAIZ = join(__dirname, '..', '..');
+const PAGINAS = ['', 'proyectos/tarkor', 'proyectos/toveriai', 'proyectos/galivelop-workflow', 'equipo', 'participa/proponer', 'participa/unirse', 'muro'];
 const RUTAS = (
   process.argv.slice(2).length
     ? process.argv.slice(2)
-    : ['', 'proyectos/tarkor', 'proyectos/toveriai', 'proyectos/galivelop-workflow', 'equipo', 'participa/proponer', 'participa/unirse', 'muro', 'no-existe']
+    : [...PAGINAS, ...['gl/', 'en/'].flatMap((idioma) => PAGINAS.map((r) => idioma + r)), 'no-existe']
 ).map((r) => r.replace(/^\//, ''));
 const VENTANAS = [
   ['escritorio', 1280, 800],
@@ -85,7 +87,7 @@ const parar = (hijo) => {
 function medirPagina({ movil, tactil }) {
   const nombre = (el) => {
     const clase = typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/)[0] : '';
-    const texto = (el.textContent || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ').slice(0, 24);
+    const texto = (el.textContent.trim() || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ').slice(0, 24);
     return `${el.tagName.toLowerCase()}${clase}${texto ? ` «${texto}»` : ''}`;
   };
   const visible = (el) => {
@@ -122,10 +124,19 @@ function medirPagina({ movil, tactil }) {
       const r = (el.closest('label') ?? el).getBoundingClientRect();
       let alto = r.height;
       let ancho = r.width;
+      // Un `::after` absoluto con márgenes negativos agranda la zona que se toca, pero solo si se mide contra el
+      // propio control (que tiene `position`); si no, es una capa sobre otra caja (la cabecera entera) y se avisa.
       const tras = getComputedStyle(el, '::after');
-      if (tras.content !== 'none' && tras.position === 'absolute') {
-        alto -= Math.min(0, parseFloat(tras.top) || 0) + Math.min(0, parseFloat(tras.bottom) || 0);
-        ancho -= Math.min(0, parseFloat(tras.left) || 0) + Math.min(0, parseFloat(tras.right) || 0);
+      const lados = ['top', 'bottom', 'left', 'right'].map((lado) => Math.min(0, parseFloat(tras[lado]) || 0));
+      if (tras.content !== 'none' && tras.position === 'absolute' && tras.display !== 'none' && lados.some((d) => d < 0)) {
+        if (getComputedStyle(el).position === 'static') {
+          tactiles.push(`${nombre(el)} ::after sin position en el control`);
+          continue;
+        }
+        if (tras.pointerEvents !== 'none') {
+          alto -= lados[0] + lados[1];
+          ancho -= lados[2] + lados[3];
+        }
       }
       if (alto < tactil.alto || ancho < tactil.ancho) tactiles.push(`${nombre(el)} ${Math.round(ancho)}x${Math.round(alto)}`);
     }
@@ -154,7 +165,7 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
       pagina.on('console', alError);
       pagina.on('pageerror', alFallo);
       await pagina.goto(BASE + ruta, { waitUntil: 'networkidle' });
-      const m = await pagina.evaluate(medirPagina, { movil: ancho < 700, tactil: TACTIL });
+      const m = await pagina.evaluate(medirPagina, { movil: nombre.startsWith('movil'), tactil: TACTIL });
       pagina.off('console', alError);
       pagina.off('pageerror', alFallo);
       const desborda = m.ancho > ancho;

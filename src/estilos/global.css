@@ -1877,7 +1877,7 @@ button {
 }
 
 /* Enlaces de texto sueltos (y los botones de idioma): la zona que se toca crece hasta unos 44px de alto sin mover
-   nada del diseño. `npm run medir` avisa en móvil de los controles que se quedan cortos. */
+   nada del diseño. `npm run medir` solo avisa por debajo de 24x24 px (el mínimo de WCAG): los ~44 px se miran aquí. */
 .idiomas button,
 .volver,
 .siguiente,
