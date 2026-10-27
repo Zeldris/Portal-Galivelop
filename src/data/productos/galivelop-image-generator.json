@@ -1,0 +1,17 @@
+{
+  "slug": "galivelop-image-generator",
+  "nombre": "Galivelop Image Generator",
+  "orden": 3,
+  "acento": "#7C5CD6",
+  "icono": "image",
+  "proximo": "galivelop-image-generator",
+  "estado": "proximamente",
+  "queOfrece": {
+    "es": "Generador de imágenes con IA local, pensado para producir arte y recursos de forma reproducible.",
+    "gl": "Xerador de imaxes con IA local, pensado para producir arte e recursos de forma reproducible.",
+    "en": "Local AI image generator, designed to produce art and assets reproducibly."
+  },
+  "servicios": [],
+  "responsable": "alvaro-garcia-grana",
+  "colaboradores": []
+}

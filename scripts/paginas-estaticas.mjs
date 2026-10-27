@@ -28,6 +28,13 @@ const publicaciones = readdirSync('src/data/muro', { withFileTypes: true })
   .flatMap((d) => readdirSync(`src/data/muro/${d.name}`).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`src/data/muro/${d.name}/${f}`, 'utf8'))))
   .sort((a, b) => b.fecha.localeCompare(a.fecha) || b.pieza.localeCompare(a.pieza));
 
+// Productos de la marca (src/data/productos/<slug>.json), en el mismo orden que src/data/productos.ts.
+const productos = readdirSync('src/data/productos')
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => JSON.parse(readFileSync(`src/data/productos/${f}`, 'utf8')))
+  .sort((a, b) => a.orden - b.orden);
+const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon' };
+
 // En el mismo orden que src/data/equipo.ts.
 const equipo = JSON.parse(readFileSync('src/data/equipo.json', 'utf8')).sort((a, b) => a.orden - b.orden);
 
@@ -43,6 +50,11 @@ const FIJAS = {
   equipo: { es: ['Equipo · Galivelop'], gl: ['Equipo · Galivelop'], en: ['Team · Galivelop'] },
   'participa/proponer': { es: ['Propón un proyecto · Galivelop'], gl: ['Propón un proxecto · Galivelop'], en: ['Propose a project · Galivelop'] },
   'participa/unirse': { es: ['Únete al taller · Galivelop'], gl: ['Únete ao obradoiro · Galivelop'], en: ['Join the workshop · Galivelop'] },
+  productos: {
+    es: ['Productos · Galivelop', 'Software de descarga local que nace en el taller de Galivelop, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.'],
+    gl: ['Produtos · Galivelop', 'Software de descarga local que nace no obradoiro de Galivelop, e as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
+    en: ['Products · Galivelop', 'Locally installed software born in the Galivelop workshop, and the people who make it. No prices on the site: everything is arranged by email.'],
+  },
 };
 // El muro solo tiene página (y entra en el sitemap) cuando ya hay alguna publicación.
 if (publicaciones.length > 0) {
@@ -96,6 +108,11 @@ function cuerpo(pg) {
     const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
     const posts = publicaciones.map((x) => `<article><h2>${esc(x.titulo[pg.idioma])}</h2><p>${esc(nombre(x.proyecto))} · ${x.fecha}</p><p>${esc(x.texto[pg.idioma])}</p>${(x.cuerpo ?? []).map((c) => `<p>${esc(c[pg.idioma])}</p>`).join('')}</article>`).join('');
     return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p>${posts}<ul>${enlaces}</ul></main>`;
+  }
+  if (pg.ruta === 'productos') {
+    const lista = productos.map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
+    const promocionados = equipo.filter((x) => x.promocionado).map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
+    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul>${promocionados ? `<ul>${promocionados}</ul>` : ''}<ul>${enlaces}</ul></main>`;
   }
   if (pg.ruta === 'equipo') {
     const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
@@ -186,7 +203,7 @@ writeFileSync(
   'dist/llms.txt',
   `# Galivelop\n\n> ${FIJAS[''].es[1]}\n\n## Proyectos\n\n${proyectos
     .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
-    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Productos](${urlDe('es', 'productos')}): software de descarga local e integrantes, sin precios\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);
 console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml, robots.txt y llms.txt`);

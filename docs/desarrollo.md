@@ -79,6 +79,27 @@ No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la po
 
 Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.ts`](../src/data/marca.ts).
 
+## Añadir o actualizar un producto
+
+**Productos** (`/productos`, [ADR 0002](adr/0002-marca-taller-y-productos.md)) sale de
+`src/data/productos/<slug>.json` (formato en [`src/data/productos.ts`](../src/data/productos.ts)); los decide
+Álvaro y se mantienen a mano, no con la tarea semanal.
+
+- `slug`, `nombre`, `orden` (de menor a mayor), `acento` (color hex) e `icono` (nombre de `Icono`).
+- `proyecto` (slug de la ficha del taller) **o** `proximo` (slug de `src/data/proximamente.json`): uno de los dos, para
+  enlazar con el taller.
+- `estado`: `disponible` o `proximamente` (sale con la etiqueta «Próximamente» y se oferta igual, sin explicar
+  cómo va). `version` es opcional (solo la que se ofrece).
+- `queOfrece` y cada entrada de `servicios`, en los tres idiomas.
+- `responsable` (id de `equipo.json`, el creador) y `colaboradores` (ids).
+- Sin precio ni forma de conseguirlo: el botón «Me interesa» abre un correo a la marca con el producto en el asunto.
+
+Un **integrante promocionado** lleva en `equipo.json` `promocionado: true` y `servicios` (lista de textos en los
+tres idiomas); sale en Productos con acceso a su página de miembro.
+
+`npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` genera la
+página estática de `/productos`.
+
 ## Añadir o actualizar a alguien del equipo
 
 La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id>`) salen de

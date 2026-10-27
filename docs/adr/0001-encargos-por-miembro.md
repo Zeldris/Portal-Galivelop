@@ -3,8 +3,8 @@
 - **Fecha:** 2026-10-26
 - **Estado:** aceptada y **publicada** el 2026-10-26; **sustituida en parte** por la
   [ADR 0002](0002-marca-taller-y-productos.md) (2026-10-27): el taller sigue sin vender y cada miembro factura por
-  su cuenta, pero la marca pasa a tener una parte de Productos donde sí se ofrecen productos e integrantes
-  (cuando haya el primero con forma); «sin "de pago" ni distintivos» queda solo para el taller. Publicada: página de cada miembro con «¿Tienes un proyecto?» y la banda
+  su cuenta, pero la marca pasa a tener una parte de Productos (`/productos`) donde sí se ofrecen productos e
+  integrantes; «sin "de pago" ni distintivos» queda solo para el taller. Publicada: página de cada miembro con «¿Tienes un proyecto?» y la banda
   «¿Tienes un proyecto propio?» de Participa (prototipo y veredicto en `docs/traspaso.md`).
 - **Decide:** Álvaro García Graña (fundador)
 

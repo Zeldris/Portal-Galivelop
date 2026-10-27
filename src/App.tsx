@@ -7,6 +7,7 @@ import { Inicio } from './pages/Inicio';
 import { Miembro } from './pages/Miembro';
 import { Muro } from './pages/Muro';
 import { NoEncontrado } from './pages/NoEncontrado';
+import { Productos } from './pages/Productos';
 import { Proponer } from './pages/Proponer';
 import { Proyecto } from './pages/Proyecto';
 import { Unirse } from './pages/Unirse';
@@ -37,6 +38,7 @@ export function App() {
           <Route path="/muro" element={<Muro />} />
           <Route path="/equipo" element={<Equipo />} />
           <Route path="/equipo/:id" element={<Miembro />} />
+          <Route path="/productos" element={<Productos />} />
           <Route path="/participa/proponer" element={<Proponer />} />
           <Route path="/participa/unirse" element={<Unirse />} />
           <Route path="*" element={<NoEncontrado />} />

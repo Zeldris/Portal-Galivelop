@@ -1,44 +1,84 @@
-import { ArrowDown, ArrowRight, Check, Cpu, Eye, FlaskConical, Globe, HeartHandshake, Layers, Lightbulb, Lock, Mail, MessageSquare, Rocket, ShieldCheck, Target, Users, Workflow, type LucideIcon } from 'lucide-react';
-import { useState, type CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
-import { IconoDiscord } from '../components/IconoDiscord';
-import { IconoGitHub } from '../components/IconoGitHub';
-import { MarcaGV } from '../components/Logo';
-import { TarjetaProxima } from '../components/TarjetaProxima';
-import { TarjetaProyecto } from '../components/TarjetaProyecto';
-import { LINEAS, type Linea } from '../data/lineas';
-import { MARCA } from '../data/marca';
-import { proximos } from '../data/proximamente';
-import { proyectos, ruta } from '../data/proyectos';
-import type { EstadoProyecto } from '../data/tipos';
-import { useIdioma } from '../i18n/Idioma';
+import {
+  ArrowDown,
+  ArrowRight,
+  Check,
+  Cpu,
+  Eye,
+  FlaskConical,
+  Globe,
+  HeartHandshake,
+  Layers,
+  Lightbulb,
+  Lock,
+  Mail,
+  MessageSquare,
+  Rocket,
+  ShieldCheck,
+  Target,
+  Users,
+  Workflow,
+  type LucideIcon,
+} from "lucide-react";
+import { useState, type CSSProperties } from "react";
+import { Link } from "react-router-dom";
+import { IconoDiscord } from "../components/IconoDiscord";
+import { IconoGitHub } from "../components/IconoGitHub";
+import { MarcaGV } from "../components/Logo";
+import { TarjetaProxima } from "../components/TarjetaProxima";
+import { TarjetaProyecto } from "../components/TarjetaProyecto";
+import { TarjetaProducto } from "./Productos";
+import { LINEAS, type Linea } from "../data/lineas";
+import { MARCA } from "../data/marca";
+import { productos } from "../data/productos";
+import { proximos } from "../data/proximamente";
+import { proyectos, ruta } from "../data/proyectos";
+import type { EstadoProyecto } from "../data/tipos";
+import { useIdioma } from "../i18n/Idioma";
 
-const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
+const FILTROS: (EstadoProyecto | "todos")[] = [
+  "todos",
+  "publicado",
+  "desarrollo",
+  "diseno",
+];
 /** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
 const FILTRAR_DESDE = 5;
-const ICONO_LINEA: Record<Linea, LucideIcon> = { 'ia-local': Cpu, mundos: Globe, informacion: ShieldCheck, producto: Layers, metodo: Workflow };
-const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
-  [Target, 'valor1'],
-  [FlaskConical, 'valor2'],
-  [Eye, 'valor3'],
-  [HeartHandshake, 'valor4'],
+const ICONO_LINEA: Record<Linea, LucideIcon> = {
+  "ia-local": Cpu,
+  mundos: Globe,
+  informacion: ShieldCheck,
+  producto: Layers,
+  metodo: Workflow,
+};
+const PRINCIPIOS: [LucideIcon, "valor1" | "valor2" | "valor3" | "valor4"][] = [
+  [Target, "valor1"],
+  [FlaskConical, "valor2"],
+  [Eye, "valor3"],
+  [HeartHandshake, "valor4"],
 ];
 
 /** «A, B y C» en el idioma de la página; sin Intl.ListFormat (navegadores viejos), con comas. */
 function listar(nombres: string[], idioma: string) {
-  return typeof Intl.ListFormat === 'function' ? new Intl.ListFormat(idioma, { type: 'conjunction' }).format(nombres) : nombres.join(', ');
+  return typeof Intl.ListFormat === "function"
+    ? new Intl.ListFormat(idioma, { type: "conjunction" }).format(nombres)
+    : nombres.join(", ");
 }
 
 export function Inicio() {
   const { t, idioma } = useIdioma();
-  const [filtro, setFiltro] = useState<EstadoProyecto | 'todos'>('todos');
+  const [filtro, setFiltro] = useState<EstadoProyecto | "todos">("todos");
 
   const conContacto = proyectos.filter((p) => p.contacto);
-  const privados = proyectos.filter((p) => p.colaboracion === 'privada');
-  const visibles = proyectos.filter((p) => filtro === 'todos' || p.estado === filtro);
-  const cuenta = (e: EstadoProyecto) => proyectos.filter((p) => p.estado === e).length;
+  const privados = proyectos.filter((p) => p.colaboracion === "privada");
+  const visibles = proyectos.filter(
+    (p) => filtro === "todos" || p.estado === filtro,
+  );
+  const cuenta = (e: EstadoProyecto) =>
+    proyectos.filter((p) => p.estado === e).length;
   // El collage de la portada toma una imagen de cada proyecto (hasta tres).
-  const collage = proyectos.slice(0, 3).map((p) => ({ p, img: p.galeria[0] ?? p.portada }));
+  const collage = proyectos
+    .slice(0, 3)
+    .map((p) => ({ p, img: p.galeria[0] ?? p.portada }));
 
   return (
     <>
@@ -46,37 +86,42 @@ export function Inicio() {
         <div className="hero-fondo" aria-hidden="true" />
         <div className="contenedor hero-rejilla">
           <div className="hero-texto">
-            <p className="antetitulo">{t('hero.antetitulo')}</p>
+            <p className="antetitulo">{t("hero.antetitulo")}</p>
             <h1>
-              {t('hero.titulo1')} <span className="destacado">{t('hero.titulo2')}</span>
+              {t("hero.titulo1")}{" "}
+              <span className="destacado">{t("hero.titulo2")}</span>
             </h1>
-            <p className="hero-parrafo">{t('hero.texto')}</p>
+            <p className="hero-parrafo">{t("hero.texto")}</p>
             <div className="hero-botones">
-              <a href="#proyectos" className="boton boton-primario">
-                {t('hero.cta.proyectos')} <ArrowDown size={18} />
-              </a>
-              <a href="#participa" className="boton boton-secundario">
-                {t('hero.cta.sobre')}
+              <Link to="/productos" className="boton boton-primario">
+                {t("hero.cta.productos")} <ArrowRight size={18} />
+              </Link>
+              <a href="#proyectos" className="boton boton-secundario">
+                {t("hero.cta.taller")} <ArrowDown size={16} />
               </a>
             </div>
             <dl className="hero-resumen">
               <div>
-                <dt>{t('hero.resumen.proyectos')}</dt>
+                <dt>{t("hero.resumen.proyectos")}</dt>
                 <dd>{proyectos.length}</dd>
               </div>
               <div>
-                <dt>{t('hero.resumen.publicados')}</dt>
-                <dd>{cuenta('publicado')}</dd>
+                <dt>{t("hero.resumen.publicados")}</dt>
+                <dd>{cuenta("publicado")}</dd>
               </div>
               <div>
-                <dt>{t('hero.resumen.desarrollo')}</dt>
-                <dd>{cuenta('desarrollo') + cuenta('diseno')}</dd>
+                <dt>{t("hero.resumen.desarrollo")}</dt>
+                <dd>{cuenta("desarrollo") + cuenta("diseno")}</dd>
               </div>
             </dl>
           </div>
           <div className="hero-collage" aria-hidden="true">
             {collage.map(({ p, img }, i) => (
-              <div key={p.slug} className={`collage-pieza collage-${i}`} style={{ borderColor: p.acento }}>
+              <div
+                key={p.slug}
+                className={`collage-pieza collage-${i}`}
+                style={{ borderColor: p.acento }}
+              >
                 <img src={ruta(img.mini)} alt="" />
                 <span>{p.nombre}</span>
               </div>
@@ -88,22 +133,64 @@ export function Inicio() {
         </div>
       </section>
 
-      <section id="proyectos" className="seccion">
+      {/* Productos (ADR 0002) va antes que el taller: es la parte de la marca con más peso en la portada. */}
+      <section
+        id="productos"
+        className="seccion seccion-productos"
+        aria-labelledby="productos-titulo"
+      >
         <div className="contenedor">
           <header className="seccion-cabecera">
             <div>
-              <h2>{t('proyectos.titulo')}</h2>
-              <p>{t('proyectos.texto')}</p>
+              <p className="antetitulo">{t("inicio.productos.antetitulo")}</p>
+              <h2 id="productos-titulo">{t("inicio.productos.titulo")}</h2>
+              <p>{t("inicio.productos.texto")}</p>
+            </div>
+            <Link to="/productos" className="boton boton-primario">
+              {t("inicio.productos.boton")} <ArrowRight size={16} />
+            </Link>
+          </header>
+          <div className="rejilla-productos rejilla-productos-inicio">
+            {productos.map((p) => (
+              <TarjetaProducto key={p.slug} producto={p} compacta />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" className="seccion seccion-taller">
+        <div className="contenedor">
+          <header className="seccion-cabecera">
+            <div>
+              <p className="antetitulo antetitulo-taller">
+                {t("inicio.taller.antetitulo")}
+              </p>
+              <h2>{t("proyectos.titulo")}</h2>
+              <p className="seccion-nota">{t("inicio.taller.texto")}</p>
+              <p>{t("proyectos.texto")}</p>
             </div>
             {proyectos.length >= FILTRAR_DESDE && (
-            <div className="filtros" role="group" aria-label={t('proyectos.titulo')}>
-              {FILTROS.filter((f) => f === 'todos' || cuenta(f) > 0).map((f) => (
-                <button key={f} type="button" aria-pressed={filtro === f} onClick={() => setFiltro(f)}>
-                  {f === 'todos' ? t('filtro.todos') : t(`estado.${f}`)}
-                  <span className="filtro-cuenta">{f === 'todos' ? proyectos.length : cuenta(f)}</span>
-                </button>
-              ))}
-            </div>
+              <div
+                className="filtros"
+                role="group"
+                aria-label={t("proyectos.titulo")}
+              >
+                {FILTROS.filter((f) => f === "todos" || cuenta(f) > 0).map(
+                  (f) => (
+                    <button
+                      key={f}
+                      type="button"
+                      aria-pressed={filtro === f}
+                      onClick={() => setFiltro(f)}
+                    >
+                      {f === "todos" ? t("filtro.todos") : t(`estado.${f}`)}
+                      <span className="filtro-cuenta">
+                        {f === "todos" ? proyectos.length : cuenta(f)}
+                      </span>
+                    </button>
+                  ),
+                )}
+              </div>
             )}
           </header>
           {visibles.length > 0 ? (
@@ -113,13 +200,16 @@ export function Inicio() {
               ))}
             </div>
           ) : (
-            <p className="vacio">{t('filtro.vacio')}</p>
+            <p className="vacio">{t("filtro.vacio")}</p>
           )}
-          {filtro === 'todos' && proximos.length > 0 && (
-            <section className="proximamente" aria-labelledby="proximamente-titulo">
+          {filtro === "todos" && proximos.length > 0 && (
+            <section
+              className="proximamente"
+              aria-labelledby="proximamente-titulo"
+            >
               <header>
-                <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
-                <p>{t('proximamente.texto')}</p>
+                <h3 id="proximamente-titulo">{t("proximamente.titulo")}</h3>
+                <p>{t("proximamente.texto")}</p>
               </header>
               <div className="rejilla-proximos">
                 {proximos.map((p) => (
@@ -135,11 +225,14 @@ export function Inicio() {
         <div className="contenedor">
           <header className="seccion-cabecera">
             <div>
-              <h2>{t('lineas.titulo')}</h2>
-              <p>{t('lineas.texto')}</p>
+              <h2>{t("lineas.titulo")}</h2>
+              <p>{t("lineas.texto")}</p>
             </div>
           </header>
-          <ul className="lineas" style={{ '--lineas': LINEAS.length } as CSSProperties}>
+          <ul
+            className="lineas"
+            style={{ "--lineas": LINEAS.length } as CSSProperties}
+          >
             {LINEAS.map((l) => {
               const IconoLinea = ICONO_LINEA[l];
               const suyos = proyectos.filter((p) => p.lineas.includes(l));
@@ -165,17 +258,18 @@ export function Inicio() {
       <section id="sobre" className="seccion">
         <div className="contenedor sobre-rejilla">
           <div>
-            <h2>{t('sobre.titulo')}</h2>
-            <p>{t('sobre.texto1')}</p>
-            <p>{t('sobre.texto2')}</p>
+            <h2>{t("sobre.titulo")}</h2>
+            <p>{t("sobre.texto1")}</p>
+            <p>{t("sobre.texto2")}</p>
             <p>
-              {t('sobre.texto3')} <Link to="/equipo">{t('sobre.verEquipo')} →</Link>
+              {t("sobre.texto3")}{" "}
+              <Link to="/equipo">{t("sobre.verEquipo")} →</Link>
             </p>
             <p className="sobre-nombre">
               <span className="sobre-marca" aria-hidden="true">
                 <b>Gali</b>cia + De<b>velop</b>
               </span>
-              {t('sobre.nombre')}
+              {t("sobre.nombre")}
             </p>
           </div>
           <ol className="valores">
@@ -193,36 +287,36 @@ export function Inicio() {
       <section id="participa" className="seccion seccion-alterna">
         <div className="contenedor contacto">
           <MarcaGV tamano={56} />
-          <h2>{t('contacto.titulo')}</h2>
-          <p>{t('contacto.texto')}</p>
+          <h2>{t("contacto.titulo")}</h2>
+          <p>{t("contacto.texto")}</p>
           <ul className="vias">
             <li>
               <Link to="/participa/unirse" className="via">
                 <Users aria-hidden="true" />
-                <h3>{t('via1.titulo')}</h3>
-                <p>{t('via1.texto')}</p>
+                <h3>{t("via1.titulo")}</h3>
+                <p>{t("via1.texto")}</p>
                 <span className="via-ir">
-                  {t('form.ir')} <ArrowRight size={16} />
+                  {t("form.ir")} <ArrowRight size={16} />
                 </span>
               </Link>
             </li>
             <li>
               <Link to="/participa/proponer" className="via">
                 <Rocket aria-hidden="true" />
-                <h3>{t('via2.titulo')}</h3>
-                <p>{t('via2.texto')}</p>
+                <h3>{t("via2.titulo")}</h3>
+                <p>{t("via2.texto")}</p>
                 <span className="via-ir">
-                  {t('form.ir')} <ArrowRight size={16} />
+                  {t("form.ir")} <ArrowRight size={16} />
                 </span>
               </Link>
             </li>
             <li>
               <Link to="/participa/unirse?modo=aprender" className="via">
                 <Lightbulb aria-hidden="true" />
-                <h3>{t('via3.titulo')}</h3>
-                <p>{t('via3.texto')}</p>
+                <h3>{t("via3.titulo")}</h3>
+                <p>{t("via3.texto")}</p>
                 <span className="via-ir">
-                  {t('form.ir')} <ArrowRight size={16} />
+                  {t("form.ir")} <ArrowRight size={16} />
                 </span>
               </Link>
             </li>
@@ -232,18 +326,25 @@ export function Inicio() {
               <MessageSquare size={22} />
             </span>
             <div>
-              <h3>{t('proyectoPropio.titulo')}</h3>
-              <p>{t('proyectoPropio.texto')}</p>
+              <h3>{t("proyectoPropio.titulo")}</h3>
+              <p>{t("proyectoPropio.texto")}</p>
             </div>
             <Link to="/equipo" className="boton boton-secundario">
-              {t('proyectoPropio.boton')} <ArrowRight size={16} />
+              {t("proyectoPropio.boton")} <ArrowRight size={16} />
             </Link>
           </aside>
           <div className="participa-guia">
             <div>
-              <h3>{t('paraquien.titulo')}</h3>
+              <h3>{t("paraquien.titulo")}</h3>
               <ul className="lista-check">
-                {(['paraquien.1', 'paraquien.2', 'paraquien.3', 'paraquien.4'] as const).map((k) => (
+                {(
+                  [
+                    "paraquien.1",
+                    "paraquien.2",
+                    "paraquien.3",
+                    "paraquien.4",
+                  ] as const
+                ).map((k) => (
                   <li key={k}>
                     <Check size={18} aria-hidden="true" /> {t(k)}
                   </li>
@@ -251,34 +352,46 @@ export function Inicio() {
               </ul>
             </div>
             <div>
-              <h3>{t('pasos.titulo')}</h3>
+              <h3>{t("pasos.titulo")}</h3>
               <ol className="pasos">
-                {(['paso.1', 'paso.2', 'paso.3', 'paso.4'] as const).map((k) => (
-                  <li key={k}>{t(k)}</li>
-                ))}
+                {(["paso.1", "paso.2", "paso.3", "paso.4"] as const).map(
+                  (k) => (
+                    <li key={k}>{t(k)}</li>
+                  ),
+                )}
               </ol>
             </div>
           </div>
-          <a className="discord" href={MARCA.discord} target="_blank" rel="noreferrer">
+          <a
+            className="discord"
+            href={MARCA.discord}
+            target="_blank"
+            rel="noreferrer"
+          >
             <span className="discord-icono">
               <IconoDiscord tamano={28} />
             </span>
             <span className="discord-texto">
-              <strong>{t('discord.titulo')}</strong>
-              <span>{t('discord.texto')}</span>
+              <strong>{t("discord.titulo")}</strong>
+              <span>{t("discord.texto")}</span>
             </span>
-            <span className="boton boton-discord">{t('discord.boton')}</span>
+            <span className="boton boton-discord">{t("discord.boton")}</span>
           </a>
           {privados.length > 0 && (
             <p className="nota-privado">
-              <Lock size={16} aria-hidden="true" />{' '}
+              <Lock size={16} aria-hidden="true" />{" "}
               {privados.length === 1
-                ? t('participa.privado', { nombre: privados[0].nombre })
-                : t('participa.privados', { nombres: listar(privados.map((p) => p.nombre), idioma) })}
+                ? t("participa.privado", { nombre: privados[0].nombre })
+                : t("participa.privados", {
+                    nombres: listar(
+                      privados.map((p) => p.nombre),
+                      idioma,
+                    ),
+                  })}
             </p>
           )}
           <p className="contacto-otros">
-            <span>{t('contacto.otros')}</span>
+            <span>{t("contacto.otros")}</span>
             <a href={`mailto:${MARCA.correo}`}>
               <Mail size={15} /> {MARCA.correo}
             </a>
@@ -297,7 +410,7 @@ export function Inicio() {
           </p>
           {conContacto.length > 0 && (
             <div className="contacto-proyectos">
-              <h3>{t('contacto.porProyecto')}</h3>
+              <h3>{t("contacto.porProyecto")}</h3>
               <ul>
                 {conContacto.map((p) => (
                   <li key={p.slug}>

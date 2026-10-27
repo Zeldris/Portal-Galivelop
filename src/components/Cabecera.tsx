@@ -1,12 +1,12 @@
-import { Menu, Moon, Sun, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { publicaciones } from '../data/muro';
-import { IDIOMAS } from '../data/tipos';
-import { useIdioma } from '../i18n/Idioma';
-import { Logo } from './Logo';
-import { MenuProyectos } from './MenuProyectos';
-import { useTema } from './Tema';
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { publicaciones } from "../data/muro";
+import { IDIOMAS } from "../data/tipos";
+import { useIdioma } from "../i18n/Idioma";
+import { Logo } from "./Logo";
+import { MenuProyectos } from "./MenuProyectos";
+import { useTema } from "./Tema";
 
 export function Cabecera() {
   const { t, idioma, cambiarIdioma } = useIdioma();
@@ -19,23 +19,55 @@ export function Cabecera() {
   return (
     <header className="cabecera">
       <a className="saltar" href="#contenido">
-        {t('nav.saltar')}
+        {t("nav.saltar")}
       </a>
       <div className="contenedor cabecera-fila">
         <Link to="/" className="cabecera-logo" aria-label="Galivelop">
           <Logo />
         </Link>
-        <nav id="menu-principal" className={`cabecera-nav${menuAbierto ? ' abierta' : ''}`} aria-label={t('nav.menu')}>
-          <MenuProyectos alNavegar={() => setMenuAbierto(false)} />
-          <Link to="/#lineas" onClick={() => setMenuAbierto(false)}>{t('nav.lineas')}</Link>
-          <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>{t('nav.sobre')}</Link>
-          {/* El muro sale en el menú en cuanto tiene alguna publicación. */}
-          {publicaciones.length > 0 && <Link to="/muro" onClick={() => setMenuAbierto(false)}>{t('nav.muro')}</Link>}
-          <Link to="/equipo" onClick={() => setMenuAbierto(false)}>{t('nav.equipo')}</Link>
-          <Link to="/#participa" onClick={() => setMenuAbierto(false)}>{t('nav.contacto')}</Link>
+        <nav
+          id="menu-principal"
+          className={`cabecera-nav${menuAbierto ? " abierta" : ""}`}
+          aria-label={t("nav.menu")}
+        >
+          {/* Dos bloques (ADR 0002): el taller, con su etiqueta, y Productos como botón aparte. */}
+          <div className="nav-grupo nav-taller">
+            <span className="nav-etiqueta" aria-hidden="true">
+              {t("nav.taller")}
+            </span>
+            <MenuProyectos alNavegar={() => setMenuAbierto(false)} />
+            <Link to="/#lineas" onClick={() => setMenuAbierto(false)}>
+              {t("nav.lineas")}
+            </Link>
+            <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>
+              {t("nav.sobre")}
+            </Link>
+            {publicaciones.length > 0 && (
+              <Link to="/muro" onClick={() => setMenuAbierto(false)}>
+                {t("nav.muro")}
+              </Link>
+            )}
+            <Link to="/equipo" onClick={() => setMenuAbierto(false)}>
+              {t("nav.equipo")}
+            </Link>
+            <Link to="/#participa" onClick={() => setMenuAbierto(false)}>
+              {t("nav.contacto")}
+            </Link>
+          </div>
+          <Link
+            to="/productos"
+            className="nav-productos"
+            onClick={() => setMenuAbierto(false)}
+          >
+            {t("nav.productos")}
+          </Link>
         </nav>
         <div className="cabecera-ajustes">
-          <div className="idiomas" role="group" aria-label={t('idioma.etiqueta')}>
+          <div
+            className="idiomas"
+            role="group"
+            aria-label={t("idioma.etiqueta")}
+          >
             {IDIOMAS.map((i) => (
               <button
                 key={i}
@@ -52,10 +84,10 @@ export function Cabecera() {
             type="button"
             className="boton-icono"
             onClick={alternar}
-            aria-label={tema === 'oscuro' ? t('tema.claro') : t('tema.oscuro')}
-            title={tema === 'oscuro' ? t('tema.claro') : t('tema.oscuro')}
+            aria-label={tema === "oscuro" ? t("tema.claro") : t("tema.oscuro")}
+            title={tema === "oscuro" ? t("tema.claro") : t("tema.oscuro")}
           >
-            {tema === 'oscuro' ? <Sun size={18} /> : <Moon size={18} />}
+            {tema === "oscuro" ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           <button
             type="button"
@@ -63,7 +95,7 @@ export function Cabecera() {
             onClick={() => setMenuAbierto((a) => !a)}
             aria-expanded={menuAbierto}
             aria-controls="menu-principal"
-            aria-label={t('nav.menu')}
+            aria-label={t("nav.menu")}
           >
             {menuAbierto ? <X size={18} /> : <Menu size={18} />}
           </button>

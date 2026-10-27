@@ -1,8 +1,10 @@
 # 0002 · Galivelop, marca que contiene el taller y la oferta de productos e integrantes
 
 - **Fecha:** 2026-10-27
-- **Estado:** **aceptada** el 2026-10-27 como diseño; **nada implementado ni publicado**: Productos se crea en la web
-  solo cuando haya un primer producto con forma. Sustituye en parte a la 0001.
+- **Estado:** **aceptada** el 2026-10-27; **fase 2 en la rama de trabajo** (2026-10-27, decisión de la persona:
+  «vamos a aplicarlo ya en la web»): `/productos` con los cuatro productos como «próximamente», la franja del inicio
+  y el enlace de la cabecera. Sin publicar en `main` hasta que la persona lo vea y confirme. Sustituye en parte a
+  la 0001.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto
@@ -55,13 +57,15 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
 
 ### Datos
 
-- `src/data/productos/<slug>.json`: `proyecto` (slug de la ficha del taller, si lo hay), `version` (la que se
-  ofrece), `queOfrece` (texto), `comoConseguirlo` (descarga local o pedirlo por correo), `responsable` (id de
-  miembro, el creador), `colaboradores` (ids), `servicios` (lista: nombre y texto). Sin campo de precio.
+- `src/data/productos/<slug>.json` (`src/data/productos.ts`): `slug`, `nombre`, `orden`, `acento`, `icono`,
+  `proyecto` (slug de la ficha del taller) o `proximo` (slug de la fila «Próximamente»; uno de los dos),
+  `estado` (`disponible` o `proximamente`), `version` (la que se ofrece, si la hay), `queOfrece` (texto),
+  `servicios` (lista de textos), `responsable` (id de miembro, el creador), `colaboradores` (ids). Sin campo de
+  precio ni de cómo conseguirlo: todo por correo («Me interesa»).
 - `src/data/equipo.json`: `promocionado: true` y `servicios` (lista de lo que ofrece) en quien entre en Productos;
   `colabora` se queda para el taller (0001).
-- Solo entran productos con forma. Un proyecto en formación no tiene ficha de producto: se menciona, como mucho, en
-  la fila «Próximamente» del inicio (taller).
+- Un producto que aún no se puede descargar entra con `estado: proximamente`: se oferta igual (tarjeta, «Me
+  interesa»), con una etiqueta y sin explicar en la web cómo va (decisión de la persona, 2026-10-27).
 
 ### Qué cambia de la ADR 0001
 
@@ -74,8 +78,9 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
 ### Fases propuestas
 
 1. **Decisión** (hecha el 2026-10-27): esta ADR, la 0001, `GLOSSARY.md` y el mensaje de la marca en `AGENTS.md`.
-2. **Catálogo**, cuando haya el primer producto con forma: tipos y datos de producto, `/productos`, cabecera con
-   los dos bloques, hero del inicio. Prototipo de UI con `prototype` antes de codificar.
+2. **Catálogo** (en la rama, 2026-10-27): tipos y datos de producto, `/productos` con productos e integrantes,
+   enlace «Productos» en la cabecera (separado del taller) y franja «Productos» en el inicio. Sin prototipo aparte:
+   se enseña el build con capturas.
 3. **Ficha de producto** `/productos/<slug>` y enlace cruzado con la ficha del taller.
 4. **Integrantes**: apartado «Servicios» en la página de miembro y su sitio en el catálogo.
 5. **Legal**: aviso legal y privacidad (LSSI-CE; ya pendiente desde la 0001 y ahora necesario: la web oferta).
@@ -98,17 +103,17 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
    aprender; Productos, para promocionar.
 7. **Salida:** nunca se publica nada que no tenga forma o no siga el flujo de versiones. Un proyecto en formación
    se puede como mucho **mencionar** como «próximamente» (sin ficha ni oferta). La v1.0.0 del flujo está lejos: no
-   se anuncia. **Hoy no hay ningún producto con forma, así que Productos no se publica todavía**: esta ADR fija el
-   diseño para cuando llegue el primero (confirmado por la persona).
+   se anuncia como descarga. **Revisado el mismo día:** la persona pide aplicarlo ya en la web y ofertar los cuatro
+   productos como «próximamente», limpio, sin contar en la web cómo va cada uno.
 
 ### Cerrado el 2026-10-27
 
 - (6) Un integrante promocionado muestra la información relevante que decida la sesión (nombre, foto, lo que
   ofrece, correo de contacto de Galivelop; sin tarifa ni disponibilidad) y **siempre un acceso a su perfil**
   (`/equipo/<id>`).
-- (7) Confirmado: Productos se crea en la web solo cuando haya un producto con forma; mientras, los proyectos en
-  formación salen solo como mención «próximamente» dentro del taller (la fila «Próximamente» del inicio) y no se
-  crea `/productos`. Hasta entonces, esta ADR solo cambia documentación (0001, `GLOSSARY.md`, `AGENTS.md`).
+- (7) Primero se confirmó no crear `/productos` hasta el primer producto con forma; después, el mismo día, la
+  persona decidió crearla ya con los cuatro productos como «próximamente» (sin paréntesis ni explicaciones de
+  estado en los textos). La fila «Próximamente» del inicio (taller) se queda como está.
 
 ## Consecuencias (si se acepta)
 

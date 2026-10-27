@@ -118,6 +118,10 @@ export interface Persona {
   perfil?: Perfil;
   /** Solo si colabora por su cuenta en proyectos de otras personas (ADR 0001): cierra su página. */
   colabora?: { texto: Texto; correo: string };
+  /** Integrante promocionado en Productos (ADR 0002): aparece allí con acceso a su página. */
+  promocionado?: boolean;
+  /** Servicios que ofrece en Productos; solo si está promocionado. */
+  servicios?: Texto[];
 }
 
 export const equipo: Persona[] = (datos as Persona[]).slice().sort((a, b) => a.orden - b.orden);

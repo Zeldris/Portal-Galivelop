@@ -1,0 +1,24 @@
+{
+  "slug": "galivelop-workflow",
+  "nombre": "Galivelop-workflow 1.0.0",
+  "orden": 1,
+  "acento": "#1AA6DF",
+  "icono": "cpu",
+  "proyecto": "galivelop-workflow",
+  "estado": "proximamente",
+  "version": "1.0.0",
+  "queOfrece": {
+    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en todos los proyectos del taller, de descarga local.",
+    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados en todos os proxectos do obradoiro, de descarga local.",
+    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across all the workshop's projects, as a local download."
+  },
+  "servicios": [
+    {
+      "es": "Soporte: ayuda para montarlo en tu proyecto y resolver dudas.",
+      "gl": "Soporte: axuda para montalo no teu proxecto e resolver dúbidas.",
+      "en": "Support: help setting it up in your project and answering questions."
+    }
+  ],
+  "responsable": "alvaro-garcia-grana",
+  "colaboradores": []
+}

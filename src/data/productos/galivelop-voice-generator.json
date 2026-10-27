@@ -1,0 +1,17 @@
+{
+  "slug": "galivelop-voice-generator",
+  "nombre": "Galivelop Voice Generator",
+  "orden": 2,
+  "acento": "#C9467A",
+  "icono": "audio",
+  "proximo": "galivelop-voice-generator",
+  "estado": "proximamente",
+  "queOfrece": {
+    "es": "Voces generadas con IA local para tus proyectos, sin enviar nada a la nube.",
+    "gl": "Voces xeradas con IA local para os teus proxectos, sen enviar nada á nube.",
+    "en": "Voices generated with local AI for your projects, with nothing sent to the cloud."
+  },
+  "servicios": [],
+  "responsable": "alvaro-garcia-grana",
+  "colaboradores": []
+}

@@ -5,8 +5,8 @@ import { describe, expect, it } from 'vitest';
 // Todo dato del portal que caduca lo pone al día la tarea semanal: si no tiene bloque en su texto, nadie lo mantiene.
 const DATA = __dirname;
 const TAREA = readFileSync(join(DATA, '../../docs/runbooks/tarea-semanal.md'), 'utf8');
-/** Datos que se ponen al día a mano, no en la tarea semanal. */
-const A_MANO = ['equipo.json'];
+/** Datos que se ponen al día a mano, no en la tarea semanal (Productos los decide Álvaro, ADR 0002). */
+const A_MANO = ['equipo.json', 'productos/'];
 
 describe('tarea semanal', () => {
   it('nombra cada .json y cada carpeta de datos de src/data/, salvo los que se ponen a mano', () => {

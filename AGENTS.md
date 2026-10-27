@@ -140,10 +140,10 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
 - No se enlaza el código de los proyectos (sus repos son privados): solo su versión pública.
 - Mensaje de la marca (2026-10-04, ampliado el 2026-10-27 con la [ADR 0002](docs/adr/0002-marca-taller-y-productos.md)):
   **Galivelop es la marca** que contiene el **taller** (crear, investigar, innovar, aprender; abierto a colaborar y
-  sin vender: expone los proyectos) y, a futuro, **Productos** (productos de descarga local e integrantes
-  promocionados; sin precios, todo por correo con Álvaro; cada integrante es autónomo). Productos no se crea en la
-  web hasta el primer producto con forma; nada se publica sin forma ni fuera del flujo de versiones, y la v1.0.0 del
-  flujo solo se ofrece cuando la versión pública anterior haya rodado. Galicia es solo una mención (el nombre), no la
+  sin vender: expone los proyectos) y **Productos** (`/productos`: productos de descarga local e integrantes
+  promocionados; sin precios, todo por correo con Álvaro; cada integrante es autónomo). Lo que aún no se puede
+  descargar se oferta limpio como «próximamente», sin explicar en la web cómo va; nada sale fuera del flujo de
+  versiones, y la 1.0.0 del flujo se descarga solo cuando la versión pública anterior haya rodado. Galicia es solo una mención (el nombre), no la
   base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
   **Encargos por miembro** ([ADR 0001](docs/adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
   taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice en la

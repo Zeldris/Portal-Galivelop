@@ -4559,3 +4559,235 @@ body:has(dialog[open]) {
   max-height: 70vh;
   object-fit: contain;
 }
+
+/* ---------- Productos (ADR 0002): la segunda parte de la marca ---------- */
+
+/* En la cabecera, el taller es un bloque con su etiqueta y Productos un botón aparte. */
+.nav-grupo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-etiqueta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  padding: 0 6px 0 2px;
+}
+
+.cabecera-nav .nav-productos {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
+  color: var(--blanco);
+  font-weight: 600;
+  box-shadow: 0 8px 22px -12px var(--celeste);
+}
+
+.cabecera-nav .nav-productos:hover {
+  color: var(--blanco);
+  background: linear-gradient(135deg, var(--celeste-intenso), var(--celeste));
+}
+
+@media (max-width: 53.75em) {
+  .nav-grupo {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+  .nav-etiqueta {
+    padding: 8px 14px 4px;
+  }
+  .cabecera-nav .nav-productos {
+    margin: 10px 0 0;
+    padding: 12px 14px;
+    text-align: center;
+    border-radius: var(--radio-sm);
+  }
+}
+
+/* Sección Productos de la portada: va antes que el taller y lleva fondo propio. */
+.seccion-productos {
+  border-block: 1px solid var(--borde);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--celeste) 12%, transparent), transparent 60%);
+}
+
+.seccion-productos .seccion-cabecera p:not(.antetitulo) {
+  color: var(--texto-2);
+  max-width: 70ch;
+}
+
+/* El taller se etiqueta con un antetítulo neutro, para que se vea que es la otra parte de la marca. */
+.antetitulo-taller {
+  color: var(--texto-3);
+}
+
+.seccion-nota {
+  color: var(--texto-3);
+  font-size: 0.95rem;
+}
+
+/* Cuatro productos caben en una fila en escritorio; en móvil, uno por fila. */
+.rejilla-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 18px;
+}
+
+.tarjeta-producto {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  border-radius: var(--radio);
+  border: 1px solid var(--borde);
+  border-top: 3px solid var(--acento-proyecto);
+  background: var(--superficie);
+}
+
+.tarjeta-producto .proxima-icono {
+  width: 44px;
+  height: 44px;
+  filter: none;
+}
+
+.tarjeta-producto h2 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.producto-version {
+  margin-top: -8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--acento-proyecto);
+}
+
+.producto-texto {
+  color: var(--texto-2);
+}
+
+.producto-servicios > span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.producto-servicios ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  color: var(--texto-2);
+  font-size: 0.92rem;
+}
+
+.producto-personas {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px 12px;
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--borde);
+}
+
+.producto-personas dt {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.producto-personas dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+
+/* Personas y botón van al pie de la tarjeta, y el botón ocupa el ancho: en toda la rejilla queda a la misma altura. */
+.producto-pie {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.producto-acciones {
+  padding-top: 4px;
+}
+
+.producto-acciones .boton {
+  width: 100%;
+  justify-content: center;
+}
+
+.producto-ficha {
+  margin-top: -4px;
+}
+
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--enlace);
+  text-decoration: none;
+}
+
+.enlace-flecha:hover {
+  text-decoration: underline;
+}
+
+.integrantes {
+  margin-top: 56px;
+}
+
+.persona-servicios {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--texto-2);
+  font-size: 0.95rem;
+  display: grid;
+  gap: 4px;
+}
+
+.productos-contacto {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px 32px;
+  margin-top: 56px;
+  padding: 26px;
+  border-radius: var(--radio);
+  border: 1px dashed var(--celeste);
+  background: var(--superficie);
+}
+
+.productos-contacto h2 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.productos-contacto p {
+  color: var(--texto-2);
+  max-width: 68ch;
+}
+
+@media (max-width: 640px) {
+  .productos-contacto {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .seccion-productos .seccion-cabecera .boton,
+  .productos-contacto .boton {
+    justify-content: center;
+  }
+  .tarjeta-producto {
+    padding: 20px;
+  }
+}

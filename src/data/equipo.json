@@ -307,7 +307,20 @@
         "en": "Álvaro occasionally works on other people’s projects, independently of Galivelop: full-stack development with React, TypeScript, Java and Spring."
       },
       "correo": "alvarogarciagrana@gmail.com"
-    }
+    },
+    "promocionado": true,
+    "servicios": [
+      {
+        "es": "Soporte e implantación de Galivelop-workflow en tu proyecto.",
+        "gl": "Soporte e implantación de Galivelop-workflow no teu proxecto.",
+        "en": "Support and rollout of Galivelop-workflow in your project."
+      },
+      {
+        "es": "Desarrollo full stack a medida con React, TypeScript, Java y Spring.",
+        "gl": "Desenvolvemento full stack á medida con React, TypeScript, Java e Spring.",
+        "en": "Custom full-stack development with React, TypeScript, Java and Spring."
+      }
+    ]
   },
   {
     "id": "raquel-c",

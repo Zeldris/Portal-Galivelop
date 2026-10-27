@@ -1,0 +1,17 @@
+{
+  "slug": "galivelop-developer",
+  "nombre": "Galivelop Developer",
+  "orden": 4,
+  "acento": "#0E9A93",
+  "icono": "code",
+  "proximo": "galivelop-developer",
+  "estado": "proximamente",
+  "queOfrece": {
+    "es": "Agente de desarrollo con IA local: programa contigo en tu máquina, sin depender de la nube.",
+    "gl": "Axente de desenvolvemento con IA local: programa contigo na túa máquina, sen depender da nube.",
+    "en": "Local AI development agent: it codes with you on your machine, with no cloud dependency."
+  },
+  "servicios": [],
+  "responsable": "alvaro-garcia-grana",
+  "colaboradores": []
+}
