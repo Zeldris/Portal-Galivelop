@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "color",
-  "actualizado": "2026-10-25",
+  "actualizado": "2026-10-27",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · v0.3.0 · fase 7: rodaje",
-    "gl": "En desenvolvemento · v0.3.0 · fase 7: rodaxe",
-    "en": "In development · v0.3.0 · phase 7: run-in"
+    "es": "En desarrollo · v0.4.1 · fase 7: rodaje",
+    "gl": "En desenvolvemento · v0.4.1 · fase 7: rodaxe",
+    "en": "In development · v0.4.1 · phase 7: run-in"
   },
   "etiquetas": [
     "Claude Code",
@@ -139,14 +139,14 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.3.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.3.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.3.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.4.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.4.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.4.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las nueve skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye doce skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as nove skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe doce skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the nine skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes twelve skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye trece skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as once skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe trece skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the eleven skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes thirteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
     }
   ],
   "lineas": [
@@ -262,9 +262,9 @@
   "pasos": [
     {
       "titulo": {
-        "es": "1. Retomar",
-        "gl": "1. Retomar",
-        "en": "1. Pick up"
+        "es": "Retomar",
+        "gl": "Retomar",
+        "en": "Pick up"
       },
       "texto": {
         "es": "La sesión lee la bitácora, comprueba que el último commit coincide y pasa el check: sabe por dónde iba sin preguntar.",
@@ -274,9 +274,9 @@
     },
     {
       "titulo": {
-        "es": "2. Elegir",
-        "gl": "2. Escoller",
-        "en": "2. Choose"
+        "es": "Elegir",
+        "gl": "Escoller",
+        "en": "Choose"
       },
       "texto": {
         "es": "selector dice qué skill y qué modelo pide la tarea, y si es de riesgo y hay que esperar a la persona.",
@@ -286,9 +286,9 @@
     },
     {
       "titulo": {
-        "es": "3. Pensar, si hace falta",
-        "gl": "3. Pensar, se cómpre",
-        "en": "3. Think, if needed"
+        "es": "Pensar, si hace falta",
+        "gl": "Pensar, se cómpre",
+        "en": "Think, if needed"
       },
       "texto": {
         "es": "Para un plan, un error difícil o una duda de diseño entran las skills de Matt Pocock: grilling, research, prototype, diagnosing-bugs…",
@@ -298,9 +298,9 @@
     },
     {
       "titulo": {
-        "es": "4. Trabajar y subir",
-        "gl": "4. Traballar e subir",
-        "en": "4. Work and push"
+        "es": "Trabajar y subir",
+        "gl": "Traballar e subir",
+        "en": "Work and push"
       },
       "texto": {
         "es": "orchestrate-dealer reparte lo mecánico a subagentes y revisa lo que vuelve. Commit + push en cada punto estable, con la bitácora en el mismo commit; los ganchos pasan el check y buscan secretos.",
@@ -310,9 +310,9 @@
     },
     {
       "titulo": {
-        "es": "5. Revisar el código",
-        "gl": "5. Revisar o código",
-        "en": "5. Review the code"
+        "es": "Revisar el código",
+        "gl": "Revisar o código",
+        "en": "Review the code"
       },
       "texto": {
         "es": "Fase 1 antes de publicar: revisión de todo el diff contra la rama protegida, con el criterio escrito del proyecto. Se arregla y se sube.",
@@ -322,9 +322,9 @@
     },
     {
       "titulo": {
-        "es": "6. Mejorar el entorno",
-        "gl": "6. Mellorar o contorno",
-        "en": "6. Improve the setup"
+        "es": "Mejorar el entorno",
+        "gl": "Mellorar o contorno",
+        "en": "Improve the setup"
       },
       "texto": {
         "es": "Fase 2: opt-tokens mide el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma.",
@@ -334,9 +334,9 @@
     },
     {
       "titulo": {
-        "es": "7. Publicar",
-        "gl": "7. Publicar",
-        "en": "7. Publish"
+        "es": "Publicar",
+        "gl": "Publicar",
+        "en": "Publish"
       },
       "texto": {
         "es": "Fase 3: un script deja la marca de revisado del commit y, con la confirmación de la persona, se sube. Sin la marca, el gancho lo rechaza.",
@@ -346,9 +346,9 @@
     },
     {
       "titulo": {
-        "es": "8. Devolver lo aprendido",
-        "gl": "8. Devolver o aprendido",
-        "en": "8. Give back what was learned"
+        "es": "Devolver lo aprendido",
+        "gl": "Devolver o aprendido",
+        "en": "Give back what was learned"
       },
       "texto": {
         "es": "gw-harvest recoge las mejoras de los proyectos, salen en una versión nueva del flujo y gw-update la lleva a cada uno.",
@@ -746,9 +746,9 @@
         "en": "Our own skills"
       },
       "intro": {
-        "es": "Las nueve skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las cinco primeras sirven en el trabajo diario (dos son opcionales); las gw-, para llevar el flujo a cada proyecto y mantenerlo al día.",
-        "gl": "As nove skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As cinco primeiras serven no traballo diario (dúas son opcionais); as gw-, para levar o fluxo a cada proxecto e mantelo ao día.",
-        "en": "The nine skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first five serve day-to-day work (two are optional); the gw- ones bring the workflow to each project and keep it up to date."
+        "es": "Las once skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las cinco primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
+        "gl": "As once skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As cinco primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, e as dúas últimas preparan contido para redes a partir do traballo feito.",
+        "en": "The eleven skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first five serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, and the last two turn finished work into content for social media."
       },
       "items": [
         {
@@ -859,6 +859,30 @@
             "es": "Recoge, como propuestas, lo que los proyectos cambiaron o inventaron sobre el flujo desde la última vez: de ahí sale cada versión nueva.",
             "gl": "Recolle, como propostas, o que os proxectos cambiaron ou inventaron sobre o fluxo desde a última vez: de aí sae cada versión nova.",
             "en": "Gathers, as proposals, what the projects changed or invented in the workflow since last time: every new version comes from there."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-media-content",
+            "gl": "gw-media-content",
+            "en": "gw-media-content"
+          },
+          "texto": {
+            "es": "Propone hasta diez publicaciones distintas sobre un proyecto (la aplicación, sus novedades, cómo se desarrolla) para sus propias redes.",
+            "gl": "Propón ata dez publicacións distintas sobre un proxecto (a aplicación, as súas novidades, como se desenvolve) para as súas propias redes.",
+            "en": "Suggests up to ten different posts about a project (the app, its news, how it is built) for its own social channels."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-media-content-now",
+            "gl": "gw-media-content-now",
+            "en": "gw-media-content-now"
+          },
+          "texto": {
+            "es": "Prepara una publicación concreta, con sus textos para cada red y sus imágenes, a partir de una propuesta o de algo que acaba de pasar. Nunca la publica.",
+            "gl": "Prepara unha publicación concreta, cos seus textos para cada rede e as súas imaxes, a partir dunha proposta ou de algo que acaba de pasar. Nunca a publica.",
+            "en": "Prepares one specific post, with its texts for each channel and its images, from a proposal or from something that just happened. It never publishes it."
           }
         }
       ]
@@ -989,9 +1013,9 @@
         "en": "Skills by Matt Pocock"
       },
       "intro": {
-        "es": "Doce skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
-        "gl": "Doce skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
-        "en": "Twelve skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
+        "es": "Trece skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
+        "gl": "Trece skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
+        "en": "Thirteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
       },
       "items": [
         {
@@ -1136,6 +1160,18 @@
             "es": "Convierte una decisión que no se puede cerrar en un cuestionario para otra persona.",
             "gl": "Converte unha decisión que non se pode pechar nun cuestionario para outra persoa.",
             "en": "Turns a decision that can’t be settled into a questionnaire for someone else to fill in."
+          }
+        },
+        {
+          "nombre": {
+            "es": "wait-what",
+            "gl": "wait-what",
+            "en": "wait-what"
+          },
+          "texto": {
+            "es": "Cuando la persona dice que no ha entendido el último mensaje, para y lo vuelve a explicar de otra forma.",
+            "gl": "Cando a persoa di que non entendeu a última mensaxe, para e vólvea explicar doutra forma.",
+            "en": "When the person says the last message didn’t land, it stops and explains it again another way."
           }
         }
       ]
@@ -1503,9 +1539,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0, en preparación, suma lo aprendido en el portal y en los proyectos nuevos.",
-        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0, en preparación, suma o aprendido no portal e nos proxectos novos.",
-        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0, in preparation, adds what the portal and the new projects taught us."
+        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos. La 0.4 es la última antes de la 1.0: desde aquí solo llevará arreglos.",
+        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos. A 0.4 é a última antes da 1.0: desde aquí só levará arranxos.",
+        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us. 0.4 is the last before 1.0: from here it only gets fixes."
       }
     },
     {
@@ -1537,6 +1573,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-10-26",
+      "texto": {
+        "es": "Publicadas las versiones 0.4.0 y 0.4.1: llega todo lo anunciado para la 0.4 y, además, los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube, el gancho de fusión reconoce un CI que GitHub no arrancó por falta de cuota y la recogida de lo aprendido gasta un 17 % menos de tokens. Es la última versión antes de la 1.0.",
+        "gl": "Publicadas as versións 0.4.0 e 0.4.1: chega todo o anunciado para a 0.4 e, ademais, os scripts atopan o repositorio tamén desde unha copia de traballo enlazada, desaparece o falso aviso de «sesión fóra do repositorio» na nube, o gancho de fusión recoñece un CI que GitHub non arrancou por falta de cota e a recollida do aprendido gasta un 17 % menos de tokens. É a última versión antes da 1.0.",
+        "en": "Versions 0.4.0 and 0.4.1 are out: everything announced for 0.4 is in and, on top of that, the scripts find the repository from a linked working copy too, the false “session outside the repository” warning in the cloud is gone, the merge hook recognises CI that GitHub didn’t start for lack of quota, and gathering what the projects taught us uses 17% fewer tokens. It is the last version before 1.0."
+      }
+    },
     {
       "fecha": "2026-10-25",
       "texto": {
@@ -1596,7 +1640,7 @@
   ],
   "cifras": [
     {
-      "valor": "9",
+      "valor": "11",
       "etiqueta": {
         "es": "skills propias",
         "gl": "skills propias",
@@ -1604,7 +1648,7 @@
       }
     },
     {
-      "valor": "12",
+      "valor": "13",
       "etiqueta": {
         "es": "skills de Matt Pocock",
         "gl": "skills de Matt Pocock",
@@ -1644,9 +1688,9 @@
         "en": "Thanks to Matt Pocock"
       },
       "texto": {
-        "es": "Doce de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
-        "gl": "Doce das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
-        "en": "Twelve of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
+        "es": "Trece de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
+        "gl": "Trece das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
+        "en": "Thirteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
       }
     },
     {

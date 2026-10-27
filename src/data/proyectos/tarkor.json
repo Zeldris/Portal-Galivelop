@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-25",
+  "actualizado": "2026-10-27",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3975,6 +3975,22 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-10-26",
+      "texto": {
+        "es": "Conversaciones más naturales: saludar o preguntar a un personaje ya no tira dados ni abre un combate salvo que su reputación contigo sea hostil, aunque uno agresivo te ataca igualmente. Quien aún no conoces aparece como «el orco desconocido» en la narración, el combate y las respuestas, puedes «Preguntar más», entregar cosas escribiéndolo con tus palabras y reencontrarte con quien ya viste.",
+        "gl": "Conversas máis naturais: saudar ou preguntar a un personaxe xa non tira dados nin abre un combate agás que a súa reputación contigo sexa hostil, aínda que un agresivo te ataca igualmente. Quen aínda non coñeces aparece como «o orco descoñecido» na narración, o combate e as respostas, podes «Preguntar máis», entregar cousas escribíndoo coas túas palabras e reencontrarte con quen xa viches.",
+        "en": "More natural conversations: greeting or asking a character something no longer rolls dice or starts a fight unless their reputation with you is hostile, though an aggressive one still attacks. Anyone you haven’t met yet shows up as “the unknown orc” in the narration, in combat and in replies, you can “Ask more”, hand things over by writing it in your own words, and meet again people you’ve already seen."
+      }
+    },
+    {
+      "fecha": "2026-10-26",
+      "texto": {
+        "es": "Caza y progreso: «Cazar» sobre la fauna que tienes delante crea su punto de caza, y uno agotado queda marcado con «sin presas por ahora». El hito de capítulo llega cada 15 acciones con 100 de experiencia y su tarjeta lo explica, las puertas de los interiores ya no caen sobre una pared o un edificio y un arbusto de bayas ya no cuenta como amenaza.",
+        "gl": "Caza e progreso: «Cazar» sobre a fauna que tes diante crea o seu punto de caza, e un esgotado queda marcado con «sen presas polo de agora». O fito de capítulo chega cada 15 accións con 100 de experiencia e a súa tarxeta explícao, as portas dos interiores xa non caen sobre unha parede ou un edificio e un arbusto de bagas xa non conta como ameaza.",
+        "en": "Hunting and progress: “Hunt” on the wildlife in front of you creates its hunting spot, and an exhausted one is marked “no game for now”. The chapter milestone comes every 15 actions with 100 experience and its card explains it, interior doors no longer land on a wall or a building, and a berry bush no longer counts as a threat."
+      }
+    },
+    {
       "fecha": "2026-10-25",
       "texto": {
         "es": "Enciclopedia revisada y alineada con el canon del mundo: fichas de combate y sistemas, objetos y recetas, lugares, facciones, fauna y flora. La Ciénaga Troncal, el Cristal Helado y la Meseta del Orden ganan fauna, población e historia propias, y ocho habilidades que se llamaban igual tienen ya nombres distintos.",
@@ -4020,22 +4036,6 @@
         "es": "Ronda de pruebas jugando: más de veinte tandas por el mundo, el combate, la muerte y el Reino, arreglando lo que salía al momento.",
         "gl": "Rolda de probas xogando: máis de vinte tandas polo mundo, o combate, a morte e o Reino, arranxando o que saía no momento.",
         "en": "Play-testing round: over twenty batches across the world, combat, death and the Kingdom, fixing whatever came up on the spot."
-      }
-    },
-    {
-      "fecha": "2026-10-18",
-      "texto": {
-        "es": "Más de 150 imágenes nuevas: criaturas, lugares, pueblos y los mapas de cada zona, ya en esta página.",
-        "gl": "Máis de 150 imaxes novas: criaturas, lugares, pobos e os mapas de cada zona, xa nesta páxina.",
-        "en": "Over 150 new images: creatures, places, peoples and every zone map, now on this page."
-      }
-    },
-    {
-      "fecha": "2026-10-17",
-      "texto": {
-        "es": "Testigos: lo que haces lo ve quien está cerca, y una muerte sin testigos no llega a saberse. Además, viajes directos con montura y el ganado del clan.",
-        "gl": "Testemuñas: o que fas véo quen está preto, e unha morte sen testemuñas non chega a saberse. Ademais, viaxes directas con montura e o gando do clan.",
-        "en": "Witnesses: whoever is nearby sees what you do, and a death with no witnesses never gets known. Plus direct travel on a mount and the clan’s livestock."
       }
     }
   ],
