@@ -1,8 +1,8 @@
 # 0002 · Galivelop, marca que contiene el taller y la oferta de productos e integrantes
 
 - **Fecha:** 2026-10-27
-- **Estado:** **propuesta, en discusión** (nada publicado ni implementado). Se ajusta con la persona antes de tocar
-  código; cuando se acepte, se actualiza esta ADR, la 0001 y `GLOSSARY.md`.
+- **Estado:** **aceptada** el 2026-10-27 como diseño; **nada implementado ni publicado**: Productos se crea en la web
+  solo cuando haya un primer producto con forma. Sustituye en parte a la 0001.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto
@@ -97,15 +97,16 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
 7. **Salida:** nunca se publica nada que no tenga forma o no siga el flujo de versiones. Un proyecto en formación
    se puede como mucho **mencionar** como «próximamente» (sin ficha ni oferta). La v1.0.0 del flujo está lejos: no
    se anuncia. **Hoy no hay ningún producto con forma, así que Productos no se publica todavía**: esta ADR fija el
-   diseño para cuando llegue el primero (pendiente de confirmar esta lectura con la persona).
+   diseño para cuando llegue el primero (confirmado por la persona).
 
-### Pendiente de cerrar
+### Cerrado el 2026-10-27
 
-- (6) Qué datos lleva un integrante promocionado en Productos: propuesta, nombre, foto, lo que ofrece (lista de
-  servicios en texto) y el correo de contacto de Galivelop (coherente con la 2); sin tarifa ni disponibilidad.
-- (7) Confirmar la lectura: Productos se crea en la web solo cuando haya un producto con forma; mientras, los
-  proyectos en formación salen solo como mención «próximamente» dentro del taller (ya existe la fila
-  «Próximamente» del inicio) y no se crea `/productos`.
+- (6) Un integrante promocionado muestra la información relevante que decida la sesión (nombre, foto, lo que
+  ofrece, correo de contacto de Galivelop; sin tarifa ni disponibilidad) y **siempre un acceso a su perfil**
+  (`/equipo/<id>`).
+- (7) Confirmado: Productos se crea en la web solo cuando haya un producto con forma; mientras, los proyectos en
+  formación salen solo como mención «próximamente» dentro del taller (la fila «Próximamente» del inicio) y no se
+  crea `/productos`. Hasta entonces, esta ADR solo cambia documentación (0001, `GLOSSARY.md`, `AGENTS.md`).
 
 ## Consecuencias (si se acepta)
 
