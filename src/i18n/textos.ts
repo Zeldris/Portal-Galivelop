@@ -68,7 +68,7 @@ const es = {
   'sobre.texto2':
     'Lo que nos mueve es crecer y llevar a término proyectos complejos. El taller muestra cada proyecto tal y como está, con sus avances y sus pendientes, y comparte con otros desarrolladores lo que aprende: acceso a repositorios, charlas, información y sesiones de diseño o de lluvia de ideas.',
   'sobre.texto3':
-    '¿Tienes un proyecto propio? Algunos miembros del equipo colaboran de vez en cuando en proyectos de otras personas, por su cuenta y no a través de Galivelop. En la página de cada uno ves su trabajo y cómo escribirle.',
+    '¿Tienes un proyecto propio? Algunos miembros del equipo aceptan encargos en proyectos de otras personas, cada uno por su cuenta y no a través de Galivelop. En la página de cada uno ves su trabajo y cómo escribirle.',
   'sobre.verEquipo': 'Ver el equipo',
   'valor1.titulo': 'Elegimos problemas que importan',
   'valor1.texto':
@@ -101,16 +101,16 @@ const es = {
   'via3.texto':
     'Si estás empezando, el mejor sitio para aprender es un proyecto de verdad con gente que te ayuda.',
   'participa.privado':
-    'El código de {nombre} no es público, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
+    '{nombre} es un desarrollo propio del taller, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'colab.abierta': 'Abierto a colaboración',
-  'colab.privada': 'Código privado',
+  'colab.privada': 'Desarrollo propio',
   'participa.abierta.titulo': '¿Quieres participar en {nombre}?',
   'participa.abierta.texto':
     'Este proyecto está abierto: si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo.',
   'participa.abierta.boton': 'Quiero participar',
-  'participa.privada.titulo': 'El código de {nombre} es privado',
+  'participa.privada.titulo': '{nombre} es un desarrollo propio',
   'participa.privada.texto':
-    'Su código no es público, pero las propuestas y las ideas son bienvenidas, igual que quien quiera sumarse a Galivelop en otros proyectos.',
+    'Las propuestas y las ideas son bienvenidas, igual que quien quiera sumarse a Galivelop en otros proyectos.',
   'participa.privada.boton': 'Enviar una propuesta',
 
   'form.nombre': 'Nombre',
@@ -269,7 +269,7 @@ const es = {
   'novedades.todas': 'Ver las {n} novedades',
   'novedades.menos': 'Ver menos',
   'participa.privados':
-    '{nombres} son proyectos privados: su desarrollo no está abierto a colaboración, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
+    '{nombres} son desarrollos propios del taller, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'nav.proyectos.todos': 'Todos los proyectos',
 
   'pie.hecho': 'Hecho en Galicia',
@@ -379,7 +379,7 @@ const gl: Record<Clave, string> = {
   'sobre.texto2':
     'O que nos move é medrar e levar a termo proxectos complexos. O obradoiro amosa cada proxecto tal e como está, cos seus avances e os seus pendentes, e comparte con outros desenvolvedores o que aprende: acceso a repositorios, charlas, información e sesións de deseño ou de chuvia de ideas.',
   'sobre.texto3':
-    'Tes un proxecto propio? Algúns membros do equipo colaboran de cando en vez en proxectos doutras persoas, pola súa conta e non a través de Galivelop. Na páxina de cada un ves o seu traballo e como escribirlle.',
+    'Tes un proxecto propio? Algúns membros do equipo aceptan encargos en proxectos doutras persoas, cada un pola súa conta e non a través de Galivelop. Na páxina de cada un ves o seu traballo e como escribirlle.',
   'sobre.verEquipo': 'Ver o equipo',
   'valor1.titulo': 'Escollemos problemas que importan',
   'valor1.texto':
@@ -412,16 +412,16 @@ const gl: Record<Clave, string> = {
   'via3.texto':
     'Se estás comezando, o mellor sitio para aprender é un proxecto de verdade con xente que che axuda.',
   'participa.privado':
-    'O código de {nombre} non é público, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
+    '{nombre} é un desenvolvemento propio do obradoiro, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'colab.abierta': 'Aberto a colaboración',
-  'colab.privada': 'Código privado',
+  'colab.privada': 'Desenvolvemento propio',
   'participa.abierta.titulo': 'Queres participar en {nombre}?',
   'participa.abierta.texto':
     'Este proxecto está aberto: se queres achegar, aprender ou simplemente saber máis, escríbenos e contámosche como.',
   'participa.abierta.boton': 'Quero participar',
-  'participa.privada.titulo': 'O código de {nombre} é privado',
+  'participa.privada.titulo': '{nombre} é un desenvolvemento propio',
   'participa.privada.texto':
-    'O seu código non é público, pero as propostas e as ideas son benvidas, igual que quen queira sumarse a Galivelop noutros proxectos.',
+    'As propostas e as ideas son benvidas, igual que quen queira sumarse a Galivelop noutros proxectos.',
   'participa.privada.boton': 'Enviar unha proposta',
 
   'form.nombre': 'Nome',
@@ -580,7 +580,7 @@ const gl: Record<Clave, string> = {
   'novedades.todas': 'Ver as {n} novidades',
   'novedades.menos': 'Ver menos',
   'participa.privados':
-    '{nombres} son proxectos privados: o seu desenvolvemento non está aberto a colaboración, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
+    '{nombres} son desenvolvementos propios do obradoiro, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'nav.proyectos.todos': 'Todos os proxectos',
 
   'pie.hecho': 'Feito en Galicia',
@@ -688,7 +688,7 @@ const en: Record<Clave, string> = {
   'sobre.texto2':
     'What drives us is growing and seeing complex projects through. The workshop shows each project as it is, with its progress and what is still pending, and shares what it learns with other developers: access to repositories, talks, information, and design or brainstorming sessions.',
   'sobre.texto3':
-    'Got a project of your own? Some team members occasionally work on other people’s projects, independently rather than through Galivelop. Each one’s page shows their work and how to get in touch.',
+    'Got a project of your own? Some team members take on commissions for other people’s projects, each on their own account rather than through Galivelop. Each one’s page shows their work and how to get in touch.',
   'sobre.verEquipo': 'Meet the team',
   'valor1.titulo': 'We pick problems that matter',
   'valor1.texto':
@@ -721,16 +721,16 @@ const en: Record<Clave, string> = {
   'via3.texto':
     'If you are starting out, the best place to learn is a real project with people who help you.',
   'participa.privado':
-    'The code of {nombre} is not public, but we welcome project proposals and would love to meet new people who are interested.',
+    '{nombre} is developed in-house by the workshop, but we welcome project proposals and would love to meet new people who are interested.',
   'colab.abierta': 'Open to collaboration',
-  'colab.privada': 'Private code',
+  'colab.privada': 'In-house development',
   'participa.abierta.titulo': 'Want to get involved in {nombre}?',
   'participa.abierta.texto':
     'This project is open: if you want to contribute, learn or simply find out more, write to us and we will tell you how.',
   'participa.abierta.boton': 'I want to take part',
-  'participa.privada.titulo': 'The code of {nombre} is private',
+  'participa.privada.titulo': '{nombre} is developed in-house',
   'participa.privada.texto':
-    'Its code is not public, but proposals and ideas are welcome, as is anyone who would like to join Galivelop on other projects.',
+    'Proposals and ideas are welcome, as is anyone who would like to join Galivelop on other projects.',
   'participa.privada.boton': 'Send a proposal',
 
   'form.nombre': 'Name',
@@ -890,7 +890,7 @@ const en: Record<Clave, string> = {
   'novedades.todas': 'See all {n} updates',
   'novedades.menos': 'Show fewer',
   'participa.privados':
-    '{nombres} are private projects: their development is not open to collaboration, but we welcome project proposals and would love to meet new people who are interested.',
+    '{nombres} are developed in-house by the workshop, but we welcome project proposals and would love to meet new people who are interested.',
   'nav.proyectos.todos': 'All projects',
 
   'pie.hecho': 'Made in Galicia',

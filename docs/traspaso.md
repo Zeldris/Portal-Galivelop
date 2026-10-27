@@ -45,6 +45,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
+- **Leve de la revisión del mensaje en positivo** (2026-10-27, no se vuelve a revisar en este cambio): `sobre.texto1` sigue abriendo con negaciones («un taller, no un escaparate», «aquí no solo se desarrolla»); la ADR 0002 solo pide quitar las de vender, así que se deja a decisión de la persona.
 - **Leves de la revisión de la ficha del generador** (2026-10-27, no se vuelven a revisar en este cambio): `.pie-proyectos` puede pasar a otra línea también en anchos intermedios de escritorio (solo si no cabe); su hueco de 20 px entre filas depende del `::after { inset: -10px 0 }` de la zona táctil, unas 800 líneas más abajo, sin nada que los ate (una variable CSS compartida).
 - **Próxima sesión nueva: sin `add_repo` en la principal** (T1 de la retro de Productos, 2026-10-27): los repos hermanos en `/home/user` suben el suelo unos 15k y el arranque de cada subagente de 35k a 75k; otro repo se lee con un subagente que lo clona en el scratchpad.
 - **Productos, tras `main`** (2026-10-27): los dos `servicios` de Álvaro en `equipo.json` (soporte del flujo y desarrollo full stack) son **texto provisional** de la sesión, por confirmar con él; el gallego de los textos nuevos, a revisar por un hablante; fases 3 (ficha `/productos/<slug>`), 4 (apartado «Servicios» en la página de miembro) y 5 (aviso legal) de la ADR 0002 siguen sin hacer.
