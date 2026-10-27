@@ -87,7 +87,9 @@ Más **los integrantes**: cada miembro que quiera puede ofertarse (lo que hoy es
 3. **Responsable:** uno por producto, el creador del proyecto; la ficha indica los colaboradores, si los hay.
 4. **Galivelop-workflow:** el plugin público se queda con todo lo cerrado antes de la v1.0.0. La **v1.0.0 es el
    producto**: se descarga en local, trae muchas más skills, ganchos, etc., y el rodaje de todos los proyectos de
-   la marca. Soporte: por decidir con el producto (no se anuncia antes).
+   la marca. Soporte: por decidir con el producto (no se anuncia antes). **Orden obligatorio** (la persona,
+   2026-10-27): primero sale la versión pública anterior a la 1.0.0 y rueda un tiempo, hasta ganarse la fama; solo
+   entonces se habla de la 1.0.0 como producto. No se vende lo que nadie ha probado.
 5. **galivelop-developer:** agente de código local, en fase 0.
 6. **Integrantes:** cada integrante es autónomo. Galivelop solo promociona el talento que sale del taller y que
    Álvaro decide que entre en Productos, tras hablarlo con esa persona y con su acuerdo. El taller es para
