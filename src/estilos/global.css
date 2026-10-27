@@ -3730,13 +3730,15 @@ img.avatar {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  /* Una etiqueta larga baja a su línea en el móvil en vez de salirse de la tarjeta. */
+  /* Una etiqueta larga baja a su línea en vez de salirse de la tarjeta; el título le deja sitio al lado mientras
+     quepa en 6rem, así que en escritorio la etiqueta sigue arriba a la derecha. */
   flex-wrap: wrap;
   gap: 4px 12px;
   margin-bottom: 6px;
 }
 
 .apartado-cabecera h3 {
+  flex: 1 1 6rem;
   font-size: 1rem;
   min-width: 0;
   overflow-wrap: anywhere;

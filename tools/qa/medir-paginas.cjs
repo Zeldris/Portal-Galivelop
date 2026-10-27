@@ -89,6 +89,7 @@ const parar = (hijo) => {
  */
 function medirPagina({ movil, tactil, raiz }) {
   const caja = raiz ? document.querySelector(raiz) : document.body;
+  if (!caja) return { alto: 0, ancho: 0, cortes: [`no está ${raiz}`], tactiles: [] };
   // La propia capa cuenta: una hoja con `overflow: hidden` más estrecha que lo de dentro lo corta sin desbordar.
   const todos = raiz ? [caja, ...caja.querySelectorAll('*')] : [...caja.querySelectorAll('*')];
   const nombre = (el) => {
@@ -151,10 +152,13 @@ function medirPagina({ movil, tactil, raiz }) {
 }
 
 /**
- * En móvil, abre lo que la página esconde hasta que se toca (el menú y su submenú, cada hoja de apartado, la vista
- * ampliada de una imagen) y lo mide como la página. Devuelve los cortes y los controles pequeños con la capa delante, para saber dónde mirar.
+ * En móvil, abre lo que la página esconde hasta que se toca (el menú, cada hoja de apartado, la vista ampliada de una
+ * imagen) y lo mide como la página. Devuelve los cortes y los controles pequeños con la capa delante, para saber dónde
+ * mirar. Las capas se miden sin animaciones (`global.css` las anula con movimiento reducido), ya quietas al abrirse; la
+ * página, con ellas, como la ve casi todo el mundo.
  */
 async function medirCapas(pagina) {
+  await pagina.emulateMedia({ reducedMotion: 'reduce' });
   const cortes = [];
   const tactiles = [];
   const medir = async (capa, raiz) => {
@@ -167,12 +171,8 @@ async function medirCapas(pagina) {
   const menu = pagina.locator('.boton-menu');
   if (await menu.isVisible()) {
     await menu.click();
+    // En el móvil el submenú de proyectos va siempre desplegado dentro del menú: se mide con él.
     await medir('menú', '#menu-principal');
-    const sub = pagina.locator('#menu-principal .submenu-boton');
-    if (await sub.isVisible()) {
-      await sub.click();
-      await medir('submenú', '#menu-principal');
-    }
     await menu.click();
   }
   // La vista ampliada pide pantalla completa: se cierra a mano (con Esc saldría solo de la pantalla completa).
@@ -180,6 +180,8 @@ async function medirCapas(pagina) {
     if (!(await boton.count())) return;
     await boton.first().click();
     await pagina.locator('dialog.galeria-dialogo[open]').waitFor();
+    // La pantalla completa llega después de abrirse el diálogo: sin esperarla, se mediría a medias y quedaría puesta.
+    await pagina.waitForFunction(() => document.fullscreenElement, null, { timeout: 2000 }).catch(() => {});
     await medir(capa, 'dialog.galeria-dialogo[open]');
     await pagina.evaluate(async () => {
       if (document.fullscreenElement) await document.exitFullscreen();
@@ -193,11 +195,13 @@ async function medirCapas(pagina) {
     const hoja = pagina.locator('dialog.hoja[open]');
     await hoja.waitFor();
     await medir(`hoja ${i + 1}`, 'dialog.hoja[open]');
-    await ampliar(hoja.locator('.galeria-ampliar'), `hoja ${i + 1}, galería ampliada`);
+    await ampliar(hoja.locator('.galeria-ampliar:visible'), `hoja ${i + 1}, galería ampliada`);
     await ampliar(hoja.locator('.tarjeta-imagen'), `hoja ${i + 1}, imagen ampliada`);
     await pagina.keyboard.press('Escape');
     await hoja.waitFor({ state: 'detached' });
   }
+  await pagina.mouse.move(0, 0);
+  await pagina.emulateMedia({ reducedMotion: 'no-preference' });
   return { cortes, tactiles };
 }
 
@@ -214,8 +218,7 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
   let fallos = 0;
   console.log('ruta\tventana\talto_px\tpantallas\tdesborda_x\tcortes\ttactiles\terrores');
   for (const [nombre, ancho, alto] of VENTANAS) {
-    // Sin animaciones (`global.css` las anula con movimiento reducido): una capa recién abierta se mide ya quieta.
-    const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto }, reducedMotion: 'reduce' });
+    const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
     for (const ruta of RUTAS) {
       const errores = [];
       const alError = (m) => m.type() === 'error' && errores.push(m.text());
@@ -234,7 +237,8 @@ for (const senal of ['SIGINT', 'SIGTERM']) {
       pagina.off('pageerror', alFallo);
       const desborda = m.ancho > ancho;
       if (desborda || errores.length || m.cortes.length || m.tactiles.length) fallos++;
-      const lista = (xs) => (xs.length ? xs.join(' | ') : '-');
+      // Como mucho 5 de cada también con las capas sumadas: una regla que rompe todas las hojas no llena la fila.
+      const lista = (xs) => (xs.length ? xs.slice(0, 5).join(' | ') + (xs.length > 5 ? ` | +${xs.length - 5} más` : '') : '-');
       console.log(
         [`/${ruta}`, nombre, m.alto, (m.alto / alto).toFixed(1), desborda ? `sí (${m.ancho}px)` : 'no', lista(m.cortes), lista(m.tactiles), lista(errores)].join('\t'),
       );
