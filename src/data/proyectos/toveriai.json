@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-10-23",
+  "actualizado": "2026-10-27",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -616,6 +616,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-10-27",
+      "texto": {
+        "es": "Trabajo de fondo: casos de prueba para toda la web y una primera ronda de pruebas, los avisos del inicio de sesión con Google traducidos a todos los idiomas y VeriAI registrando cada análisis para medir cómo aprende.",
+        "gl": "Traballo de fondo: casos de proba para toda a web e unha primeira rolda de probas, os avisos do inicio de sesión con Google traducidos a todos os idiomas e VeriAI rexistrando cada análise para medir como aprende.",
+        "en": "Behind the scenes: test cases for the whole site and a first round of testing, Google sign-in messages translated into every language, and VeriAI logging each analysis to measure how it learns."
+      }
+    },
     {
       "fecha": "2026-07-17",
       "texto": {
