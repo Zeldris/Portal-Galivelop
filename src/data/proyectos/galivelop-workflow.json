@@ -1582,29 +1582,29 @@
     {
       "version": "9",
       "nombre": {
-        "es": "Plugin y npm",
-        "gl": "Plugin e npm",
-        "en": "Plugin and npm"
+        "es": "Público: plugin anterior a la 1.0",
+        "gl": "Público: plugin anterior á 1.0",
+        "en": "Public: plugin before 1.0"
       },
       "estado": "pendiente",
       "detalle": {
-        "es": "Se publica el plugin de la versión anterior a la 1.0.0 (la 0.4), de descarga local desde Productos.",
-        "gl": "Publícase o plugin da versión anterior á 1.0.0 (a 0.4), de descarga local desde Produtos.",
-        "en": "The plugin of the version before 1.0.0 (0.4) is published, as a local download from Products."
+        "es": "Lo que se publica es el plugin de la versión anterior a la 1.0.0 (la 0.4), de descarga local desde Productos y en npm.",
+        "gl": "O que se publica é o plugin da versión anterior á 1.0.0 (a 0.4), de descarga local desde Produtos e en npm.",
+        "en": "What goes public is the plugin of the version before 1.0.0 (0.4), as a local download from Products and on npm."
       }
     },
     {
       "version": "10",
       "nombre": {
-        "es": "Público (1.0)",
-        "gl": "Público (1.0)",
-        "en": "Public (1.0)"
+        "es": "Producto final (1.0.0)",
+        "gl": "Produto final (1.0.0)",
+        "en": "Final product (1.0.0)"
       },
       "estado": "pendiente",
       "detalle": {
-        "es": "La 1.0.0 es el producto final: se descarga cuando la versión pública anterior haya rodado.",
-        "gl": "A 1.0.0 é o produto final: descárgase cando a versión pública anterior teña rodado.",
-        "en": "1.0.0 is the final product: it becomes available once the previous public version has been run in."
+        "es": "La 1.0.0 es el producto final: llega cuando el plugin público anterior haya rodado.",
+        "gl": "A 1.0.0 é o produto final: chega cando o plugin público anterior teña rodado.",
+        "en": "1.0.0 is the final product: it arrives once the previous public plugin has been run in."
       }
     }
   ],
