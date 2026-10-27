@@ -68,10 +68,7 @@
       "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is being connected to the service, while the API, the interface and the pilot with Tarkor are still pending. It does not yet generate images from the service and cannot be downloaded yet."
     }
   ],
-  "lineas": [
-    "ia-local",
-    "producto"
-  ],
+  "lineas": ["ia-local", "producto"],
   "aprendizajes": [
     {
       "es": "Nombrar en vez de comparar: el modelo pinta lo que se nombra, así que las comparaciones «como…» sobran en el pedido.",
@@ -300,9 +297,9 @@
         "en": "Content pilot"
       },
       "intro": {
-        "es": "Seis rondas del 26 al 27 de octubre de 2026, en una Steam Deck con stable-diffusion.cpp sobre Vulkan y el modelo FLUX.2 klein 4B.",
-        "gl": "Seis roldas do 26 ao 27 de outubro de 2026, nunha Steam Deck con stable-diffusion.cpp sobre Vulkan e o modelo FLUX.2 klein 4B.",
-        "en": "Six rounds on 26–27 October 2026, on a Steam Deck with stable-diffusion.cpp over Vulkan and the FLUX.2 klein 4B model."
+        "es": "Seis rondas del 26 al 27 de octubre de 2026, en una Steam Deck con stable-diffusion.cpp sobre Vulkan y el modelo FLUX.2 klein 4B. En la galería, cómo evolucionan dos proyectos de la ronda 1 a la 3 y a la 5.",
+        "gl": "Seis roldas do 26 ao 27 de outubro de 2026, nunha Steam Deck con stable-diffusion.cpp sobre Vulkan e o modelo FLUX.2 klein 4B. Na galería, como evolucionan dous proxectos da rolda 1 á 3 e á 5.",
+        "en": "Six rounds on 26–27 October 2026, on a Steam Deck with stable-diffusion.cpp over Vulkan and the FLUX.2 klein 4B model. The gallery shows how two projects evolve from round 1 to 3 and 5."
       },
       "items": [
         {
@@ -376,6 +373,94 @@
             "gl": "Cadrada, vertical, cabeceira e avatar para todos os proxectos. O custo medra cos píxeles.",
             "en": "Square, vertical, header and avatar for every project. Cost grows with pixels."
           }
+        }
+      ],
+      "grupos": [
+        {
+          "id": "portal",
+          "etiqueta": {
+            "es": "Portal",
+            "gl": "Portal",
+            "en": "Portal"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r1.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/portal-r1-mini.webp",
+              "ancho": 1280,
+              "alto": 640,
+              "alt": {
+                "es": "Ronda 1 · Portal: primer fondo social, una esfera de luz difusa sobre azul noche. La idea está, pero no se lee como un portal.",
+                "gl": "Rolda 1 · Portal: primeiro fondo social, unha esfera de luz difusa sobre azul noite. A idea está, pero non se le como un portal.",
+                "en": "Round 1 · Portal: first social background, a diffuse sphere of light on night blue. The idea is there, but it doesn't read as a portal."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r3.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/portal-r3-mini.webp",
+              "ancho": 1280,
+              "alto": 640,
+              "alt": {
+                "es": "Ronda 3 · Portal: con el estilo elegido ya es una puerta de luz con sus anillos en el suelo; definitivo a 1280×640.",
+                "gl": "Rolda 3 · Portal: co estilo escollido xa é unha porta de luz cos seus aneis no chan; definitivo a 1280×640.",
+                "en": "Round 3 · Portal: with the chosen style it is now a doorway of light with rings on the floor; final at 1280×640."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r5.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/portal-r5-mini.webp",
+              "ancho": 1500,
+              "alto": 500,
+              "alt": {
+                "es": "Ronda 5 · Portal: la cabecera terminada, con logo, lema y la imagen a un lado para dejar sitio al texto (pieza de ejemplo en castellano).",
+                "gl": "Rolda 5 · Portal: a cabeceira rematada, con logo, lema e a imaxe a un lado para deixar sitio ao texto (peza de exemplo en castelán).",
+                "en": "Round 5 · Portal: the finished header, with logo, tagline and the image to one side to make room for the text (sample piece in Spanish)."
+              }
+            }
+          ]
+        },
+        {
+          "id": "tarkor",
+          "etiqueta": {
+            "es": "Tarkor",
+            "gl": "Tarkor",
+            "en": "Tarkor"
+          },
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r1.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r1-mini.webp",
+              "ancho": 1280,
+              "alto": 640,
+              "alt": {
+                "es": "Ronda 1 · Tarkor: columnas ante un atardecer saturado; bonito, pero genérico y lejos del mundo del juego.",
+                "gl": "Rolda 1 · Tarkor: columnas diante dun solpor saturado; bonito, pero xenérico e lonxe do mundo do xogo.",
+                "en": "Round 1 · Tarkor: columns against a saturated sunset; pretty, but generic and far from the game's world."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r3.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r3-mini.webp",
+              "ancho": 1280,
+              "alto": 640,
+              "alt": {
+                "es": "Ronda 3 · Tarkor: con el estilo elegido aparecen las agujas de roca del juego, con luz natural y paleta contenida.",
+                "gl": "Rolda 3 · Tarkor: co estilo escollido aparecen as agullas de rocha do xogo, con luz natural e paleta contida.",
+                "en": "Round 3 · Tarkor: with the chosen style the game's rock spires appear, in natural light with a restrained palette."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r5.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r5-mini.webp",
+              "ancho": 1500,
+              "alto": 500,
+              "alt": {
+                "es": "Ronda 5 · Tarkor: la cabecera terminada, con logo y lema sobre el paisaje (pieza de ejemplo en castellano).",
+                "gl": "Rolda 5 · Tarkor: a cabeceira rematada, con logo e lema sobre a paisaxe (peza de exemplo en castelán).",
+                "en": "Round 5 · Tarkor: the finished header, with logo and tagline over the landscape (sample piece in Spanish)."
+              }
+            }
+          ]
         }
       ]
     },
@@ -463,11 +548,7 @@
         "gl": "Servizo",
         "en": "Service"
       },
-      "tecnologias": [
-        "Python 3 (biblioteca estándar)",
-        "CLI gimg",
-        "API HTTP local"
-      ]
+      "tecnologias": ["Python 3 (biblioteca estándar)", "CLI gimg", "API HTTP local"]
     },
     {
       "capa": {
@@ -475,11 +556,7 @@
         "gl": "Motor",
         "en": "Engine"
       },
-      "tecnologias": [
-        "stable-diffusion.cpp",
-        "Vulkan",
-        "FLUX.2 klein 4B"
-      ]
+      "tecnologias": ["stable-diffusion.cpp", "Vulkan", "FLUX.2 klein 4B"]
     },
     {
       "capa": {
@@ -487,10 +564,7 @@
         "gl": "Entrega",
         "en": "Delivery"
       },
-      "tecnologias": [
-        "PNG + manifiesto JSON",
-        "Registro JSONL"
-      ]
+      "tecnologias": ["PNG + manifiesto JSON", "Registro JSONL"]
     },
     {
       "capa": {
@@ -498,10 +572,7 @@
         "gl": "Plataforma",
         "en": "Platform"
       },
-      "tecnologias": [
-        "Linux",
-        "Steam Deck"
-      ]
+      "tecnologias": ["Linux", "Steam Deck"]
     }
   ],
   "hitos": [
