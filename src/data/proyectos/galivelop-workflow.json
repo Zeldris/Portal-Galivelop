@@ -541,6 +541,19 @@
         },
         {
           "nombre": {
+            "es": "commit-msg",
+            "gl": "commit-msg",
+            "en": "commit-msg"
+          },
+          "valor": "exit 1",
+          "texto": {
+            "es": "Bloquea. Si el commit toca la bitácora, la valida (la fecha de «Actualizado», filas mal formadas o demasiado largas) para que el error salga en ese commit y no en el pre-push con varios ya apilados.",
+            "gl": "Bloquea. Se o commit toca a bitácora, valídaa (a data de «Actualizado», filas mal formadas ou demasiado longas) para que o erro saia nese commit e non no pre-push con varios xa apilados.",
+            "en": "Blocks. If the commit touches the handoff log, it validates it (the “Updated” date, malformed or oversized rows) so the error shows up in that commit, not at pre-push with several already stacked."
+          }
+        },
+        {
+          "nombre": {
             "es": "Gancho de pull request",
             "gl": "Gancho de pull request",
             "en": "Pull request hook"
@@ -924,6 +937,19 @@
             "es": "Busca secretos antes de cada commit y protege las rutas que el proyecto marca.",
             "gl": "Busca segredos antes de cada commit e protexe as rutas que o proxecto marca.",
             "en": "Scans for secrets before every commit and protects the paths the project marks."
+          }
+        },
+        {
+          "nombre": {
+            "es": "commit-msg",
+            "gl": "commit-msg",
+            "en": "commit-msg"
+          },
+          "valor": "Git hook",
+          "texto": {
+            "es": "Valida la bitácora en el mismo commit que la cambia, en vez de esperar a la subida.",
+            "gl": "Valida a bitácora no mesmo commit que a cambia, en vez de agardar á subida.",
+            "en": "Validates the handoff log in the same commit that changes it, instead of waiting for the push."
           }
         },
         {
@@ -1576,9 +1602,9 @@
     {
       "fecha": "2026-10-26",
       "texto": {
-        "es": "Publicadas las versiones 0.4.0 y 0.4.1: llega todo lo anunciado para la 0.4 y, además, los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube, el gancho de fusión reconoce un CI que GitHub no arrancó por falta de cuota y la recogida de lo aprendido gasta un 17 % menos de tokens. Es la última versión antes de la 1.0.",
-        "gl": "Publicadas as versións 0.4.0 e 0.4.1: chega todo o anunciado para a 0.4 e, ademais, os scripts atopan o repositorio tamén desde unha copia de traballo enlazada, desaparece o falso aviso de «sesión fóra do repositorio» na nube, o gancho de fusión recoñece un CI que GitHub non arrancou por falta de cota e a recollida do aprendido gasta un 17 % menos de tokens. É a última versión antes da 1.0.",
-        "en": "Versions 0.4.0 and 0.4.1 are out: everything announced for 0.4 is in and, on top of that, the scripts find the repository from a linked working copy too, the false “session outside the repository” warning in the cloud is gone, the merge hook recognises CI that GitHub didn’t start for lack of quota, and gathering what the projects taught us uses 17% fewer tokens. It is the last version before 1.0."
+        "es": "Publicadas las versiones 0.4.0 y 0.4.1: llega todo lo anunciado para la 0.4 y, además, los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube, el gancho de fusión reconoce un CI que GitHub no arrancó por falta de cuota y la recogida de lo aprendido gasta un 17 % menos de tokens. La serie 0.4 es la última antes de la 1.0.",
+        "gl": "Publicadas as versións 0.4.0 e 0.4.1: chega todo o anunciado para a 0.4 e, ademais, os scripts atopan o repositorio tamén desde unha copia de traballo enlazada, desaparece o falso aviso de «sesión fóra do repositorio» na nube, o gancho de fusión recoñece un CI que GitHub non arrancou por falta de cota e a recollida do aprendido gasta un 17 % menos de tokens. A serie 0.4 é a última antes da 1.0.",
+        "en": "Versions 0.4.0 and 0.4.1 are out: everything announced for 0.4 is in and, on top of that, the scripts find the repository from a linked working copy too, the false “session outside the repository” warning in the cloud is gone, the merge hook recognises CI that GitHub didn’t start for lack of quota, and gathering what the projects taught us uses 17% fewer tokens. The 0.4 series is the last one before 1.0."
       }
     },
     {
@@ -1656,7 +1682,7 @@
       }
     },
     {
-      "valor": "461",
+      "valor": "1043",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",

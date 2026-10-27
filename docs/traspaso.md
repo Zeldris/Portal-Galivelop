@@ -18,10 +18,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-_(nada: todo publicado)_
+- Ficha de Galivelop-workflow al día con la 0.4.1 en lo que la revisión semanal no tocó (rama `ccr-47f8fddd-o5ek6p`, fusionada en la de trabajo): diagramas «arquitectura» (0.4.1, 24 skills, gancho `commit-msg`, 1043 tests) y «versiones» (1043 tests) con sus webp; cifra de pruebas 461 → 1043; `commit-msg` en «Qué se impone y qué se aconseja» y en «Ganchos y scripts propios»; la novedad del 26-10 dice «la serie 0.4 es la última antes de la 1.0» (la 0.4.2 está en `main` del flujo sin etiqueta). Solo contenido.
 
 ## Hecho
 
+- ✅ 2026-10-27 · Comprobación de la revisión semanal (petición de la persona): versión, skills, hito y novedades bien; desfasados los diagramas «arquitectura» y «versiones», la cifra de pruebas y el gancho `commit-msg` en dos apartados. Arreglado (ver «Para la próxima publicación»). Causa: el bloque del flujo en `docs/runbooks/tarea-semanal.md` solo pedía versión y novedad.
 - ✅ 2026-10-27 · Revisión semanal (tarea «Proyectos semanal»), publicada en `main`: Galivelop-workflow a la 0.4.1 (fase, descripción, hito 7, once skills propias y trece de Matt Pocock con sus fichas de `gw-media-content`, `gw-media-content-now` y `wait-what`, novedad del 26-10) y sin el número repetido en los títulos de «Cómo funciona» (pendiente de la ronda de móvil); Tarkor, dos novedades del 26-10 (conversaciones; caza y progreso). toVeriAI, muro y Próximamente sin cambios. Solo contenido.
 - ✅ 2026-10-27 · `claude/galivelop-dev-portal-1h89ci` igualada con `main` (avance rápido de 959e26f a d4c1ce6, 27 commits, ninguno propio por detrás; petición de la persona, «Hazlo»). El bloque de `docs/runbooks/tarea-semanal.md` ya está pegado en «Proyectos semanal» (lo hizo la persona).
 - ✅ 2026-10-27 · **Publicado en `main`** (3b3d804 y esta entrada) con confirmación de la persona («Si»): la segunda pasada de front, con la fase 1 (`/code-review` y sus arreglos medios), sin fase 2 (cambio pequeño, `requireRetro: false`) y la marca de 6f2fdf4. CI «Comprobar» en verde en 3b3d804 y `pre-push` en verde.
