@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Nada pendiente: todo lo de la rama de trabajo está en `main` (2026-10-27, revisión semanal con la 0.4.2 del flujo).
+- 2026-10-29 · Puesto de Álvaro en `src/data/equipo.json` (`rol`): «Software Architect & AI Systems Engineer, specializing in local-first infrastructure and deterministic systems», con su traducción en es y gl; sigue «Fundador ·» delante. Solo contenido, en `ccr-83ea043c-r1gbyp`.
 
 ## Hecho
 

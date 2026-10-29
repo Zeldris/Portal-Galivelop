@@ -4,9 +4,9 @@
     "nombre": "Álvaro García Graña",
     "orden": 1,
     "rol": {
-      "es": "Fundador · Desarrollo full stack",
-      "gl": "Fundador · Desenvolvemento full stack",
-      "en": "Founder · Full-stack development"
+      "es": "Fundador · Arquitecto de software e ingeniero de sistemas de IA, especializado en infraestructura local-first y sistemas deterministas",
+      "gl": "Fundador · Arquitecto de software e enxeñeiro de sistemas de IA, especializado en infraestrutura local-first e sistemas deterministas",
+      "en": "Founder · Software Architect & AI Systems Engineer, specializing in local-first infrastructure and deterministic systems"
     },
     "bio": {
       "es": "Desarrollador full stack desde 2017 y, desde 2023, sénior en Orienteed. Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir: creó Tarkor, Galivelop-workflow y Galivelop Image Generator, y forma parte del equipo de toVeriAI. Le mueven el aprendizaje continuo y adaptarse a lo que cambia, hoy también con la IA en el día a día del desarrollo.",
