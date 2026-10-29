@@ -18,10 +18,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- 2026-10-29 · Puesto de Álvaro en `src/data/equipo.json` (`rol`): «Software Architect & AI Systems Engineer, specializing in local-first infrastructure and deterministic systems», con su traducción en es y gl; sigue «Fundador ·» delante. Solo contenido, en `ccr-83ea043c-r1gbyp`.
+- Nada pendiente: todo lo de la rama de trabajo está en `main` (2026-10-29, puesto de Álvaro).
 
 ## Hecho
 
+- ✅ 2026-10-29 · Puesto de Álvaro (`rol` de `src/data/equipo.json`): «Fundador · Software Architect & AI Systems Engineer, specializing in local-first infrastructure and deterministic systems», traducido en es y gl. Solo contenido; subido a `main` con confirmación de la persona y el CI en verde.
 - ✅ 2026-10-27 · Revisión semanal (tarea «Proyectos semanal», tercera pasada del día), publicada en `main`: Galivelop-workflow en la 0.4.2 (texto de las etapas, 1063 pruebas automáticas y diagramas de arquitectura y versiones regenerados); Tarkor, toVeriAI, galivelop-image-generator y próximamente, sin cambios; muro sin piezas listas.
 - ✅ 2026-10-27 · **Revisión de novedades de los proyectos** (solo contenido): Galivelop-workflow con la 0.4.2 (parche solo de arreglos; novedad, hito 7 y línea de estado); Tarkor sin novedad nueva (INS-33/34 son trabajo interno del instalador y la web no explica cómo va); toVeriAI ya al día con la del 27. Subido a `main` con la confirmación de la persona («Cuando este todo llevalo a main»).
 - ✅ 2026-10-27 · **Ficha de Galivelop-workflow en `main`** (solo contenido, bba73b0; títulos finales de los hitos 9 «Público (plugin 0.4)» y 10 «Producto (1.0.0)» tras dos capturas de la persona, a92c95e, también en `main`): hitos 7, 9 y 10 y `queOfrece` del producto dicen que se publica el plugin de la versión anterior a la 1.0.0 (la 0.4) y que el producto final es la 1.0.0; subido con la confirmación de la persona.
