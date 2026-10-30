@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-27 |
+| **Actualizado** | 2026-10-30 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-83ea043c-r1gbyp` (sigue el WIP de `ccr-47f8fddd-o5ek6p`, de otra cuenta) |
 | **Tarea en curso** | Ninguna en código. **Mensaje en positivo y galería del generador en `main`** (2026-10-27, la persona: «Aplícalo todo y cuando acabes llévalo a main»; revisión con 5 hallazgos, 4 arreglados y 1 leve; marca de 97aedf3; CI verde). Redes: pieza 01 lista salvo Reddit (faltan subreddit y normas) |
 | **Siguiente paso** | Publicaciones en redes: Reddit de la pieza 01 cuando la persona pegue las normas, y luego la siguiente actualización (Productos, mensaje en positivo…). Decidir el leve de `sobre.texto1` |
@@ -46,6 +46,26 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
+- **Ideas de `elayadesign/ai-design-skills` aprobadas, sin aplicar** (2026-10-30, la persona: «Apruebo tus
+  recomendaciones, apúntalas, pero no apliques nada aún»). El repo (MIT) solo trae la skill `landing-page-design`; no
+  se instala (su parte de conversión choca con la ADR 0002 y su sistema visual prohíbe Inter, los degradados de
+  fondo y lucide); se toman estas reglas, por orden de valor:
+  1. Palabras de relleno prohibidas en los textos visibles, en es/gl/en («revolucionar», «de vanguardia», «sin
+     esfuerzo», «al siguiente nivel»…), como comprobación de `npm run check`.
+  2. `text-wrap: pretty` en el texto corrido (hoy solo hay un `balance`, `global.css:514`).
+  3. Enlace de privacidad o aviso legal en el pie (hoy no hay; enlaza con la fase 5 de la ADR 0002 y la LSSI-CE de
+     más arriba). Lo demás de su lista de publicar ya está (404, saltar al contenido, `og:image`, `focus-visible`,
+     `prefers-reduced-motion`).
+  4. Auditar estados: respuesta al pulsar (`scale(0.98)`), vacíos cuidados y errores junto al campo del formulario.
+  5. Movimiento: `--transicion` (180 ms) a ≥200 ms en color y ~500 ms en posición; animar sobre todo `transform` y
+     `opacity` (hoy también `box-shadow` y `background`).
+  6. FAQ de `/productos` («¿Cómo consigo un producto?», «¿Cuánto cuesta?») con JSON-LD `FAQPage`; toca
+     `scripts/paginas-estaticas.mjs` (peligro de SEO según las notas de `pr`).
+  7. Radios anidados (interior = exterior − hueco, si el hueco es < 32 px) como criterio en `REVIEW.md`.
+  8. Frase de la marca que se ilumina palabra a palabra al hacer scroll en Inicio: solo como `prototype`, con el
+     enlace a la persona.
+  Además: el repo a `designReferences` de `.claude/gw.json`, y los puntos 1 y 3 como propuesta para el flujo
+  (próxima recogida). Sin mirar aún: `elayadesign/redesign-skill`, del mismo autor, para webs ya hechas.
 - **Leve de la revisión del mensaje en positivo** (2026-10-27, no se vuelve a revisar en este cambio): `sobre.texto1` sigue abriendo con negaciones («un taller, no un escaparate», «aquí no solo se desarrolla»); la ADR 0002 solo pide quitar las de vender, así que se deja a decisión de la persona.
 - **Leves de la revisión de la ficha del generador** (2026-10-27, no se vuelven a revisar en este cambio): `.pie-proyectos` puede pasar a otra línea también en anchos intermedios de escritorio (solo si no cabe); su hueco de 20 px entre filas depende del `::after { inset: -10px 0 }` de la zona táctil, unas 800 líneas más abajo, sin nada que los ate (una variable CSS compartida).
 - **Próxima sesión nueva: sin `add_repo` en la principal** (T1 de la retro de Productos, 2026-10-27): los repos hermanos en `/home/user` suben el suelo unos 15k y el arranque de cada subagente de 35k a 75k; otro repo se lee con un subagente que lo clona en el scratchpad.
