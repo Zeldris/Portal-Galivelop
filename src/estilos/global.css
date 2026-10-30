@@ -3746,7 +3746,8 @@ img.avatar {
   gap: 12px;
 }
 
-.apartado-items li {
+/* Solo los hijos directos son tarjetas: la lista de «Ver el detalle» va dentro. */
+.apartado-items > li {
   padding: 16px 18px;
   border-radius: var(--radio-sm);
   background: var(--superficie-2);
@@ -3793,17 +3794,11 @@ img.avatar {
 .apartado-items .apartado-detalle ul {
   margin: 10px 0 0;
   padding-left: 18px;
+  list-style: disc;
   display: grid;
   gap: 6px;
   color: var(--texto-2);
   font-size: 0.88rem;
-}
-
-.apartado-items .apartado-detalle li {
-  display: list-item;
-  padding: 0;
-  border: 0;
-  background: none;
 }
 
 /* Tarjeta con imagen: la imagen ocupa la cabecera de la tarjeta, de borde a borde. */

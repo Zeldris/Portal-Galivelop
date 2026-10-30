@@ -159,7 +159,8 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                 />
               )}
               {a.items.length > 0 && (
-                <ul className="apartado-items">
+                // key: al pasar de un apartado a otro, sus elementos no heredan el estado (un «Ver el detalle» abierto).
+                <ul key={a.id} className="apartado-items">
                   {a.items.map((item, i) => (
                     // Por posición: dos elementos pueden llamarse igual (dos «Parche de arreglos»).
                     <li key={i} className={item.imagen ? 'con-imagen' : undefined}>
@@ -169,7 +170,7 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                         {item.valor && <span className="apartado-valor">{item.valor}</span>}
                       </div>
                       <p>{tx(item.texto)}</p>
-                      {item.detalle && (
+                      {item.detalle?.length ? (
                         <details className="apartado-detalle">
                           <summary>
                             {t('afondo.detalle')} <ChevronDown size={16} aria-hidden="true" />
@@ -180,7 +181,7 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
                             ))}
                           </ul>
                         </details>
-                      )}
+                      ) : null}
                     </li>
                   ))}
                 </ul>

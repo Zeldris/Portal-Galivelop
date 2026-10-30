@@ -53,6 +53,21 @@ describe('proyectos', () => {
         // `valor` es un dato corto igual en todos los idiomas: si fuera un objeto, React no lo puede pintar.
         for (const a of p.apartados)
           for (const i of a.items) if (i.valor !== undefined) expect(typeof i.valor).toBe('string');
+        // `detalle` es una lista no vacía de textos en los tres idiomas (lo escribe la tarea semanal sin revisión).
+        for (const a of p.apartados)
+          for (const i of a.items)
+            if (i.detalle !== undefined) {
+              expect(Array.isArray(i.detalle) && i.detalle.length > 0, `${a.id}: detalle`).toBe(
+                true,
+              );
+              for (const d of i.detalle)
+                expect(
+                  (['es', 'gl', 'en'] as const).every(
+                    (k) => typeof d?.[k] === 'string' && d[k] !== '',
+                  ),
+                  `${a.id}: ${JSON.stringify(d)}`,
+                ).toBe(true);
+            }
       });
 
       it('pertenece a líneas de trabajo que existen', () => {
