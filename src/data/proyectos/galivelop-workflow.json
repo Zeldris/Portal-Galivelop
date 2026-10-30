@@ -1448,9 +1448,9 @@
         "en": "Released versions"
       },
       "intro": {
-        "es": "Qué trae cada versión, de la más reciente a la primera. Es un resumen: el detalle técnico vive en las notas de cada versión del repositorio, que se enlazarán aquí cuando sea público.",
-        "gl": "Que trae cada versión, da máis recente á primeira. É un resumo: o detalle técnico vive nas notas de cada versión do repositorio, que se ligarán aquí cando sexa público.",
-        "en": "What each version brings, newest first. This is a summary: the technical detail lives in each version’s release notes in the repository, which will be linked here once it is public."
+        "es": "Qué trae cada versión, de la más reciente a la primera, y en «Ver el detalle», sus cambios uno a uno. Las notas completas del repositorio se enlazarán aquí cuando sea público.",
+        "gl": "Que trae cada versión, da máis recente á primeira, e en «Ver o detalle», os seus cambios un a un. As notas completas do repositorio ligaranse aquí cando sexa público.",
+        "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The repository’s full release notes will be linked here once it is public."
       },
       "items": [
         {
@@ -1464,7 +1464,29 @@
             "es": "Correcciones que pidieron los proyectos: el aviso de secretos reconoce más formas de clave, la fusión de la rama de un subagente pasa también los tests de lo que cambia, el mapa del código entiende Java, Kotlin o C#, y los scripts dejan de proponer reescribir el último commit.",
             "gl": "Correccións que pediron os proxectos: o aviso de segredos recoñece máis formas de clave, a fusión da rama dun subaxente pasa tamén os tests do que cambia, o mapa do código entende Java, Kotlin ou C#, e os scripts deixan de propoñer reescribir o último commit.",
             "en": "Fixes the projects asked for: the secrets warning recognises more kinds of key, merging a subagent’s branch also runs the tests for what changed, the code map understands Java, Kotlin or C#, and the scripts stop suggesting rewriting the last commit."
-          }
+          },
+          "detalle": [
+            {
+              "es": "El registro de trabajo ya no propone reescribir el último commit: pide un commit nuevo con el arreglo, y la subida mira la bitácora tal como queda al final.",
+              "gl": "O rexistro de traballo xa non propón reescribir o último commit: pide un commit novo co arranxo, e a subida mira a bitácora tal como queda ao final.",
+              "en": "The work log no longer suggests rewriting the last commit: it asks for a new commit with the fix, and the push checks the log as it ends up at the tip."
+            },
+            {
+              "es": "El aviso de secretos antes de cada commit reconoce nombres como api.key y las claves pegadas a un proveedor de IA, sin saltar con nombres inocentes como primary_key.",
+              "gl": "O aviso de segredos antes de cada commit recoñece nomes como api.key e as claves pegadas a un provedor de IA, sen saltar con nomes inocentes como primary_key.",
+              "en": "The secrets warning before each commit recognises names such as api.key and keys tied to an AI provider, without firing on harmless names such as primary_key."
+            },
+            {
+              "es": "Al fusionar la rama de un subagente se pasan también los tests relacionados con lo que trae la fusión, como al subir.",
+              "gl": "Ao fusionar a rama dun subaxente pásanse tamén os tests relacionados co que trae a fusión, como ao subir.",
+              "en": "Merging a subagent’s branch also runs the tests related to what the merge brings in, just as a push does."
+            },
+            {
+              "es": "El mapa del código para agentes entiende métodos de Java, Kotlin, C#, Scala y Groovy.",
+              "gl": "O mapa do código para axentes entende métodos de Java, Kotlin, C#, Scala e Groovy.",
+              "en": "The code map for agents understands methods in Java, Kotlin, C#, Scala and Groovy."
+            }
+          ]
         },
         {
           "nombre": {
@@ -1477,7 +1499,34 @@
             "es": "Los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube y la revisión antes de main distingue un CI que GitHub no llegó a arrancar por cuota. La recogida de ideas lee los proyectos sin cargarlos enteros.",
             "gl": "Os scripts atopan o repositorio tamén desde unha copia de traballo ligada, desaparece o falso aviso de «sesión fóra do repositorio» na nube e a revisión antes de main distingue un CI que GitHub non chegou a arrancar por cota. A recollida de ideas le os proxectos sen cargalos enteiros.",
             "en": "The scripts find the repository from a linked working copy too, the false “session outside the repository” warning disappears in the cloud, and the review before main tells apart a CI run GitHub never started because of quota. The idea harvest reads projects without loading them whole."
-          }
+          },
+          "detalle": [
+            {
+              "es": "Los scripts encuentran la raíz del repositorio también desde una copia de trabajo enlazada (git worktree).",
+              "gl": "Os scripts atopan a raíz do repositorio tamén desde unha copia de traballo ligada (git worktree).",
+              "en": "The scripts find the repository root from a linked working copy (git worktree) too."
+            },
+            {
+              "es": "En la nube desaparece el falso aviso de «sesión abierta fuera del repositorio», y el reparto a subagentes sabe crear sus copias de trabajo desde ahí.",
+              "gl": "Na nube desaparece o falso aviso de «sesión aberta fóra do repositorio», e o reparto a subaxentes sabe crear as súas copias de traballo desde aí.",
+              "en": "In the cloud the false “session opened outside the repository” warning disappears, and handing work to subagents can create their working copies from there."
+            },
+            {
+              "es": "La revisión antes de main reconoce un CI que GitHub no arrancó por facturación o límite de gasto: sigue bloqueando, pero dice por qué.",
+              "gl": "A revisión antes de main recoñece un CI que GitHub non arrancou por facturación ou límite de gasto: segue bloqueando, pero di por que.",
+              "en": "The review before main recognises a CI run GitHub did not start because of billing or a spending limit: it still blocks, but says why."
+            },
+            {
+              "es": "La comprobación de que un test nuevo falla sin su arreglo es más estricta y explica cómo seguir cuando no puede aplicarse.",
+              "gl": "A comprobación de que un test novo falla sen o seu arranxo é máis estrita e explica como seguir cando non se pode aplicar.",
+              "en": "The check that a new test fails without its fix is stricter and explains how to continue when it cannot run."
+            },
+            {
+              "es": "La recogida de ideas clona los proyectos solo para leerlos, sin cargarlos en la sesión, y gasta menos.",
+              "gl": "A recollida de ideas clona os proxectos só para lelos, sen cargalos na sesión, e gasta menos.",
+              "en": "The idea harvest clones projects only to read them, without loading them into the session, and spends less."
+            }
+          ]
         },
         {
           "nombre": {
@@ -1490,7 +1539,49 @@
             "es": "Dos ganchos nuevos: uno no deja acabar la sesión con trabajo sin subir y otro avisa antes de tocar la configuración del flujo. Cada versión empieza recogiendo lo aprendido en los proyectos, el aviso de secretos deja de dar falsos positivos y, si el CI no arranca, vale el check en local con la confirmación de la persona.",
             "gl": "Dous ganchos novos: un non deixa rematar a sesión con traballo sen subir e outro avisa antes de tocar a configuración do fluxo. Cada versión empeza recollendo o aprendido nos proxectos, o aviso de segredos deixa de dar falsos positivos e, se o CI non arranca, vale o check en local coa confirmación da persoa.",
             "en": "Two new hooks: one will not let a session end with unpushed work, and another warns before the workflow’s configuration is edited. Each version starts by collecting what the projects learnt, the secrets warning stops giving false positives and, if CI does not start, the local check counts once the person confirms it."
-          }
+          },
+          "detalle": [
+            {
+              "es": "Gancho de parada: no deja acabar la sesión con commits sin subir.",
+              "gl": "Gancho de parada: non deixa rematar a sesión con commits sen subir.",
+              "en": "Stop hook: a session cannot end with unpushed commits."
+            },
+            {
+              "es": "Guardia de configuración: avisa antes de editar los archivos que gobiernan el flujo (ajustes, ganchos, scripts copiados).",
+              "gl": "Garda de configuración: avisa antes de editar os arquivos que gobernan o fluxo (axustes, ganchos, scripts copiados).",
+              "en": "Configuration guard: warns before editing the files that govern the workflow (settings, hooks, copied scripts)."
+            },
+            {
+              "es": "Tope de subagentes: limita cuántos se lanzan a la vez, para que un reparto no se dispare.",
+              "gl": "Tope de subaxentes: limita cantos se lanzan á vez, para que un reparto non se dispare.",
+              "en": "Subagent cap: limits how many run at once, so a hand-out cannot run away."
+            },
+            {
+              "es": "Cada versión empieza con una recogida de lo que proponen los proyectos, que ahora también lee sus bitácoras.",
+              "gl": "Cada versión empeza cunha recollida do que propoñen os proxectos, que agora tamén le as súas bitácoras.",
+              "en": "Each version starts by collecting what the projects propose, which now also reads their logs."
+            },
+            {
+              "es": "Si el CI no arranca (sin cuota ni runners), vale el check en local sobre el mismo commit con la confirmación de la persona.",
+              "gl": "Se o CI non arranca (sen cota nin runners), vale o check en local sobre o mesmo commit coa confirmación da persoa.",
+              "en": "If CI does not start (no quota or runners), the local check on the same commit counts once the person confirms it."
+            },
+            {
+              "es": "El aviso de secretos deja de confundir palabras normales con claves, y el diagnóstico avisa si el agente no puede leer el CI.",
+              "gl": "O aviso de segredos deixa de confundir palabras normais con claves, e o diagnóstico avisa se o axente non pode ler o CI.",
+              "en": "The secrets warning stops mistaking ordinary words for keys, and the diagnosis warns when the agent cannot read CI."
+            },
+            {
+              "es": "La guía de revisión pide intentar refutar cada hallazgo y acabar con un veredicto: publicar, publicar con arreglos o no publicar.",
+              "gl": "A guía de revisión pide tentar refutar cada achado e rematar cun veredicto: publicar, publicar con arranxos ou non publicar.",
+              "en": "The review guide asks to try to refute each finding and to end with a verdict: ship, ship with fixes or do not ship."
+            },
+            {
+              "es": "Notas personales que acompañan a la persona de un proyecto a otro, y una bitácora con celdas más cortas.",
+              "gl": "Notas persoais que acompañan á persoa dun proxecto a outro, e unha bitácora con celas máis curtas.",
+              "en": "Personal notes that follow the person from one project to the next, and a log with shorter cells."
+            }
+          ]
         },
         {
           "nombre": {
@@ -1503,7 +1594,34 @@
             "es": "Lo que pidió el piloto en World-Maker-Fantasy: claves nuevas para comandos envueltos, tests relacionados y arranque del entorno, revisiones y bitácora más estrictas, y una carpeta de notas propias por skill. Los subagentes trabajan en tandas más cortas y la bitácora guarda menos historia.",
             "gl": "O que pediu o piloto en World-Maker-Fantasy: claves novas para comandos envoltos, tests relacionados e arranque do contorno, revisións e bitácora máis estritas, e un cartafol de notas propias por skill. Os subaxentes traballan en tandas máis curtas e a bitácora garda menos historia.",
             "en": "What the World-Maker-Fantasy pilot asked for: new settings for wrapped commands, related tests and environment start-up, stricter reviews and log, and a folder of project notes for each skill. Subagents work in shorter batches and the log keeps less history."
-          }
+          },
+          "detalle": [
+            {
+              "es": "Claves nuevas en la configuración: envolver los comandos del check, tests relacionados por carpeta, instalar y preparar el entorno al arrancar.",
+              "gl": "Claves novas na configuración: envolver os comandos do check, tests relacionados por cartafol, instalar e preparar o contorno ao arrancar.",
+              "en": "New configuration keys: wrapping the check commands, related tests per folder, installing and preparing the environment at start-up."
+            },
+            {
+              "es": "La marca de revisión ignora los borradores sin seguimiento y lee la decisión de la retro entera.",
+              "gl": "A marca de revisión ignora os borradores sen seguimento e le a decisión da retro enteira.",
+              "en": "The review mark ignores untracked drafts and reads the whole retro decision."
+            },
+            {
+              "es": "La subida comprueba el código en una copia temporal por repositorio y limpia las que quedan huérfanas.",
+              "gl": "A subida comproba o código nunha copia temporal por repositorio e limpa as que quedan orfas.",
+              "en": "The push checks the code in one temporary copy per repository and cleans up orphaned ones."
+            },
+            {
+              "es": "El diagnóstico reconoce los ganchos del flujo, exige que la marca de revisión esté en git y avisa de términos repetidos en el glosario.",
+              "gl": "O diagnóstico recoñece os ganchos do fluxo, esixe que a marca de revisión estea en git e avisa de termos repetidos no glosario.",
+              "en": "The diagnosis recognises the workflow’s hooks, requires the review mark to be in git and warns about repeated glossary terms."
+            },
+            {
+              "es": "Cada skill lee sus notas propias del proyecto, y los subagentes trabajan en tandas de unas 35 llamadas como mucho.",
+              "gl": "Cada skill le as súas notas propias do proxecto, e os subaxentes traballan en tandas duns 35 chamados como moito.",
+              "en": "Each skill reads its own project notes, and subagents work in batches of about 35 calls at most."
+            }
+          ]
         },
         {
           "nombre": {
@@ -1516,7 +1634,34 @@
             "es": "La rama protegida se juzga con la configuración que se sube, se buscan restos de conflictos en toda la subida y el diagnóstico avisa de archivos del flujo ignorados por git o de ganchos repetidos. Instalar en un proyecto pide menos decisiones y enseña lo que cambia.",
             "gl": "A rama protexida xúlgase coa configuración que se sobe, búscanse restos de conflitos en toda a subida e o diagnóstico avisa de arquivos do fluxo ignorados por git ou de ganchos repetidos. Instalar nun proxecto pide menos decisións e ensina o que cambia.",
             "en": "The protected branch is judged with the configuration being pushed, conflict leftovers are searched across the whole push, and the diagnosis warns about workflow files ignored by git or duplicated hooks. Installing in a project asks for fewer decisions and shows what changes."
-          }
+          },
+          "detalle": [
+            {
+              "es": "La subida a la rama protegida se juzga con la configuración de la propia rama remota; la configuración cuenta como código.",
+              "gl": "A subida á rama protexida xúlgase coa configuración da propia rama remota; a configuración conta como código.",
+              "en": "Pushes to the protected branch are judged with the remote branch’s own configuration; the configuration counts as code."
+            },
+            {
+              "es": "Se buscan marcadores de conflicto en todos los commits que se suben, no solo en el último.",
+              "gl": "Búscanse marcadores de conflito en todos os commits que se soben, non só no último.",
+              "en": "Conflict markers are searched for in every pushed commit, not just the last one."
+            },
+            {
+              "es": "El diagnóstico avisa de archivos del flujo ignorados por git, de propuestas sin resolver y de ganchos duplicados.",
+              "gl": "O diagnóstico avisa de arquivos do fluxo ignorados por git, de propostas sen resolver e de ganchos duplicados.",
+              "en": "The diagnosis warns about workflow files ignored by git, unresolved proposals and duplicated hooks."
+            },
+            {
+              "es": "El instalador pregunta solo lo que decide el proyecto, enseña el diff de lo que ya existía y copia la licencia de las skills adaptadas.",
+              "gl": "O instalador pregunta só o que decide o proxecto, ensina o diff do que xa existía e copia a licenza das skills adaptadas.",
+              "en": "The installer asks only what the project decides, shows the diff of what already existed and copies the licence of the adapted skills."
+            },
+            {
+              "es": "La retro ya la puede lanzar el propio agente, y la recuperación tras una compactación no se cuelga.",
+              "gl": "A retro xa a pode lanzar o propio axente, e a recuperación tras unha compactación non se colga.",
+              "en": "The agent can now start the retro itself, and recovery after a compaction no longer hangs."
+            }
+          ]
         },
         {
           "nombre": {
@@ -1529,7 +1674,29 @@
             "es": "El esqueleto: las skills de Matt Pocock y las propias (elegir skill y modelo, repartir a subagentes, medir el gasto de tokens), los ganchos que impiden subir a main sin revisión, la bitácora para retomar el trabajo y el instalador. Antes de publicarla pasó una revisión con diez arreglos.",
             "gl": "O esqueleto: as skills de Matt Pocock e as propias (escoller skill e modelo, repartir a subaxentes, medir o gasto de tokens), os ganchos que impiden subir a main sen revisión, a bitácora para retomar o traballo e o instalador. Antes de publicala pasou unha revisión con dez arranxos.",
             "en": "The skeleton: Matt Pocock’s skills and our own (choosing a skill and model, handing work to subagents, measuring token spend), the hooks that block pushing to main without review, the log for picking work back up, and the installer. Before release it went through a review with ten fixes."
-          }
+          },
+          "detalle": [
+            {
+              "es": "Skills: once de Matt Pocock, con su mención, y las propias para elegir skill y modelo, repartir a subagentes, medir el gasto de tokens y recoger lo aprendido.",
+              "gl": "Skills: once de Matt Pocock, coa súa mención, e as propias para escoller skill e modelo, repartir a subaxentes, medir o gasto de tokens e recoller o aprendido.",
+              "en": "Skills: eleven by Matt Pocock, credited, plus our own for choosing a skill and model, handing work to subagents, measuring token spend and collecting what was learnt."
+            },
+            {
+              "es": "Ganchos y scripts: check antes de subir, aviso de secretos, marca de revisión, guarda del pull request a la rama protegida, arranque y recuperación de la sesión, y diagnóstico.",
+              "gl": "Ganchos e scripts: check antes de subir, aviso de segredos, marca de revisión, garda do pull request á rama protexida, arranque e recuperación da sesión, e diagnóstico.",
+              "en": "Hooks and scripts: the check before pushing, the secrets warning, the review mark, the pull request guard for the protected branch, session start and recovery, and the diagnosis."
+            },
+            {
+              "es": "Instalador que aplica el flujo a un proyecto sin pisar lo que ya tiene, y versiones con su release a partir del CHANGELOG.",
+              "gl": "Instalador que aplica o fluxo a un proxecto sen pisar o que xa ten, e versións coa súa release a partir do CHANGELOG.",
+              "en": "An installer that applies the workflow to a project without overwriting what it already has, and versions with their release built from the CHANGELOG."
+            },
+            {
+              "es": "Antes de publicarla, una revisión de todo el conjunto con diez arreglos y la retro de las fases 0 a 4.",
+              "gl": "Antes de publicala, unha revisión de todo o conxunto con dez arranxos e a retro das fases 0 a 4.",
+              "en": "Before release, a review of the whole set with ten fixes and the retro of phases 0 to 4."
+            }
+          ]
         }
       ]
     }

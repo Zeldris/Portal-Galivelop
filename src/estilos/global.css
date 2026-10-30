@@ -1905,6 +1905,7 @@ button {
 .vistazo-mas,
 .miembro-mas > summary,
 .miembro-pliegue > summary,
+.apartado-detalle > summary,
 .pie-proyectos a,
 .contacto-otros a {
   position: relative;
@@ -1916,6 +1917,7 @@ button {
 .vistazo-mas::after,
 .miembro-mas > summary::after,
 .miembro-pliegue > summary::after,
+.apartado-detalle > summary::after,
 .pie-proyectos a::after,
 .contacto-otros a::after {
   content: '';
@@ -3295,7 +3297,8 @@ img.perfil-logo {
 }
 
 .miembro-mas > summary,
-.miembro-pliegue > summary {
+.miembro-pliegue > summary,
+.apartado-detalle > summary {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -3304,11 +3307,13 @@ img.perfil-logo {
 }
 
 .miembro-mas > summary::-webkit-details-marker,
-.miembro-pliegue > summary::-webkit-details-marker {
+.miembro-pliegue > summary::-webkit-details-marker,
+.apartado-detalle > summary::-webkit-details-marker {
   display: none;
 }
 
-.miembro-mas > summary {
+.miembro-mas > summary,
+.apartado-detalle > summary {
   margin-top: 10px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -3324,7 +3329,8 @@ img.perfil-logo {
 }
 
 .miembro-mas[open] > summary svg,
-.miembro-pliegue[open] > summary svg {
+.miembro-pliegue[open] > summary svg,
+.apartado-detalle[open] > summary svg {
   transform: rotate(180deg);
 }
 
@@ -3781,6 +3787,23 @@ img.avatar {
 .apartado-items p {
   color: var(--texto-2);
   font-size: 0.92rem;
+}
+
+/* Lista de «Ver el detalle»: más pequeña que el resumen, con viñetas. */
+.apartado-items .apartado-detalle ul {
+  margin: 10px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+  color: var(--texto-2);
+  font-size: 0.88rem;
+}
+
+.apartado-items .apartado-detalle li {
+  display: list-item;
+  padding: 0;
+  border: 0;
+  background: none;
 }
 
 /* Tarjeta con imagen: la imagen ocupa la cabecera de la tarjeta, de borde a borde. */

@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown, X } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ruta } from '../data/proyectos';
 import type { Apartado, Imagen } from '../data/tipos';
@@ -160,14 +160,27 @@ export function Apartados({ apartados }: { apartados: Apartado[] }) {
               )}
               {a.items.length > 0 && (
                 <ul className="apartado-items">
-                  {a.items.map((item) => (
-                    <li key={tx(item.nombre)} className={item.imagen ? 'con-imagen' : undefined}>
+                  {a.items.map((item, i) => (
+                    // Por posición: dos elementos pueden llamarse igual (dos «Parche de arreglos»).
+                    <li key={i} className={item.imagen ? 'con-imagen' : undefined}>
                       {item.imagen && <ImagenAmpliable imagen={item.imagen} />}
                       <div className="apartado-cabecera">
                         <h3>{tx(item.nombre)}</h3>
                         {item.valor && <span className="apartado-valor">{item.valor}</span>}
                       </div>
                       <p>{tx(item.texto)}</p>
+                      {item.detalle && (
+                        <details className="apartado-detalle">
+                          <summary>
+                            {t('afondo.detalle')} <ChevronDown size={16} aria-hidden="true" />
+                          </summary>
+                          <ul>
+                            {item.detalle.map((d, j) => (
+                              <li key={j}>{tx(d)}</li>
+                            ))}
+                          </ul>
+                        </details>
+                      )}
                     </li>
                   ))}
                 </ul>

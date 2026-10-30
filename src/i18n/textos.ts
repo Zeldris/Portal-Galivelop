@@ -258,6 +258,7 @@ const es = {
   'afondo.texto':
     'Cada tema se abre encima de la página: pasa de uno a otro con las flechas sin perder tu sitio.',
   'afondo.elementos': '{n} {n:elemento|elementos}',
+  'afondo.detalle': 'Ver el detalle',
   'afondo.imagenes': '{n} {n:imagen|imágenes}',
   'apartado.anterior': 'Tema anterior',
   'apartado.siguiente': 'Tema siguiente',
@@ -569,6 +570,7 @@ const gl: Record<Clave, string> = {
   'afondo.texto':
     'Cada tema ábrese enriba da páxina: pasa dun a outro coas frechas sen perder o teu sitio.',
   'afondo.elementos': '{n} {n:elemento|elementos}',
+  'afondo.detalle': 'Ver o detalle',
   'afondo.imagenes': '{n} {n:imaxe|imaxes}',
   'apartado.anterior': 'Tema anterior',
   'apartado.siguiente': 'Tema seguinte',
@@ -879,6 +881,7 @@ const en: Record<Clave, string> = {
   'afondo.texto':
     'Each topic opens on top of the page: move from one to the next with the arrows without losing your place.',
   'afondo.elementos': '{n} {n:item|items}',
+  'afondo.detalle': 'See the details',
   'afondo.imagenes': '{n} {n:image|images}',
   'apartado.anterior': 'Previous topic',
   'apartado.siguiente': 'Next topic',

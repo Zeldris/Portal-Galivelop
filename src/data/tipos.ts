@@ -89,7 +89,8 @@ export interface Apartado {
   titulo: Texto;
   intro?: Texto;
   /** `valor`: dato corto e igual en todos los idiomas (p. ej. «26 %» o «0.4»). */
-  items: { nombre: Texto; valor?: string; texto: Texto; imagen?: Imagen }[];
+  /** `detalle`: puntos que se despliegan con «Ver el detalle» (p. ej. los cambios de una versión). */
+  items: { nombre: Texto; valor?: string; texto: Texto; imagen?: Imagen; detalle?: Texto[] }[];
   /** Galería propia del apartado, por grupos con pestañas (p. ej. «Arte del mundo»). No rota sola. */
   grupos?: { id: string; etiqueta: Texto; imagenes: Imagen[] }[];
 }
