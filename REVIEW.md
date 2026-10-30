@@ -33,6 +33,8 @@ criterio.
 - Una ruta nueva se añade también en `scripts/paginas-estaticas.mjs` (página estática, sitemap) y funciona con
   los prefijos `/gl/` y `/en/`.
 - Los enlaces internos usan `Link` (respetan el prefijo de idioma); las imágenes, `ruta()` (respetan la base).
+- El `lastmod` del sitemap es la fecha real del último cambio de lo que enseña la página (datos o git), nunca la del
+  build: Google deja de fiarse de un `lastmod` que no lo es. Un proyecto nuevo trae su `og.jpg` (`tools/og/generar.py`).
 
 ## Móvil y accesibilidad
 
@@ -53,6 +55,10 @@ criterio.
   un ternario con dos claves en el componente.
 - El `#ancla` de la URL se lee con `leerAncla()` (`src/utils/ancla.ts`); un `decodeURIComponent` suelto en `src/` ya
   lo rechaza `src/utils/ancla.test.ts`, y las marcas de plural mal escritas, `src/i18n/rellenar.test.ts`.
+- Una forma dentro de otra con menos de 32 px de hueco lleva de radio el de fuera menos el hueco (si sale más de 2 px).
+- Un `z-index` nuevo sale de la escala `--z-*` de `global.css`; una transición, de `--transicion` o `--curva`.
+- Los mensajes del sistema (avisos, errores del formulario) son tranquilos y concretos: qué ha pasado y qué hacer, sin
+  exclamaciones. Las palabras de relleno («revolucionar», «de vanguardia»…) las rechaza `src/i18n/relleno.test.ts`.
 
 ## Ganchos y scripts
 

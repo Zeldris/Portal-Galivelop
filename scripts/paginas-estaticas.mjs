@@ -1,10 +1,11 @@
 // Tras `vite build`: crea una página HTML real por ruta e idioma (castellano sin prefijo, /gl/, /en/) (sin el 404 de GitHub Pages), con su título,
-// descripción, canónica y vista previa para redes, y genera sitemap.xml y robots.txt.
-// Si cambia la dirección del portal, actualizar SITIO.
+// descripción, canónica y vista previa para redes, y genera sitemap.xml, robots.txt, llms.txt y la clave de IndexNow.
+// La dirección del portal está en scripts/sitio.mjs.
+import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
 
-const SITIO = 'https://zeldris.github.io/Portal-Galivelop';
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
 const imagenDe = (src) => `${SITIO}/${src}?v=${createHash('sha1').update(readFileSync(`public/${src}`)).digest('hex').slice(0, 8)}`;
 const IMAGEN = imagenDe('marca/galivelop-portal.jpg');
@@ -15,6 +16,20 @@ const base = readFileSync('dist/index.html', 'utf8');
 // El 404 es copia de la portada sin páginas estáticas: solo necesita la imagen versionada.
 writeFileSync('dist/404.html', conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+// Fecha (AAAA-MM-DD) del último commit que tocó esos archivos: el lastmod de las páginas sin fecha propia en los datos.
+// Google ignora un lastmod que no es fiable, así que sin historia completa de git (un clon superficial daría la fecha
+// del último commit a todo) se omite en vez de poner la del build.
+const gitCompleto = (() => {
+  try {
+    return execFileSync('git', ['rev-parse', '--is-shallow-repository'], { encoding: 'utf8' }).trim() === 'false';
+  } catch {
+    return false;
+  }
+})();
+const fechaGit = (...rutas) =>
+  gitCompleto ? execFileSync('git', ['log', '-1', '--format=%cs', '--', ...rutas], { encoding: 'utf8' }).trim() || undefined : undefined;
+const masReciente = (...fechas) => fechas.filter(Boolean).sort().at(-1);
 
 // En el mismo orden que src/data/proyectos.ts: el último añadido (mayor `orden`), el primero.
 const proyectos = readdirSync('src/data/proyectos')
@@ -65,19 +80,41 @@ if (publicaciones.length > 0) {
   };
 }
 
+// lastmod de cada página fija: el último cambio de los datos que enseña (textos.ts incluido).
+const TEXTOS = 'src/i18n/textos.ts';
+const FECHA_FIJA = {
+  '': masReciente(fechaGit(TEXTOS, 'src/data/proyectos', 'src/data/productos', 'src/data/proximamente.json', 'src/data/equipo.json'), ...proyectos.map((p) => p.actualizado)),
+  equipo: fechaGit(TEXTOS, 'src/data/equipo.json'),
+  'participa/proponer': fechaGit(TEXTOS),
+  'participa/unirse': fechaGit(TEXTOS),
+  productos: fechaGit(TEXTOS, 'src/data/productos', 'src/data/equipo.json'),
+  muro: publicaciones[0]?.fecha,
+};
+const FECHA_EQUIPO = fechaGit(TEXTOS, 'src/data/equipo.json');
+
+// Idioma de la tarjeta en redes (Open Graph; sin él, en_US).
+const LOCALE = { es: 'es_ES', gl: 'gl_ES', en: 'en_US' };
+
+// Vista previa de cada proyecto: public/proyectos/<slug>/og.jpg (1200×630, JPEG; la genera tools/og/generar.py), que las
+// redes aceptan todas; si falta, la portada (WebP, sin medidas).
+const vistaDe = (p) => {
+  const og = `${p.portada.src.replace(/[^/]+$/, '')}og.jpg`;
+  return existsSync(`public/${og}`) ? { imagen: imagenDe(og), medidas: true } : { imagen: imagenDe(p.portada.src), medidas: false };
+};
+
 const paginas = [];
 for (const idioma of IDIOMAS) {
   for (const [ruta, t] of Object.entries(FIJAS)) {
-    paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN, ...(ruta === 'muro' ? { fecha: publicaciones[0].fecha } : {}) });
+    paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN, fecha: FECHA_FIJA[ruta] });
   }
   for (const p of proyectos) {
-    p.imagen ??= imagenDe(p.portada.src);
+    p.vista ??= vistaDe(p);
     paginas.push({
       idioma,
       ruta: `proyectos/${p.slug}`,
       titulo: `${p.nombre} · ${p.lema[idioma].replace(/\.$/, '')} · Galivelop`,
       descripcion: p.resumen[idioma],
-      imagen: p.imagen,
+      imagen: p.vista.imagen,
       fecha: p.actualizado,
       proyecto: p,
     });
@@ -92,6 +129,7 @@ for (const idioma of IDIOMAS) {
       // la foto (webp, cuadrada y pequeña) no sirve como vista previa grande en redes.
       descripcion: `${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`,
       imagen: IMAGEN,
+      fecha: FECHA_EQUIPO,
       persona: p,
     });
   }
@@ -145,6 +183,7 @@ function datos(pg, url) {
       '@type': 'ProfilePage',
       url,
       inLanguage: pg.idioma,
+      ...(pg.fecha ? { dateModified: pg.fecha } : {}),
       mainEntity: { '@type': 'Person', name: m.nombre, jobTitle: m.rol[pg.idioma], description: m.bio[pg.idioma], ...(m.foto ? { image: `${SITIO}/${m.foto}` } : {}), sameAs: m.redes.filter((r) => r.tipo !== 'correo').map((r) => r.url), memberOf: ORG },
     };
   }
@@ -174,6 +213,12 @@ for (const pg of paginas) {
   let html = base
     .replace(/<html lang="[^"]*"/, `<html lang="${pg.idioma}"`)
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(pg.titulo)}</title>\n    <link rel="canonical" href="${url}" />\n    ${alternas}`)
+    .replace(
+      /(<meta property="og:site_name"[^>]*>)/,
+      `$1\n    <meta property="og:locale" content="${LOCALE[pg.idioma]}" />${IDIOMAS.filter((i) => i !== pg.idioma)
+        .map((i) => `\n    <meta property="og:locale:alternate" content="${LOCALE[i]}" />`)
+        .join('')}`,
+    )
     .replace(/(property="og:url" content=")[^"]*/, `$1${url}`)
     .replace(/(property="og:title" content=")[^"]*/, `$1${esc(pg.titulo)}`)
     .replace(/(name="twitter:title" content=")[^"]*/, `$1${esc(pg.titulo)}`);
@@ -183,8 +228,8 @@ for (const pg of paginas) {
   html = conImagen(html, pg.imagen);
   if (pg.proyecto) {
     const alt = esc(pg.proyecto.portada.alt[pg.idioma]);
+    if (!pg.proyecto.vista.medidas) html = html.replace(/\s*<meta property="og:image:(width|height|type)"[^>]*>/g, '');
     html = html
-      .replace(/\s*<meta property="og:image:(width|height)"[^>]*>/g, '')
       .replace(/(property="og:image:alt" content=")[^"]*/, `$1${alt}`)
       .replace(/(name="twitter:image:alt" content=")[^"]*/, `$1${alt}`);
   }
@@ -196,11 +241,10 @@ for (const pg of paginas) {
   writeFileSync(`${dir}/index.html`, html);
 }
 
-const hoy = new Date().toISOString().slice(0, 10);
 writeFileSync(
   'dist/sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paginas
-    .map((pg) => `  <url><loc>${urlDe(pg.idioma, pg.ruta)}</loc><lastmod>${pg.fecha ?? hoy}</lastmod></url>`)
+    .map((pg) => `  <url><loc>${urlDe(pg.idioma, pg.ruta)}</loc>${pg.fecha ? `<lastmod>${pg.fecha}</lastmod>` : ''}</url>`)
     .join('\n')}\n</urlset>\n`,
 );
 writeFileSync(
@@ -209,5 +253,6 @@ writeFileSync(
     .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
     .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Productos](${urlDe('es', 'productos')}): software de descarga local e integrantes, sin precios\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
+writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);
 console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml, robots.txt y llms.txt`);

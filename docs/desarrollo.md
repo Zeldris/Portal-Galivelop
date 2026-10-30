@@ -228,7 +228,21 @@ Cada idioma tiene su dirección: castellano sin prefijo, gallego en `/gl/…` e 
 Tras `vite build`, [`scripts/paginas-estaticas.mjs`](../scripts/paginas-estaticas.mjs) crea una página
 HTML por ruta e idioma (con `hreflang`) (portada, cada proyecto, equipo, cada miembro y participa) con su título, descripción, canónica y
 vista previa, con su texto en HTML para buscadores sin JavaScript y datos
-estructurados schema.org, y genera `sitemap.xml`, `robots.txt` y `llms.txt`. Una ruta nueva se añade en ese script.
+estructurados schema.org, y genera `sitemap.xml`, `robots.txt`, `llms.txt` y el archivo de la clave de IndexNow. Una
+ruta nueva se añade en ese script. La dirección del portal y la clave están en [`scripts/sitio.mjs`](../scripts/sitio.mjs).
+
+- **`lastmod`:** el `actualizado` del proyecto o del muro; en las demás páginas, la fecha del último commit de sus
+  datos (`textos.ts`, `equipo.json`…). Sin historia completa de git se omite: por eso `pages.yml` clona con
+  `fetch-depth: 0`.
+- **Avisar a los buscadores:** Google no admite avisos (retiró el ping del sitemap en 2023): se usa Search Console.
+  Tras cada despliegue, el job `avisar` de `pages.yml` corre [`scripts/indexnow.mjs`](../scripts/indexnow.mjs), que
+  manda por IndexNow (Bing, Yandex, Seznam, Naver…) las páginas con `lastmod` de los últimos 8 días
+  (`node scripts/indexnow.mjs --probar` enseña qué mandaría).
+- **Vista previa en redes:** `og:locale` por idioma; la de cada proyecto es `public/proyectos/<slug>/og.jpg`
+  (1200×630, JPEG), que se genera desde la portada con `python3 tools/og/generar.py` (Pillow) al cambiarla. Una
+  tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
+  (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
+- Investigación y fuentes: [`docs/investigacion/seo-indexacion-previews.md`](investigacion/seo-indexacion-previews.md).
 
 ## Flujo de trabajo con Claude
 
