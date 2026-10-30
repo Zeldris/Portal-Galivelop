@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "color",
-  "actualizado": "2026-10-27",
+  "actualizado": "2026-10-30",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -1436,6 +1436,99 @@
             "es": "Hay pocas medidas: cuatro pilotos, y cifras como el ~30 % de ahorro por compactar a 200k son estimaciones, no medidas.",
             "gl": "Hai poucas medidas: catro pilotos, e cifras como o ~30 % de aforro por compactar a 200k son estimacións, non medidas.",
             "en": "There are few measurements: four pilots, and figures like the ~30% saving from compacting at 200k are estimates, not measurements."
+          }
+        }
+      ]
+    },
+    {
+      "id": "versiones-publicadas",
+      "titulo": {
+        "es": "Versiones publicadas",
+        "gl": "Versións publicadas",
+        "en": "Released versions"
+      },
+      "intro": {
+        "es": "Qué trae cada versión, de la más reciente a la primera. Es un resumen: el detalle técnico vive en las notas de cada versión del repositorio, que se enlazarán aquí cuando sea público.",
+        "gl": "Que trae cada versión, da máis recente á primeira. É un resumo: o detalle técnico vive nas notas de cada versión do repositorio, que se ligarán aquí cando sexa público.",
+        "en": "What each version brings, newest first. This is a summary: the technical detail lives in each version’s release notes in the repository, which will be linked here once it is public."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Parche de arreglos",
+            "gl": "Parche de arranxos",
+            "en": "Fixes-only patch"
+          },
+          "valor": "0.4.2 · 2026-10-27",
+          "texto": {
+            "es": "Correcciones que pidieron los proyectos: el aviso de secretos reconoce más formas de clave, la fusión de la rama de un subagente pasa también los tests de lo que cambia, el mapa del código entiende Java, Kotlin o C#, y los scripts dejan de proponer reescribir el último commit.",
+            "gl": "Correccións que pediron os proxectos: o aviso de segredos recoñece máis formas de clave, a fusión da rama dun subaxente pasa tamén os tests do que cambia, o mapa do código entende Java, Kotlin ou C#, e os scripts deixan de propoñer reescribir o último commit.",
+            "en": "Fixes the projects asked for: the secrets warning recognises more kinds of key, merging a subagent’s branch also runs the tests for what changed, the code map understands Java, Kotlin or C#, and the scripts stop suggesting rewriting the last commit."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Parche de arreglos",
+            "gl": "Parche de arranxos",
+            "en": "Fixes-only patch"
+          },
+          "valor": "0.4.1 · 2026-10-26",
+          "texto": {
+            "es": "Los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube y la revisión antes de main distingue un CI que GitHub no llegó a arrancar por cuota. La recogida de ideas lee los proyectos sin cargarlos enteros.",
+            "gl": "Os scripts atopan o repositorio tamén desde unha copia de traballo ligada, desaparece o falso aviso de «sesión fóra do repositorio» na nube e a revisión antes de main distingue un CI que GitHub non chegou a arrancar por cota. A recollida de ideas le os proxectos sen cargalos enteiros.",
+            "en": "The scripts find the repository from a linked working copy too, the false “session outside the repository” warning disappears in the cloud, and the review before main tells apart a CI run GitHub never started because of quota. The idea harvest reads projects without loading them whole."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Más guardas automáticas",
+            "gl": "Máis gardas automáticas",
+            "en": "More automatic guards"
+          },
+          "valor": "0.4.0 · 2026-10-25",
+          "texto": {
+            "es": "Dos ganchos nuevos: uno no deja acabar la sesión con trabajo sin subir y otro avisa antes de tocar la configuración del flujo. Cada versión empieza recogiendo lo aprendido en los proyectos, el aviso de secretos deja de dar falsos positivos y, si el CI no arranca, vale el check en local con la confirmación de la persona.",
+            "gl": "Dous ganchos novos: un non deixa rematar a sesión con traballo sen subir e outro avisa antes de tocar a configuración do fluxo. Cada versión empeza recollendo o aprendido nos proxectos, o aviso de segredos deixa de dar falsos positivos e, se o CI non arranca, vale o check en local coa confirmación da persoa.",
+            "en": "Two new hooks: one will not let a session end with unpushed work, and another warns before the workflow’s configuration is edited. Each version starts by collecting what the projects learnt, the secrets warning stops giving false positives and, if CI does not start, the local check counts once the person confirms it."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Se adapta a cada proyecto",
+            "gl": "Adáptase a cada proxecto",
+            "en": "Fits each project"
+          },
+          "valor": "0.3.0 · 2026-10-23",
+          "texto": {
+            "es": "Lo que pidió el piloto en World-Maker-Fantasy: claves nuevas para comandos envueltos, tests relacionados y arranque del entorno, revisiones y bitácora más estrictas, y una carpeta de notas propias por skill. Los subagentes trabajan en tandas más cortas y la bitácora guarda menos historia.",
+            "gl": "O que pediu o piloto en World-Maker-Fantasy: claves novas para comandos envoltos, tests relacionados e arranque do contorno, revisións e bitácora máis estritas, e un cartafol de notas propias por skill. Os subaxentes traballan en tandas máis curtas e a bitácora garda menos historia.",
+            "en": "What the World-Maker-Fantasy pilot asked for: new settings for wrapped commands, related tests and environment start-up, stricter reviews and log, and a folder of project notes for each skill. Subagents work in shorter batches and the log keeps less history."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Primeras correcciones",
+            "gl": "Primeras correccións",
+            "en": "First fixes"
+          },
+          "valor": "0.2.0 · 2026-10-22",
+          "texto": {
+            "es": "La rama protegida se juzga con la configuración que se sube, se buscan restos de conflictos en toda la subida y el diagnóstico avisa de archivos del flujo ignorados por git o de ganchos repetidos. Instalar en un proyecto pide menos decisiones y enseña lo que cambia.",
+            "gl": "A rama protexida xúlgase coa configuración que se sobe, búscanse restos de conflitos en toda a subida e o diagnóstico avisa de arquivos do fluxo ignorados por git ou de ganchos repetidos. Instalar nun proxecto pide menos decisións e ensina o que cambia.",
+            "en": "The protected branch is judged with the configuration being pushed, conflict leftovers are searched across the whole push, and the diagnosis warns about workflow files ignored by git or duplicated hooks. Installing in a project asks for fewer decisions and shows what changes."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Primera versión",
+            "gl": "Primeira versión",
+            "en": "First version"
+          },
+          "valor": "0.1.0 · 2026-10-22",
+          "texto": {
+            "es": "El esqueleto: las skills de Matt Pocock y las propias (elegir skill y modelo, repartir a subagentes, medir el gasto de tokens), los ganchos que impiden subir a main sin revisión, la bitácora para retomar el trabajo y el instalador. Antes de publicarla pasó una revisión con diez arreglos.",
+            "gl": "O esqueleto: as skills de Matt Pocock e as propias (escoller skill e modelo, repartir a subaxentes, medir o gasto de tokens), os ganchos que impiden subir a main sen revisión, a bitácora para retomar o traballo e o instalador. Antes de publicala pasou unha revisión con dez arranxos.",
+            "en": "The skeleton: Matt Pocock’s skills and our own (choosing a skill and model, handing work to subagents, measuring token spend), the hooks that block pushing to main without review, the log for picking work back up, and the installer. Before release it went through a review with ten fixes."
           }
         }
       ]
