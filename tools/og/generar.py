@@ -4,8 +4,11 @@
 Las redes (Facebook, LinkedIn, WhatsApp…) documentan JPEG/PNG y 1.91:1; la portada es WebP con otra proporción. Una
 portada más ancha que 1.91:1 (una ilustración apaisada) se recorta por los lados; una más alta se encaja entera (sin
 cortar texto ni diagramas) sobre un fondo del color medio de sus bordes.
+Cada og.jpg lleva en su comentario JPEG la huella de la portada de la que sale («portada:<sha1>»): src/data/og.test.ts
+falla si la portada cambia y nadie regenera la vista previa.
 Uso, tras cambiar una portada: python3 tools/og/generar.py   (necesita Pillow; escribe public/proyectos/<slug>/og.jpg)
 """
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -24,7 +27,12 @@ def borde(img: Image.Image) -> tuple[int, ...]:
     return tuple(round(sum(m[c] for m in medias) / len(medias)) for c in range(3))
 
 
+def huella(portada: Path) -> bytes:
+    return b'portada:' + hashlib.sha1(portada.read_bytes()).hexdigest().encode()
+
+
 def generar(portada: Path, destino: Path) -> None:
+    guardar = {'quality': 85, 'optimize': True, 'progressive': True, 'comment': huella(portada)}
     img = Image.open(portada)
     if img.mode in ('RGBA', 'LA', 'P'):
         # Una portada con transparencia, sobre el fondo oscuro de la marca (convertir sin más la deja en negro).
@@ -35,13 +43,13 @@ def generar(portada: Path, destino: Path) -> None:
     if img.width / img.height > ANCHO / ALTO:
         img = img.resize((round(img.width * ALTO / img.height), ALTO), Image.LANCZOS)
         x = (img.width - ANCHO) // 2
-        img.crop((x, 0, x + ANCHO, ALTO)).save(destino, 'JPEG', quality=85, optimize=True, progressive=True)
+        img.crop((x, 0, x + ANCHO, ALTO)).save(destino, 'JPEG', **guardar)
         return
     escala = min(ANCHO / img.width, ALTO / img.height, 1)  # sin agrandar: una portada pequeña saldría borrosa
     img = img.resize((round(img.width * escala), round(img.height * escala)), Image.LANCZOS)
     lienzo = Image.new('RGB', (ANCHO, ALTO), borde(img))
     lienzo.paste(img, ((ANCHO - img.width) // 2, (ALTO - img.height) // 2))
-    lienzo.save(destino, 'JPEG', quality=85, optimize=True, progressive=True)
+    lienzo.save(destino, 'JPEG', **guardar)
 
 
 def main() -> int:

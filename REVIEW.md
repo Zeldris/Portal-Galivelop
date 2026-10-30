@@ -72,6 +72,8 @@ aquí, se proponen en el repo del flujo; lo del portal es su configuración (`.c
 - Un gancho de subida comprueba el commit que se sube, no la carpeta de trabajo, y falla cerrado cuando le falta un
   dato (un commit que no tiene, una API que no responde).
 - Los scripts de shell corren en bash 3.2 (macOS): nada de `mapfile` ni arrays asociativos.
+- Un paso de CI que compara con el sitio publicado lo lee **antes** de desplegar: justo después, GitHub Pages aún sirve
+  la copia vieja de su caché (`max-age=600`). Pasó con IndexNow, 2026-10-30.
 - Una carpeta con nombre fijo en un directorio compartido (`$TMPDIR`, `/tmp`) es por usuario, se crea con permisos 700
   y se rechaza si ya existe como symlink o de otro usuario; los archivos sueltos, con `mktemp`.
 - Lo traído de otro repo se adapta a cómo trabaja el portal: aquí se sube directo a `main`, no por PR, y la marca de
