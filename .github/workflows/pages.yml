@@ -17,6 +17,8 @@ concurrency:
 jobs:
   construir:
     runs-on: ubuntu-latest
+    outputs:
+      urls: ${{ steps.cambios.outputs.urls }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,6 +33,11 @@ jobs:
         run: npm run check
       - name: Construir
         run: npm run build
+      # Antes de desplegar: qué páginas cambian respecto al sitemap publicado (para IndexNow).
+      - name: Páginas cambiadas
+        id: cambios
+        continue-on-error: true
+        run: node scripts/indexnow.mjs cambios >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -48,9 +55,12 @@ jobs:
 
   # Avisa a los buscadores de IndexNow (Bing, Yandex…) de lo que ha cambiado. Si falla, la web ya está publicada.
   avisar:
-    needs: publicar
+    needs: [construir, publicar]
+    if: needs.construir.outputs.urls != '' && needs.construir.outputs.urls != '[]'
     runs-on: ubuntu-latest
     continue-on-error: true
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -59,4 +69,6 @@ jobs:
         with:
           node-version: 22
       - name: IndexNow
-        run: node scripts/indexnow.mjs
+        env:
+          URLS: ${{ needs.construir.outputs.urls }}
+        run: node scripts/indexnow.mjs avisar

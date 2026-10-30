@@ -80,17 +80,20 @@ if (publicaciones.length > 0) {
   };
 }
 
-// lastmod de cada página fija: el último cambio de los datos que enseña (textos.ts incluido).
-const TEXTOS = 'src/i18n/textos.ts';
+// lastmod de cada página fija: el último cambio de los datos de su contenido principal (lo que importa la página en
+// src/pages/). No cuentan los de la cabecera y el pie (el menú de proyectos) ni src/i18n/textos.ts, que tiene los
+// textos de todas las páginas: con ellos, cualquier cambio movería todas las fechas a la vez.
+const D = 'src/data/';
 const FECHA_FIJA = {
-  '': masReciente(fechaGit(TEXTOS, 'src/data/proyectos', 'src/data/productos', 'src/data/proximamente.json', 'src/data/equipo.json'), ...proyectos.map((p) => p.actualizado)),
-  equipo: fechaGit(TEXTOS, 'src/data/equipo.json'),
-  'participa/proponer': fechaGit(TEXTOS),
-  'participa/unirse': fechaGit(TEXTOS),
-  productos: fechaGit(TEXTOS, 'src/data/productos', 'src/data/equipo.json'),
+  '': masReciente(fechaGit(`${D}proyectos`, `${D}productos`, `${D}proximamente.json`, `${D}lineas.ts`, `${D}marca.ts`), ...proyectos.map((p) => p.actualizado)),
+  equipo: fechaGit(`${D}equipo.json`, `${D}proyectos`),
+  'participa/proponer': fechaGit(`${D}marca.ts`),
+  'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
+  productos: fechaGit(`${D}productos`, `${D}equipo.json`, `${D}marca.ts`, `${D}proyectos`),
   muro: publicaciones[0]?.fecha,
 };
-const FECHA_EQUIPO = fechaGit(TEXTOS, 'src/data/equipo.json');
+// Página de miembro: su ficha en equipo.json y la de sus proyectos.
+const fechaMiembro = (m) => fechaGit(`${D}equipo.json`, ...m.proyectos.map((slug) => `${D}proyectos/${slug}.json`));
 
 // Idioma de la tarjeta en redes (Open Graph; sin él, en_US).
 const LOCALE = { es: 'es_ES', gl: 'gl_ES', en: 'en_US' };
@@ -129,7 +132,7 @@ for (const idioma of IDIOMAS) {
       // la foto (webp, cuadrada y pequeña) no sirve como vista previa grande en redes.
       descripcion: `${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`,
       imagen: IMAGEN,
-      fecha: FECHA_EQUIPO,
+      fecha: (p.fecha ??= fechaMiembro(p)),
       persona: p,
     });
   }

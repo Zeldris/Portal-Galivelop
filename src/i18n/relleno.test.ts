@@ -8,7 +8,7 @@ import { textos } from './textos';
 // distinguir mayúsculas y por palabra entera.
 const RELLENO = [
   // es
-  'revoluciona\\w*',
+  'revoluciona\\p{L}*',
   'de vanguardia',
   'sin esfuerzo',
   'al siguiente nivel',
@@ -16,15 +16,15 @@ const RELLENO = [
   'potencia al máximo',
   'transforma tu flujo',
   // gl
-  'revoluciona\\w*',
+  'revoluciona\\p{L}*',
   'sen esforzo',
   'ao seguinte nivel',
   'de clase mundial',
   // en
-  'revolutioni[sz]\\w*',
-  'supercharg\\w*',
+  'revolutioni[sz]\\p{L}*',
+  'supercharg\\p{L}*',
   'cutting[ -]edge',
-  'effortless\\w*',
+  'effortless\\p{L}*',
   'next level',
   'world[ -]class',
   'harness the power',
@@ -54,6 +54,7 @@ describe('textos visibles sin palabras de relleno', () => {
     expect(patron.test('Revolucionamos el desarrollo')).toBe(true);
     expect(patron.test('Leva o proxecto ao seguinte nivel')).toBe(true);
     expect(patron.test('A cutting-edge tool')).toBe(true);
+    expect(patron.test('Tarkor revolucionará la estrategia')).toBe(true);
     expect(patron.test('Revisión sin errores')).toBe(false);
   });
 

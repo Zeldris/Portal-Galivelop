@@ -25,13 +25,19 @@ def borde(img: Image.Image) -> tuple[int, ...]:
 
 
 def generar(portada: Path, destino: Path) -> None:
-    img = Image.open(portada).convert('RGB')
+    img = Image.open(portada)
+    if img.mode in ('RGBA', 'LA', 'P'):
+        # Una portada con transparencia, sobre el fondo oscuro de la marca (convertir sin más la deja en negro).
+        img = img.convert('RGBA')
+        fondo = Image.new('RGBA', img.size, (6, 18, 28, 255))
+        img = Image.alpha_composite(fondo, img)
+    img = img.convert('RGB')
     if img.width / img.height > ANCHO / ALTO:
         img = img.resize((round(img.width * ALTO / img.height), ALTO), Image.LANCZOS)
         x = (img.width - ANCHO) // 2
         img.crop((x, 0, x + ANCHO, ALTO)).save(destino, 'JPEG', quality=85, optimize=True, progressive=True)
         return
-    escala = min(ANCHO / img.width, ALTO / img.height)
+    escala = min(ANCHO / img.width, ALTO / img.height, 1)  # sin agrandar: una portada pequeña saldría borrosa
     img = img.resize((round(img.width * escala), round(img.height * escala)), Image.LANCZOS)
     lienzo = Image.new('RGB', (ANCHO, ALTO), borde(img))
     lienzo.paste(img, ((ANCHO - img.width) // 2, (ALTO - img.height) // 2))

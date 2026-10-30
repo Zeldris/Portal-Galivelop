@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-10-30 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-83ea043c-r1gbyp` (sigue el WIP de `ccr-47f8fddd-o5ek6p`, de otra cuenta) |
-| **Tarea en curso** | Ninguna en código. **Mensaje en positivo y galería del generador en `main`** (2026-10-27, la persona: «Aplícalo todo y cuando acabes llévalo a main»; revisión con 5 hallazgos, 4 arreglados y 1 leve; marca de 97aedf3; CI verde). Redes: pieza 01 lista salvo Reddit (faltan subreddit y normas) |
-| **Siguiente paso** | Publicaciones en redes: Reddit de la pieza 01 cuando la persona pegue las normas, y luego la siguiente actualización (Productos, mensaje en positivo…). Decidir el leve de `sobre.texto1` |
+| **Tarea en curso** | **SEO e ideas de diseño, en la rama `ccr-83ea043c-r1gbyp`** (2026-10-30, la persona: «vamos a aplicar todo lo analizado y recomendado» y «me enseñas la preview antes de llevar a main»): hecho y revisado (15 hallazgos, arreglados los graves y medios); falta enseñar la vista previa a la persona, `revisado.sh` y, con su confirmación, `main`. Redes: pieza 01 lista salvo Reddit |
+| **Siguiente paso** | Vista previa (web antes/después y tarjetas de enlaces) a la persona; con su «sí», `revisado.sh` y subir a `main`. Luego, a mano, lo de la persona en «SEO, a mano» de Pendiente |
 | **En `main`** | Todo publicado: **mensaje en positivo** (textos sin «no se vende», «aceptan encargos», «desarrollo propio») y **galería de 14 imágenes del piloto** en la ficha del generador (2026-10-27, confirmación de la persona); **ficha de Galivelop Image Generator** con galería del piloto (2026-10-27, colaboración privada; confirmación de la persona: «Déjalo privado y llévalo a main»); **ficha y producto de Galivelop-workflow** con el plugin pre-1.0 (la 0.4) como lo que se publica y la 1.0.0 como producto final (bba73b0, 2026-10-27, confirmación de la persona: «Llevalo ya a main»); **Productos** (`/productos`, portada con taller y Productos diferenciados, cabecera en dos bloques; fase 2 de la ADR 0002) con prettier en el check, tests de rutas y de claves y `npm run capturas` (2026-10-27, confirmación de la persona: «Perfecto llevalo a main» y «Apruebo todo» a opt-tokens y retro); segunda pasada de front (hojas de apartado cortadas en el móvil y `npm run medir` con menú, hojas y ampliaciones abiertas, 2026-10-27, confirmación de la persona); ronda de pruebas de front en móvil y `npm run medir` a 390/360/320 px con `cortes` y `tactiles` (2026-10-27, confirmación de la persona); caja «¿Tienes un proyecto?» (`colabora`) de Raquel y frase quitada de «Colabora» de Álvaro (2026-10-26, confirmación de la persona); porfolio de Raquel y logo de ArgaQuest (2026-10-26, con la confirmación del perfil); nombre completo, grado, web y logo de toVeriAI de Raquel (2026-10-26); perfil de Raquel y GitHub, Manfred, Reddit y correo en «Dónde encontrar a…» (2026-10-26, confirmación de la persona); nota del cierre «¿Tienes un proyecto?» de la página de miembro (2026-10-26, confirmación de la persona); revisión especial de los repos (fichas de Galivelop-workflow y Tarkor, 2026-10-25, confirmación de la persona); «Próximamente» en el inicio (2026-10-25, confirmación de la persona); muro (`/muro`, oculto hasta la primera publicación) (2026-10-25, confirmación de la persona); rediseño de la ficha («De un vistazo», barra de grupos, apartados en hoja) y del inicio, `npm run medir`, `leerAncla()` y plurales en plantilla (2026-10-25, confirmación de la persona). https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 84/84 y `tools/qa/tests/test-ganchos.sh` (ganchos y scripts del flujo, `.claude/gw.json` y 11 casos de la regla de `main`, 3 de ellos de la tarea semanal, más la clasificación código/contenido, el `pre-commit`, `content` fijado y nada del flujo en el `.gitignore`; pide bash, git y python3). `npm run build` correcto (30 páginas estáticas, con las de cada miembro y `/productos` en es/gl/en) |
 
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Nada pendiente: todo lo de la rama de trabajo está en `main` (2026-10-29, puesto de Álvaro).
+- **SEO e ideas de diseño** (2026-10-30, rama `ccr-83ea043c-r1gbyp`, aún no en `main`): `lastmod` real, IndexNow tras desplegar, `og:locale`, `og.jpg` por proyecto, `text-wrap`, curva y `z-index` en variables, respuesta al pulsar, test de palabras de relleno.
 
 ## Hecho
 
@@ -46,26 +46,24 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-- **Ideas de `elayadesign/ai-design-skills` aprobadas, sin aplicar** (2026-10-30, la persona: «Apruebo tus
-  recomendaciones, apúntalas, pero no apliques nada aún»). El repo (MIT) solo trae la skill `landing-page-design`; no
-  se instala (su parte de conversión choca con la ADR 0002 y su sistema visual prohíbe Inter, los degradados de
-  fondo y lucide); se toman estas reglas, por orden de valor:
-  1. Palabras de relleno prohibidas en los textos visibles, en es/gl/en («revolucionar», «de vanguardia», «sin
-     esfuerzo», «al siguiente nivel»…), como comprobación de `npm run check`.
-  2. `text-wrap: pretty` en el texto corrido (hoy solo hay un `balance`, `global.css:514`).
-  3. Enlace de privacidad o aviso legal en el pie (hoy no hay; enlaza con la fase 5 de la ADR 0002 y la LSSI-CE de
-     más arriba). Lo demás de su lista de publicar ya está (404, saltar al contenido, `og:image`, `focus-visible`,
-     `prefers-reduced-motion`).
-  4. Auditar estados: respuesta al pulsar (`scale(0.98)`), vacíos cuidados y errores junto al campo del formulario.
-  5. Movimiento: `--transicion` (180 ms) a ≥200 ms en color y ~500 ms en posición; animar sobre todo `transform` y
-     `opacity` (hoy también `box-shadow` y `background`).
-  6. FAQ de `/productos` («¿Cómo consigo un producto?», «¿Cuánto cuesta?») con JSON-LD `FAQPage`; toca
-     `scripts/paginas-estaticas.mjs` (peligro de SEO según las notas de `pr`).
-  7. Radios anidados (interior = exterior − hueco, si el hueco es < 32 px) como criterio en `REVIEW.md`.
-  8. Frase de la marca que se ilumina palabra a palabra al hacer scroll en Inicio: solo como `prototype`, con el
-     enlace a la persona.
-  Además: el repo a `designReferences` de `.claude/gw.json`, y los puntos 1 y 3 como propuesta para el flujo
-  (próxima recogida). Sin mirar aún: `elayadesign/redesign-skill`, del mismo autor, para webs ya hechas.
+- **Ideas de `elayadesign/ai-design-skills` y `redesign-skill`** (aprobadas el 2026-10-30; aplicadas el mismo día en
+  la rama `ccr-83ea043c-r1gbyp`): hechas las palabras de relleno (`src/i18n/relleno.test.ts`), `text-wrap`, respuesta
+  al pulsar, `--curva` a 200 ms, escala `--z-*`, radios anidados y mensajes del sistema en `REVIEW.md` y
+  `designReferences`. **Quedan:** (a) aviso legal o privacidad en el pie: necesita los datos del titular y la consulta
+  de la LSSI-CE de más abajo (fase 5 de la ADR 0002); (b) la FAQ con JSON-LD **no se hace**: Google retiró ese
+  resultado enriquecido (ver `docs/investigacion/seo-indexacion-previews.md`); (c) prototipo de la frase que se
+  ilumina al hacer scroll, si la persona lo quiere; (d) mirar caso por caso los 7 `uppercase` y que los botones de
+  Productos y Próximamente queden alineados abajo con textos largos en gl y en.
+- **SEO, a mano (la persona)** (2026-10-30, `docs/investigacion/seo-indexacion-previews.md`): en Search Console, enviar
+  `sitemap.xml` e inspeccionar la portada y las fichas nuevas tras cada publicación importante; dar de alta el sitio
+  en Bing Webmaster Tools importándolo desde Search Console; tras cambiar una tarjeta, refrescarla en el Sharing
+  Debugger de Facebook, el Post Inspector de LinkedIn y `@WebpageBot` de Telegram. **Decisiones suyas:** dominio
+  propio (cambia todas las URL: cuanto antes, mejor), política de rastreadores de IA en `robots.txt`, y página y feed
+  por pieza del muro cuando haya publicaciones.
+- **Leves de la revisión de SEO y diseño** (2026-10-30, no se vuelven a revisar en este cambio): `designReferences`
+  cambió en `.claude/gw.json` sin caso en `test-ganchos.sh` (es texto libre); los `z-index` negativos de la cabecera
+  de la ficha quedan como número (solo ordenan fondos dentro de su caja); `tools/og/generar.py` hay que correrlo a
+  mano al cambiar una portada (el test exige que exista con 1200×630, no que esté al día con la portada).
 - **Leve de la revisión del mensaje en positivo** (2026-10-27, no se vuelve a revisar en este cambio): `sobre.texto1` sigue abriendo con negaciones («un taller, no un escaparate», «aquí no solo se desarrolla»); la ADR 0002 solo pide quitar las de vender, así que se deja a decisión de la persona.
 - **Leves de la revisión de la ficha del generador** (2026-10-27, no se vuelven a revisar en este cambio): `.pie-proyectos` puede pasar a otra línea también en anchos intermedios de escritorio (solo si no cabe); su hueco de 20 px entre filas depende del `::after { inset: -10px 0 }` de la zona táctil, unas 800 líneas más abajo, sin nada que los ate (una variable CSS compartida).
 - **Próxima sesión nueva: sin `add_repo` en la principal** (T1 de la retro de Productos, 2026-10-27): los repos hermanos en `/home/user` suben el suelo unos 15k y el arranque de cada subagente de 35k a 75k; otro repo se lee con un subagente que lo clona en el scratchpad.
