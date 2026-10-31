@@ -23,7 +23,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
-- ✅ 2026-10-31 · **Invitación de Discord permanente** (la persona): `https://discord.gg/HWakpsAv3V`, sin caducidad según la API de Discord (servidor Galivelop, canal «🔎-news»), en `marca.ts`, README y JSON-LD; sustituye a la de 30 días.
+- ✅ 2026-10-31 · **Invitación de Discord permanente** (la persona): `https://discord.gg/HWakpsAv3V`, sin caducidad según la API de Discord (servidor Galivelop, canal «🔎-news»), en `marca.ts`, README y JSON-LD; sustituye a la de 30 días. Revisión sin hallazgos, marca de `f20f027`, CI en verde y subido a `main` (2026-10-31, la persona dio el enlace para el portal).
 
 - ✅ 2026-10-31 · **Invitación de Discord nueva** (petición de la persona): `https://discord.gg/QSCRcEeF9` en `src/data/marca.ts` (botones del portal), `README.md` y el `sameAs` de `scripts/paginas-estaticas.mjs`; sin rastro del enlace anterior. Revisión: la invitación nueva también caduca (el 2026-11-30, según la API de Discord; la anterior, el 2026-11-03); test `src/data/marca.test.ts` para que el JSON-LD y el README usen los enlaces de `marca.ts` (rojo comprobado) y nota en `docs/desarrollo.md`. Check 111/111. Marca de `9bb37ab`, CI en verde y **subido a `main`** (2026-10-31, la persona: «lleva a main lo de discord»).
 
