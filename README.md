@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://zeldris.github.io/Portal-Galivelop/"><strong>Visitar el portal →</strong></a>
   &nbsp;·&nbsp;
-  <a href="https://discord.gg/QSCRcEeF9">Discord</a>
+  <a href="https://discord.gg/HWakpsAv3V">Discord</a>
   &nbsp;·&nbsp;
   <a href="mailto:alvarogarciagrana@gmail.com">alvarogarciagrana@gmail.com</a>
 </p>
@@ -77,7 +77,7 @@ construir, de aprender y de hacerlo en equipo.
   [formulario](https://zeldris.github.io/Portal-Galivelop/participa/unirse).
 - **Propón un proyecto** que parezca demasiado grande para hacerlo en solitario:
   [formulario](https://zeldris.github.io/Portal-Galivelop/participa/proponer).
-- **Entra en la comunidad** en [Discord](https://discord.gg/QSCRcEeF9) o escríbenos a
+- **Entra en la comunidad** en [Discord](https://discord.gg/HWakpsAv3V) o escríbenos a
   [alvarogarciagrana@gmail.com](mailto:alvarogarciagrana@gmail.com).
 
 ## Equipo
