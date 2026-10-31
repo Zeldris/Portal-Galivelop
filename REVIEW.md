@@ -14,7 +14,10 @@ criterio.
 
 ## Lo que no se publica
 
-- Nada de enlaces al código de los proyectos (sus repos son privados).
+- Solo se enlaza el código de un proyecto con repo público (`enlaces`, tipo `otro`); el de un repo privado, nunca.
+- **La privacidad dice lo que hace el código.** Un cambio en formularios, correos de contacto (`contacto` de una
+  ficha, `colabora` de un miembro), `localStorage` o recursos de otro dominio revisa
+  `src/data/legal/privacidad.json` y su `actualizado`; `src/data/legal.test.ts` vigila solo lo mecánico.
 - En Tarkor, ningún juego de referencia (X4, D&D, BG3, Medieval Dynasty…) ni identificadores internos del
   juego (`QA-27`, `P164`, `CR-69`…), aunque vengan en sus documentos o commits.
 - Lo marcado 🗺️ en el contenido de Tarkor no se presenta como jugable.

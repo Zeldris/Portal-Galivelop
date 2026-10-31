@@ -37,7 +37,10 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   se prepara el texto completo y se cambia con un solo `update_trigger`, sin `get_trigger` para comprobar (la
   respuesta ya lo trae). 10 llamadas arrastraron ~525k.
 - **`/clear` al llegar a `main`** (2026-10-25): una sesión encadenó varias tareas sin `/clear` (605 llamadas, 18
-  compactaciones, 115k de contexto medio); tras cada subida a `main`, `/clear` y retomar desde la bitácora.
+  compactaciones, 115k de contexto medio); tras cada subida a `main`, `/clear` y retomar desde la bitácora. Desde el
+  2026-10-31 lo pide `AGENTS.md` («Relevos»): esta nota sola no se cargaba y no se siguió (225k de media).
+- **Reddit no se lee desde la nube** (2026-10-31): responde 403 a todo (`www`, `old.reddit.com`, la API y
+  `WebFetch`); se pide a la persona el texto pegado o una captura, sin probar más vías (6 llamadas perdidas).
 
 - **Capturas con medidas** (2026-10-27): `npm run capturas -- <ruta> [selector | --menu]` (`tools/qa/capturas.cjs`,
   tras `npm run build`) deja el PNG en `capturas/` (escritorio y móvil) y escribe alto, pantallas, desborde, cortes y

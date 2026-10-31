@@ -5,6 +5,8 @@ import { MARCA } from './marca';
 import { textosIncompletos } from './textosIncompletos';
 
 const app = readFileSync(new URL('../App.tsx', import.meta.url), 'utf8');
+const leer = (ruta: string) => readFileSync(new URL(`../../${ruta}`, import.meta.url), 'utf8');
+const privacidad = readFileSync(new URL('./legal/privacidad.json', import.meta.url), 'utf8');
 
 describe('textos legales', () => {
   it('están los tres, sin slugs ni órdenes repetidos', () => {
@@ -60,4 +62,24 @@ describe('textos legales', () => {
       });
     });
   }
+});
+
+// La privacidad describe lo que hace el portal; lo mecánico se vigila aquí y el resto en la revisión (REVIEW.md).
+describe('la política de privacidad y el código', () => {
+  const fuentes = ['index.html', 'src/i18n/Idioma.tsx', 'src/components/Tema.tsx']
+    .map(leer)
+    .join('\n');
+
+  it('nombra cada clave que el portal guarda en el navegador', () => {
+    const claves = [...new Set(fuentes.match(/galivelop\.[a-z]+/g) ?? [])];
+    expect(claves.length).toBeGreaterThan(0);
+    expect(claves.filter((c) => !privacidad.includes(c))).toEqual([]);
+  });
+
+  it('index.html no carga scripts ni hojas de estilo de otro dominio', () => {
+    const externos =
+      leer('index.html').match(/<(script|link)\b[^>]*(src|href)="(https?:)?\/\/[^"]*"[^>]*>/g) ??
+      [];
+    expect(externos).toEqual([]);
+  });
 });

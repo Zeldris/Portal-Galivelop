@@ -108,6 +108,8 @@ Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaro
 - `src/App.tsx` (la `Route`) y su componente en `src/pages/`.
 - `src/components/Cabecera.tsx` si va en el menú (y `Pie.tsx` si va en el pie).
 - `FIJAS` de `scripts/paginas-estaticas.mjs`: título y descripción en es/gl/en (página estática, sitemap y `llms.txt`).
+- Si tiene contenido propio, su rama en `cuerpo()` de `scripts/paginas-estaticas.mjs`; sin ella, la página estática
+  solo lleva título y descripción (se olvidó con los textos legales, 2026-10-31).
 - `PAGINAS` de `tools/qa/medir-paginas.cjs`, para que `npm run medir` la mida.
 - Claves en `src/i18n/textos.ts` en los tres idiomas; un componente que usan dos páginas, en `src/components/`.
 - Si cambia la portada, también las metas de `index.html` y el README.
