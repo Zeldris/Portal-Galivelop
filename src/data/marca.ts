@@ -8,5 +8,5 @@ export const MARCA = {
   /** Licencia de los textos e imágenes propias (el aviso legal enlaza la misma). */
   licenciaContenido: 'https://creativecommons.org/licenses/by/4.0/',
   github: 'https://github.com/Zeldris',
-  discord: 'https://discord.gg/8vyjW3VrN',
+  discord: 'https://discord.gg/QSCRcEeF9',
 };
