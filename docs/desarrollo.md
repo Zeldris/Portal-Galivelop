@@ -78,7 +78,9 @@ cuando su repositorio es público; si es privado, no se enlaza. Además, el port
 
 No hay que tocar código: cualquier `.json` de esa carpeta aparece solo en la portada.
 
-Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.ts`](../src/data/marca.ts).
+Correo (recibe los formularios), Discord y GitHub de la marca: [`src/data/marca.ts`](../src/data/marca.ts). El
+JSON-LD de `scripts/paginas-estaticas.mjs` y el README los repiten, y `src/data/marca.test.ts` exige que coincidan.
+La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días deja rotos todos los botones del portal.
 
 ## Añadir o actualizar un producto
 
