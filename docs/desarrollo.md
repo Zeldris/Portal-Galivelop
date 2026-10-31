@@ -114,6 +114,19 @@ Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaro
 
 `src/rutas.test.ts` comprueba que cada ruta fija de `App.tsx` está en `FIJAS` y en `PAGINAS`.
 
+## Textos legales y pie
+
+- **Aviso legal, privacidad y términos** viven en `src/data/legal/<slug>.json` (es, gl y en), con su página en
+  `/aviso-legal`, `/privacidad` y `/terminos` (`src/pages/Legal.tsx`). Cada sección lleva párrafos, filas de datos
+  (`datos`, con `enlace` opcional), lista y enlaces. Al cambiar uno, se cambia su `actualizado`.
+- **Los cambia una sesión con el titular**, nunca la tarea semanal (`legal/` va en `A_MANO` de
+  `src/data/tarea-semanal.test.ts`). La privacidad describe lo que hace el portal: si se añade analítica, un
+  formulario con servidor, fuentes o scripts de otro sitio, o un dato nuevo en `localStorage`, se actualiza antes.
+- **Titular y repositorio**, en `src/data/marca.ts` (`titular`, `repositorio`). Licencias: código MIT (`LICENSE`),
+  textos e imágenes propias CC BY 4.0, con las excepciones del aviso legal.
+- **El pie** (`src/components/Pie.tsx`) va en columnas: marca y redes, Taller (los proyectos), Galivelop,
+  Participa y Legal (los textos de `src/data/legal/`, por `orden`); debajo, el titular y las licencias.
+
 ## Añadir o actualizar a alguien del equipo
 
 La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id>`) salen de

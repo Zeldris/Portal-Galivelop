@@ -70,6 +70,21 @@ const FIJAS = {
     gl: ['Produtos · Galivelop', 'Software de descarga local que nace no obradoiro de Galivelop, e as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
     en: ['Products · Galivelop', 'Locally installed software born in the Galivelop workshop, and the people who make it. No prices on the site: everything is arranged by email.'],
   },
+  'aviso-legal': {
+    es: ['Aviso legal · Galivelop', 'Quién es el titular del portal de Galivelop, con qué licencias se publican su código y su contenido y qué ley se aplica.'],
+    gl: ['Aviso legal · Galivelop', 'Quen é o titular do portal de Galivelop, con que licenzas se publican o seu código e o seu contido e que lei se aplica.'],
+    en: ['Legal notice · Galivelop', 'Who owns the Galivelop portal, which licences cover its code and content, and which law applies.'],
+  },
+  privacidad: {
+    es: ['Política de privacidad · Galivelop', 'Qué datos trata el portal de Galivelop: sin cookies ni analítica, solo el registro de seguridad del alojamiento y lo que tú envías al escribirnos.'],
+    gl: ['Política de privacidade · Galivelop', 'Que datos trata o portal de Galivelop: sen cookies nin analítica, só o rexistro de seguridade do aloxamento e o que ti envías ao escribirnos.'],
+    en: ['Privacy policy · Galivelop', 'What data the Galivelop portal handles: no cookies or analytics, only the host’s security log and what you send when you write to us.'],
+  },
+  terminos: {
+    es: ['Términos de uso · Galivelop', 'Condiciones para usar el portal de Galivelop y para reutilizar su código y su contenido.'],
+    gl: ['Termos de uso · Galivelop', 'Condicións para usar o portal de Galivelop e para reutilizar o seu código e o seu contido.'],
+    en: ['Terms of use · Galivelop', 'Terms for using the Galivelop portal and for reusing its code and content.'],
+  },
 };
 // El muro solo tiene página (y entra en el sitemap) cuando ya hay alguna publicación.
 if (publicaciones.length > 0) {
@@ -91,6 +106,9 @@ const FECHA_FIJA = {
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
   productos: fechaGit(`${D}productos`, `${D}equipo.json`, `${D}marca.ts`, `${D}proyectos`),
   muro: publicaciones[0]?.fecha,
+  'aviso-legal': fechaGit(`${D}legal/aviso-legal.json`, `${D}marca.ts`),
+  privacidad: fechaGit(`${D}legal/privacidad.json`, `${D}marca.ts`),
+  terminos: fechaGit(`${D}legal/terminos.json`, `${D}marca.ts`),
 };
 // Página de miembro: su ficha en equipo.json y la de sus proyectos.
 const fechaMiembro = (m) => fechaGit(`${D}equipo.json`, ...m.proyectos.map((slug) => `${D}proyectos/${slug}.json`));

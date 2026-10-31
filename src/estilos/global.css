@@ -1080,46 +1080,184 @@ button {
 
 .pie {
   border-top: 1px solid var(--borde);
-  padding: 36px 0;
+  padding: 48px 0 28px;
   background: var(--fondo-alterno);
 }
 
-.pie-fila {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+/* Marca y cuatro columnas en escritorio; por debajo, la marca arriba y las columnas de dos en dos. */
+.pie-rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
+  gap: 32px 24px;
 }
 
 .pie-marca {
   display: flex;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   color: var(--texto-3);
   font-size: 0.9rem;
 }
 
-.pie-proyectos {
-  display: flex;
-  flex-wrap: wrap;
-  /* 20px entre filas: la zona táctil de cada enlace (::after) sale 10px por arriba y por abajo. */
-  gap: 20px 18px;
+.pie-marca p {
+  margin: 0;
 }
 
-.pie-proyectos a {
+.pie-columna h2 {
+  margin: 0 0 16px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--texto);
+}
+
+.pie-columna ul {
+  display: grid;
+  /* 20px entre filas: la zona táctil de cada enlace (::after) sale 10px por arriba y por abajo. */
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pie-columna a {
   color: var(--texto-2);
   text-decoration: none;
   font-size: 0.92rem;
 }
 
-.pie-proyectos a:hover {
+.pie-columna a:hover {
   color: var(--texto);
 }
 
-.pie-derechos {
+.pie-base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
   color: var(--texto-3);
   font-size: 0.85rem;
+}
+
+.pie-base p {
+  margin: 0;
+}
+
+.pie-base a {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+.pie-base a:hover {
+  color: var(--texto);
+}
+
+@media (max-width: 62.5em) {
+  .pie-rejilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pie-marca {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Textos legales ---------- */
+
+.legal-contenedor {
+  max-width: 76ch;
+}
+
+.legal-fecha {
+  margin-top: 10px;
+  color: var(--texto-3);
+  font-size: 0.9rem;
+}
+
+.legal-seccion {
+  margin-top: 40px;
+}
+
+.legal-seccion h2 {
+  margin-bottom: 14px;
+  font-size: 1.3rem;
+}
+
+.legal-seccion p,
+.legal-seccion li {
+  color: var(--texto-2);
+  line-height: 1.65;
+}
+
+.legal-seccion p + p {
+  margin-top: 12px;
+}
+
+.legal-seccion ul {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding-left: 1.2em;
+}
+
+.legal-datos {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0 0;
+  padding: 16px 18px;
+  border: 1px solid var(--borde);
+  border-radius: var(--radio-sm);
+  background: var(--fondo-alterno);
+}
+
+.legal-datos div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 12px;
+}
+
+.legal-datos dt {
+  color: var(--texto-3);
+}
+
+.legal-datos dd {
+  margin: 0;
+  color: var(--texto);
+  overflow-wrap: anywhere;
+}
+
+/* El correo y la web van solos en su fila: 2px arriba y abajo los llevan a los 24px del mínimo táctil. */
+.legal-datos a {
+  display: inline-block;
+  padding: 2px 0;
+}
+
+.legal-seccion .legal-enlaces {
+  gap: 20px;
+  margin-top: 18px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.legal-otros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 18px;
+  margin-top: 56px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
+  color: var(--texto-3);
+}
+
+@media (max-width: 26.875em) {
+  .legal-datos div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
 }
 
 /* ---------- Ficha de proyecto ---------- */
@@ -1906,7 +2044,9 @@ button {
 .miembro-mas > summary,
 .miembro-pliegue > summary,
 .apartado-detalle > summary,
-.pie-proyectos a,
+.pie-columna a,
+.legal-enlaces a,
+.legal-otros a,
 .contacto-otros a {
   position: relative;
 }
@@ -1918,7 +2058,9 @@ button {
 .miembro-mas > summary::after,
 .miembro-pliegue > summary::after,
 .apartado-detalle > summary::after,
-.pie-proyectos a::after,
+.pie-columna a::after,
+.legal-enlaces a::after,
+.legal-otros a::after,
 .contacto-otros a::after {
   content: '';
   position: absolute;

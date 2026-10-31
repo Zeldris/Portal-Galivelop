@@ -274,7 +274,11 @@ const es = {
   'nav.proyectos.todos': 'Todos los proyectos',
 
   'pie.hecho': 'Hecho en Galicia',
-  'pie.derechos': 'Todos los derechos reservados.',
+  'pie.legal': 'Legal',
+  'pie.codigo': 'Código',
+  'pie.contenido': 'Textos e imágenes propias',
+  'legal.actualizado': 'Última actualización',
+  'legal.otros': 'Otros textos legales',
 
   'tema.claro': 'Cambiar a tema claro',
   'tema.oscuro': 'Cambiar a tema oscuro',
@@ -586,7 +590,11 @@ const gl: Record<Clave, string> = {
   'nav.proyectos.todos': 'Todos os proxectos',
 
   'pie.hecho': 'Feito en Galicia',
-  'pie.derechos': 'Todos os dereitos reservados.',
+  'pie.legal': 'Legal',
+  'pie.codigo': 'Código',
+  'pie.contenido': 'Textos e imaxes propias',
+  'legal.actualizado': 'Última actualización',
+  'legal.otros': 'Outros textos legais',
 
   'tema.claro': 'Cambiar ao tema claro',
   'tema.oscuro': 'Cambiar ao tema escuro',
@@ -897,7 +905,11 @@ const en: Record<Clave, string> = {
   'nav.proyectos.todos': 'All projects',
 
   'pie.hecho': 'Made in Galicia',
-  'pie.derechos': 'All rights reserved.',
+  'pie.legal': 'Legal',
+  'pie.codigo': 'Code',
+  'pie.contenido': 'Own texts and images',
+  'legal.actualizado': 'Last updated',
+  'legal.otros': 'Other legal texts',
 
   'tema.claro': 'Switch to light theme',
   'tema.oscuro': 'Switch to dark theme',

@@ -109,5 +109,18 @@ open to anyone who wants to take part. Some members of the workshop take on comm
 
 ---
 
+## Licencia
+
+- **Código del portal:** [MIT](LICENSE).
+- **Textos e imágenes creadas por Galivelop:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), citando a
+  «Galivelop» con un enlace al portal.
+- **Fuera de esas licencias**, con todos sus derechos: el nombre, el logotipo y el monograma GV de Galivelop; los
+  nombres, logotipos e imágenes de cada proyecto (de sus titulares); las fotos del equipo y los logotipos de
+  terceros. El código de cada proyecto, con la licencia de su repositorio.
+
+Detalle en el [aviso legal](https://zeldris.github.io/Portal-Galivelop/aviso-legal); también la
+[privacidad](https://zeldris.github.io/Portal-Galivelop/privacidad) y los
+[términos de uso](https://zeldris.github.io/Portal-Galivelop/terminos).
+
 <sub>Este repositorio contiene el código del portal. Para desarrollarlo o añadir proyectos, consulta
-la [guía técnica](docs/desarrollo.md). © Galivelop. Todos los derechos reservados.</sub>
+la [guía técnica](docs/desarrollo.md). © 2026 Galivelop · Álvaro García Graña.</sub>

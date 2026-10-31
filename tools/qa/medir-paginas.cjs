@@ -25,7 +25,7 @@ try {
 
 const BASE = process.env.BASE || 'http://localhost:4173/Portal-Galivelop/';
 const RAIZ = join(__dirname, '..', '..');
-const PAGINAS = ['', 'proyectos/tarkor', 'proyectos/toveriai', 'proyectos/galivelop-workflow', 'equipo', 'productos', 'participa/proponer', 'participa/unirse', 'muro'];
+const PAGINAS = ['', 'proyectos/tarkor', 'proyectos/toveriai', 'proyectos/galivelop-workflow', 'equipo', 'productos', 'participa/proponer', 'participa/unirse', 'muro', 'aviso-legal', 'privacidad', 'terminos'];
 const RUTAS = (
   process.argv.slice(2).length
     ? process.argv.slice(2)

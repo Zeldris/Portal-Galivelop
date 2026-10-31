@@ -1,0 +1,208 @@
+{
+  "slug": "aviso-legal",
+  "orden": 1,
+  "actualizado": "2026-10-31",
+  "titulo": {
+    "es": "Aviso legal",
+    "gl": "Aviso legal",
+    "en": "Legal notice"
+  },
+  "secciones": [
+    {
+      "titulo": {
+        "es": "Datos del titular",
+        "gl": "Datos do titular",
+        "en": "Owner details"
+      },
+      "parrafos": [
+        {
+          "es": "En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), estos son los datos del titular del portal.",
+          "gl": "En cumprimento do artigo 10 da Lei 34/2002, de servizos da sociedade da información e de comercio electrónico (LSSI-CE), estes son os datos do titular do portal.",
+          "en": "In accordance with Article 10 of Spanish Law 34/2002 on information society services and electronic commerce (LSSI-CE), these are the details of the portal's owner."
+        }
+      ],
+      "datos": [
+        {
+          "etiqueta": {
+            "es": "Titular",
+            "gl": "Titular",
+            "en": "Owner"
+          },
+          "valor": {
+            "es": "Álvaro García Graña",
+            "gl": "Álvaro García Graña",
+            "en": "Álvaro García Graña"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Domicilio",
+            "gl": "Domicilio",
+            "en": "Address"
+          },
+          "valor": {
+            "es": "A Coruña (A Coruña), España",
+            "gl": "A Coruña (A Coruña), España",
+            "en": "A Coruña (A Coruña), Spain"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Correo",
+            "gl": "Correo",
+            "en": "Email"
+          },
+          "valor": {
+            "es": "alvarogarciagrana@gmail.com",
+            "gl": "alvarogarciagrana@gmail.com",
+            "en": "alvarogarciagrana@gmail.com"
+          },
+          "enlace": "mailto:alvarogarciagrana@gmail.com"
+        },
+        {
+          "etiqueta": {
+            "es": "Sitio web",
+            "gl": "Sitio web",
+            "en": "Website"
+          },
+          "valor": {
+            "es": "zeldris.github.io/Portal-Galivelop",
+            "gl": "zeldris.github.io/Portal-Galivelop",
+            "en": "zeldris.github.io/Portal-Galivelop"
+          },
+          "enlace": "https://zeldris.github.io/Portal-Galivelop/"
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Qué es el portal",
+        "gl": "Que é o portal",
+        "en": "What the portal is"
+      },
+      "parrafos": [
+        {
+          "es": "Galivelop es una marca, no una sociedad: el portal lo gestiona su titular como persona física.",
+          "gl": "Galivelop é unha marca, non unha sociedade: o portal xestióno o seu titular como persoa física.",
+          "en": "Galivelop is a brand, not a company: the portal is run by its owner as an individual."
+        },
+        {
+          "es": "El portal presenta la marca Galivelop: el taller, donde se crean, investigan y comparten proyectos, y Productos, el software de descarga local y los servicios de sus integrantes.",
+          "gl": "O portal presenta a marca Galivelop: o obradoiro, onde se crean, investigan e comparten proxectos, e Produtos, o software de descarga local e os servizos dos seus integrantes.",
+          "en": "The portal presents the Galivelop brand: the workshop, where projects are created, researched and shared, and Products, the locally installed software and the services of its members."
+        },
+        {
+          "es": "Es informativo: no hay compras, pagos, publicidad ni registro de usuarios. Cualquier colaboración o encargo se trata por correo, fuera de la web.",
+          "gl": "É informativo: non hai compras, pagamentos, publicidade nin rexistro de usuarios. Calquera colaboración ou encargo trátase por correo, fóra da web.",
+          "en": "It is informational: there are no purchases, payments, advertising or user accounts. Any collaboration or commission is arranged by email, outside the website."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Licencias y propiedad intelectual",
+        "gl": "Licenzas e propiedade intelectual",
+        "en": "Licences and intellectual property"
+      },
+      "parrafos": [
+        {
+          "es": "El código del portal es software libre con licencia MIT: puedes usarlo, copiarlo y modificarlo siempre que conserves el aviso de copyright y la licencia. El código de cada proyecto se rige por la licencia de su propio repositorio.",
+          "gl": "O código do portal é software libre con licenza MIT: podes usalo, copialo e modificalo sempre que conserves o aviso de copyright e a licenza. O código de cada proxecto rexese pola licenza do seu propio repositorio.",
+          "en": "The portal's code is free software under the MIT licence: you may use, copy and modify it as long as you keep the copyright notice and the licence. Each project's code is governed by the licence in its own repository."
+        },
+        {
+          "es": "Los textos del portal y las imágenes creadas por Galivelop se publican con licencia Creative Commons Reconocimiento 4.0 Internacional (CC BY 4.0): puedes compartirlos y adaptarlos, también con fines comerciales, citando a «Galivelop» con un enlace al portal e indicando si hiciste cambios.",
+          "gl": "Os textos do portal e as imaxes creadas por Galivelop publícanse con licenza Creative Commons Recoñecemento 4.0 Internacional (CC BY 4.0): podes compartilos e adaptalos, tamén con fins comerciais, citando a «Galivelop» cunha ligazón ao portal e indicando se fixeches cambios.",
+          "en": "The portal's texts and the images created by Galivelop are published under the Creative Commons Attribution 4.0 International licence (CC BY 4.0): you may share and adapt them, including for commercial purposes, by crediting “Galivelop” with a link to the portal and stating whether you made changes."
+        },
+        {
+          "es": "Quedan fuera de esas licencias, y conservan todos sus derechos:",
+          "gl": "Quedan fóra desas licenzas, e conservan todos os seus dereitos:",
+          "en": "The following are not covered by those licences and keep all their rights:"
+        }
+      ],
+      "lista": [
+        {
+          "es": "el nombre «Galivelop», su logotipo y el monograma GV;",
+          "gl": "o nome «Galivelop», o seu logotipo e o monograma GV;",
+          "en": "the name “Galivelop”, its logo and the GV monogram;"
+        },
+        {
+          "es": "los nombres, logotipos e imágenes de cada proyecto, que son de sus titulares (los de toVeriAI, de su equipo);",
+          "gl": "os nomes, logotipos e imaxes de cada proxecto, que son dos seus titulares (os de toVeriAI, do seu equipo);",
+          "en": "each project's names, logos and images, which belong to their owners (toVeriAI's, to its team);"
+        },
+        {
+          "es": "las fotografías de las personas del equipo;",
+          "gl": "as fotografías das persoas do equipo;",
+          "en": "the photographs of the team members;"
+        },
+        {
+          "es": "los logotipos de empresas, centros de estudios y tecnologías de terceros.",
+          "gl": "os logotipos de empresas, centros de estudos e tecnoloxías de terceiros.",
+          "en": "the logos of third-party companies, schools and technologies."
+        }
+      ],
+      "enlaces": [
+        {
+          "etiqueta": {
+            "es": "Licencia MIT del portal",
+            "gl": "Licenza MIT do portal",
+            "en": "The portal's MIT licence"
+          },
+          "url": "https://github.com/Zeldris/Portal-Galivelop/blob/main/LICENSE"
+        },
+        {
+          "etiqueta": {
+            "es": "Licencia CC BY 4.0",
+            "gl": "Licenza CC BY 4.0",
+            "en": "CC BY 4.0 licence"
+          },
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Enlaces a otros sitios",
+        "gl": "Ligazóns a outros sitios",
+        "en": "Links to other sites"
+      },
+      "parrafos": [
+        {
+          "es": "El portal enlaza a sitios de terceros: GitHub, Discord, redes sociales y la web de cada proyecto. Galivelop no controla su contenido ni sus políticas de privacidad; al pulsar uno de esos enlaces sales del portal.",
+          "gl": "O portal ligazona a sitios de terceiros: GitHub, Discord, redes sociais e a web de cada proxecto. Galivelop non controla o seu contido nin as súas políticas de privacidade; ao premer unha desas ligazóns saes do portal.",
+          "en": "The portal links to third-party sites: GitHub, Discord, social networks and each project's website. Galivelop does not control their content or their privacy policies; when you follow one of those links you leave the portal."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Responsabilidad",
+        "gl": "Responsabilidade",
+        "en": "Liability"
+      },
+      "parrafos": [
+        {
+          "es": "La información de los proyectos se ofrece tal cual y puede cambiar: muchos están en desarrollo, y lo que aparece como «Próximamente» no compromete ninguna fecha. El titular procura que el portal funcione y que su información sea correcta, pero no garantiza que no haya interrupciones o errores.",
+          "gl": "A información dos proxectos ofrécese tal cal e pode cambiar: moitos están en desenvolvemento, e o que aparece como «Proximamente» non compromete ningunha data. O titular procura que o portal funcione e que a súa información sexa correcta, pero non garante que non haxa interrupcións ou erros.",
+          "en": "Project information is provided as is and may change: many projects are in development, and anything shown as “Coming soon” does not commit to any date. The owner tries to keep the portal working and its information accurate, but does not guarantee that there will be no interruptions or errors."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Legislación aplicable",
+        "gl": "Lexislación aplicable",
+        "en": "Applicable law"
+      },
+      "parrafos": [
+        {
+          "es": "Este aviso legal se rige por la legislación española. Para cualquier controversia serán competentes los juzgados y tribunales que correspondan según la normativa de consumidores y usuarios aplicable.",
+          "gl": "Este aviso legal rexese pola lexislación española. Para calquera controversia serán competentes os xulgados e tribunais que correspondan segundo a normativa de consumidores e usuarios aplicable.",
+          "en": "This legal notice is governed by Spanish law. Any dispute will be heard by the courts that have jurisdiction under the applicable consumer protection rules."
+        }
+      ]
+    }
+  ]
+}

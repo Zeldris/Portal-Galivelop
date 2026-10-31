@@ -1,0 +1,116 @@
+{
+  "slug": "terminos",
+  "orden": 3,
+  "actualizado": "2026-10-31",
+  "titulo": {
+    "es": "Términos de uso",
+    "gl": "Termos de uso",
+    "en": "Terms of use"
+  },
+  "secciones": [
+    {
+      "titulo": {
+        "es": "Qué regulan",
+        "gl": "Que regulan",
+        "en": "What they cover"
+      },
+      "parrafos": [
+        {
+          "es": "Estos términos regulan el uso del portal de Galivelop. Usarlo supone aceptarlos, junto con el aviso legal y la política de privacidad, en la versión publicada en ese momento.",
+          "gl": "Estes termos regulan o uso do portal de Galivelop. Usalo supón aceptalos, xunto co aviso legal e a política de privacidade, na versión publicada nese momento.",
+          "en": "These terms govern the use of the Galivelop portal. Using it means accepting them, together with the legal notice and the privacy policy, in the version published at that time."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Uso del portal",
+        "gl": "Uso do portal",
+        "en": "Using the portal"
+      },
+      "parrafos": [
+        {
+          "es": "El portal es gratuito y no necesita registro. Se pide un uso lícito y respetuoso: no intentar dañarlo ni alterarlo, ni impedir que otras personas lo usen.",
+          "gl": "O portal é gratuíto e non precisa rexistro. Pídese un uso lícito e respectuoso: non tentar danalo nin alteralo, nin impedir que outras persoas o usen.",
+          "en": "The portal is free and needs no sign-up. Please use it lawfully and respectfully: don't try to damage or alter it, or to stop other people from using it."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Reutilizar el contenido",
+        "gl": "Reutilizar o contido",
+        "en": "Reusing the content"
+      },
+      "parrafos": [
+        {
+          "es": "El código del portal tiene licencia MIT, y sus textos y las imágenes creadas por Galivelop, licencia CC BY 4.0, con las excepciones del aviso legal: la marca, los logotipos, las imágenes de cada proyecto y las fotos del equipo. Para reutilizar un texto o una imagen basta con citar a «Galivelop», enlazar al portal e indicar si lo cambiaste.",
+          "gl": "O código do portal ten licenza MIT, e os seus textos e as imaxes creadas por Galivelop, licenza CC BY 4.0, coas excepcións do aviso legal: a marca, os logotipos, as imaxes de cada proxecto e as fotos do equipo. Para reutilizar un texto ou unha imaxe abonda con citar a «Galivelop», ligar ao portal e indicar se o cambiaches.",
+          "en": "The portal's code is under the MIT licence, and its texts and the images created by Galivelop under CC BY 4.0, with the exceptions listed in the legal notice: the brand, the logos, each project's images and the team photos. To reuse a text or an image, just credit “Galivelop”, link to the portal and say whether you changed it."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Propuestas y participación",
+        "gl": "Propostas e participación",
+        "en": "Proposals and taking part"
+      },
+      "parrafos": [
+        {
+          "es": "Lo que nos envías (una idea, un proyecto, tu candidatura) sigue siendo tuyo. Enviarlo no crea ningún compromiso para ninguna de las partes, ni una relación laboral o comercial: se habla por correo y se decide con cada persona.",
+          "gl": "O que nos envías (unha idea, un proxecto, a túa candidatura) segue sendo teu. Envialo non crea ningún compromiso para ningunha das partes, nin unha relación laboral ou comercial: fálase por correo e decídese con cada persoa.",
+          "en": "What you send us (an idea, a project, your application) remains yours. Sending it creates no commitment for either side, and no employment or commercial relationship: we talk it over by email and decide together with each person."
+        },
+        {
+          "es": "Los encargos los acepta cada miembro por su cuenta, desde su página: si llegáis a un acuerdo, el trato es entre esa persona y tú, no con Galivelop.",
+          "gl": "Os encargos acéptaos cada membro pola súa conta, desde a súa páxina: se chegades a un acordo, o trato é entre esa persoa e ti, non con Galivelop.",
+          "en": "Commissions are taken on by each member on their own account, from their page: if you reach an agreement, the deal is between that person and you, not with Galivelop."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Productos y proyectos",
+        "gl": "Produtos e proxectos",
+        "en": "Products and projects"
+      },
+      "parrafos": [
+        {
+          "es": "En el portal no se compra nada: los productos se tratan por correo, y cualquier acuerdo se recoge aparte, con sus propias condiciones. La información de cada proyecto puede cambiar mientras está en desarrollo, «Próximamente» no compromete ninguna fecha, y el código de cada proyecto se rige por la licencia de su repositorio.",
+          "gl": "No portal non se compra nada: os produtos trátanse por correo, e calquera acordo recóllese á parte, coas súas propias condicións. A información de cada proxecto pode cambiar mentres está en desenvolvemento, «Proximamente» non compromete ningunha data, e o código de cada proxecto rexese pola licenza do seu repositorio.",
+          "en": "Nothing is bought on the portal: products are arranged by email, and any agreement is set out separately, with its own terms. Each project's information may change while it is in development, “Coming soon” does not commit to any date, and each project's code is governed by the licence in its repository."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Cambios, legislación y contacto",
+        "gl": "Cambios, lexislación e contacto",
+        "en": "Changes, law and contact"
+      },
+      "parrafos": [
+        {
+          "es": "Estos términos pueden cambiar; la versión vigente es la publicada aquí, con su fecha. Se rigen por la legislación española, como el aviso legal. Para cualquier duda, escribe al titular.",
+          "gl": "Estes termos poden cambiar; a versión vixente é a publicada aquí, coa súa data. Réxense pola lexislación española, coma o aviso legal. Para calquera dúbida, escríbelle ao titular.",
+          "en": "These terms may change; the version in force is the one published here, with its date. They are governed by Spanish law, like the legal notice. For any questions, write to the owner."
+        }
+      ],
+      "datos": [
+        {
+          "etiqueta": {
+            "es": "Correo",
+            "gl": "Correo",
+            "en": "Email"
+          },
+          "valor": {
+            "es": "alvarogarciagrana@gmail.com",
+            "gl": "alvarogarciagrana@gmail.com",
+            "en": "alvarogarciagrana@gmail.com"
+          },
+          "enlace": "mailto:alvarogarciagrana@gmail.com"
+        }
+      ]
+    }
+  ]
+}

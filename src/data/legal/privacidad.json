@@ -1,0 +1,283 @@
+{
+  "slug": "privacidad",
+  "orden": 2,
+  "actualizado": "2026-10-31",
+  "titulo": {
+    "es": "Política de privacidad",
+    "gl": "Política de privacidade",
+    "en": "Privacy policy"
+  },
+  "secciones": [
+    {
+      "titulo": {
+        "es": "En resumen",
+        "gl": "En resumo",
+        "en": "In short"
+      },
+      "lista": [
+        {
+          "es": "El portal no usa cookies, ni analítica, ni publicidad, ni carga fuentes o scripts de otros sitios.",
+          "gl": "O portal non usa cookies, nin analítica, nin publicidade, nin carga fontes ou scripts doutros sitios.",
+          "en": "The portal uses no cookies, analytics or advertising, and loads no fonts or scripts from other sites."
+        },
+        {
+          "es": "No hay registro ni cuentas de usuario.",
+          "gl": "Non hai rexistro nin contas de usuario.",
+          "en": "There is no sign-up and there are no user accounts."
+        },
+        {
+          "es": "Los formularios no envían nada a un servidor: preparan un correo que tú decides enviar.",
+          "gl": "Os formularios non envían nada a un servidor: preparan un correo que ti decides enviar.",
+          "en": "The forms send nothing to a server: they prepare an email that you decide whether to send."
+        },
+        {
+          "es": "Tu idioma y tu tema solo se guardan en tu navegador.",
+          "gl": "O teu idioma e o teu tema só se gardan no teu navegador.",
+          "en": "Your language and theme are stored only in your browser."
+        },
+        {
+          "es": "El alojamiento, GitHub Pages, registra tu dirección IP por seguridad.",
+          "gl": "O aloxamento, GitHub Pages, rexistra o teu enderezo IP por seguridade.",
+          "en": "The host, GitHub Pages, logs your IP address for security."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Responsable",
+        "gl": "Responsable",
+        "en": "Data controller"
+      },
+      "datos": [
+        {
+          "etiqueta": {
+            "es": "Responsable",
+            "gl": "Responsable",
+            "en": "Controller"
+          },
+          "valor": {
+            "es": "Álvaro García Graña",
+            "gl": "Álvaro García Graña",
+            "en": "Álvaro García Graña"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Domicilio",
+            "gl": "Domicilio",
+            "en": "Address"
+          },
+          "valor": {
+            "es": "A Coruña (A Coruña), España",
+            "gl": "A Coruña (A Coruña), España",
+            "en": "A Coruña (A Coruña), Spain"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Correo",
+            "gl": "Correo",
+            "en": "Email"
+          },
+          "valor": {
+            "es": "alvarogarciagrana@gmail.com",
+            "gl": "alvarogarciagrana@gmail.com",
+            "en": "alvarogarciagrana@gmail.com"
+          },
+          "enlace": "mailto:alvarogarciagrana@gmail.com"
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Al visitar el portal",
+        "gl": "Ao visitar o portal",
+        "en": "When you visit the portal"
+      },
+      "parrafos": [
+        {
+          "es": "El portal se aloja en GitHub Pages, un servicio de GitHub, Inc. (Estados Unidos). Según su documentación, GitHub registra y guarda la dirección IP de cada visita por motivos de seguridad, tenga o no cuenta en GitHub quien visita. Ese registro lo hace GitHub con su propia declaración de privacidad, y el titular del portal no tiene acceso a él.",
+          "gl": "O portal alóxase en GitHub Pages, un servizo de GitHub, Inc. (Estados Unidos). Segundo a súa documentación, GitHub rexistra e garda o enderezo IP de cada visita por motivos de seguridade, teña ou non conta en GitHub quen visita. Ese rexistro faino GitHub coa súa propia declaración de privacidade, e o titular do portal non ten acceso a el.",
+          "en": "The portal is hosted on GitHub Pages, a service of GitHub, Inc. (United States). According to its documentation, GitHub logs and stores the IP address of every visit for security purposes, whether or not the visitor has a GitHub account. GitHub keeps that log under its own privacy statement, and the portal's owner has no access to it."
+        },
+        {
+          "es": "Aparte de eso, al navegar no se recoge ningún dato tuyo.",
+          "gl": "Á parte diso, ao navegar non se recolle ningún dato teu.",
+          "en": "Apart from that, no data about you is collected while you browse."
+        }
+      ],
+      "enlaces": [
+        {
+          "etiqueta": {
+            "es": "GitHub Pages: recogida de datos",
+            "gl": "GitHub Pages: recollida de datos",
+            "en": "GitHub Pages: data collection"
+          },
+          "url": "https://docs.github.com/pages/getting-started-with-github-pages/what-is-github-pages#data-collection"
+        },
+        {
+          "etiqueta": {
+            "es": "Declaración de privacidad de GitHub",
+            "gl": "Declaración de privacidade de GitHub",
+            "en": "GitHub privacy statement"
+          },
+          "url": "https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement"
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Lo que se guarda en tu navegador",
+        "gl": "O que se garda no teu navegador",
+        "en": "What is stored in your browser"
+      },
+      "parrafos": [
+        {
+          "es": "Si cambias el idioma o el tema (claro u oscuro), el portal lo recuerda en el almacenamiento local de tu navegador, con las claves galivelop.idioma y galivelop.tema. No es una cookie, no sale de tu equipo y no te identifica: solo sirve para lo que pediste. Puedes borrarlo desde la configuración del navegador.",
+          "gl": "Se cambias o idioma ou o tema (claro ou escuro), o portal lémbrao no almacenamento local do teu navegador, coas claves galivelop.idioma e galivelop.tema. Non é unha cookie, non sae do teu equipo e non te identifica: só serve para o que pediches. Podes borralo desde a configuración do navegador.",
+          "en": "If you change the language or the theme (light or dark), the portal remembers it in your browser's local storage, under the keys galivelop.idioma and galivelop.tema. It is not a cookie, it never leaves your device and it does not identify you: it only does what you asked for. You can delete it from your browser settings."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Cuando nos escribes",
+        "gl": "Cando nos escribes",
+        "en": "When you write to us"
+      },
+      "parrafos": [
+        {
+          "es": "Los formularios «Propón un proyecto» y «Únete al taller», y los botones de contacto y «Me interesa», no envían nada a un servidor: abren un correo en tu aplicación de correo, que tú revisas y envías. Lo que recibe el titular es ese correo: tu dirección, tu nombre si lo pones y lo que escribas.",
+          "gl": "Os formularios «Propón un proxecto» e «Únete ao obradoiro», e os botóns de contacto e «Interésame», non envían nada a un servidor: abren un correo na túa aplicación de correo, que ti revisas e envías. O que recibe o titular é ese correo: o teu enderezo, o teu nome se o pos e o que escribas.",
+          "en": "The “Propose a project” and “Join the workshop” forms, and the contact and “I'm interested” buttons, send nothing to a server: they open an email in your mail app, which you review and send. What the owner receives is that email: your address, your name if you include it, and whatever you write."
+        },
+        {
+          "es": "Si escribes directamente a un miembro desde su página, quien recibe y trata tu correo es esa persona.",
+          "gl": "Se lle escribes directamente a un membro desde a súa páxina, quen recibe e trata o teu correo é esa persoa.",
+          "en": "If you write directly to a member from their page, that person is the one who receives and handles your email."
+        }
+      ],
+      "datos": [
+        {
+          "etiqueta": {
+            "es": "Para qué",
+            "gl": "Para que",
+            "en": "Purpose"
+          },
+          "valor": {
+            "es": "Responderte y valorar tu propuesta o tu incorporación al taller.",
+            "gl": "Responderche e valorar a túa proposta ou a túa incorporación ao obradoiro.",
+            "en": "To reply to you and consider your proposal or your joining the workshop."
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Base legal",
+            "gl": "Base legal",
+            "en": "Legal basis"
+          },
+          "valor": {
+            "es": "Tu consentimiento, que das al escribir y puedes retirar cuando quieras; y, si te sumas a un proyecto, la colaboración que acordemos.",
+            "gl": "O teu consentimento, que dás ao escribir e podes retirar cando queiras; e, se te sumas a un proxecto, a colaboración que acordemos.",
+            "en": "Your consent, which you give by writing and can withdraw at any time; and, if you join a project, the collaboration we agree on."
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Cuánto tiempo",
+            "gl": "Canto tempo",
+            "en": "How long"
+          },
+          "valor": {
+            "es": "Mientras dure la conversación. Si no colaboras en el taller, el correo se borra como mucho un año después del último contacto; si colaboras, se guarda mientras dure la colaboración.",
+            "gl": "Mentres dure a conversa. Se non colaboras no obradoiro, o correo bórrase como moito un ano despois do último contacto; se colaboras, gárdase mentres dure a colaboración.",
+            "en": "For as long as the conversation lasts. If you do not collaborate in the workshop, the email is deleted at most one year after the last contact; if you do, it is kept for as long as the collaboration lasts."
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Quién más lo trata",
+            "gl": "Quen máis o trata",
+            "en": "Who else handles it"
+          },
+          "valor": {
+            "es": "El correo llega a una cuenta de Gmail, de Google LLC (Estados Unidos), que lo trata con su propia política de privacidad; Google está adherido al Marco de Privacidad de Datos UE-EE. UU. Nadie más recibe tus datos, salvo que pidas que se los pasemos a un miembro o lo exija la ley.",
+            "gl": "O correo chega a unha conta de Gmail, de Google LLC (Estados Unidos), que o trata coa súa propia política de privacidade; Google está adherido ao Marco de Privacidade de Datos UE-EUA. Ninguén máis recibe os teus datos, salvo que pidas que llos pasemos a un membro ou o esixa a lei.",
+            "en": "The email arrives at a Gmail account, run by Google LLC (United States), which handles it under its own privacy policy; Google participates in the EU-U.S. Data Privacy Framework. Nobody else receives your data, unless you ask us to pass it on to a member or the law requires it."
+          }
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Las personas del equipo",
+        "gl": "As persoas do equipo",
+        "en": "Team members"
+      },
+      "parrafos": [
+        {
+          "es": "Las páginas del equipo muestran el nombre, la foto, la trayectoria y los enlaces de cada miembro, publicados con su consentimiento. Cada miembro puede pedir en cualquier momento que se cambien o se retiren.",
+          "gl": "As páxinas do equipo amosan o nome, a foto, a traxectoria e as ligazóns de cada membro, publicados co seu consentimento. Cada membro pode pedir en calquera momento que se cambien ou se retiren.",
+          "en": "The team pages show each member's name, photo, career and links, published with their consent. Each member can ask at any time for them to be changed or removed."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Tus derechos",
+        "gl": "Os teus dereitos",
+        "en": "Your rights"
+      },
+      "parrafos": [
+        {
+          "es": "Puedes pedir el acceso a tus datos, su rectificación o su supresión, oponerte a su tratamiento o limitarlo, pedir su portabilidad o retirar tu consentimiento, escribiendo al correo del responsable. Estos derechos valen para cualquier persona, aunque solo nos hayas escrito una vez.",
+          "gl": "Podes pedir o acceso aos teus datos, a súa rectificación ou a súa supresión, opoñerte ao seu tratamento ou limitalo, pedir a súa portabilidade ou retirar o teu consentimento, escribindo ao correo do responsable. Estes dereitos valen para calquera persoa, aínda que só nos escribiras unha vez.",
+          "en": "You can ask for access to your data, its correction or erasure, object to or restrict its processing, request its portability or withdraw your consent, by writing to the controller's email. These rights apply to anyone, even if you have only written to us once."
+        },
+        {
+          "es": "Si crees que no se respetan, puedes reclamar ante la Agencia Española de Protección de Datos.",
+          "gl": "Se cres que non se respectan, podes reclamar ante a Axencia Española de Protección de Datos.",
+          "en": "If you believe they are not being respected, you can file a complaint with the Spanish Data Protection Agency (AEPD)."
+        }
+      ],
+      "enlaces": [
+        {
+          "etiqueta": {
+            "es": "Agencia Española de Protección de Datos",
+            "gl": "Axencia Española de Protección de Datos",
+            "en": "Spanish Data Protection Agency (AEPD)"
+          },
+          "url": "https://www.aepd.es/"
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Menores de edad",
+        "gl": "Menores de idade",
+        "en": "Minors"
+      },
+      "parrafos": [
+        {
+          "es": "Para unirte al taller con menos de 14 años necesitas el consentimiento de tu madre, tu padre o tu tutor legal.",
+          "gl": "Para unirte ao obradoiro con menos de 14 anos necesitas o consentimento da túa nai, o teu pai ou o teu titor legal.",
+          "en": "To join the workshop if you are under 14, you need the consent of your parent or legal guardian."
+        }
+      ]
+    },
+    {
+      "titulo": {
+        "es": "Cambios en esta política",
+        "gl": "Cambios nesta política",
+        "en": "Changes to this policy"
+      },
+      "parrafos": [
+        {
+          "es": "Si cambia lo que hace el portal con los datos, se actualiza esta página y su fecha.",
+          "gl": "Se cambia o que fai o portal cos datos, actualízase esta páxina e a súa data.",
+          "en": "If what the portal does with data changes, this page and its date are updated."
+        }
+      ]
+    }
+  ]
+}

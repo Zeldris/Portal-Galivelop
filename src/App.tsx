@@ -3,7 +3,9 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import { Cabecera } from './components/Cabecera';
 import { Pie } from './components/Pie';
 import { Equipo } from './pages/Equipo';
+import { buscarLegal } from './data/legal';
 import { Inicio } from './pages/Inicio';
+import { Legal } from './pages/Legal';
 import { Miembro } from './pages/Miembro';
 import { Muro } from './pages/Muro';
 import { NoEncontrado } from './pages/NoEncontrado';
@@ -41,6 +43,9 @@ export function App() {
           <Route path="/productos" element={<Productos />} />
           <Route path="/participa/proponer" element={<Proponer />} />
           <Route path="/participa/unirse" element={<Unirse />} />
+          <Route path="/aviso-legal" element={<Legal documento={buscarLegal('aviso-legal')!} />} />
+          <Route path="/privacidad" element={<Legal documento={buscarLegal('privacidad')!} />} />
+          <Route path="/terminos" element={<Legal documento={buscarLegal('terminos')!} />} />
           <Route path="*" element={<NoEncontrado />} />
         </Routes>
       </main>

@@ -18,10 +18,12 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Enlaces a los repos públicos (2026-10-31, petición de la persona: «dejo todo público»): Tarkor, Galivelop-workflow y Galivelop Image Generator llevan «Ver el código en GitHub» en su ficha (`enlaces`, tipo `otro`) y el README enlaza su repo. `AGENTS.md` y `docs/desarrollo.md` dicen ahora que el código se enlaza cuando el repo es público.
-- toVeriAI sigue sin enlace de código (2026-10-31, decisión de la persona): su repo es el privado `raquelccarreraA/VeriNews_AI`, que sigue privado; `raquelccarreraA/ToVeriAI` (público) no es el de este proyecto. El README dice «proyecto privado».
+- Aviso legal, privacidad, términos y pie nuevo (2026-10-31, rama `ccr-83ea043c-r1gbyp`): es código, pendiente de las fases 1-3 y de la confirmación de la persona.
+- Ya en `main` (2026-10-31): los enlaces a los repos públicos, con el instalador de Tarkor; toVeriAI sin enlace (su repo, VeriNews_AI, sigue privado).
 
 ## Hecho
+
+- ✅ 2026-10-31 · **Aviso legal, privacidad, términos y pie nuevo** (petición de la persona: «aplicar estos 3 también en Galivelop para ser totalmente transparentes y mejorar el footer»). Datos de la persona: titular Álvaro García Graña, domicilio solo «A Coruña (A Coruña), España», sin NIF; licencias MIT para el código (`LICENSE` nuevo) y CC BY 4.0 para textos e imágenes propias, con marca, logotipos, imágenes de cada proyecto, fotos del equipo y logos de terceros fuera. Textos en `src/data/legal/` (es, gl, en) y página `src/pages/Legal.tsx` en `/aviso-legal`, `/privacidad` y `/terminos`, con página estática, sitemap y `npm run medir`. La privacidad dice lo que hace el portal (sin cookies ni analítica, `localStorage` solo para idioma y tema, formularios por `mailto:`, IP registrada por GitHub Pages según su documentación, correo en Gmail). Pie en columnas (marca y redes con correo; Taller; Galivelop; Participa; Legal) y base con titular y licencias. README con «Licencia». Test `src/data/legal.test.ts` (rojo comprobado sin las rutas). Check 106/106, build con 42 páginas, capturas sin cortes ni táctiles. **Falta antes de `main`:** fases 1-3 (es código: componentes, estilos y script de build) y la confirmación de la persona.
 
 - ✅ 2026-10-31 · **Instalador de Tarkor enlazado** (la persona: «te dejaste el instalador de tarkor»): la ficha de Tarkor lleva dos botones, «Ver el código del juego» (`Zeldris/World-Maker-Fantasy`) y «Ver el código del instalador» (`Zeldris/Instalador-WMF-Tarkor`, público); README y la pieza de Reddit, al día. Solo contenido. Check 93/93 y build con 33 páginas. Subido a `main` con la confirmación de la persona («si»).
 
@@ -56,7 +58,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 - **Ideas de `elayadesign/ai-design-skills` y `redesign-skill`** (aprobadas el 2026-10-30; aplicadas el mismo día en
   la rama `ccr-83ea043c-r1gbyp`): hechas las palabras de relleno (`src/i18n/relleno.test.ts`), `text-wrap`, respuesta
   al pulsar, `--curva` a 200 ms, escala `--z-*`, radios anidados y mensajes del sistema en `REVIEW.md` y
-  `designReferences`. **Quedan:** (a) aviso legal o privacidad en el pie: necesita los datos del titular y la consulta
+  `designReferences`. **Quedan:** (a) ~~aviso legal o privacidad en el pie~~ hecho el 2026-10-31 (ver «Hecho»); queda la consulta
   de la LSSI-CE de más abajo (fase 5 de la ADR 0002); (b) la FAQ con JSON-LD **no se hace**: Google retiró ese
   resultado enriquecido (ver `docs/investigacion/seo-indexacion-previews.md`); (c) prototipo de la frase que se
   ilumina al hacer scroll, si la persona lo quiere; (d) mirar caso por caso los 7 `uppercase` y que los botones de
