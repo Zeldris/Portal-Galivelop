@@ -147,14 +147,14 @@
       },
       "parrafos": [
         {
-          "es": "Los formularios «Propón un proyecto» y «Únete al taller», y los botones de contacto y «Me interesa», no envían nada a un servidor: abren un correo en tu aplicación de correo, que tú revisas y envías. Lo que recibe el titular es ese correo: tu dirección, tu nombre si lo pones y lo que escribas.",
-          "gl": "Os formularios «Propón un proxecto» e «Únete ao obradoiro», e os botóns de contacto e «Interésame», non envían nada a un servidor: abren un correo na túa aplicación de correo, que ti revisas e envías. O que recibe o titular é ese correo: o teu enderezo, o teu nome se o pos e o que escribas.",
-          "en": "The “Propose a project” and “Join the workshop” forms, and the contact and “I'm interested” buttons, send nothing to a server: they open an email in your mail app, which you review and send. What the owner receives is that email: your address, your name if you include it, and whatever you write."
+          "es": "Los formularios «Propón un proyecto» y «Únete al taller», y los botones de contacto y «Me interesa», no envían nada a un servidor: abren un correo en tu aplicación de correo, que tú revisas y envías. Lo que recibe el titular es ese correo: tu nombre, tu dirección y lo que escribas.",
+          "gl": "Os formularios «Propón un proxecto» e «Únete ao obradoiro», e os botóns de contacto e «Interésame», non envían nada a un servidor: abren un correo na túa aplicación de correo, que ti revisas e envías. O que recibe o titular é ese correo: o teu nome, o teu enderezo e o que escribas.",
+          "en": "The “Propose a project” and “Join the workshop” forms, and the contact and “I'm interested” buttons, send nothing to a server: they open an email in your mail app, which you review and send. What the owner receives is that email: your name, your address and whatever you write."
         },
         {
-          "es": "Si escribes directamente a un miembro desde su página, quien recibe y trata tu correo es esa persona.",
-          "gl": "Se lle escribes directamente a un membro desde a súa páxina, quen recibe e trata o teu correo é esa persoa.",
-          "en": "If you write directly to a member from their page, that person is the one who receives and handles your email."
+          "es": "Si escribes a un miembro desde su página, o a un proyecto que tiene su propio correo de contacto (como toVeriAI), quien recibe y trata tu correo es esa persona o el equipo de ese proyecto.",
+          "gl": "Se lle escribes a un membro desde a súa páxina, ou a un proxecto que ten o seu propio correo de contacto (como toVeriAI), quen recibe e trata o teu correo é esa persoa ou o equipo dese proxecto.",
+          "en": "If you write to a member from their page, or to a project that has its own contact email (such as toVeriAI), the person or that project's team is the one who receives and handles your email."
         }
       ],
       "datos": [
@@ -259,9 +259,9 @@
       },
       "parrafos": [
         {
-          "es": "Para unirte al taller con menos de 14 años necesitas el consentimiento de tu madre, tu padre o tu tutor legal.",
-          "gl": "Para unirte ao obradoiro con menos de 14 anos necesitas o consentimento da túa nai, o teu pai ou o teu titor legal.",
-          "en": "To join the workshop if you are under 14, you need the consent of your parent or legal guardian."
+          "es": "Si tienes menos de 14 años, para escribirnos o unirte al taller necesitas el consentimiento de tu madre, tu padre o tu tutor legal.",
+          "gl": "Se tes menos de 14 anos, para escribirnos ou unirte ao obradoiro necesitas o consentimento da túa nai, o teu pai ou o teu titor legal.",
+          "en": "If you are under 14, you need the consent of your parent or legal guardian to write to us or to join the workshop."
         }
       ]
     },

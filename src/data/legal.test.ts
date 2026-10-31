@@ -19,8 +19,10 @@ describe('textos legales', () => {
 
   for (const d of documentosLegales) {
     describe(d.slug, () => {
-      it('tiene su ruta en App.tsx', () => {
-        expect(app).toContain(`<Route path="/${d.slug}"`);
+      it('tiene su ruta en App.tsx, que pinta este mismo documento', () => {
+        expect(app).toContain(
+          `<Route path="/${d.slug}" element={<Legal documento={buscarLegal('${d.slug}')!} />} />`,
+        );
       });
 
       it('tiene fecha AAAA-MM-DD y todos sus textos en castellano, gallego e inglés', () => {
@@ -45,9 +47,16 @@ describe('textos legales', () => {
         }
       });
 
-      it('el correo de contacto es el de la marca', () => {
-        const correos = JSON.stringify(d).match(/mailto:[^"]+/g) ?? [];
-        for (const c of correos) expect(c).toBe(`mailto:${MARCA.correo}`);
+      it('titular, correo y licencia del contenido son los de marca.ts', () => {
+        const datos = d.secciones.flatMap((s) => s.datos ?? []);
+        const valores = (es: string[]) =>
+          datos.filter((x) => es.includes(x.etiqueta.es)).flatMap((x) => Object.values(x.valor));
+        for (const v of valores(['Titular', 'Responsable'])) expect(v).toBe(MARCA.titular);
+        for (const v of valores(['Correo'])) expect(v).toBe(MARCA.correo);
+        const json = JSON.stringify(d);
+        for (const c of json.match(/mailto:[^"]+/g) ?? []) expect(c).toBe(`mailto:${MARCA.correo}`);
+        for (const u of json.match(/https:\/\/creativecommons\.org[^"]*/g) ?? [])
+          expect(u).toBe(MARCA.licenciaContenido);
       });
     });
   }

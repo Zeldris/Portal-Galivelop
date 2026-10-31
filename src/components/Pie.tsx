@@ -9,8 +9,6 @@ import { IconoDiscord } from './IconoDiscord';
 import { IconoGitHub } from './IconoGitHub';
 import { Logo } from './Logo';
 
-const CC_BY = 'https://creativecommons.org/licenses/by/4.0/';
-
 /** Pie en columnas: marca y redes, taller, Galivelop, Participa y Legal; debajo, titular y licencias. */
 export function Pie() {
   const { t, tx } = useIdioma();
@@ -105,8 +103,14 @@ export function Pie() {
           © {new Date().getFullYear()} Galivelop · {MARCA.titular}
         </p>
         <p>
-          {t('pie.codigo')}: <a href={`${MARCA.repositorio}/blob/main/LICENSE`}>MIT</a> ·{' '}
-          {t('pie.contenido')}: <a href={CC_BY}>CC BY 4.0</a>
+          {t('pie.codigo')}:{' '}
+          <a href={`${MARCA.repositorio}/blob/main/LICENSE`} target="_blank" rel="noreferrer">
+            MIT
+          </a>{' '}
+          · {t('pie.contenido')}:{' '}
+          <a href={MARCA.licenciaContenido} target="_blank" rel="noreferrer">
+            CC BY 4.0
+          </a>
         </p>
       </div>
     </footer>

@@ -31,6 +31,11 @@ const fechaGit = (...rutas) =>
   gitCompleto ? execFileSync('git', ['log', '-1', '--format=%cs', '--', ...rutas], { encoding: 'utf8' }).trim() || undefined : undefined;
 const masReciente = (...fechas) => fechas.filter(Boolean).sort().at(-1);
 
+// Textos legales (src/data/legal/): su página estática lleva el texto entero, también sin JS.
+const legales = readdirSync('src/data/legal')
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => JSON.parse(readFileSync(`src/data/legal/${f}`, 'utf8')));
+
 // En el mismo orden que src/data/proyectos.ts: el último añadido (mayor `orden`), el primero.
 const proyectos = readdirSync('src/data/proyectos')
   .filter((f) => f.endsWith('.json'))
@@ -106,9 +111,8 @@ const FECHA_FIJA = {
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
   productos: fechaGit(`${D}productos`, `${D}equipo.json`, `${D}marca.ts`, `${D}proyectos`),
   muro: publicaciones[0]?.fecha,
-  'aviso-legal': fechaGit(`${D}legal/aviso-legal.json`, `${D}marca.ts`),
-  privacidad: fechaGit(`${D}legal/privacidad.json`, `${D}marca.ts`),
-  terminos: fechaGit(`${D}legal/terminos.json`, `${D}marca.ts`),
+  // Los textos legales: la fecha que muestran («Última actualización»).
+  ...Object.fromEntries(legales.map((d) => [d.slug, d.actualizado])),
 };
 // Página de miembro: su ficha en equipo.json y la de sus proyectos.
 const fechaMiembro = (m) => fechaGit(`${D}equipo.json`, ...m.proyectos.map((slug) => `${D}proyectos/${slug}.json`));
@@ -178,6 +182,18 @@ function cuerpo(pg) {
     const lista = productos.map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
     const promocionados = equipo.filter((x) => x.promocionado).map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
     return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul>${promocionados ? `<ul>${promocionados}</ul>` : ''}<ul>${enlaces}</ul></main>`;
+  }
+  const legal = legales.find((d) => d.slug === pg.ruta);
+  if (legal) {
+    const i = pg.idioma;
+    const a = (url, texto) => `<a href="${url}">${esc(texto)}</a>`;
+    const secciones = legal.secciones.map((x) => `<section><h2>${esc(x.titulo[i])}</h2>`
+      + (x.parrafos ?? []).map((t) => `<p>${esc(t[i])}</p>`).join('')
+      + (x.datos ? `<ul>${x.datos.map((d) => `<li>${esc(d.etiqueta[i])}: ${d.enlace ? a(d.enlace, d.valor[i]) : esc(d.valor[i])}</li>`).join('')}</ul>` : '')
+      + (x.lista ? `<ul>${x.lista.map((t) => `<li>${esc(t[i])}</li>`).join('')}</ul>` : '')
+      + (x.enlaces ? `<ul>${x.enlaces.map((e) => `<li>${a(e.url, e.etiqueta[i])}</li>`).join('')}</ul>` : '')
+      + '</section>').join('');
+    return `<main><h1>${esc(legal.titulo[i])}</h1><p>${legal.actualizado}</p>${secciones}<ul>${enlaces}</ul></main>`;
   }
   if (pg.ruta === 'equipo') {
     const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
