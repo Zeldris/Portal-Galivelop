@@ -21,13 +21,15 @@ Idiomas: en (en Reddit solo se publica en inglés, decisión de la persona del 2
 |---|---|
 | Los repos `Zeldris/World-Maker-Fantasy`, `Zeldris/Galivelop-workflow` y `Zeldris/galivelop-image-generator` son públicos | listado de repos de la cuenta (visibilidad `public`), consultado el 2026-10-31 |
 | Tarkor es un juego de rol por texto con una IA local como directora de juego, en un mundo de bolsillo donde las facciones, la fauna y tu reino viven por su cuenta | `src/data/proyectos/tarkor.json`, `resumen` |
+| El repo `Zeldris/Instalador-WMF-Tarkor` (instalador de Tarkor) es público | respuesta de acceso de la sesión («public repository»), 2026-10-31 |
+| El instalador mide memoria, procesador y gráfica y propone un perfil (de Mínimo a Ultra) para que el juego vaya fluido desde una Steam Deck hasta un PC potente; llega con la beta pública | `src/data/proyectos/tarkor.json`, `decisiones[4]` y apartado de requisitos («La beta pública, con el instalador…») |
 | Tarkor está en alpha y abierto a colaborar | mismo archivo, `fase` («Alpha · hito 0.3») y `colaboracion: abierta` |
 | Galivelop-workflow es un flujo de trabajo versionado para programar con agentes de IA: relevos entre sesiones sin perder nada, elegir skill y modelo antes de empezar, revisión obligatoria antes de publicar y menos tokens sin perder calidad | `src/data/proyectos/galivelop-workflow.json`, `resumen` |
 | Galivelop-workflow va por la 0.4.2 y tiene licencia MIT | mismo archivo, `fase`; `.claude-plugin/plugin.json` y `LICENSE` del repo del flujo |
 | Galivelop Image Generator es un servicio local de generación de imágenes con IA, uno por máquina y compartido por los proyectos del taller; nada sale del equipo | `src/data/proyectos/galivelop-image-generator.json`, `resumen` |
 | Galivelop Image Generator está en desarrollo | mismo archivo, `estado` y `fase` («fase 2: motor real») |
 | En los proyectos con colaboración privada, las propuestas y las ideas son bienvenidas | `src/i18n/textos.ts`, `participa.privada.texto` |
-| Las fichas de los tres proyectos enlazan su repo («Ver el código en GitHub») | `enlaces` de los tres `.json` (commit 47baaec); respuesta 200 y enlace presente en la web publicada, comprobado el 2026-10-31 |
+| Las fichas de los tres proyectos enlazan su repo; la de Tarkor, también el del instalador | `enlaces` de los tres `.json` (commit 47baaec); respuesta 200 y enlace presente en la web publicada, comprobado el 2026-10-31 |
 | El portal está en https://zeldris.github.io/Portal-Galivelop/ | respuesta 200 comprobada el 2026-10-31 |
 
 ## Imágenes

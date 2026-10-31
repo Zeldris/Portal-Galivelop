@@ -5,12 +5,14 @@ a la vista. Sin etiquetas. Solo en inglés (decisión de la persona, 2026-10-31)
 
 ## en
 
-**Title:** As of today, the code of three Galivelop workshop projects is public on GitHub
+**Title:** As of today, the code of the Galivelop workshop projects is public on GitHub
 
 Until now, the Galivelop portal only described what each project does. As of today you can read the code too:
 
 - **Tarkor**: a text-based role-playing game with a local AI as game master, in a pocket world where factions, wildlife and your kingdom live on their own. It's in alpha and open to collaboration.
   https://github.com/Zeldris/World-Maker-Fantasy
+- **Tarkor's installer**: it measures memory, CPU and GPU and suggests a profile, from Minimum to Ultra, so the game runs smoothly from a Steam Deck to a high-end PC. It will ship with the public beta.
+  https://github.com/Zeldris/Instalador-WMF-Tarkor
 - **Galivelop-workflow**: a versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality. It's at 0.4.2, under the MIT licence.
   https://github.com/Zeldris/Galivelop-workflow
 - **Galivelop Image Generator**: a local AI image-generation service, one per machine and shared by every project in the workshop. Nothing leaves the machine. Still in development.

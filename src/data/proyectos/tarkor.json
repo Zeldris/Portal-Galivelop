@@ -52,9 +52,18 @@
       "tipo": "otro",
       "url": "https://github.com/Zeldris/World-Maker-Fantasy",
       "etiqueta": {
-        "es": "Ver el código en GitHub",
-        "gl": "Ver o código en GitHub",
-        "en": "View the code on GitHub"
+        "es": "Ver el código del juego",
+        "gl": "Ver o código do xogo",
+        "en": "View the game’s code"
+      }
+    },
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/Instalador-WMF-Tarkor",
+      "etiqueta": {
+        "es": "Ver el código del instalador",
+        "gl": "Ver o código do instalador",
+        "en": "View the installer’s code"
       }
     }
   ],
