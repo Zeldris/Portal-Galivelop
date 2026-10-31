@@ -1,12 +1,11 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { documentosLegales } from './legal';
 import { MARCA } from './marca';
 import { textosIncompletos } from './textosIncompletos';
 
-const app = readFileSync(new URL('../App.tsx', import.meta.url), 'utf8');
 const leer = (ruta: string) => readFileSync(new URL(`../../${ruta}`, import.meta.url), 'utf8');
-const privacidad = readFileSync(new URL('./legal/privacidad.json', import.meta.url), 'utf8');
+const app = leer('src/App.tsx');
 
 describe('textos legales', () => {
   it('están los tres, sin slugs ni órdenes repetidos', () => {
@@ -66,20 +65,50 @@ describe('textos legales', () => {
 
 // La privacidad describe lo que hace el portal; lo mecánico se vigila aquí y el resto en la revisión (REVIEW.md).
 describe('la política de privacidad y el código', () => {
-  const fuentes = ['index.html', 'src/i18n/Idioma.tsx', 'src/components/Tema.tsx']
-    .map(leer)
-    .join('\n');
+  /** index.html y el código de src/ (sin tests), con su ruta. */
+  const fuentes = (): [string, string][] => [
+    ['index.html', leer('index.html')],
+    ...readdirSync(new URL('../', import.meta.url), { recursive: true, encoding: 'utf8' })
+      .filter((f) => /\.(tsx?|css)$/.test(f) && !/\.test\.tsx?$/.test(f))
+      .map((f): [string, string] => [`src/${f}`, leer(`src/${f}`)]),
+  ];
+  const privacidad = documentosLegales.find((d) => d.slug === 'privacidad')!;
+  const textoDe = (idioma: 'es' | 'gl' | 'en') =>
+    JSON.stringify(privacidad, (_, v) =>
+      v && typeof v === 'object' && idioma in v ? v[idioma] : v,
+    );
 
-  it('nombra cada clave que el portal guarda en el navegador', () => {
-    const claves = [...new Set(fuentes.match(/galivelop\.[a-z]+/g) ?? [])];
-    expect(claves.length).toBeGreaterThan(0);
-    expect(claves.filter((c) => !privacidad.includes(c))).toEqual([]);
+  it('nombra, en los tres idiomas, cada clave que el portal guarda en el navegador', () => {
+    const claves = new Set<string>();
+    for (const [ruta, codigo] of fuentes()) {
+      if (!/\b(localStorage|sessionStorage)\b/.test(codigo)) continue;
+      const deEste = [
+        ...codigo.matchAll(
+          /(?:CLAVE_GUARDADA\s*=|(?:get|set|remove)Item\()\s*['"`]([^'"`]+)['"`]/g,
+        ),
+      ].map((m) => m[1]);
+      expect(
+        deEste.length,
+        `${ruta} usa el almacenamiento con una clave que el test no reconoce`,
+      ).toBeGreaterThan(0);
+      deEste.forEach((c) => claves.add(c));
+    }
+    const escapar = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    for (const idioma of ['es', 'gl', 'en'] as const) {
+      const texto = textoDe(idioma);
+      const faltan = [...claves].filter(
+        (c) => !new RegExp(`(?<![\\w.-])${escapar(c)}(?![\\w-])`).test(texto),
+      );
+      expect(faltan, `privacidad (${idioma})`).toEqual([]);
+    }
   });
 
-  it('index.html no carga scripts ni hojas de estilo de otro dominio', () => {
-    const externos =
-      leer('index.html').match(/<(script|link)\b[^>]*(src|href)="(https?:)?\/\/[^"]*"[^>]*>/g) ??
-      [];
-    expect(externos).toEqual([]);
+  it('no se carga nada de otro dominio: scripts, hojas, imágenes, marcos ni @import', () => {
+    const externo =
+      /<(script|link|iframe|img)\b[^>]*\b(src|href)\s*=\s*["'{]?\s*["'`]?(https?:)?\/\/|(@import|url\()\s*["']?(https?:)?\/\//gi;
+    const hallados = fuentes().flatMap(([ruta, codigo]) =>
+      [...codigo.matchAll(externo)].map((m) => `${ruta}: ${m[0]}`),
+    );
+    expect(hallados).toEqual([]);
   });
 });
