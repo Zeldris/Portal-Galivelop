@@ -48,7 +48,17 @@
       "en": "Cover of Galivelop Image Generator: a grid of attempts with one chosen"
     }
   },
-  "enlaces": [],
+  "enlaces": [
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/galivelop-image-generator",
+      "etiqueta": {
+        "es": "Ver el código en GitHub",
+        "gl": "Ver o código en GitHub",
+        "en": "View the code on GitHub"
+      }
+    }
+  ],
   "galeria": [
     {
       "src": "proyectos/galivelop-image-generator/piloto/portal-r3.webp",

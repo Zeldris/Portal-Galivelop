@@ -47,7 +47,17 @@
       "en": "The Broken Pillars, red rock towers joined by rope bridges in the Plains"
     }
   },
-  "enlaces": [],
+  "enlaces": [
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/World-Maker-Fantasy",
+      "etiqueta": {
+        "es": "Ver el código en GitHub",
+        "gl": "Ver o código en GitHub",
+        "en": "View the code on GitHub"
+      }
+    }
+  ],
   "galeria": [
     {
       "src": "proyectos/tarkor/arte/fauna-gargantua-de-ceniza.webp",

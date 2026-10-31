@@ -137,7 +137,7 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación.
 - **Todo texto visible, en castellano, gallego e inglés** (`visibleLanguages`); `npm run check` lo comprueba. Un
   subagente que escriba textos lo recibe en su encargo.
-- No se enlaza el código de los proyectos (sus repos son privados): solo su versión pública.
+- El código de cada proyecto se enlaza desde su ficha (`enlaces`, tipo `otro`) cuando su repo es público. Si el repo es privado, no se enlaza: solo su versión pública.
 - Mensaje de la marca (2026-10-04, ampliado el 2026-10-27 con la [ADR 0002](docs/adr/0002-marca-taller-y-productos.md)):
   **Galivelop es la marca** que contiene el **taller** (crear, investigar, innovar, aprender; abierto a colaborar y
   sin vender: expone los proyectos) y **Productos** (`/productos`: productos de descarga local e integrantes

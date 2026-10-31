@@ -46,7 +46,17 @@
       "en": "Diagram of a task’s flow: log, selector, orchestrate-dealer, commit and push with their hooks, /code-review, /opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
     }
   },
-  "enlaces": [],
+  "enlaces": [
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/Galivelop-workflow",
+      "etiqueta": {
+        "es": "Ver el código en GitHub",
+        "gl": "Ver o código en GitHub",
+        "en": "View the code on GitHub"
+      }
+    }
+  ],
   "galeria": [
     {
       "src": "proyectos/galivelop-workflow/portada.webp",
@@ -1448,9 +1458,9 @@
         "en": "Released versions"
       },
       "intro": {
-        "es": "Qué trae cada versión, de la más reciente a la primera, y en «Ver el detalle», sus cambios uno a uno. Las notas completas del repositorio se enlazarán aquí cuando sea público.",
-        "gl": "Que trae cada versión, da máis recente á primeira, e en «Ver o detalle», os seus cambios un a un. As notas completas do repositorio ligaranse aquí cando sexa público.",
-        "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The repository’s full release notes will be linked here once it is public."
+        "es": "Qué trae cada versión, de la más reciente a la primera, y en «Ver el detalle», sus cambios uno a uno. Las notas completas están en el repositorio del proyecto.",
+        "gl": "Que trae cada versión, da máis recente á primeira, e en «Ver o detalle», os seus cambios un a un. As notas completas están no repositorio do proxecto.",
+        "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The full release notes are in the project’s repository."
       },
       "items": [
         {

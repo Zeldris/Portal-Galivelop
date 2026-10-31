@@ -24,8 +24,9 @@ La presentación pública está en el [README](../README.md).
 - **Idiomas:** castellano, gallego e inglés (detecta el del navegador y recuerda la elección).
 - **Tema** claro y oscuro.
 
-El código de los proyectos no se enlaza: el portal describe cada uno y lleva solo a su versión
-pública (web, descarga…) cuando la hay.
+El código de cada proyecto se enlaza desde su ficha («Ver el código en GitHub», tipo `otro` en `enlaces`)
+cuando su repositorio es público; si es privado, no se enlaza. Además, el portal lleva a su versión pública
+(web, descarga…) cuando la hay.
 
 ## Marca
 

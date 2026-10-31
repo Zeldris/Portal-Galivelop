@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-10-30 |
+| **Actualizado** | 2026-10-31 |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-83ea043c-r1gbyp` (sigue el WIP de `ccr-47f8fddd-o5ek6p`, de otra cuenta) |
 | **Tarea en curso** | Ninguna en código. **Versiones publicadas del flujo en `main`** (2026-10-30, la persona: «Si» tras la vista previa; apartado con resumen y «Ver el detalle» por versión; revisión con 7 hallazgos, arreglados; marca de 69c06a7; CI verde). Redes: pieza 01 lista salvo Reddit |
 | **Siguiente paso** | Lo de la persona: pegar el bloque nuevo del flujo de `docs/runbooks/tarea-semanal.md` en la tarea «Proyectos semanal» (resumen y detalle de cada versión nueva), «SEO, a mano» de Pendiente (Bing) y abrir la próxima sesión desde el repo. Redes: Reddit de la pieza 01 cuando la persona pegue las normas |
@@ -18,9 +18,12 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Nada pendiente: todo lo de la rama de trabajo está en `main` (2026-10-30, versiones publicadas del flujo).
+- Enlaces a los repos públicos (2026-10-31, petición de la persona: «dejo todo público»): Tarkor, Galivelop-workflow y Galivelop Image Generator llevan «Ver el código en GitHub» en su ficha (`enlaces`, tipo `otro`) y el README enlaza su repo. `AGENTS.md` y `docs/desarrollo.md` dicen ahora que el código se enlaza cuando el repo es público.
+- **toVeriAI, pendiente de la persona:** `raquelccarreraA/ToVeriAI` es público (último push 2026-10-15) y `raquelccarreraA/VeriNews_AI` es privado (último push 2026-10-29). Falta elegir cuál es el de la web y, si es el privado, hacerlo público antes de enlazarlo.
 
 ## Hecho
+
+- ✅ 2026-10-31 · **Repos públicos enlazados** (petición de la persona): «Ver el código en GitHub» en Tarkor (`Zeldris/World-Maker-Fantasy`), Galivelop-workflow (`Zeldris/Galivelop-workflow`) y Galivelop Image Generator (`Zeldris/galivelop-image-generator`); README con los repos en lugar de «proyecto privado»; reglas de `AGENTS.md` y `docs/desarrollo.md` al día. Solo contenido y docs, sin código. Check 93/93 y build con 33 páginas; los enlaces salen en las páginas de cada proyecto.
 
 - ✅ 2026-10-29 · Puesto de Álvaro (`rol` de `src/data/equipo.json`): «Fundador · Software Architect & AI Systems Engineer, specializing in local-first infrastructure and deterministic systems», traducido en es y gl. Solo contenido; subido a `main` con confirmación de la persona y el CI en verde.
 - ✅ 2026-10-27 · Revisión semanal (tarea «Proyectos semanal», tercera pasada del día), publicada en `main`: Galivelop-workflow en la 0.4.2 (texto de las etapas, 1063 pruebas automáticas y diagramas de arquitectura y versiones regenerados); Tarkor, toVeriAI, galivelop-image-generator y próximamente, sin cambios; muro sin piezas listas.
