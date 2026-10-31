@@ -19,7 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Enlaces a los repos públicos (2026-10-31, petición de la persona: «dejo todo público»): Tarkor, Galivelop-workflow y Galivelop Image Generator llevan «Ver el código en GitHub» en su ficha (`enlaces`, tipo `otro`) y el README enlaza su repo. `AGENTS.md` y `docs/desarrollo.md` dicen ahora que el código se enlaza cuando el repo es público.
-- toVeriAI sigue sin enlace de código (2026-10-31, decisión de la persona): su repo es el privado `raquelccarreraA/VeriNews_AI`, que no se hace público; `raquelccarreraA/ToVeriAI` público no es el de este proyecto. El README dice «proyecto privado».
+- toVeriAI sigue sin enlace de código (2026-10-31, decisión de la persona): su repo es el privado `raquelccarreraA/VeriNews_AI`, que sigue privado; `raquelccarreraA/ToVeriAI` (público) no es el de este proyecto. El README dice «proyecto privado».
 
 ## Hecho
 
