@@ -3,7 +3,7 @@
 La fuente de todo lo que se publica de esta pieza. Lo que no esté aquí, con su fuente, no sale en los canales.
 Carpeta de la pieza: `docs/difusion/2026-10-31/01-repos-publicos/` (01 = número de la pieza del día).
 
-Idiomas: es, en
+Idiomas: en (en Reddit solo se publica en inglés, decisión de la persona del 2026-10-31)
 
 ## Canales
 
