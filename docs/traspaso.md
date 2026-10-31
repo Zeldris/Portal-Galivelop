@@ -23,7 +23,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
-- ✅ 2026-10-31 · **Instalador de Tarkor enlazado** (la persona: «te dejaste el instalador de tarkor»): la ficha de Tarkor lleva dos botones, «Ver el código del juego» (`Zeldris/World-Maker-Fantasy`) y «Ver el código del instalador» (`Zeldris/Instalador-WMF-Tarkor`, público); README y la pieza de Reddit, al día. Solo contenido. Check 93/93 y build con 33 páginas. **Pendiente de subir a `main`** (falta la confirmación de la persona).
+- ✅ 2026-10-31 · **Instalador de Tarkor enlazado** (la persona: «te dejaste el instalador de tarkor»): la ficha de Tarkor lleva dos botones, «Ver el código del juego» (`Zeldris/World-Maker-Fantasy`) y «Ver el código del instalador» (`Zeldris/Instalador-WMF-Tarkor`, público); README y la pieza de Reddit, al día. Solo contenido. Check 93/93 y build con 33 páginas. Subido a `main` con la confirmación de la persona («si»).
 
 - ✅ 2026-10-31 · **Pieza de redes 01 «repos públicos»** (`docs/difusion/2026-10-31/01-repos-publicos/`, petición de la persona): publicación de Reddit para el perfil `u/Alvaro-Garcia-Grana` en es y en, que anuncia los repos públicos de Tarkor, Galivelop-workflow y Galivelop Image Generator y que el portal los enlaza; sin imagen. Lista para que la publique la persona; si va a un subreddit, faltan sus normas.
 
