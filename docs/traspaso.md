@@ -23,6 +23,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- ✅ 2026-10-31 · **Pieza de redes 01 «repos públicos»** (`docs/difusion/2026-10-31/01-repos-publicos/`, petición de la persona): publicación de Reddit para el perfil `u/Alvaro-Garcia-Grana` en es y en, que anuncia los repos públicos de Tarkor, Galivelop-workflow y Galivelop Image Generator y que el portal los enlaza; sin imagen. Lista para que la publique la persona; si va a un subreddit, faltan sus normas.
+
 - ✅ 2026-10-31 · **Repos públicos enlazados** (petición de la persona): «Ver el código en GitHub» en Tarkor (`Zeldris/World-Maker-Fantasy`), Galivelop-workflow (`Zeldris/Galivelop-workflow`) y Galivelop Image Generator (`Zeldris/galivelop-image-generator`); README con los repos en lugar de «proyecto privado»; reglas de `AGENTS.md` y `docs/desarrollo.md` al día. Solo contenido y docs, sin código. Check 93/93 y build con 33 páginas; los enlaces salen en las páginas de cada proyecto.
 
 - ✅ 2026-10-29 · Puesto de Álvaro (`rol` de `src/data/equipo.json`): «Fundador · Software Architect & AI Systems Engineer, specializing in local-first infrastructure and deterministic systems», traducido en es y gl. Solo contenido; subido a `main` con confirmación de la persona y el CI en verde.
