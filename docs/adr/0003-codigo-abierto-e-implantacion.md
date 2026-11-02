@@ -27,7 +27,10 @@ su instalador. Ya no tiene sentido ofrecer como «descarga» algo cuyo código e
 5. **Colaboración:** todo lo público admite aportaciones (`colaboracion: "abierta"` en su ficha).
 6. **Portada:** los proyectos pasan a pesar más que Productos. El taller va primero y Productos va debajo de los
    proyectos; el botón principal del hero lleva al taller.
-7. Galivelop-workflow pasa a `disponible` en Productos, con la versión publicada (0.4.3).
+7. Galivelop-workflow (con la versión publicada, 0.4.3) y Galivelop Image Generator pasan a `disponible` en
+   Productos, con implantación y soporte.
+8. **Tarkor no es un producto**: es público y abierto a colaborar, pero no tiene tarjeta en Productos.
+9. En la cabecera, Productos deja de ser un botón relleno y pasa a ser un enlace tras un separador.
 
 ## Consecuencias
 
@@ -35,5 +38,4 @@ su instalador. Ya no tiene sentido ofrecer como «descarga» algo cuyo código e
   páginas estáticas, aviso legal, glosario, `AGENTS.md`) pasan a hablar de código abierto e implantación.
 - La tarea semanal mantiene la versión del producto del flujo junto con su ficha (`docs/runbooks/tarea-semanal.md`;
   el bloque nuevo lo pega la persona en la conversación de la tarea).
-- Queda abierto qué ofrece Tarkor en Productos (no tiene tarjeta): lo decide la persona.
 - Enlazar cada versión del flujo a su release de GitHub necesita un campo nuevo en el código; se apunta como pendiente.

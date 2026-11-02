@@ -30,7 +30,7 @@ export function Cabecera() {
           className={`cabecera-nav${menuAbierto ? ' abierta' : ''}`}
           aria-label={t('nav.menu')}
         >
-          {/* Dos bloques (ADR 0002): el taller, con su etiqueta, y Productos como botón aparte. */}
+          {/* Dos bloques (ADR 0002): el taller, con su etiqueta, y Productos como enlace aparte (ADR 0003). */}
           <div className="nav-grupo nav-taller" role="group" aria-labelledby="nav-taller-etiqueta">
             <span className="nav-etiqueta" id="nav-taller-etiqueta">
               {t('nav.taller')}

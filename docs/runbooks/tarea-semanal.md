@@ -42,7 +42,7 @@ for n in sys.argv[2:]:
 
 ── GALIVELOP-IMAGE-GENERATOR (galivelop-image-generator.json; repo Zeldris/galivelop-image-generator) ──
 - Commits para NOVEDADES: los de la rama por defecto (origin/HEAD) y la cabecera de docs/traspaso.md (filas «Fase / tarea» y «Siguiente paso») para "fase" e "hitos" (las fases F0-F5 del repo; en la ficha, "version" es solo el número, de "0" a "5", y en "fase" se escribe «fase 2: …», nunca «F2»; estados hecho, curso, pendiente). Las novedades, en lenguaje de quien usará el servicio (pedido, intento, elegida, entrega, manifiesto), sin identificadores internos (F2.1, D28…) ni jerga de flujo (PR, CI, tests).
-- CIFRAS: «tests automáticos» sale del número que da la bitácora o el CHANGELOG del repo; si no lo dan, no la cambies. «fases hechas» es «<hitos en hecho> / <hitos>»: cámbiala en el mismo cambio que los hitos. El repo es público y Productos lo ofrece como implantación (ADR 0003); cuando el repo publique su primera versión, apúntalo en «Para la próxima publicación» para que una sesión pase el producto de /productos a «disponible».
+- CIFRAS: «tests automáticos» sale del número que da la bitácora o el CHANGELOG del repo; si no lo dan, no la cambies. «fases hechas» es «<hitos en hecho> / <hitos>»: cámbiala en el mismo cambio que los hitos. El repo es público y Productos lo ofrece como implantación (ADR 0003): no cambies su tarjeta de /productos.
 - Sin imágenes nuevas salvo que el usuario las pida.
 
 ── PRÓXIMAMENTE (src/data/proximamente.json; repos Zeldris/galivelop-voice-generator y Zeldris/galivelop-developer; el slug de cada entrada es el nombre de su repo) ──

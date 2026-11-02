@@ -4743,7 +4743,8 @@ body:has(dialog[open]) {
 
 /* ---------- Productos (ADR 0002): la segunda parte de la marca ---------- */
 
-/* En la cabecera, el taller es un bloque con su etiqueta y Productos un botón aparte. */
+/* En la cabecera, el taller es un bloque con su etiqueta y Productos un enlace aparte, tras un separador:
+   pesa menos que el taller (ADR 0003). */
 .nav-grupo {
   display: flex;
   align-items: center;
@@ -4760,18 +4761,17 @@ body:has(dialog[open]) {
 }
 
 .cabecera-nav .nav-productos {
-  margin-left: 10px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
-  color: var(--blanco);
-  font-weight: 600;
-  box-shadow: 0 8px 22px -12px var(--celeste);
+  position: relative;
+  margin-left: 14px;
 }
 
-.cabecera-nav .nav-productos:hover {
-  color: var(--blanco);
-  background: linear-gradient(135deg, var(--celeste-intenso), var(--celeste));
+.cabecera-nav .nav-productos::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 25%;
+  height: 50%;
+  border-left: 1px solid var(--borde);
 }
 
 @media (max-width: 53.75em) {
@@ -4784,10 +4784,11 @@ body:has(dialog[open]) {
     padding: 8px 14px 4px;
   }
   .cabecera-nav .nav-productos {
-    margin: 10px 0 0;
-    padding: 12px 14px;
-    text-align: center;
-    border-radius: var(--radio-sm);
+    margin: 6px 0 0;
+    border-top: 1px solid var(--borde);
+  }
+  .cabecera-nav .nav-productos::before {
+    content: none;
   }
 }
 

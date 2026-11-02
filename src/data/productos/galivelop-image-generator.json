@@ -5,13 +5,24 @@
   "acento": "#7C5CD6",
   "icono": "image",
   "proyecto": "galivelop-image-generator",
-  "estado": "proximamente",
+  "estado": "disponible",
   "queOfrece": {
     "es": "Generador de imágenes con IA local, pensado para producir arte y recursos de forma reproducible, con el código abierto en GitHub.",
     "gl": "Xerador de imaxes con IA local, pensado para producir arte e recursos de forma reproducible, co código aberto en GitHub.",
     "en": "Local AI image generator, designed to produce art and assets reproducibly, with its code open on GitHub."
   },
-  "servicios": [],
+  "servicios": [
+    {
+      "es": "Implantación: lo montamos en tu máquina con los modelos y las carpetas de tu proyecto.",
+      "gl": "Implantación: montámolo na túa máquina cos modelos e os cartafoles do teu proxecto.",
+      "en": "Setup: we install it on your machine with your project’s models and folders."
+    },
+    {
+      "es": "Soporte: ayuda con las dudas y con cada versión nueva.",
+      "gl": "Soporte: axuda coas dúbidas e con cada versión nova.",
+      "en": "Support: help with questions and with every new version."
+    }
+  ],
   "responsable": "alvaro-garcia-grana",
   "colaboradores": []
 }
