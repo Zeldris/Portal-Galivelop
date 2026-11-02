@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-10-27",
+  "actualizado": "2026-11-02",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3994,6 +3994,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-10-27",
+      "texto": {
+        "es": "Instalador: el asistente de primer arranque funciona de punta a punta, con perfiles según tu equipo, calentamiento del narrador al entrar y aviso si narra lento. El juego empaquetado ya no lleva herramientas de administración ni de creación de contenido, y «Crear desde cero» queda marcado como en construcción.",
+        "gl": "Instalador: o asistente de primeiro arranque funciona de punta a punta, con perfís segundo o teu equipo, quecemento do narrador ao entrar e aviso se narra lento. O xogo empaquetado xa non leva ferramentas de administración nin de creación de contido, e «Crear desde cero» queda marcado como en construción.",
+        "en": "Installer: the first-run wizard now works end to end, with profiles that fit your hardware, narrator warm-up on entry and a warning if it narrates slowly. The packaged game no longer includes administration or content-creation tools, and “Create from scratch” is marked as under construction."
+      }
+    },
+    {
       "fecha": "2026-10-26",
       "texto": {
         "es": "Conversaciones más naturales: saludar o preguntar a un personaje ya no tira dados ni abre un combate salvo que su reputación contigo sea hostil, aunque uno agresivo te ataca igualmente. Quien aún no conoces aparece como «el orco desconocido» en la narración, el combate y las respuestas, puedes «Preguntar más», entregar cosas escribiéndolo con tus palabras y reencontrarte con quien ya viste.",
@@ -4060,7 +4068,7 @@
   ],
   "cifras": [
     {
-      "valor": "+4.200",
+      "valor": "+4.700",
       "etiqueta": {
         "es": "tests automáticos",
         "gl": "tests automáticos",

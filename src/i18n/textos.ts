@@ -93,7 +93,7 @@ const es = {
     'Compartimos lo que sabemos y aprendemos de quien llega. Nadie empieza sabiéndolo todo.',
   'via1.titulo': 'Colabora en un proyecto',
   'via1.texto':
-    'Tarkor y los proyectos abiertos que vengan necesitan manos: código, arte, textos, pruebas o investigación.',
+    'Tarkor, Galivelop-workflow, Galivelop Image Generator y los proyectos abiertos que vengan necesitan manos: código, arte, textos, pruebas o investigación.',
   'via2.titulo': 'Propón un proyecto',
   'via2.texto':
     '¿Tienes un proyecto de ensueño que parece imposible? Cuéntanoslo y vemos cómo hacerlo real.',
@@ -409,7 +409,7 @@ const gl: Record<Clave, string> = {
     'Compartimos o que sabemos e aprendemos de quen chega. Ninguén comeza sabéndoo todo.',
   'via1.titulo': 'Colabora nun proxecto',
   'via1.texto':
-    'Tarkor e os proxectos abertos que veñan precisan mans: código, arte, textos, probas ou investigación.',
+    'Tarkor, Galivelop-workflow, Galivelop Image Generator e os proxectos abertos que veñan precisan mans: código, arte, textos, probas ou investigación.',
   'via2.titulo': 'Propón un proxecto',
   'via2.texto':
     'Tes un proxecto de soño que semella imposible? Cóntanolo e vemos como facelo real.',
@@ -723,7 +723,7 @@ const en: Record<Clave, string> = {
     'We share what we know and learn from whoever joins. Nobody starts out knowing everything.',
   'via1.titulo': 'Join a project',
   'via1.texto':
-    'Tarkor and the open projects still to come need hands: code, art, writing, testing or research.',
+    'Tarkor, Galivelop-workflow, Galivelop Image Generator and the open projects still to come need hands: code, art, writing, testing or research.',
   'via2.titulo': 'Propose a project',
   'via2.texto':
     'Got a dream project that seems impossible? Tell us about it and we will see how to make it real.',

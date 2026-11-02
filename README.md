@@ -35,6 +35,10 @@ No es un escaparate. Nos mueve crecer y llevar a término proyectos
 complejos. El portal enseña cada proyecto tal y como está, con sus avances y sus
 pendientes, y deja la puerta abierta a quien quiera saber más o sumarse.
 
+**Productos** es lo que sale del taller: lo maduro tiene el código abierto en GitHub y Álvaro lo implanta y da
+soporte en tu proyecto (hoy, Galivelop-workflow y Galivelop Image Generator; Voice Generator y Developer,
+próximamente). Sin precios: todo por correo. Todo lo público admite colaboración; toVeriAI es privado.
+
 El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
 
 ## Proyectos
@@ -98,14 +102,14 @@ Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
 a credibilidade das novas. O portal amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. **Produtos** é o que sae do obradoiro: o maduro ten o código aberto en GitHub e Álvaro impántao e dá soporte no teu proxecto (hoxe, Galivelop-workflow e Galivelop Image Generator; Voice Generator e Developer, proximamente). Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
 **Galivelop is an independent software workshop.** We create, research and learn by building
 ambitious software, from a fantasy world that lives on its own to a tool that measures the
 credibility of the news. The portal shows each project as it is and keeps the door
-open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. **Products** is what comes out of the workshop: mature work has its code open on GitHub and Álvaro sets it up and supports it in your project (today Galivelop-workflow and Galivelop Image Generator; Voice Generator and Developer coming soon). No prices: everything by email. Everything public welcomes contributions; toVeriAI is private. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ---
 

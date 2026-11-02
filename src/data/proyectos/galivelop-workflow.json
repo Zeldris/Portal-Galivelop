@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "color",
-  "actualizado": "2026-10-30",
+  "actualizado": "2026-11-02",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · v0.4.2 · fase 7: rodaje",
-    "gl": "En desenvolvemento · v0.4.2 · fase 7: rodaxe",
-    "en": "In development · v0.4.2 · phase 7: run-in"
+    "es": "En desarrollo · v0.4.3 · fase 7: rodaje",
+    "gl": "En desenvolvemento · v0.4.3 · fase 7: rodaxe",
+    "en": "In development · v0.4.3 · phase 7: run-in"
   },
   "etiquetas": [
     "Claude Code",
@@ -149,9 +149,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.4.2, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. Se abrirá al público solo cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.4.2, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. Abrirase ao público só cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.4.2, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. It will open to the public only once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.4.3, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.4.3, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.4.3, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive once it has worked for weeks on real projects built with different technologies."
     },
     {
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye trece skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
@@ -1469,6 +1469,46 @@
             "gl": "Parche de arranxos",
             "en": "Fixes-only patch"
           },
+          "valor": "0.4.3 · 2026-11-01",
+          "texto": {
+            "es": "Correcciones que pidió un proyecto al adoptar el flujo: el diagnóstico ya no rompe el CI de GitHub por no tener los ganchos de git puestos, avisa de los checks de sintaxis que solo miran el primer archivo y la instalación parte siempre de la última versión publicada.",
+            "gl": "Correccións que pediu un proxecto ao adoptar o fluxo: o diagnóstico xa non rompe o CI de GitHub por non ter os ganchos de git postos, avisa dos checks de sintaxe que só miran o primeiro ficheiro e a instalación parte sempre da última versión publicada.",
+            "en": "Fixes that a project asked for when adopting the workflow: the diagnosis no longer breaks GitHub CI for lacking git hooks, it warns about syntax checks that only look at the first file, and installation always starts from the latest published version."
+          },
+          "detalle": [
+            {
+              "es": "En el CI de GitHub, que no puede tener los ganchos de git instalados, la falta de ganchos es ahora un aviso y no un fallo: antes rompía el CI de cualquier proyecto que usara el diagnóstico. En local sigue siendo un fallo.",
+              "gl": "No CI de GitHub, que non pode ter os ganchos de git instalados, a falta de ganchos é agora un aviso e non un fallo: antes rompía o CI de calquera proxecto que usase o diagnóstico. En local segue sendo un fallo.",
+              "en": "In GitHub CI, which cannot have git hooks installed, missing hooks are now a warning rather than a failure: it used to break the CI of any project using the diagnosis. Locally it is still a failure."
+            },
+            {
+              "es": "El diagnóstico avisa cuando la comprobación del proyecto es una verificación de sintaxis de varios archivos, con comodín o con sustitución de órdenes: solo se revisaba el primero y daba un falso verde. Dice cómo arreglarlo.",
+              "gl": "O diagnóstico avisa cando a comprobación do proxecto é unha verificación de sintaxe de varios ficheiros, con comodín ou con substitución de ordes: só se revisaba o primeiro e daba un falso verde. Di como arranxalo.",
+              "en": "The diagnosis warns when the project’s check is a syntax check over several files, with a wildcard or command substitution: only the first was checked, giving a false green. It says how to fix it."
+            },
+            {
+              "es": "La instalación y la guía de aplicar piden clonar la última versión publicada y no la rama por defecto, que puede no ser la estable.",
+              "gl": "A instalación e a guía de aplicar piden clonar a última versión publicada e non a rama por defecto, que pode non ser a estable.",
+              "en": "Installation and the apply guide ask to clone the latest published version, not the default branch, which may not be the stable one."
+            },
+            {
+              "es": "Se avisa de que una configuración de Claude Code creada a mitad de sesión no se carga hasta la siguiente: en la sesión que aplica el flujo la guarda de los pull requests no está activa y la marca de revisión se comprueba a mano.",
+              "gl": "Avísase de que unha configuración de Claude Code creada a metade de sesión non se carga ata a seguinte: na sesión que aplica o fluxo a garda dos pull requests non está activa e a marca de revisión comprébase a man.",
+              "en": "A warning explains that a Claude Code configuration created mid-session is not loaded until the next one: in the session that applies the workflow the pull-request guard is not active and the review mark is checked by hand."
+            },
+            {
+              "es": "Las reglas de plantilla para agentes piden lanzar la subida y las comprobaciones largas en segundo plano y esperar su aviso, sin bucles de espera que gastan contexto.",
+              "gl": "As regras de modelo para axentes piden lanzar a subida e as comprobacións longas en segundo plano e agardar o seu aviso, sen bucles de espera que gastan contexto.",
+              "en": "The agent rules template asks to run the push and long checks in the background and wait for their notice, with no polling loops that burn context."
+            }
+          ]
+        },
+        {
+          "nombre": {
+            "es": "Parche de arreglos",
+            "gl": "Parche de arranxos",
+            "en": "Fixes-only patch"
+          },
           "valor": "0.4.2 · 2026-10-27",
           "texto": {
             "es": "Correcciones que pidieron los proyectos: el aviso de secretos reconoce más formas de clave, la fusión de la rama de un subagente pasa también los tests de lo que cambia, el mapa del código entiende Java, Kotlin o C#, y los scripts dejan de proponer reescribir el último commit.",
@@ -1835,9 +1875,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos; la 0.4.2, del 27 de octubre, solo trae arreglos. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
-        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos; a 0.4.2, do 27 de outubro, só trae arranxos. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
-        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us; 0.4.2, from 27 October, brings fixes only. Since 0.4 the repository is public and every version ships with its release."
+        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos; la 0.4.2, del 27 de octubre, y la 0.4.3, del 1 de noviembre, solo traen arreglos. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
+        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos; a 0.4.2, do 27 de outubro, e a 0.4.3, do 1 de novembro, só traen arranxos. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
+        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us; 0.4.2, from 27 October, and 0.4.3, from 1 November, bring fixes only. Since 0.4 the repository is public and every version ships with its release."
       }
     },
     {
@@ -1880,6 +1920,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-01",
+      "texto": {
+        "es": "Publicada la 0.4.3, otro parche solo de arreglos: el diagnóstico deja de romper el CI de GitHub por no tener los ganchos de git puestos, avisa de los checks de sintaxis que solo miran un archivo, la instalación parte siempre de la última versión publicada y las reglas piden lanzar la subida y las comprobaciones largas en segundo plano. Lo evolutivo sigue yendo a la 1.0.0.",
+        "gl": "Publicada a 0.4.3, outro parche só de arranxos: o diagnóstico deixa de romper o CI de GitHub por non ter os ganchos de git postos, avisa dos checks de sintaxe que só miran un ficheiro, a instalación parte sempre da última versión publicada e as regras piden lanzar a subida e as comprobacións longas en segundo plano. O evolutivo segue indo á 1.0.0.",
+        "en": "Version 0.4.3 is out, another fixes-only patch: the diagnosis no longer breaks GitHub CI for lacking git hooks, it warns about syntax checks that only look at one file, installation always starts from the latest published version and the rules ask to run the push and long checks in the background. New features still go to 1.0.0."
+      }
+    },
+    {
       "fecha": "2026-10-27",
       "texto": {
         "es": "Publicada la 0.4.2, un parche solo de arreglos: el aviso de secretos antes de cada commit reconoce más formas de clave (también las pegadas a un proveedor de IA), la fusión de la rama de un subagente corre además los tests relacionados con lo que cambia, el mapa del código entiende más lenguajes (Java, Kotlin, C#…) y los scripts dejan de sugerir reescribir el último commit. Lo evolutivo ya va a la 1.0.0.",
@@ -1898,9 +1946,9 @@
     {
       "fecha": "2026-10-25",
       "texto": {
-        "es": "Versión 0.4.0, en preparación (prevista hacia el 30 de octubre): cada versión empezará recogiendo lo aprendido en los proyectos, llegan dos skills para preparar contenido para redes a partir del trabajo hecho y otra para pararse a revisar lo que no cuadra, y los ganchos son más seguros: comprueban que la bitácora va en el mismo commit, detectan caracteres invisibles y ya no se quedan colgados. Si el CI no arranca, el check en local solo vale con la confirmación de la persona.",
-        "gl": "Versión 0.4.0, en preparación (prevista cara ao 30 de outubro): cada versión comezará recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
-        "en": "Version 0.4.0, in preparation (due around 30 October): each version will start by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn't add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn't start, a local check only counts with the person's confirmation."
+        "es": "Versión 0.4.0 lista para publicar: cada versión empieza recogiendo lo aprendido en los proyectos, llegan dos skills para preparar contenido para redes a partir del trabajo hecho y otra para pararse a revisar lo que no cuadra, y los ganchos son más seguros: comprueban que la bitácora va en el mismo commit, detectan caracteres invisibles y ya no se quedan colgados. Si el CI no arranca, el check en local solo vale con la confirmación de la persona.",
+        "gl": "Versión 0.4.0 lista para publicar: cada versión comeza recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
+        "en": "Version 0.4.0 ready to ship: each version starts by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn't add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn't start, a local check only counts with the person's confirmation."
       }
     },
     {
@@ -1970,7 +2018,7 @@
       }
     },
     {
-      "valor": "1063",
+      "valor": "1068",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",
@@ -2045,14 +2093,14 @@
     },
     {
       "titulo": {
-        "es": "Público solo tras el rodaje",
-        "gl": "Público só tras a rodaxe",
-        "en": "Public only after the run-in"
+        "es": "Abierto desde la 0.4; la 1.0 tras el rodaje",
+        "gl": "Aberto desde a 0.4; a 1.0 tras a rodaxe",
+        "en": "Open since 0.4; 1.0 after the run-in"
       },
       "texto": {
-        "es": "Se abre cuando haya funcionado al menos cuatro semanas en tres proyectos de tecnologías distintas.",
-        "gl": "Ábrese cando funcionase polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
-        "en": "It opens once it has worked for at least four weeks on three projects built with different technologies."
+        "es": "El repositorio es público y admite colaboración desde la 0.4. La 1.0 se declarará cuando haya funcionado al menos cuatro semanas en tres proyectos de tecnologías distintas.",
+        "gl": "O repositorio é público e admite colaboración desde a 0.4. A 1.0 declararase cando funcionase polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
+        "en": "The repository has been public and open to collaboration since 0.4. 1.0 will be declared once it has worked for at least four weeks on three projects built with different technologies."
       }
     },
     {

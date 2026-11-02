@@ -7,7 +7,7 @@
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.png",
   "cabecera": "color",
-  "actualizado": "2026-10-27",
+  "actualizado": "2026-11-02",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -228,9 +228,9 @@
       "en": "The answer is a service per machine that knows nothing about any project’s domain: it takes requests (a key and an image profile), generates several attempts, lets you mark one as chosen and delivers it as a PNG with a manifest recording which model, parameters and seed produced it, so it can be reproduced. It will speak through a local HTTP API, the gimg command and a three-screen web interface."
     },
     {
-      "es": "Hoy el núcleo está hecho (pedidos, intentos, elegida, entrega, cola y registro) y el piloto de contenido, cerrado en una Steam Deck. El motor real se está conectando al servicio, y la API, la interfaz y el piloto con Tarkor están pendientes. Todavía no genera imágenes desde el servicio y aún no se puede descargar.",
-      "gl": "Hoxe o núcleo está feito (pedidos, intentos, elixida, entrega, cola e rexistro) e o piloto de contido, pechado nunha Steam Deck. O motor real estase conectando ao servizo, e a API, a interface e o piloto con Tarkor están pendentes. Aínda non xera imaxes desde o servizo e aínda non se pode descargar.",
-      "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is being connected to the service, while the API, the interface and the pilot with Tarkor are still pending. It does not yet generate images from the service and cannot be downloaded yet."
+      "es": "Hoy el núcleo está hecho (pedidos, intentos, elegida, entrega, cola y registro) y el piloto de contenido, cerrado en una Steam Deck. El motor real se está conectando al servicio, y la API, la interfaz y el piloto con Tarkor están pendientes. Todavía no genera imágenes reales desde el servicio y aún no tiene instalador, aunque el código ya está abierto.",
+      "gl": "Hoxe o núcleo está feito (pedidos, intentos, elixida, entrega, cola e rexistro) e o piloto de contido, pechado nunha Steam Deck. O motor real estase conectando ao servizo, e a API, a interface e o piloto con Tarkor están pendentes. Aínda non xera imaxes reais desde o servizo e aínda non ten instalador, aínda que o código xa está aberto.",
+      "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is being connected to the service, while the API, the interface and the pilot with Tarkor are still pending. It does not yet generate real images from the service and has no installer yet, although the code is already open."
     }
   ],
   "lineas": ["ia-local", "producto"],
