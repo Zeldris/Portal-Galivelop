@@ -60,6 +60,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
+- **Leve de la revisión de la ADR 0003** (2026-11-02, no se vuelve a revisar en este cambio): la sección de Productos de la portada vive dentro de `Inicio.tsx`; sacarla a su propio componente (`SeccionProductos`) cuando se vuelva a tocar.
 - **Leve de la revisión del enlace de Discord** (2026-10-31, no se vuelve a revisar en este cambio): el `lastmod` del sitemap solo sigue `marca.ts` en la portada, Participa y Productos, aunque el pie y el JSON-LD con sus enlaces están en todas las páginas.
 - **La persona: `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en las variables del entorno de la nube** (T1 de la retro del 2026-10-31): hoy no estaba y el contexto medio fue de 225k.
 - **Pasar el portal a la 0.4.2 del flujo con `/gw-update`** (R3 de la retro del 2026-10-31), en una sesión nueva abierta desde el repo.
