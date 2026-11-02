@@ -102,7 +102,7 @@ Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
 a credibilidade das novas. O portal amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. **Produtos** é o que sae do obradoiro: o maduro ten o código aberto en GitHub e Álvaro impántao e dá soporte no teu proxecto (hoxe, Galivelop-workflow e Galivelop Image Generator; Voice Generator e Developer, proximamente). Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. **Produtos** é o que sae do obradoiro: o maduro ten o código aberto en GitHub e Álvaro implántao e dá soporte no teu proxecto (hoxe, Galivelop-workflow e Galivelop Image Generator; Voice Generator e Developer, proximamente). Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
