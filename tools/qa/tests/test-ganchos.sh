@@ -117,5 +117,42 @@ echo img2 > public/otra.webp; echo "- Revisión semanal: 1 novedad." >> docs/d.m
 salida="$(CLAUDECODE=1 bash .githooks/pre-commit 2>&1)" \
   || { echo "test-ganchos: el pre-commit rechaza un commit de la tarea semanal:"; echo "$salida" | tail -n 5; fallos=1; }
 git reset -q --hard
-[ $fallos = 0 ] && echo "test-ganchos: ganchos en verde (sintaxis, config, content, pre-commit y regla de main)."
+# pre-commit: una palabra que solo acaba en un prefijo de clave (musk-tells-…) pasa; una clave con su forma, no. La
+# clave se arma por partes para que este archivo no la lleve escrita.
+# El reset de arriba quita los ganchos copiados (estaban en el índice): se copian otra vez y se añade solo lo de cada caso.
+cp "$raiz/.githooks/pre-commit" "$raiz/.githooks/commit-msg" .githooks/
+clave="s""k-$(printf 'a%.0s' $(seq 1 24))"
+precommit_clave() {  # precommit_clave <nombre> <sale 0|1> <línea añadida>
+  local salida r
+  echo "$3" > src/clave.ts; git add src/clave.ts
+  salida="$(CLAUDECODE=1 bash .githooks/pre-commit 2>&1)"; r=$?
+  git reset -q --hard
+  [ "$r" = "$2" ] || { echo "test-ganchos: pre-commit «$1» salió $r y se esperaba $2"; echo "$salida" | tail -n 3; fallos=1; return; }
+  if [ "$2" = 1 ] && ! printf '%s\n' "$salida" | grep -q "shaped like a key or token"; then
+    echo "test-ganchos: pre-commit «$1» no dice el motivo"; echo "$salida" | tail -n 3; fallos=1
+  fi
+}
+precommit_clave "clave con su forma"          1 "const k = '$clave';"
+precommit_clave "palabra que acaba en prefijo" 0 "const u = 'https://x.com/mu$clave';"
+# commit-msg: sin `logRows` (el portal), comprueba la bitácora solo si el commit la lleva y solo avisa (una celda de más
+# de 800 caracteres): nunca corta el commit, tampoco el de la tarea semanal.
+bitacora() { printf '# Bitácora\n\n## Estado actual\n\n| | |\n|---|---|\n| **Actualizado** | 2026-11-02 |\n| **Siguiente paso** | %s |\n' "$1" > docs/traspaso.md; git add docs/traspaso.md; }
+commitmsg() {  # commitmsg <nombre> <sale 0|1> <aviso esperado, o «-» si no debe avisar>
+  local salida r
+  echo "x" > .git/COMMIT_EDITMSG
+  salida="$(bash .githooks/commit-msg .git/COMMIT_EDITMSG 2>&1)"; r=$?
+  git reset -q --hard
+  [ "$r" = "$2" ] || { echo "test-ganchos: commit-msg «$1» salió $r y se esperaba $2"; echo "$salida" | tail -n 3; fallos=1; return; }
+  if [ "$3" = - ]; then
+    [ -z "$salida" ] || { echo "test-ganchos: commit-msg «$1» avisa sin motivo:"; echo "$salida" | tail -n 3; fallos=1; }
+  elif ! printf '%s\n' "$salida" | grep -q -- "$3"; then
+    echo "test-ganchos: commit-msg «$1» no dice «$3»"; echo "$salida" | tail -n 3; fallos=1
+  fi
+}
+larga="$(printf 'x%.0s' $(seq 1 900))"
+bitacora seguir;                                    commitmsg "bitácora corta"                 0 -
+bitacora "$larga"; echo z >> src/data/a.json
+git add src/data/a.json; git reset -q docs/traspaso.md; commitmsg "celda larga, bitácora fuera"  0 -
+bitacora "$larga";                                  commitmsg "celda larga en el commit"       0 "has 900 characters (limit 800)"
+[ $fallos = 0 ] && echo "test-ganchos: ganchos en verde (sintaxis, config, content, pre-commit, commit-msg y regla de main)."
 exit $fallos
