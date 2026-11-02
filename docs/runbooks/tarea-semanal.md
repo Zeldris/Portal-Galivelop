@@ -1,5 +1,27 @@
 # Tarea semanal «Proyectos semanal»
 
+## Reglas
+
+Traídas de `AGENTS.md` (retro 2026-11-02), que solo guarda lo esencial y apunta aquí.
+
+**Publicación semanal** (decisión y consentimiento del usuario, 2026-10-13): la web se actualiza los **domingos por
+la noche**. La tarea programada «Proyectos semanal» revisa el avance de **cada proyecto** (Tarkor, toVeriAI,
+Galivelop-workflow y los que se añadan), actualiza sus fichas y sube la rama de trabajo
+(`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea; desde el
+2026-10-23, con la ficha de Galivelop-workflow ya en la 0.3.0, por decisión del usuario, las fichas las pone al
+día ella y no las sesiones). Gasta los mínimos tokens:
+de cada proyecto lee solo su bitácora o su CHANGELOG y los commits desde la última fecha de `actualizado`.
+Un proyecto nuevo se añade a mano (código y ficha, con su revisión) junto con su bloque en
+este runbook, que el usuario pega en la conversación de la tarea
+(desde otra sesión no se puede cambiar); desde ahí lo mantiene la tarea.
+Solo toca contenido (los `.json` de `src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
+`content`; cualquier otro archivo es código y el `pre-push` lo rechaza en `main`), así que no necesita revisión mientras la marca de
+`docs/registros/revisado.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y
+todo código que entre en ella lleva su `/code-review` y su marca antes del domingo. Entre semana, lo hecho se
+apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación.
+
+## Texto de la tarea
+
 Texto de la tarea programada que cada domingo a las 20:45 (hora de Madrid; desde el 2026-10-25, antes a las 22:46) pone al día las fichas de todos los proyectos y publica
 la rama de trabajo en `main` (ver «Publicación semanal» en [`AGENTS.md`](../../AGENTS.md)). La tarea solo se puede
 cambiar desde su propia conversación: si este texto cambia, se pega allí.

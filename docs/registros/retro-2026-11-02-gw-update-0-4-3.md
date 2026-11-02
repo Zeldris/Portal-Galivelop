@@ -4,7 +4,12 @@ Lo revisado: los commits de `ccr-83ea043c-r1gbyp` desde `ed78f76` (`a223d6f` act
 bitácora. Medida de la sesión (`medir.py --hours 0`): 51 llamadas, contexto medio 154k (suelo 98k, techo 202k, sin
 compactar), más un subagente de revisión (19 llamadas, 80k de arranque).
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada entera por la persona («Apruebo todo», 2026-11-02) y aplicada: T2 (nota en
+`.claude/gw/opt-tokens.md`), R1 (`test-ganchos.sh` vigila Node 22 y `npm run build` en `comprobar.yml`, rojo
+comprobado), R2 (`AGENTS.md` de 186 a 167 líneas: publicación semanal y mensaje de la marca en
+`docs/runbooks/tarea-semanal.md#reglas` y `docs/desarrollo.md#mensaje`) y R3. P1-P4 quedan abajo para `gw-harvest`.
+
+T1 la hace la persona en el entorno de la nube (variable de compactación y un entorno solo con el portal).
 
 ## Propuestas
 

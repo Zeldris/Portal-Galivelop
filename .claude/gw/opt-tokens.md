@@ -51,6 +51,9 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   está en «Añadir una página» de `docs/desarrollo.md` (y `src/rutas.test.ts` la vigila).
 - **Formato comprobado, no juzgado** (2026-10-27): `prettier --check` en `npm run check` (`.prettierrc`); la revisión
   no gasta hallazgos en estilo.
+- **`/gw-update` con la salida filtrada** (2026-11-02): `python3 <flujo>/scripts/aplicar.py . --dry-run 2>&1 | grep -v
+  '^  [-+ @]'` (y lo mismo con `--update`): sin el diff entero de `REVIEW.md`/`GLOSSARY.md` contra la plantilla
+  (~300k arrastrados), que no se usa; el que importa es el de plantilla vieja contra nueva (paso 3 de la skill).
 
 ## Costes conocidos
 

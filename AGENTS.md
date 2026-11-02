@@ -128,36 +128,17 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   usuario, salvo la tarea semanal (abajo). Diferencia con el flujo: `/opt-tokens` y `/retro` (fase 2) solo cuando el
   cambio de código es grande (componentes, estilos, scripts de build, ganchos); un cambio pequeño de código pasa
   por la fase 1 y la 3. Por eso `requireRetro` está a `false` en `.claude/gw.json`.
-- **Publicación semanal** (decisión y consentimiento del usuario, 2026-10-13): la web se actualiza los **domingos por
-  la noche**. La tarea programada «Proyectos semanal» revisa el avance de **cada proyecto** (Tarkor, toVeriAI,
-  Galivelop-workflow y los que se añadan), actualiza sus fichas y sube la rama de trabajo
-  (`claude/galivelop-dev-portal-1h89ci`) a `main` **sin pedir confirmación** (autorizado para esa tarea; desde el
-  2026-10-23, con la ficha de Galivelop-workflow ya en la 0.3.0, por decisión del usuario, las fichas las pone al
-  día ella y no las sesiones). Gasta los mínimos tokens:
-  de cada proyecto lee solo su bitácora o su CHANGELOG y los commits desde la última fecha de `actualizado`.
-  Un proyecto nuevo se añade a mano (código y ficha, con su revisión) junto con su bloque en
-  [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md), que el usuario pega en la conversación de la tarea
-  (desde otra sesión no se puede cambiar); desde ahí lo mantiene la tarea.
-  Solo toca contenido (los `.json` de `src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
-  `content`; cualquier otro archivo es código y el `pre-push` lo rechaza en `main`), así que no necesita revisión mientras la marca de
-  `docs/registros/revisado.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y
-  todo código que entre en ella lleva su `/code-review` y su marca antes del domingo. Entre semana, lo hecho se
-  apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación.
+- **Publicación semanal** (2026-10-13): los domingos por la noche, la tarea «Proyectos semanal» pone al día las fichas
+  de cada proyecto y sube `claude/galivelop-dev-portal-1h89ci` a `main` **sin pedir confirmación** (solo ella; solo
+  contenido). Por eso **la rama de trabajo está siempre publicable**: todo código que entre lleva su `/code-review` y
+  su marca antes del domingo, y lo hecho entre semana va a «Para la próxima publicación» de la bitácora. Detalle y
+  cómo añadir un proyecto: [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md#reglas).
 - **Todo texto visible, en castellano, gallego e inglés** (`visibleLanguages`); `npm run check` lo comprueba. Un
   subagente que escriba textos lo recibe en su encargo.
 - El código de cada proyecto se enlaza desde su ficha (`enlaces`, tipo `otro`) cuando su repo es público. Si el repo es privado, no se enlaza: solo su versión pública.
-- Mensaje de la marca (2026-10-04, ampliado el 2026-10-27 con la [ADR 0002](docs/adr/0002-marca-taller-y-productos.md)):
-  **Galivelop es la marca** que contiene el **taller** (crear, investigar, innovar, aprender; abierto a colaborar y
-  sin vender: expone los proyectos) y **Productos** (`/productos`: lo que sale del taller e integrantes promocionados; sin precios, todo por correo
-  con Álvaro; cada integrante es autónomo). Desde la [ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md)
-  (2026-11-02), lo maduro tiene el repo público y se ofrece como implantación y servicio de Álvaro (comprarlo sigue
-  siendo posible); todo lo público admite colaboración (toVeriAI queda fuera, privado). En la portada, los proyectos
-  van antes que Productos. Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
-  base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
-  **Encargos por miembro** ([ADR 0001](docs/adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
-  taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice en la
-  página de ese miembro (`colabora`), en una banda discreta de Participa, en «Cómo trabajamos» y en el README, sin
-  «de pago» ni distintivos.
+- **Mensaje de la marca** (ADR [0001](docs/adr/0001-encargos-por-miembro.md), [0002](docs/adr/0002-marca-taller-y-productos.md)
+  y [0003](docs/adr/0003-codigo-abierto-e-implantacion.md)): lee [«Mensaje»](docs/desarrollo.md#mensaje) antes de
+  escribir cualquier texto de la web, el README o una ficha.
 - Al sacar información de otro repo (Tarkor, toVeriAI…), solo se lee: nunca se modifica desde aquí.
 - Riesgo alto (esperar al usuario aunque el `selector` diga seguir): borrar contenido publicado y cambiar rutas que
   ya están indexadas.

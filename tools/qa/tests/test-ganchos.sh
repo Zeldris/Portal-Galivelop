@@ -29,6 +29,12 @@ fijar check '["npm run check"]' --json
 fijar reviewMark docs/registros/revisado.txt
 fijar protectedBranch main
 fijar pushToProtected direct
+# Lo propio del portal en el CI del flujo (retro 2026-11-02: `/gw-update` lo quitó sin avisar): Node 22 como
+# pages.yml y el build de la web tras el check.
+for linea in 'node-version: 22' 'run: npm run build'; do
+  grep -qF -- "$linea" "$raiz/.github/workflows/comprobar.yml" \
+    || { echo "test-ganchos: .github/workflows/comprobar.yml ya no tiene «$linea» (lo propio del portal); devuélvelo"; fallos=1; }
+done
 # Lo versionado del flujo y de este test no puede estar en el .gitignore del repo (F3 del piloto: .claude/* ocultaba
 # .claude/gw.json). Solo el .gitignore del repo: el global de cada equipo no cuenta.
 for f in .claude/gw.json .claude/gw/scripts/config.py .claude/gw/scripts/es-codigo.sh .claude/gw/scripts/revisado.sh \
