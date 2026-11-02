@@ -4791,7 +4791,7 @@ body:has(dialog[open]) {
   }
 }
 
-/* Sección Productos de la portada: va antes que el taller y lleva fondo propio. */
+/* Sección Productos de la portada: va después del taller y lleva fondo propio. */
 .seccion-productos {
   border-block: 1px solid var(--borde);
   background: linear-gradient(135deg, color-mix(in srgb, var(--celeste) 12%, transparent), transparent 60%);

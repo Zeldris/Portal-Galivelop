@@ -140,10 +140,11 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
 - El código de cada proyecto se enlaza desde su ficha (`enlaces`, tipo `otro`) cuando su repo es público. Si el repo es privado, no se enlaza: solo su versión pública.
 - Mensaje de la marca (2026-10-04, ampliado el 2026-10-27 con la [ADR 0002](docs/adr/0002-marca-taller-y-productos.md)):
   **Galivelop es la marca** que contiene el **taller** (crear, investigar, innovar, aprender; abierto a colaborar y
-  sin vender: expone los proyectos) y **Productos** (`/productos`: productos de descarga local e integrantes
-  promocionados; sin precios, todo por correo con Álvaro; cada integrante es autónomo). Lo que aún no se puede
-  descargar se oferta limpio como «próximamente», sin explicar en la web cómo va; nada sale fuera del flujo de
-  versiones, y la 1.0.0 del flujo se descarga solo cuando la versión pública anterior haya rodado. Galicia es solo una mención (el nombre), no la
+  sin vender: expone los proyectos) y **Productos** (`/productos`: lo que sale del taller e integrantes promocionados; sin precios, todo por correo
+  con Álvaro; cada integrante es autónomo). Desde la [ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md)
+  (2026-11-02), lo maduro tiene el repo público y se ofrece como implantación y servicio de Álvaro (comprarlo sigue
+  siendo posible); todo lo público admite colaboración (toVeriAI queda fuera, privado). En la portada, los proyectos
+  van antes que Productos. Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
   base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
   **Encargos por miembro** ([ADR 0001](docs/adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
   taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice en la

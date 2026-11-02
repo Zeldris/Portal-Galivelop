@@ -63,17 +63,17 @@ const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
 const FIJAS = {
   '': {
-    es: ['Galivelop · Marca de software: taller y Productos', 'Galivelop son dos cosas: el taller, que crea, investiga y aprende a la vista y con la puerta abierta, y Productos, el software de descarga local y los servicios de sus integrantes.'],
-    gl: ['Galivelop · Marca de software: obradoiro e Produtos', 'Galivelop son dúas cousas: o obradoiro, que crea, investiga e aprende á vista e coa porta aberta, e Produtos, o software de descarga local e os servizos dos seus integrantes.'],
-    en: ['Galivelop · Software brand: workshop and Products', 'Galivelop is two things: the workshop, which creates, researches and learns in the open with the door open, and Products, the locally installed software and the services of its members.'],
+    es: ['Galivelop · Marca de software: taller y Productos', 'Galivelop son dos cosas: el taller, que crea, investiga y aprende a la vista y con la puerta abierta, y Productos, lo que sale de él con el código abierto y montamos en tu proyecto, y los servicios de sus integrantes.'],
+    gl: ['Galivelop · Marca de software: obradoiro e Produtos', 'Galivelop son dúas cousas: o obradoiro, que crea, investiga e aprende á vista e coa porta aberta, e Produtos, o que sae del co código aberto e montamos no teu proxecto, e os servizos dos seus integrantes.'],
+    en: ['Galivelop · Software brand: workshop and Products', 'Galivelop is two things: the workshop, which creates, researches and learns in the open with the door open, and Products, what comes out of it with open code that we set up in your project, and the services of its members.'],
   },
   equipo: { es: ['Equipo · Galivelop'], gl: ['Equipo · Galivelop'], en: ['Team · Galivelop'] },
   'participa/proponer': { es: ['Propón un proyecto · Galivelop'], gl: ['Propón un proxecto · Galivelop'], en: ['Propose a project · Galivelop'] },
   'participa/unirse': { es: ['Únete al taller · Galivelop'], gl: ['Únete ao obradoiro · Galivelop'], en: ['Join the workshop · Galivelop'] },
   productos: {
-    es: ['Productos · Galivelop', 'Software de descarga local que nace en el taller de Galivelop, y las personas que lo hacen. Sin precios en la web: todo se trata por correo.'],
-    gl: ['Produtos · Galivelop', 'Software de descarga local que nace no obradoiro de Galivelop, e as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
-    en: ['Products · Galivelop', 'Locally installed software born in the Galivelop workshop, and the people who make it. No prices on the site: everything is arranged by email.'],
+    es: ['Productos · Galivelop', 'Lo que nace en el taller de Galivelop, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto. Y las personas que lo hacen. Sin precios en la web: todo se trata por correo.'],
+    gl: ['Produtos · Galivelop', 'O que nace no obradoiro de Galivelop, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto. E as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
+    en: ['Products · Galivelop', 'What is born in the Galivelop workshop, with its code open as soon as it is mature: we set it up and adapt it to your project. And the people who make it. No prices on the site: everything is arranged by email.'],
   },
   'aviso-legal': {
     es: ['Aviso legal · Galivelop', 'Quién es el titular del portal de Galivelop, con qué licencias se publican su código y su contenido y qué ley se aplica.'],
@@ -288,7 +288,7 @@ writeFileSync(
   'dist/llms.txt',
   `# Galivelop\n\n> ${FIJAS[''].es[1]}\n\n## Proyectos\n\n${proyectos
     .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
-    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Productos](${urlDe('es', 'productos')}): software de descarga local e integrantes, sin precios\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Productos](${urlDe('es', 'productos')}): lo que sale del taller, con el código abierto, montado en tu proyecto, e integrantes, sin precios\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);

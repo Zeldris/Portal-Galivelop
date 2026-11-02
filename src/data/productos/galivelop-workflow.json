@@ -5,18 +5,23 @@
   "acento": "#1AA6DF",
   "icono": "cpu",
   "proyecto": "galivelop-workflow",
-  "estado": "proximamente",
-  "version": "1.0.0",
+  "estado": "disponible",
+  "version": "0.4.3",
   "queOfrece": {
-    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en todos los proyectos del taller, de descarga local. Primero se publica el plugin de la versión anterior a la 1.0.0; el producto final es la 1.0.0.",
-    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados en todos os proxectos do obradoiro, de descarga local. Primeiro publícase o plugin da versión anterior á 1.0.0; o produto final é a 1.0.0.",
-    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across all the workshop's projects, as a local download. The plugin of the version before 1.0.0 is published first; the final product is 1.0.0."
+    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en todos los proyectos del taller. El código es abierto y cada versión se publica en GitHub; lo montamos en tu proyecto y lo adaptamos a tu forma de trabajar.",
+    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados en todos os proxectos do obradoiro. O código é aberto e cada versión publícase en GitHub; montámolo no teu proxecto e adaptámolo á túa forma de traballar.",
+    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across all the workshop’s projects. The code is open and every version is published on GitHub; we set it up in your project and adapt it to the way you work."
   },
   "servicios": [
     {
-      "es": "Soporte: ayuda para montarlo en tu proyecto y resolver dudas.",
-      "gl": "Soporte: axuda para montalo no teu proxecto e resolver dúbidas.",
-      "en": "Support: help setting it up in your project and answering questions."
+      "es": "Implantación: lo montamos en tu proyecto y lo adaptamos a tus reglas.",
+      "gl": "Implantación: montámolo no teu proxecto e adaptámolo ás túas regras.",
+      "en": "Setup: we install it in your project and adapt it to your rules."
+    },
+    {
+      "es": "Soporte: ayuda con las dudas y con cada versión nueva.",
+      "gl": "Soporte: axuda coas dúbidas e con cada versión nova.",
+      "en": "Support: help with questions and with every new version."
     }
   ],
   "responsable": "alvaro-garcia-grana",

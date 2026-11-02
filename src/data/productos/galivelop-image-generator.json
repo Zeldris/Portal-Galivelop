@@ -7,9 +7,9 @@
   "proyecto": "galivelop-image-generator",
   "estado": "proximamente",
   "queOfrece": {
-    "es": "Generador de imágenes con IA local, pensado para producir arte y recursos de forma reproducible.",
-    "gl": "Xerador de imaxes con IA local, pensado para producir arte e recursos de forma reproducible.",
-    "en": "Local AI image generator, designed to produce art and assets reproducibly."
+    "es": "Generador de imágenes con IA local, pensado para producir arte y recursos de forma reproducible, con el código abierto en GitHub.",
+    "gl": "Xerador de imaxes con IA local, pensado para producir arte e recursos de forma reproducible, co código aberto en GitHub.",
+    "en": "Local AI image generator, designed to produce art and assets reproducibly, with its code open on GitHub."
   },
   "servicios": [],
   "responsable": "alvaro-garcia-grana",

@@ -5,6 +5,8 @@
   «vamos a aplicarlo ya en la web»): `/productos` con los cuatro productos como «próximamente», la franja del inicio
   y el enlace de la cabecera. Sin publicar en `main` hasta que la persona lo vea y confirme. Sustituye en parte a
   la 0001.
+  **Sustituida en parte por la [0003](0003-codigo-abierto-e-implantacion.md)** (2026-11-02): lo maduro, con el
+  repo público; Productos ofrece implantación y servicio en vez de descarga, y va debajo de los proyectos.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto

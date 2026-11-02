@@ -7,9 +7,10 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
   es una sociedad: cada integrante es autónomo.
 - **Taller**: la parte de Galivelop que crea, investiga, innova y aprende; expone sus proyectos, no los vende. Es
   para aprender.
-- **Productos**: la parte de la marca que ofrece productos (software de descarga local) e integrantes
-  promocionados: `/productos`. Sin precios: lo legal y lo financiero, por correo con Álvaro. Un producto que aún
-  no se puede descargar se oferta como «próximamente», sin explicar su estado; nada sale fuera del flujo de versiones.
+- **Productos**: la parte de la marca que ofrece lo que sale del taller e integrantes promocionados: `/productos`.
+  Lo maduro tiene el código abierto y se ofrece como implantación y servicio de Álvaro; quien quiera comprarlo, también
+  puede ([ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md)). Sin precios: lo legal y lo financiero, por
+  correo con Álvaro. Lo que aún no está maduro se oferta como «próximamente», sin explicar su estado.
 - **Producto**: lo que la marca ofrece en Productos. Nace de un proyecto del taller; tiene un responsable (el
   creador) y, si los hay, colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o
   `proximamente`.

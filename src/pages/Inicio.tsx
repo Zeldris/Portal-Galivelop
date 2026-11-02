@@ -82,12 +82,12 @@ export function Inicio() {
             </h1>
             <p className="hero-parrafo">{t('hero.texto')}</p>
             <div className="hero-botones">
-              <Link to="/productos" className="boton boton-primario">
-                {t('hero.cta.productos')} <ArrowRight size={18} />
-              </Link>
-              <a href="#proyectos" className="boton boton-secundario">
-                {t('hero.cta.taller')} <ArrowDown size={16} />
+              <a href="#proyectos" className="boton boton-primario">
+                {t('hero.cta.taller')} <ArrowDown size={18} />
               </a>
+              <Link to="/productos" className="boton boton-secundario">
+                {t('hero.cta.productos')} <ArrowRight size={16} />
+              </Link>
             </div>
             <dl className="hero-resumen">
               <div>
@@ -118,31 +118,6 @@ export function Inicio() {
             <div className="collage-marca">
               <MarcaGV tamano={84} />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Productos (ADR 0002) va antes que el taller: es la parte de la marca con más peso en la portada. */}
-      <section
-        id="productos"
-        className="seccion seccion-productos"
-        aria-labelledby="productos-titulo"
-      >
-        <div className="contenedor">
-          <header className="seccion-cabecera">
-            <div>
-              <p className="antetitulo">{t('inicio.productos.antetitulo')}</p>
-              <h2 id="productos-titulo">{t('productos.titulo')}</h2>
-              <p>{t('inicio.productos.texto')}</p>
-            </div>
-            <Link to="/productos" className="boton boton-primario">
-              {t('hero.cta.productos')} <ArrowRight size={16} />
-            </Link>
-          </header>
-          <div className="rejilla-productos rejilla-productos-inicio">
-            {productos.map((p) => (
-              <TarjetaProducto key={p.slug} producto={p} compacta titulo="h3" />
-            ))}
           </div>
         </div>
       </section>
@@ -196,6 +171,31 @@ export function Inicio() {
               </div>
             </section>
           )}
+        </div>
+      </section>
+
+      {/* Productos (ADR 0002) va después del taller: los proyectos son lo que más pesa en la portada (ADR 0003). */}
+      <section
+        id="productos"
+        className="seccion seccion-productos"
+        aria-labelledby="productos-titulo"
+      >
+        <div className="contenedor">
+          <header className="seccion-cabecera">
+            <div>
+              <p className="antetitulo">{t('inicio.productos.antetitulo')}</p>
+              <h2 id="productos-titulo">{t('productos.titulo')}</h2>
+              <p>{t('inicio.productos.texto')}</p>
+            </div>
+            <Link to="/productos" className="boton boton-primario">
+              {t('hero.cta.productos')} <ArrowRight size={16} />
+            </Link>
+          </header>
+          <div className="rejilla-productos rejilla-productos-inicio">
+            {productos.map((p) => (
+              <TarjetaProducto key={p.slug} producto={p} compacta titulo="h3" />
+            ))}
+          </div>
         </div>
       </section>
 

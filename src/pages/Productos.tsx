@@ -8,7 +8,7 @@ import { productos } from '../data/productos';
 import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
-/** Productos de la marca (ADR 0002): software de descarga local e integrantes promocionados. Sin precios. */
+/** Productos de la marca (ADR 0002 y 0003): lo que sale del taller, con el código abierto, como implantación y servicio, e integrantes promocionados. Sin precios. */
 export function Productos() {
   const { t, tx } = useIdioma();
   const promocionados = equipo.filter((p) => p.promocionado);
