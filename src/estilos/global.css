@@ -4786,6 +4786,7 @@ body:has(dialog[open]) {
   .cabecera-nav .nav-productos {
     margin: 6px 0 0;
     border-top: 1px solid var(--borde);
+    border-radius: 0;
   }
   .cabecera-nav .nav-productos::before {
     content: none;

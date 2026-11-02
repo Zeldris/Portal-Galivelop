@@ -71,9 +71,9 @@ const FIJAS = {
   'participa/proponer': { es: ['Propón un proyecto · Galivelop'], gl: ['Propón un proxecto · Galivelop'], en: ['Propose a project · Galivelop'] },
   'participa/unirse': { es: ['Únete al taller · Galivelop'], gl: ['Únete ao obradoiro · Galivelop'], en: ['Join the workshop · Galivelop'] },
   productos: {
-    es: ['Productos · Galivelop', 'Lo que nace en el taller de Galivelop, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto. Y las personas que lo hacen. Sin precios en la web: todo se trata por correo.'],
-    gl: ['Produtos · Galivelop', 'O que nace no obradoiro de Galivelop, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto. E as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
-    en: ['Products · Galivelop', 'What is born in the Galivelop workshop, with its code open as soon as it is mature: we set it up and adapt it to your project. And the people who make it. No prices on the site: everything is arranged by email.'],
+    es: ['Productos · Galivelop', 'Lo que nace en el taller de Galivelop, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto, y si prefieres comprarlo, también se puede. Y las personas que lo hacen. Sin precios en la web: todo se trata por correo.'],
+    gl: ['Produtos · Galivelop', 'O que nace no obradoiro de Galivelop, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto, e se prefires mercalo, tamén se pode. E as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
+    en: ['Products · Galivelop', 'What is born in the Galivelop workshop, with its code open as soon as it is mature: we set it up and adapt it to your project, and if you would rather buy it, that works too. And the people who make it. No prices on the site: everything is arranged by email.'],
   },
   'aviso-legal': {
     es: ['Aviso legal · Galivelop', 'Quién es el titular del portal de Galivelop, con qué licencias se publican su código y su contenido y qué ley se aplica.'],

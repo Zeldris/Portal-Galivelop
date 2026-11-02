@@ -27,7 +27,7 @@ su instalador. Ya no tiene sentido ofrecer como «descarga» algo cuyo código e
 5. **Colaboración:** todo lo público admite aportaciones (`colaboracion: "abierta"` en su ficha).
 6. **Portada:** los proyectos pasan a pesar más que Productos. El taller va primero y Productos va debajo de los
    proyectos; el botón principal del hero lleva al taller.
-7. Galivelop-workflow (con la versión publicada, 0.4.3) y Galivelop Image Generator pasan a `disponible` en
+7. Galivelop-workflow (con la versión que da su ficha; la tarea semanal la sube con cada etiqueta) y Galivelop Image Generator pasan a `disponible` en
    Productos, con implantación y soporte.
 8. **Tarkor no es un producto**: es público y abierto a colaborar, pero no tiene tarjeta en Productos.
 9. En la cabecera, Productos deja de ser un botón relleno y pasa a ser un enlace tras un separador.
