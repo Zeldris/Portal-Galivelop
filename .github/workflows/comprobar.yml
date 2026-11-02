@@ -1,4 +1,4 @@
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # The project's check in CI: each `ciInstall` command (else each `install` command), then each `check` command of
 # .claude/gw.json, on every push outside the protected branch and on every pull request. On a pull request it also
 # runs the BASE branch's copy of .githooks/pre-commit over the PR's commits, so a pull request cannot weaken the check
@@ -52,6 +52,9 @@ jobs:
             echo "== $cmd"
             bash -c "$cmd"
           done <<<"$cmds"
+      - name: Git hooks path
+        # `doctor.py` in `check` fails on an unset core.hooksPath; the hooks are in the checkout, so point git at them.
+        run: git config core.hooksPath .githooks
       - name: Check
         run: |
           cmds="$(python3 .claude/gw/scripts/config.py get check)"

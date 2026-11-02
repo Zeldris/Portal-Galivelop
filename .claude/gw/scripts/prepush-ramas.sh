@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # What pre-push checks about the hand-off log of each branch it pushes (for projects with "logRows": true; a no-op
 # otherwise). Called by .githooks/pre-push as:   prepush-ramas.sh <changed-files-file> <pushed-commits-file>
 # with git's ref lines ("local-ref local-sha remote-ref remote-sha" per ref) on stdin. For each pushed ref:
@@ -11,8 +11,9 @@
 #   - bitacora.py own-row: no new commit changes another branch's row or a shared one (BITACORA_COMPARTIDA=1 or
 #     GW_SHARED_LOG=1 allows it); the branch is the remote one pushed to, or the current one; a commit that comes
 #     from another local branch (a sub-branch merged back) may write in that branch's row instead;
-#   - bitacora.py check: the log as each new commit has it (not the working copy): rows well formed, <= 600
-#     characters, one per branch, and "Updated" not older than the commit if the commit changes the log.
+#   - bitacora.py check: the log as the pushed tip has it (not the working copy; a later commit fixes an earlier
+#     one's): rows well formed, <= 600 characters, one per branch, and "Updated" not older than the newest new
+#     commit that changes the log.
 # Plan folder and task-id regex: GW_PLAN and GW_TASK_ID (see bitacora.py). Exit 1 if a rule is broken.
 # Bash 3.2 compatible. Root from this script's path, never from $CLAUDE_PROJECT_DIR or the current directory.
 set -uo pipefail
@@ -22,7 +23,9 @@ fi
 changed="$1"
 pushed="$2"
 here="$(cd "$(dirname "$0")" && pwd)"
-root="$(git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
+# Git exports GIT_DIR (and friends) to hooks, also in a linked worktree; with GIT_DIR set `rev-parse --show-toplevel`
+# answers $here, not the repo root.
+root="$(unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE; git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "prepush-ramas: $here is not inside a git repository; reinstall the workflow: /gw-update" >&2; exit 2; }
 cd "$root" || exit 2
 config="$here/config.py"
@@ -93,19 +96,23 @@ while read -r local_ref sha_local remote_ref sha_remote; do
       || { echo "bitacora: in commit $(git log -1 --format='%h %s' "$commit")"; exit 1; }
   done <<<"$(git rev-list --no-merges "$sha_local" --not --remotes 2>/dev/null)"
 
-  # Well-formed log in every new commit (an intermediate one with a bad log would also reach the remote).
-  while IFS= read -r commit; do
-    [ -n "$commit" ] || continue
-    git cat-file -e "$commit:$log" 2>/dev/null || continue
+  # Well-formed log as pushed (the tip's): a later commit fixes an intermediate one's bad log, as the hint says.
+  # "Updated" is checked against the day of the newest new commit that changes the log.
+  if [ -n "$new" ] && git cat-file -e "$sha_local:$log" 2>/dev/null; then
+    last=""
+    while IFS= read -r commit; do
+      [ -n "$commit" ] || continue
+      git diff-tree --no-commit-id --name-only -r "$commit" | grep -qxF "$log" && last="$commit"
+    done <<<"$new"
     tmp="$(mktemp "${TMPDIR:-/tmp}/gw-log.XXXXXX")"
-    git show "$commit:$log" > "$tmp"
+    git show "$sha_local:$log" > "$tmp"
     date=()
-    git diff-tree --no-commit-id --name-only -r "$commit" | grep -qxF "$log" && date=(--date "$(git log -1 --format=%as "$commit")")
-    if ! bita check "$tmp" ${date[@]+"${date[@]}"}; then
-      echo "bitacora: in commit $(git log -1 --format='%h %s' "$commit")"; rm -f "$tmp"; exit 1
+    [ -n "$last" ] && date=(--date "$(git log -1 --format=%as "$last")")
+    if ! bita check "$tmp" --at push ${date[@]+"${date[@]}"}; then
+      echo "bitacora: in commit $(git log -1 --format='%h %s' "$sha_local")"; rm -f "$tmp"; exit 1
     fi
     rm -f "$tmp"
-  done <<<"$new"
+  fi
 done
 sort -u -o "$changed" "$changed"
 exit 0

@@ -1,5 +1,5 @@
 {
-  "$comment": "galivelop-workflow v0.3.0",
+  "$comment": "galivelop-workflow v0.4.3",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/zeldris/Galivelop-workflow/main/schema/gw.schema.json",
   "title": "Galivelop-workflow project config (.claude/gw.json)",
@@ -346,6 +346,46 @@
       "type": "string",
       "minLength": 1,
       "description": "Regex of the project's task ids (bitacora.py); default [A-Z]{2,5}-\\d+."
+    },
+    "agentMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!(.*/)?\\.\\.(/|$)).+$",
+          "description": "The agent map file (relative to the repo root, no '..'); mapa-agente.py checks the paths it cites. Absent: docs/mapa-agente.md, and a project without that file is not an error; a path set here that does not exist is."
+        },
+        "prefixes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!(.*/)?\\.\\.(/|$)).+$"
+          },
+          "default": {},
+          "description": "Short path prefixes the map uses, each mapped to its real folder (relative, no '..'): {\"b/\": \"backend/src/\"} reads `b/a.ts` as backend/src/a.ts."
+        },
+        "roots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!(.*/)?\\.\\.(/|$)).+$"
+          },
+          "default": [],
+          "description": "Top-level folders whose references the map check always looks up, even when the folder is gone. By default a backtick token counts as a path when its first folder exists, it ends with `/` or its last part has a file extension."
+        }
+      },
+      "default": {},
+      "description": "The agent map (docs/mapa-agente.md): where each contract lives and what implements it. Read by mapa-agente.py."
+    },
+    "subagentCap": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 30,
+      "description": "Subagents (Agent/Task calls) one session may launch before tope-subagentes.py asks the user to check they are not looping, and again every 10 after."
     }
   }
 }

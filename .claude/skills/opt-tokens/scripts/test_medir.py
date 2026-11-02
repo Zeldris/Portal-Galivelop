@@ -255,6 +255,30 @@ class Medir(unittest.TestCase):
         open_last = self.measure([response('a', 500), response('b', 1000), *compaction(), response('c', 100)])
         self.assertNotIn('WARNING', open_last)
 
+    def default_log(self, remote: str | None) -> subprocess.CompletedProcess:
+        """Run without --session in a repo whose only log is in `-home-user`, with a temp HOME."""
+        home, repo = folder(), folder()
+        subprocess.run(['git', 'init', '-q', repo], check=True)
+        log(os.path.join(home, '.claude', 'projects', '-home-user', 's.jsonl'), response('m1', 100))
+        env = {k: v for k, v in os.environ.items() if k != 'CLAUDE_CODE_REMOTE'}
+        env['HOME'] = home
+        if remote is not None:
+            env['CLAUDE_CODE_REMOTE'] = remote
+        return subprocess.run(['python3', MEDIR, '--hours', '0'], capture_output=True, text=True, cwd=repo, env=env)
+
+    def test_cloud_start_folder_gives_no_outside_the_repo_warning(self):
+        cloud = self.default_log('true')
+        self.assertEqual(cloud.returncode, 0, cloud.stderr)
+        self.assertIn('API calls: 1', cloud.stdout)  # the same log is chosen
+        self.assertNotIn('opened outside the repo', cloud.stderr)
+
+    def test_outside_the_repo_warns_when_not_in_the_cloud(self):
+        for remote in (None, 'false'):
+            local = self.default_log(remote)
+            self.assertEqual(local.returncode, 0, local.stderr)
+            self.assertIn('API calls: 1', local.stdout)
+            self.assertIn('warning: log from a session opened outside the repo, in folder -home-user', local.stderr)
+
 
 if __name__ == '__main__':
     unittest.main()

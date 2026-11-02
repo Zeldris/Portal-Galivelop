@@ -1,9 +1,9 @@
-<!-- galivelop-workflow v0.3.0 -->
+<!-- galivelop-workflow v0.4.3 -->
 # Portal-Galivelop — instrucciones para agentes
 
 Este proyecto se trabaja por relevos: una sesión puede acabarse en cualquier momento (tokens, contenedor, cambio de
 cuenta) y la siguiente tiene que seguir **sin perder nada y sin preguntar por dónde iba**. Todo lo de este archivo
-existe para eso. El flujo es Galivelop-workflow v0.3.0; sus scripts están en `.claude/gw/scripts/`, sus skills
+existe para eso. El flujo es Galivelop-workflow v0.4.3; sus scripts están en `.claude/gw/scripts/`, sus skills
 en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.claude/gw/scripts/config.py`).
 
 ## Al empezar cualquier sesión
@@ -34,13 +34,16 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
 - Si hay que parar con algo a medias o en rojo: commit igualmente con `WIP:` al principio del mensaje y, en la
   bitácora, qué falla y por qué. Nunca dejar trabajo solo en local.
 - Push a la rama de trabajo (`git push -u origin <rama>`); si falla por red, reintentar con espera 2, 4, 8 y 16 s.
+  El push y el check largo se lanzan en segundo plano y se espera su aviso, sin bucles de espera.
 - **Tras una llamada interrumpida o rechazada, `git status` y `git diff` antes de repetirla**: el cambio puede
   haberse guardado, o incluso subido, y repetirlo lo duplica.
 - Si la persona dice que se para, se para: se sube lo que haya, se deja la bitácora al día y no se sigue con nada más.
 - **Al cerrar cada tarea o PR** (y cada fase), con todo subido y la bitácora al día, se pide a la persona un `/clear` en
   una línea, con el porqué: el contexto largo es casi todo el gasto, y la bitácora basta para retomar.
 - **Al cerrar cada bloque o fase, mira el CI de la última subida.** Un CI que no arranca (sin cuota, sin runners)
-  cuenta como rojo: se dice a la persona y no se da nada por comprobado en el CI.
+  cuenta como rojo: se dice a la persona y no se da nada por comprobado en el CI. Entonces vale el check pasado en
+  local sobre el mismo commit (el de `.githooks/pre-push`) **solo si la persona lo confirma**, y se dice y se apunta en
+  la bitácora como «comprobado solo en local». Un CI que arrancó y falló nunca se sustituye así.
 
 ## Comprobar
 
@@ -74,9 +77,11 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
   de `.claude/gw.json`, se sube directo (`direct`: `.githooks/pre-push` pide la marca de revisión) o por pull request
   (`pr`: un gancho de Claude Code pide la marca antes de crearlo o fusionarlo; un push directo la sigue pidiendo).
 - **Se fusiona solo con el CI en verde**, también cuando la persona dice «fusiona directamente»: eso quita esperar a
-  más revisiones, nunca el CI ni la retro presentada a la persona.
-- La rama de un subagente vuelve con `bash .claude/gw/scripts/fusionar.sh <rama> "<mensaje>"`, que corre el check y
-  limpia su worktree.
+  más revisiones, nunca el CI ni la retro presentada a la persona. Si el CI no arranca, vale el check en local de
+  «Relevos» con la confirmación de la persona: se sube directo (el `pre-push` corre el check) o fusiona ella; el
+  gancho no deja al agente fusionar un pull request sin CI.
+- La rama de un subagente vuelve con `bash .claude/gw/scripts/fusionar.sh <rama> "<mensaje>"`, que corre el check y los tests
+  relacionados, y limpia su worktree.
 
 ## Antes de ir a `main`: tres fases
 
@@ -89,7 +94,10 @@ Nunca sobre trabajo ya fusionado.
    `.claude/gw.json` es contenido.
 2. **Entorno:** la skill `opt-tokens` y luego `retro` (más `opt-ai` si hubo medidas con un modelo de IA local). Sus
    propuestas se **presentan a la persona**; lo que confirme se aplica en la rama. Una retro escrita sin presentarla no
-   vale.
+   vale. Si la persona pidió ir a `main` y no está para decidir la retro, se deja todo listo (retro con
+   `**Estado:** pendiente`, check en verde sobre la fusión con `main`, descripción del pull request) y
+   se para antes de `revisado.sh`: su confirmación de la retro es el único paso que falta; la decisión no se escribe
+   por ella.
 3. **Cierre:** si la fase 2 trajo código, revisión solo de esos commits y sus arreglos; luego
    `bash .claude/gw/scripts/revisado.sh` (escribe la marca de revisión, `docs/registros/revisado.txt`, y hace su commit) y
    `git push`; para un pull request, su descripción con la skill `pr`. Solo entonces se sube a `main`

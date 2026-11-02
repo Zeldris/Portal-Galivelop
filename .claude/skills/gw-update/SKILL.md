@@ -1,11 +1,11 @@
 ---
 name: gw-update
-description: Bring a project's copy of Galivelop-workflow up to the workflow repo's current version, showing the template changes before applying what the user confirms. Run by hand with /gw-update after the workflow publishes a new version.
+description: Bring a project's copy of Galivelop-workflow up to the workflow repo's current version, showing the template changes before applying what the user confirms. Use after the workflow publishes a new version (run by hand with /gw-update).
 disable-model-invocation: true
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; git and python3 3.8+; the Galivelop-workflow repo cloned or added to the session
 metadata:
-  version: "0.3.0"
+  version: "0.4.3"
   source: "Galivelop workshop"
 ---
 
@@ -36,8 +36,9 @@ git -C <project> status --short            # a clean tree makes the update easy 
 python3 <workflow>/scripts/aplicar.py <project> --dry-run
 ```
 
-It lists what it would create, update or propose, files the workflow no longer has, and template updates. Summarise
-it for the user with the CHANGELOG entries between X and Y (`### ES` or `### EN` per the user's language).
+It lists what it would create, update or propose, files the workflow no longer has, and template updates, plus the
+user's personal notes (`~/.claude/gw/notas/`, see `docs/en/config.md`) it would create (`personal note`) or that differ
+from the project's copy. Summarise it for the user with the CHANGELOG entries between X and Y (`### ES` or `### EN` per the user's language).
 
 ## 3. Show the template diff for filled files
 
@@ -64,7 +65,10 @@ hand.
 2. A `<file>.gw-nuevo` is a proposal: merge it by hand with the user, then delete it. `AGENTS.md` and `CLAUDE.md`
    merge block by block, keeping the project's rules and the `galivelop-workflow` marker line.
 3. Files the workflow no longer has are reported, never deleted: ask before `git rm`.
-4. Set `version` in `.claude/gw.json` to Y once the proposals are reviewed.
+4. Personal notes: the missing ones are created by the run above. For each `personal note … differs` line, show the
+   user `diff <source> <target>` (the project's copy is never overwritten and gets no `.gw-nuevo`) and merge by hand
+   only what they accept. Nothing personal ever goes into the workflow repo; `--sin-notas-personales` skips them.
+5. Set `version` in `.claude/gw.json` to Y once the proposals are reviewed.
 
 ## 5. Check and commit
 

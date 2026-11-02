@@ -16,7 +16,8 @@ Reads the session log (`~/.claude/projects/<folder>/<session>.jsonl`) and report
 Session lookup: the project root comes from `git rev-parse --show-toplevel`. The log is searched in the folder of
 the root and in the folders of its parent directories (a session opened in a folder that contains the repo stores
 its log there), never in sibling repos; the newest log wins. If it is not the root's own folder, a warning goes to
-stderr: that session may belong to another project, and it did not load the repo's `.claude/settings.json`. Last
+stderr: that session may belong to another project, and it did not load the repo's `.claude/settings.json`; in a
+cloud session (`CLAUDE_CODE_REMOTE=true`) the start folder `-home-user` is the normal one and gives no warning. Last
 resort: the log folder of the home directory's cloud start (`-home-user`). Pass `--session` to skip the search.
 
 Tokens of a result are estimated from its size (characters / 3.5; an image counts ~1,600). API usage is exact.
@@ -86,7 +87,8 @@ def default_session(root):
         sys.exit(f'No sessions in ~/.claude/projects/{folder_of(root)}/ or its parent folders (use --session)')
     path = max(candidates, key=os.path.getmtime)
     folder = os.path.basename(os.path.dirname(path))
-    if folder != folder_of(root):
+    cloud_start = os.environ.get('CLAUDE_CODE_REMOTE') == 'true' and folder == '-home-user'  # where the cloud starts
+    if folder != folder_of(root) and not cloud_start:
         print(f'(warning: log from a session opened outside the repo, in folder {folder}; '
               f'if it is not this session, pass --session)', file=sys.stderr)
     return path

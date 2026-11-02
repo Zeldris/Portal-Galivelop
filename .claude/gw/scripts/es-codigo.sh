@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # Lists the files that are code among those changed between two commits: everything that matches none of the
 # config's `content` regexes (Python syntax, on repo-relative paths). The review mark file itself is never code; the
 # workflow's own policy and guards always are, whatever `content` says (.claude/gw.json, .claude/settings.json,
@@ -13,7 +13,9 @@
 # Bash 3.2 compatible.
 set -uo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
-root="$(git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
+# Git exports GIT_DIR (and friends) to hooks, also in a linked worktree; with GIT_DIR set `rev-parse --show-toplevel`
+# answers $here, not the repo root.
+root="$(unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE; git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "es-codigo: $here is not inside a git repository; reinstall the workflow: /gw-update" >&2; exit 2; }
 cd "$root" || exit 2
 rev=""
@@ -51,6 +53,7 @@ try:
             print(path, flush=True)
 except BrokenPipeError:  # the reader closed early (| head -1): it has what it wanted, not an error
     os.dup2(os.open(os.devnull, os.O_WRONLY), sys.stdout.fileno())
+    sys.stdin.read()  # drain it: with pipefail, a writer killed by SIGPIPE (141) would fail the whole pipeline
 '
 # The classifier exits 3 for a bad content regex (it already printed which one); any other code is some other failure.
 classify_failed() {

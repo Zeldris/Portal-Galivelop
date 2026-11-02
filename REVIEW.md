@@ -1,9 +1,16 @@
-<!-- galivelop-workflow v0.3.0 -->
+<!-- galivelop-workflow v0.4.3 -->
 # Guía de revisión
 
 Lo que el revisor (`/code-review`) comprueba en cada diff del portal, además de los fallos de siempre. Lo
 mecánico ya lo comprueban `npm run check` (tsc y tests de datos) y el gancho `pre-push`; aquí está lo que pide
 criterio.
+
+## Cómo se informa
+
+- Antes de dar un hallazgo, intenta refutarlo: busca el código, el test o el gancho que ya lo cubre. Solo se informa
+  de lo que sobrevive, con la ruta y la línea.
+- La revisión acaba con un veredicto, uno de tres: `SHIP` (nada que arreglar), `SHIP WITH FIXES` (hay arreglos, ninguno
+  bloquea) o `DO NOT SHIP` (algo grave o que rompe).
 
 ## Tres idiomas, siempre
 
@@ -84,3 +91,7 @@ aquí, se proponen en el repo del flujo; lo del portal es su configuración (`.c
   contratos de **este** repo (rutas, formatos, claves de configuración), no contra los del original.
 - Un cambio en `.claude/gw.json` (sobre todo `content`, `check` o `reviewMark`) o en `.githooks/` lleva su caso en
   `tools/qa/tests/test-ganchos.sh`: `content` decide qué puede publicar sola la tarea semanal.
+- Un gancho que pregunta o bloquea se revisa **probando cómo saltárselo**: envoltorios con opciones que llevan valor
+  (`sudo -u X`, `sudo -uX`, `env -u X`, `nice -n 5`, `timeout 5`, `xargs -I{}`), el destino de los copiadores (`cp`,
+  `install`, `rsync`, `dd of=`, `-t DIR`), una carpeta antecesora de la protegida y una ruta relativa o con `..`; y
+  los falsos positivos habituales (leer o copiar **desde** la carpeta, `git restore --staged`). Cada forma, su caso.

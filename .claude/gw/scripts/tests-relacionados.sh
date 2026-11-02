@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # The tests of what changes, in the push. Called by .githooks/pre-push as:
 #   tests-relacionados.sh <changed-files-file> [<checkout-dir>]
 # (one repo-relative path per line; git's ref lines on stdin are ignored). <checkout-dir> is where the pushed commit
@@ -17,7 +17,9 @@ set -uo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
 if [ "$#" -lt 1 ]; then echo "tests-relacionados: usage: tests-relacionados.sh <changed-files-file> [<checkout-dir>]" >&2; exit 2; fi
 list="$1"
-root="$(git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
+# Git exports GIT_DIR (and friends) to hooks, also in a linked worktree; with GIT_DIR set `rev-parse --show-toplevel`
+# answers $here, not the repo root.
+root="$(unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE; git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "tests-relacionados: $here is not inside a git repository; reinstall the workflow: /gw-update" >&2; exit 2; }
 dir="${2:-$root}"
 sha="$(git -C "$dir" rev-parse -q --verify 'HEAD^{commit}' 2>/dev/null)" || {

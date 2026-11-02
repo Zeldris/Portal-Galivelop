@@ -4,7 +4,7 @@ description: Token-spend retrospective: measures where a session's tokens went a
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; git; python3 for scripts/medir.py (standard library only)
 metadata:
-  version: "0.3.0"
+  version: "0.4.3"
   source: "Galivelop workshop; generalised from the Tarkor, installer, portal and VeriNews opt-tokens"
 ---
 
@@ -48,7 +48,7 @@ retries and redone work.
    - **Long context.** Every call rereads the whole history (at cache price, but whole). If the main session's average
      context passed ~150k (the `orchestrate-dealer` threshold), say so in the report and list the big reads
      (`BY FILE`, `BY TOOL`) a subagent should have made. If the average is high:
-     close tasks with a written handover and start fresh (`/clear`), or compact at task boundaries
+     close each task or PR with a written handover and ask for a `/clear`, or compact at task boundaries
      (`/compact <what to keep>`), instead of stretching one session.
    - **Number of calls.** With a long context each call costs the average context. Steps that belong together
      (click and read the state, edit and check) go in one command; no "let's see what happens" calls and no blind
@@ -75,7 +75,10 @@ retries and redone work.
    counterweight). Cheapest to apply and biggest saving first. Present them to the user; **the step ends there**:
    the user decides.
 5. **Apply what is approved**, on the working branch. Record the new tool or rule in `.claude/gw/opt-tokens.md`
-   (create it if missing) so the next pass does not propose it again.
+   (create it if missing) so the next pass does not propose it again. A change to a file copied from the workflow
+   (`.claude/gw/scripts/`, `.claude/skills/`, the hooks) is not patched in the project: it goes to the workflow, as
+   `retro` says (under `## For Galivelop-workflow` in the retro file, or as an issue), because the next update
+   overwrites local edits.
 
 ## Reference
 

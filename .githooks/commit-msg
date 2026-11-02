@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# galivelop-workflow v0.4.3
+# Git commit-msg hook (copied into projects as .githooks/commit-msg; enable with: git config core.hooksPath .githooks).
+#   - When the commit stages the config's `log` file, runs the workflow's `bitacora.py check --date <today>` on the
+#     staged version of it, so a log error (the "Updated" date, a malformed or oversized row) stops the commit
+#     instead of surfacing at pre-push with several commits already stacked.
+#     Its WARNING: lines (a long state-table cell, a bad "Done" section) are printed to stderr but do not stop it.
+#   - Does nothing when the commit does not touch the log, deletes it, or the config has no `log`.
+#   - Skipped while finishing a merge, revert or cherry-pick (MERGE_HEAD, REVERT_HEAD, CHERRY_PICK_HEAD) and during
+#     a rebase.
+#   - Fails closed when the workflow's config.py or (with the log staged) bitacora.py is missing.
+# Bash 3.2 compatible. Root from this hook's path, never from $CLAUDE_PROJECT_DIR or the current directory.
+set -uo pipefail
+hookdir="$(cd "$(dirname "$0")" && pwd)"
+# Git exports GIT_DIR/GIT_INDEX_FILE to the hook (in a linked worktree too), and with GIT_DIR set `rev-parse
+# --show-toplevel` answers the hook's own folder. Unset them for this one call (a subshell); the checks below keep them.
+root="$(unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE; git -C "$hookdir" rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "commit-msg: $hookdir is not inside a git work tree; point git at the project's hooks: git config core.hooksPath .githooks" >&2; exit 1; }
+cd "$root" || exit 1
+if [ -d "$root/.claude/gw/scripts" ]; then scripts="$root/.claude/gw/scripts"; else scripts="$root/scripts"; fi
+config="$scripts/config.py"
+[ -f "$config" ] || { echo "commit-msg: the workflow scripts are missing ($config); reinstall them: /gw-update" >&2; exit 1; }
+
+python3 "$config" --root "$root" validate >/dev/null || {
+  echo "commit-msg: cannot read .claude/gw.json; fix it: python3 $config --root $root validate" >&2; exit 1; }
+log="$(python3 "$config" --root "$root" get log 2>/dev/null)" || log=""
+[ -n "$log" ] || exit 0
+# `git diff --name-only` prints normalised paths: compare with the log as antes-de-parar.py does (./docs/x.md, a//b).
+log_raw="$log"
+log="$(python3 -c 'import posixpath, sys; print(posixpath.normpath(sys.argv[1]))' "$log_raw")" || {
+  echo "commit-msg: cannot normalise the log path '$log_raw'; check python3: python3 --version" >&2; exit 1; }
+
+for head in MERGE_HEAD REVERT_HEAD CHERRY_PICK_HEAD; do
+  [ -e "$(git rev-parse --git-path "$head")" ] && exit 0
+done
+for dir in rebase-merge rebase-apply; do
+  [ -d "$(git rev-parse --git-path "$dir")" ] && exit 0
+done
+
+# core.quotepath=false: otherwise git prints a path with accents quoted ("docs/bit\303\241cora.md") and it never matches.
+staged="$(git -c core.quotepath=false diff --cached --name-only --no-renames --diff-filter=d)" || {
+  echo "commit-msg: git diff failed; check the repository: git status" >&2; exit 1; }
+printf '%s\n' "$staged" | grep -Fxq -- "$log" || exit 0
+
+[ -f "$scripts/bitacora.py" ] || { echo "commit-msg: $scripts/bitacora.py is missing; reinstall the workflow scripts: /gw-update" >&2; exit 1; }
+tmp="$(mktemp "${TMPDIR:-/tmp}/gw-commit-msg.XXXXXX")" || {
+  echo "commit-msg: cannot create a temp file; free space in ${TMPDIR:-/tmp} and retry: git commit" >&2; exit 1; }
+trap 'rm -f "$tmp"' EXIT
+git show ":$log" > "$tmp" || { echo "commit-msg: cannot read the staged $log; stage it again: git add $log" >&2; exit 1; }
+if ! out="$(python3 "$scripts/bitacora.py" --root "$root" check "$tmp" --date "$(date +%F)" 2>&1)"; then
+  printf '%s\n' "$out" >&2
+  echo "commit-msg: the staged $log fails the log check; fix it, stage it and commit again: git add $log && git commit" >&2
+  exit 1
+fi
+[ -z "$out" ] || printf '%s\n' "$out" >&2  # WARNING: lines (size and "Done" rules) do not stop the commit
+exit 0

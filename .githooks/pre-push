@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # Git pre-push hook (copied into projects as .githooks/pre-push; enable with: git config core.hooksPath .githooks).
+#   - While it runs, keeps a marker `gw-push-en-curso` in the git common dir (shared by linked worktrees) with its pid
+#     and, per pushed ref, the LOCAL sha and branch, so the Stop hook (antes-de-parar.py) does not tell an agent to
+#     push again while this one is still checking that very commit. Best effort and silent: it never makes the push fail; removed on every exit (only while
+#     it still holds this hook's pid).
 #   - Says which commits each ref pushes, or that it pushes nothing new.
 #   - Refuses conflict markers and added *.rej / *.orig files in what is pushed (to the protected branch, in all it
 #     gains from the remote tip, commits other branches already have included).
@@ -31,7 +35,10 @@ remote="${1:-origin}"
 # Git's ref lines come on stdin: save them before anything else can read it.
 work="$(mktemp -d "${TMPDIR:-/tmp}/gw-pre-push.XXXXXX")" || { echo "pre-push: cannot create a temp dir; free space in ${TMPDIR:-/tmp} and retry: git push" >&2; exit 1; }
 worktree=""
+pushmark=""  # <git common dir>/gw-push-en-curso: line 1 the pid of this hook, then one "<local sha> <branch>" line per ref pushed
 cleanup() {
+  # Remove the marker only while it is still this hook's (a later push may have rewritten it).
+  if [ -n "$pushmark" ] && [ "$(head -n 1 "$pushmark" 2>/dev/null)" = "$$" ]; then rm -f "$pushmark" 2>/dev/null; fi
   if [ -n "$worktree" ]; then git -C "$root" worktree remove --force "$worktree" >/dev/null 2>&1; rm -rf "$worktree" "${worktree%.d}"; fi
   rm -rf "$work"
 }
@@ -48,6 +55,18 @@ hookdir="$(cd "$(dirname "$0")" && pwd)"
 root="$(git -C "$hookdir" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "pre-push: $hookdir is not inside a git work tree; point git at the project's hooks: git config core.hooksPath .githooks" >&2; exit 1; }
 cd "$root" || exit 1
+{  # best effort: any failure here is silent and leaves the push untouched
+  gitcommon="$(git rev-parse --git-common-dir 2>/dev/null)" && gitcommon="$(cd "$gitcommon" 2>/dev/null && pwd)" || gitcommon=""
+  if [ -n "$gitcommon" ]; then
+    pushed_to="$(awk '$2 !~ /^0+$/ { sub(/^refs\/heads\//, "", $3); print $2, $3 }' "$work/input" 2>/dev/null)"
+    if printf '%s\n%s\n' "$$" "$pushed_to" > "$gitcommon/gw-push-en-curso.$$" \
+        && mv -f "$gitcommon/gw-push-en-curso.$$" "$gitcommon/gw-push-en-curso"; then
+      pushmark="$gitcommon/gw-push-en-curso"
+    else
+      rm -f "$gitcommon/gw-push-en-curso.$$"
+    fi
+  fi
+} >/dev/null 2>&1
 if [ -d "$root/.claude/gw/scripts" ]; then scripts="$root/.claude/gw/scripts"; else scripts="$root/scripts"; fi
 config="$scripts/config.py"
 fail() {  # fail <message lines...>: the last line is the command that fixes it

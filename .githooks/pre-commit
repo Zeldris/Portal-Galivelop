@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # Git pre-commit hook (copied into projects as .githooks/pre-commit; enable with: git config core.hooksPath .githooks).
 #   - No secrets in a commit: by file (.env except .env.example/.sample/.template, *.pem, *.key, *.p12, *.pfx, *.jks,
 #     id_rsa and friends, .netrc) and by added content (well-known key formats, and secret/password/token/api_key
@@ -45,19 +45,24 @@ if [ -n "$bad_files" ]; then
 fi
 
 added="$(diff_of -U0 --no-renames --diff-filter=ACMR | grep -E '^\+' | grep -vE '^\+\+\+ ' | grep -v 'gw-allow-secret' || true)"
-KEY_FORMATS='-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{22,}|xox[abposr]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}|sk-(ant-)?[A-Za-z0-9_-]{20,}|gsk_[A-Za-z0-9]{20,}|[rs]k_live_[0-9A-Za-z]{20,}|glpat-[0-9A-Za-z_-]{20,}'
+# The left edge stops a word that merely ends in a prefix (musk-tells-…, task-…) from matching.
+KEY_FORMATS='(^|[^A-Za-z0-9])(-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{22,}|xox[abposr]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}|sk-(ant-)?[A-Za-z0-9_-]{20,}|gsk_[A-Za-z0-9]{20,}|[rs]k_live_[0-9A-Za-z]{20,}|glpat-[0-9A-Za-z_-]{20,})'
 found="$(printf '%s\n' "$added" | grep -oE -e "$KEY_FORMATS" | head -n 5 || true)"
 if [ -n "$found" ]; then
   echo "pre-commit: the commit adds something shaped like a key or token:" >&2
-  printf '%s\n' "$found" | sed -E 's/^(.{8}).*/  \1…/' >&2
+  printf '%s\n' "$found" | sed -E 's/^[^A-Za-z0-9-]//; s/^(.{8}).*/  \1…/' >&2
   echo "pre-commit: keys belong in environment variables or a secrets manager, never in the repo; $fix_line" >&2
   exit 1
 fi
 
 # Assignments with a literal value: NAME = "value" anywhere; NAME=value unquoted in config files. Names end in
-# secret, password, passwd, token or api_key/apikey. ${VAR}, $VAR, <placeholder> and empty values pass; unquoted, so
-# do read/write/none/true/false and values under 8 characters (GitHub Actions' `id-token: write`, `token: false`).
-NAME='[A-Za-z0-9_.-]*([Ss][Ee][Cc][Rr][Ee][Tt]|[Pp][Aa][Ss][Ss][Ww]([Oo][Rr])?[Dd]|[Tt][Oo][Kk][Ee][Nn]|[Aa][Pp][Ii][_-]?[Kk][Ee][Yy])'
+# secret, password, passwd, token or api_key/apikey/api.key/api-key (a dot too: openai.api.key in .properties), or in
+# key glued to an LLM provider (openaikey, OPENAI_KEY, anthropic-key). A bare `*key` suffix is NOT matched on purpose:
+# primary_key, sort_key, cache_key = "user:{id}" or monkey = "banana" are everyday code and would block commits
+# everywhere. ${VAR}, $VAR, <placeholder> and empty values pass; unquoted, so do read/write/none/true/false and values
+# under 8 characters (GitHub Actions' `id-token: write`, `token: false`).
+PROVIDER='[Oo][Pp][Ee][Nn][Aa][Ii]|[Aa][Nn][Tt][Hh][Rr][Oo][Pp][Ii][Cc]|[Cc][Ll][Aa][Uu][Dd][Ee]|[Gg][Ee][Mm][Ii][Nn][Ii]|[Gg][Rr][Oo][Qq]|[Mm][Ii][Ss][Tt][Rr][Aa][Ll]|[Cc][Oo][Hh][Ee][Rr][Ee]|[Dd][Ee][Ee][Pp][Ss][Ee][Ee][Kk]|[Hh][Uu][Gg][Gg][Ii][Nn][Gg][Ff][Aa][Cc][Ee]|[Oo][Pp][Ee][Nn][Rr][Oo][Uu][Tt][Ee][Rr]|[Pp][Ee][Rr][Pp][Ll][Ee][Xx][Ii][Tt][Yy]'
+NAME="[A-Za-z0-9_.-]*([Ss][Ee][Cc][Rr][Ee][Tt]|[Pp][Aa][Ss][Ss][Ww]([Oo][Rr])?[Dd]|[Tt][Oo][Kk][Ee][Nn]|[Aa][Pp][Ii][._-]?[Kk][Ee][Yy]|(${PROVIDER})[._-]?[Kk][Ee][Yy])"
 QUOTED="^\\+.*${NAME}[\"']?[[:space:]]*(:=|=|:)[[:space:]]*(\"[^\"\$<{][^\"]{3,}\"|'[^'\$<{][^']{3,}')"
 UNQUOTED="^\\+[[:space:]]*(export[[:space:]]+)?${NAME}[[:space:]]*[=:][[:space:]]*[^[:space:]\$<{\"'#]"
 HARMLESS="^\\+[[:space:]]*(export[[:space:]]+)?${NAME}[[:space:]]*[=:][[:space:]]*([Rr][Ee][Aa][Dd]|[Ww][Rr][Ii][Tt][Ee]|[Nn][Oo][Nn][Ee]|[Tt][Rr][Uu][Ee]|[Ff][Aa][Ll][Ss][Ee]|[^[:space:]#]{1,7})[[:space:]]*(#.*)?$"

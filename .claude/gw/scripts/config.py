@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 """The only reader of a project's .claude/gw.json (one fact, one place).
 
 Validates the config against schema/gw.schema.json (a stdlib validator for the subset the schema uses) and fills the
@@ -15,8 +15,12 @@ defaults the schema declares. Shell scripts call the CLI; Python scripts import 
                                         # commit a hook is about to push; absent or invalid at REV -> exit 2
 
 Project root: --root, else the git top level of this script's folder when that repo has .claude/gw.json (the copy
-in a project lives in .claude/gw/scripts/), else the git top level of $CLAUDE_PROJECT_DIR, else of the current
-directory. Fails closed: no config, invalid config or unknown key -> exit 2 with the command that fixes it.
+in a project lives in .claude/gw/scripts/), else the git top level of the current directory when it is
+$CLAUDE_PROJECT_DIR's repo (the same checkout or a linked worktree of it, where $CLAUDE_PROJECT_DIR names the main
+checkout), else of $CLAUDE_PROJECT_DIR (a plugin hook run from a sibling repo or from outside any repo), else of the
+current directory. GIT_DIR/GIT_WORK_TREE/GIT_INDEX_FILE are
+ignored: git exports them to hooks, and with GIT_DIR set `rev-parse --show-toplevel` answers the folder it is
+given, not the repo's. Fails closed: no config, invalid config or unknown key -> exit 2 with the command that fixes it.
 Python 3.8+ (macOS ships 3.9).
 """
 import argparse
@@ -38,10 +42,22 @@ class ConfigError(Exception):
 
 
 def git_toplevel(path):
+    env = {k: v for k, v in os.environ.items() if k not in ("GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE")}
     try:
         out = subprocess.run(["git", "-C", str(path), "rev-parse", "--show-toplevel"],
-                             capture_output=True, text=True, check=True).stdout.strip()
+                             capture_output=True, text=True, check=True, env=env).stdout.strip()
         return Path(out) if out else None
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def git_common_dir(root):
+    """The repository a checkout belongs to (shared by the main checkout and its linked worktrees), or None."""
+    env = {k: v for k, v in os.environ.items() if k not in ("GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE")}
+    try:
+        out = subprocess.run(["git", "-C", str(root), "rev-parse", "--git-common-dir"],
+                             capture_output=True, text=True, check=True, env=env).stdout.strip()
+        return (Path(root) / out).resolve() if out else None  # relative to `root` when git prints it relative
     except (OSError, subprocess.CalledProcessError):
         return None
 
@@ -100,11 +116,14 @@ def find_root(explicit=None):
     own = git_toplevel(HERE)
     if own is not None and (own / CONFIG_REL).is_file():
         return own
-    for candidate in (os.environ.get("CLAUDE_PROJECT_DIR"), os.getcwd()):
-        if candidate:
-            root = git_toplevel(candidate)
-            if root is not None:
-                return root
+    project_dir = os.environ.get("CLAUDE_PROJECT_DIR")
+    project = git_toplevel(project_dir) if project_dir else None
+    cwd_root = git_toplevel(os.getcwd())
+    if project is not None and cwd_root is not None and git_common_dir(project) != git_common_dir(cwd_root):
+        return project  # the current directory is another repo (a sibling, a cloned dependency): not the project
+    root = cwd_root or project
+    if root is not None:
+        return root
     raise ConfigError("not inside a git repository; run from the project or pass --root <path>")
 
 
@@ -133,6 +152,8 @@ def validate(value, schema, path="$"):
             return [f"{path}: matches none of the allowed forms: " + " | ".join("; ".join(t) for t in tried)]
     if "enum" in schema and value not in schema["enum"]:
         errors.append(f"{path}: must be one of {schema['enum']}, got {value!r}")
+    if isinstance(value, (int, float)) and not isinstance(value, bool) and value < schema.get("minimum", value):
+        errors.append(f"{path}: must be at least {schema['minimum']}, got {value!r}")
     if isinstance(value, str):
         if len(value) < schema.get("minLength", 0):
             errors.append(f"{path}: must not be empty")
@@ -151,14 +172,23 @@ def validate(value, schema, path="$"):
         for key, item in value.items():
             if key in props:
                 errors += validate(item, props[key], f"{path}.{key}")
+            elif isinstance(schema.get("additionalProperties"), dict):
+                errors += validate(item, schema["additionalProperties"], f"{path}.{key}")
             elif schema.get("additionalProperties") is False:
                 errors.append(f"{path}: unknown key '{key}' (check spelling; allowed: {', '.join(sorted(props))})")
     return errors
 
 
 def semantic_errors(config):
-    """Problems the schema subset cannot express: a relatedTests `paths` that is not a valid regex."""
+    """Problems the schema subset cannot express: a relatedTests `paths` that is not a valid regex, an agentMap
+    prefix that is not one folder name."""
     errors = []
+    agent_map = config.get("agentMap")
+    if isinstance(agent_map, dict) and isinstance(agent_map.get("prefixes"), dict):
+        for short in agent_map["prefixes"]:
+            if not re.fullmatch(r"[^/\s]+/?", short) or short in (".", "..", "./", "../"):
+                errors.append(f"$.agentMap.prefixes: key {short!r} must be one folder-like name, with or without a "
+                              f"trailing '/' (e.g. \"b/\")")
     related = config.get("relatedTests")
     if isinstance(related, dict):
         for kind in ("fast", "slow"):

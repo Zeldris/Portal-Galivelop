@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- Code snippet: paste the code into pre#codigo as plain text (the "<" of the code written as &lt;) and set
+     the language class on the pre: lang-js, lang-py, lang-sh or lang-json for the keyword list; any other value
+     only colors strings, numbers and comments. Highlighting is a few lines of script in this file, no library.
+     Ten lines of about 65 characters fit (the render fails if the code does not); show only the lines that matter. Fill every gap written between double braces. -->
+<meta name="gw-size" content="1200x675">
+<title>Código</title>
+<style>
+  :root {
+    /* Palette: override these to match the project (brand colors, dark or light). Nothing else needs to change. */
+    --fondo: #0f172a; --superficie: #1e293b; --borde: #334155;
+    --texto: #f1f5f9; --tenue: #94a3b8; --acento: #38bdf8; --acento-texto: #0f172a;
+    --bien: #4ade80; --mal: #f87171;
+    --fuente: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", "Liberation Sans", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace;
+  }
+  :root { --k: #c084fc; --s: #86efac; --n: #fbbf24; --c: #64748b; }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 675px; overflow: hidden; background: var(--fondo); color: var(--texto); font-family: var(--fuente);
+         padding: 44px 64px; display: flex; flex-direction: column; }
+  .marca { font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); font-weight: 700; }
+  h1 { font-size: 36px; margin: 14px 0 22px; }
+  .ventana { background: var(--superficie); border: 2px solid var(--borde); border-radius: 14px; overflow: hidden; }
+  .barra { display: flex; align-items: center; gap: 8px; padding: 12px 18px; border-bottom: 2px solid var(--borde); font-size: 18px; color: var(--tenue); }
+  .barra i { width: 12px; height: 12px; border-radius: 50%; background: var(--borde); }
+  .barra span { margin-left: 10px; font-family: var(--mono); }
+  pre { font-family: var(--mono); font-size: 24px; line-height: 1.5; padding: 22px 28px; white-space: pre; tab-size: 2; }
+  .k { color: var(--k); font-weight: 700; } .s { color: var(--s); } .n { color: var(--n); } .c { color: var(--c); font-style: italic; }
+  .pie { margin-top: auto; font-size: 20px; color: var(--tenue); }
+</style>
+</head>
+<body>
+  <div class="marca">{{proyecto}}</div>
+  <h1>{{qué hace este código}}</h1>
+  <div class="ventana">
+    <div class="barra"><i></i><i></i><i></i><span>{{nombre del archivo}}</span></div>
+<pre id="codigo" class="lang-js">{{código}}</pre>
+  </div>
+  <div class="pie">{{una frase: qué se ve aquí}}</div>
+  <script>
+    var PALABRAS = {
+      "lang-js": "const let var function return if else for while of in new class import export from await async try catch throw true false null undefined",
+      "lang-py": "def class return if elif else for while in import from as with try except raise lambda True False None and or not is yield async await",
+      "lang-sh": "if then else fi for do done while case esac in function export local echo cd set",
+      "lang-json": "true false null"
+    };
+    var pre = document.getElementById("codigo");
+    var clave = (pre.className.match(/lang-[a-z]+/) || [""])[0];
+    var claves = {};
+    (PALABRAS[clave] || "").split(" ").forEach(function (p) { claves[p] = true; });
+    var codigo = pre.textContent;
+    var re = /(\/\/[^\n]*|(?:^|\s)#[^\n]*)|("(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*'|`(?:\\.|[^`\\])*`)|(\b\d+(?:\.\d+)?\b)|(\b[A-Za-z_]\w*\b)/gm;
+    pre.textContent = "";
+    var ultimo = 0, m;
+    function poner(texto, clase) {
+      if (!texto) return;
+      if (!clase) { pre.appendChild(document.createTextNode(texto)); return; }
+      var s = document.createElement("span");
+      s.className = clase;
+      s.textContent = texto;
+      pre.appendChild(s);
+    }
+    while ((m = re.exec(codigo)) !== null) {
+      poner(codigo.slice(ultimo, m.index));
+      if (m[1]) poner(m[1], "c");
+      else if (m[2]) poner(m[2], "s");
+      else if (m[3]) poner(m[3], "n");
+      else poner(m[4], claves[m[4]] ? "k" : "");
+      ultimo = re.lastIndex;
+    }
+    poner(codigo.slice(ultimo));
+  </script>
+</body>
+</html>

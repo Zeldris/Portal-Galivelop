@@ -3,7 +3,7 @@ name: retro
 description: "Conduct a retrospective on a coding session. Use before each push or PR to the protected branch (after /code-review and /opt-tokens), when a phase or milestone closes, or when the user asks for a retro."
 license: MIT (see LICENSE-mattpocock-skills)
 metadata:
-  version: "0.3.0"
+  version: "0.4.3"
   source: "mattpocock/skills@5beb35b"
 ---
 
@@ -66,3 +66,8 @@ This section is the only change to the upstream skill.
 - **Present the retro before the PR**, even when the user said "merge directly": that skips waiting for reviews, not
   the retro. Its `**Estado:**`/`**Status:**` line records what the user decided (applied, rejected, deferred), not just
   "done"; `revisado.sh` checks it when `requireRetro` is set.
+- **The person asked for the protected branch but is not there to decide the retro:** leave everything ready and stop
+  before `revisado.sh`. Ready means the retro written with `**Status:** pending` (`revisado.sh` refuses it), the check
+  green on the merge with the protected branch, and the PR description. Tell them their decision on the retro is the
+  one missing step; when it arrives, write it into the `**Status:**` line and run `revisado.sh`. Never fill in the
+  decision for them.

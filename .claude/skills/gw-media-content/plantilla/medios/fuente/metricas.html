@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<!-- Metric card: one big figure and a small bar chart drawn from the data below. Edit only the JSON in
+     script#datos: "valor" is any number (the longest bar is the largest value) and "texto" is what is printed
+     next to the bar. Three to six bars. Use real figures and give their source in ficha.md. Fill every other
+     gap written between double braces. -->
+<meta name="gw-size" content="1200x675">
+<title>Métricas</title>
+<style>
+  :root {
+    /* Palette: override these to match the project (brand colors, dark or light). Nothing else needs to change. */
+    --fondo: #0f172a; --superficie: #1e293b; --borde: #334155;
+    --texto: #f1f5f9; --tenue: #94a3b8; --acento: #38bdf8; --acento-texto: #0f172a;
+    --bien: #4ade80; --mal: #f87171;
+    --fuente: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", "Liberation Sans", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 675px; overflow: hidden; background: var(--fondo); color: var(--texto); font-family: var(--fuente);
+         padding: 52px 64px; display: flex; flex-direction: column; }
+  .marca { font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--acento); font-weight: 700; }
+  .cabecera { display: flex; align-items: flex-end; gap: 28px; margin-top: 18px; }
+  .grande { font-size: 96px; line-height: 1; font-weight: 800; color: var(--acento); }
+  .grande-texto { font-size: 28px; line-height: 1.25; color: var(--tenue); padding-bottom: 10px; max-width: 640px; }
+  #grafico { margin-top: auto; display: flex; flex-direction: column; gap: 14px; }
+  .fila { display: grid; grid-template-columns: 220px 1fr 120px; align-items: center; gap: 18px; font-size: 22px; }
+  .fila .et { color: var(--tenue); text-align: right; }
+  .pista { height: 28px; background: var(--superficie); border: 2px solid var(--borde); border-radius: 8px; overflow: hidden; }
+  .pista i { display: block; height: 100%; background: var(--acento); }
+  .fila b { font-size: 24px; }
+  .pie { margin-top: 24px; font-size: 20px; color: var(--tenue); }
+</style>
+</head>
+<body>
+  <div class="marca">{{proyecto}}</div>
+  <div class="cabecera"><div class="grande">{{cifra principal}}</div><div class="grande-texto">{{qué mide, en una frase}}</div></div>
+  <div id="grafico"></div>
+  <div class="pie">{{fuente del dato y fecha}}</div>
+  <script type="application/json" id="datos">
+  [
+    {"etiqueta": "{{etiqueta}}", "valor": {{número}}, "texto": "{{texto de la barra}}"},
+    {"etiqueta": "{{etiqueta}}", "valor": {{número}}, "texto": "{{texto de la barra}}"},
+    {"etiqueta": "{{etiqueta}}", "valor": {{número}}, "texto": "{{texto de la barra}}"}
+  ]
+  </script>
+  <script>
+    var datos = JSON.parse(document.getElementById("datos").textContent);
+    var mayor = Math.max.apply(null, datos.map(function (d) { return d.valor; })) || 1;
+    var grafico = document.getElementById("grafico");
+    datos.forEach(function (d) {
+      var fila = document.createElement("div");
+      fila.className = "fila";
+      var et = document.createElement("span");
+      et.className = "et";
+      et.textContent = d.etiqueta;
+      var pista = document.createElement("div");
+      pista.className = "pista";
+      var barra = document.createElement("i");
+      barra.style.width = Math.max(1, Math.round((d.valor / mayor) * 100)) + "%";
+      pista.appendChild(barra);
+      var texto = document.createElement("b");
+      texto.textContent = d.texto;
+      fila.appendChild(et);
+      fila.appendChild(pista);
+      fila.appendChild(texto);
+      grafico.appendChild(fila);
+    });
+  </script>
+</body>
+</html>

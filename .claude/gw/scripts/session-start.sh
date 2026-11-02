@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # Claude Code SessionStart hook (startup|resume|clear): leaves the project ready to work. Idempotent.
 #   - git hooks: sets core.hooksPath to .githooks when it is unset and .githooks exists; when another hook manager
 #     owns the hooks (core.hooksPath elsewhere, or hooks installed in .git/hooks), it says how to chain the
@@ -16,8 +16,8 @@
 # Fails open: always exits 0 (a SessionStart hook cannot block); warnings go to stdout, which enters the agent's
 # context, each ending with the command that fixes it.
 # Project root: the git top level of this script's folder when it holds .claude/gw.json (the copy in
-# .claude/gw/scripts); from the plugin cache, the same fallback as config.py (CLAUDE_PROJECT_DIR, then the current
-# directory), only to find the repo. Bash 3.2 compatible.
+# .claude/gw/scripts); from the plugin cache, $CLAUDE_PROJECT_DIR, then the current
+# directory (config.py, run from that root, resolves the same one). Bash 3.2 compatible.
 set -uo pipefail
 start_pwd="$PWD"
 here="$(cd "$(dirname "$0")" && pwd)" || { echo "gw session-start: cannot find its own folder; reinstall the workflow: /gw-update"; exit 0; }
@@ -26,7 +26,7 @@ warn() { echo "gw session-start: $*"; }
 input=""
 if [ ! -t 0 ]; then input="$(cat 2>/dev/null || true)"; fi
 
-toplevel() { git -C "$1" rev-parse --show-toplevel 2>/dev/null; }
+toplevel() { (unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE; git -C "$1" rev-parse --show-toplevel 2>/dev/null); }
 root="$(toplevel "$here")"
 if [ -z "$root" ] || [ ! -f "$root/.claude/gw.json" ]; then
   root=""
@@ -54,6 +54,8 @@ fi
 real() { (cd "$1" 2>/dev/null && pwd -P); }
 if [ -n "$cwd" ]; then
   rcwd="$(real "$cwd")"; rroot="$(real "$root")"
+  # a cloud session always starts in /home/user, whatever repo it works on: not a mistake to warn about (Portal P1)
+  [ "${CLAUDE_CODE_REMOTE:-}" = true ] && [ "${cwd%/}" = /home/user ] && rcwd="$rroot"
   case "$rcwd/" in
     "$rroot"/*) ;;
     *) warn "this session was started in $cwd, outside the repo root ($root): the repo's .claude/settings.json (hooks, env) may not have loaded; restart Claude Code from the repo: cd $root && claude" ;;

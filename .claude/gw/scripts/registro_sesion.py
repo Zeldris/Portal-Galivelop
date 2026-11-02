@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 """The transcript (.jsonl) of the Claude Code session working on this repo. Shared by recuperar.py and doctor.py.
 
 Claude Code stores each session in ~/.claude/projects/<working folder with every non-alphanumeric as "-">/. A session
 opened in a folder that contains the repo (in the cloud, /home/user with several repos in it) stores it in that
 folder's directory, not the repo's, and did not load the repo's .claude/settings.json (VeriNews P3). So the search
 covers the repo folder and its parent folders (never sibling repos), plus the cloud start folder (-home-user), and
-the newest transcript wins. When it is not the repo's own folder, a warning goes to stderr.
+the newest transcript wins. When it is not the repo's own folder, a warning goes to stderr, except for a cloud session
+(CLAUDE_CODE_REMOTE=true) in the cloud start folder: there it cannot start anywhere else (Portal P1).
 
   python3 registro_sesion.py --path          # print the transcript path (exit 1 if there is none)
   python3 registro_sesion.py --path --root R # for the repo at R (default: see config.find_root)
@@ -21,6 +22,12 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CLOUD_START = "-home-user"  # cloud sessions start in /home/user whatever repo they work on
+
+
+def cloud_start(folder):
+    """True for the cloud start folder in a cloud session: opening outside the repo is how the cloud works, not a
+    mistake to warn about (Portal P1)."""
+    return folder == CLOUD_START and os.environ.get("CLAUDE_CODE_REMOTE") == "true"
 
 
 def folder_of(path):
@@ -58,7 +65,7 @@ def find(root, transcript=None, warn=True):
     path = max(candidates, key=os.path.getmtime)
     folder = os.path.basename(os.path.dirname(path))
     own = folder == folder_of(root)
-    if not own and warn:
+    if not own and warn and not cloud_start(folder):
         print(f"warning: the session transcript is in {folder}, not the repo's folder ({folder_of(root)}): the session "
               f"was opened outside the repo and may not have loaded its .claude/settings.json; if it is not this "
               f"session, pass the transcript explicitly, or restart Claude Code from the repo: cd {root} && claude",

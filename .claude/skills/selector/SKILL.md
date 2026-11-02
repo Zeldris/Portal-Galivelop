@@ -4,7 +4,7 @@ description: Pick the skill and models for the task that is starting. Use at the
 license: MIT
 compatibility: Claude Code or any Agent Skills agent; reads .claude/gw.json when present
 metadata:
-  version: "0.3.0"
+  version: "0.4.3"
   source: "Galivelop workshop; generalised from the Tarkor, installer and portal selectors"
 ---
 
@@ -25,6 +25,7 @@ Classify the task with the table, then act on its row. Reply in the project's `l
 | Apply or update the workflow (`gw-init`, `gw-update`, `gw-doctor`) | `orchestrate-dealer` | large, to decide | light, to read the workflow's guide and scripts and return the decisions with paths |
 | Review before the protected branch | `/code-review`, then `pr` for the description | large | none |
 | Closing a block or phase | `retro` (Claude runs it, the user confirms its proposals); now and then `improve-codebase-architecture` | large | none |
+| Social posts about the project (what to post, a post, an announcement or an image about something that just happened) | `gw-media-content` to propose, `gw-media-content-now` to produce one piece | medium | none |
 | Writing for agents (`AGENTS.md`, `CLAUDE.md`, skills, docs agents read) | `writing-for-agents` | medium | none |
 
 Use a skill only if it exists in this repo's `skills/` (or `.claude/skills/`) or the project declares it; otherwise
@@ -44,6 +45,8 @@ do the case without it and say so.
   and ask the user.** A subagent that never starts (tool error) is retried on the same rung and does not count as a
   failure. Unattended long work that closes nothing in a batch stops and writes the state to the log.
 - **When in doubt between two rows, take the one with higher risk.**
+- **Closing a task or PR:** with everything pushed and the log up to date, ask the user for a `/clear` in one line,
+  saying why (a long context is almost all the spend; the log is enough to resume).
 - **Compaction budget:** at the start of a task, estimate how many compactions it should need (0–5) and write it in
   the log next to the count the session already has (`recuperar.py --estado` prints it). Going over the budget is the
   signal to deal more work out with `orchestrate-dealer`, not to keep going.

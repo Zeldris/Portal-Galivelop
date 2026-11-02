@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.3.0
+# galivelop-workflow v0.4.3
 # Claude Code PreToolUse hook: no pull request reaches the protected branch without /code-review of the same code,
 # and none is merged with CI not green (plan §5.2). Reads the hook JSON (tool_name, tool_input) on stdin.
 #   - Create: mcp__github__create_pull_request, mcp__github__update_pull_request that sets `base` to the protected
@@ -12,7 +12,9 @@
 #   - Merge: mcp__github__merge_pull_request, mcp__github__enable_pr_auto_merge, and in Bash `gh pr merge` (also
 #     `gh -R o/r pr merge`, inside `bash -c`/`eval`, after `xargs`) and `gh api` PUT on repos/<o>/<r>/pulls/<n>/merge
 #     (-R/--repo and GH_REPO= name the repo). Same mark rule on the PR head, plus CI green: every check-run completed with success/neutral/skipped and every
-#     commit status success (a commit with no CI reported at all is not green).
+#     commit status success (a commit with no CI reported at all is not green; that block names the path the person
+#     can confirm instead: the local check, said as "checked only locally"). Check-runs that GitHub closed as failed
+#     without starting the job (billing, spending limit) and nothing else failing get that same block.
 #   - Anything else (other tools, update_pull_request_branch, other bases, Bash that only mentions `gh pr`) exits 0
 #     silently. pushToProtected does not matter: a PR is another way into the protected branch.
 #   - A PR that is already closed or merged: blocked with that fact (and `gh pr view`), no config is asked of its branch;
@@ -40,6 +42,9 @@ NAME = "revision-antes-de-main"
 GIT_ENV = {k: v for k, v in os.environ.items() if k not in ("GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE")}
 GIT_ENV["GIT_TERMINAL_PROMPT"] = "0"
 GREEN_RUNS = ("success", "neutral", "skipped")
+NO_CI = "no CI has reported on this commit yet"
+# What GitHub writes on a check-run whose job it refused to start for lack of quota.
+NOT_STARTED = ("job was not started because recent account payments have failed", "spending limit needs to be increased")
 
 
 class Blocked(Exception):
@@ -64,12 +69,24 @@ def run(cmd, cwd=None, stdin=None):
 
 # ---- what the tool call does -------------------------------------------------------------------------------------
 # Each command segment of a Bash call is tokenised (shlex) and read as a command: past VAR=x assignments, prefixes
-# (env, command, exec, time, sudo, nohup, xargs and its options, shell keywords), into `bash|sh|zsh -c '<script>'` and
-# `eval <words>`, then `gh [-R|--repo X] [--hostname X] pr create|merge …` or `gh api` PUT on repos/<o>/<r>/pulls/<n>/
+# (env, command, exec, time, sudo, nohup, nice, timeout, stdbuf with their options, xargs and its options, shell keywords), into `bash|sh|zsh -c '<script>'` and
+# `eval <words>`, then `gh [-R|--repo X] [--hostname X] pr [-R X] create|merge …` or `gh api` PUT on repos/<o>/<r>/pulls/<n>/
 # merge. Text that only names it (grep "gh pr merge", echo '…') is an argument of another command, so not guarded.
 SEPARATORS = set(";&|()\n")
-PREFIXES = {"env", "command", "exec", "time", "sudo", "nohup", "nice", "!", "{", "}", "if", "then", "else", "elif",
-            "do", "while", "until"}
+PREFIXES = {"env", "command", "exec", "time", "sudo", "nohup", "nice", "timeout", "stdbuf", "!", "{", "}", "if", "then",
+            "else", "elif", "do", "while", "until"}
+# Prefixes that take options (and which options take a value in the next word): `nice -n 5`, `time -p`,
+# `timeout -s KILL 5`, `env -u X`, `stdbuf -o0`, `sudo -u root`. `timeout` also takes a duration before the command.
+PREFIX_OPTIONS = {
+    "env": {"-u", "--unset", "-C", "--chdir", "-S", "--split-string"},
+    "nice": {"-n", "--adjustment"},
+    "time": {"-f", "--format", "-o", "--output"},
+    "timeout": {"-s", "--signal", "-k", "--kill-after"},
+    "stdbuf": {"-i", "--input", "-o", "--output", "-e", "--error"},
+    "sudo": {"-u", "--user", "-g", "--group", "-h", "--host", "-p", "--prompt", "-C", "-D", "--chdir", "-R", "-r",
+             "-t", "-T", "-U"},
+    "exec": {"-a"}, "command": set(), "nohup": set(),
+}
 SHELLS = {"bash", "sh", "zsh", "dash", "ksh"}
 XARGS_VALUE = {"-I", "-L", "-n", "-P", "-s", "-d", "-E", "-a", "--delimiter", "--max-args", "--max-procs",
                "--arg-file", "--replace", "--max-lines", "--eof", "--max-chars"}
@@ -80,7 +97,25 @@ API_FIELDS = ("-f", "-F", "--field", "--raw-field", "--input")
 API_MERGE = re.compile(r"^/?repos/([^/]+)/([^/]+)/pulls/(\d+)/merge/?$")
 MERGE_VALUE_FLAGS = {"-R", "--repo", "-b", "--body", "-F", "--body-file", "-t", "--subject", "-A",
                      "--author-email", "--match-head-commit"}
-SUSPECT = re.compile(r"\bgh\b[\s\S]*\bpr\b[\s\S]*\b(merge|create)\b|\bgh\b[\s\S]*\bpulls/[^\s]*merge")
+GH_WORD = re.compile(r"\bgh\b")
+PR_WORD = re.compile(r"\bpr\b")
+PR_ACTION = re.compile(r"\b(merge|create)\b")
+PULLS_TOKEN = re.compile(r"pulls/\S*")
+
+
+def looks_like_pr_action(command):
+    """Does an unparseable command look like `gh ... pr ... merge|create` or `gh ... pulls/...merge`?
+
+    The words must come in that order; the earliest `gh`, then the earliest `pr` after it, is enough. One scan per
+    word: a single regex chaining `[\\s\\S]*` between them backtracks without end on a long command (P4 of
+    docs/propuestas/2026-10-25-repos-x.md; tests/test_revision_main.py times it)."""
+    gh = GH_WORD.search(command)
+    if not gh:
+        return False
+    pr = PR_WORD.search(command, gh.end())
+    if pr and PR_ACTION.search(command, pr.end()):
+        return True
+    return any("merge" in m.group()[len("pulls/"):] for m in PULLS_TOKEN.finditer(command, gh.end()))
 
 
 def flag(args, names):
@@ -120,16 +155,74 @@ def segments(command):
     return out
 
 
+COMMENT_START = re.compile(r"(?:^|[\s;&|()])#")
+
+
+def join_lines(command, glue, comments_end_lines):
+    """The command with its line continuations joined by glue. A newline continues the line only after an odd run of
+    backslashes (`\\\\<newline>` is a literal backslash and the newline ends the command); with comments_end_lines, also
+    only when the line has no comment (a comment ends at the newline, a backslash in it continues nothing)."""
+    lines = command.split("\n")
+    out = []
+    for n, line in enumerate(lines):
+        body = line[:-1] if line.endswith("\r") and n < len(lines) - 1 else line
+        run = len(body) - len(body.rstrip("\\"))
+        if n < len(lines) - 1 and run % 2 == 1:
+            if comments_end_lines and COMMENT_START.search(body):
+                out.append(body[:-1] + "\n")  # inert in a comment; dropped so shlex does not glue the newline to a word
+            else:
+                out.append(body[:-1] + glue)
+        else:
+            out.append(line + ("\n" if n < len(lines) - 1 else ""))
+    return "".join(out)
+
+
 def from_bash(command, depth=0):
     if depth > 5:
         block("the command nests shells too deeply to check.", "run the gh command directly and retry")
+    # Bash joins a backslash-newline continuation (`pulls/7/\\<nl>merge` is `pulls/7/merge`, `gh\\<nl>pr` is `ghpr`),
+    # but not after an escaped backslash, and a comment ends at the newline. The reader cannot tell quoting from that
+    # apart, so the union of readings is judged: the text as it is, and the continuations joined (glued, or with a
+    # space, with and without comments ending their line). Never a physical line alone: a line cut out of a quoted
+    # string or a heredoc body would be read as a command (git commit -m "…<nl>gh pr merge 7 …"). When the text as
+    # it is parses, a joined reading that does not is ignored. When it does not (an apostrophe in a comment, $'…'),
+    # the joined ones fail the same way, so the command is blocked if ANY reading looks like a PR create/merge (a
+    # continuation can split the words: `gh pr mer\\<nl>ge 7`). Each action once.
+    readings = {command: None}
+    for glue in ("", " "):
+        for comments in (False, True):
+            readings[join_lines(command, glue, comments)] = None
+    actions, seen = [], set()
+    for text in readings:
+        found = from_text(text, depth)
+        if found is None:
+            if text == command and any(looks_like_pr_action(t) for t in readings):
+                block(f"cannot parse the command ({parse_error(command)}) and it looks like a PR create/merge; blocked "
+                      "because it could not be checked.",
+                      "write it as a plain command and retry, e.g.: gh pr merge <number> -R <owner>/<repo>")
+            continue
+        for action in found:
+            key = json.dumps(action, sort_keys=True, default=str)
+            if key not in seen:
+                seen.add(key)
+                actions.append(action)
+    return actions
+
+
+def parse_error(command):
+    try:
+        segments(command)
+    except ValueError as exc:
+        return str(exc)
+    return "bad quoting"
+
+
+def from_text(command, depth):
+    """The actions of one reading, or None when it cannot be parsed."""
     try:
         segs = segments(command)
-    except ValueError as exc:
-        if SUSPECT.search(command):
-            block(f"cannot parse the command ({exc}) and it looks like a PR create/merge; blocked because it could "
-                  "not be checked.", "write it as a plain command and retry, e.g.: gh pr merge <number> -R <owner>/<repo>")
-        return []
+    except ValueError:
+        return None
     actions = []
     for words in segs:
         actions += from_words(words, depth)
@@ -149,9 +242,17 @@ def from_words(words, depth):
             i += 1
         elif w in PREFIXES:
             i += 1
-            if w == "env":
-                while i < len(words) and words[i].startswith("-"):
-                    i += 1
+            if w in PREFIX_OPTIONS:
+                while i < len(words) and words[i].startswith("-") and words[i] != "-":
+                    opt = words[i]
+                    # `-u X`, and combined short flags whose last letter takes the value (`sudo -Eu root`)
+                    takes = opt in PREFIX_OPTIONS[w] or (
+                        len(opt) > 2 and opt[1] != "-" and "-" + opt[-1] in PREFIX_OPTIONS[w])
+                    i += 2 if takes else 1
+                    if opt == "--":
+                        break
+                if w == "timeout" and i < len(words):
+                    i += 1  # the duration
         elif os.path.basename(w) == "xargs":
             i += 1
             while i < len(words) and words[i].startswith("-"):
@@ -170,7 +271,20 @@ def from_words(words, depth):
         return from_bash(" ".join(args), depth + 1)
     if cmd != "gh":
         return []
-    repo, j = env_repo, 0
+    j, repo = gh_flags(args, 0, env_repo)
+    rest = args[j:]
+    if rest and rest[0] == "pr":  # `gh pr --repo o/r merge 7`: -R/--repo also goes between `pr` and the subcommand
+        j, repo = gh_flags(rest, 1, repo)
+        rest = ["pr"] + rest[j:]
+    if len(rest) >= 2 and rest[0] == "pr" and rest[1] in ("create", "merge"):
+        return [pr_action(rest[1], rest[2:], repo)]
+    if rest and rest[0] == "api":
+        return api_action(rest[1:], repo)
+    return []
+
+
+def gh_flags(args, j, repo):
+    """Skip the leading flags of args from index j (-R/--repo/--hostname take a value); returns (index, repo)."""
     while j < len(args) and args[j].startswith("-"):
         a = args[j]
         if a in GH_GLOBAL_VALUE and j + 1 < len(args):
@@ -183,12 +297,7 @@ def from_words(words, depth):
         elif a.startswith("-R") and len(a) > 2:
             repo = a[2:]
         j += 1
-    rest = args[j:]
-    if len(rest) >= 2 and rest[0] == "pr" and rest[1] in ("create", "merge"):
-        return [pr_action(rest[1], rest[2:], repo)]
-    if rest and rest[0] == "api":
-        return api_action(rest[1:], repo)
-    return []
+    return j, repo
 
 
 def pr_action(kind, args, repo):
@@ -392,7 +501,23 @@ def pr_info(repo, number):
               f"check the PR at https://github.com/{repo}/pull/{number} and retry")
 
 
+def not_started(repo, run_):
+    """GitHub closed this check-run as failed without running the job (billing, spending limit)."""
+    if run_.get("conclusion") != "failure":
+        return False
+    out = run_.get("output") or {}
+    text = f"{out.get('title')} {out.get('summary')}"
+    if not any(m in text for m in NOT_STARTED) and "id" in run_:
+        try:
+            notes = api(f"repos/{repo}/check-runs/{run_['id']}/annotations")
+            text = " ".join(str(n.get("message", "")) for n in notes)
+        except (ApiError, AttributeError, TypeError):
+            return False  # cannot tell: it stays an ordinary failure
+    return any(m in text for m in NOT_STARTED)
+
+
 def ci_problems(repo, sha):
+    """(problems, True when every problem is a check-run GitHub never started)."""
     runs, page = [], 1
     while True:
         data = api(f"repos/{repo}/commits/{sha}/check-runs?per_page=100&page={page}")
@@ -403,11 +528,12 @@ def ci_problems(repo, sha):
         page += 1
     statuses = api(f"repos/{repo}/commits/{sha}/status?per_page=100")["statuses"]
     if not runs and not statuses:
-        return ["no CI has reported on this commit yet"]
-    bad = [f"{c.get('name', '?')}: {c.get('conclusion') or c.get('status')}" for c in runs
-           if c.get("status") != "completed" or c.get("conclusion") not in GREEN_RUNS]
-    bad += [f"{s.get('context', '?')}: {s.get('state')}" for s in statuses if s.get("state") != "success"]
-    return bad
+        return [NO_CI], False
+    bad_runs = [c for c in runs if c.get("status") != "completed" or c.get("conclusion") not in GREEN_RUNS]
+    bad_statuses = [s for s in statuses if s.get("state") != "success"]
+    bad = [f"{c.get('name', '?')}: {c.get('conclusion') or c.get('status')}" for c in bad_runs]
+    bad += [f"{s.get('context', '?')}: {s.get('state')}" for s in bad_statuses]
+    return bad, bool(bad_runs) and not bad_statuses and all(not_started(repo, c) for c in bad_runs)
 
 
 # ---- the rules ---------------------------------------------------------------------------------------------------
@@ -557,11 +683,18 @@ def handle(action, cfg, root, scripts):
     if action["kind"] != "merge":
         return
     try:
-        bad = ci_problems(repo, info["sha"])
+        bad, unstarted = ci_problems(repo, info["sha"])
     except (ApiError, KeyError, TypeError, ValueError) as exc:
         block(f"Blocked: could not verify CI of PR #{number} ({info['sha'][:12]}): {exc}",
               f"check CI in the PR ({info['url']}); once it is all green, authenticate (gh auth login, or export "
               "GITHUB_TOKEN) and retry the merge")
+    if bad == [NO_CI] or (bad and unstarted):
+        what = f"no CI has reported on PR #{number} ({info['sha'][:12]})" if bad == [NO_CI] else \
+            f"GitHub did not start the CI of PR #{number} ({info['sha'][:12]}): billing or spending limit; nothing ran"
+        block(f"Blocked: {what}.",
+              f"if CI does not start (no Actions quota, no runners), tell the person: with their confirmation the check "
+              f"passed locally counts, said as 'checked only locally'; they merge it ({info['url']}) or the branch is "
+              "pushed directly, where .githooks/pre-push runs the check")
     if bad:
         block(f"Blocked: CI of PR #{number} ({info['sha'][:12]}) is not green: {'; '.join(bad)}",
               f"wait until every check passes ({info['url']}), fix what failed if needed, then retry the merge")
@@ -598,18 +731,58 @@ input="$(cat)"
 # Cheap pre-filter, in bash with no external tools: the matcher includes every Bash call, so what cannot be a PR action
 # leaves here without python3 (a missing python3 must not block unrelated commands). It goes on for the PR tools, and
 # for text with the word `gh` (not "github") followed by the word `pr` or `pulls` (not "projects").
-word='[^[:alnum:]_-]'
+# A word separator: anything but a letter, digit, _ or -; and the JSON escapes of a tab, newline or carriage return
+# (backslash + letter in the raw input, also after a backslash continuation), which separate words like a space.
+word='(\\([tnr]|u000[9aAdD])|[^[:alnum:]_-])'
 tool='"tool_name"[[:space:]]*:[[:space:]]*'
 pr_tools="${tool}\"mcp__[^\"]*(create_pull_request|update_pull_request|merge_pull_request|enable_pr_auto_merge)\""
 bash_tool="${tool}\"Bash\""
-gh="(^|$word|\\\\[nt])gh$word(.*$word)?"
+gh="(^|$word)gh$word"
 end="($word|\$)"
-any_pr="${gh}(pr|pulls)${end}"
-do_pr="${gh}(pr$word(.*$word)?(create|merge)|pulls/[^[:space:]]*merge)${end}"
+any_pr="(^|$word)(pr|pulls)${end}"
+pr_word="(^|$word)pr$word"
+pr_action="(^|$word)(create|merge)${end}"
+# One regex per word, each on what follows the previous match: a single regex with `.*` between the words backtracks
+# quadratically on a long command (P4 of docs/propuestas/2026-10-25-repos-x.md; tests/test_revision_main.py times it).
+# after_first <text> <regex> sets `after` to the text following the first match of the regex, or fails.
+after=""
+after_first() {
+  [[ $1 =~ $2 ]] || return 1
+  local lit="${BASH_REMATCH[0]}" before
+  before="${1%%"$lit"*}"
+  after="${1:$((${#before} + ${#lit}))}"
+}
+# gh creating/merging: `gh ... pr ... create|merge` or `gh ... pulls/... merge`, the words in that order.
+gh_does_pr() {
+  local rest
+  after_first "$1" "$gh" || return 1
+  rest="$after"
+  if after_first "$rest" "$pr_word" && [[ $after =~ $pr_action ]]; then return 0; fi
+  # pulls/ and then merge, anywhere after it (not only in the same word): the regex for "in the same word" backtracks
+  # quadratically on one long word. A looser match here only makes python3 run, or a call without python3 be refused.
+  local before="${rest%%pulls/*}"
+  [[ ${#before} -lt ${#rest} ]] || return 1
+  rest="${rest:$((${#before} + 6))}"
+  [[ $rest == *merge* ]]
+}
 own=""  # 1 when the call is one this hook decides on (a PR tool, or gh creating/merging), for the python3-missing case
 if [[ $input =~ $pr_tools ]]; then own=1
-elif [[ $input =~ $bash_tool && $input =~ $any_pr ]]; then
-  if [[ $input =~ $do_pr ]]; then own=1; else own=0; fi
+elif [[ $input =~ $bash_tool ]]; then
+  # A backslash-newline continuation can split a word (`g\<nl>h pr merge 7` is `gh pr merge 7`); in the raw JSON it is
+  # backslash, backslash, backslash + n (or + r, backslash, n). The text with them removed is looked at too; a wrong
+  # join only makes python3 run. sed, not ${input//…/}: bash's replace is quadratic in the number of continuations.
+  cont_crlf='\\\r\n'; cont_lf='\\\n'; joined="$input"
+  case $input in *'\\\n'* | *'\\\r\n'*)
+    # Without sed (or if it fails), the slow join in bash: never skip the joined text.
+    joined="$(printf '%s' "$input" | sed -e 's/\\\\\\r\\n//g' -e 's/\\\\\\n//g' 2>/dev/null)" ||
+      { joined="${input//"$cont_crlf"/}"; joined="${joined//"$cont_lf"/}"; } ;;
+  esac
+  for text in "$input" "$joined"; do
+    if after_first "$text" "$gh" && [[ $after =~ $any_pr ]]; then
+      if gh_does_pr "$text"; then own=1; elif [ "$own" != "1" ]; then own=0; fi
+    fi
+  done
+  [ -n "$own" ] || exit 0
 else exit 0
 fi
 if ! command -v python3 >/dev/null 2>&1; then

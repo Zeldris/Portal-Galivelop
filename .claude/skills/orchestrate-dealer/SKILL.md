@@ -4,7 +4,7 @@ description: Run the main session as an orchestrator that deals work out to clea
 license: MIT
 compatibility: Claude Code or any Agent Skills agent with subagents; git; reads .claude/gw.json
 metadata:
-  version: "0.3.0"
+  version: "0.4.3"
   source: "Galivelop workshop; generalised from the Tarkor, installer and portal orchestrate-dealer"
 ---
 
@@ -35,9 +35,12 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
 
 1. **Split.** With the `selector` already applied, cut the task into chunks one subagent can close in one go: a fix,
    a module, a screen, a command. Each chunk gets a **done criterion** that can be checked (a green test, a green
-   CI job, a pushed commit) and a list of what blocks it. The **frontier** is the chunks nothing pending blocks:
-   they go out together (see Rules). Cap a subagent at ~35 tool calls (one or two proposal rows); at the cap it saves its state in `log` and the
-   next one resumes from it. A subagent's context grows with every call: chunks of 44-55 calls averaged 100-116k,
+   CI job, a pushed commit), a list of what blocks it and the files it touches. The **frontier** (one wave) is the chunks
+   nothing pending blocks: they go out together (see Rules), but two chunks of one wave never share a file: the second
+   waits for the first. With more than ~5 chunks, a cheap-model subagent may review the split before launch (missing
+   blockers, shared files, criteria that cannot be checked). Cap a subagent at ~30 tool calls (one or two proposal rows); at the cap it saves its state in `log` and the
+   next one resumes from it. A subagent's context grows with every call: chunks of 44-55 calls averaged 100-116k (and 9 of the 10
+   costliest subagents of one session went past 33 calls),
    and splitting them costs one more ~50k startup but far less than the drag. A one-file fix whose place the reviewer already gave is not a chunk: the main session
    makes it, with its tests (a subagent pays ~50k just to start and rediscovers what the session knows).
 2. **Deal.** One subagent per chunk with the Agent tool, in the foreground when the next chunk depends on it. Model and
@@ -52,8 +55,15 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
    `python3 .claude/gw/scripts/recuperar.py --estado`; if it reports no row for your branch or the log has no
    per-branch rows, read the next step and pending sections of {log}. If you touch code, read REVIEW.md and
    AGENTS.md. Follow the project's commit and push rules: commit and push each stable point, log update in the
-   same commit.
+   same commit. If the push is rejected, `git fetch` and `git merge` (never rebase), then push again.
+   At ~25 tool calls, commit (`WIP:` if red), push, and reply with what is left under MISSING.
+   To wait for something long (a push with its check), run it with `run_in_background` and watch it with `Monitor`
+   (load it with ToolSearch first) until it exits; keep your turn open while it runs, and never a foreground `sleep`.
+   Push with its output to a file outside the tree (`git push … > "$(git rev-parse --git-dir)/push.log" 2>&1`); if it
+   fails, read the pre-push reason in that file before retrying.
    Task: <what, in one or two sentences>.
+   Files: <paths you touch>. Create: <exact names of what is new>. A path not listed here: stop and return it
+   under QUESTIONS.
    Done when: <checkable criterion>. Run before pushing: {check}.
    For guard code or scripts: first list the edge cases (git states, platforms, empty or odd input) and write a
    test for each before calling the chunk done; the review afterwards is the safety net, not the first pass.
@@ -62,7 +72,9 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
    If you touch processes, paths or permissions, write it for every platform the project supports.
    If something needs a user decision, stop and return it as a question. Never merge into {protectedBranch}.
    Write your reply and commit message in {language}. Reply in at most 15 lines:
-   DONE: … · COMMIT: <sha> · MISSING: … · QUESTIONS: …
+   DONE: … · COMMIT: <sha> · EVIDENCE: <command and summarised result> · MISSING: … · QUESTIONS: …
+   If the chunk cannot be tested, reply NOT_TESTABLE: <reason> + the command that checks it another way, in place of
+   EVIDENCE. Every number you report you counted yourself.
    Add FOUND: (one line per finding) and TOOLS: (failures of the project's scripts, hooks or CI) only if you have any.
    ```
 
@@ -70,6 +82,7 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
    for each project rule a fresh agent could miss.
 3. **Review what returns.** Fetch and check the commit (`git fetch`, `git log -1 --stat`) and that the done
    criterion holds. If it does not close, the retry climbs one ladder rung; two failures, stop and tell the user.
+   Chunks that depended on the failed one are marked "cancelled: blocked by X" and listed to the user, never left waiting.
    For every subagent branch built in a worktree, **before merging it**, a subagent reviewer runs a short
    `/code-review` of its diff and returns only the findings; nothing merges until they are fixed. The reviewer's
    brief asks it to compare the diff with the **contract**: the doc that describes it and the real callers outside
@@ -77,7 +90,11 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
    a script against its backend, a doc against its code, two branches that edit the same rule.
    Log what comes back: `FOUND` and `TOOLS` into `log` (or the records the project keeps for them). `QUESTIONS`
    go to the user as they are, with the answer you recommend.
-4. **Continue.** Next chunk. One line to the user per chunk closed; the detail lives in `log`.
+4. **Close the wave.** After merging the whole wave, one reviewer subagent compares the merged result with the task
+   and returns `MISSING_ITEMS`: what the task asks for and no chunk covers. Each item becomes a chunk or a question.
+5. **Continue.** Next chunk. One line to the user per chunk closed; the detail lives in `log`. When something long
+   starts (a push with its check, a background subagent), one line to the user with what runs and roughly how long it
+   takes; then wait for its notification.
 
 ## Rules
 
@@ -94,7 +111,10 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
 - **Code fixes of the frontier, in parallel, in isolated worktrees:** each subagent runs with `isolation: "worktree"` in
   the background, commits at every stable point (`WIP:` if still red, so a restart loses nothing), does not touch the
   log or push, and returns its branch. The main session has each one reviewed (step 3), merges them one by one
-  (merge, never rebase; `check` after each), writes the log and pushes.
+  (merge, never rebase; `check` after each), writes the log and pushes. When the session folder is not the repo root
+  (a cloud session starts in `/home/user`, next to other repos, and `isolation` lands the worktree in the wrong one),
+  the main session creates each worktree itself with `git -C <repo> worktree add <folder> -b <branch>` and puts that
+  folder in the brief, without `isolation`.
 - **Shared records, main session only:** with parallel subagents none touches `log`, the findings register or any other
   shared record; they return their entries under `FOUND` and the main session writes them. Parallel writes conflict
   on merge.
@@ -104,7 +124,9 @@ A read of more than ~200 lines, or a long output, in the main session is a chunk
   tool itself; it deals batches and logs what returns. **Size a batch by its items: 6-8 checks**, and split it on
   the fly when it grows (batches of 11-14 blew a 60-call cap; 6-8 kept within it). Screenshots only when the finding
   is visual; otherwise the text tool's output. Batches share the environment, so each leaves it in a state the
-  next can resume from and says so under `MISSING`.
+  next can resume from and says so under `MISSING`. **Before dealing a batch, check that the starting state gives
+  each check its precondition** (the scenario, data or account it needs); if not, the first chunk prepares it.
+  Checks dealt on a state that cannot reach them burn whole subagent calls.
 - **A subagent never talks to the user:** what it needs from them returns as `QUESTIONS`.
 - **A subagent cut off by a usage or API limit is resumed, not restarted:** send it a message (SendMessage to its id)
   once the limit resets; it continues from its transcript. A new subagent would redo the work. Commit its partial
