@@ -13,9 +13,9 @@
   },
   "servicios": [
     {
-      "es": "Implantación: lo montamos en tu máquina con los modelos y las carpetas de tu proyecto.",
-      "gl": "Implantación: montámolo na túa máquina cos modelos e os cartafoles do teu proxecto.",
-      "en": "Setup: we install it on your machine with your project’s models and folders."
+      "es": "Implantación: lo montamos en tu máquina a medida que el motor real esté listo, con los modelos y las carpetas de tu proyecto.",
+      "gl": "Implantación: montámolo na túa máquina a medida que o motor real estea listo, cos modelos e os cartafoles do teu proxecto.",
+      "en": "Setup: we install it on your machine as the real engine becomes ready, with your project’s models and folders."
     },
     {
       "es": "Soporte: ayuda con las dudas y con cada versión nueva.",
