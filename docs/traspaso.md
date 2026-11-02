@@ -18,6 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
+- Nada pendiente.
 
 ## Hecho
 
