@@ -59,5 +59,38 @@ class Commits(unittest.TestCase):
         self.assertEqual((utiles, total), (["2026-01-05 Novedad de madrugada"], 1))
 
 
+class Escaparate(unittest.TestCase):
+    def test_imagenes_diagramas_y_menciones_publicas(self):
+        archivos = {
+            ".claude/gw.json": '{"content": ["^src/data/.*\\\\.json$", "^docs/", "^README\\\\.md$"]}',
+            "public/proyectos/tarkor/portada.webp": "x",
+            "public/proyectos/tarkor/portada-mini.webp": "x",
+            "docs/diagramas/tarkor.svg": "Tarkor",
+            "src/data/proyectos/tarkor.json": "tarkor",
+            "src/data/proyectos/otro.json": "Como en Tarkor",
+            "src/i18n/textos.ts": "tarkor",
+            "src/data/x.test.ts": "tarkor",
+            "README.md": "TARKOR",
+            "AGENTS.md": "tarkor",
+            "docs/traspaso.md": "tarkor",
+        }
+        with tempfile.TemporaryDirectory() as d:
+            for ruta, texto in archivos.items():
+                (Path(d) / ruta).parent.mkdir(parents=True, exist_ok=True)
+                (Path(d) / ruta).write_text(texto, encoding="utf-8")
+            env = dict(os.environ, GIT_AUTHOR_DATE="2026-01-05T10:00:00", GIT_COMMITTER_DATE="2026-01-05T10:00:00",
+                       GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                       GIT_COMMITTER_EMAIL="t@t")
+            subprocess.run(["git", "init", "-q", d], check=True)
+            subprocess.run(["git", "-C", d, "add", "."], check=True)
+            subprocess.run(["git", "-C", d, "commit", "-q", "-m", "inicio"], check=True, env=env)
+            e = recoger.escaparate("tarkor", ["Tarkor"], ["docs/diagramas/*.svg"], raiz=d)
+        self.assertEqual(e["visuales"], ["2026-01-05 public/proyectos/tarkor/portada.webp",
+                                         "2026-01-05 docs/diagramas/tarkor.svg"])
+        # Ni la propia ficha, ni los tests, ni lo que no ve el público, ni los diagramas (ya en visuales).
+        self.assertEqual(e["menciones"], ["contenido README.md", "contenido src/data/proyectos/otro.json",
+                                          "código src/i18n/textos.ts"])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -8,7 +8,9 @@ Clasifica cada repo del titular y de los extras de fuentes.json (ficha, proximam
 repo con destino, lee su clon en --clones (por defecto /home/user; vale <clones>/<repo> o <clones>/<owner>/<repo>):
 trae su rama por defecto y sus etiquetas, ahonda un clon superficial hasta las fechas de la ficha y saca los commits
 desde la última novedad, la etiqueta más alta, la cabecera de la bitácora, los cambios en las rutas vigiladas y las
-piezas de difusión listas. Solo lee los repos (fetch incluido); nunca escribe en ellos ni en el portal.
+piezas de difusión listas. Del portal, por proyecto, saca su escaparate: las imágenes y diagramas que lo muestran (con
+la fecha de su último cambio) y los demás archivos que lo nombran, marcados como contenido o código según `content` de
+.claude/gw.json. Solo lee los repos (fetch incluido); nunca escribe en ellos ni en el portal.
 """
 import argparse
 import datetime as dt
@@ -71,7 +73,45 @@ def leer_ficha(slug):
     d = json.loads(ruta.read_text(encoding="utf-8"))
     nov = d.get("novedades") or []
     return {"F": d.get("actualizado"), "N": nov[0]["fecha"] if nov else d.get("actualizado"),
-            "enlaces": [e.get("url", "") for e in d.get("enlaces", [])]}
+            "enlaces": [e.get("url", "") for e in d.get("enlaces", [])], "nombre": d.get("nombre")}
+
+
+def patrones_contenido(raiz=PORTAL):
+    datos = json.loads((Path(raiz) / ".claude" / "gw.json").read_text(encoding="utf-8"))
+    return [re.compile(c) for c in datos.get("content", [])]
+
+
+# Lo que ve el público, fuera de public/proyectos/ (que va aparte, con su fecha).
+ESCAPARATE = ("README.md", "index.html", "src/", "scripts/", "docs/diagramas/")
+
+
+def escaparate(slug, nombres, diagramas=(), raiz=PORTAL):
+    """Lo que muestra el proyecto en el portal, fuera de su ficha o su entrada de próximamente.
+
+    {"visuales": ["AAAA-MM-DD ruta"], "menciones": ["contenido|código ruta"]}: las imágenes de public/proyectos/<slug>/
+    (sin las -mini) y los diagramas de `diagramas` (globs), con la fecha de su último commit en el portal; y los
+    archivos de lo que ve el público (ESCAPARATE) que nombran el proyecto (por su slug o sus nombres), sin contar su
+    propia ficha ni los tests.
+    """
+    raiz = Path(raiz)
+    rutas = [f for f in git(raiz, "ls-files", f"public/proyectos/{slug}/", check=False).splitlines()
+             if not re.search(r"-mini\.\w+$", f)]
+    for g in diagramas:
+        rutas += git(raiz, "ls-files", g, check=False).splitlines()
+    visuales = [f"{git(raiz, 'log', '-1', '--format=%ad', '--date=short', '--', f, check=False) or '?'} {f}"
+                for f in rutas]
+    claves = [slug, *[n for n in nombres if n]]
+    args = ["grep", "-l", "-i", "-F"]
+    for c in claves:
+        args += ["-e", c]
+    propias = {f"src/data/proyectos/{slug}.json", "src/data/proximamente.json"}
+    contenido = patrones_contenido(raiz)
+    menciones = []
+    for f in git(raiz, *args, "--", *ESCAPARATE, ":!*.test.ts", check=False).splitlines():
+        if f in propias or f in rutas:
+            continue
+        menciones.append(("contenido " if any(c.search(f) for c in contenido) else "código ") + f)
+    return {"visuales": visuales, "menciones": menciones}
 
 
 def dia_antes(fecha):
@@ -176,6 +216,9 @@ def informe_repo(nombre, visibilidad, cfg, clones):
             r["enlace"] = "repo público sin enlace al código en la ficha: proponer añadirlo (ADR 0003)"
         elif visibilidad == "private" and enlazado:
             r["enlace"] = "repo privado enlazado desde la ficha: quitar el enlace"
+    nombre_ficha = leer_ficha(cfg["slug"]) if cfg["destino"] == "ficha" else None
+    r["escaparate"] = escaparate(cfg["slug"], [cfg.get("nombre"), (nombre_ficha or {}).get("nombre")],
+                                 cfg.get("diagramas", []))
     clon = buscar_clon(clones, nombre)
     if clon is None:
         r["falta_clon"] = (f"git clone https://github.com/{nombre} {Path(clones) / nombre.split('/')[1]}"
@@ -228,6 +271,12 @@ def texto(informes, perdidos):
         for ruta, filas in (r.get("bitacora") or {}).items():
             out.append(f"- {ruta}:" + ("" if filas else " (no existe o sin tabla)"))
             out += [f"    {f}" for f in filas]
+        if r.get("escaparate"):
+            e = r["escaparate"]
+            out.append("- imágenes y diagramas en el portal (último cambio):")
+            out += [f"    {v}" for v in e["visuales"]] or ["    (ninguno)"]
+            out.append("- otros archivos del portal que lo nombran:")
+            out += [f"    {m}" for m in e["menciones"]] or ["    (ninguno)"]
         out.append("")
     if perdidos:
         out.append("## En fuentes.json pero no en la lista de repos de la cuenta")

@@ -40,8 +40,10 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
    Por cada repo con línea `falta_clon`: si es privado, `add_repo` (lectura) primero; luego la orden de clonado que
    da el script, de uno en uno, y vuelve a ejecutarlo. Hecho cuando ningún repo con destino tiene `falta_clon`.
 4. **Decidir, repo a repo**, con su sección de [`proyectos.md`](proyectos.md) (y las reglas comunes del final):
-   - `ficha` / `proximamente`: qué novedades, fase, hitos, cifras, versión, textos, imágenes o muro cambian. Lee solo
-     lo que el informe señala (un diff, una entrada del CHANGELOG, un archivo vigilado).
+   - `ficha` / `proximamente`: qué novedades, fase, hitos, cifras, versión, textos, imágenes o muro cambian. Con commits
+     desde N, siempre al menos una novedad (lo trabajado o probado, por encima). Y el **escaparate** de `proyectos.md`:
+     la ficha entera, sus imágenes y diagramas, y cada archivo del portal que lo nombra (las dos listas del informe).
+     Lee solo lo que el informe señala (un diff, una entrada del CHANGELOG, un archivo vigilado, la línea que lo nombra).
    - `enlace`: un repo que pasó a público sin enlace en la ficha (ADR 0003) se enlaza (`enlaces`, tipo `otro`); uno
      privado enlazado, se desenlaza. Es contenido.
    - `nuevo`: nunca se añade solo. Propón destino (ficha, próximamente o `ignorar` con motivo) con una línea de qué
@@ -51,7 +53,8 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
    En informe y aplicar puedes repartir la lectura con un subagente ligero por repo (`orchestrate-dealer`), que
    devuelve sus propuestas con rutas; en semanal, no. Hecho cuando cada repo del informe tiene su decisión.
 5. **Informe** (los tres modos lo llevan en la respuesta):
-   - **Contenido**: por proyecto, qué cambia (o «sin cambios»).
+   - **Contenido**: por proyecto, qué cambia (o «sin cambios»): novedades, campos de la ficha, imágenes y diagramas, y
+     otros archivos del portal.
    - **Pide código**: qué y por qué; en aplicar y semanal se apunta en «Para la próxima publicación» de
      `docs/traspaso.md`.
    - **Repos nuevos** y avisos (`perdidos`, `enlace`, `aviso`): en aplicar y semanal, también en esa sección.
