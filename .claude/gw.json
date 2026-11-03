@@ -36,6 +36,12 @@
         "subagentModel": "light"
       },
       {
+        "case": "Poner el portal al día con los repos de la cuenta (fichas, próximamente, muro, repos nuevos) o revisar qué cambió en ellos: gw-portal en modo informe o aplicar",
+        "skill": "gw-portal",
+        "sessionModel": "medium",
+        "subagentModel": "light"
+      },
+      {
         "case": "Contenido de un proyecto (textos, imágenes, novedades) a partir de su repo, que solo se lee (un subagente ligero lo lee y resume con rutas)",
         "skill": "orchestrate-dealer",
         "sessionModel": "medium",

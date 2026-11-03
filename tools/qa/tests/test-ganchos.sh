@@ -14,6 +14,14 @@ for f in "$raiz"/.claude/gw/scripts/*.py "$raiz"/.claude/skills/*/scripts/*.py; 
   python3 -c 'import ast, sys; ast.parse(open(sys.argv[1]).read())' "$f" 2>/dev/null \
     || { echo "test-ganchos: Python roto en ${f#$raiz/}"; fallos=1; }
 done
+# Tests de los scripts de las skills propias del portal (gw-portal). Las del flujo (con «version:» en su SKILL.md) se
+# saltan: sus tests esperan el árbol del repo del flujo y se corren allí.
+for d in "$raiz"/.claude/skills/*/scripts; do
+  ls "$d"/test_*.py > /dev/null 2>&1 || continue
+  grep -qE '^ +version:' "${d%/scripts}/SKILL.md" 2>/dev/null && continue
+  python3 -m unittest discover -s "$d" > /dev/null 2>&1 \
+    || { echo "test-ganchos: fallan los tests de ${d#$raiz/} (python3 -m unittest discover -s ${d#$raiz/})"; fallos=1; }
+done
 python3 "$raiz/.claude/gw/scripts/config.py" --root "$raiz" validate > /dev/null \
   || { echo "test-ganchos: .claude/gw.json no es válido"; fallos=1; }
 # Claves de .claude/gw.json que el pre-push lee del commit que se sube, fijadas aquí (retro 2026-10-22, F18 del

@@ -1,0 +1,30 @@
+{
+  "_comentario": "Repos que gw-portal mira. Entran todos los de «titular» y los de «extras»; cada uno dice adónde va en el portal (ficha, proximamente o ignorar). Un repo del titular que no esté aquí sale en el informe como nuevo.",
+  "titular": "Zeldris",
+  "extras": ["raquelccarreraA/VeriNews_AI"],
+  "repos": {
+    "Zeldris/World-Maker-Fantasy": {
+      "destino": "ficha",
+      "slug": "tarkor",
+      "bitacora": "docs/registros/traspaso.md",
+      "vigilar": ["docs/producto/tarkor-contenido-web.md", "backend/uploads/images", "frontend/src/assets/maps"]
+    },
+    "Zeldris/Instalador-WMF-Tarkor": { "destino": "ficha", "slug": "tarkor", "bitacora": "docs/traspaso.md" },
+    "Zeldris/Galivelop-workflow": {
+      "destino": "ficha",
+      "slug": "galivelop-workflow",
+      "bitacora": "docs/traspaso.md",
+      "etiquetas": true
+    },
+    "raquelccarreraA/VeriNews_AI": { "destino": "ficha", "slug": "toveriai", "bitacora": "docs/traspaso.md" },
+    "Zeldris/galivelop-image-generator": {
+      "destino": "ficha",
+      "slug": "galivelop-image-generator",
+      "bitacora": "docs/traspaso.md"
+    },
+    "Zeldris/galivelop-voice-generator": { "destino": "proximamente", "slug": "galivelop-voice-generator" },
+    "Zeldris/galivelop-developer": { "destino": "proximamente", "slug": "galivelop-developer" },
+    "Zeldris/Portal-Galivelop": { "destino": "ignorar", "motivo": "es este portal" },
+    "Zeldris/Zeldris": { "destino": "ignorar", "motivo": "README del perfil de GitHub" }
+  }
+}

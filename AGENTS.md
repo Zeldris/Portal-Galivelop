@@ -132,7 +132,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   de cada proyecto y sube `claude/galivelop-dev-portal-1h89ci` a `main` **sin pedir confirmación** (solo ella; solo
   contenido). Por eso **la rama de trabajo está siempre publicable**: todo código que entre lleva su `/code-review` y
   su marca antes del domingo, y lo hecho entre semana va a «Para la próxima publicación» de la bitácora. Detalle y
-  cómo añadir un proyecto: [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md#reglas).
+  cómo añadir un proyecto: [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md#reglas); lo hace la skill
+  `gw-portal`, que también se usa en una sesión para revisar los repos (modo informe) o aplicar sus cambios.
 - **Todo texto visible, en castellano, gallego e inglés** (`visibleLanguages`); `npm run check` lo comprueba. Un
   subagente que escriba textos lo recibe en su encargo.
 - El código de cada proyecto se enlaza desde su ficha (`enlaces`, tipo `otro`) cuando su repo es público. Si el repo es privado, no se enlaza: solo su versión pública.
