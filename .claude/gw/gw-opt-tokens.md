@@ -55,6 +55,12 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   '^  [-+ @]'` (y lo mismo con `--update`): sin el diff entero de `REVIEW.md`/`GLOSSARY.md` contra la plantilla
   (~300k arrastrados), que no se usa; el que importa es el de plantilla vieja contra nueva (paso 3 de la skill).
 
+- **Clones de `gw-portal` en el scratchpad** (2026-11-04): `recoger.py --clones <scratchpad>/clones`; en `/home/user`
+  cargaban tres repos más en cada llamada (75k de arranque por subagente). Y `proyectos.md` se lee por sección
+  (`sed -n '/^## TARKOR/,/^## /p'`): entero, 17 lecturas y 152k arrastrados.
+- 2026-11-04, flujo 0.5.0 y `gw-portal` aplicar: 149 llamadas, 129k de contexto medio (suelo 113k, techo 158k), 5
+  compactaciones; 9 subagentes, 9,8M de entrada.
+
 ## Costes conocidos
 
 - **Repos hermanos en `/home/user`** (2026-10-26): cada repo que se añade con `add_repo` en la sesión principal mete

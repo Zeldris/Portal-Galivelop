@@ -34,12 +34,17 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
 3. **Recogida mecánica:**
 
    ```bash
-   python3 .claude/skills/gw-portal/scripts/recoger.py --repos <scratchpad>/repos.json --clones /home/user
+   python3 .claude/skills/gw-portal/scripts/recoger.py --repos <scratchpad>/repos.json --clones <scratchpad>/clones
    ```
+
+   Los clones van al scratchpad, fuera de la carpeta de la sesión: dentro, cada llamada y cada subagente cargarían
+   el `CLAUDE.md`, el `AGENTS.md` y las skills de cada repo (75k de arranque por subagente, retro del 2026-11-04).
 
    Por cada repo con línea `falta_clon`: si es privado, `add_repo` (lectura) primero; luego la orden de clonado que
    da el script, de uno en uno, y vuelve a ejecutarlo. Hecho cuando ningún repo con destino tiene `falta_clon`.
 4. **Decidir, repo a repo**, con su sección de [`proyectos.md`](proyectos.md) (y las reglas comunes del final):
+   - De [`proyectos.md`](proyectos.md), lee una vez las secciones comunes y, por repo, solo la suya:
+     `sed -n '/^## TARKOR/,/^## /p' .claude/skills/gw-portal/proyectos.md` (el encabezado, en mayúsculas).
    - `ficha` / `proximamente`: qué novedades, fase, hitos, cifras, versión, textos, imágenes o muro cambian. Con commits
      desde N, siempre al menos una novedad (lo trabajado o probado, por encima). Y el **escaparate** de `proyectos.md`:
      la ficha entera, sus imágenes y diagramas, y cada archivo del portal que lo nombra (las dos listas del informe).

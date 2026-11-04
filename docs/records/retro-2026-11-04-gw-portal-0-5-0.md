@@ -1,6 +1,6 @@
 # Retro 2026-11-04 · flujo 0.5.0 y `gw-portal` en modo aplicar
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada por la persona el 2026-11-04 y aplicada: P1, P2 y P4 en la skill `gw-portal`; P3 y el resto, en «For Galivelop-workflow» para `gw-harvest`. P5 no pide cambio de archivos.
 
 Lo revisado es lo que entra en `main`: el paso del flujo de 0.4.3 a 0.5.0, el informe y la aplicación de
 `gw-portal` (Tarkor, toVeriAI, Image Generator, ficha y diagramas del workflow) y los arreglos de la revisión.
