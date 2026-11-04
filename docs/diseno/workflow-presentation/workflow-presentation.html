@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Galivelop-workflow, step by step</title>
+<meta name="description" content="Animated presentation of Galivelop-workflow v0.5.0: one task from the session hook to the published web, as the real scripts and hooks run it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg0:#06121b; --bg1:#0e2a42; --agent:#38b6e8; --script:#4cc38a; --person:#f2b34a; --reject:#f0716a;
+  --muted:#8a9bb0; --fg:#eef6fb; --ci:#a9b8d4; --panel:rgba(255,255,255,.045); --line:rgba(238,246,251,.14);
+  --sans:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --gutter:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+  --radius:12px; --dur:520ms; --fs:16; color-scheme:dark;
+}
+@media (prefers-reduced-motion: reduce){ :root{--dur:0ms} }
+:root.noanim{--dur:0ms}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg0) radial-gradient(120% 90% at 50% -10%,var(--bg1),var(--bg0) 70%) fixed;color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.45;
+  padding-block:0 16px;padding-left:var(--gutter);padding-right:var(--gutter-r);display:flex;flex-direction:column;min-height:100vh}
+.top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding-block:14px 8px}
+h1{font-size:clamp(17px,2.2vw,22px);margin:0;font-weight:600;letter-spacing:.01em}
+h1 small{color:var(--muted);font-weight:500;font-size:.75em;margin-left:.5em}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--muted);margin-left:auto}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.lang{display:flex;gap:4px;margin-left:8px}
+.lang button{font:inherit;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:999px;padding:3px 9px;cursor:pointer}
+.lang button[aria-pressed="true"]{color:var(--fg);border-color:var(--agent);background:rgba(56,182,232,.12)}
+.lang button:focus-visible,.ctl button:focus-visible,.chapters button:focus-visible{outline:2px solid var(--agent);outline-offset:2px}
+main{display:grid;grid-template-columns:1fr;gap:14px;flex:1;align-content:start}
+@media (min-width:960px){ main{grid-template-columns:3fr 2fr;align-items:start} }
+.scene{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:8px;min-width:0}
+.scene svg{display:block;width:100%;height:auto;overflow:visible;font-family:var(--sans)}
+.scene text{fill:var(--fg);font-size:calc(var(--fs) * 1px)}
+.scene text.m{font-family:var(--mono);font-size:calc(var(--fs) * .95px)}
+.scene text.mu{fill:var(--muted)}
+.scene.narrow .node text.mu,.scene.narrow #badges{display:none}
+.scene text.sm{font-size:calc(var(--fs) * .9px)}
+.scene .lane-line{stroke:var(--line);stroke-width:1.4}
+.scene .lane-glow{fill:var(--person);opacity:0;transition:opacity var(--dur)}
+.scene .lane-glow.on{opacity:.14}
+.scene .tok{transition:transform var(--dur) cubic-bezier(.4,0,.2,1);}
+.scene .tok circle{transition:fill var(--dur)}
+.scene .tok .halo{opacity:.35}
+.scene .fade{opacity:0;transition:opacity var(--dur)}
+.scene .fade.on{opacity:1}
+.scene .mv{transition:transform var(--dur) cubic-bezier(.4,0,.2,1)}
+.scene .commit{opacity:0;transition:opacity var(--dur),fill var(--dur),stroke var(--dur)}
+.scene .commit.u{opacity:1;fill:var(--bg0);stroke:var(--agent);stroke-dasharray:3 2}
+.scene .commit.p{opacity:1;fill:var(--agent);stroke:var(--agent);stroke-dasharray:none}
+.scene .commit.m{opacity:1;fill:var(--script);stroke:var(--script);stroke-dasharray:none}
+.scene .commit.f{opacity:1;fill:var(--reject);stroke:var(--reject);stroke-dasharray:none}
+.scene .gate{fill:var(--bg0);stroke:var(--line);stroke-width:1.2;transition:fill var(--dur),stroke var(--dur)}
+.scene .gate.on{fill:var(--script);stroke:var(--script)}
+.scene .gate.red{fill:var(--reject);stroke:var(--reject)}
+.scene .chip rect{fill:var(--bg0);stroke:var(--line);transition:stroke var(--dur),fill var(--dur)}
+.scene .chip.run rect{stroke:var(--ci)}
+.scene .chip.ok rect{stroke:var(--script);fill:rgba(76,195,138,.18)}
+.scene .chip .dot{fill:var(--muted);transition:fill var(--dur)}
+.scene .chip.run .dot{fill:var(--ci)}
+.scene .chip.ok .dot{fill:var(--script)}
+.scene .node circle{fill:var(--bg0);stroke:var(--line);stroke-width:1.5;transition:stroke var(--dur),fill var(--dur)}
+.scene .node.on circle{stroke:var(--agent);fill:rgba(56,182,232,.18)}
+.scene .node.on.p circle{stroke:var(--person);fill:rgba(242,179,74,.18)}
+.scene .node.on.c circle{stroke:var(--ci);fill:rgba(169,184,212,.18)}
+.scene .node.on.s circle{stroke:var(--script);fill:rgba(76,195,138,.18)}
+.scene .arrow{stroke:var(--muted);stroke-width:1.4;fill:none;marker-end:url(#arr)}
+.scene .arrow.red{stroke:var(--reject);marker-end:url(#arr-red)}
+.scene .arrow.green{stroke:var(--script);marker-end:url(#arr-green)}
+.scene .arrow.amber{stroke:var(--person);marker-end:url(#arr-amber)}
+.scene .dash{stroke-dasharray:5 4}
+.scene .pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:.9}}
+@media (prefers-reduced-motion: reduce){ .scene .pulse{animation:none;opacity:.7} }
+:root.noanim .scene .pulse{animation:none;opacity:.7}
+.caption{min-width:0;display:flex;flex-direction:column;gap:10px}
+.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.kicker .who{display:inline-flex;align-items:center;gap:6px}
+.kicker .who::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c,var(--muted))}
+h2{font-size:clamp(19px,2.4vw,26px);margin:0;line-height:1.2;text-wrap:balance;font-weight:600}
+.lines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.lines li{display:grid;grid-template-columns:18px 1fr;gap:8px;align-items:start;opacity:0;transform:translateY(6px);transition:opacity var(--dur),transform var(--dur);min-width:0}
+.lines li.show{opacity:1;transform:none}
+.lines li::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c,var(--muted));margin-top:7px;justify-self:center}
+.lines code,.lines .file{font-family:var(--mono);font-size:13px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:6px;padding:3px 8px;display:inline-block;max-width:100%;overflow-wrap:anywhere;color:var(--fg)}
+.lines .note{color:var(--fg);font-size:14px}
+.lines .ok{color:var(--script);font-size:14px}
+.lines .fail{color:var(--reject);font-family:var(--mono);font-size:13px;overflow-wrap:anywhere}
+.lines .gate{color:var(--script);font-size:14px}
+.lines .gate::before{content:"✓ ";}
+.say{margin:0;color:var(--muted);font-size:14px;max-width:62ch;opacity:0;transition:opacity var(--dur)}
+.say.show{opacity:1}
+.src{font-family:var(--mono);font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.ctl{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding-block:12px 4px;border-top:1px solid var(--line);margin-top:10px}
+.ctl button,.chapters button{font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;min-height:36px}
+.ctl button[aria-pressed="true"]{border-color:var(--agent)}
+#progress{flex:1 1 180px;accent-color:var(--agent);min-width:120px}
+.meta{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.chapters{display:flex;flex-wrap:wrap;gap:6px;padding-block:6px}
+.chapters button{font-size:12px;padding:4px 10px;min-height:30px;color:var(--muted)}
+.chapters button[aria-current="true"]{color:var(--fg);border-color:var(--agent)}
+.hint{font-size:12px;color:var(--muted);margin:0;flex-basis:100%}
+select{font:inherit;color:var(--fg);background:var(--bg0);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+/* record mode */
+body.record{padding:0;overflow:hidden;min-height:0;display:grid;background-attachment:scroll}
+body.record .top,body.record .ctl,body.record .chapters,body.record .lang,body.record .say,body.record .src,body.record .kicker .no{display:none}
+body.record main{gap:0}
+body.record .scene{border:0;background:transparent;padding:0}
+body.record .caption{justify-content:center}
+body.record .lines li.show{opacity:1}
+body.record.r16x9{width:1280px;height:720px;--fs:21}
+body.record.r16x9 main{grid-template-columns:780px 1fr;height:720px;align-items:center;padding:24px 40px 24px 28px;gap:28px}
+body.record.r16x9 h2{font-size:34px}
+body.record.r16x9 .lines .note,body.record.r16x9 .lines .ok,body.record.r16x9 .lines .gate{font-size:22px;line-height:1.35}
+body.record.r16x9 .lines code,body.record.r16x9 .lines .file,body.record.r16x9 .lines .fail{font-size:19px}
+body.record.r16x9 .kicker{font-size:15px}
+body.record.r16x9 .lines li{grid-template-columns:22px 1fr;gap:10px}
+body.record.r16x9 .lines li::before{width:11px;height:11px;margin-top:10px}
+body.record.r9x16{width:1080px;height:1920px;--fs:30}
+body.record.r9x16 main{grid-template-columns:1fr;height:1920px;align-content:center;padding:40px 56px;gap:56px}
+body.record.r9x16 h2{font-size:52px}
+body.record.r9x16 .lines .note,body.record.r9x16 .lines .ok,body.record.r9x16 .lines .gate{font-size:32px;line-height:1.35}
+body.record.r9x16 .lines code,body.record.r9x16 .lines .file,body.record.r9x16 .lines .fail{font-size:27px}
+body.record.r9x16 .kicker{font-size:22px}
+body.record.r9x16 .lines li{grid-template-columns:30px 1fr;gap:14px}
+body.record.r9x16 .lines li::before{width:15px;height:15px;margin-top:16px}
+body.record.r9x16 .lines{gap:14px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1 id="h1">Galivelop-workflow <small id="h1s">v0.5.0 · one task, step by step</small></h1>
+  <div class="legend" aria-hidden="true">
+    <span style="--c:var(--agent)" id="lg-a">agent</span><span style="--c:var(--script)" id="lg-s">script / hook</span>
+    <span style="--c:var(--person)" id="lg-p">person</span><span style="--c:var(--ci)" id="lg-c">CI</span>
+  </div>
+  <div class="lang" role="group" aria-label="Language" id="lang">
+    <button type="button" data-lang="es" aria-pressed="false" lang="es">es</button>
+    <button type="button" data-lang="gl" aria-pressed="false" lang="gl">gl</button>
+    <button type="button" data-lang="en" aria-pressed="true" lang="en">en</button>
+  </div>
+</header>
+<main>
+  <div class="scene" id="scene" aria-hidden="true"></div>
+  <section class="caption" aria-live="polite">
+    <div class="kicker"><span class="no" id="ch-no"></span><span id="ch-name"></span><span class="who" id="who"></span><span class="no" id="beat-no"></span></div>
+    <h2 id="beat-title"></h2>
+    <ul class="lines" id="panel"></ul>
+    <p class="say" id="narration"></p>
+    <p class="src" id="source"></p>
+  </section>
+</main>
+<nav class="chapters" id="chapters" aria-label="Chapters"></nav>
+<div class="ctl">
+  <button type="button" id="prev" aria-label="Previous step">‹</button>
+  <button type="button" id="play" aria-pressed="false">Play</button>
+  <button type="button" id="next" aria-label="Next step">›</button>
+  <input type="range" id="progress" min="0" value="0" aria-label="Step">
+  <span class="meta" id="meta"></span>
+  <select id="speed" aria-label="Speed"><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+  <button type="button" id="rec" aria-label="Open record mode 16:9">16:9</button>
+  <p class="hint" id="hint"></p>
+</div>
+<script>
+// Language-independent step data: chapter, actor, source path and scene state.
+// scene: lane A|S|P|C, x 0..1 along the lane, c = commit slots ('.' none, u unpushed, p pushed, m mark, f fix),
+// sub 0..3 (subagent branches: appear, commit, merged), cut/relay (session cut), lock, review, card (proposals),
+// person (amber lane glow), stamp, gates 0..11, red (index of red gate), reject (red return arrow),
+// ci idle|run|ok, pages idle|run|ok, merge, pub, loop 0..4 (chapter 10 ring), doc (log icon at agent).
+const GATES=['commit exists','cfg_at','rev-list','scan_leftovers','private-check.py','run_checks','check-green','is_protected','policy','is-code.sh','mark ancestor'];
+const SC=[
+ {ch:1,a:'S',src:'.claude/settings.json · .claude/gw/scripts/session-start.sh',s:{lane:'S',x:.04}},
+ {ch:1,a:'A',src:'docs/handoff.md · recover.py --state',s:{lane:'A',x:.1,doc:1}},
+ {ch:1,a:'A',src:'.claude/skills/gw-selector · .claude/gw.json selector.cases',s:{lane:'A',x:.16}},
+ {ch:2,a:'A',src:'.claude/skills/gw-orchestrate-dealer · subagent-cap.py',s:{lane:'A',x:.2,sub:1}},
+ {ch:2,a:'A',src:'gw-orchestrate-dealer (brief, ladder)',s:{lane:'A',x:.24,sub:2}},
+ {ch:2,a:'S',src:'.claude/gw/scripts/merge-branch.sh',s:{lane:'S',x:.28,sub:3,c:'u'}},
+ {ch:3,a:'S',src:'.githooks/pre-commit · .githooks/commit-msg · handoff.py',s:{lane:'S',x:.32,sub:3,c:'uu'}},
+ {ch:3,a:'A',src:'.claude/gw/scripts/check.sh · .githooks/pre-push (check-green)',s:{lane:'A',x:.36,sub:3,c:'pp',push:1}},
+ {ch:3,a:'S',src:'before-stop.py · config-guard.py · agent-signatures.py',s:{lane:'S',x:.4,sub:3,c:'pp',lock:1}},
+ {ch:4,a:'S',src:'.claude/settings.json (compaction) · recover.py',s:{lane:'S',x:.42,sub:3,c:'pp',cut:1,compact:1}},
+ {ch:4,a:'A',src:'docs/handoff.md · AGENTS.md «Relevos»',s:{lane:'A',x:.5,sub:3,c:'pp',cut:1,relay:1}},
+ {ch:5,a:'A',src:'REVIEW.md · .claude/gw/scripts/is-code.sh',s:{lane:'A',x:.53,sub:3,c:'ppp',cut:1,review:1}},
+ {ch:6,a:'A',src:'gw-opt-tokens · measure.py · retro',s:{lane:'A',x:.56,sub:3,c:'ppp',cut:1,card:1}},
+ {ch:6,a:'P',src:'retro (**Status:**) · .claude/gw.json requireRetro',s:{lane:'P',x:.56,sub:3,c:'ppp',cut:1,card:2,person:1,stamp:1}},
+ {ch:7,a:'S',src:'.claude/gw/scripts/reviewed.sh · docs/records/reviewed.txt',s:{lane:'S',x:.6,sub:3,c:'pppm',cut:1}},
+ {ch:7,a:'P',src:'.claude/gw.json pushToProtected · AGENTS.md «Ramas y main»',s:{lane:'P',x:.62,sub:3,c:'pppm',cut:1,person:1,stamp:2}},
+ {ch:8,a:'S',src:'.githooks/pre-push (part 1)',s:{lane:'S',x:.66,sub:3,c:'pppm',cut:1,gates:4}},
+ {ch:8,a:'S',src:'.githooks/pre-push · private-check.py · run_checks',s:{lane:'S',x:.7,sub:3,c:'pppm',cut:1,gates:7}},
+ {ch:8,a:'S',src:'.githooks/pre-push (fail messages)',s:{lane:'S',x:.72,sub:3,c:'pppmfm',cut:1,gates:7,red:5,reject:1}},
+ {ch:8,a:'S',src:'.githooks/pre-push · is-code.sh',s:{lane:'S',x:.78,sub:3,c:'pppmfm',cut:1,gates:10}},
+ {ch:8,a:'S',src:'.githooks/pre-push (mark ancestor)',s:{lane:'S',x:.84,sub:3,c:'pppmfm',cut:1,gates:11}},
+ {ch:9,a:'C',src:'.github/workflows/check.yml',s:{lane:'C',x:.6,sub:3,c:'pppmfm',cut:1,gates:11,ci:'ok'}},
+ {ch:9,a:'C',src:'.github/workflows/pages.yml',s:{lane:'C',x:.86,sub:3,c:'pppmfm',cut:1,gates:11,ci:'ok',pages:'ok',merge:1,pub:1}},
+ {ch:10,a:'A',src:'gw-harvest · harvest.py · docs/proposals/',s:{lane:'A',x:.3,loop:1}},
+ {ch:10,a:'P',src:'docs/proposals/*.md · version.py X.Y.Z · CHANGELOG.md',s:{lane:'P',x:.55,loop:2,person:1,stamp:3}},
+ {ch:10,a:'C',src:'version.py --release · release.yml · check.yml',s:{lane:'C',x:.8,loop:3}},
+ {ch:10,a:'A',src:'gw-update · apply.py · doctor.py',s:{lane:'A',x:.3,loop:4}},
+];
+const T={};
+T.en={
+ ui:{title:'Galivelop-workflow',sub:'v0.5.0 · one task, step by step',legend:{A:'agent',S:'script / hook',P:'person',C:'CI'},
+  play:'Play',pause:'Pause',prev:'Previous step',next:'Next step',step:'Step',speed:'Speed',rec:'Open record mode 16:9',
+  chapter:'Chapter',of:'of',hint:'Keys: ← → step · space play · 1-9, 0 chapter · Home/End. Reduced motion shows the final frame of each step.',
+  lang:'Language',chapters:'Chapters'},
+ scene:{A:'agent',S:'script',P:'person',C:'CI',branch:'branch',main:'main',s1:'session 1',s2:'session 2',log:'handoff.md',
+  sub:'agent/<id>',fix:'fix · commit · push',findings:'findings',proposals:'proposals',mark:'mark',pub:'published',
+  check:'check.yml',pages:'pages.yml',lock:'no stop',compact:'compaction',loop:['projects','harvest','workflow','release','/gw-update'],
+  loopSub:['vX.Y.Z','docs/proposals/','version.py','release.yml','apply.py'],approve:'approved',toMain:'→ main',allgreen:'pre-push: all green'},
+ chapters:['Task start','Plan and deal out','Commit and push','Session cut and relay','Phase 1 · code','Phase 2 · environment','Phase 3 · closing','Pre-push, gate by gate','CI and publication','Versions of the workflow'],
+ beats:[
+ {t:'The session opens; a hook runs first',l:[['S','cmd','session-start.sh'],['S','note','Prints the log state and the last commits before the agent reads anything.'],['S','file','.claude/settings.json → compaction window 200 000']],
+  s:'Every session starts the same way, on a fresh container or after a /clear: the start hook, not the agent, says where things stand.',b:['The start hook prints the log state and the last commits.']},
+ {t:'The agent reads the log, not the chat',l:[['A','file','docs/handoff.md'],['A','note','Branch, task in progress, what is missing, next step.'],['A','cmd','git fetch origin <branch> · npm run check'],['A','note','Last commit matches the log; the check is green before touching anything.']],
+  s:'State lives in files, not in the conversation. The agent checks that the pushed branch and the log agree.',b:['State lives in docs/handoff.md, not in the chat.','Fetch, compare with the log, run the check.']},
+ {t:'Which skill and which model',l:[['A','cmd','gw-selector'],['A','note','One line: skill and model for this task. The session model is the person\'s choice.'],['A','note','Subagents get the cheapest model that does the job.']],
+  s:'The selector reads the project\'s own rows in .claude/gw.json and names the skill and the model before the first edit.',b:['gw-selector names the skill and the model in one line.']},
+ {t:'Split the task into chunks',l:[['A','cmd','gw-orchestrate-dealer'],['A','note','The main session plans, decides and reviews; it does not grind.'],['A','cmd','subagent-cap.py → about 30 calls per subagent']],
+  s:'Work of more than one step is dealt out to clean-context subagents, each on its own branch and worktree.',b:['Multi-step work goes to clean-context subagents.','The main session plans, decides and reviews.']},
+ {t:'The brief each subagent gets',l:[['A','note','Goal, paths, constraints, the check it must pass, what to return.'],['A','file','agent/<id>-<topic> · its own worktree'],['A','note','Model ladder: sonnet low → sonnet medium → opus medium → opus high.'],['A','note','Two failures in a row → stop and ask the person.']],
+  s:'Pointers instead of pasted content keep each subagent cheap; the ladder raises the model only when a cheaper one fails.',b:['Goal, paths, constraints, the check to pass.','Two failures in a row: stop and ask.']},
+ {t:'Back into the branch, reviewed',l:[['S','cmd','merge-branch.sh <branch> "<message>"'],['S','note','Runs the check and the related tests, merges, deletes the worktree.'],['A','note','The main session reviews what came back before merging it.']],
+  s:'Nothing from a subagent enters the work branch without the check and a review.',b:['merge-branch.sh: check, related tests, merge, clean up.']},
+ {t:'Two hooks on every commit',l:[['S','cmd','pre-commit'],['S','note','Blocks secrets and leftovers (merge markers, debug prints).'],['S','cmd','commit-msg → handoff.py'],['S','note','The log changes in the same commit; last line starts with «Siguiente:»; no agent signatures.']],
+  s:'The commit message carries the next step. With agentSignatures false, a Co-Authored-By from the agent is rejected.',b:['pre-commit blocks secrets and leftovers.','commit-msg: log updated, «Siguiente:» last, no signatures.']},
+ {t:'Push at every stable point',l:[['A','cmd','bash .claude/gw/scripts/check.sh && git push -u origin <branch>'],['A','note','Green check recorded; pre-push does not repeat it on the same tree (<24 h).'],['A','note','Never more than 30-45 minutes without pushing. On a network error: retry 2, 4, 8, 16 s.']],
+  s:'What is not pushed does not exist for the next session. Big tasks are split into small pushed commits.',b:['What is not pushed does not exist.','Check, then push; retries on network errors.']},
+ {t:'The agent cannot stop with unpushed work',l:[['S','cmd','before-stop.py'],['S','note','A Claude Code Stop hook: with uncommitted or unpushed changes, the turn does not end.'],['S','cmd','config-guard.py · agent-signatures.py'],['S','note','The agent cannot edit settings, scripts or hooks without the person; signatures are stripped.']],
+  s:'Three Claude Code hooks fence the agent: it cannot leave work only local and it cannot loosen its own rules.',b:['A Stop hook refuses to end with unpushed work.','The agent cannot edit its own rules.']},
+ {t:'Compaction at 200k tokens',l:[['S','file','.claude/settings.json → autoCompact 200 000'],['S','cmd','recover.py --state'],['S','note','After a compaction or /clear, the start hook reprints the log state and the last commits.'],['S','cmd','recover.py --search "<text>"']],
+  s:'The conversation is disposable; the context can be cut at any time. Anything that must survive is in the log.',b:['The context can be cut at any time.','recover.py reprints the log and the last commits.']},
+ {t:'Relay: the next session picks up the log',l:[['A','note','Stopping half-way: a «WIP:» commit, and the log says what fails and why.'],['A','note','Closing a task: everything pushed, log current, ask for /clear in one line.'],['A','note','The next session starts at chapter 1 and continues at «next step».']],
+  s:'A session can die at any moment; the relay works because every commit carries the log and the next step.',b:['Half-way: a WIP: commit, the log says what fails.','The next session reads the log and continues.']},
+ {t:'Review the whole diff against main',l:[['A','cmd','git fetch origin main · /code-review --max-findings all'],['A','file','REVIEW.md → criteria'],['A','note','Serious and medium findings fixed, committed, pushed; minor ones go to the log.'],['S','cmd','is-code.sh → content needs no review']],
+  s:'Never on work already merged. is-code.sh tells code from content with the content patterns of .claude/gw.json.',b:['Code review of the whole diff, with REVIEW.md.','Serious and medium fixed and pushed; minor to the log.']},
+ {t:'Measure and propose',l:[['A','cmd','gw-opt-tokens → measure.py'],['A','note','Where the tokens went; environment changes that cut them.'],['A','cmd','retro'],['A','file','docs/records/retro-<date>-<topic>.md · **Status:** pending']],
+  s:'Phase 2 only for large code changes in this project (requireRetro false). The proposals are written, not applied.',b:['Where the tokens went, and what would cut them.','The retro proposes; it does not apply.']},
+ {t:'The person decides',l:[['P','note','Each proposal: approve, reject or defer. A retro written without being presented does not count.'],['P','note','«Merge directly» skips more review rounds, never the CI or the retro.'],['A','note','What is approved is applied in the branch, with its commit.']],
+  s:'First of three moments where the person decides. If they are not there, everything stays ready and the agent stops before the mark.',b:['The person approves, rejects or defers each proposal.','Written but not presented: does not count.']},
+ {t:'The review mark is a commit',l:[['S','cmd','bash .claude/gw/scripts/reviewed.sh'],['S','file','docs/records/reviewed.txt → sha of the reviewed commit'],['S','note','Its own commit, «Revisado: <sha>», then git push.'],['S','note','If phase 2 brought code, only those commits are reviewed again.']],
+  s:'The mark is data in the repository, not a claim in the chat: the hooks will look for it.',b:['reviewed.sh writes the mark and commits it.','The mark is data the hooks will check.']},
+ {t:'The person confirms going to main',l:[['P','note','main is the published web. Only with explicit confirmation, written down in the log.'],['S','file','.claude/gw.json → pushToProtected: direct'],['A','cmd','git push origin <branch>:main'],['P','note','Exception: the weekly task pushes content on Sundays without asking.']],
+  s:'With pushToProtected pr, a Claude Code hook asks for the same mark before creating or merging the pull request.',b:['main is the published web: only with confirmation.','Direct push; a PR variant asks for the same mark.']},
+ {t:'Pre-push, part 1: what is being pushed',l:[['S','gate','commit exists → an empty push ends here'],['S','gate','cfg_at → .claude/gw.json read from the pushed commit, not the worktree'],['S','gate','rev-list → the new commits, one by one'],['S','gate','scan_leftovers → merge markers, debug prints']],
+  s:'The hook reads its configuration from the commit being pushed, so a local edit of gw.json cannot loosen it.',b:['Config read from the pushed commit, not the worktree.','New commits listed and scanned for leftovers.']},
+ {t:'Pre-push, part 2: the check',l:[['S','gate','private-check.py → private paths and secrets'],['S','gate','run_checks → npm run check in a temporary worktree'],['S','gate','check-green → cache of the green check (<24 h, never on main)'],['S','note','The temporary worktree checks the commit, not whatever is on disk.']],
+  s:'The check runs on the exact tree being pushed. The cache from check.sh skips it only when the tree is identical.',b:['The check runs in a temporary worktree of the pushed commit.','A green check <24 h is reused; never on main.']},
+ {t:'Rejection: exit 1, and the fix in the last line',l:[['S','fail','pre-push: check failed on <sha>'],['S','fail','fix: bash .claude/gw/scripts/check.sh · (only a WIP: commit may skip this hook: git push --no-verify)'],['A','note','The agent fixes, commits, writes a new mark and pushes again.']],
+  s:'Every failure message ends with the command that fixes it. The red gate goes back to the agent lane; nothing passes by hand.',b:['Every failure ends with the command that fixes it.','Fix, commit, new mark, push again.']},
+ {t:'What only main passes',l:[['S','gate','is_protected → the target is main'],['S','gate','policy → pushToProtected read from the remote tip'],['S','note','Leftovers scanned on every commit main would gain.'],['S','gate','is-code.sh → content-only pushes need no mark']],
+  s:'The policy is read from the branch the remote already has, so the pushed commit cannot change its own rules.',b:['Policy read from the remote tip, not the pushed commit.','Content-only pushes need no mark.']},
+ {t:'The mark must cover the code',l:[['S','gate','mark ancestor → reviewed.txt points at an ancestor'],['S','note','No code commit after the marked one; the log, records and content may follow.'],['S','cmd','prepush-branches.sh · related-tests.sh'],['S','ok','pre-push: all green']],
+  s:'Eleven gates, one path through. The last one ties the review to the exact code going out.',b:['The mark must be an ancestor with no code after it.','Eleven gates, all green.']},
+ {t:'CI on every branch but main',l:[['C','file','.github/workflows/check.yml → ubuntu-latest, Node 22'],['C','cmd','npm ci · npm run check'],['C','note','A CI that does not start counts as red; the local check only replaces it if the person confirms, and the log says so.']],
+  s:'The CI repeats on GitHub the same check the hook ran. Before closing a block, the agent looks at the last run.',b:['The same check again, on GitHub.','A CI that does not start counts as red.']},
+ {t:'main is the published web',l:[['C','file','.github/workflows/pages.yml → build, deploy'],['C','note','GitHub Pages serves main; IndexNow tells the search engines.'],['A','note','The branch stays publishable: the Sunday task will push content again.']],
+  s:'The transaction is complete: commit, log, review, mark, gates, CI, publication.',b:['pages.yml builds and deploys main.','The branch stays always publishable.']},
+ {t:'Collect what the projects learned',l:[['A','file','retro → «## For Galivelop-workflow»'],['A','cmd','gw-harvest → harvest.py --json --diff'],['A','file','docs/proposals/YYYY-MM-DD-<repo>.md'],['A','note','Also edited skills and scripts, and commits since the last harvest; state saved with --update-state.']],
+  s:'Every new version starts with a harvest: version.py --release enforces a «# Harvest» proposal since the last tag.',b:['Retros become proposals in docs/proposals/.','Every version starts with a harvest.']},
+ {t:'The person decides what the workflow adopts',l:[['P','note','Approves the proposals; the agent applies them in the workflow repository.'],['A','cmd','version.py X.Y.Z → plugin.json, markers, CHANGELOG entry'],['A','note','The agent fills in and dates the CHANGELOG. Then the three phases and reviewed.sh, like any project.']],
+  s:'The workflow repository follows its own rules: review, retro presented, mark. Only the latest minor gets patches.',b:['The person approves; the agent bumps and fills the CHANGELOG.','The workflow repo passes its own three phases.']},
+ {t:'Release: a check, a tag, a CI',l:[['S','cmd','version.py --release ← pre-push on main'],['S','note','Checks: version bumped, harvest present, CHANGELOG dated and filled.'],['P','cmd','git tag vX.Y.Z → by hand'],['C','file','release.yml → ancestor of main, tag == plugin.json, tests, gh release create']],
+  s:'check.yml tests the workflow on ubuntu and macos with Python 3.12; release.yml runs on ubuntu only. docs/records/release-vX.Y.Z.md is written after the push.',b:['pre-push on main runs version.py --release as a check.','The person tags; release.yml publishes.']},
+ {t:'Each project applies the new version',l:[['A','cmd','gw-update → ls-remote tags → checkout vX.Y.Z'],['A','cmd','apply.py --dry-run → person confirms → --update'],['A','note','*.gw-new merged by hand; doctor.py until no FAIL; apply.py --check.'],['A','note','Commit with a real «Siguiente:», push: chapter 3 again. gw-portal updates the project page.']],
+  s:'The loop closes: what a project learned comes back to every project as a version, through the same hooks.',b:['gw-update: dry-run, confirm, update, doctor.','Commit and push: chapter 3 again.']}
+ ]
+};
+T.es={
+ ui:{title:'Galivelop-workflow',sub:'v0.5.0 · una tarea, paso a paso',legend:{A:'agente',S:'script / gancho',P:'persona',C:'CI'},
+  play:'Reproducir',pause:'Pausa',prev:'Paso anterior',next:'Paso siguiente',step:'Paso',speed:'Velocidad',rec:'Abrir modo grabación 16:9',
+  chapter:'Capítulo',of:'de',hint:'Teclas: ← → paso · espacio reproducir · 1-9, 0 capítulo · Inicio/Fin. Con movimiento reducido se ve el fotograma final de cada paso.',
+  lang:'Idioma',chapters:'Capítulos'},
+ scene:{A:'agente',S:'script',P:'persona',C:'CI',branch:'rama',main:'main',s1:'sesión 1',s2:'sesión 2',log:'handoff.md',
+  sub:'agent/<id>',fix:'arreglo · commit · push',findings:'hallazgos',proposals:'propuestas',mark:'marca',pub:'publicada',
+  check:'check.yml',pages:'pages.yml',lock:'sin parar',compact:'compactación',loop:['proyectos','cosecha','flujo','versión','/gw-update'],
+  loopSub:['vX.Y.Z','docs/proposals/','version.py','release.yml','apply.py'],approve:'aprobado',toMain:'→ main',allgreen:'pre-push: todo en verde'},
+ chapters:['Arranque de la tarea','Planear y repartir','Commit y push','Corte de sesión y relevo','Fase 1 · código','Fase 2 · entorno','Fase 3 · cierre','Pre-push, puerta a puerta','CI y publicación','Versiones del flujo'],
+ beats:[
+ {t:'Se abre la sesión; primero corre un gancho',l:[['S','cmd','session-start.sh'],['S','note','Imprime el estado de la bitácora y los últimos commits antes de que el agente lea nada.'],['S','file','.claude/settings.json → ventana de compactación 200 000']],
+  s:'Toda sesión empieza igual, en un contenedor nuevo o tras un /clear: el gancho de inicio, no el agente, dice por dónde iba.',b:['El gancho de inicio imprime la bitácora y los últimos commits.']},
+ {t:'El agente lee la bitácora, no el chat',l:[['A','file','docs/handoff.md'],['A','note','Rama, tarea en curso, qué falta, siguiente paso.'],['A','cmd','git fetch origin <rama> · npm run check'],['A','note','El último commit coincide con la bitácora; el check está en verde antes de tocar nada.']],
+  s:'El estado vive en los archivos, no en la conversación. El agente comprueba que la rama subida y la bitácora coinciden.',b:['El estado vive en docs/handoff.md, no en el chat.','Fetch, comparar con la bitácora, pasar el check.']},
+ {t:'Qué skill y qué modelo',l:[['A','cmd','gw-selector'],['A','note','Una línea: skill y modelo para esta tarea. El modelo de la sesión lo elige la persona.'],['A','note','Los subagentes llevan el modelo más barato que haga bien el trabajo.']],
+  s:'El selector lee las filas propias del proyecto en .claude/gw.json y nombra skill y modelo antes de la primera edición.',b:['gw-selector nombra skill y modelo en una línea.']},
+ {t:'Partir la tarea en trozos',l:[['A','cmd','gw-orchestrate-dealer'],['A','note','La sesión principal planea, decide y revisa; no pica piedra.'],['A','cmd','subagent-cap.py → unas 30 llamadas por subagente']],
+  s:'El trabajo de más de un paso se reparte a subagentes de contexto limpio, cada uno en su rama y su worktree.',b:['El trabajo de varios pasos va a subagentes de contexto limpio.','La sesión principal planea, decide y revisa.']},
+ {t:'El encargo que recibe cada subagente',l:[['A','note','Objetivo, rutas, restricciones, el check que debe pasar, qué devolver.'],['A','file','agent/<id>-<tema> · su propio worktree'],['A','note','Escalera de modelos: sonnet low → sonnet medium → opus medium → opus high.'],['A','note','Dos fallos seguidos → parar y preguntar a la persona.']],
+  s:'Punteros en vez de contenido pegado: cada subagente sale barato; la escalera sube de modelo solo cuando falla uno más barato.',b:['Objetivo, rutas, restricciones, el check que pasar.','Dos fallos seguidos: parar y preguntar.']},
+ {t:'De vuelta a la rama, revisado',l:[['S','cmd','merge-branch.sh <rama> "<mensaje>"'],['S','note','Corre el check y los tests relacionados, fusiona, borra el worktree.'],['A','note','La sesión principal revisa lo que vuelve antes de fusionarlo.']],
+  s:'Nada de un subagente entra en la rama de trabajo sin el check y una revisión.',b:['merge-branch.sh: check, tests relacionados, fusión, limpieza.']},
+ {t:'Dos ganchos en cada commit',l:[['S','cmd','pre-commit'],['S','note','Bloquea secretos y restos (marcas de merge, prints de depuración).'],['S','cmd','commit-msg → handoff.py'],['S','note','La bitácora cambia en el mismo commit; la última línea empieza por «Siguiente:»; sin firmas del agente.']],
+  s:'El mensaje del commit lleva el siguiente paso. Con agentSignatures false, un Co-Authored-By del agente se rechaza.',b:['pre-commit bloquea secretos y restos.','commit-msg: bitácora al día, «Siguiente:» al final, sin firmas.']},
+ {t:'Push en cada punto estable',l:[['A','cmd','bash .claude/gw/scripts/check.sh && git push -u origin <rama>'],['A','note','Check verde apuntado; el pre-push no lo repite sobre el mismo árbol (<24 h).'],['A','note','Nunca más de 30-45 minutos sin subir. Si falla la red: reintentos a 2, 4, 8, 16 s.']],
+  s:'Lo que no está subido no existe para la siguiente sesión. Las tareas grandes se parten en commits pequeños y subidos.',b:['Lo que no está subido no existe.','Check y luego push; reintentos si falla la red.']},
+ {t:'El agente no puede parar con trabajo sin subir',l:[['S','cmd','before-stop.py'],['S','note','Un gancho Stop de Claude Code: con cambios sin commit o sin subir, el turno no termina.'],['S','cmd','config-guard.py · agent-signatures.py'],['S','note','El agente no edita settings, scripts ni ganchos sin la persona; las firmas se quitan.']],
+  s:'Tres ganchos de Claude Code acotan al agente: no puede dejar trabajo solo en local ni aflojar sus propias reglas.',b:['Un gancho Stop no deja terminar con trabajo sin subir.','El agente no puede editar sus propias reglas.']},
+ {t:'Compactación a los 200k tokens',l:[['S','file','.claude/settings.json → autoCompact 200 000'],['S','cmd','recover.py --state'],['S','note','Tras una compactación o un /clear, el gancho de inicio reimprime la bitácora y los últimos commits.'],['S','cmd','recover.py --search "<texto>"']],
+  s:'La conversación es desechable; el contexto puede cortarse en cualquier momento. Lo que tenga que sobrevivir está en la bitácora.',b:['El contexto puede cortarse en cualquier momento.','recover.py reimprime la bitácora y los últimos commits.']},
+ {t:'Relevo: la siguiente sesión toma la bitácora',l:[['A','note','Parar a medias: un commit «WIP:», y la bitácora dice qué falla y por qué.'],['A','note','Cerrar una tarea: todo subido, bitácora al día, pedir /clear en una línea.'],['A','note','La siguiente sesión empieza por el capítulo 1 y sigue por «siguiente paso».']],
+  s:'Una sesión puede morir en cualquier momento; el relevo funciona porque cada commit lleva la bitácora y el siguiente paso.',b:['A medias: un commit WIP:, la bitácora dice qué falla.','La siguiente sesión lee la bitácora y sigue.']},
+ {t:'Revisar todo el diff contra main',l:[['A','cmd','git fetch origin main · /code-review --max-findings all'],['A','file','REVIEW.md → criterio'],['A','note','Lo grave y lo medio se arregla, se commitea y se sube; lo leve va a la bitácora.'],['S','cmd','is-code.sh → el contenido no necesita revisión']],
+  s:'Nunca sobre trabajo ya fusionado. is-code.sh separa código de contenido con los patrones content de .claude/gw.json.',b:['Revisión de todo el diff, con REVIEW.md.','Grave y medio arreglado y subido; leve a la bitácora.']},
+ {t:'Medir y proponer',l:[['A','cmd','gw-opt-tokens → measure.py'],['A','note','Dónde fueron los tokens; cambios del entorno que los recortan.'],['A','cmd','retro'],['A','file','docs/records/retro-<fecha>-<tema>.md · **Estado:** pendiente']],
+  s:'Fase 2 solo con cambios grandes de código en este proyecto (requireRetro false). Las propuestas se escriben, no se aplican.',b:['Dónde fueron los tokens y qué los recortaría.','La retro propone; no aplica.']},
+ {t:'La persona decide',l:[['P','note','Cada propuesta: aprobar, rechazar o aplazar. Una retro escrita sin presentarla no vale.'],['P','note','«Fusiona directamente» quita más rondas de revisión, nunca el CI ni la retro.'],['A','note','Lo aprobado se aplica en la rama, con su commit.']],
+  s:'Primero de los tres momentos en que decide la persona. Si no está, todo queda listo y el agente se para antes de la marca.',b:['La persona aprueba, rechaza o aplaza cada propuesta.','Escrita sin presentar: no vale.']},
+ {t:'La marca de revisión es un commit',l:[['S','cmd','bash .claude/gw/scripts/reviewed.sh'],['S','file','docs/records/reviewed.txt → sha del commit revisado'],['S','note','Su propio commit, «Revisado: <sha>», y luego git push.'],['S','note','Si la fase 2 trajo código, solo esos commits se revisan otra vez.']],
+  s:'La marca es un dato del repositorio, no una afirmación en el chat: los ganchos la buscarán.',b:['reviewed.sh escribe la marca y la commitea.','La marca es un dato que los ganchos comprobarán.']},
+ {t:'La persona confirma ir a main',l:[['P','note','main es la web publicada. Solo con confirmación expresa, apuntada en la bitácora.'],['S','file','.claude/gw.json → pushToProtected: direct'],['A','cmd','git push origin <rama>:main'],['P','note','Excepción: la tarea semanal sube contenido los domingos sin preguntar.']],
+  s:'Con pushToProtected pr, un gancho de Claude Code pide la misma marca antes de crear o fusionar el pull request.',b:['main es la web publicada: solo con confirmación.','Push directo; la variante con PR pide la misma marca.']},
+ {t:'Pre-push, parte 1: qué se sube',l:[['S','gate','commit exists → un push vacío acaba aquí'],['S','gate','cfg_at → .claude/gw.json leído del commit subido, no del worktree'],['S','gate','rev-list → los commits nuevos, uno a uno'],['S','gate','scan_leftovers → marcas de merge, prints de depuración']],
+  s:'El gancho lee su configuración del commit que se sube, así que una edición local de gw.json no puede aflojarlo.',b:['Configuración leída del commit subido, no del worktree.','Commits nuevos listados y buscados restos.']},
+ {t:'Pre-push, parte 2: el check',l:[['S','gate','private-check.py → rutas privadas y secretos'],['S','gate','run_checks → npm run check en un worktree temporal'],['S','gate','check-green → caché del check verde (<24 h, nunca en main)'],['S','note','El worktree temporal comprueba el commit, no lo que haya en disco.']],
+  s:'El check corre sobre el árbol exacto que se sube. La caché de check.sh lo ahorra solo si el árbol es idéntico.',b:['El check corre en un worktree temporal del commit subido.','Un check verde <24 h se reutiliza; nunca en main.']},
+ {t:'Rechazo: exit 1, y el arreglo en la última línea',l:[['S','fail','pre-push: check failed on <sha>'],['S','fail','fix: bash .claude/gw/scripts/check.sh · (only a WIP: commit may skip this hook: git push --no-verify)'],['A','note','El agente arregla, commitea, escribe una marca nueva y vuelve a subir.']],
+  s:'Cada mensaje de fallo termina con la orden que lo arregla. La puerta roja vuelve al carril del agente; nada pasa a mano.',b:['Cada fallo termina con la orden que lo arregla.','Arreglo, commit, marca nueva, push otra vez.']},
+ {t:'Lo que solo pasa main',l:[['S','gate','is_protected → el destino es main'],['S','gate','policy → pushToProtected leído de la punta remota'],['S','note','Restos buscados en cada commit que main ganaría.'],['S','gate','is-code.sh → un push solo de contenido no necesita marca']],
+  s:'La política se lee de la rama que ya tiene el remoto, así que el commit subido no puede cambiar sus propias reglas.',b:['Política leída de la punta remota, no del commit subido.','Un push solo de contenido no necesita marca.']},
+ {t:'La marca tiene que cubrir el código',l:[['S','gate','mark ancestor → reviewed.txt apunta a un antecesor'],['S','note','Ningún commit de código después del marcado; bitácora, registros y contenido sí pueden seguir.'],['S','cmd','prepush-branches.sh · related-tests.sh'],['S','ok','pre-push: todo en verde']],
+  s:'Once puertas, un solo camino. La última ata la revisión al código exacto que sale.',b:['La marca debe ser antecesor sin código después.','Once puertas, todas en verde.']},
+ {t:'CI en todas las ramas menos main',l:[['C','file','.github/workflows/check.yml → ubuntu-latest, Node 22'],['C','cmd','npm ci · npm run check'],['C','note','Un CI que no arranca cuenta como rojo; el check local solo lo sustituye si la persona lo confirma, y la bitácora lo dice.']],
+  s:'El CI repite en GitHub el mismo check que corrió el gancho. Antes de cerrar un bloque, el agente mira la última ejecución.',b:['El mismo check otra vez, en GitHub.','Un CI que no arranca cuenta como rojo.']},
+ {t:'main es la web publicada',l:[['C','file','.github/workflows/pages.yml → build, deploy'],['C','note','GitHub Pages sirve main; IndexNow avisa a los buscadores.'],['A','note','La rama sigue publicable: la tarea del domingo volverá a subir contenido.']],
+  s:'La transacción está completa: commit, bitácora, revisión, marca, puertas, CI, publicación.',b:['pages.yml construye y despliega main.','La rama se queda siempre publicable.']},
+ {t:'Recoger lo que aprendieron los proyectos',l:[['A','file','retro → «## For Galivelop-workflow»'],['A','cmd','gw-harvest → harvest.py --json --diff'],['A','file','docs/proposals/AAAA-MM-DD-<repo>.md'],['A','note','También skills y scripts editados, y commits desde la última cosecha; estado guardado con --update-state.']],
+  s:'Toda versión nueva empieza con una cosecha: version.py --release exige una propuesta «# Harvest» desde la última etiqueta.',b:['Las retros se vuelven propuestas en docs/proposals/.','Toda versión empieza con una cosecha.']},
+ {t:'La persona decide qué adopta el flujo',l:[['P','note','Aprueba las propuestas; el agente las aplica en el repositorio del flujo.'],['A','cmd','version.py X.Y.Z → plugin.json, marcadores, entrada del CHANGELOG'],['A','note','El agente rellena y fecha el CHANGELOG. Luego las tres fases y reviewed.sh, como cualquier proyecto.']],
+  s:'El repositorio del flujo sigue sus propias reglas: revisión, retro presentada, marca. Solo la última minor recibe parches.',b:['La persona aprueba; el agente sube la versión y rellena el CHANGELOG.','El repo del flujo pasa sus propias tres fases.']},
+ {t:'Versión: una comprobación, una etiqueta, un CI',l:[['S','cmd','version.py --release ← pre-push en main'],['S','note','Comprueba: versión subida, cosecha presente, CHANGELOG fechado y relleno.'],['P','cmd','git tag vX.Y.Z → a mano'],['C','file','release.yml → antecesor de main, etiqueta == plugin.json, tests, gh release create']],
+  s:'check.yml prueba el flujo en ubuntu y macos con Python 3.12; release.yml corre solo en ubuntu. docs/records/release-vX.Y.Z.md se escribe tras el push.',b:['El pre-push en main corre version.py --release como comprobación.','La persona etiqueta; release.yml publica.']},
+ {t:'Cada proyecto aplica la versión nueva',l:[['A','cmd','gw-update → ls-remote tags → checkout vX.Y.Z'],['A','cmd','apply.py --dry-run → la persona confirma → --update'],['A','note','*.gw-new se fusionan a mano; doctor.py hasta que no haya FAIL; apply.py --check.'],['A','note','Commit con un «Siguiente:» real, push: capítulo 3 otra vez. gw-portal actualiza la ficha.']],
+  s:'El bucle se cierra: lo que un proyecto aprendió vuelve a todos los proyectos como versión, por los mismos ganchos.',b:['gw-update: dry-run, confirmar, update, doctor.','Commit y push: capítulo 3 otra vez.']}
+ ]
+};
+T.gl={
+ ui:{title:'Galivelop-workflow',sub:'v0.5.0 · unha tarefa, paso a paso',legend:{A:'axente',S:'script / gancho',P:'persoa',C:'CI'},
+  play:'Reproducir',pause:'Pausa',prev:'Paso anterior',next:'Paso seguinte',step:'Paso',speed:'Velocidade',rec:'Abrir modo gravación 16:9',
+  chapter:'Capítulo',of:'de',hint:'Teclas: ← → paso · espazo reproducir · 1-9, 0 capítulo · Inicio/Fin. Con movemento reducido vese o fotograma final de cada paso.',
+  lang:'Idioma',chapters:'Capítulos'},
+ scene:{A:'axente',S:'script',P:'persoa',C:'CI',branch:'rama',main:'main',s1:'sesión 1',s2:'sesión 2',log:'handoff.md',
+  sub:'agent/<id>',fix:'arranxo · commit · push',findings:'achados',proposals:'propostas',mark:'marca',pub:'publicada',
+  check:'check.yml',pages:'pages.yml',lock:'sen parar',compact:'compactación',loop:['proxectos','colleita','fluxo','versión','/gw-update'],
+  loopSub:['vX.Y.Z','docs/proposals/','version.py','release.yml','apply.py'],approve:'aprobado',toMain:'→ main',allgreen:'pre-push: todo en verde'},
+ chapters:['Arrinque da tarefa','Planear e repartir','Commit e push','Corte de sesión e relevo','Fase 1 · código','Fase 2 · contorno','Fase 3 · peche','Pre-push, porta a porta','CI e publicación','Versións do fluxo'],
+ beats:[
+ {t:'Ábrese a sesión; primeiro corre un gancho',l:[['S','cmd','session-start.sh'],['S','note','Imprime o estado da bitácora e os últimos commits antes de que o axente lea nada.'],['S','file','.claude/settings.json → xanela de compactación 200 000']],
+  s:'Toda sesión empeza igual, nun contedor novo ou tras un /clear: o gancho de inicio, non o axente, di por onde ía.',b:['O gancho de inicio imprime a bitácora e os últimos commits.']},
+ {t:'O axente le a bitácora, non o chat',l:[['A','file','docs/handoff.md'],['A','note','Rama, tarefa en curso, que falta, seguinte paso.'],['A','cmd','git fetch origin <rama> · npm run check'],['A','note','O último commit coincide coa bitácora; o check está en verde antes de tocar nada.']],
+  s:'O estado vive nos ficheiros, non na conversa. O axente comproba que a rama subida e a bitácora coinciden.',b:['O estado vive en docs/handoff.md, non no chat.','Fetch, comparar coa bitácora, pasar o check.']},
+ {t:'Que skill e que modelo',l:[['A','cmd','gw-selector'],['A','note','Unha liña: skill e modelo para esta tarefa. O modelo da sesión escólleo a persoa.'],['A','note','Os subaxentes levan o modelo máis barato que faga ben o traballo.']],
+  s:'O selector le as filas propias do proxecto en .claude/gw.json e nomea skill e modelo antes da primeira edición.',b:['gw-selector nomea skill e modelo nunha liña.']},
+ {t:'Partir a tarefa en anacos',l:[['A','cmd','gw-orchestrate-dealer'],['A','note','A sesión principal planea, decide e revisa; non pica pedra.'],['A','cmd','subagent-cap.py → unhas 30 chamadas por subaxente']],
+  s:'O traballo de máis dun paso repártese a subaxentes de contexto limpo, cada un na súa rama e no seu worktree.',b:['O traballo de varios pasos vai a subaxentes de contexto limpo.','A sesión principal planea, decide e revisa.']},
+ {t:'O encargo que recibe cada subaxente',l:[['A','note','Obxectivo, rutas, restricións, o check que debe pasar, que devolver.'],['A','file','agent/<id>-<tema> · o seu propio worktree'],['A','note','Escaleira de modelos: sonnet low → sonnet medium → opus medium → opus high.'],['A','note','Dous fallos seguidos → parar e preguntar á persoa.']],
+  s:'Punteiros en vez de contido pegado: cada subaxente sae barato; a escaleira sobe de modelo só cando falla un máis barato.',b:['Obxectivo, rutas, restricións, o check que pasar.','Dous fallos seguidos: parar e preguntar.']},
+ {t:'De volta á rama, revisado',l:[['S','cmd','merge-branch.sh <rama> "<mensaxe>"'],['S','note','Corre o check e os tests relacionados, fusiona, borra o worktree.'],['A','note','A sesión principal revisa o que volve antes de fusionalo.']],
+  s:'Nada dun subaxente entra na rama de traballo sen o check e unha revisión.',b:['merge-branch.sh: check, tests relacionados, fusión, limpeza.']},
+ {t:'Dous ganchos en cada commit',l:[['S','cmd','pre-commit'],['S','note','Bloquea segredos e restos (marcas de merge, prints de depuración).'],['S','cmd','commit-msg → handoff.py'],['S','note','A bitácora cambia no mesmo commit; a última liña empeza por «Siguiente:»; sen sinaturas do axente.']],
+  s:'A mensaxe do commit leva o seguinte paso. Con agentSignatures false, un Co-Authored-By do axente rexéitase.',b:['pre-commit bloquea segredos e restos.','commit-msg: bitácora ao día, «Siguiente:» ao final, sen sinaturas.']},
+ {t:'Push en cada punto estable',l:[['A','cmd','bash .claude/gw/scripts/check.sh && git push -u origin <rama>'],['A','note','Check verde apuntado; o pre-push non o repite sobre a mesma árbore (<24 h).'],['A','note','Nunca máis de 30-45 minutos sen subir. Se falla a rede: reintentos a 2, 4, 8, 16 s.']],
+  s:'O que non está subido non existe para a seguinte sesión. As tarefas grandes pártense en commits pequenos e subidos.',b:['O que non está subido non existe.','Check e logo push; reintentos se falla a rede.']},
+ {t:'O axente non pode parar con traballo sen subir',l:[['S','cmd','before-stop.py'],['S','note','Un gancho Stop de Claude Code: con cambios sen commit ou sen subir, a quenda non remata.'],['S','cmd','config-guard.py · agent-signatures.py'],['S','note','O axente non edita settings, scripts nin ganchos sen a persoa; as sinaturas quítanse.']],
+  s:'Tres ganchos de Claude Code acoutan o axente: non pode deixar traballo só en local nin afrouxar as súas propias regras.',b:['Un gancho Stop non deixa rematar con traballo sen subir.','O axente non pode editar as súas propias regras.']},
+ {t:'Compactación aos 200k tokens',l:[['S','file','.claude/settings.json → autoCompact 200 000'],['S','cmd','recover.py --state'],['S','note','Tras unha compactación ou un /clear, o gancho de inicio reimprime a bitácora e os últimos commits.'],['S','cmd','recover.py --search "<texto>"']],
+  s:'A conversa é desbotable; o contexto pode cortarse en calquera momento. O que teña que sobrevivir está na bitácora.',b:['O contexto pode cortarse en calquera momento.','recover.py reimprime a bitácora e os últimos commits.']},
+ {t:'Relevo: a seguinte sesión toma a bitácora',l:[['A','note','Parar a medias: un commit «WIP:», e a bitácora di que falla e por que.'],['A','note','Pechar unha tarefa: todo subido, bitácora ao día, pedir /clear nunha liña.'],['A','note','A seguinte sesión empeza polo capítulo 1 e segue por «seguinte paso».']],
+  s:'Unha sesión pode morrer en calquera momento; o relevo funciona porque cada commit leva a bitácora e o seguinte paso.',b:['A medias: un commit WIP:, a bitácora di que falla.','A seguinte sesión le a bitácora e segue.']},
+ {t:'Revisar todo o diff contra main',l:[['A','cmd','git fetch origin main · /code-review --max-findings all'],['A','file','REVIEW.md → criterio'],['A','note','O grave e o medio arránxase, faise commit e súbese; o leve vai á bitácora.'],['S','cmd','is-code.sh → o contido non precisa revisión']],
+  s:'Nunca sobre traballo xa fusionado. is-code.sh separa código de contido cos patróns content de .claude/gw.json.',b:['Revisión de todo o diff, con REVIEW.md.','Grave e medio arranxado e subido; leve á bitácora.']},
+ {t:'Medir e propor',l:[['A','cmd','gw-opt-tokens → measure.py'],['A','note','Onde foron os tokens; cambios do contorno que os recortan.'],['A','cmd','retro'],['A','file','docs/records/retro-<data>-<tema>.md · **Estado:** pendente']],
+  s:'Fase 2 só con cambios grandes de código neste proxecto (requireRetro false). As propostas escríbense, non se aplican.',b:['Onde foron os tokens e que os recortaría.','A retro propón; non aplica.']},
+ {t:'A persoa decide',l:[['P','note','Cada proposta: aprobar, rexeitar ou adiar. Unha retro escrita sen presentala non vale.'],['P','note','«Fusiona directamente» quita máis roldas de revisión, nunca o CI nin a retro.'],['A','note','O aprobado aplícase na rama, co seu commit.']],
+  s:'Primeiro dos tres momentos nos que decide a persoa. Se non está, todo queda listo e o axente párase antes da marca.',b:['A persoa aproba, rexeita ou adía cada proposta.','Escrita sen presentar: non vale.']},
+ {t:'A marca de revisión é un commit',l:[['S','cmd','bash .claude/gw/scripts/reviewed.sh'],['S','file','docs/records/reviewed.txt → sha do commit revisado'],['S','note','O seu propio commit, «Revisado: <sha>», e logo git push.'],['S','note','Se a fase 2 trouxo código, só eses commits se revisan outra vez.']],
+  s:'A marca é un dato do repositorio, non unha afirmación no chat: os ganchos buscarana.',b:['reviewed.sh escribe a marca e fai o seu commit.','A marca é un dato que os ganchos comprobarán.']},
+ {t:'A persoa confirma ir a main',l:[['P','note','main é a web publicada. Só con confirmación expresa, apuntada na bitácora.'],['S','file','.claude/gw.json → pushToProtected: direct'],['A','cmd','git push origin <rama>:main'],['P','note','Excepción: a tarefa semanal sobe contido os domingos sen preguntar.']],
+  s:'Con pushToProtected pr, un gancho de Claude Code pide a mesma marca antes de crear ou fusionar o pull request.',b:['main é a web publicada: só con confirmación.','Push directo; a variante con PR pide a mesma marca.']},
+ {t:'Pre-push, parte 1: que se sobe',l:[['S','gate','commit exists → un push vacío acaba aquí'],['S','gate','cfg_at → .claude/gw.json lido do commit subido, non do worktree'],['S','gate','rev-list → os commits novos, un a un'],['S','gate','scan_leftovers → marcas de merge, prints de depuración']],
+  s:'O gancho le a súa configuración do commit que se sobe, así que unha edición local de gw.json non pode afrouxalo.',b:['Configuración lida do commit subido, non do worktree.','Commits novos listados e buscados restos.']},
+ {t:'Pre-push, parte 2: o check',l:[['S','gate','private-check.py → rutas privadas e segredos'],['S','gate','run_checks → npm run check nun worktree temporal'],['S','gate','check-green → caché do check verde (<24 h, nunca en main)'],['S','note','O worktree temporal comproba o commit, non o que haxa en disco.']],
+  s:'O check corre sobre a árbore exacta que se sobe. A caché de check.sh afórrao só se a árbore é idéntica.',b:['O check corre nun worktree temporal do commit subido.','Un check verde <24 h reutilízase; nunca en main.']},
+ {t:'Rexeitamento: exit 1, e o arranxo na última liña',l:[['S','fail','pre-push: check failed on <sha>'],['S','fail','fix: bash .claude/gw/scripts/check.sh · (only a WIP: commit may skip this hook: git push --no-verify)'],['A','note','O axente arranxa, fai commit, escribe unha marca nova e volve subir.']],
+  s:'Cada mensaxe de fallo remata coa orde que o arranxa. A porta vermella volve ao carril do axente; nada pasa a man.',b:['Cada fallo remata coa orde que o arranxa.','Arranxo, commit, marca nova, push outra vez.']},
+ {t:'O que só pasa main',l:[['S','gate','is_protected → o destino é main'],['S','gate','policy → pushToProtected lido da punta remota'],['S','note','Restos buscados en cada commit que main gañaría.'],['S','gate','is-code.sh → un push só de contido non precisa marca']],
+  s:'A política lese da rama que xa ten o remoto, así que o commit subido non pode cambiar as súas propias regras.',b:['Política lida da punta remota, non do commit subido.','Un push só de contido non precisa marca.']},
+ {t:'A marca ten que cubrir o código',l:[['S','gate','mark ancestor → reviewed.txt apunta a un antecesor'],['S','note','Ningún commit de código despois do marcado; bitácora, rexistros e contido si poden seguir.'],['S','cmd','prepush-branches.sh · related-tests.sh'],['S','ok','pre-push: todo en verde']],
+  s:'Once portas, un só camiño. A última ata a revisión ao código exacto que sae.',b:['A marca debe ser antecesor sen código despois.','Once portas, todas en verde.']},
+ {t:'CI en todas as ramas menos main',l:[['C','file','.github/workflows/check.yml → ubuntu-latest, Node 22'],['C','cmd','npm ci · npm run check'],['C','note','Un CI que non arrinca conta como vermello; o check local só o substitúe se a persoa o confirma, e a bitácora dio.']],
+  s:'O CI repite en GitHub o mesmo check que correu o gancho. Antes de pechar un bloque, o axente mira a última execución.',b:['O mesmo check outra vez, en GitHub.','Un CI que non arrinca conta como vermello.']},
+ {t:'main é a web publicada',l:[['C','file','.github/workflows/pages.yml → build, deploy'],['C','note','GitHub Pages serve main; IndexNow avisa os buscadores.'],['A','note','A rama segue publicable: a tarefa do domingo volverá subir contido.']],
+  s:'A transacción está completa: commit, bitácora, revisión, marca, portas, CI, publicación.',b:['pages.yml constrúe e desprega main.','A rama queda sempre publicable.']},
+ {t:'Recoller o que aprenderon os proxectos',l:[['A','file','retro → «## For Galivelop-workflow»'],['A','cmd','gw-harvest → harvest.py --json --diff'],['A','file','docs/proposals/AAAA-MM-DD-<repo>.md'],['A','note','Tamén skills e scripts editados, e commits desde a última colleita; estado gardado con --update-state.']],
+  s:'Toda versión nova empeza cunha colleita: version.py --release esixe unha proposta «# Harvest» desde a última etiqueta.',b:['As retros vólvense propostas en docs/proposals/.','Toda versión empeza cunha colleita.']},
+ {t:'A persoa decide que adopta o fluxo',l:[['P','note','Aproba as propostas; o axente aplícaas no repositorio do fluxo.'],['A','cmd','version.py X.Y.Z → plugin.json, marcadores, entrada do CHANGELOG'],['A','note','O axente enche e data o CHANGELOG. Logo as tres fases e reviewed.sh, como calquera proxecto.']],
+  s:'O repositorio do fluxo segue as súas propias regras: revisión, retro presentada, marca. Só a última minor recibe parches.',b:['A persoa aproba; o axente sobe a versión e enche o CHANGELOG.','O repo do fluxo pasa as súas propias tres fases.']},
+ {t:'Versión: unha comprobación, unha etiqueta, un CI',l:[['S','cmd','version.py --release ← pre-push en main'],['S','note','Comproba: versión subida, colleita presente, CHANGELOG datado e cheo.'],['P','cmd','git tag vX.Y.Z → a man'],['C','file','release.yml → antecesor de main, etiqueta == plugin.json, tests, gh release create']],
+  s:'check.yml proba o fluxo en ubuntu e macos con Python 3.12; release.yml corre só en ubuntu. docs/records/release-vX.Y.Z.md escríbese tras o push.',b:['O pre-push en main corre version.py --release como comprobación.','A persoa etiqueta; release.yml publica.']},
+ {t:'Cada proxecto aplica a versión nova',l:[['A','cmd','gw-update → ls-remote tags → checkout vX.Y.Z'],['A','cmd','apply.py --dry-run → a persoa confirma → --update'],['A','note','*.gw-new fusiónanse a man; doctor.py ata que non haxa FAIL; apply.py --check.'],['A','note','Commit cun «Siguiente:» real, push: capítulo 3 outra vez. gw-portal actualiza a ficha.']],
+  s:'O bucle péchase: o que un proxecto aprendeu volve a todos os proxectos como versión, polos mesmos ganchos.',b:['gw-update: dry-run, confirmar, update, doctor.','Commit e push: capítulo 3 outra vez.']}
+ ]
+};
+// ---- setup -------------------------------------------------------------
+const qs=new URLSearchParams(location.search);
+const recordMode=qs.get('record');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const root=document.documentElement;
+if(recordMode){document.body.classList.add('record',recordMode==='9x16'?'r9x16':'r16x9');}
+let lang='en';
+if(!recordMode){
+  const want=qs.get('lang');let saved=null;try{saved=localStorage.getItem('gw-lang');}catch(e){}
+  const nav=(navigator.language||'en').slice(0,2);
+  lang=[want,saved,nav].find(l=>T[l])||'en';
+}
+const LANES={A:40,S:96,P:182,C:244},X0=124,X1=782,SLOTS=[200,250,450,510,570,640],GX=i=>430+i*34;
+const COLORS={A:'var(--agent)',S:'var(--script)',P:'var(--person)',C:'var(--ci)'};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let idx=0,playing=false,timer=null,speed=1,subTimers=[];
+
+// ---- scene -------------------------------------------------------------
+function buildScene(){
+  const S=T[lang].scene;
+  const lanes=Object.entries(LANES).map(([k,y])=>`<text id="ln-${k}" x="116" y="${y+5}" text-anchor="end" class="mu">${esc(S[k])}</text><line class="lane-line" x1="${X0}" y1="${y}" x2="792" y2="${y}"/>`).join('');
+  const gates=GATES.map((g,i)=>`<rect class="gate" id="g${i}" x="${GX(i)-7}" y="114" width="14" height="14" rx="3"/>`).join('');
+  const commits=SLOTS.map((x,i)=>`<circle class="commit" id="c${i}" cx="${x}" cy="310" r="7" stroke-width="1.6"/><g class="fade" id="f${i}"><line x1="${x}" y1="302" x2="${x}" y2="284" stroke="var(--script)" stroke-width="1.6"/><path d="M${x},284 l13,5 l-13,5" fill="var(--script)"/><text class="sm" x="${x}" y="338" text-anchor="middle" fill="var(--script)">${esc(S.mark)}</text></g>`).join('');
+  const loop=[[110,332],[290,332],[490,332],[680,332],[470,408]].map(([x,y],i)=>`<g class="node" id="n${i}"><circle cx="${x}" cy="${y}" r="${i===4?16:18}"/>${i<4?`<text x="${x}" y="${y-30}" text-anchor="middle">${esc(S.loop[i])}</text><text class="m mu" x="${x}" y="${y-50}" text-anchor="middle">${esc(S.loopSub[i])}</text>`:`<text x="${x+26}" y="${y+5}">${esc(S.loop[i])}</text><text class="m mu" x="${x+26}" y="${y+25}">${esc(S.loopSub[i])}</text>`}</g>`).join('');
+  $('scene').innerHTML=`<svg viewBox="0 0 800 440" role="img" aria-label="">
+  <defs>${['arr','var(--muted)','arr-red','var(--reject)','arr-green','var(--script)','arr-amber','var(--person)'].reduce((a,v,i,arr)=>i%2?a+`<marker id="${arr[i-1]}" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${v}"/></marker>`:a,'')}</defs>
+  <rect class="lane-glow" id="glow" x="4" y="158" width="792" height="50" rx="10"/>
+  ${lanes}
+  <g class="fade" id="cut"><line x1="420" y1="14" x2="420" y2="262" class="dash" stroke="var(--muted)" stroke-width="1.4"/><text class="sm mu" x="272" y="22" text-anchor="middle">${esc(S.s1)}</text><text class="sm mu" x="606" y="22" text-anchor="middle">${esc(S.s2)}</text></g>
+  <g class="fade" id="compact"><text class="sm mu" x="420" y="280" text-anchor="middle">${esc(S.compact)}</text></g>
+  <g class="fade" id="lock"><rect x="320" y="24" width="210" height="34" rx="8" class="dash" fill="none" stroke="var(--script)" stroke-width="1.4"/><text class="sm" x="536" y="45" fill="var(--script)">${esc(S.lock)}</text></g>
+  <g class="fade" id="relayarrow"><path class="arrow" d="M398,40 H452"/></g>
+  <g class="mv fade" id="log"><rect x="-13" y="-16" width="26" height="32" rx="3" fill="var(--bg0)" stroke="var(--person)" stroke-width="1.4"/><line x1="-7" y1="-8" x2="7" y2="-8" stroke="var(--person)"/><line x1="-7" y1="-2" x2="7" y2="-2" stroke="var(--person)"/><line x1="-7" y1="4" x2="3" y2="4" stroke="var(--person)"/><text class="m sm mu" x="18" y="5">${esc(S.log)}</text></g>
+  <g class="fade" id="review"><circle cx="520" cy="40" r="10" fill="none" stroke="var(--agent)" stroke-width="2"/><line x1="527" y1="47" x2="536" y2="56" stroke="var(--agent)" stroke-width="2.5"/><circle cx="560" cy="40" r="4" fill="var(--reject)"/><circle cx="574" cy="40" r="4" fill="var(--person)"/><circle cx="588" cy="40" r="4" fill="var(--muted)"/><text class="sm mu" x="600" y="45">${esc(S.findings)}</text></g>
+  <g class="mv fade" id="card"><rect x="0" y="-13" width="${Math.max(96,S.proposals.length*16+20)}" height="26" rx="5" fill="var(--bg0)" stroke="var(--agent)" stroke-width="1.4"/><text class="sm" x="10" y="5">${esc(S.proposals)}</text></g>
+  <g class="fade" id="stamp"><circle cx="690" cy="182" r="13" fill="var(--person)"/><text x="690" y="188" text-anchor="middle" fill="var(--bg0)" font-weight="700">✓</text><text class="sm" id="stamp-t" x="690" y="218" text-anchor="middle" fill="var(--person)"></text></g>
+  <g id="gates">${gates}<text class="m sm" id="gate-l" x="430" y="150" text-anchor="middle" fill="var(--script)"></text>
+   <g class="fade" id="reject"><path class="arrow red" id="reject-p" d=""/><text class="sm" id="reject-t" x="0" y="0" text-anchor="end" fill="var(--reject)">${esc(S.fix)}</text></g>
+   <g class="fade" id="allgreen"><text class="sm" x="792" y="150" text-anchor="end" fill="var(--script)">${esc(S.allgreen)}</text></g></g>
+  <g class="chip" id="chip0"><rect x="430" y="258" width="170" height="30" rx="8"/><circle class="dot" cx="446" cy="273" r="5"/><text class="m sm" x="458" y="278">${esc(S.check)}</text></g>
+  <g class="chip" id="chip1"><rect x="610" y="258" width="170" height="30" rx="8"/><circle class="dot" cx="626" cy="273" r="5"/><text class="m sm" x="638" y="278">${esc(S.pages)}</text></g>
+  <g id="git" class="fade on">
+   <text class="mu" x="116" y="315" text-anchor="end">${esc(S.branch)}</text><line x1="${X0}" y1="310" x2="792" y2="310" stroke="var(--agent)" stroke-width="1.6" opacity=".7"/>
+   <text class="mu" x="116" y="375" text-anchor="end">${esc(S.main)}</text><line x1="${X0}" y1="370" x2="792" y2="370" stroke="var(--fg)" stroke-width="1.6" opacity=".55"/>
+   <g class="fade" id="sub"><path d="M150,310 L168,328 H214 L232,310" fill="none" stroke="var(--agent)" stroke-width="1.2" opacity=".7"/><path d="M158,310 L176,342 H206 L224,310" fill="none" stroke="var(--agent)" stroke-width="1.2" opacity=".7"/><text class="m sm mu" x="246" y="346">${esc(S.sub)}</text></g>
+   <g class="fade" id="subc"><circle cx="191" cy="328" r="5" fill="var(--agent)"/><circle cx="191" cy="342" r="5" fill="var(--agent)"/></g>
+   ${commits}
+   <g class="fade" id="push"><path class="arrow" d="M250,298 V278"/></g>
+   <g class="fade" id="merge"><path class="arrow green" d="M690,310 C720,310 720,370 740,370"/><circle cx="745" cy="370" r="7" fill="var(--script)"/></g>
+   <g class="fade" id="pub"><circle cx="776" cy="370" r="11" fill="none" stroke="var(--script)" stroke-width="1.6"/><ellipse cx="776" cy="370" rx="5" ry="11" fill="none" stroke="var(--script)" stroke-width="1.2"/><line x1="765" y1="370" x2="787" y2="370" stroke="var(--script)" stroke-width="1.2"/><text class="sm" x="792" y="402" text-anchor="end" fill="var(--script)">${esc(S.pub)}</text></g>
+  </g>
+  <g id="loop" class="fade">
+   <path class="arrow" d="M130,332 H270"/><path class="arrow" d="M310,332 H470"/><path class="arrow" d="M510,332 H660"/>
+   <path class="arrow" d="M672,348 C652,382 560,372 480,392"/><path class="arrow" d="M454,410 C320,430 40,440 94,352"/>
+   ${loop}
+   <g class="fade" id="badges"><text class="m sm" x="110" y="372" text-anchor="middle" fill="var(--agent)">vX.Y.Z</text></g>
+  </g>
+  <g class="tok" id="tok"><circle class="halo" r="16" fill="var(--agent)"/><circle r="9" fill="var(--agent)" stroke="var(--bg0)" stroke-width="2"/></g>
+  </svg>`;
+  fitScene();
+}
+function fitScene(){
+  const w=$('scene').clientWidth||800;
+  const target=recordMode?(recordMode==='9x16'?30:21):14;
+  const fs=Math.min(32,Math.max(14,target*800/w));
+  root.style.setProperty('--fs',fs.toFixed(1));
+  $('scene').classList.toggle('narrow',fs>22);
+}
+const on=(id,v)=>$(id).classList.toggle('on',!!v);
+let prevScene={};
+function applyScene(s,instant){
+  subTimers.forEach(clearTimeout);subTimers=[];
+  const stagger=instant?0:1;
+  const x=X0+s.x*(X1-X0),y=LANES[s.lane];
+  const tok=$('tok');tok.setAttribute('transform',`translate(${x},${y})`);
+  tok.querySelectorAll('circle').forEach(c=>c.setAttribute('fill',COLORS[s.lane]));
+  on('glow',s.person);
+  on('cut',s.cut);on('compact',s.compact);on('lock',s.lock);on('review',s.review);
+  on('relayarrow',s.relay);
+  const log=$('log');on('log',s.doc||s.relay);
+  log.setAttribute('transform',s.relay?'translate(470,40)':`translate(${x+26},${y-2})`);
+  const card=$('card');on('card',s.card);
+  card.setAttribute('transform',s.card===2?'translate(470,182)':`translate(${x+22},${y})`);
+  on('stamp',s.stamp===1||s.stamp===2);$('stamp-t').textContent=s.stamp===2?T[lang].scene.toMain:T[lang].scene.approve;
+  // commits
+  const c=s.c||'';let k=0;
+  SLOTS.forEach((_,i)=>{const el=$('c'+i),st=c[i]||'.';const was=(prevScene.c||'')[i]||'.';
+    el.classList.remove('u','p','m','f');
+    if(st!=='.'){el.classList.add(st);el.style.transitionDelay=(st!==was&&was==='.')?`${(k++)*260*stagger}ms`:'0ms';}
+    on('f'+i,st==='m');});
+  on('push',s.push);on('sub',s.sub>=1);on('subc',s.sub>=2);
+  on('merge',s.merge);on('pub',s.pub);
+  // gates
+  const n=s.gates||0,pn=prevScene.gates||0;let j=0;
+  GATES.forEach((_,i)=>{const g=$('g'+i);const lit=i<n;
+    g.style.transitionDelay=(lit&&i>=pn)?`${(j++)*300*stagger}ms`:'0ms';
+    g.classList.toggle('on',lit&&s.red!==i);g.classList.toggle('red',s.red===i);});
+  const gl=$('gate-l');
+  if(n&&n<GATES.length){const gi=s.red!=null?s.red:n-1;gl.textContent=GATES[gi];gl.setAttribute('x',Math.min(690,Math.max(300,GX(gi))));gl.setAttribute('fill',s.red!=null?'var(--reject)':'var(--script)');}else gl.textContent='';
+  on('allgreen',n===GATES.length);
+  on('reject',s.reject);
+  if(s.reject){const gx=GX(s.red);$('reject-p').setAttribute('d',`M${gx},112 C${gx},80 ${gx-50},62 ${gx-80},52`);
+    const t=$('reject-t');t.setAttribute('x',gx-14);t.setAttribute('y',76);}
+  // CI chips
+  ['ci','pages'].forEach((kk,i)=>{const ch=$('chip'+i);const v=s[kk]||'idle';ch.classList.remove('run','ok');
+    if(v==='ok'&&prevScene[kk]!=='ok'&&!instant){ch.classList.add('run');subTimers.push(setTimeout(()=>{ch.classList.remove('run');ch.classList.add('ok');},1400));}
+    else if(v!=='idle')ch.classList.add(v);});
+  // chapter 10 loop
+  const L=s.loop||0;on('git',!L);$('gates').style.opacity=L?0:1;$('chip0').style.opacity=L?0:1;$('chip1').style.opacity=L?0:1;on('loop',L);
+  for(let i=0;i<5;i++){const nd=$('n'+i);nd.classList.remove('on','p','c','s');
+    const act=(L===1&&i===1)||(L===2&&i===2)||(L===3&&i===3)||(L===4&&(i===4||i===0));
+    if(act){nd.classList.add('on');if(s.lane==='P')nd.classList.add('p');if(s.lane==='C')nd.classList.add('c');}}
+  on('badges',L===4);
+  prevScene=s;
+}
+
+// ---- caption -----------------------------------------------------------
+function dur(i){const b=T[lang].beats[i];const n=recordMode?b.b.length:b.l.length;return (recordMode?3200+1600*n:2600+1500*n)/speed;}
+function render(i,instant){
+  idx=Math.max(0,Math.min(SC.length-1,i));
+  clearTimeout(timer);subTimers.forEach(clearTimeout);
+  const L=T[lang],d=SC[idx],b=L.beats[idx];
+  if(instant||reduced)root.classList.add('noanim');
+  $('ch-no').textContent=`${L.ui.chapter} ${d.ch}/10`;$('ch-name').textContent=L.chapters[d.ch-1];
+  const who=$('who');who.textContent=L.ui.legend[d.a];who.style.setProperty('--c',COLORS[d.a]);
+  $('beat-no').textContent=`${L.ui.step} ${idx+1} ${L.ui.of} ${SC.length}`;
+  $('beat-title').textContent=b.t;
+  const lines=recordMode?b.b.map(t=>[d.a,'note',t]):b.l;
+  $('panel').innerHTML=lines.map(([w,k,t])=>`<li style="--c:${COLORS[w]}">${k==='cmd'?`<code>${esc(t)}</code>`:k==='file'?`<span class="file">${esc(t)}</span>`:`<span class="${k}">${esc(t)}</span>`}</li>`).join('');
+  $('narration').textContent=b.s;$('source').textContent=d.src;
+  const items=[...$('panel').children],say=$('narration');
+  const step=(recordMode?1600:1500)/speed;
+  if(instant||reduced){items.forEach(li=>li.classList.add('show'));say.classList.add('show');}
+  else{items.forEach((li,n)=>subTimers.push(setTimeout(()=>li.classList.add('show'),400+n*step)));subTimers.push(setTimeout(()=>say.classList.add('show'),400+items.length*step*.6));}
+  applyScene(d.s,instant||reduced);
+  if(instant||reduced){void root.offsetWidth;requestAnimationFrame(()=>root.classList.remove('noanim'));}
+  $('progress').value=idx;$('meta').textContent=`${idx+1}/${SC.length} · ${Math.round(dur(idx)/1000)} s`;
+  [...$('chapters').children].forEach((bt,n)=>bt.setAttribute('aria-current',n===d.ch-1?'true':'false'));
+  document.dispatchEvent(new CustomEvent('gw:beat',{detail:{index:idx,chapter:d.ch}}));
+  if(playing)schedule();
+}
+function schedule(){clearTimeout(timer);timer=setTimeout(()=>{if(idx<SC.length-1)render(idx+1);else{pause();document.dispatchEvent(new CustomEvent('gw:end'));}},dur(idx));}
+function play(){playing=true;$('play').textContent=T[lang].ui.pause;$('play').setAttribute('aria-pressed','true');schedule();}
+function pause(){playing=false;clearTimeout(timer);$('play').textContent=T[lang].ui.play;$('play').setAttribute('aria-pressed','false');}
+function goTo(i){render(i,!playing);}
+function goChapter(n){const i=SC.findIndex(d=>d.ch===n);if(i>=0)goTo(i);}
+
+// ---- language ----------------------------------------------------------
+function setLang(l){
+  if(!T[l])return;lang=l;root.lang=l;try{localStorage.setItem('gw-lang',l);}catch(e){}
+  const U=T[l].ui;
+  $('h1').firstChild.textContent=U.title+' ';$('h1s').textContent=U.sub;
+  Object.entries(U.legend).forEach(([k,v])=>$('lg-'+k.toLowerCase()).textContent=v);
+  $('prev').setAttribute('aria-label',U.prev);$('next').setAttribute('aria-label',U.next);$('progress').setAttribute('aria-label',U.step);
+  $('speed').setAttribute('aria-label',U.speed);$('rec').setAttribute('aria-label',U.rec);$('hint').textContent=U.hint;
+  $('lang').setAttribute('aria-label',U.lang);$('chapters').setAttribute('aria-label',U.chapters);
+  $('play').textContent=playing?U.pause:U.play;
+  [...$('lang').children].forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===l?'true':'false'));
+  $('chapters').innerHTML=T[l].chapters.map((c,n)=>`<button type="button" data-ch="${n+1}">${n+1}. ${esc(c)}</button>`).join('');
+  prevScene={};buildScene();render(idx,true);
+}
+
+// ---- controls ----------------------------------------------------------
+$('progress').max=SC.length-1;
+$('progress').addEventListener('input',e=>goTo(+e.target.value));
+$('prev').addEventListener('click',()=>goTo(idx-1));$('next').addEventListener('click',()=>goTo(idx+1));
+$('play').addEventListener('click',()=>playing?pause():(idx===SC.length-1?(render(0,false),play()):play()));
+$('speed').addEventListener('change',e=>{speed=+e.target.value;if(playing)schedule();});
+$('rec').addEventListener('click',()=>{location.search='?record=16x9';});
+$('chapters').addEventListener('click',e=>{const b=e.target.closest('button[data-ch]');if(b)goChapter(+b.dataset.ch);});
+$('lang').addEventListener('click',e=>{const b=e.target.closest('button[data-lang]');if(b)setLang(b.dataset.lang);});
+document.addEventListener('keydown',e=>{
+  const tag=e.target.tagName;if(tag==='SELECT'||tag==='INPUT')return;
+  if(e.key==='ArrowRight'){goTo(idx+1);e.preventDefault();}
+  else if(e.key==='ArrowLeft'){goTo(idx-1);e.preventDefault();}
+  else if(e.key===' '&&tag!=='BUTTON'){playing?pause():play();e.preventDefault();}
+  else if(e.key==='Home'){goTo(0);}else if(e.key==='End'){goTo(SC.length-1);}
+  else if(/^[0-9]$/.test(e.key)){goChapter(e.key==='0'?10:+e.key);}
+});
+addEventListener('resize',fitScene);
+window.gwPresentation={get index(){return idx;},get count(){return SC.length;},get lang(){return lang;},chapters:()=>T[lang].chapters,
+  durations:()=>SC.map((_,i)=>dur(i)),total:()=>SC.reduce((a,_,i)=>a+dur(i),0),goTo,play,pause,setSpeed:v=>{speed=v;if(playing)schedule();},setLang};
+setLang(lang);
+if(recordMode&&!reduced)play();
+</script>
+</body>
+</html>
