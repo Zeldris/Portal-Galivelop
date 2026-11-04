@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-10-27",
+  "actualizado": "2026-11-04",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -29,14 +29,7 @@
     "gl": "En produción · Premium e VeriAI en beta",
     "en": "Live · Premium and VeriAI in beta"
   },
-  "etiquetas": [
-    "IA",
-    "React",
-    "Spring Boot",
-    "Java",
-    "MySQL",
-    "Ollama"
-  ],
+  "etiquetas": ["IA", "React", "Spring Boot", "Java", "MySQL", "Ollama"],
   "portada": {
     "src": "proyectos/toveriai/portada.webp",
     "mini": "proyectos/toveriai/portada-mini.webp",
@@ -178,11 +171,7 @@
       "en": "toVeriAI is live at toveriai.com: five languages, free use without an account, accounts with history and statistics, and a Premium plan in beta. Alongside it, VeriAI is being trained: an in-house model that learns from every analysis."
     }
   ],
-  "lineas": [
-    "informacion",
-    "ia-local",
-    "producto"
-  ],
+  "lineas": ["informacion", "ia-local", "producto"],
   "aprendizajes": [
     {
       "es": "Convertir criterios periodísticos en métricas que una IA puede aplicar y una persona puede entender.",
@@ -505,9 +494,7 @@
         "gl": "Datos",
         "en": "Data"
       },
-      "tecnologias": [
-        "MySQL 8"
-      ]
+      "tecnologias": ["MySQL 8"]
     },
     {
       "capa": {
@@ -526,12 +513,7 @@
         "gl": "Despregamento",
         "en": "Deployment"
       },
-      "tecnologias": [
-        "Docker",
-        "Render (API)",
-        "Vercel (web)",
-        "Cloudflare"
-      ]
+      "tecnologias": ["Docker", "Render (API)", "Vercel (web)", "Cloudflare"]
     },
     {
       "capa": {
@@ -539,10 +521,7 @@
         "gl": "Acceso",
         "en": "Access"
       },
-      "tecnologias": [
-        "Email y contraseña",
-        "Inicio de sesión con Google"
-      ]
+      "tecnologias": ["Email y contraseña", "Inicio de sesión con Google"]
     }
   ],
   "hitos": [
@@ -616,6 +595,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-03",
+      "texto": {
+        "es": "Trabajo de fondo: revisión de toda la web para que un fallo se vea como fallo, con aviso y botón de reintentar, y ajustes en el feed público, en las publicaciones y en el panel de administración.",
+        "gl": "Traballo de fondo: revisión de toda a web para que un fallo se vexa como fallo, con aviso e botón de reintentar, e axustes no feed público, nas publicacións e no panel de administración.",
+        "en": "Behind the scenes: a pass over the whole site so a failure shows up as a failure, with a notice and a retry button, plus tweaks to the public feed, to publishing and to the admin panel."
+      }
+    },
     {
       "fecha": "2026-10-27",
       "texto": {

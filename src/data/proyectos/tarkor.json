@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-11-02",
+  "actualizado": "2026-11-04",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3994,6 +3994,22 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-03",
+      "texto": {
+        "es": "Ronda de pruebas jugando: decenas de partidas de comprobación sobre el combate con varios rivales, las órdenes del capitán, los compañeros y la recarga de partidas, con una larga tanda de arreglos de lo que fue apareciendo. Además, un generador de ilustraciones más fiable, que empieza a ensayar un estilo propio y más realista para las imágenes del mundo, y más pruebas automáticas que vigilan todo esto.",
+        "gl": "Rolda de probas xogando: decenas de partidas de comprobación sobre o combate con varios rivais, as ordes do capitán, os compañeiros e a recarga de partidas, cunha longa quenda de arranxos do que foi aparecendo. Ademais, un xerador de ilustracións máis fiable, que comeza a ensaiar un estilo propio e máis realista para as imaxes do mundo, e máis probas automáticas que vixían todo isto.",
+        "en": "Playtesting round: dozens of check games on combat with several opponents, the captain’s orders, companions and reloading saved games, with a long batch of fixes for whatever turned up. Also, a more reliable illustration generator that is starting to try out its own, more realistic style for the world’s images, and more automated tests that watch over all of this."
+      }
+    },
+    {
+      "fecha": "2026-11-03",
+      "texto": {
+        "es": "Enciclopedia del mundo revisada de arriba abajo: los textos de personajes, clases, objetos, lugares, facciones, fauna y flora se pusieron al día con la historia del mundo, la historia queda completa con los hechos principales de su cronología, y una entrada sin documento propio se da por sabida o se abre al visitar su lugar. Lo que ya no existe en el mundo desaparece de la enciclopedia.",
+        "gl": "Enciclopedia do mundo revisada de arriba abaixo: os textos de personaxes, clases, obxectos, lugares, faccións, fauna e flora púxose ao día coa historia do mundo, a historia queda completa cos feitos principais da súa cronoloxía, e unha entrada sen documento propio dase por sabida ou ábrese ao visitar o seu lugar. O que xa non existe no mundo desaparece da enciclopedia.",
+        "en": "World encyclopedia reviewed from top to bottom: the texts on characters, classes, items, places, factions, fauna and flora were brought up to date with the world’s history, the history is now complete with the main events of its timeline, and an entry without its own document is taken as common knowledge or opens when you visit its place. Whatever no longer exists in the world disappears from the encyclopedia."
+      }
+    },
+    {
       "fecha": "2026-10-27",
       "texto": {
         "es": "Instalador: el asistente de primer arranque funciona de punta a punta, con perfiles según tu equipo, calentamiento del narrador al entrar y aviso si narra lento. El juego empaquetado ya no lleva herramientas de administración ni de creación de contenido, y «Crear desde cero» queda marcado como en construcción.",
@@ -4039,30 +4055,6 @@
         "es": "Casa de obras: una cola de obras y reparaciones que llevan tus constructores, y un Almacén con topes de comida y agua que explica de dónde sale la comida de cada día.",
         "gl": "Casa de obras: unha cola de obras e reparacións que levan os teus construtores, e un Almacén con topes de comida e auga que explica de onde sae a comida de cada día.",
         "en": "Works house: a queue of builds and repairs carried out by your builders, and a Storehouse with food and water caps that explains where each day's food comes from."
-      }
-    },
-    {
-      "fecha": "2026-10-22",
-      "texto": {
-        "es": "Vasallaje con cuota semanal: si un vasallo paga solo una parte, sus patrullas salen en proporción. Los bandidos esperan siete días entre asaltos al Reino y la milicia defiende la Capital.",
-        "gl": "Vasalaxe con cota semanal: se un vasalo paga só unha parte, as súas patrullas saen en proporción. Os bandidos agardan sete días entre asaltos ao Reino e a milicia defende a Capital.",
-        "en": "Vassalage with a weekly quota: if a vassal pays only part of it, its patrols go out in proportion. Bandits wait seven days between raids on the Kingdom and the militia defends the Capital."
-      }
-    },
-    {
-      "fecha": "2026-10-21",
-      "texto": {
-        "es": "Los edificios dañados se reparan pagando su coste, las partidas de caza salen armadas y cuentan su vuelta, y la deuda de los vasallos se ve en Diplomacia.",
-        "gl": "Os edificios danados repáranse pagando o seu custo, as partidas de caza saen armadas e contan a súa volta, e a débeda dos vasalos vese en Diplomacia.",
-        "en": "Damaged buildings are repaired by paying their cost, hunting parties head out armed and report on their return, and vassals' debt shows up in Diplomacy."
-      }
-    },
-    {
-      "fecha": "2026-10-21",
-      "texto": {
-        "es": "Ronda de pruebas jugando: más de veinte tandas por el mundo, el combate, la muerte y el Reino, arreglando lo que salía al momento.",
-        "gl": "Rolda de probas xogando: máis de vinte tandas polo mundo, o combate, a morte e o Reino, arranxando o que saía no momento.",
-        "en": "Play-testing round: over twenty batches across the world, combat, death and the Kingdom, fixing whatever came up on the spot."
       }
     }
   ],

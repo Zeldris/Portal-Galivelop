@@ -7,7 +7,7 @@
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.png",
   "cabecera": "color",
-  "actualizado": "2026-11-02",
+  "actualizado": "2026-11-04",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -24,9 +24,9 @@
     "en": "A local AI image-generation service, one per machine and shared by every workshop project: it takes requests, generates attempts, lets you choose one and delivers it with its manifest. Nothing leaves the machine."
   },
   "fase": {
-    "es": "En desarrollo · fase 2: motor real (piloto de contenido)",
-    "gl": "En desenvolvemento · fase 2: motor real (piloto de contido)",
-    "en": "In development · phase 2: real engine (content pilot)"
+    "es": "En desarrollo · fase 2: motor real conectado, en pruebas",
+    "gl": "En desenvolvemento · fase 2: motor real conectado, en probas",
+    "en": "In development · phase 2: real engine connected, in testing"
   },
   "etiquetas": [
     "IA local",
@@ -228,12 +228,15 @@
       "en": "The answer is a service per machine that knows nothing about any project’s domain: it takes requests (a key and an image profile), generates several attempts, lets you mark one as chosen and delivers it as a PNG with a manifest recording which model, parameters and seed produced it, so it can be reproduced. It will speak through a local HTTP API, the gimg command and a three-screen web interface."
     },
     {
-      "es": "Hoy el núcleo está hecho (pedidos, intentos, elegida, entrega, cola y registro) y el piloto de contenido, cerrado en una Steam Deck. El motor real se está conectando al servicio, y la API, la interfaz y el piloto con Tarkor están pendientes. Todavía no genera imágenes reales desde el servicio y aún no tiene instalador, aunque el código ya está abierto.",
-      "gl": "Hoxe o núcleo está feito (pedidos, intentos, elixida, entrega, cola e rexistro) e o piloto de contido, pechado nunha Steam Deck. O motor real estase conectando ao servizo, e a API, a interface e o piloto con Tarkor están pendentes. Aínda non xera imaxes reais desde o servizo e aínda non ten instalador, aínda que o código xa está aberto.",
-      "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is being connected to the service, while the API, the interface and the pilot with Tarkor are still pending. It does not yet generate real images from the service and has no installer yet, although the code is already open."
+      "es": "Hoy el núcleo está hecho (pedidos, intentos, elegida, entrega, cola y registro) y el piloto de contenido, cerrado en una Steam Deck. El motor real ya está conectado y hay un instalador en el código abierto, aunque la instalación solo se ha probado en una Steam Deck. Falta publicar una primera versión; la API, la interfaz y el piloto con Tarkor están pendientes.",
+      "gl": "Hoxe o núcleo está feito (pedidos, intentos, elixida, entrega, cola e rexistro) e o piloto de contido, pechado nunha Steam Deck. O motor real xa está conectado e hai un instalador no código aberto, aínda que a instalación só se probou nunha Steam Deck. Falta publicar unha primeira versión; a API, a interface e o piloto con Tarkor están pendentes.",
+      "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is now connected and there is an installer in the open code, although the installation has only been tested on a Steam Deck. A first version still has to be published; the API, the interface and the pilot with Tarkor are pending."
     }
   ],
-  "lineas": ["ia-local", "producto"],
+  "lineas": [
+    "ia-local",
+    "producto"
+  ],
   "aprendizajes": [
     {
       "es": "Nombrar en vez de comparar: el modelo pinta lo que se nombra, así que las comparaciones «como…» sobran en el pedido.",
@@ -387,9 +390,9 @@
         "en": "From request to delivery"
       },
       "intro": {
-        "es": "Lo que ya funciona en el núcleo del servicio, con un motor de pruebas mientras se conecta el real.",
-        "gl": "O que xa funciona no núcleo do servizo, cun motor de probas mentres se conecta o real.",
-        "en": "What already works in the service core, with a test engine while the real one is being connected."
+        "es": "Lo que ya funciona en el núcleo del servicio.",
+        "gl": "O que xa funciona no núcleo do servizo.",
+        "en": "What already works in the service core."
       },
       "items": [
         {
@@ -637,9 +640,9 @@
         "en": "What’s underneath"
       },
       "intro": {
-        "es": "El motor real es la fase en curso: hoy el servicio funciona con un motor de pruebas.",
-        "gl": "O motor real é a fase en curso: hoxe o servizo funciona cun motor de probas.",
-        "en": "The real engine is the phase in progress: today the service runs on a test engine."
+        "es": "El motor real ya está conectado y se está afinando con rondas de prueba.",
+        "gl": "O motor real xa está conectado e estase afinando con roldas de proba.",
+        "en": "The real engine is now connected and is being tuned with test rounds."
       },
       "items": [
         {
@@ -673,9 +676,9 @@
             "en": "FLUX.2 klein 4B"
           },
           "texto": {
-            "es": "El modelo del piloto. Un catálogo de modelos y un instalador lo descargarán aparte.",
-            "gl": "O modelo do piloto. Un catálogo de modelos e un instalador descargarano á parte.",
-            "en": "The pilot’s model. A model catalogue and an installer will download it separately."
+            "es": "El modelo del piloto. Un catálogo de modelos y un instalador lo descargan aparte.",
+            "gl": "O modelo do piloto. Un catálogo de modelos e un instalador descárgano á parte.",
+            "en": "The pilot’s model. A model catalogue and an installer download it separately."
           }
         },
         {
@@ -713,7 +716,11 @@
         "gl": "Servizo",
         "en": "Service"
       },
-      "tecnologias": ["Python 3 (biblioteca estándar)", "CLI gimg", "API HTTP local"]
+      "tecnologias": [
+        "Python 3 (biblioteca estándar)",
+        "CLI gimg",
+        "API HTTP local"
+      ]
     },
     {
       "capa": {
@@ -721,7 +728,11 @@
         "gl": "Motor",
         "en": "Engine"
       },
-      "tecnologias": ["stable-diffusion.cpp", "Vulkan", "FLUX.2 klein 4B"]
+      "tecnologias": [
+        "stable-diffusion.cpp",
+        "Vulkan",
+        "FLUX.2 klein 4B"
+      ]
     },
     {
       "capa": {
@@ -729,7 +740,10 @@
         "gl": "Entrega",
         "en": "Delivery"
       },
-      "tecnologias": ["PNG + manifiesto JSON", "Registro JSONL"]
+      "tecnologias": [
+        "PNG + manifiesto JSON",
+        "Registro JSONL"
+      ]
     },
     {
       "capa": {
@@ -737,7 +751,10 @@
         "gl": "Plataforma",
         "en": "Platform"
       },
-      "tecnologias": ["Linux", "Steam Deck"]
+      "tecnologias": [
+        "Linux",
+        "Steam Deck"
+      ]
     }
   ],
   "hitos": [
@@ -768,9 +785,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Piloto de contenido cerrado; el motor real falta por conectar.",
-        "gl": "Piloto de contido pechado; o motor real falta por conectar.",
-        "en": "Content pilot closed; the real engine is yet to be connected."
+        "es": "Motor real conectado e instalador hecho; faltan las rondas de ajuste y publicar la versión.",
+        "gl": "Motor real conectado e instalador feito; faltan as roldas de axuste e publicar a versión.",
+        "en": "Real engine connected and installer done; the tuning rounds and publishing the version are still to do."
       }
     },
     {
@@ -802,6 +819,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-04",
+      "texto": {
+        "es": "Motor real conectado: el servicio ya genera con stable-diffusion.cpp, con borradores rápidos, texto compuesto sobre la imagen, medida de color y hojas de contactos. Hay un instalador en el código abierto, probado solo en una Steam Deck; aún no hay versión publicada ni licencia.",
+        "gl": "Motor real conectado: o servizo xa xera con stable-diffusion.cpp, con borradores rápidos, texto composto sobre a imaxe, medida de cor e follas de contactos. Hai un instalador no código aberto, probado só nunha Steam Deck; aínda non hai versión publicada nin licenza.",
+        "en": "Real engine connected: the service now generates with stable-diffusion.cpp, with quick drafts, text composed over the image, colour measurement and contact sheets. There is an installer in the open code, tested only on a Steam Deck; there is no published version or licence yet."
+      }
+    },
     {
       "fecha": "2026-10-27",
       "texto": {
@@ -837,7 +862,7 @@
   ],
   "cifras": [
     {
-      "valor": "347",
+      "valor": "950",
       "etiqueta": {
         "es": "tests automáticos",
         "gl": "tests automáticos",
