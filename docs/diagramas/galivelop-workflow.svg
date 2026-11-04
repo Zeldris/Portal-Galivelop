@@ -33,11 +33,11 @@
 <text x="1252" y="164" class="m" font-size="20" fill="#c9d6e2">Claude Code</text>
 <rect x="90" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="112" y="292" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="112" y="346" class="m" font-size="24" font-weight="bold" fill="#eef6fb">traspaso.md</text>
-<text x="112" y="378" class="m" font-size="17" fill="#8a9bb0">recuperar.py</text>
+<text x="112" y="346" class="m" font-size="24" font-weight="bold" fill="#eef6fb">handoff.md</text>
+<text x="112" y="378" class="m" font-size="17" fill="#8a9bb0">recover.py</text>
 <rect x="386" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="408" y="292" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="408" y="346" class="m" font-size="26" font-weight="bold" fill="#eef6fb">/selector</text>
+<text x="408" y="346" class="m" font-size="26" font-weight="bold" fill="#eef6fb">/gw-selector</text>
 <text x="408" y="378" class="m" font-size="17" fill="#8a9bb0">skill · model</text>
 <rect x="682" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#f2b34a" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="704" y="292" width="34" height="5" rx="2.5" fill="#f2b34a"/>
@@ -65,8 +65,8 @@
 <rect x="408" y="516" width="34" height="5" rx="2.5" fill="#38b6e8"/>
 <circle cx="588" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
 <text x="588" y="528" text-anchor="middle" class="m" font-size="17" fill="#c9d6e2">2</text>
-<text x="408" y="570" class="m" font-size="24" font-weight="bold" fill="#eef6fb">/opt-tokens</text>
-<text x="408" y="602" class="m" font-size="17" fill="#8a9bb0">medir.py</text>
+<text x="408" y="570" class="m" font-size="22" font-weight="bold" fill="#eef6fb">/gw-opt-tokens</text>
+<text x="408" y="602" class="m" font-size="17" fill="#8a9bb0">measure.py</text>
 <rect x="682" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#f2b34a" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="704" y="516" width="34" height="5" rx="2.5" fill="#f2b34a"/>
 <circle cx="884" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
@@ -77,7 +77,7 @@
 <rect x="1000" y="516" width="34" height="5" rx="2.5" fill="#38b6e8"/>
 <circle cx="1180" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
 <text x="1180" y="528" text-anchor="middle" class="m" font-size="17" fill="#c9d6e2">3</text>
-<text x="1000" y="570" class="m" font-size="24" font-weight="bold" fill="#eef6fb">revisado.sh</text>
+<text x="1000" y="570" class="m" font-size="24" font-weight="bold" fill="#eef6fb">reviewed.sh</text>
 <text x="1000" y="602" class="m" font-size="17" fill="#8a9bb0">pre-push ✓</text>
 <rect x="1274" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="1" stroke-width="2.5" filter="url(#brillo)"/>
 <rect x="1296" y="516" width="34" height="5" rx="2.5" fill="#38b6e8"/>
@@ -101,5 +101,5 @@
 <path d="M800.0 634 V726 q0 14 -14 14 H442 q-14 0 -14 14 V752" fill="none" stroke="#38b6e8" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#fa)"/>
 <path d="M991.5 822 V856 q0 14 -14 14 H56 q-14 0 -14 -14 V350.0 q0 -14 14 -14 H80" fill="none" stroke="#38b6e8" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#fa)"/>
 <text x="1119" y="795" class="m" font-size="20" fill="#8a9bb0">+ gw-init · gw-doctor</text>
-<text x="800.0" y="950" text-anchor="middle" class="m" font-size="22" fill="#8a9bb0">claude·1 <tspan fill="#38b6e8">→</tspan> docs/traspaso.md <tspan fill="#38b6e8">→</tspan> claude·2</text>
+<text x="800.0" y="950" text-anchor="middle" class="m" font-size="22" fill="#8a9bb0">claude·1 <tspan fill="#38b6e8">→</tspan> docs/handoff.md <tspan fill="#38b6e8">→</tspan> claude·2</text>
 </svg>

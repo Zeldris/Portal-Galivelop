@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#3D6FD9",
   "cabecera": "color",
-  "actualizado": "2026-11-02",
+  "actualizado": "2026-11-04",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -23,9 +23,9 @@
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
   "fase": {
-    "es": "En desarrollo · v0.4.3 · fase 7: rodaje",
-    "gl": "En desenvolvemento · v0.4.3 · fase 7: rodaxe",
-    "en": "In development · v0.4.3 · phase 7: run-in"
+    "es": "En desarrollo · v0.5.0 · fase 7: rodaje",
+    "gl": "En desenvolvemento · v0.5.0 · fase 7: rodaxe",
+    "en": "In development · v0.5.0 · phase 7: run-in"
   },
   "etiquetas": [
     "Claude Code",
@@ -41,9 +41,9 @@
     "ancho": 1600,
     "alto": 1000,
     "alt": {
-      "es": "Esquema del flujo de una tarea: bitácora, selector, orchestrate-dealer, commit y push con sus ganchos, /code-review, /opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
-      "gl": "Esquema do fluxo dunha tarefa: bitácora, selector, orchestrate-dealer, commit e push cos seus ganchos, /code-review, /opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
-      "en": "Diagram of a task’s flow: log, selector, orchestrate-dealer, commit and push with their hooks, /code-review, /opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
+      "es": "Esquema del flujo de una tarea: bitácora, gw-selector, gw-orchestrate-dealer, commit y push con sus ganchos, /code-review, /gw-opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
+      "gl": "Esquema do fluxo dunha tarefa: bitácora, gw-selector, gw-orchestrate-dealer, commit e push cos seus ganchos, /code-review, /gw-opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
+      "en": "Diagram of a task’s flow: log, gw-selector, gw-orchestrate-dealer, commit and push with their hooks, /code-review, /gw-opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
     }
   },
   "enlaces": [
@@ -64,9 +64,9 @@
       "ancho": 1600,
       "alto": 1000,
       "alt": {
-        "es": "Esquema del flujo de una tarea: bitácora, selector, orchestrate-dealer, commit y push con sus ganchos, /code-review, /opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
-        "gl": "Esquema do fluxo dunha tarefa: bitácora, selector, orchestrate-dealer, commit e push cos seus ganchos, /code-review, /opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
-        "en": "Diagram of a task’s flow: log, selector, orchestrate-dealer, commit and push with their hooks, /code-review, /opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
+        "es": "Esquema del flujo de una tarea: bitácora, gw-selector, gw-orchestrate-dealer, commit y push con sus ganchos, /code-review, /gw-opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
+        "gl": "Esquema do fluxo dunha tarefa: bitácora, gw-selector, gw-orchestrate-dealer, commit e push cos seus ganchos, /code-review, /gw-opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
+        "en": "Diagram of a task’s flow: log, gw-selector, gw-orchestrate-dealer, commit and push with their hooks, /code-review, /gw-opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
       }
     },
     {
@@ -86,9 +86,9 @@
       "ancho": 1600,
       "alto": 900,
       "alt": {
-        "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recuperar.py devuelve el estado. Git es la memoria.",
-        "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recuperar.py devolve o estado. Git é a memoria.",
-        "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recuperar.py restores the state. Git is the memory."
+        "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recover.py devuelve el estado. Git es la memoria.",
+        "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recover.py devolve o estado. Git é a memoria.",
+        "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recover.py restores the state. Git is the memory."
       }
     },
     {
@@ -97,9 +97,9 @@
       "ancho": 1600,
       "alto": 900,
       "alt": {
-        "es": "Gancho pre-push: ocho comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
-        "gl": "Gancho pre-push: oito comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
-        "en": "pre-push hook: eight checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
+        "es": "Gancho pre-push: varias comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
+        "gl": "Gancho pre-push: varias comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
+        "en": "pre-push hook: several checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
       }
     },
     {
@@ -108,9 +108,9 @@
       "ancho": 1600,
       "alto": 900,
       "alt": {
-        "es": "Tres fases antes de la rama protegida: revisión de código, entorno (opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
-        "gl": "Tres fases antes da rama protexida: revisión de código, contorno (opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
-        "en": "Three phases before the protected branch: code review, environment (opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
+        "es": "Tres fases antes de la rama protegida: revisión de código, entorno (gw-opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
+        "gl": "Tres fases antes da rama protexida: revisión de código, contorno (gw-opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
+        "en": "Three phases before the protected branch: code review, environment (gw-opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
       }
     },
     {
@@ -149,14 +149,14 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.4.3, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.4.3, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.4.3, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.5.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.5.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.5.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive once it has worked for weeks on real projects built with different technologies."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye trece skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as once skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe trece skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the eleven skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes thirteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as once skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the eleven skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
     }
   ],
   "lineas": [
@@ -211,9 +211,9 @@
         "en": "Choose before starting"
       },
       "texto": {
-        "es": "La skill selector decide qué skill y qué modelo pide cada tarea, y orchestrate-dealer reparte lo mecánico a subagentes de contexto limpio con el modelo más barato que lo haga bien.",
-        "gl": "A skill selector decide que skill e que modelo pide cada tarefa, e orchestrate-dealer reparte o mecánico a subaxentes de contexto limpo co modelo máis barato que o faga ben.",
-        "en": "The selector skill decides which skill and model each task calls for, and orchestrate-dealer hands the mechanical work to clean-context subagents on the cheapest model that does it well."
+        "es": "La skill gw-selector decide qué skill y qué modelo pide cada tarea, y gw-orchestrate-dealer reparte lo mecánico a subagentes de contexto limpio con el modelo más barato que lo haga bien.",
+        "gl": "A skill gw-selector decide que skill e que modelo pide cada tarefa, e gw-orchestrate-dealer reparte o mecánico a subaxentes de contexto limpo co modelo máis barato que o faga ben.",
+        "en": "The gw-selector skill decides which skill and model each task calls for, and gw-orchestrate-dealer hands the mechanical work to clean-context subagents on the cheapest model that does it well."
       }
     },
     {
@@ -237,9 +237,9 @@
         "en": "Fewer tokens, same quality"
       },
       "texto": {
-        "es": "Subagentes de contexto limpio, compactación acotada y la skill opt-tokens, que mide en qué se fue el gasto y propone recortes que no empeoren el resultado.",
-        "gl": "Subaxentes de contexto limpo, compactación acoutada e a skill opt-tokens, que mide en que se foi o gasto e propón recortes que non empeoren o resultado.",
-        "en": "Clean-context subagents, capped compaction and the opt-tokens skill, which measures where the spend went and proposes cuts that don’t make the result worse."
+        "es": "Subagentes de contexto limpio, compactación acotada y la skill gw-opt-tokens, que mide en qué se fue el gasto y propone recortes que no empeoren el resultado.",
+        "gl": "Subaxentes de contexto limpo, compactación acoutada e a skill gw-opt-tokens, que mide en que se foi o gasto e propón recortes que non empeoren o resultado.",
+        "en": "Clean-context subagents, capped compaction and the gw-opt-tokens skill, which measures where the spend went and proposes cuts that don’t make the result worse."
       }
     },
     {
@@ -289,9 +289,9 @@
         "en": "Choose"
       },
       "texto": {
-        "es": "selector dice qué skill y qué modelo pide la tarea, y si es de riesgo y hay que esperar a la persona.",
-        "gl": "selector di que skill e que modelo pide a tarefa, e se é de risco e hai que agardar pola persoa.",
-        "en": "selector says which skill and model the task calls for, and whether it’s risky enough to wait for the person."
+        "es": "gw-selector dice qué skill y qué modelo pide la tarea, y si es de riesgo y hay que esperar a la persona.",
+        "gl": "gw-selector di que skill e que modelo pide a tarefa, e se é de risco e hai que agardar pola persoa.",
+        "en": "gw-selector says which skill and model the task calls for, and whether it’s risky enough to wait for the person."
       }
     },
     {
@@ -313,9 +313,9 @@
         "en": "Work and push"
       },
       "texto": {
-        "es": "orchestrate-dealer reparte lo mecánico a subagentes y revisa lo que vuelve. Commit + push en cada punto estable, con la bitácora en el mismo commit; los ganchos pasan el check y buscan secretos.",
-        "gl": "orchestrate-dealer reparte o mecánico a subaxentes e revisa o que volve. Commit + push en cada punto estable, coa bitácora no mesmo commit; os ganchos pasan o check e buscan segredos.",
-        "en": "orchestrate-dealer hands the mechanical work to subagents and reviews what comes back. Commit + push at every stable point, with the log in the same commit; the hooks run the check and scan for secrets."
+        "es": "gw-orchestrate-dealer reparte lo mecánico a subagentes y revisa lo que vuelve. Commit + push en cada punto estable, con la bitácora en el mismo commit; los ganchos pasan el check y buscan secretos.",
+        "gl": "gw-orchestrate-dealer reparte o mecánico a subaxentes e revisa o que volve. Commit + push en cada punto estable, coa bitácora no mesmo commit; os ganchos pasan o check e buscan segredos.",
+        "en": "gw-orchestrate-dealer hands the mechanical work to subagents and reviews what comes back. Commit + push at every stable point, with the log in the same commit; the hooks run the check and scan for secrets."
       }
     },
     {
@@ -337,9 +337,9 @@
         "en": "Improve the setup"
       },
       "texto": {
-        "es": "Fase 2: opt-tokens mide el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma.",
-        "gl": "Fase 2: opt-tokens mide o gasto e a retro propón cambios. As propostas preséntanse á persoa e só se aplica o que confirma.",
-        "en": "Phase 2: opt-tokens measures the spend and the retro proposes changes. The proposals are shown to the person and only what they confirm is applied."
+        "es": "Fase 2: gw-opt-tokens mide el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma.",
+        "gl": "Fase 2: gw-opt-tokens mide o gasto e a retro propón cambios. As propostas preséntanse á persoa e só se aplica o que confirma.",
+        "en": "Phase 2: gw-opt-tokens measures the spend and the retro proposes changes. The proposals are shown to the person and only what they confirm is applied."
       }
     },
     {
@@ -417,9 +417,9 @@
               "ancho": 1600,
               "alto": 900,
               "alt": {
-                "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recuperar.py devuelve el estado. Git es la memoria.",
-                "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recuperar.py devolve o estado. Git é a memoria.",
-                "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recuperar.py restores the state. Git is the memory."
+                "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recover.py devuelve el estado. Git es la memoria.",
+                "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recover.py devolve o estado. Git é a memoria.",
+                "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recover.py restores the state. Git is the memory."
               }
             }
           ]
@@ -438,9 +438,9 @@
               "ancho": 1600,
               "alto": 900,
               "alt": {
-                "es": "Gancho pre-push: ocho comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
-                "gl": "Gancho pre-push: oito comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
-                "en": "pre-push hook: eight checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
+                "es": "Gancho pre-push: varias comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
+                "gl": "Gancho pre-push: varias comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
+                "en": "pre-push hook: several checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
               }
             }
           ]
@@ -459,9 +459,9 @@
               "ancho": 1600,
               "alto": 900,
               "alt": {
-                "es": "Tres fases antes de la rama protegida: revisión de código, entorno (opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
-                "gl": "Tres fases antes da rama protexida: revisión de código, contorno (opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
-                "en": "Three phases before the protected branch: code review, environment (opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
+                "es": "Tres fases antes de la rama protegida: revisión de código, entorno (gw-opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
+                "gl": "Tres fases antes da rama protexida: revisión de código, contorno (gw-opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
+                "en": "Three phases before the protected branch: code review, environment (gw-opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
               }
             }
           ]
@@ -622,9 +622,9 @@
           },
           "valor": "SKILL.md",
           "texto": {
-            "es": "Aconsejan. selector, orchestrate-dealer, retro o las reglas de AGENTS.md deciden lo que pide criterio. Si una regla se sigue rompiendo, se convierte en un script.",
-            "gl": "Aconsellan. selector, orchestrate-dealer, retro ou as regras de AGENTS.md deciden o que pide criterio. Se unha regra se segue rompendo, convértese nun script.",
-            "en": "Advise. selector, orchestrate-dealer, retro and the rules in AGENTS.md decide what needs judgement. If a rule keeps being broken, it becomes a script."
+            "es": "Aconsejan. gw-selector, gw-orchestrate-dealer, retro o las reglas de AGENTS.md deciden lo que pide criterio. Si una regla se sigue rompiendo, se convierte en un script.",
+            "gl": "Aconsellan. gw-selector, gw-orchestrate-dealer, retro ou as regras de AGENTS.md deciden o que pide criterio. Se unha regra se segue rompendo, convértese nun script.",
+            "en": "Advise. gw-selector, gw-orchestrate-dealer, retro and the rules in AGENTS.md decide what needs judgement. If a rule keeps being broken, it becomes a script."
           }
         }
       ]
@@ -648,7 +648,7 @@
             "gl": "A sesión acábase a metade de tarefa",
             "en": "The session ends mid-task"
           },
-          "valor": "traspaso.md",
+          "valor": "handoff.md",
           "texto": {
             "es": "La bitácora dice rama, tarea, qué falta y siguiente paso, y cada commit acaba con «Siguiente:». La sesión nueva retoma sin preguntar por dónde iba.",
             "gl": "A bitácora di rama, tarefa, que falta e seguinte paso, e cada commit remata con «Siguiente:». A sesión nova retoma sen preguntar por onde ía.",
@@ -661,7 +661,7 @@
             "gl": "Tras compactar, o axente esquece por onde ía",
             "en": "After compaction, the agent forgets where it was"
           },
-          "valor": "recuperar.py",
+          "valor": "recover.py",
           "texto": {
             "es": "Tras /compact o /clear, un gancho devuelve el estado de la bitácora, los archivos sin subir y los últimos commits; --buscar encuentra un detalle perdido de la conversación.",
             "gl": "Tras /compact ou /clear, un gancho devolve o estado da bitácora, os ficheiros sen subir e os últimos commits; --buscar atopa un detalle perdido da conversa.",
@@ -674,7 +674,7 @@
             "gl": "Chega código sen revisar ao publicado",
             "en": "Unreviewed code reaches what is published"
           },
-          "valor": "revisado.txt",
+          "valor": "reviewed.txt",
           "texto": {
             "es": "pre-push exige que el último commit con código esté cubierto por la marca de revisión. El contenido (textos, imágenes) pasa sin ella, y así se puede publicar sin repetir revisiones.",
             "gl": "pre-push esixe que o último commit con código estea cuberto pola marca de revisión. O contido (textos, imaxes) pasa sen ela, e así pódese publicar sen repetir revisións.",
@@ -713,7 +713,7 @@
             "gl": "O contexto medra e cada chamada custa máis",
             "en": "Context grows and every call costs more"
           },
-          "valor": "orchestrate-dealer",
+          "valor": "gw-orchestrate-dealer",
           "texto": {
             "es": "En un piloto, una sesión de 157 llamadas con 191k de contexto medio se llevó el 70 % del gasto. Desde entonces: compactación a 200k y subagentes de contexto limpio con unas 35 llamadas como máximo.",
             "gl": "Nun piloto, unha sesión de 157 chamadas con 191k de contexto medio levou o 70 % do gasto. Desde entón: compactación a 200k e subaxentes de contexto limpo cunhas 35 chamadas como máximo.",
@@ -726,7 +726,7 @@
             "gl": "Úsase o modelo máis caro para todo",
             "en": "The most expensive model is used for everything"
           },
-          "valor": "selector",
+          "valor": "gw-selector",
           "texto": {
             "es": "Cada tarea empieza diciendo qué skill y qué modelo pide. Los subagentes empiezan en el escalón más barato que haga bien el trabajo y solo suben tras un fallo; dos fallos en el mismo escalón, se para y se pregunta.",
             "gl": "Cada tarefa comeza dicindo que skill e que modelo pide. Os subaxentes comezan no chanzo máis barato que faga ben o traballo e só soben tras un fallo; dous fallos no mesmo chanzo, párase e pregúntase.",
@@ -739,11 +739,11 @@
             "gl": "Unha actualización pisa o adaptado",
             "en": "An update overwrites local changes"
           },
-          "valor": "*.gw-nuevo",
+          "valor": "*.gw-new",
           "texto": {
-            "es": "aplicar.py nunca sobrescribe un archivo cambiado en el proyecto: deja la versión nueva al lado para comparar. Nunca borra ni hace commit, y repetirlo no cambia nada.",
-            "gl": "aplicar.py nunca sobrescribe un ficheiro cambiado no proxecto: deixa a versión nova ao lado para comparar. Nunca borra nin fai commit, e repetilo non cambia nada.",
-            "en": "aplicar.py never overwrites a file changed in the project: it leaves the new version beside it to compare. It never deletes or commits, and running it again changes nothing."
+            "es": "apply.py nunca sobrescribe un archivo cambiado en el proyecto: deja la versión nueva al lado para comparar. Nunca borra ni hace commit, y repetirlo no cambia nada.",
+            "gl": "apply.py nunca sobrescribe un ficheiro cambiado no proxecto: deixa a versión nova ao lado para comparar. Nunca borra nin fai commit, e repetilo non cambia nada.",
+            "en": "apply.py never overwrites a file changed in the project: it leaves the new version beside it to compare. It never deletes or commits, and running it again changes nothing."
           }
         },
         {
@@ -776,9 +776,9 @@
       "items": [
         {
           "nombre": {
-            "es": "selector",
-            "gl": "selector",
-            "en": "selector"
+            "es": "gw-selector",
+            "gl": "gw-selector",
+            "en": "gw-selector"
           },
           "texto": {
             "es": "Al empezar cada tarea decide qué skill y qué modelo pide. El de la sesión lo elige la persona; para los subagentes, el más barato que haga bien el trabajo. Cada proyecto añade sus propios casos.",
@@ -788,9 +788,9 @@
         },
         {
           "nombre": {
-            "es": "orchestrate-dealer",
-            "gl": "orchestrate-dealer",
-            "en": "orchestrate-dealer"
+            "es": "gw-orchestrate-dealer",
+            "gl": "gw-orchestrate-dealer",
+            "en": "gw-orchestrate-dealer"
           },
           "texto": {
             "es": "Convierte la sesión principal en orquestadora: planea, decide y revisa, y reparte el trabajo en tandas pequeñas a subagentes de contexto limpio. Así trabaja horas sin vaciar el contexto, y todo el código que vuelve se revisa.",
@@ -800,11 +800,11 @@
         },
         {
           "nombre": {
-            "es": "opt-tokens",
-            "gl": "opt-tokens",
-            "en": "opt-tokens"
+            "es": "gw-opt-tokens",
+            "gl": "gw-opt-tokens",
+            "en": "gw-opt-tokens"
           },
-          "valor": "medir.py",
+          "valor": "measure.py",
           "texto": {
             "es": "Mide en qué se fueron los tokens de una sesión y propone cambios del entorno que los recorten sin empeorar el resultado. Va antes de la retro, al cerrar cada cambio grande.",
             "gl": "Mide en que se foron os tokens dunha sesión e propón cambios do contorno que os recorten sen empeorar o resultado. Vai antes da retro, ao pechar cada cambio grande.",
@@ -813,11 +813,11 @@
         },
         {
           "nombre": {
-            "es": "opt-ai",
-            "gl": "opt-ai",
-            "en": "opt-ai"
+            "es": "gw-opt-ai",
+            "gl": "gw-opt-ai",
+            "en": "gw-opt-ai"
           },
-          "valor": "medir.py",
+          "valor": "measure.py",
           "texto": {
             "es": "Opcional, para proyectos con modelos de IA locales (Ollama, LM Studio, llama.cpp, vLLM o un RAG): mide latencia, calidad y configuración por tipo de máquina y propone cambios sin aplicarlos.",
             "gl": "Opcional, para proxectos con modelos de IA locais (Ollama, LM Studio, llama.cpp, vLLM ou un RAG): mide latencia, calidade e configuración por tipo de máquina e propón cambios sen aplicalos.",
@@ -826,9 +826,9 @@
         },
         {
           "nombre": {
-            "es": "scout-updates",
-            "gl": "scout-updates",
-            "en": "scout-updates"
+            "es": "gw-scout-updates",
+            "gl": "gw-scout-updates",
+            "en": "gw-scout-updates"
           },
           "texto": {
             "es": "Opcional: hace inventario de dependencias, entornos, imágenes, acciones de CI y modelos de IA, busca novedades en fuentes primarias y propone las migraciones que encajan con el proyecto. Solo cuando se pide.",
@@ -981,7 +981,7 @@
             "gl": "Marca de revisado",
             "en": "Review mark"
           },
-          "valor": "revisado.sh",
+          "valor": "reviewed.sh",
           "texto": {
             "es": "Tras las tres fases, un script deja escrito en el repositorio qué commit se revisó; si el proyecto lo pide, exige antes una retro decidida.",
             "gl": "Tras as tres fases, un script deixa escrito no repositorio que commit se revisou; se o proxecto o pide, esixe antes unha retro decidida.",
@@ -994,7 +994,7 @@
             "gl": "Arranque e recuperación",
             "en": "Start-up and recovery"
           },
-          "valor": "recuperar.py",
+          "valor": "recover.py",
           "texto": {
             "es": "Al abrir sesión o tras limpiar el contexto, devuelve el estado de la bitácora, los últimos commits y la configuración que importa; también busca un detalle perdido.",
             "gl": "Ao abrir sesión ou tras limpar o contexto, devolve o estado da bitácora, os últimos commits e a configuración que importa; tamén busca un detalle perdido.",
@@ -1007,7 +1007,7 @@
             "gl": "Aplicar e diagnosticar",
             "en": "Apply and diagnose"
           },
-          "valor": "aplicar.py · doctor.py",
+          "valor": "apply.py · doctor.py",
           "texto": {
             "es": "Aplican, actualizan y revisan el flujo de forma determinista, y avisan de lo que falta (por ejemplo, una sesión en la nube sin el tope de compactación). Las skills gw- se apoyan en ellos.",
             "gl": "Aplican, actualizan e revisan o fluxo de forma determinista, e avisan do que falta (por exemplo, unha sesión na nube sen o tope de compactación). As skills gw- apóianse neles.",
@@ -1049,9 +1049,9 @@
         "en": "Skills by Matt Pocock"
       },
       "intro": {
-        "es": "Trece skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
-        "gl": "Trece skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
-        "en": "Thirteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
+        "es": "Quince skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
+        "gl": "Quince skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
+        "en": "Fifteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
       },
       "items": [
         {
@@ -1209,6 +1209,30 @@
             "gl": "Cando a persoa di que non entendeu a última mensaxe, para e vólvea explicar doutra forma.",
             "en": "When the person says the last message didn’t land, it stops and explains it again another way."
           }
+        },
+        {
+          "nombre": {
+            "es": "to-spec",
+            "gl": "to-spec",
+            "en": "to-spec"
+          },
+          "texto": {
+            "es": "Convierte lo ya hablado en una especificación, sin entrevista.",
+            "gl": "Converte o xa falado nunha especificación, sen entrevista.",
+            "en": "Turns what has already been discussed into a spec, with no interview."
+          }
+        },
+        {
+          "nombre": {
+            "es": "wayfinder",
+            "gl": "wayfinder",
+            "en": "wayfinder"
+          },
+          "texto": {
+            "es": "Planifica un esfuerzo grande y con niebla como un mapa de decisiones y las resuelve una a una.",
+            "gl": "Planifica un esforzo grande e con néboa como un mapa de decisións e resólveas unha a unha.",
+            "en": "Plans a large, foggy effort as a map of decisions and settles them one at a time."
+          }
         }
       ]
     },
@@ -1283,7 +1307,7 @@
             "gl": "reviewMark",
             "en": "reviewMark"
           },
-          "valor": "docs/registros/revisado.txt",
+          "valor": "docs/records/reviewed.txt",
           "texto": {
             "es": "Dónde se guarda la marca de revisión: el commit revisado.",
             "gl": "Onde se garda a marca de revisión: o commit revisado.",
@@ -1296,7 +1320,7 @@
             "gl": "log",
             "en": "log"
           },
-          "valor": "docs/traspaso.md",
+          "valor": "docs/handoff.md",
           "texto": {
             "es": "La bitácora; logRows limita cuántas filas guarda para que leerla siga siendo barato.",
             "gl": "A bitácora; logRows limita cantas filas garda para que lela siga sendo barato.",
@@ -1337,9 +1361,9 @@
           },
           "valor": "[ … ]",
           "texto": {
-            "es": "Filas propias del proyecto para la skill selector: qué caso pide qué skill y qué modelo.",
-            "gl": "Filas propias do proxecto para a skill selector: que caso pide que skill e que modelo.",
-            "en": "The project’s own rows for the selector skill: which case calls for which skill and model."
+            "es": "Filas propias del proyecto para la skill gw-selector: qué caso pide qué skill y qué modelo.",
+            "gl": "Filas propias do proxecto para a skill gw-selector: que caso pide que skill e que modelo.",
+            "en": "The project’s own rows for the gw-selector skill: which case calls for which skill and model."
           }
         },
         {
@@ -1463,6 +1487,61 @@
         "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The full release notes are in the project’s repository."
       },
       "items": [
+        {
+          "nombre": {
+            "es": "Base de la 0.x",
+            "gl": "Base da 0.x",
+            "en": "Base of 0.x"
+          },
+          "valor": "0.5.0 · 2026-11-04",
+          "texto": {
+            "es": "Primera versión con evolutivos desde que el repositorio es público: nombres en inglés y coherentes en skills, archivos y carpetas, con migración automática al actualizar, un check que no se repite si ya pasó y nuevas formas de comprobar sin depender de GitHub. Se avanza por la serie 0.x y la 1.0 llegará con el centro de gestión.",
+            "gl": "Primeira versión con evolutivos desde que o repositorio é público: nomes en inglés e coherentes en skills, ficheiros e cartafoles, con migración automática ao actualizar, un check que non se repite se xa pasou e novas formas de comprobar sen depender de GitHub. Avánzase pola serie 0.x e a 1.0 chegará co centro de xestión.",
+            "en": "First version with new features since the repository went public: consistent English names for skills, files and folders, with an automatic migration on update, a check that does not repeat once it has passed, and new ways to verify without depending on GitHub. Progress goes through the 0.x series and 1.0 will arrive with the management centre."
+          },
+          "detalle": [
+            {
+              "es": "Las skills propias llevan ahora el prefijo gw- y los archivos, carpetas y scripts del flujo tienen nombres en inglés; las skills de terceros conservan el suyo.",
+              "gl": "As skills propias levan agora o prefixo gw- e os ficheiros, cartafoles e scripts do fluxo teñen nomes en inglés; as skills de terceiros conservan o seu.",
+              "en": "Our own skills now carry the gw- prefix and the workflow’s files, folders and scripts have English names; third-party skills keep theirs."
+            },
+            {
+              "es": "Al actualizar, una migración automática traslada un proyecto instalado a los nombres nuevos sin sobrescribir nada y se detiene si el destino ya existe; durante la 0.x los nombres antiguos siguen valiendo, con un aviso.",
+              "gl": "Ao actualizar, unha migración automática traslada un proxecto instalado aos nomes novos sen sobrescribir nada e detense se o destino xa existe; durante a 0.x os nomes antigos seguen valendo, cun aviso.",
+              "en": "On update, an automatic migration moves an installed project to the new names without overwriting anything and stops if the destination already exists; during 0.x the old names still work, with a warning."
+            },
+            {
+              "es": "El check de subida no se repite si el mismo código ya lo pasó en verde con las mismas órdenes, y la configuración lleva ahora la versión de su formato para que un proyecto antiguo nunca se rompa en silencio.",
+              "gl": "O check de subida non se repite se o mesmo código xa o pasou en verde coas mesmas ordes, e a configuración leva agora a versión do seu formato para que un proxecto antigo nunca se rompa en silencio.",
+              "en": "The push check does not repeat if the same code already passed it green with the same commands, and the configuration now carries its format version so an old project never breaks silently."
+            },
+            {
+              "es": "Se puede prohibir que los commits lleven firmas del agente: el gancho rechaza el mensaje que las traiga.",
+              "gl": "Pódese prohibir que os commits leven sinaturas do axente: o gancho rexeita a mensaxe que as traia.",
+              "en": "Agent signatures can be banned from commits: the hook rejects any message that carries them."
+            },
+            {
+              "es": "Cuando el CI de GitHub no arranca (sin cuota o sin runners), el flujo puede correrlo en local y dejar apuntado el resultado, que cuenta si la persona lo confirma.",
+              "gl": "Cando o CI de GitHub non arranca (sen cota ou sen runners), o fluxo pode correrlo en local e deixar apuntado o resultado, que conta se a persoa o confirma.",
+              "en": "When GitHub CI does not start (no quota or no runners), the workflow can run it locally and record the result, which counts once the person confirms it."
+            },
+            {
+              "es": "Se avisa cuando dos ramas dan de alta tareas distintas con el mismo identificador, antes de que choquen al fusionarse.",
+              "gl": "Avísase cando dúas ramas dan de alta tarefas distintas co mesmo identificador, antes de que choquen ao fusionarse.",
+              "en": "A warning appears when two branches add different tasks with the same identifier, before they clash on merge."
+            },
+            {
+              "es": "Las piezas de difusión pueden llevar un canal web, con un texto por idioma y un estado de borrador o listo, para que la web del proyecto las publique.",
+              "gl": "As pezas de difusión poden levar un canle web, cun texto por idioma e un estado de borrador ou listo, para que a web do proxecto as publique.",
+              "en": "Outreach pieces can carry a web channel, with one text per language and a draft or ready status, for the project’s website to publish."
+            },
+            {
+              "es": "Un control comprueba que nada privado (claves, correos, nombres reservados) se publica, y llegan dos skills de Matt Pocock: to-spec y wayfinder.",
+              "gl": "Un control comproba que nada privado (claves, correos, nomes reservados) se publica, e chegan dúas skills de Matt Pocock: to-spec e wayfinder.",
+              "en": "A check makes sure nothing private (keys, e-mails, reserved names) is published, and two skills by Matt Pocock arrive: to-spec and wayfinder."
+            }
+          ]
+        },
         {
           "nombre": {
             "es": "Parche de arreglos",
@@ -1875,9 +1954,9 @@
       },
       "estado": "curso",
       "detalle": {
-        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos; la 0.4.2, del 27 de octubre, y la 0.4.3, del 1 de noviembre, solo traen arreglos. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
-        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos; a 0.4.2, do 27 de outubro, e a 0.4.3, do 1 de novembro, só traen arranxos. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
-        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us; 0.4.2, from 27 October, and 0.4.3, from 1 November, bring fixes only. Since 0.4 the repository is public and every version ships with its release."
+        "es": "Empezó con la versión 0.3.0, que recoge lo aprendido en los pilotos de Tarkor y su instalador; la 0.4.0 y la 0.4.1, publicadas el 26 de octubre, suman lo aprendido en el portal y en los proyectos nuevos; la 0.4.2, del 27 de octubre, y la 0.4.3, del 1 de noviembre, solo traen arreglos, y la 0.5.0, del 4 de noviembre, reúne los primeros evolutivos de la serie 0.x: nombres en inglés, comprobaciones que no se repiten y formas de comprobar sin depender de GitHub. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
+        "gl": "Comezou coa versión 0.3.0, que recolle o aprendido nos pilotos de Tarkor e o seu instalador; a 0.4.0 e a 0.4.1, publicadas o 26 de outubro, suman o aprendido no portal e nos proxectos novos; a 0.4.2, do 27 de outubro, e a 0.4.3, do 1 de novembro, só traen arranxos, e a 0.5.0, do 4 de novembro, reúne os primeiros evolutivos da serie 0.x: nomes en inglés, comprobacións que non se repiten e formas de comprobar sen depender de GitHub. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
+        "en": "It began with version 0.3.0, which brings in what the pilots on Tarkor and its installer taught us; 0.4.0 and 0.4.1, published on 26 October, add what the portal and the new projects taught us; 0.4.2, from 27 October, and 0.4.3, from 1 November, bring fixes only, and 0.5.0, from 4 November, gathers the first new features of the 0.x series: English names, checks that do not repeat and ways to verify without depending on GitHub. Since 0.4 the repository is public and every version ships with its release."
       }
     },
     {
@@ -1919,6 +1998,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-04",
+      "texto": {
+        "es": "Publicada la 0.5.0, la primera de la serie con evolutivos: las skills propias pasan a llevar el prefijo gw- y los archivos, carpetas y scripts del flujo reciben nombres coherentes en inglés, con una migración automática al actualizar que no pisa nada. El check ya no se repite si pasó en verde sobre el mismo código, se pueden prohibir las firmas del agente en los commits, hay una forma de correr en local el CI cuando el de GitHub no arranca, se avisa si dos ramas dan de alta tareas distintas con el mismo identificador y las piezas de difusión pueden llevar un canal web para el sitio del proyecto. Llegan además dos skills nuevas, to-spec y wayfinder.",
+        "gl": "Publicada a 0.5.0, a primeira da serie con evolutivos: as skills propias pasan a levar o prefixo gw- e os ficheiros, cartafoles e scripts do fluxo reciben nomes coherentes en inglés, cunha migración automática ao actualizar que non pisa nada. O check xa non se repite se pasou en verde sobre o mesmo código, pódense prohibir as sinaturas do axente nos commits, hai unha forma de correr en local o CI cando o de GitHub non arranca, avísase se dúas ramas dan de alta tarefas distintas co mesmo identificador e as pezas de difusión poden levar un canle web para o sitio do proxecto. Chegan ademais dúas skills novas, to-spec e wayfinder.",
+        "en": "Version 0.5.0 is out, the first of the series with new features: our own skills now carry the gw- prefix and the workflow’s files, folders and scripts get consistent English names, with an automatic migration on update that overwrites nothing. The check no longer repeats if it already passed green on the same code, the agent’s signatures can be banned from commits, there is a way to run CI locally when GitHub’s does not start, a warning appears if two branches add different tasks with the same identifier, and outreach pieces can carry a web channel for the project’s site. Two new skills also arrive, to-spec and wayfinder."
+      }
+    },
     {
       "fecha": "2026-11-01",
       "texto": {
@@ -1974,30 +2061,6 @@
         "gl": "Primeiro piloto: este portal xa traballa co fluxo. Aplicámolo a un proxecto real, comprobamos que nada chega á web sen revisión e anotamos 26 friccións para melloralo.",
         "en": "First pilot: this portal now runs on the workflow. We applied it to a real project, checked that nothing reaches the site without review and logged 26 points of friction to improve it."
       }
-    },
-    {
-      "fecha": "2026-10-22",
-      "texto": {
-        "es": "Fases 2 a 4 cerradas: skills, ganchos y scripts (comprobados en Linux y macOS), plantillas y aplicación automática a un proyecto. Primera versión, 0.1.0.",
-        "gl": "Fases 2 a 4 pechadas: skills, ganchos e scripts (comprobados en Linux e macOS), modelos e aplicación automática a un proxecto. Primeira versión, 0.1.0.",
-        "en": "Phases 2 to 4 done: skills, hooks and scripts (checked on Linux and macOS), templates and automatic setup in a project. First version, 0.1.0."
-      }
-    },
-    {
-      "fecha": "2026-10-21",
-      "texto": {
-        "es": "Fases 0 y 1 cerradas: verificación, esqueleto del repositorio y comprobaciones automáticas en Linux y macOS. Empieza la adaptación de las skills.",
-        "gl": "Fases 0 e 1 pechadas: verificación, esqueleto do repositorio e comprobacións automáticas en Linux e macOS. Comeza a adaptación das skills.",
-        "en": "Phases 0 and 1 done: verification, repository skeleton and automated checks on Linux and macOS. Adapting the skills begins."
-      }
-    },
-    {
-      "fecha": "2026-10-21",
-      "texto": {
-        "es": "Plan por fases escrito y repositorio creado.",
-        "gl": "Plan por fases escrito e repositorio creado.",
-        "en": "Phased plan written and repository created."
-      }
     }
   ],
   "cifras": [
@@ -2010,7 +2073,7 @@
       }
     },
     {
-      "valor": "13",
+      "valor": "15",
       "etiqueta": {
         "es": "skills de Matt Pocock",
         "gl": "skills de Matt Pocock",
@@ -2018,7 +2081,7 @@
       }
     },
     {
-      "valor": "1068",
+      "valor": "1776",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",
@@ -2050,9 +2113,9 @@
         "en": "Thanks to Matt Pocock"
       },
       "texto": {
-        "es": "Trece de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
-        "gl": "Trece das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
-        "en": "Thirteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
+        "es": "Quince de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
+        "gl": "Quince das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
+        "en": "Fifteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
       }
     },
     {

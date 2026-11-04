@@ -56,7 +56,7 @@
 <circle cx="708" cy="292" r="20" fill="#f2b34a" fill-opacity="0.18" stroke="#f2b34a" stroke-width="2"/>
 <text x="708" y="299" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="middle">2</text>
 <text x="742" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">environment</text>
-<text x="692" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">/opt-tokens</text>
+<text x="692" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">/gw-opt-tokens</text>
 <text x="692" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">/retro</text>
 <path d="M930 365H962" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
 <rect x="670" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
@@ -69,10 +69,10 @@
 <text x="1037" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">close</text>
 <text x="987" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">review phase-2</text>
 <text x="987" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">commits</text>
-<text x="987" y="422" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">revisado.sh</text>
+<text x="987" y="422" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">reviewed.sh</text>
 <path d="M1225 365H1257" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
 <rect x="965" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="985" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">revisado.txt</text>
+<text x="985" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">reviewed.txt</text>
 <text x="985" y="628" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">= reviewed sha</text>
 <path d="M1095.0 480V552" stroke="#8a9bb0" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="4 5"/>
 <rect x="1260" y="250" width="260" height="230" rx="18" fill="#0b2120" stroke="#4cc38a" stroke-opacity="0.6" stroke-width="2"/>
@@ -93,6 +93,6 @@
 <text x="1356.0" y="200" class="m" font-size="16" fill="#f2b34a" text-anchor="end">person confirms</text>
 <text x="80" y="730" class="m" font-size="18" fill="#eef6fb" font-weight="bold" text-anchor="start">artifacts</text>
 <text x="80" y="762" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">Each phase leaves a file in the repo: the next session, or a reviewer, sees what was decided.</text>
-<text x="80" y="792" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">requireRetro: revisado.sh refuses the mark until a retro on the branch says applied, rejected or deferred.</text>
+<text x="80" y="792" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">requireRetro: reviewed.sh refuses the mark until a retro on the branch says applied, rejected or deferred.</text>
 <text x="80" y="822" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">Phase 2 is optional for small changes when the project says so (requireRetro: false).</text>
 </svg>

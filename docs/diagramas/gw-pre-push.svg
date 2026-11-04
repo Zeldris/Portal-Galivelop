@@ -65,7 +65,7 @@
 <path d="M1026 425H1038" fill="none" stroke="#38b6e8" stroke-width="2" marker-end="url(#fa)"/>
 <rect x="1040" y="330" width="146" height="190" rx="14" fill="#0d1b2a" stroke="#f2b34a" stroke-opacity="0.55" stroke-width="2"/>
 <text x="1054" y="370" class="m" font-size="18" fill="#eef6fb" font-weight="bold" text-anchor="start">code files?</text>
-<text x="1054" y="410" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">es-codigo.sh</text>
+<text x="1054" y="410" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">is-code.sh</text>
 <text x="1054" y="436" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">content</text>
 <text x="1054" y="462" class="m" font-size="15" fill="#8a9bb0" text-anchor="start">regexes</text>
 <path d="M1186 425H1198" fill="none" stroke="#38b6e8" stroke-width="2" marker-end="url(#fa)"/>
@@ -85,7 +85,7 @@
 <text x="1270" y="286" class="m" font-size="16" fill="#4cc38a" text-anchor="middle">content only</text>
 <rect x="80" y="640" width="1440" height="120" rx="14" fill="#2a1215" stroke="#f0716a" stroke-opacity="0.7" stroke-width="2"/>
 <text x="110" y="690" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">✗ push rejected · exit 1</text>
-<text x="110" y="726" class="m" font-size="17" fill="#e9c3c0" text-anchor="start">reason on stderr · last line is the fix:  /code-review → bash .claude/gw/scripts/revisado.sh → git push</text>
+<text x="110" y="726" class="m" font-size="17" fill="#e9c3c0" text-anchor="start">reason on stderr · last line is the fix:  /code-review → bash .claude/gw/scripts/reviewed.sh → git push</text>
 <text x="80" y="820" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">pushToProtected: pr → a PreToolUse hook asks the same mark, plus green CI, before a PR is created or merged (exit 2).</text>
 <text x="80" y="850" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">A commit cannot unprotect the branch it is judged on: the policy is read from the remote tip.</text>
 </svg>
