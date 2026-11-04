@@ -202,7 +202,7 @@ estática existen.
 - Código: [`src/pages/Muro.tsx`](../src/pages/Muro.tsx), [`src/components/Publicacion.tsx`](../src/components/Publicacion.tsx)
   y [`src/data/muro.ts`](../src/data/muro.ts); la página estática, en `scripts/paginas-estaticas.mjs`.
 
-### De dónde salen: `docs/difusion` de cada proyecto
+### De dónde salen: `docs/media` (antes `docs/difusion`) de cada proyecto
 
 Las publicaciones las escribe la tarea semanal a partir de la carpeta de difusión de cada proyecto (la rellena la
 skill `gw-media-content` del flujo). De cada pieza lee solo su `web.md`, que lleva un bloque JSON:

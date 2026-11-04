@@ -24,7 +24,8 @@ SKILL = Path(__file__).resolve().parent.parent
 PORTAL = SKILL.parent.parent.parent
 FUENTES = SKILL / "fuentes.json"
 # Commits que nunca son una novedad: fusiones, marcas de revisión, bitácora y WIP.
-RUIDO = re.compile(r"^merge |merge pull|bitácora|^wip|^revisado:|marca de revisión|^fusi[oó]n|^fusiona", re.I)
+RUIDO = re.compile(r"^merge |merge pull|^wip|^revisado:|^reviewed:|marca de revisión|review mark|^fusi[oó]n|^fusiona"
+                   r"|^(docs|chore)(\([^)]*\))?: *(bitácora|handoff)|^(bitácora|handoff)\b", re.I)
 ETIQUETA = re.compile(r"^v(\d+)\.(\d+)\.(\d+)$")
 MAX_COMMITS = 80
 
@@ -212,8 +213,17 @@ def cambios_vigilados(clon, rama, desde, rutas):
     return lista
 
 
+def url_repo(enlace):
+    """El repo de GitHub de un enlace, sin .git, /tree/…, #ancla, ?consulta ni www. (en minúsculas)."""
+    m = re.match(r"https?://(?:www\.)?github\.com/([^/#?]+)/([^/#?]+)", enlace.strip(), re.I)
+    if not m:
+        return enlace.lower().rstrip("/")
+    repo = m.group(2)[:-4] if m.group(2).lower().endswith(".git") else m.group(2)
+    return f"https://github.com/{m.group(1)}/{repo}".lower()
+
+
 def difusion_lista(clon, rama):
-    salida = git(clon, "grep", "-l", "-E", '"estado": *"listo"', rama, "--", "docs/difusion/**/web.md",
+    salida = git(clon, "grep", "-l", "-E", '"(estado|status)": *"(listo|ready)"', rama, "--", "docs/difusion/**/web.md",
                  "docs/media/**/web.md", check=False)
     return [l.split(":", 1)[1] for l in salida.splitlines() if ":" in l]
 
@@ -233,12 +243,12 @@ def informe_repo(nombre, visibilidad, cfg, clones):
             r["aviso"] = f"no existe src/data/proyectos/{cfg['slug']}.json"
             return r
         r.update(F=ficha["F"], N=ficha["N"])
-        enlazado = any(e.lower().rstrip("/") == url for e in ficha["enlaces"])
+        enlazado = any(url_repo(e) == url for e in ficha["enlaces"])
         if visibilidad == "public" and not enlazado:
             r["enlace"] = "repo público sin enlace al código en la ficha: proponer añadirlo (ADR 0003)"
         elif visibilidad == "private" and enlazado:
             r["enlace"] = "repo privado enlazado desde la ficha: quitar el enlace"
-    nombre_ficha = leer_ficha(cfg["slug"]) if cfg["destino"] == "ficha" else None
+    nombre_ficha = ficha if cfg["destino"] == "ficha" else None
     r["escaparate"] = escaparate(cfg["slug"], [cfg.get("nombre"), (nombre_ficha or {}).get("nombre")],
                                  cfg.get("diagramas", []))
     clon = buscar_clon(clones, nombre)
@@ -248,6 +258,8 @@ def informe_repo(nombre, visibilidad, cfg, clones):
         return r
     r["clon"] = str(clon)
     desde = min(f for f in (r.get("N"), r.get("F")) if f) if r.get("F") else None
+    if cfg["destino"] == "ficha" and not desde:
+        r["aviso"] = "la ficha no tiene «actualizado»: sin fecha F no se miran commits ni difusión; ponle una"
     rama = poner_al_dia(clon, desde)
     r["rama"] = rama
     if desde:
@@ -260,7 +272,7 @@ def informe_repo(nombre, visibilidad, cfg, clones):
             r["etiqueta"]["nueva"] = True
     rutas = [cfg["bitacora"]] if cfg.get("bitacora") else []
     if cfg["destino"] == "proximamente":
-        rutas = ["docs/plan.md", "docs/traspaso.md"]
+        rutas = ["docs/plan.md", cfg.get("bitacora", "docs/traspaso.md")]
     r["bitacora"] = dict(cabecera_bitacora(clon, rama, ruta) for ruta in rutas)
     return r
 

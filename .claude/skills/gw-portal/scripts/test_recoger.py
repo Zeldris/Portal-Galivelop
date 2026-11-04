@@ -38,6 +38,12 @@ class Filtros(unittest.TestCase):
         self.assertEqual(utiles, ["2026-11-01 IMG-27: el encuadre sale de la ficha"])
         self.assertEqual(total, 1)
 
+    def test_quita_marcas_y_bitacora_en_ingles_pero_no_lo_que_solo_la_nombra(self):
+        # La 0.5 escribe «Reviewed: …» y «docs: handoff …»; un commit que solo cita la bitácora sí es novedad.
+        lineas = ["2026-11-03 Reviewed: 1cfcfdb", "2026-11-03 Review mark before main", "2026-11-03 Handoff al día",
+                  "2026-11-03 docs(flujo): bitácora al día", "2026-11-02 Recover lee la bitácora en inglés"]
+        self.assertEqual(recoger.filtrar_commits(lineas)[0], ["2026-11-02 Recover lee la bitácora en inglés"])
+
     def test_plan_solo_tabla_de_fases_y_bitacora_su_primera_tabla(self):
         plan = "| # | Decisión |\n|---|---|\n| D1 | algo |\n\n| Fase | Qué trae |\n|---|---|\n| F0 | esqueleto |\n"
         self.assertEqual(recoger.filas_utiles(plan, "docs/plan.md"), ["| Fase | Qué trae |", "| F0 | esqueleto |"])
@@ -66,6 +72,30 @@ class RutasDelFlujo(unittest.TestCase):
                 subprocess.run(["git", "-C", d, "commit", "-q", "-m", "inicio"], check=True, env=env)
                 self.assertEqual(recoger.cabecera_bitacora(d, "HEAD", "docs/traspaso.md"), (bitacora, ["| Fase | F2 |"]))
                 self.assertEqual(recoger.difusion_lista(d, "HEAD"), [pieza])
+
+
+    def test_pieza_lista_con_status_ready_de_la_0_5(self):
+        with tempfile.TemporaryDirectory() as d:
+            for ruta, texto in (("docs/media/a/web.md", '{"status": "ready"}'),
+                                ("docs/media/b/web.md", '{"status": "draft", "estado": "borrador"}')):
+                (Path(d) / ruta).parent.mkdir(parents=True, exist_ok=True)
+                (Path(d) / ruta).write_text(texto, encoding="utf-8")
+            env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                       GIT_COMMITTER_EMAIL="t@t")
+            subprocess.run(["git", "init", "-q", d], check=True)
+            subprocess.run(["git", "-C", d, "add", "."], check=True)
+            subprocess.run(["git", "-C", d, "commit", "-q", "-m", "inicio"], check=True, env=env)
+            self.assertEqual(recoger.difusion_lista(d, "HEAD"), ["docs/media/a/web.md"])
+
+
+class Enlaces(unittest.TestCase):
+    def test_variantes_de_la_url_del_repo_cuentan_como_enlazado(self):
+        url = "https://github.com/zeldris/tarkor"
+        for enlace in ("https://github.com/Zeldris/Tarkor", "https://github.com/Zeldris/Tarkor.git",
+                       "https://www.github.com/Zeldris/Tarkor/tree/main", "https://github.com/Zeldris/Tarkor#readme"):
+            with self.subTest(enlace=enlace):
+                self.assertEqual(recoger.url_repo(enlace), url)
+        self.assertNotEqual(recoger.url_repo("https://github.com/Zeldris/Tarkor-web"), url)
 
 
 class Commits(unittest.TestCase):

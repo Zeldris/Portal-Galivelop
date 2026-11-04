@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-04 (flujo 0.5.0 en la rama, sin revisar) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-6aa8bbd7-86cgbe` (desde `main`) |
 | **Tarea en curso** | Skill `gw-portal` (`.claude/skills/gw-portal/`): pone el portal al día con los repos de la cuenta (titular Zeldris y VeriNews_AI) en modo informe, aplicar o semanal; la tarea semanal pasará a solo ejecutarla. Hecha y con tests; falta probarla y revisarla |
-| **Siguiente paso** | Ir a `main` (la persona, 2026-11-04: «lo llevamos a main»): fase 1 (`/code-review --max-findings all`: el flujo 0.5.0, `recoger.py` y sus tests son código) y fase 3 antes del domingo, fusión en `claude/galivelop-dev-portal-1h89ci` y que la persona pegue el texto nuevo de `docs/runbooks/tarea-semanal.md` en la conversación de la tarea. Pendiente de la persona (T1 de la retro): `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` |
+| **Siguiente paso** | Ir a `main` (la persona, 2026-11-04: «lo llevamos a main»): fase 1 hecha (12 hallazgos; arreglados los medios: rutas 0.5 en `proyectos.md`, ruido en inglés, `status: ready`, URL del repo normalizada, bitácora de próximamente; leves en «Pendiente»); fase 2 (`gw-opt-tokens` y `retro`, a presentar a la persona) y fase 3 antes del domingo, fusión en `claude/galivelop-dev-portal-1h89ci` y que la persona pegue el texto nuevo de `docs/runbooks/tarea-semanal.md` en la conversación de la tarea. Pendiente de la persona (T1 de la retro): `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` |
 | **En `main`** | Todo publicado, hasta el **flujo Galivelop-workflow 0.4.3** (18e3d48, 2026-11-02, confirmación de la persona: «Si»); el detalle de cada subida, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 114/114 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, con `/aviso-legal`, `/privacidad` y `/terminos` en es/gl/en) |
 
@@ -68,10 +68,10 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
+- **Leves de la revisión del paso a 0.5.0 y `gw-portal`** (2026-11-04, no se vuelven a revisar en este cambio): `escaparate()` de `recoger.py` recorre todo el portal por cada repo (bien para 6 repos; con muchos más, un solo `git grep` para todos); el aviso «sin actualizado» no sale si al repo le falta el clon. Del flujo, para su retro (no se tocan aquí sin permiso): la clave de caché de `.claude/gw/scripts/check-green.sh` ignora los archivos ignorados por git, y `.githooks/pre-push` sugiere `git rebase -i` aunque aquí se fusiona.
 - **Leve de la revisión de la ADR 0003** (2026-11-02, no se vuelve a revisar en este cambio): la sección de Productos de la portada vive dentro de `Inicio.tsx`; sacarla a su propio componente (`SeccionProductos`) cuando se vuelva a tocar.
 - **Leve de la revisión del enlace de Discord** (2026-10-31, no se vuelve a revisar en este cambio): el `lastmod` del sitemap solo sigue `marca.ts` en la portada, Participa y Productos, aunque el pie y el JSON-LD con sus enlaces están en todas las páginas.
 - **La persona: `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en las variables del entorno de la nube** (T1 de la retro del 2026-10-31): hoy no estaba y el contexto medio fue de 225k.
-- **Pasar el portal a la 0.4.2 del flujo con `/gw-update`** (R3 de la retro del 2026-10-31), en una sesión nueva abierta desde el repo.
 - **Leve de la revisión de los textos legales** (2026-10-31, no se vuelve a revisar en este cambio): en `datos`, el enlace «Sitio web» lleva siempre a la portada en castellano, también desde `/gl/` y `/en/`.
 - **Ideas de `elayadesign/ai-design-skills` y `redesign-skill`** (aprobadas el 2026-10-30; aplicadas el mismo día en
   la rama `ccr-83ea043c-r1gbyp`): hechas las palabras de relleno (`src/i18n/relleno.test.ts`), `text-wrap`, respuesta
