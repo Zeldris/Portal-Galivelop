@@ -46,6 +46,12 @@ class Filtros(unittest.TestCase):
 
 
 class RutasDelFlujo(unittest.TestCase):
+    def test_variantes_de_la_bitacora(self):
+        # La 0.5 lleva la bitácora a docs/handoff.md también desde docs/registros/traspaso.md.
+        self.assertEqual(recoger.variantes("docs/registros/traspaso.md"),
+                         ["docs/registros/traspaso.md", "docs/handoff.md", "docs/records/traspaso.md"])
+        self.assertIn("docs/registros/traspaso.md", recoger.variantes("docs/handoff.md"))
+
     def test_bitacora_y_difusion_con_el_nombre_viejo_o_el_nuevo(self):
         # Un repo aún en la 0.4 (docs/traspaso.md, docs/difusion/) y otro ya en la 0.5 (docs/handoff.md, docs/media/).
         for bitacora, pieza in (("docs/traspaso.md", "docs/difusion/a/web.md"), ("docs/handoff.md", "docs/media/a/web.md")):

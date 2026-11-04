@@ -17,7 +17,7 @@
       "etiquetas": true,
       "diagramas": ["docs/diagramas/gw-*.svg", "docs/diagramas/galivelop-workflow.svg"]
     },
-    "raquelccarreraA/VeriNews_AI": { "destino": "ficha", "slug": "toveriai", "nombre": "toVeriAI", "bitacora": "docs/traspaso.md" },
+    "raquelccarreraA/VeriNews_AI": { "destino": "ficha", "slug": "toveriai", "nombre": "toVeriAI", "bitacora": "docs/registros/traspaso.md" },
     "Zeldris/galivelop-image-generator": {
       "destino": "ficha",
       "slug": "galivelop-image-generator",

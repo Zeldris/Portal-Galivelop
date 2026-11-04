@@ -175,7 +175,8 @@ def filas_utiles(texto, ruta, max_filas=14):
 
 
 # Galivelop-workflow 0.5.0 pasó sus rutas a inglés; cada repo puede estar aún en cualquiera de los dos nombres.
-RUTAS_FLUJO = [("docs/traspaso.md", "docs/handoff.md"), ("docs/registros/", "docs/records/"),
+RUTAS_FLUJO = [("docs/traspaso.md", "docs/handoff.md"), ("docs/registros/traspaso.md", "docs/handoff.md"),
+               ("docs/registros/", "docs/records/"),
                ("docs/difusion/", "docs/media/")]
 
 
