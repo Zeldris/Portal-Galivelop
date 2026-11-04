@@ -42,7 +42,7 @@
 <rect x="1220" y="190" width="300" height="330" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="1240" y="208" width="30" height="5" rx="2.5" fill="#38b6e8"/>
 <text x="1240" y="248" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">work</text>
-<rect x="1240" y="290" width="105" height="38" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
+<rect x="1240" y="290" width="135" height="38" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
 <text x="1254" y="311" class="m" font-size="16" fill="#eef6fb" text-anchor="start">gw-selector</text>
 <rect x="1240" y="340" width="115" height="38" rx="10" fill="#38b6e8" fill-opacity="0.12" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="1.5"/>
 <text x="1254" y="361" class="m" font-size="16" fill="#eef6fb" text-anchor="start">dealer ×n</text>
@@ -61,7 +61,7 @@
 <rect x="450" y="420" width="330" height="150" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
 <rect x="470" y="438" width="30" height="5" rx="2.5" fill="#38b6e8"/>
 <text x="470" y="478" class="m" font-size="22" fill="#eef6fb" font-weight="bold" text-anchor="start">recover.py</text>
-<text x="470" y="508" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">--estado: log row,</text>
+<text x="470" y="508" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">--state: log row,</text>
 <text x="470" y="532" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">uncommitted, last 5</text>
 <text x="470" y="556" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">commits, compactions</text>
 <path d="M1220 495H1158" fill="none" stroke="#8a9bb0" stroke-width="2.5" marker-end="url(#fg)"/>
