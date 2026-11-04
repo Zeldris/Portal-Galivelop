@@ -174,8 +174,28 @@ def filas_utiles(texto, ruta, max_filas=14):
     return [f[:400] for t in elegidas for f in t[:max_filas]]
 
 
+# Galivelop-workflow 0.5.0 pasó sus rutas a inglés; cada repo puede estar aún en cualquiera de los dos nombres.
+RUTAS_FLUJO = [("docs/traspaso.md", "docs/handoff.md"), ("docs/registros/", "docs/records/"),
+               ("docs/difusion/", "docs/media/")]
+
+
+def variantes(ruta):
+    """La ruta y su equivalente con el otro nombre del flujo (español o inglés), sin repetir."""
+    out = [ruta]
+    for viejo, nuevo in RUTAS_FLUJO:
+        for a, b in ((viejo, nuevo), (nuevo, viejo)):
+            if ruta.startswith(a) and b + ruta[len(a):] not in out:
+                out.append(b + ruta[len(a):])
+    return out
+
+
 def cabecera_bitacora(clon, rama, ruta):
-    return filas_utiles(git(clon, "show", f"{rama}:{ruta}", check=False), ruta)
+    """(ruta que existe en la rama, sus filas útiles); con ninguna variante, (ruta pedida, [])."""
+    for r in variantes(ruta):
+        texto = git(clon, "show", f"{rama}:{r}", check=False)
+        if texto:
+            return r, filas_utiles(texto, r)
+    return ruta, []
 
 
 def cambios_vigilados(clon, rama, desde, rutas):
@@ -192,7 +212,8 @@ def cambios_vigilados(clon, rama, desde, rutas):
 
 
 def difusion_lista(clon, rama):
-    salida = git(clon, "grep", "-l", "-E", '"estado": *"listo"', rama, "--", "docs/difusion/**/web.md", check=False)
+    salida = git(clon, "grep", "-l", "-E", '"estado": *"listo"', rama, "--", "docs/difusion/**/web.md",
+                 "docs/media/**/web.md", check=False)
     return [l.split(":", 1)[1] for l in salida.splitlines() if ":" in l]
 
 
@@ -239,7 +260,7 @@ def informe_repo(nombre, visibilidad, cfg, clones):
     rutas = [cfg["bitacora"]] if cfg.get("bitacora") else []
     if cfg["destino"] == "proximamente":
         rutas = ["docs/plan.md", "docs/traspaso.md"]
-    r["bitacora"] = {ruta: cabecera_bitacora(clon, rama, ruta) for ruta in rutas}
+    r["bitacora"] = dict(cabecera_bitacora(clon, rama, ruta) for ruta in rutas)
     return r
 
 

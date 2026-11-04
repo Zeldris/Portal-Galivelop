@@ -1,4 +1,4 @@
-<!-- galivelop-workflow v0.4.3 -->
+<!-- galivelop-workflow v0.5.0 -->
 # Glosario del portal
 
 Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeriAI) viven en su repositorio.
@@ -31,4 +31,4 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
 - **Colaboración abierta / privada**: si se puede participar en el desarrollo de un proyecto.
 - **Tarea semanal**: la tarea programada «Proyectos semanal», que cada domingo actualiza las fichas de todos los proyectos y la
   publica.
-- **Bitácora**: `docs/traspaso.md`, el estado del trabajo para la siguiente sesión.
+- **Bitácora**: `docs/handoff.md`, el estado del trabajo para la siguiente sesión.

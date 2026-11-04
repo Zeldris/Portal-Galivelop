@@ -45,6 +45,23 @@ class Filtros(unittest.TestCase):
         self.assertEqual(recoger.filas_utiles(bitacora, "docs/traspaso.md"), ["| Campo | Valor |", "| Fase | F1 |"])
 
 
+class RutasDelFlujo(unittest.TestCase):
+    def test_bitacora_y_difusion_con_el_nombre_viejo_o_el_nuevo(self):
+        # Un repo aún en la 0.4 (docs/traspaso.md, docs/difusion/) y otro ya en la 0.5 (docs/handoff.md, docs/media/).
+        for bitacora, pieza in (("docs/traspaso.md", "docs/difusion/a/web.md"), ("docs/handoff.md", "docs/media/a/web.md")):
+            with self.subTest(bitacora=bitacora), tempfile.TemporaryDirectory() as d:
+                for ruta, texto in ((bitacora, "| Fase | F2 |\n|--|--|\n"), (pieza, '{"estado": "listo"}')):
+                    (Path(d) / ruta).parent.mkdir(parents=True, exist_ok=True)
+                    (Path(d) / ruta).write_text(texto, encoding="utf-8")
+                env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                           GIT_COMMITTER_EMAIL="t@t")
+                subprocess.run(["git", "init", "-q", d], check=True)
+                subprocess.run(["git", "-C", d, "add", "."], check=True)
+                subprocess.run(["git", "-C", d, "commit", "-q", "-m", "inicio"], check=True, env=env)
+                self.assertEqual(recoger.cabecera_bitacora(d, "HEAD", "docs/traspaso.md"), (bitacora, ["| Fase | F2 |"]))
+                self.assertEqual(recoger.difusion_lista(d, "HEAD"), [pieza])
+
+
 class Commits(unittest.TestCase):
     def test_entra_el_dia_entero_de_la_fecha(self):
         # Un commit a las 00:30 del día N cuenta: «--since=N» a secas tomaría la hora actual de ese día.
@@ -72,7 +89,7 @@ class Escaparate(unittest.TestCase):
             "src/data/x.test.ts": "tarkor",
             "README.md": "TARKOR",
             "AGENTS.md": "tarkor",
-            "docs/traspaso.md": "tarkor",
+            "docs/handoff.md": "tarkor",
         }
         with tempfile.TemporaryDirectory() as d:
             for ruta, texto in archivos.items():

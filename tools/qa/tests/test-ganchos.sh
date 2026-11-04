@@ -34,20 +34,20 @@ fijar() {  # fijar <clave> <valor esperado> [--json]
 }
 fijar content '["^docs/", "^src/data/.*\\.json$", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]' --json
 fijar check '["npm run check"]' --json
-fijar reviewMark docs/registros/revisado.txt
+fijar reviewMark docs/records/reviewed.txt
 fijar protectedBranch main
 fijar pushToProtected direct
 # Lo propio del portal en el CI del flujo (retro 2026-11-02: `/gw-update` lo quitó sin avisar): Node 22 como
 # pages.yml y el build de la web tras el check.
 for linea in 'node-version: 22' 'run: npm run build'; do
-  grep -qF -- "$linea" "$raiz/.github/workflows/comprobar.yml" \
-    || { echo "test-ganchos: .github/workflows/comprobar.yml ya no tiene «$linea» (lo propio del portal); devuélvelo"; fallos=1; }
+  grep -qF -- "$linea" "$raiz/.github/workflows/check.yml" \
+    || { echo "test-ganchos: .github/workflows/check.yml ya no tiene «$linea» (lo propio del portal); devuélvelo"; fallos=1; }
 done
 # Lo versionado del flujo y de este test no puede estar en el .gitignore del repo (F3 del piloto: .claude/* ocultaba
 # .claude/gw.json). Solo el .gitignore del repo: el global de cada equipo no cuenta.
-for f in .claude/gw.json .claude/gw/scripts/config.py .claude/gw/scripts/es-codigo.sh .claude/gw/scripts/revisado.sh \
+for f in .claude/gw.json .claude/gw/scripts/config.py .claude/gw/scripts/is-code.sh .claude/gw/scripts/reviewed.sh \
          .claude/gw/schema/gw.schema.json .claude/skills/retro/SKILL.md .claude/settings.json .githooks/pre-push \
-         .githooks/pre-commit .github/workflows/comprobar.yml tools/qa/tests/test-ganchos.sh; do
+         .githooks/pre-commit .github/workflows/check.yml tools/qa/tests/test-ganchos.sh; do
   git -C "$raiz" -c core.excludesFile=/dev/null check-ignore -q --no-index "$f" \
     && { echo "test-ganchos: $f está en el .gitignore y no se subiría"; fallos=1; }
 done
@@ -61,13 +61,13 @@ unset CLAUDECODE
   git -C "$tmp" init -q r && cd "$tmp/r"
   git symbolic-ref HEAD refs/heads/main
   git config user.email t@t; git config user.name t; git config commit.gpgsign false; git config core.hooksPath /dev/null
-  mkdir -p .githooks .claude/gw docs/registros src/data public bin
-  cp "$raiz/.githooks/pre-push" .githooks/; cp -R "$raiz/.claude/gw/scripts" "$raiz/.claude/gw/schema" .claude/gw/; cp "$raiz/.claude/gw.json" .claude/
+  mkdir -p .githooks .claude/gw docs/records src/data public bin
+  cp "$raiz/.githooks/pre-push" "$raiz/.githooks/pre-commit" .githooks/; cp -R "$raiz/.claude/gw/scripts" "$raiz/.claude/gw/schema" .claude/gw/; cp "$raiz/.claude/gw.json" .claude/
   printf '#!/bin/sh\nexit 0\n' > bin/npm; chmod +x bin/npm
   echo bin/ > .gitignore
   echo a > src/data/a.json; echo d > docs/d.md; git add -A; git commit -qm base; git tag base
   echo x > src/codigo.ts; git add -A; git commit -qm codigo; git tag codigo
-  git rev-parse HEAD > docs/registros/revisado.txt; git add -A; git commit -qm marca
+  git rev-parse HEAD > docs/records/reviewed.txt; git add -A; git commit -qm marca
   echo y >> docs/d.md; git commit -qam contenido; git tag marcado
   echo z >> src/codigo.ts; git commit -qam mas; git tag tras-marca
   # Semana tipo de la tarea semanal sobre lo ya publicado (marcado): ficha, imagen y bitácora.
@@ -77,18 +77,18 @@ unset CLAUDECODE
   git checkout -q -b otra base
   echo c >> src/data/a.json; git commit -qam solo-contenido; git tag solo-contenido
   echo w > src/otro.ts; git add -A; git commit -qm codigo-otra
-  mkdir -p docs/registros; git rev-parse codigo > docs/registros/revisado.txt; git add -A; git commit -qm marca-ajena; git tag marca-ajena
-  echo basura > docs/registros/revisado.txt; git commit -qam marca-basura; git tag marca-basura
+  mkdir -p docs/records; git rev-parse codigo > docs/records/reviewed.txt; git add -A; git commit -qm marca-ajena; git tag marca-ajena
+  echo basura > docs/records/reviewed.txt; git commit -qam marca-basura; git tag marca-basura
   # Qué es código y qué contenido con el `content` del portal (una ruta por regla).
   git checkout -q -b rama-tipos base
   mkdir -p .claude/skills/x/scripts public
   for f in .claude/skills/x/SKILL.md .claude/skills/x/scripts/a.py public/a.html public/b.webp public/c.png AGENTS.md \
-           CLAUDE.md README.md docs/x.md src/data/p.json src/data/p.ts src/x.md .claude/gw/opt-tokens.md package.json; do
+           CLAUDE.md README.md docs/x.md src/data/p.json src/data/p.ts src/x.md .claude/gw/gw-opt-tokens.md package.json; do
     echo t > "$f"
   done
   git add -A; git commit -qm tipos; git tag tipos
   git checkout -q -b flujo marcado
-  echo '# cambio' >> .claude/gw/scripts/es-codigo.sh; git commit -qam flujo; git tag cambio-flujo
+  echo '# cambio' >> .claude/gw/scripts/is-code.sh; git commit -qam flujo; git tag cambio-flujo
 ) || { echo "test-ganchos: no pude montar el repo de prueba"; exit 1; }
 cd "$tmp/r" || exit 1
 export PATH="$tmp/r/bin:$PATH"
@@ -114,15 +114,15 @@ caso "tarea semanal desde la base"         0 "$(sha semana)"         "$B"
 caso "script del flujo tras la marca"      1 "$(sha cambio-flujo)"   "$(sha marcado)" "code changed after the review mark"
 caso "main nuevo (remoto vacío)"           1 "$(sha codigo)"         0000000000000000000000000000000000000000 "has no review mark"
 caso "main remoto desconocido"             1 "$(sha marcado)"        1111111111111111111111111111111111111111 "which this clone does not have"
-# es-codigo.sh: exactamente estos son código entre base y tipos.
-esperado=".claude/gw/opt-tokens.md
+# is-code.sh: exactamente estos son código entre base y tipos.
+esperado=".claude/gw/gw-opt-tokens.md
 .claude/skills/x/scripts/a.py
 package.json
 public/a.html
 src/data/p.ts
 src/x.md"
-obtenido="$(bash .claude/gw/scripts/es-codigo.sh "$B" "$(sha tipos)" | sort)"
-[ "$obtenido" = "$esperado" ] || { echo "test-ganchos: es-codigo.sh clasifica mal; código:"; echo "$obtenido" | sed 's/^/  /'; fallos=1; }
+obtenido="$(bash .claude/gw/scripts/is-code.sh "$B" "$(sha tipos)" | sort)"
+[ "$obtenido" = "$esperado" ] || { echo "test-ganchos: is-code.sh clasifica mal; código:"; echo "$obtenido" | sed 's/^/  /'; fallos=1; }
 # pre-commit (como agente) sobre un commit tipo de la tarea semanal: ficha, imagen y bitácora pasan.
 cp "$raiz/.githooks/pre-commit" .githooks/
 git checkout -q semana 2>/dev/null
@@ -150,7 +150,7 @@ precommit_clave "clave con su forma"          1 "const k = '$clave';"
 precommit_clave "palabra que acaba en prefijo" 0 "const u = 'https://x.com/mu$clave';"
 # commit-msg: sin `logRows` (el portal), comprueba la bitácora solo si el commit la lleva y solo avisa (una celda de más
 # de 800 caracteres): nunca corta el commit, tampoco el de la tarea semanal.
-bitacora() { printf '# Bitácora\n\n## Estado actual\n\n| | |\n|---|---|\n| **Actualizado** | 2026-11-02 |\n| **Siguiente paso** | %s |\n' "$1" > docs/traspaso.md; git add docs/traspaso.md; }
+bitacora() { printf '# Bitácora\n\n## Estado actual\n\n| | |\n|---|---|\n| **Actualizado** | 2026-11-02 |\n| **Siguiente paso** | %s |\n' "$1" > docs/handoff.md; git add docs/handoff.md; }
 commitmsg() {  # commitmsg <nombre> <sale 0|1> <aviso esperado, o «-» si no debe avisar>
   local salida r
   echo "x" > .git/COMMIT_EDITMSG
@@ -166,7 +166,7 @@ commitmsg() {  # commitmsg <nombre> <sale 0|1> <aviso esperado, o «-» si no de
 larga="$(printf 'x%.0s' $(seq 1 900))"
 bitacora seguir;                                    commitmsg "bitácora corta"                 0 -
 bitacora "$larga"; echo z >> src/data/a.json
-git add src/data/a.json; git reset -q docs/traspaso.md; commitmsg "celda larga, bitácora fuera"  0 -
+git add src/data/a.json; git reset -q docs/handoff.md; commitmsg "celda larga, bitácora fuera"  0 -
 bitacora "$larga";                                  commitmsg "celda larga en el commit"       0 "has 900 characters (limit 800)"
 [ $fallos = 0 ] && echo "test-ganchos: ganchos en verde (sintaxis, config, content, pre-commit, commit-msg y regla de main)."
 exit $fallos

@@ -103,13 +103,13 @@ export interface ImagenPublicacion extends Imagen {
 
 /**
  * Publicación del muro. Cada una vive en src/data/muro/<proyecto>/<pieza>.json y sus imágenes en
- * public/proyectos/<proyecto>/muro/<pieza>/. Sale del `web.md` de una pieza de `docs/difusion/` del proyecto
+ * public/proyectos/<proyecto>/muro/<pieza>/. Sale del `web.md` de una pieza de `docs/media/` (antes `docs/difusion/`) del proyecto
  * marcada como lista; ver docs/desarrollo.md, «El muro».
  */
 export interface Publicacion {
   /** Slug del proyecto (el de src/data/proyectos/<slug>.json). */
   proyecto: string;
-  /** Carpeta de la pieza dentro de docs/difusion/ del proyecto, con «/» cambiada por «-». Igual al nombre del archivo. */
+  /** Carpeta de la pieza dentro de docs/media/ (antes docs/difusion/) del proyecto, con «/» cambiada por «-». Igual al nombre del archivo. */
   pieza: string;
   fecha: string;
   titulo: Texto;

@@ -16,3 +16,5 @@ dist
 # Python: los scripts del flujo no dejan bytecode; por si acaso.
 __pycache__/
 /capturas/
+# galivelop-workflow: private, never committed
+.claude/gw.local.json

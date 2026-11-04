@@ -50,20 +50,20 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
      es, sacada de su README.
    - lo que pediría tocar código del portal (un campo o una sección nueva, un `.ts`, un componente): no se hace aquí.
 
-   En informe y aplicar puedes repartir la lectura con un subagente ligero por repo (`orchestrate-dealer`), que
+   En informe y aplicar puedes repartir la lectura con un subagente ligero por repo (`gw-orchestrate-dealer`), que
    devuelve sus propuestas con rutas; en semanal, no. Hecho cuando cada repo del informe tiene su decisión.
 5. **Informe** (los tres modos lo llevan en la respuesta):
    - **Contenido**: por proyecto, qué cambia (o «sin cambios»): novedades, campos de la ficha, imágenes y diagramas, y
      otros archivos del portal.
    - **Pide código**: qué y por qué; en aplicar y semanal se apunta en «Para la próxima publicación» de
-     `docs/traspaso.md`.
+     `docs/handoff.md`.
    - **Repos nuevos** y avisos (`perdidos`, `enlace`, `aviso`): en aplicar y semanal, también en esa sección.
 
    En modo informe, aquí se para.
 6. **Aplicar** solo contenido (lo que casa con `content` de `.claude/gw.json`: los `.json` de `src/data/`, imágenes de
    `public/` y `docs/`), con las reglas de [`proyectos.md`](proyectos.md). Todo texto visible en es, gl y en.
 7. **Comprobar:** `npm ci && npm run check`. Si falla, corrige tu cambio o deshazlo; nunca se publica algo roto.
-8. **Bitácora y subida.** En `docs/traspaso.md`, una línea al principio de «Hecho» (por proyecto: novedades,
+8. **Bitácora y subida.** En `docs/handoff.md`, una línea al principio de «Hecho» (por proyecto: novedades,
    publicaciones del muro, textos e imágenes cambiadas). Commit en español; push a la rama.
    - Semanal: vacía «Para la próxima publicación» salvo lo que no se haya podido publicar; última línea del commit
      «Siguiente: próxima revisión semanal»; `git push origin claude/galivelop-dev-portal-1h89ci` y

@@ -196,7 +196,7 @@ estática existen.
 - **Imágenes:** en `public/proyectos/<slug>/muro/<pieza>/`, WebP grande (unos 1600 px) y `-mini` (unos 720 px). Una
   imagen con texto dentro puede tener versión por idioma en `porIdioma` (`{ "en": { "src", "mini" } }`); sin ella, se
   usa la de `src`/`mini`.
-- **`pieza`:** la ruta de la pieza dentro de `docs/difusion/` del proyecto con las `/` cambiadas por `-`
+- **`pieza`:** la ruta de la pieza dentro de `docs/media/` (antes `docs/difusion/`) del proyecto con las `/` cambiadas por `-`
   (`2026-10-20-mapa-del-mundo`, o `2026-10-20-01-mapa` si la carpeta es `2026-10-20/01-mapa/`). Es también el
   nombre del archivo, y `npm run check` comprueba que casan.
 - Código: [`src/pages/Muro.tsx`](../src/pages/Muro.tsx), [`src/components/Publicacion.tsx`](../src/components/Publicacion.tsx)
@@ -285,5 +285,5 @@ Skills, selector de modelo, revisión antes de `main` y retro: [`docs/runbooks/s
 Criterio de revisión: [`REVIEW.md`](../REVIEW.md). El flujo es Galivelop-workflow (configuración en `.claude/gw.json`,
 scripts en `.claude/gw/scripts/`). Ganchos: `.claude/settings.json` (al empezar la sesión y antes de un PR a `main`),
 `.githooks/pre-commit` (sin secretos) y `.githooks/pre-push` (`npm run check` del commit que se sube y, en una subida a
-`main` con cambios de código, la marca de `.claude/gw/scripts/revisado.sh` en `docs/registros/revisado.txt`). Lo activa
+`main` con cambios de código, la marca de `.claude/gw/scripts/reviewed.sh` en `docs/records/reviewed.txt`). Lo activa
 el gancho de sesión; para subir a mano: `git config core.hooksPath .githooks`.

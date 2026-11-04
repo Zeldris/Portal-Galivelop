@@ -1,7 +1,7 @@
 # Skills y selector de modelo
 
 **Para qué:** qué skills usa Claude en el portal, cuándo, y con qué modelo conviene cada tipo de tarea. Desde el
-2026-10-22 el flujo es **Galivelop-workflow v0.1.0** (piloto, `docs/registros/piloto-galivelop-workflow.md`): sus
+2026-10-22 el flujo es **Galivelop-workflow** (piloto en v0.1.0, `docs/records/piloto-galivelop-workflow.md`; v0.5.0 desde el 2026-11-04): sus
 reglas generales están en [`AGENTS.md`](../../AGENTS.md); aquí, cómo se usan en una web pequeña (sin roadmap con
 hitos ni rondas de pruebas jugando).
 
@@ -19,7 +19,7 @@ su trabajo. Su mención y su licencia se conservan siempre que se copien o adapt
 
 Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-with-docs` solo lo lanza el usuario.
 
-1. **Empezar:** cargar `selector`, clasificar la tarea con su tabla y decir en una línea qué skill y qué modelo
+1. **Empezar:** cargar `gw-selector`, clasificar la tarea con su tabla y decir en una línea qué skill y qué modelo
    pide. Antes, traer `main` a la rama de trabajo (`git fetch origin main` y, si trae commits, `git merge
    origin/main`): la tarea semanal y el usuario también suben a `main`. `npm run check` incluye
    `tools/qa/tests/test-ganchos.sh` (sintaxis de los ganchos y scripts del flujo, `.claude/gw.json` válido y la
@@ -27,8 +27,8 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
    **Puntos de `/clear`:** la compactación automática (200k) es la red; el corte limpio es un `/clear` tras subir
    a `main` o al cerrar un bloque grande. Antes de recomendarlo, todo con commit y push y la bitácora al día;
    Claude lo dice en una línea («Punto de `/clear`: todo subido (`<commit>`)») y no puede lanzarlo. Tras un
-   `/clear` o una compactación, el gancho de `SessionStart` pone el estado (`.claude/gw/scripts/recuperar.py --estado`);
-   un detalle de antes se busca con `python3 .claude/gw/scripts/recuperar.py --buscar "<regex>"`.
+   `/clear` o una compactación, el gancho de `SessionStart` pone el estado (`.claude/gw/scripts/recover.py --state`);
+   un detalle de antes se busca con `python3 .claude/gw/scripts/recover.py --search "<regex>"`.
 2. **Si hay diseño o una decisión abierta:** `grilling` + `domain-modeling` (o `/grill-with-docs`). Variantes de
    pantalla, con `prototype` (rama de UI). Lo decidido, a la bitácora; los términos, a `GLOSSARY.md`; lo difícil
    de revertir (rutas, estructura de datos de los proyectos), a `docs/adr/`.
@@ -41,9 +41,9 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
    - Cambio de contenido (textos, imágenes, novedades): `npm run check`, build y una captura; basta.
    - Cambio de código (componentes, estilos, `scripts/`, `main.tsx`, rutas): `git fetch origin main` y
      `/code-review` del diff contra `origin/main` con el criterio de [`REVIEW.md`](../../REVIEW.md); se arregla lo
-     que encuentre. Si el cambio es grande, después `/opt-tokens` y `retro`: sus propuestas se presentan al
-     usuario y solo lo que confirme se aplica. Luego `bash .claude/gw/scripts/revisado.sh` y el resumen con `pr`.
-   - Si se trabaja con PR en vez de subir directo, el gancho `.claude/gw/scripts/revision-antes-de-main.sh` no deja crearlo ni
+     que encuentre. Si el cambio es grande, después `/gw-opt-tokens` y `retro`: sus propuestas se presentan al
+     usuario y solo lo que confirme se aplica. Luego `bash .claude/gw/scripts/reviewed.sh` y el resumen con `pr`.
+   - Si se trabaja con PR en vez de subir directo, el gancho `.claude/gw/scripts/review-before-main.sh` no deja crearlo ni
      fusionarlo sin esa misma marca, ni fusionarlo con el CI sin terminar en verde.
    Al contárselo al usuario, el destino con su nombre: «en la rama de trabajo, no en `main`» o «en `main`».
 
@@ -51,15 +51,15 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
 
 | Skill | Se invoca | Cuándo, en el portal |
 |---|---|---|
-| `selector` (del flujo; filas del portal en `selector.cases` de `.claude/gw.json`) | sola, al empezar | Siempre, al arrancar una tarea, un fallo o un diseño |
-| `orchestrate-dealer` (del flujo) | Claude, en tareas de varios pasos con lecturas largas | Repasar el repo de un proyecto, un banco de imágenes, revisar muchas páginas |
+| `gw-selector` (del flujo; filas del portal en `selector.cases` de `.claude/gw.json`) | sola, al empezar | Siempre, al arrancar una tarea, un fallo o un diseño |
+| `gw-orchestrate-dealer` (del flujo) | Claude, en tareas de varios pasos con lecturas largas | Repasar el repo de un proyecto, un banco de imágenes, revisar muchas páginas |
 | `/grill-with-docs` | el usuario | Antes de diseñar algo grande: un proyecto nuevo en el portal, una sección nueva, la marca |
 | `grilling` | Claude, en una decisión abierta | La entrevista en sí, por rondas con respuesta recomendada |
 | `domain-modeling` | por debajo de la anterior | `GLOSSARY.md` y `docs/adr/` |
 | `diagnosing-bugs` | sola ante un fallo | Algo que se ve mal o falla: primero reproducirlo (Playwright, un test) |
 | `/improve-codebase-architecture` | el usuario o de vez en cuando | Candidatos: `Proyecto.tsx`, `Galeria.tsx`, `global.css` |
 | `codebase-design` | por debajo de la anterior | — |
-| `opt-tokens` | Claude antes de subir un cambio grande, o el usuario | Medir el gasto de la sesión (`scripts/medir.py`; notas del portal en `.claude/gw/opt-tokens.md`) y proponer cómo gastar menos |
+| `gw-opt-tokens` | Claude antes de subir un cambio grande, o el usuario | Medir el gasto de la sesión (`scripts/measure.py`; notas del portal en `.claude/gw/gw-opt-tokens.md`) y proponer cómo gastar menos |
 | `retro` | Claude tras un cambio grande, o el usuario con `/retro` | Mejoras del entorno: comprobaciones, instrucciones, herramientas |
 | `writing-for-agents` | sola | Al tocar `CLAUDE.md`, la bitácora, el prompt de la tarea semanal o una skill |
 | `prototype` | Claude, en una ronda de diseño | Variantes de una sección o tarjeta para elegir; se publica como Artifact |
@@ -68,7 +68,7 @@ Cada skill se carga con la herramienta Skill (no basta con nombrarla); `/grill-w
 
 ## Selector de modelo
 
-Tres tamaños: **grande** (Opus), **medio** (Sonnet), **ligero** (Haiku). La tabla está en el `selector`.
+Tres tamaños: **grande** (Opus), **medio** (Sonnet), **ligero** (Haiku). La tabla está en el `gw-selector`.
 
 - El modelo de la sesión lo elige el usuario con `/model`; Claude no puede cambiarlo. Si la tarea pide otro, lo
   dice en una línea al empezar y sigue.

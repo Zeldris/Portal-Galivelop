@@ -18,7 +18,7 @@ su revisión) junto con su sección en `proyectos.md` y su entrada en `fuentes.j
 volver a pegar su texto.
 Solo toca contenido (los `.json` de `src/data/`, imágenes `webp|png|jpg|svg|ico` de `public/` y `docs/`: lo que casa con
 `content`; cualquier otro archivo es código y el `pre-push` lo rechaza en `main`), así que no necesita revisión mientras la marca de
-`docs/registros/revisado.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y
+`docs/records/reviewed.txt` cubra todo el código: **la rama de trabajo tiene que estar siempre publicable** y
 todo código que entre en ella lleva su `/code-review` y su marca antes del domingo. Entre semana, lo hecho se
 apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación.
 
