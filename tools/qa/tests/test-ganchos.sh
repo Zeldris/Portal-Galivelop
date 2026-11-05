@@ -14,11 +14,19 @@ for f in "$raiz"/.claude/gw/scripts/*.py "$raiz"/.claude/skills/*/scripts/*.py; 
   python3 -c 'import ast, sys; ast.parse(open(sys.argv[1]).read())' "$f" 2>/dev/null \
     || { echo "test-ganchos: Python roto en ${f#$raiz/}"; fallos=1; }
 done
-# Tests de los scripts de las skills propias del portal (gw-portal). Las del flujo (con «version:» en su SKILL.md) se
-# saltan: sus tests esperan el árbol del repo del flujo y se corren allí.
+# Tests de los scripts de las skills nacidas en el portal: siempre, lleven o no versión (retro 2026-11-05, R2: con
+# «version:» se saltaban en silencio). Las del flujo (con «version:» y fuera de esta lista) se saltan: sus tests esperan
+# el árbol del repo del flujo y se corren allí. Una skill con tests que no es de ninguno de los dos grupos, falla.
+PROPIAS=" gw-portal gw-seo "
 for d in "$raiz"/.claude/skills/*/scripts; do
   ls "$d"/test_*.py > /dev/null 2>&1 || continue
-  grep -qE '^ +version:' "${d%/scripts}/SKILL.md" 2>/dev/null && continue
+  skill="$(basename "${d%/scripts}")"
+  if [[ "$PROPIAS" != *" $skill "* ]]; then
+    grep -qE '^ +version:' "${d%/scripts}/SKILL.md" 2>/dev/null && continue
+    echo "test-ganchos: la skill $skill tiene tests y no está en PROPIAS ni es del flujo (sin «version:»); añádela a PROPIAS en ${0#$raiz/}"
+    fallos=1
+    continue
+  fi
   python3 -m unittest discover -s "$d" > /dev/null 2>&1 \
     || { echo "test-ganchos: fallan los tests de ${d#$raiz/} (python3 -m unittest discover -s ${d#$raiz/})"; fallos=1; }
 done

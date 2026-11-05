@@ -36,7 +36,7 @@ complejos. El portal enseña cada proyecto tal y como está, con sus avances y s
 pendientes, y deja la puerta abierta a quien quiera saber más o sumarse.
 
 **Productos** es lo que sale del taller: lo maduro tiene el código abierto en GitHub y Álvaro lo implanta y da
-soporte en tu proyecto (hoy, Galivelop-workflow y Galivelop Image Generator; Voice Generator y Developer,
+soporte en tu proyecto (hoy, Galivelop-workflow y Galivelop IG; Voice Generator y Developer,
 próximamente). Sin precios: todo por correo. Todo lo público admite colaboración; toVeriAI es privado.
 
 El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
@@ -48,7 +48,7 @@ El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
 | <img src="public/proyectos/tarkor/portada-mini.webp" width="140" alt=""> | **Tarkor**<br>RPG narrativo por texto con una IA local como directora de juego. Facciones que comercian y hacen la guerra, personajes que recuerdan y un reino que crece por generaciones: el mundo sigue aunque no juegues. | 🟡 En desarrollo (alpha) · abierto a colaboración · código del [juego](https://github.com/Zeldris/World-Maker-Fantasy) y del [instalador](https://github.com/Zeldris/Instalador-WMF-Tarkor) | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/tarkor) |
 | <img src="public/proyectos/toveriai/portada-mini.webp" width="140" alt=""> | **toVeriAI**<br>Plataforma web que analiza noticias, enlaces y capturas con IA y devuelve un índice de credibilidad de 0 a 100 que explica qué falla y dónde. | 🟢 Publicado en [toveriai.com](https://www.toveriai.com) · proyecto privado | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/toveriai) |
 | <img src="public/proyectos/galivelop-workflow/portada-mini.webp" width="140" alt=""> | **Galivelop-workflow**<br>Un flujo de trabajo versionado para programar con agentes de IA: relevos entre sesiones sin perder nada, elegir skill y modelo antes de empezar, revisión obligatoria antes de publicar y menos tokens sin perder calidad. | 🟡 En desarrollo · [código en GitHub](https://github.com/Zeldris/Galivelop-workflow) | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow) |
-| <img src="public/proyectos/galivelop-image-generator/portada-mini.webp" width="140" alt=""> | **Galivelop Image Generator**<br>Servicio local de generación de imágenes con IA, uno por máquina y compartido por todos los proyectos del taller: se hace un pedido, se prueban intentos, se elige uno y se entrega con su manifiesto. Nada sale del equipo. | 🟡 En desarrollo · [código en GitHub](https://github.com/Zeldris/galivelop-image-generator) | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-image-generator) |
+| <img src="public/proyectos/galivelop-image-generator/portada-mini.webp" width="140" alt=""> | **Galivelop IG**<br>Servicio local de generación de imágenes con IA, uno por máquina y compartido por todos los proyectos del taller: se hace un pedido, se prueban intentos, se elige uno y se entrega con su manifiesto. Nada sale del equipo. | 🟡 En desarrollo · [código en GitHub](https://github.com/Zeldris/galivelop-image-generator) | [Ver proyecto](https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-image-generator) |
 
 Cada proyecto tiene su página en el portal: qué es, cómo funciona, galería, ficha técnica, hoja de
 ruta y lo que estamos aprendiendo con él.
@@ -102,14 +102,14 @@ Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
 a credibilidade das novas. O portal amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. **Produtos** é o que sae do obradoiro: o maduro ten o código aberto en GitHub e Álvaro implántao e dá soporte no teu proxecto (hoxe, Galivelop-workflow e Galivelop Image Generator; Voice Generator e Developer, proximamente). Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. **Produtos** é o que sae do obradoiro: o maduro ten o código aberto en GitHub e Álvaro implántao e dá soporte no teu proxecto (hoxe, Galivelop-workflow e Galivelop IG; Voice Generator e Developer, proximamente). Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
 **Galivelop is an independent software workshop.** We create, research and learn by building
 ambitious software, from a fantasy world that lives on its own to a tool that measures the
 credibility of the news. The portal shows each project as it is and keeps the door
-open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. **Products** is what comes out of the workshop: mature work has its code open on GitHub and Álvaro sets it up and supports it in your project (today Galivelop-workflow and Galivelop Image Generator; Voice Generator and Developer coming soon). No prices: everything by email. Everything public welcomes contributions; toVeriAI is private. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. **Products** is what comes out of the workshop: mature work has its code open on GitHub and Álvaro sets it up and supports it in your project (today Galivelop-workflow and Galivelop IG; Voice Generator and Developer coming soon). No prices: everything by email. Everything public welcomes contributions; toVeriAI is private. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ---
 

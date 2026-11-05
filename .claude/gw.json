@@ -30,7 +30,7 @@
     "cases": [
       {
         "case": "Cambio de varios componentes, rutas, build o SEO (scripts/paginas-estaticas.mjs, src/main.tsx, src/i18n/Idioma.tsx, index.html): afecta a la web publicada y a enlaces ya indexados",
-        "skill": "none",
+        "skill": "gw-seo",
         "sessionModel": "large",
         "subagentModel": "light"
       },

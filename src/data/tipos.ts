@@ -54,6 +54,9 @@ export interface Proyecto {
   categoria: Texto;
   lema: Texto;
   resumen: Texto;
+  /** Opcional: título y descripción cortos para buscadores (título ≤ 60 y descripción ≤ 160 en la página;
+   *  si faltan, se usan el lema y el resumen). */
+  seo?: { titulo?: Texto; descripcion?: Texto };
   /** Etapa actual en una frase corta (p. ej. "Alpha · hito 0.2 en curso"). */
   fase: Texto;
   etiquetas: string[];

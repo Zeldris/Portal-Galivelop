@@ -54,6 +54,9 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
    - `nuevo`: nunca se añade solo. Propón destino (ficha, próximamente o `ignorar` con motivo) con una línea de qué
      es, sacada de su README.
    - lo que pediría tocar código del portal (un campo o una sección nueva, un `.ts`, un componente): no se hace aquí.
+   - Para cambiar un campo entero de una ficha (hitos, fase, cifras, novedades…), `python3
+     .claude/skills/gw-portal/scripts/bloque.py <ficha> <campo> -` con el JSON nuevo por la entrada estándar: deja el
+     resto del archivo igual (un volcado entero despliega listas y ensucia el diff).
 
    En informe y aplicar puedes repartir la lectura con un subagente ligero por repo (`gw-orchestrate-dealer`), que
    devuelve sus propuestas con rutas; en semanal, no. Hecho cuando cada repo del informe tiene su decisión.

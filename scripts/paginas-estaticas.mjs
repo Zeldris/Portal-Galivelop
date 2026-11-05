@@ -59,21 +59,35 @@ const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon
 const equipo = JSON.parse(readFileSync('src/data/equipo.json', 'utf8')).sort((a, b) => a.orden - b.orden);
 
 const IDIOMAS = ['es', 'gl', 'en'];
+// Recorta un texto a `max` caracteres sin partir palabras, con «…» al final.
+const recorta = (t, max) => (t.length <= max ? t : `${t.slice(0, max - 1).replace(/[\s·,;:]+\S*$/, '')}…`);
 const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
 const FIJAS = {
   '': {
-    es: ['Galivelop · Marca de software: taller y Productos', 'Galivelop son dos cosas: el taller, que crea, investiga y aprende a la vista y con la puerta abierta, y Productos, lo que sale de él con el código abierto y montamos en tu proyecto, y los servicios de sus integrantes.'],
-    gl: ['Galivelop · Marca de software: obradoiro e Produtos', 'Galivelop son dúas cousas: o obradoiro, que crea, investiga e aprende á vista e coa porta aberta, e Produtos, o que sae del co código aberto e montamos no teu proxecto, e os servizos dos seus integrantes.'],
-    en: ['Galivelop · Software brand: workshop and Products', 'Galivelop is two things: the workshop, which creates, researches and learns in the open with the door open, and Products, what comes out of it with open code that we set up in your project, and the services of its members.'],
+    es: ['Galivelop · Marca de software: taller y Productos', 'Galivelop es un taller abierto que crea, investiga y aprende a la vista, y Productos: lo que sale de él, con código abierto y montado en tu proyecto.'],
+    gl: ['Galivelop · Marca de software: obradoiro e Produtos', 'Galivelop é un obradoiro de software aberto que crea, investiga e aprende á vista, e Produtos: o que sae del, con código aberto e montado no teu proxecto.'],
+    en: ['Galivelop · Software brand: workshop and Products', 'Galivelop is a software workshop that creates, researches and learns in the open, plus Products: what comes out of it, open source, set up in your project.'],
   },
-  equipo: { es: ['Equipo · Galivelop'], gl: ['Equipo · Galivelop'], en: ['Team · Galivelop'] },
-  'participa/proponer': { es: ['Propón un proyecto · Galivelop'], gl: ['Propón un proxecto · Galivelop'], en: ['Propose a project · Galivelop'] },
-  'participa/unirse': { es: ['Únete al taller · Galivelop'], gl: ['Únete ao obradoiro · Galivelop'], en: ['Join the workshop · Galivelop'] },
+  equipo: {
+    es: ['Equipo · Galivelop', 'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.'],
+    gl: ['Equipo · Galivelop', 'As persoas que fan Galivelop. Cada unha co seu camiño, todas con ganas de construír e aprender.'],
+    en: ['Team · Galivelop', 'The people who make Galivelop. Each with their own path, all eager to build and learn.'],
+  },
+  'participa/proponer': {
+    es: ['Propón un proyecto · Galivelop', '¿Tienes una idea que parece demasiado grande? Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.'],
+    gl: ['Propón un proxecto · Galivelop', 'Tes unha idea que semella demasiado grande? Cóntanola. Lemos todas as propostas e, se encaixa no obradoiro, escribímosche para darlle forma xuntos.'],
+    en: ['Propose a project · Galivelop', 'Got an idea that seems too big? Tell us about it. We read every proposal and, if it fits the workshop, we will get back to you to shape it together.'],
+  },
+  'participa/unirse': {
+    es: ['Únete al taller · Galivelop', 'Buscamos gente con ganas de cooperar y aprender, tenga o no experiencia. Cuéntanos quién eres y cómo te gustaría participar.'],
+    gl: ['Únete ao obradoiro · Galivelop', 'Buscamos xente con ganas de cooperar e aprender, teña ou non experiencia. Cóntanos quen es e como che gustaría participar.'],
+    en: ['Join the workshop · Galivelop', 'We are looking for people who want to cooperate and learn, with or without experience. Tell us who you are and how you would like to take part.'],
+  },
   productos: {
-    es: ['Productos · Galivelop', 'Lo que nace en el taller de Galivelop, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto, y si prefieres comprarlo, también se puede. Y las personas que lo hacen. Sin precios en la web: todo se trata por correo.'],
-    gl: ['Produtos · Galivelop', 'O que nace no obradoiro de Galivelop, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto, e se prefires mercalo, tamén se pode. E as persoas que o fan. Sen prezos na web: todo se trata por correo.'],
-    en: ['Products · Galivelop', 'What is born in the Galivelop workshop, with its code open as soon as it is mature: we set it up and adapt it to your project, and if you would rather buy it, that works too. And the people who make it. No prices on the site: everything is arranged by email.'],
+    es: ['Productos · Galivelop', 'Lo que sale del taller de Galivelop, con código abierto: lo montamos y adaptamos a tu proyecto, y las personas que lo hacen. Sin precios: todo por correo.'],
+    gl: ['Produtos · Galivelop', 'O que sae do obradoiro de Galivelop, con código aberto: montámolo e adaptámolo ao teu proxecto, e as persoas que o fan. Sen prezos: todo por correo.'],
+    en: ['Products · Galivelop', 'What comes out of the Galivelop workshop, open source: we set it up and adapt it to your project, plus the people who make it. No prices: all by email.'],
   },
   'aviso-legal': {
     es: ['Aviso legal · Galivelop', 'Quién es el titular del portal de Galivelop, con qué licencias se publican su código y su contenido y qué ley se aplica.'],
@@ -137,8 +151,9 @@ for (const idioma of IDIOMAS) {
     paginas.push({
       idioma,
       ruta: `proyectos/${p.slug}`,
-      titulo: `${p.nombre} · ${p.lema[idioma].replace(/\.$/, '')} · Galivelop`,
-      descripcion: p.resumen[idioma],
+      // `seo`, opcional en la ficha: título y descripción cortos para buscadores (si no, el lema y el resumen).
+      titulo: `${p.nombre} · ${(p.seo?.titulo ?? p.lema)[idioma].replace(/\.$/, '')} · Galivelop`,
+      descripcion: (p.seo?.descripcion ?? p.resumen)[idioma],
       imagen: p.vista.imagen,
       fecha: p.actualizado,
       proyecto: p,
@@ -152,7 +167,8 @@ for (const idioma of IDIOMAS) {
       titulo: `${p.nombre} · ${FIJAS.equipo[idioma][0]}`,
       // Rol + resumen: el resumen solo («Full stack desde 2017…») no dice quién es. La imagen es la de la marca:
       // la foto (webp, cuadrada y pequeña) no sirve como vista previa grande en redes.
-      descripcion: `${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`,
+      // Buscadores: hasta 160 caracteres (Google corta lo demás); se recorta por palabra completa.
+      descripcion: recorta(`${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`, 160),
       imagen: IMAGEN,
       fecha: (p.fecha ??= fechaMiembro(p)),
       persona: p,
