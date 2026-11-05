@@ -27,6 +27,19 @@ describe('proyectos', () => {
         expect(textosIncompletos(p, p.slug)).toEqual([]);
       });
 
+      it('su título y descripción para buscadores caben (título ≤ 60, descripción ≤ 160)', () => {
+        // Mismo título que pone scripts/paginas-estaticas.mjs; Google corta lo que pasa de ahí.
+        for (const idioma of ['es', 'gl', 'en'] as const) {
+          if (p.seo?.titulo) {
+            const titulo = `${p.nombre} · ${p.seo.titulo[idioma].replace(/\.$/, '')} · Galivelop`;
+            expect(titulo.length, `${idioma}: ${titulo}`).toBeLessThanOrEqual(60);
+          }
+          if (p.seo?.descripcion) {
+            expect(p.seo.descripcion[idioma].length, idioma).toBeLessThanOrEqual(160);
+          }
+        }
+      });
+
       it('todas sus imágenes existen en public/', () => {
         const deApartados = p.apartados.flatMap((a) => [
           ...a.items.flatMap((i) => (i.imagen ? [i.imagen] : [])),

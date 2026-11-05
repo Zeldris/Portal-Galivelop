@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-04",
+  "actualizado": "2026-11-05",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -24,10 +24,17 @@
     "gl": "Unha plataforma web que analiza novas, ligazóns e capturas con IA e devolve o IMI, un índice de credibilidade de 0 a 100 que sinala que falla e onde.",
     "en": "A web platform that analyses news, links and screenshots with AI and returns the IMI, a 0–100 credibility score that shows what is wrong and where."
   },
+  "seo": {
+    "titulo": {
+      "es": "Índice de credibilidad de noticias",
+      "gl": "Índice de credibilidade de novas",
+      "en": "News credibility score"
+    }
+  },
   "fase": {
-    "es": "En producción · Premium y VeriAI en beta",
-    "gl": "En produción · Premium e VeriAI en beta",
-    "en": "Live · Premium and VeriAI in beta"
+    "es": "En producción · Análisis de capturas en pausa",
+    "gl": "En produción · Análise de capturas en pausa",
+    "en": "Live · Screenshot analysis paused"
   },
   "etiquetas": ["IA", "React", "Spring Boot", "Java", "MySQL", "Ollama"],
   "portada": {
@@ -526,71 +533,101 @@
   ],
   "hitos": [
     {
-      "estado": "hecho",
       "nombre": {
-        "es": "Primera versión: análisis de texto",
-        "gl": "Primeira versión: análise de texto",
-        "en": "First version: text analysis"
+        "es": "Análisis de texto con el índice IMI",
+        "gl": "Análise de texto co índice IMI",
+        "en": "Text analysis with the IMI score"
       },
+      "estado": "hecho",
       "detalle": {
-        "es": "Siete dimensiones de contenido combinadas en el índice IMI de 0 a 100.",
-        "gl": "Sete dimensións de contido combinadas no índice IMI de 0 a 100.",
-        "en": "Seven content dimensions combined into the 0–100 IMI score."
+        "es": "Siete dimensiones de contenido combinadas en un índice de 0 a 100.",
+        "gl": "Sete dimensións de contido combinadas nun índice de 0 a 100.",
+        "en": "Seven content dimensions combined into a 0–100 score."
       }
     },
     {
-      "estado": "hecho",
       "nombre": {
         "es": "Publicación en toveriai.com",
         "gl": "Publicación en toveriai.com",
         "en": "Launch at toveriai.com"
-      }
-    },
-    {
-      "estado": "hecho",
-      "nombre": {
-        "es": "Análisis de URL e imágenes",
-        "gl": "Análise de URL e imaxes",
-        "en": "URL and image analysis"
       },
+      "estado": "hecho"
+    },
+    {
+      "nombre": {
+        "es": "Análisis de enlaces",
+        "gl": "Análise de ligazóns",
+        "en": "Link analysis"
+      },
+      "estado": "hecho",
       "detalle": {
-        "es": "Nueve dimensiones en modo URL y varias capturas por análisis.",
-        "gl": "Nove dimensións en modo URL e varias capturas por análise.",
-        "en": "Nine dimensions in URL mode and multiple screenshots per analysis."
+        "es": "Nueve dimensiones, con la transparencia del medio y la autoría.",
+        "gl": "Nove dimensións, coa transparencia do medio e a autoría.",
+        "en": "Nine dimensions, including outlet transparency and authorship."
       }
     },
     {
-      "estado": "hecho",
       "nombre": {
         "es": "Cuentas, historial y feed público",
         "gl": "Contas, historial e feed público",
         "en": "Accounts, history and public feed"
+      },
+      "estado": "hecho"
+    },
+    {
+      "version": "1.9",
+      "nombre": {
+        "es": "Sesión más segura y menos fallos",
+        "gl": "Sesión máis segura e menos fallos",
+        "en": "Safer sessions and fewer errors"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Protección frente a enlaces peligrosos, sesión y permisos más seguros y errores corregidos.",
+        "gl": "Protección fronte a ligazóns perigosas, sesión e permisos máis seguros e erros corrixidos.",
+        "en": "Protection against dangerous links, safer sessions and permissions, and errors fixed."
       }
     },
     {
-      "estado": "curso",
+      "version": "1.10",
       "nombre": {
-        "es": "Premium (beta)",
-        "gl": "Premium (beta)",
-        "en": "Premium (beta)"
+        "es": "Errores visibles, feed y administración",
+        "gl": "Erros visibles, feed e administración",
+        "en": "Visible errors, feed and administration"
       },
+      "estado": "hecho",
       "detalle": {
-        "es": "Análisis ilimitados, informes en PDF y tarjetas y sellos para compartir.",
-        "gl": "Análises ilimitadas, informes en PDF e tarxetas e selos para compartir.",
-        "en": "Unlimited analyses, PDF reports and shareable cards and seals."
+        "es": "Avisos claros con «Reintentar» cuando algo falla, feed público con más publicaciones y panel de administración corregido.",
+        "gl": "Avisos claros con «Reintentar» cando algo falla, feed público con máis publicacións e panel de administración corrixido.",
+        "en": "Clear errors with a Retry button when something fails, a public feed with more posts and a fixed admin panel."
       }
     },
     {
-      "estado": "curso",
+      "version": "1.11",
       "nombre": {
-        "es": "VeriAI, modelo propio",
-        "gl": "VeriAI, modelo propio",
-        "en": "VeriAI in-house model"
+        "es": "Pulido de la web",
+        "gl": "Pulido da web",
+        "en": "Web polish"
       },
+      "estado": "curso",
       "detalle": {
-        "es": "Entrenamiento con el dataset que generan los análisis de la plataforma.",
-        "gl": "Adestramento co dataset que xeran as análises da plataforma.",
-        "en": "Training on the dataset produced by the platform's analyses."
+        "es": "Móvil, textos en los cinco idiomas, formularios de cuenta, accesibilidad y páginas legales. El análisis de capturas está en pausa mientras se arregla.",
+        "gl": "Móbil, textos nos cinco idiomas, formularios de conta, accesibilidade e páxinas legais. A análise de capturas está en pausa mentres se arranxa.",
+        "en": "Mobile, texts in all five languages, account forms, accessibility and legal pages. Screenshot analysis is paused while it is being fixed."
+      }
+    },
+    {
+      "version": "1.12",
+      "nombre": {
+        "es": "Capturas estables y VeriAI",
+        "gl": "Capturas estables e VeriAI",
+        "en": "Reliable screenshots and VeriAI"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Volver a analizar capturas de forma estable, guardar menos datos para entrenar el modelo propio VeriAI y revisar los proveedores de IA.",
+        "gl": "Volver analizar capturas de forma estable, gardar menos datos para adestrar o modelo propio VeriAI e revisar os provedores de IA.",
+        "en": "Bring back reliable screenshot analysis, store less data to train the in-house VeriAI model and review the AI providers."
       }
     }
   ],
@@ -662,7 +699,7 @@
       }
     },
     {
-      "valor": "9",
+      "valor": "7–9",
       "etiqueta": {
         "es": "dimensiones de análisis",
         "gl": "dimensións de análise",
@@ -670,11 +707,11 @@
       }
     },
     {
-      "valor": "3",
+      "valor": "2",
       "etiqueta": {
-        "es": "formas de analizar: texto, enlace o captura",
-        "gl": "formas de analizar: texto, ligazón ou captura",
-        "en": "ways to analyse: text, link or screenshot"
+        "es": "formas de analizar: texto o enlace",
+        "gl": "formas de analizar: texto ou ligazón",
+        "en": "ways to analyse: text or link"
       }
     },
     {
@@ -686,7 +723,7 @@
       }
     },
     {
-      "valor": "6",
+      "valor": "5",
       "etiqueta": {
         "es": "proveedores de IA en rotación",
         "gl": "provedores de IA en rotación",

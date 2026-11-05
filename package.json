@@ -11,7 +11,8 @@
     "test": "vitest run",
     "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" && vitest run && bash tools/qa/tests/test-ganchos.sh",
     "medir": "node tools/qa/medir-paginas.cjs",
-    "capturas": "node tools/qa/capturas.cjs"
+    "capturas": "node tools/qa/capturas.cjs",
+    "seo": "python3 .claude/skills/gw-seo/scripts/comprobar.py dist"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",

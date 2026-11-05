@@ -191,6 +191,25 @@ def variantes(ruta):
     return out
 
 
+def seccion_roadmap(clon, rama, cfg):
+    """(ruta, líneas de la sección `cfg["seccion"]` del roadmap hasta el siguiente encabezado de su nivel o mayor);
+    con el archivo o la sección ausentes, (ruta, []): los hitos de la ficha se comparan con esto cada semana."""
+    ruta, encabezado = cfg["ruta"], cfg["seccion"].strip()
+    nivel = (len(encabezado) - len(encabezado.lstrip("#"))) or 6  # sin «#», cualquier encabezado la cierra
+    texto = git(clon, "show", f"{rama}:{ruta}", check=False) or ""
+    lineas, dentro, en_codigo = [], False, False
+    for linea in texto.splitlines():
+        if linea.lstrip().startswith("```"):
+            en_codigo = not en_codigo  # un «# comentario» dentro de un bloque de código no es encabezado
+        elif not en_codigo and dentro and re.match(rf"^#{{1,{nivel}}} ", linea):
+            break  # también si repite el encabezado de la sección (una copia vieja más abajo)
+        elif not en_codigo and linea.strip() == encabezado:
+            dentro = True
+        if dentro and linea.strip():
+            lineas.append(linea.rstrip())
+    return ruta, lineas
+
+
 def cabecera_bitacora(clon, rama, ruta):
     """(ruta que existe en la rama, sus filas útiles); con ninguna variante, (ruta pedida, [])."""
     for r in variantes(ruta):
@@ -274,6 +293,8 @@ def informe_repo(nombre, visibilidad, cfg, clones):
     if cfg["destino"] == "proximamente":
         rutas = ["docs/plan.md", cfg.get("bitacora", "docs/traspaso.md")]
     r["bitacora"] = dict(cabecera_bitacora(clon, rama, ruta) for ruta in rutas)
+    if cfg.get("roadmap"):
+        r["roadmap"] = seccion_roadmap(clon, rama, cfg["roadmap"])
     return r
 
 
@@ -305,6 +326,11 @@ def texto(informes, perdidos):
         for ruta, filas in (r.get("bitacora") or {}).items():
             out.append(f"- {ruta}:" + ("" if filas else " (no existe o sin tabla)"))
             out += [f"    {f}" for f in filas]
+        if r.get("roadmap"):
+            ruta, lineas = r["roadmap"]
+            out.append(f"- roadmap ({ruta}), para comparar con los hitos de la ficha:"
+                       + ("" if lineas else " (no existe o falta la sección; corrige «roadmap» en fuentes.json)"))
+            out += [f"    {x}" for x in lineas]
         if r.get("escaparate"):
             e = r["escaparate"]
             out.append("- imágenes y diagramas en el portal (último cambio):")
