@@ -158,6 +158,12 @@ class TestPageChecks(Base):
         ld = '{"@context":"https://schema.org","@type":"Organization","name":"[Business Name]"}'
         self.assertIn("jsonld-placeholder", self.codes(es=dict(jsonld=ld)))
 
+    def test_jsonld_lowercase_todo_is_a_word_not_a_placeholder(self):
+        ld = '{"@context":"https://schema.org","@type":"Organization","name":"Org","description":"y todo queda guardado"}'
+        self.assertNotIn("jsonld-placeholder", self.codes(es=dict(jsonld=ld)))
+        ld = '{"@context":"https://schema.org","@type":"Organization","name":"Org","description":"TODO"}'
+        self.assertIn("jsonld-placeholder", self.codes(es=dict(jsonld=ld)))
+
     def test_jsonld_no_context(self):
         self.assertIn("jsonld-no-context", self.codes(es=dict(jsonld='{"@type":"Organization"}')))
 
@@ -302,6 +308,14 @@ class TestIgnore(Base):
     def test_404_not_checked(self):
         c = self.codes(files={"404.html": "<html><head></head><body></body></html>"})
         self.assertEqual(c, set())
+
+    def test_ignore_flag_before_build_dir(self):
+        with tempfile.TemporaryDirectory() as d:
+            build(Path(d))
+            r = subprocess.run([sys.executable, str(SCRIPT), "--ignore", "borrador/*", d],
+                               capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stderr)
+            self.assertIn("0 errors", r.stdout)
 
     def test_custom_ignore(self):
         files = {"borrador/index.html": "<html></html>"}

@@ -59,6 +59,8 @@ const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon
 const equipo = JSON.parse(readFileSync('src/data/equipo.json', 'utf8')).sort((a, b) => a.orden - b.orden);
 
 const IDIOMAS = ['es', 'gl', 'en'];
+// Recorta un texto a `max` caracteres sin partir palabras, con «…» al final.
+const recorta = (t, max) => (t.length <= max ? t : `${t.slice(0, max - 1).replace(/[\s·,;:]+\S*$/, '')}…`);
 const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
 const FIJAS = {
@@ -165,8 +167,8 @@ for (const idioma of IDIOMAS) {
       titulo: `${p.nombre} · ${FIJAS.equipo[idioma][0]}`,
       // Rol + resumen: el resumen solo («Full stack desde 2017…») no dice quién es. La imagen es la de la marca:
       // la foto (webp, cuadrada y pequeña) no sirve como vista previa grande en redes.
-      // Buscadores: hasta 160 caracteres; si el rol y el resumen no caben juntos, solo el rol.
-      descripcion: ((d) => (d.length <= 160 ? d : p.rol[idioma]))(`${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`),
+      // Buscadores: hasta 160 caracteres (Google corta lo demás); se recorta por palabra completa.
+      descripcion: recorta(`${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`, 160),
       imagen: IMAGEN,
       fecha: (p.fecha ??= fechaMiembro(p)),
       persona: p,

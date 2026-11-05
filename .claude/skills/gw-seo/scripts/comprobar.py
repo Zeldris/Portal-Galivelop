@@ -41,7 +41,7 @@ RETIRED_TYPES = {"FAQPage", "HowTo", "SpecialAnnouncement", "ClaimReview",
                  "OccupationalAggregateRating", "LearningVideo"}
 PLACEHOLDER = re.compile(
     r"\[(business name|city|state|phone|address|your [^\]]+)\]|lorem ipsum"
-    r"|\bTODO\b|example\.com", re.I)
+    r"|(?-i:\bTODO\b)|example\.com", re.I)  # TODO in capitals only: «todo» is a Spanish word
 LASTMOD = re.compile(r"^(\d{4}-\d{2}-\d{2})(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?"
                      r"(Z|[+-]\d{2}:\d{2}))?$")
 MAX_HTML = 2 * 1024 * 1024
@@ -485,7 +485,8 @@ def main(argv=None) -> int:
     ap.add_argument("build_dir")
     ap.add_argument("--site")
     ap.add_argument("--langs")
-    ap.add_argument("--ignore", action="append", default=[], nargs="+", metavar="GLOB")
+    ap.add_argument("--ignore", action="append", default=[], metavar="GLOB",
+                    help="glob to skip, relative to build_dir (repeat the flag for several)")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--today")
@@ -500,7 +501,7 @@ def main(argv=None) -> int:
             today = dt.date.fromisoformat(args.today) if args.today else None
         except ValueError:
             raise UsageError("--today must be YYYY-MM-DD")
-        ignore = [g for group in args.ignore for g in group]
+        ignore = list(args.ignore)
         npages, findings = check(build, site, langs, ignore, today)
     except UsageError as exc:
         print(f"error: {exc}", file=sys.stderr)

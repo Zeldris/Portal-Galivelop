@@ -154,7 +154,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
 
 ### Notas del portal para las skills
 
-Las skills de `.claude/skills/` son copia del flujo y no se editan aquí (las pisa `/gw-update`); lo propio del portal
+Las skills de `.claude/skills/` son copia del flujo y no se editan aquí (las pisa `/gw-update`), salvo las nacidas en
+el portal (`gw-portal`, `gw-seo`), que `/gw-update` no toca y `gw-harvest` recoge desde el flujo; lo propio del portal
 va aquí, en `.claude/gw.json` (`selector.cases`) o en `.claude/gw/gw-opt-tokens.md`.
 
 - `research`: cada afirmación con su fuente primaria y la fecha de consulta; las notas, en `docs/investigacion/<tema>.md`.

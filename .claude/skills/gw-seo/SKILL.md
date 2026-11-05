@@ -4,7 +4,6 @@ description: Check and improve the SEO and link previews of a project's static w
 license: MIT (adapted material from claude-seo, see LICENSE-claude-seo.txt)
 compatibility: Python 3.10+ (standard library only) and the project's own build.
 metadata:
-  version: "0.1.0"
   source: "Galivelop workshop (born in Portal-Galivelop); checks and references adapted from AgriciDaniel/claude-seo@6be93f4 (MIT)"
 ---
 
