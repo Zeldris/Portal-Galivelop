@@ -7,7 +7,7 @@
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.png",
   "cabecera": "color",
-  "actualizado": "2026-11-04",
+  "actualizado": "2026-11-05",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -31,9 +31,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · fase 2: motor real conectado, en pruebas",
-    "gl": "En desenvolvemento · fase 2: motor real conectado, en probas",
-    "en": "In development · phase 2: real engine connected, in testing"
+    "es": "En desarrollo · fase 4: interfaz hecha, a falta de probarla a mano",
+    "gl": "En desenvolvemento · fase 4: interface feita, a falta de probala a man",
+    "en": "In development · phase 4: interface done, still to be tried by hand"
   },
   "etiquetas": [
     "IA local",
@@ -790,11 +790,11 @@
         "gl": "Motor real",
         "en": "Real engine"
       },
-      "estado": "curso",
+      "estado": "hecho",
       "detalle": {
-        "es": "Motor real conectado e instalador hecho; faltan las rondas de ajuste y publicar la versión.",
-        "gl": "Motor real conectado e instalador feito; faltan as roldas de axuste e publicar a versión.",
-        "en": "Real engine connected and installer done; the tuning rounds and publishing the version are still to do."
+        "es": "Motor real conectado, instalador, composición de texto y logo, y medida de marca. Quedan por probar a mano en la Deck las rondas de ajuste.",
+        "gl": "Motor real conectado, instalador, composición de texto e logo, e medida de marca. Quedan por probar a man na Deck as roldas de axuste.",
+        "en": "Real engine connected, installer, text and logo composition, and brand measurement. The tuning rounds are still to be tried by hand on the Deck."
       }
     },
     {
@@ -804,7 +804,12 @@
         "gl": "API e arranque baixo demanda",
         "en": "API and on-demand start"
       },
-      "estado": "pendiente"
+      "estado": "hecho",
+      "detalle": {
+        "es": "API local y servicio que arranca solo al hacer un pedido y se para tras un rato sin uso. Falta comprobar a mano en la Deck que se abre el navegador y se para a los 15 minutos.",
+        "gl": "API local e servizo que arranca só ao facer un pedido e se para tras un tempo sen uso. Falta comprobar a man na Deck que se abre o navegador e se para aos 15 minutos.",
+        "en": "Local API and a service that starts by itself when you place a request and stops after a while idle. Still to check by hand on the Deck: the browser opens and the service stops after 15 minutes."
+      }
     },
     {
       "version": "4",
@@ -813,16 +818,54 @@
         "gl": "Interface de tres pantallas",
         "en": "Three-screen interface"
       },
-      "estado": "pendiente"
+      "estado": "hecho",
+      "detalle": {
+        "es": "Interfaz en el navegador, en castellano e inglés: pedidos, comparar y elegir intentos, cola, plantillas elegibles y editor de elementos. Falta el recorrido completo a mano en el navegador.",
+        "gl": "Interface no navegador, en castelán e inglés: pedidos, comparar e elixir intentos, cola, modelos elixibles e editor de elementos. Falta o percorrido completo a man no navegador.",
+        "en": "Browser interface in Spanish and English: requests, comparing and choosing attempts, queue, selectable templates and an element editor. The full walkthrough in the browser by hand is still to do."
+      }
     },
     {
       "version": "5",
       "nombre": {
-        "es": "Piloto con Tarkor",
-        "gl": "Piloto con Tarkor",
-        "en": "Pilot with Tarkor"
+        "es": "Piloto con World-Maker-Fantasy",
+        "gl": "Piloto con World-Maker-Fantasy",
+        "en": "Pilot with World-Maker-Fantasy"
       },
-      "estado": "pendiente"
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Configuración de ejemplo y guía de integración para que el juego pida y reciba la imagen elegida sin copiar a mano, con estilo propio.",
+        "gl": "Configuración de exemplo e guía de integración para que o xogo pida e reciba a imaxe elixida sen copiar a man, con estilo propio.",
+        "en": "Example configuration and integration guide so the game can request and receive the chosen image without copying by hand, with its own style."
+      }
+    },
+    {
+      "version": "6",
+      "nombre": {
+        "es": "Director local",
+        "gl": "Director local",
+        "en": "Local director"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Paso opcional con un modelo de lenguaje local que redacta los pedidos y ayuda a elegir entre los intentos; sin él, todo sigue funcionando a mano.",
+        "gl": "Paso opcional cun modelo de linguaxe local que redacta os pedidos e axuda a elixir entre os intentos; sen el, todo segue funcionando a man.",
+        "en": "Optional step with a local language model that drafts requests and helps choose among attempts; without it, everything keeps working by hand."
+      }
+    },
+    {
+      "version": "7",
+      "nombre": {
+        "es": "Compatibilidad",
+        "gl": "Compatibilidade",
+        "en": "Compatibility"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Que funcione en cualquier equipo, no solo con Vulkan: solo CPU, otras tarjetas gráficas, otros Linux y Windows.",
+        "gl": "Que funcione en calquera equipo, non só con Vulkan: só CPU, outras tarxetas gráficas, outros Linux e Windows.",
+        "en": "Make it work on any machine, not just with Vulkan: CPU only, other graphics cards, other Linux distributions and Windows."
+      }
     }
   ],
   "novedades": [
@@ -893,7 +936,7 @@
       }
     },
     {
-      "valor": "2 / 6",
+      "valor": "5 / 8",
       "etiqueta": {
         "es": "fases hechas",
         "gl": "fases feitas",

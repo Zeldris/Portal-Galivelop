@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-11-04",
+  "actualizado": "2026-11-05",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3929,9 +3929,9 @@
         "en": "Deep kingdom"
       },
       "detalle": {
-        "es": "En curso: memoria, generaciones, economía, ganadería y conflicto hechos. Ahora, una ronda de pruebas jugando antes de seguir.",
-        "gl": "En curso: memoria, xeracións, economía, gandaría e conflito feitos. Agora, unha rolda de probas xogando antes de seguir.",
-        "en": "In progress: memory, generations, economy, livestock and conflict done. Now a play-testing round before moving on."
+        "es": "En curso: hechos la memoria del narrador, la población del Reino (llegadas, parejas y crías), la economía, la ganadería y parte del conflicto. Ahora, una ronda de pruebas jugando; después, el resto del conflicto y hablar y comerciar con los habitantes.",
+        "gl": "En curso: feitas a memoria do narrador, a poboación do Reino (chegadas, parellas e crías), a economía, a gandaría e parte do conflito. Agora, unha rolda de probas xogando; despois, o resto do conflito e falar e comerciar cos habitantes.",
+        "en": "In progress: narrator memory, the kingdom’s population (arrivals, couples and young), economy, livestock and part of the conflict are done. Now a play-testing round; after it, the rest of the conflict and talking and trading with inhabitants."
       }
     },
     {
@@ -3941,6 +3941,11 @@
         "es": "Berig abierto: Cristal Helado",
         "gl": "Berig aberto: Cristal Xeado",
         "en": "Open Berig: Frozen Crystal"
+      },
+      "detalle": {
+        "es": "Viajar entre regiones y jugar una segunda región completa.",
+        "gl": "Viaxar entre rexións e xogar unha segunda rexión completa.",
+        "en": "Travel between regions and play a full second region."
       }
     },
     {
@@ -3966,12 +3971,12 @@
       "estado": "pendiente",
       "nombre": {
         "es": "Personaje propio",
-        "gl": "Personaxe propia",
+        "gl": "Personaxe propio",
         "en": "Your own character"
       },
       "detalle": {
         "es": "Crear un personaje desde cero con cualquier raza de Berig.",
-        "gl": "Crear unha personaxe desde cero con calquera raza de Berig.",
+        "gl": "Crear un personaxe desde cero con calquera raza de Berig.",
         "en": "Create a character from scratch with any race of Berig."
       }
     },
