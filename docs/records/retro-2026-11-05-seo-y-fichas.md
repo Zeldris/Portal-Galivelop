@@ -1,6 +1,7 @@
 # Retro: skill gw-seo, «Avance» de las fichas e Image Generator (2026-11-05)
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada entera por la persona (2026-11-05, «Apruebo todo») y aplicada: R1, R2 y T2 en la rama; T1 apuntada para
+la persona; `gw-seo` queda para Galivelop-workflow.
 
 Lo revisado: los commits de `ccr-83ea043c-r1gbyp` que van a `main` (desde `941d3ce`: skill `gw-seo`, títulos y
 descripciones, arreglos de la revisión, «Avance» de las cuatro fichas y la ficha entera de Image Generator) y la

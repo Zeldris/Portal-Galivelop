@@ -1,6 +1,6 @@
 {
   "slug": "galivelop-image-generator",
-  "nombre": "Galivelop Image Generator",
+  "nombre": "Galivelop IG",
   "orden": 4,
   "colaboracion": "abierta",
   "estado": "desarrollo",
@@ -50,9 +50,9 @@
     "ancho": 1600,
     "alto": 1000,
     "alt": {
-      "es": "Portada de Galivelop Image Generator: rejilla de intentos con uno elegido",
-      "gl": "Portada de Galivelop Image Generator: reixa de intentos cun elixido",
-      "en": "Cover of Galivelop Image Generator: a grid of attempts with one chosen"
+      "es": "Portada de Galivelop IG: rejilla de intentos con uno elegido",
+      "gl": "Portada de Galivelop IG: reixa de intentos cun elixido",
+      "en": "Cover of Galivelop IG: a grid of attempts with one chosen"
     }
   },
   "enlaces": [
@@ -236,9 +236,9 @@
       "ancho": 1280,
       "alto": 640,
       "alt": {
-        "es": "Ronda 3 · Galivelop Image Generator: fondo definitivo con el estilo elegido, paneles de vidrio en fila con una luz violeta.",
-        "gl": "Rolda 3 · Galivelop Image Generator: fondo definitivo co estilo escollido, paneis de vidro en fila cunha luz violeta.",
-        "en": "Round 3 · Galivelop Image Generator: final background in the chosen style, glass panels in a row with a violet light."
+        "es": "Ronda 3 · Galivelop IG: fondo definitivo con el estilo elegido, paneles de vidrio en fila con una luz violeta.",
+        "gl": "Rolda 3 · Galivelop IG: fondo definitivo co estilo escollido, paneis de vidro en fila cunha luz violeta.",
+        "en": "Round 3 · Galivelop IG: final background in the chosen style, glass panels in a row with a violet light."
       }
     },
     {
@@ -247,9 +247,9 @@
       "ancho": 1500,
       "alto": 500,
       "alt": {
-        "es": "Ronda 5 · Galivelop Image Generator: cabecera terminada con logo y lema «Cada elegida, con su manifiesto.» (pieza de ejemplo en castellano).",
-        "gl": "Rolda 5 · Galivelop Image Generator: cabeceira rematada con logo e lema «Cada escollida, co seu manifesto.» (peza de exemplo en castelán).",
-        "en": "Round 5 · Galivelop Image Generator: finished header with logo and tagline “Every pick, with its manifest.” (sample piece in Spanish)."
+        "es": "Ronda 5 · Galivelop IG: cabecera terminada con logo y lema «Cada elegida, con su manifiesto.» (pieza de ejemplo en castellano).",
+        "gl": "Rolda 5 · Galivelop IG: cabeceira rematada con logo e lema «Cada escollida, co seu manifesto.» (peza de exemplo en castelán).",
+        "en": "Round 5 · Galivelop IG: finished header with logo and tagline “Every pick, with its manifest.” (sample piece in Spanish)."
       }
     },
     {
@@ -258,9 +258,9 @@
       "ancho": 1200,
       "alto": 630,
       "alt": {
-        "es": "Ronda 7 · Galivelop Image Generator: tarjeta para redes con logo, lema «Pide, prueba, elige.» y subtítulo, junto a una fila de láminas de cristal con humo violeta (pieza de ejemplo en castellano).",
-        "gl": "Rolda 7 · Galivelop Image Generator: tarxeta para redes con logo, lema «Pide, proba, elixe.» e subtítulo, xunto a unha fila de láminas de cristal con fume violeta (peza de exemplo en castelán).",
-        "en": "Round 7 · Galivelop Image Generator: social card with logo, tagline “Ask, try, choose.” and subtitle, beside a row of glass panes with violet smoke (sample piece in Spanish)."
+        "es": "Ronda 7 · Galivelop IG: tarjeta para redes con logo, lema «Pide, prueba, elige.» y subtítulo, junto a una fila de láminas de cristal con humo violeta (pieza de ejemplo en castellano).",
+        "gl": "Rolda 7 · Galivelop IG: tarxeta para redes con logo, lema «Pide, proba, elixe.» e subtítulo, xunto a unha fila de láminas de cristal con fume violeta (peza de exemplo en castelán).",
+        "en": "Round 7 · Galivelop IG: social card with logo, tagline “Ask, try, choose.” and subtitle, beside a row of glass panes with violet smoke (sample piece in Spanish)."
       }
     },
     {
@@ -316,9 +316,9 @@
       "en": "Every workshop project needs brand images: backgrounds for social media, pieces in several formats, avatars. We don’t want those images or their requests to leave the machine, and we don’t want to repeat the same setup of models, queues and folders in every repository."
     },
     {
-      "es": "La respuesta es un servicio por máquina que no conoce el dominio de ningún proyecto: recibe pedidos (una clave y un perfil de imagen), genera varios intentos, deja marcar una elegida y la entrega como PNG con un manifiesto que dice qué modelo, qué parámetros y qué semilla la produjeron, para poder reproducirla. Habla por una API HTTP local, por la orden gimg y por una interfaz web de tres pantallas.",
-      "gl": "A resposta é un servizo por máquina que non coñece o dominio de ningún proxecto: recibe pedidos (unha clave e un perfil de imaxe), xera varios intentos, deixa marcar unha elixida e entrégaa como PNG cun manifesto que di que modelo, que parámetros e que semente a produciron, para poder reproducila. Fala por unha API HTTP local, pola orde gimg e por unha interface web de tres pantallas.",
-      "en": "The answer is a per-machine service that knows nothing about any project's domain: it takes requests (a key and an image profile), generates several attempts, lets you mark a chosen one and delivers it as a PNG with a manifest saying which model, which parameters and which seed produced it, so it can be reproduced. It speaks through a local HTTP API, the gimg command and a three-screen web interface."
+      "es": "La respuesta es un servicio por máquina que no conoce el dominio de ningún proyecto: recibe pedidos (una clave y un perfil de imagen), genera varios intentos, deja marcar una elegida y la entrega como PNG con un manifiesto que dice qué modelo, qué parámetros y qué semilla la produjeron, para poder reproducirla. Habla por una API HTTP local, por la orden gimg y por una interfaz web de tres pantallas. Su repositorio y su orden conservan el nombre de trabajo: galivelop-image-generator y gimg.",
+      "gl": "A resposta é un servizo por máquina que non coñece o dominio de ningún proxecto: recibe pedidos (unha clave e un perfil de imaxe), xera varios intentos, deixa marcar unha elixida e entrégaa como PNG cun manifesto que di que modelo, que parámetros e que semente a produciron, para poder reproducila. Fala por unha API HTTP local, pola orde gimg e por unha interface web de tres pantallas. O seu repositorio e a súa orde conservan o nome de traballo: galivelop-image-generator e gimg.",
+      "en": "The answer is a per-machine service that knows nothing about any project's domain: it takes requests (a key and an image profile), generates several attempts, lets you mark a chosen one and delivers it as a PNG with a manifest saying which model, which parameters and which seed produced it, so it can be reproduced. It speaks through a local HTTP API, the gimg command and a three-screen web interface. Its repository and command keep the working name: galivelop-image-generator and gimg."
     },
     {
       "es": "Hoy el servicio está publicado en su versión 0.4.0, con el código abierto bajo licencia MIT: pedidos, intentos, elegida, entrega, cola y registro, el motor real con instalador, la composición de texto y logo sobre la imagen, la medida de marca, una API local y una interfaz en el navegador. Falta comprobar a mano en la Steam Deck el recorrido completo de la interfaz y el arranque bajo demanda, y el piloto con World-Maker-Fantasy.",

@@ -88,6 +88,29 @@ class RutasDelFlujo(unittest.TestCase):
             self.assertEqual(recoger.difusion_lista(d, "HEAD"), ["docs/media/a/web.md"])
 
 
+class Roadmap(unittest.TestCase):
+    def test_saca_solo_la_seccion_del_roadmap_hasta_el_siguiente_encabezado_de_su_nivel(self):
+        texto = ("# Plan\n\n## Fases\n\n| Fase | Estado |\n|--|--|\n| 0 | hecha |\n\n### Detalle\nsigue\n\n"
+                 "## Otra\nno entra\n")
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "docs").mkdir()
+            (Path(d) / "docs/plan.md").write_text(texto, encoding="utf-8")
+            env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                       GIT_COMMITTER_EMAIL="t@t")
+            subprocess.run(["git", "init", "-q", d], check=True)
+            subprocess.run(["git", "-C", d, "add", "."], check=True)
+            subprocess.run(["git", "-C", d, "commit", "-q", "-m", "inicio"], check=True, env=env)
+            ruta, lineas = recoger.seccion_roadmap(d, "HEAD", {"ruta": "docs/plan.md", "seccion": "## Fases"})
+            self.assertEqual(ruta, "docs/plan.md")
+            self.assertEqual(lineas[0], "## Fases")
+            self.assertIn("| 0 | hecha |", lineas)
+            self.assertIn("### Detalle", lineas)
+            self.assertNotIn("## Otra", lineas)
+            # Un encabezado que ya no está se dice, no se calla.
+            self.assertEqual(recoger.seccion_roadmap(d, "HEAD", {"ruta": "docs/plan.md", "seccion": "## Hitos"}),
+                             ("docs/plan.md", []))
+
+
 class Enlaces(unittest.TestCase):
     def test_variantes_de_la_url_del_repo_cuentan_como_enlazado(self):
         url = "https://github.com/zeldris/tarkor"

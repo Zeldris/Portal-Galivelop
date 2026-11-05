@@ -7,6 +7,7 @@
       "destino": "ficha",
       "slug": "tarkor",
       "bitacora": "docs/registros/traspaso.md",
+      "roadmap": { "ruta": "docs/producto/21-roadmap.md", "seccion": "## Hitos de un vistazo" },
       "vigilar": ["docs/producto/tarkor-contenido-web.md", "backend/uploads/images", "frontend/src/assets/maps"]
     },
     "Zeldris/Instalador-WMF-Tarkor": { "destino": "ficha", "slug": "tarkor", "bitacora": "docs/traspaso.md" },
@@ -14,14 +15,17 @@
       "destino": "ficha",
       "slug": "galivelop-workflow",
       "bitacora": "docs/traspaso.md",
+      "roadmap": { "ruta": "docs/plan.md", "seccion": "## 9. Fases de construcción" },
       "etiquetas": true,
       "diagramas": ["docs/diagramas/gw-*.svg", "docs/diagramas/galivelop-workflow.svg"]
     },
-    "raquelccarreraA/VeriNews_AI": { "destino": "ficha", "slug": "toveriai", "nombre": "toVeriAI", "bitacora": "docs/registros/traspaso.md" },
+    "raquelccarreraA/VeriNews_AI": { "destino": "ficha", "slug": "toveriai", "nombre": "toVeriAI", "bitacora": "docs/registros/traspaso.md",
+      "roadmap": { "ruta": "docs/producto/21-roadmap.md", "seccion": "### Qué entra en cada hito" } },
     "Zeldris/galivelop-image-generator": {
       "destino": "ficha",
       "slug": "galivelop-image-generator",
-      "bitacora": "docs/traspaso.md"
+      "bitacora": "docs/traspaso.md",
+      "roadmap": { "ruta": "docs/plan.md", "seccion": "## Fases (aprobadas el 2026-10-25)" }
     },
     "Zeldris/galivelop-voice-generator": { "destino": "proximamente", "slug": "galivelop-voice-generator" },
     "Zeldris/galivelop-developer": { "destino": "proximamente", "slug": "galivelop-developer" },
