@@ -195,6 +195,12 @@ class TestHreflang(Base):
             EN_URL, "en", [("en", EN_URL)], EN_T, EN_D)})
         self.assertIn("hreflang-not-reciprocal", c)
 
+    def test_return_link_only_through_x_default_is_not_reciprocal(self):
+        # The es page is also x-default: an en page that links back only as x-default does not list es.
+        alts = [("en", EN_URL), ("x-default", ES_URL)]
+        c = self.codes(files={"en/index.html": page(EN_URL, "en", alts, EN_T, EN_D)})
+        self.assertIn("hreflang-not-reciprocal", c)
+
     def test_target_missing(self):
         alts = ALTS + [("gl", SITE + "gl/")]
         c = self.codes(files={"index.html": page(ES_URL, "es", alts, ES_T, ES_D)})

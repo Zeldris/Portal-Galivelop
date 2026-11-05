@@ -301,7 +301,8 @@ def check_hreflang(p: Page, pages: dict[str, Page], langs: set[str],
         if tgt is None:
             if href.startswith(site):
                 out.add("ERROR", "hreflang-target-missing", r, f"hreflang {lang} target {href} is not in the build; fix or remove the link")
-        elif p.url not in tgt.alt_urls():
+        elif not any(h == p.url and lg.lower() != "x-default" for lg, h in tgt.alternates):
+            # x-default alone is not a return link: each version must list the others by language.
             out.add("ERROR", "hreflang-not-reciprocal", r, f"lists {href} but {tgt.rel} does not link back; add the return hreflang")
     found = {lg.lower() for lg, _ in p.alternates}
     if "x-default" not in found:
