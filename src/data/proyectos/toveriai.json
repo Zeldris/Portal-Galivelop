@@ -24,6 +24,13 @@
     "gl": "Unha plataforma web que analiza novas, ligazóns e capturas con IA e devolve o IMI, un índice de credibilidade de 0 a 100 que sinala que falla e onde.",
     "en": "A web platform that analyses news, links and screenshots with AI and returns the IMI, a 0–100 credibility score that shows what is wrong and where."
   },
+  "seo": {
+    "titulo": {
+      "es": "Índice de credibilidad de noticias",
+      "gl": "Índice de credibilidade de novas",
+      "en": "News credibility score"
+    }
+  },
   "fase": {
     "es": "En producción · Premium y VeriAI en beta",
     "gl": "En produción · Premium e VeriAI en beta",

@@ -23,6 +23,13 @@
     "gl": "Un servizo local de xeración de imaxes con IA, un por máquina e compartido por todos os proxectos do taller: recibe pedidos, xera intentos, deixa elixir un e entrégao co seu manifesto. Nada sae do equipo.",
     "en": "A local AI image-generation service, one per machine and shared by every workshop project: it takes requests, generates attempts, lets you choose one and delivers it with its manifest. Nothing leaves the machine."
   },
+  "seo": {
+    "descripcion": {
+      "es": "Servicio local de imágenes con IA, uno por máquina y compartido por los proyectos del taller: pide, genera intentos, elige uno. Nada sale del equipo.",
+      "gl": "Servizo local de imaxes con IA, un por máquina e compartido polos proxectos do obradoiro: pide, xera intentos, elixe un. Nada sae do equipo.",
+      "en": "A local AI image service, one per machine and shared by the workshop’s projects: ask, generate attempts, pick one. Nothing leaves the machine."
+    }
+  },
   "fase": {
     "es": "En desarrollo · fase 2: motor real conectado, en pruebas",
     "gl": "En desenvolvemento · fase 2: motor real conectado, en probas",

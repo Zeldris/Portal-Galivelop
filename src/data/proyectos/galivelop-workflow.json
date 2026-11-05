@@ -22,6 +22,18 @@
     "gl": "Un fluxo de traballo versionado para programar con axentes de IA: relevos entre sesións sen perder nada, escoller skill e modelo antes de comezar, revisión obrigatoria antes de publicar e menos tokens sen perder calidade.",
     "en": "A versioned workflow for coding with AI agents: handoffs between sessions without losing anything, picking the right skill and model before starting, mandatory review before publishing, and fewer tokens without losing quality."
   },
+  "seo": {
+    "titulo": {
+      "es": "Flujo de trabajo con IA",
+      "gl": "Fluxo de traballo con IA",
+      "en": "AI coding workflow"
+    },
+    "descripcion": {
+      "es": "Flujo de trabajo versionado para programar con agentes de IA: relevos sin perder nada, revisión antes de publicar y menos tokens sin perder calidad.",
+      "gl": "Fluxo de traballo versionado para programar con axentes de IA: relevos sen perder nada, revisión antes de publicar e menos tokens sen perder calidade.",
+      "en": "A versioned workflow for coding with AI agents: hand-offs without losing anything, review before publishing and fewer tokens without losing quality."
+    }
+  },
   "fase": {
     "es": "En desarrollo · v0.5.0 · fase 7: rodaje",
     "gl": "En desenvolvemento · v0.5.0 · fase 7: rodaxe",

@@ -21,6 +21,18 @@
     "gl": "Xogo de rol por texto cunha IA local como directora de xogo, nun mundo de peto onde as faccións, a fauna e o teu reino viven pola súa conta. Escribes o que fas, o motor resólveo con tiradas visibles e un narrador cóntao.",
     "en": "A text-based role-playing game with a local AI as game master, in a pocket world where factions, wildlife and your kingdom live on their own. You write what you do, the engine resolves it with visible dice rolls and a narrator tells the story."
   },
+  "seo": {
+    "titulo": {
+      "es": "RPG narrativo con IA local",
+      "gl": "RPG narrativo cunha IA local",
+      "en": "Narrative RPG with a local AI"
+    },
+    "descripcion": {
+      "es": "Juego de rol por texto con una IA local como directora de juego: facciones, fauna y tu reino viven solos, y el motor resuelve con tiradas visibles.",
+      "gl": "Xogo de rol por texto cunha IA local como directora de xogo: faccións, fauna e o teu reino viven sós, e o motor resolve con tiradas visibles.",
+      "en": "A text RPG with a local AI as game master: factions, wildlife and your kingdom live on their own, and the engine resolves with visible rolls."
+    }
+  },
   "fase": {
     "es": "Alpha · hito 0.3 «Reino profundo»: ronda de pruebas jugando",
     "gl": "Alpha · fito 0.3 «Reino profundo»: rolda de probas xogando",
