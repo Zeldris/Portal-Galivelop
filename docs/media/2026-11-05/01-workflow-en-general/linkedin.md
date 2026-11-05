@@ -6,18 +6,27 @@
 
 ## es
 
-Programar semanas con un agente de IA tiene un problema poco visible: cada sesión puede acabarse en cualquier momento, y lo que no quedó escrito se pierde.
+Programar semanas con un agente de IA tiene un problema poco visible: cada sesión puede acabarse en cualquier momento (sin tokens, con el contenedor reciclado o con el relevo a otra cuenta), y lo que no quedó escrito se pierde.
 En el taller Galivelop lo resolvimos con una regla: lo que no está subido no existe.
 
-De ahí nació Galivelop-workflow, nuestra forma de trabajar con IA empaquetada para cualquier proyecto. Sus piezas de más valor:
+De ahí nació Galivelop-workflow: el método que ya usábamos en Tarkor, en nuestro portal y en otros proyectos, convertido en un repositorio versionado que se aplica a cualquier proyecto. Reglas en AGENTS.md (un estándar abierto que entiende cualquier agente), skills, scripts y ganchos de git en un solo sitio. Estas son sus piezas de más valor:
 
-🔁 Relevos sin pérdidas: bitácora al día en el mismo commit que el trabajo. La siguiente sesión sabe por dónde iba sin preguntar.
-🎯 Elegir antes de empezar: una skill decide qué skill y qué modelo pide cada tarea, y lo mecánico va a subagentes con el modelo más barato que lo haga bien.
-🛡️ Nada sin revisar llega a main: tres fases antes de publicar y ganchos de git que no dejan subir sin la marca de revisado, con pruebas en rojo o con secretos.
-📉 Medir antes de recortar: en un piloto, una sola sesión larga se llevó el 70 % de los tokens. De ahí salieron el tope de compactación y el reparto a subagentes.
-♻️ Mejora con cada proyecto: lo que un proyecto aprende vuelve en una versión nueva y llega a todos.
+🔁 Relevos sin pérdidas
+La bitácora se actualiza en el mismo commit que el trabajo, y se hace commit + push en cada punto estable. Al abrir sesión, o tras limpiar el contexto, un gancho devuelve el estado: la siguiente sesión sigue sin preguntar por dónde iba. El estado vive en git, no en la conversación.
 
-Va por la versión 0.5.0 y el repositorio es público:
+🎯 Elegir antes de empezar
+gw-selector dice qué skill y qué modelo pide cada tarea, y si es de riesgo y hay que esperar a la persona. gw-orchestrate-dealer reparte lo mecánico a subagentes con contexto limpio y el modelo más barato que lo haga bien; cada uno devuelve un resumen corto y la sesión principal decide y revisa.
+
+🛡️ Nada sin revisar llega a main
+Tres fases antes de publicar: revisión de todo el diff con el criterio escrito del proyecto; retro y medida del gasto, cuyas propuestas solo se aplican si la persona las confirma; y una marca de revisado del commit. Sin esa marca, o con las pruebas en rojo, el gancho de git rechaza la subida. Y antes de cada commit se buscan secretos: una clave subida hay que darla por filtrada aunque se borre.
+
+📉 Medir antes de recortar
+En un piloto, una sola sesión de 157 llamadas con 191k de contexto medio se llevó el 70 % del gasto. De ahí salieron la compactación a 200k y los subagentes, no de una intuición. gw-opt-tokens mide en qué se fue cada sesión y solo propone recortes que no empeoren el resultado.
+
+♻️ Mejora con cada proyecto
+Cada proyecto declara lo suyo en un archivo pequeño. gw-harvest recoge lo que cada uno mejora; lo bueno sale en una versión nueva y gw-update la lleva a todos, enseñando antes los cambios.
+
+Va por la versión 0.5.0, en rodaje, y la 1.0 llegará cuando haya funcionado semanas en proyectos reales. El repositorio es público y abierto a colaborar:
 https://github.com/Zeldris/Galivelop-workflow
 
 ¿Cómo evitáis que vuestros agentes pierdan el hilo entre sesiones?

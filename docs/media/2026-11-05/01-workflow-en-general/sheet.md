@@ -32,6 +32,15 @@ Languages: es
 | Once skills propias y quince de Matt Pocock, sin cambios y con su licencia | `src/data/proyectos/galivelop-workflow.json`:157 |
 | Versión 0.5.0, fase 7: rodaje; la 1.0 tras semanas de uso; repositorio público y abierto a colaborar | `src/data/proyectos/galivelop-workflow.json`:26, `src/data/proyectos/galivelop-workflow.json`:152 |
 | Pasos de una tarea: retomar (bitácora y check), elegir (gw-selector), trabajar y subir (subagentes, commit + push en cada punto estable), revisar (código, gw-opt-tokens y retro con la persona), publicar (marca de revisado; sin ella el gancho rechaza) | `src/data/proyectos/galivelop-workflow.json`, `pasos` (líneas 272-360) |
+| Causas de fin de sesión: sin tokens, contenedor reciclado o relevo de otra cuenta | `src/data/proyectos/galivelop-workflow.json`:142 |
+| Cada proyecto declara lo suyo en un archivo de configuración pequeño | `src/data/proyectos/galivelop-workflow.json`:147, `src/data/proyectos/galivelop-workflow.json`:253 |
+| gw-selector también dice si la tarea es de riesgo y hay que esperar a la persona | `src/data/proyectos/galivelop-workflow.json`:292 |
+| Cada subagente devuelve un resumen corto (15 líneas como máximo) | `src/data/proyectos/galivelop-workflow.json`:483 |
+| Fase 1: revisión de todo el diff contra la rama protegida con el criterio escrito del proyecto | `src/data/proyectos/galivelop-workflow.json`:328 |
+| Un secreto subido hay que darlo por filtrado aunque se borre | `src/data/proyectos/galivelop-workflow.json`:705 |
+| Piloto: sesión de 157 llamadas con 191k de contexto medio, 70 % del gasto; desde entonces, compactación a 200k y subagentes | `src/data/proyectos/galivelop-workflow.json`:718 |
+| gw-update enseña los cambios antes de aplicarlos | `src/data/proyectos/galivelop-workflow.json`:266 |
+| La 1.0 llegará cuando haya funcionado semanas en proyectos reales de tecnologías distintas | `src/data/proyectos/galivelop-workflow.json`:152 |
 | Repositorio: https://github.com/Zeldris/Galivelop-workflow | `src/data/proyectos/galivelop-workflow.json` (enlaces[0]) |
 | Ficha: https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow/ | ruta de la ficha, slug `galivelop-workflow` en `src/data/proyectos/galivelop-workflow.json` |
 
