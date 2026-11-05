@@ -41,6 +41,12 @@ Languages: es
 | Piloto: sesión de 157 llamadas con 191k de contexto medio, 70 % del gasto; desde entonces, compactación a 200k y subagentes | `src/data/proyectos/galivelop-workflow.json`:718 |
 | gw-update enseña los cambios antes de aplicarlos | `src/data/proyectos/galivelop-workflow.json`:266 |
 | La 1.0 llegará cuando haya funcionado semanas en proyectos reales de tecnologías distintas | `src/data/proyectos/galivelop-workflow.json`:152 |
+| Skills propias: gw-selector, gw-orchestrate-dealer, gw-opt-tokens, gw-doctor (qué falla y la orden que lo arregla), gw-init, gw-update, gw-harvest | `src/data/proyectos/galivelop-workflow.json`, lista de skills propias (líneas 772-901) |
+| Ganchos: pre-commit busca secretos; commit-msg valida la bitácora; pre-push pasa el check y exige la marca de revisado | `src/data/proyectos/galivelop-workflow.json`, «Ganchos y scripts propios» (líneas 928-960) |
+| recover.py devuelve el estado tras compactar o limpiar el contexto | `src/data/proyectos/galivelop-workflow.json`:89 |
+| config.py es el único que lee la configuración y falla cerrado si falta una clave obligatoria | `src/data/proyectos/galivelop-workflow.json`, «Un archivo de configuración» |
+| reviewed.sh escribe la marca de revisión | `AGENTS.md`, «Antes de ir a main», fase 3 |
+| Lenguajes: Python y Bash | `src/data/proyectos/galivelop-workflow.json`, `etiquetas` |
 | Repositorio: https://github.com/Zeldris/Galivelop-workflow | `src/data/proyectos/galivelop-workflow.json` (enlaces[0]) |
 | Ficha: https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow/ | ruta de la ficha, slug `galivelop-workflow` en `src/data/proyectos/galivelop-workflow.json` |
 
