@@ -67,3 +67,4 @@ Languages: es
 
 | Channel | Language | Date | Link |
 |---|---|---|---|
+| linkedin | es | 2026-11-05 | https://lnkd.in/p/eF-_5bS5 |
