@@ -23,4 +23,5 @@ https://github.com/Zeldris/Galivelop-workflow
 ¿Cómo evitáis que vuestros agentes pierdan el hilo entre sesiones?
 
 #IA #AgentesDeIA #ClaudeCode #DesarrolloDeSoftware
+Image: media/diagrama.png
 Image: media/portada.png

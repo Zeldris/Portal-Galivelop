@@ -31,6 +31,7 @@ Languages: es
 | En un piloto, una sola sesión larga se llevó el 70 % de los tokens; de ahí el tope de compactación y el reparto a subagentes | `src/data/proyectos/galivelop-workflow.json`:187 |
 | Once skills propias y quince de Matt Pocock, sin cambios y con su licencia | `src/data/proyectos/galivelop-workflow.json`:157 |
 | Versión 0.5.0, fase 7: rodaje; la 1.0 tras semanas de uso; repositorio público y abierto a colaborar | `src/data/proyectos/galivelop-workflow.json`:26, `src/data/proyectos/galivelop-workflow.json`:152 |
+| Pasos de una tarea: retomar (bitácora y check), elegir (gw-selector), trabajar y subir (subagentes, commit + push en cada punto estable), revisar (código, gw-opt-tokens y retro con la persona), publicar (marca de revisado; sin ella el gancho rechaza) | `src/data/proyectos/galivelop-workflow.json`, `pasos` (líneas 272-360) |
 | Repositorio: https://github.com/Zeldris/Galivelop-workflow | `src/data/proyectos/galivelop-workflow.json` (enlaces[0]) |
 | Ficha: https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow/ | ruta de la ficha, slug `galivelop-workflow` en `src/data/proyectos/galivelop-workflow.json` |
 
@@ -38,6 +39,8 @@ Languages: es
 
 | Image | Alt text | Channels |
 |---|---|---|
+| `media/diagrama.png` | es: Diagrama de flujo de una tarea en cinco pasos: retomar, elegir, trabajar y subir, revisar y publicar; una flecha discontinua devuelve lo aprendido a una versión nueva para todos los proyectos | linkedin |
+| `media/diagrama.webp` | es: Diagrama de flujo de una tarea en cinco pasos: retomar, elegir, trabajar y subir, revisar y publicar; una flecha discontinua devuelve lo aprendido a una versión nueva para todos los proyectos | — |
 | `media/portada.png` | es: Esquema del flujo de una tarea: bitácora, gw-selector, gw-orchestrate-dealer, commit y push con sus ganchos, revisión, gw-opt-tokens y retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras a una versión nueva | linkedin |
 
 ## Internal use
