@@ -64,6 +64,15 @@
         "gl": "Ver o código en GitHub",
         "en": "View the code on GitHub"
       }
+    },
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.4.0",
+      "etiqueta": {
+        "es": "Ver la versión 0.4.0",
+        "gl": "Ver a versión 0.4.0",
+        "en": "View version 0.4.0"
+      }
     }
   ],
   "galeria": [
@@ -90,6 +99,17 @@
       }
     },
     {
+      "src": "proyectos/galivelop-image-generator/piloto/portal-r7.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/portal-r7-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Ronda 7 · Portal: tarjeta para redes con logo, lema «Un taller, no un escaparate.» y subtítulo, junto a un marco de piedra con luz azul y anillos en el suelo (pieza de ejemplo en castellano).",
+        "gl": "Rolda 7 · Portal: tarxeta para redes con logo, lema «Un obradoiro, non un escaparate.» e subtítulo, xunto a un marco de pedra con luz azul e aneis no chan (peza de exemplo en castelán).",
+        "en": "Round 7 · Portal: social card with logo, tagline “A workshop, not a showcase.” and subtitle, beside a stone frame with blue light and rings on the floor (sample piece in Spanish)."
+      }
+    },
+    {
       "src": "proyectos/galivelop-image-generator/piloto/toveriai-r3.webp",
       "mini": "proyectos/galivelop-image-generator/piloto/toveriai-r3-mini.webp",
       "ancho": 1280,
@@ -109,6 +129,17 @@
         "es": "Ronda 5 · toVeriAI: cabecera terminada con logo y lema «La credibilidad no se decreta: se mide.» (pieza de ejemplo en castellano).",
         "gl": "Rolda 5 · toVeriAI: cabeceira rematada con logo e lema «A credibilidade non se decreta: mídese.» (peza de exemplo en castelán).",
         "en": "Round 5 · toVeriAI: finished header with logo and tagline “Credibility isn’t decreed: it’s measured.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/toveriai-r7.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/toveriai-r7-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Ronda 7 · toVeriAI: tarjeta para redes con logo, lema «La verdad no es binaria.» y subtítulo, sobre un collage de recortes de periódico, regla, compás y tintas de acuarela (pieza de ejemplo en castellano).",
+        "gl": "Rolda 7 · toVeriAI: tarxeta para redes con logo, lema «A verdade non é binaria.» e subtítulo, sobre unha colaxe de recortes de xornal, regra, compás e tintas de acuarela (peza de exemplo en castelán).",
+        "en": "Round 7 · toVeriAI: social card with logo, tagline “Truth isn’t binary.” and subtitle, over a collage of newspaper clippings, ruler, compass and watercolour inks (sample piece in Spanish)."
       }
     },
     {
@@ -134,6 +165,17 @@
       }
     },
     {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-workflow-r7.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-workflow-r7-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Ronda 7 · Galivelop-workflow: tarjeta para redes con logo, lema «Lo que no está subido no existe.» y subtítulo, junto a un árbol de luz con nodos sobre una rejilla oscura (pieza de ejemplo en castellano).",
+        "gl": "Rolda 7 · Galivelop-workflow: tarxeta para redes con logo, lema «O que non está subido non existe.» e subtítulo, xunto a unha árbore de luz con nodos sobre unha reixa escura (peza de exemplo en castelán).",
+        "en": "Round 7 · Galivelop-workflow: social card with logo, tagline “If it isn’t pushed, it doesn’t exist.” and subtitle, beside a tree of light with nodes over a dark grid (sample piece in Spanish)."
+      }
+    },
+    {
       "src": "proyectos/galivelop-image-generator/piloto/tarkor-r3.webp",
       "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r3-mini.webp",
       "ancho": 1280,
@@ -156,6 +198,39 @@
       }
     },
     {
+      "src": "proyectos/galivelop-image-generator/piloto/tarkor-r6.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r6-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Ronda 6 · Tarkor, estilo realista: tarjeta para redes con logo, lema «El mundo sigue aunque tú te detengas.» y subtítulo, junto a una duna con una empalizada, una atalaya y agujas de roca (pieza de ejemplo en castellano).",
+        "gl": "Rolda 6 · Tarkor, estilo realista: tarxeta para redes con logo, lema «O mundo segue aínda que ti te deteñas.» e subtítulo, xunto a unha duna cunha empalizada, unha atalaia e agullas de rocha (peza de exemplo en castelán).",
+        "en": "Round 6 · Tarkor, realistic style: social card with logo, tagline “The world moves on even when you stop.” and subtitle, beside a dune with a palisade, a watchtower and rock spires (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/tarkor-r7.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r7-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Ronda 7 · Tarkor, estilo a lápiz: tarjeta para redes con logo, lema «El mundo sigue aunque tú te detengas.» y subtítulo, sobre una página de cuaderno con agujas de roca y un cardo (pieza de ejemplo en castellano).",
+        "gl": "Rolda 7 · Tarkor, estilo a lapis: tarxeta para redes con logo, lema «O mundo segue aínda que ti te deteñas.» e subtítulo, sobre unha páxina de caderno con agullas de rocha e un cardo (peza de exemplo en castelán).",
+        "en": "Round 7 · Tarkor, pencil style: social card with logo, tagline “The world moves on even when you stop.” and subtitle, over a notebook page with rock spires and a thistle (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/tarkor-acuarela.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/tarkor-acuarela-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Prueba de estilo · Tarkor, acuarela: tarjeta para redes con logo, lema «El mundo sigue aunque tú te detengas.» y subtítulo, junto a un esqueleto gigante y un tótem en un desierto de arcilla (pieza de ejemplo en castellano).",
+        "gl": "Proba de estilo · Tarkor, acuarela: tarxeta para redes con logo, lema «O mundo segue aínda que ti te deteñas.» e subtítulo, xunto a un esqueleto xigante e un tótem nun deserto de arxila (peza de exemplo en castelán).",
+        "en": "Style test · Tarkor, watercolour: social card with logo, tagline “The world moves on even when you stop.” and subtitle, beside a giant skeleton and a totem in a clay desert (sample piece in Spanish)."
+      }
+    },
+    {
       "src": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r3.webp",
       "mini": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r3-mini.webp",
       "ancho": 1280,
@@ -175,6 +250,17 @@
         "es": "Ronda 5 · Galivelop Image Generator: cabecera terminada con logo y lema «Cada elegida, con su manifiesto.» (pieza de ejemplo en castellano).",
         "gl": "Rolda 5 · Galivelop Image Generator: cabeceira rematada con logo e lema «Cada escollida, co seu manifesto.» (peza de exemplo en castelán).",
         "en": "Round 5 · Galivelop Image Generator: finished header with logo and tagline “Every pick, with its manifest.” (sample piece in Spanish)."
+      }
+    },
+    {
+      "src": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r7.webp",
+      "mini": "proyectos/galivelop-image-generator/piloto/galivelop-image-generator-r7-mini.webp",
+      "ancho": 1200,
+      "alto": 630,
+      "alt": {
+        "es": "Ronda 7 · Galivelop Image Generator: tarjeta para redes con logo, lema «Pide, prueba, elige.» y subtítulo, junto a una fila de láminas de cristal con humo violeta (pieza de ejemplo en castellano).",
+        "gl": "Rolda 7 · Galivelop Image Generator: tarxeta para redes con logo, lema «Pide, proba, elixe.» e subtítulo, xunto a unha fila de láminas de cristal con fume violeta (peza de exemplo en castelán).",
+        "en": "Round 7 · Galivelop Image Generator: social card with logo, tagline “Ask, try, choose.” and subtitle, beside a row of glass panes with violet smoke (sample piece in Spanish)."
       }
     },
     {
@@ -230,14 +316,14 @@
       "en": "Every workshop project needs brand images: backgrounds for social media, pieces in several formats, avatars. We don’t want those images or their requests to leave the machine, and we don’t want to repeat the same setup of models, queues and folders in every repository."
     },
     {
-      "es": "La respuesta es un servicio por máquina que no conoce el dominio de ningún proyecto: recibe pedidos (una clave y un perfil de imagen), genera varios intentos, deja marcar una elegida y la entrega como PNG con un manifiesto que dice qué modelo, qué parámetros y qué semilla la produjeron, para poder reproducirla. Hablará por una API HTTP local, por la orden gimg y por una interfaz web de tres pantallas.",
-      "gl": "A resposta é un servizo por máquina que non coñece o dominio de ningún proxecto: recibe pedidos (unha clave e un perfil de imaxe), xera varios intentos, deixa marcar unha elixida e entrégaa como PNG cun manifesto que di que modelo, que parámetros e que semente a produciron, para poder reproducila. Falará por unha API HTTP local, pola orde gimg e por unha interface web de tres pantallas.",
-      "en": "The answer is a service per machine that knows nothing about any project’s domain: it takes requests (a key and an image profile), generates several attempts, lets you mark one as chosen and delivers it as a PNG with a manifest recording which model, parameters and seed produced it, so it can be reproduced. It will speak through a local HTTP API, the gimg command and a three-screen web interface."
+      "es": "La respuesta es un servicio por máquina que no conoce el dominio de ningún proyecto: recibe pedidos (una clave y un perfil de imagen), genera varios intentos, deja marcar una elegida y la entrega como PNG con un manifiesto que dice qué modelo, qué parámetros y qué semilla la produjeron, para poder reproducirla. Habla por una API HTTP local, por la orden gimg y por una interfaz web de tres pantallas.",
+      "gl": "A resposta é un servizo por máquina que non coñece o dominio de ningún proxecto: recibe pedidos (unha clave e un perfil de imaxe), xera varios intentos, deixa marcar unha elixida e entrégaa como PNG cun manifesto que di que modelo, que parámetros e que semente a produciron, para poder reproducila. Fala por unha API HTTP local, pola orde gimg e por unha interface web de tres pantallas.",
+      "en": "The answer is a per-machine service that knows nothing about any project's domain: it takes requests (a key and an image profile), generates several attempts, lets you mark a chosen one and delivers it as a PNG with a manifest saying which model, which parameters and which seed produced it, so it can be reproduced. It speaks through a local HTTP API, the gimg command and a three-screen web interface."
     },
     {
-      "es": "Hoy el núcleo está hecho (pedidos, intentos, elegida, entrega, cola y registro) y el piloto de contenido, cerrado en una Steam Deck. El motor real ya está conectado y hay un instalador en el código abierto, aunque la instalación solo se ha probado en una Steam Deck. Falta publicar una primera versión; la API, la interfaz y el piloto con Tarkor están pendientes.",
-      "gl": "Hoxe o núcleo está feito (pedidos, intentos, elixida, entrega, cola e rexistro) e o piloto de contido, pechado nunha Steam Deck. O motor real xa está conectado e hai un instalador no código aberto, aínda que a instalación só se probou nunha Steam Deck. Falta publicar unha primeira versión; a API, a interface e o piloto con Tarkor están pendentes.",
-      "en": "Today the core is done (requests, attempts, chosen one, delivery, queue and log) and the content pilot is closed, run on a Steam Deck. The real engine is now connected and there is an installer in the open code, although the installation has only been tested on a Steam Deck. A first version still has to be published; the API, the interface and the pilot with Tarkor are pending."
+      "es": "Hoy el servicio está publicado en su versión 0.4.0, con el código abierto bajo licencia MIT: pedidos, intentos, elegida, entrega, cola y registro, el motor real con instalador, la composición de texto y logo sobre la imagen, la medida de marca, una API local y una interfaz en el navegador. Falta comprobar a mano en la Steam Deck el recorrido completo de la interfaz y el arranque bajo demanda, y el piloto con World-Maker-Fantasy.",
+      "gl": "Hoxe o servizo está publicado na súa versión 0.4.0, co código aberto baixo licenza MIT: pedidos, intentos, elixida, entrega, cola e rexistro, o motor real con instalador, a composición de texto e logo sobre a imaxe, a medida de marca, unha API local e unha interface no navegador. Falta comprobar a man na Steam Deck o percorrido completo da interface e o arranque baixo demanda, e o piloto con World-Maker-Fantasy.",
+      "en": "Today the service is published as version 0.4.0, with the code open under the MIT licence: requests, attempts, chosen one, delivery, queue and log, the real engine with its installer, text and logo composed over the image, brand measurement, a local API and a browser interface. Still to check by hand on the Steam Deck: the full walk-through of the interface and the on-demand start, plus the pilot with World-Maker-Fantasy."
     }
   ],
   "lineas": [
@@ -269,6 +355,16 @@
       "es": "El texto y el logo se componen después sobre la imagen; no se piden al modelo.",
       "gl": "O texto e o logo compóñense despois sobre a imaxe; non se lle piden ao modelo.",
       "en": "Text and logo are composed afterwards over the image; they are not asked of the model."
+    },
+    {
+      "es": "Una semilla por ronda es lotería: con cuatro semillas y ocho pasos se compara de verdad.",
+      "gl": "Unha semente por rolda é lotaría: con catro sementes e oito pasos compárase de verdade.",
+      "en": "One seed per round is a lottery: with four seeds and eight steps you can really compare."
+    },
+    {
+      "es": "Pedir «minimalista» da imágenes pobres: funciona mejor describir materia, luz y profundidad.",
+      "gl": "Pedir «minimalista» dá imaxes pobres: funciona mellor describir materia, luz e profundidade.",
+      "en": "Asking for “minimal” gives poor images: describing material, light and depth works better."
     }
   ],
   "caracteristicas": [
@@ -336,6 +432,19 @@
         "gl": "Python 3 con só a biblioteca estándar; os modelos descárganse á parte.",
         "en": "Python 3 with only the standard library; models are downloaded separately."
       }
+    },
+    {
+      "icono": "image",
+      "titulo": {
+        "es": "Interfaz en el navegador",
+        "gl": "Interface no navegador",
+        "en": "Browser interface"
+      },
+      "texto": {
+        "es": "Tres pantallas, en castellano e inglés: pedidos, comparar y elegir intentos, cola y plantillas.",
+        "gl": "Tres pantallas, en castelán e inglés: pedidos, comparar e elixir intentos, cola e modelos de composición.",
+        "en": "Three screens, in Spanish and English: requests, compare and choose attempts, queue and templates."
+      }
     }
   ],
   "pasos": [
@@ -397,9 +506,9 @@
         "en": "From request to delivery"
       },
       "intro": {
-        "es": "Lo que ya funciona en el núcleo del servicio.",
-        "gl": "O que xa funciona no núcleo do servizo.",
-        "en": "What already works in the service core."
+        "es": "Lo que ya funciona de principio a fin, desde la línea de órdenes, la API local o la interfaz.",
+        "gl": "O que xa funciona de principio a fin, dende a liña de ordes, a API local ou a interface.",
+        "en": "What already works end to end, from the command line, the local API or the interface."
       },
       "items": [
         {
@@ -461,6 +570,30 @@
             "gl": "Cola persistente con límites; todo queda nun rexistro JSONL para poder medir.",
             "en": "A persistent queue with limits; everything goes into a JSONL log so it can be measured."
           }
+        },
+        {
+          "nombre": {
+            "es": "Composición y medida",
+            "gl": "Composición e medida",
+            "en": "Composition and measurement"
+          },
+          "texto": {
+            "es": "Titular, logo y adornos sobre la imagen con plantillas elegibles por pieza; después se mide la paleta, el contraste y la distancia a la marca.",
+            "gl": "Titular, logo e adornos sobre a imaxe con modelos elixibles por peza; despois mídense a paleta, o contraste e a distancia á marca.",
+            "en": "Headline, logo and ornaments over the image with selectable templates per piece; palette, contrast and distance to the brand are then measured."
+          }
+        },
+        {
+          "nombre": {
+            "es": "API e interfaz",
+            "gl": "API e interface",
+            "en": "API and interface"
+          },
+          "texto": {
+            "es": "Una API local que solo escucha en este equipo y una interfaz de tres pantallas; el servicio arranca al hacer un pedido y se para tras un rato sin uso.",
+            "gl": "Unha API local que só escoita neste equipo e unha interface de tres pantallas; o servizo arranca ao facer un pedido e párase tras un anaco sen uso.",
+            "en": "A local API that only listens on this machine and a three-screen interface; the service starts when a request is made and stops after a while unused."
+          }
         }
       ]
     },
@@ -472,9 +605,9 @@
         "en": "Content pilot"
       },
       "intro": {
-        "es": "Seis rondas del 26 al 27 de octubre de 2026, en una Steam Deck con stable-diffusion.cpp sobre Vulkan y el modelo FLUX.2 klein 4B. En la galería, cómo evolucionan dos proyectos de la ronda 1 a la 3 y a la 5.",
-        "gl": "Seis roldas do 26 ao 27 de outubro de 2026, nunha Steam Deck con stable-diffusion.cpp sobre Vulkan e o modelo FLUX.2 klein 4B. Na galería, como evolucionan dous proxectos da rolda 1 á 3 e á 5.",
-        "en": "Six rounds on 26–27 October 2026, on a Steam Deck with stable-diffusion.cpp over Vulkan and the FLUX.2 klein 4B model. The gallery shows how two projects evolve from round 1 to 3 and 5."
+        "es": "Seis rondas del 26 al 27 de octubre de 2026 y dos de ajuste el 4 de noviembre, en una Steam Deck con stable-diffusion.cpp sobre Vulkan y el modelo FLUX.2 klein 4B. En la galería, cómo evolucionan los proyectos, de la ronda 1 a la 3, la 5 y la 7.",
+        "gl": "Seis roldas do 26 ao 27 de outubro de 2026 e dúas de axuste o 4 de novembro, nunha Steam Deck con stable-diffusion.cpp sobre Vulkan e o modelo FLUX.2 klein 4B. Na galería, como evolucionan os proxectos, da rolda 1 á 3, á 5 e á 7.",
+        "en": "Six rounds on 26–27 October 2026 and two adjustment rounds on 4 November, on a Steam Deck with stable-diffusion.cpp over Vulkan and the FLUX.2 klein 4B model. The gallery shows how the projects evolve, from round 1 to 3, 5 and 7."
       },
       "items": [
         {
@@ -548,6 +681,30 @@
             "gl": "Cadrada, vertical, cabeceira e avatar para todos os proxectos. O custo medra cos píxeles.",
             "en": "Square, vertical, header and avatar for every project. Cost grows with pixels."
           }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 6 · Más detalle",
+            "gl": "Rolda 6 · Máis detalle",
+            "en": "Round 6 · More detail"
+          },
+          "texto": {
+            "es": "Tras descartar la imagen social minimalista, descripciones nuevas con materia, luz y profundidad, y cuatro semillas por proyecto: con una sola, el resultado era lotería.",
+            "gl": "Tras descartar a imaxe social minimalista, descricións novas con materia, luz e profundidade, e catro sementes por proxecto: cunha soa, o resultado era lotaría.",
+            "en": "After discarding the minimalist social image, new descriptions with material, light and depth, and four seeds per project: with a single one, the result was a lottery."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Ronda 7 · Un estilo por proyecto",
+            "gl": "Rolda 7 · Un estilo por proxecto",
+            "en": "Round 7 · One style per project"
+          },
+          "texto": {
+            "es": "Plantillas de texto comunes y, en Tarkor, dibujo a lápiz en lugar de fotografía realista; después, una prueba en acuarela. La que más gustó fue la del propio generador.",
+            "gl": "Modelos de texto comúns e, en Tarkor, debuxo a lapis en lugar de fotografía realista; despois, unha proba en acuarela. A que máis gustou foi a do propio xerador.",
+            "en": "Common text templates and, for Tarkor, pencil drawing instead of realistic photography, followed by a watercolour test. The favourite was the generator's own."
+          }
         }
       ],
       "grupos": [
@@ -590,6 +747,17 @@
                 "es": "Ronda 5 · Portal: la cabecera terminada, con logo, lema y la imagen a un lado para dejar sitio al texto (pieza de ejemplo en castellano).",
                 "gl": "Rolda 5 · Portal: a cabeceira rematada, con logo, lema e a imaxe a un lado para deixar sitio ao texto (peza de exemplo en castelán).",
                 "en": "Round 5 · Portal: the finished header, with logo, tagline and the image to one side to make room for the text (sample piece in Spanish)."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r7.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/portal-r7-mini.webp",
+              "ancho": 1200,
+              "alto": 630,
+              "alt": {
+                "es": "Ronda 7 · Portal: tarjeta para redes con logo, lema «Un taller, no un escaparate.» y subtítulo, junto a un marco de piedra con luz azul y anillos en el suelo (pieza de ejemplo en castellano).",
+                "gl": "Rolda 7 · Portal: tarxeta para redes con logo, lema «Un obradoiro, non un escaparate.» e subtítulo, xunto a un marco de pedra con luz azul e aneis no chan (peza de exemplo en castelán).",
+                "en": "Round 7 · Portal: social card with logo, tagline “A workshop, not a showcase.” and subtitle, beside a stone frame with blue light and rings on the floor (sample piece in Spanish)."
               }
             }
           ]
@@ -634,6 +802,39 @@
                 "gl": "Rolda 5 · Tarkor: a cabeceira rematada, con logo e lema sobre a paisaxe (peza de exemplo en castelán).",
                 "en": "Round 5 · Tarkor: the finished header, with logo and tagline over the landscape (sample piece in Spanish)."
               }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r6.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r6-mini.webp",
+              "ancho": 1200,
+              "alto": 630,
+              "alt": {
+                "es": "Ronda 6 · Tarkor, estilo realista: tarjeta para redes con logo, lema «El mundo sigue aunque tú te detengas.» y subtítulo, junto a una duna con una empalizada, una atalaya y agujas de roca (pieza de ejemplo en castellano).",
+                "gl": "Rolda 6 · Tarkor, estilo realista: tarxeta para redes con logo, lema «O mundo segue aínda que ti te deteñas.» e subtítulo, xunto a unha duna cunha empalizada, unha atalaia e agullas de rocha (peza de exemplo en castelán).",
+                "en": "Round 6 · Tarkor, realistic style: social card with logo, tagline “The world moves on even when you stop.” and subtitle, beside a dune with a palisade, a watchtower and rock spires (sample piece in Spanish)."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r7.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/tarkor-r7-mini.webp",
+              "ancho": 1200,
+              "alto": 630,
+              "alt": {
+                "es": "Ronda 7 · Tarkor, estilo a lápiz: tarjeta para redes con logo, lema «El mundo sigue aunque tú te detengas.» y subtítulo, sobre una página de cuaderno con agujas de roca y un cardo (pieza de ejemplo en castellano).",
+                "gl": "Rolda 7 · Tarkor, estilo a lapis: tarxeta para redes con logo, lema «O mundo segue aínda que ti te deteñas.» e subtítulo, sobre unha páxina de caderno con agullas de rocha e un cardo (peza de exemplo en castelán).",
+                "en": "Round 7 · Tarkor, pencil style: social card with logo, tagline “The world moves on even when you stop.” and subtitle, over a notebook page with rock spires and a thistle (sample piece in Spanish)."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-acuarela.webp",
+              "mini": "proyectos/galivelop-image-generator/piloto/tarkor-acuarela-mini.webp",
+              "ancho": 1200,
+              "alto": 630,
+              "alt": {
+                "es": "Prueba de estilo · Tarkor, acuarela: tarjeta para redes con logo, lema «El mundo sigue aunque tú te detengas.» y subtítulo, junto a un esqueleto gigante y un tótem en un desierto de arcilla (pieza de ejemplo en castellano).",
+                "gl": "Proba de estilo · Tarkor, acuarela: tarxeta para redes con logo, lema «O mundo segue aínda que ti te deteñas.» e subtítulo, xunto a un esqueleto xigante e un tótem nun deserto de arxila (peza de exemplo en castelán).",
+                "en": "Style test · Tarkor, watercolour: social card with logo, tagline “The world moves on even when you stop.” and subtitle, beside a giant skeleton and a totem in a clay desert (sample piece in Spanish)."
+              }
             }
           ]
         }
@@ -647,9 +848,9 @@
         "en": "What’s underneath"
       },
       "intro": {
-        "es": "El motor real ya está conectado y se está afinando con rondas de prueba.",
-        "gl": "O motor real xa está conectado e estase afinando con roldas de proba.",
-        "en": "The real engine is now connected and is being tuned with test rounds."
+        "es": "El motor real está conectado y se instala con un solo comando; las rondas de prueba lo siguen afinando.",
+        "gl": "O motor real está conectado e instálase cunha soa orde; as roldas de proba seguen afinándoo.",
+        "en": "The real engine is connected and installs with a single command; test rounds keep tuning it."
       },
       "items": [
         {
@@ -723,11 +924,7 @@
         "gl": "Servizo",
         "en": "Service"
       },
-      "tecnologias": [
-        "Python 3 (biblioteca estándar)",
-        "CLI gimg",
-        "API HTTP local"
-      ]
+      "tecnologias": ["Python 3 (biblioteca estándar)", "CLI gimg", "API HTTP local", "Interfaz web local (HTML y JS sin framework)"]
     },
     {
       "capa": {
@@ -735,11 +932,7 @@
         "gl": "Motor",
         "en": "Engine"
       },
-      "tecnologias": [
-        "stable-diffusion.cpp",
-        "Vulkan",
-        "FLUX.2 klein 4B"
-      ]
+      "tecnologias": ["stable-diffusion.cpp", "Vulkan", "FLUX.2 klein 4B"]
     },
     {
       "capa": {
@@ -747,10 +940,7 @@
         "gl": "Entrega",
         "en": "Delivery"
       },
-      "tecnologias": [
-        "PNG + manifiesto JSON",
-        "Registro JSONL"
-      ]
+      "tecnologias": ["PNG + manifiesto JSON", "Registro JSONL", "Composición con ffmpeg y rsvg-convert"]
     },
     {
       "capa": {
@@ -758,10 +948,7 @@
         "gl": "Plataforma",
         "en": "Platform"
       },
-      "tecnologias": [
-        "Linux",
-        "Steam Deck"
-      ]
+      "tecnologias": ["Linux", "Steam Deck"]
     }
   ],
   "hitos": [
@@ -870,11 +1057,35 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-05",
+      "texto": {
+        "es": "Versión 0.4.0: interfaz en el navegador, en castellano e inglés, con plantillas elegibles por pieza y un editor para mover y cambiar el tamaño del titular, el logo y los adornos, con el contraste medido en directo. El código pasa a ser abierto con licencia MIT.",
+        "gl": "Versión 0.4.0: interface no navegador, en castelán e inglés, con modelos de composición elixibles por peza e un editor para mover e cambiar o tamaño do titular, do logo e dos adornos, co contraste medido en directo. O código pasa a ser aberto con licenza MIT.",
+        "en": "Version 0.4.0: a browser interface, in Spanish and English, with selectable templates per piece and an editor to move and resize the headline, logo and ornaments, with contrast measured live. The code is now open under the MIT licence."
+      }
+    },
+    {
+      "fecha": "2026-11-05",
+      "texto": {
+        "es": "Versión 0.3.0, la primera publicada: API local y servicio que arranca solo al hacer un pedido y se para tras un rato sin uso.",
+        "gl": "Versión 0.3.0, a primeira publicada: API local e servizo que arranca só ao facer un pedido e párase tras un anaco sen uso.",
+        "en": "Version 0.3.0, the first published: a local API and a service that starts by itself on a request and stops after a while unused."
+      }
+    },
+    {
       "fecha": "2026-11-04",
       "texto": {
-        "es": "Motor real conectado: el servicio ya genera con stable-diffusion.cpp, con borradores rápidos, texto compuesto sobre la imagen, medida de color y hojas de contactos. Hay un instalador en el código abierto, probado solo en una Steam Deck; aún no hay versión publicada ni licencia.",
-        "gl": "Motor real conectado: o servizo xa xera con stable-diffusion.cpp, con borradores rápidos, texto composto sobre a imaxe, medida de cor e follas de contactos. Hai un instalador no código aberto, probado só nunha Steam Deck; aínda non hai versión publicada nin licenza.",
-        "en": "Real engine connected: the service now generates with stable-diffusion.cpp, with quick drafts, text composed over the image, colour measurement and contact sheets. There is an installer in the open code, tested only on a Steam Deck; there is no published version or licence yet."
+        "es": "Dos rondas de ajuste del piloto: más detalle en las imágenes y un estilo propio por proyecto, con Tarkor a lápiz.",
+        "gl": "Dúas roldas de axuste do piloto: máis detalle nas imaxes e un estilo propio por proxecto, con Tarkor a lapis.",
+        "en": "Two pilot adjustment rounds: more detail in the images and a style of its own per project, with Tarkor in pencil."
+      }
+    },
+    {
+      "fecha": "2026-11-04",
+      "texto": {
+        "es": "Motor real conectado: el servicio ya genera con stable-diffusion.cpp, con borradores rápidos, texto compuesto sobre la imagen, medida de color y hojas de contactos. Hay un instalador, probado solo en una Steam Deck.",
+        "gl": "Motor real conectado: o servizo xa xera con stable-diffusion.cpp, con borradores rápidos, texto composto sobre a imaxe, medida de cor e follas de contactos. Hai un instalador, probado só nunha Steam Deck.",
+        "en": "Real engine connected: the service now generates with stable-diffusion.cpp, with quick drafts, text composed over the image, colour measurement and contact sheets. There is an installer, tested only on a Steam Deck."
       }
     },
     {
@@ -912,7 +1123,7 @@
   ],
   "cifras": [
     {
-      "valor": "950",
+      "valor": "1280",
       "etiqueta": {
         "es": "tests automáticos",
         "gl": "tests automáticos",
@@ -920,7 +1131,7 @@
       }
     },
     {
-      "valor": "6",
+      "valor": "8",
       "etiqueta": {
         "es": "rondas del piloto",
         "gl": "roldas do piloto",
@@ -1027,6 +1238,30 @@
         "es": "Cada imagen entregada se puede reproducir; el registro JSONL sirve para medir.",
         "gl": "Cada imaxe entregada pódese reproducir; o rexistro JSONL serve para medir.",
         "en": "Every delivered image can be reproduced; the JSONL log is there to measure."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Texto y logo compuestos aparte",
+        "gl": "Texto e logo compostos á parte",
+        "en": "Text and logo composed separately"
+      },
+      "texto": {
+        "es": "El modelo pinta solo la imagen; el titular y el logo se componen después, para que siempre se lean y salgan bien escritos.",
+        "gl": "O modelo pinta só a imaxe; o titular e o logo compóñense despois, para que sempre se lean e saian ben escritos.",
+        "en": "The model paints only the image; the headline and logo are composed afterwards, so they always read well and are spelled right."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Código abierto con licencia MIT",
+        "gl": "Código aberto con licenza MIT",
+        "en": "Open code under the MIT licence"
+      },
+      "texto": {
+        "es": "El código es MIT; cada modelo del catálogo conserva su propia licencia.",
+        "gl": "O código é MIT; cada modelo do catálogo conserva a súa propia licenza.",
+        "en": "The code is MIT; each model in the catalogue keeps its own licence."
       }
     }
   ],
