@@ -115,7 +115,9 @@ open to anyone who wants to take part. Some members of the workshop take on comm
 
 ## Licencia
 
-- **Código del portal:** [MIT](LICENSE).
+- **Código del portal:** [MIT](LICENSE). Las skills de [mattpocock/skills](https://github.com/mattpocock/skills)
+  de `.claude/skills/` conservan su licencia MIT ([`LICENSE-mattpocock-skills`](LICENSE-mattpocock-skills)); ver
+  [`CREDITS.md`](CREDITS.md).
 - **Textos e imágenes creadas por Galivelop:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), citando a
   «Galivelop» con un enlace al portal.
 - **Fuera de esas licencias**, con todos sus derechos: el nombre, el logotipo y el monograma GV de Galivelop; los
