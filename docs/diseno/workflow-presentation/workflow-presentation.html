@@ -476,7 +476,6 @@ function fitScene(){
 const on=(id,v)=>$(id).classList.toggle('on',!!v);
 let prevScene={};
 function applyScene(s,instant){
-  subTimers.forEach(clearTimeout);subTimers=[];
   const stagger=instant?0:1;
   const x=X0+s.x*(X1-X0),y=LANES[s.lane];
   const tok=$('tok');tok.setAttribute('transform',`translate(${x},${y})`);
@@ -525,7 +524,7 @@ function applyScene(s,instant){
 function dur(i){const b=T[lang].beats[i];const n=recordMode?b.b.length:b.l.length;return (recordMode?3200+1600*n:2600+1500*n)/speed;}
 function render(i,instant){
   idx=Math.max(0,Math.min(SC.length-1,i));
-  clearTimeout(timer);subTimers.forEach(clearTimeout);
+  clearTimeout(timer);subTimers.forEach(clearTimeout);subTimers=[];
   const L=T[lang],d=SC[idx],b=L.beats[idx];
   if(instant||reduced)root.classList.add('noanim');
   $('ch-no').textContent=`${L.ui.chapter} ${d.ch}/10`;$('ch-name').textContent=L.chapters[d.ch-1];
