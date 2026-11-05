@@ -277,6 +277,9 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   (1200×630, JPEG), que se genera desde la portada con `python3 tools/og/generar.py` (Pillow) al cambiarla. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
+- **Comprobar:** `npm run build && npm run seo` revisa las páginas generadas (título, descripción, canónica, `hreflang`,
+  vista previa, JSON-LD, sitemap, `robots.txt` y que es/gl/en vayan parejos); el criterio y las fuentes, en la skill
+  [`gw-seo`](../.claude/skills/gw-seo/SKILL.md) y su nota del portal, [`.claude/gw/gw-seo.md`](../.claude/gw/gw-seo.md).
 - Investigación y fuentes: [`docs/investigacion/seo-indexacion-previews.md`](investigacion/seo-indexacion-previews.md).
 
 ## Flujo de trabajo con Claude
