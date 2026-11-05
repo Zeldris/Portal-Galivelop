@@ -106,9 +106,27 @@ class Roadmap(unittest.TestCase):
             self.assertIn("| 0 | hecha |", lineas)
             self.assertIn("### Detalle", lineas)
             self.assertNotIn("## Otra", lineas)
-            # Un encabezado que ya no está se dice, no se calla.
+            # Un encabezado que ya no está se dice, no se calla; uno sin «#» tampoco rompe el informe.
+            self.assertEqual(recoger.seccion_roadmap(d, "HEAD", {"ruta": "docs/plan.md", "seccion": "Fases"}),
+                             ("docs/plan.md", []))
             self.assertEqual(recoger.seccion_roadmap(d, "HEAD", {"ruta": "docs/plan.md", "seccion": "## Hitos"}),
                              ("docs/plan.md", []))
+
+
+class RoadmapBordes(unittest.TestCase):
+    def test_un_comentario_en_un_bloque_de_codigo_no_corta_y_un_encabezado_repetido_si(self):
+        texto = ("## Fases\n| 0 | hecha |\n```bash\n# instala\n## no es encabezado\n```\n| 1 | curso |\n"
+                 "## Fases\nvieja\n")
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "plan.md").write_text(texto, encoding="utf-8")
+            env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                       GIT_COMMITTER_EMAIL="t@t")
+            subprocess.run(["git", "init", "-q", d], check=True)
+            subprocess.run(["git", "-C", d, "add", "."], check=True)
+            subprocess.run(["git", "-C", d, "commit", "-q", "-m", "inicio"], check=True, env=env)
+            _, lineas = recoger.seccion_roadmap(d, "HEAD", {"ruta": "plan.md", "seccion": "## Fases"})
+            self.assertIn("| 1 | curso |", lineas)
+            self.assertNotIn("vieja", lineas)
 
 
 class Enlaces(unittest.TestCase):

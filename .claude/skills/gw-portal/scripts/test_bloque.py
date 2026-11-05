@@ -44,8 +44,24 @@ class Cambiar(unittest.TestCase):
         with self.assertRaises(KeyError):
             bloque.cambiar(FICHA, "es", "x")
 
+    def test_una_lista_de_objetos_como_los_hitos_queda_sangrada_y_valida(self):
+        hitos = [{"version": "0", "nombre": {"es": "a", "gl": "a", "en": "a"}, "estado": "hecho"}]
+        nuevo = bloque.cambiar(FICHA, "lineas", hitos)
+        self.assertEqual(json.loads(nuevo)["lineas"], hitos)
+        self.assertIn('  "lineas": [\n    {\n      "version": "0",\n      "nombre": {\n        "es": "a"', nuevo)
+
 
 class Cli(unittest.TestCase):
+    def test_un_valor_que_no_es_json_sale_con_2_y_no_toca_la_ficha(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "ficha.json"
+            f.write_text(FICHA, encoding="utf-8")
+            r = subprocess.run([sys.executable, str(SCRIPT), str(f), "fase", "-"], input="{roto",
+                               capture_output=True, text=True)
+            self.assertEqual(r.returncode, 2)
+            self.assertIn("no se pudo leer JSON válido", r.stderr)
+            self.assertEqual(f.read_text(encoding="utf-8"), FICHA)
+
     def test_escribe_desde_la_entrada_estandar_y_avisa_del_campo_que_falta(self):
         with tempfile.TemporaryDirectory() as d:
             f = Path(d) / "ficha.json"

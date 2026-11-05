@@ -195,14 +195,16 @@ def seccion_roadmap(clon, rama, cfg):
     """(ruta, líneas de la sección `cfg["seccion"]` del roadmap hasta el siguiente encabezado de su nivel o mayor);
     con el archivo o la sección ausentes, (ruta, []): los hitos de la ficha se comparan con esto cada semana."""
     ruta, encabezado = cfg["ruta"], cfg["seccion"].strip()
-    nivel = len(encabezado) - len(encabezado.lstrip("#"))
+    nivel = (len(encabezado) - len(encabezado.lstrip("#"))) or 6  # sin «#», cualquier encabezado la cierra
     texto = git(clon, "show", f"{rama}:{ruta}", check=False) or ""
-    lineas, dentro = [], False
+    lineas, dentro, en_codigo = [], False, False
     for linea in texto.splitlines():
-        if linea.strip() == encabezado:
+        if linea.lstrip().startswith("```"):
+            en_codigo = not en_codigo  # un «# comentario» dentro de un bloque de código no es encabezado
+        elif not en_codigo and dentro and re.match(rf"^#{{1,{nivel}}} ", linea):
+            break  # también si repite el encabezado de la sección (una copia vieja más abajo)
+        elif not en_codigo and linea.strip() == encabezado:
             dentro = True
-        elif dentro and re.match(rf"^#{{1,{nivel}}} ", linea):
-            break
         if dentro and linea.strip():
             lineas.append(linea.rstrip())
     return ruta, lineas
