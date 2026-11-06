@@ -27,11 +27,12 @@ apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea,
 Texto de la tarea programada que cada domingo a las 20:45 (hora de Madrid) pone al día las fichas de todos los
 proyectos y publica la rama de trabajo en `main`. La tarea solo se puede cambiar desde su propia conversación: si este
 texto cambia, se pega allí. Como lo que hace cada semana vive en la skill, solo hay que volver a pegarlo si cambian la
-rama, la autorización o la forma de responder.
+rama, la autorización o la forma de responder. El propio texto le dice que, al recibirlo como actualización, no lo ejecute hasta su fecha
+(antes, cada texto pegado se ejecutaba en el acto).
 
 **Pendiente de pegar** (2026-11-03): hasta que la persona lo pegue, tras probar `gw-portal` en modo informe con la 0.5.0
 del flujo, la tarea sigue con su texto largo anterior (en `git log -p -- docs/runbooks/tarea-semanal.md`).
 
 ```text
-Revisión semanal de los proyectos del portal (autorizada por Álvaro: publicar en main sin pedir confirmación). Trabaja en la rama claude/galivelop-dev-portal-1h89ci del portal y ejecuta la skill gw-portal en modo semanal, siguiendo su SKILL.md de principio a fin: sin subagentes, sin capturas, sin preguntas; los repos de los proyectos solo se leen. Publica en main solo si npm run check pasa. Responde en 4 líneas como máximo: qué cambió en cada proyecto, si se publicó y lo que quedó apuntado para una sesión de trabajo.
+Revisión semanal de los proyectos del portal (autorizada por Álvaro: publicar en main sin pedir confirmación). Si recibes este texto como actualización de la tarea, solo guárdalo y responde «Texto actualizado»: no ejecutes nada hasta su próxima fecha programada (domingo a las 20:45, hora de Madrid). Trabaja en la rama claude/galivelop-dev-portal-1h89ci del portal y ejecuta la skill gw-portal en modo semanal, siguiendo su SKILL.md de principio a fin: sin subagentes, sin capturas, sin preguntas; los repos de los proyectos solo se leen. Publica en main solo si npm run check pasa. Responde en 4 líneas como máximo: qué cambió en cada proyecto, si se publicó y lo que quedó apuntado para una sesión de trabajo.
 ```
