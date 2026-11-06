@@ -31,7 +31,9 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
    `git merge origin/main`. Informe y aplicar: la rama de la sesión, con `origin/main` fusionado (`AGENTS.md`).
 2. **Repos de la cuenta.** Llama a `list_repos` (`limit` 200) y guarda su JSON tal cual en el scratchpad
    (`repos.json`). Entran los del `titular` de [`fuentes.json`](fuentes.json) y sus `extras`; el script ignora el resto.
-3. **Recogida mecánica:**
+3. **Recogida mecánica**, que empieza por **poner al día la rama por defecto (`main`) de cada repo conectado**: antes
+   de leer nada, el script trae de `origin` su rama por defecto y sus etiquetas en cada clon (un clon de una sesión
+   anterior está viejo):
 
    ```bash
    python3 .claude/skills/gw-portal/scripts/recoger.py --repos <scratchpad>/repos.json --clones <scratchpad>/clones
@@ -41,7 +43,10 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
    el `CLAUDE.md`, el `AGENTS.md` y las skills de cada repo (75k de arranque por subagente, retro del 2026-11-04).
 
    Por cada repo con línea `falta_clon`: si es privado, `add_repo` (lectura) primero; luego la orden de clonado que
-   da el script, de uno en uno, y vuelve a ejecutarlo. Hecho cuando ningún repo con destino tiene `falta_clon`.
+   da el script, de uno en uno, y vuelve a ejecutarlo.
+   Un repo con línea `sin_traer` no se pudo poner al día: vuelve a ejecutar el script y, si sigue, ese repo no se decide
+   (sus datos son viejos); se dice en el informe. Hecho cuando ningún repo con destino tiene `falta_clon` y los que
+   sigan con `sin_traer` están en el informe como no decididos.
 4. **Decidir, repo a repo**, con su sección de [`proyectos.md`](proyectos.md) (y las reglas comunes del final):
    - De [`proyectos.md`](proyectos.md), lee una vez las secciones comunes y, por repo, solo la suya:
      `sed -n '/^## TARKOR/,/^## /p' .claude/skills/gw-portal/proyectos.md` (el encabezado, en mayúsculas).

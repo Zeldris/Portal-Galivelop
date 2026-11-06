@@ -123,18 +123,29 @@ def dia_antes(fecha):
     return (dt.date.fromisoformat(fecha) - dt.timedelta(days=1)).isoformat()
 
 
+def fetch(clon, *args):
+    """git fetch -q --tags <args>; el error de git si falla, None si va bien."""
+    r = subprocess.run(["git", "-C", str(clon), "fetch", "-q", "--tags", *args], capture_output=True, text=True)
+    if not r.returncode:
+        return None
+    lineas = r.stderr.strip().splitlines()
+    return next((l for l in lineas if l.startswith("fatal:")), lineas[0] if lineas else f"salida {r.returncode}")
+
+
 def poner_al_dia(clon, desde):
-    """Fetch de la rama por defecto y las etiquetas; en un clon superficial, historia hasta un día antes de `desde`."""
+    """Lo primero con cada repo: traer de origin su rama por defecto (main) y sus etiquetas; en un clon superficial,
+    historia hasta un día antes de `desde`. Devuelve (rama, error): con error, el clon sigue con lo que tenía y el
+    informe lo dice, para no decidir con datos viejos."""
     git(clon, "remote", "set-head", "origin", "--auto", check=False)
     rama = git(clon, "rev-parse", "--abbrev-ref", "origin/HEAD", check=False) or "origin/main"
     corta = rama.removeprefix("origin/")
     if git(clon, "rev-parse", "--is-shallow-repository", check=False) == "true" and desde:
-        if subprocess.run(["git", "-C", str(clon), "fetch", "-q", "--tags", f"--shallow-since={dia_antes(desde)}",
-                           "origin", corta], capture_output=True).returncode:
-            git(clon, "fetch", "-q", "--tags", "--unshallow", "origin", check=False)
+        error = fetch(clon, f"--shallow-since={dia_antes(desde)}", "origin", corta)
+        if error:
+            error = fetch(clon, "--unshallow", "origin", corta)
     else:
-        git(clon, "fetch", "-q", "--tags", "origin", corta, check=False)
-    return rama
+        error = fetch(clon, "origin", corta)
+    return rama, error
 
 
 def commits(clon, rama, desde):
@@ -303,8 +314,11 @@ def informe_repo(nombre, visibilidad, cfg, clones):
     desde = min(f for f in (r.get("N"), r.get("F")) if f) if r.get("F") else None
     if cfg["destino"] == "ficha" and not desde:
         r["aviso"] = "la ficha no tiene «actualizado»: sin fecha F no se miran commits ni difusión; ponle una"
-    rama = poner_al_dia(clon, desde)
+    rama, error = poner_al_dia(clon, desde)
     r["rama"] = rama
+    if error:
+        r["sin_traer"] = (f"no se pudo traer {rama} ({error}); lo de abajo es lo que ya tenía el clon, del "
+                          f"{git(clon, 'log', '-1', '--format=%cs', rama, check=False) or '?'}: no se decide con ello")
     if desde:
         r["commits"], r["commits_total"], r["commits_dia_N"] = commits(clon, rama, r["N"])
         r["vigilados"] = cambios_vigilados(clon, rama, r["F"], cfg.get("vigilar", []))
@@ -329,7 +343,7 @@ def texto(informes, perdidos):
         out.append(cab)
         if r["destino"] == "nuevo":
             out.append("- NUEVO: no está en fuentes.json; proponer ficha, próximamente o ignorar")
-        for clave in ("motivo", "aviso", "enlace", "falta_clon"):
+        for clave in ("sin_traer", "motivo", "aviso", "enlace", "falta_clon"):
             if r.get(clave):
                 out.append(f"- {clave}: {r[clave]}")
         if r.get("F"):

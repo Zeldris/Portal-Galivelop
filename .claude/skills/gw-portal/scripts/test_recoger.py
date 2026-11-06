@@ -161,6 +161,34 @@ class Commits(unittest.TestCase):
         self.assertEqual((utiles, total, dia_n), (["2026-01-05 Novedad de madrugada"], 1, 1))
 
 
+class PonerAlDia(unittest.TestCase):
+    def _repo(self, d, nombre):
+        env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t", GIT_COMMITTER_NAME="t",
+                   GIT_COMMITTER_EMAIL="t@t")
+        ruta = str(Path(d) / nombre)
+        subprocess.run(["git", "init", "-q", "-b", "main", ruta], check=True)
+        subprocess.run(["git", "-C", ruta, "commit", "-q", "--allow-empty", "-m", "uno"], check=True, env=env)
+        return ruta, env
+
+    def test_trae_main_de_origin_antes_de_leer(self):
+        with tempfile.TemporaryDirectory() as d:
+            origen, env = self._repo(d, "origen")
+            subprocess.run(["git", "clone", "-q", origen, str(Path(d) / "clon")], check=True)
+            subprocess.run(["git", "-C", origen, "commit", "-q", "--allow-empty", "-m", "dos"], check=True, env=env)
+            rama, error = recoger.poner_al_dia(str(Path(d) / "clon"), None)
+            self.assertEqual((rama, error), ("origin/main", None))
+            self.assertEqual(recoger.git(str(Path(d) / "clon"), "log", "-1", "--format=%s", rama), "dos")
+
+    def test_si_no_puede_traer_lo_dice(self):
+        with tempfile.TemporaryDirectory() as d:
+            origen, _ = self._repo(d, "origen")
+            subprocess.run(["git", "clone", "-q", origen, str(Path(d) / "clon")], check=True)
+            subprocess.run(["git", "-C", str(Path(d) / "clon"), "remote", "set-url", "origin", str(Path(d) / "no")],
+                           check=True)
+            _, error = recoger.poner_al_dia(str(Path(d) / "clon"), None)
+            self.assertIn("does not appear to be a git repository", error)
+
+
 class EtiquetaNueva(unittest.TestCase):
     def test_version_publicada_es_la_mas_alta_de_la_lista_aunque_falte_valor(self):
         ficha = {"actualizado": "2026-11-05", "novedades": [], "apartados": [{"id": "versiones-publicadas", "items": [
