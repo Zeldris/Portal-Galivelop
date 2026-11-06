@@ -74,7 +74,8 @@ def leer_ficha(slug):
     d = json.loads(ruta.read_text(encoding="utf-8"))
     nov = d.get("novedades") or []
     return {"F": d.get("actualizado"), "N": nov[0]["fecha"] if nov else d.get("actualizado"),
-            "enlaces": [e.get("url", "") for e in d.get("enlaces", [])], "nombre": d.get("nombre")}
+            "enlaces": [e.get("url", "") for e in d.get("enlaces", [])], "nombre": d.get("nombre"),
+            "texto": ruta.read_text(encoding="utf-8")}
 
 
 def patrones_contenido(raiz=PORTAL):
@@ -134,15 +135,25 @@ def poner_al_dia(clon, desde):
 
 
 def commits(clon, rama, desde):
+    """(primeros MAX_COMMITS útiles, total, cuántos son del propio día `desde`): esos pueden estar ya en la novedad N."""
     # «--since=AAAA-MM-DD» a secas toma la hora actual de ese día: con T00:00 entra el día entero.
     salida = git(clon, "log", f"--since={desde}T00:00", "--format=%ad %s", "--date=short", rama, check=False)
-    return filtrar_commits(salida.splitlines())
+    utiles, total = filtrar_commits(salida.splitlines())
+    return utiles, total, sum(1 for l in salida.splitlines() if l.startswith(desde) and not RUIDO.search(l[11:]))
 
 
 def filtrar_commits(lineas):
     """Quita el ruido de líneas «AAAA-MM-DD asunto»; devuelve las primeras MAX_COMMITS y cuántas había."""
     utiles = [l for l in lineas if l and not RUIDO.search(l[11:])]
     return utiles[:MAX_COMMITS], len(utiles)
+
+
+def etiqueta_nueva(etiqueta, F, texto_ficha):
+    """Nueva si es de F o posterior y la ficha aún no nombra su versión (v0.5.1 en la ficha, también «0.5.1»)."""
+    if not F or etiqueta["fecha"] < F:
+        return False
+    version = re.escape(etiqueta["etiqueta"].lstrip("v"))
+    return not re.search(rf"(?<![\d.]){version}(?!\.?\d)", texto_ficha or "")
 
 
 def etiqueta_mayor(clon):
@@ -177,6 +188,7 @@ def filas_utiles(texto, ruta, max_filas=14):
 
 # Galivelop-workflow 0.5.0 pasó sus rutas a inglés; cada repo puede estar aún en cualquiera de los dos nombres.
 RUTAS_FLUJO = [("docs/traspaso.md", "docs/handoff.md"), ("docs/registros/traspaso.md", "docs/handoff.md"),
+               ("docs/traspaso.md", "docs/records/traspaso.md"),  # Tarkor-WMF: carpeta en inglés, nombre en español
                ("docs/registros/", "docs/records/"),
                ("docs/difusion/", "docs/media/")]
 
@@ -282,12 +294,12 @@ def informe_repo(nombre, visibilidad, cfg, clones):
     rama = poner_al_dia(clon, desde)
     r["rama"] = rama
     if desde:
-        r["commits"], r["commits_total"] = commits(clon, rama, r["N"])
+        r["commits"], r["commits_total"], r["commits_dia_N"] = commits(clon, rama, r["N"])
         r["vigilados"] = cambios_vigilados(clon, rama, r["F"], cfg.get("vigilar", []))
         r["difusion_lista"] = difusion_lista(clon, rama)
     if cfg.get("etiquetas"):
         r["etiqueta"] = etiqueta_mayor(clon)
-        if r["etiqueta"] and r.get("F") and r["etiqueta"]["fecha"] >= r["F"]:
+        if r["etiqueta"] and etiqueta_nueva(r["etiqueta"], r.get("F"), (nombre_ficha or {}).get("texto")):
             r["etiqueta"]["nueva"] = True
     rutas = [cfg["bitacora"]] if cfg.get("bitacora") else []
     if cfg["destino"] == "proximamente":
@@ -315,8 +327,10 @@ def texto(informes, perdidos):
             out.append(f"- etiqueta más alta: {e['etiqueta']} ({e['fecha']})" + (" · NUEVA desde F" if e.get("nueva")
                                                                                  else ""))
         if "commits" in r:
-            out.append(f"- commits desde N: {r['commits_total']}" + (f" (se muestran {MAX_COMMITS})"
-                                                                     if r['commits_total'] > MAX_COMMITS else ""))
+            dia_n = r.get("commits_dia_N", 0)
+            out.append(f"- commits desde N: {r['commits_total']}"
+                       + (f", {dia_n} del propio día N (mira si ya los cuenta su novedad)" if dia_n else "")
+                       + (f" (se muestran {MAX_COMMITS})" if r['commits_total'] > MAX_COMMITS else ""))
             out += [f"    {c}" for c in r["commits"]]
         if r.get("vigilados"):
             out.append("- rutas vigiladas cambiadas desde F:")

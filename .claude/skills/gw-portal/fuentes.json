@@ -10,7 +10,7 @@
       "roadmap": { "ruta": "docs/producto/21-roadmap.md", "seccion": "## Hitos de un vistazo" },
       "vigilar": ["docs/producto/tarkor-contenido-web.md", "backend/uploads/images", "frontend/src/assets/maps"]
     },
-    "Zeldris/Instalador-WMF-Tarkor": { "destino": "ficha", "slug": "tarkor", "bitacora": "docs/traspaso.md" },
+    "Zeldris/Instalador-WMF-Tarkor": { "destino": "ficha", "slug": "tarkor", "bitacora": "docs/records/traspaso.md" },
     "Zeldris/Galivelop-workflow": {
       "destino": "ficha",
       "slug": "galivelop-workflow",

@@ -57,6 +57,8 @@ class RutasDelFlujo(unittest.TestCase):
         self.assertEqual(recoger.variantes("docs/registros/traspaso.md"),
                          ["docs/registros/traspaso.md", "docs/handoff.md", "docs/records/traspaso.md"])
         self.assertIn("docs/registros/traspaso.md", recoger.variantes("docs/handoff.md"))
+        # Instalador-WMF-Tarkor: la carpeta ya en inglés y el nombre aún en español.
+        self.assertIn("docs/records/traspaso.md", recoger.variantes("docs/traspaso.md"))
 
     def test_bitacora_y_difusion_con_el_nombre_viejo_o_el_nuevo(self):
         # Un repo aún en la 0.4 (docs/traspaso.md, docs/difusion/) y otro ya en la 0.5 (docs/handoff.md, docs/media/).
@@ -149,8 +151,22 @@ class Commits(unittest.TestCase):
             subprocess.run(["git", "init", "-q", d], check=True)
             subprocess.run(["git", "-C", d, "commit", "-q", "--allow-empty", "-m", "Novedad de madrugada"],
                            check=True, env=env)
-            utiles, total = recoger.commits(d, "HEAD", "2026-01-05")
-        self.assertEqual((utiles, total), (["2026-01-05 Novedad de madrugada"], 1))
+            utiles, total, dia_n = recoger.commits(d, "HEAD", "2026-01-05")
+        self.assertEqual((utiles, total, dia_n), (["2026-01-05 Novedad de madrugada"], 1, 1))
+
+
+class EtiquetaNueva(unittest.TestCase):
+    def test_del_dia_de_f_y_ya_en_la_ficha_no_es_nueva(self):
+        # Galivelop-workflow, 2026-11-06: v0.5.1 del mismo día que F y la ficha ya dice «v0.5.1».
+        e = {"etiqueta": "v0.5.1", "fecha": "2026-11-05"}
+        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-05", '"es": "En desarrollo · v0.5.1"'))
+        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-05", "La última, la 0.5.1, del 5 de noviembre."))
+
+    def test_posterior_o_sin_nombrar_si_y_anterior_a_f_no(self):
+        e = {"etiqueta": "v0.5.1", "fecha": "2026-11-05"}
+        self.assertTrue(recoger.etiqueta_nueva(e, "2026-11-05", "v0.5.0 y v0.5.10"))
+        self.assertTrue(recoger.etiqueta_nueva(e, "2026-11-01", "v0.5.0"))
+        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-06", "v0.5.0"))
 
 
 class Escaparate(unittest.TestCase):
