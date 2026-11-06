@@ -15,6 +15,7 @@ la fecha de su último cambio) y los demás archivos que lo nombran, marcados co
 import argparse
 import datetime as dt
 import json
+import os
 import re
 import subprocess
 import sys
@@ -124,12 +125,15 @@ def dia_antes(fecha):
 
 
 def fetch(clon, *args):
-    """git fetch -q --tags <args>; el error de git si falla, None si va bien."""
-    r = subprocess.run(["git", "-C", str(clon), "fetch", "-q", "--tags", *args], capture_output=True, text=True)
+    """git fetch -q --tags --force <args>; el error de git si falla, None si va bien. --force: una etiqueta movida en
+    origin se pisa (el clon es solo de lectura) en vez de hacer fallar el fetch; LC_ALL=C: el error, siempre en inglés."""
+    r = subprocess.run(["git", "-C", str(clon), "fetch", "-q", "--tags", "--force", *args], capture_output=True,
+                       text=True, env={**os.environ, "LC_ALL": "C"})
     if not r.returncode:
         return None
     lineas = r.stderr.strip().splitlines()
-    return next((l for l in lineas if l.startswith("fatal:")), lineas[0] if lineas else f"salida {r.returncode}")
+    return next((l for l in lineas if l.lstrip().startswith(("fatal:", "error:", "!"))),
+                lineas[-1] if lineas else f"salida {r.returncode}")
 
 
 def poner_al_dia(clon, desde):
@@ -141,8 +145,8 @@ def poner_al_dia(clon, desde):
     corta = rama.removeprefix("origin/")
     if git(clon, "rev-parse", "--is-shallow-repository", check=False) == "true" and desde:
         error = fetch(clon, f"--shallow-since={dia_antes(desde)}", "origin", corta)
-        if error:
-            error = fetch(clon, "--unshallow", "origin", corta)
+        if error and not fetch(clon, "--unshallow", "origin", corta):
+            error = None
     else:
         error = fetch(clon, "origin", corta)
     return rama, error
@@ -317,8 +321,9 @@ def informe_repo(nombre, visibilidad, cfg, clones):
     rama, error = poner_al_dia(clon, desde)
     r["rama"] = rama
     if error:
-        r["sin_traer"] = (f"no se pudo traer {rama} ({error}); lo de abajo es lo que ya tenía el clon, del "
+        r["sin_traer"] = (f"no se pudo traer {rama} ({error}); el clon se quedó en el "
                           f"{git(clon, 'log', '-1', '--format=%cs', rama, check=False) or '?'}: no se decide con ello")
+        return r
     if desde:
         r["commits"], r["commits_total"], r["commits_dia_N"] = commits(clon, rama, r["N"])
         r["vigilados"] = cambios_vigilados(clon, rama, r["F"], cfg.get("vigilar", []))

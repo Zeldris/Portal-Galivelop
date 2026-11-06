@@ -188,6 +188,33 @@ class PonerAlDia(unittest.TestCase):
             _, error = recoger.poner_al_dia(str(Path(d) / "clon"), None)
             self.assertIn("does not appear to be a git repository", error)
 
+    def test_una_etiqueta_movida_en_origin_no_impide_traer(self):
+        with tempfile.TemporaryDirectory() as d:
+            origen, env = self._repo(d, "origen")
+            subprocess.run(["git", "-C", origen, "tag", "v1"], check=True)
+            subprocess.run(["git", "clone", "-q", origen, str(Path(d) / "clon")], check=True)
+            subprocess.run(["git", "-C", origen, "commit", "-q", "--allow-empty", "-m", "dos"], check=True, env=env)
+            subprocess.run(["git", "-C", origen, "tag", "-f", "v1"], check=True, capture_output=True)
+            rama, error = recoger.poner_al_dia(str(Path(d) / "clon"), None)
+            self.assertIsNone(error)
+            self.assertEqual(recoger.git(str(Path(d) / "clon"), "log", "-1", "--format=%s", "v1"), "dos")
+
+    def test_el_informe_dice_sin_traer_y_no_da_datos_viejos(self):
+        with tempfile.TemporaryDirectory() as d:
+            origen, _ = self._repo(d, "origen")
+            clon = Path(d) / "clones" / "Tarkor"
+            subprocess.run(["git", "clone", "-q", origen, str(clon)], check=True)
+            fuentes = json.loads((Path(recoger.__file__).parent.parent / "fuentes.json").read_text())
+            nombre, cfg = next((n, c) for n, c in fuentes["repos"].items() if c.get("destino") == "ficha")
+            # buscar_clon reconoce el clon por la URL de origin: una que acaba en el repo, pero no existe.
+            subprocess.run(["git", "-C", str(clon), "remote", "set-url", "origin", str(Path(d) / "no" / nombre)],
+                           check=True)
+            clon.rename(clon.parent / nombre.split("/")[1])
+            r = recoger.informe_repo(nombre, "public", cfg, str(Path(d) / "clones"))
+            self.assertIn("no se pudo traer origin/main", r["sin_traer"])
+            self.assertNotIn("commits", r)
+            self.assertIn("- sin_traer: no se pudo traer", recoger.texto([r], []))
+
 
 class EtiquetaNueva(unittest.TestCase):
     def test_version_publicada_es_la_mas_alta_de_la_lista_aunque_falte_valor(self):
