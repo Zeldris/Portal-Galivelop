@@ -30,7 +30,7 @@ texto cambia, se pega allí. Como lo que hace cada semana vive en la skill, solo
 rama, la autorización o la forma de responder. El propio texto le dice que, al recibirlo como actualización, no lo ejecute hasta su fecha
 (antes, cada texto pegado se ejecutaba en el acto).
 
-**Pendiente de pegar** (2026-11-03): hasta que la persona lo pegue, tras probar `gw-portal` en modo informe con la 0.5.0
+**Pendiente de pegar** (texto de 2026-11-06, con «no ejecutes nada hasta su fecha»): hasta que la persona lo pegue, tras probar `gw-portal` en modo informe con la 0.5.0
 del flujo, la tarea sigue con su texto largo anterior (en `git log -p -- docs/runbooks/tarea-semanal.md`).
 
 ```text

@@ -73,9 +73,11 @@ def leer_ficha(slug):
         return None
     d = json.loads(ruta.read_text(encoding="utf-8"))
     nov = d.get("novedades") or []
+    versiones = next((a.get("items") or [] for a in d.get("apartados", []) if a.get("id") == "versiones-publicadas"), [])
     return {"F": d.get("actualizado"), "N": nov[0]["fecha"] if nov else d.get("actualizado"),
             "enlaces": [e.get("url", "") for e in d.get("enlaces", [])], "nombre": d.get("nombre"),
-            "texto": ruta.read_text(encoding="utf-8")}
+            # «0.5.0 · 2026-11-04» → «0.5.0»: la última versión que la ficha ya cuenta.
+            "version_publicada": versiones[0]["valor"].split("·")[0].strip() if versiones else None}
 
 
 def patrones_contenido(raiz=PORTAL):
@@ -136,24 +138,29 @@ def poner_al_dia(clon, desde):
 
 def commits(clon, rama, desde):
     """(primeros MAX_COMMITS útiles, total, cuántos son del propio día `desde`): esos pueden estar ya en la novedad N."""
-    # «--since=AAAA-MM-DD» a secas toma la hora actual de ese día: con T00:00 entra el día entero.
-    salida = git(clon, "log", f"--since={desde}T00:00", "--format=%ad %s", "--date=short", rama, check=False)
+    # «--since=AAAA-MM-DD» a secas toma la hora actual de ese día: con T00:00 entra el día entero. Filtra por la
+    # fecha del committer, así que se muestra esa (%cd) y no la del autor.
+    salida = git(clon, "log", f"--since={desde}T00:00", "--format=%cd %s", "--date=short", rama, check=False)
     utiles, total = filtrar_commits(salida.splitlines())
-    return utiles, total, sum(1 for l in salida.splitlines() if l.startswith(desde) and not RUIDO.search(l[11:]))
+    return utiles[:MAX_COMMITS], total, sum(1 for l in utiles if l.startswith(desde))
 
 
 def filtrar_commits(lineas):
-    """Quita el ruido de líneas «AAAA-MM-DD asunto»; devuelve las primeras MAX_COMMITS y cuántas había."""
+    """Quita el ruido de líneas «AAAA-MM-DD asunto»; devuelve las útiles y cuántas son."""
     utiles = [l for l in lineas if l and not RUIDO.search(l[11:])]
-    return utiles[:MAX_COMMITS], len(utiles)
+    return utiles, len(utiles)
 
 
-def etiqueta_nueva(etiqueta, F, texto_ficha):
-    """Nueva si es de F o posterior y la ficha aún no nombra su versión (v0.5.1 en la ficha, también «0.5.1»)."""
-    if not F or etiqueta["fecha"] < F:
-        return False
-    version = re.escape(etiqueta["etiqueta"].lstrip("v"))
-    return not re.search(rf"(?<![\d.]){version}(?!\.?\d)", texto_ficha or "")
+def version(texto):
+    return tuple(map(int, ETIQUETA.match("v" + texto.lstrip("v")).groups()))
+
+
+def etiqueta_nueva(etiqueta, F, version_publicada):
+    """Con «Versiones publicadas» en la ficha, nueva si la etiqueta es mayor que su primera versión (una ficha a medias,
+    con la versión en la fase pero no en esa lista, sigue pidiendo su puesta al día); sin ella, si es de F o posterior."""
+    if version_publicada and ETIQUETA.match("v" + version_publicada.lstrip("v")):
+        return version(etiqueta["etiqueta"]) > version(version_publicada)
+    return bool(F) and etiqueta["fecha"] >= F
 
 
 def etiqueta_mayor(clon):
@@ -188,18 +195,19 @@ def filas_utiles(texto, ruta, max_filas=14):
 
 # Galivelop-workflow 0.5.0 pasó sus rutas a inglés; cada repo puede estar aún en cualquiera de los dos nombres.
 RUTAS_FLUJO = [("docs/traspaso.md", "docs/handoff.md"), ("docs/registros/traspaso.md", "docs/handoff.md"),
-               ("docs/traspaso.md", "docs/records/traspaso.md"),  # Tarkor-WMF: carpeta en inglés, nombre en español
                ("docs/registros/", "docs/records/"),
                ("docs/difusion/", "docs/media/")]
 
 
 def variantes(ruta):
-    """La ruta y su equivalente con el otro nombre del flujo (español o inglés), sin repetir."""
+    """La ruta y todas sus equivalentes con los nombres del flujo (español, inglés o mezcla, como
+    docs/records/traspaso.md), sin repetir: se sustituye hasta que no sale ninguna nueva."""
     out = [ruta]
-    for viejo, nuevo in RUTAS_FLUJO:
-        for a, b in ((viejo, nuevo), (nuevo, viejo)):
-            if ruta.startswith(a) and b + ruta[len(a):] not in out:
-                out.append(b + ruta[len(a):])
+    for actual in out:  # `out` crece mientras se recorre: así se llega a todas
+        for viejo, nuevo in RUTAS_FLUJO:
+            for a, b in ((viejo, nuevo), (nuevo, viejo)):
+                if actual.startswith(a) and b + actual[len(a):] not in out:
+                    out.append(b + actual[len(a):])
     return out
 
 
@@ -299,7 +307,7 @@ def informe_repo(nombre, visibilidad, cfg, clones):
         r["difusion_lista"] = difusion_lista(clon, rama)
     if cfg.get("etiquetas"):
         r["etiqueta"] = etiqueta_mayor(clon)
-        if r["etiqueta"] and etiqueta_nueva(r["etiqueta"], r.get("F"), (nombre_ficha or {}).get("texto")):
+        if r["etiqueta"] and etiqueta_nueva(r["etiqueta"], r.get("F"), (nombre_ficha or {}).get("version_publicada")):
             r["etiqueta"]["nueva"] = True
     rutas = [cfg["bitacora"]] if cfg.get("bitacora") else []
     if cfg["destino"] == "proximamente":

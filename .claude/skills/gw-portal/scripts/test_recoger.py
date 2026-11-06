@@ -54,11 +54,15 @@ class Filtros(unittest.TestCase):
 class RutasDelFlujo(unittest.TestCase):
     def test_variantes_de_la_bitacora(self):
         # La 0.5 lleva la bitácora a docs/handoff.md también desde docs/registros/traspaso.md.
-        self.assertEqual(recoger.variantes("docs/registros/traspaso.md"),
+        self.assertEqual(recoger.variantes("docs/registros/traspaso.md")[:3],
                          ["docs/registros/traspaso.md", "docs/handoff.md", "docs/records/traspaso.md"])
         self.assertIn("docs/registros/traspaso.md", recoger.variantes("docs/handoff.md"))
-        # Instalador-WMF-Tarkor: la carpeta ya en inglés y el nombre aún en español.
-        self.assertIn("docs/records/traspaso.md", recoger.variantes("docs/traspaso.md"))
+        # Instalador-WMF-Tarkor: la carpeta ya en inglés y el nombre aún en español; desde cualquier nombre se
+        # llega a todos, también a docs/handoff.md cuando acabe de pasar a la 0.5.
+        todas = {"docs/traspaso.md", "docs/handoff.md", "docs/registros/traspaso.md", "docs/records/traspaso.md"}
+        for ruta in todas:
+            with self.subTest(ruta=ruta):
+                self.assertEqual(set(recoger.variantes(ruta)), todas)
 
     def test_bitacora_y_difusion_con_el_nombre_viejo_o_el_nuevo(self):
         # Un repo aún en la 0.4 (docs/traspaso.md, docs/difusion/) y otro ya en la 0.5 (docs/handoff.md, docs/media/).
@@ -156,17 +160,18 @@ class Commits(unittest.TestCase):
 
 
 class EtiquetaNueva(unittest.TestCase):
-    def test_del_dia_de_f_y_ya_en_la_ficha_no_es_nueva(self):
-        # Galivelop-workflow, 2026-11-06: v0.5.1 del mismo día que F y la ficha ya dice «v0.5.1».
+    def test_ficha_a_medias_sigue_pidiendo_la_version(self):
+        # Galivelop-workflow, 2026-11-06: la fase ya dice v0.5.1, pero «Versiones publicadas» sigue en 0.5.0.
         e = {"etiqueta": "v0.5.1", "fecha": "2026-11-05"}
-        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-05", '"es": "En desarrollo · v0.5.1"'))
-        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-05", "La última, la 0.5.1, del 5 de noviembre."))
+        self.assertTrue(recoger.etiqueta_nueva(e, "2026-11-05", "0.5.0"))
+        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-05", "0.5.1"))
+        self.assertFalse(recoger.etiqueta_nueva({"etiqueta": "v0.5.9", "fecha": "2026-11-05"}, None, "0.5.10"))
 
-    def test_posterior_o_sin_nombrar_si_y_anterior_a_f_no(self):
+    def test_sin_versiones_publicadas_compara_con_f(self):
         e = {"etiqueta": "v0.5.1", "fecha": "2026-11-05"}
-        self.assertTrue(recoger.etiqueta_nueva(e, "2026-11-05", "v0.5.0 y v0.5.10"))
-        self.assertTrue(recoger.etiqueta_nueva(e, "2026-11-01", "v0.5.0"))
-        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-06", "v0.5.0"))
+        self.assertTrue(recoger.etiqueta_nueva(e, "2026-11-05", None))
+        self.assertFalse(recoger.etiqueta_nueva(e, "2026-11-06", None))
+        self.assertFalse(recoger.etiqueta_nueva(e, None, None))
 
 
 class Escaparate(unittest.TestCase):
