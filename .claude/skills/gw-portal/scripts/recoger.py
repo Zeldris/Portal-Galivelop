@@ -76,8 +76,9 @@ def leer_ficha(slug):
     versiones = next((a.get("items") or [] for a in d.get("apartados", []) if a.get("id") == "versiones-publicadas"), [])
     return {"F": d.get("actualizado"), "N": nov[0]["fecha"] if nov else d.get("actualizado"),
             "enlaces": [e.get("url", "") for e in d.get("enlaces", [])], "nombre": d.get("nombre"),
-            # «0.5.0 · 2026-11-04» → «0.5.0»: la última versión que la ficha ya cuenta.
-            "version_publicada": versiones[0]["valor"].split("·")[0].strip() if versiones else None}
+            # «0.5.0 · 2026-11-04» → «0.5.0»: la versión más alta que la ficha ya cuenta, esté donde esté en la lista.
+            "version_publicada": max((v for v in ((i.get("valor") or "").split("·")[0].strip() for i in versiones)
+                                      if version(v)), key=version, default=None)}
 
 
 def patrones_contenido(raiz=PORTAL):
@@ -139,8 +140,8 @@ def poner_al_dia(clon, desde):
 def commits(clon, rama, desde):
     """(primeros MAX_COMMITS útiles, total, cuántos son del propio día `desde`): esos pueden estar ya en la novedad N."""
     # «--since=AAAA-MM-DD» a secas toma la hora actual de ese día: con T00:00 entra el día entero. Filtra por la
-    # fecha del committer, así que se muestra esa (%cd) y no la del autor.
-    salida = git(clon, "log", f"--since={desde}T00:00", "--format=%cd %s", "--date=short", rama, check=False)
+    # fecha del committer en la hora local, así que se muestra esa (%cd, short-local) y no la del autor.
+    salida = git(clon, "log", f"--since={desde}T00:00", "--format=%cd %s", "--date=short-local", rama, check=False)
     utiles, total = filtrar_commits(salida.splitlines())
     return utiles[:MAX_COMMITS], total, sum(1 for l in utiles if l.startswith(desde))
 
@@ -152,13 +153,16 @@ def filtrar_commits(lineas):
 
 
 def version(texto):
-    return tuple(map(int, ETIQUETA.match("v" + texto.lstrip("v")).groups()))
+    """«v0.5.1» o «0.5.1» → (0, 5, 1); None si no es una versión."""
+    m = ETIQUETA.match("v" + (texto or "").lstrip("v"))
+    return tuple(map(int, m.groups())) if m else None
 
 
 def etiqueta_nueva(etiqueta, F, version_publicada):
-    """Con «Versiones publicadas» en la ficha, nueva si la etiqueta es mayor que su primera versión (una ficha a medias,
-    con la versión en la fase pero no en esa lista, sigue pidiendo su puesta al día); sin ella, si es de F o posterior."""
-    if version_publicada and ETIQUETA.match("v" + version_publicada.lstrip("v")):
+    """Con «Versiones publicadas» en la ficha, nueva si la etiqueta es mayor que la más alta de la lista (una ficha a
+    medias, con la versión en la fase pero no en esa lista, sigue pidiendo su puesta al día); sin ella, si es de F o
+    posterior."""
+    if version(version_publicada):
         return version(etiqueta["etiqueta"]) > version(version_publicada)
     return bool(F) and etiqueta["fecha"] >= F
 
@@ -167,7 +171,7 @@ def etiqueta_mayor(clon):
     tags = [t for t in git(clon, "tag", "--list", "v*", check=False).splitlines() if ETIQUETA.match(t)]
     if not tags:
         return None
-    t = max(tags, key=lambda x: tuple(map(int, ETIQUETA.match(x).groups())))
+    t = max(tags, key=version)
     return {"etiqueta": t, "fecha": git(clon, "log", "-1", "--format=%cs", t, check=False)}
 
 
@@ -332,7 +336,7 @@ def texto(informes, perdidos):
             out.append(f"- F (actualizado) = {r['F']} · N (última novedad) = {r['N']} · rama {r.get('rama', '?')}")
         if r.get("etiqueta"):
             e = r["etiqueta"]
-            out.append(f"- etiqueta más alta: {e['etiqueta']} ({e['fecha']})" + (" · NUEVA desde F" if e.get("nueva")
+            out.append(f"- etiqueta más alta: {e['etiqueta']} ({e['fecha']})" + (" · NUEVA (no está en la ficha)" if e.get("nueva")
                                                                                  else ""))
         if "commits" in r:
             dia_n = r.get("commits_dia_N", 0)

@@ -1,9 +1,11 @@
 """Tests de recoger.py (gw-portal): python3 -m unittest discover -s .claude/skills/gw-portal/scripts"""
+import json
 import os
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -160,6 +162,15 @@ class Commits(unittest.TestCase):
 
 
 class EtiquetaNueva(unittest.TestCase):
+    def test_version_publicada_es_la_mas_alta_de_la_lista_aunque_falte_valor(self):
+        ficha = {"actualizado": "2026-11-05", "novedades": [], "apartados": [{"id": "versiones-publicadas", "items": [
+            {"nombre": "Próxima versión"}, {"valor": "0.5.0 · 2026-11-04"}, {"valor": "0.5.1 · 2026-11-05"}]}]}
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "src" / "data" / "proyectos").mkdir(parents=True)
+            (Path(d) / "src" / "data" / "proyectos" / "x.json").write_text(json.dumps(ficha), encoding="utf-8")
+            with mock.patch.object(recoger, "PORTAL", Path(d)):
+                self.assertEqual(recoger.leer_ficha("x")["version_publicada"], "0.5.1")
+
     def test_ficha_a_medias_sigue_pidiendo_la_version(self):
         # Galivelop-workflow, 2026-11-06: la fase ya dice v0.5.1, pero «Versiones publicadas» sigue en 0.5.0.
         e = {"etiqueta": "v0.5.1", "fecha": "2026-11-05"}
