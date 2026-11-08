@@ -67,8 +67,8 @@ export function Inicio() {
   const privados = proyectos.filter((p) => p.colaboracion === 'privada');
   const visibles = proyectos.filter((p) => filtro === 'todos' || p.estado === filtro);
   const cuenta = (e: EstadoProyecto) => proyectos.filter((p) => p.estado === e).length;
-  // El collage de la portada toma una imagen de cada proyecto (hasta tres).
-  const collage = proyectos.slice(0, 3).map((p) => ({ p, img: p.galeria[0] ?? p.portada }));
+  // El collage de la portada toma la portada de cada proyecto (hasta tres): es su imagen de presentación.
+  const collage = proyectos.slice(0, 3).map((p) => ({ p, img: p.portada }));
 
   return (
     <>

@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Galivelop IG: su portada en el portal (tarjeta y ficha) es ahora la imagen de Galivelop IG que pasó la persona el 2026-11-08 (la misma `og-fuente.png` de su og.jpg), en vez de la portada provisional oscura; la de toVeriAI sigue siendo la captura de su producto. Subido a `main` el mismo día.
+- Galivelop IG: su portada en el portal (tarjeta y ficha) es ahora la imagen de Galivelop IG que pasó la persona el 2026-11-08 (la misma `og-fuente.png` de su og.jpg), en vez de la portada provisional oscura; la de toVeriAI sigue siendo la captura de su producto. El collage de la portada de la web toma ahora la **portada** de cada proyecto (antes, la primera imagen de su galería: en Galivelop IG salía una pieza del piloto) y la pieza grande conserva el lado izquierdo (`object-position`), donde va el texto. Pendiente de subir a `main`: la sesión no pudo (el modo automático bloqueó el push); lo sube la persona o la tarea semanal.
 - Galivelop-workflow v0.5.1 (para una sesión de trabajo): contar las pruebas exactas de la etiqueta `v0.5.1` y poner al día la cifra «1776» de la ficha (ni la revisión semanal ni la sesión del 2026-11-08 pudieron correr los tests de esa etiqueta). Los siete diagramas ya van en 0.5.1 y con la hoja de estilos de la marca (2026-11-08, rama `ccr-47a38edd-v566du`).
 
 

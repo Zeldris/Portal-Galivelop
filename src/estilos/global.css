@@ -685,6 +685,11 @@ button {
   object-fit: cover;
 }
 
+/* La pieza grande es más cuadrada que una portada apaisada: se conserva el lado izquierdo, donde va el texto. */
+.collage-0 img {
+  object-position: left center;
+}
+
 .collage-pieza span {
   position: absolute;
   left: 0;
