@@ -1,8 +1,5 @@
-import { useId } from 'react';
-
-/** Monograma GV (Galivelop): azul celeste y blanco, los colores de la bandera gallega. */
+/** Monograma GV (Galivelop): celeste plano con chaflán y trazo blanco, los colores de la bandera gallega. */
 export function MarcaGV({ tamano = 36 }: { tamano?: number }) {
-  const id = useId();
   return (
     <svg
       width={tamano}
@@ -11,13 +8,7 @@ export function MarcaGV({ tamano = 36 }: { tamano?: number }) {
       aria-hidden="true"
       className="marca-gd"
     >
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#2BB3EA" />
-          <stop offset="1" stopColor="#0083C1" />
-        </linearGradient>
-      </defs>
-      <rect width="128" height="128" rx="30" fill={`url(#${id})`} />
+      <path d="M0 0H100L128 28V128H0Z" fill="#1AA6DF" />
       <g fill="none" stroke="#fff" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round">
         <path d="M55.4 45.6 A24 24 0 1 0 64 64" />
         <path d="M50 64 H80" />

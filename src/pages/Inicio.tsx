@@ -73,7 +73,7 @@ export function Inicio() {
   return (
     <>
       <section className="hero">
-        <div className="hero-fondo" aria-hidden="true" />
+        <img className="hero-fondo" src={ruta('/marca/isobatas.svg')} alt="" aria-hidden="true" />
         <div className="contenedor hero-rejilla">
           <div className="hero-texto">
             <p className="antetitulo">{t('hero.antetitulo')}</p>
@@ -115,9 +115,6 @@ export function Inicio() {
                 <span>{p.nombre}</span>
               </div>
             ))}
-            <div className="collage-marca">
-              <MarcaGV tamano={84} />
-            </div>
           </div>
         </div>
       </section>

@@ -1,15 +1,25 @@
-/* Galivelop — azul celeste y blanco de la bandera gallega como base de toda la marca. */
+/* Galivelop — cuaderno de taller sobre carta náutica: papel con retícula, filetes finos, celeste plano en bloques,
+   chaflanes en vez de esquinas redondas y los datos en monoespaciada. Qué es cada cosa y por qué: docs/marca.md. */
 
 :root {
   --celeste: #1aa6df;
-  --celeste-intenso: #0083c1;
   --blanco: #ffffff;
 
-  --fuente-titulos: 'Sora Variable', 'Sora', system-ui, sans-serif;
-  --fuente-texto: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --fuente-titulos:
+    'Big Shoulders Display Variable', 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --fuente-texto: 'Literata Variable', 'Literata', Georgia, 'Times New Roman', serif;
+  --fuente-datos:
+    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  /* Antetítulos, etiquetas, fechas, versiones y escalas: monoespaciada en versalitas con aire. */
+  --datos: 500 0.75rem/1.4 var(--fuente-datos);
+  --datos-espaciado: 0.06em;
 
-  --radio: 18px;
-  --radio-sm: 10px;
+  /* Esquinas: ningún redondeo; lo grande lleva chaflán (`.chaflan`), lo pequeño se queda recto. */
+  --radio: 0;
+  --radio-sm: 0;
+  --chaflan: 14px;
+  --chaflan-grande: 28px;
+  --reticula-paso: 24px;
   --ancho: 1180px;
   /* Curva de toda transición: decelera al llegar (nada de ease/linear del navegador). 200 ms como mínimo. */
   --curva: cubic-bezier(0.2, 0.7, 0.3, 1);
@@ -25,36 +35,55 @@
   interpolate-size: allow-keywords;
 }
 
-/* Oscuro (por defecto) */
+/* Claro (por defecto): papel de carta náutica. */
 :root,
-:root[data-tema='oscuro'] {
-  color-scheme: dark;
-  --fondo: #06121c;
-  --fondo-alterno: #081826;
-  --superficie: #0c1d2b;
-  --superficie-2: #11283a;
-  --borde: #1b3447;
-  --texto: #eaf4fa;
-  --texto-2: #9fb4c4;
-  --texto-3: #6f8799;
-  --enlace: #5cc8f2;
-  --sombra: 0 18px 50px -20px rgb(0 0 0 / 0.65);
-  --brillo: rgb(26 166 223 / 0.22);
-}
-
 :root[data-tema='claro'] {
   color-scheme: light;
-  --fondo: #f6fafd;
-  --fondo-alterno: #eaf4fa;
+  --papel: #fbfcfd;
+  --reticula: #e3edf3;
+  --celeste-hondo: #0072a8;
+  --tinta: #13212b;
+  --tinta-2: #4a5c69;
+  --alga: #5d7a6a;
+  --filete: #b9cbd6;
+  --fondo: var(--papel);
+  --fondo-alterno: #f1f6f9;
   --superficie: #ffffff;
-  --superficie-2: #f0f6fa;
-  --borde: #d6e4ee;
-  --texto: #0a1a28;
-  --texto-2: #43586a;
-  --texto-3: #6b8193;
-  --enlace: #006c9f;
-  --sombra: 0 18px 44px -24px rgb(10 40 70 / 0.35);
-  --brillo: rgb(26 166 223 / 0.16);
+  --superficie-2: #f1f6f9;
+  --borde: var(--filete);
+  --texto: var(--tinta);
+  --texto-2: var(--tinta-2);
+  --texto-3: #6b7f8c;
+  --enlace: var(--celeste-hondo);
+  --celeste-intenso: var(--celeste-hondo);
+  /* Solo el panel flotante lleva sombra; lo demás se separa con filetes. */
+  --sombra: 0 12px 32px -18px rgb(19 33 43 / 0.35);
+  /* Tinte plano del celeste para píldoras y marcas de posición (no es un resplandor). */
+  --brillo: rgb(26 166 223 / 0.12);
+}
+
+/* Oscuro: la misma carta, de noche. */
+:root[data-tema='oscuro'] {
+  color-scheme: dark;
+  --papel: #0d171e;
+  --reticula: #16242e;
+  --celeste-hondo: #0b5e88;
+  --tinta: #e6eef3;
+  --tinta-2: #9fb2bf;
+  --alga: #8fb09e;
+  --filete: #2b3d49;
+  --fondo: var(--papel);
+  --fondo-alterno: #111f29;
+  --superficie: #111f29;
+  --superficie-2: #16242e;
+  --borde: var(--filete);
+  --texto: var(--tinta);
+  --texto-2: var(--tinta-2);
+  --texto-3: #7d919e;
+  --enlace: #5cc8f2;
+  --celeste-intenso: var(--celeste);
+  --sombra: 0 12px 32px -18px rgb(0 0 0 / 0.7);
+  --brillo: rgb(26 166 223 / 0.18);
 }
 
 *,
@@ -70,10 +99,15 @@ html {
 
 body {
   margin: 0;
-  background: var(--fondo);
+  /* Papel cuadriculado: la retícula de 24 px es la del cuaderno de taller. */
+  background-color: var(--fondo);
+  background-image:
+    linear-gradient(var(--reticula) 1px, transparent 1px),
+    linear-gradient(90deg, var(--reticula) 1px, transparent 1px);
+  background-size: var(--reticula-paso) var(--reticula-paso);
   color: var(--texto);
   font-family: var(--fuente-texto);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -84,14 +118,48 @@ img {
   display: block;
 }
 
+/* Títulos: condensada, en mayúsculas y apretada de interlineado, como el rótulo de una carta. */
 h1,
 h2,
 h3 {
   font-family: var(--fuente-titulos);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   margin: 0;
   text-wrap: balance;
+}
+
+h4 {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.35rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Datos: antetítulos, etiquetas, fechas, versiones, escalas. */
+.datos {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+}
+
+/* Chaflán en la esquina superior derecha, como la hoja doblada de un cuaderno. */
+.chaflan {
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+.chaflan-grande {
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-grande)) 0,
+    100% var(--chaflan-grande),
+    100% 100%,
+    0 100%
+  );
 }
 
 /* Sin el margen del navegador: si no, los títulos de las tarjetas bajan respecto a su icono o su número. */
@@ -117,7 +185,6 @@ button {
 :focus-visible {
   outline: 2px solid var(--celeste);
   outline-offset: 3px;
-  border-radius: 6px;
 }
 
 .contenedor {
@@ -147,9 +214,10 @@ button {
 
 .logo-texto {
   font-family: var(--fuente-titulos);
-  font-weight: 700;
-  font-size: 1.3rem;
-  letter-spacing: -0.03em;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--texto);
 }
 
@@ -187,9 +255,8 @@ button {
   position: sticky;
   top: 0;
   z-index: var(--z-cabecera);
-  background: color-mix(in srgb, var(--fondo) 82%, transparent);
-  backdrop-filter: blur(14px) saturate(1.4);
-  border-bottom: 1px solid color-mix(in srgb, var(--borde) 70%, transparent);
+  background: var(--superficie);
+  border-bottom: 1px solid var(--filete);
 }
 
 .cabecera-fila {
@@ -212,16 +279,20 @@ button {
 .cabecera-nav a {
   color: var(--texto-2);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
+  font: var(--datos);
+  font-size: 0.8rem;
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   padding: 8px 12px;
-  border-radius: 999px;
-  transition: color var(--transicion), background var(--transicion);
+  border-bottom: 2px solid transparent;
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
 }
 
 .cabecera-nav a:hover {
   color: var(--texto);
-  background: var(--superficie-2);
+  border-bottom-color: var(--celeste);
 }
 
 .cabecera-ajustes {
@@ -234,7 +305,7 @@ button {
   display: flex;
   padding: 3px;
   border: 1px solid var(--borde);
-  border-radius: 999px;
+  border-radius: 0;
   background: var(--superficie);
 }
 
@@ -242,18 +313,20 @@ button {
   border: 0;
   background: transparent;
   padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font: var(--datos);
+  font-size: 0.72rem;
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   color: var(--texto-3);
   cursor: pointer;
-  transition: background var(--transicion), color var(--transicion);
+  transition:
+    background var(--transicion),
+    color var(--transicion);
 }
 
 .idiomas button[aria-pressed='true'] {
-  background: var(--celeste-intenso);
-  color: var(--blanco);
+  background: var(--tinta);
+  color: var(--papel);
 }
 
 .boton-icono {
@@ -261,12 +334,14 @@ button {
   place-items: center;
   width: 38px;
   height: 38px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid var(--borde);
   background: var(--superficie);
   color: var(--texto-2);
   cursor: pointer;
-  transition: color var(--transicion), border-color var(--transicion);
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
 }
 
 .boton-icono:hover {
@@ -352,12 +427,17 @@ button {
   align-items: center;
   gap: 8px;
   padding: 12px 20px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
+  font: var(--datos);
+  font-size: 0.8rem;
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  transition: transform var(--transicion), background var(--transicion), border-color var(--transicion);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  transition:
+    transform var(--transicion),
+    background var(--transicion),
+    border-color var(--transicion);
 }
 
 .boton:hover {
@@ -372,19 +452,23 @@ button {
 }
 
 .boton-primario {
-  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
+  background: var(--celeste-hondo);
   color: var(--blanco);
-  box-shadow: 0 10px 30px -12px var(--celeste);
+}
+
+.boton-primario:hover {
+  background: var(--tinta);
 }
 
 .boton-secundario {
   background: var(--superficie);
   color: var(--texto);
-  border-color: var(--borde);
+  border-color: var(--tinta);
 }
 
 .boton-secundario:hover {
-  border-color: var(--celeste);
+  background: var(--tinta);
+  color: var(--papel);
 }
 
 .boton-texto {
@@ -401,19 +485,17 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
-  color: var(--celeste);
+  color: var(--celeste-hondo);
 }
 
 .antetitulo::before {
   content: '';
   width: 28px;
-  height: 2px;
+  height: 1px;
   background: currentColor;
-  border-radius: 2px;
 }
 
 .chips {
@@ -426,42 +508,41 @@ button {
 }
 
 .chips li {
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: var(--superficie-2);
+  font: var(--datos);
+  font-size: 0.7rem;
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: 3px 8px;
+  background: var(--superficie);
   border: 1px solid var(--borde);
   color: var(--texto-2);
 }
 
 .barra {
   display: block;
-  height: 6px;
-  border-radius: 999px;
-  background: var(--superficie-2);
+  height: 4px;
+  background: var(--reticula);
+  border: 1px solid var(--borde);
   overflow: hidden;
 }
 
 .barra > span {
   display: block;
   height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, var(--celeste), var(--acento-proyecto, var(--celeste-intenso)));
+  background: var(--celeste);
 }
 
 .estado {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 4px 11px;
-  border-radius: 999px;
-  backdrop-filter: blur(8px);
-  background: rgb(6 18 28 / 0.72);
-  color: var(--blanco);
-  border: 1px solid rgb(255 255 255 / 0.16);
+  font: var(--datos);
+  font-size: 0.7rem;
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: 4px 9px;
+  background: var(--tinta);
+  color: var(--papel);
 }
 
 .estado-punto {
@@ -472,18 +553,15 @@ button {
 
 .estado-publicado .estado-punto {
   background: #3ddc84;
-  box-shadow: 0 0 0 3px rgb(61 220 132 / 0.25);
 }
 
 .estado-desarrollo .estado-punto {
   background: #ffc247;
-  box-shadow: 0 0 0 3px rgb(255 194 71 / 0.25);
   animation: latido 2s ease-in-out infinite;
 }
 
 .estado-diseno .estado-punto {
   background: var(--celeste);
-  box-shadow: 0 0 0 3px var(--brillo);
 }
 
 @keyframes latido {
@@ -494,56 +572,60 @@ button {
 
 /* ---------- Portada ---------- */
 
+/* Bloque celeste plano con las isobatas de la carta (regla 6 de docs/marca.md). */
 .hero {
   position: relative;
-  padding: clamp(48px, 9vw, 110px) 0 clamp(56px, 8vw, 100px);
+  margin-top: 24px;
+  background: var(--celeste-hondo);
+  color: var(--blanco);
   overflow: hidden;
+}
+
+.hero > .contenedor {
+  position: relative;
 }
 
 .hero-fondo {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(60% 70% at 85% 30%, var(--brillo), transparent 70%),
-    radial-gradient(40% 50% at 10% 90%, rgb(26 166 223 / 0.08), transparent 70%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
   pointer-events: none;
 }
 
-.hero-fondo::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(color-mix(in srgb, var(--texto) 9%, transparent) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: linear-gradient(180deg, black, transparent 85%);
-}
-
 .hero-rejilla {
-  position: relative;
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: clamp(32px, 5vw, 64px);
   align-items: center;
+  padding-block: clamp(40px, 7vw, 88px);
+}
+
+.hero .antetitulo {
+  color: rgb(255 255 255 / 0.85);
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.7rem);
-  font-weight: 700;
-  margin: 18px 0 20px;
-  text-wrap: balance;
+  font-size: clamp(2.75rem, 7.5vw, 5.25rem);
+  margin: 14px 0 22px;
 }
 
+/* La segunda parte del título va en su propia línea, como un rótulo de tinta sobre la carta. */
 .destacado {
   display: block;
-  background: linear-gradient(120deg, var(--celeste) 10%, var(--texto) 120%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.08em;
+  padding: 0.04em 0.14em 0;
+  line-height: 1;
+  background: var(--tinta);
+  color: var(--papel);
 }
 
 .hero-parrafo {
-  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
-  color: var(--texto-2);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   max-width: 54ch;
 }
 
@@ -554,12 +636,33 @@ button {
   margin-top: 30px;
 }
 
+.hero .boton-primario {
+  background: var(--blanco);
+  color: var(--celeste-hondo);
+}
+
+.hero .boton-primario:hover {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.hero .boton-secundario {
+  background: transparent;
+  color: var(--blanco);
+  border-color: rgb(255 255 255 / 0.7);
+}
+
+.hero .boton-secundario:hover {
+  background: var(--blanco);
+  color: var(--celeste-hondo);
+}
+
 .hero-resumen {
   display: flex;
   gap: clamp(20px, 4vw, 44px);
   margin: 40px 0 0;
-  padding-top: 24px;
-  border-top: 1px solid var(--borde);
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 0.4);
 }
 
 .hero-resumen div {
@@ -568,17 +671,21 @@ button {
 }
 
 .hero-resumen dt {
-  font-size: 0.85rem;
-  color: var(--texto-3);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.8);
 }
 
 .hero-resumen dd {
   margin: 0;
-  font-family: var(--fuente-titulos);
+  font-family: var(--fuente-datos);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 600;
+  line-height: 1.1;
 }
 
+/* Capturas de los proyectos, pinchadas rectas sobre la carta. */
 .hero-collage {
   position: relative;
   aspect-ratio: 1 / 0.95;
@@ -586,10 +693,8 @@ button {
 
 .collage-pieza {
   position: absolute;
-  border-radius: var(--radio);
   overflow: hidden;
-  border: 2px solid;
-  box-shadow: var(--sombra);
+  border: 1px solid rgb(255 255 255 / 0.85);
   background: var(--superficie);
   transition: transform 400ms var(--curva);
 }
@@ -602,16 +707,14 @@ button {
 
 .collage-pieza span {
   position: absolute;
-  left: 12px;
-  bottom: 12px;
-  font-family: var(--fuente-titulos);
-  font-weight: 600;
-  font-size: 0.85rem;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: rgb(6 18 28 / 0.75);
-  color: var(--blanco);
-  backdrop-filter: blur(6px);
+  left: 0;
+  bottom: 0;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: 4px 10px;
+  background: var(--tinta);
+  color: var(--papel);
 }
 
 .collage-0 {
@@ -619,7 +722,13 @@ button {
   height: 52%;
   left: 0;
   top: 4%;
-  transform: rotate(-2.5deg);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-grande)) 0,
+    100% var(--chaflan-grande),
+    100% 100%,
+    0 100%
+  );
 }
 
 .collage-1 {
@@ -627,7 +736,6 @@ button {
   height: 50%;
   right: 0;
   bottom: 2%;
-  transform: rotate(2deg);
 }
 
 .collage-2 {
@@ -635,29 +743,11 @@ button {
   height: 32%;
   left: 4%;
   bottom: 0;
-  transform: rotate(-1deg);
 }
 
-.hero-collage:hover .collage-0 {
-  transform: rotate(-1deg) translateY(-6px);
-}
-
+.hero-collage:hover .collage-0,
 .hero-collage:hover .collage-1 {
-  transform: rotate(0.5deg) translateY(-6px);
-}
-
-.collage-marca {
-  position: absolute;
-  right: 6%;
-  top: 0;
-  filter: drop-shadow(0 16px 30px rgb(0 131 193 / 0.45));
-  animation: flotar 6s ease-in-out infinite;
-}
-
-@keyframes flotar {
-  50% {
-    transform: translateY(-10px);
-  }
+  transform: translateY(-6px);
 }
 
 @media (max-width: 900px) {
@@ -678,7 +768,7 @@ button {
 }
 
 .seccion-alterna {
-  background: var(--fondo-alterno);
+  background: var(--superficie);
   border-block: 1px solid var(--borde);
 }
 
@@ -710,15 +800,18 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  border-radius: 999px;
+  padding: 8px 12px;
   border: 1px solid var(--borde);
   background: var(--superficie);
   color: var(--texto-2);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   cursor: pointer;
-  transition: border-color var(--transicion), color var(--transicion), background var(--transicion);
+  transition:
+    border-color var(--transicion),
+    color var(--transicion),
+    background var(--transicion);
 }
 
 .filtros button:hover {
@@ -733,10 +826,8 @@ button {
 }
 
 .filtro-cuenta {
-  font-size: 0.75rem;
-  padding: 0 7px;
-  border-radius: 999px;
-  background: color-mix(in srgb, currentColor 14%, transparent);
+  padding: 0 6px;
+  border: 1px solid currentColor;
 }
 
 .vacio {
@@ -759,18 +850,18 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--radio);
   background: var(--superficie);
   border: 1px solid var(--borde);
   overflow: hidden;
-  transition: transform var(--transicion), border-color var(--transicion), box-shadow var(--transicion);
+  transition:
+    transform var(--transicion),
+    border-color var(--transicion);
 }
 
 .tarjeta:hover,
 .tarjeta:focus-within {
   transform: translateY(-4px);
-  border-color: color-mix(in srgb, var(--acento-proyecto) 60%, var(--borde));
-  box-shadow: var(--sombra), 0 0 0 1px color-mix(in srgb, var(--acento-proyecto) 30%, transparent);
+  border-color: var(--tinta);
 }
 
 .tarjeta-imagen {
@@ -794,8 +885,9 @@ button {
 .tarjeta-imagen::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 55%, color-mix(in srgb, var(--superficie) 85%, transparent));
+  inset: auto 0 0;
+  height: 1px;
+  background: var(--borde);
 }
 
 .tarjeta-imagen .estado {
@@ -814,15 +906,14 @@ button {
 }
 
 .tarjeta-categoria {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--texto-2);
 }
 
 .tarjeta h3 {
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .tarjeta-enlace {
@@ -844,7 +935,7 @@ button {
 .tarjeta-icono {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--blanco);
   padding: 3px;
 }
@@ -875,7 +966,9 @@ button {
   flex-direction: column;
   gap: 8px;
   flex: 1;
-  font-size: 0.85rem;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   color: var(--texto-2);
 }
 
@@ -883,8 +976,9 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   color: var(--enlace);
   white-space: nowrap;
 }
@@ -950,7 +1044,7 @@ button {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid var(--borde);
   color: var(--texto-2);
 }
@@ -1039,7 +1133,7 @@ button {
   width: 44px;
   height: 44px;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 0;
   color: var(--celeste);
   background: var(--brillo);
 }
@@ -1298,7 +1392,12 @@ button {
 
 :root[data-tema='claro'] .proyecto-cabecera::before {
   background:
-    linear-gradient(180deg, rgb(6 18 28 / 0.35) 0%, rgb(6 18 28 / 0.6) 60%, rgb(6 18 28 / 0.85) 100%),
+    linear-gradient(
+      180deg,
+      rgb(6 18 28 / 0.35) 0%,
+      rgb(6 18 28 / 0.6) 60%,
+      rgb(6 18 28 / 0.85) 100%
+    ),
     linear-gradient(90deg, rgb(6 18 28 / 0.7), transparent 70%);
 }
 
@@ -1332,7 +1431,7 @@ button {
 .proyecto-icono {
   width: clamp(44px, 6vw, 60px);
   height: clamp(44px, 6vw, 60px);
-  border-radius: 14px;
+  border-radius: 0;
   background: var(--blanco);
   padding: 5px;
 }
@@ -1368,7 +1467,7 @@ button {
   align-items: center;
   gap: 8px;
   padding: 11px 18px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px dashed rgb(255 255 255 / 0.35);
   color: rgb(255 255 255 / 0.82);
   font-size: 0.92rem;
@@ -1397,7 +1496,9 @@ button {
   gap: 2px;
   padding: 16px 18px;
   /* Rejilla con líneas: cada celda dibuja su borde y el exceso queda fuera por el overflow. */
-  box-shadow: 1px 0 0 var(--borde), 0 1px 0 var(--borde);
+  box-shadow:
+    1px 0 0 var(--borde),
+    0 1px 0 var(--borde);
   min-width: 0;
 }
 
@@ -1433,7 +1534,7 @@ button {
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid var(--borde);
   background: var(--superficie);
   color: var(--texto-2);
@@ -1441,7 +1542,10 @@ button {
   font-weight: 600;
   font-size: 0.92rem;
   cursor: pointer;
-  transition: color var(--transicion), background var(--transicion), border-color var(--transicion);
+  transition:
+    color var(--transicion),
+    background var(--transicion),
+    border-color var(--transicion);
 }
 
 .galeria-grupo:hover {
@@ -1459,7 +1563,7 @@ button {
   font-size: 0.78rem;
   font-weight: 600;
   padding: 1px 8px;
-  border-radius: 999px;
+  border-radius: 0;
   background: rgb(0 0 0 / 0.12);
 }
 
@@ -1475,7 +1579,7 @@ button {
   place-items: center;
   width: 40px;
   height: 40px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid rgb(255 255 255 / 0.2);
   background: rgb(6 18 28 / 0.6);
   color: var(--blanco);
@@ -1519,7 +1623,7 @@ button {
   align-self: stretch;
   width: 2px;
   margin: 6px 4px;
-  border-radius: 2px;
+  border-radius: 0;
   background: var(--borde);
 }
 
@@ -1554,13 +1658,15 @@ button {
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid rgb(255 255 255 / 0.2);
   background: rgb(6 18 28 / 0.6);
   color: var(--blanco);
   backdrop-filter: blur(8px);
   cursor: pointer;
-  transition: background var(--transicion), transform var(--transicion);
+  transition:
+    background var(--transicion),
+    transform var(--transicion);
 }
 
 .galeria-flecha:hover,
@@ -1629,7 +1735,9 @@ button {
   opacity: 0.6;
   cursor: pointer;
   scroll-snap-align: center;
-  transition: opacity var(--transicion), border-color var(--transicion);
+  transition:
+    opacity var(--transicion),
+    border-color var(--transicion);
 }
 
 .galeria-miniatura img {
@@ -1759,7 +1867,7 @@ button {
   place-items: center;
   width: 42px;
   height: 42px;
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 14px;
   color: var(--acento-proyecto, var(--celeste));
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
@@ -1842,7 +1950,7 @@ button {
   place-items: center;
   width: 32px;
   height: 32px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 2px solid var(--borde);
   background: var(--superficie);
   color: var(--texto-3);
@@ -1882,7 +1990,7 @@ button {
   font-family: var(--fuente-titulos);
   font-size: 0.8rem;
   padding: 1px 8px;
-  border-radius: 6px;
+  border-radius: 0;
   background: var(--superficie-2);
   border: 1px solid var(--borde);
 }
@@ -1961,7 +2069,7 @@ button {
   padding: 18px 20px;
   border-left: 3px solid var(--acento-proyecto, var(--celeste));
   background: var(--superficie-2);
-  border-radius: 0 var(--radio-sm) var(--radio-sm) 0;
+  border-radius: 0;
 }
 
 .decisiones h4 {
@@ -1998,7 +2106,7 @@ button {
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 999px;
+  border-radius: 0;
   font-family: var(--fuente-titulos);
   font-weight: 700;
   font-size: 0.95rem;
@@ -2088,7 +2196,11 @@ button {
 .cabecera-color {
   align-items: center;
   background:
-    radial-gradient(70% 90% at 80% 30%, color-mix(in srgb, var(--acento-proyecto) 45%, transparent), transparent 70%),
+    radial-gradient(
+      70% 90% at 80% 30%,
+      color-mix(in srgb, var(--acento-proyecto) 45%, transparent),
+      transparent 70%
+    ),
     linear-gradient(135deg, #06121c, color-mix(in srgb, var(--acento-proyecto) 30%, #06121c));
 }
 
@@ -2116,7 +2228,7 @@ button {
 
 .ventana {
   margin: 0 0 40px;
-  border-radius: 14px;
+  border-radius: 0;
   overflow: hidden;
   background: #fff;
   box-shadow: 0 30px 70px -25px rgb(0 0 0 / 0.75);
@@ -2282,7 +2394,7 @@ button {
   font-size: 0.78rem;
   font-weight: 600;
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid;
 }
 
@@ -2327,7 +2439,7 @@ button {
   width: 44px;
   height: 44px;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 0;
   color: var(--celeste);
   background: var(--brillo);
   margin-bottom: 12px;
@@ -2371,7 +2483,11 @@ button {
   border-radius: var(--radio);
   border: 1px solid color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 40%, var(--borde));
   background:
-    radial-gradient(80% 140% at 0% 0%, color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent), transparent 70%),
+    radial-gradient(
+      80% 140% at 0% 0%,
+      color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent),
+      transparent 70%
+    ),
     var(--superficie);
 }
 
@@ -2380,7 +2496,7 @@ button {
   place-items: center;
   width: 52px;
   height: 52px;
-  border-radius: 14px;
+  border-radius: 0;
   color: var(--acento-proyecto, var(--celeste));
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
 }
@@ -2419,7 +2535,9 @@ button {
   border-radius: inherit;
   color: inherit;
   text-decoration: none;
-  transition: border-color var(--transicion), transform var(--transicion);
+  transition:
+    border-color var(--transicion),
+    transform var(--transicion);
 }
 
 .vias li:has(.via:hover) {
@@ -2548,7 +2666,9 @@ button {
   border: 1px solid var(--borde);
   border-radius: var(--radio-sm);
   padding: 11px 14px;
-  transition: border-color var(--transicion), box-shadow var(--transicion);
+  transition:
+    border-color var(--transicion),
+    box-shadow var(--transicion);
 }
 
 .campo textarea {
@@ -2575,12 +2695,14 @@ button {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid var(--borde);
   background: var(--fondo);
   font-size: 0.92rem;
   cursor: pointer;
-  transition: border-color var(--transicion), background var(--transicion);
+  transition:
+    border-color var(--transicion),
+    background var(--transicion);
 }
 
 .opcion:has(input:checked) {
@@ -2686,7 +2808,7 @@ button {
   width: 44px;
   height: 44px;
   padding: 10px;
-  border-radius: 12px;
+  border-radius: 0;
   color: var(--celeste);
   background: var(--brillo);
   margin-bottom: 14px;
@@ -2717,7 +2839,7 @@ button {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: 0;
   text-decoration: none;
   color: var(--enlace);
   border: 1px solid color-mix(in srgb, var(--celeste) 40%, transparent);
@@ -2794,7 +2916,7 @@ button {
   place-items: center;
   width: 26px;
   height: 26px;
-  border-radius: 999px;
+  border-radius: 0;
   font-family: var(--fuente-titulos);
   font-size: 0.8rem;
   font-weight: 700;
@@ -2865,9 +2987,10 @@ button {
   color: var(--texto);
   border: 1px solid color-mix(in srgb, #5865f2 45%, var(--borde));
   background:
-    radial-gradient(80% 160% at 0% 50%, rgb(88 101 242 / 0.18), transparent 70%),
-    var(--superficie);
-  transition: transform var(--transicion), border-color var(--transicion);
+    radial-gradient(80% 160% at 0% 50%, rgb(88 101 242 / 0.18), transparent 70%), var(--superficie);
+  transition:
+    transform var(--transicion),
+    border-color var(--transicion);
 }
 
 .discord:hover {
@@ -2880,7 +3003,7 @@ button {
   place-items: center;
   width: 52px;
   height: 52px;
-  border-radius: 14px;
+  border-radius: 0;
   color: var(--blanco);
   background: #5865f2;
 }
@@ -2915,10 +3038,12 @@ button {
   place-items: center;
   width: 36px;
   height: 36px;
-  border-radius: 999px;
+  border-radius: 0;
   color: var(--texto-2);
   border: 1px solid var(--borde);
-  transition: color var(--transicion), border-color var(--transicion);
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
 }
 
 .pie-redes a:hover {
@@ -2977,7 +3102,7 @@ button {
   flex: none;
   width: 64px;
   height: 64px;
-  border-radius: 18px;
+  border-radius: 0;
   object-fit: cover;
 }
 
@@ -3035,13 +3160,15 @@ button {
   align-items: center;
   gap: 8px;
   padding: 7px 14px;
-  border-radius: 999px;
+  border-radius: 0;
   border: 1px solid var(--borde);
   color: var(--texto-2);
   font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  transition: color var(--transicion), border-color var(--transicion);
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
 }
 
 .persona-redes a:hover {
@@ -3120,7 +3247,7 @@ img.perfil-logo {
   margin-left: 8px;
   padding: 1px 7px;
   border: 1px solid var(--borde);
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.03em;
@@ -3224,7 +3351,7 @@ img.perfil-logo {
   align-items: center;
   gap: 6px;
   padding: 3px 10px;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.82rem;
   background: var(--brillo);
   color: var(--texto);
@@ -3272,7 +3399,11 @@ img.perfil-logo {
   border-radius: var(--radio);
   border: 1px solid var(--borde);
   background:
-    radial-gradient(80% 140% at 0% 0%, color-mix(in srgb, var(--celeste) 16%, transparent), transparent 70%),
+    radial-gradient(
+      80% 140% at 0% 0%,
+      color-mix(in srgb, var(--celeste) 16%, transparent),
+      transparent 70%
+    ),
     var(--superficie);
 }
 
@@ -3368,7 +3499,7 @@ img.perfil-logo {
   flex-direction: column;
   gap: 3px;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: 0;
   border: 1px solid var(--borde);
   color: var(--texto);
   text-decoration: none;
@@ -3407,7 +3538,7 @@ img.perfil-logo {
   min-width: 14px;
   height: 14px;
   padding: 0 2px;
-  border-radius: 3px;
+  border-radius: 0;
   background: var(--texto-3);
   color: var(--superficie);
   font-size: 0.6rem;
@@ -3559,7 +3690,7 @@ img.perfil-logo {
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 0;
   color: var(--celeste);
   background: var(--brillo);
 }
@@ -3640,7 +3771,7 @@ img.avatar {
 
 .equipo .equipo-destacadas li {
   padding: 1px 8px;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.75rem;
   background: var(--brillo);
 }
@@ -3662,8 +3793,10 @@ img.avatar {
   font-weight: 500;
   font-size: 0.95rem;
   padding: 8px 12px;
-  border-radius: 999px;
-  transition: color var(--transicion), background var(--transicion);
+  border-radius: 0;
+  transition:
+    color var(--transicion),
+    background var(--transicion);
 }
 
 .submenu-boton:hover,
@@ -3696,7 +3829,10 @@ img.avatar {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-6px);
-  transition: opacity var(--transicion), transform var(--transicion), visibility var(--transicion);
+  transition:
+    opacity var(--transicion),
+    transform var(--transicion),
+    visibility var(--transicion);
   z-index: var(--z-panel);
 }
 
@@ -3741,7 +3877,7 @@ img.avatar {
   width: 56px;
   height: 40px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .submenu-texto {
@@ -3855,7 +3991,7 @@ img.avatar {
   place-items: center;
   width: 30px;
   height: 30px;
-  border-radius: 999px;
+  border-radius: 0;
   font-family: var(--fuente-titulos);
   font-weight: 700;
   font-size: 0.9rem;
@@ -3922,7 +4058,7 @@ img.avatar {
   font-size: 0.82rem;
   font-weight: 700;
   padding: 2px 9px;
-  border-radius: 999px;
+  border-radius: 0;
   color: var(--acento-proyecto, var(--celeste));
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 15%, transparent);
 }
@@ -4137,12 +4273,14 @@ body:has(dialog[open]) {
 .nav-ficha a {
   flex: none;
   padding: 8px 14px;
-  border-radius: 999px;
+  border-radius: 0;
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--texto-2);
   text-decoration: none;
-  transition: background var(--transicion), color var(--transicion);
+  transition:
+    background var(--transicion),
+    color var(--transicion);
 }
 
 .nav-ficha a:hover {
@@ -4193,7 +4331,7 @@ body:has(dialog[open]) {
   font-size: 0.8rem;
   font-weight: 600;
   padding: 2px 10px;
-  border-radius: 999px;
+  border-radius: 0;
   color: var(--texto-2);
   background: var(--superficie-2);
 }
@@ -4242,7 +4380,9 @@ body:has(dialog[open]) {
   text-align: left;
   font: inherit;
   cursor: pointer;
-  transition: border-color var(--transicion), transform var(--transicion);
+  transition:
+    border-color var(--transicion),
+    transform var(--transicion);
 }
 
 .mosaico-pieza:hover {
@@ -4254,7 +4394,7 @@ body:has(dialog[open]) {
 .mosaico-inicial {
   width: 56px;
   height: 56px;
-  border-radius: 8px;
+  border-radius: 0;
   object-fit: cover;
 }
 
@@ -4410,7 +4550,7 @@ body:has(dialog[open]) {
     width: 36px;
     height: 36px;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 0;
   }
   .caracteristica-icono svg {
     width: 18px;
@@ -4567,7 +4707,7 @@ body:has(dialog[open]) {
     height: 36px;
     padding: 8px;
     margin: 0;
-    border-radius: 10px;
+    border-radius: 0;
   }
   .lineas h3,
   .valores h3,
@@ -4657,7 +4797,7 @@ body:has(dialog[open]) {
 .publicacion-autor img {
   width: 28px;
   height: 28px;
-  border-radius: 8px;
+  border-radius: 0;
   object-fit: contain;
 }
 
@@ -4796,7 +4936,11 @@ body:has(dialog[open]) {
 /* Sección Productos de la portada: va después del taller y lleva fondo propio. */
 .seccion-productos {
   border-block: 1px solid var(--borde);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--celeste) 12%, transparent), transparent 60%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--celeste) 12%, transparent),
+    transparent 60%
+  );
 }
 
 .seccion-productos .seccion-cabecera p:not(.antetitulo) {

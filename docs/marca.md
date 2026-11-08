@@ -65,11 +65,12 @@ Tres papeles: **títulos** (condensada o cuadrada, mayúsculas, tracking corto),
 
 | | Títulos | Texto | Datos |
 |---|---|---|---|
-| **A (recomendada)** | Barlow Condensed 600/700 | Source Serif 4 400/600 | IBM Plex Mono 400/500 |
-| B | Big Shoulders Display 600/800 | Literata 400/600 | JetBrains Mono 400/500 |
+| A | Barlow Condensed 600/700 | Source Serif 4 400/600 | IBM Plex Mono 400/500 |
+| **B (elegida)** | Big Shoulders Display 700/800 | Literata 400/600 | JetBrains Mono 400/500 |
 | C | IBM Plex Sans Condensed 500/700 | IBM Plex Serif 400/600 | IBM Plex Mono 400/500 |
 
-Decisión de la persona: **pendiente**. Escala: texto 17 px / 1.6; datos 12 px con tracking `.04em`; h3 32 px, h2 36 px,
+Decisión de la persona: **B** (2026-11-08, «Tipografia b»); en el código, `--fuente-titulos`, `--fuente-texto` y
+`--fuente-datos` de `src/estilos/global.css` (paquetes `@fontsource-variable/*`). Escala: texto 17 px / 1.6; datos 12 px con tracking `.04em`; h3 32 px, h2 36 px,
 h1 `clamp(44px, 9vw, 96px)` con interlineado 1.02 (más apretado monta las cajas de color; visto en el prototipo).
 
 ## Recursos de imagen para el generador (Galivelop IG)

@@ -1,5 +1,6 @@
-import '@fontsource-variable/inter';
-import '@fontsource-variable/sora';
+import '@fontsource-variable/big-shoulders-display';
+import '@fontsource-variable/literata';
+import '@fontsource-variable/jetbrains-mono';
 import { StrictMode, useCallback, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

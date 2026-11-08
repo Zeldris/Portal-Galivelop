@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="es" data-tema="oscuro">
+<html lang="es" data-tema="claro">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galivelop</title>
     <meta name="description" content="Galivelop son dos cosas: el taller, que crea, investiga y aprende a la vista y con la puerta abierta, y Productos, lo que sale de él con el código abierto y montamos en tu proyecto, y los servicios de sus integrantes." />
-    <meta name="theme-color" content="#06121C" />
+    <meta name="theme-color" content="#1AA6DF" />
     <meta name="google-site-verification" content="2Ze1UdXRlPzOYNDXjFyE5ieBVbTEjah6yuOS0gMLzcc" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%marca/gv-logo.svg" />
     <link rel="apple-touch-icon" href="%BASE_URL%marca/gv-logo-512.png" />
@@ -30,7 +30,7 @@
       // Aplica el tema guardado antes de pintar, para evitar un parpadeo.
       try {
         var t = localStorage.getItem('galivelop.tema');
-        if (t !== 'claro' && t !== 'oscuro') t = matchMedia('(prefers-color-scheme: light)').matches ? 'claro' : 'oscuro';
+        if (t !== 'claro' && t !== 'oscuro') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
         document.documentElement.dataset.tema = t;
       } catch (e) {}
     </script>

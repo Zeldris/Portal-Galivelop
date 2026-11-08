@@ -8,9 +8,9 @@ function temaInicial(): Tema {
     const guardado = localStorage.getItem(CLAVE_GUARDADA);
     if (guardado === 'claro' || guardado === 'oscuro') return guardado;
   } catch {
-    // Sin localStorage: se sigue la preferencia del sistema.
+    // Sin localStorage: se sigue la preferencia del sistema (claro si no hay ninguna).
   }
-  return matchMedia('(prefers-color-scheme: light)').matches ? 'claro' : 'oscuro';
+  return matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
 }
 
 export function useTema() {

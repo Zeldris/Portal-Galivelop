@@ -94,7 +94,7 @@ describe('perfil de cada miembro', () => {
     expect(tonoIcono('005FAD')).toBe('oscuro');
     expect(tonoIcono('3178C6')).toBe('oscuro'); // TypeScript: 2,6:1 sobre la píldora del tema oscuro
     expect(tonoIcono('F7DF1E')).toBe('claro');
-    expect(tonoIcono('4FC08D')).toBe('claro'); // Vue: 1,94:1 sobre la píldora del tema claro
+    expect(tonoIcono('4FC08D')).toBeUndefined(); // Vue: 2,01:1 sobre la píldora del tema claro, justo por encima
     expect(tonoIcono('D97757')).toBeUndefined();
     expect(tonoIcono('6DB33F')).toBeUndefined(); // Spring conserva su verde en el claro (2,20:1)
   });
