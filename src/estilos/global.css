@@ -1039,9 +1039,8 @@ button {
 }
 
 .proxima-etiqueta {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
   padding: 3px 10px;
   border-radius: 0;
@@ -1051,9 +1050,8 @@ button {
 
 .tarjeta-proxima h4 {
   font-family: var(--fuente-titulos);
-  font-size: 1.15rem;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: 1.3rem;
+  line-height: 1.1;
   color: var(--texto-2);
 }
 
@@ -1200,10 +1198,9 @@ button {
 
 .pie-columna h2 {
   margin: 0 0 16px;
-  font-family: inherit;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   color: var(--texto);
 }
 
@@ -1375,14 +1372,13 @@ button {
   z-index: -2;
 }
 
-.proyecto-cabecera::before {
+.cabecera-ilustracion::before {
   content: '';
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(180deg, rgb(6 18 28 / 0.35) 0%, rgb(6 18 28 / 0.55) 45%, var(--fondo) 100%),
-    linear-gradient(90deg, rgb(6 18 28 / 0.7), transparent 70%);
+  /* Velo plano: el texto va sobre la foto oscurecida, sin degradado (docs/marca.md). */
+  background: rgb(6 18 28 / 0.62);
 }
 
 /* El texto de la cabecera va siempre sobre la imagen oscurecida. */
@@ -1390,15 +1386,8 @@ button {
   color: var(--blanco);
 }
 
-:root[data-tema='claro'] .proyecto-cabecera::before {
-  background:
-    linear-gradient(
-      180deg,
-      rgb(6 18 28 / 0.35) 0%,
-      rgb(6 18 28 / 0.6) 60%,
-      rgb(6 18 28 / 0.85) 100%
-    ),
-    linear-gradient(90deg, rgb(6 18 28 / 0.7), transparent 70%);
+:root[data-tema='claro'] .cabecera-ilustracion::before {
+  background: rgb(6 18 28 / 0.68);
 }
 
 .volver {
@@ -1581,9 +1570,8 @@ button {
   height: 40px;
   border-radius: 0;
   border: 1px solid rgb(255 255 255 / 0.2);
-  background: rgb(6 18 28 / 0.6);
+  background: rgb(6 18 28 / 0.78);
   color: var(--blanco);
-  backdrop-filter: blur(8px);
   cursor: pointer;
   transition: background var(--transicion);
 }
@@ -1660,9 +1648,8 @@ button {
   height: 44px;
   border-radius: 0;
   border: 1px solid rgb(255 255 255 / 0.2);
-  background: rgb(6 18 28 / 0.6);
+  background: rgb(6 18 28 / 0.78);
   color: var(--blanco);
-  backdrop-filter: blur(8px);
   cursor: pointer;
   transition:
     background var(--transicion),
@@ -1794,7 +1781,7 @@ button {
   font-size: 0.9rem;
   color: rgb(255 255 255 / 0.85);
   text-align: center;
-  background: linear-gradient(transparent, rgb(3 9 15 / 0.85));
+  background: rgb(3 9 15 / 0.78);
   pointer-events: none;
 }
 
@@ -2111,7 +2098,7 @@ button {
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--blanco);
-  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
+  background: var(--celeste-hondo);
   flex: none;
 }
 
@@ -2195,23 +2182,8 @@ button {
 .cabecera-captura,
 .cabecera-color {
   align-items: center;
-  background:
-    radial-gradient(
-      70% 90% at 80% 30%,
-      color-mix(in srgb, var(--acento-proyecto) 45%, transparent),
-      transparent 70%
-    ),
-    linear-gradient(135deg, #06121c, color-mix(in srgb, var(--acento-proyecto) 30%, #06121c));
-}
-
-.cabecera-captura::before,
-.cabecera-color::before {
-  background: linear-gradient(180deg, transparent 70%, var(--fondo) 100%);
-}
-
-:root[data-tema='claro'] .cabecera-captura::before,
-:root[data-tema='claro'] .cabecera-color::before {
-  background: linear-gradient(180deg, transparent 75%, rgb(6 18 28 / 0.4) 100%);
+  /* Bloque plano con el color del proyecto, como la portada con el celeste. */
+  background: color-mix(in srgb, var(--acento-proyecto) 55%, #0b2230);
 }
 
 .cabecera-captura .proyecto-cabecera-contenido {
@@ -2231,13 +2203,7 @@ button {
   border-radius: 0;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 30px 70px -25px rgb(0 0 0 / 0.75);
-  transform: perspective(1400px) rotateY(-6deg) rotateX(2deg);
-  transition: transform 500ms var(--curva);
-}
-
-.ventana:hover {
-  transform: none;
+  border: 1px solid rgb(255 255 255 / 0.6);
 }
 
 .ventana-barra {
@@ -2258,9 +2224,6 @@ button {
   .cabecera-captura .proyecto-cabecera-contenido {
     grid-template-columns: 1fr;
   }
-  .ventana {
-    transform: none;
-  }
 }
 
 /* Relleno desenfocado para imágenes que no llenan el carrusel */
@@ -2271,7 +2234,8 @@ button {
   width: calc(100% + 80px);
   height: calc(100% + 80px);
   object-fit: cover;
-  filter: blur(28px) brightness(0.55) saturate(1.2);
+  /* Plano, sin desenfoque: solo oscurece el hueco que la imagen no llena. */
+  filter: brightness(0.25) saturate(0.4);
 }
 
 .galeria-imagen {
@@ -2341,9 +2305,8 @@ button {
 }
 
 .contacto-proyectos h3 {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
   color: var(--texto-3);
   margin-bottom: 12px;
@@ -2377,7 +2340,6 @@ button {
   background: rgb(255 255 255 / 0.12);
   border-color: rgb(255 255 255 / 0.3);
   color: var(--blanco);
-  backdrop-filter: blur(8px);
 }
 
 .boton-cristal:hover {
@@ -2411,8 +2373,7 @@ button {
 }
 
 .proyecto-meta .colab {
-  backdrop-filter: blur(8px);
-  background: rgb(6 18 28 / 0.6);
+  background: rgb(6 18 28 / 0.78);
   color: var(--blanco);
   border-color: rgb(255 255 255 / 0.2);
 }
@@ -2482,13 +2443,7 @@ button {
   padding: 24px;
   border-radius: var(--radio);
   border: 1px solid color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 40%, var(--borde));
-  background:
-    radial-gradient(
-      80% 140% at 0% 0%,
-      color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent),
-      transparent 70%
-    ),
-    var(--superficie);
+  background: var(--superficie);
 }
 
 .participar-icono {
@@ -2680,8 +2635,8 @@ button {
 .campo textarea:focus,
 .campo select:focus {
   outline: none;
-  border-color: var(--celeste);
-  box-shadow: 0 0 0 3px var(--brillo);
+  border-color: var(--tinta);
+  box-shadow: 0 0 0 1px var(--tinta);
 }
 
 .opciones {
@@ -2921,7 +2876,7 @@ button {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--blanco);
-  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
+  background: var(--celeste-hondo);
 }
 
 @media (max-width: 760px) {
@@ -2986,8 +2941,7 @@ button {
   text-decoration: none;
   color: var(--texto);
   border: 1px solid color-mix(in srgb, #5865f2 45%, var(--borde));
-  background:
-    radial-gradient(80% 160% at 0% 50%, rgb(88 101 242 / 0.18), transparent 70%), var(--superficie);
+  background: var(--superficie);
   transition:
     transform var(--transicion),
     border-color var(--transicion);
@@ -3088,8 +3042,8 @@ button {
 }
 
 .persona:target {
-  border-color: var(--celeste);
-  box-shadow: 0 0 0 3px var(--brillo);
+  border-color: var(--tinta);
+  box-shadow: 0 0 0 1px var(--tinta);
 }
 
 .persona-cabecera {
@@ -3113,7 +3067,7 @@ button {
   font-weight: 700;
   font-size: 1.3rem;
   color: var(--blanco);
-  background: linear-gradient(135deg, var(--celeste), var(--celeste-intenso));
+  background: var(--celeste-hondo);
 }
 
 .persona :is(h2, h3) {
@@ -3233,8 +3187,8 @@ img.perfil-logo {
 }
 
 .perfil-lugar-actual > .perfil-logo {
-  border-color: var(--celeste);
-  box-shadow: 0 0 0 4px var(--brillo);
+  border-color: var(--celeste-hondo);
+  box-shadow: 0 0 0 2px var(--celeste-hondo);
 }
 
 .perfil-lugares h3 {
@@ -3248,9 +3202,9 @@ img.perfil-logo {
   padding: 1px 7px;
   border: 1px solid var(--borde);
   border-radius: 0;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   color: var(--texto-2);
   vertical-align: 2px;
 }
@@ -3398,13 +3352,7 @@ img.perfil-logo {
   margin-bottom: 24px;
   border-radius: var(--radio);
   border: 1px solid var(--borde);
-  background:
-    radial-gradient(
-      80% 140% at 0% 0%,
-      color-mix(in srgb, var(--celeste) 16%, transparent),
-      transparent 70%
-    ),
-    var(--superficie);
+  background: var(--superficie);
 }
 
 .miembro-foto {
@@ -3421,11 +3369,10 @@ img.perfil-logo {
 }
 
 .miembro-antetitulo {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
-  color: var(--enlace);
+  color: var(--celeste-hondo);
 }
 
 .miembro-cabecera h1 {
@@ -3790,8 +3737,9 @@ img.avatar {
   background: none;
   cursor: pointer;
   color: var(--texto-2);
-  font-weight: 500;
-  font-size: 0.95rem;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
   padding: 8px 12px;
   border-radius: 0;
   transition:
@@ -3802,8 +3750,9 @@ img.avatar {
 .submenu-boton:hover,
 .submenu.abierto .submenu-boton,
 .submenu-boton.actual {
-  color: var(--texto);
-  background: var(--superficie-2);
+  color: var(--tinta);
+  background: none;
+  box-shadow: inset 0 -2px 0 var(--celeste-hondo);
 }
 
 .submenu-boton svg {
@@ -4132,14 +4081,12 @@ body:has(dialog[open]) {
   border-radius: var(--radio);
   background: var(--superficie);
   border: 1px solid var(--borde);
-  box-shadow: var(--sombra);
   min-width: 0;
 }
 
 .vistazo-etiqueta {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
   color: var(--texto-3);
   margin-bottom: 6px;
@@ -4228,8 +4175,7 @@ body:has(dialog[open]) {
   padding: 8px 0;
   overflow-x: auto;
   scrollbar-width: none;
-  background: color-mix(in srgb, var(--fondo) 88%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--fondo);
   border-bottom: 1px solid var(--borde);
 }
 
@@ -4456,7 +4402,6 @@ body:has(dialog[open]) {
 
 .hoja::backdrop {
   background: rgb(3 9 15 / 0.7);
-  backdrop-filter: blur(4px);
 }
 
 .hoja-caja {
@@ -4892,9 +4837,8 @@ body:has(dialog[open]) {
 }
 
 .nav-etiqueta {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
   color: var(--texto-3);
   padding: 0 6px 0 2px;
@@ -4936,11 +4880,7 @@ body:has(dialog[open]) {
 /* Sección Productos de la portada: va después del taller y lleva fondo propio. */
 .seccion-productos {
   border-block: 1px solid var(--borde);
-  background: linear-gradient(
-    135deg,
-    color-mix(in srgb, var(--celeste) 12%, transparent),
-    transparent 60%
-  );
+  background: var(--fondo-alterno);
 }
 
 .seccion-productos .seccion-cabecera p:not(.antetitulo) {
@@ -4984,9 +4924,8 @@ body:has(dialog[open]) {
 
 .tarjeta-producto h2 {
   font-family: var(--fuente-titulos);
-  font-size: 1.35rem;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: 1.6rem;
+  line-height: 1.1;
 }
 
 .producto-version {
