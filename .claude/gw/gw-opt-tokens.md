@@ -63,6 +63,16 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   (`sed -n '/^## TARKOR/,/^## /p'`): entero, 17 lecturas y 152k arrastrados.
 - 2026-11-04, flujo 0.5.0 y `gw-portal` aplicar: 149 llamadas, 129k de contexto medio (suelo 113k, techo 158k), 5
   compactaciones; 9 subagentes, 9,8M de entrada.
+- **Prototipo publicado desde un subagente** (2026-11-08, T1): el `quickstart` de `Artifact` mete ~10k en el contexto
+  y se arrastró 308k; un subagente ligero (fork o encargo con el HTML) publica y devuelve solo la URL. Nota en
+  `AGENTS.md` (`prototype`).
+- **Barrido de estilos con plan cerrado, al modelo barato** (2026-11-08, T2): `global.css` se leyó 44 veces (410k) y
+  hubo 113 llamadas de Bash con el modelo grande; aplicar una hoja de estilos o una decisión de diseño ya escrita va
+  con la fila de `selector.cases` de «Página o sección nueva con el plan cerrado»: un subagente ligero por bloque de
+  la hoja, que devuelve el diff; la sesión revisa el diff y las capturas.
+- **Hoja de contacto de páginas** (2026-11-08, T3): `npm run capturas -- --hoja <ruta> <ruta>…` deja una imagen con N
+  páginas en miniatura (escritorio y móvil, claro y oscuro); la captura entera, solo de la página sospechosa;
+  `npm run medir` da cortes y desbordes en texto. 17 capturas de página entera costaron ~570k arrastrados.
 
 ## Costes conocidos
 
@@ -102,6 +112,7 @@ carpeta del portal. `measure.py` y `recover.py` lo buscan también en las carpet
   138k), 6 compactaciones; 13 capturas (189k arrastrados); un subagente en el modelo grande, 1,6M de entrada y 76k de
   arranque (repos hermanos cargados).
 
+- 2026-11-08, identidad visual: 120 llamadas, 132k de contexto medio (suelo 98k, techo 154k).
 - 2026-10-27, ronda de móvil (fase 2, desde 305f3cf): 243 llamadas, 121k de contexto medio (suelo 102k, techo 142k),
   8 compactaciones; Bash 1,31M arrastrados, Read 912k (39 imágenes); un subagente general en el modelo grande, 2,38M
   de entrada. La sesión entera: 1.337 llamadas, 50 compactaciones.

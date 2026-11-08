@@ -83,6 +83,27 @@ Se generan en local, así que la lista es larga a propósito; lo que manda es la
 familia. Mientras no existan, la web usa el sustituto de la columna «Hasta entonces». Cada recurso entregado se apunta
 aquí con fecha y ruta.
 
+### Dónde va cada recurso
+
+Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números son los de las tablas de abajo; los nombres de archivo que no fija otro sitio (`rosa-vientos.svg`, `sello.svg`, `gv-logo-negativo.svg`, los de `iconos/`) son la propuesta: se puede cambiar al recibirlos.
+
+| # | Destino | Orden |
+|---|---|---|
+| 1 | `public/marca/gv-logo.svg` y `public/marca/gv-logo-512.png` (favicon 32 y `apple-touch-icon` 180 en `public/marca/`) | Vectorizar el PNG de 1024 px a SVG; exportar el PNG de 512 |
+| 1b | `public/marca/gv-logo-negativo.svg` | Vectorizar |
+| 2 | `public/marca/isobatas.svg` (sustituye a las provisionales de `scripts/isobatas-provisionales.py`) | Copiar; quitar o dejar de usar el script provisional |
+| 3 | `public/marca/galivelop-portal.jpg` (1200×630, referenciada en `index.html`) | Copiar y comprobar la referencia de `og:image` |
+| 4, 5 | `public/marca/rosa-vientos.svg`, `public/marca/sello.svg` | Vectorizar |
+| 6 | `public/proyectos/<slug>/portada.webp` (+ `portada-mini.webp`) | Convertir a WebP, grande y `-mini` |
+| 7, 8, 9, 14 | `public/marca/iconos/<nombre>.svg` | Vectorizar la hoja y recortar cada icono (trazo uniforme, `currentColor`) |
+| 10, 11, 13, 16, 18, 19, 21, 22 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel |
+| 12, 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
+| 15 | Decidir al recibirlo: las entradas de «Próximamente» aún no tienen carpeta en `public/proyectos/` | Convertir a WebP |
+| 23 | `public/proyectos/<slug>/icono.png`, el `icono` de la ficha | Copiar a 512×512 |
+| 24 | `public/proyectos/<slug>/og-fuente.png` | `python3 tools/og/generar.py` genera el `og.jpg`; `src/data/og.test.ts` comprueba la huella |
+
+La vista previa (`og`) de un proyecto es siempre `og-fuente.png` + `python3 tools/og/generar.py`, nunca el `og.jpg` a mano.
+
 ### Cómo pedirlas
 
 - **Un solo estilo para todo:** cada prompt termina con el bloque común de abajo. Si el generador admite imagen de

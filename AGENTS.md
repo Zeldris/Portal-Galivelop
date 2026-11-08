@@ -167,7 +167,9 @@ va aquí, en `.claude/gw.json` (`selector.cases`) o en `.claude/gw/gw-opt-tokens
   compartidos.
 - `prototype`: sobre todo la rama de UI (variantes de una sección, de la galería o de una tarjeta). Con la
   herramienta `Artifact`, publícalo y pon el enlace (el usuario lo abre desde el móvil); si no, `SendUserFile`. Las
-  variantes se borran al elegir; el veredicto va a la bitácora.
+  variantes se borran al elegir; el veredicto va a la bitácora. **Con `Artifact` lo publica un subagente** (fork o
+  encargo con el HTML) que devuelve solo la URL: la respuesta del `quickstart` (~10k tokens) se arrastra en la
+  sesión principal hasta la compactación.
 - `grilling`: lo decidido va a la bitácora o a `docs/desarrollo.md`; se respeta el mensaje de la marca y estas
   reglas. Las referencias de diseño (`designReferences`) se buscan con `WebSearch` y se cita de dónde sale cada
   recomendación.

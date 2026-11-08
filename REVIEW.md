@@ -65,6 +65,11 @@ de git; aquí está lo que pide criterio. Cada regla acaba en `(check: …)`, co
 
 ## Estilos y textos
 
+- Un cambio visible sigue las reglas de `docs/marca.md`. Lo mecánico lo comprueba `src/estilos/marca.test.ts`
+  (degradados, desenfoques, sombras difusas, esquinas redondas); el revisor mira lo de criterio: los datos (fechas,
+  versiones, etiquetas, números) en `--datos` (mono, mayúsculas pequeñas con tracking), el celeste solo en bloques
+  planos grandes, chaflán en tarjetas y botones, el foco como línea de tinta y el texto en blanco sobre
+  `--celeste-hondo`. (criterio; check: `marca.test.ts` para lo mecánico)
 - Un componente que usan dos páginas vive en `src/components/`, no dentro de una de ellas (`TarjetaProducto`
   empezó en `pages/Productos.tsx` y lo usaba el inicio, 2026-10-27). (criterio)
 - Una clase de `src/estilos/global.css` que usan dos componentes va acotada por su contenedor
