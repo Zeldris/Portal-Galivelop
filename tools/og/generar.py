@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Genera la imagen de vista previa (og.jpg, 1200x630, JPEG) de cada proyecto a partir de su portada.
 
+Si junto a la portada hay un `og-fuente.png` (o `.jpg`), una imagen hecha para redes (1200x630, p. ej. del generador de
+imágenes de Galivelop), la vista previa sale de ese archivo y no de la portada.
+
 Las redes (Facebook, LinkedIn, WhatsApp…) documentan JPEG/PNG y 1.91:1; la portada es WebP con otra proporción. Una
 portada más ancha que 1.91:1 (una ilustración apaisada) se recorta por los lados; una más alta se encaja entera (sin
 cortar texto ni diagramas) sobre un fondo del color medio de sus bordes.
-Cada og.jpg lleva en su comentario JPEG la huella de la portada de la que sale («portada:<sha1>»): src/data/og.test.ts
-falla si la portada cambia y nadie regenera la vista previa.
+Cada og.jpg lleva en su comentario JPEG la huella del archivo del que sale («portada:<sha1>» u «og-fuente:<sha1>»):
+src/data/og.test.ts falla si ese archivo cambia y nadie regenera la vista previa.
 Uso, tras cambiar una portada: python3 tools/og/generar.py   (necesita Pillow; escribe public/proyectos/<slug>/og.jpg)
 """
 import hashlib
@@ -27,8 +30,17 @@ def borde(img: Image.Image) -> tuple[int, ...]:
     return tuple(round(sum(m[c] for m in medias) / len(medias)) for c in range(3))
 
 
-def huella(portada: Path) -> bytes:
-    return b'portada:' + hashlib.sha1(portada.read_bytes()).hexdigest().encode()
+FUENTES = ('og-fuente.png', 'og-fuente.jpg')
+
+
+def origen(portada: Path) -> Path:
+    """La imagen hecha para redes si existe junto a la portada; si no, la portada."""
+    return next((portada.parent / f for f in FUENTES if (portada.parent / f).exists()), portada)
+
+
+def huella(archivo: Path) -> bytes:
+    tipo = b'og-fuente' if archivo.name in FUENTES else b'portada'
+    return tipo + b':' + hashlib.sha1(archivo.read_bytes()).hexdigest().encode()
 
 
 def generar(portada: Path, destino: Path) -> None:
@@ -57,7 +69,7 @@ def main() -> int:
         datos = json.loads(ficha.read_text(encoding='utf-8'))
         portada = RAIZ / 'public' / datos['portada']['src']
         destino = portada.parent / 'og.jpg'
-        generar(portada, destino)
+        generar(origen(portada), destino)
         print(destino.relative_to(RAIZ))
     return 0
 

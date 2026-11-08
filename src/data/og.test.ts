@@ -27,23 +27,26 @@ function comentarioJpeg(b: Buffer): string | null {
 }
 
 // La vista previa en redes de cada ficha: scripts/paginas-estaticas.mjs usa og.jpg y, si falta, la portada en WebP sin
-// medidas, que Facebook no acepta. Se genera con `python3 tools/og/generar.py`, que deja en el JPEG la huella de la
-// portada: si la portada cambia y la vista previa no se regenera, la tarjeta en redes enseñaría la imagen vieja.
+// medidas, que Facebook no acepta. Se genera con `python3 tools/og/generar.py` a partir de `og-fuente.png` (o `.jpg`,
+// una imagen hecha para redes) si existe junto a la portada, y si no de la portada; deja en el JPEG la huella de ese
+// origen: si cambia y la vista previa no se regenera, la tarjeta en redes enseñaría la imagen vieja.
 describe('vista previa de cada proyecto', () => {
   it.each(proyectos.map((p) => [p.slug, p.portada.src]))(
-    '%s tiene og.jpg de 1200×630, al día con su portada',
+    '%s tiene og.jpg de 1200×630, al día con su origen',
     (_, portada) => {
-      const ruta = `public/${portada.replace(/[^/]+$/, '')}og.jpg`;
+      const carpeta = `public/${portada.replace(/[^/]+$/, '')}`;
+      const ruta = `${carpeta}og.jpg`;
       expect(existsSync(ruta), `falta ${ruta}: python3 tools/og/generar.py`).toBe(true);
       const og = readFileSync(ruta);
       expect(medidasJpeg(og)).toEqual([1200, 630]);
-      const huella = `portada:${createHash('sha1')
-        .update(readFileSync(`public/${portada}`))
+      const fuente = ['og-fuente.png', 'og-fuente.jpg'].find((f) => existsSync(carpeta + f));
+      const origen = fuente ? `${carpeta}${fuente}` : `public/${portada}`;
+      const huella = `${fuente ? 'og-fuente' : 'portada'}:${createHash('sha1')
+        .update(readFileSync(origen))
         .digest('hex')}`;
-      expect(
-        comentarioJpeg(og),
-        `${ruta} no sale de la portada actual: python3 tools/og/generar.py`,
-      ).toBe(huella);
+      expect(comentarioJpeg(og), `${ruta} no sale de ${origen}: python3 tools/og/generar.py`).toBe(
+        huella,
+      );
     },
   );
 });

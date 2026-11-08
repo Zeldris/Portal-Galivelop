@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 
 type Tema = 'claro' | 'oscuro';
 const CLAVE_GUARDADA = 'galivelop.tema';
+/** Color de la barra del navegador: el de la cabecera (`--superficie`) en cada tema. Mismos valores que en index.html. */
+const COLOR_BARRA: Record<Tema, string> = { claro: '#ffffff', oscuro: '#111f29' };
 
 function temaInicial(): Tema {
   try {
@@ -18,6 +20,7 @@ export function useTema() {
 
   useEffect(() => {
     document.documentElement.dataset.tema = tema;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', COLOR_BARRA[tema]);
   }, [tema]);
 
   const alternar = () => {

@@ -34,7 +34,9 @@ cuando su repositorio es público; si es privado, no se enlaza. Además, el port
   `src/components/Logo.tsx`). El travesaño de la G se prolonga hasta el brazo de la V.
 - Colores: el azul celeste y el blanco de la bandera gallega, sin su composición:
   `#1AA6DF` (celeste), `#0083C1` (celeste intenso), `#FFFFFF`.
-- Tipografías: Sora (títulos) e Inter (texto), servidas desde el propio sitio.
+- Tipografías: Big Shoulders Display (títulos, `--fuente-titulos`), Literata (texto, `--fuente-texto`) y JetBrains
+  Mono (datos: etiquetas, fechas, cifras; `--fuente-datos`), servidas desde el propio sitio (`@fontsource-variable`).
+  La hoja de estilos de la marca completa: [`marca.md`](marca.md).
 - Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630, captura de la
   portada), declarada en `index.html` con URL absolutas (X y otras redes no aceptan rutas relativas).
   Si cambia la portada, rehacer la captura y nada más: `scripts/paginas-estaticas.mjs` pone en cada página la
@@ -274,7 +276,9 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   el job `avisar` de `pages.yml` manda después por IndexNow (Bing, Yandex, Seznam, Naver…) las páginas nuevas o con
   otro `lastmod` (`node scripts/indexnow.mjs cambios`, tras `npm run build`, enseña cuáles serían).
 - **Vista previa en redes:** `og:locale` por idioma; la de cada proyecto es `public/proyectos/<slug>/og.jpg`
-  (1200×630, JPEG), que se genera desde la portada con `python3 tools/og/generar.py` (Pillow) al cambiarla. Una
+  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow) desde `og-fuente.png` (una imagen hecha para
+  redes, p. ej. del generador de imágenes de Galivelop) si está junto a la portada, y si no desde la portada; se
+  vuelve a correr al cambiar cualquiera de las dos. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
 - **Título y descripción:** los de cada página van en `FIJAS` del script; los de un proyecto salen de su lema y su

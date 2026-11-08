@@ -46,6 +46,11 @@ def val(i, j):
     return v[j * cols + i]
 
 
+def cruce(t, v1, v2):
+    """Dónde corta el nivel t la arista entre dos valores, de 0 a 1."""
+    return (t - v1) / (v2 - v1)
+
+
 print(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" fill="none" stroke="#fff" stroke-linecap="round">')
 print("<!-- Isobatas provisionales (ruido). Las definitivas salen de EMODnet; ver docs/marca.md. -->")
 for k in range(1, NIVELES):
@@ -57,18 +62,14 @@ for k in range(1, NIVELES):
             a, b, c, d = val(i, j), val(i + 1, j), val(i + 1, j + 1), val(i, j + 1)
             x, y = i * PASO, j * PASO
             p = []
-
-            def e(v1, v2):
-                return (t - v1) / (v2 - v1)
-
             if (a < t) != (b < t):
-                p.append((x + e(a, b) * PASO, y))
+                p.append((x + cruce(t, a, b) * PASO, y))
             if (b < t) != (c < t):
-                p.append((x + PASO, y + e(b, c) * PASO))
+                p.append((x + PASO, y + cruce(t, b, c) * PASO))
             if (c < t) != (d < t):
-                p.append((x + (1 - e(c, d)) * PASO, y + PASO))
+                p.append((x + (1 - cruce(t, c, d)) * PASO, y + PASO))
             if (d < t) != (a < t):
-                p.append((x, y + (1 - e(d, a)) * PASO))
+                p.append((x, y + (1 - cruce(t, d, a)) * PASO))
             for q in range(0, len(p) - 1, 2):
                 segs.append(f"M{p[q][0]:.0f} {p[q][1]:.0f}L{p[q+1][0]:.0f} {p[q+1][1]:.0f}")
     print(f'<path stroke-width="{ancho}" stroke-opacity="{alfa}" d="{"".join(segs)}"/>')

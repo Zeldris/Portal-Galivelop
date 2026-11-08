@@ -19,6 +19,7 @@
   --radio-sm: 0;
   --chaflan: 14px;
   --chaflan-grande: 28px;
+  --chaflan-pequeno: 10px; /* botones */
   --reticula-paso: 24px;
   --ancho: 1180px;
   /* Curva de toda transición: decelera al llegar (nada de ease/linear del navegador). 200 ms como mínimo. */
@@ -131,40 +132,15 @@ h3 {
   text-wrap: balance;
 }
 
+/* Sin el margen del navegador: si no, los títulos de las tarjetas bajan respecto a su icono o su número. */
 h4 {
+  margin: 0;
   font-family: var(--fuente-titulos);
   font-weight: 700;
   font-size: 1.35rem;
   line-height: 1.1;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-}
-
-/* Datos: antetítulos, etiquetas, fechas, versiones, escalas. */
-.datos {
-  font: var(--datos);
-  letter-spacing: var(--datos-espaciado);
-  text-transform: uppercase;
-}
-
-/* Chaflán en la esquina superior derecha, como la hoja doblada de un cuaderno. */
-.chaflan {
-  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
-}
-
-.chaflan-grande {
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--chaflan-grande)) 0,
-    100% var(--chaflan-grande),
-    100% 100%,
-    0 100%
-  );
-}
-
-/* Sin el margen del navegador: si no, los títulos de las tarjetas bajan respecto a su icono o su número. */
-h4 {
-  margin: 0;
 }
 
 p {
@@ -433,7 +409,13 @@ button {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-pequeno)) 0,
+    100% var(--chaflan-pequeno),
+    100% 100%,
+    0 100%
+  );
   transition:
     transform var(--transicion),
     background var(--transicion),
