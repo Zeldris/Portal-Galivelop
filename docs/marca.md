@@ -36,6 +36,10 @@ Lo que nos separa de las webs genéricas hechas con IA. Cada regla pasa a compro
    cambios de color. Nada que se mueva solo, salvo la animación del flujo, con su reposo para `prefers-reduced-motion`.
 10. **Contraste AA sobre el celeste:** sobre `--celeste-hondo` el texto va en blanco; sobre `--celeste` claro solo
     van etiquetas grandes o el granito.
+11. **Los diagramas siguen la misma hoja** (`docs/diagramas/*.svg`, exportados con `scripts/diagramas-webp.mjs`): papel con
+    retícula, cajas blancas con chaflán y filete, títulos en Big Shoulders Display, etiquetas en JetBrains Mono, solo
+    colores de la paleta (celeste hondo, alga y tinta-2 para las categorías; celeste para lo que pasa, tinta para lo
+    rechazado) y nada de degradados. Ningún número que cambie cada semana (la cifra de pruebas va en la ficha).
 
 ## Tokens
 

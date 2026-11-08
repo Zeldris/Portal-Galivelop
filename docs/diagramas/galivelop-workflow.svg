@@ -1,105 +1,105 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
-<!-- Fuente del diagrama de la ficha de Galivelop-workflow. Se exporta a public/proyectos/galivelop-workflow/
-     portada.webp (1600x1000) y portada-mini.webp (720x450) con Chromium. Fuentes: Inter y DejaVu Sans Mono. -->
+<!-- Fuente de un diagrama de la ficha de Galivelop-workflow, con la hoja de estilos de docs/marca.md (papel,
+     retícula de 24 px, tinta, celeste hondo, chaflanes). Se exporta a public/proyectos/galivelop-workflow/
+     <nombre>.webp (1600x900) y <nombre>-mini.webp (720x405) con Chromium (.claude/skills/gw-portal/proyectos.md).
+     Fuentes: Big Shoulders Display (títulos) y JetBrains Mono (el resto), las de la web. -->
 <defs>
-  <radialGradient id="fondo" cx="0.1" cy="0" r="0.9">
-    <stop offset="0" stop-color="#0e2a42"/><stop offset="0.6" stop-color="#08151f"/><stop offset="1" stop-color="#06121b"/>
-  </radialGradient>
-  <pattern id="rejilla" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.025"/>
+  <pattern id="rejilla" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M24 0H0V24" fill="none" stroke="#e3edf3" stroke-width="1"/>
   </pattern>
   <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-    <path d="M0 0L10 5L0 10z" fill="#38b6e8"/></marker>
+    <path d="M0 0L10 5L0 10z" fill="#0072a8"/></marker>
   <marker id="fg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-    <path d="M0 0L10 5L0 10z" fill="#8a9bb0"/></marker>
+    <path d="M0 0L10 5L0 10z" fill="#4a5c69"/></marker>
   <filter id="brillo" x="-20%" y="-20%" width="140%" height="140%">
     <feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter>
 </defs>
 <style>
-  .t { font-family: Inter, sans-serif; font-weight: 800; }
-  .m { font-family: 'DejaVu Sans Mono', monospace; }
+  .t { font-family: 'Big Shoulders Display Variable', 'Big Shoulders Display', sans-serif; font-weight: 800; letter-spacing: 0.01em; }
+  .s { font-family: 'Literata Variable', Literata, serif; font-weight: 600; }
+  .m { font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; }
 </style>
-<rect width="1600" height="1000" fill="url(#fondo)"/>
+<rect width="1600" height="1000" fill="#fbfcfd"/>
 <rect width="1600" height="1000" fill="url(#rejilla)"/>
-<text x="90" y="128" class="t" font-size="68" fill="#eef6fb">galivelop<tspan fill="#38b6e8">-</tspan>workflow</text>
-<text x="92" y="178" class="m" font-size="24" fill="#8a9bb0">v0.5.0 · AGENTS.md · skills · hooks</text>
+<text x="90" y="128" class="t" font-size="68" fill="#13212b">GALIVELOP<tspan fill="#0072a8">-</tspan>WORKFLOW</text>
+<text x="92" y="178" class="m" font-size="24" fill="#4a5c69">v0.5.1 · AGENTS.md · skills · hooks</text>
 
-<rect x="1222" y="78" width="18" height="18" rx="5" fill="#38b6e8" fill-opacity="0.18" stroke="#38b6e8" stroke-width="2"/>
-<text x="1252" y="92" class="m" font-size="20" fill="#c9d6e2">galivelop</text>
-<rect x="1222" y="114" width="18" height="18" rx="5" fill="#f2b34a" fill-opacity="0.18" stroke="#f2b34a" stroke-width="2"/>
-<text x="1252" y="128" class="m" font-size="20" fill="#c9d6e2">mattpocock/skills</text>
-<rect x="1222" y="150" width="18" height="18" rx="5" fill="#8a9bb0" fill-opacity="0.18" stroke="#8a9bb0" stroke-width="2"/>
-<text x="1252" y="164" class="m" font-size="20" fill="#c9d6e2">Claude Code</text>
-<rect x="90" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="112" y="292" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="112" y="346" class="m" font-size="24" font-weight="bold" fill="#eef6fb">handoff.md</text>
-<text x="112" y="378" class="m" font-size="17" fill="#8a9bb0">recover.py</text>
-<rect x="386" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="408" y="292" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="408" y="346" class="m" font-size="26" font-weight="bold" fill="#eef6fb">/gw-selector</text>
-<text x="408" y="378" class="m" font-size="17" fill="#8a9bb0">skill · model</text>
-<rect x="682" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#f2b34a" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="704" y="292" width="34" height="5" rx="2.5" fill="#f2b34a"/>
-<text x="704" y="346" class="m" font-size="26" font-weight="bold" fill="#eef6fb">/grilling</text>
-<text x="704" y="378" class="m" font-size="17" fill="#8a9bb0">research · prototype</text>
-<rect x="978" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="1000" y="292" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="1000" y="346" class="m" font-size="26" font-weight="bold" fill="#eef6fb">dealer</text>
-<text x="1000" y="378" class="m" font-size="17" fill="#8a9bb0">orchestrate ×n</text>
-<rect x="1274" y="268" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="1296" y="292" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="1296" y="346" class="m" font-size="24" font-weight="bold" fill="#eef6fb">commit+push</text>
-<text x="1296" y="378" class="m" font-size="17" fill="#8a9bb0">pre-commit/push</text>
-<line x1="336" y1="336.0" x2="376" y2="336.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="632" y1="336.0" x2="672" y2="336.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="928" y1="336.0" x2="968" y2="336.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="1224" y1="336.0" x2="1264" y2="336.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<rect x="90" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="112" y="516" width="34" height="5" rx="2.5" fill="#8a9bb0"/>
-<circle cx="292" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
-<text x="292" y="528" text-anchor="middle" class="m" font-size="17" fill="#c9d6e2">1</text>
-<text x="112" y="570" class="m" font-size="24" font-weight="bold" fill="#eef6fb">/code-review</text>
-<text x="112" y="602" class="m" font-size="17" fill="#8a9bb0">REVIEW.md</text>
-<rect x="386" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="408" y="516" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<circle cx="588" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
-<text x="588" y="528" text-anchor="middle" class="m" font-size="17" fill="#c9d6e2">2</text>
-<text x="408" y="570" class="m" font-size="22" font-weight="bold" fill="#eef6fb">/gw-opt-tokens</text>
-<text x="408" y="602" class="m" font-size="17" fill="#8a9bb0">measure.py</text>
-<rect x="682" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#f2b34a" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="704" y="516" width="34" height="5" rx="2.5" fill="#f2b34a"/>
-<circle cx="884" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
-<text x="884" y="528" text-anchor="middle" class="m" font-size="17" fill="#c9d6e2">2</text>
-<text x="704" y="570" class="m" font-size="26" font-weight="bold" fill="#eef6fb">/retro</text>
-<text x="704" y="602" class="m" font-size="17" fill="#8a9bb0">retro.md</text>
-<rect x="978" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<rect x="1000" y="516" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<circle cx="1180" cy="522" r="15" fill="none" stroke="#8a9bb0" stroke-opacity="0.7" stroke-width="1.5"/>
-<text x="1180" y="528" text-anchor="middle" class="m" font-size="17" fill="#c9d6e2">3</text>
-<text x="1000" y="570" class="m" font-size="24" font-weight="bold" fill="#eef6fb">reviewed.sh</text>
-<text x="1000" y="602" class="m" font-size="17" fill="#8a9bb0">pre-push ✓</text>
-<rect x="1274" y="492" width="236" height="136" rx="20" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="1" stroke-width="2.5" filter="url(#brillo)"/>
-<rect x="1296" y="516" width="34" height="5" rx="2.5" fill="#38b6e8"/>
-<text x="1296" y="570" class="m" font-size="26" font-weight="bold" fill="#eef6fb">main</text>
-<text x="1296" y="602" class="m" font-size="17" fill="#8a9bb0">✓ CI</text>
-<line x1="336" y1="560.0" x2="376" y2="560.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="632" y1="560.0" x2="672" y2="560.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="928" y1="560.0" x2="968" y2="560.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="1224" y1="560.0" x2="1264" y2="560.0" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<path d="M1392.0 410 V434.0 q0 14 -14 14 H222.0 q-14 0 -14 14 V482" fill="none" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<rect x="330" y="760" width="198" height="56" rx="14" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<text x="429.0" y="797" text-anchor="middle" class="m" font-size="24" font-weight="bold" fill="#eef6fb">gw-harvest</text>
-<rect x="640" y="760" width="138" height="56" rx="14" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<text x="709.0" y="797" text-anchor="middle" class="m" font-size="24" font-weight="bold" fill="#eef6fb">vX.Y.Z</text>
-<rect x="900" y="760" width="183" height="56" rx="14" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.55" stroke-width="2"/>
-<text x="991.5" y="797" text-anchor="middle" class="m" font-size="24" font-weight="bold" fill="#eef6fb">gw-update</text>
-<line x1="528" y1="788" x2="630" y2="788" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<line x1="780" y1="788" x2="890" y2="788" stroke="#38b6e8" stroke-width="3" marker-end="url(#fa)"/>
-<path d="M800.0 634 V730 q0 -0 0 0" fill="none" stroke="#38b6e8" stroke-width="2" stroke-dasharray="6 7"/>
+<path d="M1222 78H1240V96H1222Z" fill="#0072a8" stroke-width="2"/>
+<text x="1252" y="92" class="m" font-size="20" fill="#13212b">galivelop</text>
+<path d="M1222 114H1240V132H1222Z" fill="#5d7a6a" stroke-width="2"/>
+<text x="1252" y="128" class="m" font-size="20" fill="#13212b">mattpocock/skills</text>
+<path d="M1222 150H1240V168H1222Z" fill="#4a5c69" stroke-width="2"/>
+<text x="1252" y="164" class="m" font-size="20" fill="#13212b">Claude Code</text>
+<path d="M90 268H312L326 282V404H90Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M112 292H146V297H112Z" fill="#0072a8"/>
+<text x="112" y="346" class="m" font-size="24" font-weight="bold" fill="#13212b">handoff.md</text>
+<text x="112" y="378" class="m" font-size="17" fill="#4a5c69">recover.py</text>
+<path d="M386 268H608L622 282V404H386Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M408 292H442V297H408Z" fill="#0072a8"/>
+<text x="408" y="346" class="m" font-size="26" font-weight="bold" fill="#13212b">/gw-selector</text>
+<text x="408" y="378" class="m" font-size="17" fill="#4a5c69">skill · model</text>
+<path d="M682 268H904L918 282V404H682Z" fill="#ffffff" stroke="#5d7a6a" stroke-width="2"/>
+<path d="M704 292H738V297H704Z" fill="#5d7a6a"/>
+<text x="704" y="346" class="m" font-size="26" font-weight="bold" fill="#13212b">/grilling</text>
+<text x="704" y="378" class="m" font-size="17" fill="#4a5c69">research · prototype</text>
+<path d="M978 268H1200L1214 282V404H978Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M1000 292H1034V297H1000Z" fill="#0072a8"/>
+<text x="1000" y="346" class="m" font-size="26" font-weight="bold" fill="#13212b">dealer</text>
+<text x="1000" y="378" class="m" font-size="17" fill="#4a5c69">orchestrate ×n</text>
+<path d="M1274 268H1496L1510 282V404H1274Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M1296 292H1330V297H1296Z" fill="#0072a8"/>
+<text x="1296" y="346" class="m" font-size="24" font-weight="bold" fill="#13212b">commit+push</text>
+<text x="1296" y="378" class="m" font-size="17" fill="#4a5c69">pre-commit/push</text>
+<line x1="336" y1="336.0" x2="376" y2="336.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="632" y1="336.0" x2="672" y2="336.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="928" y1="336.0" x2="968" y2="336.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="1224" y1="336.0" x2="1264" y2="336.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M90 492H312L326 506V628H90Z" fill="#ffffff" stroke="#4a5c69" stroke-width="2"/>
+<path d="M112 516H146V521H112Z" fill="#4a5c69"/>
+<circle cx="292" cy="522" r="15" fill="none" stroke="#4a5c69" stroke-width="1.5"/>
+<text x="292" y="528" text-anchor="middle" class="m" font-size="17" fill="#13212b">1</text>
+<text x="112" y="570" class="m" font-size="24" font-weight="bold" fill="#13212b">/code-review</text>
+<text x="112" y="602" class="m" font-size="17" fill="#4a5c69">REVIEW.md</text>
+<path d="M386 492H608L622 506V628H386Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M408 516H442V521H408Z" fill="#0072a8"/>
+<circle cx="588" cy="522" r="15" fill="none" stroke="#4a5c69" stroke-width="1.5"/>
+<text x="588" y="528" text-anchor="middle" class="m" font-size="17" fill="#13212b">2</text>
+<text x="408" y="570" class="m" font-size="22" font-weight="bold" fill="#13212b">/gw-opt-tokens</text>
+<text x="408" y="602" class="m" font-size="17" fill="#4a5c69">measure.py</text>
+<path d="M682 492H904L918 506V628H682Z" fill="#ffffff" stroke="#5d7a6a" stroke-width="2"/>
+<path d="M704 516H738V521H704Z" fill="#5d7a6a"/>
+<circle cx="884" cy="522" r="15" fill="none" stroke="#4a5c69" stroke-width="1.5"/>
+<text x="884" y="528" text-anchor="middle" class="m" font-size="17" fill="#13212b">2</text>
+<text x="704" y="570" class="m" font-size="26" font-weight="bold" fill="#13212b">/retro</text>
+<text x="704" y="602" class="m" font-size="17" fill="#4a5c69">retro.md</text>
+<path d="M978 492H1200L1214 506V628H978Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M1000 516H1034V521H1000Z" fill="#0072a8"/>
+<circle cx="1180" cy="522" r="15" fill="none" stroke="#4a5c69" stroke-width="1.5"/>
+<text x="1180" y="528" text-anchor="middle" class="m" font-size="17" fill="#13212b">3</text>
+<text x="1000" y="570" class="m" font-size="24" font-weight="bold" fill="#13212b">reviewed.sh</text>
+<text x="1000" y="602" class="m" font-size="17" fill="#4a5c69">pre-push ✓</text>
+<path d="M1274 492H1496L1510 506V628H1274Z" fill="#ffffff" stroke="#0072a8" stroke-width="2.5" filter="url(#brillo)"/>
+<path d="M1296 516H1330V521H1296Z" fill="#0072a8"/>
+<text x="1296" y="570" class="m" font-size="26" font-weight="bold" fill="#13212b">main</text>
+<text x="1296" y="602" class="m" font-size="17" fill="#4a5c69">✓ CI</text>
+<line x1="336" y1="560.0" x2="376" y2="560.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="632" y1="560.0" x2="672" y2="560.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="928" y1="560.0" x2="968" y2="560.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="1224" y1="560.0" x2="1264" y2="560.0" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M1392.0 410 V434.0 q0 14 -14 14 H222.0 q-14 0 -14 14 V482" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M330 760H514L528 774V816H330Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<text x="429.0" y="797" text-anchor="middle" class="m" font-size="24" font-weight="bold" fill="#13212b">gw-harvest</text>
+<path d="M640 760H764L778 774V816H640Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<text x="709.0" y="797" text-anchor="middle" class="m" font-size="24" font-weight="bold" fill="#13212b">vX.Y.Z</text>
+<path d="M900 760H1069L1083 774V816H900Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<text x="991.5" y="797" text-anchor="middle" class="m" font-size="24" font-weight="bold" fill="#13212b">gw-update</text>
+<line x1="528" y1="788" x2="630" y2="788" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<line x1="780" y1="788" x2="890" y2="788" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M800.0 634 V730 q0 -0 0 0" fill="none" stroke="#0072a8" stroke-width="2" stroke-dasharray="6 7"/>
 <path d="M800.0 730 V744 q0 14 -14 14 H444" fill="none" stroke="none"/>
-<path d="M800.0 634 V726 q0 14 -14 14 H442 q-14 0 -14 14 V752" fill="none" stroke="#38b6e8" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#fa)"/>
-<path d="M991.5 822 V856 q0 14 -14 14 H56 q-14 0 -14 -14 V350.0 q0 -14 14 -14 H80" fill="none" stroke="#38b6e8" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#fa)"/>
-<text x="1119" y="795" class="m" font-size="20" fill="#8a9bb0">+ gw-init · gw-doctor</text>
-<text x="800.0" y="950" text-anchor="middle" class="m" font-size="22" fill="#8a9bb0">claude·1 <tspan fill="#38b6e8">→</tspan> docs/handoff.md <tspan fill="#38b6e8">→</tspan> claude·2</text>
+<path d="M800.0 634 V726 q0 14 -14 14 H442 q-14 0 -14 14 V752" fill="none" stroke="#0072a8" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#fa)"/>
+<path d="M991.5 822 V856 q0 14 -14 14 H56 q-14 0 -14 -14 V350.0 q0 -14 14 -14 H80" fill="none" stroke="#0072a8" stroke-width="2" stroke-dasharray="6 7" marker-end="url(#fa)"/>
+<text x="1119" y="795" class="m" font-size="20" fill="#4a5c69">+ gw-init · gw-doctor</text>
+<text x="800.0" y="950" text-anchor="middle" class="m" font-size="22" fill="#4a5c69">claude·1 <tspan fill="#0072a8">→</tspan> docs/handoff.md <tspan fill="#0072a8">→</tspan> claude·2</text>
 </svg>

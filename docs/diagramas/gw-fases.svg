@@ -1,98 +1,97 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
-<!-- Fuente de un diagrama de la ficha de Galivelop-workflow. Se exporta a public/proyectos/galivelop-workflow/
-     <nombre>.webp (1600x900) y <nombre>-mini.webp (720x405) con Chromium. Fuentes: Inter y DejaVu Sans Mono. -->
+<!-- Fuente de un diagrama de la ficha de Galivelop-workflow, con la hoja de estilos de docs/marca.md (papel,
+     retícula de 24 px, tinta, celeste hondo, chaflanes). Se exporta a public/proyectos/galivelop-workflow/
+     <nombre>.webp (1600x900) y <nombre>-mini.webp (720x405) con Chromium (.claude/skills/gw-portal/proyectos.md).
+     Fuentes: Big Shoulders Display (títulos) y JetBrains Mono (el resto), las de la web. -->
 <defs>
-  <radialGradient id="fondo" cx="0.1" cy="0" r="0.9">
-    <stop offset="0" stop-color="#0e2a42"/><stop offset="0.6" stop-color="#08151f"/><stop offset="1" stop-color="#06121b"/>
-  </radialGradient>
-  <pattern id="rejilla" width="40" height="40" patternUnits="userSpaceOnUse">
-    <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.025"/>
+  <pattern id="rejilla" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M24 0H0V24" fill="none" stroke="#e3edf3" stroke-width="1"/>
   </pattern>
-  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#38b6e8"/></marker>
-  <marker id="fg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8a9bb0"/></marker>
-  <marker id="fo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4cc38a"/></marker>
-  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f0716a"/></marker>
-  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f2b34a"/></marker>
+  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0072a8"/></marker>
+  <marker id="fg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4a5c69"/></marker>
+  <marker id="fo" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1aa6df"/></marker>
+  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#13212b"/></marker>
+  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5d7a6a"/></marker>
 </defs>
 <style>
-  .t { font-family: Inter, sans-serif; font-weight: 800; }
-  .s { font-family: Inter, sans-serif; font-weight: 600; }
-  .m { font-family: 'DejaVu Sans Mono', monospace; }
+  .t { font-family: 'Big Shoulders Display Variable', 'Big Shoulders Display', sans-serif; font-weight: 800; letter-spacing: 0.01em; }
+  .s { font-family: 'Literata Variable', Literata, serif; font-weight: 600; }
+  .m { font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; }
 </style>
-<rect width="1600" height="900" fill="url(#fondo)"/>
+<rect width="1600" height="900" fill="#fbfcfd"/>
 <rect width="1600" height="900" fill="url(#rejilla)"/>
-<text x="80" y="92" class="t" font-size="46" fill="#eef6fb" text-anchor="start">three phases before main</text>
-<text x="82" y="132" class="m" font-size="20" fill="#8a9bb0" text-anchor="start">nothing reaches the protected branch without review · never on already-merged work</text>
-<rect x="1250" y="60" width="16" height="16" rx="4" fill="#38b6e8" fill-opacity="0.18" stroke="#38b6e8" stroke-width="2"/>
-<text x="1278" y="74" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">galivelop</text>
-<rect x="1250" y="94" width="16" height="16" rx="4" fill="#f2b34a" fill-opacity="0.18" stroke="#f2b34a" stroke-width="2"/>
-<text x="1278" y="108" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">mattpocock/skills</text>
-<rect x="1250" y="128" width="16" height="16" rx="4" fill="#8a9bb0" fill-opacity="0.18" stroke="#8a9bb0" stroke-width="2"/>
-<text x="1278" y="142" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">Claude Code · git</text>
-<rect x="80" y="250" width="260" height="230" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="2"/>
-<circle cx="118" cy="292" r="20" fill="#38b6e8" fill-opacity="0.18" stroke="#38b6e8" stroke-width="2"/>
-<text x="118" y="299" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="middle">0</text>
-<text x="152" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">branch</text>
-<text x="102" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">work + push</text>
-<text x="102" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">check green</text>
-<path d="M340 365H372" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
-<rect x="80" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="100" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">commits</text>
-<text x="100" y="628" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">“Siguiente: …”</text>
-<path d="M210.0 480V552" stroke="#8a9bb0" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="4 5"/>
-<rect x="375" y="250" width="260" height="230" rx="18" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.6" stroke-width="2"/>
-<circle cx="413" cy="292" r="20" fill="#8a9bb0" fill-opacity="0.18" stroke="#8a9bb0" stroke-width="2"/>
-<text x="413" y="299" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="middle">1</text>
-<text x="447" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">code</text>
-<text x="397" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">/code-review</text>
-<text x="397" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">--max-findings all</text>
-<text x="397" y="422" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">REVIEW.md</text>
-<path d="M635 365H667" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
-<rect x="375" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="395" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">fix commits</text>
-<text x="395" y="628" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">minor → log</text>
-<path d="M505.0 480V552" stroke="#8a9bb0" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="4 5"/>
-<rect x="670" y="250" width="260" height="230" rx="18" fill="#0d1b2a" stroke="#f2b34a" stroke-opacity="0.6" stroke-width="2"/>
-<circle cx="708" cy="292" r="20" fill="#f2b34a" fill-opacity="0.18" stroke="#f2b34a" stroke-width="2"/>
-<text x="708" y="299" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="middle">2</text>
-<text x="742" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">environment</text>
-<text x="692" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">/gw-opt-tokens</text>
-<text x="692" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">/retro</text>
-<path d="M930 365H962" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
-<rect x="670" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="690" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">retro-*.md</text>
-<text x="690" y="628" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">Status: applied</text>
-<path d="M800.0 480V552" stroke="#8a9bb0" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="4 5"/>
-<rect x="965" y="250" width="260" height="230" rx="18" fill="#0d1b2a" stroke="#38b6e8" stroke-opacity="0.6" stroke-width="2"/>
-<circle cx="1003" cy="292" r="20" fill="#38b6e8" fill-opacity="0.18" stroke="#38b6e8" stroke-width="2"/>
-<text x="1003" y="299" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="middle">3</text>
-<text x="1037" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">close</text>
-<text x="987" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">review phase-2</text>
-<text x="987" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">commits</text>
-<text x="987" y="422" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">reviewed.sh</text>
-<path d="M1225 365H1257" fill="none" stroke="#38b6e8" stroke-width="2.5" marker-end="url(#fa)"/>
-<rect x="965" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="985" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">reviewed.txt</text>
-<text x="985" y="628" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">= reviewed sha</text>
-<path d="M1095.0 480V552" stroke="#8a9bb0" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="4 5"/>
-<rect x="1260" y="250" width="260" height="230" rx="18" fill="#0b2120" stroke="#4cc38a" stroke-opacity="0.6" stroke-width="2"/>
-<circle cx="1298" cy="292" r="20" fill="#4cc38a" fill-opacity="0.18" stroke="#4cc38a" stroke-width="2"/>
-<text x="1298" y="299" class="m" font-size="20" fill="#eef6fb" font-weight="bold" text-anchor="middle">✓</text>
-<text x="1332" y="300" class="m" font-size="24" fill="#eef6fb" font-weight="bold" text-anchor="start">main</text>
-<text x="1282" y="358" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">pre-push ✓</text>
-<text x="1282" y="390" class="m" font-size="18" fill="#c9d6e2" text-anchor="start">CI ✓</text>
-<rect x="1260" y="560" width="260" height="100" rx="12" fill="#0d1b2a" stroke="#8a9bb0" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="8 7"/>
-<text x="1280" y="600" class="m" font-size="16" fill="#8a9bb0" text-anchor="start">web / release</text>
-<text x="1280" y="628" class="m" font-size="16" fill="#8a9bb0" text-anchor="start"></text>
-<path d="M1390.0 480V552" stroke="#8a9bb0" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="4 5"/>
-<circle cx="800.0" cy="190" r="13" fill="none" stroke="#f2b34a" stroke-width="2.5"/><path d="M778.0 228C778.0 205 822.0 205 822.0 228" fill="none" stroke="#f2b34a" stroke-width="2.5"/>
-<path d="M800.0 232V246" stroke="#f2b34a" stroke-width="2" stroke-dasharray="4 4"/>
-<circle cx="1390.0" cy="190" r="13" fill="none" stroke="#f2b34a" stroke-width="2.5"/><path d="M1368.0 228C1368.0 205 1412.0 205 1412.0 228" fill="none" stroke="#f2b34a" stroke-width="2.5"/>
-<path d="M1390.0 232V246" stroke="#f2b34a" stroke-width="2" stroke-dasharray="4 4"/>
-<text x="834.0" y="200" class="m" font-size="16" fill="#f2b34a" text-anchor="start">person confirms</text>
-<text x="1356.0" y="200" class="m" font-size="16" fill="#f2b34a" text-anchor="end">person confirms</text>
-<text x="80" y="730" class="m" font-size="18" fill="#eef6fb" font-weight="bold" text-anchor="start">artifacts</text>
-<text x="80" y="762" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">Each phase leaves a file in the repo: the next session, or a reviewer, sees what was decided.</text>
-<text x="80" y="792" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">requireRetro: reviewed.sh refuses the mark until a retro on the branch says applied, rejected or deferred.</text>
-<text x="80" y="822" class="m" font-size="17" fill="#8a9bb0" text-anchor="start">Phase 2 is optional for small changes when the project says so (requireRetro: false).</text>
+<text x="80" y="92" class="t" font-size="46" fill="#13212b" text-anchor="start">THREE PHASES BEFORE MAIN</text>
+<text x="82" y="132" class="m" font-size="20" fill="#4a5c69" text-anchor="start">nothing reaches the protected branch without review · never on already-merged work</text>
+<path d="M1250 60H1266V76H1250Z" fill="#0072a8" stroke-width="2"/>
+<text x="1278" y="74" class="m" font-size="18" fill="#13212b" text-anchor="start">galivelop</text>
+<path d="M1250 94H1266V110H1250Z" fill="#5d7a6a" stroke-width="2"/>
+<text x="1278" y="108" class="m" font-size="18" fill="#13212b" text-anchor="start">mattpocock/skills</text>
+<path d="M1250 128H1266V144H1250Z" fill="#4a5c69" stroke-width="2"/>
+<text x="1278" y="142" class="m" font-size="18" fill="#13212b" text-anchor="start">Claude Code · git</text>
+<path d="M80 250H326L340 264V480H80Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<circle cx="118" cy="292" r="20" fill="#0072a8" stroke-width="2"/>
+<text x="118" y="299" class="m" font-size="20" fill="#ffffff" font-weight="bold" text-anchor="middle">0</text>
+<text x="152" y="300" class="m" font-size="24" fill="#13212b" font-weight="bold" text-anchor="start">branch</text>
+<text x="102" y="358" class="m" font-size="18" fill="#13212b" text-anchor="start">work + push</text>
+<text x="102" y="390" class="m" font-size="18" fill="#13212b" text-anchor="start">check green</text>
+<path d="M340 365H372" fill="none" stroke="#0072a8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M80 560H326L340 574V660H80Z" fill="#ffffff" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="100" y="600" class="m" font-size="16" fill="#4a5c69" text-anchor="start">commits</text>
+<text x="100" y="628" class="m" font-size="16" fill="#4a5c69" text-anchor="start">“Siguiente: …”</text>
+<path d="M210.0 480V552" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="4 5"/>
+<path d="M375 250H621L635 264V480H375Z" fill="#ffffff" stroke="#4a5c69" stroke-width="2"/>
+<circle cx="413" cy="292" r="20" fill="#4a5c69" stroke-width="2"/>
+<text x="413" y="299" class="m" font-size="20" fill="#ffffff" font-weight="bold" text-anchor="middle">1</text>
+<text x="447" y="300" class="m" font-size="24" fill="#13212b" font-weight="bold" text-anchor="start">code</text>
+<text x="397" y="358" class="m" font-size="18" fill="#13212b" text-anchor="start">/code-review</text>
+<text x="397" y="390" class="m" font-size="18" fill="#13212b" text-anchor="start">--max-findings all</text>
+<text x="397" y="422" class="m" font-size="18" fill="#13212b" text-anchor="start">REVIEW.md</text>
+<path d="M635 365H667" fill="none" stroke="#0072a8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M375 560H621L635 574V660H375Z" fill="#ffffff" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="395" y="600" class="m" font-size="16" fill="#4a5c69" text-anchor="start">fix commits</text>
+<text x="395" y="628" class="m" font-size="16" fill="#4a5c69" text-anchor="start">minor → log</text>
+<path d="M505.0 480V552" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="4 5"/>
+<path d="M670 250H916L930 264V480H670Z" fill="#ffffff" stroke="#5d7a6a" stroke-width="2"/>
+<circle cx="708" cy="292" r="20" fill="#5d7a6a" stroke-width="2"/>
+<text x="708" y="299" class="m" font-size="20" fill="#ffffff" font-weight="bold" text-anchor="middle">2</text>
+<text x="742" y="300" class="m" font-size="24" fill="#13212b" font-weight="bold" text-anchor="start">environment</text>
+<text x="692" y="358" class="m" font-size="18" fill="#13212b" text-anchor="start">/gw-opt-tokens</text>
+<text x="692" y="390" class="m" font-size="18" fill="#13212b" text-anchor="start">/retro</text>
+<path d="M930 365H962" fill="none" stroke="#0072a8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M670 560H916L930 574V660H670Z" fill="#ffffff" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="690" y="600" class="m" font-size="16" fill="#4a5c69" text-anchor="start">retro-*.md</text>
+<text x="690" y="628" class="m" font-size="16" fill="#4a5c69" text-anchor="start">Status: applied</text>
+<path d="M800.0 480V552" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="4 5"/>
+<path d="M965 250H1211L1225 264V480H965Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<circle cx="1003" cy="292" r="20" fill="#0072a8" stroke-width="2"/>
+<text x="1003" y="299" class="m" font-size="20" fill="#ffffff" font-weight="bold" text-anchor="middle">3</text>
+<text x="1037" y="300" class="m" font-size="24" fill="#13212b" font-weight="bold" text-anchor="start">close</text>
+<text x="987" y="358" class="m" font-size="18" fill="#13212b" text-anchor="start">review phase-2</text>
+<text x="987" y="390" class="m" font-size="18" fill="#13212b" text-anchor="start">commits</text>
+<text x="987" y="422" class="m" font-size="18" fill="#13212b" text-anchor="start">reviewed.sh</text>
+<path d="M1225 365H1257" fill="none" stroke="#0072a8" stroke-width="2.5" marker-end="url(#fa)"/>
+<path d="M965 560H1211L1225 574V660H965Z" fill="#ffffff" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="985" y="600" class="m" font-size="16" fill="#4a5c69" text-anchor="start">reviewed.txt</text>
+<text x="985" y="628" class="m" font-size="16" fill="#4a5c69" text-anchor="start">= reviewed sha</text>
+<path d="M1095.0 480V552" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="4 5"/>
+<path d="M1260 250H1506L1520 264V480H1260Z" fill="#ffffff" stroke="#1aa6df" stroke-width="2"/>
+<circle cx="1298" cy="292" r="20" fill="#1aa6df" stroke-width="2"/>
+<text x="1298" y="299" class="m" font-size="20" fill="#ffffff" font-weight="bold" text-anchor="middle">✓</text>
+<text x="1332" y="300" class="m" font-size="24" fill="#13212b" font-weight="bold" text-anchor="start">main</text>
+<text x="1282" y="358" class="m" font-size="18" fill="#13212b" text-anchor="start">pre-push ✓</text>
+<text x="1282" y="390" class="m" font-size="18" fill="#13212b" text-anchor="start">CI ✓</text>
+<path d="M1260 560H1506L1520 574V660H1260Z" fill="#ffffff" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="1280" y="600" class="m" font-size="16" fill="#4a5c69" text-anchor="start">web / release</text>
+<text x="1280" y="628" class="m" font-size="16" fill="#4a5c69" text-anchor="start"></text>
+<path d="M1390.0 480V552" stroke="#b9cbd6" stroke-width="2" stroke-dasharray="4 5"/>
+<circle cx="800.0" cy="190" r="13" fill="none" stroke="#5d7a6a" stroke-width="2.5"/><path d="M778.0 228C778.0 205 822.0 205 822.0 228" fill="none" stroke="#5d7a6a" stroke-width="2.5"/>
+<path d="M800.0 232V246" stroke="#5d7a6a" stroke-width="2" stroke-dasharray="4 4"/>
+<circle cx="1390.0" cy="190" r="13" fill="none" stroke="#5d7a6a" stroke-width="2.5"/><path d="M1368.0 228C1368.0 205 1412.0 205 1412.0 228" fill="none" stroke="#5d7a6a" stroke-width="2.5"/>
+<path d="M1390.0 232V246" stroke="#5d7a6a" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="834.0" y="200" class="m" font-size="16" fill="#5d7a6a" text-anchor="start">person confirms</text>
+<text x="1356.0" y="200" class="m" font-size="16" fill="#5d7a6a" text-anchor="end">person confirms</text>
+<text x="80" y="730" class="m" font-size="18" fill="#13212b" font-weight="bold" text-anchor="start">artifacts</text>
+<text x="80" y="762" class="m" font-size="17" fill="#4a5c69" text-anchor="start">Each phase leaves a file in the repo: the next session, or a reviewer, sees what was decided.</text>
+<text x="80" y="792" class="m" font-size="17" fill="#4a5c69" text-anchor="start">requireRetro: reviewed.sh refuses the mark until a retro on the branch says applied, rejected or deferred.</text>
+<text x="80" y="822" class="m" font-size="17" fill="#4a5c69" text-anchor="start">Phase 2 is optional for small changes when the project says so (requireRetro: false).</text>
 </svg>
