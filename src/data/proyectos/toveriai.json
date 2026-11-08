@@ -48,6 +48,17 @@
       "en": "toVeriAI home page: “Truth isn't binary”"
     }
   },
+  "presentacion": {
+    "src": "proyectos/toveriai/presentacion.webp",
+    "mini": "proyectos/toveriai/presentacion-mini.webp",
+    "ancho": 1600,
+    "alto": 840,
+    "alt": {
+      "es": "Presentación de toVeriAI: «La verdad no es binaria», con un compás de puntas, reglas y recortes de prensa en acuarela",
+      "gl": "Presentación de toVeriAI: «A verdade non é binaria», cun compás de puntas, regras e recortes de prensa en acuarela",
+      "en": "toVeriAI presentation: “Truth is not binary”, with dividers, rulers and watercolour press cuttings"
+    }
+  },
   "enlaces": [
     {
       "tipo": "web",

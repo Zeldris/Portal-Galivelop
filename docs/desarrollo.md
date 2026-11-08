@@ -69,6 +69,10 @@ página de ese miembro (`colabora`), en una banda discreta de Participa, en «C�
    El formato está descrito en [`src/data/tipos.ts`](../src/data/tipos.ts).
 2. Pon sus imágenes en `public/proyectos/<slug>/`, en WebP: cada imagen con su versión grande
    (unos 1600 px de ancho) y una `-mini` (unos 720 px) para miniaturas y tarjetas.
+   Opcional, `presentacion`: la imagen de redes del proyecto (apaisada 1.9:1, 1600×840 y `-mini` 720×378), que el
+   collage de la portada usa en vez de la `portada` cuando esta es una captura o un diagrama; sale del mismo
+   `og-fuente.png` que su `og.jpg`. La de Galivelop-workflow se compone en `tools/og/galivelop-workflow-presentacion.html`
+   y la renderiza `node tools/og/presentacion.mjs galivelop-workflow` (og-fuente, presentación y og.jpg).
 3. Todo texto visible va en los tres idiomas: `{ "es": "…", "gl": "…", "en": "…" }`.
 4. Detalles útiles:
    - `orden`: el siguiente número libre (el mayor de los existentes más uno). El portal muestra

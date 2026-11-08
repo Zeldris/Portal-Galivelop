@@ -673,6 +673,7 @@ button {
 
 .collage-pieza {
   position: absolute;
+  aspect-ratio: 40 / 21; /* la proporción de las imágenes de presentación (1200×630): se ven enteras */
   overflow: hidden;
   border: 1px solid rgb(255 255 255 / 0.85);
   background: var(--superficie);
@@ -680,14 +681,27 @@ button {
 }
 
 .collage-pieza img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms var(--curva);
 }
 
-/* La pieza grande es más cuadrada que una portada apaisada: se conserva el lado izquierdo, donde va el texto. */
-.collage-0 img {
-  object-position: left center;
+.collage-pieza img.activa {
+  opacity: 1;
+}
+
+.collage-pieza span {
+  animation: collage-rotulo 900ms var(--curva);
+}
+
+@keyframes collage-rotulo {
+  from {
+    opacity: 0;
+  }
 }
 
 .collage-pieza span {
@@ -703,10 +717,9 @@ button {
 }
 
 .collage-0 {
-  width: 78%;
-  height: 52%;
+  width: 82%;
   left: 0;
-  top: 4%;
+  top: 2%;
   clip-path: polygon(
     0 0,
     calc(100% - var(--chaflan-grande)) 0,
@@ -717,17 +730,15 @@ button {
 }
 
 .collage-1 {
-  width: 64%;
-  height: 50%;
+  width: 72%;
   right: 0;
-  bottom: 2%;
+  top: 38%;
 }
 
 .collage-2 {
-  width: 40%;
-  height: 32%;
-  left: 4%;
-  bottom: 0;
+  width: 46%;
+  left: 0;
+  top: 76%;
 }
 
 .hero-collage:hover .collage-0,

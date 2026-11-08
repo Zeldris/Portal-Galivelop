@@ -45,10 +45,13 @@ describe('proyectos', () => {
           ...a.items.flatMap((i) => (i.imagen ? [i.imagen] : [])),
           ...(a.grupos ?? []).flatMap((g) => g.imagenes),
         ]);
-        const imagenes = [p.portada, ...p.galeria, ...p.capturas, ...deApartados].flatMap((i) => [
-          i.src,
-          i.mini,
-        ]);
+        const imagenes = [
+          p.portada,
+          ...(p.presentacion ? [p.presentacion] : []),
+          ...p.galeria,
+          ...p.capturas,
+          ...deApartados,
+        ].flatMap((i) => [i.src, i.mini]);
         if (p.icono) imagenes.push(p.icono);
         expect(imagenes.filter((src) => !existsSync(join(PUBLIC, src)))).toEqual([]);
       });

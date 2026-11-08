@@ -61,6 +61,11 @@ export interface Proyecto {
   fase: Texto;
   etiquetas: string[];
   portada: Imagen;
+  /**
+   * Imagen de presentación del proyecto (la de redes, apaisada 1.9:1), opcional: la usa el collage de la portada
+   * de la web en vez de la portada cuando esta es una captura o un diagrama.
+   */
+  presentacion?: Imagen;
   enlaces: Enlace[];
   galeria: Imagen[];
   /** Capturas reales del producto (la interfaz del juego, de la web…), en su propia sección. */

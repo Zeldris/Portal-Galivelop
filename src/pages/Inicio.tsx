@@ -19,7 +19,7 @@ import {
   Workflow,
   type LucideIcon,
 } from 'lucide-react';
-import { useState, type CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
@@ -67,8 +67,19 @@ export function Inicio() {
   const privados = proyectos.filter((p) => p.colaboracion === 'privada');
   const visibles = proyectos.filter((p) => filtro === 'todos' || p.estado === filtro);
   const cuenta = (e: EstadoProyecto) => proyectos.filter((p) => p.estado === e).length;
-  // El collage de la portada toma la portada de cada proyecto (hasta tres): es su imagen de presentación.
-  const collage = proyectos.slice(0, 3).map((p) => ({ p, img: p.portada }));
+  // El collage de la portada tiene tres piezas por las que pasan todos los proyectos: cada pocos segundos las imágenes
+  // avanzan una posición con un fundido (quieto si el sistema pide menos movimiento o la pestaña no se ve). Cada pieza
+  // enseña la imagen de presentación del proyecto o, si no tiene, su portada.
+  const [giro, setGiro] = useState(0);
+  const total = proyectos.length;
+  useEffect(() => {
+    if (total <= 3 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = window.setInterval(() => {
+      if (!document.hidden) setGiro((g) => (g + 1) % total);
+    }, 5000);
+    return () => window.clearInterval(id);
+  }, [total]);
+  const piezas = [0, 1, 2].map((i) => proyectos[(giro + i) % total]).filter(Boolean);
 
   return (
     <>
@@ -105,14 +116,22 @@ export function Inicio() {
             </dl>
           </div>
           <div className="hero-collage" aria-hidden="true">
-            {collage.map(({ p, img }, i) => (
+            {piezas.map((activo, i) => (
               <div
-                key={p.slug}
+                key={i}
                 className={`collage-pieza collage-${i}`}
-                style={{ borderColor: p.acento }}
+                style={{ borderColor: activo.acento }}
               >
-                <img src={ruta(img.mini)} alt="" />
-                <span>{p.nombre}</span>
+                {proyectos.map((p) => (
+                  <img
+                    key={p.slug}
+                    src={ruta((p.presentacion ?? p.portada).mini)}
+                    alt=""
+                    className={p === activo ? 'activa' : undefined}
+                    loading={p === activo ? undefined : 'lazy'}
+                  />
+                ))}
+                <span key={activo.slug}>{activo.nombre}</span>
               </div>
             ))}
           </div>

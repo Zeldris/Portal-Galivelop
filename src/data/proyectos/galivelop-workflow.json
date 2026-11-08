@@ -58,6 +58,17 @@
       "en": "Diagram of a task’s flow: log, gw-selector, gw-orchestrate-dealer, commit and push with their hooks, /code-review, /gw-opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
     }
   },
+  "presentacion": {
+    "src": "proyectos/galivelop-workflow/presentacion.webp",
+    "mini": "proyectos/galivelop-workflow/presentacion-mini.webp",
+    "ancho": 1600,
+    "alto": 840,
+    "alt": {
+      "es": "Presentación de Galivelop-workflow: «Relevos sin perder nada», con cinco tarjetas de cristal escalonadas (bitácora, selector, check, revisión y main) unidas por el testigo",
+      "gl": "Presentación de Galivelop-workflow: «Relevos sen perder nada», con cinco tarxetas de cristal escalonadas (bitácora, selector, check, revisión e main) unidas polo testemuño",
+      "en": "Galivelop-workflow presentation: “Handoffs without losing anything”, with five stepped glass cards (log, selector, check, review and main) joined by the baton"
+    }
+  },
   "enlaces": [
     {
       "tipo": "otro",
