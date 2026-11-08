@@ -48,11 +48,11 @@
     "src": "proyectos/galivelop-image-generator/portada.webp",
     "mini": "proyectos/galivelop-image-generator/portada-mini.webp",
     "ancho": 1600,
-    "alto": 1000,
+    "alto": 840,
     "alt": {
-      "es": "Portada de Galivelop IG: rejilla de intentos con uno elegido",
-      "gl": "Portada de Galivelop IG: reixa de intentos cun elixido",
-      "en": "Cover of Galivelop IG: a grid of attempts with one chosen"
+      "es": "Portada de Galivelop IG: «Pide, prueba, elige», con una fila de paneles de cristal y uno iluminado",
+      "gl": "Portada de Galivelop IG: «Pide, proba, elixe», cunha fila de paneis de cristal e un iluminado",
+      "en": "Cover of Galivelop IG: “Ask, try, choose”, with a row of glass panels and one lit up"
     }
   },
   "enlaces": [
