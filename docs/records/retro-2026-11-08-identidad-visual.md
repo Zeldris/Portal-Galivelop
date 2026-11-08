@@ -1,6 +1,6 @@
 # Retro: identidad visual propia (`docs/marca.md` aplicada a la web) (2026-11-08)
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada y aplicada entera (T1, T2, T3, R1, R2, R3, R4) por la persona el 2026-11-08 («aprueba la retro y llévalo a main»), tras ver la vista previa de la web («se ve genial»).
 
 Lo revisado: los commits de `ccr-47a38edd-v566du` que van a `main` (desde `9e1a21e`: investigación y hoja de estilos
 de la marca, tipografía B, tema claro, tokens, portada con isobatas, barrido de `global.css`, arreglos de la revisión
