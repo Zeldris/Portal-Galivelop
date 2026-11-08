@@ -7,7 +7,7 @@
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.png",
   "cabecera": "color",
-  "actualizado": "2026-11-05",
+  "actualizado": "2026-11-08",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -1057,6 +1057,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-06",
+      "texto": {
+        "es": "Versión 0.4.1, de arreglos: al abrir la interfaz se usa siempre la versión más reciente del generador, aunque quede uno antiguo en marcha, y dos arranques a la vez ya no dejan funcionando el viejo.",
+        "gl": "Versión 0.4.1, de arranxos: ao abrir a interface úsase sempre a versión máis recente do xerador, aínda que quede un antigo en marcha, e dous arranques á vez xa non deixan funcionando o vello.",
+        "en": "Version 0.4.1, a fixes release: opening the interface always uses the latest version of the generator, even if an older one is still running, and two starts at once no longer leave the old one in place."
+      }
+    },
+    {
       "fecha": "2026-11-05",
       "texto": {
         "es": "Versión 0.4.0: interfaz en el navegador, en castellano e inglés, con plantillas elegibles por pieza y un editor para mover y cambiar el tamaño del titular, el logo y los adornos, con el contraste medido en directo. El código pasa a ser abierto con licencia MIT.",
@@ -1110,14 +1118,6 @@
         "es": "Núcleo terminado: pedidos, intentos, elegida, entrega con manifiesto y cola.",
         "gl": "Núcleo terminado: pedidos, intentos, elixida, entrega con manifesto e cola.",
         "en": "Core finished: requests, attempts, chosen one, delivery with manifest, and queue."
-      }
-    },
-    {
-      "fecha": "2026-10-25",
-      "texto": {
-        "es": "Diseño, biblia de marca y esqueleto del proyecto.",
-        "gl": "Deseño, biblia de marca e esqueleto do proxecto.",
-        "en": "Design, brand bible and project skeleton."
       }
     }
   ],

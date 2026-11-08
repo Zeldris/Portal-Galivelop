@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-05",
+  "actualizado": "2026-11-08",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -632,6 +632,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-05",
+      "texto": {
+        "es": "El análisis de capturas queda en pausa mientras se arregla: el modo «Imagen» aparece desactivado. Además, los avisos de la web usan todos el mismo estilo en lugar de ventanas del navegador, y textos que estaban fijos ya se traducen a los cinco idiomas.",
+        "gl": "A análise de capturas queda en pausa mentres se arranxa: o modo «Imaxe» aparece desactivado. Ademais, os avisos da web usan todos o mesmo estilo en lugar de xanelas do navegador, e textos que estaban fixos xa se traducen aos cinco idiomas.",
+        "en": "Screenshot analysis is paused while it is being fixed: the Image mode now shows as disabled. Also, the site’s notices all share the same style instead of browser pop-ups, and texts that were hard-coded are now translated into all five languages."
+      }
+    },
     {
       "fecha": "2026-11-03",
       "texto": {

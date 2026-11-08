@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-11-05",
+  "actualizado": "2026-11-08",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3970,28 +3970,14 @@
       "version": "0.7",
       "estado": "pendiente",
       "nombre": {
-        "es": "Personaje propio",
-        "gl": "Personaxe propio",
-        "en": "Your own character"
-      },
-      "detalle": {
-        "es": "Crear un personaje desde cero con cualquier raza de Berig.",
-        "gl": "Crear un personaxe desde cero con calquera raza de Berig.",
-        "en": "Create a character from scratch with any race of Berig."
-      }
-    },
-    {
-      "version": "0.8",
-      "estado": "pendiente",
-      "nombre": {
         "es": "Beta de Berig",
         "gl": "Beta de Berig",
         "en": "Berig beta"
       },
       "detalle": {
-        "es": "Instalador público, rendimiento en la Steam Deck y narrador local afinado.",
-        "gl": "Instalador público, rendemento na Steam Deck e narrador local afinado.",
-        "en": "Public installer, Steam Deck performance and a fine-tuned local narrator."
+        "es": "Instalador público, rendimiento en la Steam Deck, narrador local afinado y el juego en inglés.",
+        "gl": "Instalador público, rendemento na Steam Deck, narrador local afinado e o xogo en inglés.",
+        "en": "Public installer, Steam Deck performance, a fine-tuned local narrator and the game in English."
       }
     },
     {
@@ -4007,9 +3993,31 @@
         "gl": "Primeira gran expansión do mundo.",
         "en": "The world's first major expansion."
       }
+    },
+    {
+      "version": "1.1",
+      "estado": "pendiente",
+      "nombre": {
+        "es": "Personaje propio",
+        "gl": "Personaxe propio",
+        "en": "Your own character"
+      },
+      "detalle": {
+        "es": "Crear un personaje desde cero, sin ser Gorhorn, con cualquier raza.",
+        "gl": "Crear un personaxe desde cero, sen ser Gorhorn, con calquera raza.",
+        "en": "Create a character from scratch, without being Gorhorn, with any race."
+      }
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-05",
+      "texto": {
+        "es": "Se cierra otro paso de la ronda de pruebas jugando, con arreglos del combate: la huida de la fauna ya no depende del nivel y huir en un duelo uno contra uno funciona como debe. El plan se reordena: un generador de mapas propio para viajar entre regiones en el hito 0.4, el juego en inglés para la Beta, que pasa al 0.7, y crear un personaje propio después de Vaelira. El juego y su instalador ya tienen licencia: MIT para el código y CC BY-NC-SA 4.0 para el contenido.",
+        "gl": "Péchase outro paso da rolda de probas xogando, con arranxos do combate: a fuxida da fauna xa non depende do nivel e fuxir nun duelo un contra un funciona como debe. O plan reordénase: un xerador de mapas propio para viaxar entre rexións no fito 0.4, o xogo en inglés para a Beta, que pasa ao 0.7, e crear un personaxe propio despois de Vaelira. O xogo e o seu instalador xa teñen licenza: MIT para o código e CC BY-NC-SA 4.0 para o contido.",
+        "en": "Another step of the play-testing round is closed, with combat fixes: wildlife fleeing no longer depends on level, and fleeing a one-on-one duel works as it should. The plan is reordered: an in-house map generator for travelling between regions in milestone 0.4, the game in English for the Beta, which moves to 0.7, and creating your own character after Vaelira. The game and its installer now have a licence: MIT for the code and CC BY-NC-SA 4.0 for the content."
+      }
+    },
     {
       "fecha": "2026-11-03",
       "texto": {
@@ -4064,14 +4072,6 @@
         "es": "Ronda de pruebas del mundo vivo, cerrada: comprobados jugando el combate en grupo, comer y beber para recuperar energía, los caminos cortados que interrumpen el viaje, los maestros de oficio, el ganado y la espera entre asaltos al Reino.",
         "gl": "Rolda de probas do mundo vivo, pechada: comprobados xogando o combate en grupo, comer e beber para recuperar enerxía, os camiños cortados que interrompen a viaxe, os mestres de oficio, o gando e a espera entre asaltos ao Reino.",
         "en": "Living-world play-testing round, finished: tested by playing group combat, eating and drinking to recover energy, cut roads that interrupt travel, trade masters, livestock and the wait between raids on the Kingdom."
-      }
-    },
-    {
-      "fecha": "2026-10-22",
-      "texto": {
-        "es": "Casa de obras: una cola de obras y reparaciones que llevan tus constructores, y un Almacén con topes de comida y agua que explica de dónde sale la comida de cada día.",
-        "gl": "Casa de obras: unha cola de obras e reparacións que levan os teus construtores, e un Almacén con topes de comida e auga que explica de onde sae a comida de cada día.",
-        "en": "Works house: a queue of builds and repairs carried out by your builders, and a Storehouse with food and water caps that explains where each day's food comes from."
       }
     }
   ],
