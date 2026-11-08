@@ -22,6 +22,7 @@ const { BASE, TACTIL, VENTANAS, lista, servidor, parar, medirPagina } = require(
 const HOJA = process.argv[2] === '--hoja';
 const ANCHO_MINIATURA = { escritorio: 360, movil: 160 };
 const ALTO_MAX = 900;
+const escapar = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 
 // Hoja de contacto: cada página en las cuatro variantes (escritorio/móvil x claro/oscuro), fullPage reducida a un
 // ancho fijo y recortada a ALTO_MAX; se compone con HTML en el propio Playwright, sin dependencias nuevas.
@@ -58,7 +59,7 @@ async function hoja(navegador, rutas, carpeta) {
           celdas
             .map(
               (c) =>
-                `<div style="width:${c.ancho}px"><div style="margin-bottom:3px;white-space:nowrap;overflow:hidden">${c.rotulo}</div>` +
+                `<div style="width:${c.ancho}px"><div style="margin-bottom:3px;white-space:nowrap;overflow:hidden">${escapar(c.rotulo)}</div>` +
                 `<img src="data:image/png;base64,${c.png}" style="display:block;width:${c.ancho}px;height:${c.alto}px;border:1px solid #000"></div>`,
             )
             .join('') +
@@ -94,7 +95,7 @@ let vista = null;
   if (HOJA) {
     await hoja(navegador, process.argv.slice(3).map((r) => r.replace(/^\//, '')), carpeta);
     await navegador.close();
-    parar(vista);
+    if (vista) parar(vista);
     return;
   }
   for (const [ventana, width, height] of VENTANAS.slice(0, 2)) {
