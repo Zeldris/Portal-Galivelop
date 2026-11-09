@@ -4,7 +4,8 @@
 // 320 px. En móvil, además, el texto cortado dentro de una caja y los controles con zona táctil pequeña, también
 // dentro de lo que solo se ve al tocar: el menú y su submenú, cada hoja de apartado de las fichas y la vista
 // ampliada de una imagen (la de la galería de la ficha y, en cada hoja, la de su galería y su primera tarjeta). Por
-// defecto mide cada ruta en castellano, gallego e inglés (un texto puede caber en uno y cortarse en otro).
+// defecto mide cada ruta en castellano, gallego e inglés (un texto puede caber en uno y cortarse en otro). Y, en cada
+// ventana, si las rejillas de `COLUMNAS` tienen las columnas que tocan.
 // Pide Playwright, que no es dependencia del portal: en la nube ya está; en local, `npm i --no-save playwright`
 // (como tools/generar-marca.mjs). Uso, tras `npm run build`:
 //   npm run medir [ruta ...]        (rutas como `equipo` o `/equipo`; por defecto, todas las de abajo)
@@ -40,6 +41,31 @@ const VENTANAS = [
 // El mínimo de WCAG 2.5.8 (AA). El portal busca unos 44 px de alto donde cabe (enlaces sueltos, iconos de 38): eso
 // es diseño y se juzga en la captura; esto avisa de lo que queda por debajo del mínimo.
 const TACTIL = { alto: 24, ancho: 24 };
+// Columnas que debe tener como mínimo la primera fila de cada rejilla (o todas sus piezas, si son menos), por ventana: el paso
+// a 12 subcolumnas dejó una vez el mosaico a una columna en móvil sin que nada lo cazase. Medido el 2026-11-09; si
+// un cambio de diseño las mueve a propósito, se cambian aquí.
+const COLUMNAS = {
+  '.mosaico': { escritorio: 4, movil: 2 },
+  '.cifras': { escritorio: 5, movil: 2, 'movil-360': 2, 'movil-320': 2 },
+  '.caracteristicas': { escritorio: 4 },
+  '.rejilla-productos': { escritorio: 4 },
+};
+
+/** En el navegador: para cada rejilla de `esperado` ({selector: columnas}), las que se quedan cortas, como `.mosaico 1/2`. */
+function contarColumnas(esperado) {
+  const fallos = [];
+  for (const [selector, columnas] of Object.entries(esperado)) {
+    for (const rejilla of document.querySelectorAll(selector)) {
+      const piezas = [...rejilla.children].filter((h) => h.getBoundingClientRect().height > 0);
+      if (!piezas.length) continue;
+      const arriba = piezas[0].getBoundingClientRect().top;
+      const primera = piezas.filter((h) => Math.abs(h.getBoundingClientRect().top - arriba) < 2).length;
+      const quiere = Math.min(columnas, piezas.length);
+      if (primera < quiere) fallos.push(`${selector} ${primera}/${quiere}`);
+    }
+  }
+  return fallos;
+}
 
 const responde = () => fetch(BASE, { signal: AbortSignal.timeout(2000) }).then((r) => r.ok, () => false);
 
@@ -222,7 +248,7 @@ if (require.main !== module) return;
   await servidor();
   const navegador = await chromium.launch();
   let fallos = 0;
-  console.log('ruta\tventana\talto_px\tpantallas\tdesborda_x\tcortes\ttactiles\terrores');
+  console.log('ruta\tventana\talto_px\tpantallas\tdesborda_x\tcortes\ttactiles\tcolumnas\terrores');
   for (const [nombre, ancho, alto] of VENTANAS) {
     const pagina = await navegador.newPage({ viewport: { width: ancho, height: alto } });
     for (const ruta of RUTAS) {
@@ -239,13 +265,17 @@ if (require.main !== module) return;
         m.cortes.push(...capas.cortes);
         m.tactiles.push(...capas.tactiles);
       }
+      const esperado = Object.fromEntries(
+        Object.entries(COLUMNAS).flatMap(([selector, porVentana]) => (porVentana[nombre] ? [[selector, porVentana[nombre]]] : [])),
+      );
+      const columnas = await pagina.evaluate(contarColumnas, esperado);
       pagina.off('console', alError);
       pagina.off('pageerror', alFallo);
       const desborda = m.ancho > ancho;
-      if (desborda || errores.length || m.cortes.length || m.tactiles.length) fallos++;
+      if (desborda || errores.length || m.cortes.length || m.tactiles.length || columnas.length) fallos++;
       // Como mucho 5 de cada también con las capas sumadas: una regla que rompe todas las hojas no llena la fila.
       console.log(
-        [`/${ruta}`, nombre, m.alto, (m.alto / alto).toFixed(1), desborda ? `sí (${m.ancho}px)` : 'no', lista(m.cortes), lista(m.tactiles), lista(errores)].join('\t'),
+        [`/${ruta}`, nombre, m.alto, (m.alto / alto).toFixed(1), desborda ? `sí (${m.ancho}px)` : 'no', lista(m.cortes), lista(m.tactiles), lista(columnas), lista(errores)].join('\t'),
       );
     }
     await pagina.close();

@@ -73,6 +73,15 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Hoja de contacto de páginas** (2026-11-08, T3): `npm run capturas -- --hoja <ruta> <ruta>…` deja una imagen con N
   páginas en miniatura (escritorio y móvil, claro y oscuro); la captura entera, solo de la página sospechosa;
   `npm run medir` da cortes y desbordes en texto. 17 capturas de página entera costaron ~570k arrastrados.
+- **Los subagentes no escriben la bitácora** (2026-11-09, T-b): el encargo dice «no toques `docs/handoff.md`; devuelve
+  el texto para ella» y la sesión principal lo apunta al fusionar. Resolver un conflicto de la bitácora costó 5,6k y
+  se arrastró 90k.
+- **Arreglo pequeño, en la sesión principal** (2026-11-09, T-c): un subagente arranca con ~68k de contexto; un arreglo
+  cerrado de menos de ~20 líneas cuyo contexto ya está cargado sale más barato hecho aquí. Lo demás sigue repartiéndose.
+- **Bitácora sin lo ya publicado** (2026-11-09, T-a): una entrada de «Pendiente» que ya está en `main` se resume en dos
+  líneas con enlace a su retro; la de «Identidad visual propia» tenía 6,5k caracteres y la bitácora se leyó 10 veces.
+- **Columnas de las rejillas en texto** (2026-11-09, R1): `npm run medir` avisa si una rejilla de `COLUMNAS` se queda
+  con menos columnas de las que toca, en escritorio o móvil; no hace falta una captura para eso.
 
 ## Costes conocidos
 

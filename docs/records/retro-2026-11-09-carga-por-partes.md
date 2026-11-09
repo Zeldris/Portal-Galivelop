@@ -1,6 +1,6 @@
 # Retro 2026-11-09: carga por partes, enlaces con barra, formas y rejillas
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada entera por la persona (2026-11-09, «Apruebo todo») y aplicada: T-a, T-b, T-c, R1 y R2 en la rama; R3 queda abajo para el workflow.
 
 Revisado: lo que entra en `main` desde `bee9330` (enlaces con barra final, formas rectas y rejillas de 12
 subcolumnas, carga por partes con `lazy` y fichas bajo demanda, arreglos de la fase 1) y la bitácora.

@@ -131,12 +131,14 @@ página estática de `/productos`.
 
 Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaron dos (2026-10-27). La lista:
 
-- `src/App.tsx` (la `Route`) y su componente en `src/pages/`.
+- `src/App.tsx` (la `Route`) y su componente en `src/pages/`, cargado por partes: en `CARGADORES`,
+  `perezosa(...)` y `PAGINA_DE_PRIMER_SEGMENTO` de `src/paginas.ts` (ver «Carga por partes»).
 - `src/components/Cabecera.tsx` si va en el menú (y `Pie.tsx` si va en el pie).
 - `FIJAS` de `scripts/paginas-estaticas.mjs`: título y descripción en es/gl/en (página estática, sitemap y `llms.txt`).
 - Si tiene contenido propio, su rama en `cuerpo()` de `scripts/paginas-estaticas.mjs`; sin ella, la página estática
   solo lleva título y descripción (se olvidó con los textos legales, 2026-10-31).
-- `PAGINAS` de `tools/qa/medir-paginas.cjs`, para que `npm run medir` la mida.
+- `PAGINAS` de `tools/qa/medir-paginas.cjs`, para que `npm run medir` la mida; si trae una rejilla nueva, sus
+  columnas en `COLUMNAS` del mismo archivo.
 - Claves en `src/i18n/textos.ts` en los tres idiomas; un componente que usan dos páginas, en `src/components/`.
 - Si cambia la portada, también las metas de `index.html` y el README.
 
@@ -245,13 +247,28 @@ npm install
 npm run dev      # http://localhost:5173/Portal-Galivelop/
 npm run check    # tipos, formato (prettier), tests y ganchos
 npm run build    # genera dist/ (con 404.html para las rutas en GitHub Pages)
-npm run medir    # tras el build: alto, desbordes, cortes y zonas táctiles de cada página, en texto
+npm run medir    # tras el build: alto, desbordes, cortes, zonas táctiles y columnas de las rejillas, en texto
 npm run capturas -- <ruta> [selector | --menu]   # tras el build: captura de una página, sección o menú móvil, con medidas
 ```
 
 El formato lo fija `.prettierrc` (comillas simples, ancho 100); `npx prettier --write "src/**/*.{ts,tsx}"` lo arregla.
 
 React 19 + Vite + TypeScript, React Router y lucide para los iconos. Sin backend: todo es estático.
+
+### Carga por partes
+
+El JS inicial lleva solo la portada y lo común; cada página y cada ficha de proyecto se bajan al entrar.
+
+- **Páginas:** `src/paginas.ts` guarda el `import()` de cada una (`CARGADORES`) y lo comparte con `lazy`. `main.tsx`
+  espera `precargarRuta(location.pathname)` antes de pintar, así que la página que se abre en frío no parpadea en
+  blanco sobre el HTML estático. Si falla la descarga de una parte (una versión nueva publicada mientras la pestaña
+  estaba abierta), `vite:preloadError` recarga una sola vez (clave `galivelop.recarga` de `sessionStorage`, contada
+  en `src/data/legal/privacidad.json`); si vuelve a fallar, `ErrorBoundary` enseña `AvisoError` con «Recargar».
+- **Fichas:** la portada, el menú y las tarjetas leen `proyectos` (`src/data/proyectos.ts`), un resumen que genera
+  el plugin `tools/vite/resumenes.ts` (módulo `virtual:proyectos-resumen`) con los campos de `CAMPOS_RESUMEN`. La
+  ficha entera la trae `useFicha(slug)` (`cargando`, `no-existe`, `error` con `reintentar`, `listo`). **Un campo
+  nuevo que necesite la portada o una tarjeta** se añade a `CAMPOS_RESUMEN`; si no, en esas páginas sale `undefined`
+  aunque esté en el JSON (el tipo `ResumenProyecto` sale de esa lista, así que `tsc` lo avisa).
 
 ## Publicación
 
