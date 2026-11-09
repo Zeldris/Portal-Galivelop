@@ -1,6 +1,6 @@
 import { ArrowRight, Mail } from 'lucide-react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { TarjetaProducto } from '../components/TarjetaProducto';
 import { equipo, iniciales } from '../data/equipo';
 import { MARCA } from '../data/marca';

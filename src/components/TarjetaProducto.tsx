@@ -1,6 +1,6 @@
 import { ArrowRight, Mail } from 'lucide-react';
 import type { CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from './Enlace';
 import { buscarPersonaPorId } from '../data/equipo';
 import { MARCA } from '../data/marca';
 import type { Producto } from '../data/productos';

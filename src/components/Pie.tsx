@@ -1,5 +1,5 @@
 import { Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link } from './Enlace';
 import { documentosLegales } from '../data/legal';
 import { MARCA } from '../data/marca';
 import { publicaciones } from '../data/muro';

@@ -1,6 +1,6 @@
 import { ArrowLeft, Check, Copy, Mail, Send } from 'lucide-react';
 import { useState, type FormEvent, type ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from './Enlace';
 import { MARCA } from '../data/marca';
 import { useIdioma } from '../i18n/Idioma';
 

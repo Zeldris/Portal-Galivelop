@@ -1,6 +1,6 @@
 import { ArrowRight, MapPin, Users } from 'lucide-react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { EnlaceRed } from '../components/IconoRed';
 import { equipo, iniciales } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';

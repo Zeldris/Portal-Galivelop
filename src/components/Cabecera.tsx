@@ -1,6 +1,7 @@
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link } from './Enlace';
 import { publicaciones } from '../data/muro';
 import { IDIOMAS } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';

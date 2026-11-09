@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { ArrowLeft } from 'lucide-react';
 import { documentosLegales, type DocumentoLegal } from '../data/legal';
 import { useIdioma } from '../i18n/Idioma';

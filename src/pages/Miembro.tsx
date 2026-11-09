@@ -1,6 +1,7 @@
 import { ArrowLeft, ChevronDown, GraduationCap, Mail, MapPin } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { EnlaceRed } from '../components/IconoRed';
 import { IconoTecnologia } from '../components/IconoTecnologia';
 import {

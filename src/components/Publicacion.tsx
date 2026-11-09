@@ -1,6 +1,6 @@
 import { X } from 'lucide-react';
 import { useRef, type CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from './Enlace';
 import { idPublicacion, versionDe } from '../data/muro';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import type { ImagenPublicacion, Publicacion as TipoPublicacion } from '../data/tipos';
