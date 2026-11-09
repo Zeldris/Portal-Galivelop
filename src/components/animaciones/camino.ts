@@ -4,9 +4,10 @@ import { at, dos, e, type Atomo, type Guion, type PorModo, type Rotulo } from '.
 // y el CI. Abajo (o a la izquierda en móvil), la pista de las cinco paradas.
 const XS = [110, 290, 470, 650, 830];
 const YM = [44, 102, 160, 218, 276];
-const NOMBRES: PorModo<Rotulo>[] = [
+const NOMBRES: PorModo<Rotulo | null>[] = [
   e('codigo'),
-  e('entorno'),
+  // En móvil, el nombre va en la columna estrecha de la pista: «environment» no cabe.
+  dos(e('entorno'), e('entorno-corto')),
   e('marca'),
   dos('pre-push', 'push'),
   'main',

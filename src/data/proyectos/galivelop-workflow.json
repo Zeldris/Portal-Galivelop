@@ -861,6 +861,11 @@
           "gl": "contorno",
           "en": "environment"
         },
+        "entorno-corto": {
+          "es": "entorno",
+          "gl": "contorno",
+          "en": "env"
+        },
         "es-main": {
           "es": "¿es main?",
           "gl": "é main?",
