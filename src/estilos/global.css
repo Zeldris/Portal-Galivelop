@@ -800,10 +800,6 @@ button {
   border-block: 1px solid var(--borde);
 }
 
-.seccion h2 {
-  font-size: 2.25rem;
-}
-
 .seccion-cabecera {
   display: flex;
   flex-wrap: wrap;
@@ -1435,7 +1431,6 @@ button {
   display: flex;
   align-items: center;
   gap: 14px;
-  font-size: clamp(2.75rem, 9vw, 6rem);
   margin: 10px 0 12px;
 }
 
@@ -2577,9 +2572,6 @@ button {
   color: var(--texto);
 }
 
-.formulario-pagina h1 {
-}
-
 .formulario-intro {
   color: var(--texto-2);
   font-size: 1.05rem;
@@ -3022,9 +3014,6 @@ button {
 
 /* ---------- Equipo ---------- */
 
-.equipo-pagina h1 {
-}
-
 .personas {
   list-style: none;
   margin: 0;
@@ -3384,6 +3373,8 @@ img.perfil-logo {
 }
 
 .miembro-cabecera h1 {
+  /* Excepción a la escala: el nombre va al lado de la foto y a 96 px parte en dos o tres líneas. */
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
   margin: 4px 0 2px;
 }
 
@@ -4596,13 +4587,14 @@ body:has(dialog[open]) {
 
 /* ---------- Inicio: proyectos de un vistazo y bloques compactos en móvil ---------- */
 
-/* Sin tarjeta huérfana: con 4 proyectos, 2×2; con 3 o 5+ se rellena y la última fila impar ocupa el ancho. */
+/* Tres proyectos en una fila cuando caben; desde 900 px, dos columnas: con 4 proyectos, 2×2 sin tarjeta huérfana. */
+.rejilla-proyectos {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+
 @media (min-width: 900px) {
   .rejilla-proyectos {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .rejilla-proyectos > :last-child:nth-child(odd) {
-    grid-column: 1 / -1;
   }
 }
 

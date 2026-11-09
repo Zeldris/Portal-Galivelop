@@ -18,13 +18,16 @@ const svg = readFileSync('public/marca/gv-logo.svg', 'utf8');
 const dataSvg = `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
 const navegador = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 
-const icono = await navegador.newPage({ viewport: { width: 512, height: 512 } });
-await icono.setContent(`<body style="margin:0;background:transparent"><img src="${dataSvg}" width="512" height="512"></body>`);
-await icono.screenshot({ path: 'public/marca/gv-logo-512.png', omitBackground: true });
+try {
+  const icono = await navegador.newPage({ viewport: { width: 512, height: 512 } });
+  await icono.setContent(`<body style="margin:0;background:transparent"><img src="${dataSvg}" width="512" height="512"></body>`);
+  await icono.screenshot({ path: 'public/marca/gv-logo-512.png', omitBackground: true });
 
-// La imagen social del README es la portada del portal (tools/og/portal.html) exportada a PNG: una sola composición.
-const social = await navegador.newPage({ viewport: { width: 1200, height: 630 } });
-await social.goto(`file://${resolve('tools/og/portal.html')}`);
-await social.evaluate(() => document.fonts.ready);
-await social.screenshot({ path: 'public/marca/galivelop-social.png' });
-await navegador.close();
+  // La imagen social del README es la portada del portal (tools/og/portal.html) exportada a PNG: una sola composición.
+  const social = await navegador.newPage({ viewport: { width: 1200, height: 630 } });
+  await social.goto(`file://${resolve('tools/og/portal.html')}`);
+  await social.evaluate(() => document.fonts.ready);
+  await social.screenshot({ path: 'public/marca/galivelop-social.png' });
+} finally {
+  await navegador.close();
+}

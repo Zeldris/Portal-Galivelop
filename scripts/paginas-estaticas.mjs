@@ -13,10 +13,10 @@ const conImagen = (html, url) => html
   .replace(/(property="og:image" content=")[^"]*/, `$1${url}`)
   .replace(/(name="twitter:image" content=")[^"]*/, `$1${url}`);
 const base = readFileSync('dist/index.html', 'utf8');
-// El 404 es copia de la portada sin páginas estáticas: solo necesita la imagen versionada.
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-// El 404 lleva título y descripción propios en los tres idiomas. Sin rutas por idioma, el castellano va en el HTML
-// y un guion elige gl/en según el prefijo de la dirección. Con noindex: no es una página que indexar.
+// El 404 es copia de la portada: lleva la imagen versionada y título y descripción propios en los tres idiomas.
+// GitHub Pages sirve un único 404.html para toda dirección desconocida: el castellano va en el HTML y un guion
+// elige gl/en según el prefijo de la dirección. Con noindex: no es una página que indexar.
 const NO_ENCONTRADA = {
   es: ['Página no encontrada · Galivelop', 'Esta página no existe o ha cambiado de sitio. Vuelve a la portada de Galivelop.'],
   gl: ['Páxina non atopada · Galivelop', 'Esta páxina non existe ou cambiou de sitio. Volve á portada de Galivelop.'],
