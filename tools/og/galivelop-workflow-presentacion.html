@@ -1,7 +1,8 @@
 <!doctype html>
 <!-- Imagen de presentación de Galivelop-workflow (1200×630): la renderiza tools/og/presentacion.mjs a og-fuente.png y
-     presentacion.webp. Misma composición que las imágenes de Galivelop IG de los otros proyectos: marca arriba a la
-     izquierda, titular y lema a la izquierda, motivo a la derecha. -->
+     presentacion.webp. Identidad de docs/marca.md, al estilo de tools/og/portal.html: bloque celeste hondo plano con
+     isobatas, sin degradados ni resplandores; marca arriba a la izquierda, titular y lema a la izquierda y, a la
+     derecha, el relevo como cinco fichas con chaflán. -->
 <html lang="es"><head><meta charset="utf-8">
 <style>
 @font-face{font-family:"Big Shoulders Display";src:url("../../node_modules/@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2") format("woff2-variations");font-weight:100 900}
@@ -9,52 +10,40 @@
 @font-face{font-family:"Literata";src:url("../../node_modules/@fontsource-variable/literata/files/literata-latin-wght-normal.woff2") format("woff2-variations");font-weight:200 900}
 *{margin:0;box-sizing:border-box}
 html,body{width:1200px;height:630px;overflow:hidden}
-body{position:relative;background:#0b1520;color:#fff;font-family:"Literata",serif}
-.fondo{position:absolute;inset:0;background:
-  radial-gradient(ellipse 640px 520px at 86% 58%,rgba(61,111,217,.55),rgba(61,111,217,0) 70%),
-  radial-gradient(ellipse 500px 380px at 62% 110%,rgba(26,166,223,.28),rgba(26,166,223,0) 70%),
-  linear-gradient(115deg,#0a131c 0%,#0f1d2a 55%,#132a3c 100%)}
-.reticula{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:24px 24px;mask-image:linear-gradient(90deg,rgba(0,0,0,.25),rgba(0,0,0,.9) 60%)}
-.marca{position:absolute;left:52px;top:46px;display:flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-weight:600;font-size:21px;letter-spacing:.01em}
-.marca i{width:38px;height:38px;background:#3d6fd9;clip-path:polygon(0 0,74% 0,100% 26%,100% 100%,0 100%);position:relative;box-shadow:0 0 24px rgba(61,111,217,.6)}
-.marca i:before,.marca i:after{content:"";position:absolute;background:#fff}
-.marca i:before{left:9px;top:18px;width:14px;height:3px}
-.marca i:after{left:17px;top:12px;width:9px;height:9px;border-right:3px solid #fff;border-top:3px solid #fff;background:none;transform:rotate(45deg) scale(.6);left:15px;top:13px}
-h1{position:absolute;left:52px;top:188px;font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:112px;line-height:.88;letter-spacing:.005em;text-transform:uppercase}
-h1 em{font-style:normal;color:#8fb3ff}
-p{position:absolute;left:54px;top:415px;width:470px;font-size:22px;line-height:1.42;color:#c3d0da;font-weight:400}
-.pie{position:absolute;left:54px;bottom:46px;font-family:"JetBrains Mono",monospace;font-size:14px;color:#7f93a3;letter-spacing:.04em}
-/* Motivo: el relevo. Cinco tarjetas de cristal escalonadas, unidas por el testigo; la última, encendida. */
-.relevo{position:absolute;left:572px;top:100px;width:560px;height:440px;perspective:1100px}
-.tarjeta{position:absolute;width:150px;height:200px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.04) 60%,rgba(61,111,217,.08));backdrop-filter:blur(6px);clip-path:polygon(0 0,86% 0,100% 11%,100% 100%,0 100%);box-shadow:inset 0 0 40px rgba(255,255,255,.04);transform-style:preserve-3d;transform:rotateY(-28deg) rotateX(6deg)}
-.tarjeta:after{content:attr(data-paso);position:absolute;left:14px;bottom:12px;font-family:"JetBrains Mono",monospace;font-size:13px;color:rgba(255,255,255,.72);letter-spacing:.02em}
-.tarjeta b{position:absolute;left:14px;top:14px;font-family:"JetBrains Mono",monospace;font-weight:400;font-size:11px;color:rgba(255,255,255,.45)}
-.t1{left:0;top:200px;transform:rotateY(-28deg) rotateX(6deg) scale(.78);opacity:.55}
-.t2{left:110px;top:170px;transform:rotateY(-28deg) rotateX(6deg) scale(.86);opacity:.7}
-.t3{left:220px;top:140px;transform:rotateY(-28deg) rotateX(6deg) scale(.94);opacity:.85}
-.t4{left:330px;top:110px}
-.t5{left:418px;top:70px;transform:rotateY(-28deg) rotateX(6deg) scale(1.08);border-color:#8fb3ff;background:linear-gradient(160deg,rgba(61,111,217,.75),rgba(26,166,223,.45));box-shadow:0 0 70px rgba(61,111,217,.7),inset 0 0 50px rgba(255,255,255,.18)}
-.t5:after,.t5 b{color:#fff}
-.testigo{position:absolute;left:0;top:0;width:560px;height:440px;overflow:visible}
-.suelo{position:absolute;left:560px;top:470px;width:640px;height:160px;background:radial-gradient(ellipse 360px 60px at 60% 40%,rgba(61,111,217,.45),rgba(61,111,217,0) 70%)}
+body{position:relative;background:#0072a8;color:#fff;font-family:"Literata",serif}
+.mar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left bottom}
+.marca{position:absolute;left:52px;top:46px;display:flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-weight:600;font-size:21px}
+.marca svg{width:44px;height:44px}
+h1{position:absolute;left:52px;top:186px;font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:96px;line-height:.9;letter-spacing:.005em;text-transform:uppercase}
+h1 em{font-style:normal;display:block;width:fit-content;margin-top:.06em;padding:.05em .14em 0;line-height:1;background:#13212b;color:#fbfcfd}
+p{position:absolute;left:54px;top:430px;width:470px;font-size:22px;line-height:1.42;color:rgba(255,255,255,.95)}
+.pie{position:absolute;left:54px;bottom:44px;font-family:"JetBrains Mono",monospace;font-size:14px;color:rgba(255,255,255,.8);letter-spacing:.04em}
+/* Motivo: el relevo. Cinco fichas con chaflán, escalonadas y unidas por la ruta; la última, en tinta. */
+.relevo{position:absolute;left:640px;top:90px;width:510px;height:470px}
+.ruta{position:absolute;inset:0;width:510px;height:470px;overflow:visible}
+.ficha{position:absolute;width:140px;height:190px;background:#fbfcfd;color:#13212b;border:0;clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,0 100%)}
+.ficha b{position:absolute;left:14px;top:14px;font-family:"JetBrains Mono",monospace;font-weight:500;font-size:13px;letter-spacing:.06em;color:#4a5c69}
+.ficha span{position:absolute;left:14px;bottom:14px;font-family:"JetBrains Mono",monospace;font-weight:600;font-size:15px;letter-spacing:.02em}
+.ficha:before{content:"";position:absolute;left:14px;right:14px;bottom:44px;border-top:1px dashed #b9cbd6}
+.t1{left:0;top:230px}
+.t2{left:92px;top:190px}
+.t3{left:184px;top:150px}
+.t4{left:276px;top:110px}
+.t5{left:368px;top:70px;background:#13212b;color:#fff}
+.t5 b{color:rgba(255,255,255,.7)}
+.t5:before{border-color:rgba(255,255,255,.35)}
 </style></head><body>
-<div class="fondo"></div><div class="reticula"></div><div class="suelo"></div>
-<div class="marca"><i></i>galivelop-workflow</div>
-<h1>Relevos sin<br>perder <em>nada.</em></h1>
+<img class="mar" src="../../public/marca/isobatas.svg" alt="">
+<div class="marca"><svg viewBox="0 0 128 128" aria-hidden="true"><path d="M0 0H100L128 28V128H0Z" fill="#1AA6DF"/><g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M55.4 45.6 A24 24 0 1 0 64 64"/><path d="M50 64 H80"/><path d="M71 40 L89.5 88 L108 40"/></g></svg>galivelop-workflow</div>
+<h1>Relevos sin<em>perder nada.</em></h1>
 <p>La forma de trabajar con agentes de IA, empaquetada: bitácora, check y revisión antes de publicar.</p>
 <div class="pie">handoff.md · /gw-selector · check · /code-review · main</div>
 <div class="relevo">
-  <svg class="testigo" viewBox="0 0 560 440"><defs>
-    <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#3d6fd9" stop-opacity=".15"/><stop offset="1" stop-color="#9cc4ff"/></linearGradient>
-    <filter id="f" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="4"/></filter></defs>
-    <path d="M40 330 C 140 300, 180 300, 250 250 S 400 170, 520 140" fill="none" stroke="url(#g)" stroke-width="10" filter="url(#f)" opacity=".8"/>
-    <path d="M40 330 C 140 300, 180 300, 250 250 S 400 170, 520 140" fill="none" stroke="url(#g)" stroke-width="2.5"/>
-    <circle cx="520" cy="140" r="7" fill="#fff"/><circle cx="520" cy="140" r="16" fill="none" stroke="#9cc4ff" stroke-opacity=".6"/>
-  </svg>
-  <div class="tarjeta t1" data-paso="handoff.md"><b>01</b></div>
-  <div class="tarjeta t2" data-paso="/gw-selector"><b>02</b></div>
-  <div class="tarjeta t3" data-paso="check ✓"><b>03</b></div>
-  <div class="tarjeta t4" data-paso="/code-review"><b>04</b></div>
-  <div class="tarjeta t5" data-paso="→ main"><b>05</b></div>
+  <svg class="ruta" viewBox="0 0 510 470"><path d="M20 470 L488 36" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 7"/><circle cx="488" cy="36" r="6" fill="#fff"/></svg>
+  <div class="ficha t1"><b>01</b><span>handoff.md</span></div>
+  <div class="ficha t2"><b>02</b><span>/gw-selector</span></div>
+  <div class="ficha t3"><b>03</b><span>check ✓</span></div>
+  <div class="ficha t4"><b>04</b><span>/code-review</span></div>
+  <div class="ficha t5"><b>05</b><span>→ main</span></div>
 </div>
 </body></html>

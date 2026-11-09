@@ -106,9 +106,9 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números
 | 12, 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
 | 15 | Decidir al recibirlo: las entradas de «Próximamente» aún no tienen carpeta en `public/proyectos/` | Convertir a WebP |
 | 23 | `public/proyectos/<slug>/icono.png`, el `icono` de la ficha | Copiar a 512×512 |
-| 24 | `public/proyectos/<slug>/og-fuente.png` | `python3 tools/og/generar.py` genera el `og.jpg`; `src/data/og.test.ts` comprueba la huella |
+| 24 | `tools/og/fuentes/<slug>/og-fuente.png` (fuera de `public/`, para que no salga en `dist/`) | `python3 tools/og/generar.py` genera el `og.jpg`; `src/data/og.test.ts` comprueba la huella |
 
-La vista previa (`og`) de un proyecto es siempre `og-fuente.png` + `python3 tools/og/generar.py`, nunca el `og.jpg` a mano.
+La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fuente.png` + `python3 tools/og/generar.py`, nunca el `og.jpg` a mano.
 
 ### Cómo pedirlas
 

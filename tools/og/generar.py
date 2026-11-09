@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Genera la imagen de vista previa (og.jpg, 1200x630, JPEG) de cada proyecto a partir de su portada.
 
-Si junto a la portada hay un `og-fuente.png` (o `.jpg`), una imagen hecha para redes (1200x630, p. ej. del generador de
+Si en `tools/og/fuentes/<slug>/` hay un `og-fuente.png` (o `.jpg`), una imagen hecha para redes (1200x630, p. ej. del generador de
 imágenes de Galivelop), la vista previa sale de ese archivo y no de la portada.
 
 Las redes (Facebook, LinkedIn, WhatsApp…) documentan JPEG/PNG y 1.91:1; la portada es WebP con otra proporción. Una
@@ -31,11 +31,13 @@ def borde(img: Image.Image) -> tuple[int, ...]:
 
 
 FUENTES = ('og-fuente.png', 'og-fuente.jpg')
+# Las fuentes viven fuera de public/ para que no salgan en dist/: solo las usan estas herramientas.
+CARPETA_FUENTES = RAIZ / 'tools/og/fuentes'
 
 
-def origen(portada: Path) -> Path:
-    """La imagen hecha para redes si existe junto a la portada; si no, la portada."""
-    return next((portada.parent / f for f in FUENTES if (portada.parent / f).exists()), portada)
+def origen(portada: Path, slug: str) -> Path:
+    """La imagen hecha para redes si existe en tools/og/fuentes/<slug>/; si no, la portada."""
+    return next((CARPETA_FUENTES / slug / f for f in FUENTES if (CARPETA_FUENTES / slug / f).exists()), portada)
 
 
 def huella(archivo: Path) -> bytes:
@@ -69,7 +71,7 @@ def main() -> int:
         datos = json.loads(ficha.read_text(encoding='utf-8'))
         portada = RAIZ / 'public' / datos['portada']['src']
         destino = portada.parent / 'og.jpg'
-        generar(origen(portada), destino)
+        generar(origen(portada, ficha.stem), destino)
         print(destino.relative_to(RAIZ))
     return 0
 

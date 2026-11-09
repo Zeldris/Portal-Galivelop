@@ -281,8 +281,8 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   el job `avisar` de `pages.yml` manda después por IndexNow (Bing, Yandex, Seznam, Naver…) las páginas nuevas o con
   otro `lastmod` (`node scripts/indexnow.mjs cambios`, tras `npm run build`, enseña cuáles serían).
 - **Vista previa en redes:** `og:locale` por idioma; la de cada proyecto es `public/proyectos/<slug>/og.jpg`
-  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow) desde `og-fuente.png` (una imagen hecha para
-  redes, p. ej. del generador de imágenes de Galivelop) si está junto a la portada, y si no desde la portada; se
+  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow) desde `tools/og/fuentes/<slug>/og-fuente.png` (una imagen hecha para
+  redes, p. ej. del generador de imágenes de Galivelop; fuera de `public/` para que no salga en `dist/`) si existe, y si no desde la portada; se
   vuelve a correr al cambiar cualquiera de las dos. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.

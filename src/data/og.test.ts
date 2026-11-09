@@ -27,20 +27,22 @@ function comentarioJpeg(b: Buffer): string | null {
 }
 
 // La vista previa en redes de cada ficha: scripts/paginas-estaticas.mjs usa og.jpg y, si falta, la portada en WebP sin
-// medidas, que Facebook no acepta. Se genera con `python3 tools/og/generar.py` a partir de `og-fuente.png` (o `.jpg`,
-// una imagen hecha para redes) si existe junto a la portada, y si no de la portada; deja en el JPEG la huella de ese
+// medidas, que Facebook no acepta. Se genera con `python3 tools/og/generar.py` a partir de `tools/og/fuentes/<slug>/og-fuente.png`
+// (o `.jpg`, una imagen hecha para redes) si existe, y si no de la portada; deja en el JPEG la huella de ese
 // origen: si cambia y la vista previa no se regenera, la tarjeta en redes enseñaría la imagen vieja.
 describe('vista previa de cada proyecto', () => {
   it.each(proyectos.map((p) => [p.slug, p.portada.src]))(
     '%s tiene og.jpg de 1200×630, al día con su origen',
-    (_, portada) => {
+    (slug, portada) => {
       const carpeta = `public/${portada.replace(/[^/]+$/, '')}`;
       const ruta = `${carpeta}og.jpg`;
       expect(existsSync(ruta), `falta ${ruta}: python3 tools/og/generar.py`).toBe(true);
       const og = readFileSync(ruta);
       expect(medidasJpeg(og)).toEqual([1200, 630]);
-      const fuente = ['og-fuente.png', 'og-fuente.jpg'].find((f) => existsSync(carpeta + f));
-      const origen = fuente ? `${carpeta}${fuente}` : `public/${portada}`;
+      const fuente = ['og-fuente.png', 'og-fuente.jpg'].find((f) =>
+        existsSync(`tools/og/fuentes/${slug}/${f}`),
+      );
+      const origen = fuente ? `tools/og/fuentes/${slug}/${fuente}` : `public/${portada}`;
       const huella = `${fuente ? 'og-fuente' : 'portada'}:${createHash('sha1')
         .update(readFileSync(origen))
         .digest('hex')}`;
