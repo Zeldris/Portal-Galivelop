@@ -137,6 +137,9 @@ function medirPagina({ movil, tactil, raiz }) {
     const desplaza = (el) => /auto|scroll/.test(getComputedStyle(el).overflowX);
     const desbordan = todos.filter((el) => {
       if (el.scrollWidth <= el.clientWidth + 1 || !el.clientWidth || !visible(el)) return false;
+      // Dentro de un SVG, `clientWidth` no es una caja que recorte (los `<text>` de las animaciones del workflow
+      // salían como cortados sin estarlo); lo que cabe en cada caja del dibujo lo mira `animaciones.test.ts`.
+      if (el.closest('svg')) return false;
       if (desplaza(el) || getComputedStyle(el).textOverflow === 'ellipsis') return false;
       // Una barra que se desplaza y sale a propósito hasta el borde (las pestañas de la ficha) no corta nada.
       const r = el.getBoundingClientRect();
