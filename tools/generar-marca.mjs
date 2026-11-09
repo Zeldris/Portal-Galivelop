@@ -1,9 +1,18 @@
 // Genera los PNG de la marca a partir de public/marca/gv-logo.svg:
-//   gv-logo-512.png (icono) y galivelop-social.png (1200x630, vista previa en redes).
+//   gv-logo-512.png (icono) y galivelop-social.png (1200x630, la portada social del portal en PNG; README.md).
 // Uso: npm i --no-save playwright && node tools/generar-marca.mjs
 // (Chromium de Playwright; otra ruta con CHROMIUM_PATH=...)
 import { readFileSync } from 'node:fs';
-import { chromium } from 'playwright';
+import { resolve } from 'node:path';
+import { createRequire } from 'node:module';
+
+const require = createRequire(import.meta.url);
+let chromium;
+try {
+  ({ chromium } = require('playwright'));
+} catch {
+  ({ chromium } = require('/opt/node-tools/node_modules/playwright')); // sesiones en la nube
+}
 
 const svg = readFileSync('public/marca/gv-logo.svg', 'utf8');
 const dataSvg = `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
@@ -13,15 +22,9 @@ const icono = await navegador.newPage({ viewport: { width: 512, height: 512 } })
 await icono.setContent(`<body style="margin:0;background:transparent"><img src="${dataSvg}" width="512" height="512"></body>`);
 await icono.screenshot({ path: 'public/marca/gv-logo-512.png', omitBackground: true });
 
+// La imagen social del README es la portada del portal (tools/og/portal.html) exportada a PNG: una sola composición.
 const social = await navegador.newPage({ viewport: { width: 1200, height: 630 } });
-await social.setContent(`
-<body style="margin:0;width:1200px;height:630px;display:flex;align-items:center;gap:56px;padding:0 96px;box-sizing:border-box;
-  background:radial-gradient(70% 90% at 85% 20%, rgba(26,166,223,.35), transparent 70%), #06121c;font-family:system-ui,sans-serif;color:#eaf4fa">
-  <img src="${dataSvg}" width="220" height="220" style="filter:drop-shadow(0 24px 40px rgba(0,131,193,.5))">
-  <div>
-    <div style="font-size:96px;font-weight:800;letter-spacing:-4px"><span style="color:#1aa6df">Gali</span>velop</div>
-    <div style="font-size:30px;color:#9fb4c4;margin-top:8px">Taller de creación, investigación y aprendizaje</div>
-  </div>
-</body>`);
+await social.goto(`file://${resolve('tools/og/portal.html')}`);
+await social.evaluate(() => document.fonts.ready);
 await social.screenshot({ path: 'public/marca/galivelop-social.png' });
 await navegador.close();
