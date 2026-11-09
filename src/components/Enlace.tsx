@@ -10,6 +10,8 @@ export function conBarraFinal(to: string): string {
   const corte = to.search(/[?#]/);
   const pathname = corte === -1 ? to : to.slice(0, corte);
   const resto = corte === -1 ? '' : to.slice(corte);
+  // Un archivo (/llms.txt, /sitemap.xml) no lleva barra: GitHub Pages lo serviría con 404.
+  if (pathname.split('/').pop()!.includes('.')) return to;
   return pathname.endsWith('/') ? to : `${pathname}/${resto}`;
 }
 

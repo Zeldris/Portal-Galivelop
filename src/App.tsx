@@ -1,23 +1,22 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Cabecera } from './components/Cabecera';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Pie } from './components/Pie';
 import { buscarLegal } from './data/legal';
 import { Inicio } from './pages/Inicio';
+import {
+  Equipo,
+  Legal,
+  Miembro,
+  Muro,
+  NoEncontrado,
+  Productos,
+  Proponer,
+  Proyecto,
+  Unirse,
+} from './paginas';
 import { leerAncla } from './utils/ancla';
-
-// Todas las páginas menos la portada van en su propio chunk: el JS inicial es solo el de la portada.
-const Equipo = lazy(() => import('./pages/Equipo').then((m) => ({ default: m.Equipo })));
-const Legal = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Legal })));
-const Miembro = lazy(() => import('./pages/Miembro').then((m) => ({ default: m.Miembro })));
-const Muro = lazy(() => import('./pages/Muro').then((m) => ({ default: m.Muro })));
-const NoEncontrado = lazy(() =>
-  import('./pages/NoEncontrado').then((m) => ({ default: m.NoEncontrado })),
-);
-const Productos = lazy(() => import('./pages/Productos').then((m) => ({ default: m.Productos })));
-const Proponer = lazy(() => import('./pages/Proponer').then((m) => ({ default: m.Proponer })));
-const Proyecto = lazy(() => import('./pages/Proyecto').then((m) => ({ default: m.Proyecto })));
-const Unirse = lazy(() => import('./pages/Unirse').then((m) => ({ default: m.Unirse })));
 
 /** Al cambiar de página, sube arriba; si la ruta trae #ancla, baja hasta ella. */
 function Desplazamiento() {
@@ -73,9 +72,11 @@ export function App() {
       <Desplazamiento />
       <Cabecera />
       <main id="contenido">
-        <Suspense fallback={<div className="carga-pagina" aria-busy="true" />}>
-          <Rutas />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<div className="carga-pagina" aria-busy="true" />}>
+            <Rutas />
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <Pie />
     </>

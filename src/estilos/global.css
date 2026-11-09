@@ -3352,13 +3352,7 @@ img.perfil-logo {
   object-fit: cover;
   border: 3px solid var(--celeste);
   /* Retrato con la esquina superior derecha cortada (recurso 17 de la marca). */
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--chaflan)) 0,
-    100% var(--chaflan),
-    100% 100%,
-    0 100%
-  );
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
 }
 
 .miembro-foto.persona-iniciales {
@@ -4291,12 +4285,24 @@ body:has(dialog[open]) {
 }
 
 /* Rejillas de fichas sin celdas huérfanas (.mosaico, .caracteristicas): 12 subcolumnas; cada pieza ocupa 12 / n y
-   las de la última fila se reparten el ancho entero, así todas las filas quedan parejas con cualquier número de piezas. */
-:is(.mosaico, .caracteristicas) > li {
+   las de la última fila se reparten el ancho entero, así todas las filas quedan parejas con cualquier número de piezas.
+   Cada tramo de ancho lleva su propia regla (con `width` entre dos límites) para que la de un tramo no se cuele en el
+   siguiente. En móvil (hasta 700px) `.mosaico` es de 2 columnas fijas (más abajo): ahí no se le aplica nada. */
+.caracteristicas > li {
   grid-column: span 12;
 }
 
-@media (min-width: 520px) {
+@media (520px <= width <= 700px) {
+  .caracteristicas > li {
+    grid-column: span 6;
+  }
+
+  .caracteristicas > li:last-child:nth-child(odd) {
+    grid-column: span 12;
+  }
+}
+
+@media (700px < width < 760px) {
   :is(.mosaico, .caracteristicas) > li {
     grid-column: span 6;
   }
@@ -4306,7 +4312,7 @@ body:has(dialog[open]) {
   }
 }
 
-@media (min-width: 760px) {
+@media (760px <= width < 1000px) {
   :is(.mosaico, .caracteristicas) > li {
     grid-column: span 4;
   }

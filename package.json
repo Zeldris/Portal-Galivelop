@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build && cp dist/index.html dist/404.html && node scripts/paginas-estaticas.mjs",
     "preview": "vite preview",
     "test": "vitest run",
-    "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" && vitest run && bash tools/qa/tests/test-ganchos.sh",
+    "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" \"tools/vite/**/*.ts\" && vitest run && bash tools/qa/tests/test-ganchos.sh",
     "medir": "node tools/qa/medir-paginas.cjs",
     "capturas": "node tools/qa/capturas.cjs",
     "seo": "python3 .claude/skills/gw-seo/scripts/comprobar.py dist"

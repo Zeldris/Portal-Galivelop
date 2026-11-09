@@ -287,6 +287,13 @@ const es = {
   'error.titulo': 'Página no encontrada',
   'error.texto': 'Esta página no existe o el proyecto ha cambiado de dirección.',
   'error.volver': 'Volver al inicio',
+  'error.carga.titulo': 'No se ha podido cargar la página',
+  'error.carga.texto':
+    'Ha fallado la descarga, quizá por la conexión o porque la web se ha actualizado. Vuelve a cargarla.',
+  'error.carga.recargar': 'Recargar',
+  'ficha.error.titulo': 'No se ha podido cargar el proyecto',
+  'ficha.error.texto': 'La ficha no ha llegado, probablemente por la conexión. Inténtalo de nuevo.',
+  'ficha.error.reintentar': 'Reintentar',
 
   'nav.taller': 'Taller',
   'nav.productos': 'Productos',
@@ -603,6 +610,13 @@ const gl: Record<Clave, string> = {
   'error.titulo': 'Páxina non atopada',
   'error.texto': 'Esta páxina non existe ou o proxecto cambiou de enderezo.',
   'error.volver': 'Volver ao inicio',
+  'error.carga.titulo': 'Non se puido cargar a páxina',
+  'error.carga.texto':
+    'Fallou a descarga, quizais pola conexión ou porque a web se actualizou. Volve cargala.',
+  'error.carga.recargar': 'Recargar',
+  'ficha.error.titulo': 'Non se puido cargar o proxecto',
+  'ficha.error.texto': 'A ficha non chegou, probablemente pola conexión. Téntao de novo.',
+  'ficha.error.reintentar': 'Reintentar',
 
   'nav.taller': 'Obradoiro',
   'nav.productos': 'Produtos',
@@ -918,6 +932,14 @@ const en: Record<Clave, string> = {
   'error.titulo': 'Page not found',
   'error.texto': 'This page does not exist or the project has moved.',
   'error.volver': 'Back to home',
+  'error.carga.titulo': 'The page could not be loaded',
+  'error.carga.texto':
+    'The download failed, perhaps because of the connection or because the site was updated. Reload it.',
+  'error.carga.recargar': 'Reload',
+  'ficha.error.titulo': 'The project could not be loaded',
+  'ficha.error.texto':
+    'The project page did not arrive, probably because of the connection. Try again.',
+  'ficha.error.reintentar': 'Try again',
 
   'nav.taller': 'Workshop',
   'nav.productos': 'Products',

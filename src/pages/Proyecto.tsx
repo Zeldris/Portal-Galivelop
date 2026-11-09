@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useParams } from 'react-router-dom';
+import { AvisoError } from '../components/AvisoError';
 import { Link } from '../components/Enlace';
 import { Apartados } from '../components/Apartados';
 import { EtiquetaColaboracion } from '../components/Colaboracion';
@@ -139,7 +140,18 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
 export function Proyecto() {
   const { slug } = useParams();
   const ficha = useFicha(slug);
+  const { t } = useIdioma();
   if (ficha.estado === 'no-existe') return <NoEncontrado />;
+  if (ficha.estado === 'error') {
+    return (
+      <AvisoError
+        titulo={t('ficha.error.titulo')}
+        texto={t('ficha.error.texto')}
+        boton={t('ficha.error.reintentar')}
+        alPulsar={ficha.reintentar}
+      />
+    );
+  }
   // Mientras llega la ficha entera: hueco sin texto (nada de «no encontrado» que parpadee).
   if (ficha.estado === 'cargando') return <div className="carga-pagina" aria-busy="true" />;
   return <FichaProyecto key={ficha.ficha.slug} p={ficha.ficha} />;

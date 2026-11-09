@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { fichasCompletas as proyectos } from './fichasCompletas';
@@ -12,7 +12,7 @@ import { LINEAS } from './lineas';
 const PUBLIC = join(__dirname, '../../public');
 
 describe('resumen de proyectos (lo que entra en el chunk inicial)', () => {
-  it('trae los mismos campos que la ficha entera, en el mismo orden, y el mismo avance', () => {
+  it('trae los valores de la ficha entera, en el mismo orden, el mismo avance y nada más que los campos del resumen', () => {
     expect(resumenes.map((r) => r.slug)).toEqual(proyectos.map((p) => p.slug));
     for (const [i, r] of resumenes.entries()) {
       const ficha = proyectos[i];
@@ -34,6 +34,16 @@ describe('resumen de proyectos (lo que entra en el chunk inicial)', () => {
 });
 
 describe('proyectos', () => {
+  it('el nombre de cada archivo de src/data/proyectos/ es su slug (cargarFicha lo busca por el nombre)', () => {
+    const carpeta = join(__dirname, 'proyectos');
+    const archivos = readdirSync(carpeta).filter((f) => f.endsWith('.json'));
+    expect(archivos.length).toBeGreaterThan(0);
+    for (const f of archivos) {
+      const { slug } = JSON.parse(readFileSync(join(carpeta, f), 'utf8')) as { slug: string };
+      expect(f, `slug «${slug}»`).toBe(`${slug}.json`);
+    }
+  });
+
   it('hay al menos un proyecto y los slugs no se repiten', () => {
     expect(proyectos.length).toBeGreaterThan(0);
     expect(new Set(proyectos.map((p) => p.slug)).size).toBe(proyectos.length);
