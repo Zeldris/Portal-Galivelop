@@ -213,7 +213,8 @@ export default function AnimacionFlujo({
       setReproduciendo(false);
       return;
     }
-    setPaso(1);
+    // Desde el paso en el que está; desde el último (el reposo), vuelve a empezar.
+    setPaso((p) => (p >= total ? 1 : p));
     setReproduciendo(true);
   };
   const teclaPestanas = (ev: KeyboardEvent) => {
