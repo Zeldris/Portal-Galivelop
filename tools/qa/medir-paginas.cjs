@@ -41,9 +41,9 @@ const VENTANAS = [
 // El mínimo de WCAG 2.5.8 (AA). El portal busca unos 44 px de alto donde cabe (enlaces sueltos, iconos de 38): eso
 // es diseño y se juzga en la captura; esto avisa de lo que queda por debajo del mínimo.
 const TACTIL = { alto: 24, ancho: 24 };
-// Columnas que debe tener como mínimo la primera fila de cada rejilla (o todas sus piezas, si son menos), por ventana: el paso
-// a 12 subcolumnas dejó una vez el mosaico a una columna en móvil sin que nada lo cazase. Medido el 2026-11-09; si
-// un cambio de diseño las mueve a propósito, se cambian aquí.
+// Columnas que debe tener como mínimo la primera fila de cada rejilla (o todas sus piezas, si son menos), por
+// ventana: el paso a 12 subcolumnas dejó una vez el mosaico a una columna en móvil sin que nada lo cazase. Medido el
+// 2026-11-09; si un cambio de diseño las mueve a propósito, se cambian aquí.
 const COLUMNAS = {
   '.mosaico': { escritorio: 4, movil: 2 },
   '.cifras': { escritorio: 5, movil: 2, 'movil-360': 2, 'movil-320': 2 },
@@ -51,7 +51,7 @@ const COLUMNAS = {
   '.rejilla-productos': { escritorio: 4 },
 };
 
-/** En el navegador: para cada rejilla de `esperado` ({selector: columnas}), las que se quedan cortas, como `.mosaico 1/2`. */
+/** En el navegador: de cada rejilla de `esperado` ({selector: columnas}), las que se quedan cortas (`.mosaico 1/2`). */
 function contarColumnas(esperado) {
   const fallos = [];
   for (const [selector, columnas] of Object.entries(esperado)) {
@@ -259,16 +259,17 @@ if (require.main !== module) return;
       pagina.on('pageerror', alFallo);
       await pagina.goto(BASE + ruta, { waitUntil: 'networkidle' });
       const movil = nombre.startsWith('movil');
+      // Antes de abrir el menú y las hojas, con la página como llega.
+      const esperado = Object.fromEntries(
+        Object.entries(COLUMNAS).flatMap(([selector, porVentana]) => (porVentana[nombre] ? [[selector, porVentana[nombre]]] : [])),
+      );
+      const columnas = await pagina.evaluate(contarColumnas, esperado);
       const m = await pagina.evaluate(medirPagina, { movil, tactil: TACTIL });
       if (movil) {
         const capas = await medirCapas(pagina);
         m.cortes.push(...capas.cortes);
         m.tactiles.push(...capas.tactiles);
       }
-      const esperado = Object.fromEntries(
-        Object.entries(COLUMNAS).flatMap(([selector, porVentana]) => (porVentana[nombre] ? [[selector, porVentana[nombre]]] : [])),
-      );
-      const columnas = await pagina.evaluate(contarColumnas, esperado);
       pagina.off('console', alError);
       pagina.off('pageerror', alFallo);
       const desborda = m.ancho > ancho;
