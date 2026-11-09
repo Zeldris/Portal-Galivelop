@@ -8,8 +8,14 @@ export function MarcaGV({ tamano = 36 }: { tamano?: number }) {
       aria-hidden="true"
       className="marca-gd"
     >
-      <path d="M0 0H100L128 28V128H0Z" fill="#1AA6DF" />
-      <g fill="none" stroke="#fff" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M0 0H100L128 28V128H0Z" fill="var(--celeste, #1aa6df)" />
+      <g
+        fill="none"
+        stroke="var(--blanco, #fff)"
+        strokeWidth="12"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <path d="M55.4 45.6 A24 24 0 1 0 64 64" />
         <path d="M50 64 H80" />
         <path d="M71 40 L89.5 88 L108 40" />

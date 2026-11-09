@@ -102,12 +102,12 @@ describe('perfil de cada miembro', () => {
 
 describe('fondo de las píldoras de tecnología', () => {
   const css = readFileSync(join(__dirname, '../estilos/global.css'), 'utf8');
-  /** `--brillo` (un rgb con alfa) mezclado sobre `--superficie`, leídos del bloque de cada tema en global.css. */
+  /** `--tinte` (un rgb con alfa) mezclado sobre `--superficie`, leídos del bloque de cada tema en global.css. */
   function fondo(selector: string): number {
     const bloque = css.slice(css.indexOf(selector)).split('}')[0];
     const superficie = /--superficie:\s*#([0-9a-f]{6});/i.exec(bloque)?.[1];
-    const brillo = /--brillo:\s*rgb\((\d+) (\d+) (\d+) \/ ([\d.]+)\);/.exec(bloque);
-    if (!superficie || !brillo) throw new Error(`faltan --superficie o --brillo en ${selector}`);
+    const brillo = /--tinte:\s*rgb\((\d+) (\d+) (\d+) \/ ([\d.]+)\);/.exec(bloque);
+    if (!superficie || !brillo) throw new Error(`faltan --superficie o --tinte en ${selector}`);
     const alfa = Number(brillo[4]);
     const mezcla = [0, 1, 2].map((i) => {
       const s = parseInt(superficie.slice(i * 2, i * 2 + 2), 16);

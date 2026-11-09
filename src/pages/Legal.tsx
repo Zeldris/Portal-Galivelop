@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { documentosLegales, type DocumentoLegal } from '../data/legal';
 import { useIdioma } from '../i18n/Idioma';
 
@@ -19,6 +20,9 @@ export function Legal({ documento: d }: { documento: DocumentoLegal }) {
   return (
     <section className="seccion legal">
       <div className="contenedor legal-contenedor">
+        <Link to="/" className="volver volver-oscuro">
+          <ArrowLeft size={16} /> {t('error.volver')}
+        </Link>
         <header className="legal-cabecera">
           <h1>{tx(d.titulo)}</h1>
           <p className="legal-fecha">

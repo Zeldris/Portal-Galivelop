@@ -4,6 +4,12 @@
 :root {
   --celeste: #1aa6df;
   --blanco: #ffffff;
+  /* Noche: fondo de los escenarios de imagen y velo plano sobre las fotos (derivados de la tinta, iguales en los dos temas). */
+  --noche: #03090f;
+  --velo: rgb(6 18 28 / 0.62);
+  --velo-denso: rgb(6 18 28 / 0.78);
+  /* Color de marca de Discord: ajeno a la paleta, solo en su botón. */
+  --discord: #5865f2;
 
   --fuente-titulos:
     'Big Shoulders Display Variable', 'Big Shoulders Display', 'Arial Narrow', sans-serif;
@@ -52,13 +58,13 @@
   --borde: var(--filete);
   --texto: var(--tinta);
   --texto-2: var(--tinta-2);
-  --texto-3: #6b7f8c;
+  --texto-3: #5a6d7a;
   --enlace: var(--celeste-hondo);
   --celeste-intenso: var(--celeste-hondo);
   /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
   --sombra: 0 12px 32px -18px rgb(19 33 43 / 0.35);
-  /* Tinte plano del celeste para píldoras y marcas de posición (no es un resplandor). */
-  --brillo: rgb(26 166 223 / 0.12);
+  /* Tinte plano del celeste para píldoras y marcas de posición. */
+  --tinte: rgb(26 166 223 / 0.12);
 }
 
 /* Oscuro: la misma carta, de noche. */
@@ -83,7 +89,7 @@
   --celeste-intenso: var(--celeste);
   /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
   --sombra: 0 12px 32px -18px rgb(0 0 0 / 0.7);
-  --brillo: rgb(26 166 223 / 0.18);
+  --tinte: rgb(26 166 223 / 0.18);
 }
 
 *,
@@ -532,11 +538,12 @@ button {
 }
 
 .estado-publicado .estado-punto {
-  background: #3ddc84;
+  background: var(--celeste);
 }
 
 .estado-desarrollo .estado-punto {
-  background: #ffc247;
+  /* Alga aclarada: la píldora es siempre tinta y el alga del tema claro se perdería sobre ella. */
+  background: color-mix(in srgb, var(--alga) 55%, var(--blanco));
   animation: latido 2s ease-in-out infinite;
 }
 
@@ -712,6 +719,10 @@ button {
   letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
   padding: 4px 10px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: var(--tinta);
   color: var(--papel);
 }
@@ -1124,7 +1135,7 @@ button {
   height: 44px;
   padding: 10px;
   color: var(--celeste);
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 .valores h3 {
@@ -1368,7 +1379,7 @@ button {
   inset: 0;
   z-index: -1;
   /* Velo plano: el texto va sobre la foto oscurecida, sin degradado (docs/marca.md). */
-  background: rgb(6 18 28 / 0.62);
+  background: var(--velo);
 }
 
 /* El texto de la cabecera va siempre sobre la imagen oscurecida. */
@@ -1377,7 +1388,7 @@ button {
 }
 
 :root[data-tema='claro'] .cabecera-ilustracion::before {
-  background: rgb(6 18 28 / 0.68);
+  background: var(--velo-denso);
 }
 
 .volver {
@@ -1396,7 +1407,7 @@ button {
 }
 
 .proyecto-cabecera .tarjeta-categoria {
-  color: color-mix(in srgb, var(--acento-proyecto) 70%, white);
+  color: rgb(255 255 255 / 0.85);
 }
 
 .proyecto-cabecera h1 {
@@ -1464,6 +1475,17 @@ button {
   background: var(--superficie);
   border: 1px solid var(--borde);
   overflow: hidden;
+}
+
+/* En móvil van a dos columnas y la última cifra, si queda sola, ocupa la fila entera. */
+@media (max-width: 480px) {
+  .cifras {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cifras li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
 .cifras li {
@@ -1554,7 +1576,7 @@ button {
   width: 40px;
   height: 40px;
   border: 1px solid rgb(255 255 255 / 0.2);
-  background: rgb(6 18 28 / 0.78);
+  background: var(--velo-denso);
   color: var(--blanco);
   cursor: pointer;
   transition: background var(--transicion);
@@ -1602,7 +1624,7 @@ button {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #03090f;
+  background: var(--noche);
   border: 1px solid var(--borde);
 }
 
@@ -1629,7 +1651,7 @@ button {
   width: 44px;
   height: 44px;
   border: 1px solid rgb(255 255 255 / 0.2);
-  background: rgb(6 18 28 / 0.78);
+  background: var(--velo-denso);
   color: var(--blanco);
   cursor: pointer;
   transition:
@@ -1730,13 +1752,13 @@ button {
   margin: 0;
   padding: 0;
   border: 0;
-  background: #03090f;
+  background: var(--noche);
   color: var(--blanco);
   overflow: hidden;
 }
 
 .galeria-dialogo::backdrop {
-  background: #03090f;
+  background: var(--noche);
 }
 
 /* La imagen ocupa toda la pantalla; el pie va encima, sobre un degradado. */
@@ -1927,8 +1949,8 @@ button {
 }
 
 .hito-curso .hito-marca {
-  border-color: #ffc247;
-  color: #ffc247;
+  border-color: var(--alga);
+  color: var(--alga);
 }
 
 .hito-curso .hito-marca svg {
@@ -1973,7 +1995,7 @@ button {
 }
 
 .hito-curso .hito-estado {
-  color: #e0a420;
+  color: var(--alga);
 }
 
 .hito-detalle {
@@ -2182,7 +2204,7 @@ button {
   display: flex;
   gap: 6px;
   padding: 10px 12px;
-  background: #e8eef2;
+  background: var(--superficie-2);
 }
 
 .ventana-barra i {
@@ -2190,7 +2212,7 @@ button {
   height: 10px;
   /* marca: permitido, puntos circulares de la barra de ventana, excepción de la regla 3. */
   border-radius: 50%;
-  background: #c3ced6;
+  background: var(--filete);
 }
 
 @media (max-width: 860px) {
@@ -2335,7 +2357,7 @@ button {
 .colab-abierta {
   color: var(--enlace);
   border-color: color-mix(in srgb, var(--celeste) 45%, transparent);
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 .colab-privada {
@@ -2345,7 +2367,7 @@ button {
 }
 
 .proyecto-meta .colab {
-  background: rgb(6 18 28 / 0.78);
+  background: var(--velo-denso);
   color: var(--blanco);
   border-color: rgb(255 255 255 / 0.2);
 }
@@ -2372,7 +2394,7 @@ button {
   height: 44px;
   padding: 10px;
   color: var(--celeste);
-  background: var(--brillo);
+  background: var(--tinte);
   margin-bottom: 12px;
 }
 
@@ -2625,7 +2647,7 @@ button {
 
 .opcion:has(input:checked) {
   border-color: var(--celeste);
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 .campo .opcion input {
@@ -2724,7 +2746,7 @@ button {
   height: 44px;
   padding: 10px;
   color: var(--celeste);
-  background: var(--brillo);
+  background: var(--tinte);
   margin-bottom: 14px;
 }
 
@@ -2756,7 +2778,7 @@ button {
   text-decoration: none;
   color: var(--enlace);
   border: 1px solid color-mix(in srgb, var(--celeste) 40%, transparent);
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 .lineas-proyectos a:hover,
@@ -2894,7 +2916,7 @@ button {
   text-align: left;
   text-decoration: none;
   color: var(--texto);
-  border: 1px solid color-mix(in srgb, #5865f2 45%, var(--borde));
+  border: 1px solid color-mix(in srgb, var(--discord) 45%, var(--borde));
   background: var(--superficie);
   transition:
     transform var(--transicion),
@@ -2903,7 +2925,7 @@ button {
 
 .discord:hover {
   transform: translateY(-2px);
-  border-color: #5865f2;
+  border-color: var(--discord);
 }
 
 .discord-icono {
@@ -2912,7 +2934,7 @@ button {
   width: 52px;
   height: 52px;
   color: var(--blanco);
-  background: #5865f2;
+  background: var(--discord);
 }
 
 .discord-texto {
@@ -2931,7 +2953,7 @@ button {
 }
 
 .boton-discord {
-  background: #5865f2;
+  background: var(--discord);
   color: var(--blanco);
 }
 
@@ -3254,7 +3276,7 @@ img.perfil-logo {
   gap: 6px;
   padding: 3px 10px;
   font-size: 0.82rem;
-  background: var(--brillo);
+  background: var(--tinte);
   color: var(--texto);
 }
 
@@ -3580,7 +3602,7 @@ img.perfil-logo {
   width: 44px;
   height: 44px;
   color: var(--celeste);
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 .proyecto-propio h3 {
@@ -3613,7 +3635,7 @@ img.perfil-logo {
   display: grid;
   place-items: center;
   color: var(--celeste);
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 .persona-unete .boton {
@@ -3660,7 +3682,7 @@ img.avatar {
 .equipo .equipo-destacadas li {
   padding: 1px 8px;
   font-size: 0.75rem;
-  background: var(--brillo);
+  background: var(--tinte);
 }
 
 /* ---------- Submenú de proyectos ---------- */
@@ -3970,7 +3992,7 @@ img.avatar {
   padding: 0;
   border: 0;
   aspect-ratio: 5 / 2;
-  background: #03090f;
+  background: var(--noche);
   cursor: zoom-in;
   overflow: hidden;
 }
@@ -4848,7 +4870,7 @@ body:has(dialog[open]) {
   margin-top: -8px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--acento-proyecto);
+  color: var(--enlace);
 }
 
 .producto-texto {
