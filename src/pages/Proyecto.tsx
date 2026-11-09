@@ -21,7 +21,7 @@ import { Icono } from '../components/Icono';
 import { buscarPersona, iniciales } from '../data/equipo';
 import { idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
-import { buscarProyecto, progreso, proyectos, ruta } from '../data/proyectos';
+import { progreso, proyectos, ruta, useFicha } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
@@ -138,9 +138,11 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
 
 export function Proyecto() {
   const { slug } = useParams();
-  const p = buscarProyecto(slug);
-  if (!p) return <NoEncontrado />;
-  return <FichaProyecto key={p.slug} p={p} />;
+  const ficha = useFicha(slug);
+  if (ficha.estado === 'no-existe') return <NoEncontrado />;
+  // Mientras llega la ficha entera: hueco sin texto (nada de «no encontrado» que parpadee).
+  if (ficha.estado === 'cargando') return <div className="carga-pagina" aria-busy="true" />;
+  return <FichaProyecto key={ficha.ficha.slug} p={ficha.ficha} />;
 }
 
 function FichaProyecto({ p }: { p: TipoProyecto }) {
