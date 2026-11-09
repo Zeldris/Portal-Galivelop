@@ -30,7 +30,8 @@
       // Aplica el tema guardado antes de pintar, para evitar un parpadeo.
       try {
         var t = localStorage.getItem('galivelop.tema');
-        if (t !== 'claro' && t !== 'oscuro') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
+        // Claro por defecto (regla 1 de docs/marca.md): solo oscuro si la persona lo eligió.
+        if (t !== 'oscuro') t = 'claro';
         document.documentElement.dataset.tema = t;
         // Barra del navegador del color de la cabecera (--superficie de cada tema).
         document.querySelector('meta[name="theme-color"]').content = t === 'oscuro' ? '#111f29' : '#ffffff';
