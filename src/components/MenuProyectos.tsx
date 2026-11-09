@@ -1,6 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Link } from './Enlace';
 import { proyectos, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { EstadoEtiqueta } from './EstadoEtiqueta';
@@ -62,7 +63,9 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
                 to={`/proyectos/${p.slug}`}
                 onClick={navegar}
                 className="submenu-proyecto"
-                aria-current={pathname === `/proyectos/${p.slug}` ? 'page' : undefined}
+                aria-current={
+                  pathname.replace(/\/$/, '') === `/proyectos/${p.slug}` ? 'page' : undefined
+                }
               >
                 <img src={ruta(p.portada.mini)} alt="" />
                 <span className="submenu-texto">

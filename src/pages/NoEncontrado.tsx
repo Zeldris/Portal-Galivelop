@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { MarcaGV } from '../components/Logo';
 import { useIdioma } from '../i18n/Idioma';
 

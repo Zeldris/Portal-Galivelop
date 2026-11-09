@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react';
 import type { CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from './Enlace';
 import { progreso, ruta } from '../data/proyectos';
 import type { Proyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';

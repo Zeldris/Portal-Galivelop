@@ -11,7 +11,8 @@ import {
   Users,
 } from 'lucide-react';
 import { useEffect, useRef, useState, type CSSProperties } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { Apartados } from '../components/Apartados';
 import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';

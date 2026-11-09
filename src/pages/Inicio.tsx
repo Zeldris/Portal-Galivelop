@@ -20,7 +20,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { useEffect, useState, type CSSProperties } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGV } from '../components/Logo';
