@@ -78,7 +78,13 @@ export interface Proyecto {
   aprendizajes: Texto[];
   caracteristicas: { icono: string; titulo: Texto; texto: Texto }[];
   /** «Cómo funciona»: pasos del uso principal (un turno, un análisis…). */
-  pasos: { titulo: Texto; texto: Texto }[];
+  pasos: { titulo: Texto; texto: Texto; animacion?: { id: string; paso: number } }[];
+  /**
+   * Animaciones paso a paso de «Cómo funciona» (una pestaña cada una). La geometría vive en
+   * src/components/animaciones/<id>.ts; aquí, los títulos, la narración de cada paso y los
+   * rótulos del dibujo por id. `pasos[].animacion` abre una pestaña en un paso (1 = el primero).
+   */
+  animaciones?: Animacion[];
   /**
    * Apartados propios del proyecto (el mundo de un juego, la metodología de una herramienta…).
    * Se muestran como mosaico en «A fondo»; cada uno se abre en una hoja con su lista de elementos.
@@ -91,6 +97,14 @@ export interface Proyecto {
   cifras: { valor: string; etiqueta: Texto }[];
   decisiones: { titulo: Texto; texto: Texto }[];
   equipo: { nombre: string; rol: Texto }[];
+}
+
+export interface Animacion {
+  id: string;
+  titulo: Texto;
+  pasos: { titulo: Texto; narracion: Texto }[];
+  /** Rótulos traducibles del dibujo; los nombres técnicos (main, push, check…) no van aquí. */
+  etiquetas: Record<string, Texto>;
 }
 
 export interface Apartado {

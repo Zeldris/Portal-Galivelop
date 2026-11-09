@@ -69,6 +69,12 @@
   /* Puntos de estado: van sobre la píldora de tinta (oscura en claro, clara en oscuro), por eso cambian con el tema. */
   --estado-publicado: var(--celeste);
   --estado-desarrollo: color-mix(in srgb, var(--alga) 55%, var(--blanco));
+  /* Fallo, rechazo o bloqueo (animaciones del flujo): siempre con ✗ y texto, nunca solo color. */
+  --peligro: #a3135f;
+  --sobre-peligro: #ffffff;
+  --peligro-tinte: rgb(163 19 95 / 0.1);
+  /* Texto de «hecho» sobre el papel: el alga, con contraste de texto. */
+  --ok-texto: #3f5a4b;
 }
 
 /* Oscuro: la misma carta, de noche. */
@@ -96,6 +102,10 @@
   --tinte: rgb(26 166 223 / 0.18);
   --estado-publicado: var(--celeste-hondo);
   --estado-desarrollo: color-mix(in srgb, var(--alga) 60%, var(--noche));
+  --peligro: #f27ab0;
+  --sobre-peligro: #0d171e;
+  --peligro-tinte: rgb(242 122 176 / 0.16);
+  --ok-texto: #8fb09e;
 }
 
 *,
@@ -3932,6 +3942,526 @@ img.avatar {
 .pasos-ficha p {
   color: var(--texto-2);
   font-size: 0.92rem;
+}
+
+.pasos-ficha .pasos-ver {
+  margin-top: 8px;
+  min-height: 44px;
+  padding: 6px 0;
+  text-align: left;
+}
+
+/* ---------- Ficha: animaciones paso a paso (AnimacionFlujo) ---------- */
+
+.flujo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  scroll-margin-top: 96px;
+}
+
+.flujo-pestanas {
+  display: flex;
+  gap: 8px;
+}
+
+.flujo-pestana {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 48px;
+  padding: 6px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  border: 2px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+  transition:
+    border-color var(--transicion),
+    background var(--transicion);
+}
+
+.flujo-pestana b {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+}
+
+.flujo-pestana span {
+  font: var(--datos);
+  font-size: 0.75rem;
+  color: var(--texto-2);
+}
+
+.flujo-pestana:hover {
+  border-color: var(--celeste-intenso);
+}
+
+.flujo-pestana[aria-selected='true'] {
+  border-color: var(--celeste-intenso);
+  background: var(--tinte);
+  /* marca: permitido, filete inferior de la pestaña activa: sombra interior sin desenfoque. */
+  box-shadow: inset 0 -4px 0 var(--celeste-intenso);
+}
+
+.flujo-pieza {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  min-width: 0;
+}
+
+.flujo-pieza:focus-visible {
+  outline: 3px solid var(--enlace);
+  outline-offset: 2px;
+}
+
+.flujo-escena {
+  background: var(--papel);
+  border-bottom: 1px solid var(--borde);
+  min-width: 0;
+}
+
+.flujo-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* En móvil y tableta, la escena alta no pasa de 440 px de ancho: más, y ocuparía más de una pantalla. */
+.flujo-svg[data-modo='m'] {
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.flujo-debajo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px;
+}
+
+@media (min-width: 800px) {
+  .flujo-debajo {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 28px;
+    padding: 20px 24px 24px;
+  }
+}
+
+.flujo-lectura {
+  min-width: 0;
+}
+
+.flujo-posicion,
+.flujo-ayuda {
+  font: var(--datos);
+  font-size: 0.75rem;
+  letter-spacing: var(--datos-espaciado);
+  color: var(--texto-3);
+  margin: 0;
+}
+
+.flujo-posicion {
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.flujo-paso-titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: 1.75rem;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+.flujo-narracion {
+  margin: 0;
+  max-width: 62ch;
+  line-height: 1.6;
+  min-height: 6.4em;
+}
+
+.flujo-controles {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.flujo-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.flujo-boton {
+  flex: 1 1 auto;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 16px;
+  border: 2px solid var(--texto);
+  background: var(--superficie);
+  color: var(--texto);
+  font: var(--datos);
+  font-size: 0.8rem;
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.flujo-boton:hover:not(:disabled) {
+  background: var(--tinte);
+}
+
+.flujo-boton-primario {
+  background: var(--celeste-hondo);
+  border-color: var(--celeste-hondo);
+  color: var(--blanco);
+}
+
+.flujo-boton-primario:hover:not(:disabled) {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--papel);
+}
+
+.flujo-boton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.flujo-progreso {
+  height: 4px;
+  background: var(--borde);
+  overflow: hidden;
+}
+
+.flujo-progreso i {
+  display: block;
+  height: 100%;
+  background: var(--celeste-intenso);
+  transform-origin: 0 50%;
+  transition: transform var(--transicion);
+}
+
+.flujo-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: 6px;
+}
+
+.flujo-lista button {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 2px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.flujo-lista button b {
+  font: var(--datos);
+  font-size: 0.8rem;
+  color: var(--texto-3);
+}
+
+.flujo-lista button[aria-current='step'] {
+  border-color: var(--celeste-intenso);
+  background: var(--tinte);
+  font-weight: 600;
+}
+
+.flujo-lista button[aria-current='step'] b {
+  color: var(--texto);
+}
+
+.flujo-cargando {
+  min-height: min(70vh, 760px);
+  margin: 0;
+  padding: 16px;
+  font: var(--datos);
+  color: var(--texto-3);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+}
+
+/* Escena: cada átomo entra con opacidad y un desplazamiento corto; su retardo, en --d. */
+.flujo-svg text {
+  font-family: var(--fuente-datos);
+  fill: var(--texto);
+  white-space: pre;
+}
+.flujo-svg .ret {
+  stroke: var(--reticula);
+  stroke-width: 1;
+  fill: none;
+}
+.flujo-svg .fondo {
+  fill: var(--papel);
+}
+.flujo-svg .a {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms var(--curva),
+    transform 500ms var(--curva);
+  transition-delay: var(--d, 0s);
+}
+.flujo-svg .a.on {
+  opacity: 1;
+  transform: none;
+}
+.flujo-svg .a.cae {
+  transform: translateY(-34px);
+}
+.flujo-svg .a.cae.on {
+  transform: none;
+}
+.flujo-svg .bx {
+  fill: var(--superficie);
+  stroke: var(--filete);
+  stroke-width: 1.5;
+}
+.flujo-svg .bx.cel {
+  fill: var(--tinte);
+  stroke: var(--enlace);
+  stroke-width: 2;
+}
+.flujo-svg .bx.ok {
+  stroke: var(--alga);
+  stroke-width: 2;
+}
+.flujo-svg .bx.no {
+  stroke: var(--tinta);
+  stroke-width: 2;
+  stroke-dasharray: 7 4;
+}
+.flujo-svg .bx.gh {
+  fill: none;
+  stroke: var(--tinta-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+}
+.flujo-svg .bx.bad {
+  fill: var(--peligro-tinte);
+  stroke: var(--peligro);
+  stroke-width: 3.5;
+}
+.flujo-svg .bx.band {
+  fill: var(--peligro);
+  stroke: var(--peligro);
+}
+.flujo-svg .ti {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.flujo-svg .tm {
+  font-weight: 500;
+}
+.flujo-svg .su {
+  fill: var(--tinta-2);
+}
+.flujo-svg .lb {
+  fill: var(--tinta-2);
+  letter-spacing: 0.03em;
+}
+.flujo-svg .tx {
+  font-family: var(--fuente-texto);
+}
+.flujo-svg .okt {
+  fill: var(--ok-texto);
+  font-weight: 500;
+}
+.flujo-svg .nm {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  fill: var(--enlace);
+  letter-spacing: 0.01em;
+}
+.flujo-svg .ck {
+  fill: var(--papel);
+  font-weight: 500;
+}
+.flujo-svg .ckb,
+.flujo-svg .xb {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  fill: var(--ok-texto);
+}
+.flujo-svg .xb {
+  fill: var(--peligro);
+}
+.flujo-svg .sp {
+  fill: var(--sobre-peligro);
+}
+.flujo-svg .pd {
+  fill: var(--peligro);
+}
+.flujo-svg .ln {
+  fill: none;
+  stroke: var(--tinta-2);
+  stroke-width: 2;
+}
+.flujo-svg .ln.gr {
+  stroke: var(--filete);
+  stroke-width: 5;
+}
+.flujo-svg .ln.cel {
+  stroke: var(--enlace);
+  stroke-width: 2.5;
+}
+.flujo-svg .ln.al {
+  stroke: var(--alga);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 5;
+}
+.flujo-svg .ln.no {
+  stroke: var(--tinta);
+  stroke-width: 2;
+  stroke-dasharray: 7 5;
+}
+.flujo-svg .ln.fino {
+  stroke-width: 1.5;
+}
+.flujo-svg .mk-cel {
+  fill: var(--enlace);
+}
+.flujo-svg .mk-al {
+  fill: var(--alga);
+}
+.flujo-svg .mk-no {
+  fill: var(--tinta);
+}
+.flujo-svg .cm {
+  fill: var(--alga);
+  stroke: var(--papel);
+  stroke-width: 2;
+}
+.flujo-svg .cm.nuevo {
+  fill: var(--enlace);
+}
+.flujo-svg .ring {
+  fill: none;
+  stroke: var(--enlace);
+  stroke-width: 2.5;
+}
+.flujo-svg .mo {
+  fill: var(--superficie);
+  stroke: var(--tinta-2);
+  stroke-width: 1.5;
+}
+/* Medidor de contexto: se llena hasta --nivel (lo pone el componente según el paso). */
+.flujo-svg .mf {
+  fill: var(--celeste-hondo);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(var(--nivel, 0.1));
+  transition: transform 500ms var(--curva);
+  transition-delay: var(--d, 0s);
+}
+:root[data-tema='oscuro'] .flujo-svg .mf {
+  fill: var(--celeste);
+}
+.flujo-svg .mg {
+  fill: none;
+  stroke: var(--tinta-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+/* La persona, en celeste hondo (el de los enlaces, que en oscuro se aclara). */
+.flujo-svg .pf {
+  fill: var(--enlace);
+}
+.flujo-svg .so {
+  fill: var(--superficie);
+  stroke: var(--tinta-2);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+.flujo-svg .sn {
+  fill: var(--ok-texto);
+}
+.flujo-svg[data-modo='d'] .ti {
+  font-size: 24px;
+}
+.flujo-svg[data-modo='d'] .tm {
+  font-size: 16px;
+}
+.flujo-svg[data-modo='d'] .su,
+.flujo-svg[data-modo='d'] .lb {
+  font-size: 15px;
+}
+.flujo-svg[data-modo='d'] .tx {
+  font-size: 17px;
+}
+.flujo-svg[data-modo='d'] .nm {
+  font-size: 44px;
+}
+.flujo-svg[data-modo='d'] .ck {
+  font-size: 20px;
+}
+.flujo-svg[data-modo='d'] .ckb,
+.flujo-svg[data-modo='d'] .xb {
+  font-size: 40px;
+}
+.flujo-svg[data-modo='m'] .ti {
+  font-size: 22px;
+}
+.flujo-svg[data-modo='m'] .tm,
+.flujo-svg[data-modo='m'] .su,
+.flujo-svg[data-modo='m'] .lb,
+.flujo-svg[data-modo='m'] .tx {
+  font-size: 13px;
+}
+.flujo-svg[data-modo='m'] .nm {
+  font-size: 26px;
+}
+.flujo-svg[data-modo='m'] .ck {
+  font-size: 15px;
+}
+.flujo-svg[data-modo='m'] .ckb,
+.flujo-svg[data-modo='m'] .xb {
+  font-size: 30px;
+}
+
+@media (max-width: 560px) {
+  .flujo-pestana {
+    padding: 6px 8px;
+  }
+  .flujo-pestana b {
+    font-size: 1.05rem;
+  }
+  .flujo-pestana span {
+    display: none;
+  }
+  .flujo-paso-titulo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flujo-svg .a {
+    transform: none !important;
+  }
 }
 
 .apartado-intro {

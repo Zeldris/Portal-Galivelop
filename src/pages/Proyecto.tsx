@@ -10,8 +10,9 @@ import {
   Sparkles,
   Users,
 } from 'lucide-react';
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useParams } from 'react-router-dom';
+import type { Destino } from '../components/AnimacionFlujo';
 import { AvisoError } from '../components/AvisoError';
 import { Link } from '../components/Enlace';
 import { Apartados } from '../components/Apartados';
@@ -34,6 +35,8 @@ type Grupo = 'resumen' | 'galeria' | 'afondo' | 'tecnica' | 'avance';
 const NOVEDADES_VISIBLES = 3;
 /** Publicaciones del muro que se adelantan en la ficha; el resto, en /muro. */
 const PUBLICACIONES_EN_FICHA = 3;
+/** Las animaciones paso a paso solo las lleva alguna ficha: van en su propio trozo, fuera del resto de la página. */
+const AnimacionFlujo = lazy(() => import('../components/AnimacionFlujo'));
 
 const ICONO_HITO: Record<EstadoHito, typeof Check> = {
   hecho: Check,
@@ -161,6 +164,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const { t, tx, fecha } = useIdioma();
   const grupos = gruposDe(p);
   const [todasNovedades, setTodasNovedades] = useState(false);
+  const [destino, setDestino] = useState<Destino | null>(null);
   const avance = progreso(p);
   const hechos = p.hitos.filter((h) => h.estado === 'hecho').length;
   const proximo =
@@ -364,9 +368,35 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                   <li key={tx(paso.titulo)}>
                     <h4>{tx(paso.titulo)}</h4>
                     <p>{tx(paso.texto)}</p>
+                    {paso.animacion && p.animaciones?.length ? (
+                      <button
+                        type="button"
+                        className="boton-texto pasos-ver"
+                        onClick={() => {
+                          const { id, paso: n } = paso.animacion!;
+                          setDestino((d) => ({ id, paso: n, n: (d?.n ?? 0) + 1 }));
+                        }}
+                      >
+                        {t('flujo.ver')}
+                      </button>
+                    ) : null}
                   </li>
                 ))}
               </ol>
+            </div>
+          )}
+          {p.animaciones && p.animaciones.length > 0 && (
+            <div id="flujo" className="bloque">
+              <h3 className="bloque-titulo">{t('flujo.titulo')}</h3>
+              <Suspense
+                fallback={
+                  <p className="flujo-cargando" role="status">
+                    {t('flujo.cargando')}
+                  </p>
+                }
+              >
+                <AnimacionFlujo animaciones={p.animaciones} destino={destino} />
+              </Suspense>
             </div>
           )}
         </section>

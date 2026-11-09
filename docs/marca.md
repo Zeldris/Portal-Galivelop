@@ -62,6 +62,9 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 | `--noche` | `#03090f` | igual | Fondo de los escenarios de imagen |
 | `--velo` / `--velo-medio` / `--velo-denso` | tinta al 62 / 68 / 78 % | igual | Velo plano sobre fotos y botones sobre imagen |
 | `--estado-publicado` / `--estado-desarrollo` | `--celeste` / alga aclarada | `--celeste-hondo` / alga oscurecida | Puntos de estado sobre la píldora de tinta; «en diseño» va hueco |
+| `--peligro` / `--sobre-peligro` | `#a3135f` / `#ffffff` | `#f27ab0` / `#0d171e` | Fallo, rechazo o bloqueo (animaciones del flujo); siempre con ✗ y texto |
+| `--peligro-tinte` | peligro al 10 % | peligro al 16 % | Fondo plano de una caja de fallo |
+| `--ok-texto` | `#3f5a4b` | `#8fb09e` | Texto y ✓ de «hecho» sobre el papel |
 | `--discord` | `#5865f2` | igual | Color de marca de Discord, solo en su botón |
 | `--chaflan` / `--chaflan-grande` | `14px` / `28px` | igual | Esquina cortada |
 | `--curva`, `--transicion`, escala `--z-*` | como ahora | | Sin cambios |

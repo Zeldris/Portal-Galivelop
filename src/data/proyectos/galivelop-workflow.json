@@ -106,50 +106,6 @@
       }
     },
     {
-      "src": "proyectos/galivelop-workflow/sesion.webp",
-      "mini": "proyectos/galivelop-workflow/sesion-mini.webp",
-      "ancho": 1600,
-      "alto": 900,
-      "alt": {
-        "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recover.py devuelve el estado. Git es la memoria.",
-        "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recover.py devolve o estado. Git é a memoria.",
-        "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recover.py restores the state. Git is the memory."
-      }
-    },
-    {
-      "src": "proyectos/galivelop-workflow/pre-push.webp",
-      "mini": "proyectos/galivelop-workflow/pre-push-mini.webp",
-      "ancho": 1600,
-      "alto": 900,
-      "alt": {
-        "es": "Gancho pre-push: varias comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
-        "gl": "Gancho pre-push: varias comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
-        "en": "pre-push hook: several checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
-      }
-    },
-    {
-      "src": "proyectos/galivelop-workflow/fases.webp",
-      "mini": "proyectos/galivelop-workflow/fases-mini.webp",
-      "ancho": 1600,
-      "alto": 900,
-      "alt": {
-        "es": "Tres fases antes de la rama protegida: revisión de código, entorno (gw-opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
-        "gl": "Tres fases antes da rama protexida: revisión de código, contorno (gw-opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
-        "en": "Three phases before the protected branch: code review, environment (gw-opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
-      }
-    },
-    {
-      "src": "proyectos/galivelop-workflow/subagentes.webp",
-      "mini": "proyectos/galivelop-workflow/subagentes-mini.webp",
-      "ancho": 1600,
-      "alto": 900,
-      "alt": {
-        "es": "Orquestador y subagentes: la sesión principal reparte encargos, cada subagente trabaja con contexto limpio y devuelve un resumen de 15 líneas como máximo. Debajo, la escalera de modelos.",
-        "gl": "Orquestador e subaxentes: a sesión principal reparte encargos, cada subaxente traballa con contexto limpo e devolve un resumo de 15 liñas como máximo. Debaixo, a escaleira de modelos.",
-        "en": "Orchestrator and workers: the main session hands out briefs, each subagent works with a clean context and returns a summary of at most 15 lines. Below, the model ladder."
-      }
-    },
-    {
       "src": "proyectos/galivelop-workflow/versiones.webp",
       "mini": "proyectos/galivelop-workflow/versiones-mini.webp",
       "ancho": 1600,
@@ -303,6 +259,10 @@
         "es": "La sesión lee la bitácora, comprueba que el último commit coincide y pasa el check: sabe por dónde iba sin preguntar.",
         "gl": "A sesión le a bitácora, comproba que o último commit coincide e pasa o check: sabe por onde ía sen preguntar.",
         "en": "The session reads the log, checks that the last commit matches and runs the check: it knows where things stood without asking."
+      },
+      "animacion": {
+        "id": "trabajar",
+        "paso": 1
       }
     },
     {
@@ -315,6 +275,10 @@
         "es": "gw-selector dice qué skill y qué modelo pide la tarea, y si es de riesgo y hay que esperar a la persona.",
         "gl": "gw-selector di que skill e que modelo pide a tarefa, e se é de risco e hai que agardar pola persoa.",
         "en": "gw-selector says which skill and model the task calls for, and whether it’s risky enough to wait for the person."
+      },
+      "animacion": {
+        "id": "trabajar",
+        "paso": 2
       }
     },
     {
@@ -327,6 +291,10 @@
         "es": "Para un plan, un error difícil o una duda de diseño entran las skills de Matt Pocock: grilling, research, prototype, diagnosing-bugs…",
         "gl": "Para un plan, un erro difícil ou unha dúbida de deseño entran as skills de Matt Pocock: grilling, research, prototype, diagnosing-bugs…",
         "en": "For a plan, a hard bug or a design question, Matt Pocock’s skills step in: grilling, research, prototype, diagnosing-bugs…"
+      },
+      "animacion": {
+        "id": "trabajar",
+        "paso": 3
       }
     },
     {
@@ -339,6 +307,10 @@
         "es": "gw-orchestrate-dealer reparte lo mecánico a subagentes y revisa lo que vuelve. Commit + push en cada punto estable, con la bitácora en el mismo commit; los ganchos pasan el check y buscan secretos.",
         "gl": "gw-orchestrate-dealer reparte o mecánico a subaxentes e revisa o que volve. Commit + push en cada punto estable, coa bitácora no mesmo commit; os ganchos pasan o check e buscan segredos.",
         "en": "gw-orchestrate-dealer hands the mechanical work to subagents and reviews what comes back. Commit + push at every stable point, with the log in the same commit; the hooks run the check and scan for secrets."
+      },
+      "animacion": {
+        "id": "trabajar",
+        "paso": 4
       }
     },
     {
@@ -351,6 +323,10 @@
         "es": "Fase 1 antes de publicar: revisión de todo el diff contra la rama protegida, con el criterio escrito del proyecto. Se arregla y se sube.",
         "gl": "Fase 1 antes de publicar: revisión de todo o diff contra a rama protexida, co criterio escrito do proxecto. Arránxase e súbese.",
         "en": "Phase 1 before publishing: a review of the whole diff against the protected branch, using the project’s written criteria. Fixes are made and pushed."
+      },
+      "animacion": {
+        "id": "main",
+        "paso": 2
       }
     },
     {
@@ -363,6 +339,10 @@
         "es": "Fase 2: gw-opt-tokens mide el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma.",
         "gl": "Fase 2: gw-opt-tokens mide o gasto e a retro propón cambios. As propostas preséntanse á persoa e só se aplica o que confirma.",
         "en": "Phase 2: gw-opt-tokens measures the spend and the retro proposes changes. The proposals are shown to the person and only what they confirm is applied."
+      },
+      "animacion": {
+        "id": "main",
+        "paso": 3
       }
     },
     {
@@ -375,6 +355,10 @@
         "es": "Fase 3: un script deja la marca de revisado del commit y, con la confirmación de la persona, se sube. Sin la marca, el gancho lo rechaza.",
         "gl": "Fase 3: un script deixa a marca de revisado do commit e, coa confirmación da persoa, súbese. Sen a marca, o gancho rexeitao.",
         "en": "Phase 3: a script records the commit’s review mark and, once the person confirms, it’s pushed. Without the mark, the hook rejects it."
+      },
+      "animacion": {
+        "id": "main",
+        "paso": 5
       }
     },
     {
@@ -390,149 +374,652 @@
       }
     }
   ],
-  "apartados": [
+  "animaciones": [
     {
-      "id": "diagramas",
+      "id": "trabajar",
       "titulo": {
-        "es": "Cómo funciona, en diagramas",
-        "gl": "Como funciona, en diagramas",
-        "en": "How it works, in diagrams"
+        "es": "Trabajar",
+        "gl": "Traballar",
+        "en": "Working"
       },
-      "intro": {
-        "es": "Seis diagramas de las partes del flujo, con los nombres reales de archivos, ganchos y órdenes. Siguen el estilo de las guías de Anthropic sobre agentes: un diagrama por patrón, con lo que hace cada pieza.",
-        "gl": "Seis diagramas das partes do fluxo, cos nomes reais de ficheiros, ganchos e ordes. Seguen o estilo das guías de Anthropic sobre axentes: un diagrama por patrón, co que fai cada peza.",
-        "en": "Six diagrams of the parts of the workflow, using the real names of files, hooks and commands. They follow the style of Anthropic’s guides on agents: one diagram per pattern, showing what each piece does."
-      },
-      "items": [],
-      "grupos": [
+      "pasos": [
         {
-          "id": "arquitectura",
-          "etiqueta": {
-            "es": "Arquitectura",
-            "gl": "Arquitectura",
-            "en": "Architecture"
+          "titulo": {
+            "es": "Retomar",
+            "gl": "Retomar",
+            "en": "Pick up"
           },
-          "imagenes": [
-            {
-              "src": "proyectos/galivelop-workflow/arquitectura.webp",
-              "mini": "proyectos/galivelop-workflow/arquitectura-mini.webp",
-              "ancho": 1600,
-              "alto": 900,
-              "alt": {
-                "es": "Arquitectura en seis capas: reglas, skills, ganchos, scripts, estado en git y CI. De arriba abajo, de lo que decide el agente con criterio a lo que impone un script.",
-                "gl": "Arquitectura en seis capas: regras, skills, ganchos, scripts, estado en git e CI. De arriba abaixo, do que decide o axente con criterio ao que impón un script.",
-                "en": "Architecture in six layers: rules, skills, hooks, scripts, state in git and CI. From top to bottom, from what the agent decides by judgement to what a script enforces."
-              }
-            }
-          ]
+          "narracion": {
+            "es": "La sesión arranca y lee la bitácora del repositorio: rama, tarea, qué falta y siguiente paso. Comprueba que el último commit coincide y que el check está en verde.",
+            "gl": "A sesión arranca e le a bitácora do repositorio: rama, tarefa, que falta e seguinte paso. Comproba que o último commit coincide e que o check está en verde.",
+            "en": "The session starts and reads the repository’s log: branch, task, what is left and the next step. It checks that the last commit matches and that the check is green."
+          }
         },
         {
-          "id": "sesion",
-          "etiqueta": {
-            "es": "Relevo de sesiones",
-            "gl": "Relevo de sesións",
-            "en": "Session relay"
+          "titulo": {
+            "es": "Elegir",
+            "gl": "Escoller",
+            "en": "Choose"
           },
-          "imagenes": [
-            {
-              "src": "proyectos/galivelop-workflow/sesion.webp",
-              "mini": "proyectos/galivelop-workflow/sesion-mini.webp",
-              "ancho": 1600,
-              "alto": 900,
-              "alt": {
-                "es": "Relevo entre sesiones: el gancho de inicio prepara el entorno, la sesión retoma desde la bitácora y, tras compactar, recover.py devuelve el estado. Git es la memoria.",
-                "gl": "Relevo entre sesións: o gancho de inicio prepara o contorno, a sesión retoma desde a bitácora e, tras compactar, recover.py devolve o estado. Git é a memoria.",
-                "en": "Relay between sessions: the start hook prepares the environment, the session resumes from the handoff log and, after compaction, recover.py restores the state. Git is the memory."
-              }
-            }
-          ]
+          "narracion": {
+            "es": "Antes de tocar nada, gw-selector dice qué skill y qué modelo pide la tarea. Si es de riesgo, se espera a la persona.",
+            "gl": "Antes de tocar nada, gw-selector di que skill e que modelo pide a tarefa. Se é de risco, espérase pola persoa.",
+            "en": "Before touching anything, gw-selector says which skill and which model the task needs. If it is risky, it waits for the person."
+          }
         },
         {
-          "id": "pre-push",
-          "etiqueta": {
-            "es": "Gancho pre-push",
-            "gl": "Gancho pre-push",
-            "en": "pre-push hook"
+          "titulo": {
+            "es": "Repartir",
+            "gl": "Repartir",
+            "en": "Delegate"
           },
-          "imagenes": [
-            {
-              "src": "proyectos/galivelop-workflow/pre-push.webp",
-              "mini": "proyectos/galivelop-workflow/pre-push-mini.webp",
-              "ancho": 1600,
-              "alto": 900,
-              "alt": {
-                "es": "Gancho pre-push: varias comprobaciones sobre el commit que se sube. Si una falla, rechaza la subida y la última línea dice la orden que lo arregla.",
-                "gl": "Gancho pre-push: varias comprobacións sobre o commit que se sube. Se unha falla, rexeita a subida e a última liña di a orde que o arranxa.",
-                "en": "pre-push hook: several checks on the commit being pushed. If one fails, the push is rejected and the last line gives the command that fixes it."
-              }
-            }
-          ]
+          "narracion": {
+            "es": "gw-orchestrate-dealer reparte lo mecánico a subagentes de contexto limpio, con el modelo más barato que lo haga bien. Cada uno vuelve con un resumen corto y la sesión principal lo revisa.",
+            "gl": "gw-orchestrate-dealer reparte o mecánico entre subaxentes de contexto limpo, co modelo máis barato que o faga ben. Cada un volve cun resumo curto e a sesión principal revísao.",
+            "en": "gw-orchestrate-dealer hands the mechanical work to subagents with a clean context, using the cheapest model that does it well. Each one comes back with a short summary and the main session reviews it."
+          }
         },
         {
-          "id": "fases",
-          "etiqueta": {
-            "es": "Tres fases antes de main",
-            "gl": "Tres fases antes de main",
-            "en": "Three phases before main"
+          "titulo": {
+            "es": "Subir",
+            "gl": "Subir",
+            "en": "Push"
           },
-          "imagenes": [
-            {
-              "src": "proyectos/galivelop-workflow/fases.webp",
-              "mini": "proyectos/galivelop-workflow/fases-mini.webp",
-              "ancho": 1600,
-              "alto": 900,
-              "alt": {
-                "es": "Tres fases antes de la rama protegida: revisión de código, entorno (gw-opt-tokens y retro) y cierre con la marca de revisión. Cada fase deja un archivo en el repositorio.",
-                "gl": "Tres fases antes da rama protexida: revisión de código, contorno (gw-opt-tokens e retro) e peche coa marca de revisión. Cada fase deixa un ficheiro no repositorio.",
-                "en": "Three phases before the protected branch: code review, environment (gw-opt-tokens and retro) and closing with the review mark. Each phase leaves a file in the repository."
-              }
-            }
-          ]
-        },
-        {
-          "id": "subagentes",
-          "etiqueta": {
-            "es": "Orquestador y subagentes",
-            "gl": "Orquestador e subaxentes",
-            "en": "Orchestrator and workers"
-          },
-          "imagenes": [
-            {
-              "src": "proyectos/galivelop-workflow/subagentes.webp",
-              "mini": "proyectos/galivelop-workflow/subagentes-mini.webp",
-              "ancho": 1600,
-              "alto": 900,
-              "alt": {
-                "es": "Orquestador y subagentes: la sesión principal reparte encargos, cada subagente trabaja con contexto limpio y devuelve un resumen de 15 líneas como máximo. Debajo, la escalera de modelos.",
-                "gl": "Orquestador e subaxentes: a sesión principal reparte encargos, cada subaxente traballa con contexto limpo e devolve un resumo de 15 liñas como máximo. Debaixo, a escaleira de modelos.",
-                "en": "Orchestrator and workers: the main session hands out briefs, each subagent works with a clean context and returns a summary of at most 15 lines. Below, the model ladder."
-              }
-            }
-          ]
-        },
-        {
-          "id": "versiones",
-          "etiqueta": {
-            "es": "Ciclo de versiones",
-            "gl": "Ciclo de versións",
-            "en": "Release loop"
-          },
-          "imagenes": [
-            {
-              "src": "proyectos/galivelop-workflow/versiones.webp",
-              "mini": "proyectos/galivelop-workflow/versiones-mini.webp",
-              "ancho": 1600,
-              "alto": 900,
-              "alt": {
-                "es": "Ciclo de versiones: el flujo se publica, se aplica a cada proyecto sin pisar lo adaptado allí, y lo que mejora en los proyectos vuelve como propuesta para la versión siguiente.",
-                "gl": "Ciclo de versións: o fluxo publícase, aplícase a cada proxecto sen pisar o adaptado alí, e o que mellora nos proxectos volve como proposta para a versión seguinte.",
-                "en": "Release loop: the workflow is released and applied to each project without overwriting local changes, and what improves in the projects comes back as a proposal for the next version."
-              }
-            }
-          ]
+          "narracion": {
+            "es": "En cada punto estable, commit y push, con la bitácora en el mismo commit. Cada commit termina con «Siguiente:». Los ganchos pasan el check y buscan secretos antes de dejarlo salir.",
+            "gl": "En cada punto estable, commit e push, coa bitácora no mesmo commit. Cada commit remata con «Siguiente:». Os ganchos pasan o check e buscan segredos antes de deixalo saír.",
+            "en": "At every stable point, commit and push, with the log in the same commit. Every commit ends with “Siguiente:”. The hooks run the check and look for secrets before letting it out."
+          }
         }
-      ]
+      ],
+      "etiquetas": {
+        "bitacora": {
+          "es": "bitácora",
+          "gl": "bitácora",
+          "en": "log"
+        },
+        "commit-arreglo": {
+          "es": "arreglo",
+          "gl": "arranxo",
+          "en": "fix"
+        },
+        "contexto": {
+          "es": "contexto",
+          "gl": "contexto",
+          "en": "context"
+        },
+        "encargo": {
+          "es": "encargo",
+          "gl": "encargo",
+          "en": "brief"
+        },
+        "git-subido": {
+          "es": "git · lo que se sube",
+          "gl": "git · o que se sobe",
+          "en": "git · what is pushed"
+        },
+        "limpio": {
+          "es": "limpio",
+          "gl": "limpo",
+          "en": "clean"
+        },
+        "modelo": {
+          "es": "modelo",
+          "gl": "modelo",
+          "en": "model"
+        },
+        "persona": {
+          "es": "la persona",
+          "gl": "a persoa",
+          "en": "the person"
+        },
+        "planea": {
+          "es": "planea · decide · revisa",
+          "gl": "planea · decide · revisa",
+          "en": "plans · decides · reviews"
+        },
+        "que-skill": {
+          "es": "qué skill, qué modelo",
+          "gl": "que skill, que modelo",
+          "en": "which skill, which model"
+        },
+        "resumen-15": {
+          "es": "resumen ≤ 15 líneas",
+          "gl": "resumo ≤ 15 liñas",
+          "en": "summary ≤ 15 lines"
+        },
+        "riesgo": {
+          "es": "riesgo → espera",
+          "gl": "risco → espera",
+          "en": "risk → wait"
+        },
+        "sesion-a": {
+          "es": "sesión A",
+          "gl": "sesión A",
+          "en": "session A"
+        },
+        "skill-modelo": {
+          "es": "skill + modelo",
+          "gl": "skill + modelo",
+          "en": "skill + model"
+        },
+        "subagente": {
+          "es": "subagente",
+          "gl": "subaxente",
+          "en": "subagent"
+        },
+        "trabajo-bitacora": {
+          "es": "trabajo + bitácora",
+          "gl": "traballo + bitácora",
+          "en": "work + log"
+        }
+      }
     },
+    {
+      "id": "relevo",
+      "titulo": {
+        "es": "Relevo",
+        "gl": "Relevo",
+        "en": "Handover"
+      },
+      "pasos": [
+        {
+          "titulo": {
+            "es": "El contexto crece",
+            "gl": "O contexto medra",
+            "en": "Context grows"
+          },
+          "narracion": {
+            "es": "Cada llamada vuelve a leer toda la conversación: cuanto más larga, más cuesta. Por eso lo mecánico va a subagentes y la ventana tiene un tope.",
+            "gl": "Cada chamada volve ler toda a conversa: canto máis longa, máis custa. Por iso o mecánico vai a subaxentes e a xanela ten un tope.",
+            "en": "Every call reads the whole conversation again: the longer it is, the more it costs. That is why mechanical work goes to subagents and the window has a limit."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Compactar",
+            "gl": "Compactar",
+            "en": "Compact"
+          },
+          "narracion": {
+            "es": "Al llegar al tope, la conversación se compacta. Un gancho corre recover.py y devuelve el estado desde git: la sesión sigue por el mismo paso.",
+            "gl": "Ao chegar ao tope, a conversa compáctase. Un gancho executa recover.py e devolve o estado desde git: a sesión segue polo mesmo paso.",
+            "en": "When it reaches the limit, the conversation is compacted. A hook runs recover.py and brings the state back from git: the session carries on from the same step."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Corte",
+            "gl": "Corte",
+            "en": "Cut-off"
+          },
+          "narracion": {
+            "es": "La sesión se acaba: sin tokens, con el contenedor reciclado o con el relevo de otra cuenta. Lo que solo estaba en la conversación se pierde; lo subido, no.",
+            "gl": "A sesión remata: sen tokens, co contedor reciclado ou co relevo doutra conta. O que só estaba na conversa pérdese; o subido, non.",
+            "en": "The session ends: out of tokens, with the container recycled or handed over to another account. What was only in the conversation is lost; what was pushed is not."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Relevo",
+            "gl": "Relevo",
+            "en": "Handover"
+          },
+          "narracion": {
+            "es": "Otra sesión, quizá con otra cuenta, arranca, lee la bitácora y sigue por «Siguiente:» sin preguntar por dónde iba. Lo que no está subido no existe.",
+            "gl": "Outra sesión, quizais con outra conta, arranca, le a bitácora e segue por «Siguiente:» sen preguntar por onde ía. O que non está subido non existe.",
+            "en": "Another session, maybe on another account, starts, reads the log and picks up at “Siguiente:” without asking where things stood. What is not pushed does not exist."
+          }
+        }
+      ],
+      "etiquetas": {
+        "bitacora": {
+          "es": "bitácora",
+          "gl": "bitácora",
+          "en": "log"
+        },
+        "commit-arreglo": {
+          "es": "arreglo",
+          "gl": "arranxo",
+          "en": "fix"
+        },
+        "compactada": {
+          "es": "compactada",
+          "gl": "compactada",
+          "en": "compacted"
+        },
+        "contenedor": {
+          "es": "contenedor",
+          "gl": "contedor",
+          "en": "container"
+        },
+        "contexto": {
+          "es": "contexto",
+          "gl": "contexto",
+          "en": "context"
+        },
+        "contexto-limpio": {
+          "es": "contexto limpio",
+          "gl": "contexto limpo",
+          "en": "clean context"
+        },
+        "cortada": {
+          "es": "cortada",
+          "gl": "cortada",
+          "en": "cut off"
+        },
+        "coste-llamada": {
+          "es": "coste por llamada",
+          "gl": "custo por chamada",
+          "en": "cost per call"
+        },
+        "esquema": {
+          "es": "esquema, no medida",
+          "gl": "esquema, non medida",
+          "en": "sketch, not measured"
+        },
+        "git-intacto": {
+          "es": "git sigue intacto",
+          "gl": "git segue intacto",
+          "en": "git is intact"
+        },
+        "git-subido": {
+          "es": "git · lo que se sube",
+          "gl": "git · o que se sobe",
+          "en": "git · what is pushed"
+        },
+        "llamadas": {
+          "es": "llamadas",
+          "gl": "chamadas",
+          "en": "calls"
+        },
+        "mismo-paso": {
+          "es": "mismo paso",
+          "gl": "mesmo paso",
+          "en": "same step"
+        },
+        "no-subido-1": {
+          "es": "lo que no está subido",
+          "gl": "o que non está subido",
+          "en": "what is not pushed"
+        },
+        "no-subido-2": {
+          "es": "no existe",
+          "gl": "non existe",
+          "en": "does not exist"
+        },
+        "otra-cuenta": {
+          "es": "otra cuenta",
+          "gl": "outra conta",
+          "en": "another account"
+        },
+        "pesa-mas": {
+          "es": "cada llamada pesa más",
+          "gl": "cada chamada pesa máis",
+          "en": "each call costs more"
+        },
+        "se-apaga": {
+          "es": "se apaga",
+          "gl": "apágase",
+          "en": "shuts down"
+        },
+        "sesion-a": {
+          "es": "sesión A",
+          "gl": "sesión A",
+          "en": "session A"
+        },
+        "sesion-b": {
+          "es": "sesión B",
+          "gl": "sesión B",
+          "en": "session B"
+        },
+        "sigue-siguiente": {
+          "es": "sigue por «Siguiente:»",
+          "gl": "segue por «Siguiente:»",
+          "en": "picks up at “Siguiente:”"
+        },
+        "sin-tokens": {
+          "es": "sin tokens",
+          "gl": "sen tokens",
+          "en": "out of tokens"
+        },
+        "tope": {
+          "es": "tope",
+          "gl": "tope",
+          "en": "limit"
+        },
+        "tres-subagentes": {
+          "es": "3 subagentes",
+          "gl": "3 subaxentes",
+          "en": "3 subagents"
+        }
+      }
+    },
+    {
+      "id": "main",
+      "titulo": {
+        "es": "Camino a main",
+        "gl": "Camiño a main",
+        "en": "Path to main"
+      },
+      "pasos": [
+        {
+          "titulo": {
+            "es": "Rama lista",
+            "gl": "Rama lista",
+            "en": "Branch ready"
+          },
+          "narracion": {
+            "es": "El trabajo está en la rama de trabajo, subido y con el check en verde. Todavía no ha llegado nada a main.",
+            "gl": "O traballo está na rama de traballo, subido e co check en verde. Aínda non chegou nada a main.",
+            "en": "The work is on the working branch, pushed and with the check green. Nothing has reached main yet."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Fase 1 · código",
+            "gl": "Fase 1 · código",
+            "en": "Phase 1 · code"
+          },
+          "narracion": {
+            "es": "Se revisa todo el diff contra main con el criterio escrito del proyecto. Lo grave o medio se arregla y se sube; lo leve se apunta en la bitácora.",
+            "gl": "Revísase todo o diff contra main co criterio escrito do proxecto. O grave ou medio arránxase e súbese; o leve anótase na bitácora.",
+            "en": "The whole diff against main is reviewed with the project’s written criteria. Major and medium findings are fixed and pushed; minor ones go into the log."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Fase 2 · entorno",
+            "gl": "Fase 2 · contorno",
+            "en": "Phase 2 · environment"
+          },
+          "narracion": {
+            "es": "gw-opt-tokens mide en qué se fue el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma. En cambios pequeños puede saltarse.",
+            "gl": "gw-opt-tokens mide en que se foi o gasto e a retro propón cambios. As propostas preséntanselle á persoa e só se aplica o que confirma. En cambios pequenos pode saltarse.",
+            "en": "gw-opt-tokens measures where the spending went and the retro proposes changes. The proposals are shown to the person and only what they confirm is applied. It can be skipped for small changes."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Fase 3 · marca",
+            "gl": "Fase 3 · marca",
+            "en": "Phase 3 · mark"
+          },
+          "narracion": {
+            "es": "Un script deja escrito en el repositorio qué commit se revisó. Sin esa marca, los ganchos no dejan publicar.",
+            "gl": "Un script deixa escrito no repositorio que commit se revisou. Sen esa marca, os ganchos non deixan publicar.",
+            "en": "A script writes into the repository which commit was reviewed. Without that mark, the hooks do not allow publishing."
+          }
+        },
+        {
+          "titulo": {
+            "es": "La persona decide",
+            "gl": "A persoa decide",
+            "en": "The person decides"
+          },
+          "narracion": {
+            "es": "A main solo se sube con la confirmación de la persona, y queda apuntado en la bitácora.",
+            "gl": "A main só se sobe coa confirmación da persoa, e queda anotado na bitácora.",
+            "en": "Pushing to main needs the person’s confirmation, and it is written down in the log."
+          }
+        },
+        {
+          "titulo": {
+            "es": "pre-push",
+            "gl": "pre-push",
+            "en": "pre-push"
+          },
+          "narracion": {
+            "es": "Al subir, el gancho pre-push juzga el commit que sale, no la carpeta de trabajo: pasa el check, busca restos de conflictos y, si es la rama protegida y trae código, exige la marca de ese mismo commit.",
+            "gl": "Ao subir, o gancho pre-push xulga o commit que sae, non o cartafol de traballo: pasa o check, busca restos de conflitos e, se é a rama protexida e trae código, esixe a marca dese mesmo commit.",
+            "en": "On push, the pre-push hook judges the outgoing commit, not the working folder: it runs the check, looks for conflict leftovers and, if it is the protected branch and the push contains code, requires the mark for that same commit."
+          }
+        },
+        {
+          "titulo": {
+            "es": "Si falta algo",
+            "gl": "Se falta algo",
+            "en": "If something is missing"
+          },
+          "narracion": {
+            "es": "Si una comprobación falla, la subida se rechaza y la última línea dice la orden que lo arregla. Ningún commit puede desproteger la rama que lo juzga.",
+            "gl": "Se unha comprobación falla, a subida rexéitase e a última liña di a orde que o arranxa. Ningún commit pode desprotexer a rama que o xulga.",
+            "en": "If a check fails, the push is rejected and the last line gives the command that fixes it. No commit can unprotect the branch that judges it."
+          }
+        },
+        {
+          "titulo": {
+            "es": "CI y main",
+            "gl": "CI e main",
+            "en": "CI and main"
+          },
+          "narracion": {
+            "es": "El CI corre la misma comprobación en Linux y macOS. Con todo en verde, el cambio llega a main: la web o la versión publicada.",
+            "gl": "O CI executa a mesma comprobación en Linux e macOS. Con todo en verde, o cambio chega a main: a web ou a versión publicada.",
+            "en": "CI runs the same check on Linux and macOS. With everything green, the change reaches main: the published website or release."
+          }
+        }
+      ],
+      "etiquetas": {
+        "arreglo": {
+          "es": "arreglo",
+          "gl": "arranxo",
+          "en": "fix"
+        },
+        "arreglos": {
+          "es": "arreglos",
+          "gl": "arranxos",
+          "en": "fixes"
+        },
+        "bitacora": {
+          "es": "bitácora",
+          "gl": "bitácora",
+          "en": "log"
+        },
+        "ci-no-arranca": {
+          "es": "un CI que no arranca",
+          "gl": "un CI que non arranca",
+          "en": "a CI that doesn’t start"
+        },
+        "ci-rojo": {
+          "es": "Un CI que no arranca cuenta como rojo.",
+          "gl": "Un CI que non arranca conta como vermello.",
+          "en": "A CI that does not start counts as red."
+        },
+        "codigo": {
+          "es": "código",
+          "gl": "código",
+          "en": "code"
+        },
+        "confirmacion": {
+          "es": "confirmación",
+          "gl": "confirmación",
+          "en": "confirmed"
+        },
+        "confirmacion-apuntada": {
+          "es": "confirmación apuntada",
+          "gl": "confirmación anotada",
+          "en": "confirmation logged"
+        },
+        "conflictos": {
+          "es": "conflictos",
+          "gl": "conflitos",
+          "en": "conflicts"
+        },
+        "cuenta-rojo": {
+          "es": "cuenta como rojo",
+          "gl": "conta como vermello",
+          "en": "counts as red"
+        },
+        "en-main": {
+          "es": "en main",
+          "gl": "en main",
+          "en": "in main"
+        },
+        "entorno": {
+          "es": "entorno",
+          "gl": "contorno",
+          "en": "environment"
+        },
+        "es-main": {
+          "es": "¿es main?",
+          "gl": "é main?",
+          "en": "is it main?"
+        },
+        "gancho-juzga": {
+          "es": "El gancho juzga el commit que sale, no la carpeta.",
+          "gl": "O gancho xulga o commit que sae, non o cartafol.",
+          "en": "The hook judges the outgoing commit, not the folder."
+        },
+        "grave": {
+          "es": "grave",
+          "gl": "grave",
+          "en": "major"
+        },
+        "leve": {
+          "es": "leve",
+          "gl": "leve",
+          "en": "minor"
+        },
+        "lo-hay": {
+          "es": "¿lo hay?",
+          "gl": "hai?",
+          "en": "any?"
+        },
+        "marca": {
+          "es": "marca",
+          "gl": "marca",
+          "en": "mark"
+        },
+        "medio": {
+          "es": "medio",
+          "gl": "medio",
+          "en": "medium"
+        },
+        "mismo-sha": {
+          "es": "mismo sha",
+          "gl": "mesmo sha",
+          "en": "same sha"
+        },
+        "opcional-1": {
+          "es": "opcional en",
+          "gl": "opcional en",
+          "en": "optional for"
+        },
+        "opcional-2": {
+          "es": "cambios pequeños",
+          "gl": "cambios pequenos",
+          "en": "small changes"
+        },
+        "orden": {
+          "es": "orden",
+          "gl": "orde",
+          "en": "command"
+        },
+        "persona": {
+          "es": "la persona",
+          "gl": "a persoa",
+          "en": "the person"
+        },
+        "persona-confirma": {
+          "es": "la persona confirma",
+          "gl": "a persoa confirma",
+          "en": "the person confirms"
+        },
+        "persona-corto": {
+          "es": "persona",
+          "gl": "persoa",
+          "en": "person"
+        },
+        "prop": {
+          "es": "prop.",
+          "gl": "prop.",
+          "en": "prop."
+        },
+        "propuesta": {
+          "es": "propuesta",
+          "gl": "proposta",
+          "en": "proposal"
+        },
+        "protegida": {
+          "es": "protegida",
+          "gl": "protexida",
+          "en": "protected"
+        },
+        "publicado": {
+          "es": "publicado",
+          "gl": "publicado",
+          "en": "published"
+        },
+        "rama": {
+          "es": "rama",
+          "gl": "rama",
+          "en": "branch"
+        },
+        "rama-trabajo": {
+          "es": "rama de trabajo",
+          "gl": "rama de traballo",
+          "en": "working branch"
+        },
+        "rechazada": {
+          "es": "subida rechazada",
+          "gl": "subida rexeitada",
+          "en": "push rejected"
+        },
+        "restos": {
+          "es": "restos",
+          "gl": "restos",
+          "en": "leftovers"
+        },
+        "sha-commit": {
+          "es": "sha del commit",
+          "gl": "sha do commit",
+          "en": "commit sha"
+        },
+        "si": {
+          "es": "sí",
+          "gl": "si",
+          "en": "yes"
+        },
+        "sin-marca": {
+          "es": "sin marca",
+          "gl": "sen marca",
+          "en": "no mark"
+        },
+        "sin-revision": {
+          "es": "nada llega a main sin revisión",
+          "gl": "nada chega a main sen revisión",
+          "en": "nothing reaches main unreviewed"
+        },
+        "subimos": {
+          "es": "¿subimos a main?",
+          "gl": "subimos a main?",
+          "en": "push to main?"
+        },
+        "tests-tipos": {
+          "es": "tests + tipos",
+          "gl": "tests + tipos",
+          "en": "tests + types"
+        },
+        "todavia-nada": {
+          "es": "todavía nada",
+          "gl": "aínda nada",
+          "en": "nothing yet"
+        },
+        "web-o-version": {
+          "es": "la web o la versión",
+          "gl": "a web ou a versión",
+          "en": "the website or the release"
+        },
+        "web-publicada": {
+          "es": "la web publicada",
+          "gl": "a web publicada",
+          "en": "the live website"
+        }
+      }
+    }
+  ],
+  "apartados": [
     {
       "id": "garantias",
       "titulo": {
@@ -554,9 +1041,9 @@
           },
           "valor": "exit 1",
           "texto": {
-            "es": "Bloquea. Pasa el check sobre el commit que se sube, en un worktree temporal; busca restos de conflictos (<<<<<<<, *.rej, *.orig) y, en la rama protegida, exige la marca de revisión si la subida trae código.",
-            "gl": "Bloquea. Pasa o check sobre o commit que se sube, nun worktree temporal; busca restos de conflitos (<<<<<<<, *.rej, *.orig) e, na rama protexida, esixe a marca de revisión se a subida trae código.",
-            "en": "Blocks. Runs the check on the pushed commit in a temporary worktree, looks for conflict leftovers (<<<<<<<, *.rej, *.orig) and, on the protected branch, requires the review mark if the push contains code."
+            "es": "Bloquea. Pasa el check sobre el commit que se sube, en un worktree temporal; busca restos de conflictos (<<<<<<<, *.rej, *.orig) y, en la rama protegida, exige la marca de revisión si la subida trae código. Con pushToProtected: pr, un gancho de Claude Code pide la marca antes de crear o fusionar el pull request, y además el CI tiene que estar en verde.",
+            "gl": "Bloquea. Pasa o check sobre o commit que se sube, nun worktree temporal; busca restos de conflitos (<<<<<<<, *.rej, *.orig) e, na rama protexida, esixe a marca de revisión se a subida trae código. Con pushToProtected: pr, un gancho de Claude Code pide a marca antes de crear ou fusionar o pull request, e ademais o CI ten que estar en verde.",
+            "en": "Blocks. Runs the check on the pushed commit in a temporary worktree, looks for conflict leftovers (<<<<<<<, *.rej, *.orig) and, on the protected branch, requires the review mark if the push contains code. With pushToProtected: pr, a Claude Code hook asks for the mark before creating or merging the pull request, and the CI must also be green."
           }
         },
         {
