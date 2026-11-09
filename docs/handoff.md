@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-08 (identidad visual propia: aplicando `docs/marca.md` a la web) |
+| **Actualizado** | 2026-11-09 (portada social del portal con la identidad nueva) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47a38edd-v566du` (desde `main`) |
 | **Tarea en curso** | **Identidad visual propia** (ver «Pendiente»): tokens, tipografía B, tema claro por defecto, portada en bloque celeste con isobatas provisionales y barrido completo de `global.css` ya en la rama; faltan las fases 1-3. Antes: skill `gw-portal` (`.claude/skills/gw-portal/`): pone el portal al día con los repos de la cuenta (titular Zeldris y VeriNews_AI) en modo informe, aplicar o semanal; la tarea semanal pasará a solo ejecutarla. Hecha y con tests; falta probarla y revisarla |
 | **Siguiente paso** | Presentación del workflow **aparcada hasta la semana del 2026-11-09** (la persona, 2026-11-04): el vídeo v2 no se entiende y no atrae. Guardado en `docs/diseno/workflow-presentation/` (prototipo, test y grabación) y el diseño en `docs/diseno/2026-11-04-workflow-presentation.md`. Al retomar: replantear el enfoque antes de gastar más (qué debe entender quien lo ve, en menos pasos y más visual). Pendiente de la persona (T1 de la retro): `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` |
@@ -19,6 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Portada de la web y portadas (2026-11-08, pedido por la persona): la portada de Galivelop IG en el portal es la imagen de Galivelop IG que pasó la persona (la `og-fuente.png` de su og.jpg). Nuevo campo opcional `presentacion` en la ficha (imagen de redes 1600×840, ver `docs/desarrollo.md`): toVeriAI la toma de su og-fuente y la del workflow se genera con `node tools/og/presentacion.mjs galivelop-workflow` desde `tools/og/galivelop-workflow-presentacion.html` (misma orden regenera su og.jpg). El **collage de la portada** ya no enseña solo tres proyectos: sus tres piezas rotan cada 5 s con fundido por todos los proyectos (presentación o, si no, portada), quieto con `prefers-reduced-motion` o con la pestaña oculta. Subido a `main` en esta misma sesión (autorización: «cuando acabes lo llevas a main»).
+- **Portada social del portal nueva** (2026-11-09, la persona: la tarjeta de X seguía enseñando la portada vieja, azul oscuro): `public/marca/galivelop-portal.jpg` rehecha con la identidad de `docs/marca.md` (bloque celeste hondo, isobatas, titular y lema), provisional hasta el recurso 3; la renderiza `node tools/og/portal.mjs` desde `tools/og/portal.html`. `index.html` con el `alt` nuevo. La URL lleva `?v=<hash>` nuevo, así que X y Discord la refrescan al publicar (la tarjeta de un tuit ya publicado no cambia). Falta: subir a `main` (pedida la confirmación).
 - Galivelop-workflow v0.5.1 (para una sesión de trabajo): contar las pruebas exactas de la etiqueta `v0.5.1` y poner al día la cifra «1776» de la ficha (ni la revisión semanal ni la sesión del 2026-11-08 pudieron correr los tests de esa etiqueta). Los siete diagramas ya van en 0.5.1 y con la hoja de estilos de la marca (2026-11-08, rama `ccr-47a38edd-v566du`).
 
 

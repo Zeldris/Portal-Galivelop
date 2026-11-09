@@ -1,0 +1,32 @@
+<!doctype html>
+<!-- Portada social del portal (og:image, 1200×630), provisional con la identidad de docs/marca.md hasta recibir el
+     recurso 3 (carta náutica generada con Galivelop IG). La renderiza tools/og/portal.mjs a
+     public/marca/galivelop-portal.jpg. Misma composición que las presentaciones de los proyectos: marca arriba a la
+     izquierda, antetítulo, titular y lema; el mar de isobatas como motivo. -->
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Big Shoulders Display";src:url("../../node_modules/@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2") format("woff2-variations");font-weight:100 900}
+@font-face{font-family:"JetBrains Mono";src:url("../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations");font-weight:100 800}
+@font-face{font-family:"Literata";src:url("../../node_modules/@fontsource-variable/literata/files/literata-latin-wght-normal.woff2") format("woff2-variations");font-weight:200 900}
+*{margin:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;background:#0072a8;color:#fff;font-family:"Literata",serif}
+.mar{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left bottom}
+.marca{position:absolute;left:56px;top:48px;display:flex;align-items:center;gap:14px;font-family:"JetBrains Mono",monospace;font-weight:600;font-size:22px}
+.marca svg{width:44px;height:44px}
+.ante{position:absolute;left:56px;top:150px;font-family:"JetBrains Mono",monospace;font-weight:500;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);padding-left:52px}
+.ante:before{content:"";position:absolute;left:0;top:50%;width:36px;height:2px;background:#fff}
+h1{position:absolute;left:56px;top:186px;font-family:"Big Shoulders Display",sans-serif;font-weight:800;font-size:104px;line-height:.9;letter-spacing:.005em;text-transform:uppercase}
+h1 span{display:block;width:fit-content;margin-top:.06em;padding:.05em .14em 0;line-height:1;background:#13212b;color:#fbfcfd;font-size:70px}
+p{position:absolute;left:58px;top:444px;width:860px;font-size:23px;line-height:1.4;color:rgba(255,255,255,.95)}
+.pie{position:absolute;left:58px;bottom:44px;font-family:"JetBrains Mono",monospace;font-size:15px;letter-spacing:.04em;color:rgba(255,255,255,.8)}
+.coord{position:absolute;right:56px;bottom:44px;font-family:"JetBrains Mono",monospace;font-size:13px;letter-spacing:.06em;color:rgba(255,255,255,.7);text-align:right;line-height:1.6}
+</style></head><body>
+<img class="mar" src="../../public/marca/isobatas.svg" alt="">
+<div class="marca"><svg viewBox="0 0 128 128" aria-hidden="true"><path d="M0 0H100L128 28V128H0Z" fill="#1AA6DF"/><g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M55.4 45.6 A24 24 0 1 0 64 64"/><path d="M50 64 H80"/><path d="M71 40 L89.5 88 L108 40"/></g></svg>Galivelop</div>
+<div class="ante">Taller independiente de software</div>
+<h1>Hacemos reales<span>los proyectos que parecen imposibles</span></h1>
+<p>Un RPG que vive por su cuenta, un verificador de noticias, un flujo de trabajo con agentes de IA… Creamos a la vista y con la puerta abierta.</p>
+<div class="pie">zeldris.github.io/Portal-Galivelop · Galicia + Develop</div>
+<div class="coord">42°52′ N<br>8°33′ W</div>
+</body></html>

@@ -37,9 +37,10 @@ cuando su repositorio es público; si es privado, no se enlaza. Además, el port
 - Tipografías: Big Shoulders Display (títulos, `--fuente-titulos`), Literata (texto, `--fuente-texto`) y JetBrains
   Mono (datos: etiquetas, fechas, cifras; `--fuente-datos`), servidas desde el propio sitio (`@fontsource-variable`).
   La hoja de estilos de la marca completa: [`marca.md`](marca.md).
-- Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630, captura de la
-  portada), declarada en `index.html` con URL absolutas (X y otras redes no aceptan rutas relativas).
-  Si cambia la portada, rehacer la captura y nada más: `scripts/paginas-estaticas.mjs` pone en cada página la
+- Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630; la renderiza
+  `node tools/og/portal.mjs` desde `tools/og/portal.html`, provisional hasta el recurso 3 de `marca.md`), declarada
+  en `index.html` con URL absolutas (X y otras redes no aceptan rutas relativas).
+  Si cambia la portada, rehacer la imagen y nada más: `scripts/paginas-estaticas.mjs` pone en cada página la
   imagen que toca (la de la ficha en las fichas) con `?v=<hash de la imagen>`, para que las redes (Discord, X…)
   no se queden con la vista previa antigua. Si cambia la dirección del portal, actualizar esas URL y `SITIO`.
 - `node tools/generar-marca.mjs` regenera `gv-logo-512.png` y la imagen para redes
