@@ -1,0 +1,586 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Storyboard del workflow</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Literata:wght@400;600&display=swap">
+<style>
+:root{
+  --papel:#fbfcfd; --reticula:#e3edf3; --celeste:#1aa6df; --celeste-hondo:#0072a8;
+  --tinta:#13212b; --tinta-2:#4a5c69; --texto-3:#5a6d7a; --alga:#5d7a6a; --ok-texto:#3f5a4b;
+  --filete:#b9cbd6; --superficie:#ffffff; --superficie-2:#f1f6f9; --tinte:rgb(26 166 223 / .12);
+  --enlace:#0072a8; --sobre-hondo:#ffffff;
+  --peligro:#a3135f; --sobre-peligro:#ffffff; --peligro-tinte:rgb(163 19 95 / .10);
+  --chaflan:14px; --chaflan-grande:28px; --chaflan-pequeno:10px;
+  --curva:cubic-bezier(.2,.7,.3,1); --t:500ms;
+  --f-tit:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-txt:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#0d171e; --reticula:#16242e; --celeste-hondo:#0b5e88; --tinta:#e6eef3; --tinta-2:#9fb2bf;
+    --texto-3:#7d919e; --alga:#8fb09e; --ok-texto:#8fb09e; --filete:#2b3d49; --superficie:#111f29;
+    --superficie-2:#16242e; --tinte:rgb(26 166 223 / .18); --enlace:#5cc8f2; color-scheme:dark;
+    --peligro:#f27ab0; --sobre-peligro:#0d171e; --peligro-tinte:rgb(242 122 176 / .16);
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#0d171e; --reticula:#16242e; --celeste-hondo:#0b5e88; --tinta:#e6eef3; --tinta-2:#9fb2bf;
+  --texto-3:#7d919e; --alga:#8fb09e; --ok-texto:#8fb09e; --filete:#2b3d49; --superficie:#111f29;
+  --superficie-2:#16242e; --tinte:rgb(26 166 223 / .18); --enlace:#5cc8f2; color-scheme:dark;
+  --peligro:#f27ab0; --sobre-peligro:#0d171e; --peligro-tinte:rgb(242 122 176 / .16);
+}
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font:400 16px/1.6 var(--f-txt);margin:0;
+  padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.pg{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:20px;min-width:0}
+h1,h2,h3{font-family:var(--f-tit);font-weight:800;margin:0;text-wrap:balance;line-height:1.05;letter-spacing:.01em}
+h1{font-size:clamp(38px,8vw,64px)}
+h2{font-size:26px}
+.eb{font:500 12px/1.4 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--texto-3);margin:0}
+.cab{display:flex;flex-direction:column;gap:10px;border-bottom:2px solid var(--tinta);padding-bottom:18px}
+.cab .marca{font:800 20px/1 var(--f-tit);letter-spacing:.08em;text-transform:uppercase;color:var(--celeste-hondo);display:flex;align-items:center;gap:10px}
+:root[data-theme="dark"] .cab .marca{color:var(--enlace)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .cab .marca{color:var(--enlace)}}
+.cab .marca i{width:14px;height:14px;background:var(--celeste);clip-path:polygon(0 0,70% 0,100% 30%,100% 100%,0 100%)}
+.lede{max-width:65ch;margin:0;color:var(--tinta-2)}
+a{color:var(--enlace)}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--enlace);outline-offset:2px}
+
+.tabs{display:flex;gap:8px}
+.tab{min-height:48px;padding:6px 16px;border:2px solid var(--filete);background:var(--superficie);cursor:pointer;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:0;text-align:left;flex:1 1 0;min-width:0}
+.tab b{font:800 20px/1.1 var(--f-tit);letter-spacing:.02em}
+.tab span{font:400 12px/1.4 var(--f-mono);color:var(--tinta-2)}
+.tab b{text-wrap:balance}
+@media (max-width:560px){.tab{padding:6px 8px}.tab b{font-size:18px}.tab span{display:none}}
+.tab[aria-selected="true"]{border-color:var(--celeste-hondo);background:var(--tinte);box-shadow:inset 0 -4px 0 var(--celeste-hondo)}
+
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px 24px;margin:0;padding:0}
+.meta div{border-top:2px solid var(--filete);padding-top:8px;min-width:0}
+.meta dt{font:500 12px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--texto-3)}
+.meta dd{margin:2px 0 0;font-size:15px;line-height:1.5}
+
+.pieza{background:var(--filete);padding:1px;clip-path:polygon(0 0,calc(100% - var(--chaflan-grande)) 0,100% var(--chaflan-grande),100% 100%,0 100%)}
+.pieza>.in{background:var(--superficie);display:flex;flex-direction:column}
+.esc{background:var(--papel);min-width:0}
+@media (max-width:560px){.pieza{clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%)}}
+svg.sb{display:block;width:100%;height:auto;max-width:100%}
+.debajo{display:grid;grid-template-columns:1fr;gap:16px;padding:16px max(16px,0px) 20px}
+@media (min-width:800px){.debajo{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;padding:20px 24px 24px}}
+.lectura{min-width:0}
+.pn{font:500 12px/1.4 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--texto-3);margin:0 0 4px}
+.pt{font:800 28px/1.1 var(--f-tit);margin:0 0 8px}
+#narr{margin:0;font-size:16px;line-height:1.6;max-width:62ch;min-height:6.4em}
+.ctl{display:flex;flex-direction:column;gap:12px;min-width:0}
+.fila{display:flex;flex-wrap:wrap;gap:8px}
+.bt{min-height:44px;min-width:44px;padding:0 16px;border:2px solid var(--tinta);background:var(--superficie);color:var(--tinta);
+  font:500 13px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;flex:1 1 auto}
+.bt.pr{background:var(--celeste-hondo);border-color:var(--celeste-hondo);color:var(--sobre-hondo)}
+.bt[disabled]{opacity:.4;cursor:default}
+.prog{height:4px;background:var(--filete);overflow:hidden}
+.prog i{display:block;height:100%;background:var(--celeste-hondo);transform-origin:0 50%;transform:scaleX(1);transition:transform 5.5s linear}
+.prog.paso i{transition:transform var(--t) var(--curva)}
+.lista{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.lista button{width:100%;min-height:44px;display:flex;align-items:center;gap:8px;padding:6px 10px;border:2px solid var(--filete);background:var(--superficie);cursor:pointer;text-align:left;font:400 14px/1.2 var(--f-txt)}
+.lista button b{font:500 13px/1 var(--f-mono);color:var(--texto-3)}
+.lista button[aria-current="step"]{border-color:var(--celeste-hondo);background:var(--tinte);font-weight:600}
+.lista button[aria-current="step"] b{color:var(--tinta)}
+.ayuda{font:400 12px/1.5 var(--f-mono);color:var(--texto-3);margin:0}
+
+details{border-top:2px solid var(--filete);padding:10px 0}
+summary{cursor:pointer;font:800 22px/1.2 var(--f-tit);letter-spacing:.01em;min-height:44px;display:flex;align-items:center}
+details ol,details ul{margin:6px 0 0;padding-left:1.2em;max-width:70ch}
+details li{margin:6px 0}
+details li b{font-weight:600}
+.inv{display:grid;gap:8px;margin-top:8px}
+.inv div{display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:4px 16px;border-bottom:1px solid var(--filete);padding-bottom:8px}
+.inv code{font:500 13px/1.4 var(--f-mono);overflow-wrap:anywhere}
+@media (max-width:560px){.inv div{grid-template-columns:1fr}}
+
+/* escena */
+.sb .ret{stroke:var(--reticula);stroke-width:1;fill:none}
+.sb .fondo{fill:var(--papel)}
+.sb .a{opacity:0;transform:translateY(10px);transition:opacity var(--t) var(--curva),transform var(--t) var(--curva);transition-delay:var(--d,0s)}
+.sb .a.on{opacity:1;transform:none}
+.sb .a.fall{transform:translateY(-34px)}
+.sb .a.fall.on{transform:none}
+.sb.nt .a,.sb.nt .mf{transition:none!important}
+.sb .bx{fill:var(--superficie);stroke:var(--filete);stroke-width:1.5}
+.sb .bx.cel{fill:var(--tinte);stroke:var(--enlace);stroke-width:2}
+.sb .bx.ok{stroke:var(--alga);stroke-width:2}
+.sb .bx.no{stroke:var(--tinta);stroke-width:2;stroke-dasharray:7 4}
+.sb .bx.gh{fill:none;stroke:var(--tinta-2);stroke-width:1.5;stroke-dasharray:6 5}
+.sb text{font-family:var(--f-mono);fill:var(--tinta)}
+.sb .ti{font-family:var(--f-tit);font-weight:800;letter-spacing:.01em}
+.sb .tm{font-weight:500}
+.sb .su{fill:var(--tinta-2)}
+.sb .lb{fill:var(--tinta-2);letter-spacing:.03em}
+.sb .tx{font-family:var(--f-txt)}
+.sb .okt{fill:var(--ok-texto);font-weight:500}
+.sb .nm{font-family:var(--f-tit);font-weight:800;fill:var(--enlace);letter-spacing:.01em}
+.sb .ck{fill:var(--papel);font-weight:500;font-family:var(--f-mono)}
+.sb .ckb{font-family:var(--f-tit);font-weight:800;fill:var(--ok-texto)}
+.sb .xb{font-family:var(--f-tit);font-weight:800;fill:var(--peligro)}
+.sb .bx.bad{fill:var(--peligro-tinte);stroke:var(--peligro);stroke-width:3.5}
+.sb .bx.band{fill:var(--peligro);stroke:var(--peligro)}
+.sb .sp{fill:var(--sobre-peligro)}
+.sb .pd{fill:var(--peligro)}
+.sb .ln{fill:none;stroke:var(--tinta-2);stroke-width:2}
+.sb .ln.gr{stroke:var(--filete);stroke-width:5}
+.sb .ln.cel{stroke:var(--enlace);stroke-width:2.5}
+.sb .ln.al{stroke:var(--alga);stroke-width:2.5;stroke-dasharray:7 5}
+.sb .ln.no{stroke:var(--tinta);stroke-width:2;stroke-dasharray:7 5}
+.sb .ln.fino{stroke-width:1.5}
+.sb .mk-cel{fill:var(--enlace)} .sb .mk-al{fill:var(--alga)} .sb .mk-no{fill:var(--tinta)}
+.sb .cm{fill:var(--alga);stroke:var(--papel);stroke-width:2}
+.sb .cm.nuevo{fill:var(--enlace)}
+.sb .ring{fill:none;stroke:var(--enlace);stroke-width:2.5}
+.sb .mo{fill:var(--superficie);stroke:var(--tinta-2);stroke-width:1.5}
+.sb .mf{fill:var(--celeste-hondo);transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(.1);transition:transform var(--t) var(--curva);transition-delay:var(--d,0s)}
+:root[data-theme="dark"] .sb .mf{fill:var(--celeste)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sb .mf{fill:var(--celeste)}}
+.sb .mg{fill:none;stroke:var(--tinta-2);stroke-width:1.5;stroke-dasharray:4 3}
+.sb .pf{fill:var(--enlace)}
+.sb .so{fill:var(--superficie);stroke:var(--tinta-2);stroke-width:2;stroke-dasharray:4 3}
+.sb .sn{fill:var(--ok-texto);stroke:none}
+.sb .sx{fill:var(--tinta)}
+.sb[data-m="d"] .ti{font-size:24px} .sb[data-m="d"] .tm{font-size:16px} .sb[data-m="d"] .su,.sb[data-m="d"] .lb{font-size:15px}
+.sb[data-m="d"] .tx{font-size:17px} .sb[data-m="d"] .nm{font-size:44px} .sb[data-m="d"] .ck{font-size:20px}
+.sb[data-m="d"] .ckb,.sb[data-m="d"] .xb{font-size:40px}
+.sb[data-m="m"] .ti{font-size:22px} .sb[data-m="m"] .tm{font-size:13px} .sb[data-m="m"] .su,.sb[data-m="m"] .lb{font-size:13px}
+.sb[data-m="m"] .tx{font-size:13px} .sb[data-m="m"] .nm{font-size:26px} .sb[data-m="m"] .ck{font-size:15px}
+.sb[data-m="m"] .ckb,.sb[data-m="m"] .xb{font-size:30px}
+@media (prefers-reduced-motion: reduce){
+  .sb .a,.sb .mf,.prog i{transition:none!important}
+  .sb .a{transform:none!important}
+}
+</style>
+
+<div class="pg">
+  <header class="cab">
+    <div class="marca"><i></i>Galivelop</div>
+    <p class="eb">Storyboard · Galivelop-workflow · <span style="white-space:nowrap">2026-11-09</span></p>
+    <h1>Animaciones del workflow</h1>
+    <p class="lede">Tres animaciones paso a paso para la ficha de Galivelop-workflow. Pulsa un paso, usa las flechas ← → o pulsa Reproducir (avanza una vez y se para). Empiezan quietas en el reposo, el último paso, que se entiende sin moverse.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Animación" id="tabs"></div>
+
+  <section id="panel" role="tabpanel" aria-labelledby="tab-0" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+    <dl class="meta" id="meta" style="order:2"></dl>
+    <div class="pieza" id="stepper"><div class="in">
+      <div class="esc" id="esc"></div>
+      <div class="debajo">
+        <div class="lectura">
+          <p class="pn" id="pn"></p>
+          <h2 class="pt" id="pt"></h2>
+          <p id="narr" aria-live="polite"></p>
+        </div>
+        <div class="ctl">
+          <div class="fila">
+            <button class="bt" id="ant" type="button">Anterior</button>
+            <button class="bt" id="sig" type="button">Siguiente</button>
+            <button class="bt pr" id="rep" type="button">Reproducir</button>
+          </div>
+          <div class="prog paso" id="prog" aria-hidden="true"><i id="progi"></i></div>
+          <ol class="lista" id="lista"></ol>
+          <p class="ayuda">Flechas ← → cambian de paso cuando el foco está aquí dentro.</p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <details id="texto"><summary id="sumtxt">Los pasos en texto</summary><ol id="ol"></ol></details>
+
+  <details>
+    <summary>Qué pasa con las siete imágenes de hoy</summary>
+    <div class="inv">
+      <div><code>galivelop-workflow.svg</code><span><b>Se queda</b> como portada y para compartir: es el mapa del conjunto.</span></div>
+      <div><code>gw-arquitectura.svg</code><span><b>Imagen de consulta.</b> No es una secuencia, animarla no añade nada.</span></div>
+      <div><code>gw-sesion.svg</code><span><b>Se retira.</b> Pasa a «Trabajar» (paso 1) y «Relevo».</span></div>
+      <div><code>gw-subagentes.svg</code><span><b>«Trabajar», paso 3,</b> más un fotograma de apoyo con la escalera de modelos.</span></div>
+      <div><code>gw-fases.svg</code><span><b>Se retira.</b> Pasa a «Camino a main» (pasos 2 a 5).</span></div>
+      <div><code>gw-pre-push.svg</code><span><b>«Camino a main», pasos 6 y 7,</b> más un fotograma de apoyo con las ocho comprobaciones.</span></div>
+      <div><code>gw-versiones.svg</code><span><b>Imagen de apoyo:</b> es otro bucle, entre proyectos y no dentro de una tarea.</span></div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Por decidir</summary>
+    <ul>
+      <li><b>Color de la persona.</b> El diseño pedía ámbar, fuera de la paleta. Aquí es celeste hondo, con figura sencilla y rótulo.</li>
+      <li><b>Magenta de peligro.</b> La marca no tiene rojo; el fallo usa el magenta de los peligros de las cartas náuticas (<code>--peligro</code>), siempre con ✗ y texto además del color. Falta decidir si pasa a la hoja de estilos.</li>
+      <li><b>Pestañas o una tras otra.</b> Aquí van en pestañas porque ahorran una pantalla entera de altura en el móvil.</li>
+      <li><b>Variante por pull request.</b> No se anima; basta una línea en el texto del paso 7 de «Cómo funciona».</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+function P(s){var o=new Set();String(s).split(",").forEach(function(p){p=p.trim();if(p.indexOf("-")>0){var q=p.split("-").map(Number);for(var i=q[0];i<=q[1];i++)o.add(i)}else if(p)o.add(+p)});return o}
+function at(k,st,d,m,o){o=o||{};o.k=k;o.st=P(st);o.ms=o.ms?P(o.ms):null;o.d=d;o.m=m;return o}
+function pick(v,m){return Array.isArray(v)?v[m]:v}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+
+/* ---------- datos ---------- */
+function GIT(nuevoSolo){
+ /* franja de git: pista, rótulo y tres commits con nombre y sha */
+ var s=nuevoSolo?"4":"1-4", o=[
+ at("L","1-4",["M60 450H900"],["M14 330H286"],{c:"gr"}),
+ at("T","1-4",[60,424],[14,398],{t:"git · lo que se sube",c:"lb"}),
+ at("D","1-4",[180,450,9],[44,330,8],{c:"cm"}),
+ at("D","1-4",[380,450,9],[144,330,8],{c:"cm"}),
+ at("T","1-4",[180,484],[44,356],{t:"bitácora",c:"tm",a:"middle"}),
+ at("T","1-4",[180,504],[44,374],{t:"9e1b7d0",c:"lb",a:"middle"}),
+ at("T","1-4",[380,484],[144,356],{t:"arreglo",c:"tm",a:"middle"}),
+ at("T","1-4",[380,504],[144,374],{t:"c40a2f6",c:"lb",a:"middle"})
+ ];
+ if(nuevoSolo){ o.push(at("D","4",[580,450,12],[244,330,10],{c:"cm nuevo",fall:1})); }
+ else { o.push(at("D","1-4",[580,450,9],[244,330,8],{c:"cm"})); }
+ o.push(at("T",s,[580,484],[244,356],{t:"Siguiente:",c:"tm",a:"middle",fall:nuevoSolo?1:0}));
+ o.push(at("T",s,[580,504],[244,374],{t:"a1b2c3d",c:"lb",a:"middle",fall:nuevoSolo?1:0}));
+ return o;
+}
+function CAB(st,bx,lv){ return [
+ at("B",bx,[60,60,300,150],[14,14,272,92],{t:"sesión A",ty:.44}),
+ at("M",st,[316,80,28,110],[252,24,18,52],{lv:lv}),
+ at("T",st,[344,199],[244,40],{t:"contexto",c:"lb",a:"end"})
+];}
+
+/* ---------- animación 1: Trabajar ---------- */
+var A1=GIT(true).concat(CAB("1-4","1-4",{1:.12,2:.16,3:.2,4:.3}),[
+ at("T","1-2",[76,183],[26,89],{t:"SessionStart",c:"su"}),
+ at("T","3",[60,238],[26,89],{t:"planea · decide · revisa",c:"tm"}),
+ at("T","4",[76,183],[26,89],{t:"commit + push",c:"su"}),
+ /* 1 retomar */
+ at("B","1",[400,70,230,40],[40,164,246,32],{t:"fetch · commit ✓",p:1,c:"ok"}),
+ at("B","1",[400,122,150,40],[40,204,246,32],{t:"check ✓",p:1,c:"ok"}),
+ at("B","1",[520,290,170,40],[40,124,246,32],{t:"handoff.md",p:1}),
+ at("L","1",["M380 441V196H364"],["M22 330V110"],{c:"cel",mk:"cel"}),
+ /* 2 elegir */
+ at("B","2",[420,64,220,76],[40,124,246,56],{t:"gw-selector",s:["qué skill, qué modelo","skill + modelo"],f:"m"}),
+ at("L","2",["M360 100H416"],["M163 182V198"],{c:"cel",mk:"cel"}),
+ at("B","2",[420,160,130,36],[40,200,118,32],{t:"skill",p:1,c:"cel",dl:.15}),
+ at("B","2",[570,160,130,36],[168,200,118,32],{t:"modelo",p:1,c:"cel",dl:.3}),
+ at("L","2",["M640 102H780"],["M166 258H224"],{c:"no",mk:"no"}),
+ at("T","2",[650,92],[40,262],{t:"riesgo → espera",c:"tm"}),
+ at("P","2",[830,110,1.7],[246,262,.9],{}),
+ at("T","2",[830,190],[246,300],{t:"la persona",c:"su",a:"middle"}),
+ /* 3 repartir */
+ at("B","3",[440,56,200,46],[14,150,84,60],{t:["subagente","sub 1"],s:[null,"limpio"],dl:.1}),
+ at("B","3",[440,112,200,46],[108,150,84,60],{t:["subagente","sub 2"],s:[null,"limpio"],dl:.2}),
+ at("B","3",[440,168,200,46],[202,150,84,60],{t:["subagente","sub 3"],s:[null,"limpio"],dl:.3}),
+ at("M","3",[606,66,12,26],null,{lv:{3:.08}}),
+ at("M","3",[606,122,12,26],null,{lv:{3:.08}}),
+ at("M","3",[606,178,12,26],null,{lv:{3:.08}}),
+ at("L","3",["M362 71H436"],["M48 108V148"],{c:"cel",mk:"cel"}),
+ at("L","3",["M362 127H436"],["M142 108V148"],{c:"cel",mk:"cel"}),
+ at("L","3",["M362 183H436"],["M236 108V148"],{c:"cel",mk:"cel"}),
+ at("L","3",["M436 87H362"],["M64 148V110"],{c:"al",mk:"al",dl:.3}),
+ at("L","3",["M436 143H362"],["M158 148V110"],{c:"al",mk:"al",dl:.3}),
+ at("L","3",["M436 199H362"],["M252 148V110"],{c:"al",mk:"al",dl:.3}),
+ at("T","3",[440,248],[14,246],{t:["→ encargo   ← resumen ≤ 15 líneas","↓ encargo"],c:"tm"}),
+ at("T","3",null,[14,264],{t:"↑ resumen ≤ 15 líneas",c:"tm"}),
+ /* 4 subir */
+ at("B","4",[400,64,250,40],[40,124,246,32],{t:"trabajo + bitácora",p:1}),
+ at("B","4",[400,116,170,40],[40,164,122,32],{t:"pre-commit ✓",p:1,c:"ok",dl:.15}),
+ at("B","4",[590,116,170,40],[164,164,122,32],{t:"pre-push ✓",p:1,c:"ok",dl:.3}),
+ at("B","4",[400,168,250,40],[40,204,246,32],{t:"Siguiente: …",p:1,c:"cel"}),
+ at("L","4",["M675 160V330H580V432"],["M244 238V312"],{c:"cel",mk:"cel",dl:.3})
+]);
+var P1=[
+ ["Retomar","La sesión arranca y lee la bitácora del repositorio: rama, tarea, qué falta y siguiente paso. Comprueba que el último commit coincide y que el check está en verde."],
+ ["Elegir","Antes de tocar nada, gw-selector dice qué skill y qué modelo pide la tarea. Si es de riesgo, se espera a la persona."],
+ ["Repartir","gw-orchestrate-dealer reparte lo mecánico a subagentes de contexto limpio, con el modelo más barato que lo haga bien. Cada uno vuelve con un resumen corto y la sesión principal lo revisa."],
+ ["Subir","En cada punto estable, commit y push, con la bitácora en el mismo commit. Cada commit termina con «Siguiente:». Los ganchos pasan el check y buscan secretos antes de dejarlo salir."]
+];
+
+/* ---------- animación 2: Relevo ---------- */
+var A2=GIT(false).concat(CAB("1-3","1-2",{1:.92,2:.22,3:.22}),[
+ at("T","1",[76,183],[26,89],{t:"cada llamada pesa más",c:"su"}),
+ at("T","2",[76,183],[26,89],{t:"compactada",c:"su"}),
+ at("B","3",[60,60,300,150],[14,14,272,92],{t:"sesión A ✗",s:"se apaga",ty:.44,c:"no"}),
+ at("B","4",[60,60,300,150],[14,14,272,56],{t:"sesión A",s:"la sombra",ty:.5,c:"gh"})
+]);
+/* contexto: solo pasos 1-2 */
+A2=A2.concat([
+ /* 1 el contexto crece */
+ at("T","1",[440,58],[30,134],{t:"coste por llamada",c:"tm"}),
+ at("L","1",["M440 70V220H880"],["M30 148V244H282"],{c:"ln"}),
+ at("L","1",["M440 100H880"],["M30 166H282"],{c:"no fino"}),
+ at("T","1",[880,92],[282,160],{t:"tope",c:"su",a:"end"}),
+ at("L","1",["M440 212Q700 205 800 104"],["M30 238Q180 230 262 172"],{c:"cel"}),
+ at("T","1",[880,244],[282,268],{t:"llamadas →",c:"su",a:"end"}),
+ at("B","1",[440,262,260,40],[14,254,164,30],{t:"esquema, no medida",p:1,c:"cel"}),
+ /* 2 compactar */
+ at("B","2",[400,64,150,40],[40,124,246,32],{t:"/compact",p:1}),
+ at("B","2",[400,116,300,40],[40,164,246,32],{t:"recover.py --state",p:1,dl:.2}),
+ at("R","2",[316,88.8,28,101.2],[252,28.2,18,47.8],{}),
+ at("L","2",["M380 441V136H396"],["M22 330V180H36"],{c:"cel",mk:"cel",dl:.2}),
+ at("T","2",[60,238],[40,232],{t:"mismo paso",c:"tm"}),
+ /* 3 corte */
+ at("T","3",[400,96],[40,140],{t:["sin tokens · contenedor · otra cuenta","sin tokens · contenedor"],c:"tm"}),
+ at("T","3",null,[40,160],{t:"· otra cuenta",c:"tm"}),
+ at("B","3",[400,380,270,40],[40,248,200,32],{t:"git sigue intacto ✓",p:1,c:"ok",dl:.2}),
+ /* 4 relevo */
+ at("B","4",[600,60,300,150],[14,82,272,60],{t:"sesión B ✓",s:"sigue por «Siguiente:»",ty:.44,c:"ok"}),
+ at("M","4",[856,80,28,110],[252,90,18,44],{lv:{4:.05}}),
+ at("L","4",["M580 441V136H596"],["M22 330V146"],{c:"cel",mk:"cel"}),
+ at("B","4",[392,70,180,84],[40,156,246,52],{t:"3 subagentes",s:["contexto limpio","contexto limpio"],dl:.2}),
+ at("T","4",[60,308],[40,250],{t:["lo que no está subido","lo que no está subido"],c:"nm"}),
+ at("T","4",[60,366],[40,280],{t:"no existe",c:"nm"})
+]);
+var P2=[
+ ["El contexto crece","Cada llamada vuelve a leer toda la conversación: cuanto más larga, más cuesta. Por eso lo mecánico va a subagentes y la ventana tiene un tope."],
+ ["Compactar","Al llegar al tope, la conversación se compacta. Un gancho corre recover.py y devuelve el estado desde git: la sesión sigue por el mismo paso."],
+ ["Corte","La sesión se acaba: sin tokens, con el contenedor reciclado o con el relevo de otra cuenta. Lo que solo estaba en la conversación se pierde; lo subido, no."],
+ ["Relevo","Otra sesión, quizá con otra cuenta, arranca, lee la bitácora y sigue por «Siguiente:» sin preguntar por dónde iba. Lo que no está subido no existe."]
+];
+
+/* ---------- animación 3: Camino a main ---------- */
+var XS=[110,290,470,650,830], YM=[44,102,160,218,276];
+var NAMES=["código","entorno","marca",["pre-push","push"],"main"], CAPS=["arreglos","retro.md","reviewed","exit 0","CI ✓"];
+var ON=["2-8","3-8","4-8","6,8","8"], OFF=["1","1-2","1-3","1-5","1-7"];
+var A3=[
+ at("L","1-8",["M90 470H870"],["M26 44V276"],{c:"gr"})
+];
+for(var i=0;i<5;i++){(function(i){
+ A3.push(at("D",OFF[i],[XS[i],470,17],[26,YM[i],11],{c:"so"}));
+ A3.push(at("D",ON[i],[XS[i],470,17],[26,YM[i],11],{c:"sn"}));
+ A3.push(at("T",ON[i],[XS[i],477],[26,YM[i]+5],{t:"✓",c:"ck",a:"middle"}));
+ A3.push(at("T","1-8",[XS[i],500],[44,YM[i]+4],{t:NAMES[i],c:"su",a:["middle","start"]}));
+ A3.push(at("T","8",[XS[i],522],null,{t:CAPS[i],c:"lb",a:"middle"}));
+})(i)}
+A3.push(at("D","7",[650,470,17],[26,218,11],{c:"pd"}));
+A3.push(at("T","7",[650,477],[26,223],{t:"✗",c:"ck",a:"middle"}));
+A3=A3.concat([
+ /* vía de git */
+ at("L","1-8",["M60 330H900"],["M130 164V350"],{c:"gr",ms:"1,4,8"}),
+ at("T","1-8",[60,318],[140,176],{t:"main",c:"tm",a:["start","start"],ms:"1,4,8"}),
+ at("L","1-8",["M110 330L140 390H560"],["M130 190L200 224V334"],{c:"cel",ms:"1,4,8"}),
+ at("D","1-8",[170,390,9],[200,254,8],{c:"cm",ms:"1,4,8"}),
+ at("D","1-8",[250,390,9],[200,288,8],{c:"cm",ms:"1,4,8"}),
+ at("D","1-8",[330,390,9],[200,322,8],{c:"cm",ms:"1,4,8"}),
+ at("D","1-8",[410,390,9],null,{c:"cm",ms:"1,4,8"}),
+ at("T","1-8",[150,424],[214,238],{t:["rama de trabajo","rama"],c:"lb",ms:"1,8"}),
+ at("T","1-8",[420,424],[200,372],{t:"check ✓",c:"okt tm",a:["start","middle"],ms:"1,8"}),
+ /* 1 */
+ at("T","1",[30,176],[110,70],{t:"todavía nada",c:"nm"}),
+ at("T","1",[30,234],[110,102],{t:"en main",c:"nm"}),
+ /* 2 */
+ at("B","2",[30,56,300,70],[110,18,176,56],{t:"/code-review",s:"--max-findings all",f:"m"}),
+ at("B","2",[30,138,170,38],[110,82,176,32],{t:"REVIEW.md",p:1}),
+ at("L","2",["M330 91H400M400 75V167M400 75H436M400 121H436M400 167H436"],null,{c:"ln cel fino"}),
+ at("B","2",[440,56,260,38],[110,126,176,32],{t:"grave → arreglo",p:1,c:"cel",dl:.15}),
+ at("B","2",[440,102,260,38],[110,164,176,32],{t:"medio → arreglo",p:1,c:"cel",dl:.3}),
+ at("B","2",[440,148,260,38],[110,202,176,32],{t:"leve → bitácora",p:1,dl:.45}),
+ /* 3 */
+ at("B","3",[30,56,260,50],[110,18,176,40],{t:"/gw-opt-tokens",p:1}),
+ at("B","3",[30,116,260,50],[110,64,176,40],{t:"/retro",p:1,dl:.1}),
+ at("T","3",[30,196],[110,124],{t:["opcional en cambios pequeños","opcional en"],c:"tm"}),
+ at("T","3",null,[110,140],{t:"cambios pequeños",c:"tm"}),
+ at("B","3",[340,56,220,38],[110,148,96,30],{t:["propuesta 1 ✓","prop. 1 ✓"],p:1,c:"ok",dl:.2}),
+ at("B","3",[340,102,220,38],[110,184,96,30],{t:["propuesta 2 ✓","prop. 2 ✓"],p:1,c:"ok",dl:.3}),
+ at("B","3",[340,148,220,38],[110,220,96,30],{t:["propuesta 3 ✗","prop. 3 ✗"],p:1,c:"no",dl:.4}),
+ at("B","3",[340,202,220,38],[110,258,176,32],{t:"retro-*.md",p:1,c:"cel",dl:.5}),
+ at("P","3",[740,110,1.8],[246,192,1],{}),
+ at("T","3",[740,190],[246,238],{t:["la persona","persona"],c:"su",a:"middle"}),
+ at("L","3",["M690 118H580"],null,{c:"no",mk:"no"}),
+ /* 4 */
+ at("B","4",[30,56,210,44],[110,18,176,44],{t:"reviewed.sh",p:1}),
+ at("B","4",[300,56,260,64],[110,70,176,56],{t:"reviewed.txt",s:"sha del commit",c:"cel",dl:.2}),
+ at("L","4",["M240 78H296"],null,{c:"cel",mk:"cel"}),
+ at("D","4",[410,390,15],[200,322,14],{c:"ring",dl:.3}),
+ at("L","4",["M440 122V345H410V372"],["M262 130V322H216"],{c:"no",mk:"no",dl:.3}),
+ at("T","4",[458,240],[200,372],{t:"mismo sha",c:"tm",a:["start","middle"]}),
+ /* 5 */
+ at("P","5",[110,150,2.6],[150,64,1.5],{}),
+ at("T","5",[110,246],[150,118],{t:"la persona",c:"su",a:"middle"}),
+ at("B","5",[250,56,280,50],[110,132,176,36],{t:"¿subimos a main?",p:1,c:"cel"}),
+ at("B","5",[250,124,130,44],[110,176,80,32],{t:"sí",p:1,c:"ok",dl:.3}),
+ at("L","5",["M380 146H560"],["M150 210V222"],{c:"cel",mk:"cel",dl:.5}),
+ at("B","5",[564,110,330,76],[110,224,176,56],{t:"handoff.md",s:["confirmación apuntada","confirmación"],p:0,dl:.6}),
+ /* 6-7 compuertas */
+ at("T","6-7",[30,76],null,{t:"El gancho juzga el commit que sale, no la carpeta.",c:"tx"})
+]);
+var GN=["check","restos","protegida","código","marca"], GS=["tests + tipos","conflictos","¿es main?","¿lo hay?","mismo sha"], GX=[30,215,400,585,770], GY=[18,76,134,192,250];
+for(var g=0;g<5;g++){(function(g){
+ var dl=g*.14, st="6"+(g<4?"-7":"");
+ A3.push(at("B",st,[GX[g],100,170,76],[110,GY[g],176,52],{t:GN[g],s:GS[g],f:"m",dl:dl}));
+ A3.push(at("T",st,[GX[g]+134,152],[252,GY[g]+38],{t:"✓",c:"ckb",dl:dl+.1}));
+})(g)}
+A3=A3.concat([
+ at("B","7",[770,100,170,76],[110,250,176,52],{t:"marca",s:"sin marca",f:"m",c:"bad"}),
+ at("T","7",[904,152],[252,288],{t:"✗",c:"xb",dl:.1}),
+ at("B","7",[30,200,900,84],[14,318,272,72],{t:["✗ subida rechazada · exit 1","✗ subida rechazada"],s:["orden: bash .claude/gw/scripts/reviewed.sh","exit 1 · reviewed.sh"],c:"band",tc:"sp",dl:.3}),
+ /* 8 */
+ at("B","8",[30,56,210,44],[110,18,176,32],{t:"CI Linux ✓",p:1,c:"ok"}),
+ at("B","8",[30,112,210,44],[110,58,176,32],{t:"CI macOS ✓",p:1,c:"ok",dl:.15}),
+ at("B","8",[620,56,310,84],[110,98,176,56],{t:"main · publicado",s:["la web o la versión","la web publicada"],c:"cel",dl:.3}),
+ at("L","8",["M560 390C650 390 700 330 780 330"],["M200 322V336L130 350"],{c:"cel",dl:.3}),
+ at("L","8",["M780 330H900"],["M130 164V350"],{c:"cel",dl:.3}),
+ at("T","8",[30,190],[14,392],{t:["Un CI que no arranca cuenta como rojo.","un CI que no arranca"],c:["tx","tm"],dl:.4}),
+ at("T","8",null,[14,410],{t:"cuenta como rojo",c:"tm",dl:.4}),
+ at("T","8",[30,260],null,{t:"nada llega a main sin revisión",c:"nm"}),
+ at("P","8",[850,215,1.2],null,{}),
+ at("T","8",[850,266],null,{t:"la persona confirma",c:"su",a:"middle"})
+]);
+var P3=[
+ ["Rama lista","El trabajo está en la rama de trabajo, subido y con el check en verde. Todavía no ha llegado nada a main."],
+ ["Fase 1 · código","Se revisa todo el diff contra main con el criterio escrito del proyecto. Lo grave o medio se arregla y se sube; lo leve se apunta en la bitácora."],
+ ["Fase 2 · entorno","gw-opt-tokens mide en qué se fue el gasto y la retro propone cambios. Las propuestas se presentan a la persona y solo se aplica lo que confirma. En cambios pequeños puede saltarse."],
+ ["Fase 3 · marca","Un script deja escrito en el repositorio qué commit se revisó. Sin esa marca, los ganchos no dejan publicar."],
+ ["La persona decide","A main solo se sube con la confirmación de la persona, y queda apuntado en la bitácora."],
+ ["pre-push","Al subir, el gancho pre-push juzga el commit que sale, no la carpeta de trabajo: pasa el check, busca restos de conflictos y, si es la rama protegida y trae código, exige la marca de ese mismo commit."],
+ ["Si falta algo","Si una comprobación falla, la subida se rechaza y la última línea dice la orden que lo arregla. Ningún commit puede desproteger la rama que lo juzga."],
+ ["CI y main","El CI corre la misma comprobación en Linux y macOS. Con todo en verde, el cambio llega a main: la web o la versión publicada."]
+];
+
+var ANIMS=[
+ {id:"trabajar",nom:"Trabajar",sub:"de retomar a subir",H:410,atoms:A1,pasos:P1,
+  meta:[["Objetivo","Que se vea cómo se trabaja una tarea: retomar desde git, elegir skill y modelo, repartir a subagentes y subir con la bitácora."],["Para quién","Quien no ha usado agentes y quien ya los usa y quiere ver dónde entra cada pieza."],["Se apoya en","Los pasos 1 a 4 de «Cómo funciona»: Retomar, Elegir, Pensar si hace falta, Trabajar y subir."],["Duración","4 pasos, unos 22 s con Reproducir."]]},
+ {id:"relevo",nom:"Relevo",sub:"git es la memoria",H:410,atoms:A2,pasos:P2,
+  meta:[["Objetivo","Que se entienda por qué git es la memoria: la sesión es desechable y todo lo que importa ya está subido."],["Para quién","Quien no sabe qué es un relevo entre sesiones y quien quiere saber qué pasa cuando una sesión se acaba."],["Se apoya en","Lo que cuenta «Cómo funciona» sobre la bitácora, la compactación y el relevo."],["Duración","4 pasos, unos 22 s con Reproducir."]]},
+ {id:"main",nom:"Camino a main",sub:"nada llega sin revisión",H:420,atoms:A3,pasos:P3,
+  meta:[["Objetivo","Que se vea que a la rama publicada no se llega sin revisión: tres fases, la persona decide y los ganchos lo hacen cumplir."],["Para quién","Quien quiere saber qué garantías hay y quien evalúa adoptar el flujo."],["Se apoya en","Los pasos 5 a 7 de «Cómo funciona»: Revisar el código, Mejorar el entorno, Publicar."],["Duración","8 pasos, unos 40 s. El paso 7 es la rama «si falta algo»; Reproducir vuelve al camino verde."]]}
+];
+
+
+/* ---------- construcción del SVG ---------- */
+function persona(g,m){return '<g transform="translate('+g[0]+' '+g[1]+') scale('+g[2]+')"><polygon class="pf" points="-4,-27 4,-27 10,-21 10,-15 4,-9 -4,-9 -10,-15 -10,-21"/><polygon class="pf" points="-16,24 -16,2 -8,-6 8,-6 16,2 16,24"/></g>'}
+function atomSvg(o,m){
+ var g=m?o.m:o.d; if(!g) return "";
+ var k=o.k, s="";
+ if(k==="B"){
+  var x=g[0],y=g[1],w=g[2],h=g[3],c=Math.min(m?8:12,h/3);
+  var pts=x+","+y+" "+(x+w-c)+","+y+" "+(x+w)+","+(y+c)+" "+(x+w)+","+(y+h)+" "+x+","+(y+h);
+  s='<polygon class="bx '+(o.c||"")+'" points="'+pts+'"/>';
+  var t=pick(o.t,m), sub=pick(o.s,m), tx=x+(m?12:16), tc=o.tc?" "+o.tc:"";
+  if(sub){ s+='<text class="'+(o.f==="m"?"tm":"ti")+tc+'" x="'+tx+'" y="'+(y+h*(o.ty||.44))+'">'+esc(t)+'</text><text class="su'+tc+'" x="'+tx+'" y="'+(y+h*.82)+'">'+esc(sub)+'</text>'; }
+  else if(t){ s+='<text class="'+(o.p||o.f==="m"?"tm":"ti")+tc+'" x="'+tx+'" y="'+(y+h/2)+'" dominant-baseline="central">'+esc(t)+'</text>'; }
+ } else if(k==="T"){
+  var an=pick(o.a,m)||"start", cl=pick(o.c,m);
+  s='<text class="'+cl+'" x="'+g[0]+'" y="'+g[1]+'" text-anchor="'+an+'">'+esc(pick(o.t,m))+'</text>';
+ } else if(k==="L"){
+  s='<path class="ln '+(o.c||"")+'" d="'+g[0]+'"'+(o.mk?' marker-end="url(#mk-'+o.mk+')"':"")+'/>';
+ } else if(k==="D"){
+  s='<circle class="'+o.c+'" cx="'+g[0]+'" cy="'+g[1]+'" r="'+g[2]+'"/>';
+ } else if(k==="M"){
+  s='<rect class="mo" x="'+g[0]+'" y="'+g[1]+'" width="'+g[2]+'" height="'+g[3]+'"/><rect class="mf" x="'+g[0]+'" y="'+g[1]+'" width="'+g[2]+'" height="'+g[3]+'"/>';
+ } else if(k==="R"){
+  s='<rect class="mg" x="'+g[0]+'" y="'+g[1]+'" width="'+g[2]+'" height="'+g[3]+'"/>';
+ } else if(k==="P"){ s=persona(g,m); }
+ return s;
+}
+function markers(){
+ var d="";
+ ["cel","al","no"].forEach(function(n){d+='<marker id="mk-'+n+'" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path class="mk-'+n+'" d="M0 0L10 5L0 10z"/></marker>'});
+ return d;
+}
+var $=function(id){return document.getElementById(id)};
+var esc_=$("esc"), cur=0, step=4, mode=-1, playing=false, timer=0, vis=[], lastNarr="";
+function N(){return ANIMS[cur].pasos.length}
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
+function build(){
+ var an=ANIMS[cur], W=mode?300:960, H=mode?428:540;
+ var h='<svg class="sb nt" data-m="'+(mode?"m":"d")+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-labelledby="narr" xmlns="'+NS+'"><defs><pattern id="ret" width="24" height="24" patternUnits="userSpaceOnUse"><path class="ret" d="M24 0H0V24"/></pattern>'+markers()+'</defs><rect class="fondo" width="'+W+'" height="'+H+'"/><rect width="'+W+'" height="'+H+'" fill="url(#ret)"/>';
+ vis=[];
+ an.atoms.forEach(function(o,i){
+  var body=atomSvg(o,mode); if(!body){vis[i]=null;return}
+  vis[i]=(mode&&o.ms)?o.ms:o.st;
+  h+='<g class="a'+(o.fall?" fall":"")+'" data-i="'+i+'" style="--d:'+(o.dl||0)+'s">'+body+'</g>';
+ });
+ h+='</svg>';
+ esc_.innerHTML=h;
+ var svg=esc_.firstChild;
+ /* retrasos escalonados: el valor d de la ficha del átomo */
+ var gs=svg.querySelectorAll(".a");
+ paint(true);
+ requestAnimationFrame(function(){requestAnimationFrame(function(){svg.classList.remove("nt")})});
+}
+function levelFor(lv,s){var best=null;for(var k in lv){if(+k<=s)best=lv[k]}return best}
+function paint(){
+ var an=ANIMS[cur], svg=esc_.firstChild; if(!svg) return;
+ svg.querySelectorAll(".a").forEach(function(g){
+  var i=+g.dataset.i, o=an.atoms[i], on=vis[i]&&vis[i].has(step);
+  g.classList.toggle("on",!!on);
+  var mf=g.querySelector(".mf");
+  if(mf&&o.lv){var l=levelFor(o.lv,step); if(l!==null) mf.style.transform="scaleY("+l+")"}
+ });
+}
+function setTexts(announce){
+ var an=ANIMS[cur], p=an.pasos[step-1];
+ $("pn").textContent="Paso "+step+" de "+N();
+ $("pt").textContent=p[0];
+ $("narr").textContent=p[1];
+ var bs=$("lista").querySelectorAll("button");
+ bs.forEach(function(b,i){ if(i===step-1) b.setAttribute("aria-current","step"); else b.removeAttribute("aria-current") });
+ $("ant").disabled=step<=1; $("sig").disabled=step>=N();
+ var pi=$("progi"); pi.style.transform="scaleX("+(step/N())+")";
+}
+function go(n){
+ step=Math.max(1,Math.min(N(),n)); paint(); setTexts();
+}
+function stop(){playing=false;clearTimeout(timer);$("rep").textContent="Reproducir";$("narr").setAttribute("aria-live","polite");$("prog").classList.add("paso")}
+function dur(){return reduce.matches?8000:5500}
+function tick(){
+ if(step>=N()){stop();return}
+ go(step+1);
+ timer=setTimeout(tick,dur());
+}
+function play(){
+ if(playing){stop();return}
+ playing=true; $("rep").textContent="Parar"; $("narr").setAttribute("aria-live","off");
+ var pr=$("prog"); pr.classList.remove("paso"); $("progi").style.transition="transform "+(dur()/1000)+"s linear";
+ go(1); timer=setTimeout(tick,dur());
+}
+function renderList(){
+ var an=ANIMS[cur], h="", t="";
+ an.pasos.forEach(function(p,i){h+='<li><button type="button" data-n="'+(i+1)+'"><b>'+(i+1)+'</b><span>'+esc(p[0])+'</span></button></li>'; t+='<li><b>'+esc(p[0])+'.</b> '+esc(p[1])+'</li>'});
+ $("lista").innerHTML=h; $("ol").innerHTML=t;
+ var m=""; an.meta.forEach(function(r){m+='<div><dt>'+r[0]+'</dt><dd>'+esc(r[1])+'</dd></div>'});
+ $("meta").innerHTML=m; $("sumtxt").textContent=an.pasos.length===4?"Los cuatro pasos en texto":"Los ocho pasos en texto";
+}
+function select(i,focus){
+ stop(); cur=i; step=N();
+ var tb=$("tabs").querySelectorAll(".tab");
+ tb.forEach(function(b,j){b.setAttribute("aria-selected",j===i?"true":"false");b.tabIndex=j===i?0:-1});
+ $("panel").setAttribute("aria-labelledby","tab-"+i);
+ renderList(); build(); setTexts();
+ if(focus) tb[i].focus();
+}
+(function(){
+ var h="";
+ ANIMS.forEach(function(a,i){h+='<button class="tab" role="tab" id="tab-'+i+'" aria-controls="panel" type="button"><b>'+esc(a.nom)+'</b><span>'+esc(a.sub)+'</span></button>'});
+ $("tabs").innerHTML=h;
+ $("tabs").addEventListener("click",function(e){var b=e.target.closest(".tab");if(!b)return;select([].indexOf.call($("tabs").children,b))});
+ $("tabs").addEventListener("keydown",function(e){
+  var k=e.key; if(k!=="ArrowRight"&&k!=="ArrowLeft"&&k!=="Home"&&k!=="End")return;
+  e.preventDefault(); var n=ANIMS.length, j=k==="Home"?0:k==="End"?n-1:(cur+(k==="ArrowRight"?1:n-1))%n; select(j,true);
+ });
+ $("lista").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;stop();go(+b.dataset.n)});
+ $("ant").addEventListener("click",function(){stop();go(step-1)});
+ $("sig").addEventListener("click",function(){stop();go(step+1)});
+ $("rep").addEventListener("click",play);
+ $("stepper").addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"){e.preventDefault();stop();go(step+1)}
+  else if(e.key==="ArrowLeft"){e.preventDefault();stop();go(step-1)}
+ });
+ var ro=new ResizeObserver(function(){
+  var w=esc_.clientWidth, m=w<800?1:0;
+  if(m!==mode){mode=m;build();}
+ });
+ mode=document.documentElement.clientWidth<820?1:0;
+ select(0);
+ ro.observe(esc_);
+})();
+})();
+</script>
+
+</body></html>
