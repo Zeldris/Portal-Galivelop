@@ -1,13 +1,37 @@
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { proyectos } from './proyectos';
+import { fichasCompletas as proyectos } from './fichasCompletas';
+import { cargarFicha, progreso, proyectos as resumenes } from './proyectos';
+import { CAMPOS_RESUMEN } from '../../tools/vite/resumenes';
 import { textosIncompletos } from './textosIncompletos';
 import { textos } from '../i18n/textos';
 import { NOMBRES_ICONOS } from '../components/Icono';
 import { LINEAS } from './lineas';
 
 const PUBLIC = join(__dirname, '../../public');
+
+describe('resumen de proyectos (lo que entra en el chunk inicial)', () => {
+  it('trae los mismos campos que la ficha entera, en el mismo orden, y el mismo avance', () => {
+    expect(resumenes.map((r) => r.slug)).toEqual(proyectos.map((p) => p.slug));
+    for (const [i, r] of resumenes.entries()) {
+      const ficha = proyectos[i];
+      for (const c of CAMPOS_RESUMEN) expect(r[c], `${ficha.slug}.${c}`).toEqual(ficha[c]);
+      expect(progreso(r)).toBe(progreso(ficha));
+      // Nada más que lo del resumen: si no, las fichas grandes vuelven al chunk inicial.
+      expect(
+        Object.keys(r).filter((c) => !(CAMPOS_RESUMEN as readonly string[]).includes(c)),
+      ).toEqual(['hitos']);
+    }
+  });
+
+  it('carga la ficha entera bajo demanda y solo si el proyecto existe', async () => {
+    const ficha = await cargarFicha(proyectos[0].slug);
+    expect(ficha).toEqual(proyectos[0]);
+    expect(await cargarFicha('no-existe')).toBeUndefined();
+    expect(await cargarFicha(undefined)).toBeUndefined();
+  });
+});
 
 describe('proyectos', () => {
   it('hay al menos un proyecto y los slugs no se repiten', () => {

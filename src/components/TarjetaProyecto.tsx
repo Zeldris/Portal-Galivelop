@@ -2,12 +2,12 @@ import { ArrowUpRight } from 'lucide-react';
 import type { CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import { progreso, ruta } from '../data/proyectos';
-import type { Proyecto } from '../data/tipos';
+import type { ResumenProyecto } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { EtiquetaColaboracion } from './Colaboracion';
 import { EstadoEtiqueta } from './EstadoEtiqueta';
 
-export function TarjetaProyecto({ proyecto: p }: { proyecto: Proyecto }) {
+export function TarjetaProyecto({ proyecto: p }: { proyecto: ResumenProyecto }) {
   const { t, tx } = useIdioma();
   const avance = progreso(p);
   return (

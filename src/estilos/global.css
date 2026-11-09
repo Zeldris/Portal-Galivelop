@@ -5030,3 +5030,8 @@ body:has(dialog[open]) {
     padding: 20px;
   }
 }
+
+/* Hueco sin texto mientras llega el chunk de una página o la ficha de un proyecto. */
+.carga-pagina {
+  min-height: 70vh;
+}
