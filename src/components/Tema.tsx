@@ -8,11 +8,12 @@ const COLOR_BARRA: Record<Tema, string> = { claro: '#ffffff', oscuro: '#111f29' 
 function temaInicial(): Tema {
   try {
     const guardado = localStorage.getItem(CLAVE_GUARDADA);
-    if (guardado === 'claro' || guardado === 'oscuro') return guardado;
+    if (guardado === 'oscuro') return guardado;
   } catch {
-    // Sin localStorage: se sigue la preferencia del sistema (claro si no hay ninguna).
+    // Sin localStorage: claro.
   }
-  return matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro';
+  // Claro por defecto (regla 1 de docs/marca.md), también si el sistema pide oscuro.
+  return 'claro';
 }
 
 export function useTema() {

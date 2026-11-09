@@ -14,8 +14,28 @@ const conImagen = (html, url) => html
   .replace(/(name="twitter:image" content=")[^"]*/, `$1${url}`);
 const base = readFileSync('dist/index.html', 'utf8');
 // El 404 es copia de la portada sin páginas estáticas: solo necesita la imagen versionada.
-writeFileSync('dist/404.html', conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN));
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+// El 404 lleva título y descripción propios en los tres idiomas. Sin rutas por idioma, el castellano va en el HTML
+// y un guion elige gl/en según el prefijo de la dirección. Con noindex: no es una página que indexar.
+const NO_ENCONTRADA = {
+  es: ['Página no encontrada · Galivelop', 'Esta página no existe o ha cambiado de sitio. Vuelve a la portada de Galivelop.'],
+  gl: ['Páxina non atopada · Galivelop', 'Esta páxina non existe ou cambiou de sitio. Volve á portada de Galivelop.'],
+  en: ['Page not found · Galivelop', 'This page does not exist or has moved. Go back to the Galivelop home page.'],
+};
+const [titulo404, descripcion404] = NO_ENCONTRADA.es;
+const guion404 = `<script>var m=/\\/(gl|en)(\\/|$)/.exec(location.pathname),T=${JSON.stringify(NO_ENCONTRADA)},l=T[m?m[1]:'es'];document.title=l[0];document.documentElement.lang=m?m[1]:'es';document.querySelector('meta[name="description"]').content=l[1];</script>`;
+writeFileSync(
+  'dist/404.html',
+  conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN)
+    .replace(/<title>[^<]*<\/title>/, `<title>${esc(titulo404)}</title>\n    <meta name="robots" content="noindex" />`)
+    .replace(/(name="description" content=")[^"]*/, `$1${esc(descripcion404)}`)
+    .replace(/(property="og:title" content=")[^"]*/, `$1${esc(titulo404)}`)
+    .replace(/(property="og:description" content=")[^"]*/, `$1${esc(descripcion404)}`)
+    .replace(/(name="twitter:title" content=")[^"]*/, `$1${esc(titulo404)}`)
+    .replace(/(name="twitter:description" content=")[^"]*/, `$1${esc(descripcion404)}`)
+    .replace(/\s*<meta property="og:url"[^>]*>/, '')
+    .replace('</head>', `  ${guion404}\n  </head>`),
+);
 
 // Fecha (AAAA-MM-DD) del último commit que tocó esos archivos: el lastmod de las páginas sin fecha propia en los datos.
 // Google ignora un lastmod que no es fiable, así que sin historia completa de git (un clon superficial daría la fecha

@@ -172,6 +172,14 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {modoCabecera === 'ilustracion' && (
           <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />
         )}
+        {modoCabecera !== 'ilustracion' && (
+          <img
+            className="proyecto-isobatas"
+            src={ruta('/marca/isobatas.svg')}
+            alt=""
+            aria-hidden="true"
+          />
+        )}
         <div className="contenedor proyecto-cabecera-contenido">
           <div className="proyecto-cabecera-texto">
             <Link to="/#proyectos" className="volver">
