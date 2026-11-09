@@ -1,6 +1,6 @@
 # Retro 2026-11-09: animaciones paso a paso del workflow
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada entera por la persona (2026-11-09, «Apruebo todo») y aplicada: T-a, T-b y T-c en `.claude/gw/gw-opt-tokens.md` (T-a también en `selector.cases`); R2 apuntada en «Pendiente» de la bitácora; R3 queda abajo para el workflow.
 
 Revisado: lo que entra en `main` desde `b142031` (componente `AnimacionFlujo` y sus guiones, ficha es/gl/en, galería
 de 7 a 3, prerender como `<ol>`, tests de la costura, arreglos de la fase 1, falso positivo de `npm run medir`) y la

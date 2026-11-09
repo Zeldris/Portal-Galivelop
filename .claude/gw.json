@@ -53,6 +53,12 @@
         "subagentModel": "light"
       },
       {
+        "case": "Componente nuevo con su diseño o storyboard aprobado: datos, textos es/gl/en, JSON de la ficha, prerender y documentación a un subagente ligero con el plan cerrado; solo la lógica del componente (estado, temporización, accesibilidad, medida) a uno grande; los tests de costura cuidan que casen",
+        "skill": "orchestrate-dealer",
+        "sessionModel": "medium",
+        "subagentModel": "light"
+      },
+      {
         "case": "Cambio acotado: un componente, un estilo o un texto visible (en es, gl y en)",
         "skill": "none",
         "sessionModel": "medium",

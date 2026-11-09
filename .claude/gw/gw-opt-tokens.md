@@ -82,6 +82,13 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   líneas con enlace a su retro; la de «Identidad visual propia» tenía 6,5k caracteres y la bitácora se leyó 10 veces.
 - **Columnas de las rejillas en texto** (2026-11-09, R1): `npm run medir` avisa si una rejilla de `COLUMNAS` se queda
   con menos columnas de las que toca, en escritorio o móvil; no hace falta una captura para eso.
+- **Componente con diseño aprobado, partido en dos encargos** (2026-11-09, T-a): datos, textos, ficha, prerender y
+  documentación al modelo barato con plan cerrado; solo la lógica del componente al grande (fila de `selector.cases`).
+  El subagente de las animaciones lo hizo todo con el grande: 14,2M de entrada, ~60 % del gasto de la tarea.
+- **Documentos de diseño por secciones** (2026-11-09, T-b): `grep -n '^<h\|^#'` para los encabezados y `sed -n` de la
+  sección, o lo lee el subagente que lo usa; el storyboard leído entero con `cat` se arrastró 245k.
+- **Capturas solo para juicio visual** (2026-11-09, T-c): si un rótulo se corta lo dicen `npm run medir` y los tests de
+  encaje; una captura final por pantalla, no por intento (~38k cada imagen arrastrada).
 
 ## Costes conocidos
 
