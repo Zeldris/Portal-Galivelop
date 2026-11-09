@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useParams } from 'react-router-dom';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 import type { Destino } from '../components/AnimacionFlujo';
 import { AvisoError } from '../components/AvisoError';
 import { Link } from '../components/Enlace';
@@ -388,15 +389,17 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           {p.animaciones && p.animaciones.length > 0 && (
             <div id="flujo" className="bloque">
               <h3 className="bloque-titulo">{t('flujo.titulo')}</h3>
-              <Suspense
-                fallback={
-                  <p className="flujo-cargando" role="status">
-                    {t('flujo.cargando')}
-                  </p>
-                }
-              >
-                <AnimacionFlujo animaciones={p.animaciones} destino={destino} />
-              </Suspense>
+              <ErrorBoundary reserva={null}>
+                <Suspense
+                  fallback={
+                    <p className="flujo-cargando" role="status">
+                      {t('flujo.cargando')}
+                    </p>
+                  }
+                >
+                  <AnimacionFlujo animaciones={p.animaciones} destino={destino} />
+                </Suspense>
+              </ErrorBoundary>
             </div>
           )}
         </section>

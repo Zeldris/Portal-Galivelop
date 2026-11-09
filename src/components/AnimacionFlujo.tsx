@@ -1,6 +1,8 @@
 import {
   useEffect,
   useId,
+  useLayoutEffect,
+  useMemo,
   useRef,
   useState,
   type CSSProperties,
@@ -18,6 +20,8 @@ import { componer, segun, type Atomo, type Rotulo } from './animaciones/tipos';
 
 /** Por debajo de este ancho de escena, el dibujo de móvil (más alto que ancho): así el texto no baja de 14 px. */
 const ANCHO_ESCRITORIO = 896;
+/** Lo que la escena pierde respecto a la ventana (márgenes de la página), para la primera estimación. */
+const MARGEN_ESCENA = 40;
 const DURACION = 5500;
 const DURACION_REDUCIDA = 8000;
 
@@ -135,7 +139,7 @@ export default function AnimacionFlujo({
 }) {
   const { t, tx } = useIdioma();
   const ids = 'flujo' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
-  const lista = animaciones.filter((a) => GUIONES[a.id]);
+  const lista = useMemo(() => animaciones.filter((a) => GUIONES[a.id]), [animaciones]);
   const [actual, setActual] = useState(() => {
     const i = destino ? lista.findIndex((a) => a.id === destino.id) : -1;
     return Math.max(0, i);
@@ -148,7 +152,8 @@ export default function AnimacionFlujo({
   const [reproduciendo, setReproduciendo] = useState(false);
   const [movil, setMovil] = useState(
     () =>
-      typeof window !== 'undefined' && document.documentElement.clientWidth < ANCHO_ESCRITORIO + 40,
+      typeof window !== 'undefined' &&
+      document.documentElement.clientWidth - MARGEN_ESCENA < ANCHO_ESCRITORIO,
   );
   const escena = useRef<HTMLDivElement>(null);
   const pieza = useRef<HTMLDivElement>(null);
@@ -156,10 +161,14 @@ export default function AnimacionFlujo({
   const raiz = useRef<HTMLDivElement>(null);
 
   // Modo según el ancho real de la escena, no el de la ventana.
-  useEffect(() => {
+  // La estimación inicial (ventana menos el margen) se corrige con la misma regla antes de pintar.
+  useLayoutEffect(() => {
     const el = escena.current;
-    if (!el || typeof ResizeObserver === 'undefined') return;
-    const ro = new ResizeObserver(() => setMovil(el.clientWidth < ANCHO_ESCRITORIO));
+    if (!el) return;
+    const medir = () => setMovil(el.clientWidth < ANCHO_ESCRITORIO);
+    medir();
+    if (typeof ResizeObserver === 'undefined') return;
+    const ro = new ResizeObserver(medir);
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
@@ -178,7 +187,7 @@ export default function AnimacionFlujo({
   }, [reproduciendo, paso, total]);
 
   // Un enlace de «Cómo funciona» pide una pestaña y un paso: se abre y se lleva la vista hasta aquí.
-  const ultimoDestino = useRef(destino?.n);
+  const ultimoDestino = useRef<number | undefined>(undefined);
   useEffect(() => {
     if (!destino || destino.n === ultimoDestino.current) return;
     ultimoDestino.current = destino.n;
@@ -203,6 +212,10 @@ export default function AnimacionFlujo({
     setPaso(Math.min(Math.max(1, n), total));
   };
   const elegir = (i: number, foco = false) => {
+    if (i === actual) {
+      if (foco) pestanas.current[i]?.focus();
+      return;
+    }
     setReproduciendo(false);
     setActual(i);
     setPaso(lista[i].pasos.length);

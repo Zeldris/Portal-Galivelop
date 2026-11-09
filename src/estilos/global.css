@@ -4462,6 +4462,9 @@ img.avatar {
   .flujo-svg .a {
     transform: none !important;
   }
+  .flujo-svg .mf {
+    transition: none;
+  }
 }
 
 .apartado-intro {

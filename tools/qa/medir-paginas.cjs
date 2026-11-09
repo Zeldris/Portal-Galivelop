@@ -49,6 +49,8 @@ const COLUMNAS = {
   '.cifras': { escritorio: 5, movil: 2, 'movil-360': 2, 'movil-320': 2 },
   '.caracteristicas': { escritorio: 4 },
   '.rejilla-productos': { escritorio: 4 },
+  '.flujo-debajo': { escritorio: 2 },
+  '.flujo-lista': { escritorio: 2, movil: 2 },
 };
 
 /** En el navegador: de cada rejilla de `esperado` ({selector: columnas}), las que se quedan cortas (`.mosaico 1/2`). */
