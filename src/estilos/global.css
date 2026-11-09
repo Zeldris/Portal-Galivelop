@@ -7,6 +7,7 @@
   /* Noche: fondo de los escenarios de imagen y velo plano sobre las fotos (derivados de la tinta, iguales en los dos temas). */
   --noche: #03090f;
   --velo: rgb(6 18 28 / 0.62);
+  --velo-medio: rgb(6 18 28 / 0.68);
   --velo-denso: rgb(6 18 28 / 0.78);
   /* Color de marca de Discord: ajeno a la paleta, solo en su botón. */
   --discord: #5865f2;
@@ -65,6 +66,9 @@
   --sombra: 0 12px 32px -18px rgb(19 33 43 / 0.35);
   /* Tinte plano del celeste para píldoras y marcas de posición. */
   --tinte: rgb(26 166 223 / 0.12);
+  /* Puntos de estado: van sobre la píldora de tinta (oscura en claro, clara en oscuro), por eso cambian con el tema. */
+  --estado-publicado: var(--celeste);
+  --estado-desarrollo: color-mix(in srgb, var(--alga) 55%, var(--blanco));
 }
 
 /* Oscuro: la misma carta, de noche. */
@@ -90,6 +94,8 @@
   /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
   --sombra: 0 12px 32px -18px rgb(0 0 0 / 0.7);
   --tinte: rgb(26 166 223 / 0.18);
+  --estado-publicado: var(--celeste-hondo);
+  --estado-desarrollo: color-mix(in srgb, var(--alga) 60%, var(--noche));
 }
 
 *,
@@ -538,17 +544,18 @@ button {
 }
 
 .estado-publicado .estado-punto {
-  background: var(--celeste);
+  background: var(--estado-publicado);
 }
 
 .estado-desarrollo .estado-punto {
-  /* Alga aclarada: la píldora es siempre tinta y el alga del tema claro se perdería sobre ella. */
-  background: color-mix(in srgb, var(--alga) 55%, var(--blanco));
+  background: var(--estado-desarrollo);
   animation: latido 2s ease-in-out infinite;
 }
 
+/* En diseño: punto hueco, del color del texto de la píldora (aún no hay nada que señalar en color). */
 .estado-diseno .estado-punto {
-  background: var(--celeste);
+  background: transparent;
+  border: 1.5px solid currentColor;
 }
 
 @keyframes latido {
@@ -1388,7 +1395,7 @@ button {
 }
 
 :root[data-tema='claro'] .cabecera-ilustracion::before {
-  background: var(--velo-denso);
+  background: var(--velo-medio);
 }
 
 .volver {

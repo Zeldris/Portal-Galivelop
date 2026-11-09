@@ -19,8 +19,9 @@ Cinco adjetivos: **técnico, sereno, atlántico, artesano, abierto.**
 Lo que nos separa de las webs genéricas hechas con IA. Cada regla pasa a comprobación en cuanto se rompa dos veces.
 
 1. **Tema claro por defecto.** El oscuro existe y se cuida, pero el blanco es la mitad de la marca.
-2. **Nada de resplandores, desenfoques ni degradados de fondo.** Ni `backdrop-filter`, ni `--brillo`, ni sombras
-   difusas grandes. La profundidad se da con filetes y con planos de color.
+2. **Nada de resplandores, desenfoques ni degradados de fondo.** Ni `backdrop-filter`, ni resplandores (el antiguo
+   `--brillo`; hoy `--tinte` es solo un plano de celeste translúcido), ni sombras difusas grandes. La profundidad se
+   da con filetes y con planos de color.
 3. **Esquinas rectas o con chaflán** (una esquina cortada a 45°), nunca redondeadas: casa con las letras cuadradas y
    con las etiquetas náuticas. Chaflán estándar: 14 px en fichas y botones, 28 px en bloques grandes.
 4. **Líneas antes que sombras.** Borde de 1 px (`--filete`), filete de 2 px bajo cabeceras, filete discontinuo para
@@ -43,8 +44,8 @@ Lo que nos separa de las webs genéricas hechas con IA. Cada regla pasa a compro
 
 ## Tokens
 
-Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se añaden; `--brillo` y `--sombra`
-desaparecen (la segunda queda solo para el panel).
+Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se añaden; `--brillo` pasó a ser
+`--tinte` (un plano, no un resplandor) y `--sombra` queda solo para el panel.
 
 | Token | Claro | Oscuro | Uso |
 |---|---|---|---|
@@ -57,6 +58,11 @@ desaparecen (la segunda queda solo para el panel).
 | `--tinta` (`--texto`) | `#13212b` | `#e6eef3` | Texto; gris granito con sesgo azul |
 | `--tinta-2` (`--texto-2`) | `#4a5c69` | `#9fb2bf` | Texto secundario y datos |
 | `--alga` | `#5d7a6a` | `#8fb09e` | Acento secundario: «en desarrollo», avisos suaves |
+| `--tinte` | celeste al 12 % | celeste al 18 % | Plano translúcido de celeste (fondos de hover y chips) |
+| `--noche` | `#03090f` | igual | Fondo de los escenarios de imagen |
+| `--velo` / `--velo-medio` / `--velo-denso` | tinta al 62 / 68 / 78 % | igual | Velo plano sobre fotos y botones sobre imagen |
+| `--estado-publicado` / `--estado-desarrollo` | `--celeste` / alga aclarada | `--celeste-hondo` / alga oscurecida | Puntos de estado sobre la píldora de tinta; «en diseño» va hueco |
+| `--discord` | `#5865f2` | igual | Color de marca de Discord, solo en su botón |
 | `--chaflan` / `--chaflan-grande` | `14px` / `28px` | igual | Esquina cortada |
 | `--curva`, `--transicion`, escala `--z-*` | como ahora | | Sin cambios |
 
@@ -180,7 +186,7 @@ Orden de trabajo: A entera, luego 6-9 (son los que más se ven), luego el resto 
 
 1. Elegir la tipografía (persona). Instalar los tres paquetes `@fontsource` y quitar Inter y Sora.
 2. Reescribir `:root` de `global.css` con los tokens de arriba y el claro por defecto; sustituir `border-radius` por
-   chaflán donde proceda; retirar `--brillo`, degradados y `backdrop-filter`.
+   chaflán donde proceda; retirar los resplandores, degradados y `backdrop-filter`.
 3. Generar las isobatas reales (recurso 2) y el logo (recurso 1).
 4. Revisar en móvil y escritorio, con capturas antes/después; `npm run check` y `npm run build`.
 5. Cambio grande: fase 1 (`/code-review`), fase 2 (`gw-opt-tokens`, `retro`, `gw-seo` por la `og:image`) y fase 3 antes

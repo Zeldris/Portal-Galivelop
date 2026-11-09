@@ -387,10 +387,12 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                         <dt>{tx(f.capa)}</dt>
                         <dd>
                           <ul className="chips">
-                            {f.tecnologias.map((tec) => {
-                              const texto = typeof tec === 'string' ? tec : tx(tec);
-                              return <li key={texto}>{texto}</li>;
-                            })}
+                            {f.tecnologias.map((tec) => (
+                              // La clave no depende del idioma activo: el castellano es estable al cambiarlo.
+                              <li key={typeof tec === 'string' ? tec : tec.es}>
+                                {typeof tec === 'string' ? tec : tx(tec)}
+                              </li>
+                            ))}
                           </ul>
                         </dd>
                       </div>
