@@ -1053,8 +1053,6 @@ button {
   place-items: center;
   width: 38px;
   height: 38px;
-  /* marca: permitido, insignia circular del icono de «próximamente», excepción de la regla 3. */
-  border-radius: 50%;
   color: var(--acento-proyecto);
   background: color-mix(in srgb, var(--acento-proyecto) 14%, transparent);
   filter: saturate(0.7);
@@ -1856,7 +1854,7 @@ button {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 14px;
 }
 
@@ -2237,8 +2235,6 @@ button {
 .ventana-barra i {
   width: 10px;
   height: 10px;
-  /* marca: permitido, puntos circulares de la barra de ventana, excepción de la regla 3. */
-  border-radius: 50%;
   background: var(--filete);
 }
 
@@ -3244,8 +3240,6 @@ img.perfil-logo {
   top: 7px;
   width: 8px;
   height: 8px;
-  /* marca: permitido, punto circular de la línea de etapas, excepción de la regla 3. */
-  border-radius: 50%;
   border: 2px solid var(--celeste);
   background: var(--superficie);
 }
@@ -3355,10 +3349,16 @@ img.perfil-logo {
   flex: none;
   width: 128px;
   height: 128px;
-  /* marca: permitido, foto de miembro circular (avatar), excepción de la regla 3. */
-  border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--celeste);
+  /* Retrato con la esquina superior derecha cortada (recurso 17 de la marca). */
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan)) 0,
+    100% var(--chaflan),
+    100% 100%,
+    0 100%
+  );
 }
 
 .miembro-foto.persona-iniciales {
@@ -4282,12 +4282,64 @@ body:has(dialog[open]) {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 12px;
 }
 
 .mosaico li {
   scroll-margin-top: 130px;
+}
+
+/* Rejillas de fichas sin celdas huérfanas (.mosaico, .caracteristicas): 12 subcolumnas; cada pieza ocupa 12 / n y
+   las de la última fila se reparten el ancho entero, así todas las filas quedan parejas con cualquier número de piezas. */
+:is(.mosaico, .caracteristicas) > li {
+  grid-column: span 12;
+}
+
+@media (min-width: 520px) {
+  :is(.mosaico, .caracteristicas) > li {
+    grid-column: span 6;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(odd) {
+    grid-column: span 12;
+  }
+}
+
+@media (min-width: 760px) {
+  :is(.mosaico, .caracteristicas) > li {
+    grid-column: span 4;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(3n + 1) {
+    grid-column: span 12;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(2):nth-child(3n + 1),
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(3n + 2) {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 1000px) {
+  :is(.mosaico, .caracteristicas) > li {
+    grid-column: span 3;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(4n + 1) {
+    grid-column: span 12;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(2):nth-child(4n + 1),
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(4n + 2) {
+    grid-column: span 6;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(3):nth-child(4n + 1),
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(2):nth-child(4n + 2),
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(4n + 3) {
+    grid-column: span 4;
+  }
 }
 
 .mosaico-pieza {
