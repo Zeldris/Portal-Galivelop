@@ -93,7 +93,18 @@ página de ese miembro (`colabora`), en una banda discreta de Participa, en «C�
      `informacion`, `producto`; ver [`src/data/lineas.ts`](../src/data/lineas.ts)).
    - `descripcion`: tres párrafos, como un caso de estudio: el reto, el enfoque y dónde está hoy.
    - `aprendizajes`: lo que el proyecto nos está obligando a aprender.
-   - `pasos`: «Cómo funciona», los pasos del uso principal (un turno, un análisis…).
+   - `pasos`: «Cómo funciona», los pasos del uso principal (un turno, un análisis…). Un paso puede
+     llevar `animacion` (`{ "id", "paso" }`, el paso desde 1): pone el botón «Verlo paso a paso», que
+     lleva a ese paso de la animación.
+   - `animaciones` (opcional; hoy, solo Galivelop-workflow): animaciones paso a paso que van tras
+     «Cómo funciona», una pestaña cada una. Cada una tiene `id`, `titulo`, `pasos` (`titulo` y
+     `narracion` de cada paso) y `etiquetas` (los rótulos traducibles del dibujo, por id). El dibujo
+     no va en la ficha: es un guion en TS con el mismo `id` en
+     [`src/components/animaciones/`](../src/components/animaciones/) (geometría de escritorio y de
+     móvil, y qué se ve en cada paso). Los nombres técnicos (`git`, `pre-push`, `main`…) son
+     literales del guion y no se traducen. Los tests comprueban que coinciden los pasos y las
+     etiquetas, y que cada rótulo cabe en su caja en los tres idiomas; sin JS, la página estática
+     lleva cada animación como una lista con el título y la narración de cada paso.
    - `apartados`: secciones propias del proyecto, cada una con `id`, `titulo`, `intro` opcional e
      `items` (`nombre`, `texto` y un `valor` corto opcional, igual en todos los idiomas).
    - `contacto`: correo propio del proyecto (opcional); aparece en su ficha y en «Contacto».

@@ -244,7 +244,9 @@ function cuerpo(pg) {
   }
   if (!p) return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
   const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
-  return `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
+  // Animaciones paso a paso: sin JS no hay dibujo, pero cada paso queda leído (título y narración) en una lista.
+  const anim = (p.animaciones ?? []).map((a) => `<section><h2>${esc(a.titulo[pg.idioma])}</h2><ol>${a.pasos.map((x) => `<li><strong>${esc(x.titulo[pg.idioma])}</strong>: ${esc(x.narracion[pg.idioma])}</li>`).join('')}</ol></section>`).join('');
+  return `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
 }
 
 function datos(pg, url) {
