@@ -84,7 +84,8 @@ export interface Proyecto {
    * Se muestran como mosaico en «A fondo»; cada uno se abre en una hoja con su lista de elementos.
    */
   apartados: Apartado[];
-  ficha: { capa: Texto; tecnologias: string[] }[];
+  /** Ficha técnica por capas; una tecnología es un nombre propio (cadena) o un texto traducible. */
+  ficha: { capa: Texto; tecnologias: (string | Texto)[] }[];
   hitos: { version?: string; nombre: Texto; estado: EstadoHito; detalle?: Texto }[];
   novedades: { fecha: string; texto: Texto }[];
   cifras: { valor: string; etiqueta: Texto }[];

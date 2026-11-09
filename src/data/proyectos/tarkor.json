@@ -430,11 +430,7 @@
       "en": "Today Tarkor is in alpha: the Red Wind Plains are the playable region and milestone 0.3 “Deep kingdom” is in a play-testing round. The rest of Berig will arrive region by region, and the beta will bring the public installer for Windows and Linux, with the Steam Deck as the performance target."
     }
   ],
-  "lineas": [
-    "ia-local",
-    "mundos",
-    "producto"
-  ],
+  "lineas": ["ia-local", "mundos", "producto"],
   "aprendizajes": [
     {
       "es": "Separar simulación y narración: la IA cuenta la historia, pero los números los deciden reglas que se pueden probar.",
@@ -3804,12 +3800,7 @@
         "gl": "Interface",
         "en": "Frontend"
       },
-      "tecnologias": [
-        "React 19",
-        "TypeScript",
-        "Vite",
-        "Tailwind CSS 4"
-      ]
+      "tecnologias": ["React 19", "TypeScript", "Vite", "Tailwind CSS 4"]
     },
     {
       "capa": {
@@ -3817,12 +3808,7 @@
         "gl": "Motor do xogo",
         "en": "Game engine"
       },
-      "tecnologias": [
-        "Node.js",
-        "Fastify 5",
-        "TypeScript",
-        "Prisma 6"
-      ]
+      "tecnologias": ["Node.js", "Fastify 5", "TypeScript", "Prisma 6"]
     },
     {
       "capa": {
@@ -3830,10 +3816,7 @@
         "gl": "Datos",
         "en": "Data"
       },
-      "tecnologias": [
-        "PostgreSQL",
-        "pgvector"
-      ]
+      "tecnologias": ["PostgreSQL", "pgvector"]
     },
     {
       "capa": {
@@ -3841,13 +3824,7 @@
         "gl": "Intelixencia artificial",
         "en": "Artificial intelligence"
       },
-      "tecnologias": [
-        "Ollama",
-        "Llama 3.1 8B",
-        "Qwen 2.5 1.5B",
-        "Qwen 3.5 4B",
-        "nomic-embed-text"
-      ]
+      "tecnologias": ["Ollama", "Llama 3.1 8B", "Qwen 2.5 1.5B", "Qwen 3.5 4B", "nomic-embed-text"]
     },
     {
       "capa": {
@@ -3855,12 +3832,7 @@
         "gl": "Instalador",
         "en": "Installer"
       },
-      "tecnologias": [
-        "Tauri v2",
-        "Rust",
-        "NSIS (Windows)",
-        "AppImage (Linux)"
-      ]
+      "tecnologias": ["Tauri v2", "Rust", "NSIS (Windows)", "AppImage (Linux)"]
     },
     {
       "capa": {
@@ -3868,13 +3840,7 @@
         "gl": "Calidade",
         "en": "Quality"
       },
-      "tecnologias": [
-        "Vitest",
-        "Testing Library",
-        "Playwright",
-        "oxlint",
-        "GitHub Actions"
-      ]
+      "tecnologias": ["Vitest", "Testing Library", "Playwright", "oxlint", "GitHub Actions"]
     }
   ],
   "hitos": [
@@ -3991,7 +3957,7 @@
       "detalle": {
         "es": "Primera gran expansión del mundo.",
         "gl": "Primeira gran expansión do mundo.",
-        "en": "The world's first major expansion."
+        "en": "The world’s first major expansion."
       }
     },
     {
@@ -4063,7 +4029,7 @@
       "texto": {
         "es": "Enciclopedia revisada y alineada con el canon del mundo: fichas de combate y sistemas, objetos y recetas, lugares, facciones, fauna y flora. La Ciénaga Troncal, el Cristal Helado y la Meseta del Orden ganan fauna, población e historia propias, y ocho habilidades que se llamaban igual tienen ya nombres distintos.",
         "gl": "Enciclopedia revisada e aliñada co canon do mundo: fichas de combate e sistemas, obxectos e receitas, lugares, faccións, fauna e flora. A Braña Troncal, o Cristal Xeado e a Meseta da Orde gañan fauna, poboación e historia propias, e oito habilidades que se chamaban igual teñen xa nomes distintos.",
-        "en": "Encyclopedia reviewed and aligned with the world's canon: combat sheets and systems, items and recipes, places, factions, fauna and flora. The Trunk Swamp, the Frozen Crystal and the Plateau of Order gain their own fauna, population and history, and eight skills that shared a name now have distinct ones."
+        "en": "Encyclopedia reviewed and aligned with the world’s canon: combat sheets and systems, items and recipes, places, factions, fauna and flora. The Trunk Swamp, the Frozen Crystal and the Plateau of Order gain their own fauna, population and history, and eight skills that shared a name now have distinct ones."
       }
     },
     {
@@ -4135,7 +4101,7 @@
       "texto": {
         "es": "El narrador corre con Ollama en el equipo del jugador: sin costes por partida, sin depender de terceros y sin que tus partidas salgan de casa.",
         "gl": "O narrador corre con Ollama no equipo do xogador: sen custos por partida, sen depender de terceiros e sen que as túas partidas saian da casa.",
-        "en": "The narrator runs on Ollama on the player's machine: no per-session costs, no third-party dependency and your games never leave home."
+        "en": "The narrator runs on Ollama on the player’s machine: no per-session costs, no third-party dependency and your games never leave home."
       }
     },
     {
@@ -4147,7 +4113,7 @@
       "texto": {
         "es": "La economía, las facciones y las tiradas son sistemas deterministas y comprobables. La IA cuenta lo que pasa, pero no decide los números, así el juego es justo y coherente.",
         "gl": "A economía, as faccións e as tiradas son sistemas deterministas e comprobables. A IA conta o que pasa, pero non decide os números, así o xogo é xusto e coherente.",
-        "en": "Economy, factions and dice are deterministic, testable systems. The AI narrates what happens but doesn't decide the numbers, keeping the game fair and consistent."
+        "en": "Economy, factions and dice are deterministic, testable systems. The AI narrates what happens but doesn’t decide the numbers, keeping the game fair and consistent."
       }
     },
     {

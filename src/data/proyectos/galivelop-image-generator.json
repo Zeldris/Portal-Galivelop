@@ -318,7 +318,7 @@
     {
       "es": "La respuesta es un servicio por máquina que no conoce el dominio de ningún proyecto: recibe pedidos (una clave y un perfil de imagen), genera varios intentos, deja marcar una elegida y la entrega como PNG con un manifiesto que dice qué modelo, qué parámetros y qué semilla la produjeron, para poder reproducirla. Habla por una API HTTP local, por la orden gimg y por una interfaz web de tres pantallas. Su repositorio y su orden conservan el nombre de trabajo: galivelop-image-generator y gimg.",
       "gl": "A resposta é un servizo por máquina que non coñece o dominio de ningún proxecto: recibe pedidos (unha clave e un perfil de imaxe), xera varios intentos, deixa marcar unha elixida e entrégaa como PNG cun manifesto que di que modelo, que parámetros e que semente a produciron, para poder reproducila. Fala por unha API HTTP local, pola orde gimg e por unha interface web de tres pantallas. O seu repositorio e a súa orde conservan o nome de traballo: galivelop-image-generator e gimg.",
-      "en": "The answer is a per-machine service that knows nothing about any project's domain: it takes requests (a key and an image profile), generates several attempts, lets you mark a chosen one and delivers it as a PNG with a manifest saying which model, which parameters and which seed produced it, so it can be reproduced. It speaks through a local HTTP API, the gimg command and a three-screen web interface. Its repository and command keep the working name: galivelop-image-generator and gimg."
+      "en": "The answer is a per-machine service that knows nothing about any project’s domain: it takes requests (a key and an image profile), generates several attempts, lets you mark a chosen one and delivers it as a PNG with a manifest saying which model, which parameters and which seed produced it, so it can be reproduced. It speaks through a local HTTP API, the gimg command and a three-screen web interface. Its repository and command keep the working name: galivelop-image-generator and gimg."
     },
     {
       "es": "Hoy el servicio está publicado en su versión 0.4.0, con el código abierto bajo licencia MIT: pedidos, intentos, elegida, entrega, cola y registro, el motor real con instalador, la composición de texto y logo sobre la imagen, la medida de marca, una API local y una interfaz en el navegador. Falta comprobar a mano en la Steam Deck el recorrido completo de la interfaz y el arranque bajo demanda, y el piloto con World-Maker-Fantasy.",
@@ -326,15 +326,12 @@
       "en": "Today the service is published as version 0.4.0, with the code open under the MIT licence: requests, attempts, chosen one, delivery, queue and log, the real engine with its installer, text and logo composed over the image, brand measurement, a local API and a browser interface. Still to check by hand on the Steam Deck: the full walk-through of the interface and the on-demand start, plus the pilot with World-Maker-Fantasy."
     }
   ],
-  "lineas": [
-    "ia-local",
-    "producto"
-  ],
+  "lineas": ["ia-local", "producto"],
   "aprendizajes": [
     {
       "es": "Nombrar en vez de comparar: el modelo pinta lo que se nombra, así que las comparaciones «como…» sobran en el pedido.",
       "gl": "Nomear en vez de comparar: o modelo pinta o que se nomea, así que as comparacións «como…» sobran no pedido.",
-      "en": "Name instead of compare: the model paints what is named, so «like…» comparisons don’t belong in a request."
+      "en": "Name instead of compare: the model paints what is named, so “like…” comparisons don’t belong in a request."
     },
     {
       "es": "Un borrador pequeño antes del definitivo: cuesta en torno a una quinta parte y sirve para descartar pronto.",
@@ -434,7 +431,7 @@
       }
     },
     {
-      "icono": "image",
+      "icono": "globe",
       "titulo": {
         "es": "Interfaz en el navegador",
         "gl": "Interface no navegador",
@@ -619,7 +616,7 @@
           "texto": {
             "es": "Con la imagen social del portal. Lección: el modelo pinta lo que se nombra; fuera las comparaciones «como…».",
             "gl": "Coa imaxe social do portal. Lección: o modelo pinta o que se nomea; fóra as comparacións «como…».",
-            "en": "With the portal’s social image. Lesson: the model paints what is named; drop the «like…» comparisons."
+            "en": "With the portal’s social image. Lesson: the model paints what is named; drop the “like…” comparisons."
           }
         },
         {
@@ -703,7 +700,7 @@
           "texto": {
             "es": "Plantillas de texto comunes y, en Tarkor, dibujo a lápiz en lugar de fotografía realista; después, una prueba en acuarela. La que más gustó fue la del propio generador.",
             "gl": "Modelos de texto comúns e, en Tarkor, debuxo a lapis en lugar de fotografía realista; despois, unha proba en acuarela. A que máis gustou foi a do propio xerador.",
-            "en": "Common text templates and, for Tarkor, pencil drawing instead of realistic photography, followed by a watercolour test. The favourite was the generator's own."
+            "en": "Common text templates and, for Tarkor, pencil drawing instead of realistic photography, followed by a watercolour test. The favourite was the generator’s own."
           }
         }
       ],
@@ -724,7 +721,7 @@
               "alt": {
                 "es": "Ronda 1 · Portal: primer fondo social, una esfera de luz difusa sobre azul noche. La idea está, pero no se lee como un portal.",
                 "gl": "Rolda 1 · Portal: primeiro fondo social, unha esfera de luz difusa sobre azul noite. A idea está, pero non se le como un portal.",
-                "en": "Round 1 · Portal: first social background, a diffuse sphere of light on night blue. The idea is there, but it doesn't read as a portal."
+                "en": "Round 1 · Portal: first social background, a diffuse sphere of light on night blue. The idea is there, but it doesn’t read as a portal."
               }
             },
             {
@@ -778,7 +775,7 @@
               "alt": {
                 "es": "Ronda 1 · Tarkor: columnas ante un atardecer saturado; bonito, pero genérico y lejos del mundo del juego.",
                 "gl": "Rolda 1 · Tarkor: columnas diante dun solpor saturado; bonito, pero xenérico e lonxe do mundo do xogo.",
-                "en": "Round 1 · Tarkor: columns against a saturated sunset; pretty, but generic and far from the game's world."
+                "en": "Round 1 · Tarkor: columns against a saturated sunset; pretty, but generic and far from the game’s world."
               }
             },
             {
@@ -789,7 +786,7 @@
               "alt": {
                 "es": "Ronda 3 · Tarkor: con el estilo elegido aparecen las agujas de roca del juego, con luz natural y paleta contenida.",
                 "gl": "Rolda 3 · Tarkor: co estilo escollido aparecen as agullas de rocha do xogo, con luz natural e paleta contida.",
-                "en": "Round 3 · Tarkor: with the chosen style the game's rock spires appear, in natural light with a restrained palette."
+                "en": "Round 3 · Tarkor: with the chosen style the game’s rock spires appear, in natural light with a restrained palette."
               }
             },
             {
@@ -924,7 +921,20 @@
         "gl": "Servizo",
         "en": "Service"
       },
-      "tecnologias": ["Python 3 (biblioteca estándar)", "CLI gimg", "API HTTP local", "Interfaz web local (HTML y JS sin framework)"]
+      "tecnologias": [
+        {
+          "es": "Python 3 (biblioteca estándar)",
+          "gl": "Python 3 (biblioteca estándar)",
+          "en": "Python 3 (standard library)"
+        },
+        "CLI gimg",
+        { "es": "API HTTP local", "gl": "API HTTP local", "en": "Local HTTP API" },
+        {
+          "es": "Interfaz web local (HTML y JS sin framework)",
+          "gl": "Interface web local (HTML e JS sen framework)",
+          "en": "Local web interface (HTML and JS, no framework)"
+        }
+      ]
     },
     {
       "capa": {
@@ -940,7 +950,19 @@
         "gl": "Entrega",
         "en": "Delivery"
       },
-      "tecnologias": ["PNG + manifiesto JSON", "Registro JSONL", "Composición con ffmpeg y rsvg-convert"]
+      "tecnologias": [
+        {
+          "es": "PNG + manifiesto JSON",
+          "gl": "PNG + manifesto JSON",
+          "en": "PNG + JSON manifest"
+        },
+        { "es": "Registro JSONL", "gl": "Rexistro JSONL", "en": "JSONL log" },
+        {
+          "es": "Composición con ffmpeg y rsvg-convert",
+          "gl": "Composición con ffmpeg e rsvg-convert",
+          "en": "Compositing with ffmpeg and rsvg-convert"
+        }
+      ]
     },
     {
       "capa": {

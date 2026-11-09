@@ -108,12 +108,12 @@
         {
           "es": "El código del portal es software libre con licencia MIT: puedes usarlo, copiarlo y modificarlo siempre que conserves el aviso de copyright y la licencia. El código de cada proyecto se rige por la licencia de su propio repositorio.",
           "gl": "O código do portal é software libre con licenza MIT: podes usalo, copialo e modificalo sempre que conserves o aviso de copyright e a licenza. O código de cada proxecto rexese pola licenza do seu propio repositorio.",
-          "en": "The portal's code is free software under the MIT licence: you may use, copy and modify it as long as you keep the copyright notice and the licence. Each project's code is governed by the licence in its own repository."
+          "en": "The portal’s code is free software under the MIT licence: you may use, copy and modify it as long as you keep the copyright notice and the licence. Each project’s code is governed by the licence in its own repository."
         },
         {
           "es": "Los textos del portal y las imágenes creadas por Galivelop se publican con licencia Creative Commons Reconocimiento 4.0 Internacional (CC BY 4.0): puedes compartirlos y adaptarlos, también con fines comerciales, citando a «Galivelop» con un enlace al portal e indicando si hiciste cambios.",
           "gl": "Os textos do portal e as imaxes creadas por Galivelop publícanse con licenza Creative Commons Recoñecemento 4.0 Internacional (CC BY 4.0): podes compartilos e adaptalos, tamén con fins comerciais, citando a «Galivelop» cunha ligazón ao portal e indicando se fixeches cambios.",
-          "en": "The portal's texts and the images created by Galivelop are published under the Creative Commons Attribution 4.0 International licence (CC BY 4.0): you may share and adapt them, including for commercial purposes, by crediting “Galivelop” with a link to the portal and stating whether you made changes."
+          "en": "The portal’s texts and the images created by Galivelop are published under the Creative Commons Attribution 4.0 International licence (CC BY 4.0): you may share and adapt them, including for commercial purposes, by crediting “Galivelop” with a link to the portal and stating whether you made changes."
         },
         {
           "es": "Quedan fuera de esas licencias, y conservan todos sus derechos:",
@@ -130,7 +130,7 @@
         {
           "es": "los nombres, logotipos e imágenes de cada proyecto, que son de sus titulares (los de toVeriAI, de su equipo);",
           "gl": "os nomes, logotipos e imaxes de cada proxecto, que son dos seus titulares (os de toVeriAI, do seu equipo);",
-          "en": "each project's names, logos and images, which belong to their owners (toVeriAI's, to its team);"
+          "en": "each project’s names, logos and images, which belong to their owners (toVeriAI’s, to its team);"
         },
         {
           "es": "las fotografías de las personas del equipo;",
@@ -148,7 +148,7 @@
           "etiqueta": {
             "es": "Licencia MIT del portal",
             "gl": "Licenza MIT do portal",
-            "en": "The portal's MIT licence"
+            "en": "The portal’s MIT licence"
           },
           "url": "https://github.com/Zeldris/Portal-Galivelop/blob/main/LICENSE"
         },
@@ -172,7 +172,7 @@
         {
           "es": "El portal enlaza a sitios de terceros: GitHub, Discord, redes sociales y la web de cada proyecto. Galivelop no controla su contenido ni sus políticas de privacidad; al pulsar uno de esos enlaces sales del portal.",
           "gl": "O portal ligazona a sitios de terceiros: GitHub, Discord, redes sociais e a web de cada proxecto. Galivelop non controla o seu contido nin as súas políticas de privacidade; ao premer unha desas ligazóns saes do portal.",
-          "en": "The portal links to third-party sites: GitHub, Discord, social networks and each project's website. Galivelop does not control their content or their privacy policies; when you follow one of those links you leave the portal."
+          "en": "The portal links to third-party sites: GitHub, Discord, social networks and each project’s website. Galivelop does not control their content or their privacy policies; when you follow one of those links you leave the portal."
         }
       ]
     },

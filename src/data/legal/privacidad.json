@@ -98,7 +98,7 @@
         {
           "es": "El portal se aloja en GitHub Pages, un servicio de GitHub, Inc. (Estados Unidos). Según su documentación, GitHub registra y guarda la dirección IP de cada visita por motivos de seguridad, tenga o no cuenta en GitHub quien visita. Ese registro lo hace GitHub con su propia declaración de privacidad, y el titular del portal no tiene acceso a él.",
           "gl": "O portal alóxase en GitHub Pages, un servizo de GitHub, Inc. (Estados Unidos). Segundo a súa documentación, GitHub rexistra e garda o enderezo IP de cada visita por motivos de seguridade, teña ou non conta en GitHub quen visita. Ese rexistro faino GitHub coa súa propia declaración de privacidade, e o titular do portal non ten acceso a el.",
-          "en": "The portal is hosted on GitHub Pages, a service of GitHub, Inc. (United States). According to its documentation, GitHub logs and stores the IP address of every visit for security purposes, whether or not the visitor has a GitHub account. GitHub keeps that log under its own privacy statement, and the portal's owner has no access to it."
+          "en": "The portal is hosted on GitHub Pages, a service of GitHub, Inc. (United States). According to its documentation, GitHub logs and stores the IP address of every visit for security purposes, whether or not the visitor has a GitHub account. GitHub keeps that log under its own privacy statement, and the portal’s owner has no access to it."
         },
         {
           "es": "Aparte de eso, al navegar no se recoge ningún dato tuyo.",
@@ -135,7 +135,7 @@
         {
           "es": "Si cambias el idioma o el tema (claro u oscuro), el portal lo recuerda en el almacenamiento local de tu navegador, con las claves galivelop.idioma y galivelop.tema. No es una cookie, no sale de tu equipo y no te identifica: solo sirve para lo que pediste. Puedes borrarlo desde la configuración del navegador.",
           "gl": "Se cambias o idioma ou o tema (claro ou escuro), o portal lémbrao no almacenamento local do teu navegador, coas claves galivelop.idioma e galivelop.tema. Non é unha cookie, non sae do teu equipo e non te identifica: só serve para o que pediches. Podes borralo desde a configuración do navegador.",
-          "en": "If you change the language or the theme (light or dark), the portal remembers it in your browser's local storage, under the keys galivelop.idioma and galivelop.tema. It is not a cookie, it never leaves your device and it does not identify you: it only does what you asked for. You can delete it from your browser settings."
+          "en": "If you change the language or the theme (light or dark), the portal remembers it in your browser’s local storage, under the keys galivelop.idioma and galivelop.tema. It is not a cookie, it never leaves your device and it does not identify you: it only does what you asked for. You can delete it from your browser settings."
         }
       ]
     },
@@ -149,12 +149,12 @@
         {
           "es": "Los formularios «Propón un proyecto» y «Únete al taller», y los botones de contacto y «Me interesa», no envían nada a un servidor: abren un correo en tu aplicación de correo, que tú revisas y envías. Lo que recibe el titular es ese correo: tu nombre, tu dirección y lo que escribas.",
           "gl": "Os formularios «Propón un proxecto» e «Únete ao obradoiro», e os botóns de contacto e «Interésame», non envían nada a un servidor: abren un correo na túa aplicación de correo, que ti revisas e envías. O que recibe o titular é ese correo: o teu nome, o teu enderezo e o que escribas.",
-          "en": "The “Propose a project” and “Join the workshop” forms, and the contact and “I'm interested” buttons, send nothing to a server: they open an email in your mail app, which you review and send. What the owner receives is that email: your name, your address and whatever you write."
+          "en": "The “Propose a project” and “Join the workshop” forms, and the contact and “I’m interested” buttons, send nothing to a server: they open an email in your mail app, which you review and send. What the owner receives is that email: your name, your address and whatever you write."
         },
         {
           "es": "Si escribes a un miembro desde su página, o a un proyecto que tiene su propio correo de contacto (como toVeriAI), quien recibe y trata tu correo es esa persona o el equipo de ese proyecto.",
           "gl": "Se lle escribes a un membro desde a súa páxina, ou a un proxecto que ten o seu propio correo de contacto (como toVeriAI), quen recibe e trata o teu correo é esa persoa ou o equipo dese proxecto.",
-          "en": "If you write to a member from their page, or to a project that has its own contact email (such as toVeriAI), the person or that project's team is the one who receives and handles your email."
+          "en": "If you write to a member from their page, or to a project that has its own contact email (such as toVeriAI), the person or that project’s team is the one who receives and handles your email."
         }
       ],
       "datos": [
@@ -218,7 +218,7 @@
         {
           "es": "Las páginas del equipo muestran el nombre, la foto, la trayectoria y los enlaces de cada miembro, publicados con su consentimiento. Cada miembro puede pedir en cualquier momento que se cambien o se retiren.",
           "gl": "As páxinas do equipo amosan o nome, a foto, a traxectoria e as ligazóns de cada membro, publicados co seu consentimento. Cada membro pode pedir en calquera momento que se cambien ou se retiren.",
-          "en": "The team pages show each member's name, photo, career and links, published with their consent. Each member can ask at any time for them to be changed or removed."
+          "en": "The team pages show each member’s name, photo, career and links, published with their consent. Each member can ask at any time for them to be changed or removed."
         }
       ]
     },
@@ -232,7 +232,7 @@
         {
           "es": "Puedes pedir el acceso a tus datos, su rectificación o su supresión, oponerte a su tratamiento o limitarlo, pedir su portabilidad o retirar tu consentimiento, escribiendo al correo del responsable. Estos derechos valen para cualquier persona, aunque solo nos hayas escrito una vez.",
           "gl": "Podes pedir o acceso aos teus datos, a súa rectificación ou a súa supresión, opoñerte ao seu tratamento ou limitalo, pedir a súa portabilidade ou retirar o teu consentimento, escribindo ao correo do responsable. Estes dereitos valen para calquera persoa, aínda que só nos escribiras unha vez.",
-          "en": "You can ask for access to your data, its correction or erasure, object to or restrict its processing, request its portability or withdraw your consent, by writing to the controller's email. These rights apply to anyone, even if you have only written to us once."
+          "en": "You can ask for access to your data, its correction or erasure, object to or restrict its processing, request its portability or withdraw your consent, by writing to the controller’s email. These rights apply to anyone, even if you have only written to us once."
         },
         {
           "es": "Si crees que no se respetan, puedes reclamar ante la Agencia Española de Protección de Datos.",

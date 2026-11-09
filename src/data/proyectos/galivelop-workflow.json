@@ -39,14 +39,7 @@
     "gl": "En desenvolvemento · v0.5.1 · fase 7: rodaxe",
     "en": "In development · v0.5.1 · phase 7: run-in"
   },
-  "etiquetas": [
-    "Claude Code",
-    "AGENTS.md",
-    "Agent Skills",
-    "Bash",
-    "Python",
-    "Git hooks"
-  ],
+  "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "portada": {
     "src": "proyectos/galivelop-workflow/portada.webp",
     "mini": "proyectos/galivelop-workflow/portada-mini.webp",
@@ -191,9 +184,7 @@
       "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the eleven skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
     }
   ],
-  "lineas": [
-    "metodo"
-  ],
+  "lineas": ["metodo"],
   "aprendizajes": [
     {
       "es": "Escribir el estado en archivos, no en la conversación: una bitácora al día vale más que la mejor memoria de una sesión.",
@@ -1919,11 +1910,7 @@
         "gl": "Regras e skills",
         "en": "Rules and skills"
       },
-      "tecnologias": [
-        "AGENTS.md",
-        "Agent Skills",
-        "Claude Code"
-      ]
+      "tecnologias": ["AGENTS.md", "Agent Skills", "Claude Code"]
     },
     {
       "capa": {
@@ -1931,11 +1918,7 @@
         "gl": "Ganchos e scripts",
         "en": "Hooks and scripts"
       },
-      "tecnologias": [
-        "Bash",
-        "Python",
-        "Git hooks"
-      ]
+      "tecnologias": ["Bash", "Python", "Git hooks"]
     },
     {
       "capa": {
@@ -1943,11 +1926,7 @@
         "gl": "Calidade",
         "en": "Quality"
       },
-      "tecnologias": [
-        "GitHub Actions",
-        "ShellCheck",
-        "JSON Schema"
-      ]
+      "tecnologias": ["GitHub Actions", "ShellCheck", "JSON Schema"]
     },
     {
       "capa": {
@@ -1955,12 +1934,7 @@
         "gl": "Plataformas",
         "en": "Platforms"
       },
-      "tecnologias": [
-        "Linux",
-        "macOS",
-        "bash 3.2",
-        "Python 3"
-      ]
+      "tecnologias": ["Linux", "macOS", "bash 3.2", "Python 3"]
     }
   ],
   "hitos": [
@@ -2125,7 +2099,7 @@
       "texto": {
         "es": "Versión 0.4.0 lista para publicar: cada versión empieza recogiendo lo aprendido en los proyectos, llegan dos skills para preparar contenido para redes a partir del trabajo hecho y otra para pararse a revisar lo que no cuadra, y los ganchos son más seguros: comprueban que la bitácora va en el mismo commit, detectan caracteres invisibles y ya no se quedan colgados. Si el CI no arranca, el check en local solo vale con la confirmación de la persona.",
         "gl": "Versión 0.4.0 lista para publicar: cada versión comeza recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
-        "en": "Version 0.4.0 ready to ship: each version starts by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn't add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn't start, a local check only counts with the person's confirmation."
+        "en": "Version 0.4.0 ready to ship: each version starts by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn’t add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn’t start, a local check only counts with the person’s confirmation."
       }
     },
     {

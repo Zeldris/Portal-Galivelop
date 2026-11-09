@@ -387,9 +387,10 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                         <dt>{tx(f.capa)}</dt>
                         <dd>
                           <ul className="chips">
-                            {f.tecnologias.map((tec) => (
-                              <li key={tec}>{tec}</li>
-                            ))}
+                            {f.tecnologias.map((tec) => {
+                              const texto = typeof tec === 'string' ? tec : tx(tec);
+                              return <li key={texto}>{texto}</li>;
+                            })}
                           </ul>
                         </dd>
                       </div>

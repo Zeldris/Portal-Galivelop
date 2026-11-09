@@ -45,7 +45,7 @@
     "alt": {
       "es": "Portada de toVeriAI: «La verdad no es binaria»",
       "gl": "Portada de toVeriAI: «A verdade non é binaria»",
-      "en": "toVeriAI home page: “Truth isn't binary”"
+      "en": "toVeriAI home page: “Truth isn’t binary”"
     }
   },
   "presentacion": {
@@ -145,7 +145,7 @@
       "alt": {
         "es": "VeriAI, el modelo propio de la plataforma",
         "gl": "VeriAI, o modelo propio da plataforma",
-        "en": "VeriAI, the platform's own model"
+        "en": "VeriAI, the platform’s own model"
       }
     },
     {
@@ -242,14 +242,14 @@
     {
       "icono": "image",
       "titulo": {
-        "es": "Texto, enlace o captura",
-        "gl": "Texto, ligazón ou captura",
-        "en": "Text, link or screenshot"
+        "es": "Texto o enlace",
+        "gl": "Texto ou ligazón",
+        "en": "Text or link"
       },
       "texto": {
-        "es": "Con un enlace, también revisa el sitio del medio para evaluar su transparencia y la autoría. Las capturas sirven para redes sociales.",
-        "gl": "Cunha ligazón, tamén revisa o sitio do medio para avaliar a súa transparencia e a autoría. As capturas serven para redes sociais.",
-        "en": "With a link it also checks the outlet’s website to assess its transparency and authorship. Screenshots work for social media."
+        "es": "Con un enlace, también revisa el sitio del medio para evaluar su transparencia y la autoría. El análisis de capturas de redes sociales volverá cuando sea estable.",
+        "gl": "Cunha ligazón, tamén revisa o sitio do medio para avaliar a súa transparencia e a autoría. A análise de capturas de redes sociais volverá cando sexa estable.",
+        "en": "With a link it also checks the outlet’s website to assess its transparency and authorship. Screenshot analysis for social media will return once it is stable."
       }
     },
     {
@@ -300,9 +300,9 @@
         "en": "You submit the content"
       },
       "texto": {
-        "es": "Texto, enlace o capturas. Un filtro previo descarta lo que no se puede analizar, como textos demasiado cortos.",
-        "gl": "Texto, ligazón ou capturas. Un filtro previo descarta o que non se pode analizar, como textos demasiado curtos.",
-        "en": "Text, a link or screenshots. A first filter discards what cannot be analysed, such as texts that are too short."
+        "es": "Texto o enlace. Un filtro previo descarta lo que no se puede analizar, como textos demasiado cortos.",
+        "gl": "Texto ou ligazón. Un filtro previo descarta o que non se pode analizar, como textos demasiado curtos.",
+        "en": "Text or a link. A first filter discards what cannot be analysed, such as texts that are too short."
       }
     },
     {
@@ -521,7 +521,11 @@
         "en": "Artificial intelligence"
       },
       "tecnologias": [
-        "Rotación de proveedores: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
+        {
+          "es": "Rotación de proveedores: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
+          "gl": "Rotación de provedores: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
+          "en": "Provider rotation: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare"
+        },
         "VeriAI sobre Ollama"
       ]
     },
@@ -539,7 +543,14 @@
         "gl": "Acceso",
         "en": "Access"
       },
-      "tecnologias": ["Email y contraseña", "Inicio de sesión con Google"]
+      "tecnologias": [
+        { "es": "Email y contraseña", "gl": "Email e contrasinal", "en": "Email and password" },
+        {
+          "es": "Inicio de sesión con Google",
+          "gl": "Inicio de sesión con Google",
+          "en": "Sign in with Google"
+        }
+      ]
     }
   ],
   "hitos": [
