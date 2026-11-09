@@ -78,6 +78,15 @@
         "gl": "Ver o código en GitHub",
         "en": "View the code on GitHub"
       }
+    },
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.5.1",
+      "etiqueta": {
+        "es": "Ver la versión 0.5.1",
+        "gl": "Ver a versión 0.5.1",
+        "en": "View version 0.5.1"
+      }
     }
   ],
   "galeria": [
