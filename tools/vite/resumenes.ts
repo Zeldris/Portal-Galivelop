@@ -4,8 +4,8 @@ import type { Plugin } from 'vite';
 
 // Módulo virtual `virtual:proyectos-resumen`: la lista ligera de proyectos (los campos que usan el menú, el pie, la
 // portada, las tarjetas, el muro, el equipo y los productos). Las fichas enteras (tarkor.json pesa 168 KB) no entran
-// en el chunk inicial: la página Proyecto las carga bajo demanda (src/data/proyectos.ts). Los campos de aquí tienen
-// que coincidir con `ResumenProyecto` (lo comprueba src/data/proyectos.test.ts).
+// en el chunk inicial: la página Proyecto las carga bajo demanda (src/data/proyectos.ts). `ResumenProyecto` sale de
+// esta lista (solo tipos), así que un campo nuevo se añade aquí y en ningún otro sitio.
 export const CAMPOS_RESUMEN = [
   'slug',
   'nombre',
@@ -44,7 +44,16 @@ export function resumenesProyectos(dir = 'src/data/proyectos'): Plugin {
         .filter((f) => f.endsWith('.json'))
         .sort()
         .map((f) => {
-          const ficha = JSON.parse(readFileSync(join(carpeta, f), 'utf8')) as Record<string, unknown>;
+          const archivo = join(carpeta, f);
+          let ficha: Record<string, unknown>;
+          try {
+            ficha = JSON.parse(readFileSync(archivo, 'utf8')) as Record<string, unknown>;
+          } catch (error) {
+            throw new Error(`${archivo}: no se puede analizar el JSON (${String(error)})`);
+          }
+          if (!Array.isArray(ficha.hitos)) {
+            throw new Error(`${archivo}: «hitos» tiene que ser una lista`);
+          }
           const r: Record<string, unknown> = {};
           for (const c of CAMPOS_RESUMEN) if (ficha[c] !== undefined) r[c] = ficha[c];
           // Para el avance solo hace falta el estado de cada hito.
@@ -53,14 +62,18 @@ export function resumenesProyectos(dir = 'src/data/proyectos'): Plugin {
         });
       return `export default ${JSON.stringify(resumenes)};`;
     },
-    // Al editar una ficha con el servidor de desarrollo en marcha, el resumen se recalcula.
+    // Al editar, añadir o quitar una ficha con el servidor de desarrollo en marcha, el resumen se recalcula.
     configureServer(server) {
       server.watcher.add(carpeta);
-      server.watcher.on('change', (f) => {
-        if (!f.startsWith(carpeta)) return;
+      const alCambiar = (f: string) => {
+        if (!f.startsWith(carpeta) || !f.endsWith('.json')) return;
         const m = server.moduleGraph.getModuleById(RESUELTO);
         if (m) server.moduleGraph.invalidateModule(m);
-      });
+        // Las fichas entran por import.meta.glob en otros módulos: se recarga la página entera.
+        server.ws.send({ type: 'full-reload' });
+      };
+      for (const evento of ['add', 'change', 'unlink'] as const)
+        server.watcher.on(evento, alCambiar);
     },
   };
 }

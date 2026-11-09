@@ -136,6 +136,11 @@
           "es": "Si cambias el idioma o el tema (claro u oscuro), el portal lo recuerda en el almacenamiento local de tu navegador, con las claves galivelop.idioma y galivelop.tema. No es una cookie, no sale de tu equipo y no te identifica: solo sirve para lo que pediste. Puedes borrarlo desde la configuración del navegador.",
           "gl": "Se cambias o idioma ou o tema (claro ou escuro), o portal lémbrao no almacenamento local do teu navegador, coas claves galivelop.idioma e galivelop.tema. Non é unha cookie, non sae do teu equipo e non te identifica: só serve para o que pediches. Podes borralo desde a configuración do navegador.",
           "en": "If you change the language or the theme (light or dark), the portal remembers it in your browser’s local storage, under the keys galivelop.idioma and galivelop.tema. It is not a cookie, it never leaves your device and it does not identify you: it only does what you asked for. You can delete it from your browser settings."
+        },
+        {
+          "es": "Si una parte de la web no se descarga (por una conexión cortada o porque se publicó una versión nueva), el portal se recarga una vez y lo apunta en el almacenamiento de sesión de tu navegador, con la clave galivelop.recarga, para no recargarse en bucle. Se borra al cerrar la pestaña.",
+          "gl": "Se unha parte da web non se descarga (por unha conexión cortada ou porque se publicou unha versión nova), o portal recárgase unha vez e anótao no almacenamento de sesión do teu navegador, coa clave galivelop.recarga, para non recargarse en bucle. Bórrase ao pechar a lapela.",
+          "en": "If part of the site fails to download (because of a dropped connection or a newly published version), the portal reloads once and notes it in your browser’s session storage, under the key galivelop.recarga, so it does not reload in a loop. It is deleted when you close the tab."
         }
       ]
     },

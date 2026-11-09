@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import type { Idioma } from './data/tipos';
 import './estilos/global.css';
+import { precargarRuta } from './paginas';
 import {
   baseDeIdioma,
   guardarIdioma,
@@ -58,8 +59,26 @@ function Raiz() {
   );
 }
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Raiz />
-  </StrictMode>,
-);
+// Si un chunk ya no existe (se publicó otra versión) o la red falló, se recarga una vez para coger los hashes nuevos.
+// La marca (con la hora) evita el bucle: sin sessionStorage o con otro fallo seguido, no se recarga.
+window.addEventListener('vite:preloadError', (evento) => {
+  try {
+    const antes = Number(sessionStorage.getItem('galivelop.recarga')) || 0;
+    if (Date.now() - antes < 10_000) return;
+    sessionStorage.setItem('galivelop.recarga', String(Date.now()));
+  } catch {
+    return;
+  }
+  evento.preventDefault();
+  location.reload();
+});
+
+// La página y la ficha que toca se esperan antes del primer render: así el HTML prerenderizado de #root no se
+// sustituye por un hueco vacío mientras llegan (entrar directo a /proyectos/tarkor/).
+void precargarRuta(location.pathname).then(() => {
+  createRoot(document.getElementById('root')!).render(
+    <StrictMode>
+      <Raiz />
+    </StrictMode>,
+  );
+});
