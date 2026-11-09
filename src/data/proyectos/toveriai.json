@@ -522,9 +522,14 @@
       },
       "tecnologias": [
         {
-          "es": "Rotación de proveedores: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
-          "gl": "Rotación de provedores: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
-          "en": "Provider rotation: Groq, Cerebras, Gemini, Mistral, SambaNova, Cloudflare"
+          "es": "Rotación de proveedores: Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
+          "gl": "Rotación de provedores: Cerebras, Gemini, Mistral, SambaNova, Cloudflare",
+          "en": "Provider rotation: Cerebras, Gemini, Mistral, SambaNova, Cloudflare"
+        },
+        {
+          "es": "Groq para la lectura de imágenes",
+          "gl": "Groq para a lectura de imaxes",
+          "en": "Groq for reading images"
         },
         "VeriAI sobre Ollama"
       ]
