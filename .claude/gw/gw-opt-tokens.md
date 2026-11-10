@@ -89,6 +89,9 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   sección, o lo lee el subagente que lo usa; el storyboard leído entero con `cat` se arrastró 245k.
 - **Capturas solo para juicio visual** (2026-11-09, T-c): si un rótulo se corta lo dicen `npm run medir` y los tests de
   encaje; una captura final por pantalla, no por intento (~38k cada imagen arrastrada).
+- **La fase 1 tras un `/clear`** (2026-11-10, T1): la revisión de código es un fork y hereda el contexto de la sesión
+  (127k por llamada, 3,7M en 29 llamadas); con el trabajo subido y la bitácora al día, se pide `/clear` y la sesión
+  nueva empieza por `/code-review`: arranca en ~70k, ~1,6M menos por revisión.
 
 ## Costes conocidos
 
@@ -108,6 +111,8 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Salida de `npm run check`**: filtrar con `grep -E "Tests|error"`.
 - **`src/estilos/global.css`** (más de 2.800 líneas): `grep -n '<selector>'` y `sed -n` del rango, nunca entero
   (el rediseño lo leyó 32 veces, 210k arrastrados).
+- **`scripts/paginas-estaticas.mjs`** (2026-11-10, T2; 19 lecturas, 127k arrastrados): sus plantillas van en líneas
+  muy largas; `grep -n "pg.ruta === '<ruta>'"` o el nombre de la constante y `sed -n` de unas 10 líneas.
 
 ## Ajustes en vigor
 

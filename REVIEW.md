@@ -70,6 +70,9 @@ de git; aquí está lo que pide criterio. Cada regla acaba en `(check: …)`, co
   versiones, etiquetas, números) en `--datos` (mono, mayúsculas pequeñas con tracking), el celeste solo en bloques
   planos grandes, chaflán en tarjetas y botones, el foco como línea de tinta y el texto en blanco sobre
   `--celeste-hondo`. (criterio; check: `marca.test.ts` para lo mecánico)
+- **Una sección que sale o se mueve no deja textos que la nombren.** Si el diff quita o traslada una sección o una
+  página, busca su nombre en `src/i18n/textos.ts` (el hero, sobre todo), `index.html` y `scripts/paginas-estaticas.mjs`
+  en los tres idiomas (2026-11-10: el hero seguía presentando «Productos» tras ADR 0004). (criterio)
 - Un componente que usan dos páginas vive en `src/components/`, no dentro de una de ellas (`TarjetaProducto`
   empezó en `pages/Productos.tsx` y lo usaba el inicio, 2026-10-27). (criterio)
 - Una clase de `src/estilos/global.css` que usan dos componentes va acotada por su contenedor

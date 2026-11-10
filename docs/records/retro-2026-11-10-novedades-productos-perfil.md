@@ -1,6 +1,7 @@
 # Retro · Novedades, productos al perfil y auditoría de front (2026-11-10)
 
-**Estado:** pendiente de la persona.
+**Estado:** decidida por la persona el 2026-11-10: R2, T1 y T2 aprobadas y aplicadas (`REVIEW.md`,
+`.claude/gw/gw-opt-tokens.md`); R1 y R3 rechazadas; R4 decidida: Muro se queda fuera de la cabecera.
 
 Lo revisado: los commits de `ccr-47a38edd-v566du` desde `08c7fe5` (9693720, d5277fa, 33c4c75, 6310d51, 96aa78a) y
 la bitácora. La revisión de código (`/code-review --max-findings all`, nivel alto) dio 18 hallazgos: 5 medios
