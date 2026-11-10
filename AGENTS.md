@@ -145,8 +145,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
 - **Todo texto visible, en castellano, gallego e inglés** (`visibleLanguages`); `npm run check` lo comprueba. Un
   subagente que escriba textos lo recibe en su encargo.
 - El código de cada proyecto se enlaza desde su ficha (`enlaces`, tipo `otro`) cuando su repo es público. Si el repo es privado, no se enlaza: solo su versión pública.
-- **Mensaje de la marca** (ADR [0001](docs/adr/0001-encargos-por-miembro.md), [0002](docs/adr/0002-marca-taller-y-productos.md)
-  y [0003](docs/adr/0003-codigo-abierto-e-implantacion.md)): lee [«Mensaje»](docs/desarrollo.md#mensaje) antes de
+- **Mensaje de la marca** (ADR [0001](docs/adr/0001-encargos-por-miembro.md), [0002](docs/adr/0002-marca-taller-y-productos.md),
+  [0003](docs/adr/0003-codigo-abierto-e-implantacion.md) y [0004](docs/adr/0004-productos-en-el-perfil.md)): lee [«Mensaje»](docs/desarrollo.md#mensaje) antes de
   escribir cualquier texto de la web, el README o una ficha.
 - Al sacar información de otro repo (Tarkor, toVeriAI…), solo se lee: nunca se modifica desde aquí.
 - Riesgo alto (esperar al usuario aunque el `gw-selector` diga seguir): borrar contenido publicado y cambiar rutas que

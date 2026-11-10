@@ -74,6 +74,15 @@ const productos = readdirSync('src/data/productos')
   .map((f) => JSON.parse(readFileSync(`src/data/productos/${f}`, 'utf8')))
   .sort((a, b) => a.orden - b.orden);
 const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon' };
+const TITULO_PRODUCTOS = { es: 'Productos', gl: 'Produtos', en: 'Products' };
+
+// Lo que enseña /novedades, como src/data/novedades.ts: novedades de las fichas y publicaciones del muro, lo más
+// reciente primero (el mismo día, las publicaciones antes).
+const novedadesTodas = () =>
+  [
+    ...publicaciones.map((x) => ({ proyecto: x.proyecto, fecha: x.fecha, titulo: x.titulo, texto: x.texto })),
+    ...proyectos.flatMap((p) => (p.novedades ?? []).map((n) => ({ proyecto: p.slug, fecha: n.fecha, texto: n.texto }))),
+  ].sort((a, b) => b.fecha.localeCompare(a.fecha));
 
 // En el mismo orden que src/data/equipo.ts.
 const equipo = JSON.parse(readFileSync('src/data/equipo.json', 'utf8')).sort((a, b) => a.orden - b.orden);
@@ -85,9 +94,9 @@ const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
 const FIJAS = {
   '': {
-    es: ['Galivelop · Marca de software: taller y Productos', 'Galivelop es un taller abierto que crea, investiga y aprende a la vista, y Productos: lo que sale de él, con código abierto y montado en tu proyecto.'],
-    gl: ['Galivelop · Marca de software: obradoiro e Produtos', 'Galivelop é un obradoiro de software aberto que crea, investiga e aprende á vista, e Produtos: o que sae del, con código aberto e montado no teu proxecto.'],
-    en: ['Galivelop · Software brand: workshop and Products', 'Galivelop is a software workshop that creates, researches and learns in the open, plus Products: what comes out of it, open source, set up in your project.'],
+    es: ['Galivelop · Marca de software: taller y productos', 'Galivelop es un taller abierto que crea, investiga y aprende a la vista, y lo que sale de él: productos con código abierto, montados en tu proyecto.'],
+    gl: ['Galivelop · Marca de software: obradoiro e produtos', 'Galivelop é un obradoiro de software aberto que crea, investiga e aprende á vista, e o que sae del: produtos con código aberto, montados no teu proxecto.'],
+    en: ['Galivelop · Software brand: workshop and products', 'Galivelop is a software workshop that creates, researches and learns in the open, plus what comes out of it: open source products, set up in your project.'],
   },
   equipo: {
     es: ['Equipo · Galivelop', 'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.'],
@@ -104,10 +113,10 @@ const FIJAS = {
     gl: ['Únete ao obradoiro · Galivelop', 'Buscamos xente con ganas de cooperar e aprender, teña ou non experiencia. Cóntanos quen es e como che gustaría participar.'],
     en: ['Join the workshop · Galivelop', 'We are looking for people who want to cooperate and learn, with or without experience. Tell us who you are and how you would like to take part.'],
   },
-  productos: {
-    es: ['Productos · Galivelop', 'Lo que sale del taller de Galivelop, con código abierto: lo montamos y adaptamos a tu proyecto, y las personas que lo hacen. Sin precios: todo por correo.'],
-    gl: ['Produtos · Galivelop', 'O que sae do obradoiro de Galivelop, con código aberto: montámolo e adaptámolo ao teu proxecto, e as persoas que o fan. Sen prezos: todo por correo.'],
-    en: ['Products · Galivelop', 'What comes out of the Galivelop workshop, open source: we set it up and adapt it to your project, plus the people who make it. No prices: all by email.'],
+  novedades: {
+    es: ['Novedades · Galivelop', 'Lo último de cada proyecto del taller de Galivelop, lo más reciente primero: versiones, cambios y publicaciones del muro.'],
+    gl: ['Novidades · Galivelop', 'O último de cada proxecto do obradoiro de Galivelop, o máis recente primeiro: versións, cambios e publicacións do muro.'],
+    en: ["What's new · Galivelop", 'The latest from each Galivelop workshop project, newest first: releases, changes and feed posts.'],
   },
   'aviso-legal': {
     es: ['Aviso legal · Galivelop', 'Quién es el titular del portal de Galivelop, con qué licencias se publican su código y su contenido y qué ley se aplica.'],
@@ -125,6 +134,9 @@ const FIJAS = {
     en: ['Terms of use · Galivelop', 'Terms for using the Galivelop portal and for reusing its code and content.'],
   },
 };
+// Páginas de paso (ADR 0004): rutas ya compartidas que llevan a otra. Noindex, fuera del sitemap y con la canónica en
+// el destino; sin JS, un meta refresh; con JS, el `<Navigate>` de su página en src/pages/.
+const DE_PASO = { productos: 'equipo' };
 // El muro solo tiene página (y entra en el sitemap) cuando ya hay alguna publicación.
 if (publicaciones.length > 0) {
   FIJAS.muro = {
@@ -143,7 +155,7 @@ const FECHA_FIJA = {
   equipo: fechaGit(`${D}equipo.json`, `${D}proyectos`),
   'participa/proponer': fechaGit(`${D}marca.ts`),
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
-  productos: fechaGit(`${D}productos`, `${D}equipo.json`, `${D}marca.ts`, `${D}proyectos`),
+  novedades: masReciente(...novedadesTodas().map((n) => n.fecha)),
   muro: publicaciones[0]?.fecha,
   // Los textos legales: la fecha que muestran («Última actualización»).
   ...Object.fromEntries(legales.map((d) => [d.slug, d.actualizado])),
@@ -214,10 +226,10 @@ function cuerpo(pg) {
     const posts = publicaciones.map((x) => `<article><h2>${esc(x.titulo[pg.idioma])}</h2><p>${esc(nombre(x.proyecto))} · ${x.fecha}</p><p>${esc(x.texto[pg.idioma])}</p>${(x.cuerpo ?? []).map((c) => `<p>${esc(c[pg.idioma])}</p>`).join('')}</article>`).join('');
     return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p>${posts}<ul>${enlaces}</ul></main>`;
   }
-  if (pg.ruta === 'productos') {
-    const lista = productos.map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
-    const promocionados = equipo.filter((x) => x.promocionado).map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
-    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul>${promocionados ? `<ul>${promocionados}</ul>` : ''}<ul>${enlaces}</ul></main>`;
+  if (pg.ruta === 'novedades') {
+    const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
+    const lista = novedadesTodas().map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
+    return `<main><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
   }
   const legal = legales.find((d) => d.slug === pg.ruta);
   if (legal) {
@@ -239,8 +251,11 @@ function cuerpo(pg) {
   if (m) {
     const suyos = m.proyectos.map((slug) => proyectos.find((x) => x.slug === slug)).filter(Boolean)
       .map((x) => `<li><a href="${urlDe(pg.idioma, `proyectos/${x.slug}`)}">${esc(x.nombre)}</a>: ${esc(x.lema[pg.idioma])}</li>`).join('');
+    // Sus productos, como responsable o colaborador (ADR 0004), como src/data/productos.ts (`productosDe`).
+    const productosSuyos = productos.filter((x) => x.responsable === m.id || x.colaboradores.includes(m.id))
+      .map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
     const colabora = m.colabora ? `<p>${esc(m.colabora.texto[pg.idioma])} <a href="mailto:${m.colabora.correo}">${esc(m.colabora.correo)}</a></p>` : '';
-    return `<main><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
+    return `<main><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
   }
   if (!p) return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
   const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
@@ -316,6 +331,18 @@ for (const pg of paginas) {
   writeFileSync(`${dir}/index.html`, html);
 }
 
+for (const idioma of IDIOMAS) {
+  for (const [ruta, destino] of Object.entries(DE_PASO)) {
+    const url = urlDe(idioma, destino);
+    const titulo = esc(FIJAS[destino][idioma][0]);
+    mkdirSync(`dist/${prefijo(idioma)}${ruta}`, { recursive: true });
+    writeFileSync(
+      `dist/${prefijo(idioma)}${ruta}/index.html`,
+      `<!doctype html>\n<html lang="${idioma}">\n  <head>\n    <meta charset="UTF-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <title>${titulo}</title>\n    <meta name="robots" content="noindex" />\n    <link rel="canonical" href="${url}" />\n    <meta http-equiv="refresh" content="0; url=${url}" />\n  </head>\n  <body>\n    <p><a href="${url}">${titulo}</a></p>\n  </body>\n</html>\n`,
+    );
+  }
+}
+
 writeFileSync(
   'dist/sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paginas
@@ -326,7 +353,7 @@ writeFileSync(
   'dist/llms.txt',
   `# Galivelop\n\n> ${FIJAS[''].es[1]}\n\n## Proyectos\n\n${proyectos
     .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
-    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Equipo](${urlDe('es', 'equipo')})\n- [Productos](${urlDe('es', 'productos')}): lo que sale del taller, con el código abierto, montado en tu proyecto, e integrantes, sin precios\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que llevan (con el código abierto, montados en tu proyecto, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);

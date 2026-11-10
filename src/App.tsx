@@ -11,6 +11,7 @@ import {
   Miembro,
   Muro,
   NoEncontrado,
+  Novedades,
   Productos,
   Proponer,
   Proyecto,
@@ -52,6 +53,7 @@ function Rutas() {
     <Routes>
       <Route path="/" element={<Inicio />} />
       <Route path="/proyectos/:slug" element={<Proyecto />} />
+      <Route path="/novedades" element={<Novedades />} />
       <Route path="/muro" element={<Muro />} />
       <Route path="/equipo" element={<Equipo />} />
       <Route path="/equipo/:id" element={<Miembro />} />

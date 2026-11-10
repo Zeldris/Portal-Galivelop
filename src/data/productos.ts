@@ -40,3 +40,8 @@ export const productos: Producto[] = Object.values(modulos)
 export function buscarProducto(slug: string | undefined): Producto | undefined {
   return productos.find((p) => p.slug === slug);
 }
+
+/** Productos que lleva un miembro, como responsable o colaborador, en el orden de siempre (ADR 0004: van en su perfil). */
+export function productosDe(id: string): Producto[] {
+  return productos.filter((p) => p.responsable === id || p.colaboradores.includes(id));
+}

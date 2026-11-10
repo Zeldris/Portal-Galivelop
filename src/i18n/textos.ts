@@ -13,7 +13,6 @@ const es = {
   'hero.titulo2': 'los proyectos que parecen imposibles',
   'hero.texto':
     'Galivelop son dos cosas. El taller crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Productos es lo que sale de él: lo que montamos y adaptamos en tu proyecto, y los servicios de sus integrantes.',
-  'hero.cta.productos': 'Ver Productos',
   'hero.cta.taller': 'Conocer el taller',
   'hero.resumen.proyectos': 'proyectos',
   'hero.resumen.publicados': 'publicados',
@@ -281,6 +280,13 @@ const es = {
   'vistazo.hitos': '{hechos} de {total} {total:hito hecho|hitos hechos}',
   'novedades.todas': 'Ver las {n} novedades',
   'novedades.menos': 'Ver menos',
+  'hero.cta.novedades': 'Ver las novedades',
+  'novedades.intro': 'Lo último de cada proyecto del taller, lo más reciente primero.',
+  'novedades.vacio': 'Todavía no hay novedades.',
+  'novedades.verMas': 'Ver más',
+  'novedades.muro': 'En el muro',
+  'equipo.productos.texto':
+    'Lo que sale del taller y lleva {nombre}, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto. Sin precios en la web: todo se trata por correo.',
   'participa.privados':
     '{nombres} son desarrollos propios del taller, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'nav.proyectos.todos': 'Todos los proyectos',
@@ -308,10 +314,7 @@ const es = {
   'ficha.error.reintentar': 'Reintentar',
 
   'nav.taller': 'Taller',
-  'nav.productos': 'Productos',
   'productos.titulo': 'Productos',
-  'productos.intro':
-    'Lo que nace en el taller de Galivelop, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto, y si prefieres comprarlo, también se puede. Y las personas que lo hacen. Sin precios en la web: todo se trata por correo.',
   'productos.version': 'Versión {version}',
   'productos.responsable': 'Responsable',
   'productos.colaboradores': 'Colaboradores',
@@ -319,17 +322,6 @@ const es = {
   'productos.ficha': 'Ver el proyecto en el taller',
   'productos.interesa': 'Me interesa',
   'productos.asunto': 'Me interesa {producto}',
-  'productos.integrantes.titulo': 'Integrantes',
-  'productos.integrantes.texto':
-    'Miembros del taller que ofrecen sus servicios por su cuenta. Cada uno es autónomo.',
-  'productos.contacto.titulo': '¿Te interesa algo?',
-  'productos.contacto.texto':
-    'Escribe a Álvaro: te cuenta cómo lo ponemos en marcha en tu proyecto, con qué condiciones y cuándo llega lo que aún no está.',
-  'productos.contacto.boton': 'Escribir a Álvaro',
-  'productos.contacto.asunto': 'Productos de Galivelop',
-  'inicio.productos.antetitulo': 'Software y servicios',
-  'inicio.productos.texto':
-    'Lo que nace en el taller, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto. Sin precios en la web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'El taller',
   'inicio.taller.texto': 'Aquí se crea, se investiga y se aprende a la vista.',
 };
@@ -348,7 +340,6 @@ const gl: Record<Clave, string> = {
   'hero.titulo2': 'os proxectos que semellan imposibles',
   'hero.texto':
     'Galivelop son dúas cousas. O obradoiro crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. Produtos é o que sae del: o que montamos e adaptamos no teu proxecto, e os servizos dos seus integrantes.',
-  'hero.cta.productos': 'Ver Produtos',
   'hero.cta.taller': 'Coñecer o obradoiro',
   'hero.resumen.proyectos': 'proxectos',
   'hero.resumen.publicados': 'publicados',
@@ -616,6 +607,13 @@ const gl: Record<Clave, string> = {
   'vistazo.hitos': '{hechos} de {total} {total:fito feito|fitos feitos}',
   'novedades.todas': 'Ver as {n} novidades',
   'novedades.menos': 'Ver menos',
+  'hero.cta.novedades': 'Ver as novidades',
+  'novedades.intro': 'O último de cada proxecto do obradoiro, o máis recente primeiro.',
+  'novedades.vacio': 'Aínda non hai novidades.',
+  'novedades.verMas': 'Ver máis',
+  'novedades.muro': 'No muro',
+  'equipo.productos.texto':
+    'O que sae do obradoiro e leva {nombre}, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto. Sen prezos na web: todo se trata por correo.',
   'participa.privados':
     '{nombres} son desenvolvementos propios do obradoiro, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'nav.proyectos.todos': 'Todos os proxectos',
@@ -643,10 +641,7 @@ const gl: Record<Clave, string> = {
   'ficha.error.reintentar': 'Reintentar',
 
   'nav.taller': 'Obradoiro',
-  'nav.productos': 'Produtos',
   'productos.titulo': 'Produtos',
-  'productos.intro':
-    'O que nace no obradoiro de Galivelop, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto, e se prefires mercalo, tamén se pode. E as persoas que o fan. Sen prezos na web: todo se trata por correo.',
   'productos.version': 'Versión {version}',
   'productos.responsable': 'Responsable',
   'productos.colaboradores': 'Colaboradores',
@@ -654,17 +649,6 @@ const gl: Record<Clave, string> = {
   'productos.ficha': 'Ver o proxecto no obradoiro',
   'productos.interesa': 'Interésame',
   'productos.asunto': 'Interésame {producto}',
-  'productos.integrantes.titulo': 'Integrantes',
-  'productos.integrantes.texto':
-    'Membros do obradoiro que ofrecen os seus servizos pola súa conta. Cada un é autónomo.',
-  'productos.contacto.titulo': 'Interésache algo?',
-  'productos.contacto.texto':
-    'Escríbelle a Álvaro: cóntache como o poñemos en marcha no teu proxecto, con que condicións e cando chega o que aínda non está.',
-  'productos.contacto.boton': 'Escribir a Álvaro',
-  'productos.contacto.asunto': 'Produtos de Galivelop',
-  'inicio.productos.antetitulo': 'Software e servizos',
-  'inicio.productos.texto':
-    'O que nace no obradoiro, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto. Sen prezos na web: todo se trata por correo.',
   'inicio.taller.antetitulo': 'O obradoiro',
   'inicio.taller.texto': 'Aquí créase, investígase e apréndese á vista.',
 };
@@ -681,7 +665,6 @@ const en: Record<Clave, string> = {
   'hero.titulo2': 'impossible projects real',
   'hero.texto':
     'Galivelop is two things. The workshop creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. Products is what comes out of it: what we set up and adapt in your project, and the services of its members.',
-  'hero.cta.productos': 'See Products',
   'hero.cta.taller': 'Meet the workshop',
   'hero.resumen.proyectos': 'projects',
   'hero.resumen.publicados': 'live',
@@ -950,6 +933,13 @@ const en: Record<Clave, string> = {
   'vistazo.hitos': '{hechos} of {total} {total:milestone done|milestones done}',
   'novedades.todas': 'See all {n} updates',
   'novedades.menos': 'Show fewer',
+  'hero.cta.novedades': "See what's new",
+  'novedades.intro': 'The latest from each workshop project, newest first.',
+  'novedades.vacio': 'No news yet.',
+  'novedades.verMas': 'Show more',
+  'novedades.muro': 'In the feed',
+  'equipo.productos.texto':
+    'What comes out of the workshop and {nombre} looks after, with its code open as soon as it is mature: we set it up and adapt it to your project. No prices on the site: everything is arranged by email.',
   'participa.privados':
     '{nombres} are developed in-house by the workshop, but we welcome project proposals and would love to meet new people who are interested.',
   'nav.proyectos.todos': 'All projects',
@@ -978,10 +968,7 @@ const en: Record<Clave, string> = {
   'ficha.error.reintentar': 'Try again',
 
   'nav.taller': 'Workshop',
-  'nav.productos': 'Products',
   'productos.titulo': 'Products',
-  'productos.intro':
-    'What is born in the Galivelop workshop, with its code open as soon as it is mature: we set it up and adapt it to your project, and if you would rather buy it, that works too. And the people who make it. No prices on the site: everything is arranged by email.',
   'productos.version': 'Version {version}',
   'productos.responsable': 'Lead',
   'productos.colaboradores': 'Contributors',
@@ -989,17 +976,6 @@ const en: Record<Clave, string> = {
   'productos.ficha': 'See the project in the workshop',
   'productos.interesa': 'I’m interested',
   'productos.asunto': 'I’m interested in {producto}',
-  'productos.integrantes.titulo': 'Members',
-  'productos.integrantes.texto':
-    'Workshop members who offer their services independently. Each one is self-employed.',
-  'productos.contacto.titulo': 'Interested in something?',
-  'productos.contacto.texto':
-    'Write to Álvaro to find out how we would set it up in your project, on what terms, and when what isn’t ready yet will arrive.',
-  'productos.contacto.boton': 'Write to Álvaro',
-  'productos.contacto.asunto': 'Galivelop products',
-  'inicio.productos.antetitulo': 'Software and services',
-  'inicio.productos.texto':
-    'What is born in the workshop, with its code open as soon as it is mature: we set it up and adapt it to your project. No prices on the web: everything is arranged by email.',
   'inicio.taller.antetitulo': 'The workshop',
   'inicio.taller.texto': 'Here we create, research and learn in the open.',
 };

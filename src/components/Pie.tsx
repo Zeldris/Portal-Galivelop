@@ -58,13 +58,13 @@ export function Pie() {
           <h2 id="pie-galivelop">Galivelop</h2>
           <ul>
             <li>
-              <Link to="/productos">{t('nav.productos')}</Link>
-            </li>
-            <li>
               <Link to="/equipo">{t('nav.equipo')}</Link>
             </li>
             <li>
               <Link to="/#sobre">{t('nav.sobre')}</Link>
+            </li>
+            <li>
+              <Link to="/novedades">{t('sec.novedades')}</Link>
             </li>
             {publicaciones.length > 0 && (
               <li>

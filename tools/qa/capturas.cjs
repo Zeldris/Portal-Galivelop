@@ -2,7 +2,7 @@
 // Captura una página (o una sección) en escritorio y móvil (las dos primeras ventanas de medir-paginas.cjs) y da en texto lo que una captura
 // no enseña bien: alto, pantallas, desbordamiento y cortes, con la medida de medir-paginas.cjs. Así la captura se
 // abre una vez, para juzgar el aspecto, y no se vuelve a leer para medir. Uso, tras `npm run build`:
-//   npm run capturas -- <ruta> [selector]     (`npm run capturas -- productos`, `npm run capturas -- '' '#productos'`)
+//   npm run capturas -- <ruta> [selector]     (`npm run capturas -- novedades`, `npm run capturas -- '' '#proyectos'`)
 //   npm run capturas -- '' --menu              (el menú del móvil abierto; con --menu no se admite selector)
 //   npm run capturas -- --hoja <ruta> [<ruta>…] (una sola imagen `hoja.png`: una fila por página y, en miniatura,
 //     escritorio y móvil en claro y oscuro, cada una con su rótulo; revisar N páginas cuesta una imagen, no N)

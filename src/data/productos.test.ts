@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { NOMBRES_ICONOS } from '../components/Icono';
 import { buscarPersonaPorId, equipo } from './equipo';
-import { ESTADOS_PRODUCTO, productos } from './productos';
+import { ESTADOS_PRODUCTO, productos, productosDe } from './productos';
 import { proximos } from './proximamente';
 import { proyectos } from './proyectos';
 import { textosIncompletos } from './textosIncompletos';
@@ -48,6 +48,25 @@ describe('productos', () => {
       });
     });
   }
+});
+
+describe('productos de cada miembro (ADR 0004)', () => {
+  it('cada producto sale en el perfil de su responsable y de cada colaborador', () => {
+    for (const p of productos) {
+      for (const id of [p.responsable, ...p.colaboradores]) {
+        expect(productosDe(id), `${p.slug} en ${id}`).toContain(p);
+      }
+    }
+  });
+  it('quien no lleva ninguno no tiene productos (y su perfil, ninguna sección)', () => {
+    expect(productosDe('nadie')).toEqual([]);
+    for (const persona of equipo) {
+      const suyos = productos.filter(
+        (p) => p.responsable === persona.id || p.colaboradores.includes(persona.id),
+      );
+      expect(productosDe(persona.id)).toEqual(suyos);
+    }
+  });
 });
 
 describe('integrantes promocionados', () => {

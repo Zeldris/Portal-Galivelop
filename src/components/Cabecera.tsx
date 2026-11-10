@@ -2,7 +2,6 @@ import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from './Enlace';
-import { publicaciones } from '../data/muro';
 import { IDIOMAS } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { Logo } from './Logo';
@@ -31,7 +30,7 @@ export function Cabecera() {
           className={`cabecera-nav${menuAbierto ? ' abierta' : ''}`}
           aria-label={t('nav.menu')}
         >
-          {/* Dos bloques (ADR 0002): el taller, con su etiqueta, y Productos como enlace aparte (ADR 0003). */}
+          {/* El taller, con su etiqueta (ADR 0002); los productos viven en el perfil de cada miembro (ADR 0004). */}
           <div className="nav-grupo nav-taller" role="group" aria-labelledby="nav-taller-etiqueta">
             <span className="nav-etiqueta" id="nav-taller-etiqueta">
               {t('nav.taller')}
@@ -43,11 +42,9 @@ export function Cabecera() {
             <Link to="/#sobre" onClick={() => setMenuAbierto(false)}>
               {t('nav.sobre')}
             </Link>
-            {publicaciones.length > 0 && (
-              <Link to="/muro" onClick={() => setMenuAbierto(false)}>
-                {t('nav.muro')}
-              </Link>
-            )}
+            <Link to="/novedades" onClick={() => setMenuAbierto(false)}>
+              {t('sec.novedades')}
+            </Link>
             <Link to="/equipo" onClick={() => setMenuAbierto(false)}>
               {t('nav.equipo')}
             </Link>
@@ -55,9 +52,6 @@ export function Cabecera() {
               {t('nav.contacto')}
             </Link>
           </div>
-          <Link to="/productos" className="nav-productos" onClick={() => setMenuAbierto(false)}>
-            {t('nav.productos')}
-          </Link>
         </nav>
         <div className="cabecera-ajustes">
           <div className="idiomas" role="group" aria-label={t('idioma.etiqueta')}>

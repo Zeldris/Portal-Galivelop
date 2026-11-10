@@ -8,19 +8,28 @@ import { buscarProyecto } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { Icono } from './Icono';
 
-/** Tarjeta de un producto. `compacta` (portada) omite servicios y personas; `titulo` sigue el esquema de títulos de la página; el botón queda siempre abajo, a la misma altura en toda la rejilla. */
+/**
+ * Tarjeta de un producto. `compacta` omite servicios y personas; `titulo` sigue el esquema de títulos de la página;
+ * `sin` es el id del miembro en cuyo perfil está la tarjeta, que no se repite entre las personas. El botón queda
+ * siempre abajo, a la misma altura en toda la rejilla.
+ */
 export function TarjetaProducto({
   producto: p,
   compacta = false,
   titulo: Titulo = 'h2',
+  sin,
 }: {
   producto: Producto;
   compacta?: boolean;
   titulo?: 'h2' | 'h3';
+  sin?: string;
 }) {
   const { t, tx } = useIdioma();
-  const responsable = buscarPersonaPorId(p.responsable);
-  const colaboradores = p.colaboradores.map(buscarPersonaPorId).filter((x) => x !== undefined);
+  const responsable = p.responsable === sin ? undefined : buscarPersonaPorId(p.responsable);
+  const colaboradores = p.colaboradores
+    .filter((id) => id !== sin)
+    .map(buscarPersonaPorId)
+    .filter((x) => x !== undefined);
   const proyecto = buscarProyecto(p.proyecto);
   return (
     <article
@@ -56,7 +65,7 @@ export function TarjetaProducto({
         </div>
       )}
       <div className="producto-pie">
-        {!compacta && (
+        {!compacta && (responsable || colaboradores.length > 0) && (
           <dl className="producto-personas">
             {responsable && (
               <>

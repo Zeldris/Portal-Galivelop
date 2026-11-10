@@ -2065,6 +2065,37 @@ button {
   }
 }
 
+/* /novedades: cada entrada lleva el proyecto, con su color de acento en un punto (el texto, con el color de siempre). */
+.novedad-proyecto {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 24px;
+  font-weight: 600;
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.novedad-proyecto::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: var(--acento-proyecto, var(--celeste));
+}
+
+.novedad-proyecto:hover {
+  text-decoration: underline;
+}
+
+.novedad-muro {
+  font-size: 0.88rem;
+  color: var(--texto-3);
+}
+
+.novedades-mas {
+  justify-self: center;
+}
+
 .decisiones {
   list-style: none;
   margin: 0;
@@ -5392,10 +5423,9 @@ body:has(dialog[open]) {
   object-fit: contain;
 }
 
-/* ---------- Productos (ADR 0002): la segunda parte de la marca ---------- */
+/* ---------- Productos: en el perfil de cada miembro (ADR 0004) ---------- */
 
-/* En la cabecera, el taller es un bloque con su etiqueta y Productos un enlace aparte, tras un separador:
-   pesa menos que el taller (ADR 0003). */
+/* En la cabecera, el taller es un bloque con su etiqueta. */
 .nav-grupo {
   display: flex;
   align-items: center;
@@ -5410,20 +5440,6 @@ body:has(dialog[open]) {
   padding: 0 6px 0 2px;
 }
 
-.cabecera-nav .nav-productos {
-  position: relative;
-  margin-left: 14px;
-}
-
-.cabecera-nav .nav-productos::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 25%;
-  height: 50%;
-  border-left: 1px solid var(--borde);
-}
-
 @media (max-width: 53.75em) {
   .nav-grupo {
     flex-direction: column;
@@ -5433,24 +5449,6 @@ body:has(dialog[open]) {
   .nav-etiqueta {
     padding: 8px 14px 4px;
   }
-  .cabecera-nav .nav-productos {
-    margin: 6px 0 0;
-    border-top: 1px solid var(--borde);
-  }
-  .cabecera-nav .nav-productos::before {
-    content: none;
-  }
-}
-
-/* Sección Productos de la portada: va después del taller y lleva fondo propio. */
-.seccion-productos {
-  border-block: 1px solid var(--borde);
-  background: var(--fondo-alterno);
-}
-
-.seccion-productos .seccion-cabecera p:not(.antetitulo) {
-  color: var(--texto-2);
-  max-width: 70ch;
 }
 
 /* El taller se etiqueta con un antetítulo neutro, para que se vea que es la otra parte de la marca. */
@@ -5486,9 +5484,9 @@ body:has(dialog[open]) {
   filter: none;
 }
 
-.tarjeta-producto h2 {
+.tarjeta-producto :is(h2, h3) {
   font-family: var(--fuente-titulos);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   line-height: 1.1;
 }
 
@@ -5575,48 +5573,21 @@ body:has(dialog[open]) {
   text-decoration: underline;
 }
 
-.integrantes {
-  margin-top: 56px;
+/* En el perfil, los productos van a todo el ancho, bajo las dos columnas. */
+.miembro-productos {
+  margin-top: 32px;
 }
 
-.persona-servicios {
-  margin: 0;
-  padding-left: 18px;
+.miembro-productos > header {
+  margin-bottom: 18px;
+}
+
+.miembro-productos > header p {
   color: var(--texto-2);
-  font-size: 0.95rem;
-  display: grid;
-  gap: 4px;
-}
-
-.productos-contacto {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 20px 32px;
-  margin-top: 56px;
-  padding: 26px;
-  border: 1px dashed var(--celeste);
-  background: var(--superficie);
-}
-
-.productos-contacto h2 {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-}
-
-.productos-contacto p {
-  color: var(--texto-2);
-  max-width: 68ch;
+  max-width: 70ch;
 }
 
 @media (max-width: 640px) {
-  .productos-contacto {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .seccion-productos .seccion-cabecera .boton,
-  .productos-contacto .boton {
-    justify-content: center;
-  }
   .tarjeta-producto {
     padding: 20px;
   }

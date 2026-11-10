@@ -26,10 +26,8 @@ import { IconoGitHub } from '../components/IconoGitHub';
 import { MarcaGV } from '../components/Logo';
 import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
-import { TarjetaProducto } from '../components/TarjetaProducto';
 import { LINEAS, type Linea } from '../data/lineas';
 import { MARCA } from '../data/marca';
-import { productos } from '../data/productos';
 import { proximos } from '../data/proximamente';
 import { proyectos, ruta } from '../data/proyectos';
 import type { EstadoProyecto } from '../data/tipos';
@@ -96,8 +94,8 @@ export function Inicio() {
               <a href="#proyectos" className="boton boton-primario">
                 {t('hero.cta.taller')} <ArrowDown size={18} />
               </a>
-              <Link to="/productos" className="boton boton-secundario">
-                {t('hero.cta.productos')} <ArrowRight size={16} />
+              <Link to="/novedades" className="boton boton-secundario">
+                {t('hero.cta.novedades')} <ArrowRight size={16} />
               </Link>
             </div>
             <dl className="hero-resumen">
@@ -187,31 +185,6 @@ export function Inicio() {
               </div>
             </section>
           )}
-        </div>
-      </section>
-
-      {/* Productos (ADR 0002) va después del taller: los proyectos son lo que más pesa en la portada (ADR 0003). */}
-      <section
-        id="productos"
-        className="seccion seccion-productos"
-        aria-labelledby="productos-titulo"
-      >
-        <div className="contenedor">
-          <header className="seccion-cabecera">
-            <div>
-              <p className="antetitulo">{t('inicio.productos.antetitulo')}</p>
-              <h2 id="productos-titulo">{t('productos.titulo')}</h2>
-              <p>{t('inicio.productos.texto')}</p>
-            </div>
-            <Link to="/productos" className="boton boton-primario">
-              {t('hero.cta.productos')} <ArrowRight size={16} />
-            </Link>
-          </header>
-          <div className="rejilla-productos rejilla-productos-inicio">
-            {productos.map((p) => (
-              <TarjetaProducto key={p.slug} producto={p} compacta titulo="h3" />
-            ))}
-          </div>
         </div>
       </section>
 

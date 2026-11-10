@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
 import { EnlaceRed } from '../components/IconoRed';
+import { TarjetaProducto } from '../components/TarjetaProducto';
 import { IconoTecnologia } from '../components/IconoTecnologia';
 import {
   agruparPorLugar,
@@ -14,6 +15,7 @@ import {
   type Perfil,
   type Persona,
 } from '../data/equipo';
+import { productosDe } from '../data/productos';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { formatearMes, useIdioma } from '../i18n/Idioma';
 import { NoEncontrado } from './NoEncontrado';
@@ -66,6 +68,7 @@ function Ficha({ p }: { p: Persona }) {
   const movil = useMovil();
   const perfil = p.perfil;
   const nombre = p.nombre.split(' ')[0];
+  const suyos = productosDe(p.id);
 
   return (
     <section className="seccion miembro-pagina">
@@ -193,6 +196,21 @@ function Ficha({ p }: { p: Persona }) {
             )}
           </aside>
         </div>
+
+        {/* Los productos que lleva, como responsable o colaborador (ADR 0004); sin ninguno, no hay sección. */}
+        {suyos.length > 0 && (
+          <section className="miembro-productos" aria-labelledby="miembro-productos-titulo">
+            <header>
+              <h2 id="miembro-productos-titulo">{t('productos.titulo')}</h2>
+              <p>{t('equipo.productos.texto', { nombre })}</p>
+            </header>
+            <div className="rejilla-productos">
+              {suyos.map((x) => (
+                <TarjetaProducto key={x.slug} producto={x} titulo="h3" sin={p.id} />
+              ))}
+            </div>
+          </section>
+        )}
 
         {p.colabora && (
           <aside className="miembro-colabora">

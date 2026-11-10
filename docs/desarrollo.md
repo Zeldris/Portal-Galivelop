@@ -52,11 +52,13 @@ Traído de `AGENTS.md` (retro 2026-11-02).
 
 Mensaje de la marca (2026-10-04, ampliado el 2026-10-27 con la [ADR 0002](adr/0002-marca-taller-y-productos.md)):
 **Galivelop es la marca** que contiene el **taller** (crear, investigar, innovar, aprender; abierto a colaborar y
-sin vender: expone los proyectos) y **Productos** (`/productos`: lo que sale del taller e integrantes promocionados; sin precios, todo por correo
-con Álvaro; cada integrante es autónomo). Desde la [ADR 0003](adr/0003-codigo-abierto-e-implantacion.md)
+sin vender: expone los proyectos) y **Productos** (lo que sale del taller; sin precios, todo por correo
+con Álvaro; cada integrante es autónomo). Desde la [ADR 0004](adr/0004-productos-en-el-perfil.md) (2026-11-10), los
+productos no tienen página, enlace en el menú ni franja en la portada: se ven en el perfil de cada miembro que los lleva,
+y `/productos` es una página de paso a `/equipo`. Desde la [ADR 0003](adr/0003-codigo-abierto-e-implantacion.md)
 (2026-11-02), lo maduro tiene el repo público y se ofrece como implantación y servicio de Álvaro (comprarlo sigue
 siendo posible); todo lo público admite colaboración (toVeriAI queda fuera, privado). En la portada, los proyectos
-van antes que Productos. Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
+van primero (y, desde la 0004, Productos ya no sale en ella). Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
 base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
 **Encargos por miembro** ([ADR 0001](adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
 taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice en la
@@ -119,7 +121,8 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 
 ## Añadir o actualizar un producto
 
-**Productos** (`/productos`, [ADR 0002](adr/0002-marca-taller-y-productos.md)) sale de
+**Productos** ([ADR 0002](adr/0002-marca-taller-y-productos.md); desde la
+[0004](adr/0004-productos-en-el-perfil.md), en el perfil de su responsable y sus colaboradores) sale de
 `src/data/productos/<slug>.json` (formato en [`src/data/productos.ts`](../src/data/productos.ts)); los decide
 Álvaro y se mantienen a mano, no con la tarea semanal.
 
@@ -132,11 +135,10 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 - `responsable` (id de `equipo.json`, el creador) y `colaboradores` (ids).
 - Sin precio ni forma de conseguirlo: el botón «Me interesa» abre un correo a la marca con el producto en el asunto.
 
-Un **integrante promocionado** lleva en `equipo.json` `promocionado: true` y `servicios` (lista de textos en los
-tres idiomas); sale en Productos con acceso a su página de miembro.
+`promocionado: true` y `servicios` de `equipo.json` (integrantes promocionados) ya no salen en la web desde la 0004.
 
-`npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` genera la
-página estática de `/productos`.
+`npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` lista los
+productos en la página estática de cada miembro; `/productos` es una página de paso (`DE_PASO`) a `/equipo`.
 
 ## Añadir una página
 

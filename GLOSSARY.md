@@ -7,7 +7,9 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
   es una sociedad: cada integrante es autónomo.
 - **Taller**: la parte de Galivelop que crea, investiga, innova y aprende; expone sus proyectos, no los vende. Es
   para aprender.
-- **Productos**: la parte de la marca que ofrece lo que sale del taller e integrantes promocionados: `/productos`.
+- **Productos**: la parte de la marca que ofrece lo que sale del taller. Desde la
+  [ADR 0004](docs/adr/0004-productos-en-el-perfil.md) se ven en el perfil de cada miembro que los lleva; `/productos`
+  es una página de paso a `/equipo`.
   Lo maduro tiene el código abierto y se ofrece como implantación y servicio de Álvaro; quien quiera comprarlo, también
   puede ([ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md)). Sin precios: lo legal y lo financiero, por
   correo con Álvaro. Lo que aún no está maduro se oferta como «próximamente», sin explicar su estado.
@@ -15,7 +17,9 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
   creador) y, si los hay, colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o
   `proximamente`.
 - **Integrante promocionado**: miembro del taller que Álvaro propone para Productos y que acepta (`promocionado`
-  y `servicios` en `equipo.json`); su tarjeta en Productos lleva siempre un acceso a su página de miembro.
+  y `servicios` en `equipo.json`). Desde la ADR 0004 la web no lo enseña.
+- **Novedades**: lo último de cada proyecto (las `novedades` de su ficha) y las publicaciones del muro, juntos y lo
+  más reciente primero, en `/novedades`.
 - **Encargo**: proyecto de pago que alguien contrata directamente con un miembro del taller, no con Galivelop
   ([ADR 0001](docs/adr/0001-encargos-por-miembro.md)). En la web no se dice «encargo» ni «de pago»: el miembro
   «colabora de vez en cuando en proyectos de otras personas, por su cuenta».
