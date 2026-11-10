@@ -68,14 +68,3 @@ describe('productos de cada miembro (ADR 0004)', () => {
     }
   });
 });
-
-describe('integrantes promocionados', () => {
-  for (const persona of equipo.filter((p) => p.promocionado)) {
-    it(`${persona.id}: sus servicios van en castellano, gallego e inglés`, () => {
-      expect(textosIncompletos({ servicios: persona.servicios }, persona.id)).toEqual([]);
-    });
-  }
-  it('quien tiene servicios está promocionado', () => {
-    expect(equipo.filter((p) => p.servicios?.length && !p.promocionado)).toEqual([]);
-  });
-});

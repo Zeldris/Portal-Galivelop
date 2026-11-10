@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-10 (novedades, productos al perfil, auditoría de front) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47a38edd-v566du` (rehecha desde `main` el 2026-11-10) |
-| **Tarea en curso** | Pedido de la persona (2026-11-10): página `/novedades` con las novedades de todas las fichas y el muro, en el menú; (1) hecho; (2) la animación del workflow arranca en el paso 1 o en el que se dejó (hecho); (3) hecho; Productos sale del menú, la portada y el pie, y pasa al perfil de cada miembro con productos; `/productos` queda como página de paso (noindex) a `/equipo`; (4) auditoría de front de toda la web (hecha y aplicada) |
-| **Siguiente paso** | La persona confirmó `main` («Si», 2026-11-10). Publicado en `main` con la rama semanal. Siguiente tarea: decidir con la persona si se borran `promocionado` y `servicios` (ver «Pendiente») |
+| **Tarea en curso** | Borrar `promocionado` y `servicios` de `equipo.json` (hecho, 2026-11-10); lo anterior (novedades, productos al perfil, auditoría de front), en `main` |
+| **Siguiente paso** | La persona confirmó `main` («Si», 2026-11-10). Borrados `promocionado` y `servicios` de `equipo.json` (la persona: «Sí, bórralos», 2026-11-10); para la próxima publicación. Siguiente: lo que pida la persona |
 | **En `main`** | **Novedades, productos al perfil y auditoría de front** (2026-11-10, «Si»; retro `docs/records/retro-2026-11-10-novedades-productos-perfil.md`; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 174/174 (19 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-(Nada: todo está en `main`.)
+- **`promocionado` y `servicios` fuera de `equipo.json`** (2026-11-10, la persona: «Sí, bórralos»; ADR 0004): campos, tipo y test retirados; los `servicios` de los productos siguen. Es código (tipo y test): necesita `/code-review` y marca.
 
 ## Hecho
 
@@ -86,8 +86,6 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   usa `sec.novedades` en vez de una clave `nav.*`; `tools/qa/medir-paginas.cjs` sigue midiendo `productos` (ahora de
   paso) y `.rejilla-productos`. Muro sale de la cabecera (Novedades lo incluye; sigue en el pie): confirmado por la
   persona (2026-11-10).
-
-- **`promocionado` y `servicios` de `equipo.json`** (2026-11-10, ADR 0004): la web ya no los usa; decidir con la persona si se borran.
 
 - **Leves de la revisión de las animaciones** (2026-11-09, no se vuelven a revisar en este cambio; R2 de su retro, aprobada: sacar `reducido()` a un util en la próxima tarea de código): `reducido()` está repetido en `AnimacionFlujo.tsx`, `Galeria.tsx:51` e `Inicio.tsx:76` (sacarlo a un util); el test «cada rótulo cabe» no mira solapes con otros átomos (el medidor dentro de «sesión A») ni el alto; los commits de la rama dejan `Siguiente:` en un párrafo aparte de las líneas de atribución (desde ahora, en el mismo bloque, sin línea en blanco).
 - **Identidad visual propia** (la persona, 2026-11-08): **hecha y en `main`** (2026-11-08). Dirección «cuaderno de taller + carta náutica atlántica», tema claro por defecto, tipografía B; las reglas y tokens, en `docs/marca.md`; lo decidido y lo aplicado, en `docs/records/retro-2026-11-08-identidad-visual.md` y en `git log` (la versión larga de este párrafo, en el historial de `docs/handoff.md` hasta 94d5a90). **Queda:** las imágenes de la lista de recursos de `docs/marca.md` (isobatas reales, recurso 2; `og:image` del portal, recurso 3), que se generan con Galivelop IG.
