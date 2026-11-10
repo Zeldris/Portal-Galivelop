@@ -1,7 +1,7 @@
 // La pestaña y el paso en que se dejó la animación de «Cómo funciona», para volver a ellos al recargar (sessionStorage:
 // solo esta pestaña del navegador; sin él, o con lo guardado roto, se empieza por la primera animación en su paso 1).
 
-const CLAVE = 'galivelop.flujo';
+const CLAVE_GUARDADA = 'galivelop.flujo';
 
 export interface Posicion {
   id: string;
@@ -24,7 +24,7 @@ export function leerPosicion(
   a: Almacen | null = almacen(),
 ): Posicion | null {
   try {
-    const crudo = a?.getItem(CLAVE);
+    const crudo = a?.getItem(CLAVE_GUARDADA);
     if (!crudo) return null;
     const v: unknown = JSON.parse(crudo);
     if (typeof v !== 'object' || v === null) return null;
@@ -40,7 +40,7 @@ export function leerPosicion(
 
 export function guardarPosicion(p: Posicion, a: Almacen | null = almacen()): void {
   try {
-    a?.setItem(CLAVE, JSON.stringify(p));
+    a?.setItem(CLAVE_GUARDADA, JSON.stringify(p));
   } catch {
     // Sin almacenamiento (modo privado, bloqueado): al recargar se empieza por el paso 1.
   }

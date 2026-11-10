@@ -1,7 +1,7 @@
 {
   "slug": "privacidad",
   "orden": 2,
-  "actualizado": "2026-10-31",
+  "actualizado": "2026-11-10",
   "titulo": {
     "es": "Política de privacidad",
     "gl": "Política de privacidade",
@@ -141,6 +141,11 @@
           "es": "Si una parte de la web no se descarga (por una conexión cortada o porque se publicó una versión nueva), el portal se recarga una vez y lo apunta en el almacenamiento de sesión de tu navegador, con la clave galivelop.recarga, para no recargarse en bucle. Se borra al cerrar la pestaña.",
           "gl": "Se unha parte da web non se descarga (por unha conexión cortada ou porque se publicou unha versión nova), o portal recárgase unha vez e anótao no almacenamento de sesión do teu navegador, coa clave galivelop.recarga, para non recargarse en bucle. Bórrase ao pechar a lapela.",
           "en": "If part of the site fails to download (because of a dropped connection or a newly published version), the portal reloads once and notes it in your browser’s session storage, under the key galivelop.recarga, so it does not reload in a loop. It is deleted when you close the tab."
+        },
+        {
+          "es": "Las animaciones del workflow recuerdan en el almacenamiento de sesión, con la clave galivelop.flujo, la pestaña y el paso en que las dejaste, para que al recargar sigan ahí. Se borra al cerrar la pestaña.",
+          "gl": "As animacións do workflow lembran no almacenamento de sesión, coa clave galivelop.flujo, a lapela e o paso en que as deixaches, para que ao recargar sigan aí. Bórrase ao pechar a lapela.",
+          "en": "The workflow animations remember, in session storage under the key galivelop.flujo, the tab and step where you left them, so they are still there when you reload. It is deleted when you close the tab."
         }
       ]
     },
