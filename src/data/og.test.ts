@@ -51,4 +51,25 @@ describe('vista previa de cada proyecto', () => {
       );
     },
   );
+
+  // En gallego e inglés: og-gl.jpg y og-en.jpg salen de og-fuente-gl.png y og-fuente-en.png (el texto de la imagen
+  // traducido) y van en las páginas de ese idioma; sin esa fuente no debe quedar un og-<idioma>.jpg viejo.
+  it.each(proyectos.flatMap((p) => ['gl', 'en'].map((idioma) => [p.slug, idioma, p.portada.src])))(
+    '%s en %s: og-<idioma>.jpg al día con su og-fuente-<idioma>.png',
+    (slug, idioma, portada) => {
+      const ruta = `public/${portada.replace(/[^/]+$/, '')}og-${idioma}.jpg`;
+      const fuente = `tools/og/fuentes/${slug}/og-fuente-${idioma}.png`;
+      if (!existsSync(fuente)) {
+        expect(existsSync(ruta), `sobra ${ruta}: python3 tools/og/generar.py`).toBe(false);
+        return;
+      }
+      expect(existsSync(ruta), `falta ${ruta}: python3 tools/og/generar.py`).toBe(true);
+      const og = readFileSync(ruta);
+      expect(medidasJpeg(og)).toEqual([1200, 630]);
+      const huella = `og-fuente:${createHash('sha1').update(readFileSync(fuente)).digest('hex')}`;
+      expect(comentarioJpeg(og), `${ruta} no sale de ${fuente}: python3 tools/og/generar.py`).toBe(
+        huella,
+      );
+    },
+  );
 });

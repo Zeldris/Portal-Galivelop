@@ -57,9 +57,9 @@
     "ancho": 1600,
     "alto": 840,
     "alt": {
-      "es": "Presentación de Galivelop-workflow: «Relevos sin perder nada», con cinco tarjetas de cristal escalonadas (bitácora, selector, check, revisión y main) unidas por el testigo",
-      "gl": "Presentación de Galivelop-workflow: «Relevos sen perder nada», con cinco tarxetas de cristal escalonadas (bitácora, selector, check, revisión e main) unidas polo testemuño",
-      "en": "Galivelop-workflow presentation: “Handoffs without losing anything”, with five stepped glass cards (log, selector, check, review and main) joined by the baton"
+      "es": "Presentación de Galivelop-workflow: «Relevos sin perder nada», con cinco fichas escalonadas (handoff.md, /gw-selector, check, /code-review y main) sobre una carta náutica celeste",
+      "gl": "Presentación de Galivelop-workflow: «Relevos sen perder nada», con cinco fichas escalonadas (handoff.md, /gw-selector, check, /code-review e main) sobre unha carta náutica celeste",
+      "en": "Galivelop-workflow presentation: “Hand-offs, nothing lost”, with five stepped cards (handoff.md, /gw-selector, check, /code-review and main) on a sky-blue nautical chart"
     }
   },
   "enlaces": [
