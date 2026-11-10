@@ -39,8 +39,8 @@
     "en": "Alpha · milestone 0.3 “Deep kingdom”: play-testing round"
   },
   "etiquetas": [
-    "IA local",
-    "Simulación",
+    { "es": "IA local", "gl": "IA local", "en": "Local AI" },
+    { "es": "Simulación", "gl": "Simulación", "en": "Simulation" },
     "React",
     "TypeScript",
     "Fastify",

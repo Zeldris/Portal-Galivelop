@@ -288,7 +288,7 @@ function datos(pg, url) {
     image: pg.imagen,
     inLanguage: pg.idioma,
     dateModified: p.actualizado,
-    keywords: p.etiquetas.join(', '),
+    keywords: p.etiquetas.map((e) => (typeof e === 'string' ? e : e[pg.idioma])).join(', '),
     ...(p.enlaces[0] ? { sameAs: p.enlaces.map((e) => e.url) } : {}),
     creator: ORG,
   };

@@ -70,10 +70,11 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
   useEffect(() => {
     const lista = ids.split(' ') as Grupo[];
     let pendiente = 0;
-    // Activo: el último grupo cuyo inicio ya ha pasado la franja de arriba de la pantalla. Una medida por fotograma.
+    // Activo: el último grupo cuyo inicio ya ha pasado el primer tercio de la pantalla (al entrar con #galeria, el
+    // grupo puede quedar algo más abajo de su scroll-margin si algo carga encima). Una medida por fotograma.
     const actualizar = () => {
       pendiente = 0;
-      const limite = 160;
+      const limite = Math.max(160, window.innerHeight / 3);
       let elegido = lista[0];
       for (const id of lista) {
         const el = document.getElementById(id);
@@ -87,8 +88,12 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
     actualizar();
     window.addEventListener('scroll', programar, { passive: true });
     window.addEventListener('resize', programar);
+    // Al entrar con ancla (#galeria), las imágenes que cargan después mueven los grupos sin ningún scroll.
+    const cambios = new ResizeObserver(programar);
+    cambios.observe(document.body);
     return () => {
       cancelAnimationFrame(pendiente);
+      cambios.disconnect();
       window.removeEventListener('scroll', programar);
       window.removeEventListener('resize', programar);
     };

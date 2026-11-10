@@ -33,8 +33,8 @@ export function TarjetaProyecto({ proyecto: p }: { proyecto: ResumenProyecto }) 
         <EtiquetaColaboracion colaboracion={p.colaboracion} />
         <p className="tarjeta-resumen">{tx(p.resumen)}</p>
         <ul className="chips" aria-label={t('sec.ficha')}>
-          {p.etiquetas.slice(0, 5).map((e) => (
-            <li key={e}>{e}</li>
+          {p.etiquetas.slice(0, 5).map((e, i) => (
+            <li key={i}>{typeof e === 'string' ? e : tx(e)}</li>
           ))}
         </ul>
         <div className="tarjeta-pie">

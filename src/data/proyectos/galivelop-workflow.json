@@ -126,7 +126,7 @@
     },
     {
       "es": "Galivelop-workflow saca ese método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona, y lo convierte en un repositorio versionado: reglas en AGENTS.md (un estándar abierto que entiende cualquier agente), skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos los proyectos, y cada uno declara lo suyo en un pequeño archivo de configuración.",
-      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do taller, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e modelos nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
+      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do obradoiro, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e modelos nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {

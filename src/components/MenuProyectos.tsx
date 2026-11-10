@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from './Enlace';
 import { proyectos, ruta } from '../data/proyectos';
@@ -10,11 +10,21 @@ import { EstadoEtiqueta } from './EstadoEtiqueta';
  * «Proyectos» con submenú: un enlace a la página de cada proyecto y otro a la lista completa.
  * En escritorio se despliega al pasar el ratón o al pulsar; en el menú móvil se muestra abierto.
  */
+/** El ancho del menú móvil (el mismo `@media` de global.css): ahí el submenú va siempre abierto. */
+const MOVIL = '(max-width: 53.75em)';
+const suscribir = (aviso: () => void) => {
+  const m = window.matchMedia(MOVIL);
+  m.addEventListener('change', aviso);
+  return () => m.removeEventListener('change', aviso);
+};
+const esMovil = () => window.matchMedia(MOVIL).matches;
+
 export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
   const { t, tx } = useIdioma();
   const [abierto, setAbierto] = useState(false);
   const caja = useRef<HTMLDivElement>(null);
   const { pathname, hash } = useLocation();
+  const movil = useSyncExternalStore(suscribir, esMovil, () => false);
 
   useEffect(() => setAbierto(false), [pathname, hash]);
 
@@ -49,7 +59,7 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
       <button
         type="button"
         className={`submenu-boton${actual ? ' actual' : ''}`}
-        aria-expanded={abierto}
+        aria-expanded={movil || abierto}
         aria-controls="submenu-proyectos"
         onClick={() => setAbierto((a) => !a)}
       >

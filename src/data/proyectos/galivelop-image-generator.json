@@ -20,7 +20,7 @@
   },
   "resumen": {
     "es": "Un servicio local de generación de imágenes con IA, uno por máquina y compartido por todos los proyectos del taller: recibe pedidos, genera intentos, deja elegir uno y lo entrega con su manifiesto. Nada sale del equipo.",
-    "gl": "Un servizo local de xeración de imaxes con IA, un por máquina e compartido por todos os proxectos do taller: recibe pedidos, xera intentos, deixa elixir un e entrégao co seu manifesto. Nada sae do equipo.",
+    "gl": "Un servizo local de xeración de imaxes con IA, un por máquina e compartido por todos os proxectos do obradoiro: recibe pedidos, xera intentos, deixa elixir un e entrégao co seu manifesto. Nada sae do equipo.",
     "en": "A local AI image-generation service, one per machine and shared by every workshop project: it takes requests, generates attempts, lets you choose one and delivers it with its manifest. Nothing leaves the machine."
   },
   "seo": {
@@ -36,7 +36,7 @@
     "en": "In development · phase 4: interface done, still to be tried by hand"
   },
   "etiquetas": [
-    "IA local",
+    { "es": "IA local", "gl": "IA local", "en": "Local AI" },
     "Python",
     "stable-diffusion.cpp",
     "FLUX.2",
@@ -312,7 +312,7 @@
   "descripcion": [
     {
       "es": "Cada proyecto del taller necesita imágenes de marca: fondos para redes, piezas por formato, avatares. No queremos que esas imágenes ni sus pedidos salgan del equipo, y tampoco repetir el mismo montaje de modelos, colas y carpetas en cada repositorio.",
-      "gl": "Cada proxecto do taller necesita imaxes de marca: fondos para redes, pezas por formato, avatares. Non queremos que esas imaxes nin os seus pedidos saian do equipo, e tampouco repetir a mesma montaxe de modelos, colas e cartafoles en cada repositorio.",
+      "gl": "Cada proxecto do obradoiro necesita imaxes de marca: fondos para redes, pezas por formato, avatares. Non queremos que esas imaxes nin os seus pedidos saian do equipo, e tampouco repetir a mesma montaxe de modelos, colas e cartafoles en cada repositorio.",
       "en": "Every workshop project needs brand images: backgrounds for social media, pieces in several formats, avatars. We don’t want those images or their requests to leave the machine, and we don’t want to repeat the same setup of models, queues and folders in every repository."
     },
     {

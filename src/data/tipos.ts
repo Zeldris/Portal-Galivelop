@@ -59,7 +59,8 @@ export interface Proyecto {
   seo?: { titulo?: Texto; descripcion?: Texto };
   /** Etapa actual en una frase corta (p. ej. "Alpha · hito 0.2 en curso"). */
   fase: Texto;
-  etiquetas: string[];
+  /** Un nombre propio (React, Python) va tal cual; lo que se traduce, en los tres idiomas. */
+  etiquetas: (string | Texto)[];
   portada: Imagen;
   /**
    * Imagen de presentación del proyecto (la de redes, apaisada 1.9:1), opcional: la usa el collage de la portada

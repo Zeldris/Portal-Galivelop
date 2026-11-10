@@ -621,7 +621,7 @@ button {
 }
 
 .hero .antetitulo {
-  color: rgb(255 255 255 / 0.85);
+  color: rgb(255 255 255 / 0.94);
 }
 
 .hero h1 {
@@ -692,7 +692,7 @@ button {
   font: var(--datos);
   letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
-  color: rgb(255 255 255 / 0.8);
+  color: rgb(255 255 255 / 0.92);
 }
 
 .hero-resumen dd {
@@ -1420,7 +1420,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: rgb(255 255 255 / 0.8);
+  color: rgb(255 255 255 / 0.92);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -1432,7 +1432,7 @@ button {
 }
 
 .proyecto-cabecera .tarjeta-categoria {
-  color: rgb(255 255 255 / 0.85);
+  color: rgb(255 255 255 / 0.94);
 }
 
 .proyecto-cabecera h1 {
@@ -1452,7 +1452,7 @@ button {
 .proyecto-lema {
   font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   max-width: 48ch;
-  color: rgb(255 255 255 / 0.88);
+  color: rgb(255 255 255 / 0.94);
 }
 
 .proyecto-meta {
@@ -1465,7 +1465,7 @@ button {
 
 .proyecto-fase {
   font-size: 0.9rem;
-  color: rgb(255 255 255 / 0.8);
+  color: rgb(255 255 255 / 0.92);
 }
 
 .proyecto-acciones {
@@ -1576,8 +1576,9 @@ button {
 
 .galeria-grupo[aria-pressed='true'] {
   color: var(--blanco);
-  background: var(--acento-proyecto, var(--celeste-intenso));
-  border-color: var(--acento-proyecto, var(--celeste-intenso));
+  /* Oscurecido como el índice de la ficha (`.nav-ficha`), para el contraste con el blanco. */
+  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste-intenso)) 78%, #000);
+  border-color: color-mix(in srgb, var(--acento-proyecto, var(--celeste-intenso)) 78%, #000);
 }
 
 .galeria-grupo-total {
@@ -1588,7 +1589,7 @@ button {
 }
 
 .galeria-grupo[aria-pressed='true'] .galeria-grupo-total {
-  background: rgb(255 255 255 / 0.22);
+  background: rgb(0 0 0 / 0.22);
 }
 
 .galeria-pausa {
@@ -2396,7 +2397,8 @@ button {
 }
 
 .boton-cristal {
-  background: rgb(255 255 255 / 0.12);
+  /* Más velo, menos contraste con el texto blanco: a 0,12 se quedaba en 4,25:1. */
+  background: rgb(255 255 255 / 0.06);
   border-color: rgb(255 255 255 / 0.3);
   color: var(--blanco);
 }
@@ -3404,7 +3406,7 @@ img.perfil-logo {
   font: var(--datos);
   letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
-  color: var(--celeste-hondo);
+  color: var(--enlace);
 }
 
 .miembro-cabecera h1 {
@@ -3925,6 +3927,10 @@ img.avatar {
   }
   .submenu-proyecto .estado {
     display: none;
+  }
+  /* En móvil, la categoría parte en dos líneas en vez de cortarse con «…». */
+  .submenu-texto span {
+    white-space: normal;
   }
 }
 
@@ -4774,7 +4780,8 @@ body:has(dialog[open]) {
 
 .nav-ficha a[aria-current='true'] {
   color: var(--blanco);
-  background: var(--acento-proyecto, var(--celeste));
+  /* El acento, oscurecido: con el naranja de Tarkor, el blanco se quedaba en 3,2:1. */
+  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 78%, #000);
 }
 
 .grupo {
@@ -5133,7 +5140,8 @@ body:has(dialog[open]) {
   .mosaico-inicial {
     width: 40px;
     height: 40px;
-    font-size: 1.1rem;
+    /* 19,2 px en negrita: texto grande para WCAG, que con el acento de cada ficha pide 3:1 y no 4,5:1. */
+    font-size: 1.2rem;
   }
   .mosaico-texto strong {
     font-size: 0.88rem;
