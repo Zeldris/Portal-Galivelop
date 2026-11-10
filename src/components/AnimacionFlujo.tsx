@@ -12,10 +12,11 @@ import {
 import type { Animacion } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { GUIONES } from './animaciones';
+import { guardarPosicion, leerPosicion } from './animaciones/recuerdo';
 import { componer, segun, type Atomo, type Rotulo } from './animaciones/tipos';
 
-// Animaciones paso a paso de «Cómo funciona» (storyboard v3). Cada pestaña empieza quieta en su último paso, el
-// reposo; Reproducir avanza una vez y se para. La narración va fuera del SVG, en un <p aria-live>, y el SVG la toma
+// Animaciones paso a paso de «Cómo funciona» (storyboard v3). Cada pestaña empieza quieta en su paso 1 y, al
+// recargar, vuelve a la pestaña y el paso en que se dejó (recuerdo.ts); Reproducir avanza una vez y se para. La narración va fuera del SVG, en un <p aria-live>, y el SVG la toma
 // como nombre. Sin bibliotecas: cada átomo es un <g> que entra y sale con una transición de opacidad y posición.
 
 /** Por debajo de este ancho de escena, el dibujo de móvil (más alto que ancho): así el texto no baja de 14 px. */
@@ -140,15 +141,18 @@ export default function AnimacionFlujo({
   const { t, tx } = useIdioma();
   const ids = 'flujo' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const lista = useMemo(() => animaciones.filter((a) => GUIONES[a.id]), [animaciones]);
-  const [actual, setActual] = useState(() => {
+  // Al montar: el destino de un enlace, si no lo guardado al recargar y, si no, la primera pestaña en su paso 1.
+  const [inicio] = useState(() => {
     const i = destino ? lista.findIndex((a) => a.id === destino.id) : -1;
-    return Math.max(0, i);
+    if (destino && i >= 0) return { actual: i, paso: destino.paso };
+    const guardada = leerPosicion((id) => lista.find((a) => a.id === id)?.pasos.length);
+    const j = guardada ? lista.findIndex((a) => a.id === guardada.id) : -1;
+    return j >= 0 && guardada ? { actual: j, paso: guardada.paso } : { actual: 0, paso: 1 };
   });
+  const [actual, setActual] = useState(inicio.actual);
   const anim = lista[actual];
   const total = anim?.pasos.length ?? 0;
-  const [paso, setPaso] = useState(() =>
-    destino && lista[actual]?.id === destino.id ? destino.paso : total,
-  );
+  const [paso, setPaso] = useState(inicio.paso);
   const [reproduciendo, setReproduciendo] = useState(false);
   const [movil, setMovil] = useState(
     () =>
@@ -172,6 +176,10 @@ export default function AnimacionFlujo({
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (anim) guardarPosicion({ id: anim.id, paso: Math.min(Math.max(1, paso), total) });
+  }, [anim, paso, total]);
 
   // Reproducir: un paso cada 5,5 s (8 s con movimiento reducido) y se para en el último.
   useEffect(() => {
@@ -218,7 +226,7 @@ export default function AnimacionFlujo({
     }
     setReproduciendo(false);
     setActual(i);
-    setPaso(lista[i].pasos.length);
+    setPaso(1);
     if (foco) pestanas.current[i]?.focus();
   };
   const reproducir = () => {
@@ -226,7 +234,7 @@ export default function AnimacionFlujo({
       setReproduciendo(false);
       return;
     }
-    // Desde el paso en el que está; desde el último (el reposo), vuelve a empezar.
+    // Desde el paso en el que está; desde el último, vuelve a empezar.
     setPaso((p) => (p >= total ? 1 : p));
     setReproduciendo(true);
   };
