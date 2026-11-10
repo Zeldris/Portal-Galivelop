@@ -44,4 +44,20 @@ describe('novedades', () => {
       'vieja',
     ]);
   });
+
+  it('el mismo día ordena las novedades por proyecto, como la página estática', () => {
+    const lista = juntarNovedades(
+      [
+        { proyecto: 'zeta', fecha: '2026-01-01', texto: texto('z1') },
+        { proyecto: 'alfa', fecha: '2026-01-01', texto: texto('a1') },
+        { proyecto: 'zeta', fecha: '2026-01-01', texto: texto('z2') },
+      ],
+      [],
+    );
+    expect(lista.map((e) => (e.tipo === 'novedad' ? e.texto.es : 'post'))).toEqual([
+      'a1',
+      'z1',
+      'z2',
+    ]);
+  });
 });

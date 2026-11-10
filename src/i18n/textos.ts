@@ -12,7 +12,7 @@ const es = {
   'hero.titulo1': 'Hacemos reales',
   'hero.titulo2': 'los proyectos que parecen imposibles',
   'hero.texto':
-    'Galivelop son dos cosas. El taller crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Productos es lo que sale de él: lo que montamos y adaptamos en tu proyecto, y los servicios de sus integrantes.',
+    'Galivelop es un taller que crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Lo que sale de él, los productos que montamos y adaptamos en tu proyecto, está en el perfil de quien los hace.',
   'hero.cta.taller': 'Conocer el taller',
   'hero.resumen.proyectos': 'proyectos',
   'hero.resumen.publicados': 'publicados',
@@ -339,7 +339,7 @@ const gl: Record<Clave, string> = {
   'hero.titulo1': 'Facemos reais',
   'hero.titulo2': 'os proxectos que semellan imposibles',
   'hero.texto':
-    'Galivelop son dúas cousas. O obradoiro crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. Produtos é o que sae del: o que montamos e adaptamos no teu proxecto, e os servizos dos seus integrantes.',
+    'Galivelop é un obradoiro que crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. O que sae del, os produtos que montamos e adaptamos no teu proxecto, está no perfil de quen os fai.',
   'hero.cta.taller': 'Coñecer o obradoiro',
   'hero.resumen.proyectos': 'proxectos',
   'hero.resumen.publicados': 'publicados',
@@ -664,7 +664,7 @@ const en: Record<Clave, string> = {
   'hero.titulo1': 'We make seemingly',
   'hero.titulo2': 'impossible projects real',
   'hero.texto':
-    'Galivelop is two things. The workshop creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. Products is what comes out of it: what we set up and adapt in your project, and the services of its members.',
+    'Galivelop is a workshop that creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. What comes out of it, the products we set up and adapt in your project, is on the profile of whoever makes them.',
   'hero.cta.taller': 'Meet the workshop',
   'hero.resumen.proyectos': 'projects',
   'hero.resumen.publicados': 'live',

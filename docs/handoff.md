@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-10 (novedades, productos al perfil, auditoría de front) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47a38edd-v566du` (rehecha desde `main` el 2026-11-10) |
 | **Tarea en curso** | Pedido de la persona (2026-11-10): página `/novedades` con las novedades de todas las fichas y el muro, en el menú; (1) hecho; (2) la animación del workflow arranca en el paso 1 o en el que se dejó (hecho); (3) hecho; Productos sale del menú, la portada y el pie, y pasa al perfil de cada miembro con productos; `/productos` queda como página de paso (noindex) a `/equipo`; (4) auditoría de front de toda la web (hecha y aplicada) |
-| **Siguiente paso** | Presentar a la persona lo hecho y pedir confirmación para `main`; con ella, fases 1 (`/code-review --max-findings all`), 2 (gw-opt-tokens y retro, cambio grande) y 3 (`reviewed.sh`) |
+| **Siguiente paso** | La persona confirmó `main` («Si», 2026-11-10). Fase 1 hecha (medios arreglados, leves en «Pendiente»); sigue la fase 2 (gw-opt-tokens y retro, presentadas a la persona) y la 3 (`reviewed.sh`), CI en verde y subida a `main` con la rama semanal |
 | **En `main`** | Todo publicado, hasta las **animaciones paso a paso del workflow** y su retro (2026-11-09, «Si»; CI en verde en la ejecución 118 tras dos que no llegaron a correr el check; rama semanal avanzada hasta ahí); antes, la **carga por partes, enlaces con barra, formas y rejillas** y su retro (2026-11-09, b142031, «Cuando acabes, llévalo a main» y «vamos a main»; rama semanal avanzada hasta ahí); antes, la **segunda tanda de arreglos de la auditoría** (2026-11-09, «Sí, tú vete arreglando y llevando a main»); antes, la **identidad visual propia** (`docs/marca.md` aplicada a la web, diagramas del workflow incluidos; 2026-11-08, confirmación de la persona: «Se ve genial, aprueba la retro y llévalo a main»); antes, el flujo Galivelop-workflow 0.4.3 (18e3d48, 2026-11-02); el detalle de cada subida, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 174/174 (19 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -89,6 +89,17 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 - ✅ 2026-10-27 · Fase 3 de la ronda de móvil: `/code-review --max-findings all` del commit de la fase 2 (12 hallazgos). Arreglados: `npm run medir` mide cada ruta también en gl y en (100 medidas, 57 s); avisa de un `::after` que agranda la zona táctil sobre un control sin `position` (sería una capa sobre la cabecera; rojo comprobado quitando `.idiomas button` de la lista) y solo suma ese `::after` si recibe toques; el nombre de un botón de solo icono usa su `aria-label`; el móvil se reconoce por el nombre de la ventana; el comentario de `global.css` dice que el script solo avisa por debajo de 24 px. Leves, a «Pendiente». `npm run check` 60/60, build con 27 páginas y `npm run medir` sin avisos.
 
 ## Pendiente
+
+- **Leves de la revisión de novedades y productos al perfil** (2026-11-10, no se vuelven a revisar en este cambio):
+  `rutas.test.ts` da por buena `productos` porque `DE_PASO` cae en el tramo de `FIJAS` que lee la regex (comprobar
+  `DE_PASO` aparte); el módulo `virtual:proyectos-novedades` exige `novedades` y la página estática no (`?? []`);
+  el `ResizeObserver` del índice de la ficha recalcula en cada imagen que carga (va por fotograma); el JSDoc de
+  `MenuProyectos` quedó encima de `MOVIL`, y su `matchMedia` repite el `useMovil` de `Miembro.tsx` y el corte del CSS
+  (sacar un hook); `TarjetaProducto` conserva `compacta` y `titulo='h2'` sin uso; `TITULO_PRODUCTOS` y `nombre(slug)`
+  repetidos en `paginas-estaticas.mjs`; `cuenta(slug)` de `Novedades.tsx` se recalcula en cada render; la cabecera
+  usa `sec.novedades` en vez de una clave `nav.*`; `tools/qa/medir-paginas.cjs` sigue midiendo `productos` (ahora de
+  paso) y `.rejilla-productos`. **Decidido sin preguntar:** Muro sale de la cabecera (Novedades ya lo incluye; sigue
+  en el pie); confirmarlo con la persona.
 
 - **`promocionado` y `servicios` de `equipo.json`** (2026-11-10, ADR 0004): la web ya no los usa; decidir con la persona si se borran.
 

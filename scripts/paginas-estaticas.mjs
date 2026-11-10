@@ -71,18 +71,19 @@ const publicaciones = readdirSync('src/data/muro', { withFileTypes: true })
 // Productos de la marca (src/data/productos/<slug>.json), en el mismo orden que src/data/productos.ts.
 const productos = readdirSync('src/data/productos')
   .filter((f) => f.endsWith('.json'))
-  .map((f) => JSON.parse(readFileSync(`src/data/productos/${f}`, 'utf8')))
+  .map((f) => ({ ...JSON.parse(readFileSync(`src/data/productos/${f}`, 'utf8')), archivo: `src/data/productos/${f}` }))
   .sort((a, b) => a.orden - b.orden);
+// Los de un miembro, como responsable o colaborador (ADR 0004), como `productosDe` de src/data/productos.ts.
+const productosDe = (id) => productos.filter((x) => x.responsable === id || x.colaboradores.includes(id));
 const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon' };
 const TITULO_PRODUCTOS = { es: 'Productos', gl: 'Produtos', en: 'Products' };
 
 // Lo que enseña /novedades, como src/data/novedades.ts: novedades de las fichas y publicaciones del muro, lo más
-// reciente primero (el mismo día, las publicaciones antes).
-const novedadesTodas = () =>
-  [
-    ...publicaciones.map((x) => ({ proyecto: x.proyecto, fecha: x.fecha, titulo: x.titulo, texto: x.texto })),
-    ...proyectos.flatMap((p) => (p.novedades ?? []).map((n) => ({ proyecto: p.slug, fecha: n.fecha, texto: n.texto }))),
-  ].sort((a, b) => b.fecha.localeCompare(a.fecha));
+// reciente primero; el mismo día, las publicaciones antes y luego por proyecto (juntarNovedades). Se calcula una vez.
+const novedadesTodas = [
+  ...publicaciones.map((x) => ({ muro: true, proyecto: x.proyecto, fecha: x.fecha, titulo: x.titulo, texto: x.texto })),
+  ...proyectos.flatMap((p) => (p.novedades ?? []).map((n) => ({ muro: false, proyecto: p.slug, fecha: n.fecha, texto: n.texto }))),
+].sort((a, b) => b.fecha.localeCompare(a.fecha) || Number(b.muro) - Number(a.muro) || (a.muro ? 0 : a.proyecto < b.proyecto ? -1 : a.proyecto > b.proyecto ? 1 : 0));
 
 // En el mismo orden que src/data/equipo.ts.
 const equipo = JSON.parse(readFileSync('src/data/equipo.json', 'utf8')).sort((a, b) => a.orden - b.orden);
@@ -151,17 +152,18 @@ if (publicaciones.length > 0) {
 // textos de todas las páginas: con ellos, cualquier cambio movería todas las fechas a la vez.
 const D = 'src/data/';
 const FECHA_FIJA = {
-  '': masReciente(fechaGit(`${D}proyectos`, `${D}productos`, `${D}proximamente.json`, `${D}lineas.ts`, `${D}marca.ts`), ...proyectos.map((p) => p.actualizado)),
+  '': masReciente(fechaGit(`${D}proyectos`, `${D}proximamente.json`, `${D}lineas.ts`, `${D}marca.ts`), ...proyectos.map((p) => p.actualizado)),
   equipo: fechaGit(`${D}equipo.json`, `${D}proyectos`),
   'participa/proponer': fechaGit(`${D}marca.ts`),
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
-  novedades: masReciente(...novedadesTodas().map((n) => n.fecha)),
+  novedades: masReciente(...novedadesTodas.map((n) => n.fecha)),
   muro: publicaciones[0]?.fecha,
   // Los textos legales: la fecha que muestran («Última actualización»).
   ...Object.fromEntries(legales.map((d) => [d.slug, d.actualizado])),
 };
-// Página de miembro: su ficha en equipo.json y la de sus proyectos.
-const fechaMiembro = (m) => fechaGit(`${D}equipo.json`, ...m.proyectos.map((slug) => `${D}proyectos/${slug}.json`));
+// Página de miembro: su ficha en equipo.json, la de sus proyectos y la de sus productos.
+const fechaMiembro = (m) =>
+  fechaGit(`${D}equipo.json`, ...m.proyectos.map((slug) => `${D}proyectos/${slug}.json`), ...productosDe(m.id).map((x) => x.archivo));
 
 // Idioma de la tarjeta en redes (Open Graph; sin él, en_US).
 const LOCALE = { es: 'es_ES', gl: 'gl_ES', en: 'en_US' };
@@ -228,7 +230,7 @@ function cuerpo(pg) {
   }
   if (pg.ruta === 'novedades') {
     const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
-    const lista = novedadesTodas().map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
+    const lista = novedadesTodas.map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro ? `${urlDe(pg.idioma, 'muro')}?proyecto=${x.proyecto}` : urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
     return `<main><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
   }
   const legal = legales.find((d) => d.slug === pg.ruta);
@@ -251,8 +253,7 @@ function cuerpo(pg) {
   if (m) {
     const suyos = m.proyectos.map((slug) => proyectos.find((x) => x.slug === slug)).filter(Boolean)
       .map((x) => `<li><a href="${urlDe(pg.idioma, `proyectos/${x.slug}`)}">${esc(x.nombre)}</a>: ${esc(x.lema[pg.idioma])}</li>`).join('');
-    // Sus productos, como responsable o colaborador (ADR 0004), como src/data/productos.ts (`productosDe`).
-    const productosSuyos = productos.filter((x) => x.responsable === m.id || x.colaboradores.includes(m.id))
+    const productosSuyos = productosDe(m.id)
       .map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
     const colabora = m.colabora ? `<p>${esc(m.colabora.texto[pg.idioma])} <a href="mailto:${m.colabora.correo}">${esc(m.colabora.correo)}</a></p>` : '';
     return `<main><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
