@@ -6,11 +6,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-11 (traída a esta rama la PR #2, imágenes del generador; hoja de recursos al día con la del generador) |
+| **Actualizado** | 2026-11-11 (imágenes nuevas del generador, 17 y 23, en `main`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (traída la rama de trabajo, 2026-11-11) |
-| **Tarea en curso** | Imágenes nuevas del generador a la web, por tandas (la persona, 2026-11-11: «te iré subiendo más imágenes y cuando te diga subimos todo junto»: **no se hace push hasta que lo diga**). Hecho en local: marco 17 en los retratos (`Retrato.tsx`, `/equipo` y cada miembro), icono 23 de Galivelop-workflow (`icono.svg`), 7a/8a/8d/9c copiados a `public/marca/iconos/` sin uso (esperar a cada serie completa, decisión de la persona; valores: 8a y 8d de 4), 14 devuelta al generador (borrada de `src/img/`); `docs/marca.md` § Entregados al día y 11, 16, 20, 21 apuntadas como «por CSS» |
-| **Siguiente paso** | Esperar las siguientes imágenes en `src/img/` (y `src/img/svg/`) y aplicarlas igual (destino en `docs/marca.md`, ver, apuntar en § Entregados). Cuando la persona diga «subimos»: `/code-review` del código nuevo (`Retrato.tsx`, CSS del marco), marca, push y lo que pida (rama de trabajo o `main`). Preguntar si quiere ya las piezas por CSS (11, 16, 20, 21). Quedan de la otra sesión: las cuatro «Dudas» de `docs/marca.md` |
-| **En `main`** | **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna: marco 17 e icono 23 en `main` (d1d5ede, CI en verde, ejecución 43114068621); iconos 7a, 8a, 8d y 9c en `public/marca/iconos/` sin uso hasta completar cada serie |
+| **Siguiente paso** | Cuando lleguen más imágenes a `src/img/`: destino en `docs/marca.md`, aplicarlas, apuntarlas en § Entregados. Faltan del generador: 06 diseño y publicado, 07b, 09a, 12, 15 Developer y los iconos sueltos de la hoja 07. Preguntar a la persona si hace ya las piezas por CSS (11, 16, 20, 21). Quedan las cuatro «Dudas» de `docs/marca.md` |
+| **En `main`** | **Marco del retrato (17) e icono de Galivelop-workflow (23)** (d1d5ede, 2026-11-11, la persona: «ahora sí iremos a main cuando esté listo»; CI en verde; rama de trabajo avanzada hasta ahí).  **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -18,16 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Imágenes nuevas del generador (2026-11-11, esta sesión): marco 17 en los retratos (`Retrato.tsx`), icono 23 de Galivelop-workflow, iconos 7a, 8a, 8d y 9c guardados sin uso; revisado con `/code-review` (9 hallazgos: los medios arreglados, lo leve en «Pendiente»).
-- En la rama de trabajo desde el 2026-11-11 (desde `ccr-5c066d81-ndsd13`, revisado, marca aec8401; la persona: «Adelante»): recursos de imagen de
-  `docs/marca.md` al día con la hoja vigente del generador (2026-11-11): «el mar pone el dónde, la tecnología el qué»,
-  dos registros (grabado en las grandes, línea simple en los iconos), cerúleo como «medium cerulean ocean blue», croma
-  para recortar, versión oscura, modelo y perfiles, motivos nuevos por recurso, la 13 pasa a `/equipo` y la 14 queda sin
-  uso, y cuatro dudas para la persona. El barco de papel que llegó como portada de
-  desarrollo (y salía de fondo en IG y workflow) pasa a ser la 19, «Mensaje preparado», como dice la hoja (la persona,
-  2026-11-11); las fichas de color vuelven a celeste con isobatas hasta la portada 06 de editor. **Lleva código**
-  (`Proyecto.tsx`, `global.css`, `Formulario.tsx`): revisado con `/code-review` (2026-11-11) y con su marca. Repaso de uso: cada imagen entregada se ve donde dice «Entregados»; las `og` por
-  idioma, el JSON-LD, el favicon y las isobatas, bien en las 42 páginas.
+- Nada: lo de la rama de trabajo está en `main` (d1d5ede, 2026-11-11), también los recursos de imagen y el barco a la 19 de la otra sesión (`ccr-5c066d81-ndsd13`).
 
 ## Hecho
 
