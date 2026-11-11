@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-11 (traída a esta rama la PR #2, imágenes del generador; hoja de recursos al día con la del generador) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (traída la rama de trabajo, 2026-11-11) |
-| **Tarea en curso** | Imágenes nuevas del generador a la web, por tandas (la persona, 2026-11-11: «te iré subiendo más imágenes y cuando te diga subimos todo junto»: **no se hace push hasta que lo diga**). Hecho en local: marco 17 en los retratos (`Retrato.tsx`, `/equipo` y cada miembro), icono 23 de Galivelop-workflow (`icono.svg`), 7a/8a/9c copiados a `public/marca/iconos/` sin uso (esperar a cada serie completa, decisión de la persona), 14 devuelta al generador (borrada de `src/img/`); `docs/marca.md` § Entregados al día y 11, 16, 20, 21 apuntadas como «por CSS» |
+| **Tarea en curso** | Imágenes nuevas del generador a la web, por tandas (la persona, 2026-11-11: «te iré subiendo más imágenes y cuando te diga subimos todo junto»: **no se hace push hasta que lo diga**). Hecho en local: marco 17 en los retratos (`Retrato.tsx`, `/equipo` y cada miembro), icono 23 de Galivelop-workflow (`icono.svg`), 7a/8a/8d/9c copiados a `public/marca/iconos/` sin uso (esperar a cada serie completa, decisión de la persona; valores: 8a y 8d de 4), 14 devuelta al generador (borrada de `src/img/`); `docs/marca.md` § Entregados al día y 11, 16, 20, 21 apuntadas como «por CSS» |
 | **Siguiente paso** | Esperar las siguientes imágenes en `src/img/` (y `src/img/svg/`) y aplicarlas igual (destino en `docs/marca.md`, ver, apuntar en § Entregados). Cuando la persona diga «subimos»: `/code-review` del código nuevo (`Retrato.tsx`, CSS del marco), marca, push y lo que pida (rama de trabajo o `main`). Preguntar si quiere ya las piezas por CSS (11, 16, 20, 21). Quedan de la otra sesión: las cuatro «Dudas» de `docs/marca.md` |
 | **En `main`** | **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Nada: lo de la rama de trabajo está en `main` (2026-11-11).
+- Imágenes nuevas del generador (2026-11-11, esta sesión): marco 17 en los retratos (`Retrato.tsx`), icono 23 de Galivelop-workflow, iconos 7a, 8a, 8d y 9c guardados sin uso; revisado con `/code-review` (9 hallazgos: los medios arreglados, lo leve en «Pendiente»).
 - En la rama de trabajo desde el 2026-11-11 (desde `ccr-5c066d81-ndsd13`, revisado, marca aec8401; la persona: «Adelante»): recursos de imagen de
   `docs/marca.md` al día con la hoja vigente del generador (2026-11-11): «el mar pone el dónde, la tecnología el qué»,
   dos registros (grabado en las grandes, línea simple en los iconos), cerúleo como «medium cerulean ocean blue», croma
@@ -87,6 +87,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 
 ## Pendiente
+
+- **Leves de la revisión de las imágenes nuevas (17, 23)** (2026-11-11, no se vuelven a revisar en este cambio): los avatares del equipo en la ficha de proyecto (`.avatar` de `Proyecto.tsx`) no usan `Retrato` (sin marco y la lógica foto/iniciales repetida); `inset: 6%` y el chaflán 90/10 % del retrato dependen del margen de `marco-retrato.webp` sin nada que los ate; la celda «En `main`» ya no nombra e02460c (está en «Hecho»).
 
 - **Leves de la revisión del barco a la 19** (2026-11-11, no se vuelven a revisar en este cambio): `portada-desarrollo.webp` se borra aunque estuvo publicada unas horas (solo era fondo de cabecera, no una ruta); sin capturas antes/después del cambio de cabecera de IG y workflow (vuelven a la cabecera de color que ya tenían antes de la PR #2).
 

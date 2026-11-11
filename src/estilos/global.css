@@ -3155,15 +3155,16 @@ button {
 }
 
 /* `inset` en % se mide contra el propio retrato; un `padding` en % se mediría contra el ancho del padre. */
-.retrato > img,
-.retrato > .persona-iniciales {
+.retrato > * {
   position: absolute;
   inset: 6%;
-  display: grid;
   width: 88%;
   height: 88%;
-  object-fit: cover;
   clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 0 100%);
+}
+
+.retrato > img {
+  object-fit: cover;
 }
 
 .retrato::after {
@@ -3171,8 +3172,8 @@ button {
   position: absolute;
   inset: 0;
   background: var(--texto);
-  -webkit-mask: var(--marco) center / 100% 100% no-repeat;
-  mask: var(--marco) center / 100% 100% no-repeat;
+  -webkit-mask: url('/marca/marco-retrato.webp') center / 100% 100% no-repeat;
+  mask: url('/marca/marco-retrato.webp') center / 100% 100% no-repeat;
   pointer-events: none;
 }
 
@@ -5428,6 +5429,9 @@ body:has(dialog[open]) {
   width: 28px;
   height: 28px;
   object-fit: contain;
+  /* Como en la tarjeta y la ficha: un icono de tinta sin fondo no se vería en el tema oscuro. */
+  background: var(--blanco);
+  padding: 2px;
 }
 
 .publicacion-autor:hover {
