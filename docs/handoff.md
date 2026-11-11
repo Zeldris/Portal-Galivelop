@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-11 (traída a esta rama la PR #2, imágenes del generador; hoja de recursos al día con la del generador) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (desde `main`, 2026-11-11) |
 | **Tarea en curso** | Recursos de imagen de `docs/marca.md` al día con la hoja vigente del generador (`galivelop-image-generator`, `docs/marcas/portal/hoja.md`, «Identidad vigente») y repaso de dónde se usa cada imagen |
-| **Siguiente paso** | La persona decide las cuatro «Dudas» de los recursos de imagen de `docs/marca.md` (dos registros, acentos de producto, versión oscura de los grabados, engranaje de Developer); luego (a) de «Repaso de toda la web» en «Pendiente» |
+| **Siguiente paso** | Se publica el domingo con la tarea semanal. La persona decide las cuatro «Dudas» de los recursos de imagen de `docs/marca.md` (dos registros, acentos de producto, versión oscura de los grabados, engranaje de Developer); luego (a) de «Repaso de toda la web» en «Pendiente» |
 | **En `main`** | **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -19,7 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Nada: lo de la rama de trabajo está en `main` (2026-11-11).
-- En la rama de esta sesión (`ccr-5c066d81-ndsd13`), sin pasar aún a la rama de trabajo: recursos de imagen de
+- En la rama de trabajo desde el 2026-11-11 (desde `ccr-5c066d81-ndsd13`, revisado, marca aec8401; la persona: «Adelante»): recursos de imagen de
   `docs/marca.md` al día con la hoja vigente del generador (2026-11-11): «el mar pone el dónde, la tecnología el qué»,
   dos registros (grabado en las grandes, línea simple en los iconos), cerúleo como «medium cerulean ocean blue», croma
   para recortar, versión oscura, modelo y perfiles, motivos nuevos por recurso, la 13 pasa a `/equipo` y la 14 queda sin
