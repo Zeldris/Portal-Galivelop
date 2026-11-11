@@ -20,7 +20,7 @@ try {
   const pagina = await navegador.newPage({ viewport: { width: 1200, height: 630 } });
   for (const sufijo of ['', '-gl', '-en']) {
     await pagina.goto(`file://${html}${sufijo ? `?l=${sufijo.slice(1)}` : ''}`);
-    await pagina.evaluate(() => document.fonts.ready);
+    await pagina.evaluate(async () => { await Promise.all([...document.fonts].map((f) => f.load())); await document.fonts.ready; }); // todas las fuentes, no solo las ya pedidas
     const png = `public/marca/galivelop-portal${sufijo}.png`;
     await pagina.screenshot({ path: png });
     execFileSync('python3', ['-c', `

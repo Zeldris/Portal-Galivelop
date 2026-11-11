@@ -311,7 +311,7 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   el job `avisar` de `pages.yml` manda después por IndexNow (Bing, Yandex, Seznam, Naver…) las páginas nuevas o con
   otro `lastmod` (`node scripts/indexnow.mjs cambios`, tras `npm run build`, enseña cuáles serían).
 - **Vista previa en redes:** `og:locale` por idioma; la de cada proyecto es `public/proyectos/<slug>/og.jpg`
-  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow) desde `tools/og/fuentes/<slug>/og-fuente.png` (una imagen hecha para
+  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow; `tools/og/limpiar.py` necesita además numpy) desde `tools/og/fuentes/<slug>/og-fuente.png` (una imagen hecha para
   redes, p. ej. del generador de imágenes de Galivelop; fuera de `public/` para que no salga en `dist/`) si existe, y si no desde la portada; se
   vuelve a correr al cambiar cualquiera de las dos. **Cada página enseña la vista previa en su idioma**: si la imagen
   lleva texto, `og-fuente-gl.png` y `og-fuente-en.png` dan `og-gl.jpg` y `og-en.jpg`, que el generador usa en

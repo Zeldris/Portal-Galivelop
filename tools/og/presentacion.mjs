@@ -32,7 +32,7 @@ try {
   for (const [escala, idioma, destino] of tomas) {
     const pagina = await navegador.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: escala });
     await pagina.goto(`file://${html}${idioma}`);
-    await pagina.evaluate(() => document.fonts.ready);
+    await pagina.evaluate(async () => { await Promise.all([...document.fonts].map((f) => f.load())); await document.fonts.ready; }); // todas las fuentes, no solo las ya pedidas
     await pagina.screenshot({ path: destino });
     await pagina.close();
   }

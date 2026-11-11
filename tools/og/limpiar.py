@@ -4,6 +4,7 @@
 
 Máscara por luminancia dentro de una caja (texto claro sobre fondo oscuro, o al revés), dilatada, y relleno por
 interpolación vertical de cada columna con un grano suave. Revisa el resultado a ojo antes de usarlo.
+Necesita Pillow y numpy (pip install pillow numpy).
 Uso: python3 tools/og/limpiar.py <origen.png> <destino.png> x0 y0 x1 y1 claro|oscuro <umbral 0-255>
 Hechas el 2026-11-10: galivelop-image-generator 55 265 600 440 claro 70; toveriai 55 220 600 500 oscuro 170.
 """
@@ -19,8 +20,10 @@ m[y0:y1, x0:x1] = caja > umbral if modo == 'claro' else caja < umbral
 mi = Image.fromarray((m * 255).astype(np.uint8)).filter(ImageFilter.MaxFilter(9))
 m = np.asarray(mi) > 0
 out = im.copy()
-H = im.shape[0]
-for x in range(x0 - 5, x1 + 5):
+H, W = lum.shape
+if not (0 <= x0 < x1 <= W and 0 <= y0 < y1 <= H):
+    sys.exit(f'caja fuera de la imagen ({W}×{H}): {x0} {y0} {x1} {y1}')
+for x in range(max(x0 - 5, 0), min(x1 + 5, W)):
     col = m[:, x]
     y = 0
     while y < H:
@@ -28,7 +31,9 @@ for x in range(x0 - 5, x1 + 5):
             a = y
             while y < H and col[y]: y += 1
             b = y
-            arriba = im[max(a - 3, 0):a, x].mean(axis=0) if a > 0 else im[b, x]
+            if a == 0 and b == H:
+                continue  # toda la columna es texto: no hay de dónde rellenar
+            arriba = im[max(a - 3, 0):a, x].mean(axis=0) if a > 0 else im[b:b + 3, x].mean(axis=0)
             abajo = im[b:b + 3, x].mean(axis=0) if b < H else arriba
             for k in range(a, b):
                 t = (k - a + 1) / (b - a + 1)

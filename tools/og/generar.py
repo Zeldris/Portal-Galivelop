@@ -78,9 +78,10 @@ def main() -> int:
         generar(origen(portada, ficha.stem), destino)
         print(destino.relative_to(RAIZ))
         for idioma in IDIOMAS:
-            fuente = CARPETA_FUENTES / ficha.stem / f'og-fuente-{idioma}.png'
+            fuente = next((CARPETA_FUENTES / ficha.stem / f'og-fuente-{idioma}.{x}' for x in ('png', 'jpg')
+                           if (CARPETA_FUENTES / ficha.stem / f'og-fuente-{idioma}.{x}').exists()), None)
             destino = portada.parent / f'og-{idioma}.jpg'
-            if fuente.exists():
+            if fuente:
                 generar(fuente, destino)
                 print(destino.relative_to(RAIZ))
             elif destino.exists():
