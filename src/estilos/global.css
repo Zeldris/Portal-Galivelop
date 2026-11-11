@@ -1053,6 +1053,18 @@ button {
   cursor: default;
 }
 
+/* Ilustración a sangre arriba de la tarjeta, atenuada como el resto. */
+.proxima-imagen {
+  display: block;
+  width: calc(100% + 40px);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin: -20px -20px 4px;
+  filter: saturate(0.75);
+}
+
 .proxima-cabeza {
   display: flex;
   align-items: center;
@@ -1400,7 +1412,8 @@ button {
   z-index: -2;
 }
 
-.cabecera-ilustracion::before {
+.cabecera-ilustracion::before,
+.cabecera-velada::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1414,7 +1427,8 @@ button {
   color: var(--blanco);
 }
 
-:root[data-tema='claro'] .cabecera-ilustracion::before {
+:root[data-tema='claro'] .cabecera-ilustracion::before,
+:root[data-tema='claro'] .cabecera-velada::before {
   background: var(--velo-medio);
 }
 
@@ -2228,6 +2242,34 @@ button {
 
 .no-encontrado p {
   color: var(--texto-2);
+}
+
+/* Ilustraciones sobre papel (404, formularios, equipo): enmarcadas, a su tamaño o menos. */
+.no-encontrado-imagen,
+.formulario-ilustracion,
+.formulario-listo-imagen,
+.equipo-banda {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--borde);
+}
+
+.no-encontrado-imagen {
+  max-width: 480px;
+}
+
+.formulario-ilustracion {
+  margin: 4px 0 24px;
+}
+
+.formulario-listo-imagen {
+  max-width: 240px;
+  margin-bottom: 16px;
+}
+
+.equipo-banda {
+  margin-bottom: clamp(24px, 4vw, 40px);
 }
 
 /* Cabecera de ficha con captura enmarcada (proyectos web o app) */

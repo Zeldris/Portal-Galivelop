@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
 import { MarcaGV } from '../components/Logo';
+import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
 export function NoEncontrado() {
@@ -19,6 +20,13 @@ export function NoEncontrado() {
   return (
     <section className="seccion no-encontrado">
       <div className="contenedor">
+        <img
+          className="no-encontrado-imagen"
+          src={ruta('marca/no-encontrado.webp')}
+          alt=""
+          width={900}
+          height={600}
+        />
         <MarcaGV tamano={64} />
         <h1>{t('error.titulo')}</h1>
         <p>{t('error.texto')}</p>

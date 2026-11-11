@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { NOMBRES_ICONOS } from '../components/Icono';
 import { proximos } from './proximamente';
@@ -25,6 +26,10 @@ describe('próximamente', () => {
       it('usa un icono que existe y un color hex', () => {
         expect(NOMBRES_ICONOS).toContain(p.icono);
         expect(p.acento).toMatch(/^#[0-9a-f]{6}$/i);
+      });
+
+      it('su imagen, si la tiene, está en public/', () => {
+        if (p.imagen) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
       });
 
       it('sus fases son enteras y las hechas no pasan del total', () => {

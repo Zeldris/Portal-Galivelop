@@ -178,6 +178,11 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const ultima = p.novedades[0];
   const deMuro = publicacionesDe(p.slug);
   const modoCabecera = p.cabecera ?? 'ilustracion';
+  // Cabecera de color en desarrollo: la ilustración de la marca para ese estado, velada como una ilustración.
+  const fondoEstado =
+    modoCabecera === 'color' && p.estado === 'desarrollo'
+      ? 'marca/portada-desarrollo.webp'
+      : undefined;
   const indice = proyectos.findIndex((x) => x.slug === p.slug);
   const siguiente = proyectos.length > 1 ? proyectos[(indice + 1) % proyectos.length] : undefined;
 
@@ -193,11 +198,14 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
   return (
     <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
-      <header className={`proyecto-cabecera cabecera-${modoCabecera}`}>
+      <header
+        className={`proyecto-cabecera cabecera-${modoCabecera}${fondoEstado ? ' cabecera-velada' : ''}`}
+      >
         {modoCabecera === 'ilustracion' && (
           <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />
         )}
-        {modoCabecera !== 'ilustracion' && (
+        {fondoEstado && <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" />}
+        {modoCabecera !== 'ilustracion' && !fondoEstado && (
           <img
             className="proyecto-isobatas"
             src={ruta('/marca/isobatas.svg')}

@@ -2,6 +2,7 @@ import { ArrowLeft, Check, Copy, Mail, Send } from 'lucide-react';
 import { useState, type FormEvent, type ReactNode } from 'react';
 import { Link } from './Enlace';
 import { MARCA } from '../data/marca';
+import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
 export interface Correo {
@@ -35,13 +36,15 @@ export function componerCorreo(
 interface Props {
   titulo: string;
   intro: string;
+  /** Ilustración decorativa entre la entrada y el formulario (ruta en public/), opcional. */
+  ilustracion?: string;
   /** Devuelve el correo a partir de los datos del formulario. */
   componer: (datos: FormData) => Correo;
   children: ReactNode;
 }
 
 /** Página de formulario: prepara el correo, lo abre y ofrece copiarlo si no se abre. */
-export function PaginaFormulario({ titulo, intro, componer, children }: Props) {
+export function PaginaFormulario({ titulo, intro, ilustracion, componer, children }: Props) {
   const { t } = useIdioma();
   const [correo, setCorreo] = useState<Correo | null>(null);
   const [copiado, setCopiado] = useState(false);
@@ -72,6 +75,15 @@ export function PaginaFormulario({ titulo, intro, componer, children }: Props) {
         </Link>
         <h1>{titulo}</h1>
         <p className="formulario-intro">{intro}</p>
+        {ilustracion && (
+          <img
+            className="formulario-ilustracion"
+            src={ruta(ilustracion)}
+            alt=""
+            width={1200}
+            height={450}
+          />
+        )}
 
         <form className="formulario" onSubmit={enviar}>
           <div className="campos-fila">
@@ -91,6 +103,13 @@ export function PaginaFormulario({ titulo, intro, componer, children }: Props) {
 
         {correo && (
           <div className="formulario-listo" role="status">
+            <img
+              className="formulario-listo-imagen"
+              src={ruta('marca/enviado.webp')}
+              alt=""
+              width={640}
+              height={480}
+            />
             <h2>
               <Check size={20} /> {t('form.listo.titulo')}
             </h2>

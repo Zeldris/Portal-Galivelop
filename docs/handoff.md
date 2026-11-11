@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-11 (fusionada la rama de la otra sesión y novedad de Tarkor) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (desde `main`, 2026-11-11) |
-| **Tarea en curso** | Llevar a `main` la fusión de `ccr-47a38edd-v566du` y la novedad de Tarkor (revisión, marca, CI) |
-| **Siguiente paso** | Decidir con la persona (a) de «Repaso de toda la web» en «Pendiente»: si el antetítulo y la descripción siguen nombrando Productos |
+| **Actualizado** | 2026-11-11 (imágenes del generador en la web, a medias) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (desde `main` en 48827b1) |
+| **Tarea en curso** | Imágenes del generador en la web (la persona las deja en `src/img/`, que no se versiona): 06 fondo de la cabecera de color en desarrollo (ficha de IG), 10 banda sobre el formulario de `/unirse`, 13 banda arriba de `/equipo` (`/productos` ya redirige allí), 15 tarjeta «Próximamente» de Voice Generator (`imagen` en `proximamente.json`), 18 página 404, 19 «enviado» de los formularios (destinos confirmados por la persona). WebP en `public/` y código hechos; falta check en verde, verlas en escritorio y móvil (claro y oscuro), apuntarlas en `docs/marca.md` y `/code-review` |
+| **Siguiente paso** | Terminar el check, capturas de la ficha de IG, `/equipo`, `/unirse`, 404 y «enviado» (y la tarjeta próxima en el inicio); apuntar las entregas en `docs/marca.md`; revisión. En esta máquina no hay Node: la sesión usa uno descargado en su carpeta temporal |
 | **En `main`** | **Borrado de `promocionado`/`servicios` y repaso de toda la web** (e02460c, 2026-11-11, la persona: «lo llevas a main y con el ci en verde fusionas»; CI «Check» en verde, ejecuciones 138 y 139; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 191/191 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
