@@ -135,7 +135,7 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 - `responsable` (id de `equipo.json`, el creador) y `colaboradores` (ids).
 - Sin precio ni forma de conseguirlo: el botón «Me interesa» abre un correo a la marca con el producto en el asunto.
 
-`promocionado: true` y `servicios` de `equipo.json` (integrantes promocionados) ya no salen en la web desde la 0004.
+Los campos `promocionado` y `servicios` de `equipo.json` (integrantes promocionados) se borraron tras la ADR 0004.
 
 `npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` lista los
 productos en la página estática de cada miembro; `/productos` es una página de paso (`DE_PASO`) a `/equipo`.

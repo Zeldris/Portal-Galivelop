@@ -1,7 +1,7 @@
 {
   "slug": "aviso-legal",
   "orden": 1,
-  "actualizado": "2026-11-02",
+  "actualizado": "2026-11-11",
   "titulo": {
     "es": "Aviso legal",
     "gl": "Aviso legal",
@@ -87,9 +87,9 @@
           "en": "Galivelop is a brand, not a company: the portal is run by its owner as an individual."
         },
         {
-          "es": "El portal presenta la marca Galivelop: el taller, donde se crean, investigan y comparten proyectos, y Productos, lo que sale de él con el código abierto y montamos en tu proyecto, y los servicios de sus integrantes.",
-          "gl": "O portal presenta a marca Galivelop: o obradoiro, onde se crean, investigan e comparten proxectos, e Produtos, o que sae del co código aberto e montamos no teu proxecto, e os servizos dos seus integrantes.",
-          "en": "The portal presents the Galivelop brand: the workshop, where projects are created, researched and shared, and Products, what comes out of it with open code that we set up in your project, and the services of its members."
+          "es": "El portal presenta la marca Galivelop: el taller, donde se crean, investigan y comparten proyectos, y Productos, lo que sale de él con el código abierto y montamos en tu proyecto.",
+          "gl": "O portal presenta a marca Galivelop: o obradoiro, onde se crean, investigan e comparten proxectos, e Produtos, o que sae del co código aberto e montamos no teu proxecto.",
+          "en": "The portal presents the Galivelop brand: the workshop, where projects are created, researched and shared, and Products, what comes out of it with open code that we set up in your project."
         },
         {
           "es": "Es informativo: no hay compras, pagos, publicidad ni registro de usuarios. Cualquier colaboración o encargo se trata por correo, fuera de la web.",
