@@ -25,6 +25,7 @@ export function Equipo() {
           alt=""
           width={1600}
           height={500}
+          fetchPriority="high"
         />
         <header className="seccion-cabecera">
           <div>

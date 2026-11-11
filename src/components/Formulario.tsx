@@ -37,7 +37,7 @@ interface Props {
   titulo: string;
   intro: string;
   /** Ilustración decorativa entre la entrada y el formulario (ruta en public/), opcional. */
-  ilustracion?: string;
+  ilustracion?: { src: string; ancho: number; alto: number };
   /** Devuelve el correo a partir de los datos del formulario. */
   componer: (datos: FormData) => Correo;
   children: ReactNode;
@@ -78,10 +78,10 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
         {ilustracion && (
           <img
             className="formulario-ilustracion"
-            src={ruta(ilustracion)}
+            src={ruta(ilustracion.src)}
             alt=""
-            width={1200}
-            height={450}
+            width={ilustracion.ancho}
+            height={ilustracion.alto}
           />
         )}
 

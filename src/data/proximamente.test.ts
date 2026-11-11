@@ -28,8 +28,12 @@ describe('próximamente', () => {
         expect(p.acento).toMatch(/^#[0-9a-f]{6}$/i);
       });
 
-      it('su imagen, si la tiene, está en public/', () => {
-        if (p.imagen) expect(existsSync(`public/${p.imagen}`), p.imagen).toBe(true);
+      it('su imagen, si la tiene, es un WebP de public/ con ruta relativa', () => {
+        if (!p.imagen) return;
+        expect(p.imagen).toMatch(/^[a-z0-9-]+(\/[a-z0-9-]+)*\.webp$/);
+        expect(existsSync(new URL(`../../public/${p.imagen}`, import.meta.url)), p.imagen).toBe(
+          true,
+        );
       });
 
       it('sus fases son enteras y las hechas no pasan del total', () => {

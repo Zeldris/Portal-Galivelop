@@ -204,7 +204,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {modoCabecera === 'ilustracion' && (
           <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />
         )}
-        {fondoEstado && <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" />}
+        {fondoEstado && (
+          <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" fetchPriority="high" />
+        )}
         {modoCabecera !== 'ilustracion' && !fondoEstado && (
           <img
             className="proyecto-isobatas"

@@ -8,10 +8,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-11 (imágenes del generador en la web, a medias) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (desde `main` en 48827b1) |
-| **Tarea en curso** | Imágenes del generador en la web (06, 10, 13, 15, 18, 19; entregas apuntadas en `docs/marca.md` § Entregados). Hecho y visto en escritorio y móvil, claro y oscuro; la persona autorizó (2026-11-11) «haces PR y lo llevas a main» y «si el CI está en verde fusionas». Falta: `/code-review`, marca, PR y fusión con el CI en verde |
-| **Siguiente paso** | `/code-review` del diff contra `origin/main`, `revisado.sh`, PR con la skill `pr` y fusión con el CI en verde. En esta máquina no hay Node: la sesión usa uno descargado en su carpeta temporal |
+| **Tarea en curso** | Imágenes del generador en la web (06, 10, 13, 15, 18, 19; entregas apuntadas en `docs/marca.md` § Entregados). Hecho y visto en escritorio y móvil, claro y oscuro; la persona autorizó (2026-11-11) «haces PR y lo llevas a main» y «si el CI está en verde fusionas». Revisado (fase 1; leves en «Pendiente»); la cabecera de Galivelop-workflow (también `color` y en desarrollo) recibe el mismo fondo, como pide el recurso 6. Falta: PR y fusión con el CI en verde |
+| **Siguiente paso** | PR de `ccr-47f8fddd-o5ek6p` a `main` y fusión con el CI en verde (autorizado por la persona); luego apuntarlo en «En `main`». En esta máquina no hay Node: la sesión usa uno descargado en su carpeta temporal |
 | **En `main`** | **Borrado de `promocionado`/`servicios` y repaso de toda la web** (e02460c, 2026-11-11, la persona: «lo llevas a main y con el ci en verde fusionas»; CI «Check» en verde, ejecuciones 138 y 139; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 191/191 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
@@ -78,6 +78,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 
 ## Pendiente
+
+- **Leves de la revisión de las imágenes del generador** (2026-11-11, no se vuelven a revisar en este cambio): el fondo de la cabecera de color sale de un caso fijo en `Proyecto.tsx` (`color` + `desarrollo`, la regla del recurso 6 de `docs/marca.md`), no de un campo de la ficha; `cabecera-equipo.webp` y `portada-desarrollo.webp` no tienen `-mini` con `srcset` para el móvil; el celeste con isobatas de las tarjetas próximas repite reglas de `.proyecto-isobatas`; las ilustraciones sobre papel (10, 18, 19) no tienen versión oscura.
 
 - **Leves de la revisión de las vistas previas por idioma** (2026-11-11, no se vuelven a revisar en este cambio): nada ata la og-fuente en castellano a su `og-base.png` ni a las traducidas (si cambia la de castellano, gl/en quedan viejas sin error); `traducir.mjs` copia por cuarta vez la carga de Playwright (ya apuntado: un `tools/qa/playwright.cjs` común); las páginas de paso (`DE_PASO`) escriben su tarjeta a mano en vez de partir de `index.html` y no llevan `og:locale:alternate`; `ALT_PORTAL.es` repite el alt de `index.html` y `tools/og/portal.html` los textos del hero de `textos.ts`, sin test que los ate; los `<slug>-og.html` leen `URLSearchParams` dos veces y tienen un texto `es` que nunca se pinta; `vistaDe` lee y calcula el hash del mismo `og.jpg` una vez por idioma (memorizar `imagenDe`); el commit 4550358 no acaba en `Siguiente:` (no se reescribe historia subida).
 
