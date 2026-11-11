@@ -117,17 +117,17 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 
 | # | Fecha | Ruta | Dónde se ve |
 |---|---|---|---|
-| 6 (desarrollo) | 2026-11-11 | `public/marca/portada-desarrollo.webp` (1600×900) | Fondo velado de la cabecera de las fichas con `cabecera: "color"` en estado desarrollo (hoy Image Generator); sin `-mini` mientras ninguna tarjeta la use |
 | 10 | 2026-11-11 | `public/marca/como-funciona.webp` (1200×450) | Banda entre la entrada y el formulario de `/participa/unirse` |
 | 13 | 2026-11-11 | `public/marca/cabecera-equipo.webp` (1600×500) | Arriba de `/equipo` (`/productos` ya redirige allí, ADR 0004) |
 | 15 (voz) | 2026-11-11 | `public/proyectos/galivelop-voice-generator/proxima.webp` (720×405, recortado el margen de papel) | `imagen` de su entrada en `proximamente.json`; las entradas sin imagen muestran celeste plano con isobatas |
 | 18 | 2026-11-11 | `public/marca/no-encontrado.webp` (900×600) | Página 404 (sustituye al monograma) |
-| 19 | 2026-11-11 | `public/marca/enviado.webp` (640×480) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse` |
+| 19 | 2026-11-11 | `public/marca/enviado.webp` (640×480, recorte 4:3 del barco de papel grabado sobre el mar) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. El barco llegó como `portada-desarrollo.webp` y se ponía de fondo en las fichas de color en desarrollo (IG y workflow); la hoja lo reserva para la 19, así que se movió aquí (2026-11-11) |
 
-Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18, 19) aún no
+Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18) aún no
 tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: la
-15 de Developer (su tarjeta muestra celeste con isobatas) y la 6 «diseno» y «publicado» (ninguna ficha de color está hoy
-en esos estados).
+15 de Developer (su tarjeta muestra celeste con isobatas) y las tres portadas 6 (ventana de editor sobre el mar); hasta
+que llegue la de desarrollo, las fichas de color (IG y workflow) muestran celeste con isobatas. Para ponerla: el fondo
+velado por estado de `Proyecto.tsx` y `.cabecera-velada` que se quitaron en este cambio (ver su `git log`).
 
 ### Cómo pedirlas
 
@@ -229,7 +229,7 @@ entero; aquí va resumido.
 
 | # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 6 | **Portada de proyecto por estado** (3) | 1600×900 y `-mini` 720×405 (perfil `portada`) | Fichas y tarjetas con `cabecera: "color"` o sin imagen | Celeste plano con isobatas | Ventana de editor de código sobre el mar de la carta, a la izquierda, con el agua abierta a la derecha. «desarrollo»: código a medias y cursor (**entregada**); «diseno»: retícula y guías de maquetación; «publicado»: código acabado y una marca de visto en un círculo (grabado) |
+| 6 | **Portada de proyecto por estado** (3) | 1600×900 y `-mini` 720×405 (perfil `portada`) | Fichas y tarjetas con `cabecera: "color"` o sin imagen | Celeste plano con isobatas | Ventana de editor de código sobre el mar de la carta, a la izquierda, con el agua abierta a la derecha. «desarrollo»: código a medias y cursor; «diseno»: retícula y guías de maquetación; «publicado»: código acabado y una marca de visto en un círculo (grabado) |
 | 7 | **Iconos de las 4 líneas de trabajo** | Hoja de contactos 2×2 (perfil `cuadrado`), luego SVG | Inicio, «Líneas de trabajo» (`lineas.ts`) | Iconos actuales de `Inicio.tsx` | Ventana de app con corchetes angulares · lupa sobre una lista con marca de visto · hoja de papel que se vuelve ventana · compás de dibujo sobre una retícula (línea simple) |
 | 8 | **Iconos de los 4 valores** («Cómo trabajamos») | Igual que 7 | Inicio, `PRINCIPIOS` | Iconos actuales | Candado abierto · punto de mira en el borde de una retícula que sigue en puntos · historial de commits con nodos · dos ramas que se unen (línea simple) |
 | 9 | **Iconos de las 3 vías de participación** | Hoja de contactos 1×3 | Inicio «Participa», `/unirse`, `/proponer` | Sin icono | Dos ramas que confluyen · bombilla dentro de una ventana · terminal con galón y cursor (línea simple) |

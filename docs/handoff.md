@@ -23,7 +23,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   `docs/marca.md` al día con la hoja vigente del generador (2026-11-11): «el mar pone el dónde, la tecnología el qué»,
   dos registros (grabado en las grandes, línea simple en los iconos), cerúleo como «medium cerulean ocean blue», croma
   para recortar, versión oscura, modelo y perfiles, motivos nuevos por recurso, la 13 pasa a `/equipo` y la 14 queda sin
-  uso, y cuatro dudas para la persona. Repaso de uso: cada imagen entregada se ve donde dice «Entregados»; las `og` por
+  uso, y cuatro dudas para la persona. El barco de papel que llegó como portada de
+  desarrollo (y salía de fondo en IG y workflow) pasa a ser la 19, «Mensaje preparado», como dice la hoja (la persona,
+  2026-11-11); las fichas de color vuelven a celeste con isobatas hasta la portada 06 de editor. Repaso de uso: cada imagen entregada se ve donde dice «Entregados»; las `og` por
   idioma, el JSON-LD, el favicon y las isobatas, bien en las 42 páginas. Solo documentación.
 
 ## Hecho
@@ -85,7 +87,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-- **Leves de la revisión de las imágenes del generador** (2026-11-11, no se vuelven a revisar en este cambio): el fondo de la cabecera de color sale de un caso fijo en `Proyecto.tsx` (`color` + `desarrollo`, la regla del recurso 6 de `docs/marca.md`), no de un campo de la ficha; `cabecera-equipo.webp` y `portada-desarrollo.webp` no tienen `-mini` con `srcset` para el móvil; el celeste con isobatas de las tarjetas próximas repite reglas de `.proyecto-isobatas`; las ilustraciones sobre papel (10, 18, 19) no tienen versión oscura.
+- **Leves de la revisión de las imágenes del generador** (2026-11-11, no se vuelven a revisar en este cambio): `cabecera-equipo.webp` no tiene `-mini` con `srcset` para el móvil; el celeste con isobatas de las tarjetas próximas repite reglas de `.proyecto-isobatas`; las ilustraciones sobre papel (10, 18) no tienen versión oscura.
 
 - **Leves de la revisión de las vistas previas por idioma** (2026-11-11, no se vuelven a revisar en este cambio): nada ata la og-fuente en castellano a su `og-base.png` ni a las traducidas (si cambia la de castellano, gl/en quedan viejas sin error); `traducir.mjs` copia por cuarta vez la carga de Playwright (ya apuntado: un `tools/qa/playwright.cjs` común); las páginas de paso (`DE_PASO`) escriben su tarjeta a mano en vez de partir de `index.html` y no llevan `og:locale:alternate`; `ALT_PORTAL.es` repite el alt de `index.html` y `tools/og/portal.html` los textos del hero de `textos.ts`, sin test que los ate; los `<slug>-og.html` leen `URLSearchParams` dos veces y tienen un texto `es` que nunca se pinta; `vistaDe` lee y calcula el hash del mismo `og.jpg` una vez por idioma (memorizar `imagenDe`); el commit 4550358 no acaba en `Siguiente:` (no se reescribe historia subida).
 
