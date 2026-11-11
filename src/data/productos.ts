@@ -9,7 +9,7 @@ export type EstadoProducto = (typeof ESTADOS_PRODUCTO)[number];
 export interface Producto {
   slug: string;
   nombre: string;
-  /** Orden en el catálogo: el menor, primero. */
+  /** Orden en el perfil del miembro: el menor, primero. */
   orden: number;
   /** Color de acento (hex). */
   acento: string;

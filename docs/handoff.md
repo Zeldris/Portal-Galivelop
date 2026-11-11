@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-11 (borrados `promocionado` y `servicios` de `equipo.json`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (desde `main`, 2026-11-11) |
 | **Tarea en curso** | Borrar `promocionado` y `servicios` de `equipo.json` y la frase «los servicios de sus integrantes» de la portada y el aviso legal (la persona, 2026-11-11: «Borrarlos», «Quitarla»). Hecho y revisado; falta la confirmación para `main` |
-| **Siguiente paso** | Fase 1 hecha (2 leves: línea en blanco arreglada; la descripción de `index.html`, a «Pendiente»). Fase 3 con marca; falta la confirmación de la persona para `main`. Cambio pequeño: sin fase 2 |
+| **Siguiente paso** | La persona pidió repaso de toda la web y llevarlo a `main` con el CI en verde («lo llevas a main y con el ci en verde fusionas», 2026-11-11). Repaso hecho; tras su revisión y marca, a `main` y avanzar la rama semanal. Cambio pequeño: sin fase 2 |
 | **En `main`** | **Novedades, productos al perfil y auditoría de front** (2026-11-10, «Si»; retro `docs/records/retro-2026-11-10-novedades-productos-perfil.md`; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 183/183 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -19,6 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Borrados `promocionado` y `servicios` de `equipo.json` (con su tipo y sus dos tests; ADR 0004, `GLOSSARY.md` y `docs/desarrollo.md` al día). Quitada «y los servicios de sus integrantes» de la descripción de `index.html` (también `og` y `twitter`) y del aviso legal en es, gl y en (`actualizado` 2026-11-11).
+- Repaso de toda la web (la persona, 2026-11-11): la fila de cifras del inicio (`.hero-resumen`) salta de línea; en gallego a 320 px se salía de su caja (`npm run medir` ya sin cortes). Comentario «catálogo» de `src/data/productos.ts` al día.
 
 ## Hecho
 
@@ -87,6 +88,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   paso) y `.rejilla-productos`. Muro sale de la cabecera (Novedades lo incluye; sigue en el pie): confirmado por la
   persona (2026-11-10).
 
+- **Repaso de toda la web** (2026-11-11), sin arreglar: (a) el antetítulo «Marca de software: taller y Productos», la descripción de la portada (`index.html`, `FIJAS['']`) y el README siguen nombrando Productos como mitad de la marca, aunque ya no hay sección; decide la persona; (b) `npm run medir` da 23 px de alto al enlace del título de las tarjetas de proyecto en el inicio, pero su `::after` hace clicable la tarjeta entera: falso positivo de la medida, a enseñarle a ignorarlo; (c) `npm run seo` da error y avisos en `/productos` (sin descripción, h1 ni Open Graph): es la página de paso `noindex` a `/equipo`, a propósito; los títulos iguales en es y gl («Equipo», «Aviso legal») también.
 - **Leve de la revisión de `promocionado`/`servicios`** (2026-11-11, no se vuelve a revisar en este cambio): la descripción de `index.html` (y sus `og`/`twitter`) es otro texto que `FIJAS['']` de `scripts/paginas-estaticas.mjs`, que la reescribe en las páginas generadas; sacarla de ahí o un test que las iguale.
 - **Leves de la revisión de las animaciones** (2026-11-09, no se vuelven a revisar en este cambio; R2 de su retro, aprobada: sacar `reducido()` a un util en la próxima tarea de código): `reducido()` está repetido en `AnimacionFlujo.tsx`, `Galeria.tsx:51` e `Inicio.tsx:76` (sacarlo a un util); el test «cada rótulo cabe» no mira solapes con otros átomos (el medidor dentro de «sesión A») ni el alto; los commits de la rama dejan `Siguiente:` en un párrafo aparte de las líneas de atribución (desde ahora, en el mismo bloque, sin línea en blanco).
 - **Identidad visual propia** (la persona, 2026-11-08): **hecha y en `main`** (2026-11-08). Dirección «cuaderno de taller + carta náutica atlántica», tema claro por defecto, tipografía B; las reglas y tokens, en `docs/marca.md`; lo decidido y lo aplicado, en `docs/records/retro-2026-11-08-identidad-visual.md` y en `git log` (la versión larga de este párrafo, en el historial de `docs/handoff.md` hasta 94d5a90). **Queda:** las imágenes de la lista de recursos de `docs/marca.md` (isobatas reales, recurso 2; `og:image` del portal, recurso 3), que se generan con Galivelop IG.

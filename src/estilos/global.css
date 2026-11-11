@@ -677,7 +677,9 @@ button {
 
 .hero-resumen {
   display: flex;
-  gap: clamp(20px, 4vw, 44px);
+  /* Sin salto, «en desenvolvemento» (gl) sacaba la fila de la caja a 320 px. */
+  flex-wrap: wrap;
+  gap: 16px clamp(20px, 4vw, 44px);
   margin: 40px 0 0;
   padding-top: 20px;
   border-top: 1px solid rgb(255 255 255 / 0.4);
