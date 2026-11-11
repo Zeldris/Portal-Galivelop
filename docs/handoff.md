@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-11 (borrados `promocionado` y `servicios` de `equipo.json`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (desde `main`, 2026-11-11) |
-| **Tarea en curso** | Borrar `promocionado` y `servicios` de `equipo.json` y la frase «los servicios de sus integrantes» de la portada y el aviso legal (la persona, 2026-11-11: «Borrarlos», «Quitarla»). Hecho y revisado; falta la confirmación para `main` |
-| **Siguiente paso** | La persona pidió repaso de toda la web y llevarlo a `main` con el CI en verde («lo llevas a main y con el ci en verde fusionas», 2026-11-11). Repaso hecho; tras su revisión y marca, a `main` y avanzar la rama semanal. Cambio pequeño: sin fase 2 |
-| **En `main`** | **Novedades, productos al perfil y auditoría de front** (2026-11-10, «Si»; retro `docs/records/retro-2026-11-10-novedades-productos-perfil.md`; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna: el borrado de `promocionado`/`servicios` y el repaso de toda la web están en `main` |
+| **Siguiente paso** | Decidir con la persona (a) de «Repaso de toda la web» en «Pendiente»: si el antetítulo y la descripción siguen nombrando Productos |
+| **En `main`** | **Borrado de `promocionado`/`servicios` y repaso de toda la web** (e02460c, 2026-11-11, la persona: «lo llevas a main y con el ci en verde fusionas»; CI «Check» en verde, ejecuciones 138 y 139; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 183/183 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -18,11 +18,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Borrados `promocionado` y `servicios` de `equipo.json` (con su tipo y sus dos tests; ADR 0004, `GLOSSARY.md` y `docs/desarrollo.md` al día). Quitada «y los servicios de sus integrantes» de la descripción de `index.html` (también `og` y `twitter`) y del aviso legal en es, gl y en (`actualizado` 2026-11-11).
-- Repaso de toda la web (la persona, 2026-11-11): la fila de cifras del inicio (`.hero-resumen`) salta de línea; en gallego a 320 px se salía de su caja (`npm run medir` ya sin cortes). Comentario «catálogo» de `src/data/productos.ts` al día.
+(Nada: todo está en `main`.)
 
 ## Hecho
 
+- 2026-11-11 · **Borrados `promocionado` y `servicios` y repaso de toda la web, a `main`** (e02460c): fuera los dos campos de `equipo.json` (tipo, tests, ADR 0004, glosario) y «y los servicios de sus integrantes» de la portada y el aviso legal; repaso con `npm run medir`, `npm run seo` y un subagente de textos y enlaces (sin enlaces rotos ni idiomas incompletos); arreglada la fila de cifras del inicio en gallego a 320 px. Leves, en «Pendiente».
 - 2026-11-10 · **Novedades, productos al perfil y auditoría de front, a `main`** (la persona: «Si»): página `/novedades` en el menú, el pie y el inicio; Productos pasa al perfil de cada miembro (ADR 0004) y `/productos` queda de paso a `/equipo`; la animación del workflow arranca en el paso 1 o en el que se dejó; arreglos de la auditoría (contraste, idiomas de las etiquetas, «obradoiro», menú móvil, índice de la ficha). Fase 1: 18 hallazgos, 5 medios arreglados (96aa78a); fase 2: retro `docs/records/retro-2026-11-10-novedades-productos-perfil.md` (R2, T1, T2 aplicadas).
 - 2026-11-09 · **Publicados en `main` el 2026-11-08 y 2026-11-09** (detalle en `git log origin/main`): animaciones paso a paso del workflow y su retro («Si»; CI en verde en la ejecución 118); carga por partes, enlaces con barra, formas y rejillas y su retro (b142031); segunda tanda de arreglos de la auditoría; identidad visual propia (`docs/marca.md`); antes, Galivelop-workflow 0.4.3 (18e3d48, 2026-11-02). La rama semanal se avanzó hasta cada subida.
 - 2026-11-08 · **Revisión semanal (`gw-portal`, modo semanal) publicada en `main`.** Tarkor: novedad del 5-11 (pruebas jugando con arreglos del combate, plan reordenado, licencias MIT y CC BY-NC-SA 4.0) y hitos como en su repo: la Beta pasa a 0.7 con el juego en inglés y «Personaje propio» a 1.1, tras Vaelira. toVeriAI: novedad del 5-11 (análisis de imagen en pausa, avisos unificados, traducciones). Image Generator: novedad de la v0.4.1 (arreglos del arranque); quedan 8. Galivelop-workflow: v0.5.1 en la descripción, en «Versiones publicadas» y en su tarjeta de `/productos`. Voice Generator y Developer, sin cambios. Sin publicaciones nuevas en el muro. `npm run check` en verde (118 tests).
