@@ -6,11 +6,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-11 (imágenes del generador en la web, a medias) |
+| **Actualizado** | 2026-11-11 (imágenes del generador en `main`, PR #2) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (desde `main` en 48827b1) |
-| **Tarea en curso** | Imágenes del generador en la web (06, 10, 13, 15, 18, 19; entregas apuntadas en `docs/marca.md` § Entregados). Hecho y visto en escritorio y móvil, claro y oscuro; la persona autorizó (2026-11-11) «haces PR y lo llevas a main» y «si el CI está en verde fusionas». Revisado (fase 1; leves en «Pendiente»); la cabecera de Galivelop-workflow (también `color` y en desarrollo) recibe el mismo fondo, como pide el recurso 6. Falta: PR y fusión con el CI en verde |
-| **Siguiente paso** | PR de `ccr-47f8fddd-o5ek6p` a `main` y fusión con el CI en verde (autorizado por la persona); luego apuntarlo en «En `main`». En esta máquina no hay Node: la sesión usa uno descargado en su carpeta temporal |
-| **En `main`** | **Borrado de `promocionado`/`servicios` y repaso de toda la web** (e02460c, 2026-11-11, la persona: «lo llevas a main y con el ci en verde fusionas»; CI «Check» en verde, ejecuciones 138 y 139; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna: imágenes del generador (06, 10, 13, 15, 18, 19) en `main` por el PR #2 (6f44c27, CI en verde) |
+| **Siguiente paso** | Ninguno pendiente en el portal. Cuando lleguen más imágenes a `src/img/`, mismo camino: destino en `docs/marca.md`, WebP, verlas y apuntarlas en § Entregados. Proponer a la persona forzar «sin autoría de Claude» en `.claude/settings.json` (`attribution`) o en un `commit-msg` de `.githooks/` (necesita su permiso) |
+| **En `main`** | **Imágenes del generador** (06 cabecera de color en desarrollo de IG y Workflow, 10 `/participa/unirse`, 13 `/equipo`, 15 Voice Generator en «Próximamente», 18 la 404, 19 «enviado»; PR #2, 2026-11-11, la persona: «haces PR y lo llevas a main», «si el CI está en verde fusionas»); **Borrado de `promocionado`/`servicios` y repaso de toda la web** (e02460c, 2026-11-11, la persona: «lo llevas a main y con el ci en verde fusionas»; CI «Check» en verde, ejecuciones 138 y 139; rama semanal avanzada hasta ahí). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
