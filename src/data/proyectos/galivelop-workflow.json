@@ -35,9 +35,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.5.1 · fase 7: rodaje",
-    "gl": "En desenvolvemento · v0.5.1 · fase 7: rodaxe",
-    "en": "In development · v0.5.1 · phase 7: run-in"
+    "es": "En desarrollo · v0.5.1 · en marcha la 0.6 «Medir»",
+    "gl": "En desenvolvemento · v0.5.1 · en marcha a 0.6 «Medir»",
+    "en": "In development · v0.5.1 · 0.6 “Measure” under way"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "portada": {
@@ -57,9 +57,9 @@
     "ancho": 1600,
     "alto": 840,
     "alt": {
-      "es": "Presentación de Galivelop-workflow: «Relevos sin perder nada», con cinco tarjetas de cristal escalonadas (bitácora, selector, check, revisión y main) unidas por el testigo",
-      "gl": "Presentación de Galivelop-workflow: «Relevos sen perder nada», con cinco tarxetas de cristal escalonadas (bitácora, selector, check, revisión e main) unidas polo testemuño",
-      "en": "Galivelop-workflow presentation: “Handoffs without losing anything”, with five stepped glass cards (log, selector, check, review and main) joined by the baton"
+      "es": "Presentación de Galivelop-workflow: «Relevos sin perder nada», con cinco fichas escalonadas (handoff.md, /gw-selector, check, /code-review y main) sobre una carta náutica celeste",
+      "gl": "Presentación de Galivelop-workflow: «Relevos sen perder nada», con cinco fichas escalonadas (handoff.md, /gw-selector, check, /code-review e main) sobre unha carta náutica celeste",
+      "en": "Galivelop-workflow presentation: “Hand-offs, nothing lost”, with five stepped cards (handoff.md, /gw-selector, check, /code-review and main) on a sky-blue nautical chart"
     }
   },
   "enlaces": [
@@ -130,9 +130,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.5.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará cuando haya funcionado semanas en proyectos reales de tecnologías distintas.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.5.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará cando funcionase semanas en proxectos reais de tecnoloxías distintas.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.5.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive once it has worked for weeks on real projects built with different technologies."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.5.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.5.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.5.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
@@ -2431,117 +2431,165 @@
   ],
   "hitos": [
     {
-      "version": "0",
+      "version": "0.1–0.4",
       "nombre": {
-        "es": "Verificar",
-        "gl": "Verificar",
-        "en": "Verify"
+        "es": "Primeras versiones y pilotos",
+        "gl": "Primeiras versións e pilotos",
+        "en": "First versions and pilots"
       },
-      "estado": "hecho"
-    },
-    {
-      "version": "1",
-      "nombre": {
-        "es": "Esqueleto",
-        "gl": "Esqueleto",
-        "en": "Skeleton"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "2",
-      "nombre": {
-        "es": "Skills",
-        "gl": "Skills",
-        "en": "Skills"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "3",
-      "nombre": {
-        "es": "Ganchos y scripts",
-        "gl": "Ganchos e scripts",
-        "en": "Hooks and scripts"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "4",
-      "nombre": {
-        "es": "Plantillas y aplicación",
-        "gl": "Modelos e aplicación",
-        "en": "Templates and apply"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "5",
-      "nombre": {
-        "es": "Piloto en este portal",
-        "gl": "Piloto neste portal",
-        "en": "Pilot on this portal"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "6",
-      "nombre": {
-        "es": "Pilotos en Tarkor y su instalador",
-        "gl": "Pilotos en Tarkor e no seu instalador",
-        "en": "Pilots on Tarkor and its installer"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "7",
-      "nombre": {
-        "es": "Rodaje de la etapa 1",
-        "gl": "Rodaxe da etapa 1",
-        "en": "Stage 1 run-in"
-      },
-      "estado": "curso",
+      "estado": "hecho",
       "detalle": {
-        "es": "Empezó con la 0.3.0, que recoge lo aprendido en los pilotos; cada versión desde entonces suma lo que enseñan los proyectos que lo usan. La última, la 0.5.1, del 5 de noviembre. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
-        "gl": "Comezou coa 0.3.0, que recolle o aprendido nos pilotos; cada versión desde entón suma o que ensinan os proxectos que o usan. A última, a 0.5.1, do 5 de novembro. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
-        "en": "It began with 0.3.0, which gathers what the pilots taught us; every version since adds what the projects using it teach. The latest is 0.5.1, from 5 November. Since 0.4 the repository is public and every version ships with its release."
+        "es": "Skills, ganchos, scripts y plantillas, probados en este portal y en Tarkor con su instalador. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
+        "gl": "Skills, ganchos, scripts e modelos, probados neste portal e en Tarkor co seu instalador. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
+        "en": "Skills, hooks, scripts and templates, tried on this portal and on Tarkor with its installer. Since 0.4 the repository is public and every version ships with its release."
       }
     },
     {
-      "version": "8",
+      "version": "0.5",
       "nombre": {
-        "es": "Instalador sin IA (etapa 2)",
-        "gl": "Instalador sen IA (etapa 2)",
-        "en": "Installer without AI (stage 2)"
+        "es": "Base",
+        "gl": "Base",
+        "en": "Base"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Todo lo que rompe compatibilidad, de una vez: nombres propios para las skills, commits que dicen a qué tarea pertenecen, configuración con versión y comprobación de datos privados antes de subir.",
+        "gl": "Todo o que rompe compatibilidade, dunha vez: nomes propios para as skills, commits que din a que tarefa pertencen, configuración con versión e comprobación de datos privados antes de subir.",
+        "en": "Everything that breaks compatibility, in one go: own names for the skills, commits that say which task they belong to, versioned configuration and a private-data check before pushing."
+      }
+    },
+    {
+      "version": "0.5.1",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 5 de noviembre.",
+        "gl": "Publicada o 5 de novembro.",
+        "en": "Released on 5 November."
+      }
+    },
+    {
+      "version": "0.5.2",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Cinco arreglos que salieron de revisar los proyectos que ya usan el flujo.",
+        "gl": "Cinco arranxos que saíron de revisar os proxectos que xa usan o fluxo.",
+        "en": "Five fixes found by reviewing the projects that already use the workflow."
+      }
+    },
+    {
+      "version": "0.6",
+      "nombre": {
+        "es": "Medir",
+        "gl": "Medir",
+        "en": "Measure"
+      },
+      "estado": "curso",
+      "detalle": {
+        "es": "Registro de los tokens que gasta cada modelo, por rama y por tarea; informes y comparaciones; aviso cuando un modelo gasta más de lo normal, y modelo y esfuerzo elegidos para cada agente.",
+        "gl": "Rexistro dos tokens que gasta cada modelo, por rama e por tarefa; informes e comparacións; aviso cando un modelo gasta máis do normal, e modelo e esforzo escollidos para cada axente.",
+        "en": "A log of the tokens each model spends, by branch and by task; reports and comparisons; a warning when a model spends more than usual, and a model and effort chosen for each agent."
+      }
+    },
+    {
+      "version": "0.7",
+      "nombre": {
+        "es": "Preguntar",
+        "gl": "Preguntar",
+        "en": "Ask"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse; un modo prudente que se enciende con un solo interruptor.",
+        "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse; un modo prudente que se acende cun só interruptor.",
+        "en": "Questions to the person, numbered, with a recommendation and never repeated; a careful mode turned on with a single switch."
+      }
+    },
+    {
+      "version": "0.8",
+      "nombre": {
+        "es": "Front y otros agentes",
+        "gl": "Front e outros axentes",
+        "en": "Front end and other agents"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Pruebas de interfaz, perfiles de instalación (mínimo, base y completo) y uso con otros agentes y modelos.",
+        "gl": "Probas de interface, perfís de instalación (mínimo, base e completo) e uso con outros axentes e modelos.",
+        "en": "Interface tests, install profiles (minimal, core and full) and use with other agents and models."
+      }
+    },
+    {
+      "version": "0.9",
+      "nombre": {
+        "es": "Estable",
+        "gl": "Estable",
+        "en": "Stable"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Repaso completo de la documentación, de la seguridad, de los datos privados y de lo que se puede configurar.",
+        "gl": "Repaso completo da documentación, da seguridade, dos datos privados e do que se pode configurar.",
+        "en": "A full review of the documentation, security, private data and what can be configured."
+      }
+    },
+    {
+      "version": "1.0",
+      "nombre": {
+        "es": "Management Center: consulta",
+        "gl": "Management Center: consulta",
+        "en": "Management Center: read-only"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Un panel local para ver los datos y el historial de git de cada proyecto.",
+        "gl": "Un panel local para ver os datos e o historial de git de cada proxecto.",
+        "en": "A local dashboard to see each project’s data and git history."
+      }
+    },
+    {
+      "version": "1.1",
+      "nombre": {
+        "es": "Management Center: configuración",
+        "gl": "Management Center: configuración",
+        "en": "Management Center: configuration"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Cambiar la configuración desde el panel, viendo antes qué cambia.",
+        "gl": "Cambiar a configuración desde o panel, vendo antes que cambia.",
+        "en": "Change the configuration from the dashboard, seeing first what changes."
+      }
+    },
+    {
+      "version": "1.2",
+      "nombre": {
+        "es": "Management Center: perfiles, entornos y roles",
+        "gl": "Management Center: perfís, contornos e roles",
+        "en": "Management Center: profiles, environments and roles"
       },
       "estado": "pendiente"
     },
     {
-      "version": "9",
       "nombre": {
-        "es": "Plugin y npm",
-        "gl": "Plugin e npm",
-        "en": "Plugin and npm"
+        "es": "Instalador sin IA, plugin y lanzamiento",
+        "gl": "Instalador sen IA, plugin e lanzamento",
+        "en": "Installer without AI, plugin and launch"
       },
       "estado": "pendiente",
       "detalle": {
-        "es": "El plugin, como vía de instalación completa junto a la copia en el repo del proyecto, y npm si se hace.",
-        "gl": "O plugin, como vía de instalación completa xunto á copia no repo do proxecto, e npm se se fai.",
-        "en": "The plugin as a full install route alongside the copy in the project’s repo, and npm if it happens."
-      }
-    },
-    {
-      "version": "10",
-      "nombre": {
-        "es": "Lanzamiento",
-        "gl": "Lanzamento",
-        "en": "Launch"
-      },
-      "estado": "pendiente",
-      "detalle": {
-        "es": "Revisión de seguridad, anuncio en redes y la ficha al día en el portal.",
-        "gl": "Revisión de seguridade, anuncio en redes e a ficha ao día no portal.",
-        "en": "Security review, social media announcement and the portal page brought up to date."
+        "es": "Una orden que instala o actualiza el flujo sin agente, el plugin como segunda vía y el lanzamiento, con su revisión de seguridad. Aún sin versión.",
+        "gl": "Unha orde que instala ou actualiza o fluxo sen axente, o plugin como segunda vía e o lanzamento, coa súa revisión de seguridade. Aínda sen versión.",
+        "en": "A single command that installs or updates the workflow without an agent, the plugin as a second route and the launch, with its security review. No version yet."
       }
     }
   ],
@@ -2704,14 +2752,14 @@
     },
     {
       "titulo": {
-        "es": "Abierto desde la 0.4; la 1.0 tras el rodaje",
-        "gl": "Aberto desde a 0.4; a 1.0 tras a rodaxe",
-        "en": "Open since 0.4; 1.0 after the run-in"
+        "es": "Abierto desde la 0.4; la 1.0, con el Management Center",
+        "gl": "Aberto desde a 0.4; a 1.0, co Management Center",
+        "en": "Open since 0.4; 1.0 with the Management Center"
       },
       "texto": {
-        "es": "El repositorio es público y admite colaboración desde la 0.4. La 1.0 se declarará cuando haya funcionado al menos cuatro semanas en tres proyectos de tecnologías distintas.",
-        "gl": "O repositorio é público e admite colaboración desde a 0.4. A 1.0 declararase cando funcionase polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
-        "en": "The repository has been public and open to collaboration since 0.4. 1.0 will be declared once it has worked for at least four weeks on three projects built with different technologies."
+        "es": "El repositorio es público y admite colaboración desde la 0.4. La 1.0 llega con el Management Center, después de la 0.9 «Estable»; para darla por madura, el flujo tiene que funcionar al menos cuatro semanas en tres proyectos de tecnologías distintas.",
+        "gl": "O repositorio é público e admite colaboración desde a 0.4. A 1.0 chega co Management Center, despois da 0.9 «Estable»; para dala por madura, o fluxo ten que funcionar polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
+        "en": "The repository has been public and open to collaboration since 0.4. 1.0 comes with the Management Center, after 0.9 “Stable”; to count as mature, the workflow has to run for at least four weeks on three projects built with different technologies."
       }
     },
     {

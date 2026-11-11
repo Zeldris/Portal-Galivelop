@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-08",
+  "actualizado": "2026-11-10",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -656,9 +656,31 @@
         "gl": "Volver analizar capturas de forma estable, gardar menos datos para adestrar o modelo propio VeriAI e revisar os provedores de IA.",
         "en": "Bring back reliable screenshot analysis, store less data to train the in-house VeriAI model and review the AI providers."
       }
+    },
+    {
+      "version": "1.13",
+      "nombre": {
+        "es": "Dependencias al día",
+        "gl": "Dependencias ao día",
+        "en": "Up-to-date dependencies"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Poner al día las versiones de las herramientas sobre las que funciona la web, para que siga segura y estable.",
+        "gl": "Poñer ao día as versións das ferramentas sobre as que funciona a web, para que siga segura e estable.",
+        "en": "Bring up to date the versions of the tools the site runs on, so it stays secure and stable."
+      }
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-09",
+      "texto": {
+        "es": "Trabajo de fondo: puesta al día de las herramientas sobre las que funciona la web, con correcciones de seguridad y versiones más recientes para que siga estable.",
+        "gl": "Traballo de fondo: posta ao día das ferramentas sobre as que funciona a web, con correccións de seguridade e versións máis recentes para que siga estable.",
+        "en": "Behind the scenes: the tools the site runs on were brought up to date, with security fixes and newer versions to keep it stable."
+      }
+    },
     {
       "fecha": "2026-11-05",
       "texto": {
@@ -713,14 +735,6 @@
         "es": "Filtro de contenido no analizable para texto, URL e imagen.",
         "gl": "Filtro de contido non analizable para texto, URL e imaxe.",
         "en": "Filter for non-analysable content in text, URL and image modes."
-      }
-    },
-    {
-      "fecha": "2026-07-15",
-      "texto": {
-        "es": "Inicio de sesión con Google y revisión completa de la arquitectura.",
-        "gl": "Inicio de sesión con Google e revisión completa da arquitectura.",
-        "en": "Google sign-in and a full architecture review."
       }
     }
   ],

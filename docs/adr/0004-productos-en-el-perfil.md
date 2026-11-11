@@ -28,5 +28,5 @@ portada. La persona quiere que la portada y el menú sean del taller y que cada 
 ## Consecuencias
 
 - Los campos `promocionado` y `servicios` de `equipo.json` ya no los usa la web (eran para la lista de integrantes de
-  `/productos`). Borrados el 2026-11-11 con la confirmación de la persona.
+  `/productos`). Borrados el 2026-11-10 a petición de la persona («Sí, bórralos»).
 - La tarea semanal y la skill `gw-portal` siguen manteniendo `src/data/productos/` igual; solo cambia dónde se ven.

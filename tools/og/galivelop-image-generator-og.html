@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Vista previa en redes de Galivelop IG en gallego e inglés: el texto de la og-fuente.png (hecha por la persona, en
+     castellano) sobre su placa limpia (fuentes/galivelop-image-generator/og-base.png, de tools/og/limpiar.py). ?l=es|gl|en.
+     La renderiza tools/og/traducir.mjs galivelop-image-generator a fuentes/galivelop-image-generator/og-fuente-<gl|en>.png. -->
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Plus Jakarta Sans";src:url("../../node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2-variations");font-weight:200 800}
+@font-face{font-family:"Inter";src:url("../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2-variations");font-weight:100 900}
+*{margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:url("fuentes/galivelop-image-generator/og-base.png")}
+h1{position:absolute;left:61px;top:268px;font:700 54px/64px "Plus Jakarta Sans",sans-serif;color:#f4f4f8;letter-spacing:-.025em}
+h1 .p{margin-left:-.08em}
+hr{position:absolute;left:62px;top:348px;width:54px;height:3px;border:0;background:#8b5cf6}
+p{position:absolute;left:62px;top:367px;width:540px;font:400 22.5px/34px "Inter",sans-serif;color:#c3c6d2;letter-spacing:-.01em}
+</style></head><body>
+<h1 id="titulo"></h1><hr><p id="texto"></p>
+<script>
+const TEXTOS = {
+  es: ['Pide, prueba, elige.', 'Imágenes con IA local: un servicio por máquina,<br>para varios proyectos.'],
+  gl: ['Pide, proba, elixe.', 'Imaxes con IA local: un servizo por máquina,<br>para varios proxectos.'],
+  en: ['Ask, try, choose.', 'Local AI images: one service per machine,<br>for several projects.'],
+};
+const l = TEXTOS[new URLSearchParams(location.search).get('l')] ? new URLSearchParams(location.search).get('l') : 'es';
+document.documentElement.lang = l;
+titulo.innerHTML = TEXTOS[l][0].replace(/([,.])/g, '<span class="p">$1</span>');
+texto.innerHTML = TEXTOS[l][1];
+</script>
+</body></html>

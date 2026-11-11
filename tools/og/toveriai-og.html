@@ -1,0 +1,27 @@
+<!doctype html>
+<!-- Vista previa en redes de toVeriAI en gallego e inglés: el texto de la og-fuente.png (hecha por la persona, en
+     castellano) sobre su placa limpia (fuentes/toveriai/og-base.png, de tools/og/limpiar.py). ?l=es|gl|en.
+     La renderiza tools/og/traducir.mjs toveriai a fuentes/toveriai/og-fuente-<gl|en>.png. -->
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Cormorant Garamond";src:url("../../node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"DM Sans";src:url("../../node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2") format("woff2-variations");font-weight:100 1000}
+*{margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:url("fuentes/toveriai/og-base.png")}
+h1{position:absolute;left:60px;top:218px;font:400 78px/80px "Cormorant Garamond",serif;color:#2b2b2b;letter-spacing:-.005em}
+hr{position:absolute;left:61px;top:388px;width:54px;height:3px;border:0;background:#2e6b4f}
+p{position:absolute;left:61px;top:409px;width:560px;font:400 23px/35px "DM Sans",sans-serif;color:#3a3a3a}
+</style></head><body>
+<h1 id="titulo"></h1><hr><p id="texto"></p>
+<script>
+const TEXTOS = {
+  es: ['La verdad<br>no es binaria.', 'Entre lo cierto y lo falso hay todo un espectro.<br>Nosotros lo medimos.'],
+  gl: ['A verdade<br>non é binaria.', 'Entre o certo e o falso hai todo un espectro.<br>Nós medímolo.'],
+  en: ['Truth<br>isn’t binary.', 'Between true and false lies a whole spectrum.<br>We measure it.'],
+};
+const l = TEXTOS[new URLSearchParams(location.search).get('l')] ? new URLSearchParams(location.search).get('l') : 'es';
+document.documentElement.lang = l;
+[titulo.innerHTML, texto.innerHTML] = TEXTOS[l];
+</script>
+</body></html>

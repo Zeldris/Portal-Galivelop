@@ -31,12 +31,16 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · fase 4: interfaz hecha, a falta de probarla a mano",
-    "gl": "En desenvolvemento · fase 4: interface feita, a falta de probala a man",
-    "en": "In development · phase 4: interface done, still to be tried by hand"
+    "es": "En desarrollo · v0.4.1 · en marcha la 0.5: borrar, texto y renombrar",
+    "gl": "En desenvolvemento · v0.4.1 · en marcha a 0.5: borrar, texto e renomear",
+    "en": "In development · v0.4.1 · 0.5 under way: delete, text and rename"
   },
   "etiquetas": [
-    { "es": "IA local", "gl": "IA local", "en": "Local AI" },
+    {
+      "es": "IA local",
+      "gl": "IA local",
+      "en": "Local AI"
+    },
     "Python",
     "stable-diffusion.cpp",
     "FLUX.2",
@@ -928,7 +932,11 @@
           "en": "Python 3 (standard library)"
         },
         "CLI gimg",
-        { "es": "API HTTP local", "gl": "API HTTP local", "en": "Local HTTP API" },
+        {
+          "es": "API HTTP local",
+          "gl": "API HTTP local",
+          "en": "Local HTTP API"
+        },
         {
           "es": "Interfaz web local (HTML y JS sin framework)",
           "gl": "Interface web local (HTML e JS sen framework)",
@@ -956,7 +964,11 @@
           "gl": "PNG + manifesto JSON",
           "en": "PNG + JSON manifest"
         },
-        { "es": "Registro JSONL", "gl": "Rexistro JSONL", "en": "JSONL log" },
+        {
+          "es": "Registro JSONL",
+          "gl": "Rexistro JSONL",
+          "en": "JSONL log"
+        },
         {
           "es": "Composición con ffmpeg y rsvg-convert",
           "gl": "Composición con ffmpeg e rsvg-convert",
@@ -975,53 +987,21 @@
   ],
   "hitos": [
     {
-      "version": "0",
+      "version": "0.1–0.3",
       "nombre": {
-        "es": "Esqueleto",
-        "gl": "Esqueleto",
-        "en": "Skeleton"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "1",
-      "nombre": {
-        "es": "Núcleo",
-        "gl": "Núcleo",
-        "en": "Core"
-      },
-      "estado": "hecho"
-    },
-    {
-      "version": "2",
-      "nombre": {
-        "es": "Motor real",
-        "gl": "Motor real",
-        "en": "Real engine"
+        "es": "Núcleo, motor real y API",
+        "gl": "Núcleo, motor real e API",
+        "en": "Core, real engine and API"
       },
       "estado": "hecho",
       "detalle": {
-        "es": "Motor real conectado, instalador, composición de texto y logo, y medida de marca. Quedan por probar a mano en la Deck las rondas de ajuste.",
-        "gl": "Motor real conectado, instalador, composición de texto e logo, e medida de marca. Quedan por probar a man na Deck as roldas de axuste.",
-        "en": "Real engine connected, installer, text and logo composition, and brand measurement. The tuning rounds are still to be tried by hand on the Deck."
+        "es": "Motor real conectado, instalador, composición de texto y logo, y un servicio local que arranca solo al hacer un pedido. Quedan por probar a mano en la Deck las rondas de ajuste y el arranque bajo demanda.",
+        "gl": "Motor real conectado, instalador, composición de texto e logo, e un servizo local que arranca só ao facer un pedido. Quedan por probar a man na Deck as roldas de axuste e o arranque baixo demanda.",
+        "en": "Real engine connected, installer, text and logo composition, and a local service that starts by itself when you place a request. The tuning rounds and the on-demand start are still to be tried by hand on the Deck."
       }
     },
     {
-      "version": "3",
-      "nombre": {
-        "es": "API y arranque bajo demanda",
-        "gl": "API e arranque baixo demanda",
-        "en": "API and on-demand start"
-      },
-      "estado": "hecho",
-      "detalle": {
-        "es": "API local y servicio que arranca solo al hacer un pedido y se para tras un rato sin uso. Falta comprobar a mano en la Deck que se abre el navegador y se para a los 15 minutos.",
-        "gl": "API local e servizo que arranca só ao facer un pedido e se para tras un tempo sen uso. Falta comprobar a man na Deck que se abre o navegador e se para aos 15 minutos.",
-        "en": "Local API and a service that starts by itself when you place a request and stops after a while idle. Still to check by hand on the Deck: the browser opens and the service stops after 15 minutes."
-      }
-    },
-    {
-      "version": "4",
+      "version": "0.4",
       "nombre": {
         "es": "Interfaz de tres pantallas",
         "gl": "Interface de tres pantallas",
@@ -1035,7 +1015,58 @@
       }
     },
     {
-      "version": "5",
+      "version": "0.5",
+      "nombre": {
+        "es": "Borrar, texto y renombrar",
+        "gl": "Borrar, texto e renomear",
+        "en": "Delete, text and rename"
+      },
+      "estado": "curso",
+      "detalle": {
+        "es": "Borrar intentos, composiciones, plantillas y elementos; editar el texto y la tipografía de lo compuesto; renombrar un pedido, y una interfaz mejorada.",
+        "gl": "Borrar intentos, composicións, modelos e elementos; editar o texto e a tipografía do composto; renomear un pedido, e unha interface mellorada.",
+        "en": "Delete attempts, compositions, templates and elements; edit the text and typography of what is composed; rename a request, and an improved interface."
+      }
+    },
+    {
+      "version": "0.6",
+      "nombre": {
+        "es": "Montaje",
+        "gl": "Montaxe",
+        "en": "Assembly"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Un formato se compone por capas con piezas del proyecto y archivos propios, y el motor lo encaja en una sola imagen.",
+        "gl": "Un formato compónse por capas con pezas do proxecto e arquivos propios, e o motor encáixao nunha soa imaxe.",
+        "en": "A format is built in layers from the project’s pieces and your own files, and the engine blends it into a single image."
+      }
+    },
+    {
+      "version": "0.7",
+      "nombre": {
+        "es": "Cajas de texto antes de generar",
+        "gl": "Caixas de texto antes de xerar",
+        "en": "Text boxes before generating"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "El texto se coloca antes de generar, para que la imagen le deje sitio y se lea bien.",
+        "gl": "O texto colócase antes de xerar, para que a imaxe lle deixe sitio e se lea ben.",
+        "en": "Text is placed before generating, so the image leaves room for it and it reads well."
+      }
+    },
+    {
+      "version": "0.8",
+      "nombre": {
+        "es": "Borrar pedidos desde la interfaz",
+        "gl": "Borrar pedidos desde a interface",
+        "en": "Delete requests from the interface"
+      },
+      "estado": "pendiente"
+    },
+    {
+      "version": "0.9",
       "nombre": {
         "es": "Piloto con World-Maker-Fantasy",
         "gl": "Piloto con World-Maker-Fantasy",
@@ -1043,13 +1074,12 @@
       },
       "estado": "pendiente",
       "detalle": {
-        "es": "Configuración de ejemplo y guía de integración para que el juego pida y reciba la imagen elegida sin copiar a mano, con estilo propio.",
-        "gl": "Configuración de exemplo e guía de integración para que o xogo pida e reciba a imaxe elixida sen copiar a man, con estilo propio.",
-        "en": "Example configuration and integration guide so the game can request and receive the chosen image without copying by hand, with its own style."
+        "es": "El juego pide y recibe la imagen elegida sin copiar a mano, con estilo propio, fondo transparente e imágenes de referencia.",
+        "gl": "O xogo pide e recibe a imaxe elixida sen copiar a man, con estilo propio, fondo transparente e imaxes de referencia.",
+        "en": "The game requests and receives the chosen image without copying by hand, with its own style, a transparent background and reference images."
       }
     },
     {
-      "version": "6",
       "nombre": {
         "es": "Director local",
         "gl": "Director local",
@@ -1063,7 +1093,6 @@
       }
     },
     {
-      "version": "7",
       "nombre": {
         "es": "Compatibilidad",
         "gl": "Compatibilidade",

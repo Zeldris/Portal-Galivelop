@@ -16,8 +16,6 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
 - **Producto**: lo que la marca ofrece en Productos. Nace de un proyecto del taller; tiene un responsable (el
   creador) y, si los hay, colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o
   `proximamente`.
-- **Integrante promocionado**: miembro del taller que Álvaro proponía para Productos (ADR 0002). Desde la ADR 0004
-  no se usa; sus campos de `equipo.json` se borraron el 2026-11-11.
 - **Novedades**: lo último de cada proyecto (las `novedades` de su ficha) y las publicaciones del muro, juntos y lo
   más reciente primero, en `/novedades`.
 - **Encargo**: proyecto de pago que alguien contrata directamente con un miembro del taller, no con Galivelop

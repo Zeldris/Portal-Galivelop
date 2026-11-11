@@ -1,6 +1,7 @@
 <!doctype html>
 <!-- Imagen de presentación de Galivelop-workflow (1200×630): la renderiza tools/og/presentacion.mjs a og-fuente.png y
-     presentacion.webp. Identidad de docs/marca.md, al estilo de tools/og/portal.html: bloque celeste hondo plano con
+     presentacion.webp (?l=gl y ?l=en: og-fuente-gl.png y og-fuente-en.png, la vista previa de las páginas en gallego e
+     inglés; el collage usa la de castellano). Identidad de docs/marca.md, al estilo de tools/og/portal.html: bloque celeste hondo plano con
      isobatas, sin degradados ni resplandores; marca arriba a la izquierda, titular y lema a la izquierda y, a la
      derecha, el relevo como cinco fichas con chaflán. -->
 <html lang="es"><head><meta charset="utf-8">
@@ -35,8 +36,8 @@ p{position:absolute;left:54px;top:430px;width:470px;font-size:22px;line-height:1
 </style></head><body>
 <img class="mar" src="../../public/marca/isobatas.svg" alt="">
 <div class="marca"><svg viewBox="0 0 128 128" aria-hidden="true"><path d="M0 0H100L128 28V128H0Z" fill="#1AA6DF"/><g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M55.4 45.6 A24 24 0 1 0 64 64"/><path d="M50 64 H80"/><path d="M71 40 L89.5 88 L108 40"/></g></svg>galivelop-workflow</div>
-<h1>Relevos sin<em>perder nada.</em></h1>
-<p>La forma de trabajar con agentes de IA, empaquetada: bitácora, check y revisión antes de publicar.</p>
+<h1 id="titulo">Relevos sin<em>perder nada.</em></h1>
+<p id="lema">La forma de trabajar con agentes de IA, empaquetada: bitácora, check y revisión antes de publicar.</p>
 <div class="pie">handoff.md · /gw-selector · check · /code-review · main</div>
 <div class="relevo">
   <svg class="ruta" viewBox="0 0 510 470"><path d="M20 470 L488 36" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="3 7"/><circle cx="488" cy="36" r="6" fill="#fff"/></svg>
@@ -46,4 +47,15 @@ p{position:absolute;left:54px;top:430px;width:470px;font-size:22px;line-height:1
   <div class="ficha t4"><b>04</b><span>/code-review</span></div>
   <div class="ficha t5"><b>05</b><span>→ main</span></div>
 </div>
+<script>
+const TEXTOS = {
+  gl: ['Relevos sen<em>perder nada.</em>', 'A forma de traballar con axentes de IA, empaquetada: bitácora, check e revisión antes de publicar.'],
+  en: ['Hand-offs,<em>nothing lost.</em>', 'A way of working with AI agents, packaged: log, check and review before publishing.'],
+};
+const l = new URLSearchParams(location.search).get('l');
+if (TEXTOS[l]) {
+  document.documentElement.lang = l;
+  [titulo.innerHTML, lema.textContent] = TEXTOS[l];
+}
+</script>
 </body></html>

@@ -8,10 +8,27 @@ import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
 
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
 const imagenDe = (src) => `${SITIO}/${src}?v=${createHash('sha1').update(readFileSync(`public/${src}`)).digest('hex').slice(0, 8)}`;
-const IMAGEN = imagenDe('marca/galivelop-portal.jpg');
-const conImagen = (html, url) => html
-  .replace(/(property="og:image" content=")[^"]*/, `$1${url}`)
-  .replace(/(name="twitter:image" content=")[^"]*/, `$1${url}`);
+// Vista previa en redes de las páginas sin imagen propia, en el idioma de cada página (la generan tools/og/portal.mjs).
+const IMAGEN = {
+  es: imagenDe('marca/galivelop-portal.jpg'),
+  gl: imagenDe('marca/galivelop-portal-gl.jpg'),
+  en: imagenDe('marca/galivelop-portal-en.jpg'),
+};
+const ALT_PORTAL = {
+  es: 'Portada de Galivelop sobre carta náutica celeste: «Hacemos reales los proyectos que parecen imposibles»',
+  gl: 'Portada de Galivelop sobre carta náutica celeste: «Facemos reais os proxectos que semellan imposibles»',
+  en: 'Galivelop cover on a sky-blue nautical chart: “We make seemingly impossible projects real”',
+};
+const conImagen = (html, url, alt) => {
+  html = html
+    .replace(/(property="og:image" content=")[^"]*/, `$1${url}`)
+    .replace(/(name="twitter:image" content=")[^"]*/, `$1${url}`);
+  return alt
+    ? html
+      .replace(/(property="og:image:alt" content=")[^"]*/, `$1${esc(alt)}`)
+      .replace(/(name="twitter:image:alt" content=")[^"]*/, `$1${esc(alt)}`)
+    : html;
+};
 const base = readFileSync('dist/index.html', 'utf8');
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 // El 404 es copia de la portada: lleva la imagen versionada y título y descripción propios en los tres idiomas.
@@ -26,7 +43,7 @@ const [titulo404, descripcion404] = NO_ENCONTRADA.es;
 const guion404 = `<script>var m=/\\/(gl|en)(\\/|$)/.exec(location.pathname),T=${JSON.stringify(NO_ENCONTRADA)},l=T[m?m[1]:'es'];document.title=l[0];document.documentElement.lang=m?m[1]:'es';document.querySelector('meta[name="description"]').content=l[1];</script>`;
 writeFileSync(
   'dist/404.html',
-  conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN)
+  conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN.es, ALT_PORTAL.es)
     .replace(/<title>[^<]*<\/title>/, `<title>${esc(titulo404)}</title>\n    <meta name="robots" content="noindex" />`)
     .replace(/(name="description" content=")[^"]*/, `$1${esc(descripcion404)}`)
     .replace(/(property="og:title" content=")[^"]*/, `$1${esc(titulo404)}`)
@@ -169,26 +186,32 @@ const fechaMiembro = (m) =>
 const LOCALE = { es: 'es_ES', gl: 'gl_ES', en: 'en_US' };
 
 // Vista previa de cada proyecto: public/proyectos/<slug>/og.jpg (1200×630, JPEG; la genera tools/og/generar.py), que las
-// redes aceptan todas; si falta, la portada (WebP, sin medidas).
-const vistaDe = (p) => {
-  const og = `${p.portada.src.replace(/[^/]+$/, '')}og.jpg`;
-  return existsSync(`public/${og}`) ? { imagen: imagenDe(og), medidas: true } : { imagen: imagenDe(p.portada.src), medidas: false };
+// redes aceptan todas; en gallego e inglés, og-gl.jpg y og-en.jpg si existen (el texto de la imagen en ese idioma). Si
+// falta, la portada (WebP, sin medidas). El texto alternativo, el de la presentación si la hay y la vista previa sale de
+// una og-fuente (la misma composición); si sale de la portada, el de la portada.
+const conFuente = (slug) => ['png', 'jpg'].some((x) => existsSync(`tools/og/fuentes/${slug}/og-fuente.${x}`));
+const vistaDe = (p, idioma) => {
+  const carpeta = p.portada.src.replace(/[^/]+$/, '');
+  const alt = (p.presentacion && conFuente(p.slug) ? p.presentacion : p.portada).alt[idioma];
+  const og = [`${carpeta}og-${idioma}.jpg`, `${carpeta}og.jpg`].find((f) => existsSync(`public/${f}`));
+  return og ? { imagen: imagenDe(og), medidas: true, alt } : { imagen: imagenDe(p.portada.src), medidas: false, alt: p.portada.alt[idioma] };
 };
 
 const paginas = [];
 for (const idioma of IDIOMAS) {
   for (const [ruta, t] of Object.entries(FIJAS)) {
-    paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN, fecha: FECHA_FIJA[ruta] });
+    paginas.push({ idioma, ruta, titulo: t[idioma][0], descripcion: t[idioma][1] ?? FIJAS[''][idioma][1], imagen: IMAGEN[idioma], fecha: FECHA_FIJA[ruta] });
   }
   for (const p of proyectos) {
-    p.vista ??= vistaDe(p);
+    const vista = vistaDe(p, idioma);
     paginas.push({
       idioma,
       ruta: `proyectos/${p.slug}`,
       // `seo`, opcional en la ficha: título y descripción cortos para buscadores (si no, el lema y el resumen).
       titulo: `${p.nombre} · ${(p.seo?.titulo ?? p.lema)[idioma].replace(/\.$/, '')} · Galivelop`,
       descripcion: (p.seo?.descripcion ?? p.resumen)[idioma],
-      imagen: p.vista.imagen,
+      imagen: vista.imagen,
+      vista,
       fecha: p.actualizado,
       proyecto: p,
     });
@@ -203,7 +226,7 @@ for (const idioma of IDIOMAS) {
       // la foto (webp, cuadrada y pequeña) no sirve como vista previa grande en redes.
       // Buscadores: hasta 160 caracteres (Google corta lo demás); se recorta por palabra completa.
       descripcion: recorta(`${p.rol[idioma]} · ${(p.perfil?.resumen ?? p.bio)[idioma]}`, 160),
-      imagen: IMAGEN,
+      imagen: IMAGEN[idioma],
       fecha: (p.fecha ??= fechaMiembro(p)),
       persona: p,
     });
@@ -316,14 +339,8 @@ for (const pg of paginas) {
   for (const k of ['name="description"', 'property="og:description"', 'name="twitter:description"']) {
     html = html.replace(new RegExp(`(${k} content=")[^"]*`), `$1${esc(pg.descripcion)}`);
   }
-  html = conImagen(html, pg.imagen);
-  if (pg.proyecto) {
-    const alt = esc(pg.proyecto.portada.alt[pg.idioma]);
-    if (!pg.proyecto.vista.medidas) html = html.replace(/\s*<meta property="og:image:(width|height|type)"[^>]*>/g, '');
-    html = html
-      .replace(/(property="og:image:alt" content=")[^"]*/, `$1${alt}`)
-      .replace(/(name="twitter:image:alt" content=")[^"]*/, `$1${alt}`);
-  }
+  html = conImagen(html, pg.imagen, pg.vista?.alt ?? ALT_PORTAL[pg.idioma]);
+  if (pg.vista && !pg.vista.medidas) html = html.replace(/\s*<meta property="og:image:(width|height|type)"[^>]*>/g, '');
   html = html
     .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
     .replace('<div id="root"></div>', `<div id="root">${cuerpo(pg)}</div>`);
@@ -336,10 +353,31 @@ for (const idioma of IDIOMAS) {
   for (const [ruta, destino] of Object.entries(DE_PASO)) {
     const url = urlDe(idioma, destino);
     const titulo = esc(FIJAS[destino][idioma][0]);
+    const descripcion = esc(FIJAS[destino][idioma][1] ?? FIJAS[''][idioma][1]);
+    // Un enlace viejo que se comparte aún enseña la tarjeta de su destino: título, descripción e imagen en su idioma.
+    const tarjeta = [
+      `<meta name="description" content="${descripcion}" />`,
+      '<meta property="og:type" content="website" />',
+      '<meta property="og:site_name" content="Galivelop" />',
+      `<meta property="og:locale" content="${LOCALE[idioma]}" />`,
+      `<meta property="og:url" content="${url}" />`,
+      `<meta property="og:title" content="${titulo}" />`,
+      `<meta property="og:description" content="${descripcion}" />`,
+      `<meta property="og:image" content="${IMAGEN[idioma]}" />`,
+      '<meta property="og:image:type" content="image/jpeg" />',
+      '<meta property="og:image:width" content="1200" />',
+      '<meta property="og:image:height" content="630" />',
+      `<meta property="og:image:alt" content="${esc(ALT_PORTAL[idioma])}" />`,
+      '<meta name="twitter:card" content="summary_large_image" />',
+      `<meta name="twitter:title" content="${titulo}" />`,
+      `<meta name="twitter:description" content="${descripcion}" />`,
+      `<meta name="twitter:image" content="${IMAGEN[idioma]}" />`,
+      `<meta name="twitter:image:alt" content="${esc(ALT_PORTAL[idioma])}" />`,
+    ].join('\n    ');
     mkdirSync(`dist/${prefijo(idioma)}${ruta}`, { recursive: true });
     writeFileSync(
       `dist/${prefijo(idioma)}${ruta}/index.html`,
-      `<!doctype html>\n<html lang="${idioma}">\n  <head>\n    <meta charset="UTF-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <title>${titulo}</title>\n    <meta name="robots" content="noindex" />\n    <link rel="canonical" href="${url}" />\n    <meta http-equiv="refresh" content="0; url=${url}" />\n  </head>\n  <body>\n    <p><a href="${url}">${titulo}</a></p>\n  </body>\n</html>\n`,
+      `<!doctype html>\n<html lang="${idioma}">\n  <head>\n    <meta charset="UTF-8" />\n    <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n    <title>${titulo}</title>\n    ${tarjeta}\n    <meta name="robots" content="noindex" />\n    <link rel="canonical" href="${url}" />\n    <meta http-equiv="refresh" content="0; url=${url}" />\n  </head>\n  <body>\n    <p><a href="${url}">${titulo}</a></p>\n  </body>\n</html>\n`,
     );
   }
 }

@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-11-08",
+  "actualizado": "2026-11-10",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -3976,6 +3976,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-10",
+      "texto": {
+        "es": "Avanza el hito 0.4: Tarkor ya tiene su propio generador de mapas, que construye cada región por capas, y con él se puede viajar entre regiones contando las horas y las jornadas de camino. Además, 25 zonas del mundo se ponen al día con el canon de la historia.",
+        "gl": "Avanza o fito 0.4: Tarkor xa ten o seu propio xerador de mapas, que constrúe cada rexión por capas, e con el pódese viaxar entre rexións contando as horas e as xornadas de camiño. Ademais, 25 zonas do mundo póñense ao día co canon da historia.",
+        "en": "Milestone 0.4 moves forward: Tarkor now has its own map generator, which builds each region in layers, and with it you can travel between regions counting the hours and days on the road. Also, 25 zones of the world are brought in line with the story’s canon."
+      }
+    },
     {
       "fecha": "2026-11-05",
       "texto": {

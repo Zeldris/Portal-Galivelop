@@ -51,4 +51,34 @@ describe('vista previa de cada proyecto', () => {
       );
     },
   );
+
+  // En gallego e inglés: og-gl.jpg y og-en.jpg salen de og-fuente-gl.png y og-fuente-en.png (o .jpg; el texto de la
+  // imagen traducido) y van en las páginas de ese idioma; sin esa fuente no debe quedar un og-<idioma>.jpg viejo. Una
+  // og-fuente en castellano lleva texto, así que exige las dos (si no, /gl/ y /en/ enseñarían el texto en castellano).
+  it.each(proyectos.flatMap((p) => ['gl', 'en'].map((idioma) => [p.slug, idioma, p.portada.src])))(
+    '%s en %s: og-<idioma>.jpg al día con su og-fuente-<idioma>',
+    (slug, idioma, portada) => {
+      const ruta = `public/${portada.replace(/[^/]+$/, '')}og-${idioma}.jpg`;
+      const deIdioma = (x: string) => `tools/og/fuentes/${slug}/og-fuente-${x}`;
+      const fuente = [`${idioma}.png`, `${idioma}.jpg`].map(deIdioma).find((f) => existsSync(f));
+      const castellano = ['png', 'jpg'].some((x) =>
+        existsSync(`tools/og/fuentes/${slug}/og-fuente.${x}`),
+      );
+      expect(
+        castellano && !fuente,
+        `falta ${deIdioma(`${idioma}.png`)}: la og-fuente en castellano lleva texto (node tools/og/traducir.mjs ${slug})`,
+      ).toBe(false);
+      if (!fuente) {
+        expect(existsSync(ruta), `sobra ${ruta}: python3 tools/og/generar.py`).toBe(false);
+        return;
+      }
+      expect(existsSync(ruta), `falta ${ruta}: python3 tools/og/generar.py`).toBe(true);
+      const og = readFileSync(ruta);
+      expect(medidasJpeg(og)).toEqual([1200, 630]);
+      const huella = `og-fuente:${createHash('sha1').update(readFileSync(fuente)).digest('hex')}`;
+      expect(comentarioJpeg(og), `${ruta} no sale de ${fuente}: python3 tools/og/generar.py`).toBe(
+        huella,
+      );
+    },
+  );
 });

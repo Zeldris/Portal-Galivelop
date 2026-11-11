@@ -9,7 +9,10 @@ portada más ancha que 1.91:1 (una ilustración apaisada) se recorta por los lad
 cortar texto ni diagramas) sobre un fondo del color medio de sus bordes.
 Cada og.jpg lleva en su comentario JPEG la huella del archivo del que sale («portada:<sha1>» u «og-fuente:<sha1>»):
 src/data/og.test.ts falla si ese archivo cambia y nadie regenera la vista previa.
-Uso, tras cambiar una portada: python3 tools/og/generar.py   (necesita Pillow; escribe public/proyectos/<slug>/og.jpg)
+Vistas previas por idioma: si hay `og-fuente-gl.png` u `og-fuente-en.png` (el texto de la imagen en gallego o inglés;
+salen de tools/og/traducir.mjs o tools/og/presentacion.mjs), se escriben también og-gl.jpg y og-en.jpg, que
+scripts/paginas-estaticas.mjs usa en las páginas de ese idioma. Sin su fuente, un og-<idioma>.jpg viejo se borra.
+Uso, tras cambiar una portada: python3 tools/og/generar.py   (necesita Pillow; escribe public/proyectos/<slug>/og*.jpg)
 """
 import hashlib
 import json
@@ -31,6 +34,7 @@ def borde(img: Image.Image) -> tuple[int, ...]:
 
 
 FUENTES = ('og-fuente.png', 'og-fuente.jpg')
+IDIOMAS = ('gl', 'en')  # el castellano es og.jpg
 # Las fuentes viven fuera de public/ para que no salgan en dist/: solo las usan estas herramientas.
 CARPETA_FUENTES = RAIZ / 'tools/og/fuentes'
 
@@ -41,7 +45,7 @@ def origen(portada: Path, slug: str) -> Path:
 
 
 def huella(archivo: Path) -> bytes:
-    tipo = b'og-fuente' if archivo.name in FUENTES else b'portada'
+    tipo = b'og-fuente' if archivo.name.startswith('og-fuente') else b'portada'
     return tipo + b':' + hashlib.sha1(archivo.read_bytes()).hexdigest().encode()
 
 
@@ -73,6 +77,15 @@ def main() -> int:
         destino = portada.parent / 'og.jpg'
         generar(origen(portada, ficha.stem), destino)
         print(destino.relative_to(RAIZ))
+        for idioma in IDIOMAS:
+            fuente = next((CARPETA_FUENTES / ficha.stem / f'og-fuente-{idioma}.{x}' for x in ('png', 'jpg')
+                           if (CARPETA_FUENTES / ficha.stem / f'og-fuente-{idioma}.{x}').exists()), None)
+            destino = portada.parent / f'og-{idioma}.jpg'
+            if fuente:
+                generar(fuente, destino)
+                print(destino.relative_to(RAIZ))
+            elif destino.exists():
+                destino.unlink()
     return 0
 
 

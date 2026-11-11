@@ -37,8 +37,9 @@ cuando su repositorio es público; si es privado, no se enlaza. Además, el port
 - Tipografías: Big Shoulders Display (títulos, `--fuente-titulos`), Literata (texto, `--fuente-texto`) y JetBrains
   Mono (datos: etiquetas, fechas, cifras; `--fuente-datos`), servidas desde el propio sitio (`@fontsource-variable`).
   La hoja de estilos de la marca completa: [`marca.md`](marca.md).
-- Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630; la renderiza
-  `node tools/og/portal.mjs` desde `tools/og/portal.html`, provisional hasta el recurso 3 de `marca.md`), declarada
+- Vista previa al compartir en redes: `public/marca/galivelop-portal.jpg` (1200×630) y, para las páginas en gallego e
+  inglés, `galivelop-portal-gl.jpg` y `-en.jpg` (las renderiza `node tools/og/portal.mjs` desde `tools/og/portal.html`,
+  con los textos de cada idioma en su `<script>`; provisional hasta el recurso 3 de `marca.md`), declarada
   en `index.html` con URL absolutas (X y otras redes no aceptan rutas relativas).
   Si cambia la portada, rehacer la imagen y nada más: `scripts/paginas-estaticas.mjs` pone en cada página la
   imagen que toca (la de la ficha en las fichas) con `?v=<hash de la imagen>`, para que las redes (Discord, X…)
@@ -75,7 +76,8 @@ página de ese miembro (`colabora`), en una banda discreta de Participa, en «C�
    Opcional, `presentacion`: la imagen de redes del proyecto (apaisada 1.9:1, 1600×840 y `-mini` 720×378), que el
    collage de la portada usa en vez de la `portada` cuando esta es una captura o un diagrama; sale del mismo
    `og-fuente.png` que su `og.jpg`. La de Galivelop-workflow se compone en `tools/og/galivelop-workflow-presentacion.html`
-   y la renderiza `node tools/og/presentacion.mjs galivelop-workflow` (og-fuente, presentación y og.jpg).
+   y la renderiza `node tools/og/presentacion.mjs galivelop-workflow` (og-fuente en los tres idiomas, presentación
+   y og*.jpg). Si la `og-fuente.png` lleva texto, hace falta también en gallego e inglés (ver «Vista previa en redes»).
 3. Todo texto visible va en los tres idiomas: `{ "es": "…", "gl": "…", "en": "…" }`.
 4. Detalles útiles:
    - `orden`: el siguiente número libre (el mayor de los existentes más uno). El portal muestra
@@ -134,8 +136,6 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 - `queOfrece` y cada entrada de `servicios`, en los tres idiomas.
 - `responsable` (id de `equipo.json`, el creador) y `colaboradores` (ids).
 - Sin precio ni forma de conseguirlo: el botón «Me interesa» abre un correo a la marca con el producto en el asunto.
-
-Los campos `promocionado` y `servicios` de `equipo.json` (integrantes promocionados) se borraron tras la ADR 0004.
 
 `npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` lista los
 productos en la página estática de cada miembro; `/productos` es una página de paso (`DE_PASO`) a `/equipo`.
@@ -311,9 +311,15 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   el job `avisar` de `pages.yml` manda después por IndexNow (Bing, Yandex, Seznam, Naver…) las páginas nuevas o con
   otro `lastmod` (`node scripts/indexnow.mjs cambios`, tras `npm run build`, enseña cuáles serían).
 - **Vista previa en redes:** `og:locale` por idioma; la de cada proyecto es `public/proyectos/<slug>/og.jpg`
-  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow) desde `tools/og/fuentes/<slug>/og-fuente.png` (una imagen hecha para
+  (1200×630, JPEG), que genera `python3 tools/og/generar.py` (Pillow; `tools/og/limpiar.py` necesita además numpy) desde `tools/og/fuentes/<slug>/og-fuente.png` (una imagen hecha para
   redes, p. ej. del generador de imágenes de Galivelop; fuera de `public/` para que no salga en `dist/`) si existe, y si no desde la portada; se
-  vuelve a correr al cambiar cualquiera de las dos. Una
+  vuelve a correr al cambiar cualquiera de las dos. **Cada página enseña la vista previa en su idioma**: si la imagen
+  lleva texto, `og-fuente-gl.png` y `og-fuente-en.png` dan `og-gl.jpg` y `og-en.jpg`, que el generador usa en
+  `/gl/` y `/en/` (sin ellas, `og.jpg`). Para una `og-fuente.png` hecha a mano con el texto dentro:
+  `python3 tools/og/limpiar.py` saca su placa sin texto (`og-base.png`), `tools/og/<slug>-og.html` pone encima el
+  texto de cada idioma con las mismas fuentes (de `node_modules/@fontsource*`) y `node tools/og/traducir.mjs <slug>`
+  las renderiza y corre `generar.py` (así están toVeriAI y Galivelop IG). El texto alternativo de la vista previa es el
+  de `presentacion` (o el de la portada) en el idioma de la página. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
 - **Título y descripción:** los de cada página van en `FIJAS` del script; los de un proyecto salen de su lema y su
