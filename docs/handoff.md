@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-11 (iconos 7a, 8a, 8d y 9c aplicados en el inicio, en `ccr-5c066d81-ndsd13`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); la última sesión, `ccr-5c066d81-ndsd13` (traída la rama de trabajo, 2026-11-11) |
-| **Tarea en curso** | Iconos 7a, 8a, 8d y 9c aplicados en el inicio aunque sus series no estén completas (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): `src/assets/iconos/`, `IconoMarca.tsx` y `tools/marca/limpiar-iconos.cjs`. Falta la revisión (fase 1) y la marca; luego a la rama de trabajo, o a `main` si la persona lo confirma |
+| **Tarea en curso** | Iconos 7a, 8a, 8d y 9c aplicados en el inicio aunque sus series no estén completas (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): `src/assets/iconos/`, `IconoMarca.tsx` y `tools/marca/limpiar-iconos.cjs`. Revisado (fase 1: 11 hallazgos, los medios arreglados; leves en «Pendiente»), con su marca; en la rama de trabajo para el domingo, o a `main` si la persona lo confirma |
 | **Siguiente paso** | Cuando lleguen más imágenes a `src/img/`: destino en `docs/marca.md`, aplicarlas, apuntarlas en § Entregados. Faltan del generador: 06 diseño y publicado, 07b, 09a, 12, 15 Developer y los iconos sueltos de la hoja 07. Preguntar a la persona si hace ya las piezas por CSS (11, 16, 20, 21). Quedan las cuatro «Dudas» de `docs/marca.md` |
 | **En `main`** | **Marco del retrato (17) e icono de Galivelop-workflow (23)** (d1d5ede, 2026-11-11, la persona: «ahora sí iremos a main cuando esté listo»; CI en verde; rama de trabajo avanzada hasta ahí).  **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
@@ -19,7 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Lo anterior está en `main` (d1d5ede, 2026-11-11), también los recursos de imagen y el barco a la 19.
-- **Iconos propios en el inicio** (2026-11-11, en `ccr-5c066d81-ndsd13`; **lleva código**): 7a en la línea «Del prototipo al producto», 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros», en lugar de los de lucide. Salen de `public/marca/iconos/` (no los usaba nada) a `src/assets/iconos/`, en un solo trazado con `currentColor`, el `viewBox` recortado al dibujo y un contorno que iguala el grosor de lucide a 24 px; los pinta en línea `IconoMarca.tsx`. Para los que lleguen: `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (en `docs/marca.md`). Capturas en escritorio y móvil.
+- **Iconos propios en el inicio** (2026-11-11, en `ccr-5c066d81-ndsd13`; **lleva código**): 7a en la línea «Del prototipo al producto», 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros», en lugar de los de lucide. Salen de `public/marca/iconos/` (no los usaba nada) a `src/assets/iconos/`, en un solo trazado con `currentColor`, el `viewBox` recortado al dibujo y un contorno proporcional (lado del dibujo / 28) que acerca su grosor al de lucide a 24 px; los pinta en línea `IconoMarca.tsx` (y `iconoMarca(nombre)` para los huecos de lucide). Para los que lleguen: `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (en `docs/marca.md`). Capturas en escritorio y móvil.
 
 ## Hecho
 
@@ -79,6 +79,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 
 ## Pendiente
+
+- **Leves de la revisión de los iconos propios** (2026-11-11, no se vuelven a revisar en este cambio): el commit ac80cf8 deja `Siguiente:` separado de las líneas de atribución por una línea en blanco (no se reescribe historia subida); el grosor de los iconos propios se acerca al de lucide a ojo (lado / 28), sin medida que lo compruebe.
 
 - **Leves de la revisión de las imágenes nuevas (17, 23)** (2026-11-11, no se vuelven a revisar en este cambio): los avatares del equipo en la ficha de proyecto (`.avatar` de `Proyecto.tsx`) no usan `Retrato` (sin marco y la lógica foto/iniciales repetida); `inset: 6%` y el chaflán 90/10 % del retrato dependen del margen de `marco-retrato.webp` sin nada que los ate; la celda «En `main`» ya no nombra e02460c (está en «Hecho»).
 

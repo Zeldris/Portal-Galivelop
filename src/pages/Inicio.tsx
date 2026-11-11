@@ -18,7 +18,7 @@ import { useEffect, useState, type ComponentType, type CSSProperties } from 'rea
 import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
-import { IconoMarca } from '../components/IconoMarca';
+import { IconoMarca, iconoMarca } from '../components/IconoMarca';
 import { MarcaGV } from '../components/Logo';
 import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
@@ -32,24 +32,21 @@ import { useIdioma } from '../i18n/Idioma';
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
 /** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
 const FILTRAR_DESDE = 5;
-/** Iconos de lucide y propios de la marca (`IconoMarca`) en el mismo hueco; los propios van llegando por series. */
+/** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco; los propios van llegando por series. */
 type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
-const IconoCodigo: Icono = () => <IconoMarca nombre="codigo" />;
-const IconoCandado: Icono = () => <IconoMarca nombre="candado" />;
-const IconoRamasUnidas: Icono = () => <IconoMarca nombre="ramas-unidas" />;
 
 const ICONO_LINEA: Record<Linea, Icono> = {
   'ia-local': Cpu,
   mundos: Globe,
   informacion: ShieldCheck,
-  producto: IconoCodigo,
+  producto: iconoMarca('codigo'),
   metodo: Workflow,
 };
 const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
-  [IconoCandado, 'valor1'],
+  [iconoMarca('candado'), 'valor1'],
   [FlaskConical, 'valor2'],
   [Eye, 'valor3'],
-  [IconoRamasUnidas, 'valor4'],
+  [iconoMarca('ramas-unidas'), 'valor4'],
 ];
 
 /** «A, B y C» en el idioma de la página; sin Intl.ListFormat (navegadores viejos), con comas. */
