@@ -121,7 +121,8 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 13 | 2026-11-11 | `public/marca/cabecera-equipo.webp` (1600×500) | Arriba de `/equipo` (`/productos` ya redirige allí, ADR 0004) |
 | 15 (voz) | 2026-11-11 | `public/proyectos/galivelop-voice-generator/proxima.webp` (720×405, recortado el margen de papel) | `imagen` de su entrada en `proximamente.json`; las entradas sin imagen muestran celeste plano con isobatas |
 | 18 | 2026-11-11 | `public/marca/no-encontrado.webp` (900×600) | Página 404 (sustituye al monograma) |
-| 19 | 2026-11-11 | `public/marca/enviado.webp` (480×360, el doble de lo que se muestra; recorte 4:3 del barco de papel grabado sobre el mar) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. El barco llegó como `portada-desarrollo.webp` y se ponía de fondo en las fichas de color en desarrollo (IG y workflow); la hoja lo reserva para la 19, así que se movió aquí (2026-11-11) |
+| 19 | 2026-11-11 | `public/marca/enviado.webp` (480×360, el doble de lo que se muestra; barco de papel con mástil sobre papel, el que llegó para la 19) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. En 88354fb se cambió por un recorte del otro barco (el de mar con olas) y volvió el suyo el 2026-11-11 (la persona: son dos imágenes distintas) |
+| 15 (Developer) | 2026-11-11 | `public/proyectos/galivelop-developer/proxima.webp` (720×405, del barco de papel sobre mar con olas, 1600×900, que llegó como `portada-desarrollo.webp`) | `imagen` de su entrada en `proximamente.json`. La persona (2026-11-11): ese barco es la portada de Developer; sustituye a la terminal con la rama y el anillo que pedía la hoja |
 | 17 | 2026-11-11 | `public/marca/marco-retrato.webp` (400×400, máscara: blanco con transparencia, recortado al cuadro; del PNG q539, el trazador rompe sus marcas) | Alrededor de la foto o las iniciales en `/equipo` y en la página de cada miembro (`Retrato.tsx`); se pinta con `--texto`, así vale en los dos temas |
 | 23 (workflow) | 2026-11-11 | `public/proyectos/galivelop-workflow/icono.svg` (SVG del generador, `viewBox` recortado al dibujo) | `icono` de su ficha: cabecera, tarjeta y muro |
 | 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie sigue con lucide hasta que llegue |
@@ -129,8 +130,8 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 vuelve al generador para rehacerla (la persona, 2026-11-11).
 
 Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18) aún no
-tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: la
-15 de Developer (su tarjeta muestra celeste con isobatas) y las tres portadas 6 (ventana de editor sobre el mar); hasta
+tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: las
+tres portadas 6 (ventana de editor sobre el mar); hasta
 que llegue la de desarrollo, las fichas de color (IG y workflow) muestran celeste con isobatas. Para ponerla: el fondo
 velado por estado de `Proyecto.tsx` y `.cabecera-velada` que se quitaron en 88354fb (`git show 88354fb -- src/pages/Proyecto.tsx src/estilos/global.css`).
 
@@ -144,7 +145,7 @@ y decide la persona.
 - **El mar pone el dónde, la tecnología pone el qué** (la persona, 2026-11-11). El mar y la costa gallega se quedan
   como fondo, color y textura (isobatas, carta náutica, papel, cerúleo); lo que se dibuja como motivo es de software
   (ventana de editor, terminal, ramas, historial de commits, retícula, placa de circuito). Anclas, barcos, faros, remos,
-  boyas, grúas, sextantes y nudos dejan de ser protagonistas. Única excepción: el barco de papel de la 19. La rosa de
+  boyas, grúas, sextantes y nudos dejan de ser protagonistas. Excepciones: los barcos de papel de la 19 y de la 15 de Developer (la persona, 2026-11-11). La rosa de
   los vientos (4) es instrumento de carta y se queda.
 - **Dos registros de dibujo:**
   - **Grabado a dos tintas** para las ilustraciones grandes (3, 6, 10, 11, 13, 15-21): mucho detalle, tramas finas y
@@ -213,8 +214,8 @@ registro → cierre → frase de paleta.
    su logo, su interfaz y su `og` (24), en el lugar del verde alga.
 3. **Versión oscura de los grabados.** Generar solo las que la web muestra a sangre en el tema oscuro (11, 16, 18, 19);
    la 10 y el 1b, por CSS.
-4. **El engranaje de la tarjeta de Developer (15).** La hoja de galivelop-developer los veta; poner su rama que vuelve
-   por un anillo.
+4. ~~**El engranaje de la tarjeta de Developer (15).**~~ Resuelta (2026-11-11): la persona le da el barco de papel
+   sobre mar con olas (ver § Entregados).
 
 ### A. Marca (prioridad 1)
 
@@ -248,11 +249,11 @@ entero; aquí va resumido.
 |---|---|---|---|---|---|
 | 13 | **Cabecera de `/equipo`** (era la de Productos, que ya no tiene página: ADR 0004) | 1600×500 sobre cerúleo (perfil `cabecera`) | Arriba de `/equipo` | Bloque celeste con isobatas | Pistas de placa de circuito dibujadas como curvas de nivel (grabado). **Entregada** |
 | 14 | ~~Icono de producto «implantación y servicio»~~ | — | Sin uso: no hay tarjetas de producto desde el ADR 0004 | — | Caja cuya tapa se despliega en ventana (línea simple); solo si vuelve a hacer falta |
-| 15 | **Tarjetas «Próximamente»** (2) | 1200×675 y `-mini` (perfil `tarjeta`), tercio inferior limpio | `TarjetaProxima` (Voice Generator y Developer) | Celeste plano con isobatas | Voz: onda de sonido como perfil del fondo marino (**entregada**); Developer: terminal de desarrollo con la rama que vuelve por un anillo (grabado; ver «Dudas», 4) |
+| 15 | **Tarjetas «Próximamente»** (2) | 1200×675 y `-mini` (perfil `tarjeta`), tercio inferior limpio | `TarjetaProxima` (Voice Generator y Developer) | Celeste plano con isobatas | Voz: onda de sonido como perfil del fondo marino (**entregada**); Developer: barco de papel sobre el mar con olas (**entregada**, la persona, 2026-11-11; antes, terminal con la rama que vuelve por un anillo) |
 | 16 | **Cabecera del Muro** | 1600×400 sobre papel (perfil `muro`) | Arriba de `/muro` | Sin cabecera | Tablero de tareas de tres columnas con tarjetas en blanco (grabado) |
 | 17 | **Marco de retrato del equipo** | SVG 400×400; la foto va dentro | `/equipo` y página de cada miembro | Borde 1 px | Marco con marcas de grados y chaflán, centro limpio, sobre croma (grabado) |
 | 18 | **Ilustración de la página 404** | 900×600 sobre papel | `NoEncontrado.tsx` | Solo texto | Ruta discontinua que acaba en un eslabón roto que se enrosca como un signo de interrogación (grabado). **Entregada** |
-| 19 | **Estado «enviado» de los formularios** | 480×360 sobre papel | `form.listo` en `/proponer` y `/unirse` | Solo texto | Barco de papel que sale del muelle (grabado; la única excepción náutica). **Entregada** |
+| 19 | **Estado «enviado» de los formularios** | 480×360 sobre papel | `form.listo` en `/proponer` y `/unirse` | Solo texto | Barco de papel que sale del muelle (grabado; excepción náutica, como la 15 de Developer). **Entregada** |
 | 20 | **Cabecera de páginas legales** | SVG 1200×80 sobre papel | `/aviso-legal`, `/privacidad`, `/terminos` | Nada | Borde de cajetín de plano con reglas interiores y marcas de esquina (grabado) |
 | 21 | **Patrón de fondo del pie** | 1200×300 repetible en los dos ejes, cerúleo | `Pie.tsx` | Celeste plano | Curvas de nivel sin costuras sobre cerúleo (grabado) |
 | 22 | **Textura de papel** (opcional) | 512×512 repetible, grano casi invisible | Fondo de página bajo la retícula | Color plano | Grano de papel finísimo, casi blanco (sin pedido aún) |
