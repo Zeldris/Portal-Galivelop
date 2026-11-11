@@ -1,7 +1,7 @@
 # Marca Galivelop: hoja de estilos
 
-**Estado:** borrador aprobado en dirección por la persona (2026-11-08), pendiente de elegir tipografía y de aplicarlo a
-`src/estilos/global.css`. Prototipo: https://claude.ai/artifact/UoLydvcktgu8jYwioKbygq. Referencias y fuentes:
+**Estado:** aprobada por la persona y aplicada a la web (2026-11-08, tipografía B); los recursos de imagen, al día con
+la hoja del generador (2026-11-11). Prototipo: https://claude.ai/artifact/UoLydvcktgu8jYwioKbygq. Referencias y fuentes:
 [`investigacion/estilo-marca.md`](investigacion/estilo-marca.md). El mensaje (qué decimos) sigue en
 [`desarrollo.md#mensaje`](desarrollo.md#mensaje); aquí va cómo se ve.
 
@@ -104,10 +104,10 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números
 | 3 | `public/marca/galivelop-portal.jpg` (1200×630, referenciada en `index.html`) | Copiar y comprobar la referencia de `og:image` |
 | 4, 5 | `public/marca/rosa-vientos.svg`, `public/marca/sello.svg` | Vectorizar |
 | 6 | `public/proyectos/<slug>/portada.webp` (+ `portada-mini.webp`) | Convertir a WebP, grande y `-mini` |
-| 7, 8, 9, 14 | `public/marca/iconos/<nombre>.svg` | Vectorizar la hoja y recortar cada icono (trazo uniforme, `currentColor`) |
+| 7, 8, 9 | `public/marca/iconos/<nombre>.svg` | Vectorizar la hoja y recortar cada icono (trazo uniforme, `currentColor`) |
 | 10, 11, 13, 16, 18, 19, 21, 22 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel |
 | 12, 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
-| 15 | Decidir al recibirlo: las entradas de «Próximamente» aún no tienen carpeta en `public/proyectos/` | Convertir a WebP |
+| 15 | `public/proyectos/<slug>/proxima.webp` y su `imagen` en `src/data/proximamente.json` | Convertir a WebP (720×405) |
 | 23 | `public/proyectos/<slug>/icono.png`, el `icono` de la ficha | Copiar a 512×512 |
 | 24 | `tools/og/fuentes/<slug>/og-fuente.png` (fuera de `public/`, para que no salga en `dist/`) | `python3 tools/og/generar.py` genera el `og.jpg`; `src/data/og.test.ts` comprueba la huella |
 
@@ -125,79 +125,142 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 19 | 2026-11-11 | `public/marca/enviado.webp` (640×480) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse` |
 
 Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18, 19) aún no
-tienen versión para el tema oscuro: se muestran enmarcadas tal cual.
+tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: la
+15 de Developer (su tarjeta muestra celeste con isobatas) y la 6 «diseno» y «publicado» (ninguna ficha de color está hoy
+en esos estados).
 
 ### Cómo pedirlas
 
-- **Un solo estilo para todo:** cada prompt termina con el bloque común de abajo. Si el generador admite imagen de
-  referencia, la primera pieza aprobada (la portada social, nº 3) se pasa como referencia a todas las demás.
-- **Sin texto** en ninguna imagen: el texto lo pone la web en los tres idiomas. Tampoco banderas ni cruces de Santiago.
-- **Dos fondos:** sobre **celeste hondo** (`#0072a8`) con líneas blancas, o sobre **papel** (`#fbfcfd`) con líneas
-  gris granito (`#13212b`). Cada prompt dice cuál. Lo que va sobre papel se pide también en versión para el tema
-  oscuro (líneas claras `#e6eef3` sobre `#0d171e`) o, mejor, en SVG, que se colorea por CSS.
-- **Formatos:** fotos/ilustraciones de fondo en WebP, grande + `-mini` como en
-  [`desarrollo.md`](desarrollo.md#añadir-o-actualizar-un-proyecto). Iconos y marcos: PNG con transparencia a 1024 px,
-  que se vectorizan aquí a SVG (trazo uniforme, sin relleno), para colorearlos con `currentColor`.
-- **Pedir en serie, no de uno en uno:** los iconos como hoja de contactos (una cuadrícula con 6-8 por imagen) para que
-  compartan trazo; las portadas por estado en la misma sesión con la misma semilla.
-- **Qué no pedir:** personas (las fotos del equipo son reales), capturas o ilustraciones de un proyecto (viven en su
-  propio repo y entran por su ficha), nada con degradado, resplandor o esquina redonda.
+La fuente de cómo se piden es la hoja del Portal en el generador (`galivelop-image-generator`,
+`docs/marcas/portal/hoja.md`, «Identidad vigente», y los pedidos de `examples/portal/orders/marca/`); lo de aquí es su
+resumen, puesto al día el 2026-11-11 con esa hoja (`db9c364`). Si las dos dicen cosas distintas, se apunta en «Dudas»
+y decide la persona.
 
-**Bloque de estilo común (al final de cada prompt):**
-> Flat vector illustration, nautical chart aesthetic, thin lines of even width, no gradients, no glow, no shading,
-> no text, no letters, no watermark, sharp 45-degree cut corners instead of rounded corners, lots of empty space,
-> minimal, technical, serene. Palette strictly limited to sky blue #0072a8, off-white #fbfcfd, ink grey #13212b and
-> a touch of seaweed green #5d7a6a.
+- **El mar pone el dónde, la tecnología pone el qué** (la persona, 2026-11-11). El mar y la costa gallega se quedan
+  como fondo, color y textura (isobatas, carta náutica, papel, cerúleo); lo que se dibuja como motivo es de software
+  (ventana de editor, terminal, ramas, historial de commits, retícula, placa de circuito). Anclas, barcos, faros, remos,
+  boyas, grúas, sextantes y nudos dejan de ser protagonistas. Única excepción: el barco de papel de la 19. La rosa de
+  los vientos (4) es instrumento de carta y se queda.
+- **Dos registros de dibujo:**
+  - **Grabado a dos tintas** para las ilustraciones grandes (3, 6, 10, 11, 13, 15-21): mucho detalle, tramas finas y
+    líneas de varios grosores, con el mar de líneas de ola y batimetría (aprobado por la persona en la 6, q310 y q311).
+  - **Línea simple** para iconos y pictogramas (1, 1b, 4, 5, 7, 8, 9, 12, 14, 23): un solo grosor de trazo, sin trama
+    ni relleno, legible a 24 px, una sola tinta; se vectorizan a SVG y se colorean con `currentColor`.
+- **Sin texto** en ninguna imagen: el texto lo pone la web en los tres idiomas. Tampoco banderas, cruces de Santiago,
+  personas, manos, robots, cerebros, cohetes, gráficas de crecimiento ni lugares reales reconocibles.
+- **Cuatro tintas:** cerúleo `#0072a8` (en el prompt, «medium cerulean ocean blue»: «sky blue» da `#1aa6df`), papel
+  `#fbfcfd`, gris tinta `#13212b` y un toque de verde alga `#5d7a6a`. Los grabados admiten tonos del cerúleo; los
+  iconos, una sola tinta. Ningún nombre de color fuera de las tintas, ni como adjetivo («golden», «white»).
+- **Zonas limpias:** el hueco para el texto de la web (o el centro de un marco) se describe en positivo y al principio
+  («the lower third of the sheet is plain flat off-white paper, open and unmarked») y la trama se confina al resto;
+  «filling the whole sheet to every edge» solo en piezas sin zona (18, 21).
+- **Sin recuentos exactos:** el modelo no los cumple («exactly four nodes» dio siete). Si el número es el significado
+  (los seis gajos de Tarkor, las ocho puntas de la rosa), el número se fija al vectorizar.
+- **A sangre:** sin marco ni banda blanca; el chaflán del logo lo pone el SVG, no el modelo. El único marco permitido
+  es el que es la pieza (17).
+- **Transparencia:** el generador no la da. Lo que se recorta (logo, sello, rosa, marcos, iconos) se genera sobre croma
+  plano `#00ff00` (`#ff00ff` si lleva verde alga) y se recorta y vectoriza en el generador (`gimg brand`); llega como
+  `-alpha.png` y `.svg`.
+- **Versión oscura:** líneas `#e6eef3` sobre `#0d171e`, cerúleo y alga iguales. Iconos y logos, por CSS
+  (`currentColor`; el 1b es el 1 en negativo); los grabados, una segunda generación con la misma semilla y las tintas
+  cambiadas (ver «Dudas», 3).
+- **Formatos:** ilustraciones en WebP (`cwebp -q 80`), grande + `-mini` como en
+  [`desarrollo.md`](desarrollo.md#añadir-o-actualizar-un-proyecto); iconos y marcos en SVG.
+- **Pedir en serie:** los iconos como hoja de contactos (sobre papel, para revisar juntos), las portadas por estado con
+  la misma semilla, y 2-4 candidatas por pedido para elegir.
+- **Qué no pedir:** fotos del equipo (son reales), capturas o ilustraciones de un proyecto (viven en su repo y entran
+  por su ficha), nada con degradado, resplandor o esquina redonda.
 
-**Negativo (si el generador lo admite):** `text, letters, watermark, gradient, glow, bokeh, rounded corners, 3d,
-photo, realistic water, waves, seagulls, flag, people`.
+**Modelo:** `zimage-turbo-q6`, 8 pasos, cfg 1.0, euler. FLUX (`flux2-klein-4b-q8`) solo para bocetos (los del logo, la
+rosa y el sello: q133, q142, q146); Qwen-Image solo para fotorrealismo, que el portal no usa. Con cfg 1.0 **no hay
+prompt negativo**: las negaciones van en el cierre del propio prompt, y solo para cualidades globales (brillo, texto,
+marco); lo que no se quiere en el sujeto no se nombra, se describe lo que sí.
+
+**Orden del prompt** (120-200 palabras): sujeto con el motivo de software → zona limpia, si la hay → bloque del
+registro → cierre → frase de paleta.
+
+**Bloque de grabado:**
+> Richly detailed engraved antique nautical chart style, like a fine sea chart printed in two inks: many layers of fine
+> lines and hatching, line density increasing in the darker areas to give depth and tone, lines of several weights,
+> crisp and sharp, intricate but calm, premium print quality, high detail, elegant.
+
+**Bloque de línea simple:**
+> Simple line icon style: one uniform stroke width, rounded caps and joins, no shading, no hatching, no fill, no
+> texture, bold and clear enough to read at 24 pixels, generous empty margin around each icon, a single ink colour.
+
+**Cierre:**
+> No photographic rendering, no glow, no text, no letters, no numbers, no watermark, full-bleed edge to edge, no border,
+> no frame.
+
+**Frase de paleta (siempre la última):**
+> Palette strictly limited to medium cerulean ocean blue #0072a8, off-white #fbfcfd, ink grey #13212b and a touch of
+> seaweed green #5d7a6a.
+
+**Perfiles del generador** (generado → entregado): `cuadrado` 1024² (iconos, logo), `icono` 1024 → 512, `fondo`
+1024 → 1200, `social` 1344×704 → 1200×630, `portada` 1344×768 → 1600×900, `tarjeta` 1344×768 → 1200×675, `cabecera`
+1664×512 → 1600×500, `muro` 1792×448 → 1600×400; el patrón del pie (21), repetible en los dos ejes.
+
+**Dudas que decide la persona** (del generador, 2026-11-11; recomendación del generador entre paréntesis):
+
+1. **Dos registros.** El grabado a dos tintas de las piezas grandes sustituye al «trazo blanco plano» que pedía esta
+   hoja hasta hoy (mantener el grabado en las grandes y la línea simple en los iconos; es lo que ya recoge esta hoja).
+2. **Acentos de producto.** En imagen generada, solo las cuatro tintas del portal; el acento de cada producto, solo en
+   su logo, su interfaz y su `og` (24), en el lugar del verde alga.
+3. **Versión oscura de los grabados.** Generar solo las que la web muestra a sangre en el tema oscuro (11, 16, 18, 19);
+   la 10 y el 1b, por CSS.
+4. **El engranaje de la tarjeta de Developer (15).** La hoja de galivelop-developer los veta; poner su rama que vuelve
+   por un anillo.
 
 ### A. Marca (prioridad 1)
 
-| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Prompt |
+El motivo de cada recurso es el del pedido del generador (`examples/portal/orders/marca/<n>-*.json`), que lleva el prompt
+entero; aquí va resumido.
+
+| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 1 | **Logo** | Cuadrado; fondo celeste plano con chaflán de 28/128 en la esquina superior derecha; monograma GV blanco, trazo 12/128. Entregas: 1024 px PNG para vectorizar; de ahí SVG, 512 PNG, favicon 32 y `apple-touch-icon` 180 | `public/marca/gv-logo.svg`, cabecera, favicon | Logo actual con fondo plano y chaflán (prototipo) | "Monogram logo: the letters G and V joined by one shared horizontal stroke, white strokes of even width on a solid sky-blue square with the top-right corner cut at 45 degrees, geometric, inspired by port signage" + bloque |
-| 1b | **Logo en negativo** | Igual, monograma gris granito sobre papel y versión monograma blanco sin fondo | Pie de página, tema oscuro, sellos | Ninguno | Mismo prompt, "ink grey strokes on off-white, no background square" |
-| 2 | **Isobatas de la costa gallega** | SVG 2400×1200, solo líneas, 12-16 niveles, cada quinta más gruesa; recortes para portada (panorámico), ficha (16:9) y fondo de tarjeta (1:1) | Fondo del bloque de portada, fichas sin captura, pie | Isobatas de ruido (prototipo) | **No es del generador:** datos EMODnet DTM (CC BY 4.0) + `gdal_contour` (`investigacion/estilo-marca.md` §4) |
-| 3 | **Portada social del portal** (`og:image`) | 1200×630, zona segura central 1000×500 vacía | `index.html`, `public/marca/galivelop-portal.jpg` | La actual | "Wide banner: bathymetric chart of the Galician Atlantic coast, white depth contours on solid sky blue, a small ink-grey compass rose in the bottom-left corner, the centre left empty" + bloque |
-| 4 | **Rosa de los vientos** | SVG 256×256, 8 puntas, trazo fino, chaflán en el marco | Pie de página, página 404, marca de agua del muro | Nada | "Compass rose with eight points, thin even strokes, inside a square frame with one 45-degree cut corner, ink grey on transparent" + bloque |
-| 5 | **Sello del taller** | SVG 320×320 circular con dos anillos de marcas de grados y el monograma en el centro (sin texto) | Junto a «Cómo trabajamos», pie, marca de agua de imágenes del muro | Nada | "Round technical stamp: two concentric rings with degree tick marks like a chart border, the G and V monogram in the centre, thin ink-grey strokes on transparent" + bloque |
+| 1 | **Logo** | Cuadrado; fondo cerúleo plano con chaflán de 28/128 en la esquina superior derecha (lo pone el SVG); monograma GV, trazo 12/128. Entregas: SVG, 512 PNG, favicon 32 y `apple-touch-icon` 180 | `public/marca/gv-logo.svg`, cabecera, favicon | Logo actual (prototipo) | Las letras G y V unidas por un trazo horizontal compartido, geométrico, sobre croma (línea simple) |
+| 1b | **Logo en negativo** | El 1 en negativo, por CSS o SVG | Pie de página, tema oscuro, sellos | Ninguno | No se genera: sale del 1 |
+| 2 | **Isobatas de la costa gallega** | SVG 2400×1200, solo líneas, 12-16 niveles, cada quinta más gruesa | Fondo del bloque de portada, fichas sin captura, pie | Isobatas provisionales (`scripts/isobatas-provisionales.py`) | **No es del generador:** datos EMODnet DTM (CC BY 4.0) + `gdal_contour` (`investigacion/estilo-marca.md` §4) |
+| 3 | **Portada social del portal** (`og:image`) | 1200×630 (perfil `social`), centro limpio | `index.html` y sus `og-gl`/`og-en` | La actual | Carta batimétrica de la costa atlántica gallega con una rosa de los vientos pequeña en una esquina y el centro abierto (grabado) |
+| 4 | **Rosa de los vientos** | SVG 256×256, ocho puntas (se fijan al vectorizar) | Pie de página, marca de agua del muro | Nada | Rosa de los vientos de trazo fino, sobre croma (línea simple) |
+| 5 | **Sello del taller** | SVG 320×320, dos anillos con marcas de grados y el monograma en el centro, sin texto | Junto a «Cómo trabajamos», pie | Nada | Sello técnico redondo con marcas de grados, sobre croma (línea simple) |
 
 ### B. Portada y secciones (prioridad 2)
 
-| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Prompt |
+| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 6 | **Portada de proyecto por estado** (3) | 1600×900 y `-mini` 720×405, sobre celeste hondo con isobatas al fondo | Fichas y tarjetas con `cabecera: "color"` o sin imagen (hoy Galivelop-workflow e IG) | Celeste plano con isobatas | «desarrollo»: "A workbench seen from above on a chart: calipers, a pencil, a half-drawn blueprint, white lines on sky blue" / «diseno»: "An empty sea chart with only the coordinate grid, a ruler and a drafting compass" / «publicado»: "A lighthouse beam drawn as thin concentric contour arcs across the sea" + bloque |
-| 7 | **Iconos de las 4 líneas de trabajo** | Hoja 2×2 a 1024 px, cada icono en cuadrado con chaflán, trazo 2/48 | Inicio, «Líneas de trabajo» (`lineas.ts`) | Iconos actuales de `Inicio.tsx` | «Mundos que viven solos»: "a small island with its own weather system drawn as contour lines" · «Información verificable»: "a magnifying lens over a chart with a checkmark tick" · «Del prototipo al producto»: "a paper boat becoming a hull blueprint" · «Método de trabajo con IA»: "a sextant whose index arm is a pencil" + "line icon set, 2px even stroke, square grid" + bloque |
-| 8 | **Iconos de los 4 valores** («Cómo trabajamos») | Igual que 7 | Inicio, `PRINCIPIOS` | Iconos actuales | «Problemas que importan»: "an anchor set into rock" · «Límite de lo que sabemos»: "the edge of a chart where the depth soundings stop" · «Enseñamos el proceso»: "an open logbook with a route drawn step by step" · «Aprendemos con generosidad»: "two mooring lines tied in one knot" + mismo pie que 7 |
-| 9 | **Iconos de las 3 vías de participación** | Hoja 1×3 a 1024 px | Inicio «Participa», `/unirse`, `/proponer` | Sin icono | «Colabora»: "two oars crossed" · «Propón»: "a message bottle drawn as a blueprint" · «Aprende»: "a buoy with a small lantern" + pie de 7 |
-| 10 | **Ilustración «Cómo funciona»** | 1600×600 panorámica sobre papel, una ruta trazada con 4 puntos numerables (los números los pone la web) | Sección de pasos de `/unirse` | Lista sin imagen | "A route plotted on a chart with four waypoints joined by a dashed line, each waypoint an empty circle, small depth soundings around, ink grey on off-white" + bloque |
-| 11 | **Fondo de «Es para ti si…»** | 1200×1200 sobre papel, muy tenue (se pondrá al 30 %) | Detrás de la lista de `/unirse` | Papel liso | "Faint chart detail: a ría estuary coastline with soundings and a few contour lines, very light ink grey on off-white" + bloque |
-| 12 | **Separador de sección** | SVG 1200×24, línea que se vuelve costa un tramo | Entre bloques largos de la portada | Filete 1 px | "A single thin horizontal line that for a short stretch becomes a stylised coastline with rías, ink grey on transparent" + bloque |
+| 6 | **Portada de proyecto por estado** (3) | 1600×900 y `-mini` 720×405 (perfil `portada`) | Fichas y tarjetas con `cabecera: "color"` o sin imagen | Celeste plano con isobatas | Ventana de editor de código sobre el mar de la carta, a la izquierda, con el agua abierta a la derecha. «desarrollo»: código a medias y cursor (**entregada**); «diseno»: retícula y guías de maquetación; «publicado»: código acabado y una marca de visto en un círculo (grabado) |
+| 7 | **Iconos de las 4 líneas de trabajo** | Hoja de contactos 2×2 (perfil `cuadrado`), luego SVG | Inicio, «Líneas de trabajo» (`lineas.ts`) | Iconos actuales de `Inicio.tsx` | Ventana de app con corchetes angulares · lupa sobre una lista con marca de visto · hoja de papel que se vuelve ventana · compás de dibujo sobre una retícula (línea simple) |
+| 8 | **Iconos de los 4 valores** («Cómo trabajamos») | Igual que 7 | Inicio, `PRINCIPIOS` | Iconos actuales | Candado abierto · punto de mira en el borde de una retícula que sigue en puntos · historial de commits con nodos · dos ramas que se unen (línea simple) |
+| 9 | **Iconos de las 3 vías de participación** | Hoja de contactos 1×3 | Inicio «Participa», `/unirse`, `/proponer` | Sin icono | Dos ramas que confluyen · bombilla dentro de una ventana · terminal con galón y cursor (línea simple) |
+| 10 | **Ilustración «Cómo funciona»** | 1200×450 sobre papel | Banda de `/participa/unirse` | Lista sin imagen | Línea de historial de commits con unos pocos nodos sobre la carta (grabado). **Entregada** |
+| 11 | **Fondo de «Es para ti si…»** | 1200×1200 sobre papel (perfil `fondo`), muy tenue (al 30 %) | Detrás de la lista de `/unirse` | Papel liso | Costa de una ría con sondas y curvas de nivel, muy tenue (grabado) |
+| 12 | **Separador de sección** | SVG 1200×24 | Entre bloques largos de la portada | Filete 1 px | Una línea fina que en un tramo se vuelve costa (línea simple; el pedido del generador aún lleva grabado y se reescribe) |
 
 ### C. Páginas interiores (prioridad 3)
 
-| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Prompt |
+| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 13 | **Cabecera de Productos** | 1600×500 sobre celeste hondo | Arriba de `/productos` | Bloque celeste con isobatas | "A harbour seen in plan view like a port chart: quays, berths and a breakwater as thin white lines on sky blue, a few moored hull outlines" + bloque |
-| 14 | **Icono de producto «implantación y servicio»** | SVG 48×48 | Tarjetas de producto (`TarjetaProducto`) | Sin icono | "A crane hook lowering a container onto a quay, line icon" + pie de 7 |
-| 15 | **Tarjetas «Próximamente»** (2) | 1200×675 y `-mini`, sobre celeste hondo, con hueco limpio en el tercio inferior | `TarjetaProxima` (hoy Voice Generator y Developer) | Celeste plano | Voz: "a sound wave drawn as a single depth profile line of the seabed" · Developer: "a keel laid on blocks in dry dock, plan view, white lines on sky blue" + bloque |
-| 16 | **Cabecera del Muro** | 1600×400 sobre papel | Arriba de `/muro` | Sin cabecera | "A long notice board drawn as a chart margin: pinned blank cards with cut corners, thin ink-grey lines on off-white" + bloque |
-| 17 | **Marco de retrato del equipo** | SVG 400×400, borde con marcas de grados y chaflán; la foto va dentro | `/equipo` y página de cada miembro | Borde 1 px | "Square picture frame drawn like the border of a nautical chart: tick marks with degrees along the edges, top-right corner cut at 45 degrees, ink grey on transparent, empty inside" + bloque |
-| 18 | **Ilustración de la página 404** | 1200×800 sobre papel | `NoEncontrado.tsx` | Solo texto | "A chart with the words area left blank, a dashed route that ends in open water with a question-shaped buoy, ink grey on off-white" + bloque (sin letras: la boya solo sugiere la forma) |
-| 19 | **Estado «enviado» de los formularios** | 800×600 sobre papel | `form.listo` en `/proponer` y `/unirse` | Solo texto | "A paper boat leaving a quay, its wake drawn as three thin lines, ink grey on off-white" + bloque |
-| 20 | **Cabecera de páginas legales** | SVG 1200×80 sobre papel | `/aviso-legal`, `/privacidad`, `/terminos` | Nada | "A thin chart title-block border: a rectangle with inner rules and small corner marks, ink grey on transparent" + bloque |
-| 21 | **Patrón de fondo del pie** | 1200×300 repetible en horizontal, celeste hondo | `Pie.tsx` | Celeste plano | "Seamless horizontal strip of bathymetric contour lines, white on sky blue, tileable left to right" + bloque |
-| 22 | **Textura de papel** (opcional) | 512×512 repetible, grano casi invisible | Fondo de página bajo la retícula | Color plano | "Seamless tileable fine paper grain texture, almost white, extremely subtle" + bloque (sin la parte azul) |
+| 13 | **Cabecera de `/equipo`** (era la de Productos, que ya no tiene página: ADR 0004) | 1600×500 sobre cerúleo (perfil `cabecera`) | Arriba de `/equipo` | Bloque celeste con isobatas | Pistas de placa de circuito dibujadas como curvas de nivel (grabado). **Entregada** |
+| 14 | ~~Icono de producto «implantación y servicio»~~ | — | Sin uso: no hay tarjetas de producto desde el ADR 0004 | — | Caja cuya tapa se despliega en ventana (línea simple); solo si vuelve a hacer falta |
+| 15 | **Tarjetas «Próximamente»** (2) | 1200×675 y `-mini` (perfil `tarjeta`), tercio inferior limpio | `TarjetaProxima` (Voice Generator y Developer) | Celeste plano con isobatas | Voz: onda de sonido como perfil del fondo marino (**entregada**); Developer: terminal de desarrollo con la rama que vuelve por un anillo (grabado; ver «Dudas», 4) |
+| 16 | **Cabecera del Muro** | 1600×400 sobre papel (perfil `muro`) | Arriba de `/muro` | Sin cabecera | Tablero de tareas de tres columnas con tarjetas en blanco (grabado) |
+| 17 | **Marco de retrato del equipo** | SVG 400×400; la foto va dentro | `/equipo` y página de cada miembro | Borde 1 px | Marco con marcas de grados y chaflán, centro limpio, sobre croma (grabado) |
+| 18 | **Ilustración de la página 404** | 900×600 sobre papel | `NoEncontrado.tsx` | Solo texto | Ruta discontinua que acaba en un eslabón roto que se enrosca como un signo de interrogación (grabado). **Entregada** |
+| 19 | **Estado «enviado» de los formularios** | 640×480 sobre papel | `form.listo` en `/proponer` y `/unirse` | Solo texto | Barco de papel que sale del muelle (grabado; la única excepción náutica). **Entregada** |
+| 20 | **Cabecera de páginas legales** | SVG 1200×80 sobre papel | `/aviso-legal`, `/privacidad`, `/terminos` | Nada | Borde de cajetín de plano con reglas interiores y marcas de esquina (grabado) |
+| 21 | **Patrón de fondo del pie** | 1200×300 repetible en los dos ejes, cerúleo | `Pie.tsx` | Celeste plano | Curvas de nivel sin costuras sobre cerúleo (grabado) |
+| 22 | **Textura de papel** (opcional) | 512×512 repetible, grano casi invisible | Fondo de página bajo la retícula | Color plano | Grano de papel finísimo, casi blanco (sin pedido aún) |
 
 ### D. Por proyecto (cuando se toque su ficha)
 
-| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Prompt |
+| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 23 | **Icono de proyecto** para los que no tienen (Tarkor, Galivelop-workflow) | 512×512, cuadrado con chaflán, símbolo blanco sobre celeste | `icono` de la ficha, `MenuProyectos` | Inicial del nombre | Tarkor: "a pocket world: a small round map with a crown-shaped mountain, white lines on sky blue" · Workflow: "a relay baton drawn as a chart pencil passing between two hands as outlines" + bloque |
-| 24 | **`og.jpg` por proyecto** en el mismo estilo | 1200×630, tercio izquierdo con hueco para el icono del proyecto | `public/proyectos/<slug>/og.jpg` | Los actuales | Mismo prompt que 3 con el motivo del proyecto en vez de la rosa de los vientos |
+| 23 | **Icono de proyecto** para los que no tienen (Tarkor, Galivelop-workflow) | 512×512 (perfil `icono`), cuadrado con chaflán | `icono` de la ficha, `MenuProyectos` | Inicial del nombre | Tarkor: anillo tallado con cuatro puntas y una piedra partida en seis gajos (el seis se fija al vectorizar) · Workflow: tres nodos encadenados, el último con marca de visto (línea simple) |
+| 24 | **`og.jpg` por proyecto** en el mismo estilo | 1200×630, tercio izquierdo con hueco para el icono | `tools/og/fuentes/<slug>/og-fuente.png` | Los actuales | Como la 3 con el motivo del proyecto; el acento del producto, en el lugar del verde alga (ver «Dudas», 2) |
 
-Orden de trabajo: A entera, luego 6-9 (son los que más se ven), luego el resto de B y C según se vaya aplicando la hoja.
+Orden de trabajo: lo que más se ve primero: 7-9 (iconos de la portada), 6 «diseno» y «publicado», la 15 de Developer y
+las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.
 
 ## Pasos para aplicarlo
 
