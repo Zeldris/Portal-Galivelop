@@ -6,23 +6,19 @@ import {
   Eye,
   FlaskConical,
   Globe,
-  HeartHandshake,
-  Layers,
-  Lightbulb,
   Lock,
   Mail,
   MessageSquare,
   Rocket,
   ShieldCheck,
-  Target,
   Users,
   Workflow,
-  type LucideIcon,
 } from 'lucide-react';
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useState, type ComponentType, type CSSProperties } from 'react';
 import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
+import { IconoMarca } from '../components/IconoMarca';
 import { MarcaGV } from '../components/Logo';
 import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
@@ -36,18 +32,24 @@ import { useIdioma } from '../i18n/Idioma';
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
 /** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
 const FILTRAR_DESDE = 5;
-const ICONO_LINEA: Record<Linea, LucideIcon> = {
+/** Iconos de lucide y propios de la marca (`IconoMarca`) en el mismo hueco; los propios van llegando por series. */
+type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
+const IconoCodigo: Icono = () => <IconoMarca nombre="codigo" />;
+const IconoCandado: Icono = () => <IconoMarca nombre="candado" />;
+const IconoRamasUnidas: Icono = () => <IconoMarca nombre="ramas-unidas" />;
+
+const ICONO_LINEA: Record<Linea, Icono> = {
   'ia-local': Cpu,
   mundos: Globe,
   informacion: ShieldCheck,
-  producto: Layers,
+  producto: IconoCodigo,
   metodo: Workflow,
 };
-const PRINCIPIOS: [LucideIcon, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
-  [Target, 'valor1'],
+const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
+  [IconoCandado, 'valor1'],
   [FlaskConical, 'valor2'],
   [Eye, 'valor3'],
-  [HeartHandshake, 'valor4'],
+  [IconoRamasUnidas, 'valor4'],
 ];
 
 /** «A, B y C» en el idioma de la página; sin Intl.ListFormat (navegadores viejos), con comas. */
@@ -275,7 +277,7 @@ export function Inicio() {
             </li>
             <li>
               <Link to="/participa/unirse?modo=aprender" className="via">
-                <Lightbulb aria-hidden="true" />
+                <IconoMarca nombre="terminal" />
                 <h3>{t('via3.titulo')}</h3>
                 <p>{t('via3.texto')}</p>
                 <span className="via-ir">

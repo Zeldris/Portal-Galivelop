@@ -104,7 +104,7 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números
 | 3 | `public/marca/galivelop-portal.jpg` (1200×630, referenciada en `index.html`) | Copiar y comprobar la referencia de `og:image` |
 | 4, 5 | `public/marca/rosa-vientos.svg`, `public/marca/sello.svg` | Vectorizar |
 | 6 | `public/proyectos/<slug>/portada.webp` (+ `portada-mini.webp`) | Convertir a WebP, grande y `-mini` |
-| 7, 8, 9 | `public/marca/iconos/<nombre>.svg` | Vectorizar la hoja y recortar cada icono (trazo uniforme, `currentColor`) |
+| 7, 8, 9 | `src/assets/iconos/<nombre>.svg`, pintados en línea por `IconoMarca.tsx` | Vectorizar la hoja y recortar cada icono; luego `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (tinta a `currentColor`, recorte del `viewBox` y contorno para igualar el grosor de lucide) y añadirlo a `ICONOS` de `IconoMarca.tsx` |
 | 10, 11, 13, 16, 18, 19, 21, 22 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel |
 | 12, 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
 | 15 | `public/proyectos/<slug>/proxima.webp` y su `imagen` en `src/data/proximamente.json` | Convertir a WebP (720×405) |
@@ -124,7 +124,7 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 19 | 2026-11-11 | `public/marca/enviado.webp` (480×360, el doble de lo que se muestra; recorte 4:3 del barco de papel grabado sobre el mar) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. El barco llegó como `portada-desarrollo.webp` y se ponía de fondo en las fichas de color en desarrollo (IG y workflow); la hoja lo reserva para la 19, así que se movió aquí (2026-11-11) |
 | 17 | 2026-11-11 | `public/marca/marco-retrato.webp` (400×400, máscara: blanco con transparencia, recortado al cuadro; del PNG q539, el trazador rompe sus marcas) | Alrededor de la foto o las iniciales en `/equipo` y en la página de cada miembro (`Retrato.tsx`); se pinta con `--texto`, así vale en los dos temas |
 | 23 (workflow) | 2026-11-11 | `public/proyectos/galivelop-workflow/icono.svg` (SVG del generador, `viewBox` recortado al dibujo) | `icono` de su ficha: cabecera, tarjeta y muro |
-| 7a, 8a, 8d, 9c | 2026-11-11 | `public/marca/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador, tinta y papel, aún sin `currentColor`) | **Sin uso todavía** (la persona, 2026-11-11: esperar a cada serie completa para no mezclarlos con los de lucide); 8a es el valor 1, 8d el valor 4, 9c la vía «Aprende»; la línea de 7a se decide con la serie |
+| 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie sigue con lucide hasta que llegue |
 
 Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 vuelve al generador para rehacerla (la persona, 2026-11-11).
 
