@@ -19,6 +19,14 @@ export function Equipo() {
   return (
     <section className="seccion equipo-pagina">
       <div className="contenedor">
+        <img
+          className="equipo-banda"
+          src={ruta('marca/cabecera-equipo.webp')}
+          alt=""
+          width={1600}
+          height={500}
+          fetchPriority="high"
+        />
         <header className="seccion-cabecera">
           <div>
             <h1>{t('equipo.titulo')}</h1>

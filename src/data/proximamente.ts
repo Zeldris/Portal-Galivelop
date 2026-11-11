@@ -18,6 +18,8 @@ export interface Proximo {
   fases: { hechas: number; total: number };
   /** El paso que viene, para completar «Siguiente: …». */
   siguiente: Texto;
+  /** Ilustración 16:9 de la tarjeta (ruta en public/), opcional. */
+  imagen?: string;
 }
 
 export const proximos: Proximo[] = datos as Proximo[];
