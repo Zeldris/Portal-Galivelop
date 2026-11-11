@@ -79,6 +79,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
+- **Ficha de Galivelop Developer, cuando se cree** (2026-11-11): su portada es el barco de papel sobre mar con olas, ya en `public/proyectos/galivelop-developer/portada.webp` y `portada-mini.webp`; esa imagen es solo de Developer (ver `docs/marca.md`, fila 15 Developer).
+
 - **Leves de la revisión de los iconos propios** (2026-11-11, no se vuelven a revisar en este cambio): el commit ac80cf8 deja `Siguiente:` separado de las líneas de atribución por una línea en blanco (no se reescribe historia subida); el grosor de los iconos propios se acerca al de lucide a ojo (lado / 28), sin medida que lo compruebe.
 
 - **Leves de la revisión de las imágenes nuevas (17, 23)** (2026-11-11, no se vuelven a revisar en este cambio): los avatares del equipo en la ficha de proyecto (`.avatar` de `Proyecto.tsx`) no usan `Retrato` (sin marco y la lógica foto/iniciales repetida); `inset: 6%` y el chaflán 90/10 % del retrato dependen del margen de `marco-retrato.webp` sin nada que los ate; la celda «En `main`» ya no nombra e02460c (está en «Hecho»).
