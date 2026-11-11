@@ -44,6 +44,7 @@ export function Unirse() {
     <PaginaFormulario
       titulo={t('unir.titulo')}
       intro={t('unir.intro')}
+      ilustracion={{ src: 'marca/como-funciona.webp', ancho: 1200, alto: 450 }}
       componer={(d) => {
         // El correo lo lee el taller: siempre en castellano, con etiquetas cortas.
         const v = (k: string) => String(d.get(k) ?? '');

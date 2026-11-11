@@ -113,6 +113,20 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números
 
 La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fuente.png` + `python3 tools/og/generar.py`, nunca el `og.jpg` a mano.
 
+### Entregados
+
+| # | Fecha | Ruta | Dónde se ve |
+|---|---|---|---|
+| 6 (desarrollo) | 2026-11-11 | `public/marca/portada-desarrollo.webp` (1600×900) | Fondo velado de la cabecera de las fichas con `cabecera: "color"` en estado desarrollo (hoy Image Generator); sin `-mini` mientras ninguna tarjeta la use |
+| 10 | 2026-11-11 | `public/marca/como-funciona.webp` (1200×450) | Banda entre la entrada y el formulario de `/participa/unirse` |
+| 13 | 2026-11-11 | `public/marca/cabecera-equipo.webp` (1600×500) | Arriba de `/equipo` (`/productos` ya redirige allí, ADR 0004) |
+| 15 (voz) | 2026-11-11 | `public/proyectos/galivelop-voice-generator/proxima.webp` (720×405, recortado el margen de papel) | `imagen` de su entrada en `proximamente.json`; las entradas sin imagen muestran celeste plano con isobatas |
+| 18 | 2026-11-11 | `public/marca/no-encontrado.webp` (900×600) | Página 404 (sustituye al monograma) |
+| 19 | 2026-11-11 | `public/marca/enviado.webp` (640×480) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse` |
+
+Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18, 19) aún no
+tienen versión para el tema oscuro: se muestran enmarcadas tal cual.
+
 ### Cómo pedirlas
 
 - **Un solo estilo para todo:** cada prompt termina con el bloque común de abajo. Si el generador admite imagen de
