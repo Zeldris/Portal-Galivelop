@@ -107,8 +107,8 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
               className="formulario-listo-imagen"
               src={ruta('marca/enviado.webp')}
               alt=""
-              width={640}
-              height={480}
+              width={480}
+              height={360}
             />
             <h2>
               <Check size={20} /> {t('form.listo.titulo')}

@@ -10,7 +10,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (desde `main`, 2026-11-11) |
 | **Tarea en curso** | Recursos de imagen de `docs/marca.md` al día con la hoja vigente del generador (`galivelop-image-generator`, `docs/marcas/portal/hoja.md`, «Identidad vigente») y repaso de dónde se usa cada imagen |
 | **Siguiente paso** | La persona decide las cuatro «Dudas» de los recursos de imagen de `docs/marca.md` (dos registros, acentos de producto, versión oscura de los grabados, engranaje de Developer); luego (a) de «Repaso de toda la web» en «Pendiente» |
-| **En `main`** | **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión) sobre la rama `ccr-47a38edd-v566du` y novedad de Tarkor (48827b1). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -25,8 +25,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
   para recortar, versión oscura, modelo y perfiles, motivos nuevos por recurso, la 13 pasa a `/equipo` y la 14 queda sin
   uso, y cuatro dudas para la persona. El barco de papel que llegó como portada de
   desarrollo (y salía de fondo en IG y workflow) pasa a ser la 19, «Mensaje preparado», como dice la hoja (la persona,
-  2026-11-11); las fichas de color vuelven a celeste con isobatas hasta la portada 06 de editor. Repaso de uso: cada imagen entregada se ve donde dice «Entregados»; las `og` por
-  idioma, el JSON-LD, el favicon y las isobatas, bien en las 42 páginas. Solo documentación.
+  2026-11-11); las fichas de color vuelven a celeste con isobatas hasta la portada 06 de editor. **Lleva código**
+  (`Proyecto.tsx`, `global.css`, `Formulario.tsx`): revisado con `/code-review` (2026-11-11) y con su marca. Repaso de uso: cada imagen entregada se ve donde dice «Entregados»; las `og` por
+  idioma, el JSON-LD, el favicon y las isobatas, bien en las 42 páginas.
 
 ## Hecho
 
@@ -86,6 +87,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 
 ## Pendiente
+
+- **Leves de la revisión del barco a la 19** (2026-11-11, no se vuelven a revisar en este cambio): `portada-desarrollo.webp` se borra aunque estuvo publicada unas horas (solo era fondo de cabecera, no una ruta); sin capturas antes/después del cambio de cabecera de IG y workflow (vuelven a la cabecera de color que ya tenían antes de la PR #2).
 
 - **Leves de la revisión de las imágenes del generador** (2026-11-11, no se vuelven a revisar en este cambio): `cabecera-equipo.webp` no tiene `-mini` con `srcset` para el móvil; el celeste con isobatas de las tarjetas próximas repite reglas de `.proyecto-isobatas`; las ilustraciones sobre papel (10, 18) no tienen versión oscura.
 

@@ -195,7 +195,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
     <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
       <header className={`proyecto-cabecera cabecera-${modoCabecera}`}>
         {modoCabecera === 'ilustracion' && (
-          <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" />
+          <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" fetchPriority="high" />
         )}
         {modoCabecera !== 'ilustracion' && (
           <img

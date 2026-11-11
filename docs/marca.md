@@ -121,13 +121,13 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 13 | 2026-11-11 | `public/marca/cabecera-equipo.webp` (1600×500) | Arriba de `/equipo` (`/productos` ya redirige allí, ADR 0004) |
 | 15 (voz) | 2026-11-11 | `public/proyectos/galivelop-voice-generator/proxima.webp` (720×405, recortado el margen de papel) | `imagen` de su entrada en `proximamente.json`; las entradas sin imagen muestran celeste plano con isobatas |
 | 18 | 2026-11-11 | `public/marca/no-encontrado.webp` (900×600) | Página 404 (sustituye al monograma) |
-| 19 | 2026-11-11 | `public/marca/enviado.webp` (640×480, recorte 4:3 del barco de papel grabado sobre el mar) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. El barco llegó como `portada-desarrollo.webp` y se ponía de fondo en las fichas de color en desarrollo (IG y workflow); la hoja lo reserva para la 19, así que se movió aquí (2026-11-11) |
+| 19 | 2026-11-11 | `public/marca/enviado.webp` (480×360, el doble de lo que se muestra; recorte 4:3 del barco de papel grabado sobre el mar) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. El barco llegó como `portada-desarrollo.webp` y se ponía de fondo en las fichas de color en desarrollo (IG y workflow); la hoja lo reserva para la 19, así que se movió aquí (2026-11-11) |
 
 Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18) aún no
 tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: la
 15 de Developer (su tarjeta muestra celeste con isobatas) y las tres portadas 6 (ventana de editor sobre el mar); hasta
 que llegue la de desarrollo, las fichas de color (IG y workflow) muestran celeste con isobatas. Para ponerla: el fondo
-velado por estado de `Proyecto.tsx` y `.cabecera-velada` que se quitaron en este cambio (ver su `git log`).
+velado por estado de `Proyecto.tsx` y `.cabecera-velada` que se quitaron en 88354fb (`git show 88354fb -- src/pages/Proyecto.tsx src/estilos/global.css`).
 
 ### Cómo pedirlas
 
