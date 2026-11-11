@@ -1424,8 +1424,7 @@ button {
   z-index: -2;
 }
 
-.cabecera-ilustracion::before,
-.cabecera-velada::before {
+.cabecera-ilustracion::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1439,8 +1438,7 @@ button {
   color: var(--blanco);
 }
 
-:root[data-tema='claro'] .cabecera-ilustracion::before,
-:root[data-tema='claro'] .cabecera-velada::before {
+:root[data-tema='claro'] .cabecera-ilustracion::before {
   background: var(--velo-medio);
 }
 
