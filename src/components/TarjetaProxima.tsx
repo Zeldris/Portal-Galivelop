@@ -11,7 +11,7 @@ export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
   const fases = t('proximamente.fases', { hechas: p.fases.hechas, total: p.fases.total });
   return (
     <article className="tarjeta-proxima" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
-      {p.imagen && (
+      {p.imagen ? (
         <img
           className="proxima-imagen"
           src={ruta(p.imagen)}
@@ -20,6 +20,11 @@ export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
           height={405}
           loading="lazy"
         />
+      ) : (
+        // Hasta que llegue su ilustración, celeste plano con isobatas (docs/marca.md, recurso 15).
+        <span className="proxima-imagen proxima-imagen-vacia" aria-hidden="true">
+          <img src={ruta('marca/isobatas.svg')} alt="" loading="lazy" />
+        </span>
       )}
       <div className="proxima-cabeza">
         <span className="proxima-icono">

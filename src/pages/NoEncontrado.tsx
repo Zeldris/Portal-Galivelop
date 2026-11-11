@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
-import { MarcaGV } from '../components/Logo';
 import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
@@ -27,7 +26,6 @@ export function NoEncontrado() {
           width={900}
           height={600}
         />
-        <MarcaGV tamano={64} />
         <h1>{t('error.titulo')}</h1>
         <p>{t('error.texto')}</p>
         <Link to="/" className="boton boton-primario">
