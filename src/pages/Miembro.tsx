@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactNode } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
 import { EnlaceRed } from '../components/IconoRed';
+import { Retrato } from '../components/Retrato';
 import { TarjetaProducto } from '../components/TarjetaProducto';
 import { IconoTecnologia } from '../components/IconoTecnologia';
 import {
@@ -78,13 +79,7 @@ function Ficha({ p }: { p: Persona }) {
         </Link>
 
         <header className="miembro-cabecera">
-          {p.foto ? (
-            <img src={ruta(p.foto)} alt="" className="miembro-foto" width={128} height={128} />
-          ) : (
-            <span className="miembro-foto persona-iniciales" aria-hidden="true">
-              {iniciales(p.nombre)}
-            </span>
-          )}
+          <Retrato nombre={p.nombre} foto={p.foto} clase="miembro-foto" lado={128} />
           <div>
             <p className="miembro-antetitulo">{t('equipo.titulo')}</p>
             <h1>{p.nombre}</h1>

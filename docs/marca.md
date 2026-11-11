@@ -122,6 +122,11 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 15 (voz) | 2026-11-11 | `public/proyectos/galivelop-voice-generator/proxima.webp` (720×405, recortado el margen de papel) | `imagen` de su entrada en `proximamente.json`; las entradas sin imagen muestran celeste plano con isobatas |
 | 18 | 2026-11-11 | `public/marca/no-encontrado.webp` (900×600) | Página 404 (sustituye al monograma) |
 | 19 | 2026-11-11 | `public/marca/enviado.webp` (480×360, el doble de lo que se muestra; recorte 4:3 del barco de papel grabado sobre el mar) | «Mensaje preparado» de `/participa/proponer` y `/participa/unirse`. El barco llegó como `portada-desarrollo.webp` y se ponía de fondo en las fichas de color en desarrollo (IG y workflow); la hoja lo reserva para la 19, así que se movió aquí (2026-11-11) |
+| 17 | 2026-11-11 | `public/marca/marco-retrato.webp` (400×400, máscara: blanco con transparencia, recortado al cuadro; del PNG q539, el trazador rompe sus marcas) | Alrededor de la foto o las iniciales en `/equipo` y en la página de cada miembro (`Retrato.tsx`); se pinta con `--texto`, así vale en los dos temas |
+| 23 (workflow) | 2026-11-11 | `public/proyectos/galivelop-workflow/icono.svg` (SVG del generador, `viewBox` recortado al dibujo) | `icono` de su ficha: cabecera, tarjeta y muro |
+| 7a, 8a, 9c | 2026-11-11 | `public/marca/iconos/codigo.svg`, `candado.svg`, `terminal.svg` (SVG del generador, tinta y papel, aún sin `currentColor`) | **Sin uso todavía** (la persona, 2026-11-11: esperar a cada serie completa para no mezclarlos con los de lucide); 8a es el valor 1, 9c la vía «Aprende»; la línea de 7a se decide con la serie |
+
+Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 vuelve al generador para rehacerla (la persona, 2026-11-11).
 
 Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18) aún no
 tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: la

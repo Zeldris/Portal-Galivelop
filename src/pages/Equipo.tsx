@@ -2,7 +2,8 @@ import { ArrowRight, MapPin, Users } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
 import { EnlaceRed } from '../components/IconoRed';
-import { equipo, iniciales } from '../data/equipo';
+import { Retrato } from '../components/Retrato';
+import { equipo } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
@@ -38,13 +39,7 @@ export function Equipo() {
           {equipo.map((p) => (
             <li key={p.id} id={p.id} className="persona">
               <div className="persona-cabecera">
-                {p.foto ? (
-                  <img src={ruta(p.foto)} alt="" className="persona-foto" width={88} height={88} />
-                ) : (
-                  <span className="persona-foto persona-iniciales" aria-hidden="true">
-                    {iniciales(p.nombre)}
-                  </span>
-                )}
+                <Retrato nombre={p.nombre} foto={p.foto} clase="persona-foto" lado={88} />
                 <div>
                   <h2>{p.nombre}</h2>
                   <p className="persona-rol">{tx(p.rol)}</p>

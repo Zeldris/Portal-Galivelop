@@ -3145,7 +3145,35 @@ button {
   flex: none;
   width: 64px;
   height: 64px;
+}
+
+/* Marco de carta náutica alrededor de la foto (recurso 17): una máscara pintada con el color del texto, para que
+   valga en los dos temas. La foto va dentro, con la esquina cortada al ras de la diagonal del marco. */
+.retrato {
+  position: relative;
+  display: block;
+}
+
+/* `inset` en % se mide contra el propio retrato; un `padding` en % se mediría contra el ancho del padre. */
+.retrato > img,
+.retrato > .persona-iniciales {
+  position: absolute;
+  inset: 6%;
+  display: grid;
+  width: 88%;
+  height: 88%;
   object-fit: cover;
+  clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 0 100%);
+}
+
+.retrato::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--texto);
+  -webkit-mask: var(--marco) center / 100% 100% no-repeat;
+  mask: var(--marco) center / 100% 100% no-repeat;
+  pointer-events: none;
 }
 
 .persona-iniciales {
@@ -3446,13 +3474,9 @@ img.perfil-logo {
   flex: none;
   width: 128px;
   height: 128px;
-  object-fit: cover;
-  border: 3px solid var(--celeste);
-  /* Retrato con la esquina superior derecha cortada (recurso 17 de la marca). */
-  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
 }
 
-.miembro-foto.persona-iniciales {
+.miembro-foto .persona-iniciales {
   font-size: 2.2rem;
 }
 
