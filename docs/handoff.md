@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-11 (iconos 7a, 8a, 8d y 9c aplicados en el inicio, en `ccr-5c066d81-ndsd13`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); la última sesión, `ccr-5c066d81-ndsd13` (traída la rama de trabajo, 2026-11-11) |
-| **Tarea en curso** | Los dos barcos de papel (2026-11-11, la persona: «son dos imágenes distintas»): el de mástil vuelve a «Mensaje preparado» (19) y el de mar con olas pasa a la tarjeta próxima de Developer (15); `docs/marca.md` al día. La persona pidió llevarlo a `main` al acabar |
+| **Tarea en curso** | Ninguna: los dos barcos de papel en `main` (e16500f) |
 | **Siguiente paso** | Cuando lleguen más imágenes a `src/img/`: destino en `docs/marca.md`, aplicarlas, apuntarlas en § Entregados. Faltan del generador: 06 diseño y publicado, 07b, 09a, 12 y los iconos sueltos de la hoja 07. Preguntar a la persona si hace ya las piezas por CSS (11, 16, 20, 21). Quedan tres «Dudas» de `docs/marca.md` |
-| **En `main`** | **Iconos propios 7a, 8a, 8d y 9c en el inicio** (fe3c6d5, 2026-11-11, la persona: «sí, a main»; CI en verde). **Marco del retrato (17) e icono de Galivelop-workflow (23)** (d1d5ede, 2026-11-11, la persona: «ahora sí iremos a main cuando esté listo»; CI en verde; rama de trabajo avanzada hasta ahí).  **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | **Los dos barcos de papel** (e16500f, 2026-11-11, la persona: «llévalo a main todo cuando acabes»; CI en verde): el de mástil en «Mensaje preparado» (19), el de olas en la tarjeta próxima de Developer (15). **Iconos propios 7a, 8a, 8d y 9c en el inicio** (fe3c6d5, 2026-11-11, la persona: «sí, a main»; CI en verde). **Marco del retrato (17) e icono de Galivelop-workflow (23)** (d1d5ede, 2026-11-11, la persona: «ahora sí iremos a main cuando esté listo»; CI en verde; rama de trabajo avanzada hasta ahí).  **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Lo anterior está en `main` (fe3c6d5, 2026-11-11), también los iconos propios del inicio.
+- Lo anterior está en `main` (e16500f, 2026-11-11), también los dos barcos de papel.
 
 ## Hecho
 
