@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-11 (iconos 7a, 8a, 8d y 9c aplicados en el inicio, en `ccr-5c066d81-ndsd13`) |
+| **Actualizado** | 2026-11-12 (retícula del papel más tenue, en `ccr-5c066d81-ndsd13`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); la última sesión, `ccr-5c066d81-ndsd13` (traída la rama de trabajo, 2026-11-11) |
 | **Tarea en curso** | Ninguna: los dos barcos de papel en `main` (e16500f) |
 | **Siguiente paso** | Cuando lleguen más imágenes a `src/img/`: destino en `docs/marca.md`, aplicarlas, apuntarlas en § Entregados. Faltan del generador: 06 diseño y publicado, 07b, 09a, 12 y los iconos sueltos de la hoja 07. Preguntar a la persona si hace ya las piezas por CSS (11, 16, 20, 21). Quedan tres «Dudas» de `docs/marca.md` |
@@ -19,6 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Lo anterior está en `main` (e16500f, 2026-11-11), también los dos barcos de papel.
+- **Retícula del papel más tenue** (2026-11-12, `ccr-5c066d81-ndsd13`): `--reticula` pasa a `#eef3f6` (claro) y `#121e27` (oscuro), y `docs/marca.md` lo recoge. La persona eligió esta opción entre tres (la actual, más tenue y puntos en los cruces) porque las líneas cortaban el texto. Las isobatas del hero se quedan como estaban (la persona: «en la portada estaba bien»). No afecta al generador. Falta `/code-review` y la marca antes de `main`.
 
 ## Hecho
 

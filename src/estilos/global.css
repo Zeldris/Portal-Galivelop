@@ -46,7 +46,7 @@
 :root[data-tema='claro'] {
   color-scheme: light;
   --papel: #fbfcfd;
-  --reticula: #e3edf3;
+  --reticula: #eef3f6; /* muy tenue: las líneas no deben cortar el texto (2026-11-12) */
   --celeste-hondo: #0072a8;
   --tinta: #13212b;
   --tinta-2: #4a5c69;
@@ -81,7 +81,7 @@
 :root[data-tema='oscuro'] {
   color-scheme: dark;
   --papel: #0d171e;
-  --reticula: #16242e;
+  --reticula: #121e27;
   --celeste-hondo: #0b5e88;
   --tinta: #e6eef3;
   --tinta-2: #9fb2bf;

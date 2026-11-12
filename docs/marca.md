@@ -52,7 +52,7 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 | `--celeste` | `#1aa6df` | `#1aa6df` | Marca, enlaces, estado «publicado» |
 | `--celeste-hondo` | `#0072a8` | `#0b5e88` | Bloques grandes de color |
 | `--papel` (`--fondo`) | `#fbfcfd` | `#0d171e` | Fondo de página |
-| `--reticula` | `#e3edf3` | `#16242e` | Cuadrícula de 24 px |
+| `--reticula` | `#eef3f6` | `#121e27` | Cuadrícula de 24 px (aclarada el 2026-11-12: cortaba el texto) |
 | `--superficie` | `#ffffff` | `#111f29` | Fichas y paneles |
 | `--filete` (`--borde`) | `#b9cbd6` | `#2b3d49` | Bordes y líneas |
 | `--tinta` (`--texto`) | `#13212b` | `#e6eef3` | Texto; gris granito con sesgo azul |
