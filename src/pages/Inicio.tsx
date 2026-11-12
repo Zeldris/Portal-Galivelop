@@ -24,7 +24,7 @@ const ICONO_LINEA: Record<Linea, Icono> = {
   'ia-local': Cpu,
   mundos: iconoMarca('mundos'),
   informacion: iconoMarca('documento-check'),
-  producto: iconoMarca('codigo'),
+  producto: iconoMarca('papel-ventana'),
   metodo: iconoMarca('compas'),
 };
 const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
