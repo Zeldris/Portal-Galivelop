@@ -106,7 +106,8 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Cada imagen 
 | 6 | `public/marca/portada-<estado>.webp`, una por estado | Convertir a WebP (1600×900); sin `-mini`: ninguna tarjeta la usa |
 | 7, 8, 9 | `src/assets/iconos/<nombre>.svg`, pintados en línea por `IconoMarca.tsx` | Vectorizar la hoja y recortar cada icono; luego `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (tinta a `currentColor`, recorte del `viewBox` y un contorno proporcional que acerca su grosor al de lucide a 24 px) y añadirlo a `ICONOS` de `IconoMarca.tsx` |
 | 10, 11, 13, 16, 18, 19, 21, 22 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel |
-| 12, 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
+| 12 | `public/marca/separador.webp` | Convertir a WebP con transparencia (`cwebp -q 90 -alpha_q 100`) |
+| 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
 | 15 | `public/proyectos/<slug>/proxima.webp` y su `imagen` en `src/data/proximamente.json` | Convertir a WebP (720×405) |
 | 23 | `public/proyectos/<slug>/icono.png`, el `icono` de la ficha | Copiar a 512×512 |
 | 24 | `tools/og/fuentes/<slug>/og-fuente.png` (fuera de `public/`, para que no salga en `dist/`) | `python3 tools/og/generar.py` genera el `og.jpg`; `src/data/og.test.ts` comprueba la huella |
@@ -127,6 +128,7 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 23 (workflow) | 2026-11-11 | `public/proyectos/galivelop-workflow/icono.svg` (SVG del generador, `viewBox` recortado al dibujo) | `icono` de su ficha: cabecera, tarjeta y muro |
 | 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie llegó el 2026-11-12 (filas siguientes) |
 | 6 | 2026-11-12 | `public/marca/portada-desarrollo.webp`, `portada-diseno.webp` y `portada-publicado.webp` (1600×900, `cwebp -q 80`). Los tres son un faro: en desarrollo, con andamios; en diseño, una plataforma de roca con un trípode; en publicado, el faro encendido de noche | Fondo velado de la cabecera de las fichas con `cabecera: "color"` (hoy Galivelop-workflow y Galivelop-image-generator), según el `estado` del proyecto (`Proyecto.tsx`, `.cabecera-velada`). Las tarjetas no la usan: esos proyectos llevan su propia portada. Sustituye al celeste con isobatas, que queda para un estado sin imagen |
+| 12 | 2026-11-12 | `public/marca/separador.webp` (1200×100, de `12-separador-transparente.png`) | Inicio: antes de «Próximamente» (sección Proyectos) y antes de «Es para ti si…» (sección Participa), al ancho del contenedor; en el tema oscuro, invertido por CSS (`.separador`) |
 | 7c, 7d, 7e | 2026-11-12 | `src/assets/iconos/documento-check.svg`, `compas.svg`, `mundos.svg` (pasados por `limpiar-iconos.cjs`) | Inicio, líneas de trabajo: «informacion» (documento con visto), «metodo» (compás) y «mundos»; «ia-local» sigue con lucide (`Cpu`) |
 | 8b, 8c | 2026-11-12 | `src/assets/iconos/mira.svg`, `historial.svg` | Inicio, valores 2 (mira) y 3 (historial) de «Cómo trabajamos» |
 | 9a, 9b | 2026-11-12 | `src/assets/iconos/ramas.svg`, `bombilla.svg` | Inicio, «Participa»: la vía «Únete» (ramas) y la de «Propón» (bombilla) |
@@ -243,7 +245,7 @@ entero; aquí va resumido.
 | 9 | **Iconos de las 3 vías de participación** | Hoja de contactos 1×3 | Inicio «Participa», `/unirse`, `/proponer` | Sin icono | Dos ramas que confluyen · bombilla dentro de una ventana · terminal con galón y cursor (línea simple) |
 | 10 | **Ilustración «Cómo funciona»** | 1200×450 sobre papel | Banda de `/participa/unirse` | Lista sin imagen | Línea de historial de commits con unos pocos nodos sobre la carta (grabado). **Entregada** |
 | 11 | **Fondo de «Es para ti si…»** | 1200×1200 sobre papel (perfil `fondo`), muy tenue (al 30 %) | Detrás de la lista de `/unirse` | Papel liso | Costa de una ría con sondas y curvas de nivel, muy tenue (grabado) |
-| 12 | **Separador de sección** | SVG 1200×24 | Entre bloques largos de la portada | Filete 1 px | Una línea fina que en un tramo se vuelve costa (línea simple; el pedido del generador aún lleva grabado y se reescribe) |
+| 12 | **Separador de sección** | 1200×100 sobre transparencia (WebP) | Entre bloques largos de la portada | Filete 1 px | Filete fino con puntos en los extremos y una rosa de ocho puntas grabada en el centro (la persona, 2026-11-12: «me gusta más la idea del que te pasé»; sustituye a la línea que se vuelve costa). **Entregada** |
 
 ### C. Páginas interiores (prioridad 3)
 

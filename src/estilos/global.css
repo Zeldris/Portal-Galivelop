@@ -1023,6 +1023,22 @@ button {
   margin-top: 48px;
 }
 
+/* Separador de la marca (recurso 12): filete con rosa de ocho puntas, entre bloques largos de una sección. */
+.separador {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 48px auto 0;
+}
+
+.separador + .proximamente {
+  margin-top: 24px;
+}
+
+:root:not([data-tema='claro']) .separador {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .proximamente header {
   margin-bottom: 20px;
 }

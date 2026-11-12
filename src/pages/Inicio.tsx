@@ -157,17 +157,27 @@ export function Inicio() {
             <p className="vacio">{t('filtro.vacio')}</p>
           )}
           {filtro === 'todos' && proximos.length > 0 && (
-            <section className="proximamente" aria-labelledby="proximamente-titulo">
-              <header>
-                <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
-                <p>{t('proximamente.texto')}</p>
-              </header>
-              <div className="rejilla-proximos">
-                {proximos.map((p) => (
-                  <TarjetaProxima key={p.slug} proximo={p} />
-                ))}
-              </div>
-            </section>
+            <>
+              <img
+                className="separador"
+                src={ruta('/marca/separador.webp')}
+                alt=""
+                width={1200}
+                height={100}
+                loading="lazy"
+              />
+              <section className="proximamente" aria-labelledby="proximamente-titulo">
+                <header>
+                  <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
+                  <p>{t('proximamente.texto')}</p>
+                </header>
+                <div className="rejilla-proximos">
+                  {proximos.map((p) => (
+                    <TarjetaProxima key={p.slug} proximo={p} />
+                  ))}
+                </div>
+              </section>
+            </>
           )}
         </div>
       </section>
@@ -280,6 +290,14 @@ export function Inicio() {
               {t('proyectoPropio.boton')} <ArrowRight size={16} />
             </Link>
           </aside>
+          <img
+            className="separador"
+            src={ruta('/marca/separador.webp')}
+            alt=""
+            width={1200}
+            height={100}
+            loading="lazy"
+          />
           <div className="participa-guia">
             <div>
               <h3>{t('paraquien.titulo')}</h3>
