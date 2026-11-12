@@ -2,7 +2,7 @@
 
 Commits revisados: 488dc0e, 0d5aa12, 7fc0357 y e8af64b (rama `ccr-47f8fddd-o5ek6p`), y la bitácora.
 
-**Estado:** pendiente: lo decide la persona.
+**Estado:** aprobada por la persona entera (2026-11-12, «apruebo todo») y aplicada: P1 (`src/estilos/clases.test.ts`, que encontró y quitó `.contacto-botones` y `.contacto-correo`), P2 y P4 (notas en `.claude/gw/gw-opt-tokens.md`; node en `/home/deck/.local/node` y `.claude/settings.local.json`, que no se sube), P3 en «For Galivelop-workflow», P5 sin cambio.
 
 ## Medida (`gw-opt-tokens`, desde 87940a6)
 

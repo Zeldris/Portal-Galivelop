@@ -2471,19 +2471,6 @@ button {
 
 /* ---------- Contacto: correos ---------- */
 
-.contacto-botones {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.contacto-correo {
-  font-weight: 600;
-  text-decoration: none;
-  word-break: break-all;
-}
-
 .contacto-proyectos {
   margin-top: 28px;
   padding-top: 24px;
