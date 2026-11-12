@@ -894,6 +894,8 @@ button {
 
 /* Aviso vacío de las listas (muro, novedades): la ventana en blanco sobre la carta (recurso 27) encima del texto. */
 .vacio-ilustrado {
+  /* La imagen ya va enmarcada: sin el borde discontinuo de .vacio. */
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;

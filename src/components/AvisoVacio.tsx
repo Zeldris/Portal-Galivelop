@@ -10,6 +10,7 @@ export function AvisoVacio({ texto }: { texto: string }) {
         alt=""
         width={480}
         height={360}
+        onError={(e) => (e.currentTarget.style.display = 'none')}
       />
       <p>{texto}</p>
     </div>

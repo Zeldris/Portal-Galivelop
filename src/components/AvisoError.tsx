@@ -21,6 +21,8 @@ export function AvisoError({
           alt=""
           width={480}
           height={360}
+          // Sin red (el caso típico de este aviso), mejor nada que una caja rota.
+          onError={(e) => (e.currentTarget.style.display = 'none')}
         />
         <h1>{titulo}</h1>
         <p>{texto}</p>
