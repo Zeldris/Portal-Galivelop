@@ -7,7 +7,7 @@
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.png",
   "cabecera": "color",
-  "actualizado": "2026-11-08",
+  "actualizado": "2026-11-12",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -328,6 +328,11 @@
       "es": "Hoy el servicio está publicado en su versión 0.4.1, con el código abierto bajo licencia MIT: pedidos, intentos, elegida, entrega, cola y registro, el motor real con instalador, la composición de texto y logo sobre la imagen, la medida de marca, una API local y una interfaz en el navegador. Falta comprobar a mano en la Steam Deck el recorrido completo de la interfaz y el arranque bajo demanda, y el piloto con World-Maker-Fantasy.",
       "gl": "Hoxe o servizo está publicado na súa versión 0.4.1, co código aberto baixo licenza MIT: pedidos, intentos, elixida, entrega, cola e rexistro, o motor real con instalador, a composición de texto e logo sobre a imaxe, a medida de marca, unha API local e unha interface no navegador. Falta comprobar a man na Steam Deck o percorrido completo da interface e o arranque baixo demanda, e o piloto con World-Maker-Fantasy.",
       "en": "Today the service is published as version 0.4.1, with the code open under the MIT licence: requests, attempts, chosen one, delivery, queue and log, the real engine with its installer, text and logo composed over the image, brand measurement, a local API and a browser interface. Still to check by hand on the Steam Deck: the full walk-through of the interface and the on-demand start, plus the pilot with World-Maker-Fantasy."
+    },
+    {
+      "es": "Las imágenes e iconos de esta web salen del generador: las portadas por estado de las fichas, los iconos del inicio, el marco de los retratos, las ilustraciones de la página 404 y de los formularios, la cabecera del equipo, las tarjetas de «próximamente» y el icono de Galivelop-workflow. Se pidieron con la hoja de marca del portal, se eligió un intento de cada pedido y los iconos se pasaron a vector con la propia orden gimg.",
+      "gl": "As imaxes e iconas desta web saen do xerador: as portadas por estado das fichas, as iconas do inicio, o marco dos retratos, as ilustracións da páxina 404 e dos formularios, a cabeceira do equipo, as tarxetas de «proximamente» e a icona de Galivelop-workflow. Pedíronse coa folla de marca do portal, elixiuse un intento de cada pedido e as iconas pasáronse a vector coa propia orde gimg.",
+      "en": "The images and icons on this website come from the generator: the status covers on project pages, the home-page icons, the portrait frame, the illustrations on the 404 page and the forms, the team header, the “coming soon” cards and the Galivelop-workflow icon. They were requested with the portal’s brand sheet, one attempt was chosen from each request, and the icons were turned into vectors with gimg itself."
     }
   ],
   "lineas": ["ia-local", "producto"],
@@ -1108,6 +1113,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-12",
+      "texto": {
+        "es": "Primer encargo real: las imágenes e iconos de la web de Galivelop salen ya del generador (portadas, iconos del inicio, ilustraciones y marcos), pedidos con la hoja de marca del portal.",
+        "gl": "Primeiro encargo real: as imaxes e iconas da web de Galivelop saen xa do xerador (portadas, iconas do inicio, ilustracións e marcos), pedidas coa folla de marca do portal.",
+        "en": "First real job: the images and icons on the Galivelop website now come from the generator (covers, home-page icons, illustrations and frames), requested with the portal’s brand sheet."
+      }
+    },
+    {
       "fecha": "2026-11-06",
       "texto": {
         "es": "Versión 0.4.1, de arreglos: al abrir la interfaz se usa siempre la versión más reciente del generador, aunque quede uno antiguo en marcha, y dos arranques a la vez ya no dejan funcionando el viejo.",
@@ -1161,14 +1174,6 @@
         "es": "Arranca el piloto en la Steam Deck: primeras imágenes sociales y borrador frente a definitivo.",
         "gl": "Arranca o piloto na Steam Deck: primeiras imaxes sociais e borrador fronte a definitivo.",
         "en": "The pilot starts on the Steam Deck: first social images and draft versus final."
-      }
-    },
-    {
-      "fecha": "2026-10-25",
-      "texto": {
-        "es": "Núcleo terminado: pedidos, intentos, elegida, entrega con manifiesto y cola.",
-        "gl": "Núcleo terminado: pedidos, intentos, elixida, entrega con manifesto e cola.",
-        "en": "Core finished: requests, attempts, chosen one, delivery with manifest, and queue."
       }
     }
   ],
