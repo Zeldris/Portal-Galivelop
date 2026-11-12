@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { AvisoVacio } from '../components/AvisoVacio';
 import { Publicacion } from '../components/Publicacion';
 import { publicaciones, publicacionesDe } from '../data/muro';
 import { proyectos } from '../data/proyectos';
@@ -67,7 +68,7 @@ export function Muro() {
             ))}
           </div>
         ) : (
-          <p className="vacio vacio-carta">{t('muro.vacio')}</p>
+          <AvisoVacio texto={t('muro.vacio')} />
         )}
       </div>
     </section>

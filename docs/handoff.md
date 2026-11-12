@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-12 (hoja del generador del 2026-11-12 aplicada en `ccr-47f8fddd-o5ek6p`, encima de «reutilizar lo ya generado») |
+| **Actualizado** | 2026-11-12 (portadas 06 rehechas, 27 y 28 aplicadas en `ccr-47f8fddd-o5ek6p`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-12) |
-| **Tarea en curso** | Ninguna: «reutilizar lo generado» y la hoja del generador del 2026-11-12 están en `main` (c19d6af). Presupuesto de compactaciones: 1 (se gastaron 2) |
-| **Siguiente paso** | `/clear`. Luego, cuando la persona traiga del generador las portadas 06 rehechas y el pedido nuevo (25-30, 10b, versiones oscuras de 10, 18, 19, 27 y 28), aplicarlos según `docs/marca.md`. Hoja del generador corregida en `32e7b44`: quedan 4 frases, ya pedidas |
+| **Tarea en curso** | Imágenes del generador del 2026-11-12 (tarde): 06 rehechas, 27 y 28 aplicadas; pendiente de `/code-review` (fase 1) y de `main` cuando la persona lo diga. Las fuentes en `src/img/` van ahora por proyecto (`src/img/<slug>/`, con `svg/` y `sin-uso/`). Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | Fase 1 (`/code-review`) de este cambio y fase 3. Luego, cuando lleguen del generador 25d, 26b y 26c (la 26a con un solo grosor), aplicar las series 25 y 26 (fuentes ya en `src/img/portal/`); siguen en cola 29, 30, 10b y las versiones oscuras de 10, 18, 19, 27 y 28 |
 | **En `main`** | **Reutilizar lo generado y hoja del generador del 2026-11-12** (c19d6af, 2026-11-12, la persona: «si»; fases 1, 2 y 3 hechas, retro `docs/records/retro-2026-11-12-hoja-generador.md` aprobada; CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 202/202 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 

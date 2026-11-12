@@ -2,6 +2,7 @@ import { estiloAcento } from '../data/tonos';
 import { Fragment, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
+import { AvisoVacio } from '../components/AvisoVacio';
 import { Separador } from '../components/Separador';
 import { entradas } from '../data/novedades';
 import { buscarProyecto, proyectos, ruta } from '../data/proyectos';
@@ -132,7 +133,7 @@ export function Novedades() {
             )}
           </>
         ) : (
-          <p className="vacio vacio-carta">{t('novedades.vacio')}</p>
+          <AvisoVacio texto={t('novedades.vacio')} />
         )}
       </div>
     </section>

@@ -892,25 +892,12 @@ button {
   border: 1px dashed var(--borde);
 }
 
-/* Aviso vacío de las listas (muro, novedades): las isobatas de la carta, muy tenues, como fondo. */
-.vacio-carta {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  padding: 72px 40px;
-  /* En tinta y no en --texto-3: donde una isobata cruza el texto, sigue por encima de 4,5:1 en los dos temas. */
-  color: var(--texto);
-}
-
-.vacio-carta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--celeste);
-  opacity: 0.35;
-  -webkit-mask: url('/marca/isobatas.svg') center / cover no-repeat;
-  mask: url('/marca/isobatas.svg') center / cover no-repeat;
+/* Aviso vacío de las listas (muro, novedades): la ventana en blanco sobre la carta (recurso 27) encima del texto. */
+.vacio-ilustrado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 /* ---------- Tarjetas de proyecto ---------- */
@@ -2327,8 +2314,10 @@ button {
   color: var(--texto-2);
 }
 
-/* Ilustraciones sobre papel (404, formularios, equipo): enmarcadas, a su tamaño o menos. */
+/* Ilustraciones sobre papel (404, error de carga, lista vacía, formularios, equipo): enmarcadas, a su tamaño o menos. */
 .no-encontrado-imagen,
+.aviso-error-imagen,
+.vacio-imagen,
 .formulario-ilustracion,
 .formulario-listo-imagen,
 .equipo-banda {
@@ -2346,8 +2335,13 @@ button {
   margin: 4px 0 24px;
 }
 
+.aviso-error-imagen,
+.vacio-imagen,
 .formulario-listo-imagen {
   max-width: 240px;
+}
+
+.formulario-listo-imagen {
   margin-bottom: 16px;
 }
 
