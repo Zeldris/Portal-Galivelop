@@ -1,19 +1,4 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  Check,
-  Cpu,
-  Eye,
-  FlaskConical,
-  Globe,
-  Lock,
-  Mail,
-  MessageSquare,
-  Rocket,
-  ShieldCheck,
-  Users,
-  Workflow,
-} from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Cpu, Lock, Mail } from 'lucide-react';
 import { useEffect, useState, type ComponentType, type CSSProperties } from 'react';
 import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
@@ -32,20 +17,20 @@ import { useIdioma } from '../i18n/Idioma';
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
 /** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
 const FILTRAR_DESDE = 5;
-/** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco; los propios van llegando por series. */
+/** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco. */
 type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
 
 const ICONO_LINEA: Record<Linea, Icono> = {
   'ia-local': Cpu,
-  mundos: Globe,
-  informacion: ShieldCheck,
+  mundos: iconoMarca('mundos'),
+  informacion: iconoMarca('documento-check'),
   producto: iconoMarca('codigo'),
-  metodo: Workflow,
+  metodo: iconoMarca('compas'),
 };
 const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
   [iconoMarca('candado'), 'valor1'],
-  [FlaskConical, 'valor2'],
-  [Eye, 'valor3'],
+  [iconoMarca('mira'), 'valor2'],
+  [iconoMarca('historial'), 'valor3'],
   [iconoMarca('ramas-unidas'), 'valor4'],
 ];
 
@@ -254,7 +239,7 @@ export function Inicio() {
           <ul className="vias">
             <li>
               <Link to="/participa/unirse" className="via">
-                <Users aria-hidden="true" />
+                <IconoMarca nombre="ramas" />
                 <h3>{t('via1.titulo')}</h3>
                 <p>{t('via1.texto')}</p>
                 <span className="via-ir">
@@ -264,7 +249,7 @@ export function Inicio() {
             </li>
             <li>
               <Link to="/participa/proponer" className="via">
-                <Rocket aria-hidden="true" />
+                <IconoMarca nombre="bombilla" />
                 <h3>{t('via2.titulo')}</h3>
                 <p>{t('via2.texto')}</p>
                 <span className="via-ir">
@@ -285,7 +270,7 @@ export function Inicio() {
           </ul>
           <aside className="proyecto-propio">
             <span className="proyecto-propio-icono" aria-hidden="true">
-              <MessageSquare size={22} />
+              <IconoMarca nombre="implantacion" />
             </span>
             <div>
               <h3>{t('proyectoPropio.titulo')}</h3>

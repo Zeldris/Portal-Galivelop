@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-12 (imágenes nuevas del generador: reparto decidido, aplicándose; ficha de Image Generator con «las imágenes de la web salen del generador») |
+| **Actualizado** | 2026-11-12 (imágenes nuevas del generador aplicadas en la rama de la sesión; sin revisar aún) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-12) |
-| **Tarea en curso** | Imágenes nuevas de `src/img/` (2026-11-12). **Reparto:** líneas mundos→07e, informacion→07c, metodo→07d (ia-local sigue Cpu, producto 07a); valores 2→08b mira, 3→08c historial; vías unirse→09a ramas, proponer→09b bombilla; aviso «¿Tienes un proyecto propio?»→14 implantación (de `sin-uso/`); portadas 06 de faro por estado (`public/marca/portada-<estado>.webp`) de fondo en las fichas `cabecera: "color"`. Sin sitio aún: 07b (apaisado, no cabe en hueco cuadrado) y 12 separador (PNG con estrella; la hoja pide SVG de línea). **Hecho:** ficha de Galivelop IG: párrafo en `descripcion` y novedad 2026-11-12 (la persona: «hay que reflejar que las imágenes e iconos de la web han sido generados con el generador»). **Falta:** iconos, portadas y `docs/marca.md` (los aplica un subagente), check, capturas, revisión |
-| **Siguiente paso** | Revisar el diff de iconos y portadas, `npm run check`, commit; preguntar a la persona por 07b y 12; añadir a `docs/marca.md` la regla de reflejar en la ficha de Galivelop IG cada imagen nueva del generador; fase 1 y 3 antes de la rama de trabajo |
+| **Tarea en curso** | Imágenes nuevas de `src/img/` (2026-11-12): **aplicadas** en `ccr-47f8fddd-o5ek6p` (detalle en `docs/marca.md` § Entregados): iconos 7c, 7d, 7e, 8b, 8c, 9a, 9b y 14 en el inicio; portadas 06 de faro por estado en las fichas `cabecera: "color"`; ficha de Galivelop IG con «las imágenes de la web salen del generador». Sin sitio aún, a decidir con la persona: 07b (apaisado, no cabe en hueco cuadrado) y 12 separador (PNG con estrella; la hoja pide SVG de línea). Capturas vistas: líneas y ficha de workflow en escritorio claro; `historial` se ve algo más estrecho que el resto. Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | Fase 1 (`/code-review --max-findings all` contra `origin/main`) de este cambio y marca; luego llevarlo a `claude/galivelop-dev-portal-1h89ci` (lo publica el domingo) o a `main` si la persona lo confirma. Preguntar por 07b y 12 |
 | **En `main`** | **Iconos propios 7a, 8a, 8d y 9c en el inicio** (fe3c6d5, 2026-11-11, la persona: «sí, a main»; CI en verde). **Marco del retrato (17) e icono de Galivelop-workflow (23)** (d1d5ede, 2026-11-11, la persona: «ahora sí iremos a main cuando esté listo»; CI en verde; rama de trabajo avanzada hasta ahí).  **Imágenes del generador en la web (06, 10, 13, 15, 18, 19)** (PR #2, 6f44c27, 2026-11-11, autorizada por la persona en la otra sesión), encima de 48827b1 (rama `ccr-47a38edd-v566du` y novedad de Tarkor). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 193/193 (21 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -19,6 +19,7 @@ La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea program
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Lo anterior está en `main` (fe3c6d5, 2026-11-11), también los iconos propios del inicio.
+- Imágenes nuevas del generador (iconos 7c-7e, 8b, 8c, 9a, 9b y 14; portadas 06 por estado) y ficha de Galivelop IG, en `ccr-47f8fddd-o5ek6p` (2026-11-12), pendientes de revisión.
 
 ## Hecho
 

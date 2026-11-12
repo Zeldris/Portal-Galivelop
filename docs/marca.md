@@ -94,7 +94,7 @@ aquí con fecha y ruta.
 
 ### Dónde va cada recurso
 
-Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números son los de las tablas de abajo; los nombres de archivo que no fija otro sitio (`rosa-vientos.svg`, `sello.svg`, `gv-logo-negativo.svg`, los de `iconos/`) son la propuesta: se puede cambiar al recibirlos.
+Al recibir una imagen, se copia a su destino y se ejecuta la orden. Cada imagen del generador que entra en la web se nombra también en la ficha de Galivelop IG (`src/data/proyectos/galivelop-image-generator.json`, último párrafo de `descripcion`), que dice qué partes de la web salen de él (la persona, 2026-11-12). Los números son los de las tablas de abajo; los nombres de archivo que no fija otro sitio (`rosa-vientos.svg`, `sello.svg`, `gv-logo-negativo.svg`, los de `iconos/`) son la propuesta: se puede cambiar al recibirlos.
 
 | # | Destino | Orden |
 |---|---|---|
@@ -103,7 +103,7 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Los números
 | 2 | `public/marca/isobatas.svg` (sustituye a las provisionales de `scripts/isobatas-provisionales.py`) | Copiar; quitar o dejar de usar el script provisional |
 | 3 | `public/marca/galivelop-portal.jpg` (1200×630, referenciada en `index.html`) | Copiar y comprobar la referencia de `og:image` |
 | 4, 5 | `public/marca/rosa-vientos.svg`, `public/marca/sello.svg` | Vectorizar |
-| 6 | `public/proyectos/<slug>/portada.webp` (+ `portada-mini.webp`) | Convertir a WebP, grande y `-mini` |
+| 6 | `public/marca/portada-<estado>.webp`, una por estado | Convertir a WebP (1600×900); sin `-mini`: ninguna tarjeta la usa |
 | 7, 8, 9 | `src/assets/iconos/<nombre>.svg`, pintados en línea por `IconoMarca.tsx` | Vectorizar la hoja y recortar cada icono; luego `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (tinta a `currentColor`, recorte del `viewBox` y un contorno proporcional que acerca su grosor al de lucide a 24 px) y añadirlo a `ICONOS` de `IconoMarca.tsx` |
 | 10, 11, 13, 16, 18, 19, 21, 22 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel |
 | 12, 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
@@ -125,15 +125,17 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 15 (Developer) | 2026-11-11 | `public/proyectos/galivelop-developer/proxima.webp` (720×405, del barco de papel sobre mar con olas, 1600×900, que llegó como `portada-desarrollo.webp`) | `imagen` de su entrada en `proximamente.json`. La persona (2026-11-11): ese barco es la portada de Developer; sustituye a la terminal con la rama y el anillo que pedía la hoja |
 | 17 | 2026-11-11 | `public/marca/marco-retrato.webp` (400×400, máscara: blanco con transparencia, recortado al cuadro; del PNG q539, el trazador rompe sus marcas) | Alrededor de la foto o las iniciales en `/equipo` y en la página de cada miembro (`Retrato.tsx`); se pinta con `--texto`, así vale en los dos temas |
 | 23 (workflow) | 2026-11-11 | `public/proyectos/galivelop-workflow/icono.svg` (SVG del generador, `viewBox` recortado al dibujo) | `icono` de su ficha: cabecera, tarjeta y muro |
-| 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie sigue con lucide hasta que llegue |
+| 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie llegó el 2026-11-12 (filas siguientes) |
+| 6 | 2026-11-12 | `public/marca/portada-desarrollo.webp`, `portada-diseno.webp` y `portada-publicado.webp` (1600×900, `cwebp -q 80`). Los tres son un faro: en desarrollo, con andamios; en diseño, una plataforma de roca con un trípode; en publicado, el faro encendido de noche | Fondo velado de la cabecera de las fichas con `cabecera: "color"` (hoy Galivelop-workflow y Galivelop-image-generator), según el `estado` del proyecto (`Proyecto.tsx`, `.cabecera-velada`). Las tarjetas no la usan: esos proyectos llevan su propia portada. Sustituye al celeste con isobatas, que queda para un estado sin imagen |
+| 7c, 7d, 7e | 2026-11-12 | `src/assets/iconos/documento-check.svg`, `compas.svg`, `mundos.svg` (pasados por `limpiar-iconos.cjs`) | Inicio, líneas de trabajo: «informacion» (documento con visto), «metodo» (compás) y «mundos»; «ia-local» sigue con lucide (`Cpu`) |
+| 8b, 8c | 2026-11-12 | `src/assets/iconos/mira.svg`, `historial.svg` | Inicio, valores 2 (mira) y 3 (historial) de «Cómo trabajamos» |
+| 9a, 9b | 2026-11-12 | `src/assets/iconos/ramas.svg`, `bombilla.svg` | Inicio, «Participa»: la vía «Únete» (ramas) y la de «Propón» (bombilla) |
+| 14 | 2026-11-12 | `src/assets/iconos/implantacion.svg` (salía de «sin uso»; caja cuya tapa se despliega en ventana) | Inicio, aviso «¿Tienes un proyecto propio?» (`proyecto-propio`), en lugar de `MessageSquare` |
 
-Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 vuelve al generador para rehacerla (la persona, 2026-11-11).
+Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 se rehízo y llegó el 2026-11-12.
 
 Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18) aún no
-tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Faltan, entre las que ya tienen sitio en la web: las
-tres portadas 6 (ventana de editor sobre el mar); hasta
-que llegue la de desarrollo, las fichas de color (IG y workflow) muestran celeste con isobatas. Para ponerla: el fondo
-velado por estado de `Proyecto.tsx` y `.cabecera-velada` que se quitaron en 88354fb (`git show 88354fb -- src/pages/Proyecto.tsx src/estilos/global.css`).
+tienen versión para el tema oscuro: se muestran enmarcadas tal cual.
 
 ### Cómo pedirlas
 
@@ -248,7 +250,7 @@ entero; aquí va resumido.
 | # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
 | 13 | **Cabecera de `/equipo`** (era la de Productos, que ya no tiene página: ADR 0004) | 1600×500 sobre cerúleo (perfil `cabecera`) | Arriba de `/equipo` | Bloque celeste con isobatas | Pistas de placa de circuito dibujadas como curvas de nivel (grabado). **Entregada** |
-| 14 | ~~Icono de producto «implantación y servicio»~~ | — | Sin uso: no hay tarjetas de producto desde el ADR 0004 | — | Caja cuya tapa se despliega en ventana (línea simple); solo si vuelve a hacer falta |
+| 14 | **Icono «implantación y servicio»** | SVG, `src/assets/iconos/implantacion.svg` | Aviso «¿Tienes un proyecto propio?» del inicio (ya no hay tarjetas de producto, ADR 0004) | `MessageSquare` de lucide | Caja cuya tapa se despliega en ventana (línea simple). **Entregada** |
 | 15 | **Tarjetas «Próximamente»** (2) | 1200×675 y `-mini` (perfil `tarjeta`), tercio inferior limpio | `TarjetaProxima` (Voice Generator y Developer) | Celeste plano con isobatas | Voz: onda de sonido como perfil del fondo marino (**entregada**); Developer: barco de papel sobre el mar con olas (**entregada**, la persona, 2026-11-11; antes, terminal con la rama que vuelve por un anillo) |
 | 16 | **Cabecera del Muro** | 1600×400 sobre papel (perfil `muro`) | Arriba de `/muro` | Sin cabecera | Tablero de tareas de tres columnas con tarjetas en blanco (grabado) |
 | 17 | **Marco de retrato del equipo** | SVG 400×400; la foto va dentro | `/equipo` y página de cada miembro | Borde 1 px | Marco con marcas de grados y chaflán, centro limpio, sobre croma (grabado) |

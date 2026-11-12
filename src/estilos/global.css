@@ -1424,7 +1424,8 @@ button {
   z-index: -2;
 }
 
-.cabecera-ilustracion::before {
+.cabecera-ilustracion::before,
+.cabecera-velada::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1438,7 +1439,8 @@ button {
   color: var(--blanco);
 }
 
-:root[data-tema='claro'] .cabecera-ilustracion::before {
+:root[data-tema='claro'] .cabecera-ilustracion::before,
+:root[data-tema='claro'] .cabecera-velada::before {
   background: var(--velo-medio);
 }
 
@@ -3748,6 +3750,11 @@ img.perfil-logo {
   height: 44px;
   color: var(--celeste);
   background: var(--tinte);
+}
+
+.proyecto-propio-icono svg {
+  width: 22px;
+  height: 22px;
 }
 
 .proyecto-propio h3 {

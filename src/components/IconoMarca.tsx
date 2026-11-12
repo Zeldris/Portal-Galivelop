@@ -1,11 +1,32 @@
 import type { ComponentType } from 'react';
+import bombilla from '../assets/iconos/bombilla.svg?raw';
+import compas from '../assets/iconos/compas.svg?raw';
+import documentoCheck from '../assets/iconos/documento-check.svg?raw';
+import historial from '../assets/iconos/historial.svg?raw';
+import implantacion from '../assets/iconos/implantacion.svg?raw';
+import mira from '../assets/iconos/mira.svg?raw';
+import mundos from '../assets/iconos/mundos.svg?raw';
+import ramas from '../assets/iconos/ramas.svg?raw';
 import candado from '../assets/iconos/candado.svg?raw';
 import codigo from '../assets/iconos/codigo.svg?raw';
 import ramasUnidas from '../assets/iconos/ramas-unidas.svg?raw';
 import terminal from '../assets/iconos/terminal.svg?raw';
 
-/** Iconos propios de la marca (recursos 7, 8 y 9 de `docs/marca.md`), en un solo trazado con `currentColor`. */
-const FUENTES = { candado, codigo, 'ramas-unidas': ramasUnidas, terminal };
+/** Iconos propios de la marca (recursos 7, 8, 9 y 14 de `docs/marca.md`), en un solo trazado con `currentColor`. */
+const FUENTES = {
+  bombilla,
+  candado,
+  codigo,
+  compas,
+  'documento-check': documentoCheck,
+  historial,
+  implantacion,
+  mira,
+  mundos,
+  ramas,
+  'ramas-unidas': ramasUnidas,
+  terminal,
+};
 export type NombreIcono = keyof typeof FUENTES;
 
 /** `viewBox` y contenido de cada SVG, leídos una vez al cargar el módulo. */
