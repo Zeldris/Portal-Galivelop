@@ -43,6 +43,7 @@ export function Unirse() {
   return (
     <PaginaFormulario
       titulo={t('unir.titulo')}
+      icono="ramas"
       intro={t('unir.intro')}
       ilustracion={{ src: 'marca/como-funciona.webp', ancho: 1200, alto: 450 }}
       componer={(d) => {

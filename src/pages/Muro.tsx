@@ -67,7 +67,7 @@ export function Muro() {
             ))}
           </div>
         ) : (
-          <p className="vacio">{t('muro.vacio')}</p>
+          <p className="vacio vacio-carta">{t('muro.vacio')}</p>
         )}
       </div>
     </section>

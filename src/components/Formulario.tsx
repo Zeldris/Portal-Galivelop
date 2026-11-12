@@ -1,6 +1,7 @@
 import { ArrowLeft, Check, Copy, Mail, Send } from 'lucide-react';
 import { useState, type FormEvent, type ReactNode } from 'react';
 import { Link } from './Enlace';
+import { IconoMarca, type NombreIcono } from './IconoMarca';
 import { MARCA } from '../data/marca';
 import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
@@ -38,13 +39,15 @@ interface Props {
   intro: string;
   /** Ilustración decorativa entre la entrada y el formulario (ruta en public/), opcional. */
   ilustracion?: { src: string; ancho: number; alto: number };
+  /** Icono de la vía de participación (el mismo que en «Participa» del inicio), encima del título. */
+  icono?: NombreIcono;
   /** Devuelve el correo a partir de los datos del formulario. */
   componer: (datos: FormData) => Correo;
   children: ReactNode;
 }
 
 /** Página de formulario: prepara el correo, lo abre y ofrece copiarlo si no se abre. */
-export function PaginaFormulario({ titulo, intro, ilustracion, componer, children }: Props) {
+export function PaginaFormulario({ titulo, intro, ilustracion, icono, componer, children }: Props) {
   const { t } = useIdioma();
   const [correo, setCorreo] = useState<Correo | null>(null);
   const [copiado, setCopiado] = useState(false);
@@ -73,6 +76,11 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
         <Link to="/#participa" className="volver volver-oscuro">
           <ArrowLeft size={16} /> {t('form.volver')}
         </Link>
+        {icono && (
+          <span className="formulario-icono" aria-hidden="true">
+            <IconoMarca nombre={icono} />
+          </span>
+        )}
         <h1>{titulo}</h1>
         <p className="formulario-intro">{intro}</p>
         {ilustracion && (

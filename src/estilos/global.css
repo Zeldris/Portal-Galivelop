@@ -873,6 +873,25 @@ button {
   border: 1px dashed var(--borde);
 }
 
+/* Aviso vacío de las listas (muro, novedades): las isobatas de la carta, muy tenues, como fondo. */
+.vacio-carta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 72px 40px;
+}
+
+.vacio-carta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--celeste);
+  opacity: 0.5;
+  -webkit-mask: url('/marca/isobatas.svg') center / cover no-repeat;
+  mask: url('/marca/isobatas.svg') center / cover no-repeat;
+}
+
 /* ---------- Tarjetas de proyecto ---------- */
 
 .rejilla-proyectos {
@@ -1407,9 +1426,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 20px 18px;
-  margin-top: 56px;
-  padding-top: 20px;
-  border-top: 1px solid var(--borde);
+  margin-top: 8px;
   color: var(--texto-3);
 }
 
@@ -2133,6 +2150,35 @@ button {
   text-decoration: underline;
 }
 
+/* Con icono, el icono del proyecto ocupa el sitio del punto de color. */
+.novedad-proyecto:has(.novedad-icono)::before {
+  display: none;
+}
+
+.novedad-icono {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  object-fit: contain;
+  /* Como en la cabecera de la ficha: fondo blanco, para que los iconos de trazo oscuro se lean en los dos temas. */
+  background: var(--blanco);
+}
+
+/* Cambio de mes en /novedades: el separador de la marca a todo el ancho de la lista. */
+.novedades li.novedades-corte {
+  display: block;
+  padding: 0;
+  border-top: 0;
+}
+
+.novedades-corte .separador {
+  margin: 12px auto;
+}
+
+.novedades li.novedades-corte + li {
+  border-top: 0;
+}
+
 .novedad-muro {
   font-size: 0.88rem;
   color: var(--texto-3);
@@ -2573,6 +2619,11 @@ button {
   padding: 24px;
   border: 1px solid color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 40%, var(--borde));
   background: var(--superficie);
+}
+
+.participar-icono svg {
+  width: 26px;
+  height: 26px;
 }
 
 .participar-icono {
@@ -3164,6 +3215,17 @@ button {
   flex: none;
   width: 64px;
   height: 64px;
+}
+
+/* Retrato con marco en el equipo de cada ficha. */
+.equipo-retrato {
+  flex: none;
+  width: 52px;
+  height: 52px;
+}
+
+.equipo-retrato .persona-iniciales {
+  font-size: 0.85rem;
 }
 
 /* Marco de carta náutica alrededor de la foto (recurso 17): una máscara pintada con el color del texto, para que
@@ -3802,6 +3864,7 @@ img.perfil-logo {
 
 .persona-hueco {
   display: grid;
+  padding: 18%;
   place-items: center;
   color: var(--celeste);
   background: var(--tinte);
@@ -5710,4 +5773,21 @@ body:has(dialog[open]) {
 /* Hueco sin texto mientras llega el chunk de una página o la ficha de un proyecto. */
 .carga-pagina {
   min-height: 70vh;
+}
+
+/* Icono de la vía de participación encima del título del formulario (el mismo que en «Participa» del inicio). */
+.formulario-icono {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 16px;
+  padding: 12px;
+  color: var(--celeste);
+  background: var(--tinte);
+}
+
+.formulario-icono svg {
+  width: 100%;
+  height: 100%;
 }

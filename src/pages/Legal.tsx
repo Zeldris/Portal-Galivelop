@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
+import { Separador } from '../components/Separador';
 import { ArrowLeft } from 'lucide-react';
 import { documentosLegales, type DocumentoLegal } from '../data/legal';
 import { useIdioma } from '../i18n/Idioma';
@@ -67,6 +68,7 @@ export function Legal({ documento: d }: { documento: DocumentoLegal }) {
           </section>
         ))}
 
+        <Separador />
         <nav className="legal-otros" aria-label={t('legal.otros')}>
           <span>{t('legal.otros')}:</span>
           {otros.map((o) => (

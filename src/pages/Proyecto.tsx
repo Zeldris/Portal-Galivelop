@@ -8,7 +8,6 @@ import {
   Lock,
   Mail,
   Sparkles,
-  Users,
 } from 'lucide-react';
 import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { useParams } from 'react-router-dom';
@@ -21,7 +20,10 @@ import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
-import { buscarPersona, iniciales } from '../data/equipo';
+import { IconoMarca } from '../components/IconoMarca';
+import { Retrato } from '../components/Retrato';
+import { Separador } from '../components/Separador';
+import { buscarPersona } from '../data/equipo';
 import { PORTADA_ESTADO } from '../data/marca';
 import { idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
@@ -499,6 +501,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           </section>
         )}
 
+        {grupos.includes('avance') && <Separador />}
         {grupos.includes('avance') && (
           <section id="avance" className="grupo" aria-labelledby="titulo-avance">
             <h2 id="titulo-avance" className="grupo-titulo">
@@ -599,20 +602,12 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                     const perfil = persona?.perfil;
                     const contenido = (
                       <>
-                        {persona?.foto ? (
-                          <img
-                            src={ruta(persona.foto)}
-                            alt=""
-                            className="avatar"
-                            width={44}
-                            height={44}
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span className="avatar" aria-hidden="true">
-                            {iniciales(m.nombre)}
-                          </span>
-                        )}
+                        <Retrato
+                          nombre={m.nombre}
+                          foto={persona?.foto}
+                          clase="equipo-retrato"
+                          lado={52}
+                        />
                         <div>
                           <p className="equipo-nombre">{m.nombre}</p>
                           <p className="equipo-rol">{tx(m.rol)}</p>
@@ -653,7 +648,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         <aside className={`participar participar-${p.colaboracion}`}>
           <span className="participar-icono" aria-hidden="true">
-            {p.colaboracion === 'abierta' ? <Users size={24} /> : <Lock size={24} />}
+            {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock size={24} />}
           </span>
           <div>
             <h2>{t(`participa.${p.colaboracion}.titulo`, { nombre: p.nombre })}</h2>

@@ -5,6 +5,7 @@ import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { IconoMarca, iconoMarca } from '../components/IconoMarca';
 import { MarcaGV } from '../components/Logo';
+import { Separador } from '../components/Separador';
 import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
@@ -158,14 +159,7 @@ export function Inicio() {
           )}
           {filtro === 'todos' && proximos.length > 0 && (
             <>
-              <img
-                className="separador"
-                src={ruta('/marca/separador.webp')}
-                alt=""
-                width={1200}
-                height={100}
-                loading="lazy"
-              />
+              <Separador />
               <section className="proximamente" aria-labelledby="proximamente-titulo">
                 <header>
                   <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
@@ -290,14 +284,7 @@ export function Inicio() {
               {t('proyectoPropio.boton')} <ArrowRight size={16} />
             </Link>
           </aside>
-          <img
-            className="separador"
-            src={ruta('/marca/separador.webp')}
-            alt=""
-            width={1200}
-            height={100}
-            loading="lazy"
-          />
+          <Separador />
           <div className="participa-guia">
             <div>
               <h3>{t('paraquien.titulo')}</h3>

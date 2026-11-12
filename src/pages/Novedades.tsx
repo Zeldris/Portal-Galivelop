@@ -1,8 +1,9 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { Fragment, useEffect, useState, type CSSProperties } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
+import { Separador } from '../components/Separador';
 import { entradas } from '../data/novedades';
-import { buscarProyecto, proyectos } from '../data/proyectos';
+import { buscarProyecto, proyectos, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
 /** Las que se ven al entrar; «Ver más» enseña otras tantas. */
@@ -72,38 +73,56 @@ export function Novedades() {
         {todas.length > 0 ? (
           <>
             <ul className="novedades novedades-todas">
-              {todas.slice(0, visibles).map((e, i) => {
+              {todas.slice(0, visibles).map((e, i, lista) => {
                 const proyecto = buscarProyecto(e.proyecto);
+                // Entre un mes y el anterior, el separador de la marca (fecha AAAA-MM-DD).
+                const cambiaMes = i > 0 && lista[i - 1].fecha.slice(0, 7) !== e.fecha.slice(0, 7);
                 return (
-                  <li
-                    key={`${e.proyecto}-${e.fecha}-${i}`}
-                    style={
-                      proyecto
-                        ? ({ '--acento-proyecto': proyecto.acento } as CSSProperties)
-                        : undefined
-                    }
-                  >
-                    <time dateTime={e.fecha}>{fecha(e.fecha)}</time>
-                    <div>
-                      {proyecto && (
-                        <Link to={`/proyectos/${proyecto.slug}`} className="novedad-proyecto">
-                          {proyecto.nombre}
-                        </Link>
-                      )}
-                      {e.tipo === 'novedad' ? (
-                        <p>{tx(e.texto)}</p>
-                      ) : (
-                        <p>
-                          <Link to={`/muro?proyecto=${e.proyecto}`}>
-                            <strong>{tx(e.publicacion.titulo)}</strong>
-                          </Link>{' '}
-                          <span className="novedad-muro">· {t('novedades.muro')}</span>
-                          <br />
-                          {tx(e.publicacion.texto)}
-                        </p>
-                      )}
-                    </div>
-                  </li>
+                  <Fragment key={`${e.proyecto}-${e.fecha}-${i}`}>
+                    {cambiaMes && (
+                      <li className="novedades-corte" aria-hidden="true">
+                        <Separador />
+                      </li>
+                    )}
+                    <li
+                      style={
+                        proyecto
+                          ? ({ '--acento-proyecto': proyecto.acento } as CSSProperties)
+                          : undefined
+                      }
+                    >
+                      <time dateTime={e.fecha}>{fecha(e.fecha)}</time>
+                      <div>
+                        {proyecto && (
+                          <Link to={`/proyectos/${proyecto.slug}`} className="novedad-proyecto">
+                            {proyecto.icono && (
+                              <img
+                                className="novedad-icono"
+                                src={ruta(proyecto.icono)}
+                                alt=""
+                                width={22}
+                                height={22}
+                                loading="lazy"
+                              />
+                            )}
+                            {proyecto.nombre}
+                          </Link>
+                        )}
+                        {e.tipo === 'novedad' ? (
+                          <p>{tx(e.texto)}</p>
+                        ) : (
+                          <p>
+                            <Link to={`/muro?proyecto=${e.proyecto}`}>
+                              <strong>{tx(e.publicacion.titulo)}</strong>
+                            </Link>{' '}
+                            <span className="novedad-muro">· {t('novedades.muro')}</span>
+                            <br />
+                            {tx(e.publicacion.texto)}
+                          </p>
+                        )}
+                      </div>
+                    </li>
+                  </Fragment>
                 );
               })}
             </ul>
@@ -118,7 +137,7 @@ export function Novedades() {
             )}
           </>
         ) : (
-          <p className="vacio">{t('novedades.vacio')}</p>
+          <p className="vacio vacio-carta">{t('novedades.vacio')}</p>
         )}
       </div>
     </section>

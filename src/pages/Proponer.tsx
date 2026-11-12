@@ -18,6 +18,7 @@ export function Proponer() {
   return (
     <PaginaFormulario
       titulo={t('prop.titulo')}
+      icono="bombilla"
       intro={t('prop.intro')}
       componer={(d) => {
         // El correo lo lee el taller: siempre en castellano, con etiquetas cortas.

@@ -1,7 +1,8 @@
-import { ArrowRight, MapPin, Users } from 'lucide-react';
+import { ArrowRight, MapPin } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
 import { EnlaceRed } from '../components/IconoRed';
+import { IconoMarca } from '../components/IconoMarca';
 import { Retrato } from '../components/Retrato';
 import { equipo } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
@@ -84,8 +85,10 @@ export function Equipo() {
           ))}
 
           <li className="persona persona-unete">
-            <span className="persona-foto persona-hueco" aria-hidden="true">
-              <Users size={26} />
+            <span className="retrato persona-foto" aria-hidden="true">
+              <span className="persona-hueco">
+                <IconoMarca nombre="ramas" />
+              </span>
             </span>
             <h2>{t('equipo.unete.titulo')}</h2>
             <p className="persona-bio">{t('equipo.unete.texto')}</p>
