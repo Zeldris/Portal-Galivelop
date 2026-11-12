@@ -6,11 +6,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-12 (portadas 06 rehechas, 27 y 28 aplicadas en `ccr-47f8fddd-o5ek6p`) |
+| **Actualizado** | 2026-11-12 (portadas 06 rehechas, 27 y 28 en `main`, 704b662) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-12) |
-| **Tarea en curso** | Imágenes del generador del 2026-11-12 (tarde): 06 rehechas, 27 y 28 aplicadas; fase 1 hecha (`/code-review`, 7 hallazgos: 4 arreglados, 2 leves a «Pendiente», 1 en la bitácora); a `main` con confirmación de la persona (2026-11-12). Las fuentes en `src/img/` van ahora por proyecto (`src/img/<slug>/`, con `svg/` y `sin-uso/`). Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Fase 3 (`reviewed.sh`) y a `main` (la persona: «vamos a llevarlo a main»). Luego, cuando lleguen del generador 25d, 26b y 26c (la 26a con un solo grosor), aplicar las series 25 y 26 (fuentes ya en `src/img/portal/`); siguen en cola 29, 30, 10b y las versiones oscuras de 10, 18, 19, 27 y 28 |
-| **En `main`** | **Reutilizar lo generado y hoja del generador del 2026-11-12** (c19d6af, 2026-11-12, la persona: «si»; fases 1, 2 y 3 hechas, retro `docs/records/retro-2026-11-12-hoja-generador.md` aprobada; CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna: portadas 06 rehechas, 27 y 28 en `main` (704b662). Las fuentes de `src/img/` van por proyecto (`src/img/<slug>/`, con `svg/` y `sin-uso/`). Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | `/clear`. Luego, cuando lleguen del generador 25d, 26b y 26c (la 26a con un solo grosor), aplicar las series 25 y 26 (fuentes ya en `src/img/portal/`); siguen en cola 29, 30, 10b y las versiones oscuras de 10, 18, 19, 27 y 28 |
+| **En `main`** | **Portadas 06 rehechas, estado vacío (27) y aviso de error (28)** (704b662, 2026-11-12, la persona: «vamos a llevarlo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en dc8bbdd). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 202/202 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -18,10 +18,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- En `ccr-47f8fddd-o5ek6p`, no en `main`: portadas 06 rehechas (faro en obra, boya, barco de papel; sustituyen a los tres faros), 27 en el aviso vacío del muro y de novedades (`AvisoVacio.tsx`, sustituye a `.vacio-carta`) y 28 en `AvisoError.tsx` (sustituye al monograma). 25 y 26 en espera: series incompletas (ver `docs/marca.md`).
+- Lo anterior está en `main` (704b662, 2026-11-12).
 
 ## Hecho
 
+- 2026-11-12 · **Portadas 06 rehechas, 27 y 28, a `main`** (704b662): portadas 06 rehechas (faro en obra, boya, barco de papel; sustituyen a los tres faros), 27 en el aviso vacío del muro y de novedades (`AvisoVacio.tsx`, sustituye a `.vacio-carta`) y 28 en `AvisoError.tsx` (sustituye al monograma). 25 y 26 en espera: series incompletas (ver `docs/marca.md`).
 - 2026-11-12 · En `main` (c19d6af): hoja del generador del 2026-11-12 (`galivelop-image-generator`, rama `hojas-repos`, `2a9af6f`; nota `docs/propuestas/portal/entrega-hoja-2026-11-12.md`), aplicada en `ccr-47f8fddd-o5ek6p` (la persona: «aplicar la idea tal cual, con lo que acabamos de decidir a mayores»): `docs/marca.md` al día (puntos 1-8, 10 y 17: «Alcance», «Acento de cada proyecto», tokens que faltaban, chaflán de botones, regla 10, tracking 0,06 em, excepciones náuticas con las portadas 6, dudas cerradas, 11/16/20/21 por CSS, pedidos 25-30 en cola); acento de workflow `#3D6FD9` y de voice `#D9467A` (11, 14); tono hondo y oscuro de cada acento calculados en OKLCH (`src/data/tonos.ts`, `estiloAcento`) para texto y bloques con blanco (13, 15); `marca.test.ts` recorre todas las hojas `.css` y prohíbe colores fuera de los tokens (16); «IA local» con la 7a (`codigo.svg`) y no `Cpu` (9: la hoja pedía la 7b, que ya está en «Del prototipo al producto»).
 - 2026-11-12 · En `main` (c19d6af): reutilizar lo ya generado (2026-11-12, `ccr-47f8fddd-o5ek6p`): componente `Separador` (también en el inicio) en ficha, novedades (entre meses) y páginas legales; ramas en «¿Quieres participar en…?»; marco del retrato en el hueco de Equipo y en el equipo de la ficha (cierra el leve de `.avatar`); icono de cada proyecto en Novedades; isobatas tenues en el aviso vacío del muro y de novedades. Aprobado por la persona salvo el icono de los formularios (quitado).
 - 2026-11-12 · imágenes del generador del 2026-11-12 en main (rama ccr-47f8fddd-o5ek6p, 87940a6; la persona: «por ahora publicamos lo que tenemos»). 2026-11-11: iconos propios 7a, 8a, 8d y 9c en el inicio (fe3c6d5); marco del retrato (17) e icono de Galivelop-workflow (23) (d1d5ede); imágenes del generador 06, 10, 13, 15, 18 y 19 (PR #2, 6f44c27).
