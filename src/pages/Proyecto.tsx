@@ -502,154 +502,158 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           </section>
         )}
 
-        {grupos.includes('avance') && <Separador />}
         {grupos.includes('avance') && (
-          <section id="avance" className="grupo" aria-labelledby="titulo-avance">
-            <h2 id="titulo-avance" className="grupo-titulo">
-              {t('grupo.avance')}
-            </h2>
-            <div className="grupo-columnas">
-              {p.hitos.length > 0 && (
-                <div id="hitos" className="bloque">
-                  <h3 className="bloque-titulo">
-                    {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
-                  </h3>
-                  <ol className="hitos">
-                    {p.hitos.map((h) => {
-                      const IconoHito = ICONO_HITO[h.estado];
-                      return (
-                        <li
-                          key={(h.version ?? '') + tx(h.nombre)}
-                          className={`hito hito-${h.estado}`}
-                        >
-                          <span className="hito-marca" aria-hidden="true">
-                            <IconoHito size={16} />
-                          </span>
-                          <div>
-                            <p className="hito-titulo">
-                              {h.version && <span className="hito-version">{h.version}</span>}
-                              {tx(h.nombre)}{' '}
-                              <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
-                            </p>
-                            {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </div>
-              )}
-              {p.novedades.length > 0 && (
-                <div id="novedades" className="bloque">
-                  <h3 className="bloque-titulo">{t('sec.novedades')}</h3>
-                  <ul className="novedades">
-                    {(todasNovedades ? p.novedades : p.novedades.slice(0, NOVEDADES_VISIBLES)).map(
-                      (n, i) => (
+          <>
+            <Separador />
+            <section id="avance" className="grupo" aria-labelledby="titulo-avance">
+              <h2 id="titulo-avance" className="grupo-titulo">
+                {t('grupo.avance')}
+              </h2>
+              <div className="grupo-columnas">
+                {p.hitos.length > 0 && (
+                  <div id="hitos" className="bloque">
+                    <h3 className="bloque-titulo">
+                      {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
+                    </h3>
+                    <ol className="hitos">
+                      {p.hitos.map((h) => {
+                        const IconoHito = ICONO_HITO[h.estado];
+                        return (
+                          <li
+                            key={(h.version ?? '') + tx(h.nombre)}
+                            className={`hito hito-${h.estado}`}
+                          >
+                            <span className="hito-marca" aria-hidden="true">
+                              <IconoHito size={16} />
+                            </span>
+                            <div>
+                              <p className="hito-titulo">
+                                {h.version && <span className="hito-version">{h.version}</span>}
+                                {tx(h.nombre)}{' '}
+                                <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
+                              </p>
+                              {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </div>
+                )}
+                {p.novedades.length > 0 && (
+                  <div id="novedades" className="bloque">
+                    <h3 className="bloque-titulo">{t('sec.novedades')}</h3>
+                    <ul className="novedades">
+                      {(todasNovedades
+                        ? p.novedades
+                        : p.novedades.slice(0, NOVEDADES_VISIBLES)
+                      ).map((n, i) => (
                         <li key={i}>
                           <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
                           <p>{tx(n.texto)}</p>
                         </li>
-                      ),
+                      ))}
+                    </ul>
+                    {p.novedades.length > NOVEDADES_VISIBLES && (
+                      <button
+                        type="button"
+                        className="boton-texto"
+                        aria-expanded={todasNovedades}
+                        onClick={() => setTodasNovedades((v) => !v)}
+                      >
+                        {todasNovedades
+                          ? t('novedades.menos')
+                          : t('novedades.todas', { n: p.novedades.length })}
+                      </button>
                     )}
-                  </ul>
-                  {p.novedades.length > NOVEDADES_VISIBLES && (
-                    <button
-                      type="button"
-                      className="boton-texto"
-                      aria-expanded={todasNovedades}
-                      onClick={() => setTodasNovedades((v) => !v)}
-                    >
-                      {todasNovedades
-                        ? t('novedades.menos')
-                        : t('novedades.todas', { n: p.novedades.length })}
-                    </button>
-                  )}
-                </div>
-              )}
-              {deMuro.length > 0 && (
-                <div id="publicaciones" className="bloque">
-                  <h3 className="bloque-titulo">{t('sec.publicaciones')}</h3>
-                  <ul className="novedades publicaciones-ficha">
-                    {deMuro.slice(0, PUBLICACIONES_EN_FICHA).map((x) => (
-                      <li key={x.pieza}>
-                        <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
-                        <div>
-                          <Link
-                            to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
-                            className="publicacion-enlace"
-                          >
-                            {tx(x.titulo)}
-                          </Link>
-                          <p>{tx(x.texto)}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                  {deMuro.length > PUBLICACIONES_EN_FICHA && (
-                    <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
-                      {t('muro.verTodas', { n: deMuro.length })}{' '}
-                      <ArrowRight size={15} aria-hidden="true" />
-                    </Link>
-                  )}
-                </div>
-              )}
-            </div>
-            {p.equipo.length > 0 && (
-              <div id="equipo" className="bloque">
-                <h3 className="bloque-titulo">{t('sec.equipo')}</h3>
-                <ul className="equipo">
-                  {p.equipo.map((m) => {
-                    const persona = buscarPersona(m.nombre);
-                    const perfil = persona?.perfil;
-                    const contenido = (
-                      <>
-                        <Retrato
-                          nombre={m.nombre}
-                          foto={persona?.foto}
-                          clase="equipo-retrato"
-                          lado={52}
-                        />
-                        <div>
-                          <p className="equipo-nombre">{m.nombre}</p>
-                          <p className="equipo-rol">{tx(m.rol)}</p>
-                          {perfil?.resumen && (
-                            <p className="equipo-resumen">{tx(perfil.resumen)}</p>
-                          )}
-                          {!!perfil?.destacadas?.length && (
-                            <ul className="equipo-destacadas">
-                              {perfil.destacadas.map((x) => (
-                                <li key={x}>{x}</li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </>
-                    );
-                    return (
-                      <li key={m.nombre}>
-                        {persona ? (
-                          <Link
-                            to={`/equipo/${persona.id}`}
-                            className="equipo-enlace"
-                            title={t('equipo.ver')}
-                          >
-                            {contenido}
-                          </Link>
-                        ) : (
-                          contenido
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
+                  </div>
+                )}
+                {deMuro.length > 0 && (
+                  <div id="publicaciones" className="bloque">
+                    <h3 className="bloque-titulo">{t('sec.publicaciones')}</h3>
+                    <ul className="novedades publicaciones-ficha">
+                      {deMuro.slice(0, PUBLICACIONES_EN_FICHA).map((x) => (
+                        <li key={x.pieza}>
+                          <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
+                          <div>
+                            <Link
+                              to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
+                              className="publicacion-enlace"
+                            >
+                              {tx(x.titulo)}
+                            </Link>
+                            <p>{tx(x.texto)}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    {deMuro.length > PUBLICACIONES_EN_FICHA && (
+                      <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
+                        {t('muro.verTodas', { n: deMuro.length })}{' '}
+                        <ArrowRight size={15} aria-hidden="true" />
+                      </Link>
+                    )}
+                  </div>
+                )}
               </div>
-            )}
-          </section>
+              {p.equipo.length > 0 && (
+                <div id="equipo" className="bloque">
+                  <h3 className="bloque-titulo">{t('sec.equipo')}</h3>
+                  <ul className="equipo">
+                    {p.equipo.map((m) => {
+                      const persona = buscarPersona(m.nombre);
+                      const perfil = persona?.perfil;
+                      const contenido = (
+                        <>
+                          <Retrato
+                            nombre={m.nombre}
+                            foto={persona?.foto}
+                            clase="equipo-retrato"
+                            lado={52}
+                            perezosa
+                          />
+                          <div>
+                            <p className="equipo-nombre">{m.nombre}</p>
+                            <p className="equipo-rol">{tx(m.rol)}</p>
+                            {perfil?.resumen && (
+                              <p className="equipo-resumen">{tx(perfil.resumen)}</p>
+                            )}
+                            {!!perfil?.destacadas?.length && (
+                              <ul className="equipo-destacadas">
+                                {perfil.destacadas.map((x) => (
+                                  <li key={x}>{x}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </>
+                      );
+                      return (
+                        <li key={m.nombre}>
+                          {persona ? (
+                            <Link
+                              to={`/equipo/${persona.id}`}
+                              className="equipo-enlace"
+                              title={t('equipo.ver')}
+                            >
+                              {contenido}
+                            </Link>
+                          ) : (
+                            contenido
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </section>
+          </>
         )}
 
         <aside className={`participar participar-${p.colaboracion}`}>
           <span className="participar-icono" aria-hidden="true">
-            {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock size={24} />}
+            {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock />}
           </span>
           <div>
             <h2>{t(`participa.${p.colaboracion}.titulo`, { nombre: p.nombre })}</h2>

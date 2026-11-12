@@ -10,16 +10,25 @@ export function Retrato({
   foto,
   clase,
   lado,
+  perezosa = false,
 }: {
   nombre: string;
   foto?: string;
   clase: string;
   lado: number;
+  /** `loading="lazy"`, para los retratos que quedan lejos del principio de la página. */
+  perezosa?: boolean;
 }) {
   return (
     <span className={`retrato ${clase}`}>
       {foto ? (
-        <img src={ruta(foto)} alt="" width={lado} height={lado} />
+        <img
+          src={ruta(foto)}
+          alt=""
+          width={lado}
+          height={lado}
+          loading={perezosa ? 'lazy' : undefined}
+        />
       ) : (
         <span className="persona-iniciales" aria-hidden="true">
           {iniciales(nombre)}

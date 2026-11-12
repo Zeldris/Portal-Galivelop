@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { PAPEL_CLARO, PAPEL_OSCURO, contraste, tonosAcento } from './tonos';
 import { proyectos } from './proyectos';
@@ -28,5 +30,18 @@ describe('tonos del acento', () => {
       expect(contraste(t.hondo, '#ffffff'), a).toBeGreaterThanOrEqual(4.5);
       expect(contraste(t.oscuro, PAPEL_OSCURO), a).toBeGreaterThanOrEqual(4.5);
     }
+  });
+
+  it('rechaza un acento que no es #rrggbb', () => {
+    expect(() => tonosAcento('#e73')).toThrow(/no es un hex de 6 cifras/);
+    expect(() => tonosAcento('#e0703aff')).toThrow(/no es un hex de 6 cifras/);
+  });
+
+  it('los papeles coinciden con --papel de global.css (si falla, cámbialos en tonos.ts)', () => {
+    const css = readFileSync(join(__dirname, '../estilos/global.css'), 'utf8');
+    const papeles = [...css.matchAll(/^\s*--papel:\s*(#[0-9a-f]{6})/gim)].map((m) =>
+      m[1].toLowerCase(),
+    );
+    expect(papeles).toEqual([PAPEL_CLARO, PAPEL_OSCURO]);
   });
 });

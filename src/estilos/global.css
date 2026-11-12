@@ -898,6 +898,8 @@ button {
   isolation: isolate;
   overflow: hidden;
   padding: 72px 40px;
+  /* En tinta y no en --texto-3: donde una isobata cruza el texto, sigue por encima de 4,5:1 en los dos temas. */
+  color: var(--texto);
 }
 
 .vacio-carta::before {
@@ -906,7 +908,7 @@ button {
   inset: 0;
   z-index: -1;
   background: var(--celeste);
-  opacity: 0.5;
+  opacity: 0.35;
   -webkit-mask: url('/marca/isobatas.svg') center / cover no-repeat;
   mask: url('/marca/isobatas.svg') center / cover no-repeat;
 }
@@ -2248,19 +2250,6 @@ button {
   padding: 14px 16px;
   border: 1px solid var(--borde);
   background: var(--superficie-2);
-}
-
-.avatar {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--blanco);
-  background: var(--celeste-hondo);
-  flex: none;
 }
 
 .equipo-nombre {
@@ -3905,10 +3894,6 @@ img.perfil-logo {
   border-color: var(--celeste);
 }
 
-img.avatar {
-  object-fit: cover;
-}
-
 /* Con resumen y tecnologías la tarjeta crece: la foto, alineada con el nombre. */
 .equipo > li:has(.equipo-destacadas),
 .equipo > li:has(.equipo-destacadas) .equipo-enlace {
@@ -4153,7 +4138,8 @@ img.avatar {
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--blanco);
-  background: var(--acento-proyecto, var(--celeste));
+  /* Número blanco en negrita de 14 px (no es texto grande): sobre el hondo, a 4,5:1 o más. */
+  background: var(--acento-bloque);
 }
 
 .pasos-ficha h4 {

@@ -15,8 +15,12 @@ type Rgb = [number, number, number];
 const lineal = (c: number) => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
 const gamma = (c: number) => (c <= 0.0031308 ? 12.92 * c : 1.055 * c ** (1 / 2.4) - 0.055);
 
+const HEX = /^#[0-9a-f]{6}$/i;
+
 function deHex(hex: string): Rgb {
-  const h = hex.replace('#', '');
+  // Un hex corto o con alfa daría NaN, y la búsqueda acabaría en negro o blanco sin avisar.
+  if (!HEX.test(hex)) throw new Error(`acento: «${hex}» no es un hex de 6 cifras (#rrggbb)`);
+  const h = hex.slice(1);
   return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255) as Rgb;
 }
 
@@ -99,12 +103,19 @@ export interface Tonos {
   oscuro: string;
 }
 
+const memoria = new Map<string, Tonos>();
+
+/** Los tres tonos de un acento; cada hex se calcula una vez (hay pocos y se piden en cada render). */
 export function tonosAcento(vivo: string): Tonos {
-  return {
+  const guardado = memoria.get(vivo);
+  if (guardado) return guardado;
+  const tonos = {
     vivo: vivo.toLowerCase(),
     hondo: buscar(vivo, PAPEL_CLARO, -1),
     oscuro: buscar(vivo, PAPEL_OSCURO, 1),
   };
+  memoria.set(vivo, tonos);
+  return tonos;
 }
 
 /** Variables CSS del acento de un proyecto para su `style` (las usa global.css: `--acento-proyecto*`). */

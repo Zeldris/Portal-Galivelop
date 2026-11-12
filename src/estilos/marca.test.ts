@@ -72,8 +72,31 @@ function infracciones(
   return out;
 }
 
+/** Selector del bloque más interno de cada línea (`''` fuera de reglas). */
+function selectores(codigo: string[]): string[] {
+  const pila: string[] = [];
+  let pendiente = '';
+  return codigo.map((linea) => {
+    const actual = pila.at(-1) ?? '';
+    for (const trozo of linea.split(/([{}])/)) {
+      if (trozo === '{') {
+        pila.push(pendiente.trim());
+        pendiente = '';
+      } else if (trozo === '}') {
+        pila.pop();
+        pendiente = '';
+      } else if (trozo.includes(';')) pendiente = trozo.slice(trozo.lastIndexOf(';') + 1);
+      else pendiente += ' ' + trozo;
+    }
+    return actual || (pila.at(-1) ?? '');
+  });
+}
+
+/** Un bloque de tokens: `:root` (o una lista de ellos), con o sin tema (`[data-tema=…]`, `:not(…)`). */
+const RAIZ = /^:root(?:\[[^\]]*\]|:not\([^)]*\))*$/;
+
 /** Colores escritos a mano que valen fuera de los tokens: blanco, negro y la noche (velos y tintas sobre imagen). */
-const COLOR_SUELTO = /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|oklch|lab|lch|hwb)\(/gi;
+const COLOR_SUELTO = /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|okl(?:ab|ch)|lab|lch|hwb|color)\(/gi;
 const COLOR_VALIDO =
   /^(?:#fff|#ffffff|#000|#000000)(?![0-9a-f])|^rgba?\(\s*(?:255 255 255|0 0 0|3 9 15)\b/i;
 
@@ -83,9 +106,15 @@ describe('hojas de estilo de la marca', () => {
   });
 
   it('los colores salen de los tokens', () => {
-    const fallos = infracciones((l) => {
-      // Un token (`--algo: #hex`) define la paleta; el resto de la hoja la usa con var().
-      if (/^\s*--[\w-]+\s*:/.test(l)) return null;
+    const raiz = new Map(
+      HOJAS.map((h) => [
+        h,
+        selectores(h.codigo).map((sel) => sel.split(',').every((x) => RAIZ.test(x.trim()))),
+      ]),
+    );
+    const fallos = infracciones((l, i, hoja) => {
+      // Un token (`--algo: #hex` en `:root`) define la paleta; el resto de la hoja la usa con var().
+      if (raiz.get(hoja)![i] && /^\s*--[\w-]+\s*:/.test(l)) return null;
       const sueltos = [...l.matchAll(COLOR_SUELTO)].filter(
         (m) => !COLOR_VALIDO.test(l.slice(m.index)),
       );

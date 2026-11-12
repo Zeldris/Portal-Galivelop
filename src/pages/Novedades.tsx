@@ -95,8 +95,8 @@ export function Novedades() {
                                 className="novedad-icono"
                                 src={ruta(proyecto.icono)}
                                 alt=""
-                                width={22}
-                                height={22}
+                                width={24}
+                                height={24}
                                 loading="lazy"
                               />
                             )}
