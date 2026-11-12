@@ -1028,11 +1028,12 @@ button {
   display: block;
   width: 100%;
   height: auto;
-  margin: 48px auto 0;
+  margin: 32px auto;
 }
 
+/* Mismo aire arriba y abajo: el margen de «Próximamente» cede al del separador. */
 .separador + .proximamente {
-  margin-top: 24px;
+  margin-top: 0;
 }
 
 :root:not([data-tema='claro']) .separador {
@@ -2305,7 +2306,7 @@ button {
 .cabecera-captura,
 .cabecera-color {
   align-items: center;
-  /* Sin captura a pantalla completa: celeste hondo plano con isobatas, como la portada (regla 6). */
+  /* Celeste hondo: con isobatas detrás de la captura; en color, bajo la portada por estado velada (recurso 6). */
   background: var(--celeste-hondo);
 }
 

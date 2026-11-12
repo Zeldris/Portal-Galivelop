@@ -22,6 +22,7 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { buscarPersona, iniciales } from '../data/equipo';
+import { PORTADA_ESTADO } from '../data/marca';
 import { idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
 import { progreso, proyectos, ruta, useFicha } from '../data/proyectos';
@@ -179,7 +180,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const deMuro = publicacionesDe(p.slug);
   const modoCabecera = p.cabecera ?? 'ilustracion';
   // Cabecera de color: la ilustración de la marca para el estado del proyecto (recurso 6), velada como una ilustración.
-  const fondoEstado = modoCabecera === 'color' ? `marca/portada-${p.estado}.webp` : undefined;
+  const fondoEstado = modoCabecera === 'color' ? PORTADA_ESTADO[p.estado] : undefined;
   const indice = proyectos.findIndex((x) => x.slug === p.slug);
   const siguiente = proyectos.length > 1 ? proyectos[(indice + 1) % proyectos.length] : undefined;
 
@@ -204,7 +205,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {fondoEstado && (
           <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" fetchPriority="high" />
         )}
-        {modoCabecera !== 'ilustracion' && !fondoEstado && (
+        {modoCabecera === 'captura' && (
           <img
             className="proyecto-isobatas"
             src={ruta('/marca/isobatas.svg')}
