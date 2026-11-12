@@ -2,7 +2,7 @@
   "slug": "galivelop-voice-generator",
   "nombre": "Galivelop Voice Generator",
   "orden": 2,
-  "acento": "#C9467A",
+  "acento": "#D9467A",
   "icono": "audio",
   "proximo": "galivelop-voice-generator",
   "estado": "proximamente",

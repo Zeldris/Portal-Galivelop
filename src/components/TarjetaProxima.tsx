@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import { estiloAcento } from '../data/tonos';
 import type { Proximo } from '../data/proximamente';
 import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
@@ -10,7 +10,7 @@ export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
   const avance = Math.round((p.fases.hechas / p.fases.total) * 100);
   const fases = t('proximamente.fases', { hechas: p.fases.hechas, total: p.fases.total });
   return (
-    <article className="tarjeta-proxima" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
+    <article className="tarjeta-proxima" style={estiloAcento(p.acento)}>
       {p.imagen ? (
         <img
           className="proxima-imagen"

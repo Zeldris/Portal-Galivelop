@@ -1,7 +1,7 @@
 # Marca Galivelop: hoja de estilos
 
 **Estado:** aprobada por la persona y aplicada a la web (2026-11-08, tipografía B); los recursos de imagen, al día con
-la hoja del generador (2026-11-11). Prototipo: https://claude.ai/artifact/UoLydvcktgu8jYwioKbygq. Referencias y fuentes:
+la hoja del generador (2026-11-11), y puesta al día con su entrega del 2026-11-12 (`2a9af6f`, rama `hojas-repos`). Prototipo: https://claude.ai/artifact/UoLydvcktgu8jYwioKbygq. Referencias y fuentes:
 [`investigacion/estilo-marca.md`](investigacion/estilo-marca.md). El mensaje (qué decimos) sigue en
 [`desarrollo.md#mensaje`](desarrollo.md#mensaje); aquí va cómo se ve.
 
@@ -23,7 +23,7 @@ Lo que nos separa de las webs genéricas hechas con IA. Cada regla pasa a compro
    `--brillo`; hoy `--tinte` es solo un plano de celeste translúcido), ni sombras difusas grandes. La profundidad se
    da con filetes y con planos de color.
 3. **Esquinas rectas o con chaflán** (una esquina cortada a 45°), nunca redondeadas: casa con las letras cuadradas y
-   con las etiquetas náuticas. Chaflán estándar: 14 px en fichas y botones, 28 px en bloques grandes.
+   con las etiquetas náuticas. Chaflán estándar: 14 px en fichas, 10 px en botones (`--chaflan-pequeno`) y 28 px en bloques grandes.
 4. **Líneas antes que sombras.** Borde de 1 px (`--filete`), filete de 2 px bajo cabeceras, filete discontinuo para
    separar metadatos. Una sola sombra permitida: la del panel desplegado sobre el contenido.
 5. **Los datos, en monoespaciada y en mayúsculas pequeñas con tracking:** número de proyecto, estado, fechas,
@@ -35,12 +35,44 @@ Lo que nos separa de las webs genéricas hechas con IA. Cada regla pasa a compro
    un sitio real (Santiago, 42°52′N 8°33′W). Nada numerado por adorno.
 9. **Movimiento mínimo:** la curva y los 200 ms actuales se mantienen; solo desplazamiento de 2-3 px al pasar y
    cambios de color. Nada que se mueva solo, salvo la animación del flujo, con su reposo para `prefers-reduced-motion`.
-10. **Contraste AA sobre el celeste:** sobre `--celeste-hondo` el texto va en blanco; sobre `--celeste` claro solo
-    van etiquetas grandes o el granito.
+10. **Contraste AA sobre el celeste:** sobre `--celeste-hondo` el texto va en blanco; sobre `--celeste` solo va la
+    tinta (5,91:1; el blanco encima da 2,78:1, por debajo del 3:1 del texto grande; hoja del generador, 2026-11-12).
 11. **Los diagramas siguen la misma hoja** (`docs/diagramas/*.svg`, exportados con `scripts/diagramas-webp.mjs`): papel con
     retícula, cajas blancas con chaflán y filete, títulos en Big Shoulders Display, etiquetas en JetBrains Mono, solo
     colores de la paleta (celeste hondo, alga y tinta-2 para las categorías; celeste para lo que pasa, tinta para lo
     rechazado) y nada de degradados. Ningún número que cambie cada semana (la cifra de pruebas va en la ficha).
+
+## Alcance
+
+**Toda la web va con esta hoja** (la persona, 2026-11-12): inicio, equipo, perfiles, muro, novedades, legales,
+formularios, avisos, estados vacíos y de error, y **también la página de cada proyecto** (Tarkor, toVeriAI y los
+`galivelop-*`). Una imagen que no casa con los tokens no se pone: se pide otra.
+
+**Única excepción: lo que enseña cada proyecto** dentro de su página (galerías, capturas, vídeos, su propio arte), dentro
+de su contenedor y con `/* marca: permitido, contenido del proyecto */` en el CSS. El marco que lo rodea (cabecera,
+menús, fichas, textos, botones, pie, iconos, estados, separadores) sigue esta hoja.
+
+**Cómo se comprueba:** `src/estilos/marca.test.ts` recorre todas las hojas `.css` de `src/`: reglas 2 y 3 (sin
+desenfoques, degradados, sombras difusas ni esquinas redondeadas) y colores solo de los tokens (fuera de una
+definición `--token:`, solo blanco, negro y la noche con transparencia).
+
+### Acento de cada proyecto
+
+Del proyecto, en el marco, solo entra **su acento, donde el Portal usa el alga**: nunca su paleta entera (hoja del
+generador, «Familia Galivelop», decisiones 1-3, 2026-11-12). El hex de la ficha (`acento`) es el **vivo**; el **hondo**
+(tema claro) y la **variante oscura** se calculan en OKLCH, no a ojo: con el tono y el croma fijos, se baja (o sube) la
+luminosidad en pasos de 0,005 hasta el primer hex con 4,5:1 sobre el papel (`#fbfcfd` o `#0d171e`); si el vivo ya
+cumple, se queda. Lo hace `src/data/tonos.ts` (`estiloAcento`, con su test, que da los hex de las hojas de producto:
+voice `#D9467A` → hondo `#ce3c71`, oscura `#db487b`; developer `#0E9A93` → hondo `#16827c`).
+
+- El **vivo** (`--acento-proyecto`): filetes, bordes al pasar, puntos, barras de progreso y tinte al 14-16 %.
+- El **texto de acento** e iconos (`--acento-texto`): el hondo en claro, la variante oscura en oscuro.
+- Los **bloques con texto blanco** (`--acento-bloque`: pestaña activa del índice de la ficha, grupo de galería
+  elegido): el hondo, en los dos temas.
+- Sin proyecto, `--acento-texto` es `--enlace` y `--acento-bloque` es `--celeste-hondo`.
+
+Acentos de producto (`src/data/productos/*.json`, la persona, 2026-11-12): workflow manda `#3D6FD9` (el de su ficha de
+proyecto; el `#1AA6DF` era el celeste del Portal) y voice pasa a `#D9467A` (también en `proximamente.json`).
 
 ## Tokens
 
@@ -49,14 +81,18 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 
 | Token | Claro | Oscuro | Uso |
 |---|---|---|---|
-| `--celeste` | `#1aa6df` | `#1aa6df` | Marca, enlaces, estado «publicado» |
+| `--celeste` | `#1aa6df` | `#1aa6df` | Marca, foco, estado «publicado»; nunca texto sobre papel claro ni con blanco encima |
 | `--celeste-hondo` | `#0072a8` | `#0b5e88` | Bloques grandes de color |
 | `--papel` (`--fondo`) | `#fbfcfd` | `#0d171e` | Fondo de página |
+| `--fondo-alterno` | `#f1f6f9` | `#111f29` | Bandas alternas de página |
 | `--reticula` | `#e3edf3` | `#16242e` | Cuadrícula de 24 px |
 | `--superficie` | `#ffffff` | `#111f29` | Fichas y paneles |
+| `--superficie-2` | `#f1f6f9` | `#16242e` | Superficie en segundo plano (dentro de una ficha) |
 | `--filete` (`--borde`) | `#b9cbd6` | `#2b3d49` | Bordes y líneas |
 | `--tinta` (`--texto`) | `#13212b` | `#e6eef3` | Texto; gris granito con sesgo azul |
 | `--tinta-2` (`--texto-2`) | `#4a5c69` | `#9fb2bf` | Texto secundario y datos |
+| `--texto-3` | `#5a6d7a` | `#7d919e` | Texto terciario (5,24:1 y 5,54:1) |
+| `--enlace` | `--celeste-hondo` | `#5cc8f2` | Enlaces y texto de acento sin proyecto |
 | `--alga` | `#5d7a6a` | `#8fb09e` | Acento secundario: «en desarrollo», avisos suaves |
 | `--tinte` | celeste al 12 % | celeste al 18 % | Plano translúcido de celeste (fondos de hover y chips) |
 | `--noche` | `#03090f` | igual | Fondo de los escenarios de imagen |
@@ -66,7 +102,10 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 | `--peligro-tinte` | peligro al 10 % | peligro al 16 % | Fondo plano de una caja de fallo |
 | `--ok-texto` | `#3f5a4b` | `#8fb09e` | Texto y ✓ de «hecho» sobre el papel |
 | `--discord` | `#5865f2` | igual | Color de marca de Discord, solo en su botón |
-| `--chaflan` / `--chaflan-grande` | `14px` / `28px` | igual | Esquina cortada |
+| `--chaflan` / `--chaflan-grande` / `--chaflan-pequeno` | `14px` / `28px` / `10px` | igual | Esquina cortada: fichas / bloques grandes / botones |
+| `--reticula-paso` | `24px` | igual | Paso de la cuadrícula |
+| `--datos` / `--datos-espaciado` | JetBrains Mono 500 a 12 px / `0.06em` | igual | Tipografía de los datos y su tracking |
+| `--sombra` | `0 12px 32px -18px` tinta al 35 % | negro al 70 % | La única sombra: el panel desplegado |
 | `--curva`, `--transicion`, escala `--z-*` | como ahora | | Sin cambios |
 
 Chaflán en CSS: `clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%)`.
@@ -83,7 +122,7 @@ Tres papeles: **títulos** (condensada o cuadrada, mayúsculas, tracking corto),
 | C | IBM Plex Sans Condensed 500/700 | IBM Plex Serif 400/600 | IBM Plex Mono 400/500 |
 
 Decisión de la persona: **B** (2026-11-08, «Tipografia b»); en el código, `--fuente-titulos`, `--fuente-texto` y
-`--fuente-datos` de `src/estilos/global.css` (paquetes `@fontsource-variable/*`). Escala: texto 17 px / 1.6; datos 12 px con tracking `.04em`; h3 32 px, h2 36 px,
+`--fuente-datos` de `src/estilos/global.css` (paquetes `@fontsource-variable/*`). Escala: texto 17 px / 1.6; datos 12 px con tracking `.06em` (`--datos-espaciado`; manda el código); h3 32 px, h2 36 px,
 h1 `clamp(44px, 9vw, 96px)` con interlineado 1.02 (más apretado monta las cajas de color; visto en el prototipo).
 
 ## Recursos de imagen para el generador (Galivelop IG)
@@ -126,32 +165,34 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 15 (Developer) | 2026-11-11 | `public/proyectos/galivelop-developer/proxima.webp` (720×405, del barco de papel sobre mar con olas, 1600×900, que llegó como `portada-desarrollo.webp`) | `imagen` de su entrada en `proximamente.json`. La persona (2026-11-11): ese barco es la portada de Developer; sustituye a la terminal con la rama y el anillo que pedía la hoja |
 | 17 | 2026-11-11 | `public/marca/marco-retrato.webp` (400×400, máscara: blanco con transparencia, recortado al cuadro; del PNG q539, el trazador rompe sus marcas) | Alrededor de la foto o las iniciales en `/equipo` y en la página de cada miembro (`Retrato.tsx`); se pinta con `--texto`, así vale en los dos temas |
 | 23 (workflow) | 2026-11-11 | `public/proyectos/galivelop-workflow/icono.svg` (SVG del generador, `viewBox` recortado al dibujo) | `icono` de su ficha: cabecera, tarjeta y muro |
-| 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie llegó el 2026-11-12 (filas siguientes). **7a, sin uso desde el 2026-11-12:** la 7b cuadrada ocupa su línea y `codigo.svg` se quitó de `src/assets/iconos/` (el original sigue en `src/img/`) |
-| 6 | 2026-11-12 | `public/marca/portada-desarrollo.webp`, `portada-diseno.webp` y `portada-publicado.webp` (1600×900, `cwebp -q 80`). Los tres son un faro: en desarrollo, con andamios; en diseño, una plataforma de roca con un trípode; en publicado, el faro encendido de noche | Fondo velado de la cabecera de las fichas con `cabecera: "color"` (hoy Galivelop-workflow y Galivelop-image-generator), según el `estado` del proyecto (`PORTADA_ESTADO` de `src/data/marca.ts`, con su test; `.cabecera-velada`). Las tarjetas no la usan: esos proyectos llevan su propia portada. Sustituye al celeste con isobatas, que queda solo para `cabecera: "captura"`. **Faro, fuera de la regla «el mar pone el dónde»:** el generador entregó faros en vez de la ventana de editor pedida; **provisionales** (la persona, 2026-11-12: «por ahora publicamos lo que tenemos y le pido la corrección al generador»); se pidieron rehechas como en la fila 6 de la tabla B y sustituirán a estas al llegar |
+| 7a, 8a, 8d, 9c | 2026-11-11 | `src/assets/iconos/codigo.svg`, `candado.svg`, `ramas-unidas.svg`, `terminal.svg` (SVG del generador pasados por `tools/marca/limpiar-iconos.cjs`) | Inicio, en lugar del icono de lucide (la persona, 2026-11-11: «aplícalos ya, aunque no estén todos»): 7a en la línea «Del prototipo al producto» (la hoja no le daba línea: es la que más se parece a una app; hay 5 líneas y la serie 7 es de 4), 8a en el valor 1, 8d en el valor 4 y 9c en la vía «Aprende con nosotros»; el resto de cada serie llegó el 2026-11-12 (filas siguientes). **7a, sin uso desde el 2026-11-12:** la 7b cuadrada ocupa su línea y `codigo.svg` se quitó de `src/assets/iconos/` (el original sigue en `src/img/`); vuelve el mismo día en «ia-local» (fila «7a (vuelve)») |
+| 6 | 2026-11-12 | `public/marca/portada-desarrollo.webp`, `portada-diseno.webp` y `portada-publicado.webp` (1600×900, `cwebp -q 80`). Los tres son un faro: en desarrollo, con andamios; en diseño, una plataforma de roca con un trípode; en publicado, el faro encendido de noche | Fondo velado de la cabecera de las fichas con `cabecera: "color"` (hoy Galivelop-workflow y Galivelop-image-generator), según el `estado` del proyecto (`PORTADA_ESTADO` de `src/data/marca.ts`, con su test; `.cabecera-velada`). Las tarjetas no la usan: esos proyectos llevan su propia portada. Sustituye al celeste con isobatas, que queda solo para `cabecera: "captura"`. **Faro, fuera de la regla «el mar pone el dónde»:** el generador entregó faros en vez de la ventana de editor pedida; **provisionales** (la persona, 2026-11-12: «por ahora publicamos lo que tenemos y le pido la corrección al generador»); se pidieron rehechas como en la fila 6 de la tabla B (faro en obra, boya y barco de papel) y sustituirán a estas al llegar |
 | 12 | 2026-11-12 | `public/marca/separador.webp` (1200×100, de `12-separador-transparente.png`) | Inicio: antes de «Próximamente» (sección Proyectos) y antes de «Es para ti si…» (sección Participa), al ancho del contenedor; en el tema oscuro, invertido por CSS (`.separador`) |
-| 7c, 7d, 7e | 2026-11-12 | `src/assets/iconos/documento-check.svg`, `compas.svg`, `mundos.svg` (pasados por `limpiar-iconos.cjs`) | Inicio, líneas de trabajo: «informacion» (documento con visto), «metodo» (compás) y «mundos»; «ia-local» sigue con lucide (`Cpu`) |
+| 7c, 7d, 7e | 2026-11-12 | `src/assets/iconos/documento-check.svg`, `compas.svg`, `mundos.svg` (pasados por `limpiar-iconos.cjs`) | Inicio, líneas de trabajo: «informacion» (documento con visto), «metodo» (compás) y «mundos» |
 | 8d (rehecha) | 2026-11-12 | `src/assets/iconos/ramas-unidas.svg` (la 8d de la víspera se sustituye por una más ancha, dos ramas que se unen en un nodo: la anterior se veía más fina que sus vecinas) | Inicio, valor 4 de «Cómo trabajamos» |
 | 8b, 8c | 2026-11-12 | `src/assets/iconos/mira.svg`, `historial.svg` (la 8c, rehecha el mismo día con proporción casi cuadrada: la primera, tres nodos en vertical, se veía más fina que sus vecinas) | Inicio, valores 2 (mira) y 3 (historial) de «Cómo trabajamos» |
 | 7b | 2026-11-12 | `src/assets/iconos/papel-ventana.svg` (rehecha cuadrada: la primera, hoja → flecha → ventana en fila, no cabía en el hueco) | Inicio, línea «Del prototipo al producto», en lugar de la 7a |
+| 7a (vuelve) | 2026-11-12 | `src/assets/iconos/codigo.svg` (recuperado de d3cf1c8^) | Inicio, línea «ia-local», en lugar de `Cpu` de lucide: una serie se usa entera (hoja del generador). La hoja pedía la 7b, pero esta ya ocupa «Del prototipo al producto»; la 7a, sin uso, completa la serie sin repetir |
 | 9a, 9b | 2026-11-12 | `src/assets/iconos/ramas.svg`, `bombilla.svg` | Inicio, «Participa»: la vía «Únete» (ramas) y la de «Propón» (bombilla) |
 | 14 | 2026-11-12 | `src/assets/iconos/implantacion.svg` (salía de «sin uso»; caja cuya tapa se despliega en ventana) | Inicio, aviso «¿Tienes un proyecto propio?» (`proyecto-propio`), en lugar de `MessageSquare` |
 
 Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 se rehízo y llegó el 2026-11-12.
 
 Las imágenes llegan a `src/img/` (fuera de git) y se convierten aquí con `cwebp -q 80`. Las de papel (10, 18) aún no
-tienen versión para el tema oscuro: se muestran enmarcadas tal cual.
+tienen versión para el tema oscuro: se muestran enmarcadas tal cual. Las versiones oscuras de 10, 18, 19, 27 y 28 están
+en cola en el generador: fondo transparente o sobre el `--celeste-hondo` oscuro (`#0b5e88`), nunca sobre el papel claro.
 
 ### Cómo pedirlas
 
 La fuente de cómo se piden es la hoja del Portal en el generador (`galivelop-image-generator`,
 `docs/marcas/portal/hoja.md`, «Identidad vigente», y los pedidos de `examples/portal/orders/marca/`); lo de aquí es su
-resumen, puesto al día el 2026-11-11 con esa hoja (`db9c364`). Si las dos dicen cosas distintas, se apunta en «Dudas»
+resumen, puesto al día el 2026-11-12 con esa hoja (`2a9af6f`, rama `hojas-repos`). Si las dos dicen cosas distintas, se apunta en «Dudas»
 y decide la persona.
 
 - **El mar pone el dónde, la tecnología pone el qué** (la persona, 2026-11-11). El mar y la costa gallega se quedan
   como fondo, color y textura (isobatas, carta náutica, papel, cerúleo); lo que se dibuja como motivo es de software
   (ventana de editor, terminal, ramas, historial de commits, retícula, placa de circuito). Anclas, barcos, faros, remos,
-  boyas, grúas, sextantes y nudos dejan de ser protagonistas. Excepciones: los barcos de papel de la 19 y de la 15 de Developer (la persona, 2026-11-11). La rosa de
+  boyas, grúas, sextantes y nudos dejan de ser protagonistas. Excepciones: los barcos de papel de la 19 y de la 15 de Developer (la persona, 2026-11-11) y las tres portadas 6, un motivo por estado: faro en obra, boya y barco de papel (la persona, 2026-11-12: «1 barco, 1 faro, uno de cada cosa»). La rosa de
   los vientos (4) es instrumento de carta y se queda.
 - **Dos registros de dibujo:**
   - **Grabado a dos tintas** para las ilustraciones grandes (3, 6, 10, 11, 13, 15-21): mucho detalle, tramas finas y
@@ -212,13 +253,19 @@ registro → cierre → frase de paleta.
 1024 → 1200, `social` 1344×704 → 1200×630, `portada` 1344×768 → 1600×900, `tarjeta` 1344×768 → 1200×675, `cabecera`
 1664×512 → 1600×500, `muro` 1792×448 → 1600×400; el patrón del pie (21), repetible en los dos ejes.
 
-**Dudas que decide la persona** (del generador, 2026-11-11; recomendación del generador entre paréntesis):
+**Reglas de imagen para todas las piezas** (2026-11-12): ninguna imagen lleva texto; iconos de una línea, trazo
+uniforme, sin relleno, legibles a 24 px, una tinta, cuadrados, en SVG; ilustraciones en grabado a dos tintas (cerúleo y
+tinta sobre papel, toque de alga); el mar y la carta solo de fondo, el motivo principal es de software.
 
-1. **Dos registros.** El grabado a dos tintas de las piezas grandes sustituye al «trazo blanco plano» que pedía esta
+**Dudas que decidió la persona** (del generador, 2026-11-11; estado al 2026-11-12):
+
+1. **Dos registros.** *Aplicada.* El grabado a dos tintas de las piezas grandes sustituye al «trazo blanco plano» que pedía esta
    hoja hasta hoy (mantener el grabado en las grandes y la línea simple en los iconos; es lo que ya recoge esta hoja).
-2. **Acentos de producto.** En imagen generada, solo las cuatro tintas del portal; el acento de cada producto, solo en
+2. **Acentos de producto.** *Cerrada (la persona, 2026-11-12):* el acento del producto va donde el Portal usa el alga
+   (ver «Acento de cada proyecto»); papel, tinta y tipografías no cambian. Antes decía: en imagen generada, solo las cuatro tintas del portal; el acento de cada producto, solo en
    su logo, su interfaz y su `og` (24), en el lugar del verde alga.
-3. **Versión oscura de los grabados.** Generar solo las que la web muestra a sangre en el tema oscuro (11, 16, 18, 19);
+3. **Versión oscura de los grabados.** *Reducida (2026-11-12):* 11 y 16 van por CSS; las de 10, 18, 19, 27 y 28, en
+   cola en el generador. Antes decía: generar solo las que la web muestra a sangre en el tema oscuro (11, 16, 18, 19);
    la 10 y el 1b, por CSS.
 4. ~~**El engranaje de la tarjeta de Developer (15).**~~ Resuelta (2026-11-11): la persona le da el barco de papel
    sobre mar con olas (ver § Entregados).
@@ -241,13 +288,13 @@ entero; aquí va resumido.
 
 | # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 6 | **Portada de proyecto por estado** (3) | 1600×900 (perfil `portada`; sin `-mini`: ninguna tarjeta la usa) | Cabecera de las fichas con `cabecera: "color"` | Celeste plano con isobatas | Ventana de editor de código sobre el mar de la carta, a la izquierda, con el agua abierta a la derecha. «desarrollo»: código a medias y cursor; «diseno»: retícula y guías de maquetación; «publicado»: código acabado y una marca de visto en un círculo (grabado) |
+| 6 | **Portada de proyecto por estado** (3) | 1600×900 (perfil `portada`; sin `-mini`: ninguna tarjeta la usa) | Cabecera de las fichas con `cabecera: "color"` | Celeste plano con isobatas | Un motivo distinto por estado, nunca tres iguales (la persona, 2026-11-12): «desarrollo», faro en obra con andamio; «diseno», boya con ruta discontinua; «publicado», barco de papel con banderín de alga. Sin ventana de editor (grabado). **En cola**; las publicadas, tres faros provisionales |
 | 7 | **Iconos de las 4 líneas de trabajo** | Hoja de contactos 2×2 (perfil `cuadrado`), luego SVG | Inicio, «Líneas de trabajo» (`lineas.ts`) | Iconos actuales de `Inicio.tsx` | Ventana de app con corchetes angulares · lupa sobre una lista con marca de visto · hoja de papel que se vuelve ventana · compás de dibujo sobre una retícula (línea simple) |
 | 8 | **Iconos de los 4 valores** («Cómo trabajamos») | Igual que 7 | Inicio, `PRINCIPIOS` | Iconos actuales | Candado abierto · punto de mira en el borde de una retícula que sigue en puntos · historial de commits con nodos · dos ramas que se unen (línea simple) |
 | 9 | **Iconos de las 3 vías de participación** | Hoja de contactos 1×3 | Inicio «Participa», `/unirse`, `/proponer` | Sin icono | Dos ramas que confluyen · bombilla dentro de una ventana · terminal con galón y cursor (línea simple) |
-| 10 | **Ilustración «Cómo funciona»** | 1200×450 sobre papel | Banda de `/participa/unirse` | Lista sin imagen | Línea de historial de commits con unos pocos nodos sobre la carta (grabado). **Entregada** |
-| 11 | **Fondo de «Es para ti si…»** | 1200×1200 sobre papel (perfil `fondo`), muy tenue (al 30 %) | Detrás de la lista de `/unirse` | Papel liso | Costa de una ría con sondas y curvas de nivel, muy tenue (grabado) |
-| 12 | **Separador de sección** | 1200×100 sobre transparencia (WebP) | Entre bloques largos de la portada | Filete 1 px | Filete fino con puntos en los extremos y una rosa de ocho puntas grabada en el centro (la persona, 2026-11-12: «me gusta más la idea del que te pasé»; sustituye a la línea que se vuelve costa). **Entregada** |
+| 10 | **Ilustración «Cómo funciona»** | 1200×450 sobre papel | Banda de `/participa/unirse` | Lista sin imagen | Línea de historial de commits con unos pocos nodos sobre la carta (grabado). **Entregada**; **se rehace** (10b, en cola): cuatro nodos sobre una línea de historial, cada uno con su dibujo (sobre, dos bocadillos vacíos, casilla con visto, rama que crece) |
+| 11 | **Fondo de «Es para ti si…»** | 1200×1200 sobre papel (perfil `fondo`), muy tenue (al 30 %) | Detrás de la lista de `/unirse` | Papel liso | Costa de una ría con sondas y curvas de nivel, muy tenue (grabado). **Cancelada: por CSS** (confirmado por la persona el 2026-11-12) |
+| 12 | **Separador de sección** | 1200×100 sobre transparencia (WebP) | Entre bloques largos de la portada | Filete 1 px | Filete fino con puntos en los extremos y una rosa de ocho puntas grabada en el centro (la persona, 2026-11-12: «me gusta más la idea del que te pasé»; sustituye a la línea que se vuelve costa; en el generador, q564 «con estrella», versión transparente). **Entregada**, con su componente `Separador` |
 
 ### C. Páginas interiores (prioridad 3)
 
@@ -256,12 +303,12 @@ entero; aquí va resumido.
 | 13 | **Cabecera de `/equipo`** (era la de Productos, que ya no tiene página: ADR 0004) | 1600×500 sobre cerúleo (perfil `cabecera`) | Arriba de `/equipo` | Bloque celeste con isobatas | Pistas de placa de circuito dibujadas como curvas de nivel (grabado). **Entregada** |
 | 14 | **Icono «implantación y servicio»** | SVG, `src/assets/iconos/implantacion.svg` | Aviso «¿Tienes un proyecto propio?» del inicio (ya no hay tarjetas de producto, ADR 0004) | `MessageSquare` de lucide | Caja cuya tapa se despliega en ventana (línea simple). **Entregada** |
 | 15 | **Tarjetas «Próximamente»** (2) | 1200×675 y `-mini` (perfil `tarjeta`), tercio inferior limpio | `TarjetaProxima` (Voice Generator y Developer) | Celeste plano con isobatas | Voz: onda de sonido como perfil del fondo marino (**entregada**); Developer: barco de papel sobre el mar con olas (**entregada**, la persona, 2026-11-11; antes, terminal con la rama que vuelve por un anillo) |
-| 16 | **Cabecera del Muro** | 1600×400 sobre papel (perfil `muro`) | Arriba de `/muro` | Sin cabecera | Tablero de tareas de tres columnas con tarjetas en blanco (grabado) |
+| 16 | **Cabecera del Muro** | 1600×400 sobre papel (perfil `muro`) | Arriba de `/muro` | Sin cabecera | Tablero de tareas de tres columnas con tarjetas en blanco (grabado). **Cancelada: por CSS** (2026-11-12) |
 | 17 | **Marco de retrato del equipo** | SVG 400×400; la foto va dentro | `/equipo` y página de cada miembro | Borde 1 px | Marco con marcas de grados y chaflán, centro limpio, sobre croma (grabado) |
 | 18 | **Ilustración de la página 404** | 900×600 sobre papel | `NoEncontrado.tsx` | Solo texto | Ruta discontinua que acaba en un eslabón roto que se enrosca como un signo de interrogación (grabado). **Entregada** |
 | 19 | **Estado «enviado» de los formularios** | 480×360 sobre papel | `form.listo` en `/proponer` y `/unirse` | Solo texto | Barco de papel que sale del muelle (grabado; excepción náutica, como la 15 de Developer). **Entregada** |
-| 20 | **Cabecera de páginas legales** | SVG 1200×80 sobre papel | `/aviso-legal`, `/privacidad`, `/terminos` | Nada | Borde de cajetín de plano con reglas interiores y marcas de esquina (grabado) |
-| 21 | **Patrón de fondo del pie** | 1200×300 repetible en los dos ejes, cerúleo | `Pie.tsx` | Celeste plano | Curvas de nivel sin costuras sobre cerúleo (grabado) |
+| 20 | **Cabecera de páginas legales** | SVG 1200×80 sobre papel | `/aviso-legal`, `/privacidad`, `/terminos` | Nada | Borde de cajetín de plano con reglas interiores y marcas de esquina (grabado). **Cancelada: por CSS** (2026-11-12) |
+| 21 | **Patrón de fondo del pie** | 1200×300 repetible en los dos ejes, cerúleo | `Pie.tsx` | Celeste plano | Curvas de nivel sin costuras sobre cerúleo (grabado). **Cancelado: por CSS**, cerúleo liso (2026-11-12) |
 | 22 | **Textura de papel** (opcional) | 512×512 repetible, grano casi invisible | Fondo de página bajo la retícula | Color plano | Grano de papel finísimo, casi blanco (sin pedido aún) |
 
 ### D. Por proyecto (cuando se toque su ficha)
@@ -270,6 +317,17 @@ entero; aquí va resumido.
 |---|---|---|---|---|---|
 | 23 | **Icono de proyecto** para los que no tienen (Tarkor, Galivelop-workflow) | 512×512 (perfil `icono`), cuadrado con chaflán | `icono` de la ficha, `MenuProyectos` | Inicial del nombre | Tarkor: anillo tallado con cuatro puntas y una piedra partida en seis gajos (el seis se fija al vectorizar) · Workflow: tres nodos encadenados, el último con marca de visto (línea simple) |
 | 24 | **`og.jpg` por proyecto** en el mismo estilo | 1200×630, tercio izquierdo con hueco para el icono | `tools/og/fuentes/<slug>/og-fuente.png` | Los actuales | Como la 3 con el motivo del proyecto; el acento del producto, en el lugar del verde alga (ver «Dudas», 2) |
+
+### E. Pedidos del Portal del 2026-11-12 (en cola en el generador)
+
+| # | Recurso | Medidas y forma | Dónde va (propuesta) | Hasta entonces | Motivo (registro) |
+|---|---|---|---|---|---|
+| 25 | **Iconos de las secciones de la ficha** (5) | SVG, `src/assets/iconos/` | Índice y títulos de la ficha de proyecto | Sin icono | Resumen (hoja con líneas), Galería (dos marcos superpuestos), A fondo (capas apiladas), Cómo está hecho (llave cruzada con corchete angular), Avance (camino de nodos con bandera) (línea simple) |
+| 26 | **Marcadores del avance** (3) | 64×64 | Hitos de «Avance» | Punto de estado | Hecho (nodo con visto), en curso (nodo medio relleno), pendiente (nodo discontinuo) (línea simple) |
+| 27 | **Estado vacío** | 480×360, con versión oscura | Avisos vacíos del muro y de novedades | Isobatas tenues (`.vacio-carta`) | Ventana de editor en blanco con el cursor sobre la carta muy tenue (grabado) |
+| 28 | **Aviso de error** | 480×360, con versión oscura | Errores de carga | Solo texto | Ventana de editor con los dos extremos de un cable desconectados (grabado) |
+| 29 | **Banda «Participar»** | 1200×240, muy tenue, dos tercios de la izquierda limpios | «¿Quieres participar en…?» de la ficha | Filete con el acento | Dos ramas de commits que confluyen a la derecha (grabado) |
+| 30 | **Cabecera de Novedades** | 1600×400 | Arriba de `/novedades` | Sin cabecera | Historial largo de commits con ramas y nodos de distinto tamaño (grabado) |
 
 Orden de trabajo: lo que más se ve primero: 7-9 (iconos de la portada), 6 «diseno» y «publicado», la 15 de Developer y
 las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.

@@ -1,5 +1,6 @@
+import { estiloAcento } from '../data/tonos';
 import { X } from 'lucide-react';
-import { useRef, type CSSProperties } from 'react';
+import { useRef } from 'react';
 import { Link } from './Enlace';
 import { idPublicacion, versionDe } from '../data/muro';
 import { buscarProyecto, ruta } from '../data/proyectos';
@@ -58,7 +59,7 @@ export function Publicacion({ p }: { p: TipoPublicacion }) {
     <article
       id={idPublicacion(p)}
       className="publicacion"
-      style={proyecto ? ({ '--acento-proyecto': proyecto.acento } as CSSProperties) : undefined}
+      style={proyecto ? estiloAcento(proyecto.acento) : undefined}
     >
       <header className="publicacion-cabecera">
         {proyecto && (

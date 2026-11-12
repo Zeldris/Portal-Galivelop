@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowRight, Check, Cpu, Lock, Mail } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Lock, Mail } from 'lucide-react';
 import { useEffect, useState, type ComponentType, type CSSProperties } from 'react';
 import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
@@ -22,7 +22,7 @@ const FILTRAR_DESDE = 5;
 type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
 
 const ICONO_LINEA: Record<Linea, Icono> = {
-  'ia-local': Cpu,
+  'ia-local': iconoMarca('codigo'),
   mundos: iconoMarca('mundos'),
   informacion: iconoMarca('documento-check'),
   producto: iconoMarca('papel-ventana'),

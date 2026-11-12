@@ -9,6 +9,7 @@ import mundos from '../assets/iconos/mundos.svg?raw';
 import papelVentana from '../assets/iconos/papel-ventana.svg?raw';
 import ramas from '../assets/iconos/ramas.svg?raw';
 import candado from '../assets/iconos/candado.svg?raw';
+import codigo from '../assets/iconos/codigo.svg?raw';
 import ramasUnidas from '../assets/iconos/ramas-unidas.svg?raw';
 import terminal from '../assets/iconos/terminal.svg?raw';
 
@@ -16,6 +17,7 @@ import terminal from '../assets/iconos/terminal.svg?raw';
 const FUENTES = {
   bombilla,
   candado,
+  codigo,
   compas,
   'documento-check': documentoCheck,
   historial,

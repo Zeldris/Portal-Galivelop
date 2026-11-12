@@ -1,23 +1,42 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-// Reglas mecánicas de la hoja de estilos de la marca (docs/marca.md, «Reglas»).
-// Una línea puede saltárselas con `/* marca: permitido, <motivo> */` en la línea anterior.
-const RUTA = join(__dirname, 'global.css');
-const lineas = readFileSync(RUTA, 'utf8').split('\n');
+// Reglas mecánicas de la marca (docs/marca.md, «Reglas» y «Alcance»), en todas las hojas de estilo de la web, también
+// las de las páginas de proyecto. Una línea puede saltárselas con `/* marca: permitido, <motivo> */` en la línea
+// anterior; lo que enseña cada proyecto (galería, capturas), con `/* marca: permitido, contenido del proyecto */`.
+const SRC = join(__dirname, '..');
+
+/** Todas las hojas `.css` de `src/`. */
+function hojas(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
+    e.isDirectory() ? hojas(join(dir, e.name)) : e.name.endsWith('.css') ? [join(dir, e.name)] : [],
+  );
+}
 
 /** El CSS con los comentarios en blanco (misma cuenta de líneas): lo que se comprueba es el código, no lo que dice un comentario. */
 function sinComentarios(texto: string): string {
   return texto.replace(/\/\*[\s\S]*?\*\//g, (c) => c.replace(/[^\n]/g, ' '));
 }
-const codigo = sinComentarios(lineas.join('\n')).split('\n');
 
 const PERMITIDO = /^\s*\/\*\s*marca: permitido,\s*\S/;
-const permitida = (i: number) => i > 0 && PERMITIDO.test(lineas[i - 1]);
+
+interface Hoja {
+  nombre: string;
+  lineas: string[];
+  codigo: string[];
+}
+const HOJAS: Hoja[] = hojas(SRC).map((ruta) => {
+  const texto = readFileSync(ruta, 'utf8');
+  return {
+    nombre: relative(SRC, ruta),
+    lineas: texto.split('\n'),
+    codigo: sinComentarios(texto).split('\n'),
+  };
+});
 
 /** Valor de la declaración que empieza en la línea `i` (puede seguir en las siguientes hasta `;`). */
-function valorDe(i: number, propiedad: string): string {
+function valorDe(codigo: string[], i: number, propiedad: string): string {
   const resto = codigo[i].slice(codigo[i].indexOf(':', codigo[i].indexOf(propiedad)) + 1);
   let texto = resto;
   for (let j = i + 1; !texto.includes(';') && j < codigo.length; j++) texto += ' ' + codigo[j];
@@ -38,16 +57,43 @@ function desenfoques(valor: string): number[] {
   });
 }
 
-function infracciones(comprueba: (linea: string, i: number) => string | null): string[] {
+function infracciones(
+  comprueba: (linea: string, i: number, hoja: Hoja) => string | null,
+): string[] {
   const out: string[] = [];
-  codigo.forEach((linea, i) => {
-    const motivo = comprueba(linea, i);
-    if (motivo && !permitida(i)) out.push(`global.css:${i + 1}: ${motivo} → ${lineas[i].trim()}`);
-  });
+  for (const hoja of HOJAS) {
+    hoja.codigo.forEach((linea, i) => {
+      const motivo = comprueba(linea, i, hoja);
+      const permitida = i > 0 && PERMITIDO.test(hoja.lineas[i - 1]);
+      if (motivo && !permitida)
+        out.push(`${hoja.nombre}:${i + 1}: ${motivo} → ${hoja.lineas[i].trim()}`);
+    });
+  }
   return out;
 }
 
-describe('hoja de estilos de la marca', () => {
+/** Colores escritos a mano que valen fuera de los tokens: blanco, negro y la noche (velos y tintas sobre imagen). */
+const COLOR_SUELTO = /#[0-9a-f]{3,8}\b|\b(?:rgba?|hsla?|oklch|lab|lch|hwb)\(/gi;
+const COLOR_VALIDO =
+  /^(?:#fff|#ffffff|#000|#000000)(?![0-9a-f])|^rgba?\(\s*(?:255 255 255|0 0 0|3 9 15)\b/i;
+
+describe('hojas de estilo de la marca', () => {
+  it('cubre todas las hojas de src/', () => {
+    expect(HOJAS.map((h) => h.nombre)).toContain(join('estilos', 'global.css'));
+  });
+
+  it('los colores salen de los tokens', () => {
+    const fallos = infracciones((l) => {
+      // Un token (`--algo: #hex`) define la paleta; el resto de la hoja la usa con var().
+      if (/^\s*--[\w-]+\s*:/.test(l)) return null;
+      const sueltos = [...l.matchAll(COLOR_SUELTO)].filter(
+        (m) => !COLOR_VALIDO.test(l.slice(m.index)),
+      );
+      return sueltos.length ? 'color fuera de la paleta (Alcance)' : null;
+    });
+    expect(fallos).toEqual([]);
+  });
+
   it.each([
     ['backdrop-filter', /backdrop-filter/, 'sin desenfoques de fondo (regla 2)'],
     ['blur(', /blur\(/, 'sin desenfoques (regla 2)'],
@@ -58,23 +104,23 @@ describe('hoja de estilos de la marca', () => {
   });
 
   it('no lleva sombras difusas', () => {
-    const fallos = infracciones((l, i) => {
+    const fallos = infracciones((l, i, h) => {
       // También las propiedades propias con forma de sombra (`--sombra`, `--sombra-panel`…).
       const m = l.match(/(?:^|[\s;{])(box-shadow|--[\w-]*sombra[\w-]*)\s*:/);
       if (!m) return null;
       const propiedad = m[1];
-      const difusa = desenfoques(valorDe(i, propiedad)).some((d) => d !== 0);
+      const difusa = desenfoques(valorDe(h.codigo, i, propiedad)).some((d) => d !== 0);
       return difusa ? 'sombra con desenfoque distinto de 0 (reglas 2 y 4)' : null;
     });
     expect(fallos).toEqual([]);
   });
 
   it('no redondea esquinas', () => {
-    const fallos = infracciones((l, i) => {
+    const fallos = infracciones((l, i, h) => {
       // La abreviada y las cuatro esquinas sueltas (`border-top-left-radius`…).
       const m = l.match(/(border(?:-[a-z]+)*-radius)\s*:/);
       if (!m) return null;
-      return /^(?:0(?:px)?)(?:\s+0(?:px)?)*$/.test(valorDe(i, m[1]))
+      return /^(?:0(?:px)?)(?:\s+0(?:px)?)*$/.test(valorDe(h.codigo, i, m[1]))
         ? null
         : 'border-radius distinto de 0 (regla 3)';
     });

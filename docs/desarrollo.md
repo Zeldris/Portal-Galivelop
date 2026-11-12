@@ -128,7 +128,7 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 `src/data/productos/<slug>.json` (formato en [`src/data/productos.ts`](../src/data/productos.ts)); los decide
 Álvaro y se mantienen a mano, no con la tarea semanal.
 
-- `slug`, `nombre`, `orden` (de menor a mayor), `acento` (color hex) e `icono` (nombre de `Icono`).
+- `slug`, `nombre`, `orden` (de menor a mayor), `acento` (color hex: el vivo; el hondo y el oscuro los calcula `src/data/tonos.ts`, ver `docs/marca.md`, «Acento de cada proyecto») e `icono` (nombre de `Icono`).
 - `proyecto` (slug de la ficha del taller) **o** `proximo` (slug de `src/data/proximamente.json`): uno de los dos, para
   enlazar con el taller.
 - `estado`: `disponible` o `proximamente` (sale con la etiqueta «Próximamente» y se oferta igual, sin explicar

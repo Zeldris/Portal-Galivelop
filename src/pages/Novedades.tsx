@@ -1,4 +1,5 @@
-import { Fragment, useEffect, useState, type CSSProperties } from 'react';
+import { estiloAcento } from '../data/tonos';
+import { Fragment, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
 import { Separador } from '../components/Separador';
@@ -84,13 +85,7 @@ export function Novedades() {
                         <Separador />
                       </li>
                     )}
-                    <li
-                      style={
-                        proyecto
-                          ? ({ '--acento-proyecto': proyecto.acento } as CSSProperties)
-                          : undefined
-                      }
-                    >
+                    <li style={proyecto ? estiloAcento(proyecto.acento) : undefined}>
                       <time dateTime={e.fecha}>{fecha(e.fecha)}</time>
                       <div>
                         {proyecto && (

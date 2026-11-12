@@ -1,3 +1,4 @@
+import { estiloAcento } from '../data/tonos';
 import {
   ArrowLeft,
   ArrowRight,
@@ -9,7 +10,7 @@ import {
   Mail,
   Sparkles,
 } from 'lucide-react';
-import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import type { Destino } from '../components/AnimacionFlujo';
@@ -197,7 +198,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const verNovedades = () => setTodasNovedades(true);
 
   return (
-    <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
+    <article className="proyecto" style={estiloAcento(p.acento)}>
       <header
         className={`proyecto-cabecera cabecera-${modoCabecera}${fondoEstado ? ' cabecera-velada' : ''}`}
       >
