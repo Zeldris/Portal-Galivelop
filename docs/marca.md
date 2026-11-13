@@ -149,6 +149,7 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Cada imagen 
 | 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
 | 15 | `public/proyectos/<slug>/proxima.webp` y su `imagen` en `src/data/proximamente.json` | Convertir a WebP (720×405) |
 | 23 | `public/proyectos/<slug>/icono.png`, el `icono` de la ficha | Copiar a 512×512 |
+| 31, 32 | `public/proyectos/<slug>/portada.webp` y `portada-mini.webp`, la `portada` de la ficha (y de su tarjeta); la imagen que había pasa a la galería | Convertir a WebP (1600×900 y 720×405) y poner `ancho`, `alto` y `alt` en los tres idiomas |
 | 24 | `tools/og/fuentes/<slug>/og-fuente.png` (fuera de `public/`, para que no salga en `dist/`) | `python3 tools/og/generar.py` genera el `og.jpg`; `src/data/og.test.ts` comprueba la huella |
 
 La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fuente.png` + `python3 tools/og/generar.py`, nunca el `og.jpg` a mano.
@@ -203,7 +204,7 @@ y decide la persona.
   boyas, grúas, sextantes y nudos dejan de ser protagonistas. Excepciones: los barcos de papel de la 19 y de la 15 de Developer (la persona, 2026-11-11) y las tres portadas 6, un motivo por estado: faro en obra, boya y barco de papel (la persona, 2026-11-12: «1 barco, 1 faro, uno de cada cosa»). La rosa de
   los vientos (4) es instrumento de carta y se queda.
 - **Dos registros de dibujo:**
-  - **Grabado a dos tintas** para las ilustraciones grandes (3, 6, 10, 11, 13, 15-21): mucho detalle, tramas finas y
+  - **Grabado a dos tintas** para las ilustraciones grandes (3, 6, 10, 11, 13, 15-21, 27-32): mucho detalle, tramas finas y
     líneas de varios grosores, con el mar de líneas de ola y batimetría (aprobado por la persona en la 6, q310 y q311).
   - **Línea simple** para iconos y pictogramas (1, 1b, 4, 5, 7, 8, 9, 14, 23; el separador 12, filete simple con una rosa grabada, a petición de la persona): un solo grosor de trazo, sin trama
     ni relleno, legible a 24 px, una sola tinta; se vectorizan a SVG y se colorean con `currentColor`.
@@ -341,11 +342,14 @@ entero; aquí va resumido.
 
 Todo proyecto Galivelop lleva una portada propia en grabado, como el barco de papel de Developer y las ondas de Voice
 (15); faltaban Workflow y GVIG (la persona, 2026-11-13). El acento del producto va donde el Portal usa el alga.
+Modelo `zimage-turbo-q6` (8 pasos, cfg 1.0, euler), perfil `portada` (1344×768 → 1600×900), 2-4 candidatas por
+pedido. Llegan a `src/img/galivelop-workflow/31-portada-workflow.png` y
+`src/img/galivelop-image-generator/32-portada-gvig.png`.
 
 | # | Recurso | Medidas y forma | Dónde va (propuesta) | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 31 | **Portada de Galivelop-workflow** | 1600×900 y `-mini` 720×405 (perfil `portada`), tercio inferior limpio; acento `#3D6FD9` | Tarjeta del proyecto y portada de su ficha; el esquema del flujo pasa a la galería | El esquema del flujo | El relevo: una línea de historial de commits que cruza la carta como una derrota, de una ventana de editor que se cierra a otra que se abre; el último nodo con visto, en el acento (grabado) |
-| 32 | **Portada de Galivelop IG** | Igual que la 31; acento `#7C5CD6` | Tarjeta del proyecto y portada de su ficha; el banner actual pasa a la galería | El banner de producto de la persona | «Pide, prueba, elige»: una hoja de contactos de marcos de imagen en blanco abierta en abanico sobre la carta; uno, con el borde más grueso en el acento y un visto (grabado) |
+| 31 | **Portada de Galivelop-workflow** | 1600×900 y `-mini` 720×405 (perfil `portada`), tercio inferior limpio; acento `#3D6FD9` | Tarjeta del proyecto y portada de su ficha; el esquema del flujo pasa a la galería | El esquema del flujo | El relevo: una línea de historial de commits que cruza la carta como una derrota, de una ventana de editor que se cierra a la izquierda, por unos pocos nodos, a otra que se abre a la derecha; el último nodo con visto, en el acento (grabado) |
+| 32 | **Portada de Galivelop IG** | Igual que la 31; acento `#7C5CD6` | Tarjeta del proyecto y portada de su ficha; el banner actual pasa a la galería | El banner de producto de la persona | «Pide, prueba, elige»: una hoja de contactos de marcos de imagen en blanco abierta en abanico sobre la carta, como pruebas de imprenta sobre la mesa de cartas; uno, con el borde más grueso en el acento y un visto (grabado) |
 
 Orden de trabajo: lo que más se ve primero: 7-9 (iconos de la portada), 6 «diseno» y «publicado», la 15 de Developer y
 las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.
