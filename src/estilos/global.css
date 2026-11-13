@@ -2704,7 +2704,7 @@ button {
 }
 
 /* Por debajo de 900 px el texto ya no cabe en el 4:1 y el cover recortaría el cabo: la banda pasa encima del texto,
-   de borde a borde, recorta solo papel de la izquierda y se funde con la tarjeta por abajo. */
+   de borde a borde, y recorta solo papel de la izquierda. */
 @media (max-width: 900px) {
   .participar-abierta {
     grid-template-columns: 1fr;
@@ -2721,7 +2721,6 @@ button {
     max-width: none;
     height: 120px;
     margin: 0 -24px;
-    mask-image: linear-gradient(to bottom, #000 75%, transparent);
   }
 }
 
