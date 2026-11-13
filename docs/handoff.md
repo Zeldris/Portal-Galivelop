@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-13 (series 25 y 26, banda 29 (solo claro) y cabecera 30 en `ccr-47f8fddd-o5ek6p`; **no a `main`**) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-13) |
-| **Tarea en curso** | **Lote del generador del 2026-11-13**. Hecho: iconos 25 en títulos e índice de la ficha, marcadores 26 en los hitos, banda 29 en «¿Quieres participar?» solo en el tema claro y cabecera 30 en `/novedades`. **29** no se muestra en el oscuro (invertida se veía mal; se pidió su versión). **Rosa y sello, sitios elegidos** (la persona: «me vale»): sello (05b) a 72 px junto a «Galicia + Develop» de «Cómo trabajamos» (`.sobre-sello`) y rosa (04b) como marca de agua al 12 % en la esquina del pie (`.pie-rosa`), invertidos en el oscuro. `/code-review` pasado y arreglado. Pedidos: 26a, 26b, rosa, sello, 29 oscura. **No llevar a `main`** hasta que la persona lo diga (2026-11-13). Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Cuando la persona diga de llevarlo a `main`: `reviewed.sh` y subir. Cuando lleguen 26a y 26b corregidas, repasarlas con `limpiar-iconos.cjs` (mismos nombres). Siguen en cola 10b y las versiones oscuras de 10, 18, 19, 27, 28 y 29 |
+| **Tarea en curso** | **Lote del generador del 2026-11-13**. Hecho: iconos 25 en títulos e índice de la ficha, marcadores 26 en los hitos, banda 29 en «¿Quieres participar?» (clara y oscura) y cabecera 30 en `/novedades`. Entregas rehechas del generador puestas (26a, 26b, sello con GV, 29 oscura con el fondo subido al de la tarjeta). **Rosa y sello, sitios elegidos** (la persona: «me vale»): sello (05b) a 72 px junto a «Galicia + Develop» de «Cómo trabajamos» (`.sobre-sello`) y rosa (04b) como marca de agua al 12 % en la esquina del pie (`.pie-rosa`), invertidos en el oscuro. `/code-review` pasado y arreglado. Pedido: la rosa (geométrica). **No llevar a `main`** hasta que la persona lo diga (2026-11-13). Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | Cuando la persona diga de llevarlo a `main`: `reviewed.sh` y subir. Cuando llegue la rosa, `public/marca/rosa-vientos.webp` a 280 px. Siguen en cola 10b y las versiones oscuras de 10, 18, 19, 27 y 28 |
 | **En `main`** | **Portadas 06 rehechas, estado vacío (27) y aviso de error (28)** (704b662, 2026-11-12, la persona: «vamos a llevarlo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en dc8bbdd). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 202/202 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- En `ccr-47f8fddd-o5ek6p`, **sin llevar a `main` por petición de la persona** (2026-11-13): iconos 25, marcadores 26, banda 29 (solo claro) y cabecera 30. Revisado y arreglado; falta la marca.
+- En `ccr-47f8fddd-o5ek6p`, **sin llevar a `main` por petición de la persona** (2026-11-13): iconos 25, marcadores 26, banda 29 (clara y oscura), cabecera 30, rosa y sello. Revisado y arreglado; falta la marca.
 
 ## Hecho
 

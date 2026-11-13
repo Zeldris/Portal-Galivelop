@@ -657,20 +657,25 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         )}
 
         <aside className={`participar participar-${p.colaboracion}`}>
-          {/* Banda de la marca (recurso 29), solo con la colaboración abierta y en el tema claro: el cabo a la derecha,
-              el texto a la izquierda. */}
-          {p.colaboracion === 'abierta' && (
-            <img
-              className="participar-banda"
-              src={ruta('marca/banda-participar.webp')}
-              srcSet={`${ruta('marca/banda-participar-mini.webp')} 800w, ${ruta('marca/banda-participar.webp')} 1600w`}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              alt=""
-              width={1600}
-              height={400}
-              loading="lazy"
-            />
-          )}
+          {/* Banda de la marca (recurso 29), solo con la colaboración abierta; el CSS muestra la del tema. */}
+          {p.colaboracion === 'abierta' &&
+            (['claro', 'oscuro'] as const).map((tema) => {
+              const base =
+                tema === 'claro' ? 'marca/banda-participar' : 'marca/banda-participar-oscura';
+              return (
+                <img
+                  key={tema}
+                  className={`participar-banda participar-banda-${tema}`}
+                  src={ruta(`${base}.webp`)}
+                  srcSet={`${ruta(`${base}-mini.webp`)} 800w, ${ruta(`${base}.webp`)} 1600w`}
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  alt=""
+                  width={1600}
+                  height={400}
+                  loading="lazy"
+                />
+              );
+            })}
           <span className="participar-icono" aria-hidden="true">
             {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock />}
           </span>

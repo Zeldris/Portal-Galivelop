@@ -2666,13 +2666,13 @@ button {
   filter: invert(1) hue-rotate(180deg);
 }
 
-/* Banda de la marca (recurso 29), solo en el tema claro: mide 4:1 y deja el cabo en la mitad derecha, así que el
-   texto va en la izquierda. En el oscuro no se muestra (invertida se veía mal) hasta que llegue su versión. */
+/* Banda de la marca (recurso 29), con su versión para cada tema: mide 4:1 y deja el cabo en la mitad derecha, así
+   que el texto va en la izquierda. */
 .participar-banda {
   display: none;
 }
 
-:root[data-tema='claro'] .participar-abierta {
+.participar-abierta {
   position: relative;
   grid-template-columns: auto minmax(0, 1fr);
   align-content: center;
@@ -2682,17 +2682,18 @@ button {
   overflow: hidden;
 }
 
-:root[data-tema='claro'] .participar-abierta > :not(.participar-banda) {
+.participar-abierta > :not(.participar-banda) {
   position: relative;
 }
 
-:root[data-tema='claro'] .participar-abierta .boton {
+.participar-abierta .boton {
   grid-column: 2;
   justify-self: start;
 }
 
 /* Si el texto pide más alto que el 4:1, la banda crece y recorta papel vacío por la izquierda, nunca el cabo. */
-:root[data-tema='claro'] .participar-banda {
+:root[data-tema='claro'] .participar-banda-claro,
+:root:not([data-tema='claro']) .participar-banda-oscuro {
   display: block;
   position: absolute;
   inset: 0;
@@ -2703,21 +2704,24 @@ button {
 }
 
 /* Por debajo de 900 px el texto ya no cabe en el 4:1 y el cover recortaría el cabo: la banda pasa encima del texto,
-   de borde a borde, y recorta solo papel de la izquierda. */
+   de borde a borde, recorta solo papel de la izquierda y se funde con la tarjeta por abajo. */
 @media (max-width: 900px) {
-  :root[data-tema='claro'] .participar-abierta {
+  .participar-abierta {
     grid-template-columns: 1fr;
     aspect-ratio: auto;
     padding: 0 24px 24px;
   }
-  :root[data-tema='claro'] .participar-abierta .boton {
+  .participar-abierta .boton {
     grid-column: auto;
   }
-  :root[data-tema='claro'] .participar-banda {
+  :root[data-tema='claro'] .participar-banda-claro,
+  :root:not([data-tema='claro']) .participar-banda-oscuro {
     position: static;
     width: calc(100% + 48px);
+    max-width: none;
     height: 120px;
     margin: 0 -24px;
+    mask-image: linear-gradient(to bottom, #000 75%, transparent);
   }
 }
 
