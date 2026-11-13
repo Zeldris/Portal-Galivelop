@@ -257,7 +257,10 @@ registro → cierre → frase de paleta.
 
 **Plantilla de las piezas de mar** (generador, 2026-11-13): se parte del prompt de la q795 (6 «publicado»,
 aprobada) y se cambian solo el sujeto, su tercio y el color del acento (en el sitio del verde alga). El bloque de
-estilo, el cierre de mar y la frase de paleta se conservan literales.
+estilo, el cierre de mar y la frase de paleta se conservan literales. Cuando la zona tranquila va abajo, se invierte
+la densidad de la q795: «line density highest in the deep water at the top and thinning steadily downwards, tonal
+bands from deep cerulean at the top to lighter cerulean at the bottom». La rosa de los vientos y las sondas van
+arriba («compass rose in the top left corner», «soundings in the upper water»), nunca en la zona del titular.
 
 **Bloque de grabado:**
 > Richly detailed engraved antique nautical chart style, like a fine sea chart printed in two inks: many layers of fine
