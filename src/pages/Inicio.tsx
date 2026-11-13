@@ -217,6 +217,15 @@ export function Inicio() {
               {t('sobre.texto3')} <Link to="/equipo">{t('sobre.verEquipo')} →</Link>
             </p>
             <p className="sobre-nombre">
+              {/* Sello del taller (recurso 5), como firma junto al nombre. */}
+              <img
+                className="sobre-sello"
+                src={ruta('marca/sello.webp')}
+                alt=""
+                width={512}
+                height={512}
+                loading="lazy"
+              />
               <span className="sobre-marca" aria-hidden="true">
                 <b>Gali</b>cia + De<b>velop</b>
               </span>

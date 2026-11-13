@@ -1189,14 +1189,21 @@ button {
 }
 
 .sobre-rejilla > div > p.sobre-nombre {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 16px;
   margin-top: 24px;
   padding-top: 18px;
   border-top: 1px solid var(--borde);
   font-size: 0.93rem;
   color: var(--texto-3);
+}
+
+.sobre-sello {
+  grid-row: span 2;
+  width: 72px;
+  height: 72px;
 }
 
 .sobre-marca {
@@ -1270,13 +1277,27 @@ button {
 /* ---------- Pie ---------- */
 
 .pie {
+  position: relative;
+  overflow: hidden;
   border-top: 1px solid var(--borde);
   padding: 48px 0 28px;
   background: var(--fondo-alterno);
 }
 
 /* Marca y cuatro columnas en escritorio; por debajo, la marca arriba y las columnas de dos en dos. */
+/* Rosa de los vientos (recurso 4): marca de agua tenue, medio fuera por la esquina, detrás de las columnas. */
+.pie-rosa {
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 280px;
+  height: 280px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
 .pie-rejilla {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
   gap: 32px 24px;
@@ -2635,6 +2656,12 @@ button {
   .participar .boton {
     justify-self: start;
   }
+}
+
+/* Rosa y sello en el tema oscuro: en negativo (tinta clara, relleno noche). */
+:root[data-tema='oscuro'] .pie-rosa,
+:root[data-tema='oscuro'] .sobre-sello {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 /* Banda de la marca (recurso 29), solo en el tema claro: mide 4:1 y deja el cabo en la mitad derecha, así que el

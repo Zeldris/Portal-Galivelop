@@ -3,7 +3,7 @@ import { Link } from './Enlace';
 import { documentosLegales } from '../data/legal';
 import { MARCA } from '../data/marca';
 import { publicaciones } from '../data/muro';
-import { proyectos } from '../data/proyectos';
+import { proyectos, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { IconoDiscord } from './IconoDiscord';
 import { IconoGitHub } from './IconoGitHub';
@@ -14,6 +14,15 @@ export function Pie() {
   const { t, tx } = useIdioma();
   return (
     <footer className="pie">
+      {/* Rosa de los vientos (recurso 4), de marca de agua en la esquina. */}
+      <img
+        className="pie-rosa"
+        src={ruta('marca/rosa-vientos.webp')}
+        alt=""
+        width={512}
+        height={512}
+        loading="lazy"
+      />
       <div className="contenedor pie-rejilla">
         <div className="pie-marca">
           <Logo tamano={30} />
