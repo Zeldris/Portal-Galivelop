@@ -1,5 +1,13 @@
 import type { ComponentType } from 'react';
+import aFondo from '../assets/iconos/a-fondo.svg?raw';
+import avance from '../assets/iconos/avance.svg?raw';
 import bombilla from '../assets/iconos/bombilla.svg?raw';
+import comoEstaHecho from '../assets/iconos/como-esta-hecho.svg?raw';
+import galeria from '../assets/iconos/galeria.svg?raw';
+import hitoCurso from '../assets/iconos/hito-curso.svg?raw';
+import hitoHecho from '../assets/iconos/hito-hecho.svg?raw';
+import hitoPendiente from '../assets/iconos/hito-pendiente.svg?raw';
+import resumen from '../assets/iconos/resumen.svg?raw';
 import compas from '../assets/iconos/compas.svg?raw';
 import documentoCheck from '../assets/iconos/documento-check.svg?raw';
 import historial from '../assets/iconos/historial.svg?raw';
@@ -13,9 +21,16 @@ import codigo from '../assets/iconos/codigo.svg?raw';
 import ramasUnidas from '../assets/iconos/ramas-unidas.svg?raw';
 import terminal from '../assets/iconos/terminal.svg?raw';
 
-/** Iconos propios de la marca (recursos 7, 8, 9 y 14 de `docs/marca.md`), en un solo trazado con `currentColor`. */
+/** Iconos propios de la marca (recursos 7, 8, 9, 14, 25 y 26 de `docs/marca.md`), en un solo trazado con `currentColor`. */
 const FUENTES = {
+  'a-fondo': aFondo,
+  avance,
   bombilla,
+  'como-esta-hecho': comoEstaHecho,
+  galeria,
+  'hito-curso': hitoCurso,
+  'hito-hecho': hitoHecho,
+  'hito-pendiente': hitoPendiente,
   candado,
   codigo,
   compas,
@@ -27,6 +42,7 @@ const FUENTES = {
   'papel-ventana': papelVentana,
   ramas,
   'ramas-unidas': ramasUnidas,
+  resumen,
   terminal,
 };
 export type NombreIcono = keyof typeof FUENTES;

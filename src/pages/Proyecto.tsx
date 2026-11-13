@@ -1,15 +1,5 @@
 import { estiloAcento } from '../data/tonos';
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  CircleDashed,
-  ExternalLink,
-  LoaderCircle,
-  Lock,
-  Mail,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, Lock, Mail, Sparkles } from 'lucide-react';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
@@ -21,7 +11,7 @@ import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
-import { IconoMarca } from '../components/IconoMarca';
+import { IconoMarca, type NombreIcono } from '../components/IconoMarca';
 import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
 import { buscarPersona } from '../data/equipo';
@@ -43,10 +33,20 @@ const PUBLICACIONES_EN_FICHA = 3;
 /** Las animaciones paso a paso solo las lleva alguna ficha: van en su propio trozo, fuera del resto de la página. */
 const AnimacionFlujo = lazy(() => import('../components/AnimacionFlujo'));
 
-const ICONO_HITO: Record<EstadoHito, typeof Check> = {
-  hecho: Check,
-  curso: LoaderCircle,
-  pendiente: CircleDashed,
+/** Marcadores del avance (recurso 26 de `docs/marca.md`): el mismo aro con visto, con «…» o vacío. */
+const ICONO_HITO: Record<EstadoHito, NombreIcono> = {
+  hecho: 'hito-hecho',
+  curso: 'hito-curso',
+  pendiente: 'hito-pendiente',
+};
+
+/** Iconos de los grupos de la ficha (recurso 25), en su título y en el índice. */
+const ICONO_GRUPO: Record<Grupo, NombreIcono> = {
+  resumen: 'resumen',
+  galeria: 'galeria',
+  afondo: 'a-fondo',
+  tecnica: 'como-esta-hecho',
+  avance: 'avance',
 };
 
 /** Grupos con contenido en este proyecto (los vacíos no se muestran). */
@@ -143,6 +143,7 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
     <nav className="nav-ficha" aria-label={t('proyecto.indice')} ref={barra}>
       {grupos.map((g) => (
         <a key={g.id} href={`#${g.id}`} aria-current={activo === g.id ? 'true' : undefined}>
+          <IconoMarca nombre={ICONO_GRUPO[g.id]} />
           {g.titulo}
         </a>
       ))}
@@ -340,6 +341,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         <section id="resumen" className="grupo" aria-labelledby="titulo-resumen">
           <h2 id="titulo-resumen" className="grupo-titulo">
+            <IconoMarca nombre={ICONO_GRUPO.resumen} />
             {t('grupo.resumen')}
           </h2>
           {p.descripcion.length > 0 && (
@@ -423,6 +425,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('galeria') && (
           <section id="galeria" className="grupo" aria-labelledby="titulo-galeria">
             <h2 id="titulo-galeria" className="grupo-titulo">
+              <IconoMarca nombre={ICONO_GRUPO.galeria} />
               {t('sec.galeria')}
             </h2>
             <Galeria
@@ -437,6 +440,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('afondo') && (
           <section id="afondo" className="grupo" aria-labelledby="titulo-afondo">
             <h2 id="titulo-afondo" className="grupo-titulo">
+              <IconoMarca nombre={ICONO_GRUPO.afondo} />
               {t('grupo.afondo')}
             </h2>
             <p className="grupo-texto">{t('afondo.texto')}</p>
@@ -447,6 +451,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('tecnica') && (
           <section id="tecnica" className="grupo" aria-labelledby="titulo-tecnica">
             <h2 id="titulo-tecnica" className="grupo-titulo">
+              <IconoMarca nombre={ICONO_GRUPO.tecnica} />
               {t('grupo.tecnica')}
             </h2>
             <div className="grupo-columnas">
@@ -507,6 +512,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             <Separador />
             <section id="avance" className="grupo" aria-labelledby="titulo-avance">
               <h2 id="titulo-avance" className="grupo-titulo">
+                <IconoMarca nombre={ICONO_GRUPO.avance} />
                 {t('grupo.avance')}
               </h2>
               <div className="grupo-columnas">
@@ -517,14 +523,13 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                     </h3>
                     <ol className="hitos">
                       {p.hitos.map((h) => {
-                        const IconoHito = ICONO_HITO[h.estado];
                         return (
                           <li
                             key={(h.version ?? '') + tx(h.nombre)}
                             className={`hito hito-${h.estado}`}
                           >
                             <span className="hito-marca" aria-hidden="true">
-                              <IconoHito size={16} />
+                              <IconoMarca nombre={ICONO_HITO[h.estado]} />
                             </span>
                             <div>
                               <p className="hito-titulo">
@@ -652,6 +657,17 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         )}
 
         <aside className={`participar participar-${p.colaboracion}`}>
+          {/* Banda de la marca (recurso 29), solo en el tema claro: el cabo a la derecha, el texto a la izquierda. */}
+          <img
+            className="participar-banda"
+            src={ruta('marca/banda-participar.webp')}
+            srcSet={`${ruta('marca/banda-participar-mini.webp')} 800w, ${ruta('marca/banda-participar.webp')} 1600w`}
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            alt=""
+            width={1600}
+            height={400}
+            loading="lazy"
+          />
           <span className="participar-icono" aria-hidden="true">
             {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock />}
           </span>

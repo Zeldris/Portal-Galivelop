@@ -22,7 +22,7 @@ export function Equipo() {
     <section className="seccion equipo-pagina">
       <div className="contenedor">
         <img
-          className="equipo-banda"
+          className="banda-cabecera"
           src={ruta('marca/cabecera-equipo.webp')}
           alt=""
           width={1600}

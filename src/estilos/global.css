@@ -2029,35 +2029,26 @@ button {
   background: var(--celeste);
 }
 
+/* Marcadores del avance (recurso 26): el aro de la marca, del color de cada estado. */
 .hito-marca {
   display: grid;
   place-items: center;
   width: 32px;
   height: 32px;
-  border: 2px solid var(--borde);
-  background: var(--superficie);
   color: var(--texto-3);
 }
 
+.hito-marca svg {
+  width: 28px;
+  height: 28px;
+}
+
 .hito-hecho .hito-marca {
-  background: var(--celeste);
-  border-color: var(--celeste);
-  color: var(--blanco);
+  color: var(--celeste);
 }
 
 .hito-curso .hito-marca {
-  border-color: var(--alga);
   color: var(--alga);
-}
-
-.hito-curso .hito-marca svg {
-  animation: girar 3s linear infinite;
-}
-
-@keyframes girar {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .hito-titulo {
@@ -2322,7 +2313,7 @@ button {
 .vacio-imagen,
 .formulario-ilustracion,
 .formulario-listo-imagen,
-.equipo-banda {
+.banda-cabecera {
   display: block;
   width: 100%;
   height: auto;
@@ -2347,7 +2338,7 @@ button {
   margin-bottom: 16px;
 }
 
-.equipo-banda {
+.banda-cabecera {
   margin-bottom: clamp(24px, 4vw, 40px);
 }
 
@@ -2643,6 +2634,60 @@ button {
   }
   .participar .boton {
     justify-self: start;
+  }
+}
+
+/* Banda de la marca (recurso 29), solo en el tema claro: mide 4:1 y deja el cabo en la mitad derecha, así que el
+   texto va en la izquierda. En el oscuro no se muestra (invertida se veía mal) hasta que llegue su versión. */
+.participar-banda {
+  display: none;
+}
+
+:root[data-tema='claro'] .participar {
+  position: relative;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  gap: 16px 20px;
+  aspect-ratio: 4 / 1;
+  padding: 24px 48% 24px 24px;
+  overflow: hidden;
+}
+
+:root[data-tema='claro'] .participar > :not(.participar-banda) {
+  position: relative;
+}
+
+:root[data-tema='claro'] .participar .boton {
+  grid-column: 2;
+  justify-self: start;
+}
+
+/* Si el texto pide más alto que el 4:1, la banda crece y recorta papel vacío por la izquierda, nunca el cabo. */
+:root[data-tema='claro'] .participar-banda {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+/* En el móvil, la banda encima del texto, de borde a borde; recorta solo papel de la izquierda. */
+@media (max-width: 700px) {
+  :root[data-tema='claro'] .participar {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+    padding: 0 24px 24px;
+  }
+  :root[data-tema='claro'] .participar .boton {
+    grid-column: auto;
+  }
+  :root[data-tema='claro'] .participar-banda {
+    position: static;
+    width: calc(100% + 48px);
+    height: 120px;
+    margin: 0 -24px;
   }
 }
 
@@ -4944,8 +4989,26 @@ body:has(dialog[open]) {
 }
 
 .grupo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: clamp(1.4rem, 3.5vw, 1.8rem);
   margin-bottom: 18px;
+}
+
+/* Iconos de los grupos (recurso 25), en el título y en el índice. */
+.grupo-titulo svg {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  color: var(--acento-texto);
+}
+
+.nav-ficha a svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: -3px;
 }
 
 .grupo-texto {

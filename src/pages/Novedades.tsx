@@ -45,6 +45,16 @@ export function Novedades() {
   return (
     <section className="seccion novedades-pagina">
       <div className="contenedor muro-contenedor">
+        <img
+          className="banda-cabecera"
+          src={ruta('marca/cabecera-novedades.webp')}
+          srcSet={`${ruta('marca/cabecera-novedades-mini.webp')} 800w, ${ruta('marca/cabecera-novedades.webp')} 1600w`}
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          alt=""
+          width={1600}
+          height={400}
+          fetchPriority="high"
+        />
         <header className="seccion-cabecera">
           <div>
             <h1>{t('sec.novedades')}</h1>
