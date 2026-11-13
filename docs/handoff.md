@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-13 (lote 25-30, rosa y sello, en `main`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-13) |
-| **Tarea en curso** | Ninguna. El lote del generador del 2026-11-13 está en `main`; solo falta la rosa (04b), que el generador rehará geométrica. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Cuando llegue la rosa, `public/marca/rosa-vientos.webp` a 280 px con transparencia. Siguen en cola 10b, las versiones oscuras de 10, 18, 19, 27 y 28 y las portadas 31 (Workflow) y 32 (GVIG), pedidas el 2026-11-13 (`docs/marca.md`, tabla F) |
+| **Tarea en curso** | Ninguna. El lote del generador del 2026-11-13 está en `main`; la rosa geométrica (04b) llegó el 2026-11-13 y está en la rama, aún no en `main`. Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | La rosa geométrica (04b) ya está en `public/marca/rosa-vientos.webp` (2026-11-13; sin subir a `main`). Siguen en cola 10b, las versiones oscuras de 10, 18, 19, 27 y 28 y las portadas 31 (Workflow) y 32 (GVIG), pedidas el 2026-11-13 (`docs/marca.md`, tabla F) |
 | **En `main`** | **Iconos de grupo (25), marcadores del avance (26), banda 29 clara y oscura, cabecera 30, rosa y sello** (f7ce483, 2026-11-13, la persona: «llévalo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en edbdd74). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 202/202 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
