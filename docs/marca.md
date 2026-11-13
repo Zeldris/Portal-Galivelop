@@ -196,7 +196,8 @@ en cola en el generador: fondo transparente o sobre el `--celeste-hondo` oscuro 
 
 La fuente de cómo se piden es la hoja del Portal en el generador (`galivelop-image-generator`,
 `docs/marcas/portal/hoja.md`, «Identidad vigente», y los pedidos de `examples/portal/orders/marca/`); lo de aquí es su
-resumen, puesto al día el 2026-11-12 con esa hoja (`2a9af6f`, rama `hojas-repos`). Si las dos dicen cosas distintas, se apunta en «Dudas»
+resumen, puesto al día el 2026-11-12 con esa hoja (`2a9af6f`, rama `hojas-repos`) y el 2026-11-13 con su cambio de
+«Zonas limpias», «Motivo» y la plantilla del prompt de mar (tras las 31 y 32 fallidas). Si las dos dicen cosas distintas, se apunta en «Dudas»
 y decide la persona.
 
 - **El mar pone el dónde, la tecnología pone el qué** (la persona, 2026-11-11). El mar y la costa gallega se quedan
@@ -214,9 +215,21 @@ y decide la persona.
 - **Cuatro tintas:** cerúleo `#0072a8` (en el prompt, «medium cerulean ocean blue»: «sky blue» da `#1aa6df`), papel
   `#fbfcfd`, gris tinta `#13212b` y un toque de verde alga `#5d7a6a`. Los grabados admiten tonos del cerúleo; los
   iconos, una sola tinta. Ningún nombre de color fuera de las tintas, ni como adjetivo («golden», «white»).
-- **Zonas limpias:** el hueco para el texto de la web (o el centro de un marco) se describe en positivo y al principio
-  («the lower third of the sheet is plain flat off-white paper, open and unmarked») y la trama se confina al resto;
-  «filling the whole sheet to every edge» solo en piezas sin zona (18, 21).
+- **Motivo** (generador, 2026-11-13): el motivo de software se dibuja como un **objeto físico dentro del agua**,
+  grabado con el mismo trazo que el mar, como el barco de papel de la 6 y la 15 o la onda de Voice. Nunca piezas de
+  interfaz planas (ventanas de editor, tarjetas, capturas) puestas encima del mar: salen como pegatinas y con
+  pseudotexto. Ejemplos: los commits, boyas unidas por un cabo; una galería, hojas de papel con marco flotando. En
+  las piezas sobre papel (10/10b, 27, 28) la ventana de editor sigue valiendo.
+- **Zonas limpias** (generador, 2026-11-13), dos casos:
+  - **Piezas de mar** (portadas, `og`/social, cabeceras, tarjetas «próximamente»): el mar va a sangre en todo el
+    cuadro y la zona del texto es **agua tranquila**, no papel: «the lower third is calm open water: sparse, thin,
+    light wave lines, lighter tone, no objects». Nunca «plain flat off-white paper» en una pieza de mar: el modelo
+    pega un bloque blanco con borde ondulado y añade un marco. Si el agua tranquila no deja leer el titular, el
+    Portal pone el texto sobre un velo por CSS; la imagen no se reintenta por eso.
+  - **Piezas sobre papel** (10/10b, 17, 19, 27, 28): el hueco (o el centro del marco) se describe en positivo y al
+    principio («the lower third of the sheet is plain flat off-white paper, open and unmarked») y la trama se confina
+    al resto.
+  - «filling the whole sheet to every edge», solo en piezas sin zona (18, 21).
 - **Sin recuentos exactos:** el modelo no los cumple («exactly four nodes» dio siete). Si el número es el significado
   (los seis gajos de Tarkor, las ocho puntas de la rosa), el número se fija al vectorizar.
 - **A sangre:** sin marco ni banda blanca; el chaflán del logo lo pone el SVG, no el modelo. El único marco permitido
@@ -242,6 +255,10 @@ marco); lo que no se quiere en el sujeto no se nombra, se describe lo que sí.
 **Orden del prompt** (120-200 palabras): sujeto con el motivo de software → zona limpia, si la hay → bloque del
 registro → cierre → frase de paleta.
 
+**Plantilla de las piezas de mar** (generador, 2026-11-13): se parte del prompt de la q795 (6 «publicado»,
+aprobada) y se cambian solo el sujeto, su tercio y el color del acento (en el sitio del verde alga). El bloque de
+estilo, el cierre de mar y la frase de paleta se conservan literales.
+
 **Bloque de grabado:**
 > Richly detailed engraved antique nautical chart style, like a fine sea chart printed in two inks: many layers of fine
 > lines and hatching, line density increasing in the darker areas to give depth and tone, lines of several weights,
@@ -254,6 +271,9 @@ registro → cierre → frase de paleta.
 **Cierre:**
 > No photographic rendering, no glow, no text, no letters, no numbers, no watermark, full-bleed edge to edge, no border,
 > no frame.
+
+En las piezas de mar, el cierre de la q795 termina en «no horizon, no sky, no clouds, full-bleed edge to edge, no
+border, no frame».
 
 **Frase de paleta (siempre la última):**
 > Palette strictly limited to medium cerulean ocean blue #0072a8, off-white #fbfcfd, ink grey #13212b and a touch of
@@ -326,7 +346,7 @@ entero; aquí va resumido.
 | # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
 | 23 | **Icono de proyecto** para los que no tienen (Tarkor, Galivelop-workflow) | 512×512 (perfil `icono`), cuadrado con chaflán | `icono` de la ficha, `MenuProyectos` | Inicial del nombre | Tarkor: anillo tallado con cuatro puntas y una piedra partida en seis gajos (el seis se fija al vectorizar) · Workflow: tres nodos encadenados, el último con marca de visto (línea simple) |
-| 24 | **`og.jpg` por proyecto** en el mismo estilo | 1200×630, tercio izquierdo con hueco para el icono | `tools/og/fuentes/<slug>/og-fuente.png` | Los actuales | Como la 3 con el motivo del proyecto; el acento del producto, en el lugar del verde alga (ver «Dudas», 2) |
+| 24 | **`og.jpg` por proyecto** en el mismo estilo | 1200×630, tercio izquierdo de agua tranquila para el icono («left third calm open water») | `tools/og/fuentes/<slug>/og-fuente.png` | Los actuales | Como la 3 con el motivo del proyecto, como objeto dentro del agua (ver «Motivo»); el acento del producto, en el lugar del verde alga (ver «Dudas», 2) |
 
 ### E. Pedidos del Portal del 2026-11-12 (en cola en el generador)
 
@@ -343,14 +363,17 @@ entero; aquí va resumido.
 
 Todo proyecto Galivelop lleva una portada propia en grabado, como el barco de papel de Developer y las ondas de Voice
 (15); faltaban Workflow y GVIG (la persona, 2026-11-13). El acento del producto va donde el Portal usa el alga.
+**Se reescriben** (generador, 2026-11-13): la primera entrega salió mucho peor que q331, q311 y q795 por pedir un
+tercio de papel limpio y ventanas de editor sobre el mar; van con la plantilla de mar, agua tranquila y el motivo
+como objeto en el agua.
 Modelo `zimage-turbo-q6` (8 pasos, cfg 1.0, euler), perfil `portada` (1344×768 → 1600×900), 2-4 candidatas por
 pedido. Llegan a `src/img/galivelop-workflow/31-portada-workflow.png` y
 `src/img/galivelop-image-generator/32-portada-gvig.png`.
 
 | # | Recurso | Medidas y forma | Dónde va (propuesta) | Hasta entonces | Motivo (registro) |
 |---|---|---|---|---|---|
-| 31 | **Portada de Galivelop-workflow** | 1600×900 y `-mini` 720×405 (perfil `portada`), tercio inferior limpio; acento `#3D6FD9` | Tarjeta del proyecto y portada de su ficha; el esquema del flujo pasa a la galería | El esquema del flujo | El relevo: una línea de historial de commits que cruza la carta como una derrota, de una ventana de editor que se cierra a la izquierda, por unos pocos nodos, a otra que se abre a la derecha; el último nodo con visto, en el acento (grabado) |
-| 32 | **Portada de Galivelop IG** | Igual que la 31; acento `#7C5CD6` | Tarjeta del proyecto y portada de su ficha; el banner actual pasa a la galería | El banner de producto de la persona | «Pide, prueba, elige»: una hoja de contactos de marcos de imagen en blanco abierta en abanico sobre la carta, como pruebas de imprenta sobre la mesa de cartas; uno, con el borde más grueso en el acento y un visto (grabado) |
+| 31 | **Portada de Galivelop-workflow** | 1600×900 y `-mini` 720×405 (perfil `portada`), tercio inferior de agua tranquila; acento `#3D6FD9` | Tarjeta del proyecto y portada de su ficha; el esquema del flujo pasa a la galería | El esquema del flujo | El relevo: el historial de commits como una fila de boyas unidas por un cabo que cruza el agua; la última, con un banderín en el acento (grabado) |
+| 32 | **Portada de Galivelop IG** | Igual que la 31; acento `#7C5CD6` | Tarjeta del proyecto y portada de su ficha; el banner actual pasa a la galería | El banner de producto de la persona | «Pide, prueba, elige»: hojas de papel con marco, en blanco, flotando en abanico sobre el agua; una, con el borde más grueso en el acento (grabado) |
 
 Orden de trabajo: lo que más se ve primero: 7-9 (iconos de la portada), 6 «diseno» y «publicado», la 15 de Developer y
 las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.
