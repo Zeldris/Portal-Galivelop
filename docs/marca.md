@@ -337,6 +337,16 @@ entero; aquí va resumido.
 | 29 | **Banda «Participar»** | 1200×240, muy tenue, dos tercios de la izquierda limpios | «¿Quieres participar en…?» de la ficha | Filete con el acento | Dos ramas de commits que confluyen a la derecha (grabado) |
 | 30 | **Cabecera de Novedades** | 1600×400 | Arriba de `/novedades` | Sin cabecera | Historial largo de commits con ramas y nodos de distinto tamaño (grabado) |
 
+### F. Pedidos del Portal del 2026-11-13 (en cola en el generador)
+
+Todo proyecto Galivelop lleva una portada propia en grabado, como el barco de papel de Developer y las ondas de Voice
+(15); faltaban Workflow y GVIG (la persona, 2026-11-13). El acento del producto va donde el Portal usa el alga.
+
+| # | Recurso | Medidas y forma | Dónde va (propuesta) | Hasta entonces | Motivo (registro) |
+|---|---|---|---|---|---|
+| 31 | **Portada de Galivelop-workflow** | 1600×900 y `-mini` 720×405 (perfil `portada`), tercio inferior limpio; acento `#3D6FD9` | Tarjeta del proyecto y portada de su ficha; el esquema del flujo pasa a la galería | El esquema del flujo | El relevo: una línea de historial de commits que cruza la carta como una derrota, de una ventana de editor que se cierra a otra que se abre; el último nodo con visto, en el acento (grabado) |
+| 32 | **Portada de Galivelop IG** | Igual que la 31; acento `#7C5CD6` | Tarjeta del proyecto y portada de su ficha; el banner actual pasa a la galería | El banner de producto de la persona | «Pide, prueba, elige»: una hoja de contactos de marcos de imagen en blanco abierta en abanico sobre la carta; uno, con el borde más grueso en el acento y un visto (grabado) |
+
 Orden de trabajo: lo que más se ve primero: 7-9 (iconos de la portada), 6 «diseno» y «publicado», la 15 de Developer y
 las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.
 
