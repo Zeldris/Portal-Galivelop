@@ -222,8 +222,8 @@ export function Inicio() {
                 className="sobre-sello"
                 src={ruta('marca/sello.webp')}
                 alt=""
-                width={512}
-                height={512}
+                width={144}
+                height={144}
                 loading="lazy"
               />
               <span className="sobre-marca" aria-hidden="true">

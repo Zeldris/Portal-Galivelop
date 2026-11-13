@@ -19,8 +19,8 @@ export function Pie() {
         className="pie-rosa"
         src={ruta('marca/rosa-vientos.webp')}
         alt=""
-        width={512}
-        height={512}
+        width={280}
+        height={280}
         loading="lazy"
       />
       <div className="contenedor pie-rejilla">
