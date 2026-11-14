@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-14 (ramas al día con `main`, 76340d5; preparando publicación para X) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal; al día con `main`, 76340d5); esta sesión, `ccr-5c066d81-ndsd13` (al día con `main`, 76340d5, 2026-11-14) |
 | **Tarea en curso** | Publicación para X de las novedades de la web (`gw-media-content`) |
-| **Siguiente paso** | Que la persona elija propuesta; luego `gw-media-content-now`. En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
+| **Siguiente paso** | Que la persona elija propuesta de `docs/media/proposals/2026-11-14.md` (P1-P7, solo X); luego `gw-media-content-now`. En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
 | **En `main`** | **Portada 32 de IG e iconos 23 en línea simple** (76340d5, 2026-11-14). Antes, **oscuras corregidas 10c, 18b, 27b y 28b** (7e13bb9) y **portada y README sin «Productos», cifra del generador 3 / 9 y fichas de `/gw-portal`** (8663e48, CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 205/205 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
