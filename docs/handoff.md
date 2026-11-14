@@ -6,11 +6,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-14 (portada sin «Productos» y fichas de `/gw-portal` en `main`, 8663e48) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (al día con `main`, 8663e48, 2026-11-14) |
-| **Tarea en curso** | Ninguna |
-| **Siguiente paso** | Nada pendiente en esta rama. En cola en el generador: portada 31 de workflow (q974-976), icono 23 de Voice en contorno (sustituirá a q926) e icono 23 **provisional** de Tarkor (anillo, `#E0703A`, q971-973). En `src/img/`, `sin-uso/` pasa a llamarse `aprobadas/` (aprobado sin sitio en la web) |
-| **En `main`** | **Portada y README sin «Productos», cifra del generador 3 / 9 y fichas de `/gw-portal` del 2026-11-14** (8663e48, 2026-11-14, la persona: «Ahora en cuanto esté en verde»; fase 1 en la sesión, 1 hallazgo arreglado, y fase 3, sin retro por ser cambio pequeño; CI en verde en 8663e48). Antes, **Retícula más tenue y flujo Galivelop-workflow 0.6.0** (2026-11-14, la persona: «Si sube a main»; fase 1 sin hallazgos y fase 3, sin retro por ser cambio pequeño; bitácora archivada a mano en `docs/records/handoff-archive.md`). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Actualizado** | 2026-11-14 (ramas al día con `main`, 76340d5; preparando publicación para X) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal; al día con `main`, 76340d5); esta sesión, `ccr-5c066d81-ndsd13` (al día con `main`, 76340d5, 2026-11-14) |
+| **Tarea en curso** | Publicación para X de las novedades de la web (`gw-media-content`) |
+| **Siguiente paso** | Que la persona elija propuesta; luego `gw-media-content-now`. En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
+| **En `main`** | **Portada 32 de IG e iconos 23 en línea simple** (76340d5, 2026-11-14). Antes, **oscuras corregidas 10c, 18b, 27b y 28b** (7e13bb9) y **portada y README sin «Productos», cifra del generador 3 / 9 y fichas de `/gw-portal`** (8663e48, CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 205/205 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- Todo está en `main` (8663e48, 2026-11-14).
+- Todo está en `main` (76340d5, 2026-11-14).
 
 ## Hecho
 
