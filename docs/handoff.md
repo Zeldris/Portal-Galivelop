@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-14 (traído `main` a `ccr-5c066d81-ndsd13`; `/gw-update` en curso) |
+| **Actualizado** | 2026-11-14 (flujo Galivelop-workflow al día: 0.5.0 → 0.6.0, en `ccr-5c066d81-ndsd13`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-5c066d81-ndsd13` (al día con `main`, 37e957b, 2026-11-14) |
-| **Tarea en curso** | `/gw-update` del flujo (la persona, 2026-11-14). La segunda tanda del 2026-11-14 ya está en `main` (37e957b) |
-| **Siguiente paso** | `/gw-update`: comparar versiones con el clon de Galivelop-workflow, `apply.py --dry-run` y enseñar los cambios a la persona. Después, la retícula a `main` (`/code-review` y marca). En cola en el generador: portada 31 de workflow (q974-976), icono 23 de Voice en contorno (sustituirá a q926) e icono 23 **provisional** de Tarkor (anillo, `#E0703A`, q971-973). En `src/img/`, `sin-uso/` pasa a llamarse `aprobadas/` (aprobado sin sitio en la web) |
+| **Tarea en curso** | Ninguna: `/gw-update` a la 0.6.0 hecho y subido (la persona, 2026-11-14) |
+| **Siguiente paso** | Decisiones abiertas del `/gw-update` (ver «Pendiente»): `ownedFiles` para `check.yml` y `merge=union` del libro de métricas. Después, la retícula y la 0.6.0 a `main` (`/code-review` y marca). En cola en el generador: portada 31 de workflow (q974-976), icono 23 de Voice en contorno (sustituirá a q926) e icono 23 **provisional** de Tarkor (anillo, `#E0703A`, q971-973). En `src/img/`, `sin-uso/` pasa a llamarse `aprobadas/` (aprobado sin sitio en la web) |
 | **En `main`** | **Rosa 04b, «Cómo funciona» 10b, portada de Voice y «enviado» oscuro** (fd7929a, 2026-11-14, la persona: «las aplicas ya y así lo vemos en main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en d0d4d68). Antes, **Iconos de grupo (25), marcadores del avance (26), banda 29 clara y oscura, cabecera 30, rosa y sello** (f7ce483, 2026-11-13, la persona: «llévalo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en edbdd74). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 205/205 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -20,6 +20,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 - Lo anterior está en `main` (37e957b, 2026-11-14).
 - **Retícula del papel más tenue** (2026-11-12, `ccr-5c066d81-ndsd13`): `--reticula` pasa a `#eef3f6` (claro) y `#121e27` (oscuro), y `docs/marca.md` lo recoge. La persona eligió esta opción entre tres (la actual, más tenue y puntos en los cruces) porque las líneas cortaban el texto. Las isobatas del hero se quedan como estaban (la persona: «en la portada estaba bien»). No afecta al generador. Falta `/code-review` y la marca antes de `main`.
+- **Flujo Galivelop-workflow 0.6.0** (2026-11-14, `ccr-5c066d81-ndsd13`, `/gw-update`; la persona: «Sí, aplica»): scripts, skills y ganchos al día (ninguno tenía ediciones locales), 11 scripts nuevos, skill `gw-metrics`, subagente `gw-worker`, `settings.json` con el aviso de lectura entera, el libro de tokens en el `Stop` y `worktree.baseRef`. Fusionados a mano `AGENTS.md` (el `pre-push` de una rama corre solo los tests relacionados, trailers `Findings:`/`Retries:`, revisión por bloques; las reglas del portal, intactas), `CLAUDE.md` (solo la marca), `check.yml` (plantilla nueva con Node 22, caché de npm y el build del portal) y `REVIEW.md` (tres reglas: `while read` con `< /dev/null`, scripts que hacen commits probados con los ganchos, prueba de humo contra lo real). Es código del flujo: falta `/code-review` (con `review-scope.py`, lo copiado tal cual queda fuera) y la marca antes de `main`.
 
 ## Hecho
 
@@ -84,6 +85,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 
 ## Pendiente
+
+- **Decisiones del `/gw-update` 0.6.0** (2026-11-14): `apply.py --check` sale en 1 solo por `check.yml`, que lleva pasos propios del portal (Node 22, caché de npm, build); con `ownedFiles: [".github/workflows/check.yml"]` saldría en 0, pero dejaría de proponer los cambios futuros de la plantilla del CI. El libro de tokens (`docs/metrics/ledger.jsonl`, lo escribe el gancho `Stop`) chocará al fusionar ramas sin `docs/metrics/ledger.jsonl merge=union` en `.gitattributes` (el flujo lo trae a los proyectos en la 0.7, B32). `doctor.py` avisa (WARN): `AGENTS.md` con 194 líneas (aviso desde 150), tests de `gw-media-content`, `gw-opt-tokens`, `gw-portal` y `gw-seo` que el check no corre, y `gw-seo` sin versión. `apply.py` lista nombres viejos (`recoger.py`, `docs/traspaso.md`, `docs/registros`, `docs/difusion`) en `gw-portal`, `docs/desarrollo.md`, `src/data/tipos.ts` y la ficha de workflow: parte puede ser a propósito (`gw-portal` lee repos que pueden seguir con esos nombres).
 
 - **Ficha de Galivelop Developer, cuando se cree** (2026-11-11): su portada es el barco de papel sobre mar con olas, ya en `public/proyectos/galivelop-developer/portada.webp` y `portada-mini.webp`; esa imagen es solo de Developer (ver `docs/marca.md`, fila 15 Developer).
 
