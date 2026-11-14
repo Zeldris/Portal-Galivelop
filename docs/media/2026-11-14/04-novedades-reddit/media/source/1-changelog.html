@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="gw-size" content="1200x1500">
+<title>Workshop log</title>
+<style>
+  @font-face { font-family: 'Big Shoulders Display Variable'; font-weight: 100 900; src: url('../../../../../../node_modules/@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Literata Variable'; font-weight: 200 900; src: url('../../../../../../node_modules/@fontsource-variable/literata/files/literata-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Literata Variable'; font-weight: 200 900; src: url('../../../../../../node_modules/@fontsource-variable/literata/files/literata-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+2020-20CF; }
+  @font-face { font-family: 'JetBrains Mono Variable'; font-weight: 100 800; src: url('../../../../../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2') format('woff2'); }
+  /* Tokens del tema oscuro de src/estilos/global.css («la misma carta, de noche») y docs/marca.md */
+  :root { --celeste: #1aa6df; --papel: #0d171e; --reticula: #121e27; --tinta: #e6eef3; --tinta-2: #9fb2bf;
+    --texto-3: #7d919e; --filete: #2b3d49; --superficie: #111f29; --superficie-2: #16242e; --enlace: #5cc8f2;
+    --chaflan: 14px; --chaflan-grande: 28px;
+    --fuente-titulos: 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif;
+    --fuente-texto: 'Literata Variable', Georgia, serif;
+    --fuente-datos: 'JetBrains Mono Variable', ui-monospace, monospace; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { width: 1200px; height: 1500px; overflow: hidden; color: var(--tinta); font-family: var(--fuente-texto);
+    background-color: var(--papel);
+    background-image: linear-gradient(var(--reticula) 1px, transparent 1px), linear-gradient(90deg, var(--reticula) 1px, transparent 1px);
+    background-size: 24px 24px; padding: 48px; display: flex; flex-direction: column; }
+  .datos { font: 500 19px/1.4 var(--fuente-datos); letter-spacing: .06em; text-transform: uppercase; }
+  .barra, .pie { display: flex; justify-content: space-between; align-items: center; color: var(--tinta-2); }
+  .barra .marca { color: var(--enlace); font-weight: 700; }
+  .barra .marca::before { content: ""; display: inline-block; width: 14px; height: 14px; background: var(--celeste); margin-right: 12px; vertical-align: -1px; }
+  .pie { color: var(--texto-3); }
+  .pie .url { color: var(--enlace); }
+
+  header { margin: 28px 0 22px; }
+  h1 { font: 800 84px/0.98 var(--fuente-titulos); text-transform: uppercase; letter-spacing: .005em; }
+  h1 em { font-style: normal; color: var(--celeste); }
+  header p { font-size: 27px; line-height: 1.4; color: var(--tinta-2); margin-top: 16px; }
+
+  .log { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .entrada { flex: 1; display: grid; grid-template-columns: 78px 1fr; gap: 0 26px; align-items: start;
+    background: var(--superficie); border: 1px solid var(--filete); border-left: 6px solid var(--c);
+    padding: 16px 26px 14px 20px;
+    clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%); }
+  .icono { width: 78px; height: 78px; background: #fbfcfd; border: 1px solid var(--filete);
+    display: flex; align-items: center; justify-content: center; }
+  .icono img { width: 56px; height: 56px; object-fit: contain; }
+  .icono.web { background: var(--c); }
+  .icono.web span { font: 800 40px/1 var(--fuente-titulos); color: var(--papel); }
+  .cab { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  h2 { font: 800 40px/1 var(--fuente-titulos); text-transform: uppercase; }
+  .etiqueta { font: 600 17px/1 var(--fuente-datos); letter-spacing: .06em; text-transform: uppercase;
+    color: color-mix(in srgb, var(--c) 62%, #ffffff); border: 1px solid color-mix(in srgb, var(--c) 62%, #ffffff); padding: 6px 10px; }
+  ul { list-style: none; margin-top: 8px; display: flex; flex-wrap: wrap; gap: 4px 28px; }
+  li { font-size: 21px; line-height: 1.34; color: var(--tinta); }
+  li::before { content: "+ "; font-family: var(--fuente-datos); color: color-mix(in srgb, var(--c) 62%, #ffffff); font-weight: 700; }
+  li b { font-weight: 700; }
+  .fases { display: inline-flex; gap: 5px; vertical-align: 1px; margin-left: 8px; }
+  .fases i { width: 22px; height: 12px; border: 1px solid var(--c); display: inline-block; }
+  .fases i.h { background: var(--c); }
+</style>
+</head>
+<body>
+  <div class="barra datos"><span class="marca">Galivelop · Workshop log</span><span>Nov 5–14, 2026</span></div>
+
+  <header>
+    <h1>Two weeks in the workshop: <em>five projects</em> and a faster website</h1>
+    <p>What changed in each one, in a single log.</p>
+  </header>
+
+  <div class="log">
+    <div class="entrada" style="--c:#E0703A">
+      <div class="icono"><img src="../../../../../../public/proyectos/tarkor/icono.svg" alt=""></div>
+      <div>
+        <div class="cab"><h2>Tarkor</h2><span class="etiqueta">Narrative RPG · milestone 0.4</span></div>
+        <ul><li>Own map generator, region by region, in layers</li><li>Travel between regions in hours and days</li><li>Installer: choose what game data to delete</li></ul>
+      </div>
+    </div>
+
+    <div class="entrada" style="--c:#3D6FD9">
+      <div class="icono"><img src="../../../../../../public/proyectos/galivelop-workflow/icono.svg" alt=""></div>
+      <div>
+        <div class="cab"><h2>Galivelop-workflow</h2><span class="etiqueta">v0.6.0 · public repo</span></div>
+        <ul><li>Tokens logged per session and model</li><li>Model and effort suggested per task</li><li>Long branches reviewed in blocks</li></ul>
+      </div>
+    </div>
+
+    <div class="entrada" style="--c:#7C5CD6">
+      <div class="icono"><img src="../../../../../../public/proyectos/galivelop-image-generator/icono.svg" alt=""></div>
+      <div>
+        <div class="cab"><h2>Image Generator</h2><span class="etiqueta">v0.5.0 · MIT</span></div>
+        <ul><li>Export to WebP, ICO and BMP</li><li>Pause and resume the queue</li><li>Negative prompt everywhere</li></ul>
+      </div>
+    </div>
+
+    <div class="entrada" style="--c:#2F7A55">
+      <div class="icono"><img src="../../../../../../public/proyectos/toveriai/icono.png" alt=""></div>
+      <div>
+        <div class="cab"><h2>toVeriAI</h2><span class="etiqueta">Behind the scenes</span></div>
+        <ul><li>Server copes better with limited resources</li><li>Tools updated with security fixes</li></ul>
+      </div>
+    </div>
+
+    <div class="entrada" style="--c:#D9467A">
+      <div class="icono"><img src="../../../../../../public/proyectos/galivelop-voice-generator/icono.svg" alt=""></div>
+      <div>
+        <div class="cab"><h2>Voice Generator</h2><span class="etiqueta">Coming soon</span></div>
+        <ul><li>Voices with local AI</li><li><b>2 of 8 phases</b><span class="fases"><i class="h"></i><i class="h"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></li><li>Next: the real voice engine</li></ul>
+      </div>
+    </div>
+
+    <div class="entrada" style="--c:#1aa6df">
+      <div class="icono web"><span>G</span></div>
+      <div>
+        <div class="cab"><h2>The website</h2><span class="etiqueta">Portal</span></div>
+        <ul><li>News page: every project in one place</li><li><b>−62 %</b> JavaScript on first load</li><li>Link previews in es, gl and en</li><li>Tarkor accent contrast 3.2:1 → 5:1</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pie datos" style="margin-top:26px"><span class="url">zeldris.github.io/Portal-Galivelop/novedades</span><span>Galicia + Develop</span></div>
+</body>
+</html>
