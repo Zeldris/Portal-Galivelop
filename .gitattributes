@@ -1,0 +1,2 @@
+# Libro de tokens del flujo (metrics.py record): cada rama añade líneas; al fusionar se juntan.
+docs/metrics/ledger.jsonl merge=union
