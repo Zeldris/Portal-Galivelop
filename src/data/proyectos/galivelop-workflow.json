@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-08",
+  "actualizado": "2026-11-14",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.5.1 · en marcha la 0.6 «Medir»",
-    "gl": "En desenvolvemento · v0.5.1 · en marcha a 0.6 «Medir»",
-    "en": "In development · v0.5.1 · 0.6 “Measure” under way"
+    "es": "En desarrollo · v0.6.0 · en marcha la 0.7 «Preguntar»",
+    "gl": "En desenvolvemento · v0.6.0 · en marcha a 0.7 «Preguntar»",
+    "en": "In development · v0.6.0 · 0.7 “Ask” under way"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "portada": {
@@ -75,11 +75,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.5.1",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.6.0",
       "etiqueta": {
-        "es": "Ver la versión 0.5.1",
-        "gl": "Ver a versión 0.5.1",
-        "en": "View version 0.5.1"
+        "es": "Ver la versión 0.6.0",
+        "gl": "Ver a versión 0.6.0",
+        "en": "View version 0.6.0"
       }
     }
   ],
@@ -131,14 +131,14 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.5.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.5.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.5.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.6.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.6.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.6.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las once skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as once skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the eleven skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as doce skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the twelve skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
     }
   ],
   "lineas": ["metodo"],
@@ -1285,9 +1285,9 @@
         "en": "Our own skills"
       },
       "intro": {
-        "es": "Las once skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las cinco primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
-        "gl": "As once skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As cinco primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, e as dúas últimas preparan contido para redes a partir do traballo feito.",
-        "en": "The eleven skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first five serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, and the last two turn finished work into content for social media."
+        "es": "Las doce skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las seis primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
+        "gl": "As doce skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As seis primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, e as dúas últimas preparan contido para redes a partir do traballo feito.",
+        "en": "The twelve skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first six serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, and the last two turn finished work into content for social media."
       },
       "items": [
         {
@@ -1350,6 +1350,18 @@
             "es": "Opcional: hace inventario de dependencias, entornos, imágenes, acciones de CI y modelos de IA, busca novedades en fuentes primarias y propone las migraciones que encajan con el proyecto. Solo cuando se pide.",
             "gl": "Opcional: fai inventario de dependencias, contornos, imaxes, accións de CI e modelos de IA, busca novidades en fontes primarias e propón as migracións que encaixan co proxecto. Só cando se pide.",
             "en": "Optional: inventories dependencies, runtimes, images, CI actions and AI models, looks for updates in primary sources and proposes the migrations that fit the project. Only when asked."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-metrics",
+            "gl": "gw-metrics",
+            "en": "gw-metrics"
+          },
+          "texto": {
+            "es": "Informes de tokens y coste por periodo, modelo, agente y tarea, con comparaciones entre periodos, para ver dónde se va el gasto y si la calidad lo acompaña.",
+            "gl": "Informes de tokens e custo por período, modelo, axente e tarefa, con comparacións entre períodos, para ver onde vai o gasto e se a calidade o acompaña.",
+            "en": "Reports of tokens and cost by period, model, agent and task, with comparisons between periods, to see where the spend goes and whether quality keeps up."
           }
         },
         {
@@ -2005,6 +2017,106 @@
       "items": [
         {
           "nombre": {
+            "es": "Medir el gasto",
+            "gl": "Medir o gasto",
+            "en": "Measuring spend"
+          },
+          "valor": "0.6.0 · 2026-11-13",
+          "texto": {
+            "es": "Versión de gasto y calidad: el flujo apunta los tokens por sesión, modelo y subagente, avisa cuando un modelo gasta más de lo normal y recomienda modelo y esfuerzo para cada tarea. La revisión se hace por bloques en las ramas largas, el check corre en paralelo (de 556 s a 352 s) y toda la configuración vive en un solo archivo.",
+            "gl": "Versión de gasto e calidade: o fluxo apunta os tokens por sesión, modelo e subaxente, avisa cando un modelo gasta máis do normal e recomenda modelo e esforzo para cada tarefa. A revisión faise por bloques nas ramas longas, o check corre en paralelo (de 556 s a 352 s) e toda a configuración vive nun só ficheiro.",
+            "en": "A spend-and-quality release: the workflow records tokens per session, model and subagent, warns when a model spends more than usual and recommends a model and effort for each task. Long branches are reviewed in blocks, the check runs in parallel (from 556 s to 352 s) and all configuration lives in a single file."
+          },
+          "detalle": [
+            {
+              "es": "Cada sesión apunta sus tokens por modelo, rama, tarea y subagente; la skill gw-metrics saca informes por periodo, comparaciones, precios con fecha y señales de calidad junto al gasto.",
+              "gl": "Cada sesión apunta os seus tokens por modelo, rama, tarefa e subaxente; a skill gw-metrics saca informes por período, comparacións, prezos con data e sinais de calidade xunto ao gasto.",
+              "en": "Each session records its tokens by model, branch, task and subagent; the gw-metrics skill produces reports by period, comparisons, dated prices and quality signals next to spend."
+            },
+            {
+              "es": "Al empezar una sesión avisa si un modelo gasta 1,5 veces su media.",
+              "gl": "Ao comezar unha sesión avisa se un modelo gasta 1,5 veces a súa media.",
+              "en": "At session start it warns if a model spends 1.5 times its average."
+            },
+            {
+              "es": "Modelo y esfuerzo para cada agente: se puede apagar un modelo, se recuerda indicarlos en cada subagente y la selección de skill recomienda también el esfuerzo de la sesión.",
+              "gl": "Modelo e esforzo para cada axente: pódese apagar un modelo, lémbrase indicalos en cada subaxente e a selección de skill recomenda tamén o esforzo da sesión.",
+              "en": "Model and effort for each agent: a model can be switched off, each subagent is reminded to state them and skill selection also recommends the session’s effort."
+            },
+            {
+              "es": "Nuevo subagente ligero, gw-worker, para el trabajo de encargo sencillo; el reparto agrupa los hallazgos por archivos y da a cada agente su propia carpeta de trabajo.",
+              "gl": "Novo subaxente lixeiro, gw-worker, para o traballo de encargo sinxelo; o reparto agrupa os achados por ficheiros e dá a cada axente a súa propia carpeta de traballo.",
+              "en": "New lightweight subagent, gw-worker, for simple commissioned work; dealing groups findings by file and gives each agent its own working folder."
+            },
+            {
+              "es": "Revisión por bloques en las ramas largas, con aviso por tamaño, y sin revisar lo copiado tal cual del flujo.",
+              "gl": "Revisión por bloques nas ramas longas, con aviso por tamaño, e sen revisar o copiado tal cal do fluxo.",
+              "en": "Review in blocks on long branches, with a size warning, skipping what is copied as-is from the workflow."
+            },
+            {
+              "es": "Check más rápido: las pruebas corren en paralelo (de 556 s a 352 s) y la subida de una rama solo repite las pruebas del cambio.",
+              "gl": "Check máis rápido: as probas corren en paralelo (de 556 s a 352 s) e a subida dunha rama só repite as probas do cambio.",
+              "en": "Faster check: tests run in parallel (from 556 s to 352 s) and pushing a branch only reruns the tests for the change."
+            },
+            {
+              "es": "Umbrales, rutas y avisos que iban fijos en el código pasan a ser claves del archivo de configuración, cada una con su valor por defecto.",
+              "gl": "Limiares, rutas e avisos que ían fixos no código pasan a ser claves do ficheiro de configuración, cada unha co seu valor por defecto.",
+              "en": "Thresholds, paths and warnings that were hard-coded become keys of the configuration file, each with a default value."
+            },
+            {
+              "es": "Hojas A4 de presentación, una para quien contrata desarrollo y otra para equipos que instalan el flujo.",
+              "gl": "Follas A4 de presentación, unha para quen contrata desenvolvemento e outra para equipos que instalan o fluxo.",
+              "en": "A4 presentation sheets, one for those commissioning development and one for teams installing the workflow."
+            }
+          ]
+        },
+        {
+          "nombre": {
+            "es": "Parche de arreglos",
+            "gl": "Parche de arranxos",
+            "en": "Patch of fixes"
+          },
+          "valor": "0.5.2 · 2026-11-12",
+          "texto": {
+            "es": "Parche con lo aprendido al usar la 0.5.1: el aviso de arranque detecta a tiempo un contexto demasiado grande o un bucle de compactaciones, la bitácora se archiva sola por versiones y el check y su candado son más fiables.",
+            "gl": "Parche co aprendido ao usar a 0.5.1: o aviso de arranque detecta a tempo un contexto demasiado grande ou un bucle de compactacións, a bitácora arquívase soa por versións e o check e o seu cadeado son máis fiables.",
+            "en": "A patch with what we learned using 0.5.1: the startup warning catches an oversized context or a compaction loop in time, the log archives itself by version, and the check and its lock are more reliable."
+          },
+          "detalle": [
+            {
+              "es": "Tras un /clear o una compactación, el arranque compara el contexto con el punto de corte y avisa, o da la alarma si hay un bucle de compactaciones, señalando qué lo causa.",
+              "gl": "Tras un /clear ou unha compactación, o arranque compara o contexto co punto de corte e avisa, ou dá a alarma se hai un bucle de compactacións, sinalando que o causa.",
+              "en": "After a /clear or a compaction, startup compares the context with the cut-off point and warns, or raises the alarm on a compaction loop, naming the cause."
+            },
+            {
+              "es": "La bitácora tiene un tope de tamaño y lo pendiente de versiones ya publicadas se archiva solo.",
+              "gl": "A bitácora ten un tope de tamaño e o pendente de versións xa publicadas arquívase só.",
+              "en": "The log has a size cap and what is pending from already published versions is archived automatically."
+            },
+            {
+              "es": "El check y su candado son más fiables: el mismo proceso actualiza el candado, un bloqueo huérfano no impide correr y se conservan los últimos registros.",
+              "gl": "O check e o seu cadeado son máis fiables: o mesmo proceso actualiza o cadeado, un bloqueo orfo non impide correr e consérvanse os últimos rexistros.",
+              "en": "The check and its lock are more reliable: the same process refreshes the lock, an orphaned lock no longer blocks and the latest logs are kept."
+            },
+            {
+              "es": "La subida vuelve a mirar si el check ya pasó en verde tras esperar el candado, y la fusión de ramas valida antes la configuración del check.",
+              "gl": "A subida volve mirar se o check xa pasou en verde tras esperar o cadeado, e a fusión de ramas valida antes a configuración do check.",
+              "en": "Pushing looks again for a green check after waiting for the lock, and merging branches validates the check configuration first."
+            },
+            {
+              "es": "El aviso de fin de turno no pide subir mientras haya subagentes trabajando en segundo plano.",
+              "gl": "O aviso de fin de quenda non pide subir mentres haxa subaxentes traballando en segundo plano.",
+              "en": "The end-of-turn reminder no longer asks to push while subagents are still working in the background."
+            },
+            {
+              "es": "Se detecta un secreto de una palabra entre comillas en un documento, y el aviso de datos privados da un arreglo más seguro.",
+              "gl": "Detéctase un segredo dunha palabra entre comiñas nun documento, e o aviso de datos privados dá un arranxo máis seguro.",
+              "en": "A one-word secret in quotes is caught in a document, and the private-data warning gives a safer fix."
+            }
+          ]
+        },
+        {
+          "nombre": {
             "es": "Arreglos de rodaje",
             "gl": "Arranxos de rodaxe",
             "en": "Shakedown fixes"
@@ -2480,11 +2592,11 @@
         "gl": "Parche",
         "en": "Patch"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "detalle": {
-        "es": "Cinco arreglos que salieron de revisar los proyectos que ya usan el flujo.",
-        "gl": "Cinco arranxos que saíron de revisar os proxectos que xa usan o fluxo.",
-        "en": "Five fixes found by reviewing the projects that already use the workflow."
+        "es": "Publicada el 12 de noviembre.",
+        "gl": "Publicada o 12 de novembro.",
+        "en": "Released on 12 November."
       }
     },
     {
@@ -2494,7 +2606,7 @@
         "gl": "Medir",
         "en": "Measure"
       },
-      "estado": "curso",
+      "estado": "hecho",
       "detalle": {
         "es": "Registro de los tokens que gasta cada modelo, por rama y por tarea; informes y comparaciones; aviso cuando un modelo gasta más de lo normal, y modelo y esfuerzo elegidos para cada agente.",
         "gl": "Rexistro dos tokens que gasta cada modelo, por rama e por tarefa; informes e comparacións; aviso cando un modelo gasta máis do normal, e modelo e esforzo escollidos para cada axente.",
@@ -2508,7 +2620,7 @@
         "gl": "Preguntar",
         "en": "Ask"
       },
-      "estado": "pendiente",
+      "estado": "curso",
       "detalle": {
         "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse; un modo prudente que se enciende con un solo interruptor.",
         "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse; un modo prudente que se acende cun só interruptor.",
@@ -2596,6 +2708,22 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-13",
+      "texto": {
+        "es": "Publicada la 0.6.0, de medida: el flujo apunta los tokens por sesión y modelo, recomienda modelo y esfuerzo para cada tarea, revisa por bloques las ramas largas y corre el check en paralelo. Llegan el subagente ligero gw-worker, la skill gw-metrics y toda la configuración en un solo archivo.",
+        "gl": "Publicada a 0.6.0, de medida: o fluxo apunta os tokens por sesión e modelo, recomenda modelo e esforzo para cada tarefa, revisa por bloques as ramas longas e corre o check en paralelo. Chegan o subaxente lixeiro gw-worker, a skill gw-metrics e toda a configuración nun só arquivo.",
+        "en": "Version 0.6.0 is out, about measuring: the workflow records tokens per session and model, recommends model and effort for each task, reviews long branches in blocks and runs the check in parallel. It brings the lightweight gw-worker subagent, the gw-metrics skill and all configuration in a single file."
+      }
+    },
+    {
+      "fecha": "2026-11-12",
+      "texto": {
+        "es": "Publicada la 0.5.2, de arreglos: el arranque avisa de un contexto demasiado grande o de un bucle de compactaciones, la bitácora se archiva por versiones y el candado del check deja de bloquear en falso.",
+        "gl": "Publicada a 0.5.2, de arranxos: o arranque avisa dun contexto demasiado grande ou dun bucle de compactacións, a bitácora arquívase por versións e o cadeado do check deixa de bloquear en falso.",
+        "en": "Version 0.5.2 is out, with fixes: startup warns about an oversized context or a compaction loop, the log is archived by version and the check’s lock stops blocking by mistake."
+      }
+    },
+    {
       "fecha": "2026-11-05",
       "texto": {
         "es": "Publicada la 0.5.1, de arreglos: el check no se repite cuando un commit solo añade la marca de revisión, la actualización respeta los pasos propios del CI de cada proyecto y ya no borra scripts que algo sigue usando, y los subagentes que escriben trabajan siempre en su propia copia del repositorio.",
@@ -2642,27 +2770,11 @@
         "gl": "Versión 0.4.0 lista para publicar: cada versión comeza recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
         "en": "Version 0.4.0 ready to ship: each version starts by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn’t add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn’t start, a local check only counts with the person’s confirmation."
       }
-    },
-    {
-      "fecha": "2026-10-23",
-      "texto": {
-        "es": "Versión 0.3.0: entran las mejoras de los pilotos en Tarkor y en su instalador. El diagnóstico detecta más fallos de montaje, el gancho de subida trabaja en una carpeta privada para cada usuario, la sesión en la nube puede preparar su entorno con un tiempo máximo y hay claves nuevas para adaptar el flujo a cada proyecto. Empieza el rodaje de la etapa 1.",
-        "gl": "Versión 0.3.0: entran as melloras dos pilotos en Tarkor e no seu instalador. O diagnóstico detecta máis fallos de montaxe, o gancho de subida traballa nun cartafol privado para cada usuario, a sesión na nube pode preparar o seu contorno cun tempo máximo e hai claves novas para adaptar o fluxo a cada proxecto. Comeza a rodaxe da etapa 1.",
-        "en": "Version 0.3.0: the improvements from the pilots on Tarkor and its installer are in. The diagnosis catches more setup problems, the push hook works in a private folder for each user, a cloud session can prepare its environment with a time limit, and new keys adapt the workflow to each project. The stage 1 run-in begins."
-      }
-    },
-    {
-      "fecha": "2026-10-22",
-      "texto": {
-        "es": "Versión 0.2.0: entran las mejoras del piloto en este portal y de Tarkor. Los ganchos juzgan la rama protegida con su propia configuración, la recuperación ya no se cuelga y el diagnóstico avisa de más problemas, como una sesión en la nube sin tope de compactación.",
-        "gl": "Versión 0.2.0: entran as melloras do piloto neste portal e de Tarkor. Os ganchos xulgan a rama protexida coa súa propia configuración, a recuperación xa non se colga e o diagnóstico avisa de máis problemas, como unha sesión na nube sen tope de compactación.",
-        "en": "Version 0.2.0: the improvements from the pilot on this portal and from Tarkor are in. The hooks judge the protected branch by its own settings, recovery no longer hangs and the diagnosis flags more problems, such as a cloud session without a compaction cap."
-      }
     }
   ],
   "cifras": [
     {
-      "valor": "11",
+      "valor": "12",
       "etiqueta": {
         "es": "skills propias",
         "gl": "skills propias",
@@ -2678,7 +2790,7 @@
       }
     },
     {
-      "valor": "1914",
+      "valor": "2554",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",

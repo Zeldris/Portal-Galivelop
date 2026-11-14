@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-12",
+  "actualizado": "2026-11-14",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -30,9 +30,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.4.1 · en marcha la 0.5: borrar, texto y renombrar",
-    "gl": "En desenvolvemento · v0.4.1 · en marcha a 0.5: borrar, texto e renomear",
-    "en": "In development · v0.4.1 · 0.5 under way: delete, text and rename"
+    "es": "En desarrollo · v0.5.0 · próxima: 0.6, montaje",
+    "gl": "En desenvolvemento · v0.5.0 · próxima: 0.6, montaxe",
+    "en": "In development · v0.5.0 · next: 0.6, assembly"
   },
   "etiquetas": [
     {
@@ -70,11 +70,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.4.1",
+      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.5.0",
       "etiqueta": {
-        "es": "Ver la versión 0.4.1",
-        "gl": "Ver a versión 0.4.1",
-        "en": "View version 0.4.1"
+        "es": "Ver la versión 0.5.0",
+        "gl": "Ver a versión 0.5.0",
+        "en": "View version 0.5.0"
       }
     }
   ],
@@ -1025,11 +1025,11 @@
         "gl": "Borrar, texto e renomear",
         "en": "Delete, text and rename"
       },
-      "estado": "curso",
+      "estado": "hecho",
       "detalle": {
-        "es": "Borrar intentos, composiciones, plantillas y elementos; editar el texto y la tipografía de lo compuesto; renombrar un pedido, y una interfaz mejorada.",
-        "gl": "Borrar intentos, composicións, modelos e elementos; editar o texto e a tipografía do composto; renomear un pedido, e unha interface mellorada.",
-        "en": "Delete attempts, compositions, templates and elements; edit the text and typography of what is composed; rename a request, and an improved interface."
+        "es": "Borrar intentos, composiciones, plantillas y elementos; editar el texto y la tipografía de lo compuesto; renombrar un pedido, y una interfaz mejorada. Incluye exportar a WebP, ICO y BMP, cuadrado de marca y pausa de la cola.",
+        "gl": "Borrar intentos, composicións, modelos e elementos; editar o texto e a tipografía do composto; renomear un pedido, e unha interface mellorada. Inclúe exportar a WebP, ICO e BMP, cadrado de marca e pausa da cola.",
+        "en": "Delete attempts, compositions, templates and elements; edit the text and typography of what is composed; rename a request, and an improved interface. Includes export to WebP, ICO and BMP, brand square and queue pause."
       }
     },
     {
@@ -1112,6 +1112,22 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-14",
+      "texto": {
+        "es": "Ya se puede añadir un prompt negativo al pedido, en la línea de órdenes, la API y la interfaz, y queda guardado en el intento y en el manifiesto de entrega. Además, el taller de marca elige solo el espaciado del nombre según la tipografía y no pisa archivos ya hechos sin confirmación.",
+        "gl": "Xa se pode engadir un prompt negativo ao pedido, na liña de ordes, na API e na interface, e queda gardado no intento e no manifesto de entrega. Ademais, o obradoiro de marca escolle só o espazado do nome segundo a tipografía e non pisa arquivos xa feitos sen confirmación.",
+        "en": "A negative prompt can now be added to a request, from the command line, the API and the interface, and it is kept in the attempt and in the delivery manifest. The brand workshop also picks the name spacing from the typeface and no longer overwrites existing files without confirmation."
+      }
+    },
+    {
+      "fecha": "2026-11-13",
+      "texto": {
+        "es": "Versión 0.5.0: se puede exportar una imagen a WebP, ICO y BMP, con recorte y anclaje declarados; hay una orden para hacer el cuadrado de marca con el símbolo y otra para medir los colores por familia; la cola se puede pausar y reanudar, también desde la interfaz; la interfaz, rediseñada, se adapta a pantallas estrechas.",
+        "gl": "Versión 0.5.0: pódese exportar unha imaxe a WebP, ICO e BMP, con recorte e ancoraxe declarados; hai unha orde para facer o cadrado de marca co símbolo e outra para medir as cores por familia; a cola pódese pausar e retomar, tamén desde a interface; a interface, redeseñada, adáptase a pantallas estreitas.",
+        "en": "Version 0.5.0: an image can be exported to WebP, ICO and BMP, with declared crop and anchor; there is a command to make the brand square from the symbol and another to measure colours by family; the queue can be paused and resumed, also from the interface; the redesigned interface adapts to narrow screens."
+      }
+    },
+    {
       "fecha": "2026-11-12",
       "texto": {
         "es": "La web de Galivelop ya usa imágenes e iconos del generador (portadas, iconos del inicio, ilustraciones y marcos), pedidos con la hoja de marca del portal.",
@@ -1186,7 +1202,7 @@
   ],
   "cifras": [
     {
-      "valor": "1280",
+      "valor": "1587",
       "etiqueta": {
         "es": "tests automáticos",
         "gl": "tests automáticos",
