@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-13 (lote 25-30, rosa y sello, en `main`) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-13) |
-| **Tarea en curso** | Ninguna. El lote del generador del 2026-11-13 está en `main`; la rosa geométrica (04b) llegó el 2026-11-13 y está en la rama, aún no en `main`. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Entrega del 2026-11-14 aplicada (10b clara, portada de Voice, 19 oscura) junto con la rosa 04b. Aprobadas y sin aplicar: las og 24 de Tarkor y toVeriAI (esperan al icono 23 de Tarkor y a montar texto e icono sobre ellas). Pedidas de nuevo al generador: 31, 32 en grabado, iconos 23 en línea simple (GVIG, Voice y Tarkor) y las oscuras de 10b, 18, 27 y 28. Siguen en cola 10b, las versiones oscuras de 10, 18, 19, 27 y 28 y las portadas 31 (Workflow) y 32 (GVIG), pedidas el 2026-11-13 (`docs/marca.md`, tabla F) |
+| **Actualizado** | 2026-11-14 (entrega del generador del 2026-11-14 y rosa 04b, camino de `main`) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-14) |
+| **Tarea en curso** | Llevar a `main` la rosa 04b y la entrega del 2026-11-14 (la persona, 2026-11-14: «las aplicas ya y así lo vemos en main»): fase 1 hecha, falta la marca (`reviewed.sh`) y el push a `main`. Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | Entrega del 2026-11-14 aplicada (10b clara, portada de Voice, 19 oscura) junto con la rosa 04b. Aprobadas y sin aplicar: las og 24 de Tarkor y toVeriAI (esperan al icono 23 de Tarkor y a montar texto e icono sobre ellas). Pedidas de nuevo al generador: 31, 32 en grabado, iconos 23 en línea simple (GVIG, Voice y Tarkor) y las oscuras de 10b, 18, 27 y 28. Sigue en cola la 10b oscura (`docs/marca.md`, tablas E y F) |
 | **En `main`** | **Iconos de grupo (25), marcadores del avance (26), banda 29 clara y oscura, cabecera 30, rosa y sello** (f7ce483, 2026-11-13, la persona: «llévalo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en edbdd74). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 202/202 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -18,6 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
+- En `ccr-47f8fddd-o5ek6p`, camino de `main` (2026-11-14): rosa 04b en el pie, «Cómo funciona» 10b, portada de Voice en su tarjeta y «enviado» oscuro (`Formulario.tsx`, `.solo-claro`/`.solo-oscuro`). Revisado y arreglado; falta la marca.
 
 ## Hecho
 
@@ -82,6 +83,8 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 
 ## Pendiente
+
+- **Leves de la revisión de la entrega del 2026-11-14** (no se vuelven a revisar en este cambio): el par de imágenes por tema está en `Formulario.tsx` y en la banda 29 de `Proyecto.tsx` (sacar un `ImagenTema` cuando lleguen las oscuras de 10b, 18, 27 y 28) y la banda 29 sigue con sus propios selectores en vez de `.solo-claro`/`.solo-oscuro`; ningún test comprueba que `marca/enviado-oscura.webp` exista ni que se vea una sola imagen por tema.
 
 - **Leves de la revisión de 25, 26, 29, 30, rosa y sello** (2026-11-13, no se vuelven a revisar en este cambio): los SVG de 25 y 26 pesan 4-20 KB y se repiten en línea por cada hito y grupo (unos 250 KB en el HTML de la ficha de workflow; un `<symbol>` con `<use>` o trazados simplificados lo evitan, junto con el pendiente de `limpiar-iconos.cjs`); `FUENTES` de `IconoMarca.tsx` perdió el orden alfabético; la rosa queda a 280 px sin versión 2x (marca de agua al 12 %).
 

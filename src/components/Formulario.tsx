@@ -43,6 +43,9 @@ interface Props {
   children: ReactNode;
 }
 
+/** Ilustración de «enviado» (recurso 19) por tema. */
+const ENVIADO = { claro: 'marca/enviado.webp', oscuro: 'marca/enviado-oscura.webp' } as const;
+
 /** Página de formulario: prepara el correo, lo abre y ofrece copiarlo si no se abre. */
 export function PaginaFormulario({ titulo, intro, ilustracion, componer, children }: Props) {
   const { t } = useIdioma();
@@ -104,15 +107,14 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
         {correo && (
           <div className="formulario-listo" role="status">
             {/* Recurso 19, una por tema; el CSS (`.solo-claro`, `.solo-oscuro`) muestra la del tema. */}
-            {(['claro', 'oscuro'] as const).map((tema) => (
+            {Object.entries(ENVIADO).map(([tema, src]) => (
               <img
                 key={tema}
                 className={`formulario-listo-imagen solo-${tema}`}
-                src={ruta(tema === 'claro' ? 'marca/enviado.webp' : 'marca/enviado-oscura.webp')}
+                src={ruta(src)}
                 alt=""
                 width={480}
                 height={360}
-                loading="lazy"
               />
             ))}
             <h2>
