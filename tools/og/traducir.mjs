@@ -17,7 +17,7 @@ try {
   ({ chromium } = require('/opt/node-tools/node_modules/playwright')); // sesiones en la nube
 }
 
-const slug = process.argv[2];
+const slug = process.argv.slice(2).find((a) => !a.startsWith('--'));
 const html = resolve(`tools/og/${slug}-og.html`);
 if (!slug || !existsSync(html)) {
   console.error('Uso: node tools/og/traducir.mjs <slug> [--es]  (necesita tools/og/<slug>-og.html)');

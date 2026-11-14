@@ -36,7 +36,14 @@
     "gl": "En produción · Análise de capturas en pausa",
     "en": "Live · Screenshot analysis paused"
   },
-  "etiquetas": ["IA", "React", "Spring Boot", "Java", "MySQL", "Ollama"],
+  "etiquetas": [
+    "IA",
+    "React",
+    "Spring Boot",
+    "Java",
+    "MySQL",
+    "Ollama"
+  ],
   "portada": {
     "src": "proyectos/toveriai/portada.webp",
     "mini": "proyectos/toveriai/portada-mini.webp",
@@ -47,6 +54,11 @@
       "gl": "Portada de toVeriAI: «A verdade non é binaria»",
       "en": "toVeriAI home page: “Truth isn’t binary”"
     }
+  },
+  "ogAlt": {
+    "es": "Vista previa de toVeriAI: «La verdad no es binaria», junto a una boya de medida con su esfera y una aguja verde en el mar grabado",
+    "gl": "Vista previa de toVeriAI: «A verdade non é binaria», xunto a unha boia de medida coa súa esfera e unha agulla verde no mar gravado",
+    "en": "toVeriAI preview: “Truth isn’t binary”, beside a measuring buoy with its dial and a green needle in an engraved sea"
   },
   "presentacion": {
     "src": "proyectos/toveriai/presentacion.webp",
@@ -189,7 +201,11 @@
       "en": "toVeriAI is live at toveriai.com: five languages, free use without an account, accounts with history and statistics, and a Premium plan in beta. Alongside it, VeriAI is being trained: an in-house model that learns from every analysis."
     }
   ],
-  "lineas": ["informacion", "ia-local", "producto"],
+  "lineas": [
+    "informacion",
+    "ia-local",
+    "producto"
+  ],
   "aprendizajes": [
     {
       "es": "Convertir criterios periodísticos en métricas que una IA puede aplicar y una persona puede entender.",
@@ -512,7 +528,9 @@
         "gl": "Datos",
         "en": "Data"
       },
-      "tecnologias": ["MySQL 8"]
+      "tecnologias": [
+        "MySQL 8"
+      ]
     },
     {
       "capa": {
@@ -540,7 +558,12 @@
         "gl": "Despregamento",
         "en": "Deployment"
       },
-      "tecnologias": ["Docker", "Render (API)", "Vercel (web)", "Cloudflare"]
+      "tecnologias": [
+        "Docker",
+        "Render (API)",
+        "Vercel (web)",
+        "Cloudflare"
+      ]
     },
     {
       "capa": {
@@ -549,7 +572,11 @@
         "en": "Access"
       },
       "tecnologias": [
-        { "es": "Email y contraseña", "gl": "Email e contrasinal", "en": "Email and password" },
+        {
+          "es": "Email y contraseña",
+          "gl": "Email e contrasinal",
+          "en": "Email and password"
+        },
         {
           "es": "Inicio de sesión con Google",
           "gl": "Inicio de sesión con Google",

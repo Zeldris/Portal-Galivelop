@@ -67,6 +67,11 @@ export interface Proyecto {
    * de la web en vez de la portada cuando esta es una captura o un diagrama.
    */
   presentacion?: Imagen;
+  /**
+   * Texto alternativo de la vista previa en redes cuando sale de una og-fuente con composición propia (recurso 24),
+   * opcional: sin él, el de `presentacion` o el de la portada.
+   */
+  ogAlt?: Texto;
   enlaces: Enlace[];
   galeria: Imagen[];
   /** Capturas reales del producto (la interfaz del juego, de la web…), en su propia sección. */

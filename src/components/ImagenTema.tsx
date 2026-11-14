@@ -10,7 +10,11 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'className' | 'al
   alt?: string;
 };
 
-/** Una ilustración con versión clara y oscura: pinta las dos y el CSS (`.solo-claro`, `.solo-oscuro`) muestra la del tema. */
+/**
+ * Una ilustración con versión clara y oscura: pinta las dos y el CSS (`.solo-claro`, `.solo-oscuro`) muestra la del
+ * tema. Van con `loading="lazy"`: el navegador no descarga una imagen diferida oculta con `display: none`, así que
+ * solo baja la del tema.
+ */
 export function ImagenTema({ claro, oscuro, className, alt = '', ...resto }: Props) {
   return (
     <>
@@ -22,6 +26,7 @@ export function ImagenTema({ claro, oscuro, className, alt = '', ...resto }: Pro
       ).map(([tema, src]) => (
         <img
           key={tema}
+          loading="lazy"
           {...resto}
           className={`${className} solo-${tema}`}
           src={ruta(src)}

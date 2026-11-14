@@ -11,7 +11,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Tarea en curso** | Segunda tanda del 2026-11-14 a `main` (la persona: «llevalo ya a main»): oscuras 10b, 18, 27 y 28 con `ImagenTema.tsx`, portada 32 e icono 23 de Galivelop IG, icono 23 de Voice en su tarjeta (`iconoPropio`) y og 24 de Tarkor y toVeriAI (texto a la izquierda sobre velo oscuro, `traducir.mjs --es`). Fase 1 y 3, sin retro por ser cambio pequeño. Presupuesto de compactaciones: 1 |
 | **Siguiente paso** | `/code-review` contra `origin/main`, `reviewed.sh` y subida a `main`. En cola en el generador: portada 31 de workflow (q974-976), icono 23 de Voice en contorno (sustituirá a q926) e icono 23 **provisional** de Tarkor (anillo, `#E0703A`, q971-973; la persona lo pidió, cambia la decisión de dejar Tarkor sin icono). En `src/img/`, `sin-uso/` pasa a llamarse `aprobadas/` (aprobado sin sitio en la web) |
 | **En `main`** | **Rosa 04b, «Cómo funciona» 10b, portada de Voice y «enviado» oscuro** (fd7929a, 2026-11-14, la persona: «las aplicas ya y así lo vemos en main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en d0d4d68). Antes, **Iconos de grupo (25), marcadores del avance (26), banda 29 clara y oscura, cabecera 30, rosa y sello** (f7ce483, 2026-11-13, la persona: «llévalo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en edbdd74). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 204/204 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 205/205 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
@@ -82,7 +82,9 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-- **Leves de la revisión de la entrega del 2026-11-14** (no se vuelven a revisar en este cambio): la banda 29 de `Proyecto.tsx` sigue con su propio par de imágenes y sus selectores en vez de `ImagenTema` (2026-11-14: ya lo usan formularios, 404 y avisos; a la banda le falta el `srcSet`); ningún test comprueba que `marca/enviado-oscura.webp` exista ni que se vea una sola imagen por tema.
+- **Leves de la revisión de la segunda tanda del 2026-11-14** (no se vuelven a revisar en este cambio): `TarjetaProducto` no mira `iconoPropio` (Voice saldría con su icono de lucide si pasa a producto); el icono de Voice lleva sus colores fijos y no sigue el tema (aceptado hasta que llegue el de contorno).
+
+- **Leves de la revisión de la entrega del 2026-11-14** (no se vuelven a revisar en este cambio): la banda 29 de `Proyecto.tsx` sigue con su propio par de imágenes y sus selectores en vez de `ImagenTema` (2026-11-14: ya lo usan formularios, 404 y avisos; a la banda le falta el `srcSet`); ningún test comprueba que se vea una sola imagen por tema (que existan, sí: `marca.test.ts`, 2026-11-14).
 
 - **Leves de la revisión de 25, 26, 29, 30, rosa y sello** (2026-11-13, no se vuelven a revisar en este cambio): los SVG de 25 y 26 pesan 4-20 KB y se repiten en línea por cada hito y grupo (unos 250 KB en el HTML de la ficha de workflow; un `<symbol>` con `<use>` o trazados simplificados lo evitan, junto con el pendiente de `limpiar-iconos.cjs`); `FUENTES` de `IconoMarca.tsx` perdió el orden alfabético; la rosa queda a 280 px sin versión 2x (marca de agua al 12 %).
 

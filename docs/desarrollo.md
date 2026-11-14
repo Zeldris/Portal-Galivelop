@@ -320,7 +320,8 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   texto de cada idioma con las mismas fuentes (de `node_modules/@fontsource*`) y `node tools/og/traducir.mjs <slug>`
   las renderiza y corre `generar.py` (así está Galivelop IG). Si la placa viene del generador sin texto (recurso 24:
   Tarkor y toVeriAI), la plantilla pinta también el castellano: `node tools/og/traducir.mjs <slug> --es`. El texto alternativo de la vista previa es el
-  de `presentacion` (o el de la portada) en el idioma de la página. Una
+  de `ogAlt` si la ficha lo trae (una placa con composición propia, como las de Tarkor y toVeriAI), si no el de
+  `presentacion` (o el de la portada), en el idioma de la página. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
 - **Título y descripción:** los de cada página van en `FIJAS` del script; los de un proyecto salen de su lema y su

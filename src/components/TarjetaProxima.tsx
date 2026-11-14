@@ -29,7 +29,7 @@ export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
       <div className="proxima-cabeza">
         <span className="proxima-icono">
           {p.iconoPropio ? (
-            <img src={ruta(p.iconoPropio)} alt="" width={24} height={24} />
+            <img src={ruta(p.iconoPropio)} alt="" width={20} height={20} />
           ) : (
             <Icono nombre={p.icono} tamano={20} />
           )}
