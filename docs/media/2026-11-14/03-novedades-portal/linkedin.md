@@ -42,5 +42,10 @@ https://zeldris.github.io/Portal-Galivelop/novedades/
 
 #DesarrolloDeSoftware #IA #IALocal #CódigoAbierto #Galivelop
 Image: media/1-resumen.png
+Image: media/4-tarkor.png
+Image: media/5-workflow.png
+Image: media/6-image-generator.png
+Image: media/7-toveriai.png
+Image: media/8-voice.png
 Image: media/2-iconos-inicio.png
 Image: media/3-animacion-relevo.png

@@ -36,6 +36,7 @@ Languages: es
 | Image Generator 0.4.0: el código pasa a ser abierto con licencia MIT | `src/data/proyectos/galivelop-image-generator.json`, novedad 2026-11-05 |
 | toVeriAI: trabajo de fondo en el servidor para que aguante mejor con pocos recursos, y herramientas al día con correcciones de seguridad | `src/data/proyectos/toveriai.json`, novedades 2026-11-09 y 2026-11-14 |
 | Galivelop Voice Generator (próximamente): voces con IA local; 2 de 8 fases, la siguiente el motor real de voz | `src/data/proximamente.json` |
+| Las tarjetas 4 a 8 usan la imagen de la ficha de cada proyecto (no muestran la novedad en sí) | `public/proyectos/<slug>/` (portada, presentacion o proxima) |
 | Todo está en `main`, publicado en https://zeldris.github.io/Portal-Galivelop/ | `docs/handoff.md` (En main, 76340d5) |
 | El repositorio de Galivelop-workflow es público | `docs/media/2026-11-05/01-workflow-en-general/linkedin.md` (pieza publicada) |
 
@@ -45,6 +46,16 @@ Languages: es
 |---|---|---|
 | `media/1-resumen.webp` | es: Tarjeta «Novedades de noviembre»: un portal más rápido y cinco proyectos en marcha; −62 % de JavaScript al entrar, contraste 5:1 y vista previa en es, gl y en | reserva (X, web) |
 | `media/1-resumen.png` | es: Tarjeta «Novedades de noviembre»: un portal más rápido y cinco proyectos en marcha; −62 % de JavaScript al entrar, contraste 5:1 y vista previa en es, gl y en | linkedin |
+| `media/4-tarkor.png` | es: Tarjeta de Tarkor con su portada (una torre en un desierto rojo) y sus novedades: generador de mapas por capas, viajes entre regiones, 25 zonas al canon e instalador | linkedin |
+| `media/4-tarkor.webp` | es: Tarjeta de Tarkor con su portada (una torre en un desierto rojo) y sus novedades: generador de mapas por capas, viajes entre regiones, 25 zonas al canon e instalador | reserva (X, web) |
+| `media/5-workflow.png` | es: Tarjeta de Galivelop-workflow 0.6.0 con su imagen «Relevos sin perder nada» y sus novedades: tokens por sesión y modelo, modelo y esfuerzo por tarea, revisión por bloques y check en paralelo | linkedin |
+| `media/5-workflow.webp` | es: Tarjeta de Galivelop-workflow 0.6.0 con su imagen «Relevos sin perder nada» y sus novedades: tokens por sesión y modelo, modelo y esfuerzo por tarea, revisión por bloques y check en paralelo | reserva (X, web) |
+| `media/6-image-generator.png` | es: Tarjeta de Galivelop Image Generator 0.5.0 con su portada (fotos sobre el mar) y sus novedades: exportar a WebP, ICO y BMP, cola con pausa, interfaz para pantallas estrechas y prompt negativo | linkedin |
+| `media/6-image-generator.webp` | es: Tarjeta de Galivelop Image Generator 0.5.0 con su portada (fotos sobre el mar) y sus novedades: exportar a WebP, ICO y BMP, cola con pausa, interfaz para pantallas estrechas y prompt negativo | reserva (X, web) |
+| `media/7-toveriai.png` | es: Tarjeta de toVeriAI con su imagen «La verdad no es binaria» y su trabajo de fondo: servidor que aguanta mejor y herramientas al día | linkedin |
+| `media/7-toveriai.webp` | es: Tarjeta de toVeriAI con su imagen «La verdad no es binaria» y su trabajo de fondo: servidor que aguanta mejor y herramientas al día | reserva (X, web) |
+| `media/8-voice.png` | es: Tarjeta de Galivelop Voice Generator, próximamente, con su imagen (ondas en el agua): voces con IA local, 2 de 8 fases, siguiente el motor real de voz | linkedin |
+| `media/8-voice.webp` | es: Tarjeta de Galivelop Voice Generator, próximamente, con su imagen (ondas en el agua): voces con IA local, 2 de 8 fases, siguiente el motor real de voz | reserva (X, web) |
 | `media/2-iconos-inicio.png` | es: Iconos del inicio del portal, hechos con nuestro generador de imágenes local | linkedin |
 | `media/3-animacion-relevo.png` | es: Animación «Relevo» de la ficha de Galivelop-workflow: una sesión deja el trabajo a la siguiente | linkedin |
 

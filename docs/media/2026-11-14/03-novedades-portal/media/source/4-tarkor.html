@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="gw-size" content="1200x675">
+<title>Tarkor</title>
+<style>
+  :root { --background: #0b1720; --surface: #111f29; --text: #e6eef3; --muted: #9fb2bf; --accent: #E0703A; --marca: #1aa6df;
+    --font: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", "Liberation Sans", sans-serif; }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 675px; overflow: hidden; background: var(--background); color: var(--text); font-family: var(--font); display: flex; }
+  .img { width: 620px; height: 675px; background: #000 url("../../../../../../public/proyectos/tarkor/portada.webp") center/cover no-repeat; border-right: 8px solid var(--accent); }
+  .txt { flex: 1; padding: 48px 48px; display: flex; flex-direction: column; }
+  .brand { font-size: 17px; letter-spacing: .16em; text-transform: uppercase; color: var(--marca); font-weight: 700; }
+  h1 { font-size: 40px; line-height: 1.1; margin-top: 22px; }
+  .sub { font-size: 22px; color: var(--accent); margin-top: 12px; font-weight: 700; filter: brightness(1.25); }
+  ul { list-style: none; padding: 0; margin-top: 34px; display: flex; flex-direction: column; gap: 18px; }
+  li { font-size: 23px; line-height: 1.3; padding-left: 30px; position: relative; }
+  li::before { content: ""; position: absolute; left: 0; top: 11px; width: 14px; height: 14px; background: var(--accent); }
+  .footer { margin-top: auto; font-size: 19px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="img"></div>
+  <div class="txt">
+    <div class="brand">Galivelop · Novedades</div>
+    <h1>Tarkor</h1>
+    <div class="sub">Hito 0.4 · noviembre de 2026</div>
+    <ul><li>Generador de mapas propio: cada región se construye por capas</li><li>Viajes entre regiones contando horas y jornadas</li><li>25 zonas del mundo al día con el canon de la historia</li><li>Instalador: eliges qué datos del juego se borran al desinstalar</li></ul>
+    <div class="footer">zeldris.github.io/Portal-Galivelop/novedades</div>
+  </div>
+</body>
+</html>
