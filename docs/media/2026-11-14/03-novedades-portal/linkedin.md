@@ -6,36 +6,41 @@
 
 ## es
 
-La web de Galivelop carga hoy un 62 % menos de JavaScript al entrar, y no es lo único que ha cambiado.
-Repaso de lo que hemos publicado en el portal estos días:
+Dos semanas en el taller Galivelop: un mapa nuevo para Tarkor, dos versiones nuevas de nuestras herramientas y una web que carga un 62 % menos de JavaScript.
+Este es el resumen de todo lo que hemos movido:
 
-📰 Todo el taller en una página
-Nueva sección de Novedades: lo último de cada proyecto y del muro en un solo sitio, con filtro por proyecto.
+🛠️ En los proyectos
 
-⚡ Más rápida
-Cada página se carga solo cuando se visita. El JavaScript inicial pasa de 258 a 97 KB (gzip).
+🗺️ Tarkor
+Ya tiene su propio generador de mapas, que construye cada región por capas, y se viaja entre regiones contando horas y jornadas. Sigue la ronda de pruebas jugando con más arreglos, y el instalador deja elegir qué datos del juego borrar al desinstalar.
 
-🌍 Se comparte en tu idioma
-Al compartir una página en gallego o en inglés, la vista previa sale con su propia imagen y su texto traducido, no con la versión en castellano.
+🔁 Galivelop-workflow 0.6.0
+Mide: apunta los tokens por sesión y modelo, recomienda modelo y esfuerzo para cada tarea, revisa por bloques las ramas largas y corre el check en paralelo.
 
-♿ Más legible
-Una auditoría de accesibilidad subió el contraste del acento de Tarkor de 3,2:1 a 5:1, medido de nuevo con Playwright.
+🎨 Galivelop Image Generator 0.5.0
+Exporta a WebP, ICO y BMP, la cola se puede pausar y reanudar, la interfaz se adapta a pantallas estrechas y acepta prompt negativo. Su código ya es abierto (MIT).
 
-🔁 El workflow, paso a paso
-La ficha de Galivelop-workflow explica con tres animaciones (Trabajar, Relevo y Camino a main) cómo una sesión de IA deja el trabajo a la siguiente sin perder nada.
+🔍 toVeriAI
+Trabajo de fondo: un servidor que aguanta mejor con pocos recursos y herramientas al día con correcciones de seguridad.
 
-🎨 Imágenes hechas en casa
-Iconos, portadas e ilustraciones salen de nuestro generador de imágenes, que corre en local.
+🎙️ Galivelop Voice Generator, próximamente
+Voces con IA local: 2 de 8 fases hechas; la siguiente, el motor real de voz.
 
-📌 Fichas al día
-Galivelop-workflow 0.6.0 (2554 pruebas), Galivelop Image Generator 0.5.0 con prompt negativo (1587 tests) y novedades de Tarkor y toVeriAI.
+🌐 En la web
+
+📰 Nueva página de Novedades: lo último de cada proyecto en un solo sitio, con filtro por proyecto.
+⚡ Cada página se carga solo cuando se visita: el JavaScript inicial pasa de 258 a 97 KB (gzip).
+🌍 Al compartir una página en gallego o en inglés, la vista previa sale en ese idioma.
+♿ Una auditoría de accesibilidad subió el contraste del acento de Tarkor de 3,2:1 a 5:1.
+🧭 La ficha del workflow explica con tres animaciones cómo una sesión de IA deja el trabajo a la siguiente.
+🖼️ Iconos, portadas e ilustraciones salen de nuestro generador, que corre en local.
 
 Todo publicado y abierto a quien quiera curiosear o colaborar:
-https://zeldris.github.io/Portal-Galivelop/
+https://zeldris.github.io/Portal-Galivelop/novedades/
 
-¿Qué es lo primero que miráis cuando entráis en la web de un proyecto?
+¿Cuál de estos proyectos os gustaría que contáramos más a fondo?
 
-#DesarrolloWeb #Accesibilidad #IA #CódigoAbierto #Galivelop
+#DesarrolloDeSoftware #IA #IALocal #CódigoAbierto #Galivelop
 Image: media/1-resumen.png
 Image: media/2-iconos-inicio.png
 Image: media/3-animacion-relevo.png

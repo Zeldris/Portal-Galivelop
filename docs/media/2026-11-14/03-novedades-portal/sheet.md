@@ -11,7 +11,7 @@ Languages: es
 
 ## What is told
 
-- **In one sentence (for who uses it):** El portal de Galivelop estrena página de novedades, carga más rápido, se comparte en el idioma de cada página, explica el workflow con animaciones y usa imágenes de nuestro generador local.
+- **In one sentence (for who uses it):** Las novedades de cada proyecto del taller y, además, el portal de Galivelop estrena página de novedades, carga más rápido, se comparte en el idioma de cada página, explica el workflow con animaciones y usa imágenes de nuestro generador local.
 - **In one sentence (technical):** Resumen de lo publicado en `main` del 2026-11-05 al 2026-11-14: /novedades, carga por ruta (JS inicial de 258 a 97 KB gzip), Open Graph por idioma, animaciones en la ficha del workflow, auditoría de contraste, imágenes del generador y fichas al día.
 - **Status:** todo publicado en `main` (76340d5, 2026-11-14).
 
@@ -27,6 +27,15 @@ Languages: es
 | La ficha de Galivelop-workflow tiene tres animaciones paso a paso (Trabajar, Relevo, Camino a main) en es, gl y en | commit 9853767 |
 | Las imágenes e iconos de la web salen de nuestro generador de imágenes, que corre en local | commit 386fd62; `docs/media/2026-10-27/01-piloto-generador/ficha.md` |
 | Fichas al día: Galivelop-workflow 0.6.0 (2554 pruebas), Galivelop Image Generator 0.5.0 con prompt negativo (1587 tests), novedades de Tarkor y toVeriAI | commit c67238a |
+| Tarkor: generador de mapas propio que construye cada región por capas; viajes entre regiones contando horas y jornadas; 25 zonas al día con el canon (hito 0.4) | `src/data/proyectos/tarkor.json`, novedad 2026-11-10 |
+| Tarkor: ronda de pruebas jugando con arreglos (el Ayuntamiento se puede reparar, compañeros en el panel de combate, el juego cuenta mejor cada ronda de combate) | `src/data/proyectos/tarkor.json`, novedad 2026-11-11 |
+| Tarkor: el instalador deja elegir qué datos del juego se borran al desinstalar, borrar solo la IA y volver a elegir perfil, y trae la pantalla «Licencias y avisos» | `src/data/proyectos/tarkor.json`, novedad 2026-11-12 |
+| Galivelop-workflow 0.6.0: apunta los tokens por sesión y modelo, recomienda modelo y esfuerzo para cada tarea, revisa por bloques las ramas largas y corre el check en paralelo | `src/data/proyectos/galivelop-workflow.json`, novedad 2026-11-13 |
+| Image Generator 0.5.0: exportar a WebP, ICO y BMP con recorte, pausar y reanudar la cola, interfaz rediseñada que se adapta a pantallas estrechas | `src/data/proyectos/galivelop-image-generator.json`, novedad 2026-11-13 |
+| Image Generator: prompt negativo en la línea de órdenes, la API y la interfaz | `src/data/proyectos/galivelop-image-generator.json`, novedad 2026-11-14 |
+| Image Generator 0.4.0: el código pasa a ser abierto con licencia MIT | `src/data/proyectos/galivelop-image-generator.json`, novedad 2026-11-05 |
+| toVeriAI: trabajo de fondo en el servidor para que aguante mejor con pocos recursos, y herramientas al día con correcciones de seguridad | `src/data/proyectos/toveriai.json`, novedades 2026-11-09 y 2026-11-14 |
+| Galivelop Voice Generator (próximamente): voces con IA local; 2 de 8 fases, la siguiente el motor real de voz | `src/data/proximamente.json` |
 | Todo está en `main`, publicado en https://zeldris.github.io/Portal-Galivelop/ | `docs/handoff.md` (En main, 76340d5) |
 | El repositorio de Galivelop-workflow es público | `docs/media/2026-11-05/01-workflow-en-general/linkedin.md` (pieza publicada) |
 
@@ -34,8 +43,8 @@ Languages: es
 
 | Image | Alt text | Channels |
 |---|---|---|
-| `media/1-resumen.webp` | es: Tarjeta «Novedades del portal»: una web más rápida, más clara y en tres idiomas; −62 % de JavaScript al entrar, contraste 5:1 y vista previa en es, gl y en | reserva (X, web) |
-| `media/1-resumen.png` | es: Tarjeta «Novedades del portal»: una web más rápida, más clara y en tres idiomas; −62 % de JavaScript al entrar, contraste 5:1 y vista previa en es, gl y en | linkedin |
+| `media/1-resumen.webp` | es: Tarjeta «Novedades de noviembre»: un portal más rápido y cinco proyectos en marcha; −62 % de JavaScript al entrar, contraste 5:1 y vista previa en es, gl y en | reserva (X, web) |
+| `media/1-resumen.png` | es: Tarjeta «Novedades de noviembre»: un portal más rápido y cinco proyectos en marcha; −62 % de JavaScript al entrar, contraste 5:1 y vista previa en es, gl y en | linkedin |
 | `media/2-iconos-inicio.png` | es: Iconos del inicio del portal, hechos con nuestro generador de imágenes local | linkedin |
 | `media/3-animacion-relevo.png` | es: Animación «Relevo» de la ficha de Galivelop-workflow: una sesión deja el trabajo a la siguiente | linkedin |
 
