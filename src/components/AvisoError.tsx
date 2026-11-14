@@ -1,6 +1,6 @@
-import { MarcaGV } from './Logo';
+import { ImagenTema } from './ImagenTema';
 
-/** Aviso de fallo de carga (no «no existe»): título, texto y un botón que vuelve a intentarlo. */
+/** Aviso de fallo de carga (no «no existe»): el cable desconectado (recurso 28), título, texto y un botón que vuelve a intentarlo. */
 export function AvisoError({
   titulo,
   texto,
@@ -15,7 +15,15 @@ export function AvisoError({
   return (
     <section className="seccion no-encontrado" role="alert">
       <div className="contenedor">
-        <MarcaGV tamano={64} />
+        <ImagenTema
+          className="aviso-error-imagen"
+          claro="marca/aviso-error.webp"
+          oscuro="marca/aviso-error-oscura.webp"
+          width={480}
+          height={360}
+          // Sin red (el caso típico de este aviso), mejor nada que una caja rota.
+          onError={(e) => (e.currentTarget.style.display = 'none')}
+        />
         <h1>{titulo}</h1>
         <p>{texto}</p>
         <button type="button" className="boton boton-primario" onClick={alPulsar}>

@@ -1,25 +1,11 @@
-import {
-  ArrowDown,
-  ArrowRight,
-  Check,
-  Cpu,
-  Eye,
-  FlaskConical,
-  Globe,
-  Lock,
-  Mail,
-  MessageSquare,
-  Rocket,
-  ShieldCheck,
-  Users,
-  Workflow,
-} from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Lock, Mail } from 'lucide-react';
 import { useEffect, useState, type ComponentType, type CSSProperties } from 'react';
 import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
 import { IconoMarca, iconoMarca } from '../components/IconoMarca';
 import { MarcaGV } from '../components/Logo';
+import { Separador } from '../components/Separador';
 import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
@@ -32,20 +18,20 @@ import { useIdioma } from '../i18n/Idioma';
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
 /** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
 const FILTRAR_DESDE = 5;
-/** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco; los propios van llegando por series. */
+/** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco. */
 type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
 
 const ICONO_LINEA: Record<Linea, Icono> = {
-  'ia-local': Cpu,
-  mundos: Globe,
-  informacion: ShieldCheck,
-  producto: iconoMarca('codigo'),
-  metodo: Workflow,
+  'ia-local': iconoMarca('codigo'),
+  mundos: iconoMarca('mundos'),
+  informacion: iconoMarca('documento-check'),
+  producto: iconoMarca('papel-ventana'),
+  metodo: iconoMarca('compas'),
 };
 const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
   [iconoMarca('candado'), 'valor1'],
-  [FlaskConical, 'valor2'],
-  [Eye, 'valor3'],
+  [iconoMarca('mira'), 'valor2'],
+  [iconoMarca('historial'), 'valor3'],
   [iconoMarca('ramas-unidas'), 'valor4'],
 ];
 
@@ -172,17 +158,20 @@ export function Inicio() {
             <p className="vacio">{t('filtro.vacio')}</p>
           )}
           {filtro === 'todos' && proximos.length > 0 && (
-            <section className="proximamente" aria-labelledby="proximamente-titulo">
-              <header>
-                <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
-                <p>{t('proximamente.texto')}</p>
-              </header>
-              <div className="rejilla-proximos">
-                {proximos.map((p) => (
-                  <TarjetaProxima key={p.slug} proximo={p} />
-                ))}
-              </div>
-            </section>
+            <>
+              <Separador />
+              <section className="proximamente" aria-labelledby="proximamente-titulo">
+                <header>
+                  <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
+                  <p>{t('proximamente.texto')}</p>
+                </header>
+                <div className="rejilla-proximos">
+                  {proximos.map((p) => (
+                    <TarjetaProxima key={p.slug} proximo={p} />
+                  ))}
+                </div>
+              </section>
+            </>
           )}
         </div>
       </section>
@@ -228,6 +217,15 @@ export function Inicio() {
               {t('sobre.texto3')} <Link to="/equipo">{t('sobre.verEquipo')} →</Link>
             </p>
             <p className="sobre-nombre">
+              {/* Sello del taller (recurso 5), como firma junto al nombre. */}
+              <img
+                className="sobre-sello"
+                src={ruta('marca/sello.webp')}
+                alt=""
+                width={144}
+                height={144}
+                loading="lazy"
+              />
               <span className="sobre-marca" aria-hidden="true">
                 <b>Gali</b>cia + De<b>velop</b>
               </span>
@@ -254,7 +252,7 @@ export function Inicio() {
           <ul className="vias">
             <li>
               <Link to="/participa/unirse" className="via">
-                <Users aria-hidden="true" />
+                <IconoMarca nombre="ramas" />
                 <h3>{t('via1.titulo')}</h3>
                 <p>{t('via1.texto')}</p>
                 <span className="via-ir">
@@ -264,7 +262,7 @@ export function Inicio() {
             </li>
             <li>
               <Link to="/participa/proponer" className="via">
-                <Rocket aria-hidden="true" />
+                <IconoMarca nombre="bombilla" />
                 <h3>{t('via2.titulo')}</h3>
                 <p>{t('via2.texto')}</p>
                 <span className="via-ir">
@@ -285,7 +283,7 @@ export function Inicio() {
           </ul>
           <aside className="proyecto-propio">
             <span className="proyecto-propio-icono" aria-hidden="true">
-              <MessageSquare size={22} />
+              <IconoMarca nombre="implantacion" />
             </span>
             <div>
               <h3>{t('proyectoPropio.titulo')}</h3>
@@ -295,6 +293,7 @@ export function Inicio() {
               {t('proyectoPropio.boton')} <ArrowRight size={16} />
             </Link>
           </aside>
+          <Separador />
           <div className="participa-guia">
             <div>
               <h3>{t('paraquien.titulo')}</h3>

@@ -187,12 +187,14 @@ const LOCALE = { es: 'es_ES', gl: 'gl_ES', en: 'en_US' };
 
 // Vista previa de cada proyecto: public/proyectos/<slug>/og.jpg (1200×630, JPEG; la genera tools/og/generar.py), que las
 // redes aceptan todas; en gallego e inglés, og-gl.jpg y og-en.jpg si existen (el texto de la imagen en ese idioma). Si
-// falta, la portada (WebP, sin medidas). El texto alternativo, el de la presentación si la hay y la vista previa sale de
-// una og-fuente (la misma composición); si sale de la portada, el de la portada.
+// falta, la portada (WebP, sin medidas). El texto alternativo, si la vista previa sale de una og-fuente: el suyo
+// (`ogAlt`) o, sin él, el de la presentación (la misma composición); si sale de la portada, el de la portada.
 const conFuente = (slug) => ['png', 'jpg'].some((x) => existsSync(`tools/og/fuentes/${slug}/og-fuente.${x}`));
 const vistaDe = (p, idioma) => {
   const carpeta = p.portada.src.replace(/[^/]+$/, '');
-  const alt = (p.presentacion && conFuente(p.slug) ? p.presentacion : p.portada).alt[idioma];
+  const alt = conFuente(p.slug)
+    ? (p.ogAlt ?? p.presentacion?.alt ?? p.portada.alt)[idioma]
+    : p.portada.alt[idioma];
   const og = [`${carpeta}og-${idioma}.jpg`, `${carpeta}og.jpg`].find((f) => existsSync(`public/${f}`));
   return og ? { imagen: imagenDe(og), medidas: true, alt } : { imagen: imagenDe(p.portada.src), medidas: false, alt: p.portada.alt[idioma] };
 };

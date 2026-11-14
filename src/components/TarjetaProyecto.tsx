@@ -1,5 +1,5 @@
+import { estiloAcento } from '../data/tonos';
 import { ArrowUpRight } from 'lucide-react';
-import type { CSSProperties } from 'react';
 import { Link } from './Enlace';
 import { progreso, ruta } from '../data/proyectos';
 import type { ResumenProyecto } from '../data/proyectos';
@@ -11,7 +11,7 @@ export function TarjetaProyecto({ proyecto: p }: { proyecto: ResumenProyecto }) 
   const { t, tx } = useIdioma();
   const avance = progreso(p);
   return (
-    <article className="tarjeta" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
+    <article className="tarjeta" style={estiloAcento(p.acento)}>
       <div className="tarjeta-imagen">
         <img
           src={ruta(p.portada.mini)}

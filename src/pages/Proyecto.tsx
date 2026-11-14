@@ -1,16 +1,6 @@
-import {
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  CircleDashed,
-  ExternalLink,
-  LoaderCircle,
-  Lock,
-  Mail,
-  Sparkles,
-  Users,
-} from 'lucide-react';
-import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { estiloAcento } from '../data/tonos';
+import { ArrowLeft, ArrowRight, ExternalLink, Lock, Mail, Sparkles } from 'lucide-react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import type { Destino } from '../components/AnimacionFlujo';
@@ -21,7 +11,11 @@ import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
-import { buscarPersona, iniciales } from '../data/equipo';
+import { IconoMarca, type NombreIcono } from '../components/IconoMarca';
+import { Retrato } from '../components/Retrato';
+import { Separador } from '../components/Separador';
+import { buscarPersona } from '../data/equipo';
+import { PORTADA_ESTADO } from '../data/marca';
 import { idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
 import { progreso, proyectos, ruta, useFicha } from '../data/proyectos';
@@ -39,10 +33,20 @@ const PUBLICACIONES_EN_FICHA = 3;
 /** Las animaciones paso a paso solo las lleva alguna ficha: van en su propio trozo, fuera del resto de la página. */
 const AnimacionFlujo = lazy(() => import('../components/AnimacionFlujo'));
 
-const ICONO_HITO: Record<EstadoHito, typeof Check> = {
-  hecho: Check,
-  curso: LoaderCircle,
-  pendiente: CircleDashed,
+/** Marcadores del avance (recurso 26 de `docs/marca.md`): el mismo aro con visto, con «…» o vacío. */
+const ICONO_HITO: Record<EstadoHito, NombreIcono> = {
+  hecho: 'hito-hecho',
+  curso: 'hito-curso',
+  pendiente: 'hito-pendiente',
+};
+
+/** Iconos de los grupos de la ficha (recurso 25), en su título y en el índice. */
+const ICONO_GRUPO: Record<Grupo, NombreIcono> = {
+  resumen: 'resumen',
+  galeria: 'galeria',
+  afondo: 'a-fondo',
+  tecnica: 'como-esta-hecho',
+  avance: 'avance',
 };
 
 /** Grupos con contenido en este proyecto (los vacíos no se muestran). */
@@ -139,6 +143,7 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
     <nav className="nav-ficha" aria-label={t('proyecto.indice')} ref={barra}>
       {grupos.map((g) => (
         <a key={g.id} href={`#${g.id}`} aria-current={activo === g.id ? 'true' : undefined}>
+          <IconoMarca nombre={ICONO_GRUPO[g.id]} />
           {g.titulo}
         </a>
       ))}
@@ -178,6 +183,8 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const ultima = p.novedades[0];
   const deMuro = publicacionesDe(p.slug);
   const modoCabecera = p.cabecera ?? 'ilustracion';
+  // Cabecera de color: la ilustración de la marca para el estado del proyecto (recurso 6), velada como una ilustración.
+  const fondoEstado = modoCabecera === 'color' ? PORTADA_ESTADO[p.estado] : undefined;
   const indice = proyectos.findIndex((x) => x.slug === p.slug);
   const siguiente = proyectos.length > 1 ? proyectos[(indice + 1) % proyectos.length] : undefined;
 
@@ -192,12 +199,17 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   const verNovedades = () => setTodasNovedades(true);
 
   return (
-    <article className="proyecto" style={{ '--acento-proyecto': p.acento } as CSSProperties}>
-      <header className={`proyecto-cabecera cabecera-${modoCabecera}`}>
+    <article className="proyecto" style={estiloAcento(p.acento)}>
+      <header
+        className={`proyecto-cabecera cabecera-${modoCabecera}${fondoEstado ? ' cabecera-velada' : ''}`}
+      >
         {modoCabecera === 'ilustracion' && (
           <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" fetchPriority="high" />
         )}
-        {modoCabecera !== 'ilustracion' && (
+        {fondoEstado && (
+          <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" fetchPriority="high" />
+        )}
+        {modoCabecera === 'captura' && (
           <img
             className="proyecto-isobatas"
             src={ruta('/marca/isobatas.svg')}
@@ -329,6 +341,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         <section id="resumen" className="grupo" aria-labelledby="titulo-resumen">
           <h2 id="titulo-resumen" className="grupo-titulo">
+            <IconoMarca nombre={ICONO_GRUPO.resumen} />
             {t('grupo.resumen')}
           </h2>
           {p.descripcion.length > 0 && (
@@ -412,6 +425,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('galeria') && (
           <section id="galeria" className="grupo" aria-labelledby="titulo-galeria">
             <h2 id="titulo-galeria" className="grupo-titulo">
+              <IconoMarca nombre={ICONO_GRUPO.galeria} />
               {t('sec.galeria')}
             </h2>
             <Galeria
@@ -426,6 +440,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('afondo') && (
           <section id="afondo" className="grupo" aria-labelledby="titulo-afondo">
             <h2 id="titulo-afondo" className="grupo-titulo">
+              <IconoMarca nombre={ICONO_GRUPO.afondo} />
               {t('grupo.afondo')}
             </h2>
             <p className="grupo-texto">{t('afondo.texto')}</p>
@@ -436,6 +451,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('tecnica') && (
           <section id="tecnica" className="grupo" aria-labelledby="titulo-tecnica">
             <h2 id="titulo-tecnica" className="grupo-titulo">
+              <IconoMarca nombre={ICONO_GRUPO.tecnica} />
               {t('grupo.tecnica')}
             </h2>
             <div className="grupo-columnas">
@@ -492,160 +508,176 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         )}
 
         {grupos.includes('avance') && (
-          <section id="avance" className="grupo" aria-labelledby="titulo-avance">
-            <h2 id="titulo-avance" className="grupo-titulo">
-              {t('grupo.avance')}
-            </h2>
-            <div className="grupo-columnas">
-              {p.hitos.length > 0 && (
-                <div id="hitos" className="bloque">
-                  <h3 className="bloque-titulo">
-                    {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
-                  </h3>
-                  <ol className="hitos">
-                    {p.hitos.map((h) => {
-                      const IconoHito = ICONO_HITO[h.estado];
-                      return (
-                        <li
-                          key={(h.version ?? '') + tx(h.nombre)}
-                          className={`hito hito-${h.estado}`}
-                        >
-                          <span className="hito-marca" aria-hidden="true">
-                            <IconoHito size={16} />
-                          </span>
-                          <div>
-                            <p className="hito-titulo">
-                              {h.version && <span className="hito-version">{h.version}</span>}
-                              {tx(h.nombre)}{' '}
-                              <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
-                            </p>
-                            {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ol>
-                </div>
-              )}
-              {p.novedades.length > 0 && (
-                <div id="novedades" className="bloque">
-                  <h3 className="bloque-titulo">{t('sec.novedades')}</h3>
-                  <ul className="novedades">
-                    {(todasNovedades ? p.novedades : p.novedades.slice(0, NOVEDADES_VISIBLES)).map(
-                      (n, i) => (
+          <>
+            <Separador />
+            <section id="avance" className="grupo" aria-labelledby="titulo-avance">
+              <h2 id="titulo-avance" className="grupo-titulo">
+                <IconoMarca nombre={ICONO_GRUPO.avance} />
+                {t('grupo.avance')}
+              </h2>
+              <div className="grupo-columnas">
+                {p.hitos.length > 0 && (
+                  <div id="hitos" className="bloque">
+                    <h3 className="bloque-titulo">
+                      {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
+                    </h3>
+                    <ol className="hitos">
+                      {p.hitos.map((h) => {
+                        return (
+                          <li
+                            key={(h.version ?? '') + tx(h.nombre)}
+                            className={`hito hito-${h.estado}`}
+                          >
+                            <span className="hito-marca" aria-hidden="true">
+                              <IconoMarca nombre={ICONO_HITO[h.estado]} />
+                            </span>
+                            <div>
+                              <p className="hito-titulo">
+                                {h.version && <span className="hito-version">{h.version}</span>}
+                                {tx(h.nombre)}{' '}
+                                <span className="hito-estado">{t(`hito.${h.estado}`)}</span>
+                              </p>
+                              {h.detalle && <p className="hito-detalle">{tx(h.detalle)}</p>}
+                            </div>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </div>
+                )}
+                {p.novedades.length > 0 && (
+                  <div id="novedades" className="bloque">
+                    <h3 className="bloque-titulo">{t('sec.novedades')}</h3>
+                    <ul className="novedades">
+                      {(todasNovedades
+                        ? p.novedades
+                        : p.novedades.slice(0, NOVEDADES_VISIBLES)
+                      ).map((n, i) => (
                         <li key={i}>
                           <time dateTime={n.fecha}>{fecha(n.fecha)}</time>
                           <p>{tx(n.texto)}</p>
                         </li>
-                      ),
+                      ))}
+                    </ul>
+                    {p.novedades.length > NOVEDADES_VISIBLES && (
+                      <button
+                        type="button"
+                        className="boton-texto"
+                        aria-expanded={todasNovedades}
+                        onClick={() => setTodasNovedades((v) => !v)}
+                      >
+                        {todasNovedades
+                          ? t('novedades.menos')
+                          : t('novedades.todas', { n: p.novedades.length })}
+                      </button>
                     )}
-                  </ul>
-                  {p.novedades.length > NOVEDADES_VISIBLES && (
-                    <button
-                      type="button"
-                      className="boton-texto"
-                      aria-expanded={todasNovedades}
-                      onClick={() => setTodasNovedades((v) => !v)}
-                    >
-                      {todasNovedades
-                        ? t('novedades.menos')
-                        : t('novedades.todas', { n: p.novedades.length })}
-                    </button>
-                  )}
-                </div>
-              )}
-              {deMuro.length > 0 && (
-                <div id="publicaciones" className="bloque">
-                  <h3 className="bloque-titulo">{t('sec.publicaciones')}</h3>
-                  <ul className="novedades publicaciones-ficha">
-                    {deMuro.slice(0, PUBLICACIONES_EN_FICHA).map((x) => (
-                      <li key={x.pieza}>
-                        <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
-                        <div>
-                          <Link
-                            to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
-                            className="publicacion-enlace"
-                          >
-                            {tx(x.titulo)}
-                          </Link>
-                          <p>{tx(x.texto)}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                  {deMuro.length > PUBLICACIONES_EN_FICHA && (
-                    <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
-                      {t('muro.verTodas', { n: deMuro.length })}{' '}
-                      <ArrowRight size={15} aria-hidden="true" />
-                    </Link>
-                  )}
-                </div>
-              )}
-            </div>
-            {p.equipo.length > 0 && (
-              <div id="equipo" className="bloque">
-                <h3 className="bloque-titulo">{t('sec.equipo')}</h3>
-                <ul className="equipo">
-                  {p.equipo.map((m) => {
-                    const persona = buscarPersona(m.nombre);
-                    const perfil = persona?.perfil;
-                    const contenido = (
-                      <>
-                        {persona?.foto ? (
-                          <img
-                            src={ruta(persona.foto)}
-                            alt=""
-                            className="avatar"
-                            width={44}
-                            height={44}
-                            loading="lazy"
-                          />
-                        ) : (
-                          <span className="avatar" aria-hidden="true">
-                            {iniciales(m.nombre)}
-                          </span>
-                        )}
-                        <div>
-                          <p className="equipo-nombre">{m.nombre}</p>
-                          <p className="equipo-rol">{tx(m.rol)}</p>
-                          {perfil?.resumen && (
-                            <p className="equipo-resumen">{tx(perfil.resumen)}</p>
-                          )}
-                          {!!perfil?.destacadas?.length && (
-                            <ul className="equipo-destacadas">
-                              {perfil.destacadas.map((x) => (
-                                <li key={x}>{x}</li>
-                              ))}
-                            </ul>
-                          )}
-                        </div>
-                      </>
-                    );
-                    return (
-                      <li key={m.nombre}>
-                        {persona ? (
-                          <Link
-                            to={`/equipo/${persona.id}`}
-                            className="equipo-enlace"
-                            title={t('equipo.ver')}
-                          >
-                            {contenido}
-                          </Link>
-                        ) : (
-                          contenido
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
+                  </div>
+                )}
+                {deMuro.length > 0 && (
+                  <div id="publicaciones" className="bloque">
+                    <h3 className="bloque-titulo">{t('sec.publicaciones')}</h3>
+                    <ul className="novedades publicaciones-ficha">
+                      {deMuro.slice(0, PUBLICACIONES_EN_FICHA).map((x) => (
+                        <li key={x.pieza}>
+                          <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
+                          <div>
+                            <Link
+                              to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
+                              className="publicacion-enlace"
+                            >
+                              {tx(x.titulo)}
+                            </Link>
+                            <p>{tx(x.texto)}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                    {deMuro.length > PUBLICACIONES_EN_FICHA && (
+                      <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
+                        {t('muro.verTodas', { n: deMuro.length })}{' '}
+                        <ArrowRight size={15} aria-hidden="true" />
+                      </Link>
+                    )}
+                  </div>
+                )}
               </div>
-            )}
-          </section>
+              {p.equipo.length > 0 && (
+                <div id="equipo" className="bloque">
+                  <h3 className="bloque-titulo">{t('sec.equipo')}</h3>
+                  <ul className="equipo">
+                    {p.equipo.map((m) => {
+                      const persona = buscarPersona(m.nombre);
+                      const perfil = persona?.perfil;
+                      const contenido = (
+                        <>
+                          <Retrato
+                            nombre={m.nombre}
+                            foto={persona?.foto}
+                            clase="equipo-retrato"
+                            lado={52}
+                            perezosa
+                          />
+                          <div>
+                            <p className="equipo-nombre">{m.nombre}</p>
+                            <p className="equipo-rol">{tx(m.rol)}</p>
+                            {perfil?.resumen && (
+                              <p className="equipo-resumen">{tx(perfil.resumen)}</p>
+                            )}
+                            {!!perfil?.destacadas?.length && (
+                              <ul className="equipo-destacadas">
+                                {perfil.destacadas.map((x) => (
+                                  <li key={x}>{x}</li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </>
+                      );
+                      return (
+                        <li key={m.nombre}>
+                          {persona ? (
+                            <Link
+                              to={`/equipo/${persona.id}`}
+                              className="equipo-enlace"
+                              title={t('equipo.ver')}
+                            >
+                              {contenido}
+                            </Link>
+                          ) : (
+                            contenido
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              )}
+            </section>
+          </>
         )}
 
         <aside className={`participar participar-${p.colaboracion}`}>
+          {/* Banda de la marca (recurso 29), solo con la colaboración abierta; el CSS muestra la del tema. */}
+          {p.colaboracion === 'abierta' &&
+            (['claro', 'oscuro'] as const).map((tema) => {
+              const base =
+                tema === 'claro' ? 'marca/banda-participar' : 'marca/banda-participar-oscura';
+              return (
+                <img
+                  key={tema}
+                  className={`participar-banda participar-banda-${tema}`}
+                  src={ruta(`${base}.webp`)}
+                  srcSet={`${ruta(`${base}-mini.webp`)} 800w, ${ruta(`${base}.webp`)} 1600w`}
+                  sizes="(max-width: 1200px) 100vw, 1200px"
+                  alt=""
+                  width={1600}
+                  height={400}
+                  loading="lazy"
+                />
+              );
+            })}
           <span className="participar-icono" aria-hidden="true">
-            {p.colaboracion === 'abierta' ? <Users size={24} /> : <Lock size={24} />}
+            {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock />}
           </span>
           <div>
             <h2>{t(`participa.${p.colaboracion}.titulo`, { nombre: p.nombre })}</h2>

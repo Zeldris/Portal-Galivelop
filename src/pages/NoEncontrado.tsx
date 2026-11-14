@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
-import { ruta } from '../data/proyectos';
+import { ImagenTema } from '../components/ImagenTema';
 import { useIdioma } from '../i18n/Idioma';
 
 export function NoEncontrado() {
@@ -19,10 +19,10 @@ export function NoEncontrado() {
   return (
     <section className="seccion no-encontrado">
       <div className="contenedor">
-        <img
+        <ImagenTema
           className="no-encontrado-imagen"
-          src={ruta('marca/no-encontrado.webp')}
-          alt=""
+          claro="marca/no-encontrado.webp"
+          oscuro="marca/no-encontrado-oscura.webp"
           width={900}
           height={600}
         />

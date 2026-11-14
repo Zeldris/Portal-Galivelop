@@ -39,8 +39,16 @@
     "en": "Alpha · milestone 0.3 “Deep kingdom”: play-testing round"
   },
   "etiquetas": [
-    { "es": "IA local", "gl": "IA local", "en": "Local AI" },
-    { "es": "Simulación", "gl": "Simulación", "en": "Simulation" },
+    {
+      "es": "IA local",
+      "gl": "IA local",
+      "en": "Local AI"
+    },
+    {
+      "es": "Simulación",
+      "gl": "Simulación",
+      "en": "Simulation"
+    },
     "React",
     "TypeScript",
     "Fastify",
@@ -58,6 +66,11 @@
       "gl": "Os Piares Rotos, torres de rocha vermella unidas por pontes colgantes nas Chairas",
       "en": "The Broken Pillars, red rock towers joined by rope bridges in the Plains"
     }
+  },
+  "ogAlt": {
+    "es": "Vista previa de Tarkor: «El mundo sigue aunque tú te detengas», junto a un anillo con una piedra naranja medio hundido en el mar grabado",
+    "gl": "Vista previa de Tarkor: «O mundo segue aínda que ti te deteñas», xunto a un anel cunha pedra laranxa medio afundido no mar gravado",
+    "en": "Tarkor preview: “The world moves on even when you stop”, beside a ring with an orange stone half sunk in an engraved sea"
   },
   "enlaces": [
     {
@@ -430,7 +443,11 @@
       "en": "Today Tarkor is in alpha: the Red Wind Plains are the playable region and milestone 0.3 “Deep kingdom” is in a play-testing round. The rest of Berig will arrive region by region, and the beta will bring the public installer for Windows and Linux, with the Steam Deck as the performance target."
     }
   ],
-  "lineas": ["ia-local", "mundos", "producto"],
+  "lineas": [
+    "ia-local",
+    "mundos",
+    "producto"
+  ],
   "aprendizajes": [
     {
       "es": "Separar simulación y narración: la IA cuenta la historia, pero los números los deciden reglas que se pueden probar.",
@@ -3800,7 +3817,12 @@
         "gl": "Interface",
         "en": "Frontend"
       },
-      "tecnologias": ["React 19", "TypeScript", "Vite", "Tailwind CSS 4"]
+      "tecnologias": [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Tailwind CSS 4"
+      ]
     },
     {
       "capa": {
@@ -3808,7 +3830,12 @@
         "gl": "Motor do xogo",
         "en": "Game engine"
       },
-      "tecnologias": ["Node.js", "Fastify 5", "TypeScript", "Prisma 6"]
+      "tecnologias": [
+        "Node.js",
+        "Fastify 5",
+        "TypeScript",
+        "Prisma 6"
+      ]
     },
     {
       "capa": {
@@ -3816,7 +3843,10 @@
         "gl": "Datos",
         "en": "Data"
       },
-      "tecnologias": ["PostgreSQL", "pgvector"]
+      "tecnologias": [
+        "PostgreSQL",
+        "pgvector"
+      ]
     },
     {
       "capa": {
@@ -3824,7 +3854,13 @@
         "gl": "Intelixencia artificial",
         "en": "Artificial intelligence"
       },
-      "tecnologias": ["Ollama", "Llama 3.1 8B", "Qwen 2.5 1.5B", "Qwen 3.5 4B", "nomic-embed-text"]
+      "tecnologias": [
+        "Ollama",
+        "Llama 3.1 8B",
+        "Qwen 2.5 1.5B",
+        "Qwen 3.5 4B",
+        "nomic-embed-text"
+      ]
     },
     {
       "capa": {
@@ -3832,7 +3868,12 @@
         "gl": "Instalador",
         "en": "Installer"
       },
-      "tecnologias": ["Tauri v2", "Rust", "NSIS (Windows)", "AppImage (Linux)"]
+      "tecnologias": [
+        "Tauri v2",
+        "Rust",
+        "NSIS (Windows)",
+        "AppImage (Linux)"
+      ]
     },
     {
       "capa": {
@@ -3840,7 +3881,13 @@
         "gl": "Calidade",
         "en": "Quality"
       },
-      "tecnologias": ["Vitest", "Testing Library", "Playwright", "oxlint", "GitHub Actions"]
+      "tecnologias": [
+        "Vitest",
+        "Testing Library",
+        "Playwright",
+        "oxlint",
+        "GitHub Actions"
+      ]
     }
   ],
   "hitos": [

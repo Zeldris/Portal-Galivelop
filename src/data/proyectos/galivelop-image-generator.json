@@ -5,9 +5,8 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#7C5CD6",
-  "icono": "proyectos/galivelop-image-generator/icono.png",
-  "cabecera": "color",
-  "actualizado": "2026-11-08",
+  "icono": "proyectos/galivelop-image-generator/icono.svg",
+  "actualizado": "2026-11-12",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -52,11 +51,11 @@
     "src": "proyectos/galivelop-image-generator/portada.webp",
     "mini": "proyectos/galivelop-image-generator/portada-mini.webp",
     "ancho": 1600,
-    "alto": 840,
+    "alto": 900,
     "alt": {
-      "es": "Portada de Galivelop IG: «Pide, prueba, elige», con una fila de paneles de cristal y uno iluminado",
-      "gl": "Portada de Galivelop IG: «Pide, proba, elixe», cunha fila de paneis de cristal e un iluminado",
-      "en": "Cover of Galivelop IG: “Ask, try, choose”, with a row of glass panels and one lit up"
+      "es": "Portada de Galivelop IG: cuatro hojas de papel flotan en el mar grabado, con un barco de papel, unas ondas, una rosa de los vientos y el sello GV; la del centro lleva una pinza violeta",
+      "gl": "Portada de Galivelop IG: catro follas de papel flotan no mar gravado, cun barco de papel, unhas ondas, unha rosa dos ventos e o selo GV; a do centro leva unha pinza violeta",
+      "en": "Cover of Galivelop IG: four sheets of paper float on an engraved sea, showing a paper boat, ripples, a compass rose and the GV seal; the middle one has a violet clip"
     }
   },
   "enlaces": [
@@ -328,6 +327,11 @@
       "es": "Hoy el servicio está publicado en su versión 0.4.1, con el código abierto bajo licencia MIT: pedidos, intentos, elegida, entrega, cola y registro, el motor real con instalador, la composición de texto y logo sobre la imagen, la medida de marca, una API local y una interfaz en el navegador. Falta comprobar a mano en la Steam Deck el recorrido completo de la interfaz y el arranque bajo demanda, y el piloto con World-Maker-Fantasy.",
       "gl": "Hoxe o servizo está publicado na súa versión 0.4.1, co código aberto baixo licenza MIT: pedidos, intentos, elixida, entrega, cola e rexistro, o motor real con instalador, a composición de texto e logo sobre a imaxe, a medida de marca, unha API local e unha interface no navegador. Falta comprobar a man na Steam Deck o percorrido completo da interface e o arranque baixo demanda, e o piloto con World-Maker-Fantasy.",
       "en": "Today the service is published as version 0.4.1, with the code open under the MIT licence: requests, attempts, chosen one, delivery, queue and log, the real engine with its installer, text and logo composed over the image, brand measurement, a local API and a browser interface. Still to check by hand on the Steam Deck: the full walk-through of the interface and the on-demand start, plus the pilot with World-Maker-Fantasy."
+    },
+    {
+      "es": "Las imágenes e iconos de esta web salen del generador: las portadas por estado de las fichas, los iconos y separadores del inicio, el marco de los retratos, las ilustraciones de la página 404, de los formularios y de «Cómo funciona», las cabeceras del equipo y de novedades, los iconos de los grupos y los marcadores del avance de las fichas, la banda de «¿Quieres participar?», los avisos de lista vacía y de error, las tarjetas de «próximamente» y el icono de Galivelop-workflow. Se pidieron con la hoja de marca del portal, se eligió un intento de cada pedido y los iconos se pasaron a vector con la propia orden gimg.",
+      "gl": "As imaxes e iconas desta web saen do xerador: as portadas por estado das fichas, as iconas e separadores do inicio, o marco dos retratos, as ilustracións da páxina 404, dos formularios e de «Como funciona», as cabeceiras do equipo e das novidades, as iconas dos grupos e os marcadores do avance das fichas, a banda de «Queres participar?», os avisos de lista baleira e de erro, as tarxetas de «proximamente» e a icona de Galivelop-workflow. Pedíronse coa folla de marca do portal, elixiuse un intento de cada pedido e as iconas pasáronse a vector coa propia orde gimg.",
+      "en": "The images and icons on this website come from the generator: the status covers on project pages, the home-page icons and dividers, the portrait frame, the illustrations on the 404 page, the forms and “How it works”, the team and news headers, the section icons and progress markers on project pages, the “Want to get involved?” band, the empty-list and error notices, the “coming soon” cards and the Galivelop-workflow icon. They were requested with the portal’s brand sheet, one attempt was chosen from each request, and the icons were turned into vectors with gimg itself."
     }
   ],
   "lineas": ["ia-local", "producto"],
@@ -1107,6 +1111,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-12",
+      "texto": {
+        "es": "La web de Galivelop ya usa imágenes e iconos del generador (portadas, iconos del inicio, ilustraciones y marcos), pedidos con la hoja de marca del portal.",
+        "gl": "A web de Galivelop xa usa imaxes e iconas do xerador (portadas, iconas do inicio, ilustracións e marcos), pedidas coa folla de marca do portal.",
+        "en": "The Galivelop website now uses images and icons from the generator (covers, home-page icons, illustrations and frames), requested with the portal’s brand sheet."
+      }
+    },
     {
       "fecha": "2026-11-06",
       "texto": {

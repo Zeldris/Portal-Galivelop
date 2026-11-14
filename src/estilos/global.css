@@ -108,6 +108,25 @@
   --ok-texto: #8fb09e;
 }
 
+/*
+ * Acento de cada proyecto (docs/marca.md, «Acento de cada proyecto»; src/data/tonos.ts). Entra donde el Portal usa el
+ * alga: el vivo (`--acento-proyecto`) marca filetes, puntos y tinte; el texto va en el hondo (claro) o en su variante
+ * oscura, y los bloques con texto blanco, en el hondo en los dos temas. Sin proyecto, los del Portal.
+ */
+:root {
+  --acento-texto: var(--enlace);
+  --acento-bloque: var(--celeste-hondo);
+}
+
+[style*='--acento-proyecto'] {
+  --acento-texto: var(--acento-proyecto-hondo);
+  --acento-bloque: var(--acento-proyecto-hondo);
+}
+
+:root[data-tema='oscuro'] [style*='--acento-proyecto'] {
+  --acento-texto: var(--acento-proyecto-oscuro);
+}
+
 *,
 *::before,
 *::after {
@@ -873,6 +892,16 @@ button {
   border: 1px dashed var(--borde);
 }
 
+/* Aviso vacío de las listas (muro, novedades): la ventana en blanco sobre la carta (recurso 27) encima del texto. */
+.vacio-ilustrado {
+  /* La imagen ya va enmarcada: sin el borde discontinuo de .vacio. */
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
 /* ---------- Tarjetas de proyecto ---------- */
 
 .rejilla-proyectos {
@@ -1023,6 +1052,23 @@ button {
   margin-top: 48px;
 }
 
+/* Separador de la marca (recurso 12): filete con rosa de ocho puntas, entre bloques largos de una sección. */
+.separador {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 32px auto;
+}
+
+/* Mismo aire arriba y abajo: el margen de «Próximamente» cede al del separador. */
+.separador + .proximamente {
+  margin-top: 0;
+}
+
+:root:not([data-tema='claro']) .separador {
+  filter: invert(1) hue-rotate(180deg);
+}
+
 .proximamente header {
   margin-bottom: 20px;
 }
@@ -1089,7 +1135,7 @@ button {
   place-items: center;
   width: 38px;
   height: 38px;
-  color: var(--acento-proyecto);
+  color: var(--acento-texto);
   background: color-mix(in srgb, var(--acento-proyecto) 14%, transparent);
   filter: saturate(0.7);
 }
@@ -1143,14 +1189,21 @@ button {
 }
 
 .sobre-rejilla > div > p.sobre-nombre {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 4px 16px;
   margin-top: 24px;
   padding-top: 18px;
   border-top: 1px solid var(--borde);
   font-size: 0.93rem;
   color: var(--texto-3);
+}
+
+.sobre-sello {
+  grid-row: span 2;
+  width: 72px;
+  height: 72px;
 }
 
 .sobre-marca {
@@ -1224,13 +1277,28 @@ button {
 /* ---------- Pie ---------- */
 
 .pie {
+  position: relative;
+  overflow: hidden;
   border-top: 1px solid var(--borde);
   padding: 48px 0 28px;
   background: var(--fondo-alterno);
 }
 
+/* Rosa de los vientos (recurso 4): marca de agua tenue, medio fuera por la esquina, detrás de todo el pie. */
+.pie-rosa {
+  position: absolute;
+  z-index: 0;
+  right: -60px;
+  bottom: -60px;
+  width: 280px;
+  height: 280px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
 /* Marca y cuatro columnas en escritorio; por debajo, la marca arriba y las columnas de dos en dos. */
 .pie-rejilla {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
   gap: 32px 24px;
@@ -1277,6 +1345,7 @@ button {
 }
 
 .pie-base {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -1390,9 +1459,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 20px 18px;
-  margin-top: 56px;
-  padding-top: 20px;
-  border-top: 1px solid var(--borde);
+  margin-top: 8px;
   color: var(--texto-3);
 }
 
@@ -1424,7 +1491,8 @@ button {
   z-index: -2;
 }
 
-.cabecera-ilustracion::before {
+.cabecera-ilustracion::before,
+.cabecera-velada::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -1438,7 +1506,8 @@ button {
   color: var(--blanco);
 }
 
-:root[data-tema='claro'] .cabecera-ilustracion::before {
+:root[data-tema='claro'] .cabecera-ilustracion::before,
+:root[data-tema='claro'] .cabecera-velada::before {
   background: var(--velo-medio);
 }
 
@@ -1602,9 +1671,9 @@ button {
 
 .galeria-grupo[aria-pressed='true'] {
   color: var(--blanco);
-  /* Oscurecido como el índice de la ficha (`.nav-ficha`), para el contraste con el blanco. */
-  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste-intenso)) 78%, #000);
-  border-color: color-mix(in srgb, var(--acento-proyecto, var(--celeste-intenso)) 78%, #000);
+  /* El hondo del acento: el blanco encima, a 4,5:1 o más (src/data/tonos.ts). */
+  background: var(--acento-bloque);
+  border-color: var(--acento-bloque);
 }
 
 .galeria-grupo-total {
@@ -1907,7 +1976,7 @@ button {
   width: 42px;
   height: 42px;
   margin-bottom: 14px;
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--acento-texto);
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
 }
 
@@ -1973,7 +2042,7 @@ button {
   content: '';
   position: absolute;
   left: 15px;
-  top: 32px;
+  top: 30px;
   bottom: 0;
   width: 2px;
   background: var(--borde);
@@ -1983,35 +2052,26 @@ button {
   background: var(--celeste);
 }
 
+/* Marcadores del avance (recurso 26): el aro de la marca, del color de cada estado. */
 .hito-marca {
   display: grid;
   place-items: center;
   width: 32px;
   height: 32px;
-  border: 2px solid var(--borde);
-  background: var(--superficie);
   color: var(--texto-3);
 }
 
+.hito-marca svg {
+  width: 28px;
+  height: 28px;
+}
+
 .hito-hecho .hito-marca {
-  background: var(--celeste);
-  border-color: var(--celeste);
-  color: var(--blanco);
+  color: var(--celeste);
 }
 
 .hito-curso .hito-marca {
-  border-color: var(--alga);
   color: var(--alga);
-}
-
-.hito-curso .hito-marca svg {
-  animation: girar 3s linear infinite;
-}
-
-@keyframes girar {
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .hito-titulo {
@@ -2114,6 +2174,35 @@ button {
   text-decoration: underline;
 }
 
+/* Con icono, el icono del proyecto ocupa el sitio del punto de color. */
+.novedad-proyecto:has(.novedad-icono)::before {
+  display: none;
+}
+
+.novedad-icono {
+  width: 24px;
+  height: 24px;
+  padding: 2px;
+  object-fit: contain;
+  /* Como en la cabecera de la ficha: fondo blanco, para que los iconos de trazo oscuro se lean en los dos temas. */
+  background: var(--blanco);
+}
+
+/* Cambio de mes en /novedades: el separador de la marca a todo el ancho de la lista. */
+.novedades li.novedades-corte {
+  display: block;
+  padding: 0;
+  border-top: 0;
+}
+
+.novedades-corte .separador {
+  margin: 12px auto;
+}
+
+.novedades li.novedades-corte + li {
+  border-top: 0;
+}
+
 .novedad-muro {
   font-size: 0.88rem;
   color: var(--texto-3);
@@ -2164,19 +2253,6 @@ button {
   padding: 14px 16px;
   border: 1px solid var(--borde);
   background: var(--superficie-2);
-}
-
-.avatar {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--blanco);
-  background: var(--celeste-hondo);
-  flex: none;
 }
 
 .equipo-nombre {
@@ -2254,11 +2330,13 @@ button {
   color: var(--texto-2);
 }
 
-/* Ilustraciones sobre papel (404, formularios, equipo): enmarcadas, a su tamaño o menos. */
+/* Ilustraciones sobre papel (404, error de carga, lista vacía, formularios, equipo): enmarcadas, a su tamaño o menos. */
 .no-encontrado-imagen,
+.aviso-error-imagen,
+.vacio-imagen,
 .formulario-ilustracion,
 .formulario-listo-imagen,
-.equipo-banda {
+.banda-cabecera {
   display: block;
   width: 100%;
   height: auto;
@@ -2273,12 +2351,23 @@ button {
   margin: 4px 0 24px;
 }
 
+.aviso-error-imagen,
+.vacio-imagen,
 .formulario-listo-imagen {
   max-width: 240px;
+}
+
+.formulario-listo-imagen {
   margin-bottom: 16px;
 }
 
-.equipo-banda {
+/* Imagen con versión por tema: solo se ve la del tema activo. */
+:root[data-tema='claro'] .solo-oscuro,
+:root:not([data-tema='claro']) .solo-claro {
+  display: none;
+}
+
+.banda-cabecera {
   margin-bottom: clamp(24px, 4vw, 40px);
 }
 
@@ -2287,7 +2376,7 @@ button {
 .cabecera-captura,
 .cabecera-color {
   align-items: center;
-  /* Sin captura a pantalla completa: celeste hondo plano con isobatas, como la portada (regla 6). */
+  /* Celeste hondo: con isobatas detrás de la captura; en color, bajo la portada por estado velada (recurso 6). */
   background: var(--celeste-hondo);
 }
 
@@ -2397,19 +2486,6 @@ button {
 }
 
 /* ---------- Contacto: correos ---------- */
-
-.contacto-botones {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.contacto-correo {
-  font-weight: 600;
-  text-decoration: none;
-  word-break: break-all;
-}
 
 .contacto-proyectos {
   margin-top: 28px;
@@ -2556,12 +2632,17 @@ button {
   background: var(--superficie);
 }
 
+.participar-icono svg {
+  width: 26px;
+  height: 26px;
+}
+
 .participar-icono {
   display: grid;
   place-items: center;
   width: 52px;
   height: 52px;
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--acento-texto);
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
 }
 
@@ -2582,6 +2663,70 @@ button {
   }
   .participar .boton {
     justify-self: start;
+  }
+}
+
+/* Rosa y sello en el tema oscuro: en negativo (tinta clara, relleno noche). */
+:root:not([data-tema='claro']) .pie-rosa,
+:root:not([data-tema='claro']) .sobre-sello {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Banda de la marca (recurso 29), con su versión para cada tema: mide 4:1 y deja el cabo en la mitad derecha, así
+   que el texto va en la izquierda. */
+.participar-banda {
+  display: none;
+}
+
+.participar-abierta {
+  position: relative;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  gap: 16px 20px;
+  aspect-ratio: 4 / 1;
+  padding: 24px 48% 24px 24px;
+  overflow: hidden;
+}
+
+.participar-abierta > :not(.participar-banda) {
+  position: relative;
+}
+
+.participar-abierta .boton {
+  grid-column: 2;
+  justify-self: start;
+}
+
+/* Si el texto pide más alto que el 4:1, la banda crece y recorta papel vacío por la izquierda, nunca el cabo. */
+:root[data-tema='claro'] .participar-banda-claro,
+:root:not([data-tema='claro']) .participar-banda-oscuro {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+/* Por debajo de 900 px el texto ya no cabe en el 4:1 y el cover recortaría el cabo: la banda pasa encima del texto,
+   de borde a borde, y recorta solo papel de la izquierda. */
+@media (max-width: 900px) {
+  .participar-abierta {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+    padding: 0 24px 24px;
+  }
+  .participar-abierta .boton {
+    grid-column: auto;
+  }
+  :root[data-tema='claro'] .participar-banda-claro,
+  :root:not([data-tema='claro']) .participar-banda-oscuro {
+    position: static;
+    width: calc(100% + 48px);
+    max-width: none;
+    height: 120px;
+    margin: 0 -24px;
   }
 }
 
@@ -3017,7 +3162,7 @@ button {
 .aprendizajes svg {
   flex: none;
   margin-top: 3px;
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--acento-texto);
 }
 
 /* ---------- Discord ---------- */
@@ -3145,6 +3290,17 @@ button {
   flex: none;
   width: 64px;
   height: 64px;
+}
+
+/* Retrato con marco en el equipo de cada ficha. */
+.equipo-retrato {
+  flex: none;
+  width: 52px;
+  height: 52px;
+}
+
+.equipo-retrato .persona-iniciales {
+  font-size: 0.85rem;
 }
 
 /* Marco de carta náutica alrededor de la foto (recurso 17): una máscara pintada con el color del texto, para que
@@ -3750,6 +3906,11 @@ img.perfil-logo {
   background: var(--tinte);
 }
 
+.proyecto-propio-icono svg {
+  width: 22px;
+  height: 22px;
+}
+
 .proyecto-propio h3 {
   font-size: 1.08rem;
   margin-bottom: 4px;
@@ -3778,6 +3939,7 @@ img.perfil-logo {
 
 .persona-hueco {
   display: grid;
+  padding: 18%;
   place-items: center;
   color: var(--celeste);
   background: var(--tinte);
@@ -3797,10 +3959,6 @@ img.perfil-logo {
 
 .equipo > li:has(.equipo-enlace:hover) {
   border-color: var(--celeste);
-}
-
-img.avatar {
-  object-fit: cover;
 }
 
 /* Con resumen y tecnologías la tarjeta crece: la foto, alineada con el nombre. */
@@ -4047,7 +4205,8 @@ img.avatar {
   font-weight: 700;
   font-size: 0.9rem;
   color: var(--blanco);
-  background: var(--acento-proyecto, var(--celeste));
+  /* Número blanco en negrita de 14 px (no es texto grande): sobre el hondo, a 4,5:1 o más. */
+  background: var(--acento-bloque);
 }
 
 .pasos-ficha h4 {
@@ -4631,7 +4790,7 @@ img.avatar {
   font-size: 0.82rem;
   font-weight: 700;
   padding: 2px 9px;
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--acento-texto);
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 15%, transparent);
 }
 
@@ -4859,8 +5018,8 @@ body:has(dialog[open]) {
 
 .nav-ficha a[aria-current='true'] {
   color: var(--blanco);
-  /* El acento, oscurecido: con el naranja de Tarkor, el blanco se quedaba en 3,2:1. */
-  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 78%, #000);
+  /* El hondo del acento: con el vivo, el blanco sobre el naranja de Tarkor se quedaba en 3,2:1. */
+  background: var(--acento-bloque);
 }
 
 .grupo {
@@ -4869,8 +5028,26 @@ body:has(dialog[open]) {
 }
 
 .grupo-titulo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: clamp(1.4rem, 3.5vw, 1.8rem);
   margin-bottom: 18px;
+}
+
+/* Iconos de los grupos (recurso 25), en el título y en el índice. */
+.grupo-titulo svg {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  color: var(--acento-texto);
+}
+
+.nav-ficha a svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: -3px;
 }
 
 .grupo-texto {
@@ -5035,7 +5212,7 @@ body:has(dialog[open]) {
   font-family: var(--fuente-titulos);
   font-weight: 700;
   font-size: 1.4rem;
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--acento-texto);
   background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
 }
 
@@ -5062,7 +5239,7 @@ body:has(dialog[open]) {
 }
 
 .mosaico-pieza:hover .mosaico-flecha {
-  color: var(--acento-proyecto, var(--celeste));
+  color: var(--acento-texto);
 }
 
 /* Hoja de un apartado: panel ancho y centrado en escritorio, pantalla completa en móvil. */

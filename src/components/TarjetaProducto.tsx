@@ -1,5 +1,5 @@
+import { estiloAcento } from '../data/tonos';
 import { ArrowRight, Mail } from 'lucide-react';
-import type { CSSProperties } from 'react';
 import { Link } from './Enlace';
 import { buscarPersonaPorId } from '../data/equipo';
 import { MARCA } from '../data/marca';
@@ -32,10 +32,7 @@ export function TarjetaProducto({
     .filter((x) => x !== undefined);
   const proyecto = buscarProyecto(p.proyecto);
   return (
-    <article
-      className="tarjeta-producto"
-      style={{ '--acento-proyecto': p.acento } as CSSProperties}
-    >
+    <article className="tarjeta-producto" style={estiloAcento(p.acento)}>
       <div className="proxima-cabeza">
         <span className="proxima-icono">
           <Icono nombre={p.icono} tamano={22} />

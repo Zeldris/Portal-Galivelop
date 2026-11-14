@@ -147,3 +147,11 @@ carpeta del portal. `measure.py` y `recover.py` lo buscan también en las carpet
 - 2026-10-22, piloto de Galivelop-workflow: 62 llamadas, 171k de contexto medio, suelo 71k, techo 237k, sin
   compactar (la ventana de 200k no se aplicó).
 - 2026-10-21, sesión del flujo traído de Tarkor: ~681k de contexto medio por llamada antes del `/clear`.
+- **`docs/marca.md` por secciones** (2026-11-12, retro P2): `grep -n '^##' docs/marca.md` y `sed -n '/^## Alcance/,/^## /p'
+  docs/marca.md`; entero solo la primera vez en la tarea (la hoja del generador lo leyó 13 veces, 252k arrastrados).
+- **Documento de otro repo para aplicar** (2026-11-12, retro P3, propuesto al flujo): el subagente devuelve los puntos
+  con su texto literal y las rutas, no un resumen; la sesión leyó la hoja del generador 3 veces más (250k).
+- **Node fijo en la máquina local** (2026-11-12, retro P4): `/home/deck/.local/node`, en el PATH por
+  `.claude/settings.local.json`; sin él, cada orden exportaba el PATH a mano y un push falló.
+- 2026-11-12, imágenes, «reutilizar» y hoja del generador sin `/clear` entre medias: 104 llamadas, 125k de contexto
+  medio (techo 166k), 2 compactaciones con presupuesto 1; 3 subagentes, 3,0M de entrada.

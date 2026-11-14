@@ -128,7 +128,7 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 `src/data/productos/<slug>.json` (formato en [`src/data/productos.ts`](../src/data/productos.ts)); los decide
 Álvaro y se mantienen a mano, no con la tarea semanal.
 
-- `slug`, `nombre`, `orden` (de menor a mayor), `acento` (color hex) e `icono` (nombre de `Icono`).
+- `slug`, `nombre`, `orden` (de menor a mayor), `acento` (color hex: el vivo; el hondo y el oscuro los calcula `src/data/tonos.ts`, ver `docs/marca.md`, «Acento de cada proyecto») e `icono` (nombre de `Icono`).
 - `proyecto` (slug de la ficha del taller) **o** `proximo` (slug de `src/data/proximamente.json`): uno de los dos, para
   enlazar con el taller.
 - `estado`: `disponible` o `proximamente` (sale con la etiqueta «Próximamente» y se oferta igual, sin explicar
@@ -318,8 +318,10 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   `/gl/` y `/en/` (sin ellas, `og.jpg`). Para una `og-fuente.png` hecha a mano con el texto dentro:
   `python3 tools/og/limpiar.py` saca su placa sin texto (`og-base.png`), `tools/og/<slug>-og.html` pone encima el
   texto de cada idioma con las mismas fuentes (de `node_modules/@fontsource*`) y `node tools/og/traducir.mjs <slug>`
-  las renderiza y corre `generar.py` (así están toVeriAI y Galivelop IG). El texto alternativo de la vista previa es el
-  de `presentacion` (o el de la portada) en el idioma de la página. Una
+  las renderiza y corre `generar.py` (así está Galivelop IG). Si la placa viene del generador sin texto (recurso 24:
+  Tarkor y toVeriAI), la plantilla pinta también el castellano: `node tools/og/traducir.mjs <slug> --es`. El texto alternativo de la vista previa es el
+  de `ogAlt` si la ficha lo trae (una placa con composición propia, como las de Tarkor y toVeriAI), si no el de
+  `presentacion` (o el de la portada), en el idioma de la página. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
 - **Título y descripción:** los de cada página van en `FIJAS` del script; los de un proyecto salen de su lema y su

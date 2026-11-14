@@ -12,6 +12,8 @@ export interface Proximo {
   acento: string;
   /** Nombre de un icono de src/components/Icono.tsx. */
   icono: string;
+  /** Icono propio del proyecto (SVG en public/, recurso 23), opcional: si está, se pinta en lugar de `icono`. */
+  iconoPropio?: string;
   /** Qué es, en una línea. */
   lema: Texto;
   /** Fases del plan del proyecto: las cerradas y el total. */

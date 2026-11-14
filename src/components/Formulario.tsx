@@ -1,8 +1,8 @@
 import { ArrowLeft, Check, Copy, Mail, Send } from 'lucide-react';
 import { useState, type FormEvent, type ReactNode } from 'react';
 import { Link } from './Enlace';
+import { ImagenTema } from './ImagenTema';
 import { MARCA } from '../data/marca';
-import { ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
 export interface Correo {
@@ -36,8 +36,8 @@ export function componerCorreo(
 interface Props {
   titulo: string;
   intro: string;
-  /** Ilustración decorativa entre la entrada y el formulario (ruta en public/), opcional. */
-  ilustracion?: { src: string; ancho: number; alto: number };
+  /** Ilustración decorativa entre la entrada y el formulario (rutas en public/, una por tema), opcional. */
+  ilustracion?: { claro: string; oscuro: string; ancho: number; alto: number };
   /** Devuelve el correo a partir de los datos del formulario. */
   componer: (datos: FormData) => Correo;
   children: ReactNode;
@@ -76,10 +76,10 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
         <h1>{titulo}</h1>
         <p className="formulario-intro">{intro}</p>
         {ilustracion && (
-          <img
+          <ImagenTema
             className="formulario-ilustracion"
-            src={ruta(ilustracion.src)}
-            alt=""
+            claro={ilustracion.claro}
+            oscuro={ilustracion.oscuro}
             width={ilustracion.ancho}
             height={ilustracion.alto}
           />
@@ -103,10 +103,11 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
 
         {correo && (
           <div className="formulario-listo" role="status">
-            <img
+            {/* Recurso 19. */}
+            <ImagenTema
               className="formulario-listo-imagen"
-              src={ruta('marca/enviado.webp')}
-              alt=""
+              claro="marca/enviado.webp"
+              oscuro="marca/enviado-oscura.webp"
               width={480}
               height={360}
             />

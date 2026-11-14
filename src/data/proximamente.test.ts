@@ -28,6 +28,15 @@ describe('próximamente', () => {
         expect(p.acento).toMatch(/^#[0-9a-f]{6}$/i);
       });
 
+      it('su icono propio, si lo tiene, es un SVG de public/ con ruta relativa', () => {
+        if (!p.iconoPropio) return;
+        expect(p.iconoPropio).toMatch(/^[a-z0-9-]+(\/[a-z0-9-]+)*\.svg$/);
+        expect(
+          existsSync(new URL(`../../public/${p.iconoPropio}`, import.meta.url)),
+          p.iconoPropio,
+        ).toBe(true);
+      });
+
       it('su imagen, si la tiene, es un WebP de public/ con ruta relativa', () => {
         if (!p.imagen) return;
         expect(p.imagen).toMatch(/^[a-z0-9-]+(\/[a-z0-9-]+)*\.webp$/);
