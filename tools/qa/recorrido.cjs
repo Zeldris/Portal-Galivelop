@@ -26,7 +26,11 @@ const arg = (nombre) => {
   const i = process.argv.indexOf(nombre);
   return i > -1 ? process.argv[i + 1] : undefined;
 };
-const BASE = (arg('--url') || process.env.BASE || 'http://localhost:4173/Portal-Galivelop/').replace(/\/?$/, '/');
+const BASE = (
+  arg('--url') ||
+  process.env.BASE ||
+  'http://localhost:4173/Portal-Galivelop/'
+).replace(/\/?$/, '/');
 const ANCHOS = (arg('--anchos') || '320,375,768,1024,1100,1280,1920').split(',').map(Number);
 const ANCHO_FOCO = 1280;
 const TEMAS = ['claro', 'oscuro'];
@@ -37,12 +41,18 @@ function rutas() {
   const mapa = join(RAIZ, 'dist', 'sitemap.xml');
   const fija = ['', 'equipo/', 'novedades/', 'productos/', 'muro/', 'proyectos/tarkor/'];
   let base = existsSync(mapa)
-    ? [...readFileSync(mapa, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => new URL(m[1]).pathname.replace(/^\/Portal-Galivelop\//, ''))
+    ? [...readFileSync(mapa, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) =>
+        new URL(m[1]).pathname.replace(/^\/Portal-Galivelop\//, ''),
+      )
     : fija;
   return [...new Set(base)];
 }
 
-const responde = () => fetch(BASE, { signal: AbortSignal.timeout(2000) }).then((r) => r.ok, () => false);
+const responde = () =>
+  fetch(BASE, { signal: AbortSignal.timeout(2000) }).then(
+    (r) => r.ok,
+    () => false,
+  );
 let vista = null;
 const parar = () => {
   try {
@@ -57,7 +67,11 @@ async function servidor() {
     console.error('recorrido: dist/ is missing. Run: npm run build');
     process.exit(2);
   }
-  vista = spawn('npx', ['vite', 'preview', '--port', '4173', '--strictPort'], { cwd: RAIZ, stdio: 'ignore', detached: true });
+  vista = spawn('npx', ['vite', 'preview', '--port', '4173', '--strictPort'], {
+    cwd: RAIZ,
+    stdio: 'ignore',
+    detached: true,
+  });
   for (let i = 0; i < 60; i++) {
     if (await responde()) return;
     await new Promise((r) => setTimeout(r, 250));
@@ -72,14 +86,26 @@ function medir() {
   const ancho = window.innerWidth;
   const corto = (e) => {
     const id = e.id ? '#' + e.id : '';
-    const cl = typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/)[0] : '';
-    const txt = (e.getAttribute('aria-label') || e.textContent || e.getAttribute('href') || '').trim().replace(/\s+/g, ' ').slice(0, 24);
+    const cl =
+      typeof e.className === 'string' && e.className.trim()
+        ? '.' + e.className.trim().split(/\s+/)[0]
+        : '';
+    const txt = (e.getAttribute('aria-label') || e.textContent || e.getAttribute('href') || '')
+      .trim()
+      .replace(/\s+/g, ' ')
+      .slice(0, 24);
     return `${e.tagName.toLowerCase()}${id}${cl}${txt ? ` «${txt}»` : ''}`;
   };
   const visible = (e) => {
     const cs = getComputedStyle(e);
     const r = e.getBoundingClientRect();
-    return cs.display !== 'none' && cs.visibility !== 'hidden' && r.width > 0 && r.height > 0 && cs.opacity !== '0';
+    return (
+      cs.display !== 'none' &&
+      cs.visibility !== 'hidden' &&
+      r.width > 0 &&
+      r.height > 0 &&
+      cs.opacity !== '0'
+    );
   };
   const recortado = (e) => {
     for (let a = e.parentElement; a && a !== document.documentElement; a = a.parentElement) {
@@ -96,19 +122,28 @@ function medir() {
   for (const e of document.body.querySelectorAll('*')) {
     if (!visible(e)) continue;
     const r = e.getBoundingClientRect();
-    if ((r.right > ancho + 1 || r.left < -1) && !recortado(e) && getComputedStyle(e).position !== 'fixed') fuera.add(corto(e));
+    if (
+      (r.right > ancho + 1 || r.left < -1) &&
+      !recortado(e) &&
+      getComputedStyle(e).position !== 'fixed'
+    )
+      fuera.add(corto(e));
   }
-  const objetivos = 'a[href], button, input:not([type=hidden]), select, textarea, summary, [role=button], [tabindex]:not([tabindex="-1"])';
+  const objetivos =
+    'a[href], button, input:not([type=hidden]), select, textarea, summary, [role=button], [tabindex]:not([tabindex="-1"])';
   for (const e of document.querySelectorAll(objetivos)) {
     if (!visible(e) || e.disabled) continue;
     const r = e.getBoundingClientRect();
-    if (r.width >= 24 && r.height >= 24) continue;
+    if (r.width >= 23.5 && r.height >= 23.5) continue; // tolerancia de subpíxel
     if (e.tagName === 'A' && getComputedStyle(e).display === 'inline') continue; // enlace dentro de un texto
     if (r.bottom < 0 || r.top > document.documentElement.scrollHeight) continue;
     pequenos.add(`${corto(e)} ${Math.round(r.width)}x${Math.round(r.height)}`);
   }
   return {
-    scroll: document.documentElement.scrollWidth > ancho ? `${document.documentElement.scrollWidth} > ${ancho}` : null,
+    scroll:
+      document.documentElement.scrollWidth > ancho
+        ? `${document.documentElement.scrollWidth} > ${ancho}`
+        : null,
     fuera: [...fuera],
     pequenos: [...pequenos],
     enlaces: [...document.querySelectorAll('a[href]')].map((a) => a.href),
@@ -130,16 +165,19 @@ function contrasteFoco() {
   };
   const sobre = (f, d) => f.slice(0, 3).map((v, i) => v * f[3] + d[i] * (1 - f[3]));
   const lum = (c) => {
-    const [r, g, b] = c.map((v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4));
+    const [r, g, b] = c.map((v) =>
+      (v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4,
+    );
     return 0.2126 * r + 0.7152 * g + 0.0722 * b;
   };
   const cs = getComputedStyle(e);
   const desc = `${e.tagName.toLowerCase()}${typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/)[0] : ''} «${(e.getAttribute('aria-label') || e.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 24)}»`;
   const tiene = cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth) > 0;
   if (!tiene) return { desc, sinContorno: cs.boxShadow === 'none' };
-  // Fondo: capas de los ascendientes, de dentro afuera, sobre blanco.
+  // Fondo: capas de los ascendientes (y del propio elemento si el contorno cae dentro), sobre blanco.
   let capas = [];
-  for (let a = e.parentElement; a; a = a.parentElement) capas.push(rgba(getComputedStyle(a).backgroundColor));
+  for (let a = parseFloat(cs.outlineOffset) < 0 ? e : e.parentElement; a; a = a.parentElement)
+    capas.push(rgba(getComputedStyle(a).backgroundColor));
   let fondo = [255, 255, 255];
   for (const c of capas.reverse()) fondo = sobre(c, fondo);
   const contorno = sobre(rgba(cs.outlineColor), fondo);
@@ -167,8 +205,17 @@ function contrasteFoco() {
       let donde = '';
       // `npm run medir` ya cubre consola y táctiles en claro a 320 y 1280: aquí no se repiten.
       const repetido = tema === 'claro' && [320, 1280].includes(ancho);
-      page.on('console', (m) => !repetido && ['error', 'warning'].includes(m.type()) && anotar('consola', `${donde} consola.${m.type()}: ${m.text().slice(0, 160)}`));
-      page.on('pageerror', (e) => !repetido && anotar('consola', `${donde} pageerror: ${e.message.slice(0, 160)}`));
+      page.on(
+        'console',
+        (m) =>
+          !repetido &&
+          ['error', 'warning'].includes(m.type()) &&
+          anotar('consola', `${donde} consola.${m.type()}: ${m.text().slice(0, 160)}`),
+      );
+      page.on(
+        'pageerror',
+        (e) => !repetido && anotar('consola', `${donde} pageerror: ${e.message.slice(0, 160)}`),
+      );
       for (const ruta of paginas) {
         donde = `[${tema} ${ancho} /${ruta}]`;
         try {
@@ -180,7 +227,8 @@ function contrasteFoco() {
         const m = await page.evaluate(medir);
         if (m.scroll) anotar('scroll-horizontal', `${donde} scroll horizontal ${m.scroll}`);
         for (const f of m.fuera) anotar('fuera-de-pantalla', `${donde} fuera de pantalla: ${f}`);
-        for (const p of repetido ? [] : m.pequenos) anotar('tactil<24', `${donde} objetivo táctil pequeño: ${p}`);
+        for (const p of repetido ? [] : m.pequenos)
+          anotar('tactil<24', `${donde} objetivo táctil pequeño: ${p}`);
         for (const u of m.enlaces) {
           const url = new URL(u);
           if (url.origin === new URL(BASE).origin && /^https?:$/.test(url.protocol)) {
@@ -188,7 +236,10 @@ function contrasteFoco() {
             if (!internos.has(url.href)) internos.set(url.href, `/${ruta}`);
           }
         }
-        if (ancho === ANCHO_FOCO || (!ANCHOS.includes(ANCHO_FOCO) && ancho === ANCHOS[ANCHOS.length - 1])) {
+        if (
+          ancho === ANCHO_FOCO ||
+          (!ANCHOS.includes(ANCHO_FOCO) && ancho === ANCHOS[ANCHOS.length - 1])
+        ) {
           await page.evaluate(() => document.activeElement?.blur());
           const vistos = new Set();
           for (let i = 0; i < 80; i++) {
@@ -200,7 +251,8 @@ function contrasteFoco() {
             }
             vistos.add(c.desc);
             if (c.sinContorno) anotar('foco', `${donde} foco sin contorno ni sombra: ${c.desc}`);
-            else if (c.ratio !== undefined && c.ratio < 3) anotar('foco', `${donde} contorno de foco ${c.ratio.toFixed(2)}:1 < 3:1: ${c.desc}`);
+            else if (c.ratio !== undefined && c.ratio < 3)
+              anotar('foco', `${donde} contorno de foco ${c.ratio.toFixed(2)}:1 < 3:1: ${c.desc}`);
           }
         }
       }
@@ -210,12 +262,15 @@ function contrasteFoco() {
   const ctx = await browser.newContext();
   for (const [url, origen] of internos) {
     const r = await ctx.request.get(url).catch((e) => ({ status: () => e.message.split('\n')[0] }));
-    if (r.status() !== 200) anotar('enlace-roto', `[enlace] ${r.status()} ${url} (desde ${origen})`);
+    if (r.status() !== 200)
+      anotar('enlace-roto', `[enlace] ${r.status()} ${url} (desde ${origen})`);
   }
   await browser.close();
   parar();
   console.log(problemas.join('\n') + (problemas.length ? '\n' : ''));
-  const detalle = Object.entries(cuenta).map(([k, v]) => `${k} ${v}`).join(', ');
+  const detalle = Object.entries(cuenta)
+    .map(([k, v]) => `${k} ${v}`)
+    .join(', ');
   console.log(
     `recorrido: ${paginas.length} páginas x ${ANCHOS.length} anchos x ${TEMAS.length} temas, ${internos.size} enlaces internos, ${problemas.length} problemas${detalle ? ` (${detalle})` : ''}, ${Math.round((Date.now() - inicio) / 1000)} s`,
   );
