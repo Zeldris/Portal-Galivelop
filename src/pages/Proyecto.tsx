@@ -12,7 +12,7 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { IconoMarca, type NombreIcono } from '../components/IconoMarca';
-import { EnlaceRed } from '../components/IconoRed';
+import { ListaRedes } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
 import { buscarPersona } from '../data/equipo';
@@ -621,8 +621,10 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                           <div>
                             <p className="equipo-nombre">{m.nombre}</p>
                             <p className="equipo-rol">{tx(m.rol)}</p>
-                            {perfil?.resumen && (
-                              <p className="equipo-resumen">{tx(perfil.resumen)}</p>
+                            {(perfil?.titular ?? perfil?.resumen) && (
+                              <p className="equipo-resumen">
+                                {tx(perfil.titular ?? perfil.resumen!)}
+                              </p>
                             )}
                             {!!perfil?.destacadas?.length && (
                               <ul className="equipo-destacadas">
@@ -649,16 +651,12 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                           )}
                           {/* Fuera del enlace de la tarjeta: un enlace no puede ir dentro de otro. */}
                           {!!persona?.redes.length && (
-                            <ul
-                              className="equipo-redes"
-                              aria-label={t('equipo.redes', { nombre: persona.nombre })}
-                            >
-                              {persona.redes.map((r) => (
-                                <li key={r.url}>
-                                  <EnlaceRed red={r} soloIcono />
-                                </li>
-                              ))}
-                            </ul>
+                            <ListaRedes
+                              redes={persona.redes}
+                              nombre={persona.nombre}
+                              clase="equipo-redes"
+                              soloIcono
+                            />
                           )}
                         </li>
                       );

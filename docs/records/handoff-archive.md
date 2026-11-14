@@ -2,6 +2,14 @@
 
 Lo que sale de `docs/handoff.md` para que la bitácora no pase de `logSize`. No se lee al empezar la sesión.
 
+## 2026-11-14 (tercera vez)
+
+Archivado a mano: de «Hecho», la entrada más antigua.
+
+### Hecho
+
+- 2026-11-11 · **Rama de la otra sesión (`ccr-47a38edd-v566du`) y novedad de Tarkor, a `main`** (48827b1; la persona: «Y apruebo todo, lleva a main»): vistas previas en redes por idioma (imágenes `-gl`/`-en` del portal y de las fichas, páginas de paso con la tarjeta de `/equipo/` en su idioma, herramientas de `tools/og/` y `og.test.ts`), avance por versiones de Galivelop-workflow e Image Generator según sus hojas de ruta, toVeriAI al día (novedad del 2026-11-09, hito 1.13) y novedad de Tarkor del 2026-11-10 (generador de mapas por capas, viajes con horas y jornadas, 25 zonas al canon; escrita desde el contraste, el texto del informe no llegó al repo). Tras publicar, refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`).
+
 ## 2026-11-14 (segunda vez)
 
 Archivado a mano: de «Pendiente», los leves de revisiones anteriores al 2026-11-13, lo ya hecho y los informes y notas viejas (difusión, repos nuevos, contraste de avances, productos, vista previa).

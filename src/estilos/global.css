@@ -3418,7 +3418,8 @@ button {
   border-top: 1px solid var(--borde);
 }
 
-.persona-redes a {
+.persona-redes a,
+.equipo-redes a {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -3433,7 +3434,8 @@ button {
     border-color var(--transicion);
 }
 
-.persona-redes a:hover {
+.persona-redes a:hover,
+.equipo-redes a:hover {
   color: var(--texto);
   border-color: var(--celeste);
 }
@@ -4020,15 +4022,16 @@ img.perfil-logo {
   background: var(--tinte);
 }
 
-/* Redes del miembro, bajo su texto (fuera del enlace de la tarjeta). */
-.equipo > li:has(.equipo-redes) {
+/* Redes del miembro, repartidas a lo ancho bajo la tarjeta (fuera de su enlace); el borde y el color, los de
+   .persona-redes. */
+.equipo > li {
   flex-wrap: wrap;
 }
 
 .equipo .equipo-redes {
   list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
   gap: 8px;
   flex-basis: 100%;
   margin: 0;
@@ -4036,27 +4039,11 @@ img.perfil-logo {
   border-top: 1px solid var(--borde);
 }
 
-/* Repartidas a lo ancho de la tarjeta, todas del mismo tamaño. */
-.equipo-redes li {
-  flex: 1;
-}
-
 .equipo-redes a {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  min-width: 36px;
-  min-height: 36px;
-  border: 1px solid var(--borde);
-  color: var(--texto-2);
-  transition:
-    color var(--transicion),
-    border-color var(--transicion);
-}
-
-.equipo-redes a:hover {
-  color: var(--texto);
-  border-color: var(--celeste);
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
 }
 
 /* ---------- Submenú de proyectos ---------- */

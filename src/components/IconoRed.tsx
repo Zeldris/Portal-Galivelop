@@ -59,6 +59,30 @@ const TRADUCIDAS: Partial<Record<Red, Clave>> = {
   portfolio: 'equipo.red.portfolio',
 };
 
+/** La lista de redes de una persona, con su nombre accesible. */
+export function ListaRedes({
+  redes,
+  nombre,
+  clase,
+  soloIcono = false,
+}: {
+  redes: { tipo: Red; url: string }[];
+  nombre: string;
+  clase: string;
+  soloIcono?: boolean;
+}) {
+  const { t } = useIdioma();
+  return (
+    <ul className={clase} aria-label={t('equipo.redes', { nombre })}>
+      {redes.map((r) => (
+        <li key={r.url}>
+          <EnlaceRed red={r} soloIcono={soloIcono} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /**
  * El enlace a una red de una persona, con su icono y su nombre. El correo y el porfolio se nombran en el idioma de la
  * página; el correo se abre en la propia pestaña (un `mailto:` en una pestaña nueva la deja en blanco).
