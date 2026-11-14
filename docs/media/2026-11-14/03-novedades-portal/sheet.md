@@ -69,3 +69,4 @@ Languages: es
 
 | Channel | Language | Date | Link |
 |---|---|---|---|
+| linkedin | es | 2026-11-14 | (sin enlace apuntado) |
