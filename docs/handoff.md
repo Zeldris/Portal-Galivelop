@@ -6,11 +6,11 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-14 (portada 32 con mar de plantilla e iconos en línea simple, en la rama) |
+| **Actualizado** | 2026-11-14 (portada 32 e iconos en línea simple en `main`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 7e13bb9, 2026-11-14) |
-| **Tarea en curso** | Portada 32 de IG (mar q984 + tarjetas) e iconos 23 en línea simple: IG q966, Voice q968, Developer q947 (nuevo, `iconoPropio`) y Tarkor provisional (nuevo `icono` en su ficha). Aplicados en `ccr-47f8fddd-o5ek6p`; solo contenido |
-| **Siguiente paso** | Que la persona los vea y diga si van a `main`; en cola en el generador solo queda la portada 31 de workflow (31d q974, sin aprobar) |
-| **En `main`** | **Oscuras corregidas 10c (q955), 18b (q957), 27b (q961) y 28b (q962)** (7e13bb9, 2026-11-14, la persona: «revisalas y si subelas a main cuando esten aplicadas»; solo contenido, sin revisión de código; fase 3 y CI en verde en cdabf49 y 7e13bb9). Antes, **Retícula más tenue y flujo Galivelop-workflow 0.6.0** (9b69087, 2026-11-14, la persona: «Si sube a main»; fase 1 sin hallazgos y fase 3, sin retro por ser cambio pequeño). Antes, **oscuras 10b, 18, 27 y 28, portada 32 e icono 23 de Galivelop IG, icono 23 de Voice y og 24 de Tarkor y toVeriAI** (37e957b, 2026-11-14, la persona: «llevalo ya a main»; CI en verde en 1aa3a7e). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna: la portada 32 y los iconos en línea simple están en `main` |
+| **Siguiente paso** | Esperar a la portada 31 de workflow (31d q974, sin aprobar en el generador) y aplicarla cuando llegue |
+| **En `main`** | **Portada 32 de IG (mar q984) e iconos 23 en línea simple de IG, Voice, Developer y Tarkor (provisional)** (76340d5, 2026-11-14, la persona: «si»; solo contenido, CI en verde). Antes, **Oscuras corregidas 10c (q955), 18b (q957), 27b (q961) y 28b (q962)** (7e13bb9, 2026-11-14, la persona: «revisalas y si subelas a main cuando esten aplicadas»; solo contenido, sin revisión de código; fase 3 y CI en verde en cdabf49 y 7e13bb9). Antes, **Retícula más tenue y flujo Galivelop-workflow 0.6.0** (9b69087, 2026-11-14, la persona: «Si sube a main»; fase 1 sin hallazgos y fase 3, sin retro por ser cambio pequeño). Antes, **oscuras 10b, 18, 27 y 28, portada 32 e icono 23 de Galivelop IG, icono 23 de Voice y og 24 de Tarkor y toVeriAI** (37e957b, 2026-11-14, la persona: «llevalo ya a main»; CI en verde en 1aa3a7e). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 205/205 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
