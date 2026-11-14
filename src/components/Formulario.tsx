@@ -48,12 +48,14 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
   const { t } = useIdioma();
   const [correo, setCorreo] = useState<Correo | null>(null);
   const [copiado, setCopiado] = useState(false);
+  const [falloCopia, setFalloCopia] = useState(false);
 
   const enviar = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const c = componer(new FormData(e.currentTarget));
     setCorreo(c);
     setCopiado(false);
+    setFalloCopia(false);
     window.location.href = c.mailto;
   };
 
@@ -62,8 +64,10 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
     try {
       await navigator.clipboard.writeText(`${MARCA.correo}\n${correo.asunto}\n\n${correo.cuerpo}`);
       setCopiado(true);
+      setFalloCopia(false);
     } catch {
       setCopiado(false);
+      setFalloCopia(true);
     }
   };
 
@@ -125,6 +129,7 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
                 <Mail size={16} /> {t('form.abrir')}
               </a>
             </div>
+            {falloCopia && <p role="alert">{t('form.copiarError')}</p>}
           </div>
         )}
       </div>

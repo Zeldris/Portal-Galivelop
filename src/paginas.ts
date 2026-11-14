@@ -1,4 +1,4 @@
-import { lazy, type ComponentType, type LazyExoticComponent } from 'react';
+import { createElement, use, type ComponentType } from 'react';
 import { cargarFicha } from './data/proyectos';
 import { leerAncla } from './utils/ancla';
 
@@ -20,6 +20,8 @@ const CARGADORES = {
 export type NombrePagina = keyof typeof CARGADORES;
 
 type Componente<N extends NombrePagina> = Awaited<ReturnType<(typeof CARGADORES)[N]>>;
+type ComponenteDe<N extends NombrePagina> =
+  Componente<N> extends ComponentType<infer P> ? P : never;
 
 const promesas = new Map<NombrePagina, Promise<unknown>>();
 const resueltas = new Map<NombrePagina, unknown>();
@@ -44,17 +46,18 @@ export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
 }
 
 function perezosa<N extends NombrePagina>(nombre: N) {
-  return lazy(() => {
+  // No es `React.lazy`: éste guarda el rechazo para siempre. Aquí `cargarPagina` borra el fallo, así que al volver a
+  // montar la página (el aviso se olvida al cambiar de ruta) se pide el chunk de nuevo.
+  function Pagina(props: object) {
     // Ficha y chunk de Proyecto a la vez, no uno detrás del otro.
-    if (nombre === 'Proyecto')
+    if (nombre === 'Proyecto' && !resueltas.has(nombre))
       void cargarFicha(slugDeRuta(location.pathname)).catch(() => undefined);
-    if (resueltas.has(nombre)) {
-      // Ya cargada: un «thenable» síncrono hace que `lazy` la dé por resuelta sin suspender ni un instante.
-      const componente = resueltas.get(nombre);
-      return { then: (ok: (m: unknown) => void) => ok({ default: componente }) } as never;
-    }
-    return cargarPagina(nombre).then((componente) => ({ default: componente })) as never;
-  }) as unknown as LazyExoticComponent<Componente<N>>;
+    // Ya cargada: se pinta sin suspender ni un instante.
+    const Componente = (resueltas.get(nombre) ??
+      use(cargarPagina(nombre))) as ComponentType<object>;
+    return createElement(Componente, props);
+  }
+  return Pagina as unknown as ComponentType<ComponenteDe<N>>;
 }
 
 export const Equipo = perezosa('Equipo');

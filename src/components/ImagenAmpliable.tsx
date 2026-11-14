@@ -14,7 +14,7 @@ export function ImagenAmpliable({ imagen }: { imagen: Imagen }) {
         type="button"
         className="tarjeta-imagen"
         onClick={() => dialogo.current?.showModal()}
-        aria-label={t('galeria.ampliar')}
+        aria-label={`${t('galeria.ampliar')}: ${tx(imagen.alt)}`}
       >
         <img
           src={ruta(imagen.mini)}

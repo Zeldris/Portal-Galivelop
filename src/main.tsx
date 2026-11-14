@@ -1,7 +1,7 @@
 import '@fontsource-variable/big-shoulders-display';
 import '@fontsource-variable/literata';
 import '@fontsource-variable/jetbrains-mono';
-import { StrictMode, useCallback, useState } from 'react';
+import { StrictMode, startTransition, useCallback, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
@@ -40,18 +40,26 @@ function Raiz() {
       const resto = location.pathname.startsWith(baseDeIdioma(idioma))
         ? location.pathname.slice(baseDeIdioma(idioma).length)
         : '';
-      history.pushState(null, '', baseDeIdioma(nuevo) + resto + location.search + location.hash);
+      history.pushState(
+        history.state,
+        '',
+        baseDeIdioma(nuevo) + resto + location.search + location.hash,
+      );
       guardarIdioma(nuevo);
-      setIdioma(nuevo);
+      // Sin remontar la app (conserva scroll, foco y lo escrito): el router se entera de la dirección nueva con un
+      // popstate y el idioma cambia en la misma transición, para que base y ruta nunca se vean desajustadas.
+      startTransition(() => setIdioma(nuevo));
+      window.dispatchEvent(new PopStateEvent('popstate', { state: history.state }));
     },
     [idioma],
   );
 
   // Al ir atrás o adelante entre idiomas, el idioma sigue a la dirección.
-  window.onpopstate = () => setIdioma(idiomaDeRuta(location.pathname) ?? 'es');
+  window.onpopstate = () =>
+    startTransition(() => setIdioma(idiomaDeRuta(location.pathname) ?? 'es'));
 
   return (
-    <BrowserRouter key={idioma} basename={baseDeIdioma(idioma)}>
+    <BrowserRouter basename={baseDeIdioma(idioma)}>
       <ProveedorIdioma idioma={idioma} cambiarIdioma={cambiarIdioma}>
         <App />
       </ProveedorIdioma>
