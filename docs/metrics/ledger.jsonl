@@ -24,3 +24,4 @@
 {"agent":"gw-worker","branch":"ccr-5c066d81-ndsd13","cacheRead":46147,"cacheWrite":361,"date":"2026-11-14","input":2,"model":"claude-sonnet-5-5","output":1095,"recorded":"2026-11-14T12:58:11Z","refs":[],"session":"7bf2b2db"}
 {"agent":"main","branch":"ccr-5c066d81-ndsd13","cacheRead":108934,"cacheWrite":840,"date":"2026-11-14","input":2,"model":"claude-opus-5-5","output":73,"recorded":"2026-11-14T12:58:11Z","refs":[],"session":"7bf2b2db"}
 {"agent":"main","branch":"ccr-5c066d81-ndsd13","cacheRead":679575,"cacheWrite":7842,"date":"2026-11-14","input":13,"model":"claude-opus-5-5","output":3367,"recorded":"2026-11-14T12:59:53Z","refs":[],"session":"7bf2b2db"}
+{"agent":"main","branch":"ccr-5c066d81-ndsd13","cacheRead":856408,"cacheWrite":10147,"date":"2026-11-14","input":16,"model":"claude-opus-5-5","output":3313,"recorded":"2026-11-14T13:02:14Z","refs":[],"session":"7bf2b2db"}

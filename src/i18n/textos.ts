@@ -8,7 +8,7 @@ const es = {
   'nav.saltar': 'Saltar al contenido',
   'nav.menu': 'Menú',
 
-  'hero.antetitulo': 'Marca de software: taller y Productos',
+  'hero.antetitulo': 'Marca de software: un taller abierto',
   'hero.titulo1': 'Hacemos reales',
   'hero.titulo2': 'los proyectos que parecen imposibles',
   'hero.texto':
@@ -335,7 +335,7 @@ const gl: Record<Clave, string> = {
   'nav.saltar': 'Saltar ao contido',
   'nav.menu': 'Menú',
 
-  'hero.antetitulo': 'Marca de software: obradoiro e Produtos',
+  'hero.antetitulo': 'Marca de software: un obradoiro aberto',
   'hero.titulo1': 'Facemos reais',
   'hero.titulo2': 'os proxectos que semellan imposibles',
   'hero.texto':
@@ -660,7 +660,7 @@ const en: Record<Clave, string> = {
   'nav.saltar': 'Skip to content',
   'nav.menu': 'Menu',
 
-  'hero.antetitulo': 'Software brand: workshop and Products',
+  'hero.antetitulo': 'Software brand: an open workshop',
   'hero.titulo1': 'We make seemingly',
   'hero.titulo2': 'impossible projects real',
   'hero.texto':
