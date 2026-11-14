@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- 2026-11-14 · **Tarjeta de Álvaro en el equipo de cada ficha** (`ccr-5c066d81-ndsd13`, pendiente del visto bueno de la persona a la vista previa): resumen «Arquitecto de software y sistemas de IA locales; full stack desde 2017» (también en su perfil), cinco destacadas para arquitecto de IA (Claude Code, Ollama, Python, Java, Docker) y redes en iconos bajo la tarjeta, fuera de su enlace. Falta `/code-review` y marca antes de `main`.
+- 2026-11-14 · **Tarjeta de Álvaro en el equipo de cada ficha** (`ccr-5c066d81-ndsd13`, pendiente del visto bueno de la persona a la vista previa): resumen «Arquitecto de software y sistemas de IA locales; full stack desde 2017» (también en su perfil), cinco destacadas para arquitecto de IA (Claude Code, Ollama, Python, Java, Docker) y redes en iconos repartidos a lo ancho bajo la tarjeta, fuera de su enlace. Falta `/code-review` y marca antes de `main`.
 
 
 ## Hecho

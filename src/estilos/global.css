@@ -4029,15 +4029,20 @@ img.perfil-logo {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   flex-basis: 100%;
   margin: 0;
-  padding: 10px 0 0 calc(52px + 14px);
+  padding: 10px 0 0;
   border-top: 1px solid var(--borde);
 }
 
+/* Repartidas a lo ancho de la tarjeta, todas del mismo tamaño. */
+.equipo-redes li {
+  flex: 1;
+}
+
 .equipo-redes a {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   min-width: 36px;
