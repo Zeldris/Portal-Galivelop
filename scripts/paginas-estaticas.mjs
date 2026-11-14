@@ -114,7 +114,7 @@ const FIJAS = {
   '': {
     es: ['Galivelop · Marca de software, un taller abierto', 'Galivelop es un taller abierto de software que crea, investiga y aprende a la vista. Lo maduro tiene el código abierto y se puede montar en tu proyecto.'],
     gl: ['Galivelop · Marca de software, un obradoiro aberto', 'Galivelop é un obradoiro de software aberto que crea, investiga e aprende á vista. O maduro ten o código aberto e pódese montar no teu proxecto.'],
-    en: ['Galivelop · Software brand, an open workshop', 'Galivelop is an open software workshop that creates, researches and learns in the open. Mature work is open source and can be set up in your project.'],
+    en: ['Galivelop · Software brand, an open workshop', 'Galivelop is an open software workshop that creates, researches and learns in public. Mature work is open source and can be set up in your project.'],
   },
   equipo: {
     es: ['Equipo · Galivelop', 'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.'],
