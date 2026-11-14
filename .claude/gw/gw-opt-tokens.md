@@ -29,6 +29,10 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   cortado a 360 y los botones de idioma de 28 px que el barrido con capturas no vio. Desde el segundo paso del
   2026-10-27 abre también el menú, el submenú, cada hoja de apartado y la ampliación de imágenes y galerías (las hojas cortadas que vio la persona en el
   móvil no salían porque solo medía la página cerrada).
+- **Recorrido en texto para auditorías** (2026-11-14, retro P1): `tools/qa/recorrido.cjs` completa a `npm run medir`
+  con lo que este no mira (anchos de tablet y escritorio, tema oscuro, contraste del foco con Tab y enlaces internos
+  que no dan 200). Una auditoría lo lanza en vez de escribir sus propios scripts de Playwright (la del 2026-11-14
+  escribió cuatro, con 27 capturas y 1,7M arrastrados).
 - **Bitácora por partes** (2026-10-25): `recover.py --state`, o `sed -n '/^## Pendiente/,/^## /p'
   docs/handoff.md` para una sección; entera solo al empezar (el rediseño la leyó 66 veces, 415k arrastrados).
 - **Subagentes con plan cerrado, en el modelo barato** (2026-10-25): aplicar estilos o textos ya decididos, hacer

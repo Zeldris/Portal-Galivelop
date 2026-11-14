@@ -3,7 +3,7 @@
 Commits revisados: f134b44, a28a6a1, 8235148, 8a093e4 y 36b4861 (rama `ccr-5c066d81-ndsd13`), el informe
 [`auditoria-2026-11-14.md`](auditoria-2026-11-14.md) y la bitácora.
 
-**Estado:** pendiente de la decisión de la persona.
+**Estado:** decidida por la persona (2026-11-14, «P1, P3 y P5»): P1 aplicada (`tools/qa/recorrido.cjs`); P5 aplicada en el proyecto (`src/estilos/clases.test.ts`) y llevada al flujo; P3 llevada al flujo («For Galivelop-workflow»: es un gancho); P2 y P4 rechazadas.
 
 ## Medida (`gw-opt-tokens`, sesión entera)
 
