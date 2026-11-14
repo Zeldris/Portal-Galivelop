@@ -4020,6 +4020,40 @@ img.perfil-logo {
   background: var(--tinte);
 }
 
+/* Redes del miembro, bajo su texto (fuera del enlace de la tarjeta). */
+.equipo > li:has(.equipo-redes) {
+  flex-wrap: wrap;
+}
+
+.equipo .equipo-redes {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex-basis: 100%;
+  margin: 0;
+  padding: 10px 0 0 calc(52px + 14px);
+  border-top: 1px solid var(--borde);
+}
+
+.equipo-redes a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
+}
+
+.equipo-redes a:hover {
+  color: var(--texto);
+  border-color: var(--celeste);
+}
+
 /* ---------- Submenú de proyectos ---------- */
 
 .submenu {

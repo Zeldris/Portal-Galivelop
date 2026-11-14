@@ -46,16 +46,15 @@
     "foto": "equipo/alvaro-garcia-grana.webp",
     "perfil": {
       "resumen": {
-        "es": "Full stack desde 2017, hoy sénior en Orienteed",
-        "gl": "Full stack desde 2017, hoxe sénior en Orienteed",
-        "en": "Full stack since 2017, now senior at Orienteed"
+        "es": "Arquitecto de software y sistemas de IA locales; full stack desde 2017",
+        "gl": "Arquitecto de software e sistemas de IA locais; full stack desde 2017",
+        "en": "Software and local AI systems architect; full stack since 2017"
       },
       "destacadas": [
+        "Claude Code",
+        "Ollama",
+        "Python",
         "Java",
-        "Spring",
-        "React",
-        "Angular 2+",
-        "TypeScript",
         "Docker"
       ],
       "ubicacion": {

@@ -12,6 +12,7 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { IconoMarca, type NombreIcono } from '../components/IconoMarca';
+import { EnlaceRed } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
 import { buscarPersona } from '../data/equipo';
@@ -645,6 +646,19 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                             </Link>
                           ) : (
                             contenido
+                          )}
+                          {/* Fuera del enlace de la tarjeta: un enlace no puede ir dentro de otro. */}
+                          {!!persona?.redes.length && (
+                            <ul
+                              className="equipo-redes"
+                              aria-label={t('equipo.redes', { nombre: persona.nombre })}
+                            >
+                              {persona.redes.map((r) => (
+                                <li key={r.url}>
+                                  <EnlaceRed red={r} soloIcono />
+                                </li>
+                              ))}
+                            </ul>
                           )}
                         </li>
                       );

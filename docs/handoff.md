@@ -8,7 +8,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-14 (ramas al día con `main`, 76340d5; dos publicaciones en X, P2 y P4) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal; al día con `main`, 76340d5); esta sesión, `ccr-5c066d81-ndsd13` (al día con `main`, 76340d5, 2026-11-14) |
-| **Tarea en curso** | Ninguna en `ccr-5c066d81-ndsd13`: la auditoría del 2026-11-14 está en `main` (ce0ccca) |
+| **Tarea en curso** | `ccr-5c066d81-ndsd13`: tarjeta de Álvaro en el equipo de la ficha (resumen, 5 destacadas de IA, redes), esperando el visto bueno de la persona a la vista previa |
 | **Siguiente paso** | Reddit: pieza `docs/media/2026-11-14/04-novedades-reddit/` **publicada el 2026-11-14** en el perfil u/Alvaro-Garcia-Grana (la persona: «siempre en el mío»; sin enlace apuntado), en inglés, una imagen oscura con todos los proyectos (`media/1-changelog.webp`); `check.py` solo falla por el nombre `r/u_Alvaro-Garcia-Grana` (su regex no admite guiones: a reportar a Galivelop-workflow). Publicaciones en X: P2 y P4 publicadas el 2026-11-14 (sin enlace apuntado); **P1, P3, P5, P6 y P7 guardadas** en `docs/media/proposals/2026-11-14.md` hasta que la persona las pida (producirlas como las otras: texto en castellano ≤280 y 4 imágenes 1200×675). En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
 | **En `main`** | **Arreglos de la auditoría completa del 2026-11-14** (ce0ccca, 2026-11-14, subida pedida por la persona: «Sube a main cuando el CI esté en verde»; CI en verde y retro decidida). Antes, **Portada 32 de IG e iconos 23 en línea simple** (76340d5, 2026-11-14). Antes, **oscuras corregidas 10c, 18b, 27b y 28b** (7e13bb9) y **portada y README sin «Productos», cifra del generador 3 / 9 y fichas de `/gw-portal`** (8663e48, CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 215/215 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-14 · **Tarjeta de Álvaro en el equipo de cada ficha** (`ccr-5c066d81-ndsd13`, pendiente del visto bueno de la persona a la vista previa): resumen «Arquitecto de software y sistemas de IA locales; full stack desde 2017» (también en su perfil), cinco destacadas para arquitecto de IA (Claude Code, Ollama, Python, Java, Docker) y redes en iconos bajo la tarjeta, fuera de su enlace. Falta `/code-review` y marca antes de `main`.
 
 
 ## Hecho
