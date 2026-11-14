@@ -112,9 +112,9 @@ const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
 const FIJAS = {
   '': {
-    es: ['Galivelop · Marca de software: taller y productos', 'Galivelop es un taller abierto que crea, investiga y aprende a la vista, y lo que sale de él: productos con código abierto, montados en tu proyecto.'],
-    gl: ['Galivelop · Marca de software: obradoiro e produtos', 'Galivelop é un obradoiro de software aberto que crea, investiga e aprende á vista, e o que sae del: produtos con código aberto, montados no teu proxecto.'],
-    en: ['Galivelop · Software brand: workshop and products', 'Galivelop is a software workshop that creates, researches and learns in the open, plus what comes out of it: open source products, set up in your project.'],
+    es: ['Galivelop · Marca de software, un taller abierto', 'Galivelop es un taller abierto de software que crea, investiga y aprende a la vista. Lo maduro tiene el código abierto y se puede montar en tu proyecto.'],
+    gl: ['Galivelop · Marca de software, un obradoiro aberto', 'Galivelop é un obradoiro de software aberto que crea, investiga e aprende á vista. O maduro ten o código aberto e pódese montar no teu proxecto.'],
+    en: ['Galivelop · Software brand, an open workshop', 'Galivelop is an open software workshop that creates, researches and learns in public. Mature work is open source and can be set up in your project.'],
   },
   equipo: {
     es: ['Equipo · Galivelop', 'Las personas que hacen Galivelop. Cada una con su camino, todas con ganas de construir y aprender.'],

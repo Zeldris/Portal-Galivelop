@@ -1,6 +1,6 @@
 {
   "$schema": "gw/schema/gw.schema.json",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "schemaVersion": 1,
   "language": "es",
   "visibleLanguages": [
@@ -79,5 +79,8 @@
     "slow": []
   },
   "plan": [],
-  "taskId": "[A-Z]{2,5}-\\d+"
+  "taskId": "[A-Z]{2,5}-\\d+",
+  "ownedFiles": [
+    ".github/workflows/check.yml"
+  ]
 }

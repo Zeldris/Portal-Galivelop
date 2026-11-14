@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-10",
+  "actualizado": "2026-11-14",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -515,7 +515,7 @@
         "en": "Backend"
       },
       "tecnologias": [
-        "Java 17",
+        "Java 21",
         "Spring Boot 3",
         "Spring Security + JWT",
         "Spring Data JPA / Hibernate",
@@ -691,7 +691,7 @@
         "gl": "Dependencias ao día",
         "en": "Up-to-date dependencies"
       },
-      "estado": "pendiente",
+      "estado": "curso",
       "detalle": {
         "es": "Poner al día las versiones de las herramientas sobre las que funciona la web, para que siga segura y estable.",
         "gl": "Poñer ao día as versións das ferramentas sobre as que funciona a web, para que siga segura e estable.",
@@ -700,6 +700,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-14",
+      "texto": {
+        "es": "Trabajo de fondo: ajustes en el servidor para que aguante mejor con pocos recursos y nueva puesta al día de las herramientas de desarrollo, para que la web siga segura y estable.",
+        "gl": "Traballo de fondo: axustes no servidor para que aguante mellor con poucos recursos e nova posta ao día das ferramentas de desenvolvemento, para que a web siga segura e estable.",
+        "en": "Behind the scenes: server tweaks so it copes better with limited resources, and another update of the development tools to keep the site secure and stable."
+      }
+    },
     {
       "fecha": "2026-11-09",
       "texto": {

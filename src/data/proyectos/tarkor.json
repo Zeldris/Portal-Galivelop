@@ -5,7 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#E0703A",
-  "actualizado": "2026-11-10",
+  "actualizado": "2026-11-14",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -4023,6 +4023,22 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-12",
+      "texto": {
+        "es": "El instalador se vuelve más cuidadoso con tu equipo: al desinstalar puedes elegir qué datos del juego se borran (en Windows y, con un botón en Ajustes, en Linux), puedes borrar solo la IA y volver a elegir perfil, y una nueva pantalla «Licencias y avisos» recoge las licencias del programa y de lo que lleva dentro. Los perfiles Equilibrado y Máximo pasan a usar el narrador llama3.1:8b.",
+        "gl": "O instalador vólvese máis coidadoso co teu equipo: ao desinstalar podes escoller que datos do xogo se borran (en Windows e, cun botón en Axustes, en Linux), podes borrar só a IA e volver escoller perfil, e unha nova pantalla «Licenzas e avisos» recolle as licenzas do programa e do que leva dentro. Os perfís Equilibrado e Máximo pasan a usar o narrador llama3.1:8b.",
+        "en": "The installer takes better care of your machine: when uninstalling you can choose which game data is deleted (on Windows and, with a button in Settings, on Linux), you can delete only the AI and pick a profile again, and a new “Licences and notices” screen lists the licences of the program and of what it bundles. The Balanced and Maximum profiles now use the llama3.1:8b narrator."
+      }
+    },
+    {
+      "fecha": "2026-11-11",
+      "texto": {
+        "es": "Sigue la ronda de pruebas jugando con otra tanda de arreglos: el Ayuntamiento ya no se abandona por una rebelión y se puede reparar, los compañeros salen en el panel de combate, la ficha de un rival que aún no conoces no revela su nombre ni su cargo, y al acabar un combate con varios rivales el diario deja una línea de cierre. El juego, además, cuenta mejor lo que pasa en cada ronda de combate.",
+        "gl": "Segue a rolda de probas xogando con outra quenda de arranxos: o Concello xa non se abandona por unha rebelión e pódese reparar, os compañeiros saen no panel de combate, a ficha dun rival que aínda non coñeces non revela o seu nome nin o seu cargo, e ao acabar un combate con varios rivais o diario deixa unha liña de peche. O xogo, ademais, conta mellor o que pasa en cada rolda de combate.",
+        "en": "The play-testing round goes on with another batch of fixes: the Town Hall is no longer abandoned after a rebellion and can be repaired, companions show up in the combat panel, a rival you have not met yet no longer reveals its name or role, and when a combat with several opponents ends the log adds a closing line. The game also narrates each combat round better."
+      }
+    },
     {
       "fecha": "2026-11-10",
       "texto": {
