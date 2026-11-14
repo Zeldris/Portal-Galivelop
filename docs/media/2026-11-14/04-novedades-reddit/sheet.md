@@ -66,3 +66,4 @@ Own profile of u/Alvaro-Garcia-Grana. The user said on 2026-11-14 that the Reddi
 
 | Channel | Language | Date | Link |
 |---|---|---|---|
+| reddit | en | 2026-11-14 | (sin enlace apuntado) |
