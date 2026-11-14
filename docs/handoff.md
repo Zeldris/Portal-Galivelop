@@ -6,19 +6,17 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-14 (entrega del generador del 2026-11-14 y rosa 04b, camino de `main`) |
+| **Actualizado** | 2026-11-14 (entrega del generador del 2026-11-14 y rosa 04b, en `main`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 2026-11-14) |
-| **Tarea en curso** | Llevar a `main` la rosa 04b y la entrega del 2026-11-14 (la persona, 2026-11-14: «las aplicas ya y así lo vemos en main»): fase 1 hecha, falta la marca (`reviewed.sh`) y el push a `main`. Presupuesto de compactaciones: 1 |
+| **Tarea en curso** | Ninguna. La rosa 04b y la entrega del 2026-11-14 están en `main`; se espera lo pedido de nuevo al generador. Presupuesto de compactaciones: 1 |
 | **Siguiente paso** | Entrega del 2026-11-14 aplicada (10b clara, portada de Voice, 19 oscura) junto con la rosa 04b. Aprobadas y sin aplicar: las og 24 de Tarkor y toVeriAI (esperan al icono 23 de Tarkor y a montar texto e icono sobre ellas). Pedidas de nuevo al generador: 31, 32 en grabado, iconos 23 en línea simple (GVIG, Voice y Tarkor) y las oscuras de 10b, 18, 27 y 28. Sigue en cola la 10b oscura (`docs/marca.md`, tablas E y F) |
-| **En `main`** | **Iconos de grupo (25), marcadores del avance (26), banda 29 clara y oscura, cabecera 30, rosa y sello** (f7ce483, 2026-11-13, la persona: «llévalo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en edbdd74). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | **Rosa 04b, «Cómo funciona» 10b, portada de Voice y «enviado» oscuro** (fd7929a, 2026-11-14, la persona: «las aplicas ya y así lo vemos en main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en d0d4d68). Antes, **Iconos de grupo (25), marcadores del avance (26), banda 29 clara y oscura, cabecera 30, rosa y sello** (f7ce483, 2026-11-13, la persona: «llévalo a main»; fase 1 y 3, sin retro por ser cambio pequeño; CI en verde en edbdd74). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 202/202 (23 archivos) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
-
-- En `ccr-47f8fddd-o5ek6p`, camino de `main` (2026-11-14): rosa 04b en el pie, «Cómo funciona» 10b, portada de Voice en su tarjeta y «enviado» oscuro (`Formulario.tsx`, `.solo-claro`/`.solo-oscuro`). Revisado y arreglado; falta la marca.
 
 ## Hecho
 
