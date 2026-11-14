@@ -22,7 +22,6 @@
   --datos-espaciado: 0.06em;
 
   /* Esquinas: ningún redondeo; lo grande lleva chaflán (`.chaflan`), lo pequeño se queda recto. */
-  --chaflan: 14px;
   --chaflan-grande: 28px;
   --chaflan-pequeno: 10px; /* botones */
   --reticula-paso: 24px;
@@ -62,6 +61,9 @@
   --texto-3: #5a6d7a;
   --enlace: var(--celeste-hondo);
   --celeste-intenso: var(--celeste-hondo);
+  --sobre-intenso: var(--blanco);
+  --foco: var(--celeste-hondo);
+  --borde-campo: #6f8696; /* 3,7:1 sobre el papel (WCAG 1.4.11) */
   /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
   --sombra: 0 12px 32px -18px rgb(19 33 43 / 0.35);
   /* Tinte plano del celeste para píldoras y marcas de posición. */
@@ -97,6 +99,10 @@
   --texto-3: #7d919e;
   --enlace: #5cc8f2;
   --celeste-intenso: var(--celeste);
+  /* El celeste vivo no admite texto blanco (2,8:1): encima va el papel oscuro (6,5:1). */
+  --sobre-intenso: var(--papel);
+  --foco: var(--celeste);
+  --borde-campo: #6b8798; /* 4,8:1 sobre el papel oscuro */
   /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
   --sombra: 0 12px 32px -18px rgb(0 0 0 / 0.7);
   --tinte: rgb(26 166 223 / 0.18);
@@ -214,8 +220,16 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--celeste);
+  outline: 2px solid var(--foco);
   outline-offset: 3px;
+}
+
+/* Sobre el celeste hondo el foco va en blanco (el celeste/hondo del tema no se distingue del fondo). */
+.hero,
+.cabecera-captura,
+.cabecera-color,
+.proxima-imagen-vacia {
+  --foco: var(--blanco);
 }
 
 .contenedor {
@@ -271,7 +285,7 @@ button {
   pointer-events: none;
   padding: 8px 14px;
   background: var(--celeste-intenso);
-  color: var(--blanco);
+  color: var(--sobre-intenso);
   z-index: var(--z-saltar);
 }
 
@@ -314,6 +328,7 @@ button {
   letter-spacing: var(--datos-espaciado);
   text-transform: uppercase;
   padding: 8px 12px;
+  white-space: nowrap;
   border-bottom: 2px solid transparent;
   transition:
     color var(--transicion),
@@ -393,7 +408,7 @@ button {
   }
 }
 
-@media (max-width: 53.75em) {
+@media (max-width: 68.75em) {
   .cabecera-fila {
     gap: 12px;
   }
@@ -416,6 +431,10 @@ button {
     background: var(--fondo);
     border-bottom: 1px solid var(--borde);
     box-shadow: var(--sombra);
+    /* Si no cabe en altura (móvil horizontal, zoom), el panel hace scroll y no se sale de la pantalla. */
+    max-height: calc(100dvh - 69px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .cabecera-nav.abierta {
     display: flex;
@@ -475,6 +494,13 @@ button {
 
 .boton:hover {
   transform: translateY(-1px);
+}
+
+/* El clip-path del chaflán recorta un contorno exterior: el foco se dibuja dentro, en el color del texto del botón
+   (que ya contrasta con su fondo en todas las variantes), a 6 px para librar el chaflán de 10 px. */
+.boton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -6px;
 }
 
 /* Respuesta al pulsar. */
@@ -591,7 +617,7 @@ button {
 
 .estado-desarrollo .estado-punto {
   background: var(--estado-desarrollo);
-  animation: latido 2s ease-in-out infinite;
+  animation: latido 2s var(--curva) infinite;
 }
 
 /* En diseño: punto hueco, del color del texto de la píldora (aún no hay nada que señalar en color). */
@@ -906,7 +932,8 @@ button {
 
 .rejilla-proyectos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr));
+  /* Tres proyectos en una fila cuando caben; desde 900 px, dos columnas (más abajo): con 4 proyectos, 2×2 sin tarjeta huérfana. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 24px;
 }
 
@@ -924,7 +951,7 @@ button {
 
 .tarjeta:hover,
 .tarjeta:focus-within {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: var(--tinta);
 }
 
@@ -1214,7 +1241,7 @@ button {
 }
 
 .sobre-marca b {
-  color: var(--celeste);
+  color: var(--enlace); /* hondo en claro (5,2:1), celeste claro en oscuro */
   font-weight: inherit;
 }
 
@@ -1513,6 +1540,7 @@ button {
 
 .volver {
   display: inline-flex;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8) */
   align-items: center;
   gap: 6px;
   color: rgb(255 255 255 / 0.92);
@@ -1704,6 +1732,7 @@ button {
 
 .galeria-pausa:hover {
   background: var(--celeste-intenso);
+  color: var(--sobre-intenso);
 }
 
 .galeria-progreso {
@@ -1783,6 +1812,7 @@ button {
 .galeria-ampliar:hover,
 .galeria-cerrar:hover {
   background: var(--celeste-intenso);
+  color: var(--sobre-intenso);
 }
 
 .galeria-flecha {
@@ -2277,6 +2307,7 @@ button {
 
 .siguiente {
   display: inline-flex;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8) */
   align-items: center;
   gap: 6px;
   font-weight: 600;
@@ -2580,7 +2611,7 @@ button {
 }
 
 .vias li {
-  padding: 22px;
+  padding: 0;
   background: var(--superficie);
   border: 1px solid var(--borde);
 }
@@ -2732,10 +2763,6 @@ button {
 
 /* ---------- Vías de participación como enlaces ---------- */
 
-.vias li {
-  padding: 0;
-}
-
 .via {
   display: flex;
   flex-direction: column;
@@ -2866,7 +2893,7 @@ button {
   font-size: 1rem;
   color: var(--texto);
   background: var(--fondo);
-  border: 1px solid var(--borde);
+  border: 1px solid var(--borde-campo);
   padding: 11px 14px;
   transition:
     border-color var(--transicion),
@@ -2897,7 +2924,7 @@ button {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  border: 1px solid var(--borde);
+  border: 1px solid var(--borde-campo);
   background: var(--fondo);
   font-size: 0.92rem;
   cursor: pointer;
@@ -2918,6 +2945,9 @@ button {
   box-shadow: none;
   accent-color: var(--celeste-intenso);
   margin: 0;
+  /* Objetivo táctil de 24 px (WCAG 2.5.8). */
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .formulario-nota {
@@ -3791,6 +3821,7 @@ img.perfil-logo {
   gap: 6px;
   cursor: pointer;
   list-style: none;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8) */
 }
 
 .miembro-mas > summary::-webkit-details-marker,
@@ -4128,7 +4159,7 @@ img.perfil-logo {
   color: var(--texto);
 }
 
-@media (max-width: 53.75em) {
+@media (max-width: 68.75em) {
   .submenu-boton {
     width: 100%;
     justify-content: space-between;
@@ -4926,12 +4957,14 @@ body:has(dialog[open]) {
   color: var(--texto-2);
   display: -webkit-box;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .vistazo-mas {
   display: inline-flex;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8) */
   align-items: center;
   gap: 6px;
   margin-top: 10px;
@@ -4962,6 +4995,13 @@ body:has(dialog[open]) {
 
 .nav-ficha::-webkit-scrollbar {
   display: none;
+}
+
+/* Móvil horizontal o zoom alto: cabecera y barra pegadas se comerían un tercio de la pantalla; la barra deja de seguir. */
+@media (max-height: 520px) {
+  .nav-ficha {
+    position: static;
+  }
 }
 
 /* Si los grupos no caben, un degradado en el borde avisa de que hay más a ese lado (lo marca NavFicha en data-mas).
@@ -5433,6 +5473,7 @@ body:has(dialog[open]) {
   }
   .vistazo-texto {
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
   .nav-ficha {
     margin-left: -16px;
@@ -5472,11 +5513,6 @@ body:has(dialog[open]) {
 }
 
 /* ---------- Inicio: proyectos de un vistazo y bloques compactos en móvil ---------- */
-
-/* Tres proyectos en una fila cuando caben; desde 900 px, dos columnas: con 4 proyectos, 2×2 sin tarjeta huérfana. */
-.rejilla-proyectos {
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-}
 
 @media (min-width: 900px) {
   .rejilla-proyectos {
@@ -5707,7 +5743,7 @@ body:has(dialog[open]) {
   padding: 0 6px 0 2px;
 }
 
-@media (max-width: 53.75em) {
+@media (max-width: 68.75em) {
   .nav-grupo {
     flex-direction: column;
     align-items: stretch;
