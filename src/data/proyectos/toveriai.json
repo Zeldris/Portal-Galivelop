@@ -367,9 +367,9 @@
         "en": "The IMI dimensions"
       },
       "intro": {
-        "es": "Los pesos parten del marco de NewsGuard, completado con IFCN y The Trust Project. Con texto o capturas se usan las siete dimensiones de contenido; con un enlace se suman dos de transparencia, que pesan un 15 % del total.",
-        "gl": "Os pesos parten do marco de NewsGuard, completado con IFCN e The Trust Project. Con texto ou capturas úsanse as sete dimensións de contido; cunha ligazón súmanse dúas de transparencia, que pesan un 15 % do total.",
-        "en": "The weights build on the NewsGuard framework, completed with IFCN and The Trust Project. Text and screenshots use the seven content dimensions; a link adds two transparency dimensions worth 15% of the total."
+        "es": "Los pesos parten del marco de NewsGuard, completado con IFCN y The Trust Project. Con texto o capturas se usan las siete dimensiones de contenido; con un enlace se suman dos de transparencia, que pesan cerca de un 19 % del total.",
+        "gl": "Os pesos parten do marco de NewsGuard, completado con IFCN e The Trust Project. Con texto ou capturas úsanse as sete dimensións de contido; cunha ligazón súmanse dúas de transparencia, que pesan preto dun 19 % do total.",
+        "en": "The weights build on the NewsGuard framework, completed with IFCN and The Trust Project. Text and screenshots use the seven content dimensions; a link adds two transparency dimensions worth about 19% of the total."
       },
       "items": [
         {
@@ -529,7 +529,7 @@
         "en": "Data"
       },
       "tecnologias": [
-        "MySQL 8"
+        "MySQL 8 · TiDB Cloud"
       ]
     },
     {
@@ -561,8 +561,7 @@
       "tecnologias": [
         "Docker",
         "Render (API)",
-        "Vercel (web)",
-        "Cloudflare"
+        "Vercel (web)"
       ]
     },
     {
@@ -673,9 +672,9 @@
     {
       "version": "1.12",
       "nombre": {
-        "es": "Capturas estables y VeriAI",
-        "gl": "Capturas estables e VeriAI",
-        "en": "Reliable screenshots and VeriAI"
+        "es": "Datos de entrenamiento",
+        "gl": "Datos de adestramento",
+        "en": "Training data"
       },
       "estado": "pendiente",
       "detalle": {
@@ -730,6 +729,14 @@
         "es": "Trabajo de fondo: revisión de toda la web para que un fallo se vea como fallo, con aviso y botón de reintentar, y ajustes en el feed público, en las publicaciones y en el panel de administración.",
         "gl": "Traballo de fondo: revisión de toda a web para que un fallo se vexa como fallo, con aviso e botón de reintentar, e axustes no feed público, nas publicacións e no panel de administración.",
         "en": "Behind the scenes: a pass over the whole site so a failure shows up as a failure, with a notice and a retry button, plus tweaks to the public feed, to publishing and to the admin panel."
+      }
+    },
+    {
+      "fecha": "2026-11-02",
+      "texto": {
+        "es": "La sesión se cierra con un aviso cuando caduca, las direcciones que se analizan se protegen mejor frente a enlaces peligrosos y, si algo falla, la web lo muestra con un botón de «Reintentar». Además, las rachas se cuentan bien en singular y en plural.",
+        "gl": "A sesión péchase cun aviso cando caduca, os enderezos que se analizan protéxense mellor fronte a ligazóns perigosas e, se algo falla, a web amósao cun botón de «Reintentar». Ademais, as rachas cóntanse ben en singular e en plural.",
+        "en": "The session now closes with a notice when it expires, the addresses being analysed are better protected against dangerous links and, if something fails, the site shows it with a “Retry” button. Streaks are also counted correctly in singular and plural."
       }
     },
     {

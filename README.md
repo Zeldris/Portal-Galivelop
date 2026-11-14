@@ -27,7 +27,7 @@
 
 ## Qué es Galivelop
 
-Galivelop es un taller donde creamos, investigamos y aprendemos construyendo software ambicioso:
+Galivelop es un taller independiente donde creamos, investigamos y aprendemos construyendo software ambicioso:
 desde un mundo de fantasía que vive por su cuenta hasta una herramienta que mide la credibilidad de
 las noticias.
 

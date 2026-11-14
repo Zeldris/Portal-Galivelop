@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.6.0 · en marcha la 0.7 «Preguntar»",
-    "gl": "En desenvolvemento · v0.6.0 · en marcha a 0.7 «Preguntar»",
-    "en": "In development · v0.6.0 · 0.7 “Ask” under way"
+    "es": "En desarrollo · v0.6.0 · próxima la 0.7 «Preguntar»",
+    "gl": "En desenvolvemento · v0.6.0 · próxima a 0.7 «Preguntar»",
+    "en": "In development · v0.6.0 · next up: 0.7 “Ask”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "portada": {
@@ -2226,7 +2226,7 @@
             "gl": "Parche de arranxos",
             "en": "Fixes-only patch"
           },
-          "valor": "0.4.3 · 2026-11-01",
+          "valor": "0.4.3 · 2026-10-27",
           "texto": {
             "es": "Correcciones que pidió un proyecto al adoptar el flujo: el diagnóstico ya no rompe el CI de GitHub por no tener los ganchos de git puestos, avisa de los checks de sintaxis que solo miran el primer archivo y la instalación parte siempre de la última versión publicada.",
             "gl": "Correccións que pediu un proxecto ao adoptar o fluxo: o diagnóstico xa non rompe o CI de GitHub por non ter os ganchos de git postos, avisa dos checks de sintaxe que só miran o primeiro ficheiro e a instalación parte sempre da última versión publicada.",
@@ -2620,7 +2620,7 @@
         "gl": "Preguntar",
         "en": "Ask"
       },
-      "estado": "curso",
+      "estado": "pendiente",
       "detalle": {
         "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse; un modo prudente que se enciende con un solo interruptor.",
         "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse; un modo prudente que se acende cun só interruptor.",
