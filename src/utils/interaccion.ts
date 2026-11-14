@@ -11,7 +11,10 @@ export function esRaton(pointerType: string): boolean {
   return pointerType === 'mouse';
 }
 
-/** Al cambiar de página (no solo de idioma ni de ancla) el foco pasa al contenido principal. */
-export function debeEnfocarContenido(rutaAntes: string, rutaAhora: string, hash: string): boolean {
-  return rutaAntes !== rutaAhora && hash === '';
+/**
+ * Al cambiar de página (no solo de idioma ni de ancla) el foco pasa al contenido principal, también si la dirección
+ * nueva lleva ancla: el enlace pulsado ya no existe y el foco caería en <body>.
+ */
+export function debeEnfocarContenido(rutaAntes: string, rutaAhora: string): boolean {
+  return rutaAntes !== rutaAhora;
 }

@@ -41,7 +41,7 @@ const NO_ENCONTRADA = {
 };
 const [titulo404, descripcion404] = NO_ENCONTRADA.es;
 // Anclado al inicio tras la base: un segmento «en» o «gl» más adentro (un slug) no cambia el idioma.
-const BASE_404 = new URL(SITIO).pathname.replace(/\/?$/, '/');
+const BASE_404 = (process.env.BASE_PATH ?? '/Portal-Galivelop/').replace(/\/?$/, '/'); // la misma base que vite.config.ts
 const guion404 = `<script>var m=new RegExp(${JSON.stringify(`^${BASE_404}(gl|en)(/|$)`)}).exec(location.pathname),T=${JSON.stringify(NO_ENCONTRADA)},l=T[m?m[1]:'es'];document.title=l[0];document.documentElement.lang=m?m[1]:'es';document.querySelector('meta[name="description"]').content=l[1];</script>`;
 writeFileSync(
   'dist/404.html',

@@ -36,6 +36,10 @@ describe('fuentes con comprobación de texto', () => {
     const src = readFileSync('src/pages/Proyecto.tsx', 'utf8');
     expect(src).not.toContain('aria-current="true"');
     expect(src).toContain('aria-current="location"');
+    // Y la hoja de estilos pinta la pestaña activa con ese mismo valor.
+    const css = readFileSync('src/estilos/global.css', 'utf8');
+    expect(css).toContain(".nav-ficha a[aria-current='location']");
+    expect(css).not.toContain(".nav-ficha a[aria-current='true']");
   });
   it('el 404 estático ancla el prefijo de idioma a la base', () => {
     const src = readFileSync('scripts/paginas-estaticas.mjs', 'utf8');

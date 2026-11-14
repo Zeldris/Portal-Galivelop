@@ -432,6 +432,7 @@ button {
     border-bottom: 1px solid var(--borde);
     box-shadow: var(--sombra);
     /* Si no cabe en altura (móvil horizontal, zoom), el panel hace scroll y no se sale de la pantalla. */
+    max-height: calc(100vh - 69px); /* respaldo sin dvh */
     max-height: calc(100dvh - 69px);
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -5056,7 +5057,7 @@ body:has(dialog[open]) {
   background: var(--superficie-2);
 }
 
-.nav-ficha a[aria-current='true'] {
+.nav-ficha a[aria-current='location'] {
   color: var(--blanco);
   /* El hondo del acento: con el vivo, el blanco sobre el naranja de Tarkor se quedaba en 3,2:1. */
   background: var(--acento-bloque);

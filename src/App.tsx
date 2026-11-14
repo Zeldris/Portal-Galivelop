@@ -27,7 +27,7 @@ function Desplazamiento() {
   useEffect(() => {
     // Gestión de foco de la SPA: sin esto, tras pulsar un enlace el foco se queda en un elemento que ya no está.
     // No en la primera carga, ni al cambiar solo de idioma o de ancla.
-    if (debeEnfocarContenido(anterior.current, pathname, hash)) {
+    if (debeEnfocarContenido(anterior.current, pathname)) {
       document.getElementById('contenido')?.focus({ preventScroll: true });
     }
     anterior.current = pathname;

@@ -55,6 +55,7 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
     setAbierto(false);
     alNavegar();
   };
+  const puntero = useRef('');
   const actual = pathname.startsWith('/proyectos/');
 
   return (
@@ -74,9 +75,14 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
         className={`submenu-boton${actual ? ' actual' : ''}`}
         aria-expanded={movil || abierto}
         aria-controls="submenu-proyectos"
-        onClick={(e) =>
-          setAbierto((a) => alClicSubmenu(a, (e.nativeEvent as PointerEvent).pointerType ?? ''))
-        }
+        // El tipo de puntero sale del pointerdown: en algunos WebKit el click no es un PointerEvent. Sin pointerdown
+        // (teclado), queda vacío y el clic alterna.
+        onPointerDown={(e) => (puntero.current = e.pointerType)}
+        onClick={() => {
+          const tipo = puntero.current;
+          puntero.current = '';
+          setAbierto((a) => alClicSubmenu(a, tipo));
+        }}
       >
         {t('nav.proyectos')} <ChevronDown size={15} aria-hidden="true" />
       </button>

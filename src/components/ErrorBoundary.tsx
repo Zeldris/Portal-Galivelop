@@ -1,6 +1,7 @@
 import { Component, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useIdioma } from '../i18n/Idioma';
+import { olvidarFallos } from '../paginas';
 import { AvisoError } from './AvisoError';
 
 interface Props {
@@ -24,6 +25,7 @@ class Limite extends Component<Props, { fallo: boolean }> {
 
   componentDidUpdate(previas: Props) {
     if (this.state.fallo && previas.reinicio !== this.props.reinicio) {
+      olvidarFallos();
       this.setState({ fallo: false });
     }
   }
@@ -39,11 +41,11 @@ class Limite extends Component<Props, { fallo: boolean }> {
 }
 
 export function ErrorBoundary({ children, reserva }: { children: ReactNode; reserva?: ReactNode }) {
-  const { t } = useIdioma();
+  const { t, idioma } = useIdioma();
   const { pathname } = useLocation();
   return (
     <Limite
-      reinicio={pathname}
+      reinicio={`${idioma}${pathname}`}
       titulo={t('error.carga.titulo')}
       texto={t('error.carga.texto')}
       boton={t('error.carga.recargar')}

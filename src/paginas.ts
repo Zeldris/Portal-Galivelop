@@ -3,7 +3,7 @@ import { cargarFicha } from './data/proyectos';
 import { leerAncla } from './utils/ancla';
 
 // Todas las páginas menos la portada van en su propio chunk. Los import() viven aquí, en un mapa compartido, para que
-// el punto de entrada pueda esperarlos antes del primer render (src/main.tsx) y `lazy` reutilice la misma carga.
+// el punto de entrada pueda esperarlos antes del primer render (src/main.tsx) y la página reutilice la misma carga.
 const CARGADORES = {
   Equipo: () => import('./pages/Equipo').then((m) => m.Equipo),
   Legal: () => import('./pages/Legal').then((m) => m.Legal),
@@ -26,7 +26,12 @@ type ComponenteDe<N extends NombrePagina> =
 const promesas = new Map<NombrePagina, Promise<unknown>>();
 const resueltas = new Map<NombrePagina, unknown>();
 
-/** Carga el chunk de una página una sola vez; un fallo no se queda en el mapa (el siguiente intento lo repite). */
+const fallidas = new Set<NombrePagina>();
+
+/**
+ * Carga el chunk de una página una sola vez. Un fallo se queda guardado (si se borrase enseguida, cada reintento de
+ * React tras suspender pediría otro import y el aviso de error no llegaría nunca) hasta `olvidarFallos`.
+ */
 export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
   let promesa = promesas.get(nombre);
   if (!promesa) {
@@ -36,7 +41,7 @@ export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
         return componente;
       },
       (error: unknown) => {
-        promesas.delete(nombre);
+        fallidas.add(nombre);
         throw error;
       },
     );
@@ -45,9 +50,16 @@ export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
   return promesa;
 }
 
+/** Lo llama el límite de error al reiniciarse (otra ruta u otro idioma): el siguiente render pide de nuevo el chunk. */
+export function olvidarFallos(): void {
+  for (const nombre of fallidas) promesas.delete(nombre);
+  fallidas.clear();
+}
+
 function perezosa<N extends NombrePagina>(nombre: N) {
-  // No es `React.lazy`: éste guarda el rechazo para siempre. Aquí `cargarPagina` borra el fallo, así que al volver a
-  // montar la página (el aviso se olvida al cambiar de ruta) se pide el chunk de nuevo.
+  // No es `React.lazy`: éste guarda el rechazo para siempre. Aquí el fallo se olvida cuando el límite de error se
+  // reinicia (al cambiar de ruta o de idioma) y se vuelve a importar. Ojo: Chromium guarda el import fallido de esa
+  // URL y no lo repite sin recargar (comprobado el 2026-11-14); por eso el aviso ofrece «Recargar».
   function Pagina(props: object) {
     // Ficha y chunk de Proyecto a la vez, no uno detrás del otro.
     if (nombre === 'Proyecto' && !resueltas.has(nombre))

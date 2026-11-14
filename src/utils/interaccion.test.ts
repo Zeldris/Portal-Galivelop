@@ -20,11 +20,11 @@ describe('submenú de Proyectos', () => {
 });
 
 describe('foco al cambiar de página', () => {
-  it('cambia de ruta sin ancla: se enfoca', () => {
-    expect(debeEnfocarContenido('/', '/equipo', '')).toBe(true);
+  it('cambia de página, con o sin ancla: se enfoca (el enlace pulsado ya no está)', () => {
+    expect(debeEnfocarContenido('/', '/equipo')).toBe(true);
+    expect(debeEnfocarContenido('/equipo', '/proyectos/tarkor')).toBe(true);
   });
-  it('misma ruta (cambio de idioma o de ancla) o ancla: no se enfoca', () => {
-    expect(debeEnfocarContenido('/equipo', '/equipo', '')).toBe(false);
-    expect(debeEnfocarContenido('/', '/equipo', '#sobre')).toBe(false);
+  it('misma página (cambio de idioma o de ancla): no se enfoca', () => {
+    expect(debeEnfocarContenido('/equipo', '/equipo')).toBe(false);
   });
 });

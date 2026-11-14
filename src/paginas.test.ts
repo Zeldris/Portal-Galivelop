@@ -1,5 +1,22 @@
-import { describe, expect, it } from 'vitest';
-import { paginaDeRuta } from './paginas';
+import { describe, expect, it, vi } from 'vitest';
+import { cargarPagina, olvidarFallos, paginaDeRuta } from './paginas';
+
+describe('cargarPagina (fallo de un chunk)', () => {
+  it('guarda el fallo hasta olvidarFallos: React no pide otro import en cada reintento', async () => {
+    vi.doMock('./pages/Muro', () => {
+      throw new Error('red cortada');
+    });
+    const primera = cargarPagina('Muro');
+    // vitest envuelve el error de la fábrica: el motivo es el fallo simulado al importar.
+    await expect(primera).rejects.toThrow(/error when mocking/);
+    expect(cargarPagina('Muro')).toBe(primera);
+    olvidarFallos();
+    vi.doUnmock('./pages/Muro');
+    const segunda = cargarPagina('Muro');
+    expect(segunda).not.toBe(primera);
+    await expect(segunda).resolves.toBeTypeOf('function');
+  });
+});
 
 const BASE = import.meta.env.BASE_URL;
 
