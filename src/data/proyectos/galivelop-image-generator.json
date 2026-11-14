@@ -5,8 +5,7 @@
   "colaboracion": "abierta",
   "estado": "desarrollo",
   "acento": "#7C5CD6",
-  "icono": "proyectos/galivelop-image-generator/icono.png",
-  "cabecera": "color",
+  "icono": "proyectos/galivelop-image-generator/icono.svg",
   "actualizado": "2026-11-12",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
@@ -52,11 +51,11 @@
     "src": "proyectos/galivelop-image-generator/portada.webp",
     "mini": "proyectos/galivelop-image-generator/portada-mini.webp",
     "ancho": 1600,
-    "alto": 840,
+    "alto": 900,
     "alt": {
-      "es": "Portada de Galivelop IG: «Pide, prueba, elige», con una fila de paneles de cristal y uno iluminado",
-      "gl": "Portada de Galivelop IG: «Pide, proba, elixe», cunha fila de paneis de cristal e un iluminado",
-      "en": "Cover of Galivelop IG: “Ask, try, choose”, with a row of glass panels and one lit up"
+      "es": "Portada de Galivelop IG: cuatro hojas de papel flotan en el mar grabado, con un barco de papel, unas ondas, una rosa de los vientos y el sello GV; la del centro lleva una pinza violeta",
+      "gl": "Portada de Galivelop IG: catro follas de papel flotan no mar gravado, cun barco de papel, unhas ondas, unha rosa dos ventos e o selo GV; a do centro leva unha pinza violeta",
+      "en": "Cover of Galivelop IG: four sheets of paper float on an engraved sea, showing a paper boat, ripples, a compass rose and the GV seal; the middle one has a violet clip"
     }
   },
   "enlaces": [

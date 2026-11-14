@@ -318,7 +318,8 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   `/gl/` y `/en/` (sin ellas, `og.jpg`). Para una `og-fuente.png` hecha a mano con el texto dentro:
   `python3 tools/og/limpiar.py` saca su placa sin texto (`og-base.png`), `tools/og/<slug>-og.html` pone encima el
   texto de cada idioma con las mismas fuentes (de `node_modules/@fontsource*`) y `node tools/og/traducir.mjs <slug>`
-  las renderiza y corre `generar.py` (así están toVeriAI y Galivelop IG). El texto alternativo de la vista previa es el
+  las renderiza y corre `generar.py` (así está Galivelop IG). Si la placa viene del generador sin texto (recurso 24:
+  Tarkor y toVeriAI), la plantilla pinta también el castellano: `node tools/og/traducir.mjs <slug> --es`. El texto alternativo de la vista previa es el
   de `presentacion` (o el de la portada) en el idioma de la página. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.

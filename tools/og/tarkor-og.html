@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- Vista previa en redes de Tarkor (recurso 24, q932): el anillo en el mar, con el texto en la mitad izquierda sobre un
+     velo oscuro (la zona limpia que indica el generador). ?l=es|gl|en. La renderiza
+     `node tools/og/traducir.mjs tarkor --es` a fuentes/tarkor/og-fuente.png y og-fuente-<gl|en>.png. -->
+<html lang="es"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Big Shoulders Display";src:url("../../node_modules/@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2") format("woff2-variations");font-weight:100 900}
+@font-face{font-family:"Literata";src:url("../../node_modules/@fontsource-variable/literata/files/literata-latin-wght-normal.woff2") format("woff2-variations");font-weight:200 900}
+*{margin:0}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{background:url("fuentes/tarkor/og-base.png")}
+body::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,20,30,.88) 0%,rgba(8,20,30,.74) 36%,rgba(8,20,30,0) 60%)}
+.marca{position:absolute;left:64px;top:150px;font:700 30px/1 "Big Shoulders Display",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#f0a77f}
+h1{position:absolute;left:62px;top:198px;width:600px;font:800 66px/70px "Big Shoulders Display",sans-serif;color:#f6f1e8}
+hr{position:absolute;left:64px;top:360px;width:54px;height:3px;border:0;background:#E0703A}
+p{position:absolute;left:64px;top:382px;width:540px;font:400 23px/35px "Literata",serif;color:#d6dde2}
+</style></head><body>
+<div class="marca">Tarkor</div><h1 id="titulo"></h1><hr><p id="texto"></p>
+<script>
+const TEXTOS = {
+  es: ['El mundo sigue<br>aunque tú te detengas.', 'Un RPG narrativo por texto, con una IA local<br>como directora de juego.'],
+  gl: ['O mundo segue<br>aínda que ti te deteñas.', 'Un RPG narrativo por texto, cunha IA local<br>como directora de xogo.'],
+  en: ['The world moves on<br>even when you stop.', 'A narrative text RPG, with a local AI<br>as game master.'],
+};
+const pedido = new URLSearchParams(location.search).get('l');
+const l = TEXTOS[pedido] ? pedido : 'es';
+document.documentElement.lang = l;
+[titulo.innerHTML, texto.innerHTML] = TEXTOS[l];
+</script>
+</body></html>

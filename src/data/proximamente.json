@@ -4,6 +4,7 @@
     "nombre": "Galivelop Voice Generator",
     "acento": "#D9467A",
     "icono": "audio",
+    "iconoPropio": "proyectos/galivelop-voice-generator/icono.svg",
     "imagen": "proyectos/galivelop-voice-generator/proxima.webp",
     "lema": {
       "es": "Voces generadas con IA local para los proyectos del taller.",

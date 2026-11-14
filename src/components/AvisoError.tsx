@@ -1,4 +1,4 @@
-import { ruta } from '../data/proyectos';
+import { ImagenTema } from './ImagenTema';
 
 /** Aviso de fallo de carga (no «no existe»): el cable desconectado (recurso 28), título, texto y un botón que vuelve a intentarlo. */
 export function AvisoError({
@@ -15,10 +15,10 @@ export function AvisoError({
   return (
     <section className="seccion no-encontrado" role="alert">
       <div className="contenedor">
-        <img
+        <ImagenTema
           className="aviso-error-imagen"
-          src={ruta('marca/aviso-error.webp')}
-          alt=""
+          claro="marca/aviso-error.webp"
+          oscuro="marca/aviso-error-oscura.webp"
           width={480}
           height={360}
           // Sin red (el caso típico de este aviso), mejor nada que una caja rota.
