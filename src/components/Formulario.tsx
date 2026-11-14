@@ -103,13 +103,18 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
 
         {correo && (
           <div className="formulario-listo" role="status">
-            <img
-              className="formulario-listo-imagen"
-              src={ruta('marca/enviado.webp')}
-              alt=""
-              width={480}
-              height={360}
-            />
+            {/* Recurso 19, una por tema; el CSS (`.solo-claro`, `.solo-oscuro`) muestra la del tema. */}
+            {(['claro', 'oscuro'] as const).map((tema) => (
+              <img
+                key={tema}
+                className={`formulario-listo-imagen solo-${tema}`}
+                src={ruta(tema === 'claro' ? 'marca/enviado.webp' : 'marca/enviado-oscura.webp')}
+                alt=""
+                width={480}
+                height={360}
+                loading="lazy"
+              />
+            ))}
             <h2>
               <Check size={20} /> {t('form.listo.titulo')}
             </h2>

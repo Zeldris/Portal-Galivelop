@@ -2361,6 +2361,12 @@ button {
   margin-bottom: 16px;
 }
 
+/* Imagen con versión por tema: solo se ve la del tema activo. */
+:root[data-tema='claro'] .solo-oscuro,
+:root:not([data-tema='claro']) .solo-claro {
+  display: none;
+}
+
 .banda-cabecera {
   margin-bottom: clamp(24px, 4vw, 40px);
 }
