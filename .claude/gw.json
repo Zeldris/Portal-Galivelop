@@ -79,5 +79,8 @@
     "slow": []
   },
   "plan": [],
-  "taskId": "[A-Z]{2,5}-\\d+"
+  "taskId": "[A-Z]{2,5}-\\d+",
+  "ownedFiles": [
+    ".github/workflows/check.yml"
+  ]
 }
