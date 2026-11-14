@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="gw-size" content="1200x675">
+<title>Card</title>
+<style>
+  :root {
+    /* Palette: override these to match the project (brand colors, dark or light). Nothing else needs to change. */
+    --background: #0b1720; --surface: #111f29; --border: #1f3442;
+    --text: #e6eef3; --muted: #9fb2bf; --accent: #1aa6df; --accent-text: #0b1720;
+    --good: #4ade80; --bad: #f87171;
+    --font: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, "DejaVu Sans", "Liberation Sans", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", "Liberation Mono", monospace;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 675px; overflow: hidden; background: var(--background); color: var(--text); font-family: var(--font);
+         padding: 56px 72px; display: flex; flex-direction: column; }
+  .brand { font-size: 20px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  h1 { font-size: 54px; line-height: 1.1; margin-top: 28px; max-width: 980px; }
+  p.sub { font-size: 26px; line-height: 1.35; color: var(--muted); margin-top: 20px; max-width: 960px; }
+  .stats { display: flex; gap: 22px; margin-top: auto; }
+  .stat { flex: 1; background: var(--surface); border: 2px solid var(--border); border-radius: 16px; padding: 20px 24px; }
+  .stat b { display: block; font-size: 46px; color: var(--accent); }
+  .stat span { font-size: 20px; color: var(--muted); }
+  .footer { display: flex; justify-content: space-between; margin-top: 26px; font-size: 20px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="brand">Galivelop · Novedades del portal</div>
+  <h1>Una web más rápida, más clara y en tres idiomas</h1>
+  <p class="sub">Página de novedades, vistas previas en el idioma de cada página, animaciones del workflow e imágenes de nuestro generador local.</p>
+  <div class="stats">
+    <div class="stat"><b>−62 %</b><span>JavaScript al entrar (258 → 97 KB gzip)</span></div>
+    <div class="stat"><b>5:1</b><span>contraste del acento de Tarkor (antes 3,2:1)</span></div>
+    <div class="stat"><b>es · gl · en</b><span>texto e imagen al compartir</span></div>
+  </div>
+  <div class="footer"><span>Noviembre de 2026</span><span>zeldris.github.io/Portal-Galivelop</span></div>
+</body>
+</html>
