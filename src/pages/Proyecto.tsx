@@ -205,10 +205,26 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
         className={`proyecto-cabecera cabecera-${modoCabecera}${fondoEstado ? ' cabecera-velada' : ''}`}
       >
         {modoCabecera === 'ilustracion' && (
-          <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" fetchPriority="high" />
+          <img
+            className="proyecto-fondo"
+            src={ruta(p.portada.src)}
+            alt=""
+            width={p.portada.ancho}
+            height={p.portada.alto}
+            fetchPriority="high"
+            decoding="async"
+          />
         )}
         {fondoEstado && (
-          <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" fetchPriority="high" />
+          <img
+            className="proyecto-fondo"
+            src={ruta(fondoEstado)}
+            alt=""
+            width={1600}
+            height={900}
+            fetchPriority="high"
+            decoding="async"
+          />
         )}
         {modoCabecera === 'captura' && (
           <img
@@ -216,6 +232,9 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
             src={ruta('/marca/isobatas.svg')}
             alt=""
             aria-hidden="true"
+            width={2400}
+            height={1200}
+            decoding="async"
           />
         )}
         <div className="contenedor proyecto-cabecera-contenido">
@@ -266,7 +285,12 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                 <i />
                 <i />
               </span>
-              <img src={ruta(p.portada.src)} alt="" />
+              <img
+                src={ruta(p.portada.src)}
+                alt=""
+                width={p.portada.ancho}
+                height={p.portada.alto}
+              />
             </figure>
           )}
         </div>

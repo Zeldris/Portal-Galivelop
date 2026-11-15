@@ -71,7 +71,16 @@ export function Inicio() {
   return (
     <>
       <section className="hero">
-        <img className="hero-fondo" src={ruta('/marca/isobatas.svg')} alt="" aria-hidden="true" />
+        <img
+          className="hero-fondo"
+          src={ruta('/marca/isobatas.svg')}
+          alt=""
+          aria-hidden="true"
+          width={2400}
+          height={1200}
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="contenedor hero-rejilla">
           <div className="hero-texto">
             <p className="antetitulo">{t('hero.antetitulo')}</p>
@@ -114,6 +123,8 @@ export function Inicio() {
                     key={p.slug}
                     src={ruta((p.presentacion ?? p.portada).mini)}
                     alt=""
+                    width={(p.presentacion ?? p.portada).ancho}
+                    height={(p.presentacion ?? p.portada).alto}
                     className={p === activo ? 'activa' : undefined}
                     loading={p === activo ? undefined : 'lazy'}
                   />

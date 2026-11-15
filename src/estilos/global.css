@@ -2442,6 +2442,10 @@ button {
   border: 1px solid rgb(255 255 255 / 0.6);
 }
 
+.ventana img {
+  height: auto;
+}
+
 .ventana-barra {
   display: flex;
   gap: 6px;
