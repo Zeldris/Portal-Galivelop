@@ -8,6 +8,8 @@ import { resumenesProyectos } from './tools/vite/resumenes';
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/Portal-Galivelop/',
   plugins: [react(), resumenesProyectos()],
+  // scripts/paginas-estaticas.mjs lee dist/.vite/manifest.json para precargar los chunks de cada ruta.
+  build: { manifest: true },
   // Los worktrees de subagentes (.claude/worktrees/) traen su propia copia de los tests: no se corren desde aquí.
   test: { exclude: [...configDefaults.exclude, '.claude/**'] },
 });
