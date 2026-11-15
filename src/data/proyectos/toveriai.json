@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-14",
+  "actualizado": "2026-11-15",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -700,6 +700,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-15",
+      "texto": {
+        "es": "Al pasar rápido de una entrada a otra, la web ya no mezcla datos de la anterior con los de la que tienes abierta.",
+        "gl": "Ao pasar rápido dunha entrada a outra, a web xa non mestura datos da anterior cos da que tes aberta.",
+        "en": "When you jump quickly from one entry to another, the site no longer mixes data from the previous one with the one you have open."
+      }
+    },
+    {
       "fecha": "2026-11-14",
       "texto": {
         "es": "Trabajo de fondo: ajustes en el servidor para que aguante mejor con pocos recursos y nueva puesta al día de las herramientas de desarrollo, para que la web siga segura y estable.",
@@ -753,30 +761,6 @@
         "es": "Al iniciar sesión, con contraseña o con Google, vuelves a la página donde estabas.",
         "gl": "Ao iniciar sesión, con contrasinal ou con Google, volves á páxina onde estabas.",
         "en": "Signing in, with a password or with Google, takes you back to the page you were on."
-      }
-    },
-    {
-      "fecha": "2026-07-16",
-      "texto": {
-        "es": "La racha de verificación se ve más: sección propia en el perfil y aviso tras cada análisis del bonus de un análisis extra cada 3 días.",
-        "gl": "A racha de verificación vese máis: sección propia no perfil e aviso tras cada análise do bonus dunha análise extra cada 3 días.",
-        "en": "Your verification streak is easier to see: its own section in your profile and, after each analysis, a reminder of the bonus of one extra analysis every 3 days."
-      }
-    },
-    {
-      "fecha": "2026-07-16",
-      "texto": {
-        "es": "El análisis de imagen acepta varias capturas por análisis, leídas en orden.",
-        "gl": "A análise de imaxe acepta varias capturas por análise, lidas en orde.",
-        "en": "Image analysis now accepts several screenshots per analysis, read in order."
-      }
-    },
-    {
-      "fecha": "2026-07-16",
-      "texto": {
-        "es": "Filtro de contenido no analizable para texto, URL e imagen.",
-        "gl": "Filtro de contido non analizable para texto, URL e imaxe.",
-        "en": "Filter for non-analysable content in text, URL and image modes."
       }
     }
   ],

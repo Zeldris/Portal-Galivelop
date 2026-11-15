@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-14",
+  "actualizado": "2026-11-15",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.6.0 · próxima la 0.7 «Preguntar»",
-    "gl": "En desenvolvemento · v0.6.0 · próxima a 0.7 «Preguntar»",
-    "en": "In development · v0.6.0 · next up: 0.7 “Ask”"
+    "es": "En desarrollo · v0.6.2 · próxima la 0.7 «Preguntar»",
+    "gl": "En desenvolvemento · v0.6.2 · próxima a 0.7 «Preguntar»",
+    "en": "In development · v0.6.2 · next up: 0.7 “Ask”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "portada": {
@@ -75,11 +75,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.6.0",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.6.2",
       "etiqueta": {
-        "es": "Ver la versión 0.6.0",
-        "gl": "Ver a versión 0.6.0",
-        "en": "View version 0.6.0"
+        "es": "Ver la versión 0.6.2",
+        "gl": "Ver a versión 0.6.2",
+        "en": "View version 0.6.2"
       }
     }
   ],
@@ -131,9 +131,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.6.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.6.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.6.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.6.2, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.6.2, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.6.2, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
@@ -2017,6 +2017,96 @@
       "items": [
         {
           "nombre": {
+            "es": "Cerrar la recogida",
+            "gl": "Pechar a recollida",
+            "en": "Closing the harvest"
+          },
+          "valor": "0.6.2 · 2026-11-15",
+          "texto": {
+            "es": "Parche de arreglos que cierra la recogida de los proyectos: la subida a main funciona aunque la rama protegida aún no exista, el aviso de trabajo sin subir deja de contar lo traído de main y el reparto a subagentes gana reglas para arreglar después de fusionar.",
+            "gl": "Parche de arranxos que pecha a recollida dos proxectos: a subida a main funciona aínda que a rama protexida aínda non exista, o aviso de traballo sen subir deixa de contar o traído de main e o reparto a subaxentes gaña regras para arranxar despois de fusionar.",
+            "en": "A fix patch that closes the harvest from the projects: pushing to main works even when the protected branch does not exist yet, the unpushed-work warning no longer counts what came from main, and dealing work to subagents gains rules for fixing after a merge."
+          },
+          "detalle": [
+            {
+              "es": "La marca de revisión se puede escribir cuando la rama protegida aún no existe en el remoto; cualquier otro fallo para en seco.",
+              "gl": "A marca de revisión pódese escribir cando a rama protexida aínda non existe no remoto; calquera outro fallo para en seco.",
+              "en": "The review mark can be written when the protected branch does not exist on the remote yet; any other failure stops cold."
+            },
+            {
+              "es": "Al parar, los commits de main traídos por merge ya no cuentan como trabajo sin subir.",
+              "gl": "Ao parar, os commits de main traídos por merge xa non contan como traballo sen subir.",
+              "en": "When stopping, main’s commits brought in by a merge no longer count as unpushed work."
+            },
+            {
+              "es": "Tras fusionar, los arreglos van a un subagente nuevo con el archivo de hallazgos, y un test en rojo solo es previo si falla igual en main.",
+              "gl": "Tras fusionar, os arranxos van a un subaxente novo co ficheiro de achados, e un test en vermello só é previo se falla igual en main.",
+              "en": "After a merge, fixes go to a new subagent with the findings file, and a red test only counts as pre-existing if it fails the same way on main."
+            },
+            {
+              "es": "El revisor recibe la lista de lo ya apuntado para no repetirlo, y la plantilla de instrucciones explica cómo leer un CI en rojo.",
+              "gl": "O revisor recibe a lista do xa apuntado para non repetilo, e o modelo de instrucións explica como ler un CI en vermello.",
+              "en": "The reviewer gets the list of what is already noted so it does not repeat it, and the instructions template explains how to read a red CI."
+            },
+            {
+              "es": "Los tests de un cambio pasan antes shellcheck y dicen por qué se eligió cada uno.",
+              "gl": "Os tests dun cambio pasan antes shellcheck e din por que se escolleu cada un.",
+              "en": "A change’s tests run shellcheck first and say why each one was chosen."
+            },
+            {
+              "es": "Las oleadas de ramas se fusionan con un solo check al final, y se avisa de un subagente genérico barato cuando existe gw-worker.",
+              "gl": "As ondas de ramas fusiónanse cun só check ao final, e avísase dun subaxente xenérico barato cando existe gw-worker.",
+              "en": "Waves of branches merge with a single check at the end, and a warning comes up for a cheap generic subagent when gw-worker exists."
+            }
+          ]
+        },
+        {
+          "nombre": {
+            "es": "Tests más seguros",
+            "gl": "Tests máis seguros",
+            "en": "Safer tests"
+          },
+          "valor": "0.6.1 · 2026-11-14",
+          "texto": {
+            "es": "Parche de arreglos de la 0.6: los commits con trailers mal colocados se rechazan, la prueba de que un test falla sin su arreglo ya no puede perder trabajo si se interrumpe, y shellcheck revisa los scripts de shell que cambian.",
+            "gl": "Parche de arranxos da 0.6: os commits con trailers mal colocados rexéitanse, a proba de que un test falla sen o seu arranxo xa non pode perder traballo se se interrompe, e shellcheck revisa os scripts de shell que cambian.",
+            "en": "A fix patch for 0.6: commits with misplaced trailers are rejected, the check that a test fails without its fix can no longer lose work if interrupted, and shellcheck reviews the shell scripts that change."
+          },
+          "detalle": [
+            {
+              "es": "El commit rechaza las marcas de hallazgos y reintentos fuera de los trailers, y pide /clear al cerrar una fase con el contexto lleno.",
+              "gl": "O commit rexeita as marcas de achados e reintentos fóra dos trailers, e pide /clear ao pechar unha fase co contexto cheo.",
+              "en": "Commits reject findings and retries marks outside the trailers, and ask for /clear when a phase closes with a full context."
+            },
+            {
+              "es": "La prueba de que un test falla sin su arreglo guarda el arreglo en una copia, segura si se corta a mitad.",
+              "gl": "A proba de que un test falla sen o seu arranxo garda o arranxo nunha copia, segura se se corta á metade.",
+              "en": "The check that a test fails without its fix keeps the fix in a copy, safe if cut off halfway."
+            },
+            {
+              "es": "shellcheck pasa sobre los scripts de shell que cambian.",
+              "gl": "shellcheck pasa sobre os scripts de shell que cambian.",
+              "en": "shellcheck runs on the shell scripts that change."
+            },
+            {
+              "es": "La instalación y la recogida son más precisas, y lo pendiente pasa a su propio archivo.",
+              "gl": "A instalación e a recollida son máis precisas, e o pendente pasa ao seu propio ficheiro.",
+              "en": "Installing and harvesting are more accurate, and pending items move to their own file."
+            },
+            {
+              "es": "El roadmap exige las mismas tareas en todos los idiomas.",
+              "gl": "O roadmap esixe as mesmas tarefas en todos os idiomas.",
+              "en": "The roadmap requires the same tasks in every language."
+            },
+            {
+              "es": "Los subagentes reciben dónde están los tests, suben su último commit en primer plano y se paran si no vuelven con él subido.",
+              "gl": "Os subaxentes reciben onde están os tests, soben o seu último commit en primeiro plano e páranse se non volven con el subido.",
+              "en": "Subagents are told where the tests are, push their last commit in the foreground and are stopped if they don’t come back with it pushed."
+            }
+          ]
+        },
+        {
+          "nombre": {
             "es": "Medir el gasto",
             "gl": "Medir o gasto",
             "en": "Measuring spend"
@@ -2708,6 +2798,22 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-15",
+      "texto": {
+        "es": "Publicada la 0.6.2, de arreglos: la subida a main funciona aunque la rama protegida aún no exista, el aviso de trabajo sin subir deja de contar lo traído de main y el reparto a subagentes arregla en un subagente nuevo tras fusionar.",
+        "gl": "Publicada a 0.6.2, de arranxos: a subida a main funciona aínda que a rama protexida aínda non exista, o aviso de traballo sen subir deixa de contar o traído de main e o reparto a subaxentes arranxa nun subaxente novo tras fusionar.",
+        "en": "Version 0.6.2 is out, with fixes: pushing to main works even when the protected branch does not exist yet, the unpushed-work warning no longer counts what came from main, and dealing work fixes in a new subagent after a merge."
+      }
+    },
+    {
+      "fecha": "2026-11-14",
+      "texto": {
+        "es": "Publicada la 0.6.1, de arreglos: los commits rechazan trailers mal colocados, la prueba de que un test falla sin su arreglo ya no pierde trabajo si se corta y shellcheck revisa los scripts que cambian.",
+        "gl": "Publicada a 0.6.1, de arranxos: os commits rexeitan trailers mal colocados, a proba de que un test falla sen o seu arranxo xa non perde traballo se se corta e shellcheck revisa os scripts que cambian.",
+        "en": "Version 0.6.1 is out, with fixes: commits reject misplaced trailers, the check that a test fails without its fix no longer loses work if cut off, and shellcheck reviews the scripts that change."
+      }
+    },
+    {
       "fecha": "2026-11-13",
       "texto": {
         "es": "Publicada la 0.6.0, de medida: el flujo apunta los tokens por sesión y modelo, recomienda modelo y esfuerzo para cada tarea, revisa por bloques las ramas largas y corre el check en paralelo. Llegan el subagente ligero gw-worker, la skill gw-metrics y toda la configuración en un solo archivo.",
@@ -2754,22 +2860,6 @@
         "gl": "Publicada a 0.4.2, un parche só de arranxos: o aviso de segredos antes de cada commit recoñece máis formas de clave (tamén as pegadas a un provedor de IA), a fusión da rama dun subaxente corre ademais os tests relacionados co que cambia, o mapa do código entende máis linguaxes (Java, Kotlin, C#…) e os scripts deixan de suxerir reescribir o último commit. O evolutivo xa vai á 1.0.0.",
         "en": "Version 0.4.2 is out, a fixes-only patch: the secrets warning before each commit recognises more kinds of key (including those tied to an AI provider), merging a subagent’s branch also runs the tests related to what changed, the code map understands more languages (Java, Kotlin, C#…) and the scripts no longer suggest rewriting the last commit. New features now go to 1.0.0."
       }
-    },
-    {
-      "fecha": "2026-10-26",
-      "texto": {
-        "es": "Publicadas las versiones 0.4.0 y 0.4.1: llega todo lo anunciado para la 0.4 y, además, los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube, el gancho de fusión reconoce un CI que GitHub no arrancó por falta de cuota y la recogida de lo aprendido gasta un 17 % menos de tokens. La serie 0.4 es la última antes de la 1.0.",
-        "gl": "Publicadas as versións 0.4.0 e 0.4.1: chega todo o anunciado para a 0.4 e, ademais, os scripts atopan o repositorio tamén desde unha copia de traballo enlazada, desaparece o falso aviso de «sesión fóra do repositorio» na nube, o gancho de fusión recoñece un CI que GitHub non arrancou por falta de cota e a recollida do aprendido gasta un 17 % menos de tokens. A serie 0.4 é a última antes da 1.0.",
-        "en": "Versions 0.4.0 and 0.4.1 are out: everything announced for 0.4 is in and, on top of that, the scripts find the repository from a linked working copy too, the false “session outside the repository” warning in the cloud is gone, the merge hook recognises CI that GitHub didn’t start for lack of quota, and gathering what the projects taught us uses 17% fewer tokens. The 0.4 series is the last one before 1.0."
-      }
-    },
-    {
-      "fecha": "2026-10-25",
-      "texto": {
-        "es": "Versión 0.4.0 lista para publicar: cada versión empieza recogiendo lo aprendido en los proyectos, llegan dos skills para preparar contenido para redes a partir del trabajo hecho y otra para pararse a revisar lo que no cuadra, y los ganchos son más seguros: comprueban que la bitácora va en el mismo commit, detectan caracteres invisibles y ya no se quedan colgados. Si el CI no arranca, el check en local solo vale con la confirmación de la persona.",
-        "gl": "Versión 0.4.0 lista para publicar: cada versión comeza recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
-        "en": "Version 0.4.0 ready to ship: each version starts by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn’t add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn’t start, a local check only counts with the person’s confirmation."
-      }
     }
   ],
   "cifras": [
@@ -2790,7 +2880,7 @@
       }
     },
     {
-      "valor": "2554",
+      "valor": "2671",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",

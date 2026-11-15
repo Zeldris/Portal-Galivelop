@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-14",
+  "actualizado": "2026-11-15",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -1112,6 +1112,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-15",
+      "texto": {
+        "es": "Las herramientas de marca son más fiables: quitar el fondo, pasar un dibujo a SVG y crear texturas que se repiten fallan menos y explican mejor qué ha salido mal. Además, el taller de logos elige bien el grosor de las tipografías instaladas y acepta fuentes .ttc.",
+        "gl": "As ferramentas de marca son máis fiables: quitar o fondo, pasar un debuxo a SVG e crear texturas que se repiten fallan menos e explican mellor que saíu mal. Ademais, o obradoiro de logos escolle ben o grosor das tipografías instaladas e acepta fontes .ttc.",
+        "en": "The brand tools are more reliable: removing the background, turning a drawing into SVG and making repeating textures fail less often and explain better what went wrong. The logo workshop also picks the right weight of installed typefaces and accepts .ttc fonts."
+      }
+    },
+    {
       "fecha": "2026-11-14",
       "texto": {
         "es": "Ya se puede añadir un prompt negativo al pedido, en la línea de órdenes, la API y la interfaz, y queda guardado en el intento y en el manifiesto de entrega. Además, el taller de marca elige solo el espaciado del nombre según la tipografía y no pisa archivos ya hechos sin confirmación.",
@@ -1165,38 +1173,6 @@
         "es": "Dos rondas de ajuste del piloto: más detalle en las imágenes y un estilo propio por proyecto, con Tarkor a lápiz.",
         "gl": "Dúas roldas de axuste do piloto: máis detalle nas imaxes e un estilo propio por proxecto, con Tarkor a lapis.",
         "en": "Two pilot adjustment rounds: more detail in the images and a style of its own per project, with Tarkor in pencil."
-      }
-    },
-    {
-      "fecha": "2026-11-04",
-      "texto": {
-        "es": "Motor real conectado: el servicio ya genera con stable-diffusion.cpp, con borradores rápidos, texto compuesto sobre la imagen, medida de color y hojas de contactos. Hay un instalador, probado solo en una Steam Deck.",
-        "gl": "Motor real conectado: o servizo xa xera con stable-diffusion.cpp, con borradores rápidos, texto composto sobre a imaxe, medida de cor e follas de contactos. Hai un instalador, probado só nunha Steam Deck.",
-        "en": "Real engine connected: the service now generates with stable-diffusion.cpp, with quick drafts, text composed over the image, colour measurement and contact sheets. There is an installer, tested only on a Steam Deck."
-      }
-    },
-    {
-      "fecha": "2026-10-27",
-      "texto": {
-        "es": "Piloto de contenido cerrado: seis rondas y piezas por formato para todos los proyectos.",
-        "gl": "Piloto de contido pechado: seis roldas e pezas por formato para todos os proxectos.",
-        "en": "Content pilot closed: six rounds and pieces per format for every project."
-      }
-    },
-    {
-      "fecha": "2026-10-26",
-      "texto": {
-        "es": "Arranca el piloto en la Steam Deck: primeras imágenes sociales y borrador frente a definitivo.",
-        "gl": "Arranca o piloto na Steam Deck: primeiras imaxes sociais e borrador fronte a definitivo.",
-        "en": "The pilot starts on the Steam Deck: first social images and draft versus final."
-      }
-    },
-    {
-      "fecha": "2026-10-25",
-      "texto": {
-        "es": "Núcleo terminado: pedidos, intentos, elegida, entrega con manifiesto y cola.",
-        "gl": "Núcleo terminado: pedidos, intentos, elixida, entrega con manifesto e cola.",
-        "en": "Core finished: requests, attempts, chosen one, delivery with manifest, and queue."
       }
     }
   ],
