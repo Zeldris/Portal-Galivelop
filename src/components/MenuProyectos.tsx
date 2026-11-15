@@ -98,7 +98,14 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
                   pathname.replace(/\/$/, '') === `/proyectos/${p.slug}` ? 'page' : undefined
                 }
               >
-                <img src={ruta(p.portada.mini)} alt="" loading="lazy" decoding="async" />
+                <img
+                  src={ruta(p.portada.mini)}
+                  alt=""
+                  width={p.portada.ancho}
+                  height={p.portada.alto}
+                  loading="lazy"
+                  decoding="async"
+                />
                 <span className="submenu-texto">
                   <strong>{p.nombre}</strong>
                   <span>{tx(p.categoria)}</span>

@@ -219,6 +219,8 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
           key={`fondo-${imagen.src}`}
           src={ruta(imagen.mini)}
           alt=""
+          width={imagen.ancho}
+          height={imagen.alto}
           className="galeria-fondo"
           aria-hidden="true"
         />
@@ -281,7 +283,13 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
                 aria-label={tx(e.imagen.alt)}
                 onClick={() => irAMano(i)}
               >
-                <img src={ruta(e.imagen.mini)} alt="" loading="lazy" />
+                <img
+                  src={ruta(e.imagen.mini)}
+                  alt=""
+                  width={e.imagen.ancho}
+                  height={e.imagen.alto}
+                  loading="lazy"
+                />
               </button>
             </Fragment>
           ))}
@@ -301,7 +309,12 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
         onTouchEnd={soltar}
       >
         <figure>
-          <img src={ruta(imagen.src)} alt={tx(imagen.alt)} />
+          <img
+            src={ruta(imagen.src)}
+            alt={tx(imagen.alt)}
+            width={imagen.ancho}
+            height={imagen.alto}
+          />
           <figcaption>
             {tx(imagen.alt)} · {t('galeria.posicion', { n: actual + 1, total })}
           </figcaption>
