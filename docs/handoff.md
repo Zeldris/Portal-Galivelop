@@ -18,9 +18,12 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
+- Galivelop-workflow 0.7.0 en su ficha, su producto y sus diagramas (`ccr-8e0862c2-niq1xt`, 2026-11-15; solo contenido).
+
 
 ## Hecho
 
+- 2026-11-15 · **`/gw-portal` (aplicar): Galivelop-workflow 0.7.0** (`ccr-8e0862c2-niq1xt`): ficha con fase, enlace a la versión, descripción, hitos (0.7 hecha; las preguntas pasan a la 0.8), novedad del 2026-11-15, cifra de pruebas 2767, «Versiones publicadas» (Autores y subagentes), garantías y piezas (autores no permitidos, aviso de copia generada); producto a 0.7.0; diagramas de portada y arquitectura a v0.7.0. Sin cambios: Tarkor (auditorías y versiones del instalador son internas), toVeriAI, generador de imágenes, World-Maker-Fantasy, voz y developer. Sin repos nuevos.
 - 2026-11-14 · **Pieza de Reddit** `docs/media/2026-11-14/04-novedades-reddit/` publicada en el perfil u/Alvaro-Garcia-Grana (la persona: «siempre en el mío»; sin enlace apuntado), en inglés, con una imagen oscura de todos los proyectos (`media/1-changelog.webp`).
 - 2026-11-15 · **Pieza de X «Fichas al día»** (P7 de `docs/media/proposals/2026-11-14.md`, `ccr-8e0862c2-niq1xt`; la persona: «Actualizar y producir»): `docs/media/2026-11-15/01-fichas-al-dia/`, un post en castellano con enlace a /novedades y 4 tarjetas 1200×675 (resumen con workflow 0.6.2, 2671 pruebas e IG 0.5.0; workflow 0.6.2; Galivelop IG; Tarkor); `check.py` en OK. Sin publicar.
 - 2026-11-15 · **Revisión semanal** (tarea «Proyectos semanal», publicada en `main`): Galivelop-workflow, versión 0.6.2 (2671 tests), las 0.6.2 y 0.6.1 en versiones publicadas, dos novedades, y los diagramas (`galivelop-workflow.svg`, `gw-arquitectura.svg`) y sus imágenes, puestos al día; toVeriAI, una novedad (cambiar rápido de entrada ya no mezcla datos); Galivelop IG, una novedad (herramientas de marca más fiables y el taller de logos con peso de fuente y .ttc); Tarkor, una novedad (arreglos de la ronda de pruebas); el muro y próximamente, sin cambios; ningún hito retirado.
