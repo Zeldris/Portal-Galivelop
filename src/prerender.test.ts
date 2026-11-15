@@ -2,7 +2,9 @@ import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 // Lo escribe scripts/paginas-estaticas.mjs tras `npm run build`; sin build previo no hay nada que comprobar.
-const hayBuild = existsSync('dist/proyectos/tarkor/index.html');
+// Solo un build con `build.manifest` (el de este cambio en adelante): un dist/ anterior no lleva precargas y fallaría.
+const hayBuild =
+  existsSync('dist/.vite/manifest.json') && existsSync('dist/proyectos/tarkor/index.html');
 
 describe.skipIf(!hayBuild)('precarga del prerender (necesita `npm run build`)', () => {
   const head = (ruta: string) => readFileSync(`dist/${ruta}index.html`, 'utf8').split('</head>')[0];
