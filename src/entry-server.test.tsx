@@ -31,4 +31,13 @@ describe('prerender de la app (entry-server)', () => {
       expect(h1(html), ruta).toHaveLength(1);
     }
   });
+
+  it('los iconos de marca salen completos en las páginas que los usan (portada, ficha y equipo)', async () => {
+    for (const ruta of ['', 'proyectos/tarkor/', 'equipo/']) {
+      const html = await renderizar(`${BASE}${ruta}`);
+      const iconos = [...html.matchAll(/<svg\b[^>]*data-icono="([^"]+)"[^>]*>([\s\S]*?)<\/svg>/g)];
+      expect(iconos.length, ruta).toBeGreaterThan(0);
+      for (const [, nombre, trazado] of iconos) expect(trazado, `${ruta} ${nombre}`).not.toBe('');
+    }
+  });
 });

@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { prerenderToNodeStream } from 'react-dom/static';
 import { StaticRouter } from 'react-router-dom';
 import { App } from './App';
+import { precargarTodosLosIconos } from './components/IconoMarca';
 import { baseDeIdioma, idiomaDeRuta, ProveedorIdioma } from './i18n/Idioma';
 import { precargarRuta } from './paginas';
 
@@ -10,10 +11,10 @@ const sinCambio = () => {};
 /**
  * HTML de #root para una dirección (con la base de Vite: `/Portal-Galivelop/gl/proyectos/tarkor/`), con el mismo árbol
  * que `Raiz` de src/main.tsx: el cliente lo hidrata sin volver a pintarlo. Lo usa scripts/paginas-estaticas.mjs tras
- * `vite build --ssr`. Espera a todo lo perezoso (página, ficha, animaciones): no queda ningún «cargando».
+ * `vite build --ssr`. Espera a todo lo perezoso (página, ficha, animaciones, iconos de marca): no queda ningún «cargando».
  */
 export async function renderizar(pathname: string): Promise<string> {
-  await precargarRuta(pathname);
+  await Promise.all([precargarRuta(pathname), precargarTodosLosIconos()]);
   const idioma = idiomaDeRuta(pathname) ?? 'es';
   const { prelude } = await prerenderToNodeStream(
     <StrictMode>

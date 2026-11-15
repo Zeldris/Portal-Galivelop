@@ -5,6 +5,7 @@ import { StrictMode, startTransition, useCallback, useState } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
+import { sembrarIconos } from './components/IconoMarca';
 import type { Idioma } from './data/tipos';
 import './estilos/global.css';
 import { precargarRuta } from './paginas';
@@ -101,6 +102,9 @@ void precargarRuta(location.pathname).then(() => {
     conBarra(raiz.dataset.prerender) === conBarra(location.pathname) &&
     location.search === '' &&
     idiomaInicial() === (idiomaDeRuta(location.pathname) ?? 'es');
-  if (prerenderizado) hydrateRoot(raiz, app);
-  else createRoot(raiz).render(app);
+  if (prerenderizado) {
+    // Los iconos de marca se cargan aparte (un chunk cada uno): se toman del propio HTML para no pintarlos vacíos.
+    sembrarIconos(raiz);
+    hydrateRoot(raiz, app);
+  } else createRoot(raiz).render(app);
 });

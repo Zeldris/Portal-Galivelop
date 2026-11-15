@@ -62,6 +62,24 @@ export function precargarIconos(nombres: readonly NombreIcono[]): Promise<unknow
   return Promise.all(nombres.map((n) => cargarIcono(n).catch(() => undefined)));
 }
 
+/** Todos los iconos: el prerender (src/entry-server.tsx) los espera para que el HTML lleve cada uno completo. */
+export function precargarTodosLosIconos(): Promise<unknown> {
+  return precargarIconos(NOMBRES);
+}
+
+/**
+ * Antes de hidratar (src/main.tsx): toma de los `<svg data-icono>` del HTML prerenderizado los iconos que ya trae, sin
+ * pedirlos a la red. Así el primer render del cliente los pinta completos, igual que el servidor.
+ */
+export function sembrarIconos(raiz: ParentNode): void {
+  for (const svg of raiz.querySelectorAll<SVGSVGElement>('svg[data-icono]')) {
+    const nombre = svg.dataset.icono as NombreIcono;
+    const viewBox = svg.getAttribute('viewBox');
+    if (!NOMBRES.includes(nombre) || resueltos.has(nombre) || !viewBox || !svg.innerHTML) continue;
+    resueltos.set(nombre, { viewBox, trazado: svg.innerHTML });
+  }
+}
+
 /** Se pinta en línea (no con `<img>`) para que tome el color del texto y casen las reglas de `svg` del CSS. */
 export function IconoMarca({ nombre }: { nombre: NombreIcono }) {
   const [, forzar] = useState(0);
@@ -88,6 +106,7 @@ export function IconoMarca({ nombre }: { nombre: NombreIcono }) {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox={icono?.viewBox ?? '0 0 24 24'}
+      data-icono={nombre}
       aria-hidden="true"
       focusable="false"
       dangerouslySetInnerHTML={{ __html: icono?.trazado ?? '' }}
