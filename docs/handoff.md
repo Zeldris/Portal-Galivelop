@@ -10,15 +10,13 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, c926bcc, 2026-11-15) |
 | **Tarea en curso** | Ninguna en `ccr-8e0862c2-niq1xt`: la pieza de X de la P7 está lista para que la publique la persona |
 | **Siguiente paso** | Publicaciones en X: **P7 lista para publicar** en `docs/media/2026-11-15/01-fichas-al-dia/` (la persona la publica y apunta el enlace en `## Published` de su `sheet.md`); **P1, P3, P5 y P6 guardadas** en `docs/media/proposals/2026-11-14.md` hasta que la persona las pida (texto en castellano ≤280 y 4 imágenes 1200×675). Reddit del 2026-11-14 publicado; `check.py` no admite guiones en `r/u_…` (a reportar a Galivelop-workflow). En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
-| **En `main`** | **Tarjeta de Álvaro en el equipo de la ficha** (titular de arquitecto de IA, 5 destacadas y redes; 2026-11-14, la persona: «Perfecto, vamos a main»). Antes, **arreglos de la auditoría completa del 2026-11-14** (ce0ccca, 2026-11-14, subida pedida por la persona: «Sube a main cuando el CI esté en verde»; CI en verde y retro decidida). Antes, **Portada 32 de IG e iconos 23 en línea simple** (76340d5, 2026-11-14). Antes, **oscuras corregidas 10c, 18b, 27b y 28b** (7e13bb9) y **portada y README sin «Productos», cifra del generador 3 / 9 y fichas de `/gw-portal`** (8663e48, CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | **Galivelop-workflow 0.7.0 en su ficha, producto y diagramas** (2026-11-15, la persona: «Llevalo a main cuando esté listo y con el ci en verde fusiona»; solo contenido). Antes, **Tarjeta de Álvaro en el equipo de la ficha** (titular de arquitecto de IA, 5 destacadas y redes; 2026-11-14, la persona: «Perfecto, vamos a main»). Antes, **arreglos de la auditoría completa del 2026-11-14** (ce0ccca, 2026-11-14, subida pedida por la persona: «Sube a main cuando el CI esté en verde»; CI en verde y retro decidida). Antes, **Portada 32 de IG e iconos 23 en línea simple** (76340d5, 2026-11-14). Antes, **oscuras corregidas 10c, 18b, 27b y 28b** (7e13bb9) y **portada y README sin «Productos», cifra del generador 3 / 9 y fichas de `/gw-portal`** (8663e48, CI en verde). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 215/215 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
-
-- Galivelop-workflow 0.7.0 en su ficha, su producto y sus diagramas (`ccr-8e0862c2-niq1xt`, 2026-11-15; solo contenido).
 
 
 ## Hecho
