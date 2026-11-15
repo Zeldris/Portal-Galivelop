@@ -1,9 +1,10 @@
 // Tras `vite build`: crea una página HTML real por ruta e idioma (castellano sin prefijo, /gl/, /en/) (sin el 404 de GitHub Pages), con su título,
-// descripción, canónica y vista previa para redes, y genera sitemap.xml, robots.txt, llms.txt y la clave de IndexNow.
+// descripción, canónica, vista previa para redes y la app ya pintada en #root (prerender), y genera sitemap.xml, robots.txt, llms.txt y la clave de IndexNow.
 // La dirección del portal está en scripts/sitio.mjs.
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
 import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
 
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
@@ -30,6 +31,25 @@ const conImagen = (html, url, alt) => {
     : html;
 };
 const base = readFileSync('dist/index.html', 'utf8');
+// La app real de cada página, la que luego hidrata src/main.tsx (src/entry-server.tsx, compilado por
+// `vite build --ssr` en `npm run build`): lo que leen los buscadores sin JS es lo mismo que ve la persona.
+const { renderizar } = await import(pathToFileURL('node_modules/.cache/prerender/entry-server.js').href);
+const BASE = (process.env.BASE_PATH ?? '/Portal-Galivelop/').replace(/\/?$/, '/'); // la misma base que vite.config.ts
+/**
+ * HTML de #root y, aparte, lo que va al <head>: de las precargas que React pone delante del HTML, solo la de la imagen
+ * principal (`fetchPriority="high"`); las demás imágenes ya salen en el HTML y no se adelantan a ella.
+ */
+async function appDe(pg) {
+  const ruta = `${BASE}${prefijo(pg.idioma)}${pg.ruta ? `${pg.ruta}/` : ''}`;
+  const html = await renderizar(ruta);
+  const [, cabeza, app] = /^((?:<link\b[^>]*>)*)([\s\S]*)$/.exec(html);
+  const donde = `${pg.idioma}/${pg.ruta}`;
+  // Un Suspense sin resolver dejaría el «cargando» (y un <script> que lo cambia) en lugar de la página.
+  if (/carga-pagina|<script\b|<template\b|<!--\$[?!]/.test(app)) throw new Error(`Prerender incompleto en ${donde}`);
+  if ((app.match(/<h1\b/g) ?? []).length !== 1) throw new Error(`Prerender de ${donde}: no tiene un único <h1>`);
+  const principales = (cabeza.match(/<link\b[^>]*>/g) ?? []).filter((l) => /fetchPriority="high"/i.test(l));
+  return { precargas: principales, app, ruta };
+}
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 // El 404 es copia de la portada: lleva la imagen versionada y título y descripción propios en los tres idiomas.
 // GitHub Pages sirve un único 404.html para toda dirección desconocida: el castellano va en el HTML y un guion
@@ -41,7 +61,7 @@ const NO_ENCONTRADA = {
 };
 const [titulo404, descripcion404] = NO_ENCONTRADA.es;
 // Anclado al inicio tras la base: un segmento «en» o «gl» más adentro (un slug) no cambia el idioma.
-const BASE_404 = (process.env.BASE_PATH ?? '/Portal-Galivelop/').replace(/\/?$/, '/'); // la misma base que vite.config.ts
+const BASE_404 = BASE;
 const guion404 = `<script>var m=new RegExp(${JSON.stringify(`^${BASE_404}(gl|en)(/|$)`)}).exec(location.pathname),T=${JSON.stringify(NO_ENCONTRADA)},l=T[m?m[1]:'es'];document.title=l[0];document.documentElement.lang=m?m[1]:'es';document.querySelector('meta[name="description"]').content=l[1];</script>`;
 writeFileSync(
   'dist/404.html',
@@ -94,8 +114,6 @@ const productos = readdirSync('src/data/productos')
   .sort((a, b) => a.orden - b.orden);
 // Los de un miembro, como responsable o colaborador (ADR 0004), como `productosDe` de src/data/productos.ts.
 const productosDe = (id) => productos.filter((x) => x.responsable === id || x.colaboradores.includes(id));
-const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon' };
-const TITULO_PRODUCTOS = { es: 'Productos', gl: 'Produtos', en: 'Products' };
 
 // Lo que enseña /novedades, como src/data/novedades.ts: novedades de las fichas y publicaciones del muro, lo más
 // reciente primero; el mismo día, las publicaciones antes y luego por proyecto (juntarNovedades). Se calcula una vez.
@@ -246,52 +264,6 @@ const TIPO = {
   'galivelop-image-generator': { '@type': 'SoftwareApplication', applicationCategory: 'MultimediaApplication', operatingSystem: 'Linux' },
 };
 
-/** Texto de la página en HTML simple (lo sustituye React al cargar; lo leen buscadores sin JS). */
-function cuerpo(pg) {
-  const enlaces = proyectos.map((p) => `<li><a href="${urlDe(pg.idioma, `proyectos/${p.slug}`)}">${esc(p.nombre)}</a>: ${esc(p.lema[pg.idioma])}</li>`).join('');
-  const p = pg.proyecto;
-  if (pg.ruta === 'muro') {
-    const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
-    const posts = publicaciones.map((x) => `<article><h2>${esc(x.titulo[pg.idioma])}</h2><p>${esc(nombre(x.proyecto))} · ${x.fecha}</p><p>${esc(x.texto[pg.idioma])}</p>${(x.cuerpo ?? []).map((c) => `<p>${esc(c[pg.idioma])}</p>`).join('')}</article>`).join('');
-    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p>${posts}<ul>${enlaces}</ul></main>`;
-  }
-  if (pg.ruta === 'novedades') {
-    const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
-    const lista = novedadesTodas.map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro ? `${urlDe(pg.idioma, 'muro')}?proyecto=${x.proyecto}` : urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
-    return `<main><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
-  }
-  const legal = legales.find((d) => d.slug === pg.ruta);
-  if (legal) {
-    const i = pg.idioma;
-    const a = (url, texto) => `<a href="${url}">${esc(texto)}</a>`;
-    const secciones = legal.secciones.map((x) => `<section><h2>${esc(x.titulo[i])}</h2>`
-      + (x.parrafos ?? []).map((t) => `<p>${esc(t[i])}</p>`).join('')
-      + (x.datos ? `<ul>${x.datos.map((d) => `<li>${esc(d.etiqueta[i])}: ${d.enlace ? a(d.enlace, d.valor[i]) : esc(d.valor[i])}</li>`).join('')}</ul>` : '')
-      + (x.lista ? `<ul>${x.lista.map((t) => `<li>${esc(t[i])}</li>`).join('')}</ul>` : '')
-      + (x.enlaces ? `<ul>${x.enlaces.map((e) => `<li>${a(e.url, e.etiqueta[i])}</li>`).join('')}</ul>` : '')
-      + '</section>').join('');
-    return `<main><h1>${esc(legal.titulo[i])}</h1><p>${legal.actualizado}</p>${secciones}<ul>${enlaces}</ul></main>`;
-  }
-  if (pg.ruta === 'equipo') {
-    const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
-    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${miembros}</ul><ul>${enlaces}</ul></main>`;
-  }
-  const m = pg.persona;
-  if (m) {
-    const suyos = m.proyectos.map((slug) => proyectos.find((x) => x.slug === slug)).filter(Boolean)
-      .map((x) => `<li><a href="${urlDe(pg.idioma, `proyectos/${x.slug}`)}">${esc(x.nombre)}</a>: ${esc(x.lema[pg.idioma])}</li>`).join('');
-    const productosSuyos = productosDe(m.id)
-      .map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
-    const colabora = m.colabora ? `<p>${esc(m.colabora.texto[pg.idioma])} <a href="mailto:${m.colabora.correo}">${esc(m.colabora.correo)}</a></p>` : '';
-    return `<main><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
-  }
-  if (!p) return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
-  const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
-  // Animaciones paso a paso: sin JS no hay dibujo, pero cada paso queda leído (título y narración) en una lista.
-  const anim = (p.animaciones ?? []).map((a) => `<section><h2>${esc(a.titulo[pg.idioma])}</h2><ol>${a.pasos.map((x) => `<li><strong>${esc(x.titulo[pg.idioma])}</strong>: ${esc(x.narracion[pg.idioma])}</li>`).join('')}</ol></section>`).join('');
-  return `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
-}
-
 function datos(pg, url) {
   const p = pg.proyecto;
   const m = pg.persona;
@@ -345,9 +317,11 @@ for (const pg of paginas) {
   }
   html = conImagen(html, pg.imagen, pg.vista?.alt ?? ALT_PORTAL[pg.idioma]);
   if (pg.vista && !pg.vista.medidas) html = html.replace(/\s*<meta property="og:image:(width|height|type)"[^>]*>/g, '');
+  const { precargas, app, ruta } = await appDe(pg);
   html = html
-    .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root">${cuerpo(pg)}</div>`);
+    .replace('</head>', () => `  ${precargas.map((l) => `${l}\n    `).join('')}<script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
+    // `data-prerender`: la dirección de este HTML; src/main.tsx solo lo hidrata en esa misma dirección.
+    .replace('<div id="root"></div>', () => `<div id="root" data-prerender="${ruta}">${app}</div>`);
   const dir = `dist/${prefijo(pg.idioma)}${pg.ruta}`.replace(/\/$/, '');
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}/index.html`, html);
