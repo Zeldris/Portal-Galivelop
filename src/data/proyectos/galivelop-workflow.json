@@ -127,7 +127,7 @@
     },
     {
       "es": "Galivelop-workflow saca ese método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona, y lo convierte en un repositorio versionado: reglas en AGENTS.md (un estándar abierto que entiende cualquier agente), skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos los proyectos, y cada uno declara lo suyo en un pequeño archivo de configuración.",
-      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do obradoiro, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e modelos nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
+      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do obradoiro, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e prantillas nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
@@ -136,9 +136,9 @@
       "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.7.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as doce skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the twelve skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as doce skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the twelve skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
     }
   ],
   "lineas": ["metodo"],
@@ -1192,9 +1192,9 @@
           },
           "valor": "recover.py",
           "texto": {
-            "es": "Tras /compact o /clear, un gancho devuelve el estado de la bitácora, los archivos sin subir y los últimos commits; --buscar encuentra un detalle perdido de la conversación.",
-            "gl": "Tras /compact ou /clear, un gancho devolve o estado da bitácora, os ficheiros sen subir e os últimos commits; --buscar atopa un detalle perdido da conversa.",
-            "en": "After /compact or /clear, a hook restores the log state, uncommitted files and the latest commits; --buscar finds a detail lost from the conversation."
+            "es": "Tras /compact o /clear, un gancho devuelve el estado de la bitácora, los archivos sin subir y los últimos commits; --search encuentra un detalle perdido de la conversación.",
+            "gl": "Tras /compact ou /clear, un gancho devolve o estado da bitácora, os ficheiros sen subir e os últimos commits; --search atopa un detalle perdido da conversa.",
+            "en": "After /compact or /clear, a hook restores the log state, uncommitted files and the latest commits; --search finds a detail lost from the conversation."
           }
         },
         {
@@ -1257,9 +1257,9 @@
           },
           "valor": "gw-selector",
           "texto": {
-            "es": "Cada tarea empieza diciendo qué skill y qué modelo pide. Los subagentes empiezan en el escalón más barato que haga bien el trabajo y solo suben tras un fallo; dos fallos en el mismo escalón, se para y se pregunta.",
-            "gl": "Cada tarefa comeza dicindo que skill e que modelo pide. Os subaxentes comezan no chanzo máis barato que faga ben o traballo e só soben tras un fallo; dous fallos no mesmo chanzo, párase e pregúntase.",
-            "en": "Every task starts by stating which skill and model it needs. Subagents start on the cheapest step that does the job well and only move up after a failure; two failures on the same step, stop and ask."
+            "es": "Cada tarea empieza diciendo qué skill y qué modelo pide. Los subagentes empiezan en el escalón más barato que haga bien el trabajo y solo suben tras un fallo; dos fallos, se para y se avisa a la persona.",
+            "gl": "Cada tarefa comeza dicindo que skill e que modelo pide. Os subaxentes comezan no chanzo máis barato que faga ben o traballo e só soben tras un fallo; dous fallos, párase e avísase á persoa.",
+            "en": "Every task starts by stating which skill and model it needs. Subagents start on the cheapest step that does the job well and only move up after a failure; two failures, stop and tell the person."
           }
         },
         {
@@ -1283,9 +1283,9 @@
           },
           "valor": "gw-harvest",
           "texto": {
-            "es": "recoger.py junta diferencias, skills nuevas y notas de las retros en propuestas; lo que se aprueba entra en la versión siguiente del flujo.",
-            "gl": "recoger.py xunta diferenzas, skills novas e notas das retros en propostas; o que se aproba entra na versión seguinte do fluxo.",
-            "en": "recoger.py gathers diffs, new skills and retro notes into proposals; what gets approved goes into the next version of the workflow."
+            "es": "harvest.py junta diferencias, skills nuevas y notas de las retros en propuestas; lo que se aprueba entra en la versión siguiente del flujo.",
+            "gl": "harvest.py xunta diferenzas, skills novas e notas das retros en propostas; o que se aproba entra na versión seguinte do fluxo.",
+            "en": "harvest.py gathers diffs, new skills and retro notes into proposals; what gets approved goes into the next version of the workflow."
           }
         }
       ]
@@ -1603,9 +1603,9 @@
         "en": "Skills by Matt Pocock"
       },
       "intro": {
-        "es": "Quince skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
-        "gl": "Quince skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
-        "en": "Fifteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
+        "es": "Quince skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en seis de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
+        "gl": "Quince skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en seis delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
+        "en": "Fifteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in six of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
       },
       "items": [
         {
@@ -1876,9 +1876,9 @@
           },
           "valor": "docs/handoff.md",
           "texto": {
-            "es": "La bitácora; logRows limita cuántas filas guarda para que leerla siga siendo barato.",
-            "gl": "A bitácora; logRows limita cantas filas garda para que lela siga sendo barato.",
-            "en": "The handoff log; logRows caps how many rows it keeps so reading it stays cheap."
+            "es": "La bitácora; logRows da a cada rama su propia fila, con un tope de tamaño, para que leerla siga siendo barato.",
+            "gl": "A bitácora; logRows dá a cada rama a súa propia fila, cun tope de tamaño, para que lela siga sendo barato.",
+            "en": "The handoff log; logRows gives each branch its own row, with a size cap, so reading it stays cheap."
           }
         },
         {
@@ -2008,9 +2008,9 @@
           },
           "valor": "bash 3.2",
           "texto": {
-            "es": "git, bash 3.2 o superior y Python 3, en Linux o macOS. Los ganchos de sesión y las skills son de Claude Code; las reglas de AGENTS.md sirven a cualquier agente.",
-            "gl": "git, bash 3.2 ou superior e Python 3, en Linux ou macOS. Os ganchos de sesión e as skills son de Claude Code; as regras de AGENTS.md serven a calquera axente.",
-            "en": "git, bash 3.2 or later and Python 3, on Linux or macOS. The session hooks and skills are for Claude Code; the rules in AGENTS.md work with any agent."
+            "es": "git, bash 3.2 o superior y Python 3.8 o superior, en Linux, macOS o Windows (con Git Bash o WSL). Los ganchos de sesión y las skills son de Claude Code; las reglas de AGENTS.md sirven a cualquier agente.",
+            "gl": "git, bash 3.2 ou superior e Python 3.8 ou superior, en Linux, macOS ou Windows (con Git Bash ou WSL). Os ganchos de sesión e as skills son de Claude Code; as regras de AGENTS.md serven a calquera axente.",
+            "en": "git, bash 3.2 or later and Python 3.8 or later, on Linux, macOS or Windows (with Git Bash or WSL). The session hooks and skills are for Claude Code; the rules in AGENTS.md work with any agent."
           }
         },
         {
@@ -2066,7 +2066,7 @@
             },
             {
               "es": "El ensayo de una actualización resume qué cambia, también en las plantillas y en el criterio de revisión.",
-              "gl": "O ensaio dunha actualización resume que cambia, tamén nos modelos de partida e no criterio de revisión.",
+              "gl": "O ensaio dunha actualización resume que cambia, tamén nas prantillas e no criterio de revisión.",
               "en": "A dry run of an update sums up what changes, templates and review criteria included."
             },
             {
@@ -2719,7 +2719,7 @@
       "estado": "hecho",
       "detalle": {
         "es": "Skills, ganchos, scripts y plantillas, probados en este portal y en Tarkor con su instalador. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
-        "gl": "Skills, ganchos, scripts e modelos, probados neste portal e en Tarkor co seu instalador. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
+        "gl": "Skills, ganchos, scripts e prantillas, probados neste portal e en Tarkor co seu instalador. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
         "en": "Skills, hooks, scripts and templates, tried on this portal and on Tarkor with its installer. Since 0.4 the repository is public and every version ships with its release."
       }
     },
@@ -2780,6 +2780,34 @@
       }
     },
     {
+      "version": "0.6.1",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 14 de noviembre.",
+        "gl": "Publicada o 14 de novembro.",
+        "en": "Released on 14 November."
+      }
+    },
+    {
+      "version": "0.6.2",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 15 de noviembre.",
+        "gl": "Publicada o 15 de novembro.",
+        "en": "Released on 15 November."
+      }
+    },
+    {
       "version": "0.7",
       "nombre": {
         "es": "Preguntar",
@@ -2788,9 +2816,9 @@
       },
       "estado": "hecho",
       "detalle": {
-        "es": "Publicada el 15 de noviembre con lo hecho: quién firma cada commit, CI validado, libro de tokens sin commits propios y subagentes ligeros en cada peldaño. Las preguntas pasan a la 0.8.",
-        "gl": "Publicada o 15 de novembro co feito: quen asina cada commit, CI validado, libro de tokens sen commits propios e subaxentes lixeiros en cada chanzo. As preguntas pasan á 0.8.",
-        "en": "Released on 15 November with what was done: who signs each commit, a validated CI, a token ledger without its own commits and lightweight subagents at every rung. The questions move to 0.8."
+        "es": "Publicada el 15 de noviembre con lo hecho: quién firma cada commit, CI validado, libro de tokens sin commits propios y subagentes ligeros en cada peldaño. Lo que faltaba (preguntas, modos, ficha de cada tarea, idiomas configurables) pasa a la 0.8.",
+        "gl": "Publicada o 15 de novembro co feito: quen asina cada commit, CI validado, libro de tokens sen commits propios e subaxentes lixeiros en cada chanzo. O que faltaba (preguntas, modos, ficha de cada tarefa, idiomas configurables) pasa á 0.8.",
+        "en": "Released on 15 November with what was done: who signs each commit, a validated CI, a token ledger without its own commits and lightweight subagents at every rung. What was left (questions, modes, a sheet for each task, configurable languages) moves to 0.8."
       }
     },
     {
@@ -2802,9 +2830,9 @@
       },
       "estado": "pendiente",
       "detalle": {
-        "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse, y un modo prudente con un solo interruptor; pruebas de interfaz, perfiles de instalación (mínimo, base y completo) y uso con otros agentes y modelos.",
-        "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse, e un modo prudente cun só interruptor; probas de interface, perfís de instalación (mínimo, base e completo) e uso con outros axentes e modelos.",
-        "en": "Questions to the person, numbered, with a recommendation and never repeated, and a cautious mode with a single switch; interface tests, install profiles (minimal, core and full) and use with other agents and models."
+        "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse, y un modo prudente con un solo interruptor; una ficha por tarea con sus criterios de aceptación e idiomas configurables; pruebas de interfaz, perfiles de instalación (mínimo, base y completo) y uso con otros agentes y modelos.",
+        "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse, e un modo prudente cun só interruptor; unha ficha por tarefa cos seus criterios de aceptación e idiomas configurables; probas de interface, perfís de instalación (mínimo, base e completo) e uso con outros axentes e modelos.",
+        "en": "Questions to the person, numbered, with a recommendation and never repeated, and a cautious mode with a single switch; a sheet for each task with its acceptance criteria, and configurable languages; interface tests, install profiles (minimal, core and full) and use with other agents and models."
       }
     },
     {
@@ -2876,9 +2904,9 @@
     {
       "fecha": "2026-11-15",
       "texto": {
-        "es": "Publicada la 0.7.0: cada commit comprueba quién lo firma, el check valida los archivos del CI y el trabajo se reparte a subagentes ligeros con el modelo y el esfuerzo de su peldaño. Las preguntas a la persona pasan a la 0.8.",
-        "gl": "Publicada a 0.7.0: cada commit comproba quen o asina, o check valida os ficheiros do CI e o traballo repártese a subaxentes lixeiros co modelo e o esforzo do seu chanzo. As preguntas á persoa pasan á 0.8.",
-        "en": "Version 0.7.0 is out: every commit checks who signs it, the check validates the CI files and work is dealt to lightweight subagents with the model and effort of their rung. Questions to the person move to 0.8."
+        "es": "Publicada la 0.7.0: cada commit comprueba quién lo firma, el check valida los archivos del CI y el trabajo se reparte a subagentes ligeros con el modelo y el esfuerzo de su peldaño. Lo que faltaba, de las preguntas a la persona a la ficha de cada tarea, pasa a la 0.8.",
+        "gl": "Publicada a 0.7.0: cada commit comproba quen o asina, o check valida os ficheiros do CI e o traballo repártese a subaxentes lixeiros co modelo e o esforzo do seu chanzo. O que faltaba, das preguntas á persoa á ficha de cada tarefa, pasa á 0.8.",
+        "en": "Version 0.7.0 is out: every commit checks who signs it, the check validates the CI files and work is dealt to lightweight subagents with the model and effort of their rung. What was left, from questions to the person to a sheet for each task, moves to 0.8."
       }
     },
     {
@@ -2964,7 +2992,7 @@
       }
     },
     {
-      "valor": "2767",
+      "valor": "+2.700",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",
@@ -2996,9 +3024,9 @@
         "en": "Thanks to Matt Pocock"
       },
       "texto": {
-        "es": "Quince de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
-        "gl": "Quince das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
-        "en": "Fifteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
+        "es": "Quince de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios en lo que hacen (solo los metadatos y, en seis, una nota final para encajarlas en el flujo), con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
+        "gl": "Quince das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios no que fan (só os metadatos e, en seis, unha nota final para encaixalas no fluxo), coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
+        "en": "Fifteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied without changing what they do (only their metadata and, in six, a closing note to fit them into the workflow), with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
       }
     },
     {
