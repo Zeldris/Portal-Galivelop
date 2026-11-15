@@ -63,7 +63,7 @@ function perezosa<N extends NombrePagina>(nombre: N) {
   // URL y no lo repite sin recargar (comprobado el 2026-11-14); por eso el aviso ofrece «Recargar».
   function Pagina(props: object) {
     // Ficha y chunk de Proyecto a la vez, no uno detrás del otro.
-    if (nombre === 'Proyecto' && !resueltas.has(nombre))
+    if (nombre === 'Proyecto' && !resueltas.has(nombre) && typeof location !== 'undefined')
       void cargarFicha(slugDeRuta(location.pathname)).catch(() => undefined);
     // Ya cargada: se pinta sin suspender ni un instante.
     const Componente = (resueltas.get(nombre) ??

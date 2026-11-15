@@ -1,5 +1,5 @@
 import { ArrowLeft, ChevronDown, GraduationCap, Mail, MapPin } from 'lucide-react';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useSyncExternalStore, type ReactNode } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
 import { ListaRedes } from '../components/IconoRed';
@@ -30,23 +30,23 @@ const LUGARES_MOVIL = 2;
  * de la página no quede a diez pantallas. Las tecnologías no: van siempre desplegadas (petición del miembro, 2026-10-26).
  */
 function useMovil(): boolean {
-  const [movil, setMovil] = useState(
-    () => typeof window !== 'undefined' && !!window.matchMedia?.(MOVIL).matches,
-  );
-  useEffect(() => {
-    const mq = window.matchMedia?.(MOVIL);
-    if (!mq) return;
-    const cambio = () => setMovil(mq.matches);
-    // Safari < 14 solo tiene addListener/removeListener.
-    if (mq.addEventListener) {
-      mq.addEventListener('change', cambio);
-      return () => mq.removeEventListener('change', cambio);
-    }
-    mq.addListener(cambio);
-    return () => mq.removeListener(cambio);
-  }, []);
-  return movil;
+  // Sin ventana (el HTML prerenderizado) y al hidratar, escritorio; justo después, el ancho real.
+  return useSyncExternalStore(suscribirMovil, esMovil, () => false);
 }
+
+function suscribirMovil(cambio: () => void): () => void {
+  const mq = window.matchMedia?.(MOVIL);
+  if (!mq) return () => {};
+  // Safari < 14 solo tiene addListener/removeListener.
+  if (mq.addEventListener) {
+    mq.addEventListener('change', cambio);
+    return () => mq.removeEventListener('change', cambio);
+  }
+  mq.addListener(cambio);
+  return () => mq.removeListener(cambio);
+}
+
+const esMovil = () => !!window.matchMedia?.(MOVIL).matches;
 
 export function Miembro() {
   const { id } = useParams();
@@ -290,8 +290,10 @@ function Cifras({ p }: { p: Persona }) {
   return (
     <ul className="miembro-cifras">
       {cifras.map((c) => (
-        <li key={c.clave}>
-          <strong>{c.n}</strong> {t(c.clave, { n: c.n })}
+        // Los años cuentan hasta hoy: el HTML prerenderizado puede llevar uno menos que el navegador (se queda el
+        // publicado hasta el siguiente render; no es un error de hidratación).
+        <li key={c.clave} suppressHydrationWarning>
+          <strong suppressHydrationWarning>{c.n}</strong> {t(c.clave, { n: c.n })}
         </li>
       ))}
     </ul>

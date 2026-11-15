@@ -108,7 +108,9 @@ export function Pie() {
       </div>
 
       <div className="contenedor pie-base">
-        <p>
+        {/* El año del HTML prerenderizado es el de la publicación: en la semana de Año Nuevo puede no ser el de hoy,
+            y eso no es un error de hidratación (se queda el publicado hasta el siguiente render). */}
+        <p suppressHydrationWarning>
           © {new Date().getFullYear()} Galivelop · {MARCA.titular}
         </p>
         <p>

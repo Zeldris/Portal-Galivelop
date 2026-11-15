@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && cp dist/index.html dist/404.html && node scripts/paginas-estaticas.mjs",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir node_modules/.cache/prerender && cp dist/index.html dist/404.html && node scripts/paginas-estaticas.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" \"tools/vite/**/*.ts\" && vitest run && bash tools/qa/tests/test-ganchos.sh",

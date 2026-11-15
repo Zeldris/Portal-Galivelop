@@ -14,6 +14,7 @@ import { useIdioma } from '../i18n/Idioma';
 import { GUIONES } from './animaciones';
 import { guardarPosicion, leerPosicion } from './animaciones/recuerdo';
 import { componer, segun, type Atomo, type Rotulo } from './animaciones/tipos';
+import { useHidratado } from '../utils/hidratacion';
 
 // Animaciones paso a paso de «Cómo funciona» (storyboard v3). Cada pestaña empieza quieta en su paso 1 y, al
 // recargar, vuelve a la pestaña y el paso en que se dejó (recuerdo.ts); Reproducir avanza una vez y se para. La narración va fuera del SVG, en un <p aria-live>, y el SVG la toma
@@ -142,23 +143,28 @@ export default function AnimacionFlujo({
   const ids = 'flujo' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
   const lista = useMemo(() => animaciones.filter((a) => GUIONES[a.id]), [animaciones]);
   // Al montar: el destino de un enlace, si no lo guardado al recargar y, si no, la primera pestaña en su paso 1.
-  const [inicio] = useState(() => {
+  // Lo guardado solo existe en el navegador: al hidratar el HTML prerenderizado se empieza como el servidor y se
+  // recupera justo después (abajo), antes de pintar.
+  const hidratado = useHidratado();
+  const posicionInicial = (conGuardada: boolean) => {
     const i = destino ? lista.findIndex((a) => a.id === destino.id) : -1;
     if (destino && i >= 0) return { actual: i, paso: destino.paso };
-    const guardada = leerPosicion((id) => lista.find((a) => a.id === id)?.pasos.length);
+    const guardada = conGuardada
+      ? leerPosicion((id) => lista.find((a) => a.id === id)?.pasos.length)
+      : null;
     const j = guardada ? lista.findIndex((a) => a.id === guardada.id) : -1;
     return j >= 0 && guardada ? { actual: j, paso: guardada.paso } : { actual: 0, paso: 1 };
-  });
+  };
+  const [inicio] = useState(() => posicionInicial(hidratado));
   const [actual, setActual] = useState(inicio.actual);
   const anim = lista[actual];
   const total = anim?.pasos.length ?? 0;
   const [paso, setPaso] = useState(inicio.paso);
   const [reproduciendo, setReproduciendo] = useState(false);
   const [movil, setMovil] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      document.documentElement.clientWidth - MARGEN_ESCENA < ANCHO_ESCRITORIO,
+    () => hidratado && document.documentElement.clientWidth - MARGEN_ESCENA < ANCHO_ESCRITORIO,
   );
+  const porRecuperar = useRef(!hidratado);
   const escena = useRef<HTMLDivElement>(null);
   const pieza = useRef<HTMLDivElement>(null);
   const pestanas = useRef<(HTMLButtonElement | null)[]>([]);
@@ -175,6 +181,16 @@ export default function AnimacionFlujo({
     const ro = new ResizeObserver(medir);
     ro.observe(el);
     return () => ro.disconnect();
+  }, []);
+
+  // Tras hidratar: la pestaña y el paso guardados, antes de que el efecto de abajo los pise. Solo al montar: lo que
+  // cambie después lo llevan los controles.
+  useLayoutEffect(() => {
+    if (!porRecuperar.current) return;
+    porRecuperar.current = false;
+    const guardada = posicionInicial(true);
+    setActual(guardada.actual);
+    setPaso(guardada.paso);
   }, []);
 
   useEffect(() => {

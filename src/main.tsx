@@ -2,9 +2,10 @@ import '@fontsource-variable/big-shoulders-display';
 import '@fontsource-variable/literata';
 import '@fontsource-variable/jetbrains-mono';
 import { StrictMode, startTransition, useCallback, useState } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
+import { sembrarIconos } from './components/IconoMarca';
 import type { Idioma } from './data/tipos';
 import './estilos/global.css';
 import { precargarRuta } from './paginas';
@@ -82,12 +83,28 @@ window.addEventListener('vite:preloadError', (evento) => {
   location.reload();
 });
 
-// La página y la ficha que toca se esperan antes del primer render: así el HTML prerenderizado de #root no se
-// sustituye por un hueco vacío mientras llegan (entrar directo a /proyectos/tarkor/).
+// La página y la ficha que toca se esperan antes del primer render: así la app sale igual que el HTML prerenderizado
+// de #root (scripts/paginas-estaticas.mjs con src/entry-server.tsx) y se hidrata sin volver a pintarlo.
+const raiz = document.getElementById('root')!;
 void precargarRuta(location.pathname).then(() => {
-  createRoot(document.getElementById('root')!).render(
+  const app = (
     <StrictMode>
       <Raiz />
-    </StrictMode>,
+    </StrictMode>
   );
+  // Se hidrata solo si el HTML es el de esta dirección (`data-prerender`, lo pone scripts/paginas-estaticas.mjs): no
+  // lo es sin prerender (vite en desarrollo, el 404, una página servida en lugar de otra), con parámetros (?proyecto=
+  // filtra el muro y las novedades; el HTML sale sin ellos) ni cuando `Raiz` lleva a otro idioma (sin prefijo, con gl
+  // o en elegidos antes). Entonces se pinta de cero, como antes del prerender.
+  const conBarra = (ruta: string) => ruta.replace(/\/?$/, '/');
+  const prerenderizado =
+    raiz.dataset.prerender !== undefined &&
+    conBarra(raiz.dataset.prerender) === conBarra(location.pathname) &&
+    location.search === '' &&
+    idiomaInicial() === (idiomaDeRuta(location.pathname) ?? 'es');
+  if (prerenderizado) {
+    // Los iconos de marca se cargan aparte (un chunk cada uno): se toman del propio HTML para no pintarlos vacíos.
+    sembrarIconos(raiz);
+    hydrateRoot(raiz, app);
+  } else createRoot(raiz).render(app);
 });
