@@ -1,6 +1,46 @@
 /* Galivelop — cuaderno de taller sobre carta náutica: papel con retícula, filetes finos, celeste plano en bloques,
    chaflanes en vez de esquinas redondas y los datos en monoespaciada. Qué es cada cosa y por qué: docs/marca.md. */
 
+/*
+ * Fuentes de reserva ajustadas: mientras llegan las de la marca (font-display: swap), el texto se pinta con una fuente
+ * local de las que traen todos los sistemas, escalada y con las métricas verticales de la de la marca, para que al
+ * llegar esta no cambie el reparto de líneas ni el alto de nada (CLS). Solo se eligen locales métricamente
+ * compatibles entre sí (Arial = Liberation Sans = Arimo; Times New Roman = Liberation Serif = Tinos;
+ * Courier New = Liberation Mono = Cousine): Georgia y Helvetica no, y con ellas los números serían otros.
+ * Cálculo: size-adjust = ancho medio de los textos reales de la web con la fuente de la marca / con la local;
+ * ascent, descent y line-gap = métrica de la fuente de la marca (hhea) / size-adjust. Medidas de los woff2 con
+ * fontTools; las de la local, en Chromium sobre Liberation. Si cambia la fuente de la marca, hay que recalcularlas.
+ */
+@font-face {
+  font-family: 'Big Shoulders Reserva';
+  src: local('Arial'), local('Liberation Sans'), local('Arimo');
+  font-weight: 100 900;
+  size-adjust: 65.3%;
+  ascent-override: 150.7%;
+  descent-override: 32.6%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Literata Reserva';
+  src: local('Times New Roman'), local('Liberation Serif'), local('Tinos');
+  font-weight: 100 900;
+  size-adjust: 116.3%;
+  ascent-override: 101.2%;
+  descent-override: 26.5%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Reserva';
+  src: local('Courier New'), local('Liberation Mono'), local('Cousine');
+  font-weight: 100 900;
+  size-adjust: 100%;
+  ascent-override: 102%;
+  descent-override: 30%;
+  line-gap-override: 0%;
+}
+
 :root {
   --celeste: #1aa6df;
   --blanco: #ffffff;
@@ -13,10 +53,10 @@
   --discord: #5865f2;
 
   --fuente-titulos:
-    'Big Shoulders Display Variable', 'Big Shoulders Display', 'Arial Narrow', sans-serif;
-  --fuente-texto: 'Literata Variable', 'Literata', Georgia, 'Times New Roman', serif;
+    'Big Shoulders Display Variable', 'Big Shoulders Display', 'Big Shoulders Reserva', 'Arial Narrow', sans-serif;
+  --fuente-texto: 'Literata Variable', 'Literata', 'Literata Reserva', Georgia, 'Times New Roman', serif;
   --fuente-datos:
-    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    'JetBrains Mono Variable', 'JetBrains Mono', 'JetBrains Mono Reserva', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   /* Antetítulos, etiquetas, fechas, versiones y escalas: monoespaciada en versalitas con aire. */
   --datos: 500 0.75rem/1.4 var(--fuente-datos);
   --datos-espaciado: 0.06em;
