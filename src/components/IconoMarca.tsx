@@ -1,71 +1,96 @@
-import type { ComponentType } from 'react';
-import aFondo from '../assets/iconos/a-fondo.svg?raw';
-import avance from '../assets/iconos/avance.svg?raw';
-import bombilla from '../assets/iconos/bombilla.svg?raw';
-import comoEstaHecho from '../assets/iconos/como-esta-hecho.svg?raw';
-import galeria from '../assets/iconos/galeria.svg?raw';
-import hitoCurso from '../assets/iconos/hito-curso.svg?raw';
-import hitoHecho from '../assets/iconos/hito-hecho.svg?raw';
-import hitoPendiente from '../assets/iconos/hito-pendiente.svg?raw';
-import resumen from '../assets/iconos/resumen.svg?raw';
-import compas from '../assets/iconos/compas.svg?raw';
-import documentoCheck from '../assets/iconos/documento-check.svg?raw';
-import historial from '../assets/iconos/historial.svg?raw';
-import implantacion from '../assets/iconos/implantacion.svg?raw';
-import mira from '../assets/iconos/mira.svg?raw';
-import mundos from '../assets/iconos/mundos.svg?raw';
-import papelVentana from '../assets/iconos/papel-ventana.svg?raw';
-import ramas from '../assets/iconos/ramas.svg?raw';
-import candado from '../assets/iconos/candado.svg?raw';
-import codigo from '../assets/iconos/codigo.svg?raw';
-import ramasUnidas from '../assets/iconos/ramas-unidas.svg?raw';
-import terminal from '../assets/iconos/terminal.svg?raw';
+import { useEffect, useState, type ComponentType } from 'react';
 
 /** Iconos propios de la marca (recursos 7, 8, 9, 14, 25 y 26 de `docs/marca.md`), en un solo trazado con `currentColor`. */
-const FUENTES = {
-  'a-fondo': aFondo,
-  avance,
-  bombilla,
-  'como-esta-hecho': comoEstaHecho,
-  galeria,
-  'hito-curso': hitoCurso,
-  'hito-hecho': hitoHecho,
-  'hito-pendiente': hitoPendiente,
-  candado,
-  codigo,
-  compas,
-  'documento-check': documentoCheck,
-  historial,
-  implantacion,
-  mira,
-  mundos,
-  'papel-ventana': papelVentana,
-  ramas,
-  'ramas-unidas': ramasUnidas,
-  resumen,
-  terminal,
-};
-export type NombreIcono = keyof typeof FUENTES;
+const NOMBRES = [
+  'a-fondo',
+  'avance',
+  'bombilla',
+  'candado',
+  'codigo',
+  'como-esta-hecho',
+  'compas',
+  'documento-check',
+  'galeria',
+  'historial',
+  'hito-curso',
+  'hito-hecho',
+  'hito-pendiente',
+  'implantacion',
+  'mira',
+  'mundos',
+  'papel-ventana',
+  'ramas',
+  'ramas-unidas',
+  'resumen',
+  'terminal',
+] as const;
+export type NombreIcono = (typeof NOMBRES)[number];
 
-/** `viewBox` y contenido de cada SVG, leídos una vez al cargar el módulo. */
-const ICONOS = Object.fromEntries(
-  Object.entries(FUENTES).map(([nombre, svg]) => {
-    const m = /<svg\b[^>]*\sviewBox="([^"]+)"[^>]*>([\s\S]*)<\/svg>/.exec(svg);
-    if (!m) throw new Error(`IconoMarca: ${nombre}.svg sin <svg viewBox> legible`);
-    return [nombre, { viewBox: m[1], trazado: m[2] }];
-  }),
-) as Record<NombreIcono, { viewBox: string; trazado: string }>;
+type Icono = { viewBox: string; trazado: string };
+
+// Un chunk por icono: solo se descarga el que se pinta.
+const FUENTES = import.meta.glob<string>('../assets/iconos/*.svg', {
+  query: '?raw',
+  import: 'default',
+});
+
+const resueltos = new Map<NombreIcono, Icono>();
+const pendientes = new Map<NombreIcono, Promise<Icono>>();
+
+/** `viewBox` y contenido de un SVG; pide el archivo una sola vez. */
+function cargarIcono(nombre: NombreIcono): Promise<Icono> {
+  let promesa = pendientes.get(nombre);
+  if (!promesa) {
+    const cargar = FUENTES[`../assets/iconos/${nombre}.svg`];
+    if (!cargar) return Promise.reject(new Error(`IconoMarca: falta ${nombre}.svg`));
+    promesa = cargar().then((svg) => {
+      const m = /<svg\b[^>]*\sviewBox="([^"]+)"[^>]*>([\s\S]*)<\/svg>/.exec(svg);
+      if (!m) throw new Error(`IconoMarca: ${nombre}.svg sin <svg viewBox> legible`);
+      const icono = { viewBox: m[1], trazado: m[2] };
+      resueltos.set(nombre, icono);
+      return icono;
+    });
+    // Un fallo se olvida para que un reintento (otra ruta, recarga del límite de error) vuelva a pedirlo.
+    promesa.catch(() => pendientes.delete(nombre));
+    pendientes.set(nombre, promesa);
+  }
+  return promesa;
+}
+
+/** Pide los iconos con antelación (p. ej. los de una página mientras llega su chunk). Nunca rechaza. */
+export function precargarIconos(nombres: readonly NombreIcono[]): Promise<unknown> {
+  return Promise.all(nombres.map((n) => cargarIcono(n).catch(() => undefined)));
+}
 
 /** Se pinta en línea (no con `<img>`) para que tome el color del texto y casen las reglas de `svg` del CSS. */
 export function IconoMarca({ nombre }: { nombre: NombreIcono }) {
-  const { viewBox, trazado } = ICONOS[nombre];
+  const [, forzar] = useState(0);
+  const icono = resueltos.get(nombre);
+  useEffect(() => {
+    if (resueltos.has(nombre)) return;
+    let vivo = true;
+    cargarIcono(nombre).then(
+      () => vivo && forzar((n) => n + 1),
+      (error: unknown) => {
+        // Se relanza en el render para que lo recoja el límite de error, como antes con el SVG ilegible.
+        if (vivo)
+          forzar(() => {
+            throw error;
+          });
+      },
+    );
+    return () => {
+      vivo = false;
+    };
+  }, [nombre]);
+  // Sin el SVG todavía: mismo contenedor vacío (el tamaño lo fija el CSS) y un viewBox cuadrado.
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox={viewBox}
+      viewBox={icono?.viewBox ?? '0 0 24 24'}
       aria-hidden="true"
       focusable="false"
-      dangerouslySetInnerHTML={{ __html: trazado }}
+      dangerouslySetInnerHTML={{ __html: icono?.trazado ?? '' }}
     />
   );
 }
