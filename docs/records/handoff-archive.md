@@ -2,6 +2,17 @@
 
 Lo que sale de `docs/handoff.md` para que la bitácora no pase de `logSize`. No se lee al empezar la sesión.
 
+## 2026-11-15
+
+Archivado a mano: de «Hecho», las entradas del 2026-11-12.
+
+### Hecho
+
+- 2026-11-12 · **Portadas 06 rehechas, 27 y 28, a `main`** (704b662): portadas 06 rehechas (faro en obra, boya, barco de papel; sustituyen a los tres faros), 27 en el aviso vacío del muro y de novedades (`AvisoVacio.tsx`, sustituye a `.vacio-carta`) y 28 en `AvisoError.tsx` (sustituye al monograma). 25 y 26 en espera: series incompletas (ver `docs/marca.md`).
+- 2026-11-12 · En `main` (c19d6af): hoja del generador del 2026-11-12 (`galivelop-image-generator`, rama `hojas-repos`, `2a9af6f`; nota `docs/propuestas/portal/entrega-hoja-2026-11-12.md`), aplicada en `ccr-47f8fddd-o5ek6p` (la persona: «aplicar la idea tal cual, con lo que acabamos de decidir a mayores»): `docs/marca.md` al día (puntos 1-8, 10 y 17: «Alcance», «Acento de cada proyecto», tokens que faltaban, chaflán de botones, regla 10, tracking 0,06 em, excepciones náuticas con las portadas 6, dudas cerradas, 11/16/20/21 por CSS, pedidos 25-30 en cola); acento de workflow `#3D6FD9` y de voice `#D9467A` (11, 14); tono hondo y oscuro de cada acento calculados en OKLCH (`src/data/tonos.ts`, `estiloAcento`) para texto y bloques con blanco (13, 15); `marca.test.ts` recorre todas las hojas `.css` y prohíbe colores fuera de los tokens (16); «IA local» con la 7a (`codigo.svg`) y no `Cpu` (9: la hoja pedía la 7b, que ya está en «Del prototipo al producto»).
+- 2026-11-12 · En `main` (c19d6af): reutilizar lo ya generado (2026-11-12, `ccr-47f8fddd-o5ek6p`): componente `Separador` (también en el inicio) en ficha, novedades (entre meses) y páginas legales; ramas en «¿Quieres participar en…?»; marco del retrato en el hueco de Equipo y en el equipo de la ficha (cierra el leve de `.avatar`); icono de cada proyecto en Novedades; isobatas tenues en el aviso vacío del muro y de novedades. Aprobado por la persona salvo el icono de los formularios (quitado).
+- 2026-11-12 · imágenes del generador del 2026-11-12 en main (rama ccr-47f8fddd-o5ek6p, 87940a6; la persona: «por ahora publicamos lo que tenemos»). 2026-11-11: iconos propios 7a, 8a, 8d y 9c en el inicio (fe3c6d5); marco del retrato (17) e icono de Galivelop-workflow (23) (d1d5ede); imágenes del generador 06, 10, 13, 15, 18 y 19 (PR #2, 6f44c27).
+
 ## 2026-11-14 (tercera vez)
 
 Archivado a mano: de «Hecho», la entrada más antigua.
