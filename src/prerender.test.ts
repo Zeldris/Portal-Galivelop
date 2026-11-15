@@ -32,4 +32,21 @@ describe.skipIf(!hayBuild)('precarga del prerender (necesita `npm run build`)', 
   it('Inicio precarga isobatas.svg', () => {
     expect(head('en/')).toContain('href="/Portal-Galivelop/marca/isobatas.svg"');
   });
+
+  it('/novedades/ lleva en un <noscript> todas las entradas, no solo la primera tanda', () => {
+    const html = readFileSync('dist/novedades/index.html', 'utf8');
+    const [antes, resto] = html.split('<noscript>');
+    expect(antes).toContain('data-prerender');
+    const noscript = resto.split('</noscript>')[0];
+    const total = (noscript.match(/<li>/g) ?? []).length;
+    expect(total).toBeGreaterThanOrEqual(
+      (antes.match(/class="novedades novedades-todas"[\s\S]*?<\/ul>/)?.[0].match(/<time/g) ?? [])
+        .length,
+    );
+  });
+
+  it('una ficha con animaciones lleva la narración de todos los pasos en el <noscript>', () => {
+    const html = readFileSync('dist/proyectos/galivelop-workflow/index.html', 'utf8');
+    expect(html).toMatch(/<\/div><noscript>[\s\S]*<ol><li><strong>/);
+  });
 });

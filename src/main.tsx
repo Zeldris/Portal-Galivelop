@@ -8,7 +8,7 @@ import { App } from './App';
 import { sembrarIconos } from './components/IconoMarca';
 import type { Idioma } from './data/tipos';
 import './estilos/global.css';
-import { precargarRuta } from './paginas';
+import { precargarRuta, queryCambiaElRender } from './paginas';
 import {
   baseDeIdioma,
   guardarIdioma,
@@ -93,14 +93,14 @@ void precargarRuta(location.pathname).then(() => {
     </StrictMode>
   );
   // Se hidrata solo si el HTML es el de esta dirección (`data-prerender`, lo pone scripts/paginas-estaticas.mjs): no
-  // lo es sin prerender (vite en desarrollo, el 404, una página servida en lugar de otra), con parámetros (?proyecto=
-  // filtra el muro y las novedades; el HTML sale sin ellos) ni cuando `Raiz` lleva a otro idioma (sin prefijo, con gl
+  // lo es sin prerender (vite en desarrollo, el 404, una página servida en lugar de otra), con parámetros que cambian el
+  // render (?proyecto= filtra el muro y las novedades; el HTML sale sin ellos; utm o fbclid no lo cambian) ni cuando `Raiz` lleva a otro idioma (sin prefijo, con gl
   // o en elegidos antes). Entonces se pinta de cero, como antes del prerender.
   const conBarra = (ruta: string) => ruta.replace(/\/?$/, '/');
   const prerenderizado =
     raiz.dataset.prerender !== undefined &&
     conBarra(raiz.dataset.prerender) === conBarra(location.pathname) &&
-    location.search === '' &&
+    !queryCambiaElRender(location.search) &&
     idiomaInicial() === (idiomaDeRuta(location.pathname) ?? 'es');
   if (prerenderizado) {
     // Los iconos de marca se cargan aparte (un chunk cada uno): se toman del propio HTML para no pintarlos vacíos.

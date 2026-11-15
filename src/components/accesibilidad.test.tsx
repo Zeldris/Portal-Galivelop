@@ -44,6 +44,6 @@ describe('fuentes con comprobación de texto', () => {
   it('el 404 estático ancla el prefijo de idioma a la base', () => {
     const src = readFileSync('scripts/paginas-estaticas.mjs', 'utf8');
     expect(src).not.toContain('/\\\\/(gl|en)(\\\\/|$)/');
-    expect(src).toContain('^${BASE_404}(gl|en)');
+    expect(src).toContain('^${BASE}(gl|en)');
   });
 });

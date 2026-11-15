@@ -50,6 +50,33 @@ async function appDe(pg) {
   return { app, ruta };
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+/**
+ * Lo que la app prerenderizada deja a medias porque lo despliega con JS (las novedades más allá de la primera tanda,
+ * los pasos de una animación que no son el actual): va en un `<noscript>` tras #root, fuera de lo que hidrata React
+ * (src/main.tsx), para que lo lean buscadores y lectores sin JS sin tocar el HTML de la app. Sin nada que añadir, vacío.
+ */
+function contenidoSinJs(pg) {
+  const i = pg.idioma;
+  const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
+  let html = '';
+  if (pg.ruta === 'novedades') {
+    const lista = novedadesTodas
+      .map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro ? `${urlDe(i, 'muro')}?proyecto=${x.proyecto}` : urlDe(i, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[i])}</strong> ` : ''}${esc(x.texto[i])}</li>`)
+      .join('');
+    html = `<h2>${esc(pg.titulo.split(' · ')[0])}</h2><ul>${lista}</ul>`;
+  }
+  const p = pg.proyecto;
+  if (p) {
+    const novedades = (p.novedades ?? []).map((n) => `<li><time datetime="${n.fecha}">${n.fecha}</time>: ${esc(n.texto[i])}</li>`).join('');
+    // Cada paso con su título y narración, como cuando iban en una lista (el dibujo sí necesita JS).
+    const animaciones = (p.animaciones ?? [])
+      .map((a) => `<section><h2>${esc(a.titulo[i])}</h2><ol>${a.pasos.map((x) => `<li><strong>${esc(x.titulo[i])}</strong>: ${esc(x.narracion[i])}</li>`).join('')}</ol></section>`)
+      .join('');
+    html = `${novedades ? `<ul>${novedades}</ul>` : ''}${animaciones}`;
+  }
+  return html ? `<noscript>${html}</noscript>` : '';
+}
 // El 404 es copia de la portada: lleva la imagen versionada y título y descripción propios en los tres idiomas.
 // GitHub Pages sirve un único 404.html para toda dirección desconocida: el castellano va en el HTML y un guion
 // elige gl/en según el prefijo de la dirección. Con noindex: no es una página que indexar.
@@ -60,8 +87,7 @@ const NO_ENCONTRADA = {
 };
 const [titulo404, descripcion404] = NO_ENCONTRADA.es;
 // Anclado al inicio tras la base: un segmento «en» o «gl» más adentro (un slug) no cambia el idioma.
-const BASE_404 = BASE;
-const guion404 = `<script>var m=new RegExp(${JSON.stringify(`^${BASE_404}(gl|en)(/|$)`)}).exec(location.pathname),T=${JSON.stringify(NO_ENCONTRADA)},l=T[m?m[1]:'es'];document.title=l[0];document.documentElement.lang=m?m[1]:'es';document.querySelector('meta[name="description"]').content=l[1];</script>`;
+const guion404 = `<script>var m=new RegExp(${JSON.stringify(`^${BASE}(gl|en)(/|$)`)}).exec(location.pathname),T=${JSON.stringify(NO_ENCONTRADA)},l=T[m?m[1]:'es'];document.title=l[0];document.documentElement.lang=m?m[1]:'es';document.querySelector('meta[name="description"]').content=l[1];</script>`;
 writeFileSync(
   'dist/404.html',
   conImagen(readFileSync('dist/404.html', 'utf8'), IMAGEN.es, ALT_PORTAL.es)
@@ -328,7 +354,8 @@ const chunksDe = (pg) => {
 const FUENTES = ['big-shoulders-display', 'literata'].map(
   (f) => enManifiesto(`node_modules/@fontsource-variable/${f}/files/${f}-latin-wght-normal.woff2`, '(fuentes)').file,
 );
-// Imagen LCP: en la ficha, la que pinta la cabecera según `cabecera` (src/pages/Proyecto.tsx); en Inicio, isobatas.svg.
+// Imagen LCP: en la ficha, la que pinta la cabecera según `cabecera` (src/pages/Proyecto.tsx; con `captura`, la propia
+// captura `portada`); en Inicio, isobatas.svg.
 // isobatas.svg no tiene variante por tema, así que es una sola imagen.
 const portadaEstado = (estado, ruta) => {
   const m = new RegExp(`\\b${estado}:\\s*'([^']+)'`).exec(readFileSync('src/data/marca.ts', 'utf8').split('PORTADA_ESTADO')[1] ?? '');
@@ -340,17 +367,16 @@ const imagenLcpDe = (pg) => {
   const p = pg.proyecto;
   if (!p) return undefined;
   const modo = p.cabecera ?? 'ilustracion';
-  if (modo === 'captura') return 'marca/isobatas.svg';
   if (modo === 'color') return portadaEstado(p.estado, pg.ruta);
   return p.portada.src;
 };
 const precargas = (pg) => {
   const lineas = [
-    ...FUENTES.map((f) => `<link rel="preload" as="font" type="font/woff2" crossorigin href="${BASE_404}${f}" />`),
-    ...chunksDe(pg).map((f) => `<link rel="modulepreload" crossorigin href="${BASE_404}${f}" />`),
+    ...FUENTES.map((f) => `<link rel="preload" as="font" type="font/woff2" crossorigin href="${BASE}${f}" />`),
+    ...chunksDe(pg).map((f) => `<link rel="modulepreload" crossorigin href="${BASE}${f}" />`),
   ];
   const img = imagenLcpDe(pg);
-  if (img) lineas.push(`<link rel="preload" as="image" fetchpriority="high" href="${BASE_404}${img.replace(/^\//, '')}" />`);
+  if (img) lineas.push(`<link rel="preload" as="image" fetchpriority="high" href="${BASE}${img.replace(/^\//, '')}" />`);
   return lineas;
 };
 // Sustituye y comprueba que ocurrió: una cadena que ya no está haría la precarga desaparecer en silencio.
@@ -387,7 +413,7 @@ for (const pg of paginas) {
   html = html
     .replace('</head>', () => `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
     // `data-prerender`: la dirección de este HTML; src/main.tsx solo lo hidrata en esa misma dirección.
-    .replace('<div id="root"></div>', () => `<div id="root" data-prerender="${ruta}">${app}</div>`);
+    .replace('<div id="root"></div>', () => `<div id="root" data-prerender="${ruta}">${app}</div>${contenidoSinJs(pg)}`);
   const dir = `dist/${prefijo(pg.idioma)}${pg.ruta}`.replace(/\/$/, '');
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}/index.html`, html);

@@ -87,15 +87,10 @@ export function IconoMarca({ nombre }: { nombre: NombreIcono }) {
   useEffect(() => {
     if (resueltos.has(nombre)) return;
     let vivo = true;
+    // Es decorativo: si el chunk no llega, el SVG se queda vacío (aria-hidden) y la página sigue entera.
     cargarIcono(nombre).then(
       () => vivo && forzar((n) => n + 1),
-      (error: unknown) => {
-        // Se relanza en el render para que lo recoja el límite de error, como antes con el SVG ilegible.
-        if (vivo)
-          forzar(() => {
-            throw error;
-          });
-      },
+      () => {},
     );
     return () => {
       vivo = false;

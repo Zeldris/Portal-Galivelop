@@ -5,6 +5,7 @@ import { Link } from '../components/Enlace';
 import { ListaRedes } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { TarjetaProducto } from '../components/TarjetaProducto';
+import { useHidratado } from '../utils/hidratacion';
 import { IconoTecnologia } from '../components/IconoTecnologia';
 import {
   agruparPorLugar,
@@ -271,8 +272,9 @@ function Grupos({ grupos }: { grupos: NonNullable<Perfil['tecnologias']> }) {
 }
 
 /** Unas cifras de un vistazo, sacadas de los datos: las que no son cero. */
-function Cifras({ p }: { p: Persona }) {
+export function Cifras({ p }: { p: Persona }) {
   const { t } = useIdioma();
+  const hidratado = useHidratado();
   const trayectoria = p.perfil?.trayectoria ?? [];
   const cifras = [
     { n: anosTrabajados(trayectoria), clave: 'equipo.cifra.anos' as const },
@@ -285,7 +287,11 @@ function Cifras({ p }: { p: Persona }) {
       clave: 'equipo.cifra.clientes' as const,
     },
     { n: p.proyectos.length, clave: 'equipo.cifra.proyectos' as const },
-  ].filter((c) => c.n > 0);
+    // Los años dependen de la fecha: hasta hidratar, la lista sale de los datos y no de la fecha (si no, el HTML
+    // publicado y el navegador podrían tener distinto número de <li>); después, sin las cifras en cero.
+  ].filter((c) =>
+    hidratado || c.clave !== 'equipo.cifra.anos' ? c.n > 0 : trayectoria.length > 0,
+  );
   if (!cifras.length) return null;
   return (
     <ul className="miembro-cifras">

@@ -9,6 +9,7 @@ import { Separador } from '../components/Separador';
 import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
+import { ICONOS_PRINCIPIOS, NOMBRE_ICONO_LINEA } from '../data/iconos-portada';
 import { MARCA } from '../data/marca';
 import { proximos } from '../data/proximamente';
 import { proyectos, ruta } from '../data/proyectos';
@@ -21,19 +22,12 @@ const FILTRAR_DESDE = 5;
 /** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco. */
 type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
 
-const ICONO_LINEA: Record<Linea, Icono> = {
-  'ia-local': iconoMarca('codigo'),
-  mundos: iconoMarca('mundos'),
-  informacion: iconoMarca('documento-check'),
-  producto: iconoMarca('papel-ventana'),
-  metodo: iconoMarca('compas'),
-};
-const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
-  [iconoMarca('candado'), 'valor1'],
-  [iconoMarca('mira'), 'valor2'],
-  [iconoMarca('historial'), 'valor3'],
-  [iconoMarca('ramas-unidas'), 'valor4'],
-];
+const ICONO_LINEA: Record<Linea, Icono> = Object.fromEntries(
+  Object.entries(NOMBRE_ICONO_LINEA).map(([l, n]) => [l, iconoMarca(n)]),
+) as Record<Linea, Icono>;
+const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = ICONOS_PRINCIPIOS.map(
+  ([n, v]) => [iconoMarca(n), v],
+);
 
 /** «A, B y C» en el idioma de la página; sin Intl.ListFormat (navegadores viejos), con comas. */
 function listar(nombres: string[], idioma: string) {

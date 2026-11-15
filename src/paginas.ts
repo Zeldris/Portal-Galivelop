@@ -1,4 +1,5 @@
 import { createElement, use, type ComponentType } from 'react';
+import { ICONOS_PORTADA } from './data/iconos-portada';
 import { precargarIconos } from './components/IconoMarca';
 import { cargarFicha } from './data/proyectos';
 import { leerAncla } from './utils/ancla';
@@ -137,17 +138,17 @@ export async function precargarRuta(pathname: string): Promise<void> {
   const esperas: Promise<unknown>[] = [];
   if (pagina) esperas.push(cargarPagina(pagina));
   // Portada: sus iconos llegan en paralelo, sin retrasar el primer render (se pintan vacíos hasta entonces).
-  else if (paginaDeRuta(pathname) === undefined)
-    void precargarIconos([
-      'ramas',
-      'bombilla',
-      'terminal',
-      'implantacion',
-      'codigo',
-      'mundos',
-      'documento-check',
-      'papel-ventana',
-    ]);
+  else void precargarIconos(ICONOS_PORTADA);
   if (pagina === 'Proyecto') esperas.push(cargarFicha(slugDeRuta(pathname)));
   await Promise.allSettled(esperas);
+}
+
+/** Parámetros de la dirección que cambian lo que se pinta (`?proyecto=` filtra el muro y las novedades, y elige el de
+ * Unirse; `?modo=` es de Unirse). Cualquier otro (utm, fbclid…) no toca el render. */
+const PARAMETROS_DEL_RENDER = ['proyecto', 'modo'];
+
+/** `true` si la query lleva un parámetro que cambia el render: entonces el HTML prerenderizado (sin query) no vale. */
+export function queryCambiaElRender(search: string): boolean {
+  const parametros = new URLSearchParams(search);
+  return PARAMETROS_DEL_RENDER.some((p) => parametros.has(p));
 }

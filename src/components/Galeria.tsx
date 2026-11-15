@@ -11,6 +11,7 @@ import {
 import { ruta } from '../data/proyectos';
 import type { Imagen } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
+import { useHidratado } from '../utils/hidratacion';
 
 /** Un bloque de la galería (p. ej. capturas del juego o ilustraciones). */
 export interface GrupoGaleria {
@@ -64,8 +65,11 @@ export function Galeria({ grupos, rotar = true }: { grupos: GrupoGaleria[]; rota
   const total = lista.length;
 
   const [actual, setActual] = useState(0);
-  // Pausa pedida con el botón: no se reanuda sola.
-  const [pausada, setPausada] = useState(() => !rotar || prefiereMenosMovimiento());
+  // Pausa pedida con el botón (`null`: aún no la ha tocado): no se reanuda sola.
+  const [pausadaPedida, setPausada] = useState<boolean | null>(null);
+  // `prefers-reduced-motion` solo se lee ya hidratado: el primer render tiene que casar con el HTML prerenderizado.
+  const hidratado = useHidratado();
+  const pausada = pausadaPedida ?? (!rotar || (hidratado && prefiereMenosMovimiento()));
   // Pausa por uso a mano: hasta esta marca de tiempo.
   const [usoHasta, setUsoHasta] = useState(0);
   const [visible, setVisible] = useState(true);
