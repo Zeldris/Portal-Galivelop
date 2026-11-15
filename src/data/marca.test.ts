@@ -51,3 +51,14 @@ describe('imágenes de la marca en los componentes', () => {
     ).toEqual([]);
   });
 });
+
+describe('isobatas.svg, la imagen LCP de la portada', () => {
+  it('pesa poco y su viewBox es el que declaran las <img> (2400x1200)', () => {
+    const svg = leer('public/marca/isobatas.svg');
+    expect(svg.length).toBeLessThan(20_000);
+    expect(svg).toContain('viewBox="0 0 2400 1200"');
+    expect(leer('src/pages/Inicio.tsx')).toMatch(
+      /hero-fondo[\s\S]*?width=\{2400\}[\s\S]*?height=\{1200\}/,
+    );
+  });
+});

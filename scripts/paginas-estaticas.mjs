@@ -36,19 +36,18 @@ const base = readFileSync('dist/index.html', 'utf8');
 const { renderizar } = await import(pathToFileURL('node_modules/.cache/prerender/entry-server.js').href);
 const BASE = (process.env.BASE_PATH ?? '/Portal-Galivelop/').replace(/\/?$/, '/'); // la misma base que vite.config.ts
 /**
- * HTML de #root y, aparte, lo que va al <head>: de las precargas que React pone delante del HTML, solo la de la imagen
- * principal (`fetchPriority="high"`); las demás imágenes ya salen en el HTML y no se adelantan a ella.
+ * HTML de #root para la página. Las precargas de imagen que React pone delante se descartan: las del <head> las pone
+ * `precargas(pg)` (fuentes, chunks e imagen LCP), y las demás imágenes ya salen en el HTML.
  */
 async function appDe(pg) {
   const ruta = `${BASE}${prefijo(pg.idioma)}${pg.ruta ? `${pg.ruta}/` : ''}`;
   const html = await renderizar(ruta);
-  const [, cabeza, app] = /^((?:<link\b[^>]*>)*)([\s\S]*)$/.exec(html);
+  const app = html.replace(/^(?:<link\b[^>]*>)*/, '');
   const donde = `${pg.idioma}/${pg.ruta}`;
   // Un Suspense sin resolver dejaría el «cargando» (y un <script> que lo cambia) en lugar de la página.
   if (/carga-pagina|<script\b|<template\b|<!--\$[?!]/.test(app)) throw new Error(`Prerender incompleto en ${donde}`);
   if ((app.match(/<h1\b/g) ?? []).length !== 1) throw new Error(`Prerender de ${donde}: no tiene un único <h1>`);
-  const principales = (cabeza.match(/<link\b[^>]*>/g) ?? []).filter((l) => /fetchPriority="high"/i.test(l));
-  return { precargas: principales, app, ruta };
+  return { app, ruta };
 }
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 // El 404 es copia de la portada: lleva la imagen versionada y título y descripción propios en los tres idiomas.
@@ -294,6 +293,72 @@ function datos(pg, url) {
   };
 }
 
+// Precarga por ruta (rendimiento): chunks JS, fuentes e imagen LCP en el <head>, para que no esperen a index.js ni al CSS.
+// Los chunks salen del manifiesto de Vite (build.manifest en vite.config.ts), siguiendo `imports`; lo que ya precarga
+// index.html (la entrada y sus imports) no se repite. Si no se sabe qué chunk toca a una ruta, el script falla.
+const manifiesto = JSON.parse(readFileSync('dist/.vite/manifest.json', 'utf8'));
+const enManifiesto = (clave, ruta) => {
+  if (!manifiesto[clave]) throw new Error(`Precarga: «${clave}» no está en dist/.vite/manifest.json (ruta «${ruta}»)`);
+  return manifiesto[clave];
+};
+const recorre = (clave, ruta, visto) => {
+  if (visto.has(clave)) return;
+  visto.add(clave);
+  for (const i of enManifiesto(clave, ruta).imports ?? []) recorre(i, ruta, visto);
+};
+const deIndex = new Set();
+recorre('index.html', '(entrada)', deIndex);
+// Página (src/pages/) que carga cada ruta; refleja paginaDeRuta de src/paginas.ts. La portada va en el chunk de entrada.
+const PAGINA_DE_RUTA = { '': undefined, equipo: 'Equipo', novedades: 'Novedades', muro: 'Muro', 'participa/proponer': 'Proponer', 'participa/unirse': 'Unirse' };
+const paginaDe = (ruta) => {
+  if (ruta in PAGINA_DE_RUTA) return PAGINA_DE_RUTA[ruta];
+  if (ruta.startsWith('proyectos/')) return 'Proyecto';
+  if (ruta.startsWith('equipo/')) return 'Miembro';
+  if (legales.some((d) => d.slug === ruta)) return 'Legal';
+  throw new Error(`Precarga: no sé qué página carga la ruta «${ruta}» (añádela a PAGINA_DE_RUTA)`);
+};
+const chunksDe = (pg) => {
+  const claves = new Set();
+  const pagina = paginaDe(pg.ruta);
+  if (pagina) recorre(`src/pages/${pagina}.tsx`, pg.ruta, claves);
+  if (pg.proyecto) recorre(`src/data/proyectos/${pg.proyecto.slug}.json`, pg.ruta, claves);
+  return [...claves].filter((k) => !deIndex.has(k)).map((k) => manifiesto[k].file);
+};
+// Fuentes latin que pintan el primer pantallazo: titulares (Big Shoulders) y texto (Literata). La mono (datos) no.
+const FUENTES = ['big-shoulders-display', 'literata'].map(
+  (f) => enManifiesto(`node_modules/@fontsource-variable/${f}/files/${f}-latin-wght-normal.woff2`, '(fuentes)').file,
+);
+// Imagen LCP: en la ficha, la que pinta la cabecera según `cabecera` (src/pages/Proyecto.tsx); en Inicio, isobatas.svg.
+// isobatas.svg no tiene variante por tema, así que es una sola imagen.
+const portadaEstado = (estado, ruta) => {
+  const m = new RegExp(`\\b${estado}:\\s*'([^']+)'`).exec(readFileSync('src/data/marca.ts', 'utf8').split('PORTADA_ESTADO')[1] ?? '');
+  if (!m) throw new Error(`Precarga: sin portada por estado «${estado}» en src/data/marca.ts (ruta «${ruta}»)`);
+  return m[1];
+};
+const imagenLcpDe = (pg) => {
+  if (pg.ruta === '') return 'marca/isobatas.svg';
+  const p = pg.proyecto;
+  if (!p) return undefined;
+  const modo = p.cabecera ?? 'ilustracion';
+  if (modo === 'captura') return 'marca/isobatas.svg';
+  if (modo === 'color') return portadaEstado(p.estado, pg.ruta);
+  return p.portada.src;
+};
+const precargas = (pg) => {
+  const lineas = [
+    ...FUENTES.map((f) => `<link rel="preload" as="font" type="font/woff2" crossorigin href="${BASE_404}${f}" />`),
+    ...chunksDe(pg).map((f) => `<link rel="modulepreload" crossorigin href="${BASE_404}${f}" />`),
+  ];
+  const img = imagenLcpDe(pg);
+  if (img) lineas.push(`<link rel="preload" as="image" fetchpriority="high" href="${BASE_404}${img.replace(/^\//, '')}" />`);
+  return lineas;
+};
+// Sustituye y comprueba que ocurrió: una cadena que ya no está haría la precarga desaparecer en silencio.
+const reemplazaSeguro = (html, buscado, nuevo, ruta) => {
+  if (!html.includes(buscado)) throw new Error(`Precarga: no encuentro «${buscado}» en el HTML de la ruta «${ruta}»`);
+  return html.replace(buscado, () => nuevo);
+};
+
 for (const pg of paginas) {
   const url = urlDe(pg.idioma, pg.ruta);
   const alternas = [
@@ -317,9 +382,10 @@ for (const pg of paginas) {
   }
   html = conImagen(html, pg.imagen, pg.vista?.alt ?? ALT_PORTAL[pg.idioma]);
   if (pg.vista && !pg.vista.medidas) html = html.replace(/\s*<meta property="og:image:(width|height|type)"[^>]*>/g, '');
-  const { precargas, app, ruta } = await appDe(pg);
+  const { app, ruta } = await appDe(pg);
+  html = reemplazaSeguro(html, '<link rel="stylesheet"', `${precargas(pg).join('\n    ')}\n    <link rel="stylesheet"`, pg.ruta || '/');
   html = html
-    .replace('</head>', () => `  ${precargas.map((l) => `${l}\n    `).join('')}<script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
+    .replace('</head>', () => `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
     // `data-prerender`: la dirección de este HTML; src/main.tsx solo lo hidrata en esa misma dirección.
     .replace('<div id="root"></div>', () => `<div id="root" data-prerender="${ruta}">${app}</div>`);
   const dir = `dist/${prefijo(pg.idioma)}${pg.ruta}`.replace(/\/$/, '');

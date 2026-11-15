@@ -1,4 +1,5 @@
 import { createElement, use, type ComponentType } from 'react';
+import { precargarIconos } from './components/IconoMarca';
 import { cargarFicha } from './data/proyectos';
 import { leerAncla } from './utils/ancla';
 
@@ -135,6 +136,18 @@ export async function precargarRuta(pathname: string): Promise<void> {
   const pagina = paginaDeRuta(pathname);
   const esperas: Promise<unknown>[] = [];
   if (pagina) esperas.push(cargarPagina(pagina));
+  // Portada: sus iconos llegan en paralelo, sin retrasar el primer render (se pintan vacíos hasta entonces).
+  else if (paginaDeRuta(pathname) === undefined)
+    void precargarIconos([
+      'ramas',
+      'bombilla',
+      'terminal',
+      'implantacion',
+      'codigo',
+      'mundos',
+      'documento-check',
+      'papel-ventana',
+    ]);
   if (pagina === 'Proyecto') esperas.push(cargarFicha(slugDeRuta(pathname)));
   await Promise.allSettled(esperas);
 }
