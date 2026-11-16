@@ -1,6 +1,6 @@
 # Retro: `/gw-update` 0.6.0 → 0.7.0 (2026-11-16)
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada por la persona (2026-11-16): P1 y P2 aplicadas como tareas suyas (archivo de tareas abiertas); P3 decidida para el flujo, en «For Galivelop-workflow».
 
 Lo revisado: c7d8cbc (flujo 0.7.0) y f831a2a (fase 1, 0 hallazgos). Gasto medido con `measure.py --since b17058f`:
 63 llamadas, todas con el modelo grande, contexto medio 122k (techo 160k, sin compactar), contexto de arranque 86k

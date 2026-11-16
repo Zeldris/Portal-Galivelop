@@ -6,6 +6,8 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 
 ## Herramientas que ya ahorran
 
+- **`/gw-update` con el flujo leído en un subagente** (2026-11-16, retro P3, propuesto al flujo): el ensayo de `apply.py`, el CHANGELOG y el diff de plantillas los resume un subagente barato; en la 0.7.0 entraron en la sesión principal (~520k arrastrados).
+
 - **Campos de una ficha con `bloque.py`** (2026-11-05, T2): `.claude/skills/gw-portal/scripts/bloque.py <ficha>
   <campo> -` cambia un campo y deja el resto del archivo igual; la sesión de las fichas gastó ~8 llamadas rehaciendo
   JSON a mano.
