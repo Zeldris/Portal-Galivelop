@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 """Check that a project has the workflow set up (used by /gw-doctor and CI). No AI, no network.
 
   python3 doctor.py            # one line per check: OK / WARN / FAIL, each problem with the command that fixes it
@@ -21,7 +21,8 @@ while the note names no other); and, when `origin` is on GitHub, a way to read t
 or effort picked per agent (CLAUDE_CODE_EFFORT_LEVEL, CLAUDE_CODE_SUBAGENT_MODEL with _FORCE, CLAUDE_CODE_SUBAGENT_EFFORT)
 in the environment or the env block of .claude/settings.json, .claude/settings.local.json or ~/.claude/settings.json;
 and (E43) a folder holding test_*.py that no `check` command runs (`test dirs`, see check_test_dirs; the folders to skip
-are the `doctorTestDirsIgnore` key).
+are the `doctorTestDirsIgnore` key); and (E41) the identity git commits with (`git var`) does not match `authorDeny` (the pre-commit
+refuses that author).
 The compaction check, the session one, the levers one, the media tools one and the CI
 access one read the machine running doctor, not only the project, so their lines can differ between a person's machine,
 CI and a cloud session.
@@ -749,6 +750,22 @@ def strip_invisible_command(name):
             f"open(p,\"w\",encoding=\"utf-8\").write(re.sub(\"{INVISIBLE_PATTERN}\",\"\",t))' {name}")
 
 
+def check_author(rep, root, cfg):
+    """E41: the identity git will commit with (git var, as the pre-commit reads it: user.name/user.email and the
+    GIT_AUTHOR_*/GIT_COMMITTER_* variables) does not match authorDeny."""
+    patterns = config.author_deny(cfg) if cfg else []
+    if not patterns:
+        return
+    code, message = config.author_check(root, patterns)
+    if code:
+        rep.warn("author", f"{message.split('; commit as yourself')[0]}, so the pre-commit refuses every commit",
+                 "git config user.name '<your name>' && git config user.email '<your email>' "
+                 "(and unset GIT_AUTHOR_*/GIT_COMMITTER_* if set)")
+    else:
+        rep.ok("author", "the identity git commits with (user.name/user.email, GIT_AUTHOR_*/GIT_COMMITTER_*) does not "
+               "match authorDeny")
+
+
 def check_instructions(rep, root, cfg=None):
     """Invisible characters in the files agents obey (a hidden instruction is an injection) and the size of
     AGENTS.md/CLAUDE.md (P7 of proposal 2026-10-25-repos-x.md)."""
@@ -1110,6 +1127,7 @@ def run(root):
     check_session(rep, root)
     check_compaction(rep, root)
     check_levers(rep, root, cfg)
+    check_author(rep, root, cfg)
     return rep
 
 

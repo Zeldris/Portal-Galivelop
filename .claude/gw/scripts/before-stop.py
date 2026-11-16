@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 """Stop hook: do not let Claude finish with commits that are not pushed, or with changes the log does not mention.
 
 "What is not pushed does not exist" (AGENTS.md) is the workflow's most important rule and, until this hook, only the
 agent remembered it. It blocks the stop when:
 
-  a. the current branch has commits its upstream does not (`git rev-list @{u}..HEAD`); with no upstream, commits no
-     remote branch has (`git rev-list HEAD --not --remotes`). The reason names `git push -u origin <branch>`. On the
+  a. the current branch has commits its upstream does not (`git rev-list @{u}..HEAD --not <remote>/<protectedBranch>`,
+     the upstream's remote: what a merged-in `main` brings is already pushed; without that ref, just `@{u}..HEAD`);
+     with no upstream, commits no remote branch has (`git rev-list HEAD --not --remotes`). The reason names `git push -u origin <branch>`. On the
      protected branch (`protectedBranch`) it does not: AGENTS.md says a push there needs the user's confirmation and
      the three phases, so Claude cannot fix it alone and a block would only make it push without asking. There it is a
      warning to the user (`systemMessage`: the commits are not pushed, and pushing needs their confirmation), never
@@ -103,7 +104,7 @@ def plural(n, word):
     return f"{n} {word}" + ("" if n == 1 else "s")
 
 
-def unpushed(root):
+def unpushed(root, protected=None):
     """(branch, count, where) of the commits the current branch has that nowhere else has; None when there is
     nothing to push or nothing to compare with (detached HEAD, no commits). Raises GitError."""
     rc, branch = git(root, "symbolic-ref", "-q", "--short", "HEAD", check=False)
@@ -115,7 +116,14 @@ def unpushed(root):
     rc, upstream = git(root, "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}", check=False)
     if rc == 0 and upstream.strip():
         upstream = upstream.strip()
-        count = int(git(root, "rev-list", "--count", f"{upstream}..HEAD")[1].strip() or 0)
+        # After merging `main` into the branch, what comes from `main` is already pushed: it is left out, and only it
+        # (a commit that is on some other remote branch, or on a stale ref, still counts)
+        cmd = ["rev-list", "--count", f"{upstream}..HEAD"]
+        remote = git(root, "config", "--get", f"branch.{branch}.remote", check=False)[1].strip()
+        base = f"{remote}/{protected}" if remote and protected else ""
+        if base and git(root, "rev-parse", "-q", "--verify", f"refs/remotes/{base}", check=False)[0] == 0:
+            cmd += ["--not", f"refs/remotes/{base}"]
+        count = int(git(root, *cmd)[1].strip() or 0)
         where = f"not on {upstream}"
     else:
         if not git(root, "remote")[1].strip():
@@ -391,7 +399,7 @@ def main():
         unpushed_to = blocks if severity["unpushed"] == "block" else notes
         log_to = blocks if severity["logRequired"] == "block" else notes
         try:
-            found = unpushed(root)
+            found = unpushed(root, cfg["protectedBranch"])
             if found:
                 branch, count, where = found
                 if branch == cfg["protectedBranch"]:

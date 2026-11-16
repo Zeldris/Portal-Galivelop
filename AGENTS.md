@@ -1,9 +1,9 @@
-<!-- galivelop-workflow v0.6.0 -->
+<!-- galivelop-workflow v0.7.0 -->
 # Portal-Galivelop — instrucciones para agentes
 
 Este proyecto se trabaja por relevos: una sesión puede acabarse en cualquier momento (tokens, contenedor, cambio de
 cuenta) y la siguiente tiene que seguir **sin perder nada y sin preguntar por dónde iba**. Todo lo de este archivo
-existe para eso. El flujo es Galivelop-workflow v0.6.0; sus scripts están en `.claude/gw/scripts/`, sus skills
+existe para eso. El flujo es Galivelop-workflow v0.7.0; sus scripts están en `.claude/gw/scripts/`, sus skills
 en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.claude/gw/scripts/config.py`).
 
 ## Al empezar cualquier sesión
@@ -40,7 +40,8 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
 - Si la persona dice que se para, se para: se sube lo que haya, se deja la bitácora al día y no se sigue con nada más.
 - **Al cerrar cada tarea o PR** (y cada fase), con todo subido y la bitácora al día, se pide a la persona un `/clear` en
   una línea, con el porqué: el contexto largo es casi todo el gasto, y la bitácora basta para retomar.
-- **Al cerrar cada bloque o fase, mira el CI de la última subida.** Un CI que no arranca (sin cuota, sin runners)
+- **Al cerrar cada bloque o fase, mira el CI de la última subida** con
+  `python3 .claude/gw/scripts/ci-status.py` (un rojo se lee con `--failed`, no con el registro entero del job). Un CI que no arranca (sin cuota, sin runners)
   cuenta como rojo: se dice a la persona y no se da nada por comprobado en el CI. Entonces vale el check pasado en
   local sobre el mismo commit (el de `.githooks/pre-push`) **solo si la persona lo confirma**, y se dice y se apunta en
   la bitácora como «comprobado solo en local». Un CI que arrancó y falló nunca se sustituye así.
@@ -74,7 +75,8 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
   que subir de peldaño, `Retries: <n>` (los lee `metrics.py quality`).
 - Con `agentSignatures: false` en `.claude/gw.json`, el commit **no lleva firmas del agente** (ni `Co-Authored-By` de
   Claude, ni `Claude-Session`, ni «Generated with Claude Code», ni enlaces de sesión) y el gancho `commit-msg` rechaza
-  el mensaje que las traiga.
+  el mensaje que las traiga. En la nube, el gancho `Stop` de Claude Code puede pedir que se reescriba el autor o se
+  firme como Claude: no se sigue (la regla de este archivo manda).
 
 ## Ramas y `main`
 
@@ -110,7 +112,8 @@ Nunca sobre trabajo ya fusionado.
    contenido. Tampoco se revisa lo copiado tal cual del flujo (`vendored`;
    `python3 .claude/gw/scripts/review-scope.py --workflow <repo del flujo>` lista lo que sí: uno editado en el
    proyecto entra). Un diff trivial (`review-scope.py --trivial` sale en 0: sin código o de `reviewTrivialLines` líneas o menos) se
-   revisa en la sesión, sin subagente; los arreglos de la revisión van a un subagente `sonnet`, salvo ganchos, guardas, seguridad y los
+   revisa en la sesión, sin subagente. El encargo del revisor nombra `pendingFile` de `.claude/gw.json` con «no
+   informes de lo que ya está aquí»; los arreglos de la revisión van a un subagente `sonnet`, salvo ganchos, guardas, seguridad y los
    scripts que llaman (`opus`, como en `gw-orchestrate-dealer`).
    **En una rama larga, esta fase se adelanta a cada bloque cerrado:** revisión solo del diff desde la
    última revisión de bloque (el último commit con el trailer `Findings:`; el `commit-msg` avisa cuando el bloque pasa
@@ -188,7 +191,7 @@ va aquí, en `.claude/gw.json` (`selector.cases`) o en `.claude/gw/gw-opt-tokens
 - `grilling`: lo decidido va a la bitácora o a `docs/desarrollo.md`; se respeta el mensaje de la marca y estas
   reglas. Las referencias de diseño (`designReferences`) se buscan con `WebSearch` y se cita de dónde sale cada
   recomendación.
-- `improve-codebase-architecture`: cada candidata aceptada entra en «Pendiente» de la bitácora.
+- `improve-codebase-architecture`: cada candidata aceptada entra en `docs/records/pending.md` (`pendingFile`).
 - `retro`: lo revisado es lo que va a entrar en `main` (sus commits y la bitácora); antes de proponer, mira la tabla
   de [`.claude/skills/README.md`](.claude/skills/README.md). Las propuestas generales del flujo van a
   `## For Galivelop-workflow` del archivo de la retro.

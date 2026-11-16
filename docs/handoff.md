@@ -6,17 +6,19 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-15 (ficha de workflow contrastada con su repo; pieza de X de la P7 lista para publicar) |
+| **Actualizado** | 2026-11-16 (`/gw-update` a Galivelop-workflow 0.7.0 en `ccr-8e0862c2-niq1xt`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, c926bcc, 2026-11-15) |
-| **Tarea en curso** | Ninguna en `ccr-8e0862c2-niq1xt`: la pieza de X de la P7 está lista para que la publique la persona |
+| **Tarea en curso** | `/gw-update` 0.6.0 → 0.7.0 en `ccr-8e0862c2-niq1xt`: aplicado y subido; falta la fase 1 (revisión de lo fusionado a mano: `AGENTS.md`, `.claude/gw.json`, `.claude/gw/gw-update.md`) y la fase 3 antes de `main`, con confirmación de la persona |
 | **Siguiente paso** | Publicaciones en X: **P7 lista para publicar** en `docs/media/2026-11-15/01-fichas-al-dia/` (la persona la publica y apunta el enlace en `## Published` de su `sheet.md`); **P1, P3, P5 y P6 guardadas** en `docs/media/proposals/2026-11-14.md` hasta que la persona las pida (texto en castellano ≤280 y 4 imágenes 1200×675). Reddit del 2026-11-14 publicado; `check.py` no admite guiones en `r/u_…` (a reportar a Galivelop-workflow). En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
 | **En `main`** | **Ficha de Galivelop-workflow contrastada con su repo** (b17058f, 2026-11-15, la persona: «Llévalo a main cuando el CI esté en verde»; CI en verde en 82104ca; solo contenido). Antes, **Galivelop-workflow 0.7.0 en su ficha** (2026-11-15). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 215/215 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-16 · **Flujo Galivelop-workflow 0.7.0** (`ccr-8e0862c2-niq1xt`, código del flujo, no de la web): `apply.py --update` (scripts, skills, `.githooks/`, agente `gw-reviewer`), `AGENTS.md` con los cambios de la plantilla, «Pendiente» en `docs/records/pending.md` y `ci-local.py --validate` en el check. Pide fase 1 y 3 antes de `main`.
 
 - 2026-11-15 · **(en `main`, b17058f) Ficha de Galivelop-workflow contrastada con su repo (v0.7.0)** (`ccr-8e0862c2-niq1xt`, solo contenido; la persona: «Arregla todo lo que esté mal»): hitos 0.7 y 0.8 con todo lo que pasa a la 0.8 (ficha de tarea, idiomas configurables), hitos de los parches 0.6.1 y 0.6.2, `harvest.py` y `--search` en vez de los nombres viejos, seis skills de Matt Pocock con nota final (no tres) y «sin cambios en lo que hacen», `logRows` (una fila por rama con tope), dos fallos «se avisa a la persona», requisitos con Python 3.8+ y Windows, cifra de pruebas «+2.700» (el repo no da una exacta), «prantillas» en gallego y producto sin «todos los proyectos».
 
@@ -35,50 +37,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-- **Leves de la auditoría completa del 2026-11-14** (informe: `docs/records/auditoria-2026-11-14.md`): imágenes sin `srcset`; tema sin `prefers-color-scheme` cuando no hay uno guardado, sin `forced-colors` ni `prefers-contrast`; celdas huérfanas, collage del hero a 768 px y safe areas; /muro sin página estática; zonas de Tarkor en gallego (contrastar con su glosario); contar de verdad los tests de Tarkor e IG; scroll al cambiar de idioma aproximado; sin medir el foco de la galería y el visor ni el submenú con toque real; tests nuevos sin `red-without-fix.sh`; Safari, Firefox y un dispositivo real, a comprobar por la persona. Leves del `/code-review` del bloque (2026-11-14, no se vuelven a revisar en este cambio): el título de Inicio repite el de `FIJAS` de `scripts/paginas-estaticas.mjs` en vez de una sola fuente; varios tests de `accesibilidad.test.tsx` leen el texto del fuente en vez de probar el comportamiento (sin jsdom).
-
-- **Diagramas de workflow con la 0.6.0** (2026-11-14, `/gw-portal`): `gw-subagentes`, `gw-sesion` y `gw-pre-push` piden rehacer su estructura (piezas nuevas de la 0.6.0); pide código o imagen, no hecho.
-
-- **Decisiones del `/gw-update` 0.6.0** (2026-11-14): `check.yml` pasa a `ownedFiles` en `.claude/gw.json` (la persona: «En este caso sí», 2026-11-14): lleva pasos propios del portal (Node 22, caché de npm, build) y `apply.py --check` sale ya en 0; para no perder los cambios de la plantilla del CI, `.claude/gw/gw-update.md` pide compararla a mano en cada `/gw-update`. El libro de tokens (`docs/metrics/ledger.jsonl`, lo escribe el gancho `Stop`) ya lleva `merge=union` en `.gitattributes` (la persona: «Sí, añádelo», 2026-11-14; el flujo lo traerá a los proyectos en la 0.7, B32). `doctor.py` avisa (WARN): `AGENTS.md` con 194 líneas (aviso desde 150), tests de `gw-media-content`, `gw-opt-tokens`, `gw-portal` y `gw-seo` que el check no corre, y `gw-seo` sin versión. `apply.py` lista nombres viejos (`recoger.py`, `docs/traspaso.md`, `docs/registros`, `docs/difusion`) en `gw-portal`, `docs/desarrollo.md`, `src/data/tipos.ts` y la ficha de workflow: parte puede ser a propósito (`gw-portal` lee repos que pueden seguir con esos nombres).
-
-- **Ficha de Galivelop Developer, cuando se cree** (2026-11-11): su portada es el barco de papel sobre mar con olas, ya en `public/proyectos/galivelop-developer/portada.webp` y `portada-mini.webp`; esa imagen es solo de Developer (ver `docs/marca.md`, fila 15 Developer).
-
-- **Leves de la revisión de la segunda tanda del 2026-11-14** (no se vuelven a revisar en este cambio): `TarjetaProducto` no mira `iconoPropio` (Voice saldría con su icono de lucide si pasa a producto); el icono de Voice lleva sus colores fijos y no sigue el tema (aceptado hasta que llegue el de contorno).
-
-- **Leves de la revisión de la entrega del 2026-11-14** (no se vuelven a revisar en este cambio): la banda 29 de `Proyecto.tsx` sigue con su propio par de imágenes y sus selectores en vez de `ImagenTema` (2026-11-14: ya lo usan formularios, 404 y avisos; a la banda le falta el `srcSet`); ningún test comprueba que se vea una sola imagen por tema (que existan, sí: `marca.test.ts`, 2026-11-14).
-
-- **Repaso de toda la web** (2026-11-11), sin arreglar: (b) `npm run medir` da 23 px de alto al enlace del título de las tarjetas de proyecto en el inicio, pero su `::after` hace clicable la tarjeta entera: falso positivo de la medida, a enseñarle a ignorarlo; (c) `npm run seo` da error y avisos en `/productos` (sin descripción, h1 ni Open Graph): es la página de paso `noindex` a `/equipo`, a propósito; los títulos iguales en es y gl («Equipo», «Aviso legal») también.
-- **Decisiones de la auditoría del 2026-11-09**, lo que queda (la persona, 2026-11-09): (4) **no** se quitan `fases`/`siguiente` de `proximamente.json` (decidido, 2026-11-09); (5) **verificado** contra los repos (2026-11-09): Galivelop IG pasa a 0.4.1 (etiqueta `v0.4.1`, CHANGELOG 2026-11-06; botón, enlace y texto de estado) y el workflow a **1914** pruebas (regla CIFRA DE PRUEBAS sobre `v0.5.1`); Tarkor se deja con sus tres hitos en `curso` (su bitácora `docs/records/traspaso.md`: 0.1 y 0.2 abiertos solo por lo que espera a Álvaro, 0.3 con fases D-E a medias aunque no es el frente actual); **toVeriAI verificado** (2026-11-10, con el repo en la sesión): son 5 proveedores en rotación y la lista de la ficha tiene esos 5; no había lista de 6. Queda para la persona: el hito 1.12 se llama en la ficha «Capturas estables y VeriAI» y en el roadmap «Datos de entrenamiento»; (6) y (8) **aprobados** por la persona («Apruebo todo, sobre la 8 hay que seguir lo que dice la marca», 2026-11-09). (6) **hecho**: `src/components/Enlace.tsx` con un `Link` que añade la barra final y un test que impide importar `Link`/`NavLink` de react-router-dom (e68a9c0). (8) **hecho**: carga por ruta (ver «JS inicial recortado» en «Para la próxima publicación»; leve: si falla la red al pedir una ficha se ve «no encontrado» en vez de un error); formas según la regla 3 (foto de miembro cuadrada con chaflán, icono de próximamente, puntos de la barra de ventana y de etapas rectos; solo `.estado-punto` sigue circular) y rejillas «A fondo»/características de 12 subcolumnas sin celdas huérfanas (ff04f12); el bloque Equipo ya usaba las fotos. Leve: el filete celeste de la foto de miembro no sigue la diagonal del chaflán. El 404 en gallego e inglés no se ha mirado en captura.
-- **Diagramas y animación del workflow** (la persona, 2026-11-04, tras el paso a `main`): el relevo entre sesiones (también animado: SVG con reposo para `prefers-reduced-motion`, que es código), las tres fases antes de `main`, la curva de gasto y el selector. Prototipo de variantes primero; guion y animación con el modelo grande, dibujo con el barato. **Diseño hecho** (2026-11-04): dos animaciones paso a paso (relevo y camino a `main`), galería de 7 a 3 imágenes; espera la decisión de la persona. **Storyboard con la marca** (2026-11-09, pedido por la persona): republicado en https://claude.ai/artifact/SEz8PBgLLi8g2YaUF459Km con tokens, fuentes y formas de `docs/marca.md`, steppers reales (pestañas, Reproducir una vez, reposo al final), composición móvil propia y las recomendaciones de las 10 preguntas aplicadas. Respuestas de la persona (2026-11-09): figura en celeste hondo, sí; `--ok-texto` se oficializa; fase 2 «opcional en cambios pequeños» y curva sin cifras, sí; el fallo sin rojo no se leía, así que se usa un token nuevo `--peligro` (magenta de los peligros de las cartas náuticas: claro `#a3135f`, oscuro `#f27ab0`, ≥6,5:1); `--peligro` y `--ok-texto` van a la tabla de `docs/marca.md` al implementarlo. Versión 3, tras ver cortes en el móvil: margen interior en móvil, ninguna línea cruza texto, commits de git rotulados, la animación 1 partida en «Trabajar» (4 pasos) y «Relevo» (4), tres pestañas (**aprobado por la persona** el 2026-11-09: «Me convence… lo aplicas», con pestañas). Comprobado con Pixel 5, iPhone SE y 320 px y la viewport de móvil real.
-- **La persona: `CLAUDE_CODE_AUTO_COMPACT_WINDOW=200000` en las variables del entorno de la nube** (T1 de la retro del 2026-10-31): hoy no estaba y el contexto medio fue de 225k.
-- **Ideas de `elayadesign/ai-design-skills` y `redesign-skill`** (aprobadas el 2026-10-30; aplicadas el mismo día en
-  la rama `ccr-83ea043c-r1gbyp`): hechas las palabras de relleno (`src/i18n/relleno.test.ts`), `text-wrap`, respuesta
-  al pulsar, `--curva` a 200 ms, escala `--z-*`, radios anidados y mensajes del sistema en `REVIEW.md` y
-  `designReferences`. **Quedan:** (a) ~~aviso legal o privacidad en el pie~~ hecho el 2026-10-31 (ver «Hecho»); queda la consulta
-  de la LSSI-CE de más abajo (fase 5 de la ADR 0002); (b) la FAQ con JSON-LD **no se hace**: Google retiró ese
-  resultado enriquecido (ver `docs/investigacion/seo-indexacion-previews.md`); (c) prototipo de la frase que se
-  ilumina al hacer scroll, si la persona lo quiere; (d) mirar caso por caso los 7 `uppercase` y que los botones de
-  Productos y Próximamente queden alineados abajo con textos largos en gl y en.
-- **SEO, a mano (la persona)** (2026-10-30, `docs/investigacion/seo-indexacion-previews.md`): en Search Console, enviar
-  `sitemap.xml` e inspeccionar la portada y las fichas nuevas tras cada publicación importante; dar de alta el sitio
-  en Bing Webmaster Tools importándolo desde Search Console; tras cambiar una tarjeta, refrescarla en el Sharing
-  Debugger de Facebook, el Post Inspector de LinkedIn y `@WebpageBot` de Telegram. **Decisiones suyas:** dominio
-  propio (cambia todas las URL: cuanto antes, mejor), política de rastreadores de IA en `robots.txt`, y página y feed
-  por pieza del muro cuando haya publicaciones.
-- **Abrir la sesión desde la carpeta del repo y en un entorno solo con el portal** (P1 de la retro de SEO, 2026-10-30, aprobada): la del 2026-10-30 se abrió en `/home/user` con cuatro repos, sin `.claude/settings.json` (sin tope de compactación: contexto medio de 194k y techo de 340k). Lo hace la persona al crear la sesión.
-- **Por pedir a la persona en otro momento: logos de la trayectoria y la formación de Raquel** (2026-10-26; la persona lo deja así por ahora, no se le vuelve a pedir en esta tarea): faltan Seidor, IES Fernando Wirtz (formación), Tokio School y la UDC, que salen con su inicial. No están en el repo de toVeriAI (solo tiene los suyos) y sus webs no se pueden bajar desde la nube: la política de red del entorno las bloquea (403 en seidor.com, tokioschool.com, udc.es, edu.xunta.gal, commons.wikimedia.org) y argaquest.fernandowirtz.com no resuelve. Que la persona mande las imágenes o abra esos dominios en la red del entorno; van a `public/equipo/empresas/<nombre>.webp` (88×88) y al campo `logo` de cada entrada.
-- **Por pedir a la persona en otro momento: datos de Álvaro y siguiente versión de la página de miembro** (la persona lo deja para después, 2026-10-26; se le recuerda junto con los logos de Raquel): la `descripcion` de cada puesto de Álvaro (Orienteed, Plexus Tech, Servicio Móvil y Grupo ALUMAN: qué hizo y en qué puesto; la persona la da en castellano y la sesión hace gl y en) y los logos de las empresas en `public/equipo/empresas/` (la red del contenedor no llega a sus webs: los pasa la persona). Opcional: apartados «Qué hago» y «Cómo trabajo», al estilo de eberna.tech, con textos de la persona.
-
-- **Encargos por miembro, aviso legal** (2026-10-26, la persona): comprobar con fuentes primarias si la LSSI-CE
-  pide algo a una web que dice que un miembro colabora por su cuenta (Galivelop no cobra ni intermedia). No se ha
-  investigado; no bloquea la publicación, pero queda abierto. El gallego de los textos nuevos, a revisar por un
-  hablante.
-
-- «About» del repo en GitHub (descripción, web y topics): lo pone el usuario (el proxy no deja cambiar ajustes del
-  repo; pendiente desde el SEO del 2026-10-14).
-1. Equipo: redes sociales que se vayan pasando (en `src/data/equipo.json`).
-2. Cuando el instalador de Tarkor sea público: añadirlo en `enlaces` de `tarkor.json` y pasar
-   el estado si procede.
+Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (20 entradas); se añade y se quita allí.
 
 ## Comprobar el estado
 

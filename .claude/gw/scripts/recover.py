@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 """Get back what a compaction or a /clear dropped, without reading the whole session transcript.
 
   recover.py --state          what the SessionStart hook (clear|compact) puts back into the context: the log's
@@ -287,7 +287,7 @@ def log_state(root, branch, logs=None, source="startup"):
                            f"heading or the key")
             else:
                 out += [f"- Log ({cfg['log']}), section '{heading}':"] + indented(section)
-        return out + ([only] if compact else [])
+        return out + ([only] if compact else pending_line(root, cfg))
     first = first_section(text)
     out = [f"- Log ({cfg['log']}), first section:"] + indented(first)
     if compact:
@@ -297,7 +297,24 @@ def log_state(root, branch, logs=None, source="startup"):
         if section is not None and section[0] not in first:
             out += [f"- Log ({cfg['log']}), section '{heading}':"] + indented(section)
             break
-    return out
+    return out + pending_line(root, cfg)
+
+
+def pending_line(root, cfg):
+    """D104: with `pendingFile` set, one line with the entries of that file (top-level "- " items of its Pending
+    section, or of the whole file without one); the file itself is not printed."""
+    rel = cfg.get("pendingFile") or ""
+    if not isinstance(rel, str) or not rel:
+        return []
+    path = root / rel
+    if not path.is_file():
+        return [f"- Pending: {rel} (pendingFile) does not exist; create it: python3 {HERE}/handoff.py move-pending"]
+    try:
+        import handoff
+    except Exception:  # handoff.py missing or broken: no count rather than a wrong one
+        return [f"- Pending: {rel} (pendingFile); read it when the task needs it"]
+    count = handoff.pending_count(path.read_text(encoding="utf-8", errors="replace"))
+    return [f"- Pending: {count} entries in {rel} (pendingFile); read it when the task needs them: grep -n '^- ' {rel}"]
 
 
 def fit_log(log_lines, room, log):
@@ -401,6 +418,22 @@ def compaction_budget(root, branch):
     except Exception:  # handoff.py missing or broken: behave as without a budget
         return None
     return handoff.compaction_budget(log_text(root, branch))
+
+
+def budget_overrun(root, branch, transcript=None):
+    """(counted, budget) when the session's compactions since the task started (as --state counts them) pass the
+    log's compaction budget, else None (D108: commit-message.py asks for /clear with it). No transcript, no budget or
+    any failure: None (only a warning reads it; it never raises)."""
+    try:
+        path, _ = session_log.find(root, transcript, warn=False)
+        budget = compaction_budget(root, branch) if path else None
+        if budget is None:
+            return None
+        task = task_start(root, branch)
+        counted = count_compactions(path, task[2] if task else None)
+        return (counted, budget) if counted > budget else None
+    except Exception:
+        return None
 
 
 def protected_branch(root):
