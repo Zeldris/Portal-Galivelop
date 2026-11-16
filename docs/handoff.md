@@ -6,9 +6,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-16 (`/gw-update` a Galivelop-workflow 0.7.0 en `ccr-8e0862c2-niq1xt`) |
+| **Actualizado** | 2026-11-16 (fase 1 de la 0.7.0 en `ccr-8e0862c2-niq1xt`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, c926bcc, 2026-11-15) |
-| **Tarea en curso** | `/gw-update` 0.6.0 → 0.7.0 en `ccr-8e0862c2-niq1xt`: aplicado y subido; falta la fase 1 (revisión de lo fusionado a mano: `AGENTS.md`, `.claude/gw.json`, `.claude/gw/gw-update.md`) y la fase 3 antes de `main`, con confirmación de la persona |
+| **Tarea en curso** | `/gw-update` 0.6.0 → 0.7.0 en `ccr-8e0862c2-niq1xt`: aplicado y subido; fase 1 hecha en la sesión (lo fusionado a mano: `AGENTS.md`, `.claude/gw.json`, `.claude/gw/gw-update.md`, `test-ganchos.sh`, `check.yml`; 0 hallazgos graves o medios; `ci-local.py --validate` en 0, CI en verde en c7d8cbc). Falta decidir si pasa por la fase 2 (toca ganchos y scripts, pero copiados tal cual del flujo) y la fase 3 antes de `main`, con confirmación de la persona |
 | **Siguiente paso** | Publicaciones en X: **P7 lista para publicar** en `docs/media/2026-11-15/01-fichas-al-dia/` (la persona la publica y apunta el enlace en `## Published` de su `sheet.md`); **P1, P3, P5 y P6 guardadas** en `docs/media/proposals/2026-11-14.md` hasta que la persona las pida (texto en castellano ≤280 y 4 imágenes 1200×675). Reddit del 2026-11-14 publicado; `check.py` no admite guiones en `r/u_…` (a reportar a Galivelop-workflow). En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
 | **En `main`** | **Ficha de Galivelop-workflow contrastada con su repo** (b17058f, 2026-11-15, la persona: «Llévalo a main cuando el CI esté en verde»; CI en verde en 82104ca; solo contenido). Antes, **Galivelop-workflow 0.7.0 en su ficha** (2026-11-15). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
