@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-16 (0.7.0 a `main` desde `ccr-8e0862c2-niq1xt`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, c926bcc, 2026-11-15) |
-| **Tarea en curso** | `/gw-update` 0.6.0 → 0.7.0 en `ccr-8e0862c2-niq1xt`: fase 1 (0 hallazgos), fase 2 (retro `docs/records/retro-2026-11-16-gw-update-0.7.md`, aprobada entera por la persona) y fase 3 hechas; la persona confirmó subir a `main` (2026-11-16) |
+| **Tarea en curso** | Ninguna: la 0.7.0 está en `main` (094e610) |
 | **Siguiente paso** | Publicaciones en X: **P7 lista para publicar** en `docs/media/2026-11-15/01-fichas-al-dia/` (la persona la publica y apunta el enlace en `## Published` de su `sheet.md`); **P1, P3, P5 y P6 guardadas** en `docs/media/proposals/2026-11-14.md` hasta que la persona las pida (texto en castellano ≤280 y 4 imágenes 1200×675). Reddit del 2026-11-14 publicado; `check.py` no admite guiones en `r/u_…` (a reportar a Galivelop-workflow). En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
-| **En `main`** | **Ficha de Galivelop-workflow contrastada con su repo** (b17058f, 2026-11-15, la persona: «Llévalo a main cuando el CI esté en verde»; CI en verde en 82104ca; solo contenido). Antes, **Galivelop-workflow 0.7.0 en su ficha** (2026-11-15). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **En `main`** | **Galivelop-workflow 0.7.0** (094e610, 2026-11-16, la persona: «Te doy permiso»; CI en verde en 094e610; retro aprobada). Antes, **Ficha de Galivelop-workflow contrastada con su repo** (b17058f, 2026-11-15, la persona: «Llévalo a main cuando el CI esté en verde»; CI en verde en 82104ca; solo contenido). Antes, **Galivelop-workflow 0.7.0 en su ficha** (2026-11-15). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- 2026-11-16 · **Flujo Galivelop-workflow 0.7.0** (`ccr-8e0862c2-niq1xt`, código del flujo, no de la web): `apply.py --update` (scripts, skills, `.githooks/`, agente `gw-reviewer`), `AGENTS.md` con los cambios de la plantilla, «Pendiente» en `docs/records/pending.md` y `ci-local.py --validate` en el check. Fases 1-3 hechas; a `main` con confirmación de la persona (2026-11-16).
+- 2026-11-16 · **(en `main`, 094e610) Flujo Galivelop-workflow 0.7.0** (`ccr-8e0862c2-niq1xt`, código del flujo, no de la web): `apply.py --update` (scripts, skills, `.githooks/`, agente `gw-reviewer`), `AGENTS.md` con los cambios de la plantilla, «Pendiente» en `docs/records/pending.md` y `ci-local.py --validate` en el check. Fases 1-3 hechas; a `main` con confirmación de la persona (2026-11-16).
 
 - 2026-11-15 · **(en `main`, b17058f) Ficha de Galivelop-workflow contrastada con su repo (v0.7.0)** (`ccr-8e0862c2-niq1xt`, solo contenido; la persona: «Arregla todo lo que esté mal»): hitos 0.7 y 0.8 con todo lo que pasa a la 0.8 (ficha de tarea, idiomas configurables), hitos de los parches 0.6.1 y 0.6.2, `harvest.py` y `--search` en vez de los nombres viejos, seis skills de Matt Pocock con nota final (no tres) y «sin cambios en lo que hacen», `logRows` (una fila por rama con tope), dos fallos «se avisa a la persona», requisitos con Python 3.8+ y Windows, cifra de pruebas «+2.700» (el repo no da una exacta), «prantillas» en gallego y producto sin «todos los proyectos».
 
