@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#E0703A",
   "icono": "proyectos/tarkor/icono.svg",
-  "actualizado": "2026-11-15",
+  "actualizado": "2026-11-17",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -4024,6 +4024,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-16",
+      "texto": {
+        "es": "Las imágenes de la marca ya se ven en la interfaz del juego, y el instalador gana en accesibilidad: más contraste, barras de progreso que lee un lector de pantalla, controles más fáciles de tocar y letra mínima legible. Además, el instalador estrena versión única y registro de cambios, con la primera versión etiquetada (v0.1.0), y se prueba más a fondo de punta a punta y frente a fallos conocidos de sus dependencias.",
+        "gl": "As imaxes da marca xa se ven na interface do xogo, e o instalador gaña en accesibilidade: máis contraste, barras de progreso que le un lector de pantalla, controis máis fáciles de tocar e letra mínima lexible. Ademais, o instalador estrea versión única e rexistro de cambios, coa primeira versión etiquetada (v0.1.0), e próbase máis a fondo de punta a punta e fronte a fallos coñecidos das súas dependencias.",
+        "en": "The brand images now show in the game's interface, and the installer is more accessible: more contrast, progress bars a screen reader can announce, easier-to-tap controls and a legible minimum text size. The installer also gets a single version number and a changelog, with its first tagged release (v0.1.0), and is tested more thoroughly end to end and against known flaws in its dependencies."
+      }
+    },
     {
       "fecha": "2026-11-15",
       "texto": {

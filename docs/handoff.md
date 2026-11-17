@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-17 (barrido de leves de `paginas-estaticas.mjs`, `claude/siguiente-fy7bji`) |
+| **Actualizado** | 2026-11-17 (`/gw-portal` en modo aplicar y paso a `main`, `claude/siguiente-fy7bji`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `claude/siguiente-fy7bji` (desde `main`, 041c5cd, 2026-11-17) |
-| **Tarea en curso** | Barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3) hecho: tabla ruta → página compartida en `src/rutas.ts`, `leerIcono` que rompe el build si no saca un SVG limpio, `engines.node` ≥ 22.18. Revisado en la sesión (diff pequeño); `npm run seo` y el HTML generado iguales |
-| **Siguiente paso** | Llevarlo a la rama de la tarea semanal (`claude/galivelop-dev-portal-1h89ci`, va por detrás de `main`) o a `main` con la marca, según diga la persona. Después: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
+| **Tarea en curso** | `/gw-portal` modo aplicar (la persona: «Hacemos un gw-portal y llevamos todo lo que tengamos pendiente a main», 2026-11-17). Hecho: Tarkor (novedad del 2026-11-16); toVeriAI y próximamente sin cambios. En marcha: Galivelop-workflow y el generador de imágenes (subagentes). Falta: fusionar `origin/main` (23 commits: lector y guiones, con el paso nuevo de guiones de la skill), guiones de las fichas tocadas, check, fase 1 del barrido 59dc5fd ya hecha, marca y push a `main` |
+| **Siguiente paso** | Terminar `/gw-portal` (workflow e IG), fusionar `origin/main`, guiones, `npm run check`, `reviewed.sh` y `git push origin HEAD:main` (confirmado por la persona). Después: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
 | **En `main`** | **Auditorías del 2026-11-17, sus arreglos y el chaflán** (041c5cd, con su retro aprobada). Antes, las vistas previas en redes sobre las placas 24 (4c4f082). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 229/229 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
