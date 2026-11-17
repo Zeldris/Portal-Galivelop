@@ -1,6 +1,6 @@
 {
   "$schema": "gw/schema/gw.schema.json",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "schemaVersion": 1,
   "language": "es",
   "visibleLanguages": [
@@ -15,9 +15,11 @@
     "npm ci"
   ],
   "check": [
-    "npm run check"
+    "npm run check",
+    "python3 .claude/gw/scripts/ci-local.py --validate"
   ],
   "requireRetro": false,
+  "pendingFile": "docs/records/pending.md",
   "content": [
     "^docs/",
     "^src/data/.*\\.json$",

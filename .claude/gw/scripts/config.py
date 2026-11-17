@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 """The only reader of a project's .claude/gw.json (one fact, one place).
 
 Validates the config against schema/gw.schema.json (a stdlib validator for the subset the schema uses) and fills the
@@ -19,6 +19,11 @@ defaults the schema declares. Shell scripts call the CLI; Python scripts import 
                                         # malformed -> exit 2. Never committed: it holds what must not be public
                                         # (privateNames, plus allowEmails for private-check.py and anonymize, the
                                         # aliases harvest.py prints instead of the names)
+  python3 config.py author-check        # E41: exit 1 when the commit's author or committer (git var GIT_AUTHOR_IDENT /
+                                        # GIT_COMMITTER_IDENT, so GIT_AUTHOR_*/GIT_COMMITTER_* count as in git) matches
+                                        # authorDeny; an empty list checks nothing (called by the pre-commit hook)
+  python3 config.py --rev REV author-check --commits -   # the same over the commits on stdin, one sha per line
+                                        # (%an/%ae/%cn/%ce; the pre-push on what it pushes, pre-commit --range in CI)
 
 Project root: --root, else the git top level of this script's folder when that repo has .claude/gw.json (the copy
 in a project lives in .claude/gw/scripts/), else the git top level of the current directory when it is
@@ -327,6 +332,86 @@ def _string_list_key(config, key):
     return list(prop["default"])
 
 
+def author_deny(config):
+    """E41: the `authorDeny` patterns (an invalid value gives the schema default, the empty list)."""
+    return _string_list_key(config, "authorDeny")
+
+
+def author_denied(patterns, name, email):
+    """E41: the first pattern of `authorDeny` that the identity (name, email) matches, else None. Case-insensitive; a
+    pattern with `@` is a whole email and matches only an equal email; any other pattern is a word or phrase of the
+    name, matched whole (`Claude` hits `Claude`, `claude[bot]` and `Claude Code`, not `Claudette`)."""
+    name, email = (name or "").strip(), (email or "").strip().casefold()
+    for pattern in patterns:
+        wanted = pattern.strip()
+        if not wanted:
+            continue
+        if "@" in wanted:
+            if email == wanted.casefold():
+                return pattern
+        elif re.search(r"(?<!\w)" + re.escape(wanted) + r"(?!\w)", name, re.IGNORECASE):
+            return pattern
+    return None
+
+
+def parse_ident(ident):
+    """`Name <email> 1700000000 +0100` (git var GIT_AUTHOR_IDENT) as (name, email); None when it is not one."""
+    m = re.match(r"^(.*?)\s*<([^>]*)>", ident or "")
+    return (m.group(1), m.group(2)) if m else None
+
+
+def commits_author_check(root, patterns, shas):
+    """E41: (0, "") when no commit of `shas` has an author or committer matching `patterns` (git commit runs the
+    pre-commit; a clean merge, cherry-pick, revert or rebase does not, so the pre-push and CI check what they carry),
+    else (1, the offending commits and the command that rewrites them). Fails closed when git cannot read them."""
+    shas = [s for s in shas if s]
+    if not patterns or not shas:
+        return 0, ""
+    r = subprocess.run(["git", "log", "--no-walk=unsorted", "--format=%H%x00%an%x00%ae%x00%cn%x00%ce", *shas],
+                       cwd=str(root), capture_output=True, text=True)
+    if r.returncode != 0:
+        return 1, f"cannot read the authors of the commits to check authorDeny; fetch and retry: git log {shas[0][:12]}"
+    bad, oldest = [], None
+    for line in r.stdout.splitlines():
+        parts = line.split("\0")
+        if len(parts) != 5:
+            continue
+        sha, an, ae, cn, ce = parts
+        for role, name, email in (("author", an, ae), ("committer", cn, ce)):
+            hit = author_denied(patterns, name, email)
+            if hit:
+                bad.append(f"  {sha[:7]}: {role} {name} <{email}> matches '{hit}'")
+                oldest = sha
+    if not bad:
+        return 0, ""
+    fix = (f"git config user.name '<your name>' && git config user.email '<your email>' && git rebase -r --exec "
+           f"'git commit --amend --no-edit --reset-author' {oldest[:7]}^")
+    return 1, "these commits have an author or committer in authorDeny (.claude/gw.json):\n" + "\n".join(bad) + \
+        f"\nrewrite them as yourself: {fix}"
+
+
+def author_check(root, patterns):
+    """E41: (0, "") when neither the author nor the committer of the commit being made matches `patterns`, else
+    (1, message with the command that fixes it). Fails closed when git cannot tell the identity."""
+    if not patterns:
+        return 0, ""
+    for role in ("AUTHOR", "COMMITTER"):
+        r = subprocess.run(["git", "var", f"GIT_{role}_IDENT"], cwd=str(root), capture_output=True, text=True)
+        ident = parse_ident(r.stdout.strip()) if r.returncode == 0 else None
+        if ident is None:
+            return 1, (f"cannot read the commit's {role.lower()} (git var GIT_{role}_IDENT failed), so authorDeny cannot "
+                       f"be checked; set your identity: git config user.name '<name>' && git config user.email '<email>'")
+        hit = author_denied(patterns, *ident)
+        if hit:
+            who = f"{ident[0]} <{ident[1]}>"
+            fix = ("git config user.name '<your name>' && git config user.email '<your email>'"
+                   + (" (and unset GIT_{0}_NAME/GIT_{0}_EMAIL if set)".format(role)))
+            amend = " For --amend, also: git commit --amend --reset-author." if role == "AUTHOR" else ""
+            return 1, (f"the commit's {role.lower()} {who} matches '{hit}' in authorDeny (.claude/gw.json); commit as "
+                       f"yourself: {fix}.{amend}")
+    return 0, ""
+
+
 def harvest(config):
     """The `harvest` key (A13) as a dict (ideaChars, commitsShown): the sizes harvest.py prints; an invalid value gives
     the schema default."""
@@ -585,6 +670,13 @@ def log_archive(config):
     schema = json.loads(schema_path().read_text(encoding="utf-8"))
     given = config.get("logArchive")
     return given if isinstance(given, str) and given else schema["properties"]["logArchive"]["default"]
+
+
+def pending_file(config):
+    """The `pendingFile` key (D104): repo-relative path of the file that holds the log's Pending items, or "" when the
+    key is absent or empty (the items stay in the log, as before)."""
+    given = config.get("pendingFile")
+    return given if isinstance(given, str) else ""
 
 
 # What Python re and grep -E do not share (A13): shorthand classes and word boundaries, extension groups, POSIX classes,
@@ -1072,6 +1164,8 @@ def main(argv=None):
     scope_p = sub.add_parser("push-scope", help="'full <reason>' or 'related' for a branch push changing the files on stdin")
     scope_p.add_argument("--commits", help="file listing the push's new commits, one sha per line: a .claude/gw.json "
                                            "change then counts only by its keys (fullCheckSkipKeys, E47)")
+    ac = sub.add_parser("author-check", help="exit 1 when the commit's author or committer matches authorDeny (E41)")
+    ac.add_argument("--commits", help="'-': check the commits on stdin (one sha per line) instead of the next commit")
     get = sub.add_parser("get")
     get.add_argument("key", help="top-level key, or dotted (relatedTests.fast)")
     get.add_argument("--json", action="store_true")
@@ -1102,6 +1196,17 @@ def main(argv=None):
             print(f"gw config: {exc}", file=sys.stderr)
             return 2
         return 0
+    if args.command == "author-check":
+        if args.commits:
+            shas = [line.strip() for line in sys.stdin.read().splitlines() if line.strip()]
+            code, message = commits_author_check(config["_root"], author_deny(config), shas)
+            if message:
+                print(f"author-check: {message}", file=sys.stderr)
+            return code
+        code, message = author_check(config["_root"], author_deny(config))
+        if message:
+            print(f"pre-commit: {message}", file=sys.stderr)
+        return code
     if args.command == "related":
         files = [line for line in sys.stdin.read().splitlines() if line]
         deleted = []

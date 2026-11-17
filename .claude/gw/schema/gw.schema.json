@@ -1,5 +1,5 @@
 {
-  "$comment": "galivelop-workflow v0.6.0",
+  "$comment": "galivelop-workflow v0.7.0",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/zeldris/Galivelop-workflow/main/schema/gw.schema.json",
   "title": "Galivelop-workflow project config (.claude/gw.json)",
@@ -66,6 +66,11 @@
       "minimum": 0,
       "default": 20000,
       "description": "Bytes above which whole-read.py (PreToolUse hook on Read) warns when a Read takes whole, with no offset or limit, the hand-off log, its archive or a file under recordsDir; it never blocks. 0 = do not warn."
+    },
+    "pendingFile": {
+      "type": "string",
+      "pattern": "^$|^(?!/)(?!(.*/)?\\.\\.(/|$)).+[^/]$",
+      "description": "Repo-relative path of the file that holds the log's Pending items (D104); the log keeps one pointer line with the count, and handoff.py check --strict fails if the log holds items itself. Absent or empty: the items stay in the log. No schema default on purpose (an older project keeps its Pending section); the template sets docs/records/pending.md."
     },
     "logArchive": {
       "type": "string",
@@ -529,6 +534,11 @@
       "default": [],
       "description": "Repo-relative workflow files that `ci-local.py` runs, whatever their triggers; empty: every .github/workflows/*.yml|yaml triggered by the event."
     },
+    "ciYamlCheck": {
+      "type": "boolean",
+      "default": true,
+      "description": "true: `ci-local.py --validate` (in the check) parses every .github/workflows/*.yml|yaml and fails when one is invalid YAML (GitHub never runs it, so no CI goes red). false: it says it is off and passes."
+    },
     "ciKeepSteps": {
       "type": "boolean",
       "default": true,
@@ -690,6 +700,15 @@
         "minLength": 1
       },
       "default": []
+    },
+    "authorDeny": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": [],
+      "description": "E41: identities the pre-commit refuses as author or committer (case-insensitive; a pattern with @ is a whole email, any other a whole word or phrase of the name); doctor.py warns when user.name/user.email match. Empty: no check."
     },
     "protectedPaths": {
       "type": "array",
@@ -1035,7 +1054,7 @@
     "doctorTestDirsIgnore": {
       "type": "array",
       "items": {"type": "string", "minLength": 1},
-      "default": [".git", "node_modules", ".claude/worktrees", ".claude/gw", "venv", ".venv", "env", ".tox", "site-packages", "__pycache__"],
+      "default": [".git", "node_modules", ".claude/worktrees", ".claude/gw", ".claude/skills", "venv", ".venv", "env", ".tox", "site-packages", "__pycache__"],
       "description": "E43: folder patterns (fnmatch on the repo-relative path or its tail, so node_modules also skips a/node_modules) that doctor.py skips when it looks for folders with test_*.py that no command of check runs; a folder with a pyvenv.cfg is always skipped."
     },
     "instructionLines": {
@@ -1069,6 +1088,7 @@
       "properties": {
         "ledger": {"type": "string", "minLength": 1, "default": "docs/metrics/ledger.jsonl"},
         "record": {"type": "boolean", "default": true},
+        "commitLedger": {"type": "boolean", "default": true, "description": "B36: the pre-commit hook (metrics.py stage-ledger) adds the changed ledger to the next work commit, so it needs no commit of its own; never during a merge, cherry-pick, revert or rebase, never in git commit <paths>/--only, never when the ledger is ignored or is the only staged change; false leaves the ledger to the user."},
         "reports": {"type": "string", "minLength": 1, "default": "docs/metrics"},
         "gitTimeout": {"type": "integer", "minimum": 1, "maximum": 600, "default": 30, "description": "Seconds each git call of the quality report (metrics.py quality) may take."},
         "alert": {
@@ -1133,8 +1153,8 @@
         ]
         }
       },
-      "default": {"ledger": "docs/metrics/ledger.jsonl", "record": true, "reports": "docs/metrics", "gitTimeout": 30, "alert": {"factor": 1.5, "days": 28, "minDays": 7}, "quality": {"findingsTrailer": "Findings", "retriesTrailer": "Retries", "reworkTypes": ["fix", "revert"]}},
-      "description": "Token ledger (B1-B6): the Stop hook metrics.py record appends, per session, agent, model and UTC date, the tokens the Claude Code transcripts show to the repo-relative ledger path (JSON lines, tokens only, never money); record false turns the recording off. reports: repo-relative folder where metrics.py report --write saves the period reports (daily/, weekly/, monthly/, quarterly/). alert (B6): the SessionStart hook (metrics.py alert) warns when a model's spend on today or yesterday (UTC) passes factor x its mean daily spend over the days before, counting only days with data and only with at least minDays of them; USD when all its rows are priced, else tokens; factor 0 turns it off. prices: dated tables of USD per million tokens per model (input, cacheWrite, cacheRead, output); a ledger row takes the newest table whose since is on or before its date, and the model key equal to its model or, failing that, the longest key that its model starts with followed by '-' (date suffixes); no table or no key = no price. A given prices replaces the whole default list. quality (B8): metrics.py quality reads the commit messages; findingsTrailer and retriesTrailer name the trailers whose integer values are summed per task id (Findings: accepted code-review findings; Retries: attempts that had to climb a rung); reworkTypes: the Conventional Commits types (after an optional WIP: prefix) that count as rework when they are not the first commit of the id, git reverts included."
+      "default": {"ledger": "docs/metrics/ledger.jsonl", "record": true, "commitLedger": true, "reports": "docs/metrics", "gitTimeout": 30, "alert": {"factor": 1.5, "days": 28, "minDays": 7}, "quality": {"findingsTrailer": "Findings", "retriesTrailer": "Retries", "reworkTypes": ["fix", "revert"]}},
+      "description": "Token ledger (B1-B6): the Stop hook metrics.py record appends, per session, agent, model and UTC date, the tokens the Claude Code transcripts show to the repo-relative ledger path (JSON lines, tokens only, never money); record false turns the recording off. commitLedger (B36): the pre-commit hook adds the changed ledger to the next work commit. reports: repo-relative folder where metrics.py report --write saves the period reports (daily/, weekly/, monthly/, quarterly/). alert (B6): the SessionStart hook (metrics.py alert) warns when a model's spend on today or yesterday (UTC) passes factor x its mean daily spend over the days before, counting only days with data and only with at least minDays of them; USD when all its rows are priced, else tokens; factor 0 turns it off. prices: dated tables of USD per million tokens per model (input, cacheWrite, cacheRead, output); a ledger row takes the newest table whose since is on or before its date, and the model key equal to its model or, failing that, the longest key that its model starts with followed by '-' (date suffixes); no table or no key = no price. A given prices replaces the whole default list. quality (B8): metrics.py quality reads the commit messages; findingsTrailer and retriesTrailer name the trailers whose integer values are summed per task id (Findings: accepted code-review findings; Retries: attempts that had to climb a rung); reworkTypes: the Conventional Commits types (after an optional WIP: prefix) that count as rework when they are not the first commit of the id, git reverts included."
     },
     "commandTimeout": {
       "type": "integer",

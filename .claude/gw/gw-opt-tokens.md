@@ -1,10 +1,12 @@
-<!-- galivelop-workflow v0.6.0 -->
+<!-- galivelop-workflow v0.7.0 -->
 # gw-opt-tokens — notas del proyecto
 
 Las lee la skill `gw-opt-tokens` antes de proponer nada, y se actualizan cuando la persona aprueba un cambio. El flujo
 las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/skills/opt-tokens/proyecto.md` y en `.claude/gw/opt-tokens.md`.)
 
 ## Herramientas que ya ahorran
+
+- **`/gw-update` con el flujo leído en un subagente** (2026-11-16, retro P3, propuesto al flujo): el ensayo de `apply.py`, el CHANGELOG y el diff de plantillas los resume un subagente barato; en la 0.7.0 entraron en la sesión principal (~520k arrastrados).
 
 - **Campos de una ficha con `bloque.py`** (2026-11-05, T2): `.claude/skills/gw-portal/scripts/bloque.py <ficha>
   <campo> -` cambia un campo y deja el resto del archivo igual; la sesión de las fichas gastó ~8 llamadas rehaciendo
@@ -29,6 +31,10 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
   cortado a 360 y los botones de idioma de 28 px que el barrido con capturas no vio. Desde el segundo paso del
   2026-10-27 abre también el menú, el submenú, cada hoja de apartado y la ampliación de imágenes y galerías (las hojas cortadas que vio la persona en el
   móvil no salían porque solo medía la página cerrada).
+- **Recorrido en texto para auditorías** (2026-11-14, retro P1): `tools/qa/recorrido.cjs` completa a `npm run medir`
+  con lo que este no mira (anchos de tablet y escritorio, tema oscuro, contraste del foco con Tab y enlaces internos
+  que no dan 200). Una auditoría lo lanza en vez de escribir sus propios scripts de Playwright (la del 2026-11-14
+  escribió cuatro, con 27 capturas y 1,7M arrastrados).
 - **Bitácora por partes** (2026-10-25): `recover.py --state`, o `sed -n '/^## Pendiente/,/^## /p'
   docs/handoff.md` para una sección; entera solo al empezar (el rediseño la leyó 66 veces, 415k arrastrados).
 - **Subagentes con plan cerrado, en el modelo barato** (2026-10-25): aplicar estilos o textos ya decididos, hacer

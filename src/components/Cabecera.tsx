@@ -1,5 +1,5 @@
 import { Menu, Moon, Sun, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from './Enlace';
 import { IDIOMAS } from '../data/tipos';
@@ -15,6 +15,18 @@ export function Cabecera() {
   // Menú desplegable en móvil: se cierra al navegar.
   const [menuAbierto, setMenuAbierto] = useState(false);
   useEffect(() => setMenuAbierto(false), [pathname, hash]);
+  const botonMenu = useRef<HTMLButtonElement>(null);
+  // Escape cierra el menú móvil y devuelve el foco a su botón.
+  useEffect(() => {
+    if (!menuAbierto) return;
+    const tecla = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setMenuAbierto(false);
+      botonMenu.current?.focus();
+    };
+    document.addEventListener('keydown', tecla);
+    return () => document.removeEventListener('keydown', tecla);
+  }, [menuAbierto]);
 
   return (
     <header className="cabecera">
@@ -78,6 +90,7 @@ export function Cabecera() {
           </button>
           <button
             type="button"
+            ref={botonMenu}
             className="boton-icono boton-menu"
             onClick={() => setMenuAbierto((a) => !a)}
             aria-expanded={menuAbierto}

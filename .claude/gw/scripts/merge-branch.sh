@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 # Merges a subagent's branch into the current one (merge, never rebase: branches are pushed), runs the config's
 # `check` commands and the related tests (`relatedTests`) on the result and, if they pass, cleans up the subagent's
 # worktree and branch.
-#   bash merge-branch.sh <branch> "<merge message>" [--reviewed]
+#   bash merge-branch.sh <branch> "<merge message>" [--reviewed] [--defer-check]   (flags in any order)
 #  - Before merging it reads `check` (at least one command) and `checkWrapper` from the config; if it cannot, it
 #    merges nothing and exits 2 (D77).
 #  - `git merge --no-ff`. On conflict it stops, lists the files and leaves the merge open (resolve it, or abort
@@ -32,12 +32,26 @@
 #  - With `commitNext: true` the message must end in the next-step trailer (`Siguiente:` for language es, `Next:`
 #    otherwise); without it the script stops before merging (exit 2). GW_NO_NEXT=1 skips that requirement.
 #  - --reviewed = the main session already had the diff reviewed; without it, it reminds you.
+#  - --defer-check (D117) = for every branch of a wave but the last: it merges (same conflict handling, same Refs)
+#    and cleans up, but runs neither the check nor the related tests, records no green and says so, with the full
+#    check to run after the last merge of the wave (or: merge the last branch without the flag). It still fails
+#    closed before merging on what it reads today, `check` and `checkWrapper` included: that full check needs them,
+#    and finding out at the first merge beats finding out after the last one. A missing check.sh or related-tests.sh
+#    does not stop it (nothing runs them here).
 # Bash 3.2 compatible. Root from this script's path, never from $CLAUDE_PROJECT_DIR or the current directory.
 set -uo pipefail
 here="$(cd "$(dirname "$0")" && pwd)"
-usage() { echo "merge-branch: usage: bash $0 <branch> \"<merge message>\" [--reviewed]" >&2; exit 2; }
-{ [ $# -eq 2 ] || { [ $# -eq 3 ] && [ "$3" = "--reviewed" ]; }; } || usage
-branch="$1"; message="$2"; reviewed="${3:-}"
+usage() { echo "merge-branch: usage: bash $0 <branch> \"<merge message>\" [--reviewed] [--defer-check]${1:+ ($1)}" >&2; exit 2; }
+[ $# -ge 2 ] || usage
+branch="$1"; message="$2"; shift 2
+reviewed=""; defer_check=""
+for flag in "$@"; do
+  case "$flag" in
+    --reviewed) reviewed="--reviewed" ;;
+    --defer-check) defer_check=1 ;;
+    *) usage "unknown argument: $flag" ;;
+  esac
+done
 # Git exports GIT_DIR (and friends) to hooks, also in a linked worktree; with GIT_DIR set `rev-parse --show-toplevel`
 # answers $here, not the repo root.
 root="$(unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE; git -C "$here" rev-parse --show-toplevel 2>/dev/null)" || {
@@ -169,12 +183,14 @@ EOF_CONFLICTS
     echo "  WARNING: git checkout --ours -- $qlog (or --theirs) keeps one side and DROPS the other's entries; see what $branch brings with: git diff :1:$qlog :3:$qlog"
     echo "  to give up instead: git merge --abort"
     # What this script would do after the merge (see cleanup_branch below): worktree only if there is one, branch only if it is not protected, claude/* or the current one.
-    after="bash $here/check.sh --quiet"
-    [ "$merge_cleanup" != "true" ] || [ -z "$wt" ] || [ "$wt" = "$root" ] || after="$after && git worktree remove $(printf '%q' "$wt")"
+    # With --defer-check the check is left for the end of the wave, so the commands are only the cleanup.
+    after=""
+    [ -n "$defer_check" ] || after="bash $here/check.sh --quiet"
+    [ "$merge_cleanup" != "true" ] || [ -z "$wt" ] || [ "$wt" = "$root" ] || after="${after:+$after && }git worktree remove $(printf '%q' "$wt")"
     if [ "$merge_cleanup" = "true" ] && [ "$branch" != "$protected" ] && ! glob_match "$branch" "$keep_globs" && [ "$branch" != "$(git branch --show-current)" ]; then
-      after="$after && git branch -d $(printf '%q' "$branch")"
+      after="${after:+$after && }git branch -d $(printf '%q' "$branch")"
     fi
-    echo "  Closing it by hand skips what this script does after a merge (re-running it says \"nothing to merge\"); then run: $after"
+    [ -n "$after" ] && echo "  Closing it by hand skips what this script does after a merge (re-running it says \"nothing to merge\"); then run: $after"
   else
     echo "merge-branch: CONFLICT (the merge stays open; resolve it and commit, or abort with: git merge --abort):"
     printf '%s\n' "${conflicts:-$(tail -n 5 "$logs/merge.log")}" | sed 's/^/  /'
@@ -187,69 +203,73 @@ if [ "$(git rev-parse HEAD)" = "$before" ]; then
 fi
 echo "merge-branch: merged $branch into $(git branch --show-current) at $(git rev-parse --short HEAD)"
 
-# The check is scripts/check.sh --quiet (E20): one registry per sha in <git common dir>/gw/check-<sha>.log that stays
-# after the run, a lock against a second check, a closing `CHECK <ok|FAILED>: ...` line, and the green recorded for
-# the pre-push (check-green.sh) so the push does not repeat it. Only its summary is shown here, never the tail.
-check_script="$here/check.sh"
-if [ ! -f "$check_script" ]; then
-  echo "merge-branch: CHECK CANNOT RUN: $check_script is not installed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-  echo "merge-branch: reinstall the workflow with: /gw-update, or undo the merge with: git reset --hard HEAD^1" >&2
-  exit 1
-fi
-bash "$check_script" --quiet > "$logs/check.out" 2> "$logs/check.err" < /dev/null
-check_rc=$?
-check_line="$(grep '^CHECK ' "$logs/check.out" "$logs/check.err" | tail -n 1 | sed 's/^[^:]*://')"
-check_log="$(grep '^check: log: ' "$logs/check.out" | tail -n 1 | sed 's/^check: log: //')"
-if [ "$check_rc" -eq 0 ]; then
-  echo "merge-branch: check OK: ${check_line:-CHECK ok} (log: ${check_log:-unknown})"
+if [ -n "$defer_check" ]; then
+  echo "merge-branch: CHECK DEFERRED (--defer-check): neither the check nor the related tests ran on this merge and no green was recorded. After the LAST merge of the wave run one full check: bash $here/check.sh (or merge the last branch without --defer-check)."
 else
-  # The summary block (each command, ok/FAILED, seconds) and the closing CHECK line; the log has the rest.
-  awk '/^check: summary/ {on=1; next} /^check: last / {on=0} on' "$logs/check.out" >&2
-  if [ -n "$check_line" ]; then
-    echo "merge-branch: $check_line" >&2
-  else  # check.sh stopped before running anything (no CHECK line): its own message says why
-    cat "$logs/check.err" >&2
-    tail -n 5 "$logs/check.out" >&2
+  # The check is scripts/check.sh --quiet (E20): one registry per sha in <git common dir>/gw/check-<sha>.log that stays
+  # after the run, a lock against a second check, a closing `CHECK <ok|FAILED>: ...` line, and the green recorded for
+  # the pre-push (check-green.sh) so the push does not repeat it. Only its summary is shown here, never the tail.
+  check_script="$here/check.sh"
+  if [ ! -f "$check_script" ]; then
+    echo "merge-branch: CHECK CANNOT RUN: $check_script is not installed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+    echo "merge-branch: reinstall the workflow with: /gw-update, or undo the merge with: git reset --hard HEAD^1" >&2
+    exit 1
   fi
-  echo "merge-branch: the check did not pass. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-  [ -z "$check_log" ] || echo "merge-branch: full log: $check_log" >&2
-  if [ "$check_rc" -eq 3 ]; then
-    echo "merge-branch: another check holds the lock; once it ends rerun the check with: bash $check_script --quiet (or undo the merge with: git reset --hard HEAD^1)" >&2
+  bash "$check_script" --quiet > "$logs/check.out" 2> "$logs/check.err" < /dev/null
+  check_rc=$?
+  check_line="$(grep '^CHECK ' "$logs/check.out" "$logs/check.err" | tail -n 1 | sed 's/^[^:]*://')"
+  check_log="$(grep '^check: log: ' "$logs/check.out" | tail -n 1 | sed 's/^check: log: //')"
+  if [ "$check_rc" -eq 0 ]; then
+    echo "merge-branch: check OK: ${check_line:-CHECK ok} (log: ${check_log:-unknown})"
   else
-    echo "merge-branch: fix it and commit, or undo the merge with: git reset --hard HEAD^1" >&2
+    # The summary block (each command, ok/FAILED, seconds) and the closing CHECK line; the log has the rest.
+    awk '/^check: summary/ {on=1; next} /^check: last / {on=0} on' "$logs/check.out" >&2
+    if [ -n "$check_line" ]; then
+      echo "merge-branch: $check_line" >&2
+    else  # check.sh stopped before running anything (no CHECK line): its own message says why
+      cat "$logs/check.err" >&2
+      tail -n 5 "$logs/check.out" >&2
+    fi
+    echo "merge-branch: the check did not pass. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+    [ -z "$check_log" ] || echo "merge-branch: full log: $check_log" >&2
+    if [ "$check_rc" -eq 3 ]; then
+      echo "merge-branch: another check holds the lock; once it ends rerun the check with: bash $check_script --quiet (or undo the merge with: git reset --hard HEAD^1)" >&2
+    else
+      echo "merge-branch: fix it and commit, or undo the merge with: git reset --hard HEAD^1" >&2
+    fi
+    exit 1
   fi
-  exit 1
-fi
 
-# The related tests the pre-push would run, on the files this merge brought. Fail closed: with commands in
-# `relatedTests` but related-tests.sh not installed they cannot run, so that is an error (with an empty
-# `relatedTests` a missing script has nothing to run); also if the changed list cannot be built.
-related_configured=""
-for kind in fast slow; do
-  value="$(python3 "$config" --root "$root" get "relatedTests.$kind" 2>/dev/null)" && [ -n "$value" ] && related_configured=1
-done
-if [ ! -f "$here/related-tests.sh" ]; then
-  if [ -n "$related_configured" ]; then
-    echo "merge-branch: RELATED TESTS CANNOT RUN: relatedTests is configured but $here/related-tests.sh is not installed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-    echo "merge-branch: reinstall the workflow with: /gw-update (then run the related tests), or undo the merge with: git reset --hard HEAD^1" >&2
-    exit 1
-  fi
-else
-  rerun="f=\$(mktemp) && git diff --name-only --no-renames ${before:0:7} HEAD > \"\$f\" && bash $here/related-tests.sh \"\$f\""
-  git diff --name-only --no-renames "$before" HEAD > "$logs/changed" || {
-    echo "merge-branch: cannot list the files the merge changed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-    echo "merge-branch: run the related tests by hand: $rerun" >&2
-    exit 1; }
-  if bash "$here/related-tests.sh" "$logs/changed" > "$logs/related.log" 2>&1 < /dev/null; then
-    echo "merge-branch: related tests OK"
+  # The related tests the pre-push would run, on the files this merge brought. Fail closed: with commands in
+  # `relatedTests` but related-tests.sh not installed they cannot run, so that is an error (with an empty
+  # `relatedTests` a missing script has nothing to run); also if the changed list cannot be built.
+  related_configured=""
+  for kind in fast slow; do
+    value="$(python3 "$config" --root "$root" get "relatedTests.$kind" 2>/dev/null)" && [ -n "$value" ] && related_configured=1
+  done
+  if [ ! -f "$here/related-tests.sh" ]; then
+    if [ -n "$related_configured" ]; then
+      echo "merge-branch: RELATED TESTS CANNOT RUN: relatedTests is configured but $here/related-tests.sh is not installed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+      echo "merge-branch: reinstall the workflow with: /gw-update (then run the related tests), or undo the merge with: git reset --hard HEAD^1" >&2
+      exit 1
+    fi
   else
-    tail -n 20 "$logs/related.log" >&2
-    echo "merge-branch: RELATED TESTS FAILED. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-    echo "merge-branch: fix it and commit, or undo the merge with: git reset --hard HEAD^1" >&2
-    echo "merge-branch: rerun them with: $rerun" >&2
-    exit 1
+    rerun="f=\$(mktemp) && git diff --name-only --no-renames ${before:0:7} HEAD > \"\$f\" && bash $here/related-tests.sh \"\$f\""
+    git diff --name-only --no-renames "$before" HEAD > "$logs/changed" || {
+      echo "merge-branch: cannot list the files the merge changed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+      echo "merge-branch: run the related tests by hand: $rerun" >&2
+      exit 1; }
+    if bash "$here/related-tests.sh" "$logs/changed" > "$logs/related.log" 2>&1 < /dev/null; then
+      echo "merge-branch: related tests OK"
+    else
+      tail -n 20 "$logs/related.log" >&2
+      echo "merge-branch: RELATED TESTS FAILED. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+      echo "merge-branch: fix it and commit, or undo the merge with: git reset --hard HEAD^1" >&2
+      echo "merge-branch: rerun them with: $rerun" >&2
+      exit 1
+    fi
   fi
-fi
+fi  # --defer-check
 
 cleanup_branch() {
   local current wt

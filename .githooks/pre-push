@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 # Git pre-push hook (copied into projects as .githooks/pre-push; enable with: git config core.hooksPath .githooks).
 #   - While it runs, keeps a marker `gw-push-in-progress.<pid>` in this worktree's own git dir (one per linked worktree, one per push) with its pid
 #     and, per pushed ref, the LOCAL sha and local branch, so the Stop hook (before-stop.py) does not tell an agent to
@@ -13,6 +13,9 @@
 #     paths and messages; privateCheck: false in the pushed commit's config turns it off. Fails closed. A refusal says
 #     those commits are not pushed yet and gives the command that fixes only them (git commit --amend, or
 #     git rebase -i <base>).
+#   - E41: no commit it pushes (only those not on the remote yet) has an author or committer in authorDeny, read from
+#     the pushed commit's config (config.py author-check --commits -): a clean merge, cherry-pick, revert or rebase
+#     skips the pre-commit, which only covers git commit. An empty list checks nothing.
 #   - Reads .claude/gw.json as each pushed commit has it (never the working tree's); a pushed commit without a valid
 #     one is refused.
 #   - Runs every `check` command of that config on the commit being pushed (a temporary worktree when it is not
@@ -399,6 +402,8 @@ while read -r local_ref local_sha remote_ref remote_sha; do
         fail "private-check could not run, exit $pc_rc (above); fix that and push again, reproduce with: python3 $scripts/private-check.py --root $root --commits - --rev ${local_sha:0:7}"
       fi
     fi
+    printf '%s\n' "$new" | python3 "$config" --root "$root" --rev "$local_sha" author-check --commits - \
+      || fail "the push carries commits by an identity in authorDeny (above); those commits are not pushed yet: rewrite them with the command above, then push again"
   fi
 
   # Protected if any config names this branch: the pushed commit's, the remote tip's or the working tree's (a commit

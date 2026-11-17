@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-14",
+  "actualizado": "2026-11-15",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.6.0 · en marcha la 0.7 «Preguntar»",
-    "gl": "En desenvolvemento · v0.6.0 · en marcha a 0.7 «Preguntar»",
-    "en": "In development · v0.6.0 · 0.7 “Ask” under way"
+    "es": "En desarrollo · v0.7.0 · próxima la 0.8 «Front y otros agentes»",
+    "gl": "En desenvolvemento · v0.7.0 · próxima a 0.8 «Front e outros axentes»",
+    "en": "In development · v0.7.0 · next up: 0.8 “Front end and other agents”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "portada": {
@@ -75,11 +75,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.6.0",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.7.0",
       "etiqueta": {
-        "es": "Ver la versión 0.6.0",
-        "gl": "Ver a versión 0.6.0",
-        "en": "View version 0.6.0"
+        "es": "Ver la versión 0.7.0",
+        "gl": "Ver a versión 0.7.0",
+        "en": "View version 0.7.0"
       }
     }
   ],
@@ -127,18 +127,18 @@
     },
     {
       "es": "Galivelop-workflow saca ese método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona, y lo convierte en un repositorio versionado: reglas en AGENTS.md (un estándar abierto que entiende cualquier agente), skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos los proyectos, y cada uno declara lo suyo en un pequeño archivo de configuración.",
-      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do obradoiro, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e modelos nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
+      "gl": "Galivelop-workflow saca ese método de Tarkor, deste portal e doutros proxectos do obradoiro, onde xa funciona, e convérteo nun repositorio versionado: regras en AGENTS.md (un estándar aberto que entende calquera axente), skills, scripts, ganchos e prantillas nun só sitio. Unha mellora faise unha vez e chega a todos os proxectos, e cada un declara o seu nun pequeno ficheiro de configuración.",
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.6.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.6.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.6.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.7.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.7.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.7.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as doce skills propias, os ganchos e scripts que fan cumprir as regras, os modelos de partida e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the twelve skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, unchanged and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as doce skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the twelve skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
     }
   ],
   "lineas": ["metodo"],
@@ -1060,9 +1060,9 @@
           },
           "valor": "exit 1",
           "texto": {
-            "es": "Bloquea. Rechaza archivos de secretos (.env, .pem, claves privadas) y patrones de claves conocidos (AWS, GitHub, Slack, Google, Anthropic…). Una línea concreta se exime con gw-allow-secret.",
-            "gl": "Bloquea. Rexeita ficheiros de segredos (.env, .pem, chaves privadas) e patróns de chaves coñecidos (AWS, GitHub, Slack, Google, Anthropic…). Unha liña concreta exímese con gw-allow-secret.",
-            "en": "Blocks. Rejects secret files (.env, .pem, private keys) and known key patterns (AWS, GitHub, Slack, Google, Anthropic…). A specific line can be exempted with gw-allow-secret."
+            "es": "Bloquea. Rechaza archivos de secretos (.env, .pem, claves privadas) y patrones de claves conocidos (AWS, GitHub, Slack, Google, Anthropic…). Una línea concreta se exime con gw-allow-secret. También rechaza un commit cuyo autor esté en la lista de cuentas no permitidas.",
+            "gl": "Bloquea. Rexeita ficheiros de segredos (.env, .pem, chaves privadas) e patróns de chaves coñecidos (AWS, GitHub, Slack, Google, Anthropic…). Unha liña concreta exímese con gw-allow-secret. Tamén rexeita un commit cuxo autor estea na lista de contas non permitidas.",
+            "en": "Blocks. Rejects secret files (.env, .pem, private keys) and known key patterns (AWS, GitHub, Slack, Google, Anthropic…). A specific line can be exempted with gw-allow-secret. It also rejects a commit whose author is on the list of disallowed accounts."
           }
         },
         {
@@ -1132,6 +1132,19 @@
         },
         {
           "nombre": {
+            "es": "Aviso de copia generada",
+            "gl": "Aviso de copia xerada",
+            "en": "Generated-copy warning"
+          },
+          "valor": "exit 0",
+          "texto": {
+            "es": "Avisa sin bloquear. Al editar una copia del flujo que se genera desde su fuente (ganchos, scripts, skills), recuerda la ruta de la fuente para que el cambio no se pierda en la próxima actualización.",
+            "gl": "Avisa sen bloquear. Ao editar unha copia do fluxo que se xera desde a súa fonte (ganchos, scripts, skills), lembra a ruta da fonte para que o cambio non se perda na próxima actualización.",
+            "en": "Warns without blocking. When you edit a copy of the workflow generated from its source (hooks, scripts, skills), it points to the source path so the change is not lost at the next update."
+          }
+        },
+        {
+          "nombre": {
             "es": "Skills y reglas",
             "gl": "Skills e regras",
             "en": "Skills and rules"
@@ -1179,9 +1192,9 @@
           },
           "valor": "recover.py",
           "texto": {
-            "es": "Tras /compact o /clear, un gancho devuelve el estado de la bitácora, los archivos sin subir y los últimos commits; --buscar encuentra un detalle perdido de la conversación.",
-            "gl": "Tras /compact ou /clear, un gancho devolve o estado da bitácora, os ficheiros sen subir e os últimos commits; --buscar atopa un detalle perdido da conversa.",
-            "en": "After /compact or /clear, a hook restores the log state, uncommitted files and the latest commits; --buscar finds a detail lost from the conversation."
+            "es": "Tras /compact o /clear, un gancho devuelve el estado de la bitácora, los archivos sin subir y los últimos commits; --search encuentra un detalle perdido de la conversación.",
+            "gl": "Tras /compact ou /clear, un gancho devolve o estado da bitácora, os ficheiros sen subir e os últimos commits; --search atopa un detalle perdido da conversa.",
+            "en": "After /compact or /clear, a hook restores the log state, uncommitted files and the latest commits; --search finds a detail lost from the conversation."
           }
         },
         {
@@ -1244,9 +1257,9 @@
           },
           "valor": "gw-selector",
           "texto": {
-            "es": "Cada tarea empieza diciendo qué skill y qué modelo pide. Los subagentes empiezan en el escalón más barato que haga bien el trabajo y solo suben tras un fallo; dos fallos en el mismo escalón, se para y se pregunta.",
-            "gl": "Cada tarefa comeza dicindo que skill e que modelo pide. Os subaxentes comezan no chanzo máis barato que faga ben o traballo e só soben tras un fallo; dous fallos no mesmo chanzo, párase e pregúntase.",
-            "en": "Every task starts by stating which skill and model it needs. Subagents start on the cheapest step that does the job well and only move up after a failure; two failures on the same step, stop and ask."
+            "es": "Cada tarea empieza diciendo qué skill y qué modelo pide. Los subagentes empiezan en el escalón más barato que haga bien el trabajo y solo suben tras un fallo; dos fallos, se para y se avisa a la persona.",
+            "gl": "Cada tarefa comeza dicindo que skill e que modelo pide. Os subaxentes comezan no chanzo máis barato que faga ben o traballo e só soben tras un fallo; dous fallos, párase e avísase á persoa.",
+            "en": "Every task starts by stating which skill and model it needs. Subagents start on the cheapest step that does the job well and only move up after a failure; two failures, stop and tell the person."
           }
         },
         {
@@ -1270,9 +1283,9 @@
           },
           "valor": "gw-harvest",
           "texto": {
-            "es": "recoger.py junta diferencias, skills nuevas y notas de las retros en propuestas; lo que se aprueba entra en la versión siguiente del flujo.",
-            "gl": "recoger.py xunta diferenzas, skills novas e notas das retros en propostas; o que se aproba entra na versión seguinte do fluxo.",
-            "en": "recoger.py gathers diffs, new skills and retro notes into proposals; what gets approved goes into the next version of the workflow."
+            "es": "harvest.py junta diferencias, skills nuevas y notas de las retros en propuestas; lo que se aprueba entra en la versión siguiente del flujo.",
+            "gl": "harvest.py xunta diferenzas, skills novas e notas das retros en propostas; o que se aproba entra na versión seguinte do fluxo.",
+            "en": "harvest.py gathers diffs, new skills and retro notes into proposals; what gets approved goes into the next version of the workflow."
           }
         }
       ]
@@ -1472,9 +1485,9 @@
           },
           "valor": "Git hook",
           "texto": {
-            "es": "Busca secretos antes de cada commit y protege las rutas que el proyecto marca.",
-            "gl": "Busca segredos antes de cada commit e protexe as rutas que o proxecto marca.",
-            "en": "Scans for secrets before every commit and protects the paths the project marks."
+            "es": "Busca secretos antes de cada commit, protege las rutas que el proyecto marca y rechaza autores no permitidos.",
+            "gl": "Busca segredos antes de cada commit, protexe as rutas que o proxecto marca e rexeita autores non permitidos.",
+            "en": "Scans for secrets before every commit, protects the paths the project marks and rejects disallowed authors."
           }
         },
         {
@@ -1531,6 +1544,19 @@
         },
         {
           "nombre": {
+            "es": "Aviso de copia generada",
+            "gl": "Aviso de copia xerada",
+            "en": "Generated-copy warning"
+          },
+          "valor": "PreToolUse",
+          "texto": {
+            "es": "Avisa al editar una copia generada del flujo y dice de qué fuente sale, para que el cambio se haga allí.",
+            "gl": "Avisa ao editar unha copia xerada do fluxo e di de que fonte sae, para que o cambio se faga alí.",
+            "en": "Warns when editing a generated copy of the workflow and names the source it comes from, so the change is made there."
+          }
+        },
+        {
+          "nombre": {
             "es": "Aplicar y diagnosticar",
             "gl": "Aplicar e diagnosticar",
             "en": "Apply and diagnose"
@@ -1577,9 +1603,9 @@
         "en": "Skills by Matt Pocock"
       },
       "intro": {
-        "es": "Quince skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en tres de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
-        "gl": "Quince skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en tres delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
-        "en": "Fifteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in three of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
+        "es": "Quince skills de mattpocock/skills (licencia MIT), copiadas sin cambios salvo los metadatos y, en seis de ellas, una nota final para encajarlas en el flujo. Llevan su mención en cada archivo. De ellas aprendimos esta forma de trabajar: skills pequeñas y bien escritas para pensar antes de programar.",
+        "gl": "Quince skills de mattpocock/skills (licenza MIT), copiadas sen cambios agás os metadatos e, en seis delas, unha nota final para encaixalas no fluxo. Levan a súa mención en cada ficheiro. Delas aprendemos esta forma de traballar: skills pequenas e ben escritas para pensar antes de programar.",
+        "en": "Fifteen skills from mattpocock/skills (MIT licence), copied unchanged except for their metadata and, in six of them, a closing note to fit them into the workflow. Each file carries his credit. They taught us this way of working: small, well-written skills for thinking before coding."
       },
       "items": [
         {
@@ -1850,9 +1876,9 @@
           },
           "valor": "docs/handoff.md",
           "texto": {
-            "es": "La bitácora; logRows limita cuántas filas guarda para que leerla siga siendo barato.",
-            "gl": "A bitácora; logRows limita cantas filas garda para que lela siga sendo barato.",
-            "en": "The handoff log; logRows caps how many rows it keeps so reading it stays cheap."
+            "es": "La bitácora; logRows da a cada rama su propia fila, con un tope de tamaño, para que leerla siga siendo barato.",
+            "gl": "A bitácora; logRows dá a cada rama a súa propia fila, cun tope de tamaño, para que lela siga sendo barato.",
+            "en": "The handoff log; logRows gives each branch its own row, with a size cap, so reading it stays cheap."
           }
         },
         {
@@ -1982,9 +2008,9 @@
           },
           "valor": "bash 3.2",
           "texto": {
-            "es": "git, bash 3.2 o superior y Python 3, en Linux o macOS. Los ganchos de sesión y las skills son de Claude Code; las reglas de AGENTS.md sirven a cualquier agente.",
-            "gl": "git, bash 3.2 ou superior e Python 3, en Linux ou macOS. Os ganchos de sesión e as skills son de Claude Code; as regras de AGENTS.md serven a calquera axente.",
-            "en": "git, bash 3.2 or later and Python 3, on Linux or macOS. The session hooks and skills are for Claude Code; the rules in AGENTS.md work with any agent."
+            "es": "git, bash 3.2 o superior y Python 3.8 o superior, en Linux, macOS o Windows (con Git Bash o WSL). Los ganchos de sesión y las skills son de Claude Code; las reglas de AGENTS.md sirven a cualquier agente.",
+            "gl": "git, bash 3.2 ou superior e Python 3.8 ou superior, en Linux, macOS ou Windows (con Git Bash ou WSL). Os ganchos de sesión e as skills son de Claude Code; as regras de AGENTS.md serven a calquera axente.",
+            "en": "git, bash 3.2 or later and Python 3.8 or later, on Linux, macOS or Windows (with Git Bash or WSL). The session hooks and skills are for Claude Code; the rules in AGENTS.md work with any agent."
           }
         },
         {
@@ -2015,6 +2041,146 @@
         "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The full release notes are in the project’s repository."
       },
       "items": [
+        {
+          "nombre": {
+            "es": "Autores y subagentes",
+            "gl": "Autores e subaxentes",
+            "en": "Authors and subagents"
+          },
+          "valor": "0.7.0 · 2026-11-15",
+          "texto": {
+            "es": "Versión menor que sale con lo ya hecho y deja las preguntas a la persona para la 0.8: controla quién firma cada commit, valida los archivos del CI y reparte el trabajo a subagentes ligeros con el modelo y el esfuerzo de cada peldaño.",
+            "gl": "Versión menor que sae co xa feito e deixa as preguntas á persoa para a 0.8: controla quen asina cada commit, valida os ficheiros do CI e reparte o traballo a subaxentes lixeiros co modelo e o esforzo de cada chanzo.",
+            "en": "A minor version that ships with what is already done and leaves questions to the person for 0.8: it controls who signs each commit, validates the CI files and deals work to lightweight subagents with the model and effort of each rung."
+          },
+          "detalle": [
+            {
+              "es": "Un commit se rechaza si su autor está en la lista de cuentas no permitidas, y la subida y el CI lo vuelven a comprobar.",
+              "gl": "Un commit rexéitase se o seu autor está na lista de contas non permitidas, e a subida e o CI volven comprobalo.",
+              "en": "A commit is rejected if its author is on the list of disallowed accounts, and the push and CI check it again."
+            },
+            {
+              "es": "El check valida los archivos del CI, y al actualizar el flujo esa comprobación se añade sola.",
+              "gl": "O check valida os ficheiros do CI, e ao actualizar o fluxo esa comprobación engádese soa.",
+              "en": "The check validates the CI files, and updating the workflow adds that check on its own."
+            },
+            {
+              "es": "El ensayo de una actualización resume qué cambia, también en las plantillas y en el criterio de revisión.",
+              "gl": "O ensaio dunha actualización resume que cambia, tamén nas prantillas e no criterio de revisión.",
+              "en": "A dry run of an update sums up what changes, templates and review criteria included."
+            },
+            {
+              "es": "El libro de tokens ya no lleva commits propios: viaja con el siguiente commit de trabajo y se fusiona sin conflictos.",
+              "gl": "O libro de tokens xa non leva commits propios: viaxa co seguinte commit de traballo e fusiónase sen conflitos.",
+              "en": "The token ledger no longer gets commits of its own: it travels with the next work commit and merges without conflicts."
+            },
+            {
+              "es": "Para probar que un test falla sin su arreglo, se revierte solo el arreglo dentro del archivo del test.",
+              "gl": "Para probar que un test falla sen o seu arranxo, reviértese só o arranxo dentro do ficheiro do test.",
+              "en": "To prove a test fails without its fix, only the fix inside the test file is reverted."
+            },
+            {
+              "es": "Un aviso, sin bloquear, al editar una copia generada del flujo, con la ruta de la que sale.",
+              "gl": "Un aviso, sen bloquear, ao editar unha copia xerada do fluxo, coa ruta da que sae.",
+              "en": "A warning, without blocking, when editing a generated copy of the workflow, naming the path it comes from."
+            },
+            {
+              "es": "Cada trozo de trabajo va a un subagente ligero con su modelo y esfuerzo, y cada revisión a un revisor propio sin herramientas externas.",
+              "gl": "Cada anaco de traballo vai a un subaxente lixeiro co seu modelo e esforzo, e cada revisión a un revisor propio sen ferramentas externas.",
+              "en": "Each chunk of work goes to a lightweight subagent with its model and effort, and each review to a dedicated reviewer without external tools."
+            }
+          ]
+        },
+        {
+          "nombre": {
+            "es": "Cerrar la recogida",
+            "gl": "Pechar a recollida",
+            "en": "Closing the harvest"
+          },
+          "valor": "0.6.2 · 2026-11-15",
+          "texto": {
+            "es": "Parche de arreglos que cierra la recogida de los proyectos: la subida a main funciona aunque la rama protegida aún no exista, el aviso de trabajo sin subir deja de contar lo traído de main y el reparto a subagentes gana reglas para arreglar después de fusionar.",
+            "gl": "Parche de arranxos que pecha a recollida dos proxectos: a subida a main funciona aínda que a rama protexida aínda non exista, o aviso de traballo sen subir deixa de contar o traído de main e o reparto a subaxentes gaña regras para arranxar despois de fusionar.",
+            "en": "A fix patch that closes the harvest from the projects: pushing to main works even when the protected branch does not exist yet, the unpushed-work warning no longer counts what came from main, and dealing work to subagents gains rules for fixing after a merge."
+          },
+          "detalle": [
+            {
+              "es": "La marca de revisión se puede escribir cuando la rama protegida aún no existe en el remoto; cualquier otro fallo para en seco.",
+              "gl": "A marca de revisión pódese escribir cando a rama protexida aínda non existe no remoto; calquera outro fallo para en seco.",
+              "en": "The review mark can be written when the protected branch does not exist on the remote yet; any other failure stops cold."
+            },
+            {
+              "es": "Al parar, los commits de main traídos por merge ya no cuentan como trabajo sin subir.",
+              "gl": "Ao parar, os commits de main traídos por merge xa non contan como traballo sen subir.",
+              "en": "When stopping, main’s commits brought in by a merge no longer count as unpushed work."
+            },
+            {
+              "es": "Tras fusionar, los arreglos van a un subagente nuevo con el archivo de hallazgos, y un test en rojo solo es previo si falla igual en main.",
+              "gl": "Tras fusionar, os arranxos van a un subaxente novo co ficheiro de achados, e un test en vermello só é previo se falla igual en main.",
+              "en": "After a merge, fixes go to a new subagent with the findings file, and a red test only counts as pre-existing if it fails the same way on main."
+            },
+            {
+              "es": "El revisor recibe la lista de lo ya apuntado para no repetirlo, y la plantilla de instrucciones explica cómo leer un CI en rojo.",
+              "gl": "O revisor recibe a lista do xa apuntado para non repetilo, e o modelo de instrucións explica como ler un CI en vermello.",
+              "en": "The reviewer gets the list of what is already noted so it does not repeat it, and the instructions template explains how to read a red CI."
+            },
+            {
+              "es": "Los tests de un cambio pasan antes shellcheck y dicen por qué se eligió cada uno.",
+              "gl": "Os tests dun cambio pasan antes shellcheck e din por que se escolleu cada un.",
+              "en": "A change’s tests run shellcheck first and say why each one was chosen."
+            },
+            {
+              "es": "Las oleadas de ramas se fusionan con un solo check al final, y se avisa de un subagente genérico barato cuando existe gw-worker.",
+              "gl": "As ondas de ramas fusiónanse cun só check ao final, e avísase dun subaxente xenérico barato cando existe gw-worker.",
+              "en": "Waves of branches merge with a single check at the end, and a warning comes up for a cheap generic subagent when gw-worker exists."
+            }
+          ]
+        },
+        {
+          "nombre": {
+            "es": "Tests más seguros",
+            "gl": "Tests máis seguros",
+            "en": "Safer tests"
+          },
+          "valor": "0.6.1 · 2026-11-14",
+          "texto": {
+            "es": "Parche de arreglos de la 0.6: los commits con trailers mal colocados se rechazan, la prueba de que un test falla sin su arreglo ya no puede perder trabajo si se interrumpe, y shellcheck revisa los scripts de shell que cambian.",
+            "gl": "Parche de arranxos da 0.6: os commits con trailers mal colocados rexéitanse, a proba de que un test falla sen o seu arranxo xa non pode perder traballo se se interrompe, e shellcheck revisa os scripts de shell que cambian.",
+            "en": "A fix patch for 0.6: commits with misplaced trailers are rejected, the check that a test fails without its fix can no longer lose work if interrupted, and shellcheck reviews the shell scripts that change."
+          },
+          "detalle": [
+            {
+              "es": "El commit rechaza las marcas de hallazgos y reintentos fuera de los trailers, y pide /clear al cerrar una fase con el contexto lleno.",
+              "gl": "O commit rexeita as marcas de achados e reintentos fóra dos trailers, e pide /clear ao pechar unha fase co contexto cheo.",
+              "en": "Commits reject findings and retries marks outside the trailers, and ask for /clear when a phase closes with a full context."
+            },
+            {
+              "es": "La prueba de que un test falla sin su arreglo guarda el arreglo en una copia, segura si se corta a mitad.",
+              "gl": "A proba de que un test falla sen o seu arranxo garda o arranxo nunha copia, segura se se corta á metade.",
+              "en": "The check that a test fails without its fix keeps the fix in a copy, safe if cut off halfway."
+            },
+            {
+              "es": "shellcheck pasa sobre los scripts de shell que cambian.",
+              "gl": "shellcheck pasa sobre os scripts de shell que cambian.",
+              "en": "shellcheck runs on the shell scripts that change."
+            },
+            {
+              "es": "La instalación y la recogida son más precisas, y lo pendiente pasa a su propio archivo.",
+              "gl": "A instalación e a recollida son máis precisas, e o pendente pasa ao seu propio ficheiro.",
+              "en": "Installing and harvesting are more accurate, and pending items move to their own file."
+            },
+            {
+              "es": "El roadmap exige las mismas tareas en todos los idiomas.",
+              "gl": "O roadmap esixe as mesmas tarefas en todos os idiomas.",
+              "en": "The roadmap requires the same tasks in every language."
+            },
+            {
+              "es": "Los subagentes reciben dónde están los tests, suben su último commit en primer plano y se paran si no vuelven con él subido.",
+              "gl": "Os subaxentes reciben onde están os tests, soben o seu último commit en primeiro plano e páranse se non volven con el subido.",
+              "en": "Subagents are told where the tests are, push their last commit in the foreground and are stopped if they don’t come back with it pushed."
+            }
+          ]
+        },
         {
           "nombre": {
             "es": "Medir el gasto",
@@ -2226,7 +2392,7 @@
             "gl": "Parche de arranxos",
             "en": "Fixes-only patch"
           },
-          "valor": "0.4.3 · 2026-11-01",
+          "valor": "0.4.3 · 2026-10-27",
           "texto": {
             "es": "Correcciones que pidió un proyecto al adoptar el flujo: el diagnóstico ya no rompe el CI de GitHub por no tener los ganchos de git puestos, avisa de los checks de sintaxis que solo miran el primer archivo y la instalación parte siempre de la última versión publicada.",
             "gl": "Correccións que pediu un proxecto ao adoptar o fluxo: o diagnóstico xa non rompe o CI de GitHub por non ter os ganchos de git postos, avisa dos checks de sintaxe que só miran o primeiro ficheiro e a instalación parte sempre da última versión publicada.",
@@ -2553,7 +2719,7 @@
       "estado": "hecho",
       "detalle": {
         "es": "Skills, ganchos, scripts y plantillas, probados en este portal y en Tarkor con su instalador. Desde la 0.4, el repositorio es público y cada versión sale con su release.",
-        "gl": "Skills, ganchos, scripts e modelos, probados neste portal e en Tarkor co seu instalador. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
+        "gl": "Skills, ganchos, scripts e prantillas, probados neste portal e en Tarkor co seu instalador. Desde a 0.4, o repositorio é público e cada versión sae coa súa release.",
         "en": "Skills, hooks, scripts and templates, tried on this portal and on Tarkor with its installer. Since 0.4 the repository is public and every version ships with its release."
       }
     },
@@ -2614,17 +2780,45 @@
       }
     },
     {
+      "version": "0.6.1",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 14 de noviembre.",
+        "gl": "Publicada o 14 de novembro.",
+        "en": "Released on 14 November."
+      }
+    },
+    {
+      "version": "0.6.2",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 15 de noviembre.",
+        "gl": "Publicada o 15 de novembro.",
+        "en": "Released on 15 November."
+      }
+    },
+    {
       "version": "0.7",
       "nombre": {
         "es": "Preguntar",
         "gl": "Preguntar",
         "en": "Ask"
       },
-      "estado": "curso",
+      "estado": "hecho",
       "detalle": {
-        "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse; un modo prudente que se enciende con un solo interruptor.",
-        "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse; un modo prudente que se acende cun só interruptor.",
-        "en": "Questions to the person, numbered, with a recommendation and never repeated; a careful mode turned on with a single switch."
+        "es": "Publicada el 15 de noviembre con lo hecho: quién firma cada commit, CI validado, libro de tokens sin commits propios y subagentes ligeros en cada peldaño. Lo que faltaba (preguntas, modos, ficha de cada tarea, idiomas configurables) pasa a la 0.8.",
+        "gl": "Publicada o 15 de novembro co feito: quen asina cada commit, CI validado, libro de tokens sen commits propios e subaxentes lixeiros en cada chanzo. O que faltaba (preguntas, modos, ficha de cada tarefa, idiomas configurables) pasa á 0.8.",
+        "en": "Released on 15 November with what was done: who signs each commit, a validated CI, a token ledger without its own commits and lightweight subagents at every rung. What was left (questions, modes, a sheet for each task, configurable languages) moves to 0.8."
       }
     },
     {
@@ -2636,9 +2830,9 @@
       },
       "estado": "pendiente",
       "detalle": {
-        "es": "Pruebas de interfaz, perfiles de instalación (mínimo, base y completo) y uso con otros agentes y modelos.",
-        "gl": "Probas de interface, perfís de instalación (mínimo, base e completo) e uso con outros axentes e modelos.",
-        "en": "Interface tests, install profiles (minimal, core and full) and use with other agents and models."
+        "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse, y un modo prudente con un solo interruptor; una ficha por tarea con sus criterios de aceptación e idiomas configurables; pruebas de interfaz, perfiles de instalación (mínimo, base y completo) y uso con otros agentes y modelos.",
+        "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse, e un modo prudente cun só interruptor; unha ficha por tarefa cos seus criterios de aceptación e idiomas configurables; probas de interface, perfís de instalación (mínimo, base e completo) e uso con outros axentes e modelos.",
+        "en": "Questions to the person, numbered, with a recommendation and never repeated, and a cautious mode with a single switch; a sheet for each task with its acceptance criteria, and configurable languages; interface tests, install profiles (minimal, core and full) and use with other agents and models."
       }
     },
     {
@@ -2708,6 +2902,30 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-15",
+      "texto": {
+        "es": "Publicada la 0.7.0: cada commit comprueba quién lo firma, el check valida los archivos del CI y el trabajo se reparte a subagentes ligeros con el modelo y el esfuerzo de su peldaño. Lo que faltaba, de las preguntas a la persona a la ficha de cada tarea, pasa a la 0.8.",
+        "gl": "Publicada a 0.7.0: cada commit comproba quen o asina, o check valida os ficheiros do CI e o traballo repártese a subaxentes lixeiros co modelo e o esforzo do seu chanzo. O que faltaba, das preguntas á persoa á ficha de cada tarefa, pasa á 0.8.",
+        "en": "Version 0.7.0 is out: every commit checks who signs it, the check validates the CI files and work is dealt to lightweight subagents with the model and effort of their rung. What was left, from questions to the person to a sheet for each task, moves to 0.8."
+      }
+    },
+    {
+      "fecha": "2026-11-15",
+      "texto": {
+        "es": "Publicada la 0.6.2, de arreglos: la subida a main funciona aunque la rama protegida aún no exista, el aviso de trabajo sin subir deja de contar lo traído de main y el reparto a subagentes arregla en un subagente nuevo tras fusionar.",
+        "gl": "Publicada a 0.6.2, de arranxos: a subida a main funciona aínda que a rama protexida aínda non exista, o aviso de traballo sen subir deixa de contar o traído de main e o reparto a subaxentes arranxa nun subaxente novo tras fusionar.",
+        "en": "Version 0.6.2 is out, with fixes: pushing to main works even when the protected branch does not exist yet, the unpushed-work warning no longer counts what came from main, and dealing work fixes in a new subagent after a merge."
+      }
+    },
+    {
+      "fecha": "2026-11-14",
+      "texto": {
+        "es": "Publicada la 0.6.1, de arreglos: los commits rechazan trailers mal colocados, la prueba de que un test falla sin su arreglo ya no pierde trabajo si se corta y shellcheck revisa los scripts que cambian.",
+        "gl": "Publicada a 0.6.1, de arranxos: os commits rexeitan trailers mal colocados, a proba de que un test falla sen o seu arranxo xa non perde traballo se se corta e shellcheck revisa os scripts que cambian.",
+        "en": "Version 0.6.1 is out, with fixes: commits reject misplaced trailers, the check that a test fails without its fix no longer loses work if cut off, and shellcheck reviews the scripts that change."
+      }
+    },
+    {
       "fecha": "2026-11-13",
       "texto": {
         "es": "Publicada la 0.6.0, de medida: el flujo apunta los tokens por sesión y modelo, recomienda modelo y esfuerzo para cada tarea, revisa por bloques las ramas largas y corre el check en paralelo. Llegan el subagente ligero gw-worker, la skill gw-metrics y toda la configuración en un solo archivo.",
@@ -2754,22 +2972,6 @@
         "gl": "Publicada a 0.4.2, un parche só de arranxos: o aviso de segredos antes de cada commit recoñece máis formas de clave (tamén as pegadas a un provedor de IA), a fusión da rama dun subaxente corre ademais os tests relacionados co que cambia, o mapa do código entende máis linguaxes (Java, Kotlin, C#…) e os scripts deixan de suxerir reescribir o último commit. O evolutivo xa vai á 1.0.0.",
         "en": "Version 0.4.2 is out, a fixes-only patch: the secrets warning before each commit recognises more kinds of key (including those tied to an AI provider), merging a subagent’s branch also runs the tests related to what changed, the code map understands more languages (Java, Kotlin, C#…) and the scripts no longer suggest rewriting the last commit. New features now go to 1.0.0."
       }
-    },
-    {
-      "fecha": "2026-10-26",
-      "texto": {
-        "es": "Publicadas las versiones 0.4.0 y 0.4.1: llega todo lo anunciado para la 0.4 y, además, los scripts encuentran el repositorio también desde una copia de trabajo enlazada, desaparece el falso aviso de «sesión fuera del repositorio» en la nube, el gancho de fusión reconoce un CI que GitHub no arrancó por falta de cuota y la recogida de lo aprendido gasta un 17 % menos de tokens. La serie 0.4 es la última antes de la 1.0.",
-        "gl": "Publicadas as versións 0.4.0 e 0.4.1: chega todo o anunciado para a 0.4 e, ademais, os scripts atopan o repositorio tamén desde unha copia de traballo enlazada, desaparece o falso aviso de «sesión fóra do repositorio» na nube, o gancho de fusión recoñece un CI que GitHub non arrancou por falta de cota e a recollida do aprendido gasta un 17 % menos de tokens. A serie 0.4 é a última antes da 1.0.",
-        "en": "Versions 0.4.0 and 0.4.1 are out: everything announced for 0.4 is in and, on top of that, the scripts find the repository from a linked working copy too, the false “session outside the repository” warning in the cloud is gone, the merge hook recognises CI that GitHub didn’t start for lack of quota, and gathering what the projects taught us uses 17% fewer tokens. The 0.4 series is the last one before 1.0."
-      }
-    },
-    {
-      "fecha": "2026-10-25",
-      "texto": {
-        "es": "Versión 0.4.0 lista para publicar: cada versión empieza recogiendo lo aprendido en los proyectos, llegan dos skills para preparar contenido para redes a partir del trabajo hecho y otra para pararse a revisar lo que no cuadra, y los ganchos son más seguros: comprueban que la bitácora va en el mismo commit, detectan caracteres invisibles y ya no se quedan colgados. Si el CI no arranca, el check en local solo vale con la confirmación de la persona.",
-        "gl": "Versión 0.4.0 lista para publicar: cada versión comeza recollendo o aprendido nos proxectos, chegan dúas skills para preparar contido para redes a partir do traballo feito e outra para pararse a revisar o que non cadra, e os ganchos son máis seguros: comproban que a bitácora vai no mesmo commit, detectan caracteres invisibles e xa non se quedan colgados. Se o CI non arranca, o check en local só vale coa confirmación da persoa.",
-        "en": "Version 0.4.0 ready to ship: each version starts by gathering what the projects taught us, two new skills turn finished work into content for social media and another stops to review whatever doesn’t add up, and the hooks are safer: they check that the log goes in the same commit, catch invisible characters and no longer hang. If CI doesn’t start, a local check only counts with the person’s confirmation."
-      }
     }
   ],
   "cifras": [
@@ -2790,7 +2992,7 @@
       }
     },
     {
-      "valor": "2554",
+      "valor": "+2.700",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",
@@ -2822,9 +3024,9 @@
         "en": "Thanks to Matt Pocock"
       },
       "texto": {
-        "es": "Quince de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios, con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
-        "gl": "Quince das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios, coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
-        "en": "Fifteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied unchanged, with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
+        "es": "Quince de las skills del flujo son de Matt Pocock (mattpocock/skills, licencia MIT): se copian sin cambios en lo que hacen (solo los metadatos y, en seis, una nota final para encajarlas en el flujo), con su mención en cada archivo, su licencia aparte y un archivo de créditos. Buena parte de esta forma de trabajar con agentes la hemos aprendido gracias a su trabajo. La de pull requests debe además su resumen visual a Dex Horthy (HumanLayer).",
+        "gl": "Quince das skills do fluxo son de Matt Pocock (mattpocock/skills, licenza MIT): cópianse sen cambios no que fan (só os metadatos e, en seis, unha nota final para encaixalas no fluxo), coa súa mención en cada ficheiro, a súa licenza á parte e un ficheiro de créditos. Boa parte desta forma de traballar con axentes aprendémola grazas ao seu traballo. A de pull requests debe ademais o seu resumo visual a Dex Horthy (HumanLayer).",
+        "en": "Fifteen of the workflow’s skills are by Matt Pocock (mattpocock/skills, MIT licence): they’re copied without changing what they do (only their metadata and, in six, a closing note to fit them into the workflow), with his credit in every file, his licence kept separately and a credits file. Much of this way of working with agents we learned thanks to his work. The pull request skill also owes its visual summary to Dex Horthy (HumanLayer)."
       }
     },
     {

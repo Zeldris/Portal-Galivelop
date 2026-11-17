@@ -1,7 +1,7 @@
 import '@fontsource-variable/big-shoulders-display';
 import '@fontsource-variable/literata';
 import '@fontsource-variable/jetbrains-mono';
-import { StrictMode, useCallback, useState } from 'react';
+import { StrictMode, startTransition, useCallback, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
@@ -35,23 +35,32 @@ function Raiz() {
     return inicial;
   });
 
-  const cambiarIdioma = useCallback(
-    (nuevo: Idioma) => {
-      const resto = location.pathname.startsWith(baseDeIdioma(idioma))
-        ? location.pathname.slice(baseDeIdioma(idioma).length)
-        : '';
-      history.pushState(null, '', baseDeIdioma(nuevo) + resto + location.search + location.hash);
-      guardarIdioma(nuevo);
-      setIdioma(nuevo);
-    },
-    [idioma],
-  );
+  const cambiarIdioma = useCallback((nuevo: Idioma) => {
+    // El idioma de ahora sale de la dirección, no del estado: con dos cambios seguidos, el estado aún no se ha
+    // actualizado (va en una transición) y la dirección sí.
+    const actual = idiomaDeRuta(location.pathname) ?? 'es';
+    const resto = location.pathname.startsWith(baseDeIdioma(actual))
+      ? location.pathname.slice(baseDeIdioma(actual).length)
+      : '';
+    // Una entrada nueva del historial, con su propia clave e índice (los del router), no una copia de la anterior.
+    const previo = (history.state ?? {}) as { idx?: number };
+    history.pushState(
+      { usr: null, key: Math.random().toString(36).slice(2, 10), idx: (previo.idx ?? 0) + 1 },
+      '',
+      baseDeIdioma(nuevo) + resto + location.search + location.hash,
+    );
+    guardarIdioma(nuevo);
+    // Sin remontar la app (conserva scroll, foco y lo escrito): el popstate avisa al router de la dirección nueva y
+    // `onpopstate` (abajo) cambia el idioma en una transición, para que base y ruta nunca se vean desajustadas.
+    window.dispatchEvent(new PopStateEvent('popstate', { state: history.state }));
+  }, []);
 
   // Al ir atrás o adelante entre idiomas, el idioma sigue a la dirección.
-  window.onpopstate = () => setIdioma(idiomaDeRuta(location.pathname) ?? 'es');
+  window.onpopstate = () =>
+    startTransition(() => setIdioma(idiomaDeRuta(location.pathname) ?? 'es'));
 
   return (
-    <BrowserRouter key={idioma} basename={baseDeIdioma(idioma)}>
+    <BrowserRouter basename={baseDeIdioma(idioma)}>
       <ProveedorIdioma idioma={idioma} cambiarIdioma={cambiarIdioma}>
         <App />
       </ProveedorIdioma>

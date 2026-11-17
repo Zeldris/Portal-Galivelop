@@ -2,7 +2,7 @@ import { ArrowLeft, ChevronDown, GraduationCap, Mail, MapPin } from 'lucide-reac
 import { useEffect, useState, type ReactNode } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
-import { EnlaceRed } from '../components/IconoRed';
+import { ListaRedes } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { TarjetaProducto } from '../components/TarjetaProducto';
 import { IconoTecnologia } from '../components/IconoTecnologia';
@@ -177,16 +177,7 @@ function Ficha({ p }: { p: Persona }) {
             {p.redes.length > 0 && (
               <section className="miembro-caja">
                 <h2>{t('equipo.contacto', { nombre })}</h2>
-                <ul
-                  className="persona-redes miembro-redes"
-                  aria-label={t('equipo.redes', { nombre: p.nombre })}
-                >
-                  {p.redes.map((r) => (
-                    <li key={r.url}>
-                      <EnlaceRed red={r} />
-                    </li>
-                  ))}
-                </ul>
+                <ListaRedes redes={p.redes} nombre={p.nombre} clase="persona-redes miembro-redes" />
               </section>
             )}
           </aside>

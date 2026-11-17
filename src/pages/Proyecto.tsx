@@ -12,6 +12,7 @@ import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
 import { IconoMarca, type NombreIcono } from '../components/IconoMarca';
+import { ListaRedes } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
 import { buscarPersona } from '../data/equipo';
@@ -106,7 +107,7 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
   // En móvil la barra se desliza de lado: el grupo activo queda siempre a la vista.
   useEffect(() => {
     const caja = barra.current;
-    const boton = caja?.querySelector<HTMLElement>('[aria-current="true"]');
+    const boton = caja?.querySelector<HTMLElement>('[aria-current="location"]');
     if (caja && boton) caja.scrollTo({ left: boton.offsetLeft - 16, behavior: 'smooth' });
   }, [activo]);
 
@@ -142,7 +143,7 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
   return (
     <nav className="nav-ficha" aria-label={t('proyecto.indice')} ref={barra}>
       {grupos.map((g) => (
-        <a key={g.id} href={`#${g.id}`} aria-current={activo === g.id ? 'true' : undefined}>
+        <a key={g.id} href={`#${g.id}`} aria-current={activo === g.id ? 'location' : undefined}>
           <IconoMarca nombre={ICONO_GRUPO[g.id]} />
           {g.titulo}
         </a>
@@ -620,8 +621,10 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                           <div>
                             <p className="equipo-nombre">{m.nombre}</p>
                             <p className="equipo-rol">{tx(m.rol)}</p>
-                            {perfil?.resumen && (
-                              <p className="equipo-resumen">{tx(perfil.resumen)}</p>
+                            {(perfil?.titular ?? perfil?.resumen) && (
+                              <p className="equipo-resumen">
+                                {tx(perfil.titular ?? perfil.resumen!)}
+                              </p>
                             )}
                             {!!perfil?.destacadas?.length && (
                               <ul className="equipo-destacadas">
@@ -645,6 +648,15 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
                             </Link>
                           ) : (
                             contenido
+                          )}
+                          {/* Fuera del enlace de la tarjeta: un enlace no puede ir dentro de otro. */}
+                          {!!persona?.redes.length && (
+                            <ListaRedes
+                              redes={persona.redes}
+                              nombre={persona.nombre}
+                              clase="equipo-redes"
+                              soloIcono
+                            />
                           )}
                         </li>
                       );

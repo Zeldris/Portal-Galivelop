@@ -1,9 +1,9 @@
-import { lazy, type ComponentType, type LazyExoticComponent } from 'react';
+import { createElement, use, type ComponentType } from 'react';
 import { cargarFicha } from './data/proyectos';
 import { leerAncla } from './utils/ancla';
 
 // Todas las páginas menos la portada van en su propio chunk. Los import() viven aquí, en un mapa compartido, para que
-// el punto de entrada pueda esperarlos antes del primer render (src/main.tsx) y `lazy` reutilice la misma carga.
+// el punto de entrada pueda esperarlos antes del primer render (src/main.tsx) y la página reutilice la misma carga.
 const CARGADORES = {
   Equipo: () => import('./pages/Equipo').then((m) => m.Equipo),
   Legal: () => import('./pages/Legal').then((m) => m.Legal),
@@ -20,11 +20,18 @@ const CARGADORES = {
 export type NombrePagina = keyof typeof CARGADORES;
 
 type Componente<N extends NombrePagina> = Awaited<ReturnType<(typeof CARGADORES)[N]>>;
+type ComponenteDe<N extends NombrePagina> =
+  Componente<N> extends ComponentType<infer P> ? P : never;
 
 const promesas = new Map<NombrePagina, Promise<unknown>>();
 const resueltas = new Map<NombrePagina, unknown>();
 
-/** Carga el chunk de una página una sola vez; un fallo no se queda en el mapa (el siguiente intento lo repite). */
+const fallidas = new Set<NombrePagina>();
+
+/**
+ * Carga el chunk de una página una sola vez. Un fallo se queda guardado (si se borrase enseguida, cada reintento de
+ * React tras suspender pediría otro import y el aviso de error no llegaría nunca) hasta `olvidarFallos`.
+ */
 export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
   let promesa = promesas.get(nombre);
   if (!promesa) {
@@ -34,7 +41,7 @@ export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
         return componente;
       },
       (error: unknown) => {
-        promesas.delete(nombre);
+        fallidas.add(nombre);
         throw error;
       },
     );
@@ -43,18 +50,26 @@ export function cargarPagina(nombre: NombrePagina): Promise<unknown> {
   return promesa;
 }
 
+/** Lo llama el límite de error al reiniciarse (otra ruta u otro idioma): el siguiente render pide de nuevo el chunk. */
+export function olvidarFallos(): void {
+  for (const nombre of fallidas) promesas.delete(nombre);
+  fallidas.clear();
+}
+
 function perezosa<N extends NombrePagina>(nombre: N) {
-  return lazy(() => {
+  // No es `React.lazy`: éste guarda el rechazo para siempre. Aquí el fallo se olvida cuando el límite de error se
+  // reinicia (al cambiar de ruta o de idioma) y se vuelve a importar. Ojo: Chromium guarda el import fallido de esa
+  // URL y no lo repite sin recargar (comprobado el 2026-11-14); por eso el aviso ofrece «Recargar».
+  function Pagina(props: object) {
     // Ficha y chunk de Proyecto a la vez, no uno detrás del otro.
-    if (nombre === 'Proyecto')
+    if (nombre === 'Proyecto' && !resueltas.has(nombre))
       void cargarFicha(slugDeRuta(location.pathname)).catch(() => undefined);
-    if (resueltas.has(nombre)) {
-      // Ya cargada: un «thenable» síncrono hace que `lazy` la dé por resuelta sin suspender ni un instante.
-      const componente = resueltas.get(nombre);
-      return { then: (ok: (m: unknown) => void) => ok({ default: componente }) } as never;
-    }
-    return cargarPagina(nombre).then((componente) => ({ default: componente })) as never;
-  }) as unknown as LazyExoticComponent<Componente<N>>;
+    // Ya cargada: se pinta sin suspender ni un instante.
+    const Componente = (resueltas.get(nombre) ??
+      use(cargarPagina(nombre))) as ComponentType<object>;
+    return createElement(Componente, props);
+  }
+  return Pagina as unknown as ComponentType<ComponenteDe<N>>;
 }
 
 export const Equipo = perezosa('Equipo');

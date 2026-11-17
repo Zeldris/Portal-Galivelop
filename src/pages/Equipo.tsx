@@ -1,7 +1,7 @@
 import { ArrowRight, MapPin } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
-import { EnlaceRed } from '../components/IconoRed';
+import { ListaRedes } from '../components/IconoRed';
 import { IconoMarca } from '../components/IconoMarca';
 import { Retrato } from '../components/Retrato';
 import { equipo } from '../data/equipo';
@@ -73,13 +73,7 @@ export function Equipo() {
                 {t('equipo.ver')} <ArrowRight size={16} />
               </Link>
               {p.redes.length > 0 && (
-                <ul className="persona-redes" aria-label={t('equipo.redes', { nombre: p.nombre })}>
-                  {p.redes.map((r) => (
-                    <li key={r.url}>
-                      <EnlaceRed red={r} />
-                    </li>
-                  ))}
-                </ul>
+                <ListaRedes redes={p.redes} nombre={p.nombre} clase="persona-redes" />
               )}
             </li>
           ))}

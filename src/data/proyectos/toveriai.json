@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-14",
+  "actualizado": "2026-11-15",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -367,9 +367,9 @@
         "en": "The IMI dimensions"
       },
       "intro": {
-        "es": "Los pesos parten del marco de NewsGuard, completado con IFCN y The Trust Project. Con texto o capturas se usan las siete dimensiones de contenido; con un enlace se suman dos de transparencia, que pesan un 15 % del total.",
-        "gl": "Os pesos parten do marco de NewsGuard, completado con IFCN e The Trust Project. Con texto ou capturas úsanse as sete dimensións de contido; cunha ligazón súmanse dúas de transparencia, que pesan un 15 % do total.",
-        "en": "The weights build on the NewsGuard framework, completed with IFCN and The Trust Project. Text and screenshots use the seven content dimensions; a link adds two transparency dimensions worth 15% of the total."
+        "es": "Los pesos parten del marco de NewsGuard, completado con IFCN y The Trust Project. Con texto o capturas se usan las siete dimensiones de contenido; con un enlace se suman dos de transparencia, que pesan cerca de un 19 % del total.",
+        "gl": "Os pesos parten do marco de NewsGuard, completado con IFCN e The Trust Project. Con texto ou capturas úsanse as sete dimensións de contido; cunha ligazón súmanse dúas de transparencia, que pesan preto dun 19 % do total.",
+        "en": "The weights build on the NewsGuard framework, completed with IFCN and The Trust Project. Text and screenshots use the seven content dimensions; a link adds two transparency dimensions worth about 19% of the total."
       },
       "items": [
         {
@@ -529,7 +529,7 @@
         "en": "Data"
       },
       "tecnologias": [
-        "MySQL 8"
+        "MySQL 8 · TiDB Cloud"
       ]
     },
     {
@@ -561,8 +561,7 @@
       "tecnologias": [
         "Docker",
         "Render (API)",
-        "Vercel (web)",
-        "Cloudflare"
+        "Vercel (web)"
       ]
     },
     {
@@ -673,9 +672,9 @@
     {
       "version": "1.12",
       "nombre": {
-        "es": "Capturas estables y VeriAI",
-        "gl": "Capturas estables e VeriAI",
-        "en": "Reliable screenshots and VeriAI"
+        "es": "Datos de entrenamiento",
+        "gl": "Datos de adestramento",
+        "en": "Training data"
       },
       "estado": "pendiente",
       "detalle": {
@@ -700,6 +699,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-15",
+      "texto": {
+        "es": "Al pasar rápido de una entrada a otra, la web ya no mezcla datos de la anterior con los de la que tienes abierta.",
+        "gl": "Ao pasar rápido dunha entrada a outra, a web xa non mestura datos da anterior cos da que tes aberta.",
+        "en": "When you jump quickly from one entry to another, the site no longer mixes data from the previous one with the one you have open."
+      }
+    },
     {
       "fecha": "2026-11-14",
       "texto": {
@@ -733,6 +740,14 @@
       }
     },
     {
+      "fecha": "2026-11-02",
+      "texto": {
+        "es": "La sesión se cierra con un aviso cuando caduca, las direcciones que se analizan se protegen mejor frente a enlaces peligrosos y, si algo falla, la web lo muestra con un botón de «Reintentar». Además, las rachas se cuentan bien en singular y en plural.",
+        "gl": "A sesión péchase cun aviso cando caduca, os enderezos que se analizan protéxense mellor fronte a ligazóns perigosas e, se algo falla, a web amósao cun botón de «Reintentar». Ademais, as rachas cóntanse ben en singular e en plural.",
+        "en": "The session now closes with a notice when it expires, the addresses being analysed are better protected against dangerous links and, if something fails, the site shows it with a “Retry” button. Streaks are also counted correctly in singular and plural."
+      }
+    },
+    {
       "fecha": "2026-10-27",
       "texto": {
         "es": "Trabajo de fondo: casos de prueba para toda la web y una primera ronda de pruebas, los avisos del inicio de sesión con Google traducidos a todos los idiomas y VeriAI registrando cada análisis para medir cómo aprende.",
@@ -746,30 +761,6 @@
         "es": "Al iniciar sesión, con contraseña o con Google, vuelves a la página donde estabas.",
         "gl": "Ao iniciar sesión, con contrasinal ou con Google, volves á páxina onde estabas.",
         "en": "Signing in, with a password or with Google, takes you back to the page you were on."
-      }
-    },
-    {
-      "fecha": "2026-07-16",
-      "texto": {
-        "es": "La racha de verificación se ve más: sección propia en el perfil y aviso tras cada análisis del bonus de un análisis extra cada 3 días.",
-        "gl": "A racha de verificación vese máis: sección propia no perfil e aviso tras cada análise do bonus dunha análise extra cada 3 días.",
-        "en": "Your verification streak is easier to see: its own section in your profile and, after each analysis, a reminder of the bonus of one extra analysis every 3 days."
-      }
-    },
-    {
-      "fecha": "2026-07-16",
-      "texto": {
-        "es": "El análisis de imagen acepta varias capturas por análisis, leídas en orden.",
-        "gl": "A análise de imaxe acepta varias capturas por análise, lidas en orde.",
-        "en": "Image analysis now accepts several screenshots per analysis, read in order."
-      }
-    },
-    {
-      "fecha": "2026-07-16",
-      "texto": {
-        "es": "Filtro de contenido no analizable para texto, URL e imagen.",
-        "gl": "Filtro de contido non analizable para texto, URL e imaxe.",
-        "en": "Filter for non-analysable content in text, URL and image modes."
       }
     }
   ],

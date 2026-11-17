@@ -62,6 +62,10 @@ export function Inicio() {
     }, 5000);
     return () => window.clearInterval(id);
   }, [total]);
+  // Mismo título que la página estática (los pares «: » de la frase pasan a «, »).
+  useEffect(() => {
+    document.title = `Galivelop · ${t('hero.antetitulo').replace(':', ',')}`;
+  }, [t]);
   const piezas = [0, 1, 2].map((i) => proyectos[(giro + i) % total]).filter(Boolean);
 
   return (

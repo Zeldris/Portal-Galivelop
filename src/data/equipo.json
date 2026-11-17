@@ -50,12 +50,16 @@
         "gl": "Full stack desde 2017, hoxe sénior en Orienteed",
         "en": "Full stack since 2017, now senior at Orienteed"
       },
+      "titular": {
+        "es": "Arquitecto de software y sistemas de IA locales; full stack desde 2017",
+        "gl": "Arquitecto de software e sistemas de IA locais; full stack desde 2017",
+        "en": "Software and local AI systems architect; full stack since 2017"
+      },
       "destacadas": [
+        "Claude Code",
+        "Ollama",
+        "Python",
         "Java",
-        "Spring",
-        "React",
-        "Angular 2+",
-        "TypeScript",
         "Docker"
       ],
       "ubicacion": {

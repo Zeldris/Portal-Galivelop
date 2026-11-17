@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="gw-size" content="1200x1350">
+<title>Galivelop-workflow 0.6.0</title>
+<style>
+  @font-face { font-family: 'Big Shoulders Display Variable'; font-weight: 100 900; src: url('../../../../../../node_modules/@fontsource-variable/big-shoulders-display/files/big-shoulders-display-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Literata Variable'; font-weight: 200 900; src: url('../../../../../../node_modules/@fontsource-variable/literata/files/literata-latin-wght-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Literata Variable'; font-weight: 200 900; src: url('../../../../../../node_modules/@fontsource-variable/literata/files/literata-latin-ext-wght-normal.woff2') format('woff2'); unicode-range: U+0100-024F, U+2020-20CF; }
+  @font-face { font-family: 'JetBrains Mono Variable'; font-weight: 100 800; src: url('../../../../../../node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2') format('woff2'); }
+  /* Tokens de src/estilos/global.css (tema claro) y docs/marca.md */
+  :root { --celeste: #1aa6df; --celeste-hondo: #0072a8; --papel: #fbfcfd; --reticula: #eef3f6; --tinta: #13212b;
+    --tinta-2: #4a5c69; --texto-3: #5a6d7a; --filete: #b9cbd6; --superficie: #ffffff; --superficie-2: #f1f6f9;
+    --chaflan: 14px; --chaflan-grande: 28px;
+    --fuente-titulos: 'Big Shoulders Display Variable', 'Arial Narrow', sans-serif;
+    --fuente-texto: 'Literata Variable', Georgia, serif;
+    --fuente-datos: 'JetBrains Mono Variable', ui-monospace, monospace; }
+  * { box-sizing: border-box; margin: 0; }
+  body { width: 1200px; height: 1350px; overflow: hidden; color: var(--tinta); font-family: var(--fuente-texto);
+    background-color: var(--papel);
+    background-image: linear-gradient(var(--reticula) 1px, transparent 1px), linear-gradient(90deg, var(--reticula) 1px, transparent 1px);
+    background-size: 24px 24px; padding: 48px; display: flex; flex-direction: column; }
+  .datos { font: 500 20px/1.4 var(--fuente-datos); letter-spacing: .06em; text-transform: uppercase; }
+  .barra { display: flex; justify-content: space-between; align-items: center; color: var(--tinta-2); }
+  .barra .marca { color: var(--celeste-hondo); font-weight: 700; }
+  .barra .marca::before { content: ""; display: inline-block; width: 14px; height: 14px; background: var(--celeste); margin-right: 12px; vertical-align: -1px; }
+  .marco { flex: 1; margin: 24px 0; background: var(--filete); padding: 1px;
+    clip-path: polygon(0 0, calc(100% - var(--chaflan-grande)) 0, 100% var(--chaflan-grande), 100% 100%, 0 100%); display: flex; }
+  .ficha { flex: 1; background: var(--superficie); display: flex; flex-direction: column;
+    clip-path: polygon(0 0, calc(100% - var(--chaflan-grande) + 0.4px) 0, 100% calc(var(--chaflan-grande) - 0.4px), 100% 100%, 0 100%); }
+  .pie { display: flex; justify-content: space-between; color: var(--texto-3); }
+
+  :root { --acento-proyecto: #3d6fd9; --acento-texto: #3d6fd9; }
+  .img { border-bottom: 4px solid var(--acento-proyecto); background: var(--superficie-2); }
+  .img img { width: 100%; height: auto; display: block; }
+  .cuerpo { flex: 1; padding: 36px 48px 40px; display: flex; flex-direction: column; }
+  .sub { color: var(--acento-texto); font-weight: 700; }
+  h1 { font: 800 76px/1.02 var(--fuente-titulos); text-transform: uppercase; letter-spacing: .01em; margin-top: 10px; }
+  ul { list-style: none; padding: 0; margin: auto 0; display: grid; gap: 16px; border-top: 1px dashed var(--filete); padding-top: 26px; }
+  li { font-size: 30px; line-height: 1.35; padding-left: 30px; position: relative; }
+  li::before { content: ""; position: absolute; left: 0; top: 13px; width: 13px; height: 13px; background: var(--acento-proyecto); }
+</style>
+</head>
+<body>
+  <div class="barra datos"><span class="marca">Galivelop · Novedades</span><span>Nº 03 · En desarrollo</span></div>
+  <div class="marco"><div class="ficha">
+    <div class="img"><img src="../../../../../../public/proyectos/galivelop-workflow/presentacion.webp" alt=""></div>
+    <div class="cuerpo">
+      <div class="sub datos">Publicada el 13 de noviembre</div>
+      <h1>Galivelop-workflow 0.6.0</h1>
+      <ul><li>Apunta los tokens por sesión y modelo</li><li>Recomienda modelo y esfuerzo para cada tarea</li><li>Revisa por bloques las ramas largas</li><li>Corre el check en paralelo</li></ul>
+    </div>
+  </div></div>
+  <div class="pie datos"><span>zeldris.github.io/Portal-Galivelop/novedades</span><span>Noviembre de 2026</span></div>
+</body>
+</html>

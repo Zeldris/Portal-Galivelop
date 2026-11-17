@@ -6,11 +6,11 @@
   "icono": "cpu",
   "proyecto": "galivelop-workflow",
   "estado": "disponible",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "queOfrece": {
-    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en todos los proyectos del taller. El código es abierto y cada versión se publica en GitHub; lo montamos en tu proyecto y lo adaptamos a tu forma de trabajar.",
-    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados en todos os proxectos do obradoiro. O código é aberto e cada versión publícase en GitHub; montámolo no teu proxecto e adaptámolo á túa forma de traballar.",
-    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across all the workshop’s projects. The code is open and every version is published on GitHub; we set it up in your project and adapt it to the way you work."
+    "es": "El flujo de trabajo completo para desarrollar con agentes de IA: skills, ganchos y scripts rodados en los proyectos del taller. El código es abierto y cada versión se publica en GitHub; lo montamos en tu proyecto y lo adaptamos a tu forma de trabajar.",
+    "gl": "O fluxo de traballo completo para desenvolver con axentes de IA: skills, ganchos e scripts rodados nos proxectos do obradoiro. O código é aberto e cada versión publícase en GitHub; montámolo no teu proxecto e adaptámolo á túa forma de traballar.",
+    "en": "The complete workflow for developing with AI agents: skills, hooks and scripts proven across the workshop’s projects. The code is open and every version is published on GitHub; we set it up in your project and adapt it to the way you work."
   },
   "servicios": [
     {

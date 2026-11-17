@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Cabecera } from './components/Cabecera';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -18,11 +18,20 @@ import {
   Unirse,
 } from './paginas';
 import { leerAncla } from './utils/ancla';
+import { debeEnfocarContenido } from './utils/interaccion';
 
-/** Al cambiar de página, sube arriba; si la ruta trae #ancla, baja hasta ella. */
+/** Al cambiar de página, sube arriba y lleva el foco al contenido; si la ruta trae #ancla, baja hasta ella. */
 function Desplazamiento() {
   const { pathname, hash } = useLocation();
+  const anterior = useRef(pathname);
   useEffect(() => {
+    // Gestión de foco de la SPA: sin esto, tras pulsar un enlace el foco se queda en un elemento que ya no está.
+    // No en la primera carga, ni al cambiar solo de idioma o de ancla.
+    if (debeEnfocarContenido(anterior.current, pathname)) {
+      document.getElementById('contenido')?.focus({ preventScroll: true });
+    }
+    anterior.current = pathname;
+
     if (!hash) {
       window.scrollTo(0, 0);
       return;
@@ -73,7 +82,7 @@ export function App() {
     <>
       <Desplazamiento />
       <Cabecera />
-      <main id="contenido">
+      <main id="contenido" tabIndex={-1} style={{ outline: 'none' }}>
         <ErrorBoundary>
           <Suspense fallback={<div className="carga-pagina" aria-busy="true" />}>
             <Rutas />

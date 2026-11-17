@@ -59,11 +59,42 @@ const TRADUCIDAS: Partial<Record<Red, Clave>> = {
   portfolio: 'equipo.red.portfolio',
 };
 
+/** La lista de redes de una persona, con su nombre accesible. */
+export function ListaRedes({
+  redes,
+  nombre,
+  clase,
+  soloIcono = false,
+}: {
+  redes: { tipo: Red; url: string }[];
+  nombre: string;
+  clase: string;
+  soloIcono?: boolean;
+}) {
+  const { t } = useIdioma();
+  return (
+    <ul className={clase} aria-label={t('equipo.redes', { nombre })}>
+      {redes.map((r) => (
+        <li key={r.url}>
+          <EnlaceRed red={r} soloIcono={soloIcono} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 /**
  * El enlace a una red de una persona, con su icono y su nombre. El correo y el porfolio se nombran en el idioma de la
  * página; el correo se abre en la propia pestaña (un `mailto:` en una pestaña nueva la deja en blanco).
  */
-export function EnlaceRed({ red }: { red: { tipo: Red; url: string } }) {
+export function EnlaceRed({
+  red,
+  soloIcono = false,
+}: {
+  red: { tipo: Red; url: string };
+  /** Sin el nombre a la vista (queda en `aria-label` y `title`), para tarjetas estrechas. */
+  soloIcono?: boolean;
+}) {
   const { t } = useIdioma();
   const correo = red.tipo === 'correo';
   const traducido = TRADUCIDAS[red.tipo];
@@ -73,9 +104,10 @@ export function EnlaceRed({ red }: { red: { tipo: Red; url: string } }) {
       href={correo ? `mailto:${red.url}` : red.url}
       {...(correo ? {} : { target: '_blank', rel: 'noreferrer' })}
       title={nombre}
+      {...(soloIcono ? { 'aria-label': nombre } : {})}
     >
       <IconoRed red={red.tipo} />
-      <span>{nombre}</span>
+      {!soloIcono && <span>{nombre}</span>}
     </a>
   );
 }

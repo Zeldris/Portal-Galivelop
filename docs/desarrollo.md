@@ -262,7 +262,11 @@ npm run check    # tipos, formato (prettier), tests y ganchos
 npm run build    # genera dist/ (con 404.html para las rutas en GitHub Pages)
 npm run medir    # tras el build: alto, desbordes, cortes, zonas táctiles y columnas de las rejillas, en texto
 npm run capturas -- <ruta> [selector | --menu]   # tras el build: captura de una página, sección o menú móvil, con medidas
+node tools/qa/recorrido.cjs [--url <base>] [--anchos 320,768]   # tras el build: 7 anchos x tema claro/oscuro, foco con Tab y enlaces internos, en texto
 ```
+
+`medir` mide alto, cortes y columnas (móvil y escritorio, en claro); `recorrido` cubre lo que `medir` no: anchos de tablet a 1920,
+tema oscuro, contraste del contorno de foco (< 3:1) y enlaces internos que no dan 200. Páginas: las de `dist/sitemap.xml`; sale con 1 si hay problemas.
 
 El formato lo fija `.prettierrc` (comillas simples, ancho 100); `npx prettier --write "src/**/*.{ts,tsx}"` lo arregla.
 

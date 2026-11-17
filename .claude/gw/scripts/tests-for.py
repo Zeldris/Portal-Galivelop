@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.6.0
+# galivelop-workflow v0.7.0
 """The test files a change calls for, from `testMap` in .claude/gw.json (E21).
 
   python3 tests-for.py FILE [...]          # the test files, one per line (repo-relative, sorted, no repeats)
   python3 tests-for.py --diff REV [FILE...] # also every file that differs from REV (commits and working tree)
   python3 tests-for.py --run ...           # run them with testMap.command ({files} -> the test files, shell-quoted)
+  python3 tests-for.py --why ...           # also say on stderr which changed file and rule brought each test (D118)
 
 Every rule of `testMap.rules` whose `paths` regex is found in a changed path (repo-relative, `/`) and, when it has
 `contains`, whose regex is found in that file's text on disk, adds its `tests`: `{name}` is the rule's named group as
@@ -12,6 +13,17 @@ matched, `{name:id}` the same with every character that is not a letter, digit o
 (`scripts/config-guard.py` -> `tests/test_config_guard.py`), `{path}` the changed path. A test file that does not
 exist is left out, so a broad rule costs nothing. A changed file may be absolute or relative to the current directory;
 one outside the project is an error. Nothing matched: no output, exit 0 (with --run, a note and exit 0).
+
+Changed `.sh` files that still exist (D106) also get shellcheck: listed on stderr without --run (`shellcheck:
+FILES`; stdout stays test names only, tests/old-python.sh reads it), run with --run BEFORE the tests (D116) via
+tests/shellcheck.sh (or shellcheck itself if the project has none); a warning there stops the run at once (exit 1,
+the tests are not run, and it says so); a missing binary warns and the tests still run, but in CI or a cloud session
+it fails and stops, as tests/shellcheck.sh does.
+
+--why (D118), with or without --run, writes to stderr, so stdout keeps the plain mode's test names only: one line per
+selected test file and per changed file that brought it, `why: TEST <- CHANGED (rule N: PATHS)`, N the rule's index
+in testMap.rules and PATHS its `paths` regex; a rule that brings many tests for one file is a wide rule. Nothing
+selected: `why: no test file for these changes`.
 
 Who uses it: the brief of gw-orchestrate-dealer (a subagent runs the tests of what it touches instead of a list
 written by hand) and anyone before a commit. It is not a hook: the push runs `check` and `relatedTests`. Project root
@@ -26,6 +38,7 @@ import importlib.util
 import os
 import re
 import shlex
+import shutil
 import subprocess
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -68,10 +81,11 @@ def text_of(root, rel):
         return None
 
 
-def tests_for(root, rules, files):
-    """The existing test files (repo-relative, sorted) the rules give for `files` (repo-relative paths)."""
+def tests_for(root, rules, files, why=None):
+    """The existing test files (repo-relative, sorted) the rules give for `files` (repo-relative paths). With a dict
+    as `why`, each test file maps to the sorted (rule index, changed file) pairs that brought it (D118)."""
     found = set()
-    for rule in rules:
+    for index, rule in enumerate(rules):
         paths = re.compile(rule["paths"])
         contains = re.compile(rule["contains"]) if rule.get("contains") else None
         for rel in files:
@@ -86,7 +100,21 @@ def tests_for(root, rules, files):
                 test = expand(template, match, rel)
                 if (root / test).is_file():
                     found.add(test)
+                    if why is not None:
+                        why.setdefault(test, set()).add((index, rel))
+    if why is not None:
+        for test in why:
+            why[test] = sorted(why[test])
     return sorted(found)
+
+
+def print_why(rules, tests, why):
+    """D118: on stderr, which changed file and testMap rule brought each selected test file."""
+    if not tests:
+        print("why: no test file for these changes", file=sys.stderr)
+    for test in tests:
+        for index, rel in why[test]:
+            print(f"why: {test} <- {rel} (rule {index}: {rules[index]['paths']})", file=sys.stderr)
 
 
 def relative(root, name):
@@ -165,11 +193,42 @@ def run_parallel(root, cfg, tests, pythonpath=None):
     return 0
 
 
+def shell_files(root, files):
+    """The changed `.sh` files that still exist (a deleted one is skipped), sorted."""
+    return sorted(f for f in set(files) if f.endswith(".sh") and (root / f).is_file())
+
+
+def run_shellcheck(root, shells):
+    """D106: shellcheck over the changed .sh files (D116: before the tests), as the check does (tests/shellcheck.sh: `shellcheckVersion`,
+    a missing binary warns locally and fails in CI or a cloud session). Without that script, shellcheck directly."""
+    if not shells:
+        return 0
+    print("tests-for: shellcheck " + " ".join(shells), flush=True)
+    script = root / "tests" / "shellcheck.sh"
+    if script.is_file():
+        code = subprocess.run(["bash", str(script), *shells], cwd=str(root)).returncode
+    elif shutil.which("shellcheck"):
+        code = subprocess.run(["shellcheck", *shells], cwd=str(root)).returncode
+    elif os.environ.get("CI") == "true" or os.environ.get("CLAUDE_CODE_REMOTE") == "true":
+        print("tests-for: shellcheck is missing and the check needs it; install it: pip install shellcheck-py",
+              file=sys.stderr)
+        return 1
+    else:
+        print("tests-for: warning: shellcheck not installed locally, so the .sh files were not checked; "
+              "install it: pip install shellcheck-py")
+        return 0
+    if code != 0:
+        print(f"tests-for: FAILED (shellcheck, exit {code})")
+    return code
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="The test files a change calls for (testMap in .claude/gw.json).")
     parser.add_argument("files", nargs="*", help="changed files (absolute or relative to the current directory)")
     parser.add_argument("--diff", metavar="REV", help="add every file that differs from REV, plus untracked ones")
     parser.add_argument("--run", action="store_true", help="run the test files with testMap.command")
+    parser.add_argument("--why", action="store_true",
+                        help="say on stderr which changed file and testMap rule brought each test file")
     parser.add_argument("--root", help="project root (default: config.find_root)")
     args = parser.parse_args(argv)
     try:
@@ -183,24 +242,38 @@ def main(argv=None):
         files = [relative(root, f) for f in args.files]
         if args.diff:
             files += diff_files(root, args.diff)
-        tests = tests_for(root, mapping["rules"], sorted(set(files)))
+        why = {}
+        tests = tests_for(root, mapping["rules"], sorted(set(files)), why)
     except MapError as exc:
         print(f"tests-for: {exc}", file=sys.stderr)
         return 2
     if not mapping["rules"]:
         print("tests-for: testMap.rules is empty, so no change calls for a test; add rules to .claude/gw.json "
               "(see docs/en/config.md)", file=sys.stderr)
+    if args.why:
+        print_why(mapping["rules"], tests, why)
+    shells = shell_files(root, files)
     if not args.run:
         for test in tests:
             print(test)
+        if shells:
+            print("shellcheck: " + " ".join(shells) + "  (--run runs it)", file=sys.stderr)
         return 0
     if not mapping["command"]:
         print("tests-for: testMap.command is empty; set it in .claude/gw.json "
               "(e.g. \"PYTHONPATH=tests python3 -B -m unittest {files}\")", file=sys.stderr)
         return 2
+    code = run_shellcheck(root, shells)  # D116: before the tests, and its first failure stops the run
+    if code != 0:
+        print("tests-for: shellcheck failed, so the tests were not run; fix the .sh files and run again")
+        return code
     if not tests:
         print("tests-for: no test file for these changes; nothing to run")
         return 0
+    return run_tests(root, cfg, mapping, tests)
+
+
+def run_tests(root, cfg, mapping, tests):
     plain = PLAIN_UNITTEST.match(mapping["command"])
     if plain and (HERE / "test-run.py").is_file():
         return run_parallel(root, cfg, tests, plain.group(1))  # B33: the same tests, one class per process (testJobs)

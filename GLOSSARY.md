@@ -1,4 +1,4 @@
-<!-- galivelop-workflow v0.6.0 -->
+<!-- galivelop-workflow v0.7.0 -->
 # Glosario del portal
 
 Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeriAI) viven en su repositorio.
