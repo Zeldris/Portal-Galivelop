@@ -1,6 +1,6 @@
 # Retro 2026-11-17: guiones que faltaban y lector de la página
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada entera por la persona (2026-11-17: «apruebo todo»): P1, P2, P3, P4 y la propuesta para el flujo. Se aplican tras subir el lector a `main`.
 
 Revisado: lo que entra en `main` desde f507753 (guiones de las siete páginas, lector con enfoques, arreglos de la
 fase 1) y la bitácora. Gasto medido con `gw-opt-tokens`: sesión principal 63 llamadas, contexto medio 102k (techo
