@@ -29,19 +29,19 @@
           "frase": "analiza el texto en siete dimensiones",
           "gl": "toVeriAI analiza o texto en sete dimensións",
           "en": "toVeriAI analyses the text across seven",
-          "ver": "caracteristica-1"
+          "ver": "caracteristica-indice-imi-de-0-a-100"
         },
         {
           "frase": "Si le das un enlace",
           "gl": "Se lle das unha ligazón",
           "en": "If you give it a link",
-          "ver": "caracteristica-3"
+          "ver": "caracteristica-texto-o-enlace"
         },
         {
           "frase": "Marca sobre el propio texto",
           "gl": "Marca sobre o propio texto",
           "en": "It marks the problematic",
-          "ver": "caracteristica-2"
+          "ver": "caracteristica-fragmentos-senalados"
         },
         {
           "frase": "Envías un texto o un enlace",
@@ -71,13 +71,13 @@
           "frase": "Hay uso gratuito sin cuenta",
           "gl": "Hai uso gratuíto sen conta",
           "en": "There is free use without an account",
-          "ver": "caracteristica-5"
+          "ver": "caracteristica-comunidad-y-seguimiento-de-medios"
         },
         {
           "frase": "Y en paralelo se entrena VeriAI",
           "gl": "E en paralelo adestrase VeriAI",
           "en": "And in parallel, VeriAI is being trained",
-          "ver": "caracteristica-6"
+          "ver": "caracteristica-veriai-modelo-propio"
         }
       ]
     },
@@ -141,49 +141,49 @@
           "frase": "Ya están hechos el análisis de texto",
           "gl": "Xa están feitos a análise de texto",
           "en": "Text analysis, publishing",
-          "ver": "hito-1"
+          "ver": "hito-analisis-de-texto-con-el-indice-imi"
         },
         {
           "frase": "la publicación",
           "gl": "a publicación",
           "en": "publishing, link analysis",
-          "ver": "hito-2"
+          "ver": "hito-publicacion-en-toveriai-com"
         },
         {
           "frase": "el análisis de enlaces",
           "gl": "a análise de ligazóns",
           "en": "link analysis, accounts",
-          "ver": "hito-3"
+          "ver": "hito-analisis-de-enlaces"
         },
         {
           "frase": "las cuentas y el feed",
           "gl": "as contas e o feed",
           "en": "accounts and the feed",
-          "ver": "hito-4"
+          "ver": "hito-cuentas-historial-y-feed-publico"
         },
         {
           "frase": "dos rondas de mejoras",
           "gl": "dúas roldas de melloras",
           "en": "two rounds of security",
-          "ver": "hito-5"
+          "ver": "hito-1-9-sesion-mas-segura-y-menos-fallos"
         },
         {
           "frase": "Ahora se pule la web",
           "gl": "Agora púlese a web",
           "en": "Now the website is being polished",
-          "ver": "hito-7"
+          "ver": "hito-1-11-pulido-de-la-web"
         },
         {
           "frase": "guardar menos datos",
           "gl": "gardar menos datos",
           "en": "storing less data",
-          "ver": "hito-8"
+          "ver": "hito-1-12-datos-de-entrenamiento"
         },
         {
           "frase": "revisar los proveedores",
           "gl": "revisar os provedores",
           "en": "reviewing the providers",
-          "ver": "hito-9"
+          "ver": "hito-1-13-dependencias-al-dia"
         },
         {
           "frase": "Debajo están las novedades",

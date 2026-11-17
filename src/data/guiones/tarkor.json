@@ -66,19 +66,19 @@
           "frase": "Todo lo que pasa queda apuntado",
           "gl": "Todo o que pasa queda apuntado",
           "en": "Everything that happens is recorded",
-          "ver": "caracteristica-2"
+          "ver": "caracteristica-todo-deja-rastro"
         },
         {
           "frase": "Tu reino crece",
           "gl": "O teu reino medra",
           "en": "Your kingdom grows",
-          "ver": "caracteristica-4"
+          "ver": "caracteristica-un-reino-por-generaciones"
         },
         {
           "frase": "Y es privado por diseño",
           "gl": "E é privado por deseño",
           "en": "And it is private by design",
-          "ver": "caracteristica-8"
+          "ver": "caracteristica-privado-por-diseno"
         }
       ]
     },
@@ -183,37 +183,37 @@
           "frase": "Primero, terminar las Llanuras",
           "gl": "Primeiro, rematar as Chairas",
           "en": "First, finish the Plains",
-          "ver": "hito-4"
+          "ver": "hito-0-3-reino-profundo"
         },
         {
           "frase": "el Cristal Helado",
           "gl": "o Cristal Xeado",
           "en": "the Frozen Crystal",
-          "ver": "hito-5"
+          "ver": "hito-0-4-berig-abierto-cristal-helado"
         },
         {
           "frase": "la Ciénaga Troncal",
           "gl": "o Cenagal Troncal",
           "en": "the Trunk Marsh",
-          "ver": "hito-6"
+          "ver": "hito-0-5-cienaga-troncal"
         },
         {
           "frase": "el Margen Silencioso",
           "gl": "a Marxe Silenciosa",
           "en": "the Silent Margin",
-          "ver": "hito-7"
+          "ver": "hito-0-6-margen-silencioso-y-meseta-del-orden"
         },
         {
           "frase": "La beta traerá",
           "gl": "A beta traerá",
           "en": "The beta will bring",
-          "ver": "hito-8"
+          "ver": "hito-0-7-beta-de-berig"
         },
         {
           "frase": "Más adelante llegará Vaelira",
           "gl": "Máis adiante chegará Vaelira",
           "en": "Later on comes Vaelira",
-          "ver": "hito-9"
+          "ver": "hito-1-0-vaelira"
         },
         {
           "frase": "Debajo están las novedades",

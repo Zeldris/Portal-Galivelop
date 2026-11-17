@@ -29,25 +29,25 @@
           "frase": "No queremos que esas imágenes",
           "gl": "Non queremos que esas imaxes",
           "en": "We do not want those images",
-          "ver": "caracteristica-1"
+          "ver": "caracteristica-todo-en-el-equipo"
         },
         {
           "frase": "genera varios intentos",
           "gl": "xera varios intentos",
           "en": "generates several attempts",
-          "ver": "caracteristica-2"
+          "ver": "caracteristica-intentos-y-una-elegida"
         },
         {
           "frase": "manifiesto que dice",
           "gl": "manifesto que di",
           "en": "manifest that says",
-          "ver": "caracteristica-3"
+          "ver": "caracteristica-entrega-reproducible"
         },
         {
           "frase": "interfaz en el navegador",
           "gl": "interface no navegador",
           "en": "interface in the browser",
-          "ver": "caracteristica-6"
+          "ver": "caracteristica-interfaz-en-el-navegador"
         },
         {
           "frase": "Registras un proyecto",
@@ -162,55 +162,55 @@
           "frase": "Ya funcionan el núcleo",
           "gl": "Xa funcionan o núcleo",
           "en": "The core, the real engine",
-          "ver": "hito-1"
+          "ver": "hito-0-1-0-3-nucleo-motor-real-y-api"
         },
         {
           "frase": "la interfaz y las funciones",
           "gl": "a interface e as funcións",
           "en": "the interface and the delete",
-          "ver": "hito-2"
+          "ver": "hito-0-4-interfaz-de-tres-pantallas"
         },
         {
           "frase": "borrar y editar texto",
           "gl": "borrar e editar texto",
           "en": "delete and edit text",
-          "ver": "hito-3"
+          "ver": "hito-0-5-borrar-texto-y-renombrar"
         },
         {
           "frase": "Ahora está en curso el proceso de marca",
           "gl": "Agora está en curso o proceso de marca",
           "en": "The brand process is now underway",
-          "ver": "hito-4"
+          "ver": "hito-0-6-0-11-proceso-de-marca"
         },
         {
           "frase": "Falta el montaje por capas",
           "gl": "Falta a montaxe por capas",
           "en": "Still missing are layered composition",
-          "ver": "hito-5"
+          "ver": "hito-0-6-montaje"
         },
         {
           "frase": "colocar el texto antes de generar",
           "gl": "colocar o texto antes de xerar",
           "en": "placing the text before generating",
-          "ver": "hito-6"
+          "ver": "hito-0-7-cajas-de-texto-antes-de-generar"
         },
         {
           "frase": "el piloto con el juego",
           "gl": "o piloto co xogo",
           "en": "the pilot with the game",
-          "ver": "hito-8"
+          "ver": "hito-0-9-piloto-con-world-maker-fantasy"
         },
         {
           "frase": "un director local",
           "gl": "un director local",
           "en": "a local director",
-          "ver": "hito-9"
+          "ver": "hito-director-local"
         },
         {
           "frase": "Y que funcione en cualquier equipo",
           "gl": "E que funcione en calquera equipo",
           "en": "And making it work on any computer",
-          "ver": "hito-10"
+          "ver": "hito-compatibilidad"
         },
         {
           "frase": "Debajo están las novedades",

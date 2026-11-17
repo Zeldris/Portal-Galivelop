@@ -29,19 +29,19 @@
           "frase": "Cada sesión puede acabarse",
           "gl": "Cada sesión pode rematar",
           "en": "Any session can end",
-          "ver": "caracteristica-1"
+          "ver": "caracteristica-relevos-sin-perdidas"
         },
         {
           "frase": "cada proyecto acaba inventando sus reglas",
           "gl": "cada proxecto acaba inventando as súas regras",
           "en": "every project ends up inventing",
-          "ver": "caracteristica-5"
+          "ver": "caracteristica-para-cualquier-proyecto"
         },
         {
           "frase": "Una mejora se hace una vez",
           "gl": "Unha mellora faise unha vez",
           "en": "An improvement is made once",
-          "ver": "caracteristica-6"
+          "ver": "caracteristica-mejora-con-cada-proyecto"
         },
         {
           "frase": "La sesión retoma leyendo la bitácora",
@@ -192,43 +192,43 @@
           "frase": "Las primeras versiones y los pilotos",
           "gl": "As primeiras versións e os pilotos",
           "en": "The first versions and the pilots",
-          "ver": "hito-1"
+          "ver": "hito-0-1-0-4-primeras-versiones-y-pilotos"
         },
         {
           "frase": "la base",
           "gl": "a base, a medida",
           "en": "the foundation, the spending",
-          "ver": "hito-2"
+          "ver": "hito-0-5-base"
         },
         {
           "frase": "la medida del gasto",
           "gl": "a medida do gasto",
           "en": "the spending measurement",
-          "ver": "hito-5"
+          "ver": "hito-0-6-medir"
         },
         {
           "frase": "y las preguntas",
           "gl": "e as preguntas",
           "en": "and the questions",
-          "ver": "hito-8"
+          "ver": "hito-0-7-preguntar"
         },
         {
           "frase": "Lo que falta: la versión cero punto ocho",
           "gl": "O que falta: a versión cero punto oito",
           "en": "What is missing: version zero point eight",
-          "ver": "hito-9"
+          "ver": "hito-0-8-front-y-otros-agentes"
         },
         {
           "frase": "Luego una versión estable",
           "gl": "Despois unha versión estable",
           "en": "Then a stable version",
-          "ver": "hito-10"
+          "ver": "hito-0-9-estable"
         },
         {
           "frase": "la uno punto cero llegará",
           "gl": "a un punto cero chegará",
           "en": "version one point zero will arrive",
-          "ver": "hito-11"
+          "ver": "hito-1-0-management-center-consulta"
         },
         {
           "frase": "Debajo están las novedades",
