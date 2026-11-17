@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-15",
+  "actualizado": "2026-11-17",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.7.0 · próxima la 0.8 «Front y otros agentes»",
-    "gl": "En desenvolvemento · v0.7.0 · próxima a 0.8 «Front e outros axentes»",
-    "en": "In development · v0.7.0 · next up: 0.8 “Front end and other agents”"
+    "es": "En desarrollo · v0.7.1 · próxima la 0.8 «Front y otros agentes»",
+    "gl": "En desenvolvemento · v0.7.1 · próxima a 0.8 «Front e outros axentes»",
+    "en": "In development · v0.7.1 · next up: 0.8 “Front end and other agents”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "ogAlt": {
@@ -69,11 +69,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.7.0",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.7.1",
       "etiqueta": {
-        "es": "Ver la versión 0.7.0",
-        "gl": "Ver a versión 0.7.0",
-        "en": "View version 0.7.0"
+        "es": "Ver la versión 0.7.1",
+        "gl": "Ver a versión 0.7.1",
+        "en": "View version 0.7.1"
       }
     }
   ],
@@ -125,9 +125,9 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.7.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.7.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.7.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.7.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.7.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.7.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
@@ -2037,6 +2037,46 @@
       "items": [
         {
           "nombre": {
+            "es": "Parche de la recogida",
+            "gl": "Parche da recollida",
+            "en": "Harvest patch"
+          },
+          "valor": "0.7.1 · 2026-11-16",
+          "texto": {
+            "es": "Parche con lo que dejó la recogida de apertura de la 0.8: avisos más claros sobre el contexto de arranque, sobre la recogida de una versión y sobre un CI que no llegó a arrancar.",
+            "gl": "Parche co que deixou a recollida de apertura da 0.8: avisos máis claros sobre o contexto de arranque, sobre a recollida dunha versión e sobre un CI que non chegou a arrancar.",
+            "en": "Patch with what the 0.8 opening harvest left: clearer warnings about the startup context, about a version's harvest and about a CI that never started."
+          },
+          "detalle": [
+            {
+              "es": "Con un arranque grande, si el mayor culpable es el resto del sistema, el aviso dice que un /clear no lo baja y pide quitar los conectores que no se usan.",
+              "gl": "Cun arranque grande, se o maior culpable é o resto do sistema, o aviso di que un /clear non o baixa e pide quitar os conectores que non se usan.",
+              "en": "With a big startup, if the largest culprit is the rest of the system, the warning says a /clear will not shrink it and asks to remove unused connectors."
+            },
+            {
+              "es": "La alarma de bucle de compactación da el mismo consejo.",
+              "gl": "A alarma de bucle de compactación dá o mesmo consello.",
+              "en": "The compaction-loop alarm gives the same advice."
+            },
+            {
+              "es": "El consejo se puede apagar con un ajuste de la configuración.",
+              "gl": "O consello pódese apagar cun axuste da configuración.",
+              "en": "The advice can be turned off with a configuration setting."
+            },
+            {
+              "es": "Al sellar una versión se avisa, sin fallar, si le falta su recogida, con la orden que la trae.",
+              "gl": "Ao selar unha versión avísase, sen fallar, se lle falta a súa recollida, coa orde que a trae.",
+              "en": "Sealing a version warns, without failing, if its harvest is missing, with the command that brings it."
+            },
+            {
+              "es": "Un CI cancelado antes de ejecutar ningún paso sigue contando como rojo, pero ahora lo dice y da la orden para relanzarlo.",
+              "gl": "Un CI cancelado antes de executar ningún paso segue contando como vermello, pero agora dío e dá a orde para relanzalo.",
+              "en": "A CI cancelled before running any step still counts as red, but now says so and gives the command to rerun it."
+            }
+          ]
+        },
+        {
+          "nombre": {
             "es": "Autores y subagentes",
             "gl": "Autores e subaxentes",
             "en": "Authors and subagents"
@@ -2896,6 +2936,14 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-16",
+      "texto": {
+        "es": "Publicada la 0.7.1, de arreglos: cuando el arranque es grande por culpa de los conectores, el aviso pide quitar los que no se usan en vez de un /clear que no ayuda; al sellar una versión se avisa si falta su recogida, y un CI cancelado por falta de máquina lo dice y da la orden para relanzarlo.",
+        "gl": "Publicada a 0.7.1, de arranxos: cando o arranque é grande por culpa dos conectores, o aviso pide quitar os que non se usan en vez dun /clear que non axuda; ao selar unha versión avísase se falta a súa recollida, e un CI cancelado por falta de máquina dío e dá a orde para relanzalo.",
+        "en": "Version 0.7.1 is out, with fixes: when a big startup is caused by connectors, the warning asks to remove the unused ones instead of a /clear that does not help; sealing a version warns if its harvest is missing, and a CI cancelled for lack of a runner says so and gives the command to rerun it."
+      }
+    },
+    {
       "fecha": "2026-11-15",
       "texto": {
         "es": "Publicada la 0.7.0: cada commit comprueba quién lo firma, el check valida los archivos del CI y el trabajo se reparte a subagentes ligeros con el modelo y el esfuerzo de su peldaño. Lo que faltaba, de las preguntas a la persona a la ficha de cada tarea, pasa a la 0.8.",
@@ -2949,22 +2997,6 @@
         "es": "Publicada la 0.5.0, la primera de la serie con evolutivos: las skills propias pasan a llevar el prefijo gw- y los archivos, carpetas y scripts del flujo reciben nombres coherentes en inglés, con una migración automática al actualizar que no pisa nada. El check ya no se repite si pasó en verde sobre el mismo código, se pueden prohibir las firmas del agente en los commits, hay una forma de correr en local el CI cuando el de GitHub no arranca, se avisa si dos ramas dan de alta tareas distintas con el mismo identificador y las piezas de difusión pueden llevar un canal web para el sitio del proyecto. Llegan además dos skills nuevas, to-spec y wayfinder.",
         "gl": "Publicada a 0.5.0, a primeira da serie con evolutivos: as skills propias pasan a levar o prefixo gw- e os ficheiros, cartafoles e scripts do fluxo reciben nomes coherentes en inglés, cunha migración automática ao actualizar que non pisa nada. O check xa non se repite se pasou en verde sobre o mesmo código, pódense prohibir as sinaturas do axente nos commits, hai unha forma de correr en local o CI cando o de GitHub non arranca, avísase se dúas ramas dan de alta tarefas distintas co mesmo identificador e as pezas de difusión poden levar un canle web para o sitio do proxecto. Chegan ademais dúas skills novas, to-spec e wayfinder.",
         "en": "Version 0.5.0 is out, the first of the series with new features: our own skills now carry the gw- prefix and the workflow’s files, folders and scripts get consistent English names, with an automatic migration on update that overwrites nothing. The check no longer repeats if it already passed green on the same code, the agent’s signatures can be banned from commits, there is a way to run CI locally when GitHub’s does not start, a warning appears if two branches add different tasks with the same identifier, and outreach pieces can carry a web channel for the project’s site. Two new skills also arrive, to-spec and wayfinder."
-      }
-    },
-    {
-      "fecha": "2026-11-01",
-      "texto": {
-        "es": "Publicada la 0.4.3, otro parche solo de arreglos: el diagnóstico deja de romper el CI de GitHub por no tener los ganchos de git puestos, avisa de los checks de sintaxis que solo miran un archivo, la instalación parte siempre de la última versión publicada y las reglas piden lanzar la subida y las comprobaciones largas en segundo plano. Lo evolutivo sigue yendo a la 1.0.0.",
-        "gl": "Publicada a 0.4.3, outro parche só de arranxos: o diagnóstico deixa de romper o CI de GitHub por non ter os ganchos de git postos, avisa dos checks de sintaxe que só miran un ficheiro, a instalación parte sempre da última versión publicada e as regras piden lanzar a subida e as comprobacións longas en segundo plano. O evolutivo segue indo á 1.0.0.",
-        "en": "Version 0.4.3 is out, another fixes-only patch: the diagnosis no longer breaks GitHub CI for lacking git hooks, it warns about syntax checks that only look at one file, installation always starts from the latest published version and the rules ask to run the push and long checks in the background. New features still go to 1.0.0."
-      }
-    },
-    {
-      "fecha": "2026-10-27",
-      "texto": {
-        "es": "Publicada la 0.4.2, un parche solo de arreglos: el aviso de secretos antes de cada commit reconoce más formas de clave (también las pegadas a un proveedor de IA), la fusión de la rama de un subagente corre además los tests relacionados con lo que cambia, el mapa del código entiende más lenguajes (Java, Kotlin, C#…) y los scripts dejan de sugerir reescribir el último commit. Lo evolutivo ya va a la 1.0.0.",
-        "gl": "Publicada a 0.4.2, un parche só de arranxos: o aviso de segredos antes de cada commit recoñece máis formas de clave (tamén as pegadas a un provedor de IA), a fusión da rama dun subaxente corre ademais os tests relacionados co que cambia, o mapa do código entende máis linguaxes (Java, Kotlin, C#…) e os scripts deixan de suxerir reescribir o último commit. O evolutivo xa vai á 1.0.0.",
-        "en": "Version 0.4.2 is out, a fixes-only patch: the secrets warning before each commit recognises more kinds of key (including those tied to an AI provider), merging a subagent’s branch also runs the tests related to what changed, the code map understands more languages (Java, Kotlin, C#…) and the scripts no longer suggest rewriting the last commit. New features now go to 1.0.0."
       }
     }
   ],

@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-15",
+  "actualizado": "2026-11-17",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -30,9 +30,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.5.0 · próxima: 0.6, montaje",
-    "gl": "En desenvolvemento · v0.5.0 · próxima: 0.6, montaxe",
-    "en": "In development · v0.5.0 · next: 0.6, assembly"
+    "es": "En desarrollo · v0.6.0 · próxima: pieza de marca",
+    "gl": "En desenvolvemento · v0.6.0 · próxima: peza de marca",
+    "en": "In development · v0.6.0 · next: brand piece"
   },
   "etiquetas": [
     {
@@ -75,11 +75,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.5.0",
+      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.6.0",
       "etiqueta": {
-        "es": "Ver la versión 0.5.0",
-        "gl": "Ver a versión 0.5.0",
-        "en": "View version 0.5.0"
+        "es": "Ver la versión 0.6.0",
+        "gl": "Ver a versión 0.6.0",
+        "en": "View version 0.6.0"
       }
     }
   ],
@@ -1038,6 +1038,20 @@
       }
     },
     {
+      "version": "0.6–0.11",
+      "nombre": {
+        "es": "Proceso de marca",
+        "gl": "Proceso de marca",
+        "en": "Brand process"
+      },
+      "estado": "curso",
+      "detalle": {
+        "es": "Pieza de marca e imagen libre, tandas, contador de fallos, recortar un intento (ya en la 0.6), taller enlazado, entrega por carpetas y nota de marca. Va antes del piloto y de los pasos siguientes.",
+        "gl": "Peza de marca e imaxe libre, quendas, contador de fallos, recortar un intento (xa na 0.6), obradoiro enlazado, entrega por cartafoles e nota de marca. Vai antes do piloto e dos pasos seguintes.",
+        "en": "Brand piece and free image, batches, failure counter, cropping an attempt (already in 0.6), linked workshop, delivery by folders and brand note. It comes before the pilot and the later steps."
+      }
+    },
+    {
       "version": "0.6",
       "nombre": {
         "es": "Montaje",
@@ -1117,6 +1131,22 @@
   ],
   "novedades": [
     {
+      "fecha": "2026-11-17",
+      "texto": {
+        "es": "Las marcas salen con los colores bien: el taller de logos y el cuadrado de marca se han ajustado para que ningún color se pierda ni se duplique al pasar a imagen, y el taller avisa si la tolerancia no es menor que el suavizado.",
+        "gl": "As marcas saen cos colores ben: o obradoiro de logos e o cadrado de marca axustáronse para que ningunha cor se perda nin se duplique ao pasar a imaxe, e o obradoiro avisa se a tolerancia non é menor que o suavizado.",
+        "en": "Brands come out with the right colours: the logo workshop and the brand square were adjusted so no colour is lost or duplicated when turning into an image, and the workshop warns if the tolerance is not smaller than the smoothing."
+      }
+    },
+    {
+      "fecha": "2026-11-16",
+      "texto": {
+        "es": "Versión 0.6.0: ya se puede recortar un intento desde la interfaz o con la orden gimg crop. El recorte queda como un intento nuevo, con la proporción del perfil o libre, y se puede repetir la misma caja en otro intento o llevarlo a otro pedido. El original no se toca.",
+        "gl": "Versión 0.6.0: xa se pode recortar un intento dende a interface ou coa orde gimg crop. O recorte queda como un intento novo, coa proporción do perfil ou libre, e pódese repetir a mesma caixa noutro intento ou levalo a outro pedido. O orixinal non se toca.",
+        "en": "Version 0.6.0: an attempt can now be cropped from the interface or with the gimg crop command. The crop is kept as a new attempt, with the profile’s ratio or free, and the same box can be repeated on another attempt or taken to another request. The original is never touched."
+      }
+    },
+    {
       "fecha": "2026-11-15",
       "texto": {
         "es": "Las herramientas de marca son más fiables: quitar el fondo, pasar un dibujo a SVG y crear texturas que se repiten fallan menos y explican mejor qué ha salido mal. Además, el taller de logos elige bien el grosor de las tipografías instaladas y acepta fuentes .ttc.",
@@ -1163,22 +1193,6 @@
         "gl": "Versión 0.4.0: interface no navegador, en castelán e inglés, con modelos de composición elixibles por peza e un editor para mover e cambiar o tamaño do titular, do logo e dos adornos, co contraste medido en directo. O código pasa a ser aberto con licenza MIT.",
         "en": "Version 0.4.0: a browser interface, in Spanish and English, with selectable templates per piece and an editor to move and resize the headline, logo and ornaments, with contrast measured live. The code is now open under the MIT licence."
       }
-    },
-    {
-      "fecha": "2026-11-05",
-      "texto": {
-        "es": "Versión 0.3.0, la primera publicada: API local y servicio que arranca solo al hacer un pedido y se para tras un rato sin uso.",
-        "gl": "Versión 0.3.0, a primeira publicada: API local e servizo que arranca só ao facer un pedido e párase tras un anaco sen uso.",
-        "en": "Version 0.3.0, the first published: a local API and a service that starts by itself on a request and stops after a while unused."
-      }
-    },
-    {
-      "fecha": "2026-11-04",
-      "texto": {
-        "es": "Dos rondas de ajuste del piloto: más detalle en las imágenes y un estilo propio por proyecto, con Tarkor a lápiz.",
-        "gl": "Dúas roldas de axuste do piloto: máis detalle nas imaxes e un estilo propio por proxecto, con Tarkor a lapis.",
-        "en": "Two pilot adjustment rounds: more detail in the images and a style of its own per project, with Tarkor in pencil."
-      }
     }
   ],
   "cifras": [
@@ -1207,7 +1221,7 @@
       }
     },
     {
-      "valor": "4 / 8",
+      "valor": "4 / 9",
       "etiqueta": {
         "es": "fases hechas",
         "gl": "fases feitas",
