@@ -5,10 +5,15 @@ export interface Guion {
   trozos: Trozo[];
 }
 
-/** Un trozo del guion: la sección que lee, su texto en castellano y, si es alto, los elementos que va recorriendo. */
+/**
+ * Un trozo del guion: la sección que lee, su texto en castellano (y su traducción al gallego y al inglés) y, si es
+ * alto, los elementos que va recorriendo.
+ */
 export interface Trozo {
   seccion: string;
   es: string;
+  gl?: string;
+  en?: string;
   enfoques?: Enfoque[];
 }
 
