@@ -1,12 +1,8 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { renderToString } from 'react-dom/server';
 import { Route, Routes, StaticRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { ProveedorIdioma } from '../i18n/Idioma';
-import galileo from '../data/proyectos/galivelop-image-generator.json';
-import workflow from '../data/proyectos/galivelop-workflow.json';
-import tarkor from '../data/proyectos/tarkor.json';
-import toveriai from '../data/proyectos/toveriai.json';
 import type { Proyecto as TipoProyecto } from '../data/tipos';
 import type { Guion } from '../utils/guion';
 import { Equipo } from './Equipo';
@@ -38,29 +34,46 @@ const envolver = (pagina: React.ReactNode, ubicacion = '/') =>
 
 const ficha = (p: unknown) => <FichaProyecto p={p as TipoProyecto} />;
 
-describe('secciones y enfoques de los guiones en la página', () => {
-  const paginas: [string, React.ReactNode][] = [
-    ['inicio', <Inicio />],
-    ['tarkor', ficha(tarkor)],
-    ['toveriai', ficha(toveriai)],
-    ['galivelop-workflow', ficha(workflow)],
-    ['galivelop-image-generator', ficha(galileo)],
-    ['novedades', <Novedades />],
-    ['equipo', <Equipo />],
-    ['proponer', <Proponer />],
-    ['unirse', <Unirse />],
-  ];
-  it.each(paginas)('%s', (clave, pagina) => {
-    expect(faltan(envolver(pagina), guion(clave))).toEqual([]);
-  });
+const claves = readdirSync('src/data/guiones')
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => f.replace(/\.json$/, ''));
+const ficheroProyecto = (clave: string) => `src/data/proyectos/${clave}.json`;
 
-  // La página de un miembro sale de su `id` en la ruta: se monta con la ruta de la app.
-  it.each(['alvaro-garcia-grana', 'raquel-c'])('miembro %s', (clave) => {
+const estaticas: Record<string, React.ReactNode> = {
+  inicio: <Inicio />,
+  novedades: <Novedades />,
+  equipo: <Equipo />,
+  proponer: <Proponer />,
+  unirse: <Unirse />,
+};
+
+/** La página de un guion: la estática de su clave, la ficha del proyecto de ese slug o la de un miembro (`/equipo/<id>`). */
+function paginaDe(clave: string): string {
+  const g = guion(clave);
+  if (clave in estaticas) return envolver(estaticas[clave], g.pagina);
+  if (existsSync(ficheroProyecto(clave))) {
+    const p = JSON.parse(readFileSync(ficheroProyecto(clave), 'utf8'));
+    return envolver(ficha(p), g.pagina);
+  }
+  if (g.pagina.startsWith('/equipo/')) {
+    // La página de un miembro sale de su `id` en la ruta: se monta con la ruta de la app.
     const pagina = (
       <Routes>
         <Route path="/equipo/:id" element={<Miembro />} />
       </Routes>
     );
-    expect(faltan(envolver(pagina, guion(clave).pagina), guion(clave))).toEqual([]);
+    return envolver(pagina, g.pagina);
+  }
+  throw new Error(
+    `El guion «${clave}» no tiene página conocida en guion.test.tsx: añádela (estática, proyecto o miembro)`,
+  );
+}
+
+describe('secciones y enfoques de los guiones en la página', () => {
+  it('hay guiones que comprobar', () => {
+    expect(claves.length).toBeGreaterThan(0);
+  });
+  it.each(claves)('%s', (clave) => {
+    expect(faltan(paginaDe(clave), guion(clave))).toEqual([]);
   });
 });

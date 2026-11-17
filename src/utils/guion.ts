@@ -1,3 +1,5 @@
+import type { Idioma } from '../data/tipos';
+
 /** Datos mínimos de un guion de lectura (src/data/guiones/<clave>.json) que usa el lector. */
 export interface Guion {
   audio?: string[];
@@ -31,16 +33,28 @@ export interface Enfoque {
 /** El enfoque que toca en el trozo con `fraccion` del audio en `idioma`: busca su frase en el texto de ese idioma. */
 export function enfoqueDelTrozo(
   trozo: Trozo,
-  idioma: string,
+  idioma: Idioma,
   fraccion: number,
   adelanto = ADELANTO_ENFOQUE,
 ): Enfoque | null {
-  if (idioma !== 'gl' && idioma !== 'en')
-    return enfoqueEn(trozo.es, trozo.enfoques, fraccion, adelanto);
-  const enfoques = trozo.enfoques ?? [];
-  const traducidos = enfoques.map((e, i) => ({ frase: e[idioma] ?? '', ver: String(i) }));
-  const elegido = enfoqueEn(trozo[idioma] ?? '', traducidos, fraccion, adelanto);
-  return elegido && enfoques[Number(elegido.ver)];
+  if (idioma === 'es') return enfoqueEn(trozo.es, trozo.enfoques, fraccion, adelanto);
+  return enfoqueEn(trozo[idioma] ?? '', trozo.enfoques, fraccion, adelanto, (e) => e[idioma] ?? '');
+}
+
+/**
+ * Ancla estable de un elemento de una ficha para `data-guion`: slug del texto en castellano (sin tildes), con el
+ * prefijo dado. No depende de la posición: si entra un hito delante, los enfoques siguen en su sitio.
+ */
+export function anclaGuion(prefijo: string, ...partes: (string | undefined)[]): string {
+  const slug = partes
+    .filter(Boolean)
+    .join(' ')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  return `${prefijo}-${slug}`;
 }
 
 /**
@@ -50,30 +64,36 @@ export function enfoqueDelTrozo(
  */
 export const ADELANTO_ENFOQUE = 0;
 
-/** Fracción (0 a 1) del texto en que empieza la frase; -1 si no está. Las voces van a ritmo casi constante: vale como tiempo. */
+/** Fracción (0 a 1) del texto en que empieza la frase; -1 si no está o si la frase está vacía (se ignora). Las voces van a ritmo casi constante: vale como tiempo. */
 export function posicionDeFrase(es: string, frase: string): number {
   if (!frase) return -1;
   const i = es.indexOf(frase);
   return i < 0 || es.length === 0 ? -1 : i / es.length;
 }
 
-/** El enfoque que toca con `fraccion` (0 a 1) del audio reproducida: el último cuya frase ya se ha alcanzado; `null` si ninguno. */
+/** El enfoque que toca con `fraccion` (0 a 1) del audio reproducida: el último cuya frase (la de `frase(e)`, por defecto `e.frase`) ya se ha alcanzado; `null` si ninguno. */
 export function enfoqueEn(
   es: string,
   enfoques: Enfoque[] | undefined,
   fraccion: number,
   adelanto = ADELANTO_ENFOQUE,
+  frase: (e: Enfoque) => string = (e) => e.frase,
 ): Enfoque | null {
   let elegido: Enfoque | null = null;
   let mejor = -1;
   for (const e of enfoques ?? []) {
-    const pos = posicionDeFrase(es, e.frase);
+    const pos = posicionDeFrase(es, frase(e));
     if (pos >= 0 && pos - adelanto <= fraccion && pos >= mejor) {
       elegido = e;
       mejor = pos;
     }
   }
   return elegido;
+}
+
+/** ¿El lector se ofrece en `idioma`? Solo si el `audio` del guion de la página lo lista. */
+export function lectorDisponible(audio: string[] | undefined, idioma: Idioma): boolean {
+  return audio?.includes(idioma) ?? false;
 }
 
 /** Clave del guion de una ruta (la de `pathname` del router, sin prefijo de idioma): `/` es `inicio`; el resto, su último tramo. */

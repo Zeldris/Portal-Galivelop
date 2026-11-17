@@ -22,6 +22,7 @@ import type { Linea } from '../data/lineas';
 import { progreso, proyectos, ruta, useFicha } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
+import { anclaGuion } from '../utils/guion';
 import { NoEncontrado } from './NoEncontrado';
 
 // La ficha se lee de arriba abajo en cinco grupos, como un caso de estudio: qué es y qué lo hace distinto
@@ -369,8 +370,8 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
             <div id="caracteristicas" className="bloque">
               <h3 className="bloque-titulo">{t('sec.caracteristicas')}</h3>
               <ul className="caracteristicas">
-                {p.caracteristicas.map((c, i) => (
-                  <li key={tx(c.titulo)} data-guion={`caracteristica-${i + 1}`}>
+                {p.caracteristicas.map((c) => (
+                  <li key={tx(c.titulo)} data-guion={anclaGuion('caracteristica', c.titulo.es)}>
                     <span className="caracteristica-icono">
                       <Icono nombre={c.icono} />
                     </span>
@@ -524,12 +525,12 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
                       {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
                     </h3>
                     <ol className="hitos">
-                      {p.hitos.map((h, i) => {
+                      {p.hitos.map((h) => {
                         return (
                           <li
                             key={(h.version ?? '') + tx(h.nombre)}
                             className={`hito hito-${h.estado}`}
-                            data-guion={`hito-${i + 1}`}
+                            data-guion={anclaGuion('hito', h.version, h.nombre.es)}
                           >
                             <span className="hito-marca" aria-hidden="true">
                               <IconoMarca nombre={ICONO_HITO[h.estado]} />

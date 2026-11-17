@@ -3,7 +3,9 @@ import {
   desplazamiento,
   enfoqueEn,
   gestoPausa,
+  anclaGuion,
   enfoqueDelTrozo,
+  lectorDisponible,
   posicionDeFrase,
   rutaNormal,
   teclaPausa,
@@ -106,5 +108,29 @@ describe('enfoqueDelTrozo', () => {
   it('sin la frase del idioma no hay enfoque', () => {
     const sinGl = { ...trozo, enfoques: [{ frase: 'el uno', ver: 'a' }] };
     expect(enfoqueDelTrozo(sinGl, 'gl', 1)).toBeNull();
+  });
+});
+
+describe('lectorDisponible', () => {
+  it('manda el `audio` del guion: el idioma listado sí, el resto y un guion sin audio no', () => {
+    expect(lectorDisponible(['es'], 'es')).toBe(true);
+    expect(lectorDisponible(['es'], 'gl')).toBe(false);
+    expect(lectorDisponible(['es', 'gl'], 'gl')).toBe(true);
+    expect(lectorDisponible(undefined, 'es')).toBe(false);
+  });
+});
+
+describe('anclaGuion', () => {
+  it('es un slug del texto, sin tildes ni posición', () => {
+    expect(anclaGuion('hito', '0.5.1', 'Parche')).toBe('hito-0-5-1-parche');
+    expect(anclaGuion('caracteristica', 'Relevos sin pérdidas')).toBe(
+      'caracteristica-relevos-sin-perdidas',
+    );
+  });
+});
+
+describe('posicionDeFrase', () => {
+  it('ignora una frase vacía', () => {
+    expect(posicionDeFrase('texto', '')).toBe(-1);
   });
 });

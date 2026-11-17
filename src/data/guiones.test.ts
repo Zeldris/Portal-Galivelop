@@ -56,11 +56,11 @@ describe('audio de los guiones', () => {
     expect(mal).toEqual([]);
   });
 
-  it('el gallego no lleva `¿` inicial (decisión de la persona, 2026-11-17)', () => {
+  it('el gallego no lleva `¿` ni `¡` iniciales (decisión de la persona, 2026-11-17)', () => {
     const mal: string[] = [];
     for (const clave of claves)
       for (const t of leer(clave).trozos)
-        if (t.gl?.includes('¿')) mal.push(`${clave}/${t.seccion}`);
+        if (t.gl?.includes('¿') || t.gl?.includes('¡')) mal.push(`${clave}/${t.seccion}`);
     expect(mal).toEqual([]);
   });
 
@@ -88,6 +88,19 @@ describe('audio de los guiones', () => {
                 `${clave}/${t.seccion}/${e.ver}: «${idioma}» ${frase ? `aparece ${veces} veces` : 'falta'}`,
               );
           }
+    expect(mal).toEqual([]);
+  });
+
+  it('las frases de los enfoques de un trozo son distintas entre sí en cada idioma', () => {
+    const mal: string[] = [];
+    for (const clave of claves)
+      for (const t of leer(clave).trozos)
+        for (const idioma of ['es', 'gl', 'en'] as const) {
+          const frases = (t.enfoques ?? []).map((e) => (idioma === 'es' ? e.frase : e[idioma]));
+          const repetidas = frases.filter((f, i) => f && frases.indexOf(f) !== i);
+          for (const f of new Set(repetidas))
+            mal.push(`${clave}/${t.seccion}: «${f}» repetida en «${idioma}»`);
+        }
     expect(mal).toEqual([]);
   });
 });
