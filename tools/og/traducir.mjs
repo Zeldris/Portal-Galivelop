@@ -1,8 +1,7 @@
 // Renderiza la vista previa en redes de un proyecto en gallego e inglés (tools/og/<slug>-og.html?l=gl|en, 1200×630) a
 // tools/og/fuentes/<slug>/og-fuente-<gl|en>.png y regenera los og*.jpg con tools/og/generar.py. Para los proyectos cuya
-// og-fuente.png (en castellano) es una imagen hecha a mano con el texto dentro; la del workflow sale de
-// tools/og/presentacion.mjs y la del portal, de tools/og/portal.mjs. Con --es, la plantilla pinta también la de
-// castellano (og-fuente.png): para las que se montan sobre una placa del generador (recurso 24).
+// og-fuente.png (en castellano) es una imagen con el texto dentro; la del portal sale de tools/og/portal.mjs. Con --es, la plantilla pinta también la de
+// castellano (og-fuente.png): para las que se montan sobre una placa del generador (recurso 24: Tarkor, toVeriAI, workflow e IG).
 // Uso: node tools/og/traducir.mjs tarkor --es
 import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
