@@ -172,7 +172,7 @@ export function Proyecto() {
   return <FichaProyecto key={ficha.ficha.slug} p={ficha.ficha} />;
 }
 
-function FichaProyecto({ p }: { p: TipoProyecto }) {
+export function FichaProyecto({ p }: { p: TipoProyecto }) {
   const { t, tx, fecha } = useIdioma();
   const grupos = gruposDe(p);
   const [todasNovedades, setTodasNovedades] = useState(false);
@@ -202,6 +202,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
   return (
     <article className="proyecto" style={estiloAcento(p.acento)}>
       <header
+        data-guion="cabecera"
         className={`proyecto-cabecera cabecera-${modoCabecera}${fondoEstado ? ' cabecera-velada' : ''}`}
       >
         {modoCabecera === 'ilustracion' && (
@@ -273,7 +274,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
       </header>
 
       <div className="contenedor proyecto-cuerpo">
-        <section className="vistazo" aria-label={t('vistazo.titulo')}>
+        <section className="vistazo" data-guion="vistazo" aria-label={t('vistazo.titulo')}>
           <div className="vistazo-ahora">
             <p className="vistazo-etiqueta">{t('vistazo.ahora')}</p>
             <p className="vistazo-fase">{tx(p.fase)}</p>
@@ -668,7 +669,7 @@ function FichaProyecto({ p }: { p: TipoProyecto }) {
           </>
         )}
 
-        <aside className={`participar participar-${p.colaboracion}`}>
+        <aside data-guion="participar" className={`participar participar-${p.colaboracion}`}>
           {/* Banda de la marca (recurso 29), solo con la colaboración abierta; el CSS muestra la del tema. */}
           {p.colaboracion === 'abierta' &&
             (['claro', 'oscuro'] as const).map((tema) => {

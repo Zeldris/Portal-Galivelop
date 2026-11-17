@@ -70,7 +70,7 @@ export function Inicio() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" data-guion="cabecera">
         <img className="hero-fondo" src={ruta('/marca/isobatas.svg')} alt="" aria-hidden="true" />
         <div className="contenedor hero-rejilla">
           <div className="hero-texto">
