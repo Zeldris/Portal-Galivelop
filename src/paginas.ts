@@ -1,5 +1,6 @@
 import { createElement, use, type ComponentType } from 'react';
 import { cargarFicha } from './data/proyectos';
+import { paginaDeSegmentos } from './rutas';
 import { leerAncla } from './utils/ancla';
 
 // Todas las páginas (la portada incluida) van en su propio chunk. Los import() viven aquí, en un mapa compartido, para que
@@ -101,31 +102,9 @@ function slugDeRuta(pathname: string): string | undefined {
   return leerAncla(slug);
 }
 
-const PAGINA_DE_PRIMER_SEGMENTO: Record<string, NombrePagina> = {
-  muro: 'Muro',
-  novedades: 'Novedades',
-  equipo: 'Equipo',
-  productos: 'Productos',
-  'aviso-legal': 'Legal',
-  privacidad: 'Legal',
-  terminos: 'Legal',
-};
-
-/** Página que toca para una ruta; refleja las `<Route>` de src/App.tsx. */
+/** Página que toca para una ruta (la tabla vive en src/rutas.ts, compartida con el generador de páginas estáticas). */
 export function paginaDeRuta(pathname: string): NombrePagina {
-  const partes = partesDeRuta(pathname);
-  const [primera, segunda, ...mas] = partes;
-  if (partes.length === 0) return 'Inicio';
-  if (primera === 'proyectos' && segunda && mas.length === 0) return 'Proyecto';
-  if (primera === 'equipo' && segunda && mas.length === 0) return 'Miembro';
-  if (primera === 'participa' && mas.length === 0) {
-    if (segunda === 'proponer') return 'Proponer';
-    if (segunda === 'unirse') return 'Unirse';
-  }
-  if (partes.length === 1 && primera in PAGINA_DE_PRIMER_SEGMENTO) {
-    return PAGINA_DE_PRIMER_SEGMENTO[primera];
-  }
-  return 'NoEncontrado';
+  return paginaDeSegmentos(partesDeRuta(pathname));
 }
 
 /**

@@ -6,17 +6,19 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-17 (arreglos de las auditorías y chaflán, `ccr-8e0862c2-niq1xt`) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, 6eb3739, 2026-11-17) |
-| **Tarea en curso** | Arreglos de las auditorías del 2026-11-17 y chaflán hechos; fase 1 hecha (`/code-review` del bloque: 0 graves, 6 medios, 9 leves; 8 arreglados en 0caa5b7, el resto en `docs/records/pending.md`) |
-| **Siguiente paso** | Tras la subida a `main`: barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3; entrada en `pending.md`). Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
-| **En `main`** | **Vistas previas en redes del portal, workflow e IG sobre las placas 24 del generador** (4c4f082, 2026-11-17, la persona: «adelante para ir a main»; CI y publicación en verde). Antes, la ficha de Galivelop-workflow contrastada con su repo (b17058f). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 227/227 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Actualizado** | 2026-11-17 (barrido de leves de `paginas-estaticas.mjs`, `claude/siguiente-fy7bji`) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `claude/siguiente-fy7bji` (desde `main`, 041c5cd, 2026-11-17) |
+| **Tarea en curso** | Barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3) hecho: tabla ruta → página compartida en `src/rutas.ts`, `leerIcono` que rompe el build si no saca un SVG limpio, `engines.node` ≥ 22.18. Revisado en la sesión (diff pequeño); `npm run seo` y el HTML generado iguales |
+| **Siguiente paso** | Llevarlo a la rama de la tarea semanal (`claude/galivelop-dev-portal-1h89ci`, va por detrás de `main`) o a `main` con la marca, según diga la persona. Después: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
+| **En `main`** | **Auditorías del 2026-11-17, sus arreglos y el chaflán** (041c5cd, con su retro aprobada). Antes, las vistas previas en redes sobre las placas 24 (4c4f082). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 229/229 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Barrido de leves de `paginas-estaticas.mjs`** (`claude/siguiente-fy7bji`, código de build): `src/rutas.ts` (`paginaDeSegmentos`) es la única tabla ruta → página, para la app y para el `modulepreload` del generador, que rompe el build si una página que genera no la tiene; `Object.hasOwn` en vez de `in` (`/constructor` ya no devuelve una función); `leerIcono` comprueba que saca un `<svg` sin `{}`; `engines.node` ≥ 22.18. HTML generado y `npm run seo` iguales. Revisión en la sesión, sin hallazgos.
 
 - 2026-11-17 · **Cinco auditorías nuevas** (`ccr-8e0862c2-niq1xt`; la persona: «todas las auditorías posibles… añádela y ejecútala» y una de conformidad con lo escrito): scripts `tools/qa/auditar-{accesibilidad,rendimiento,seguridad,html}.cjs` (`npm run auditar:a11y|rendimiento|seguridad|html`), axe-core de desarrollo, e informe `docs/records/auditoria-2026-11-17.md`. Sin `/code-review` todavía: no va a `main` hasta pasarlo. **Arreglos** (la persona: «Arregla todo lo que propones y pon el chaflán»): CLS 0, JS inicial 538 → 183 kB, cabecera y pie sin JS, `h1` estático, `publisher.url`, impresión, «Ver perfil» (WCAG 2.5.3), vite 8.3.8, chaflán de 14 px en las tarjetas, doc vieja al día; el `main` estático se oculta con JS hasta montar (LCP de páginas de texto 1,8-2,4 s, aceptado). Detalle y cifras en el informe. Sin cambio de rutas (`npm run seo` igual).
 
@@ -43,7 +45,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (24 entradas); se añade y se quita allí.
+Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (23 entradas); se añade y se quita allí.
 
 ## Comprobar el estado
 

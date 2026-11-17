@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { MARCA, PORTADA_ESTADO } from '../src/data/marca.ts';
 import { textos } from '../src/i18n/textos.ts';
+import { paginaDeSegmentos } from '../src/rutas.ts';
 import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
 
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
@@ -270,11 +271,15 @@ const ICONOS = {
   correo: ICONO(18, '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>'),
 };
 // Discord y GitHub: los de src/components/IconoDiscord.tsx e IconoGitHub.tsx.
-const leerIcono = (archivo) =>
-  readFileSync(`src/components/${archivo}`, 'utf8')
-    .match(/<svg[\s\S]*?<\/svg>/)[0]
-    .replace(/width=\{tamano\} height=\{tamano\}/, 'width="18" height="18"')
+// Si el componente cambia y lo extraído deja de ser un SVG limpio (JSX que se cuela), el build falla en vez de publicarlo.
+const leerIcono = (archivo) => {
+  const svg = readFileSync(`src/components/${archivo}`, 'utf8')
+    .match(/<svg[\s\S]*?<\/svg>/)?.[0]
+    ?.replace(/width=\{tamano\} height=\{tamano\}/, 'width="18" height="18"')
     .replace(/\s+/g, ' ');
+  if (!svg?.startsWith('<svg') || /[{}]/.test(svg)) throw new Error(`paginas-estaticas: no se pudo sacar el SVG de src/components/${archivo}`);
+  return svg;
+};
 const ICONO_DISCORD = leerIcono('IconoDiscord.tsx');
 const ICONO_GITHUB = leerIcono('IconoGitHub.tsx');
 
@@ -415,13 +420,13 @@ function datos(pg, url) {
 // (2026-11-17, móvil con 4G lento), compiten con el JS por el ancho de banda y retrasan el FCP y el LCP unos 100-150 ms.
 const ACTIVOS = readdirSync('dist/assets');
 const activo = (re) => ACTIVOS.find((f) => re.test(f));
-// Qué chunk de src/paginas.ts lleva cada ruta (el nombre del chunk es el del componente de la página).
-const CHUNK_DE_RUTA = (ruta) =>
-  ruta === '' ? 'Inicio'
-  : ruta.startsWith('proyectos/') ? 'Proyecto'
-    : ruta.startsWith('equipo/') ? 'Miembro'
-      : { equipo: 'Equipo', muro: 'Muro', novedades: 'Novedades', 'participa/proponer': 'Proponer', 'participa/unirse': 'Unirse' }[ruta]
-        ?? (legales.some((d) => d.slug === ruta) ? 'Legal' : undefined);
+// Qué chunk de src/paginas.ts lleva cada ruta: la misma tabla que la app (src/rutas.ts). Una página generada aquí que la
+// app no conozca rompe el build: se quedaría sin precarga y la app pintaría «no encontrado».
+const CHUNK_DE_RUTA = (ruta) => {
+  const pagina = paginaDeSegmentos(ruta.split('/').filter(Boolean));
+  if (pagina === 'NoEncontrado') throw new Error(`paginas-estaticas: la ruta «${ruta}» no tiene página en src/rutas.ts`);
+  return pagina;
+};
 // Imagen de la cabecera de cada ficha, como src/pages/Proyecto.tsx: la portada (`ilustracion`), el fondo por estado
 // (`color`) o las isobatas (`captura`).
 const imagenLcp = (pg) => {

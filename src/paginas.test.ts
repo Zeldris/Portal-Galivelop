@@ -1,5 +1,7 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it, vi } from 'vitest';
 import { cargarPagina, olvidarFallos, paginaDeRuta } from './paginas';
+import { paginaDeSegmentos } from './rutas';
 
 describe('cargarPagina (fallo de un chunk)', () => {
   it('guarda el fallo hasta olvidarFallos: React no pide otro import en cada reintento', async () => {
@@ -59,5 +61,22 @@ describe('paginaDeRuta (qué chunk se espera antes del primer render)', () => {
     ['no-existe/', 'NoEncontrado'],
   ])('%s -> %s', (ruta, pagina) => {
     expect(paginaDeRuta(BASE + ruta)).toBe(pagina);
+  });
+});
+
+// La misma tabla la usa scripts/paginas-estaticas.mjs para el `modulepreload` de cada página: una ruta que generase y
+// que aquí diese «NoEncontrado» rompe el build.
+describe('paginaDeSegmentos (tabla compartida con paginas-estaticas.mjs)', () => {
+  it('cada texto legal de src/data/legal tiene página Legal', () => {
+    const slugs = readdirSync('src/data/legal')
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => JSON.parse(readFileSync(`src/data/legal/${f}`, 'utf8')).slug as string);
+    expect(slugs.length).toBeGreaterThan(0);
+    expect(slugs.filter((s) => paginaDeSegmentos([s]) !== 'Legal')).toEqual([]);
+  });
+
+  it('un nombre heredado de Object no es una página', () => {
+    expect(paginaDeSegmentos(['constructor'])).toBe('NoEncontrado');
+    expect(paginaDeSegmentos(['toString'])).toBe('NoEncontrado');
   });
 });
