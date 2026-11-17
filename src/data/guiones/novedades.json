@@ -1,0 +1,22 @@
+{
+  "pagina": "/novedades",
+  "narra": "2026-11-17",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP).",
+    "No narra entradas, así que no envejece con ellas. Si cambia el filtro, el orden o el botón de ver más, se reescribe el trozo «filtros»."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Qué se mueve en el taller? Esta es la página de novedades de Galivelop. Reúne lo último de cada proyecto, con lo más reciente primero. Aquí van tanto las novedades de cada ficha como las publicaciones del muro."
+    },
+    {
+      "seccion": "filtros",
+      "es": "Arriba tienes unos botones, uno por proyecto. Con todos, ves todo mezclado. Si pulsas el nombre de un proyecto, solo ves lo suyo. Cada botón dice cuántas entradas tiene. Y si buscas una novedad concreta, pulsa un proyecto y sigue hacia abajo."
+    },
+    {
+      "seccion": "novedades",
+      "es": "Debajo está la lista. Cada entrada lleva su fecha y el proyecto al que pertenece, y puedes pulsar el nombre para ir a su ficha. Cuando se acaban las primeras, pulsa Ver más para seguir leyendo. No te las leo yo: cambian cada semana, así que lo mejor es que las leas tú. Gracias por escuchar."
+    }
+  ]
+}

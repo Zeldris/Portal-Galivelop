@@ -29,7 +29,7 @@ export function Equipo() {
           height={500}
           fetchPriority="high"
         />
-        <header className="seccion-cabecera">
+        <header className="seccion-cabecera" data-guion="cabecera">
           <div>
             <h1>{t('equipo.titulo')}</h1>
             <p>{t('equipo.intro')}</p>
@@ -78,7 +78,7 @@ export function Equipo() {
             </li>
           ))}
 
-          <li className="persona persona-unete">
+          <li className="persona persona-unete" data-guion="unete">
             <span className="retrato persona-foto" aria-hidden="true">
               <span className="persona-hueco">
                 <IconoMarca nombre="ramas" />

@@ -70,7 +70,7 @@ export function Inicio() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero" data-guion="cabecera">
         <img className="hero-fondo" src={ruta('/marca/isobatas.svg')} alt="" aria-hidden="true" />
         <div className="contenedor hero-rejilla">
           <div className="hero-texto">
@@ -164,7 +164,11 @@ export function Inicio() {
           {filtro === 'todos' && proximos.length > 0 && (
             <>
               <Separador />
-              <section className="proximamente" aria-labelledby="proximamente-titulo">
+              <section
+                className="proximamente"
+                data-guion="proximamente"
+                aria-labelledby="proximamente-titulo"
+              >
                 <header>
                   <h3 id="proximamente-titulo">{t('proximamente.titulo')}</h3>
                   <p>{t('proximamente.texto')}</p>
@@ -193,7 +197,7 @@ export function Inicio() {
               const IconoLinea = ICONO_LINEA[l];
               const suyos = proyectos.filter((p) => p.lineas.includes(l));
               return (
-                <li key={l}>
+                <li key={l} data-guion={`linea-${l}`}>
                   <IconoLinea aria-hidden="true" />
                   <h3>{t(`linea.${l}.titulo`)}</h3>
                   <p>{t(`linea.${l}.texto`)}</p>
@@ -238,7 +242,7 @@ export function Inicio() {
           </div>
           <ol className="valores">
             {PRINCIPIOS.map(([IconoPrincipio, v]) => (
-              <li key={v}>
+              <li key={v} data-guion={`principio-${v}`}>
                 <IconoPrincipio aria-hidden="true" />
                 <h3>{t(`${v}.titulo`)}</h3>
                 <p>{t(`${v}.texto`)}</p>
@@ -254,7 +258,7 @@ export function Inicio() {
           <h2>{t('contacto.titulo')}</h2>
           <p>{t('contacto.texto')}</p>
           <ul className="vias">
-            <li>
+            <li data-guion="via-unirse">
               <Link to="/participa/unirse" className="via">
                 <IconoMarca nombre="ramas" />
                 <h3>{t('via1.titulo')}</h3>
@@ -264,7 +268,7 @@ export function Inicio() {
                 </span>
               </Link>
             </li>
-            <li>
+            <li data-guion="via-proponer">
               <Link to="/participa/proponer" className="via">
                 <IconoMarca nombre="bombilla" />
                 <h3>{t('via2.titulo')}</h3>
@@ -274,7 +278,7 @@ export function Inicio() {
                 </span>
               </Link>
             </li>
-            <li>
+            <li data-guion="via-aprender">
               <Link to="/participa/unirse?modo=aprender" className="via">
                 <IconoMarca nombre="terminal" />
                 <h3>{t('via3.titulo')}</h3>
@@ -285,7 +289,7 @@ export function Inicio() {
               </Link>
             </li>
           </ul>
-          <aside className="proyecto-propio">
+          <aside className="proyecto-propio" data-guion="proyecto-propio">
             <span className="proyecto-propio-icono" aria-hidden="true">
               <IconoMarca nombre="implantacion" />
             </span>
@@ -298,7 +302,7 @@ export function Inicio() {
             </Link>
           </aside>
           <Separador />
-          <div className="participa-guia">
+          <div className="participa-guia" data-guion="como-funciona">
             <div>
               <h3>{t('paraquien.titulo')}</h3>
               <ul className="lista-check">
@@ -320,7 +324,13 @@ export function Inicio() {
               </ol>
             </div>
           </div>
-          <a className="discord" href={MARCA.discord} target="_blank" rel="noreferrer">
+          <a
+            className="discord"
+            data-guion="discord"
+            href={MARCA.discord}
+            target="_blank"
+            rel="noreferrer"
+          >
             <span className="discord-icono">
               <IconoDiscord tamano={28} />
             </span>

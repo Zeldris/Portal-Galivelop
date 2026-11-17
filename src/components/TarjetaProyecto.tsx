@@ -11,7 +11,7 @@ export function TarjetaProyecto({ proyecto: p }: { proyecto: ResumenProyecto }) 
   const { t, tx } = useIdioma();
   const avance = progreso(p);
   return (
-    <article className="tarjeta" style={estiloAcento(p.acento)}>
+    <article className="tarjeta" data-guion={`proyecto-${p.slug}`} style={estiloAcento(p.acento)}>
       <div className="tarjeta-imagen">
         <img
           src={ruta(p.portada.mini)}

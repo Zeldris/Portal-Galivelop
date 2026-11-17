@@ -10,7 +10,11 @@ export function TarjetaProxima({ proximo: p }: { proximo: Proximo }) {
   const avance = Math.round((p.fases.hechas / p.fases.total) * 100);
   const fases = t('proximamente.fases', { hechas: p.fases.hechas, total: p.fases.total });
   return (
-    <article className="tarjeta-proxima" style={estiloAcento(p.acento)}>
+    <article
+      className="tarjeta-proxima"
+      data-guion={`proxima-${p.slug}`}
+      style={estiloAcento(p.acento)}
+    >
       {p.imagen ? (
         <img
           className="proxima-imagen"

@@ -68,7 +68,7 @@ export function Unirse() {
         ]);
       }}
     >
-      <Campo etiqueta={t('unir.proyecto')}>
+      <Campo etiqueta={t('unir.proyecto')} guion="campo-proyecto">
         <select name="proyecto" defaultValue={proyectoInicial}>
           <option value="cualquiera">{t('unir.proyecto.cualquiera')}</option>
           {abiertos.map((p) => (
@@ -79,7 +79,7 @@ export function Unirse() {
           <option value="nuevos">{t('unir.proyecto.nuevos')}</option>
         </select>
       </Campo>
-      <fieldset className="campo">
+      <fieldset className="campo" data-guion="campo-areas">
         <legend className="campo-etiqueta">{t('unir.areas')}</legend>
         <div className="opciones">
           {AREAS.map((a) => (
@@ -95,14 +95,19 @@ export function Unirse() {
           ))}
         </div>
       </fieldset>
-      <Campo etiqueta={t('unir.sobreti')} ayuda={t('unir.sobreti.ayuda')}>
+      <Campo guion="campo-sobreti" etiqueta={t('unir.sobreti')} ayuda={t('unir.sobreti.ayuda')}>
         <textarea name="sobreti" rows={6} required />
       </Campo>
       <div className="campos-fila">
-        <Campo etiqueta={t('unir.disponibilidad')} ayuda={t('unir.disponibilidad.ayuda')} opcional>
+        <Campo
+          guion="campo-disponibilidad"
+          etiqueta={t('unir.disponibilidad')}
+          ayuda={t('unir.disponibilidad.ayuda')}
+          opcional
+        >
           <input name="disponibilidad" />
         </Campo>
-        <Campo etiqueta={t('unir.enlace')} opcional>
+        <Campo guion="campo-enlace" etiqueta={t('unir.enlace')} opcional>
           <input name="enlace" type="url" placeholder="https://" />
         </Campo>
       </div>

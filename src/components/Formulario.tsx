@@ -77,8 +77,10 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
         <Link to="/#participa" className="volver volver-oscuro">
           <ArrowLeft size={16} /> {t('form.volver')}
         </Link>
-        <h1>{titulo}</h1>
-        <p className="formulario-intro">{intro}</p>
+        <div data-guion="cabecera">
+          <h1>{titulo}</h1>
+          <p className="formulario-intro">{intro}</p>
+        </div>
         {ilustracion && (
           <ImagenTema
             className="formulario-ilustracion"
@@ -89,12 +91,12 @@ export function PaginaFormulario({ titulo, intro, ilustracion, componer, childre
           />
         )}
 
-        <form className="formulario" onSubmit={enviar}>
+        <form className="formulario" data-guion="formulario" onSubmit={enviar}>
           <div className="campos-fila">
-            <Campo etiqueta={t('form.nombre')}>
+            <Campo etiqueta={t('form.nombre')} guion="campo-nombre">
               <input name="nombre" required autoComplete="name" />
             </Campo>
-            <Campo etiqueta={t('form.correo')}>
+            <Campo etiqueta={t('form.correo')} guion="campo-correo">
               <input name="correo" type="email" required autoComplete="email" />
             </Campo>
           </div>
@@ -141,8 +143,11 @@ export function Campo({
   etiqueta,
   ayuda,
   opcional,
+  guion,
   children,
 }: {
+  /** `data-guion` del campo, para que el lector lo enfoque. */
+  guion?: string;
   etiqueta: string;
   ayuda?: string;
   opcional?: boolean;
@@ -150,7 +155,7 @@ export function Campo({
 }) {
   const { t } = useIdioma();
   return (
-    <label className="campo">
+    <label className="campo" data-guion={guion}>
       <span className="campo-etiqueta">
         {etiqueta}
         {opcional && <span className="campo-opcional"> ({t('form.opcional')})</span>}

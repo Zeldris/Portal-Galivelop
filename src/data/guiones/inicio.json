@@ -1,0 +1,61 @@
+{
+  "audio": ["es"],
+  "pagina": "/",
+  "narra": "2026-11-17",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP); «Develop» a la inglesa; «toVeriAI» como «tu-veri-ei-ai»; «IG» letra a letra (i-ge).",
+    "Los nombres de los proyectos y de «Próximamente» cambian: si entra o sale uno, se reescribe el trozo «proyectos» y se cambia «narra»."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Tienes un proyecto que parece imposible? Hola, esto es Galivelop, un taller de software abierto, y eso es justo lo que nos mueve: hacer reales proyectos así. Aquí se crea, se investiga y se aprende a la vista de todos, y con la puerta abierta. Puedes seguir cada proyecto, proponer uno nuevo o sumarte a alguno."
+    },
+    {
+      "seccion": "proyectos",
+      "es": "Empezamos por los proyectos, cada uno tal y como está hoy: qué es, cómo está hecho, en qué punto se encuentra y qué viene después. Tarkor es un juego de rol por texto donde el mundo sigue adelante aunque tú te detengas. toVeriAI parte de una idea: la verdad no es binaria. Por eso da un índice que explica cuánto puedes fiarte de una noticia. Galivelop-workflow es nuestra forma de trabajar con inteligencia artificial, empaquetada para que la use cualquier proyecto. Y Galivelop IG es un servicio para generar imágenes en tu propio equipo: pides, pruebas y eliges. Justo debajo hay dos proyectos que están naciendo: un generador de voces y un agente de desarrollo, los dos con inteligencia artificial local. Tendrán su ficha cuando haya algo que enseñar.",
+      "enfoques": [
+        { "frase": "Tarkor es un juego", "ver": "proyecto-tarkor" },
+        { "frase": "toVeriAI parte de una idea", "ver": "proyecto-toveriai" },
+        { "frase": "Galivelop-workflow es nuestra forma", "ver": "proyecto-galivelop-workflow" },
+        { "frase": "Y Galivelop IG es un servicio", "ver": "proyecto-galivelop-image-generator" },
+        { "frase": "Justo debajo hay dos proyectos", "ver": "proximamente" },
+        { "frase": "un generador de voces", "ver": "proxima-galivelop-voice-generator" },
+        { "frase": "un agente de desarrollo", "ver": "proxima-galivelop-developer" }
+      ]
+    },
+    {
+      "seccion": "lineas",
+      "es": "Todos estos proyectos vuelven, una y otra vez, a cinco temas. Son nuestras líneas de trabajo. La primera, una inteligencia artificial local y responsable: modelos que funcionan en el equipo de cada persona, sin cuentas ni pagos por uso, y que probamos hasta en una Steam Deck. La segunda, mundos que viven solos, que siguen avanzando aunque nadie mire. La tercera, información que se puede comprobar, que explica por qué algo merece confianza en lugar de dictar un veredicto. La cuarta, llevar una idea desde el prototipo hasta las manos de quien la va a usar. Y la quinta, el método: cómo trabajar semanas con agentes de inteligencia artificial sin perder el hilo.",
+      "enfoques": [
+        { "frase": "La primera,", "ver": "linea-ia-local" },
+        { "frase": "La segunda,", "ver": "linea-mundos" },
+        { "frase": "La tercera,", "ver": "linea-informacion" },
+        { "frase": "La cuarta,", "ver": "linea-producto" },
+        { "frase": "Y la quinta,", "ver": "linea-metodo" }
+      ]
+    },
+    {
+      "seccion": "sobre",
+      "es": "¿Y cómo trabajamos? Galivelop es un taller, no un escaparate. Aquí no solo se programa: se investiga, se prueban ideas y se aprende en cada paso. Cada proyecto se enseña como está, con lo que ya funciona y con lo que aún falta, porque lo que falta se cuenta igual que lo que funciona. Nos guían cuatro principios. Elegimos problemas que importan. Trabajamos en el límite de lo que sabemos. Enseñamos el proceso, no solo el resultado. Y aprendemos con generosidad, porque nadie empieza sabiéndolo todo. Por cierto, el nombre une Galicia, de donde venimos, y Develop, lo que hacemos.",
+      "enfoques": [
+        { "frase": "Elegimos problemas que importan.", "ver": "principio-valor1" },
+        { "frase": "Trabajamos en el límite de lo que sabemos.", "ver": "principio-valor2" },
+        { "frase": "Enseñamos el proceso, no solo el resultado.", "ver": "principio-valor3" },
+        { "frase": "Y aprendemos con generosidad", "ver": "principio-valor4" }
+      ]
+    },
+    {
+      "seccion": "participa",
+      "es": "Para terminar, una pregunta: ¿creamos juntos? Galivelop crece con las personas que se suman. No pedimos experiencia: pedimos ganas de construir, de aprender y de hacerlo en equipo. Hay tres caminos. Puedes colaborar en un proyecto abierto, con código, arte, textos, pruebas o investigación. Puedes proponernos ese proyecto que parece imposible. O puedes venir a aprender, que el mejor sitio para hacerlo es un proyecto de verdad. Funciona así: nos escribes, hablamos para ver dónde encajas, empiezas con una tarea pequeña y, desde ahí, creces a tu ritmo. Si tienes un proyecto propio, algunos miembros del equipo aceptan encargos, cada uno por su cuenta: en su perfil ves su trabajo y cómo escribirle. Y si quieres conocernos antes, o solo lanzar una idea, te esperamos en Discord. Gracias por escuchar.",
+      "enfoques": [
+        { "frase": "Puedes colaborar en un proyecto abierto", "ver": "via-unirse" },
+        { "frase": "Puedes proponernos ese proyecto", "ver": "via-proponer" },
+        { "frase": "O puedes venir a aprender", "ver": "via-aprender" },
+        { "frase": "Funciona así:", "ver": "como-funciona" },
+        { "frase": "Si tienes un proyecto propio", "ver": "proyecto-propio" },
+        { "frase": "Y si quieres conocernos antes", "ver": "discord" }
+      ]
+    }
+  ]
+}

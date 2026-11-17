@@ -158,6 +158,39 @@ Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaro
 
 `src/rutas.test.ts` comprueba que cada ruta fija de `App.tsx` está en `FIJAS` y en `PAGINAS`.
 
+## Guiones de lectura
+
+Un guion por página de contenido, escrito para el oído, en `src/data/guiones/<página>.json` (`inicio`, el slug de
+cada ficha…); legales y 404 no llevan. Lo leerá la voz `lectora-es` (audio pregrabado) mientras la página baja y
+resalta cada sección: el lector flotante (`src/components/Lector.tsx`).
+
+- `narra`: la fecha de lo que cuenta (en una ficha, su `actualizado`). Si la página cambia, se revisa el guion y la fecha.
+- `trozos`: uno por sección, en orden; `seccion` es el `id` del elemento (`proyectos`, `resumen`, `avance`…) o, si no
+  tiene, un nombre fijo (`cabecera`, `vistazo`, `participar`). Cada uno lleva `es` (a mano); `gl` y `en`, traducidos.
+- `enfoques` (opcional, por trozo): en una sección más alta que la pantalla, o que recorre varios elementos (tarjetas,
+  apartados, hitos, campos), `[{ "frase": "<texto literal y único del `es` del trozo>", "ver": "<id o data-guion>" }]`.
+  Cuando el audio llega a esa frase, el lector centra ese elemento (si es más alto que la ventana, deja visible su
+  inicio) y lo contornea. El momento sale de la posición de la frase en el texto (`audio.duration` × posición / longitud),
+  así que no hay tiempos a mano y vale si se regraba. Los elementos llevan `data-guion` derivado de los datos
+  (`proyecto-<slug>`, `linea-<id>`, `hito-<n>`, `decision-<n>`, `paso-<n>`, `campo-<x>`; los apartados, su `ap-<id>`).
+  Un test comprueba que cada frase está una vez en su trozo y que cada `seccion` y `ver` existe en la página.
+- `audio`: idiomas con audio grabado (`"audio": ["es"]`); sin el campo, el guion no tiene audio. Solo con él aparece el
+  lector (botón flotante, solo en ese idioma) en su página; un test comprueba que existe el MP3 de cada trozo y que
+  ningún guion sin el campo tiene su carpeta de audio a medias. Al grabar un idioma nuevo, se añade aquí.
+- Las secciones sin `id` llevan `data-guion="<nombre>"` en la página (el lector busca primero el `id`); otro test
+  comprueba que cada `seccion` de inicio y tarkor existe en la página.
+- `notas`: pronunciación de los nombres y qué hace envejecer el guion.
+- **Audio:** un MP3 por trozo en `public/audio/<idioma>/<página>/<nn>-<seccion>.mp3` (`nn`, el orden del trozo desde
+  `01`), mono a 48 kbps. Sale de los WAV aprobados del generador de voces
+  (`~/.local/share/galivelop-voice/proyectos/portal/final/<idioma>/<página>/`), que no se suben:
+  `ffmpeg -i <nn>-<seccion>.wav -ac 1 -codec:a libmp3lame -b:a 48k <nn>-<seccion>.mp3`. Si cambia un trozo, se
+  regenera su audio.
+- **Al día con la página:** cuando `gw-portal` (también la tarea semanal) cambia una ficha o los proyectos del inicio,
+  reescribe los trozos de su guion que ya no sean verdad y apunta su «audio pendiente» en la bitácora; el audio lo graba
+  la persona. Una página o sección nueva la añade una sesión.
+- Para el oído: frases cortas, sin paréntesis, siglas ni símbolos (`d20`, `%`, `NPC`); números con letra cuando se
+  leen raro. Sin cifras que cambian cada semana: las novedades se invitan a leer, no se narran. Se respeta [«Mensaje»](#mensaje).
+
 ## Textos legales y pie
 
 - **Aviso legal, privacidad y términos** viven en `src/data/legal/<slug>.json` (es, gl y en), con su página en

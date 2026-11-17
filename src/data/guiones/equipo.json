@@ -1,0 +1,27 @@
+{
+  "pagina": "/equipo",
+  "narra": "2026-11-17",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP).",
+    "Nombres de personas: Álvaro García Graña, Raquel Comesaña Carrera. «toVeriAI» como «tu-veri-ei-ai». «Spring Boot» y «full stack» a la inglesa.",
+    "Si entra o sale un miembro, o cambia su rol o sus proyectos, se reescribe su trozo y el de «cabecera» o «unete»."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Quién hay detrás de Galivelop? Esta es la página del equipo: las personas que hacen el taller. Cada una con su camino, y todas con ganas de construir y aprender."
+    },
+    {
+      "seccion": "alvaro-garcia-grana",
+      "es": "Empezamos por Álvaro García Graña, fundador del taller. Es arquitecto de software e ingeniero de sistemas de inteligencia artificial, y le interesa sobre todo la infraestructura que funciona en local. Creó Tarkor, Galivelop-workflow y Galivelop IG, y forma parte del equipo de toVeriAI. Pulsa Ver perfil para conocer más de él."
+    },
+    {
+      "seccion": "raquel-c",
+      "es": "Raquel Comesaña Carrera es la fundadora de toVeriAI y desarrolla full stack. Llegó a la programación desde la Educación Social, y por eso piensa mucho en para quién se construye y en cuidar la comunicación del equipo. Su proyecto en el taller es toVeriAI, que ella llevó de la idea a producción. En su perfil tienes el detalle."
+    },
+    {
+      "seccion": "unete",
+      "es": "Y al final hay un hueco: ¿quieres aparecer aquí? Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar. Hay un botón que te lleva al formulario para unirte. Gracias por escuchar."
+    }
+  ]
+}

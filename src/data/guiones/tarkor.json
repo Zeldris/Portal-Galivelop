@@ -1,0 +1,82 @@
+{
+  "audio": ["es"],
+  "pagina": "/proyectos/tarkor",
+  "narra": "2026-11-15",
+  "notas": [
+    "Pronunciación: «Tarkor», «Gorhorn» y «Maktor» con acento en la última sílaba; «Berig» llana (BE-rig); «Helek Sirik» llanas; «Steam Deck» a la inglesa (estim dek).",
+    "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la fase y el siguiente hito, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
+    "Sin cifras que cambien a menudo (tests, porcentaje de avance); sí las del mundo (nueve facciones, 53 especies), que solo cambian con un hito."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Y si el mundo de un juego siguiera adelante aunque tú te detengas? Eso es Tarkor, un juego de rol narrativo. Es un juego por texto: escribes lo que haces y una inteligencia artificial, que funciona en tu propio equipo, hace de directora de juego. Todo ocurre en un mundo de bolsillo donde las facciones, la fauna y tu reino viven por su cuenta."
+    },
+    {
+      "seccion": "vistazo",
+      "es": "¿En qué punto está? Tarkor está en alpha. Ahora mismo, el hito cero punto tres, «Reino profundo», está en una ronda de pruebas jugando. El mundo ya tiene nueve facciones vivas, nueve clases con treinta y una especializaciones y cincuenta y tres especies de fauna. Y toda la inteligencia artificial funciona en tu equipo. Aún falta, y lo contamos tal cual: medir bien el rendimiento en la Steam Deck, cerrar el conflicto y poder hablar y comerciar con los habitantes. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+    },
+    {
+      "seccion": "resumen",
+      "es": "Se juega como en una mesa de rol. Escribes lo que hace tu personaje, por ejemplo: «sigo las huellas hacia el norte». El motor comprueba que la acción encaja con el mundo, tira los dados a la vista y fija el resultado. Después, un narrador lo cuenta con el tono del mundo. Mientras tanto, el mundo sigue: las facciones comercian, cazan y hacen la guerra, los rumores viajan de una región a otra y los personajes recuerdan lo que les hiciste. Juegas como Gorhorn, el último superviviente del Clan Maktor, en Berig, un continente sin humanos donde cada muerte deja cicatriz. Todo lo que pasa queda apuntado con su causa, y de ahí nacen las leyendas y las consecuencias que llegan días después. Tu reino crece generación tras generación, con súbditos que tienen nombre, familia y linaje. Y es privado por diseño: sin cuentas, sin telemetría y sin conexión durante la partida.",
+      "enfoques": [
+        { "frase": "Escribes lo que hace tu personaje", "ver": "paso-1" },
+        { "frase": "El motor comprueba", "ver": "paso-2" },
+        { "frase": "tira los dados", "ver": "paso-3" },
+        { "frase": "un narrador lo cuenta", "ver": "paso-4" },
+        { "frase": "Mientras tanto, el mundo sigue", "ver": "paso-5" },
+        { "frase": "Juegas como Gorhorn", "ver": "descripcion" },
+        { "frase": "Todo lo que pasa queda apuntado", "ver": "caracteristica-2" },
+        { "frase": "Tu reino crece", "ver": "caracteristica-4" },
+        { "frase": "Y es privado por diseño", "ver": "caracteristica-8" }
+      ]
+    },
+    {
+      "seccion": "galeria",
+      "es": "En la galería tienes capturas del juego y el arte del mundo. Es arte en desarrollo, y puede cambiar en la versión final."
+    },
+    {
+      "seccion": "afondo",
+      "es": "Si quieres entrar a fondo, el mundo se llama Helek Sirik. Es una fantasía épica y trágica, pero con base científica: todo tiene una causa física, y nada es magia sin mecanismo. Hoy se juega en las Llanuras del Viento Rojo, una estepa de arcilla roja con volcanes, costa y tormentas de arena magnética. El resto de Berig llegará región a región. En estos apartados conoces sus lugares, sus razas y sus facciones, los primeros personajes, las clases, el bestiario, la flora y los oficios, cómo crece tu reino y las preguntas más frecuentes.",
+      "enfoques": [
+        { "frase": "el mundo se llama Helek Sirik", "ver": "ap-mundo" },
+        { "frase": "Hoy se juega en las Llanuras", "ver": "ap-lugares" },
+        { "frase": "sus razas", "ver": "ap-razas" },
+        { "frase": "sus facciones", "ver": "ap-facciones" },
+        { "frase": "los primeros personajes", "ver": "ap-personajes" },
+        { "frase": "las clases", "ver": "ap-clases" },
+        { "frase": "el bestiario", "ver": "ap-bestiario" },
+        { "frase": "la flora", "ver": "ap-flora" },
+        { "frase": "cómo crece tu reino", "ver": "ap-reino" },
+        { "frase": "las preguntas más frecuentes", "ver": "ap-preguntas" }
+      ]
+    },
+    {
+      "seccion": "tecnica",
+      "es": "¿Y cómo está hecho? La decisión más importante es esta: el mundo funciona con reglas, y la inteligencia artificial solo narra. La economía, las facciones y las tiradas son sistemas que se pueden probar, así que el juego es justo y coherente. La inteligencia artificial cuenta lo que ya ha pasado, pero no decide los números. Además, el narrador funciona en tu equipo: sin pagar por partida y sin que tus partidas salgan de casa. Y ningún suceso sale de un temporizador: cada asalto, caravana o crisis nace del estado del mundo. Por el camino estamos aprendiendo a dar memoria al narrador sin saturarlo, y a que todo responda con fluidez incluso en una Steam Deck.",
+      "enfoques": [
+        { "frase": "el mundo funciona con reglas", "ver": "decision-2" },
+        { "frase": "Además, el narrador funciona en tu equipo", "ver": "decision-1" },
+        { "frase": "Y ningún suceso sale de un temporizador", "ver": "decision-3" },
+        { "frase": "Por el camino estamos aprendiendo", "ver": "aprendizajes" }
+      ]
+    },
+    {
+      "seccion": "avance",
+      "es": "En el avance ves el camino completo. Primero, terminar las Llanuras y el reino. Después, abrir Berig región a región: el Cristal Helado, la Ciénaga Troncal, el Margen Silencioso y la Meseta del Orden. La beta traerá el instalador público para Windows y Linux, con la Steam Deck como objetivo. Más adelante llegará Vaelira, el segundo continente, y la posibilidad de crear tu propio personaje. Debajo están las novedades, semana a semana.",
+      "enfoques": [
+        { "frase": "Primero, terminar las Llanuras", "ver": "hito-4" },
+        { "frase": "el Cristal Helado", "ver": "hito-5" },
+        { "frase": "la Ciénaga Troncal", "ver": "hito-6" },
+        { "frase": "el Margen Silencioso", "ver": "hito-7" },
+        { "frase": "La beta traerá", "ver": "hito-8" },
+        { "frase": "Más adelante llegará Vaelira", "ver": "hito-9" },
+        { "frase": "Debajo están las novedades", "ver": "novedades" }
+      ]
+    },
+    {
+      "seccion": "participar",
+      "es": "Tarkor está abierto a colaboración, y el código es público. Si quieres aportar con código, arte, textos o pruebas, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar."
+    }
+  ]
+}

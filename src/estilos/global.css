@@ -6089,3 +6089,91 @@ body:has(dialog[open]) {
     position: static;
   }
 }
+
+/* Lector de la página (src/components/Lector.tsx): botón flotante y barra fija abajo; resalta la sección que lee. */
+.lector-boton,
+.lector button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.lector-boton {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: var(--z-panel);
+  width: 52px;
+  height: 52px;
+  background: var(--celeste-intenso);
+  border-color: var(--celeste-intenso);
+  color: var(--sobre-intenso);
+  box-shadow: var(--sombra);
+}
+
+.lector {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: var(--z-panel);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: calc(100vw - 24px);
+  padding: 6px 8px;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+}
+
+.lector button {
+  width: 44px;
+  height: 44px;
+}
+
+.lector button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.lector-boton:focus-visible,
+.lector button:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
+}
+
+.lector-posicion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 6px;
+  font: var(--datos);
+  white-space: nowrap;
+}
+
+.guion-activo,
+.guion-enfoque {
+  scroll-margin-top: 96px;
+  scroll-margin-bottom: 96px;
+  outline: 3px solid var(--celeste-intenso);
+  outline-offset: -3px;
+  transition: outline-color var(--transicion);
+}
+
+/* El elemento que se está leyendo dentro de una sección alta: solo contorno, sin fondo que tape el texto. */
+.guion-enfoque {
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guion-activo,
+  .guion-enfoque {
+    transition: none;
+  }
+}

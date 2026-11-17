@@ -1,0 +1,72 @@
+{
+  "pagina": "/proyectos/toveriai",
+  "narra": "2026-11-15",
+  "notas": [
+    "Pronunciación: «toVeriAI» como «tu-veri-ei-ai»; «VeriAI» como «veri-ei-ai»; «NewsGuard» a la inglesa (niús-gard); «Ollama» como «o-la-ma»; «Premium» a la inglesa. El índice se llama IMI en la ficha, pero el guion dice solo «el índice».",
+    "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la fase y lo que está en curso, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
+    "Envejece cuando cambia la fase (análisis de capturas en pausa, versión en curso), los idiomas, el plan Premium o los proveedores de inteligencia artificial. Sin porcentajes de pesos ni cifras que cambian a menudo."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Y si una noticia no fuera ni verdadera ni falsa? Eso es toVeriAI, y parte de una idea: la verdad no es binaria. Es una plataforma web que analiza noticias, enlaces y capturas con inteligencia artificial. Y te devuelve un índice de credibilidad, de cero a cien, que explica cuánto puedes fiarte de lo que lees."
+    },
+    {
+      "seccion": "vistazo",
+      "es": "¿En qué punto está? toVeriAI ya está en producción, y puedes usarlo hoy en su web. Ahora mismo toca pulir: el móvil, los textos en los cinco idiomas, las cuentas y la accesibilidad. Y aún falta algo, y lo contamos tal cual: el análisis de capturas está en pausa mientras se arregla. Después llegará volver a analizarlas de forma estable y poner al día las herramientas sobre las que funciona la web. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+    },
+    {
+      "seccion": "resumen",
+      "es": "La desinformación no siempre es una mentira evidente. A veces es una cifra sin fuente, un tono alarmista o unos expertos que nadie identifica. Decir verdadero o falso se queda corto, y muchas veces solo genera más desconfianza. Por eso toVeriAI analiza el texto en siete dimensiones de contenido. Si le das un enlace, suma dos más sobre el medio. Marca sobre el propio texto los fragmentos problemáticos y cierra con un resumen que explica el resultado. La metodología parte de NewsGuard y se completa con criterios de dos referentes en verificación y transparencia periodística. Funciona así. Envías un texto o un enlace. La inteligencia artificial identifica qué tipo de texto es. Analiza cada dimensión. Y calcula el índice y lo explica. Hay uso gratuito sin cuenta, cuentas con historial y estadísticas, un feed público, cinco idiomas y un plan Premium en beta. Y en paralelo se entrena VeriAI, un modelo propio que aprende de cada análisis.",
+      "enfoques": [
+        { "frase": "analiza el texto en siete dimensiones", "ver": "caracteristica-1" },
+        { "frase": "Si le das un enlace", "ver": "caracteristica-3" },
+        { "frase": "Marca sobre el propio texto", "ver": "caracteristica-2" },
+        { "frase": "Envías un texto o un enlace", "ver": "paso-1" },
+        { "frase": "identifica qué tipo de texto es", "ver": "paso-2" },
+        { "frase": "Analiza cada dimensión", "ver": "paso-3" },
+        { "frase": "calcula el índice y lo explica", "ver": "paso-4" },
+        { "frase": "Hay uso gratuito sin cuenta", "ver": "caracteristica-5" },
+        { "frase": "Y en paralelo se entrena VeriAI", "ver": "caracteristica-6" }
+      ]
+    },
+    {
+      "seccion": "galeria",
+      "es": "En la galería tienes capturas de la web funcionando, para que veas cómo se ve un análisis antes de probarlo."
+    },
+    {
+      "seccion": "afondo",
+      "es": "Si quieres entrar a fondo, aquí conoces las dimensiones que mide el índice. Cada una pesa de forma distinta. Cuentan sobre todo la verificación de los hechos y la coherencia del texto. Después, las fuentes, el sesgo, el tono, el lenguaje y las cifras. Y con un enlace se suman la transparencia del medio y la autoría. Los pesos parten del marco de NewsGuard."
+    },
+    {
+      "seccion": "tecnica",
+      "es": "¿Y cómo está hecho? Una decisión manda: métricas, no veredictos. El índice no dice si algo es verdad o mentira. Explica qué falla y dónde, para que saques tus propias conclusiones. Otra decisión: varios proveedores de inteligencia artificial se alternan, con control de cuota, así que el servicio sigue funcionando aunque uno falle. Y VeriAI, el modelo propio, repite cada análisis en segundo plano. Las diferencias con la nube sirven para entrenar la siguiente versión. En la ficha técnica ves las herramientas de cada capa. Por el camino hemos aprendido a convertir criterios periodísticos en métricas que una máquina aplica y una persona entiende, y a diseñar para cinco idiomas desde el principio.",
+      "enfoques": [
+        { "frase": "Una decisión manda", "ver": "decision-1" },
+        { "frase": "Otra decisión", "ver": "decision-2" },
+        { "frase": "Y VeriAI, el modelo propio, repite", "ver": "decision-3" },
+        { "frase": "En la ficha técnica", "ver": "ficha" },
+        { "frase": "Por el camino hemos aprendido", "ver": "aprendizajes" }
+      ]
+    },
+    {
+      "seccion": "avance",
+      "es": "En el avance ves el camino. Ya están hechos el análisis de texto, la publicación, el análisis de enlaces, las cuentas y el feed, y dos rondas de mejoras de seguridad y de errores visibles. Ahora se pule la web. Lo que viene: volver a analizar capturas de forma estable, guardar menos datos para entrenar el modelo propio y revisar los proveedores. Debajo están las novedades, semana a semana, y el equipo.",
+      "enfoques": [
+        { "frase": "Ya están hechos el análisis de texto", "ver": "hito-1" },
+        { "frase": "la publicación", "ver": "hito-2" },
+        { "frase": "el análisis de enlaces", "ver": "hito-3" },
+        { "frase": "las cuentas y el feed", "ver": "hito-4" },
+        { "frase": "dos rondas de mejoras", "ver": "hito-5" },
+        { "frase": "Ahora se pule la web", "ver": "hito-7" },
+        { "frase": "guardar menos datos", "ver": "hito-8" },
+        { "frase": "revisar los proveedores", "ver": "hito-9" },
+        { "frase": "Debajo están las novedades", "ver": "novedades" }
+      ]
+    },
+    {
+      "seccion": "participar",
+      "es": "toVeriAI es un desarrollo propio, pero las propuestas y las ideas son bienvenidas. También si quieres sumarte a Galivelop en otros proyectos. Escríbenos y te contamos cómo. Gracias por escuchar."
+    }
+  ]
+}

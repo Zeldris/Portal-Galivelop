@@ -2,6 +2,7 @@ import { Suspense, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Cabecera } from './components/Cabecera';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { LectorCarga } from './components/LectorCarga';
 import { Pie } from './components/Pie';
 import { buscarLegal } from './data/legal';
 import {
@@ -90,6 +91,7 @@ export function App() {
         </ErrorBoundary>
       </main>
       <Pie />
+      <LectorCarga />
     </>
   );
 }
