@@ -1,0 +1,43 @@
+{
+  "pagina": "/proyectos/galivelop-workflow",
+  "narra": "2026-11-15",
+  "notas": [
+    "Pronunciación: «Galivelop» como ga-li-ve-LOP; «workflow» a la inglesa (uórk-flou); «Matt Pocock» a la inglesa (mat po-cok); «Dex Horthy» a la inglesa; «Claude» a la francesa (clod); «GitHub» a la inglesa (guit-jab); «Management Center» a la inglesa (ma-nach-ment sen-ter). Los nombres de skills y archivos (gw-selector, AGENTS.md, bitácora) no se leen: se describen con palabras.",
+    "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión en curso y la siguiente, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
+    "Envejece con cada versión publicada (hoy la cero punto siete, próxima la cero punto ocho) y con la hoja de ruta. Sin número de tests ni de pruebas."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Qué pasa con el trabajo de una sesión de inteligencia artificial cuando se acaba sin avisar? Esa pregunta está detrás de Galivelop-workflow, un flujo de trabajo para programar con agentes de inteligencia artificial. Es nuestra forma de trabajar, empaquetada para que la use cualquier proyecto. Su idea cabe en una frase: lo que no está subido no existe."
+    },
+    {
+      "seccion": "vistazo",
+      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto siete. La próxima, la cero punto ocho, se llama «Front y otros agentes». Falta mucho todavía, y lo decimos claro: un instalador que lo ponga sin inteligencia artificial, un panel para ver y configurar los proyectos, y la versión uno punto cero. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+    },
+    {
+      "seccion": "resumen",
+      "es": "Trabajar semanas con un agente tiene un problema poco visible. Cada sesión puede acabarse en cualquier momento, por falta de tokens, por un contenedor reciclado o por un relevo de cuenta. Y lo que no quedó escrito se pierde. Además, cada proyecto acaba inventando sus reglas y copiándolas a mano. Este flujo saca el método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona. Lo deja en un repositorio con versiones: reglas, skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos. Se trabaja así. La sesión retoma leyendo la bitácora y sabe por dónde iba. Elige qué skill y qué modelo pide la tarea. Piensa antes, si hace falta. Trabaja, reparte lo mecánico a subagentes y sube en cada punto estable. Antes de publicar, revisa el código y mejora el entorno, y solo con la confirmación de la persona se publica. Y lo aprendido vuelve al flujo. Hoy un agente aplica el flujo leyendo el repositorio. Más adelante lo hará un instalador, sin inteligencia artificial. El repositorio es público y está abierto a colaborar."
+    },
+    {
+      "seccion": "galeria",
+      "es": "En la galería tienes tres esquemas: el flujo de una tarea, la arquitectura en seis capas y el ciclo de versiones."
+    },
+    {
+      "seccion": "afondo",
+      "es": "Si quieres entrar a fondo, hay varios apartados. Qué se impone y qué se aconseja: un gancho se ejecuta siempre, y una instrucción el agente puede saltársela. Qué fallo evita cada pieza. Las skills y los scripts propios. Las skills de Matt Pocock, que usamos con su licencia y de las que hemos aprendido mucho. Cómo se configura cada proyecto. Cuándo encaja el flujo y qué cuesta, que también lo contamos. Y las versiones publicadas."
+    },
+    {
+      "seccion": "tecnica",
+      "es": "¿Y cómo está hecho? Las reglas que se pueden comprobar las hace cumplir un script, no la opinión de un agente. Las skills se quedan con lo que pide criterio. Las reglas viven en un estándar abierto que entiende cualquier agente, no solo uno. Y el flujo se copia a cada proyecto con su versión, para que funcione en cualquier entorno, también en la nube. Quince de sus skills son de Matt Pocock, con su licencia y su mención. Por el camino hemos aprendido que el estado va en archivos, no en la conversación. Que los ganchos deben fallar cerrados. Y que hay que medir dónde se gastan los tokens antes de recortar, porque un ahorro que empeora el resultado no es ahorro."
+    },
+    {
+      "seccion": "avance",
+      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto y las preguntas. Lo que falta: la versión cero punto ocho, con las preguntas a la persona más claras, un modo prudente y pruebas de interfaz. Luego una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con el Management Center, un panel local para consultar y configurar. Debajo están las novedades, semana a semana."
+    },
+    {
+      "seccion": "participar",
+      "es": "Galivelop-workflow está abierto a colaboración, y el código es público. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar."
+    }
+  ]
+}
