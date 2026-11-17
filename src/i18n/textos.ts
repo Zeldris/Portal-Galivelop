@@ -220,7 +220,7 @@ const es = {
   'equipo.unete.texto':
     'Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar.',
   'equipo.ver': 'Ver perfil',
-  'equipo.verPerfilDe': 'Ver el perfil de {nombre}',
+  'equipo.verPerfilDe': 'Ver perfil: {nombre}',
   'equipo.trayectoria': 'Trayectoria',
   'equipo.formacion': 'Formación',
   'equipo.tecnologias': 'Tecnologías',
@@ -548,7 +548,7 @@ const gl: Record<Clave, string> = {
   'equipo.unete.texto':
     'Quen se suma ao obradoiro pasa a formar parte do equipo. Cóntanos quen es e en que che gustaría participar.',
   'equipo.ver': 'Ver perfil',
-  'equipo.verPerfilDe': 'Ver o perfil de {nombre}',
+  'equipo.verPerfilDe': 'Ver perfil: {nombre}',
   'equipo.trayectoria': 'Traxectoria',
   'equipo.formacion': 'Formación',
   'equipo.tecnologias': 'Tecnoloxías',
@@ -875,7 +875,7 @@ const en: Record<Clave, string> = {
   'equipo.unete.texto':
     'Everyone who joins the workshop becomes part of the team. Tell us who you are and what you would like to work on.',
   'equipo.ver': 'View profile',
-  'equipo.verPerfilDe': 'View {nombre}’s profile',
+  'equipo.verPerfilDe': 'View profile: {nombre}',
   'equipo.trayectoria': 'Experience',
   'equipo.formacion': 'Education',
   'equipo.tecnologias': 'Technologies',
