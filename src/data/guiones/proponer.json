@@ -1,0 +1,18 @@
+{
+  "pagina": "/participa/proponer",
+  "narra": "2026-11-17",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP).",
+    "Si cambian los campos del formulario o las fases que se ofrecen, se reescribe el trozo «formulario»."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Tienes una idea que parece demasiado grande? Esta es la página para proponer un proyecto a Galivelop. Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos."
+    },
+    {
+      "seccion": "formulario",
+      "es": "Te pedimos tu nombre y tu correo, el nombre del proyecto y de qué trata: qué es, qué problema resuelve o qué quieres crear. También nos dices en qué punto está: una idea, un diseño, un prototipo o algo ya en marcha. Si quieres, añade qué papel te gustaría tener y un enlace, si lo hay. Esos dos son opcionales. Cuando pulses el botón, no se envía nada a ningún servidor: se abre tu aplicación de correo con el mensaje preparado. Tú lo revisas y lo envías. Si no se abre, puedes copiar el mensaje y mandarlo a mano. Gracias por escuchar."
+    }
+  ]
+}
