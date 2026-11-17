@@ -131,3 +131,4 @@
 {"agent":"main","branch":"ccr-47f8fddd-o5ek6p","cacheRead":308710,"cacheWrite":1800,"date":"2026-11-17","input":4,"model":"claude-opus-5-5","output":621,"recorded":"2026-11-17T15:50:54Z","refs":[],"session":"a81b697c"}
 {"agent":"gw-worker","branch":"ccr-b2d381ed-e10ez8","cacheRead":158789,"cacheWrite":28061,"date":"2026-11-17","input":14,"model":"claude-sonnet-5-5","output":9104,"recorded":"2026-11-17T21:40:24Z","refs":[],"session":"afeb7fa4"}
 {"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":2168994,"cacheWrite":56247,"date":"2026-11-17","input":42,"model":"claude-opus-5-5","output":10316,"recorded":"2026-11-17T21:40:24Z","refs":[],"session":"afeb7fa4"}
+{"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":432758,"cacheWrite":28010,"date":"2026-11-17","input":10,"model":"claude-opus-5-5","output":2623,"recorded":"2026-11-17T21:44:55Z","refs":[],"session":"65d5b8c2"}

@@ -56,6 +56,14 @@ describe('audio de los guiones', () => {
     expect(mal).toEqual([]);
   });
 
+  it('el gallego no lleva `¿` inicial (decisión de la persona, 2026-11-17)', () => {
+    const mal: string[] = [];
+    for (const clave of claves)
+      for (const t of leer(clave).trozos)
+        if (t.gl?.includes('¿')) mal.push(`${clave}/${t.seccion}`);
+    expect(mal).toEqual([]);
+  });
+
   it('cada `frase` de un enfoque aparece una sola vez en el `es` de su trozo', () => {
     const mal: string[] = [];
     for (const clave of claves)
