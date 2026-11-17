@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-17 (arreglos de las auditorías y chaflán, `ccr-8e0862c2-niq1xt`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, 6eb3739, 2026-11-17) |
 | **Tarea en curso** | Arreglos de las auditorías del 2026-11-17 y chaflán hechos; fase 1 hecha (`/code-review` del bloque: 0 graves, 6 medios, 9 leves; 8 arreglados en 0caa5b7, el resto en `docs/records/pending.md`) |
-| **Siguiente paso** | La persona decide la retro `docs/records/retro-2026-11-17-auditorias.md` (P1-P3, presentada el 2026-11-17; la persona: «vamos a main»); con su decisión en el `**Estado:**`, se aplica lo aprobado, `reviewed.sh` y subida a `main`. Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
+| **Siguiente paso** | Tras la subida a `main`: barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3; entrada en `pending.md`). Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
 | **En `main`** | **Vistas previas en redes del portal, workflow e IG sobre las placas 24 del generador** (4c4f082, 2026-11-17, la persona: «adelante para ir a main»; CI y publicación en verde). Antes, la ficha de Galivelop-workflow contrastada con su repo (b17058f). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 227/227 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -43,7 +43,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (23 entradas); se añade y se quita allí.
+Lo pendiente está en [`docs/records/pending.md`](records/pending.md); se añade y se quita allí (sin cifra: retro del 2026-11-17, P2).
 
 ## Comprobar el estado
 

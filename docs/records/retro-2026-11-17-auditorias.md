@@ -1,6 +1,6 @@
 # Retro: auditorías del 2026-11-17 y sus arreglos (2026-11-17)
 
-**Estado:** pendiente de la persona.
+**Estado:** aprobada por la persona (2026-11-17, «Apruebo todo»): P2 aplicada; P3 decidida como siguiente tarea (entrada en `pending.md`); P1 decidida para el flujo, en «For Galivelop-workflow».
 
 Lo revisado: los 18 commits de `ccr-8e0862c2-niq1xt` que no están en `main` (af4f431..221c6c1: cuatro auditorías
 como scripts, informe, chaflán, impresión, «Ver perfil», cabecera y pie estáticos, JS inicial 538 → 183 kB, vite
