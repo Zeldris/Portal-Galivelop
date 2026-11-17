@@ -6162,10 +6162,7 @@ body:has(dialog[open]) {
   scroll-margin-bottom: 96px;
   outline: 3px solid var(--celeste-intenso);
   outline-offset: -3px;
-  background-color: var(--superficie-2);
-  transition:
-    outline-color var(--transicion),
-    background-color var(--transicion);
+  transition: outline-color var(--transicion);
 }
 
 @media (prefers-reduced-motion: reduce) {
