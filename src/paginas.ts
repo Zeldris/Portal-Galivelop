@@ -2,9 +2,10 @@ import { createElement, use, type ComponentType } from 'react';
 import { cargarFicha } from './data/proyectos';
 import { leerAncla } from './utils/ancla';
 
-// Todas las páginas menos la portada van en su propio chunk. Los import() viven aquí, en un mapa compartido, para que
+// Todas las páginas (la portada incluida) van en su propio chunk. Los import() viven aquí, en un mapa compartido, para que
 // el punto de entrada pueda esperarlos antes del primer render (src/main.tsx) y la página reutilice la misma carga.
 const CARGADORES = {
+  Inicio: () => import('./pages/Inicio').then((m) => m.Inicio),
   Equipo: () => import('./pages/Equipo').then((m) => m.Equipo),
   Legal: () => import('./pages/Legal').then((m) => m.Legal),
   Miembro: () => import('./pages/Miembro').then((m) => m.Miembro),
@@ -72,6 +73,7 @@ function perezosa<N extends NombrePagina>(nombre: N) {
   return Pagina as unknown as ComponentType<ComponenteDe<N>>;
 }
 
+export const Inicio = perezosa('Inicio');
 export const Equipo = perezosa('Equipo');
 export const Legal = perezosa('Legal');
 export const Miembro = perezosa('Miembro');
@@ -109,11 +111,11 @@ const PAGINA_DE_PRIMER_SEGMENTO: Record<string, NombrePagina> = {
   terminos: 'Legal',
 };
 
-/** Página (si no es la portada) que toca para una ruta; refleja las `<Route>` de src/App.tsx. */
-export function paginaDeRuta(pathname: string): NombrePagina | undefined {
+/** Página que toca para una ruta; refleja las `<Route>` de src/App.tsx. */
+export function paginaDeRuta(pathname: string): NombrePagina {
   const partes = partesDeRuta(pathname);
   const [primera, segunda, ...mas] = partes;
-  if (partes.length === 0) return undefined;
+  if (partes.length === 0) return 'Inicio';
   if (primera === 'proyectos' && segunda && mas.length === 0) return 'Proyecto';
   if (primera === 'equipo' && segunda && mas.length === 0) return 'Miembro';
   if (primera === 'participa' && mas.length === 0) {
@@ -133,8 +135,7 @@ export function paginaDeRuta(pathname: string): NombrePagina | undefined {
  */
 export async function precargarRuta(pathname: string): Promise<void> {
   const pagina = paginaDeRuta(pathname);
-  const esperas: Promise<unknown>[] = [];
-  if (pagina) esperas.push(cargarPagina(pagina));
+  const esperas: Promise<unknown>[] = [cargarPagina(pagina)];
   if (pagina === 'Proyecto') esperas.push(cargarFicha(slugDeRuta(pathname)));
   await Promise.allSettled(esperas);
 }

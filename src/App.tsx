@@ -1,4 +1,4 @@
-import { Suspense, use, useEffect, useRef, type ComponentType } from 'react';
+import { Suspense, useEffect, useRef } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Cabecera } from './components/Cabecera';
 import { ErrorBoundary } from './components/ErrorBoundary';
@@ -6,6 +6,7 @@ import { Pie } from './components/Pie';
 import { buscarLegal } from './data/legal';
 import {
   Equipo,
+  Inicio,
   Legal,
   Miembro,
   Muro,
@@ -18,20 +19,6 @@ import {
 } from './paginas';
 import { leerAncla } from './utils/ancla';
 import { debeEnfocarContenido } from './utils/interaccion';
-
-// La portada también va en su propio trozo: arrastra los iconos de la marca (unos 230 kB de SVG) que las demás páginas
-// de texto no necesitan. Como en src/paginas.ts, el punto de entrada la espera antes del primer render (src/main.tsx) y,
-// ya cargada, se pinta sin suspender.
-let inicioCargado: ComponentType | undefined;
-let inicioPromesa: Promise<ComponentType> | undefined;
-export function cargarInicio(): Promise<ComponentType> {
-  inicioPromesa ??= import('./pages/Inicio').then((m) => (inicioCargado = m.Inicio));
-  return inicioPromesa;
-}
-function Inicio() {
-  const Pagina = inicioCargado ?? use(cargarInicio());
-  return <Pagina />;
-}
 
 /** Al cambiar de página, sube arriba y lleva el foco al contenido; si la ruta trae #ancla, baja hasta ella. */
 function Desplazamiento() {

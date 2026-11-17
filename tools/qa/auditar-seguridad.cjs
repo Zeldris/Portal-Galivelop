@@ -189,8 +189,13 @@ async function auditarNavegador() {
   }
   let servidor = null;
   if (!process.env.BASE && (await puertoLibre(BASE))) {
-    servidor = spawn('npx', ['vite', 'preview', '--port', '4176', '--strictPort'], { cwd: RAIZ, stdio: 'ignore' });
+    servidor = spawn('npx', ['vite', 'preview', '--port', '4176', '--strictPort'], { cwd: RAIZ, stdio: 'ignore', detached: true });
     for (let i = 0; i < 60 && (await puertoLibre(BASE)); i++) await new Promise((r) => setTimeout(r, 500));
+    if (await puertoLibre(BASE)) {
+      pararServidor(servidor);
+      console.error('auditar-seguridad: vite preview did not start on port 4176');
+      process.exit(2);
+    }
   }
   const propio = new URL(BASE).origin;
   const terceros = new Map();
@@ -244,7 +249,7 @@ async function auditarNavegador() {
     }
   } finally {
     await navegador.close();
-    if (servidor) servidor.kill('SIGTERM');
+    if (servidor) pararServidor(servidor);
   }
   info.push(`Páginas cargadas del sitemap: ${paginas.length}`);
   for (const [k, pags] of terceros) {
@@ -259,6 +264,14 @@ async function auditarNavegador() {
   for (const [k, v] of claves) {
     info.push(`Almacenamiento: ${k} = ${v}`);
     if (personal.test(v)) falla(`posible dato personal en ${k}: ${v}`);
+  }
+}
+
+function pararServidor(hijo) {
+  try {
+    process.kill(-hijo.pid);
+  } catch {
+    // Ya había terminado.
   }
 }
 

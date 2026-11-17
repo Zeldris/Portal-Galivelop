@@ -75,7 +75,8 @@ const masReciente = (...fechas) => fechas.filter(Boolean).sort().at(-1);
 // Textos legales (src/data/legal/): su página estática lleva el texto entero, también sin JS.
 const legales = readdirSync('src/data/legal')
   .filter((f) => f.endsWith('.json'))
-  .map((f) => JSON.parse(readFileSync(`src/data/legal/${f}`, 'utf8')));
+  .map((f) => JSON.parse(readFileSync(`src/data/legal/${f}`, 'utf8')))
+  .sort((a, b) => a.orden - b.orden); // como el Pie de React (src/data/legal.ts)
 
 // En el mismo orden que src/data/proyectos.ts: el último añadido (mayor `orden`), el primero.
 const proyectos = readdirSync('src/data/proyectos')
@@ -264,6 +265,7 @@ const ICONO = (tamano, trazos) =>
 const ICONOS = {
   chevron: ICONO(15, '<path d="m6 9 6 6 6-6"/>'),
   luna: ICONO(18, '<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>'),
+  sol: ICONO(18, '<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>'),
   menu: ICONO(18, '<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>'),
   correo: ICONO(18, '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>'),
 };
@@ -291,7 +293,9 @@ function cabecera(i, ruta) {
     + enlace(hrefDe(i, 'equipo'), T(i, 'nav.equipo'))
     + enlace(`${hrefDe(i, '')}#participa`, T(i, 'nav.contacto'))
     + `</div></nav><div class="cabecera-ajustes"><div class="idiomas" role="group" aria-label="${esc(T(i, 'idioma.etiqueta'))}">${idiomas}</div>`
-    + `<button type="button" class="boton-icono" aria-label="${esc(T(i, 'tema.oscuro'))}">${ICONOS.luna}</button>`
+    // Los dos estados del botón; el CSS de index.html muestra el que toca según html[data-tema] (lo fija el script inline).
+    + `<button type="button" class="boton-icono tema-estatico tema-estatico-oscuro" aria-label="${esc(T(i, 'tema.oscuro'))}">${ICONOS.luna}</button>`
+    + `<button type="button" class="boton-icono tema-estatico tema-estatico-claro" aria-label="${esc(T(i, 'tema.claro'))}">${ICONOS.sol}</button>`
     + `<button type="button" class="boton-icono boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="${esc(T(i, 'nav.menu'))}">${ICONOS.menu}</button></div></div></header>`;
 }
 

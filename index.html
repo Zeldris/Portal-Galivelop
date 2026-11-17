@@ -47,6 +47,10 @@
           visibility: visible;
         }
       }
+      html[data-tema='oscuro'] .tema-estatico-oscuro,
+      html:not([data-tema='oscuro']) .tema-estatico-claro {
+        display: none;
+      }
       html.js [data-estatico] {
         visibility: hidden;
         animation: gv-revelar 0s 6s forwards;
