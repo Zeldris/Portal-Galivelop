@@ -36,7 +36,14 @@
     "gl": "En produción · Análise de capturas en pausa",
     "en": "Live · Screenshot analysis paused"
   },
-  "etiquetas": ["IA", "React", "Spring Boot", "Java", "MySQL", "Ollama"],
+  "etiquetas": [
+    "IA",
+    "React",
+    "Spring Boot",
+    "Java",
+    "MySQL",
+    "Ollama"
+  ],
   "portada": {
     "src": "proyectos/toveriai/portada.webp",
     "mini": "proyectos/toveriai/portada-mini.webp",
@@ -194,7 +201,11 @@
       "en": "toVeriAI is live at toveriai.com: five languages, free use without an account, accounts with history and statistics, and a Premium plan in beta. Alongside it, VeriAI is being trained: an in-house model that learns from every analysis."
     }
   ],
-  "lineas": ["informacion", "ia-local", "producto"],
+  "lineas": [
+    "informacion",
+    "ia-local",
+    "producto"
+  ],
   "aprendizajes": [
     {
       "es": "Convertir criterios periodísticos en métricas que una IA puede aplicar y una persona puede entender.",
@@ -517,7 +528,9 @@
         "gl": "Datos",
         "en": "Data"
       },
-      "tecnologias": ["MySQL 8 · TiDB Cloud"]
+      "tecnologias": [
+        "MySQL 8 · TiDB Cloud"
+      ]
     },
     {
       "capa": {
@@ -545,7 +558,11 @@
         "gl": "Despregamento",
         "en": "Deployment"
       },
-      "tecnologias": ["Docker", "Render (API)", "Vercel (web)"]
+      "tecnologias": [
+        "Docker",
+        "Render (API)",
+        "Vercel (web)"
+      ]
     },
     {
       "capa": {

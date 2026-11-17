@@ -13,7 +13,12 @@
       "gl": "Desenvolvedor full stack desde 2017 e, desde 2023, sénior en Orienteed. Fundou Galivelop para darlles forma a proxectos ambiciosos e abrilos a quen queira aprender e construír: creou Tarkor, Galivelop-workflow e Galivelop IG, e forma parte do equipo de toVeriAI. Móveno a aprendizaxe continua e adaptarse ao que cambia, hoxe tamén coa IA no día a día do desenvolvemento.",
       "en": "Full-stack developer since 2017 and, since 2023, senior developer at Orienteed. He founded Galivelop to shape ambitious projects and open them to anyone who wants to learn and build: he created Tarkor, Galivelop-workflow and Galivelop IG, and is part of the toVeriAI team. He is driven by continuous learning and by adapting to change, now also with AI in everyday development."
     },
-    "proyectos": ["tarkor", "toveriai", "galivelop-workflow", "galivelop-image-generator"],
+    "proyectos": [
+      "tarkor",
+      "toveriai",
+      "galivelop-workflow",
+      "galivelop-image-generator"
+    ],
     "papeles": {
       "tarkor": "creo",
       "toveriai": "equipo",
@@ -50,7 +55,13 @@
         "gl": "Arquitecto de software e sistemas de IA locais; full stack desde 2017",
         "en": "Software and local AI systems architect; full stack since 2017"
       },
-      "destacadas": ["Claude Code", "Ollama", "Python", "Java", "Docker"],
+      "destacadas": [
+        "Claude Code",
+        "Ollama",
+        "Python",
+        "Java",
+        "Docker"
+      ],
       "ubicacion": {
         "es": "A Coruña, Galicia",
         "gl": "A Coruña, Galicia",
@@ -65,8 +76,16 @@
           },
           "lugar": "Orienteed",
           "desde": "2023-02",
-          "clientes": ["Luxottica", "Ezpeleta", "PLADUR", "Mayoral"],
-          "negocio": ["B2C", "B2B"]
+          "clientes": [
+            "Luxottica",
+            "Ezpeleta",
+            "PLADUR",
+            "Mayoral"
+          ],
+          "negocio": [
+            "B2C",
+            "B2B"
+          ]
         },
         {
           "titulo": {
@@ -87,8 +106,12 @@
           "lugar": "Plexus Tech",
           "desde": "2020-03",
           "hasta": "2021-03",
-          "clientes": ["Luckia"],
-          "negocio": ["B2C"]
+          "clientes": [
+            "Luckia"
+          ],
+          "negocio": [
+            "B2C"
+          ]
         },
         {
           "titulo": {
@@ -99,8 +122,13 @@
           "lugar": "Servicio Móvil",
           "desde": "2018-06",
           "hasta": "2020-03",
-          "clientes": ["Inditex", "Sergas"],
-          "negocio": ["B2C"]
+          "clientes": [
+            "Inditex",
+            "Sergas"
+          ],
+          "negocio": [
+            "B2C"
+          ]
         },
         {
           "titulo": {
@@ -111,7 +139,9 @@
           "lugar": "Grupo ALUMAN",
           "desde": "2017-06",
           "hasta": "2017-09",
-          "negocio": ["B2B"]
+          "negocio": [
+            "B2B"
+          ]
         }
       ],
       "formacion": [
@@ -185,7 +215,14 @@
             "gl": "Bases de datos",
             "en": "Databases"
           },
-          "lista": ["PostgreSQL", "MySQL", "Oracle", "SQL Server", "MongoDB", "SQL"]
+          "lista": [
+            "PostgreSQL",
+            "MySQL",
+            "Oracle",
+            "SQL Server",
+            "MongoDB",
+            "SQL"
+          ]
         },
         {
           "grupo": {
@@ -193,7 +230,11 @@
             "gl": "IA no desenvolvemento",
             "en": "AI in development"
           },
-          "lista": ["Claude Code", "OpenCode", "Ollama"]
+          "lista": [
+            "Claude Code",
+            "OpenCode",
+            "Ollama"
+          ]
         },
         {
           "grupo": {
@@ -201,7 +242,12 @@
             "gl": "Ferramentas",
             "en": "Tooling"
           },
-          "lista": ["Git", "Docker", "Linux", "Microsoft 365"]
+          "lista": [
+            "Git",
+            "Docker",
+            "Linux",
+            "Microsoft 365"
+          ]
         }
       ],
       "idiomas": [
@@ -283,7 +329,9 @@
       "gl": "Desenvolvedora full stack con Java, Spring Boot e React. Chegou á programación desde a Educación Social, e de aí vénlle querer entender para quen constrúe e coidar a comunicación co equipo. Fundou toVeriAI, a plataforma que analiza a credibilidade das novas con intelixencia artificial, e levouna da idea á produción: tests desde o principio, seguridade con Spring Security e JWT, e decisións con datos, como escoller os provedores de IA probándoos con novas falsas.",
       "en": "Full-stack developer working with Java, Spring Boot and React. Came to programming from social education, which shows in a wish to understand who the software is for and to communicate well with the team. Founded toVeriAI, the platform that analyses the credibility of news with artificial intelligence, and took it from idea to production: tests from day one, security with Spring Security and JWT, and data-driven decisions, such as choosing AI providers by testing them against fake news."
     },
-    "proyectos": ["toveriai"],
+    "proyectos": [
+      "toveriai"
+    ],
     "papeles": {
       "toveriai": "creo"
     },
@@ -320,7 +368,13 @@
         "gl": "Full stack con Java, Spring Boot e React",
         "en": "Full stack with Java, Spring Boot and React"
       },
-      "destacadas": ["Java", "Spring Boot", "React", "MySQL", "Docker"],
+      "destacadas": [
+        "Java",
+        "Spring Boot",
+        "React",
+        "MySQL",
+        "Docker"
+      ],
       "ubicacion": {
         "es": "A Coruña, Galicia",
         "gl": "A Coruña, Galicia",
@@ -341,7 +395,9 @@
             "gl": "No equipo de IBM i que moderniza aplicacións de xestión: servizos REST en RPG con SQL embebido sobre DB2 que devolven JSON a React, e pantallas de terminal pasadas a React.",
             "en": "On the IBM i team modernising business applications: REST services in RPG with embedded SQL on DB2 that return JSON to React, and green-screen terminals moved to React."
           },
-          "negocio": ["B2B"]
+          "negocio": [
+            "B2B"
+          ]
         },
         {
           "titulo": {
@@ -358,7 +414,9 @@
             "gl": "Analizador da credibilidade das novas, con React e Tailwind, Spring Boot e un índice propio, o IMI, para combater a desinformación.",
             "en": "A news-credibility analyser built with React and Tailwind, Spring Boot and its own index, the IMI, to fight disinformation."
           },
-          "negocio": ["B2C"]
+          "negocio": [
+            "B2C"
+          ]
         },
         {
           "titulo": {
@@ -390,7 +448,9 @@
             "gl": "Aplicacións de xestión en IBM i (AS/400) con RPG clásico e libre: lóxica de negocio e acceso a datos.",
             "en": "Business applications on IBM i (AS/400) in classic and free-format RPG: business logic and data access."
           },
-          "negocio": ["B2B"]
+          "negocio": [
+            "B2B"
+          ]
         }
       ],
       "formacion": [
@@ -481,7 +541,12 @@
             "gl": "Bases de datos",
             "en": "Databases"
           },
-          "lista": ["MySQL", "Oracle", "DB2", "SQL"]
+          "lista": [
+            "MySQL",
+            "Oracle",
+            "DB2",
+            "SQL"
+          ]
         },
         {
           "grupo": {
@@ -489,7 +554,11 @@
             "gl": "Probas",
             "en": "Testing"
           },
-          "lista": ["JUnit", "Mockito", "Vitest"]
+          "lista": [
+            "JUnit",
+            "Mockito",
+            "Vitest"
+          ]
         },
         {
           "grupo": {
@@ -497,7 +566,10 @@
             "gl": "Intelixencia artificial",
             "en": "Artificial intelligence"
           },
-          "lista": ["Ollama", "Qwen"]
+          "lista": [
+            "Ollama",
+            "Qwen"
+          ]
         },
         {
           "grupo": {
@@ -505,7 +577,15 @@
             "gl": "Ferramentas",
             "en": "Tooling"
           },
-          "lista": ["Git", "GitHub", "Docker", "Linux", "Cloudflare", "Vercel", "Microsoft 365"]
+          "lista": [
+            "Git",
+            "GitHub",
+            "Docker",
+            "Linux",
+            "Cloudflare",
+            "Vercel",
+            "Microsoft 365"
+          ]
         }
       ],
       "idiomas": [

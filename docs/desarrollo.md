@@ -174,12 +174,13 @@ resalta cada sección: el lector flotante (`src/components/Lector.tsx`).
   la cabecera, la barra de grupos de la ficha ni la barra del lector: centrado si cabe, su inicio si no, y sin mover
   la vista si ya se ve entero (así no tiembla en móvil al pasar de una tarjeta a la de al lado). El momento sale de la posición de la frase en el texto (`audio.duration` × posición / longitud),
   así que no hay tiempos a mano y vale si se regraba. Los elementos llevan `data-guion` derivado de los datos
-  (`proyecto-<slug>`, `producto-<slug>`, `linea-<id>`, `hito-<n>`, `decision-<n>`, `paso-<n>`, `campo-<x>`; los apartados, su
+  (`proyecto-<slug>`, `producto-<slug>`, `linea-<id>`, `hito-<versión>-<nombre>` y `caracteristica-<título>` (slug del castellano, `anclaGuion`), `decision-<n>`, `paso-<n>`, `campo-<x>`; los apartados, su
   `ap-<id>`).
   Un test comprueba que cada frase está una vez en su trozo y que cada `seccion` y `ver` existe en la página.
-- `audio`: idiomas con audio grabado (`"audio": ["es"]`); sin el campo, el guion no tiene audio. Solo con él aparece el
+- `audio`: idiomas con audio grabado (`"audio": ["es"]`); obligatorio, `[]` si el guion no tiene audio (el build lo
+  pide: `LectorCarga` lee solo este campo de cada guion). Solo con un idioma listado aparece el
   lector (botón flotante, solo en ese idioma) en su página; un test comprueba que existe el MP3 de cada trozo y que
-  ningún guion sin el campo tiene su carpeta de audio a medias. Al grabar un idioma nuevo, se añade aquí.
+  ningún guion con `[]` tiene su carpeta de audio a medias. Al grabar un idioma nuevo, se añade aquí.
 - Las secciones sin `id` llevan `data-guion="<nombre>"` en la página (el lector busca primero el `id`); otro test
   comprueba que cada `seccion` de inicio y tarkor existe en la página.
 - `notas`: pronunciación de los nombres y qué hace envejecer el guion.
