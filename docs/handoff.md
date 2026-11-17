@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-17 (guiones en gallego e inglés, `ccr-b2d381ed-e10ez8`, desde `claude/siguiente-fy7bji` 6dd7795) |
+| **Actualizado** | 2026-11-17 (audio `es` de siete guiones más, `claude/audio-guiones-es` desde `main` 5fcad8b) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-b2d381ed-e10ez8` (sigue a `claude/siguiente-fy7bji`, 6dd7795) |
 | **Tarea en curso** | **Guiones en gallego e inglés** (la persona, 2026-11-17: «generar los guiones en gallego e inglés»): los once guiones llevan `gl` y `en` en cada trozo; test `src/data/guiones.test.ts` en verde; su código (tipo `Trozo` y test, 20 líneas) revisado en la sesión, sin hallazgos. Términos unificados con la web: «What's new section», «Tech stack section», «Deep kingdom» y «Red Wind Plains» en inglés, «Thanks for listening.» en todos los cierres. Sin `¿` inicial en gallego (la persona, 2026-11-17; quitado de workflow, IG y unirse, y lo comprueba el test). Antes: auditoría del lector en móvil y guiones de miembro, a la espera de la persona. |
 | **Siguiente paso** | Que la persona lea los textos `gl`/`en` (sobre todo los de los dos miembros); que pruebe el lector en su móvil y revise los guiones de los dos miembros; `/code-review` del código de la rama desde db75c2f y fase 3 (`reviewed.sh`) cuando lo confirme; retro del lector: P2 aplicada (`gw-portal` revisa enfoques y reescribe en es/gl/en), P4 hecha, P3 (leves del lector) hecha y revisada en `ccr-b2d381ed-e10ez8` (2 medios: uno arreglado, otro decidido; leves a pendientes); subida a `main` confirmada por la persona (2026-11-17); grabar los guiones sin audio; refrescar tarjetas compartidas; pedidos al generador (23c, 24c, 31f, «lectora-es», OG 24 de Developer) |
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Audio en castellano de siete guiones más** (`claude/audio-guiones-es`, solo contenido; la persona: «revisa el repo de galivelop-voice… y móntalo»): los 35 trozos aprobados en `final/es/` del generador de voces pasan a MP3 en `public/audio/es/{equipo,novedades,proponer,unirse,toveriai,galivelop-workflow,galivelop-image-generator}/` y esos guiones llevan `"audio": ["es"]`, así que el lector sale en esas páginas. El `es` de los guiones no cambió desde antes de grabar. Faltan los dos miembros (sin audio en el generador). Sin cambio de rutas.
 
   - 2026-11-17 · **Leves del lector (P3 de la retro del lector)** (`ccr-b2d381ed-e10ez8`, código pequeño): enfoques de fichas con ancla estable (`anclaGuion`: `hito-<versión>-<nombre>`, `caracteristica-<título>`, `data-guion`, sin cambio de rutas); `LectorCarga` carga el lector solo si el `audio` del guion de la página lista el idioma activo (`audio` pasa a obligatorio, `[]` sin audio); `guion.test.tsx` lee todos los guiones del disco; enfoques gl/en: `idioma: Idioma`, `enfoqueEn` con función de frase, test de frases distintas, sin `¡` en gallego. Sin cambio visible. `/code-review` (2026-11-17): medio arreglado (test que exige `audio` en todo guion; el lector usa `lectorDisponible`), medio de anclas de hito decidido y leves en `pending.md`.
 
