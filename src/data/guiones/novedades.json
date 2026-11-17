@@ -8,15 +8,21 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "¿Qué se mueve en el taller? Esta es la página de novedades de Galivelop. Reúne lo último de cada proyecto, con lo más reciente primero. Aquí van tanto las novedades de cada ficha como las publicaciones del muro."
+      "es": "¿Qué se mueve en el taller? Esta es la página de novedades de Galivelop. Reúne lo último de cada proyecto, con lo más reciente primero. Aquí van tanto las novedades de cada ficha como las publicaciones del muro.",
+      "gl": "Que se move no obradoiro? Esta é a páxina de novidades de Galivelop. Reúne o último de cada proxecto, co máis recente primeiro. Aquí van tanto as novidades de cada ficha como as publicacións do muro.",
+      "en": "What is moving in the workshop? This is the news page of Galivelop. It gathers the latest from each project, with the most recent first. Here you will find both the news from each project page and the posts from the wall."
     },
     {
       "seccion": "filtros",
-      "es": "Arriba tienes unos botones, uno por proyecto. Con todos, ves todo mezclado. Si pulsas el nombre de un proyecto, solo ves lo suyo. Cada botón dice cuántas entradas tiene. Y si buscas una novedad concreta, pulsa un proyecto y sigue hacia abajo."
+      "es": "Arriba tienes unos botones, uno por proyecto. Con todos, ves todo mezclado. Si pulsas el nombre de un proyecto, solo ves lo suyo. Cada botón dice cuántas entradas tiene. Y si buscas una novedad concreta, pulsa un proyecto y sigue hacia abajo.",
+      "gl": "Arriba tes uns botóns, un por proxecto. Con todos, ves todo mesturado. Se premes o nome dun proxecto, só ves o seu. Cada botón di cantas entradas ten. E se buscas unha novidade concreta, preme un proxecto e segue cara abaixo.",
+      "en": "At the top you have some buttons, one per project. With all of them selected, you see everything mixed together. If you press a project's name, you only see its own. Each button says how many entries it has. And if you are looking for a specific piece of news, press a project and keep going down."
     },
     {
       "seccion": "novedades",
-      "es": "Debajo está la lista. Cada entrada lleva su fecha y el proyecto al que pertenece, y puedes pulsar el nombre para ir a su ficha. Cuando se acaban las primeras, pulsa Ver más para seguir leyendo. No te las leo yo: cambian cada semana, así que lo mejor es que las leas tú. Gracias por escuchar."
+      "es": "Debajo está la lista. Cada entrada lleva su fecha y el proyecto al que pertenece, y puedes pulsar el nombre para ir a su ficha. Cuando se acaban las primeras, pulsa Ver más para seguir leyendo. No te las leo yo: cambian cada semana, así que lo mejor es que las leas tú. Gracias por escuchar.",
+      "gl": "Debaixo está a lista. Cada entrada leva a súa data e o proxecto ao que pertence, e podes premer o nome para ir á súa ficha. Cando se acaban as primeiras, preme Ver máis para seguir lendo. Non cho leo eu: cambian cada semana, así que o mellor é que as len ti. Grazas por escoitar.",
+      "en": "Below is the list. Each entry has its date and the project it belongs to, and you can press the name to go to its page. When the first ones run out, press Show more to keep reading. I will not read them to you: they change every week, so it is best that you read them yourself. Thanks for listening."
     }
   ]
 }

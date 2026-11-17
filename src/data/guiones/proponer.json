@@ -8,11 +8,15 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "¿Tienes una idea que parece demasiado grande? Esta es la página para proponer un proyecto a Galivelop. Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos."
+      "es": "¿Tienes una idea que parece demasiado grande? Esta es la página para proponer un proyecto a Galivelop. Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.",
+      "gl": "Tes unha idea que parece demasiado grande? Esta é a páxina para propoñer un proxecto a Galivelop. Cóntanola. Lemos todas as propostas e, se encaixa no obradoiro, escribímosche para darlle forma xuntos.",
+      "en": "Do you have an idea that seems too big? This is the page to propose a project to Galivelop. Tell us about it. We read every proposal and, if it fits the workshop, we write to you so we can shape it together."
     },
     {
       "seccion": "formulario",
       "es": "Te pedimos tu nombre y tu correo, el nombre del proyecto y de qué trata: qué es, qué problema resuelve o qué quieres crear. También nos dices en qué punto está: una idea, un diseño, un prototipo o algo ya en marcha. Si quieres, añade qué papel te gustaría tener y un enlace, si lo hay. Esos dos son opcionales. Cuando pulses el botón, no se envía nada a ningún servidor: se abre tu aplicación de correo con el mensaje preparado. Tú lo revisas y lo envías. Si no se abre, puedes copiar el mensaje y mandarlo a mano. Gracias por escuchar.",
+      "gl": "Pedímosche o teu nome e o teu correo, o nome do proxecto e de que trata: que é, que problema resolve ou que queres crear. Tamén nos dis en que punto está: unha idea, un deseño, un prototipo ou algo xa en marcha. Se queres, engade que papel che gustaría ter e unha ligazón, se a hai. Eses dous son opcionais. Cando premas o botón, non se envía nada a ningún servidor: ábrese a túa aplicación de correo coa mensaxe preparada. Ti revísala e envíala. Se non se abre, podes copiar a mensaxe e mandala a man. Grazas por escoitar.",
+      "en": "We ask for your name and your email, the name of the project and what it is about: what it is, what problem it solves or what you want to create. You also tell us where it stands: an idea, a design, a prototype or something already underway. If you want, add what role you would like to have and a link, if there is one. Those two are optional. When you press the button, nothing is sent to any server: your email app opens with the message ready. You review it and send it. If it does not open, you can copy the message and send it by hand. Thanks for listening.",
       "enfoques": [
         { "frase": "Te pedimos tu nombre", "ver": "campo-nombre" },
         { "frase": "el nombre del proyecto", "ver": "campo-proyecto" },

@@ -43,6 +43,19 @@ describe('audio de los guiones', () => {
     for (const clave of claves) expect(claveDeGuion(leer(clave).pagina), clave).toBe(clave);
   });
 
+  it('cada trozo lleva su texto en gallego e inglés, distinto del castellano', () => {
+    const mal: string[] = [];
+    for (const clave of claves)
+      for (const t of leer(clave).trozos)
+        for (const idioma of ['gl', 'en'] as const) {
+          const texto = t[idioma]?.trim();
+          if (!texto) mal.push(`${clave}/${t.seccion}: falta «${idioma}»`);
+          else if (texto === t.es.trim())
+            mal.push(`${clave}/${t.seccion}: «${idioma}» igual que «es»`);
+        }
+    expect(mal).toEqual([]);
+  });
+
   it('cada `frase` de un enfoque aparece una sola vez en el `es` de su trozo', () => {
     const mal: string[] = [];
     for (const clave of claves)

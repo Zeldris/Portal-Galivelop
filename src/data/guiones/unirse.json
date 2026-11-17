@@ -8,11 +8,15 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "¿Te apetece construir con nosotros? Buscamos gente con ganas de cooperar y aprender, tenga o no experiencia. Esta es la página para unirte al taller. Cuéntanos quién eres y cómo te gustaría participar."
+      "es": "¿Te apetece construir con nosotros? Buscamos gente con ganas de cooperar y aprender, tenga o no experiencia. Esta es la página para unirte al taller. Cuéntanos quién eres y cómo te gustaría participar.",
+      "gl": "¿Apetéceche construír connosco? Buscamos xente con ganas de cooperar e aprender, teña ou non experiencia. Esta é a páxina para unirte ao obradoiro. Cóntanos quen es e como che gustaría participar.",
+      "en": "Would you like to build with us? We are looking for people who want to cooperate and learn, with or without experience. This is the page to join the workshop. Tell us who you are and how you would like to take part."
     },
     {
       "seccion": "formulario",
       "es": "Te pedimos tu nombre y tu correo. Luego eliges en qué te gustaría participar: en un proyecto abierto, en lo que haga falta o en proyectos nuevos. También marcas cómo quieres aportar, por ejemplo con programación, diseño, textos, pruebas, investigación o, sobre todo, aprendiendo. Y nos cuentas sobre ti: qué sabes hacer, qué te gustaría aprender y por qué te interesa. Opcionalmente, tu disponibilidad aproximada y un enlace a tu portfolio. Al terminar, se abre tu aplicación de correo con el mensaje ya preparado. Tú lo revisas y lo envías, y si no se abre, puedes copiarlo. Gracias por escuchar.",
+      "gl": "Pedímosche o teu nome e o teu correo. Logo elixes en que che gustaría participar: nun proxecto aberto, no que faga falta ou en proxectos novos. Tamén marcas como queres achegar, por exemplo con programación, deseño, textos, probas, investigación ou, sobre todo, aprendendo. E cóntasnos sobre ti: que sabes facer, que che gustaría aprender e por que che interesa. Opcionalmente, a túa dispoñibilidade aproximada e unha ligazón ao teu portfolio. Ao terminar, ábrese a túa aplicación de correo coa mensaxe xa preparada. Ti revísala e envíala, e se non se abre, podes copiala. Grazas por escoitar.",
+      "en": "We ask for your name and your email. Then you choose where you would like to take part: in an open project, in whatever is needed, or in new projects. You also mark how you want to contribute, for example with programming, design, writing, testing, research or, above all, learning. And you tell us about yourself: what you can do, what you would like to learn and why it interests you. Optionally, your rough availability and a link to your portfolio. When you finish, your email app opens with the message already prepared. You review it and send it, and if it does not open, you can copy it.",
       "enfoques": [
         { "frase": "Te pedimos tu nombre", "ver": "campo-nombre" },
         { "frase": "Luego eliges en qué te gustaría participar", "ver": "campo-proyecto" },

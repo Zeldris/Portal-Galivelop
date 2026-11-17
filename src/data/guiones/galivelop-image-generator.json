@@ -9,15 +9,21 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "¿Y si pudieras generar imágenes de marca sin que nada salga de tu equipo? Eso es Galivelop IG, un servicio local de generación de imágenes con inteligencia artificial. Funciona con una idea sencilla: pide, prueba, elige. Hay uno por máquina, y lo comparten todos los proyectos del taller."
+      "es": "¿Y si pudieras generar imágenes de marca sin que nada salga de tu equipo? Eso es Galivelop IG, un servicio local de generación de imágenes con inteligencia artificial. Funciona con una idea sencilla: pide, prueba, elige. Hay uno por máquina, y lo comparten todos los proyectos del taller.",
+      "gl": "¿E se puideses xerar imaxes de marca sen que nada saia do teu equipo? Iso é Galivelop IG, un servizo local de xeración de imaxes con intelixencia artificial. Funciona cunha idea sinxela: pide, proba, elixe. Hai un por máquina, e compárteno todos os proxectos do obradoiro.",
+      "en": "What if you could generate brand images without anything leaving your computer? That is Galivelop IG, a local service for generating images with artificial intelligence. It works on a simple idea: ask, try, choose. There is one per machine, and every workshop project shares it."
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto seis, con el código abierto. La próxima es la pieza de marca, dentro del proceso de marca. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto seis, con el código abierto. La próxima es la pieza de marca, dentro del proceso de marca. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "¿En que punto está? Está en desenvolvemento, na versión cero punto seis, co código aberto. A próxima é a peza de marca, dentro do proceso de marca. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, at version zero point six, with open code. The next one is the brand piece, within the brand process. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the news section, further down."
     },
     {
       "seccion": "resumen",
       "es": "Cada proyecto del taller necesita imágenes de marca: fondos para redes, piezas por formato, avatares. No queremos que esas imágenes ni sus pedidos salgan del equipo. Tampoco repetir en cada repositorio el mismo montaje de modelos, colas y carpetas. El servicio recibe un pedido, genera varios intentos y te deja marcar uno como elegido. Lo entrega como imagen, junto a un manifiesto que dice con qué modelo y qué parámetros se hizo, para poder reproducirla. Se usa desde la línea de órdenes, desde una interfaz local o desde una pequeña interfaz en el navegador, con tres pantallas. Se trabaja así. Registras un proyecto y haces un pedido. El servicio genera los intentos. Eliges uno, y puedes deshacerlo. Y se entrega. Además, las imágenes e iconos de esta misma web salen de este generador: portadas, iconos, ilustraciones y más.",
+      "gl": "Cada proxecto do obradoiro necesita imaxes de marca: fondos para redes, pezas por formato, avatares. Non queremos que esas imaxes nin os seus pedidos saian do equipo. Tampouco repetir en cada repositorio a mesma montaxe de modelos, colas e cartafoles. O servizo recibe un pedido, xera varios intentos e déixache marcar un como elixido. Entrégao como imaxe, xunto cun manifesto que di con que modelo e que parámetros se fixo, para poder reproducila. Úsase desde a liña de ordes, desde unha interface local ou desde unha pequena interface no navegador, con tres pantallas. Tráballase así. Rexistras un proxecto e fas un pedido. O servizo xera os intentos. Elixes un, e podes desfacelo. E entrégase. Ademais, as imaxes e iconas desta mesma web saen deste xerador: portadas, iconas, ilustracións e máis.",
+      "en": "Every workshop project needs brand images: backgrounds for social networks, pieces for each format, avatars. We do not want those images or their requests to leave the computer. Nor do we want to repeat the same setup of models, queues and folders in every repository. The service receives a request, generates several attempts and lets you mark one as chosen. It delivers it as an image, together with a manifest that says which model and which parameters were used, so it can be reproduced. You use it from the command line, from a local interface, or from a small interface in the browser, with three screens. This is how it works. You register a project and make a request. The service generates the attempts. You choose one, and you can undo it. And it gets delivered. On top of that, the images and icons on this very website come from this generator: covers, icons, illustrations and more.",
       "enfoques": [
         { "frase": "No queremos que esas imágenes", "ver": "caracteristica-1" },
         { "frase": "genera varios intentos", "ver": "caracteristica-2" },
@@ -31,11 +37,15 @@
     },
     {
       "seccion": "galeria",
-      "es": "En la galería tienes imágenes del piloto, para ver cómo evolucionan los proyectos de una ronda a otra."
+      "es": "En la galería tienes imágenes del piloto, para ver cómo evolucionan los proyectos de una ronda a otra.",
+      "gl": "Na galería tes imaxes do piloto, para ver como evolucionan os proxectos dunha ronda a outra.",
+      "en": "In the gallery you will find images from the pilot, to see how the projects evolve from one round to the next."
     },
     {
       "seccion": "afondo",
       "es": "Si quieres entrar a fondo, hay tres apartados. El primero cuenta el camino del pedido a la entrega: intentos, elegida, cola, composición del texto y el logo, y la medida de la marca. El segundo, el piloto de contenido, con las rondas que hicimos en una Steam Deck y qué aprendimos en cada una. Y el tercero, el motor que genera las imágenes.",
+      "gl": "Se queres entrar a fondo, hai tres apartados. O primeiro conta o camiño do pedido á entrega: intentos, elixida, cola, composición do texto e o logo, e a medida da marca. O segundo, o piloto de contido, coas roldas que fixemos nunha Steam Deck e que aprendemos en cada unha. E o terceiro, o motor que xera as imaxes.",
+      "en": "If you want to go deeper, there are three sections. The first tells the path from request to delivery: attempts, the chosen one, the queue, text and logo composition, and brand measurement. The second is the content pilot, with the rounds we ran on a Steam Deck and what we learned in each. And the third is the engine that generates the images.",
       "enfoques": [
         { "frase": "El primero cuenta el camino", "ver": "ap-flujo" },
         { "frase": "El segundo, el piloto", "ver": "ap-piloto" },
@@ -45,6 +55,8 @@
     {
       "seccion": "tecnica",
       "es": "¿Y cómo está hecho? El servicio no conoce el dominio de ningún proyecto: cada uno aporta su marca y sus referencias. Está escrito solo con la biblioteca estándar de Python, y los modelos, que pesan mucho, se descargan aparte. El texto y el logo se componen después sobre la imagen, para que siempre se lean y salgan bien escritos. Cada imagen se puede reproducir gracias a su manifiesto. Y el código es abierto, aunque cada modelo conserva su propia licencia. Por el camino aprendimos que el modelo pinta todo lo que nombras, así que sobran las comparaciones en el pedido. Que un borrador pequeño sirve para descartar pronto. Y que con varias semillas se compara de verdad.",
+      "gl": "¿E como está feito? O servizo non coñece o dominio de ningún proxecto: cada un achega a súa marca e as súas referencias. Está escrito só coa biblioteca estándar de Python, e os modelos, que pesan moito, descárganse á parte. O texto e o logo compóñense despois sobre a imaxe, para que sempre se lean e saian ben escritos. Cada imaxe pódese reproducir grazas ao seu manifesto. E o código é aberto, aínda que cada modelo conserva a súa propia licenza. Polo camiño aprendemos que o modelo pinta todo o que nomeas, así que sobran as comparacións no pedido. Que un borrador pequeno serve para descartar cedo. E que con varias sementes compárase de verdade.",
+      "en": "And how is it built? The service knows nothing about any project's domain: each one brings its own brand and references. It is written using only the Python standard library, and the models, which are very large, are downloaded separately. Text and logo are added afterwards on top of the image, so they always read well and are spelled correctly. Every image can be reproduced thanks to its manifest. And the code is open, although each model keeps its own license. Along the way we learned that the model paints everything you name, so comparisons in the request are best left out. That a small draft is enough to rule things out early. And that with several seeds you can really compare.",
       "enfoques": [
         { "frase": "El servicio no conoce el dominio", "ver": "decision-2" },
         { "frase": "Está escrito solo con la biblioteca estándar", "ver": "decision-4" },
@@ -58,6 +70,8 @@
     {
       "seccion": "avance",
       "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Ahora está en curso el proceso de marca: pieza de marca e imagen libre, tandas, recortar un intento y entrega por carpetas. Falta el montaje por capas, colocar el texto antes de generar, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana.",
+      "gl": "No avance ves o camiño. Xa funcionan o núcleo, o motor real, a interface e as funcións de borrar e editar texto. Agora está en curso o proceso de marca: peza de marca e imaxe libre, quendas, recortar un intento e entrega por cartafoles. Falta a montaxe por capas, colocar o texto antes de xerar, o piloto co xogo, e un director local cun modelo de linguaxe que axude a redactar pedidos. E que funcione en calquera equipo, non só no noso. Debaixo están as novidades, semana a semana.",
+      "en": "In the progress section you see the road. The core, the real engine, the interface and the delete and edit text functions already work. The brand process is now underway: brand piece and free image, batches, cropping an attempt, and delivery by folders. Still missing are layered composition, placing the text before generating, the pilot with the game, and a local director with a language model that helps write requests. And making it work on any computer, not just ours. Below is the news, week by week.",
       "enfoques": [
         { "frase": "Ya funcionan el núcleo", "ver": "hito-1" },
         { "frase": "la interfaz y las funciones", "ver": "hito-2" },
@@ -73,7 +87,9 @@
     },
     {
       "seccion": "participar",
-      "es": "Galivelop IG está abierto a colaboración, y el código es público. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar."
+      "es": "Galivelop IG está abierto a colaboración, y el código es público. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar.",
+      "gl": "Galivelop IG está aberto á colaboración, e o código é público. Se queres achegar, aprender ou simplemente saber máis, escríbenos e cóntámosche como. Grazas por escoitar.",
+      "en": "Galivelop IG is open to collaboration, and the code is public. If you want to contribute, learn, or simply find out more, write to us and we will tell you how. Thank you for listening."
     }
   ]
 }
