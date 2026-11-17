@@ -12,6 +12,7 @@ import {
   teclaPausa,
   type Guion,
   type ZonaLibre,
+  lectorDisponible,
 } from '../utils/guion';
 import { Icono } from './Icono';
 import { ChevronLeft, ChevronRight, Pause, Play, X } from 'lucide-react';
@@ -111,7 +112,7 @@ export function Lector() {
         if (
           vigente &&
           rutaNormal(g.pagina) === rutaNormal(pathname) &&
-          g.audio?.includes(idioma) &&
+          lectorDisponible(g.audio, idioma) &&
           g.trozos.length > 0
         )
           setGuion(g);

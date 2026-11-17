@@ -12,6 +12,11 @@ const leer = (clave: string) =>
   JSON.parse(readFileSync(join(DIR, `${clave}.json`), 'utf8')) as Guion;
 
 describe('audio de los guiones', () => {
+  it('todo guion lleva `audio` (lista, `[]` sin audio): `LectorCarga` lo importa y el build falla sin él', () => {
+    const mal = claves.filter((c) => !Array.isArray(leer(c).audio));
+    expect(mal).toEqual([]);
+  });
+
   it('cada idioma de `audio` tiene el MP3 de cada trozo, con su nombre esperado', () => {
     const faltan: string[] = [];
     for (const clave of claves) {
