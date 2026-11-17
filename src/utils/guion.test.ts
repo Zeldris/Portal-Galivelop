@@ -76,6 +76,12 @@ describe('desplazamiento', () => {
   });
   it('deja el inicio bajo las barras de arriba si no cabe', () => {
     expect(desplazamiento(900, 1500, zona)).toBe(900 - 86);
-    expect(desplazamiento(70, 701, zona)).toBe(-16);
+    expect(desplazamiento(300, 701, zona)).toBe(300 - 86);
+  });
+  it('no tiembla si no cabe y su inicio ya está en el primer cuarto de la zona', () => {
+    expect(desplazamiento(70, 701, zona)).toBe(0);
+    expect(desplazamiento(100, 1500, zona)).toBe(0);
+    expect(desplazamiento(70 + 175, 1500, zona)).toBe(0);
+    expect(desplazamiento(70 + 176, 1500, zona)).toBe(70 + 176 - 86);
   });
 });

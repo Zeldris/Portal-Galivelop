@@ -51,12 +51,9 @@ function medir() {
         document.querySelector('.guion-enfoque') ?? document.querySelector('.guion-activo');
       if (!el) return listo(null);
       const r = el.getBoundingClientRect();
-      // Las barras fijas de arriba: la cabecera y, si el elemento va tras ella, la de grupos de la ficha.
-      let arriba = document.querySelector('.cabecera')?.getBoundingClientRect().bottom ?? 0;
-      const nav = document.querySelector('.nav-ficha');
-      if (nav && nav.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)
-        arriba = Math.max(arriba, nav.getBoundingClientRect().bottom);
-      const abajo = document.querySelector('.lector')?.getBoundingClientRect().top ?? innerHeight;
+      // La zona libre que usó el lector (la deja en data-* del <html>): se mide contra lo que aplica el código.
+      const arriba = Number(document.documentElement.dataset.zonaArriba ?? 0);
+      const abajo = Number(document.documentElement.dataset.zonaAbajo ?? innerHeight);
       listo({
         ver: el.id || el.getAttribute('data-guion') || el.tagName,
         enfoque: el.classList.contains('guion-enfoque'),
@@ -75,12 +72,11 @@ function medir() {
 // Qué falla en una medida: lo que el lector promete es que se ve el inicio del elemento y, si cabe, entero.
 function fallos(m) {
   if (!m) return ['nada resaltado'];
-  // El lector deja 8 px sobre la barra: lo que no cabe con ellos se muestra desde su inicio.
   const libre = m.abajo - m.arriba;
   const f = [];
   if (m.bottom <= m.arriba || m.top >= m.abajo) return ['fuera de la vista'];
   if (m.top < m.arriba - 2) f.push(`la cabecera tapa ${m.arriba - m.top}px`);
-  if (m.alto <= libre - 8 && m.bottom > m.abajo + 2) f.push(`la barra tapa ${m.bottom - m.abajo}px`);
+  if (m.alto <= libre && m.bottom > m.abajo + 2) f.push(`la barra tapa ${m.bottom - m.abajo}px`);
   if (m.alto > libre && m.top > m.arriba + libre * 0.25)
     f.push(`empieza a ${m.top - m.arriba}px de la cabecera`);
   return f;

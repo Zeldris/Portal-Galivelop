@@ -109,5 +109,7 @@ export function desplazamiento(top: number, alto: number, zona: ZonaLibre): numb
     if (top >= zona.arriba && top + alto <= zona.abajo) return 0;
     return Math.round(top - (zona.arriba + (libre - alto) / 2));
   }
+  // No cabe: si su inicio ya está en el primer cuarto de la zona, se deja (no tiembla).
+  if (top >= zona.arriba && top <= zona.arriba + libre * 0.25) return 0;
   return Math.round(top - (zona.arriba + HUECO));
 }

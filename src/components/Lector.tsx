@@ -39,8 +39,13 @@ const RESERVA_BARRA = 76;
 function zonaLibre(el: HTMLElement): ZonaLibre {
   let arriba = document.querySelector('.cabecera')?.getBoundingClientRect().bottom ?? 0;
   const nav = document.querySelector('.nav-ficha');
-  if (nav && nav.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)
-    arriba += nav.getBoundingClientRect().height;
+  // Solo cuenta si está pegada (en pantallas bajas es estática, o ya salió de la vista).
+  if (
+    nav &&
+    getComputedStyle(nav).position === 'sticky' &&
+    nav.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING
+  )
+    arriba += nav.getBoundingClientRect().height; // pegada bajo la cabecera, esté ya pegada o no
   const barra = document.querySelector('.lector')?.getBoundingClientRect().top;
   const abajo = Math.min(
     window.innerHeight - RESERVA_BARRA,
@@ -49,10 +54,31 @@ function zonaLibre(el: HTMLElement): ZonaLibre {
   return { arriba, abajo };
 }
 
+/** Un nodo que puede ser (o estar dentro de) un `details`; así se prueba sin DOM. */
+interface Pliegable {
+  tagName: string;
+  open?: boolean;
+  parentElement: Pliegable | null;
+  closest(selector: string): Pliegable | null;
+}
+
+/** Abre los `details` cerrados que son el elemento o lo contienen (p. ej. los pliegues de la ficha en móvil). */
+export function abrirPliegues(el: Pliegable) {
+  for (let d: Pliegable | null = el.tagName === 'DETAILS' ? el : el.closest('details'); d;) {
+    d.open = true;
+    d = d.parentElement?.closest('details') ?? null;
+  }
+}
+
 /** Lleva el elemento a la zona libre: centrado si cabe; si no, su inicio. Si ya se ve entero, no mueve la vista. */
 function mostrar(el: HTMLElement) {
+  abrirPliegues(el);
   const r = el.getBoundingClientRect();
-  const d = desplazamiento(r.top, r.height, zonaLibre(el));
+  const zona = zonaLibre(el);
+  // La zona usada queda en el documento: el probador (tools/qa/probar-lector.cjs) mide contra ella.
+  document.documentElement.dataset.zonaArriba = String(Math.round(zona.arriba));
+  document.documentElement.dataset.zonaAbajo = String(Math.round(zona.abajo));
+  const d = desplazamiento(r.top, r.height, zona);
   if (d !== 0) window.scrollBy({ top: d, behavior: sinMovimiento() ? 'auto' : 'smooth' });
 }
 
