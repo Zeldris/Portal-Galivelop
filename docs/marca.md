@@ -83,6 +83,12 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 |---|---|---|---|
 | `--celeste` | `#1aa6df` | `#1aa6df` | Marca, foco, estado «publicado»; nunca texto sobre papel claro ni con blanco encima |
 | `--celeste-hondo` | `#0072a8` | `#0b5e88` | Bloques grandes de color |
+| `--celeste-intenso` | `--celeste-hondo` | `--celeste` | Relleno intenso de botones y marcas (el celeste intenso `#0083C1` de la primera versión ya no se usa) |
+| `--sobre-intenso` | `--blanco` | `--papel` | Texto sobre `--celeste-intenso`: el celeste vivo no admite blanco (2,8:1) |
+| `--blanco` | `#ffffff` | igual | Blanco fijo, para texto sobre bloques de color y fondos de logos |
+| `--foco` | `--celeste-hondo` | `--celeste` | Contorno del foco visible (sobre el celeste hondo, `--blanco`) |
+| `--borde-campo` | `#6f8696` | `#6b8798` | Borde de los campos de formulario (3,7:1 y 4,8:1, WCAG 1.4.11) |
+| `--ancho` | `1180px` | igual | Ancho máximo del contenido |
 | `--papel` (`--fondo`) | `#fbfcfd` | `#0d171e` | Fondo de página |
 | `--fondo-alterno` | `#f1f6f9` | `#111f29` | Bandas alternas de página |
 | `--reticula` | `#eef3f6` | `#121e27` | Cuadrícula de 24 px (aclarada el 2026-11-12: cortaba el texto) |
@@ -144,9 +150,9 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Cada imagen 
 | 4, 5 | `public/marca/rosa-vientos.svg`, `public/marca/sello.svg` | Vectorizar |
 | 6 | `public/marca/portada-<estado>.webp`, una por estado | Convertir a WebP (1600×900); sin `-mini`: ninguna tarjeta la usa |
 | 7, 8, 9 | `src/assets/iconos/<nombre>.svg`, pintados en línea por `IconoMarca.tsx` | Vectorizar la hoja y recortar cada icono; luego `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (tinta a `currentColor`, recorte del `viewBox` y un contorno proporcional que acerca su grosor al de lucide a 24 px) y añadirlo a `ICONOS` de `IconoMarca.tsx` |
-| 10, 11, 13, 16, 18, 19, 21, 22 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel |
+| 10, 13, 18, 19 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel. **11, 16, 21 y 22 canceladas** (por CSS, sin imagen; véase abajo) |
 | 12 | `public/marca/separador.webp` | Convertir a WebP con transparencia (`cwebp -q 90 -alpha_q 100`) |
-| 17, 20 | `public/marca/<nombre>.svg` | Vectorizar |
+| 17 | `public/marca/<nombre>.svg` | Vectorizar. **La 20 está cancelada** (por CSS) |
 | 15 | `public/proyectos/<slug>/proxima.webp` y su `imagen` en `src/data/proximamente.json` | Convertir a WebP (720×405) |
 | 23 | `public/proyectos/<slug>/icono.png`, el `icono` de la ficha | Copiar a 512×512 |
 | 31, 32 | `public/proyectos/<slug>/portada.webp` y `portada-mini.webp`, la `portada` de la ficha (y de su tarjeta); la imagen que había pasa a la galería | Convertir a WebP (1600×900 y 720×405) y poner `ancho`, `alto` y `alt` en los tres idiomas |
@@ -351,7 +357,7 @@ entero; aquí va resumido.
 | 19 | **Estado «enviado» de los formularios** | 480×360 sobre papel | `form.listo` en `/proponer` y `/unirse` | Solo texto | Barco de papel que sale del muelle (grabado; excepción náutica, como la 15 de Developer). **Entregada** |
 | 20 | **Cabecera de páginas legales** | SVG 1200×80 sobre papel | `/aviso-legal`, `/privacidad`, `/terminos` | Nada | Borde de cajetín de plano con reglas interiores y marcas de esquina (grabado). **Cancelada: por CSS** (2026-11-12) |
 | 21 | **Patrón de fondo del pie** | 1200×300 repetible en los dos ejes, cerúleo | `Pie.tsx` | Celeste plano | Curvas de nivel sin costuras sobre cerúleo (grabado). **Cancelado: por CSS**, cerúleo liso (2026-11-12) |
-| 22 | **Textura de papel** (opcional) | 512×512 repetible, grano casi invisible | Fondo de página bajo la retícula | Color plano | Grano de papel finísimo, casi blanco (sin pedido aún) |
+| 22 | **Textura de papel** (opcional) | 512×512 repetible, grano casi invisible | Fondo de página bajo la retícula | Color plano | Grano de papel finísimo, casi blanco (sin pedido aún). **Cancelada: por CSS**, el fondo sigue en color plano (2026-11-11) |
 
 ### D. Por proyecto (cuando se toque su ficha)
 
