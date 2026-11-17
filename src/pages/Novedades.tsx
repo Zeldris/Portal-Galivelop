@@ -55,7 +55,7 @@ export function Novedades() {
           height={400}
           fetchPriority="high"
         />
-        <header className="seccion-cabecera">
+        <header className="seccion-cabecera" data-guion="cabecera">
           <div>
             <h1>{t('sec.novedades')}</h1>
             <p>{t('novedades.intro')}</p>
@@ -63,7 +63,7 @@ export function Novedades() {
         </header>
 
         {conNovedades.length > 1 && (
-          <div className="filtros" role="group" aria-label={t('muro.filtro')}>
+          <div className="filtros" data-guion="filtros" role="group" aria-label={t('muro.filtro')}>
             <button type="button" aria-pressed={!filtro} onClick={() => filtrar(null)}>
               {t('filtro.todos')}
               <span className="filtro-cuenta">{entradas.length}</span>
@@ -84,7 +84,7 @@ export function Novedades() {
 
         {todas.length > 0 ? (
           <>
-            <ul className="novedades novedades-todas">
+            <ul className="novedades novedades-todas" data-guion="novedades">
               {todas.slice(0, visibles).map((e, i, lista) => {
                 const proyecto = buscarProyecto(e.proyecto);
                 // Entre un mes y el anterior, el separador de la marca (fecha AAAA-MM-DD).

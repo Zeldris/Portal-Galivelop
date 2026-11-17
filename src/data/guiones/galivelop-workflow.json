@@ -17,7 +17,20 @@
     },
     {
       "seccion": "resumen",
-      "es": "Trabajar semanas con un agente tiene un problema poco visible. Cada sesión puede acabarse en cualquier momento, por falta de tokens, por un contenedor reciclado o por un relevo de cuenta. Y lo que no quedó escrito se pierde. Además, cada proyecto acaba inventando sus reglas y copiándolas a mano. Este flujo saca el método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona. Lo deja en un repositorio con versiones: reglas, skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos. Se trabaja así. La sesión retoma leyendo la bitácora y sabe por dónde iba. Elige qué skill y qué modelo pide la tarea. Piensa antes, si hace falta. Trabaja, reparte lo mecánico a subagentes y sube en cada punto estable. Antes de publicar, revisa el código y mejora el entorno, y solo con la confirmación de la persona se publica. Y lo aprendido vuelve al flujo. Hoy un agente aplica el flujo leyendo el repositorio. Más adelante lo hará un instalador, sin inteligencia artificial. El repositorio es público y está abierto a colaborar."
+      "es": "Trabajar semanas con un agente tiene un problema poco visible. Cada sesión puede acabarse en cualquier momento, por falta de tokens, por un contenedor reciclado o por un relevo de cuenta. Y lo que no quedó escrito se pierde. Además, cada proyecto acaba inventando sus reglas y copiándolas a mano. Este flujo saca el método de Tarkor, de este portal y de otros proyectos del taller, donde ya funciona. Lo deja en un repositorio con versiones: reglas, skills, scripts, ganchos y plantillas en un solo sitio. Una mejora se hace una vez y llega a todos. Se trabaja así. La sesión retoma leyendo la bitácora y sabe por dónde iba. Elige qué skill y qué modelo pide la tarea. Piensa antes, si hace falta. Trabaja, reparte lo mecánico a subagentes y sube en cada punto estable. Antes de publicar, revisa el código y mejora el entorno, y solo con la confirmación de la persona se publica. Y lo aprendido vuelve al flujo. Hoy un agente aplica el flujo leyendo el repositorio. Más adelante lo hará un instalador, sin inteligencia artificial. El repositorio es público y está abierto a colaborar.",
+      "enfoques": [
+        { "frase": "Cada sesión puede acabarse", "ver": "caracteristica-1" },
+        { "frase": "cada proyecto acaba inventando sus reglas", "ver": "caracteristica-5" },
+        { "frase": "Una mejora se hace una vez", "ver": "caracteristica-6" },
+        { "frase": "La sesión retoma leyendo la bitácora", "ver": "paso-1" },
+        { "frase": "Elige qué skill", "ver": "paso-2" },
+        { "frase": "Piensa antes", "ver": "paso-3" },
+        { "frase": "Trabaja, reparte lo mecánico", "ver": "paso-4" },
+        { "frase": "Antes de publicar, revisa el código", "ver": "paso-5" },
+        { "frase": "y mejora el entorno", "ver": "paso-6" },
+        { "frase": "solo con la confirmación de la persona se publica", "ver": "paso-7" },
+        { "frase": "Y lo aprendido vuelve al flujo", "ver": "paso-8" }
+      ]
     },
     {
       "seccion": "galeria",
@@ -25,15 +38,41 @@
     },
     {
       "seccion": "afondo",
-      "es": "Si quieres entrar a fondo, hay varios apartados. Qué se impone y qué se aconseja: un gancho se ejecuta siempre, y una instrucción el agente puede saltársela. Qué fallo evita cada pieza. Las skills y los scripts propios. Las skills de Matt Pocock, que usamos con su licencia y de las que hemos aprendido mucho. Cómo se configura cada proyecto. Cuándo encaja el flujo y qué cuesta, que también lo contamos. Y las versiones publicadas."
+      "es": "Si quieres entrar a fondo, hay varios apartados. Qué se impone y qué se aconseja: un gancho se ejecuta siempre, y una instrucción el agente puede saltársela. Qué fallo evita cada pieza. Las skills y los scripts propios. Las skills de Matt Pocock, que usamos con su licencia y de las que hemos aprendido mucho. Cómo se configura cada proyecto. Cuándo encaja el flujo y qué cuesta, que también lo contamos. Y las versiones publicadas.",
+      "enfoques": [
+        { "frase": "Qué se impone y qué se aconseja", "ver": "ap-garantias" },
+        { "frase": "Qué fallo evita cada pieza", "ver": "ap-fallos" },
+        { "frase": "Las skills y los scripts propios", "ver": "ap-skills-propias" },
+        { "frase": "Las skills de Matt Pocock", "ver": "ap-matt-pocock" },
+        { "frase": "Cómo se configura cada proyecto", "ver": "ap-configuracion" },
+        { "frase": "Cuándo encaja el flujo", "ver": "ap-cuando-encaja" },
+        { "frase": "Y las versiones publicadas", "ver": "ap-versiones-publicadas" }
+      ]
     },
     {
       "seccion": "tecnica",
-      "es": "¿Y cómo está hecho? Las reglas que se pueden comprobar las hace cumplir un script, no la opinión de un agente. Las skills se quedan con lo que pide criterio. Las reglas viven en un estándar abierto que entiende cualquier agente, no solo uno. Y el flujo se copia a cada proyecto con su versión, para que funcione en cualquier entorno, también en la nube. Quince de sus skills son de Matt Pocock, con su licencia y su mención. Por el camino hemos aprendido que el estado va en archivos, no en la conversación. Que los ganchos deben fallar cerrados. Y que hay que medir dónde se gastan los tokens antes de recortar, porque un ahorro que empeora el resultado no es ahorro."
+      "es": "¿Y cómo está hecho? Las reglas que se pueden comprobar las hace cumplir un script, no la opinión de un agente. Las skills se quedan con lo que pide criterio. Las reglas viven en un estándar abierto que entiende cualquier agente, no solo uno. Y el flujo se copia a cada proyecto con su versión, para que funcione en cualquier entorno, también en la nube. Quince de sus skills son de Matt Pocock, con su licencia y su mención. Por el camino hemos aprendido que el estado va en archivos, no en la conversación. Que los ganchos deben fallar cerrados. Y que hay que medir dónde se gastan los tokens antes de recortar, porque un ahorro que empeora el resultado no es ahorro.",
+      "enfoques": [
+        { "frase": "Las reglas que se pueden comprobar", "ver": "decision-2" },
+        { "frase": "Las reglas viven en un estándar abierto", "ver": "decision-4" },
+        { "frase": "el flujo se copia a cada proyecto", "ver": "decision-3" },
+        { "frase": "Quince de sus skills", "ver": "decision-1" },
+        { "frase": "Por el camino hemos aprendido", "ver": "aprendizajes" }
+      ]
     },
     {
       "seccion": "avance",
-      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto y las preguntas. Lo que falta: la versión cero punto ocho, con las preguntas a la persona más claras, un modo prudente y pruebas de interfaz. Luego una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con el Management Center, un panel local para consultar y configurar. Debajo están las novedades, semana a semana."
+      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto y las preguntas. Lo que falta: la versión cero punto ocho, con las preguntas a la persona más claras, un modo prudente y pruebas de interfaz. Luego una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con el Management Center, un panel local para consultar y configurar. Debajo están las novedades, semana a semana.",
+      "enfoques": [
+        { "frase": "Las primeras versiones y los pilotos", "ver": "hito-1" },
+        { "frase": "la base", "ver": "hito-2" },
+        { "frase": "la medida del gasto", "ver": "hito-5" },
+        { "frase": "y las preguntas", "ver": "hito-8" },
+        { "frase": "Lo que falta: la versión cero punto ocho", "ver": "hito-9" },
+        { "frase": "Luego una versión estable", "ver": "hito-10" },
+        { "frase": "la uno punto cero llegará", "ver": "hito-11" },
+        { "frase": "Debajo están las novedades", "ver": "novedades" }
+      ]
     },
     {
       "seccion": "participar",

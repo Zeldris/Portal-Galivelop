@@ -43,4 +43,15 @@ describe('audio de los guiones', () => {
     for (const clave of claves)
       expect(claveDeGuion(leer(clave).pagina)).toBe(clave === 'inicio' ? 'inicio' : clave);
   });
+
+  it('cada `frase` de un enfoque aparece una sola vez en el `es` de su trozo', () => {
+    const mal: string[] = [];
+    for (const clave of claves)
+      for (const t of leer(clave).trozos)
+        for (const e of t.enfoques ?? []) {
+          const veces = t.es.split(e.frase).length - 1;
+          if (veces !== 1) mal.push(`${clave}/${t.seccion}: «${e.frase}» aparece ${veces} veces`);
+        }
+    expect(mal).toEqual([]);
+  });
 });

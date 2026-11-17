@@ -35,13 +35,17 @@ export function Proponer() {
         ]);
       }}
     >
-      <Campo etiqueta={t('prop.proyecto')}>
+      <Campo etiqueta={t('prop.proyecto')} guion="campo-proyecto">
         <input name="proyecto" required />
       </Campo>
-      <Campo etiqueta={t('prop.descripcion')} ayuda={t('prop.descripcion.ayuda')}>
+      <Campo
+        guion="campo-descripcion"
+        etiqueta={t('prop.descripcion')}
+        ayuda={t('prop.descripcion.ayuda')}
+      >
         <textarea name="descripcion" rows={6} required />
       </Campo>
-      <fieldset className="campo">
+      <fieldset className="campo" data-guion="campo-fase">
         <legend className="campo-etiqueta">{t('prop.fase')}</legend>
         <div className="opciones">
           {FASES.map((f, i) => (
@@ -52,10 +56,15 @@ export function Proponer() {
           ))}
         </div>
       </fieldset>
-      <Campo etiqueta={t('prop.papel')} ayuda={t('prop.papel.ayuda')} opcional>
+      <Campo guion="campo-papel" etiqueta={t('prop.papel')} ayuda={t('prop.papel.ayuda')} opcional>
         <textarea name="papel" rows={3} />
       </Campo>
-      <Campo etiqueta={t('prop.enlace')} ayuda={t('prop.enlace.ayuda')} opcional>
+      <Campo
+        guion="campo-enlace"
+        etiqueta={t('prop.enlace')}
+        ayuda={t('prop.enlace.ayuda')}
+        opcional
+      >
         <input name="enlace" type="url" placeholder="https://" />
       </Campo>
     </PaginaFormulario>

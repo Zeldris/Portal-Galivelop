@@ -6157,7 +6157,8 @@ body:has(dialog[open]) {
   white-space: nowrap;
 }
 
-.guion-activo {
+.guion-activo,
+.guion-enfoque {
   scroll-margin-top: 96px;
   scroll-margin-bottom: 96px;
   outline: 3px solid var(--celeste-intenso);
@@ -6165,8 +6166,16 @@ body:has(dialog[open]) {
   transition: outline-color var(--transicion);
 }
 
+/* El elemento que se está leyendo dentro de una sección alta: solo contorno, sin fondo que tape el texto. */
+.guion-enfoque {
+  outline: 3px solid var(--celeste-intenso);
+  outline-offset: 4px;
+  transition: outline-color var(--transicion);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .guion-activo {
+  .guion-activo,
+  .guion-enfoque {
     transition: none;
   }
 }

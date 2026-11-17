@@ -12,7 +12,15 @@
     },
     {
       "seccion": "formulario",
-      "es": "Te pedimos tu nombre y tu correo. Luego eliges en qué te gustaría participar: en un proyecto abierto, en lo que haga falta o en proyectos nuevos. También marcas cómo quieres aportar, por ejemplo con programación, diseño, textos, pruebas, investigación o, sobre todo, aprendiendo. Y nos cuentas sobre ti: qué sabes hacer, qué te gustaría aprender y por qué te interesa. Opcionalmente, tu disponibilidad aproximada y un enlace a tu portfolio. Al terminar, se abre tu aplicación de correo con el mensaje ya preparado. Tú lo revisas y lo envías, y si no se abre, puedes copiarlo. Gracias por escuchar."
+      "es": "Te pedimos tu nombre y tu correo. Luego eliges en qué te gustaría participar: en un proyecto abierto, en lo que haga falta o en proyectos nuevos. También marcas cómo quieres aportar, por ejemplo con programación, diseño, textos, pruebas, investigación o, sobre todo, aprendiendo. Y nos cuentas sobre ti: qué sabes hacer, qué te gustaría aprender y por qué te interesa. Opcionalmente, tu disponibilidad aproximada y un enlace a tu portfolio. Al terminar, se abre tu aplicación de correo con el mensaje ya preparado. Tú lo revisas y lo envías, y si no se abre, puedes copiarlo. Gracias por escuchar.",
+      "enfoques": [
+        { "frase": "Te pedimos tu nombre", "ver": "campo-nombre" },
+        { "frase": "Luego eliges en qué te gustaría participar", "ver": "campo-proyecto" },
+        { "frase": "También marcas cómo quieres aportar", "ver": "campo-areas" },
+        { "frase": "Y nos cuentas sobre ti", "ver": "campo-sobreti" },
+        { "frase": "Opcionalmente, tu disponibilidad", "ver": "campo-disponibilidad" },
+        { "frase": "un enlace a tu portfolio", "ver": "campo-enlace" }
+      ]
     }
   ]
 }

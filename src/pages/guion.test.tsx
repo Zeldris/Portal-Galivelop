@@ -3,20 +3,27 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { ProveedorIdioma } from '../i18n/Idioma';
+import galileo from '../data/proyectos/galivelop-image-generator.json';
+import workflow from '../data/proyectos/galivelop-workflow.json';
 import tarkor from '../data/proyectos/tarkor.json';
+import toveriai from '../data/proyectos/toveriai.json';
 import type { Proyecto as TipoProyecto } from '../data/tipos';
 import type { Guion } from '../utils/guion';
+import { Equipo } from './Equipo';
 import { Inicio } from './Inicio';
+import { Novedades } from './Novedades';
+import { Proponer } from './Proponer';
 import { FichaProyecto } from './Proyecto';
+import { Unirse } from './Unirse';
 
 const guion = (clave: string) =>
   JSON.parse(readFileSync(`src/data/guiones/${clave}.json`, 'utf8')) as Guion;
 
-/** Cada sección del guion existe en la página renderizada: por `id` o por `data-guion`. */
+/** Lo que el lector busca (`id` o `data-guion`) y no está en la página renderizada: secciones y elementos de los enfoques. */
 function faltan(html: string, g: Guion) {
-  return g.trozos
-    .map((t) => t.seccion)
-    .filter((s) => !html.includes(`id="${s}"`) && !html.includes(`data-guion="${s}"`));
+  const hay = (v: string) => html.includes(`id="${v}"`) || html.includes(`data-guion="${v}"`);
+  const pedidos = g.trozos.flatMap((t) => [t.seccion, ...(t.enfoques ?? []).map((e) => e.ver)]);
+  return [...new Set(pedidos)].filter((v) => !hay(v));
 }
 
 const envolver = (pagina: React.ReactNode) =>
@@ -28,12 +35,21 @@ const envolver = (pagina: React.ReactNode) =>
     </StaticRouter>,
   );
 
-describe('secciones de los guiones en la página', () => {
-  it('inicio', () => {
-    expect(faltan(envolver(<Inicio />), guion('inicio'))).toEqual([]);
-  });
-  it('tarkor', () => {
-    const html = envolver(<FichaProyecto p={tarkor as unknown as TipoProyecto} />);
-    expect(faltan(html, guion('tarkor'))).toEqual([]);
+const ficha = (p: unknown) => <FichaProyecto p={p as TipoProyecto} />;
+
+describe('secciones y enfoques de los guiones en la página', () => {
+  const paginas: [string, React.ReactNode][] = [
+    ['inicio', <Inicio />],
+    ['tarkor', ficha(tarkor)],
+    ['toveriai', ficha(toveriai)],
+    ['galivelop-workflow', ficha(workflow)],
+    ['galivelop-image-generator', ficha(galileo)],
+    ['novedades', <Novedades />],
+    ['equipo', <Equipo />],
+    ['proponer', <Proponer />],
+    ['unirse', <Unirse />],
+  ];
+  it.each(paginas)('%s', (clave, pagina) => {
+    expect(faltan(envolver(pagina), guion(clave))).toEqual([]);
   });
 });

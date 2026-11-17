@@ -369,8 +369,8 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
             <div id="caracteristicas" className="bloque">
               <h3 className="bloque-titulo">{t('sec.caracteristicas')}</h3>
               <ul className="caracteristicas">
-                {p.caracteristicas.map((c) => (
-                  <li key={tx(c.titulo)}>
+                {p.caracteristicas.map((c, i) => (
+                  <li key={tx(c.titulo)} data-guion={`caracteristica-${i + 1}`}>
                     <span className="caracteristica-icono">
                       <Icono nombre={c.icono} />
                     </span>
@@ -385,8 +385,8 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
             <div id="pasos" className="bloque">
               <h3 className="bloque-titulo">{t('sec.pasos')}</h3>
               <ol className="pasos-ficha">
-                {p.pasos.map((paso) => (
-                  <li key={tx(paso.titulo)}>
+                {p.pasos.map((paso, i) => (
+                  <li key={tx(paso.titulo)} data-guion={`paso-${i + 1}`}>
                     <h4>{tx(paso.titulo)}</h4>
                     <p>{tx(paso.texto)}</p>
                     {paso.animacion && p.animaciones?.length ? (
@@ -483,8 +483,8 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
                 <div id="aprendizajes" className="bloque">
                   <h3 className="bloque-titulo">{t('sec.aprendizajes')}</h3>
                   <ul className="aprendizajes">
-                    {p.aprendizajes.map((a) => (
-                      <li key={tx(a)}>
+                    {p.aprendizajes.map((a, i) => (
+                      <li key={tx(a)} data-guion={`aprendizaje-${i + 1}`}>
                         <Sparkles size={18} aria-hidden="true" />
                         <span>{tx(a)}</span>
                       </li>
@@ -497,8 +497,8 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
               <div id="decisiones" className="bloque">
                 <h3 className="bloque-titulo">{t('sec.decisiones')}</h3>
                 <ul className="decisiones">
-                  {p.decisiones.map((d) => (
-                    <li key={tx(d.titulo)}>
+                  {p.decisiones.map((d, i) => (
+                    <li key={tx(d.titulo)} data-guion={`decision-${i + 1}`}>
                       <h4>{tx(d.titulo)}</h4>
                       <p>{tx(d.texto)}</p>
                     </li>
@@ -524,11 +524,12 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
                       {t('sec.hitos')} <span className="bloque-extra">{avance} %</span>
                     </h3>
                     <ol className="hitos">
-                      {p.hitos.map((h) => {
+                      {p.hitos.map((h, i) => {
                         return (
                           <li
                             key={(h.version ?? '') + tx(h.nombre)}
                             className={`hito hito-${h.estado}`}
+                            data-guion={`hito-${i + 1}`}
                           >
                             <span className="hito-marca" aria-hidden="true">
                               <IconoMarca nombre={ICONO_HITO[h.estado]} />

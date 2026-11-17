@@ -17,7 +17,17 @@
     },
     {
       "seccion": "resumen",
-      "es": "Cada proyecto del taller necesita imágenes de marca: fondos para redes, piezas por formato, avatares. No queremos que esas imágenes ni sus pedidos salgan del equipo. Tampoco repetir en cada repositorio el mismo montaje de modelos, colas y carpetas. El servicio recibe un pedido, genera varios intentos y te deja marcar uno como elegido. Lo entrega como imagen, junto a un manifiesto que dice con qué modelo y qué parámetros se hizo, para poder reproducirla. Se usa desde la línea de órdenes, desde una interfaz local o desde una pequeña interfaz en el navegador, con tres pantallas. Se trabaja así. Registras un proyecto y haces un pedido. El servicio genera los intentos. Eliges uno, y puedes deshacerlo. Y se entrega. Además, las imágenes e iconos de esta misma web salen de este generador: portadas, iconos, ilustraciones y más."
+      "es": "Cada proyecto del taller necesita imágenes de marca: fondos para redes, piezas por formato, avatares. No queremos que esas imágenes ni sus pedidos salgan del equipo. Tampoco repetir en cada repositorio el mismo montaje de modelos, colas y carpetas. El servicio recibe un pedido, genera varios intentos y te deja marcar uno como elegido. Lo entrega como imagen, junto a un manifiesto que dice con qué modelo y qué parámetros se hizo, para poder reproducirla. Se usa desde la línea de órdenes, desde una interfaz local o desde una pequeña interfaz en el navegador, con tres pantallas. Se trabaja así. Registras un proyecto y haces un pedido. El servicio genera los intentos. Eliges uno, y puedes deshacerlo. Y se entrega. Además, las imágenes e iconos de esta misma web salen de este generador: portadas, iconos, ilustraciones y más.",
+      "enfoques": [
+        { "frase": "No queremos que esas imágenes", "ver": "caracteristica-1" },
+        { "frase": "genera varios intentos", "ver": "caracteristica-2" },
+        { "frase": "manifiesto que dice", "ver": "caracteristica-3" },
+        { "frase": "interfaz en el navegador", "ver": "caracteristica-6" },
+        { "frase": "Registras un proyecto", "ver": "paso-1" },
+        { "frase": "El servicio genera los intentos", "ver": "paso-2" },
+        { "frase": "Eliges uno", "ver": "paso-3" },
+        { "frase": "Y se entrega", "ver": "paso-4" }
+      ]
     },
     {
       "seccion": "galeria",
@@ -25,15 +35,40 @@
     },
     {
       "seccion": "afondo",
-      "es": "Si quieres entrar a fondo, hay tres apartados. El primero cuenta el camino del pedido a la entrega: intentos, elegida, cola, composición del texto y el logo, y la medida de la marca. El segundo, el piloto de contenido, con las rondas que hicimos en una Steam Deck y qué aprendimos en cada una. Y el tercero, el motor que genera las imágenes."
+      "es": "Si quieres entrar a fondo, hay tres apartados. El primero cuenta el camino del pedido a la entrega: intentos, elegida, cola, composición del texto y el logo, y la medida de la marca. El segundo, el piloto de contenido, con las rondas que hicimos en una Steam Deck y qué aprendimos en cada una. Y el tercero, el motor que genera las imágenes.",
+      "enfoques": [
+        { "frase": "El primero cuenta el camino", "ver": "ap-flujo" },
+        { "frase": "El segundo, el piloto", "ver": "ap-piloto" },
+        { "frase": "Y el tercero, el motor", "ver": "ap-motor" }
+      ]
     },
     {
       "seccion": "tecnica",
-      "es": "¿Y cómo está hecho? El servicio no conoce el dominio de ningún proyecto: cada uno aporta su marca y sus referencias. Está escrito solo con la biblioteca estándar de Python, y los modelos, que pesan mucho, se descargan aparte. El texto y el logo se componen después sobre la imagen, para que siempre se lean y salgan bien escritos. Cada imagen se puede reproducir gracias a su manifiesto. Y el código es abierto, aunque cada modelo conserva su propia licencia. Por el camino aprendimos que el modelo pinta todo lo que nombras, así que sobran las comparaciones en el pedido. Que un borrador pequeño sirve para descartar pronto. Y que con varias semillas se compara de verdad."
+      "es": "¿Y cómo está hecho? El servicio no conoce el dominio de ningún proyecto: cada uno aporta su marca y sus referencias. Está escrito solo con la biblioteca estándar de Python, y los modelos, que pesan mucho, se descargan aparte. El texto y el logo se componen después sobre la imagen, para que siempre se lean y salgan bien escritos. Cada imagen se puede reproducir gracias a su manifiesto. Y el código es abierto, aunque cada modelo conserva su propia licencia. Por el camino aprendimos que el modelo pinta todo lo que nombras, así que sobran las comparaciones en el pedido. Que un borrador pequeño sirve para descartar pronto. Y que con varias semillas se compara de verdad.",
+      "enfoques": [
+        { "frase": "El servicio no conoce el dominio", "ver": "decision-2" },
+        { "frase": "Está escrito solo con la biblioteca estándar", "ver": "decision-4" },
+        { "frase": "los modelos, que pesan mucho", "ver": "decision-3" },
+        { "frase": "El texto y el logo se componen", "ver": "decision-8" },
+        { "frase": "Cada imagen se puede reproducir", "ver": "decision-7" },
+        { "frase": "Y el código es abierto", "ver": "decision-9" },
+        { "frase": "Por el camino aprendimos", "ver": "aprendizajes" }
+      ]
     },
     {
       "seccion": "avance",
-      "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Falta el montaje por capas, colocar el texto antes de generar, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana."
+      "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Falta el montaje por capas, colocar el texto antes de generar, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana.",
+      "enfoques": [
+        { "frase": "Ya funcionan el núcleo", "ver": "hito-1" },
+        { "frase": "la interfaz y las funciones", "ver": "hito-2" },
+        { "frase": "borrar y editar texto", "ver": "hito-3" },
+        { "frase": "Falta el montaje por capas", "ver": "hito-4" },
+        { "frase": "colocar el texto antes de generar", "ver": "hito-5" },
+        { "frase": "el piloto con el juego", "ver": "hito-7" },
+        { "frase": "un director local", "ver": "hito-8" },
+        { "frase": "Y que funcione en cualquier equipo", "ver": "hito-9" },
+        { "frase": "Debajo están las novedades", "ver": "novedades" }
+      ]
     },
     {
       "seccion": "participar",

@@ -1,19 +1,33 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useIdioma } from '../i18n/Idioma';
-import { buscarSeccion, claveDeGuion, rutaAudio, type Guion } from '../utils/guion';
+import { buscarSeccion, claveDeGuion, enfoqueEn, rutaAudio, type Guion } from '../utils/guion';
 import { Icono } from './Icono';
 import { ChevronLeft, ChevronRight, Pause, Play, X } from 'lucide-react';
 
 const BASE = import.meta.env.BASE_URL;
 const RESALTADO = 'guion-activo';
+const ENFOCADO = 'guion-enfoque';
 const guiones = import.meta.glob<{ default: Guion }>('../data/guiones/*.json');
 
 /** Teclas con las que la persona recorre la página por su cuenta: la lectura se pausa. */
 const TECLAS_SCROLL = new Set([' ', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End']);
 
 function quitarResaltado() {
-  document.querySelectorAll('.' + RESALTADO).forEach((e) => e.classList.remove(RESALTADO));
+  document
+    .querySelectorAll(`.${RESALTADO}, .${ENFOCADO}`)
+    .forEach((e) => e.classList.remove(RESALTADO, ENFOCADO));
+}
+
+const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/** Centra el elemento en la ventana; si es más alto que ella, deja visible su inicio. */
+function mostrar(el: HTMLElement, centrar: boolean) {
+  const cabe = el.getBoundingClientRect().height <= window.innerHeight * 0.9;
+  el.scrollIntoView({
+    behavior: sinMovimiento() ? 'auto' : 'smooth',
+    block: centrar && cabe ? 'center' : 'start',
+  });
 }
 
 /**
@@ -66,17 +80,44 @@ export function Lector() {
   // Cambiar de página o de idioma cierra el lector.
   useEffect(() => cerrar, [pathname, idioma, cerrar]);
 
+  // Qué trozo suena y a qué elemento está enfocado (para no repetir el scroll en cada `timeupdate`).
+  const enCurso = useRef<{ i: number; ver: string | null }>({ i: 0, ver: null });
+  // Coloca la vista según el instante del trozo `i` (fracción del audio): el elemento del enfoque que toca, centrado.
+  const colocar = useCallback(
+    (i: number, fraccion: number) => {
+      const trozo = trozos[i];
+      if (!trozo) return;
+      const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
+      if (!enfoque) return;
+      if (enCurso.current.i === i && enCurso.current.ver === enfoque.ver) return;
+      enCurso.current = { i, ver: enfoque.ver };
+      document.querySelectorAll('.' + ENFOCADO).forEach((e) => e.classList.remove(ENFOCADO));
+      const el = buscarSeccion(enfoque.ver);
+      if (!el) return;
+      el.classList.add(ENFOCADO);
+      mostrar(el, true);
+    },
+    [trozos],
+  );
+  const colocarAhora = () => {
+    const a = audio.current;
+    if (a && Number.isFinite(a.duration) && a.duration > 0)
+      colocar(enCurso.current.i, a.currentTime / a.duration);
+  };
+  const alActualizar = useRef<() => void>(() => undefined);
+  alActualizar.current = colocarAhora;
+
   const reproducir = useCallback(
     (i: number) => {
       const trozo = trozos[i];
       if (!trozo) return;
       quitarResaltado();
       const el = buscarSeccion(trozo.seccion);
-      if (el) {
-        el.classList.add(RESALTADO);
-        const quieto = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        el.scrollIntoView({ behavior: quieto ? 'auto' : 'smooth', block: 'start' });
-      }
+      el?.classList.add(RESALTADO);
+      enCurso.current = { i, ver: null };
+      const primero = enfoqueEn(trozo.es, trozo.enfoques, 0);
+      if (primero) colocar(i, 0);
+      else if (el) mostrar(el, false);
       const a = (audio.current ??= new Audio());
       a.src = rutaAudio(BASE, idioma, clave, i, trozo.seccion);
       void a.play().then(
@@ -92,7 +133,7 @@ export function Lector() {
       }
       setIndice(i);
     },
-    [trozos, idioma, clave],
+    [trozos, idioma, clave, colocar],
   );
 
   // Al acabar un trozo, el siguiente; tras el último, se cierra solo.
@@ -101,9 +142,12 @@ export function Lector() {
   useEffect(() => {
     const a = (audio.current ??= new Audio());
     const fin = () => alAcabar.current();
+    const avance = () => alActualizar.current();
     a.addEventListener('ended', fin);
+    a.addEventListener('timeupdate', avance);
     return () => {
       a.removeEventListener('ended', fin);
+      a.removeEventListener('timeupdate', avance);
       a.pause();
     };
   }, []);
@@ -139,11 +183,15 @@ export function Lector() {
       audio.current?.pause();
       setSonando(false);
     } else if (audio.current?.src && !audio.current.ended) {
-      const el = buscarSeccion(trozos[indice].seccion);
-      el?.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
-      });
-      void audio.current.play().then(() => setSonando(true));
+      // Al reanudar se vuelve al enfoque (o a la sección) que toca en este instante.
+      const trozo = trozos[indice];
+      const a = audio.current;
+      const fraccion =
+        Number.isFinite(a.duration) && a.duration > 0 ? a.currentTime / a.duration : 0;
+      const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
+      const el = buscarSeccion(enfoque?.ver ?? trozo.seccion);
+      if (el) mostrar(el, !!enfoque);
+      void a.play().then(() => setSonando(true));
     } else reproducir(indice);
   };
   const ir = (i: number) => i >= 0 && i < trozos.length && reproducir(i);
