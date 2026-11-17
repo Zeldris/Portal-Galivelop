@@ -8,10 +8,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-17 (arreglos de las auditorías y chaflán, `ccr-8e0862c2-niq1xt`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, 6eb3739, 2026-11-17) |
-| **Tarea en curso** | Arreglos de las auditorías del 2026-11-17 y chaflán de 14 px hechos (informe, sección «Arreglos»); falta el `/code-review` del bloque (desde `origin/main`, más de 1.000 líneas) |
-| **Siguiente paso** | `/code-review --max-findings all` del diff contra `origin/main` (scripts de auditoría, rendimiento, HTML estático, CSS), arreglos con `Findings: <n>`; luego proponer a la persona ir a `main` (fase 2 aplica: cambio grande de componentes, estilos y build). Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
+| **Tarea en curso** | Arreglos de las auditorías del 2026-11-17 y chaflán hechos; fase 1 hecha (`/code-review` del bloque: 0 graves, 6 medios, 9 leves; 8 arreglados en 0caa5b7, el resto en `docs/records/pending.md`) |
+| **Siguiente paso** | Confirmación de la persona para ir a `main`; entonces fase 2 (`gw-opt-tokens` y `retro`, cambio grande de componentes, estilos y build) presentada a la persona, fase 3 (`reviewed.sh`) y subida. Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
 | **En `main`** | **Vistas previas en redes del portal, workflow e IG sobre las placas 24 del generador** (4c4f082, 2026-11-17, la persona: «adelante para ir a main»; CI y publicación en verde). Antes, la ficha de Galivelop-workflow contrastada con su repo (b17058f). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 225/225 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 227/227 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
