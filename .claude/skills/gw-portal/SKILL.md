@@ -55,7 +55,7 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
      la ficha entera, sus imágenes y diagramas, y cada archivo del portal que lo nombra (las dos listas del informe).
      Lee solo lo que el informe señala (un diff, una entrada del CHANGELOG, un archivo vigilado, la línea que lo nombra).
    - **Guion de lectura** de cada página que cambie (la ficha, o el inicio si cambian sus proyectos): los trozos que
-     ya no sean verdad se reescriben y su audio queda pendiente («Guiones de lectura» de [`proyectos.md`](proyectos.md)).
+     ya no sean verdad se reescriben en los tres idiomas, sus `enfoques` se revisan y su audio queda pendiente («Guiones de lectura» de [`proyectos.md`](proyectos.md)).
    - `enlace`: un repo que pasó a público sin enlace en la ficha (ADR 0003) se enlaza (`enlaces`, tipo `otro`); uno
      privado enlazado, se desenlaza. Es contenido.
    - `nuevo`: nunca se añade solo. Propón destino (ficha, próximamente o `ignorar` con motivo) con una línea de qué

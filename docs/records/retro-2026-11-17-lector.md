@@ -1,6 +1,6 @@
 # Retro 2026-11-17: guiones que faltaban y lector de la página
 
-**Estado:** aprobada entera por la persona (2026-11-17: «apruebo todo»): P1, P2, P3, P4 y la propuesta para el flujo. Se aplican tras subir el lector a `main`.
+**Estado:** aprobada entera por la persona (2026-11-17: «apruebo todo»): P1, P2, P3, P4 y la propuesta para el flujo. Se aplican tras subir el lector a `main`. Aplicadas: P1 (`probar-lector.cjs`), P2 (2026-11-17, también para gl/en) y P4; P3 en curso.
 
 Revisado: lo que entra en `main` desde f507753 (guiones de las siete páginas, lector con enfoques, arreglos de la
 fase 1) y la bitácora. Gasto medido con `gw-opt-tokens`: sesión principal 63 llamadas, contexto medio 102k (techo

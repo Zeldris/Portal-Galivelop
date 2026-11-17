@@ -139,3 +139,4 @@
 {"agent":"gw-reviewer","branch":"ccr-b2d381ed-e10ez8","cacheRead":82085,"cacheWrite":33274,"date":"2026-11-17","input":8,"model":"claude-opus-5-5","output":1999,"recorded":"2026-11-17T22:12:00Z","refs":[],"session":"68a543fd"}
 {"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":1400841,"cacheWrite":7561,"date":"2026-11-17","input":24,"model":"claude-opus-5-5","output":3740,"recorded":"2026-11-17T22:12:00Z","refs":[],"session":"68a543fd"}
 {"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":241910,"cacheWrite":608,"date":"2026-11-17","input":6,"model":"claude-opus-5-5","output":666,"recorded":"2026-11-17T22:13:32Z","refs":[],"session":"68a543fd"}
+{"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":365480,"cacheWrite":1113,"date":"2026-11-17","input":7,"model":"claude-opus-5-5","output":341,"recorded":"2026-11-17T22:14:16Z","refs":[],"session":"68a543fd"}
