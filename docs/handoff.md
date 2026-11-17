@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-17 (icono de Tarkor q1417, `ccr-47f8fddd-o5ek6p`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 041c5cd, 2026-11-17) |
-| **Tarea en curso** | Guiones de lectura por página: decidido, sin empezar (ver siguiente paso) |
-| **Siguiente paso** | Barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3; entrada en `pending.md`). Refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`). **Primero: guiones de lectura por página** (la persona, 2026-11-17; alcance y formato en `pending.md`): empezar por inicio y Tarkor, en castellano. En el generador (pedido dado el 2026-11-17): 23c retrazado sin escalones, 24c OG de Tarkor otra vez, 31f portada de workflow (en cola, pausada); en el de voces, «lectora-es»; OG 24 de Developer (q1146 en `pendiente/`). |
+| **Tarea en curso** | Guiones de lectura por página: inicio y Tarkor escritos en castellano (`src/data/guiones/`), a la espera de que la persona los lea |
+| **Siguiente paso** | Barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3; entrada en `pending.md`). Refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`). **Primero: guiones de lectura** (`pending.md`): la persona lee los de inicio y Tarkor; con su visto bueno, el resto de páginas en castellano. En el generador (pedido dado el 2026-11-17): 23c retrazado sin escalones, 24c OG de Tarkor otra vez, 31f portada de workflow (en cola, pausada); en el de voces, «lectora-es»; OG 24 de Developer (q1146 en `pendiente/`). |
 | **En `main`** | **Auditorías del 2026-11-17 y sus arreglos, chaflán y retro** (041c5cd, `ccr-8e0862c2-niq1xt`). Antes, **portada provisional de Galivelop-workflow (boyas)** (6eb3739, 2026-11-17) y **vistas previas en redes sobre las placas 24** (4c4f082). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 227/227 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Guiones de lectura de inicio y Tarkor** (`ccr-47f8fddd-o5ek6p`, contenido, aún sin uso en la web): `src/data/guiones/{inicio,tarkor}.json`, formato en «Guiones de lectura» de `docs/desarrollo.md`; `guiones/` entra en los datos «a mano» de `src/data/tarea-semanal.test.ts` (4 líneas de test, revisadas en la sesión: diff trivial).
 
 - 2026-11-17 · **Icono de Tarkor: colmillo con cordón (q1417)** (`ccr-47f8fddd-o5ek6p`, solo contenido; la persona lo eligió en el generador): `public/proyectos/tarkor/icono.svg` pasa del anillo provisional al SVG del generador con el `viewBox` recortado al dibujo (`101 105 308 308`). El trazo tiene escalones de píxel visibles solo en grande; retrazado pedido al generador. Fila en `docs/marca.md`. Sin cambio de rutas.
 

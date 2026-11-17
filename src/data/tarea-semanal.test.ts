@@ -10,8 +10,11 @@ const REGLAS = readFileSync(join(SKILL, 'proyectos.md'), 'utf8');
 const FUENTES: { repos: Record<string, { destino: string; slug?: string }> } = JSON.parse(
   readFileSync(join(SKILL, 'fuentes.json'), 'utf8'),
 );
-/** Datos que se ponen al día a mano, no en la tarea semanal (Productos los decide Álvaro, ADR 0002; los textos legales, el titular). */
-const A_MANO = ['equipo.json', 'productos/', 'legal/'];
+/**
+ * Datos que se ponen al día a mano, no en la tarea semanal (Productos los decide Álvaro, ADR 0002; los textos legales,
+ * el titular; los guiones de lectura, la persona, porque su audio se graba aparte).
+ */
+const A_MANO = ['equipo.json', 'productos/', 'legal/', 'guiones/'];
 
 const slugsDe = (destino: string) =>
   new Set(

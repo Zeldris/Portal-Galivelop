@@ -158,6 +158,19 @@ Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaro
 
 `src/rutas.test.ts` comprueba que cada ruta fija de `App.tsx` está en `FIJAS` y en `PAGINAS`.
 
+## Guiones de lectura
+
+Un guion por página de contenido, escrito para el oído, en `src/data/guiones/<página>.json` (`inicio`, el slug de
+cada ficha…); legales y 404 no llevan. Lo leerá la voz `lectora-es` (audio pregrabado) mientras la página baja y
+resalta cada sección; aún no se usa en la web.
+
+- `narra`: la fecha de lo que cuenta (en una ficha, su `actualizado`). Si la página cambia, se revisa el guion y la fecha.
+- `trozos`: uno por sección, en orden; `seccion` es el `id` del elemento (`proyectos`, `resumen`, `avance`…) o, si no
+  tiene, un nombre fijo (`cabecera`, `vistazo`, `participar`). Cada uno lleva `es` (a mano); `gl` y `en`, traducidos.
+- `notas`: pronunciación de los nombres y qué hace envejecer el guion.
+- Para el oído: frases cortas, sin paréntesis, siglas ni símbolos (`d20`, `%`, `NPC`); números con letra cuando se
+  leen raro. Sin cifras que cambian cada semana: las novedades se invitan a leer, no se narran. Se respeta [«Mensaje»](#mensaje).
+
 ## Textos legales y pie
 
 - **Aviso legal, privacidad y términos** viven en `src/data/legal/<slug>.json` (es, gl y en), con su página en
