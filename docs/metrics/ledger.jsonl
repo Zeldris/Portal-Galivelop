@@ -163,3 +163,4 @@
 {"agent":"general-purpose","branch":"ccr-b2d381ed-e10ez8","cacheRead":51786,"cacheWrite":1826,"date":"2026-11-17","input":2,"model":"claude-opus-5-5","output":2711,"recorded":"2026-11-17T22:30:20Z","refs":[],"session":"6a138be7"}
 {"agent":"gw-reviewer","branch":"ccr-b2d381ed-e10ez8","cacheRead":87591,"cacheWrite":14270,"date":"2026-11-17","input":6,"model":"claude-opus-5-5","output":2251,"recorded":"2026-11-17T22:30:20Z","refs":[],"session":"6a138be7"}
 {"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":672825,"cacheWrite":6479,"date":"2026-11-17","input":11,"model":"claude-opus-5-5","output":3456,"recorded":"2026-11-17T22:30:20Z","refs":[],"session":"6a138be7"}
+{"agent":"main","branch":"ccr-b2d381ed-e10ez8","cacheRead":978334,"cacheWrite":5077,"date":"2026-11-17","input":16,"model":"claude-opus-5-5","output":1551,"recorded":"2026-11-17T22:34:43Z","refs":[],"session":"6a138be7"}
