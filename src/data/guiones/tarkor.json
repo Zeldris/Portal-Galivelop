@@ -9,11 +9,11 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "Esto es Tarkor, un juego de rol narrativo donde el mundo sigue adelante aunque tú te detengas. Es un juego por texto: escribes lo que haces y una inteligencia artificial, que funciona en tu propio equipo, hace de directora de juego. Todo ocurre en un mundo de bolsillo donde las facciones, la fauna y tu reino viven por su cuenta."
+      "es": "¿Y si el mundo de un juego siguiera adelante aunque tú te detengas? Eso es Tarkor, un juego de rol narrativo. Es un juego por texto: escribes lo que haces y una inteligencia artificial, que funciona en tu propio equipo, hace de directora de juego. Todo ocurre en un mundo de bolsillo donde las facciones, la fauna y tu reino viven por su cuenta."
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Tarkor está en alpha. Ahora mismo, el hito cero punto tres, «Reino profundo», está en una ronda de pruebas jugando. El mundo ya tiene nueve facciones vivas, nueve clases con treinta y una especializaciones y cincuenta y tres especies de fauna. Y toda la inteligencia artificial funciona en tu equipo. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+      "es": "¿En qué punto está? Tarkor está en alpha. Ahora mismo, el hito cero punto tres, «Reino profundo», está en una ronda de pruebas jugando. El mundo ya tiene nueve facciones vivas, nueve clases con treinta y una especializaciones y cincuenta y tres especies de fauna. Y toda la inteligencia artificial funciona en tu equipo. Aún falta, y lo contamos tal cual: medir bien el rendimiento en la Steam Deck, cerrar el conflicto y poder hablar y comerciar con los habitantes. Lo último que ha cambiado lo tienes en las novedades, más abajo."
     },
     {
       "seccion": "resumen",
@@ -37,7 +37,7 @@
     },
     {
       "seccion": "participar",
-      "es": "Tarkor está abierto a colaboración. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar."
+      "es": "Tarkor está abierto a colaboración, y el código es público. Si quieres aportar con código, arte, textos o pruebas, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar."
     }
   ]
 }

@@ -8,7 +8,7 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "Hola. Esto es Galivelop, una marca de software que funciona como un taller abierto. Nos mueve una idea sencilla: hacer reales los proyectos que parecen imposibles. Aquí se crea, se investiga y se aprende a la vista de todos, y con la puerta abierta. Puedes seguir cada proyecto, proponer uno nuevo o sumarte a alguno. Y lo que sale del taller lo encuentras en el perfil de quien lo hace."
+      "es": "¿Tienes un proyecto que parece imposible? Hola, esto es Galivelop, un taller de software abierto, y eso es justo lo que nos mueve: hacer reales proyectos así. Aquí se crea, se investiga y se aprende a la vista de todos, y con la puerta abierta. Puedes seguir cada proyecto, proponer uno nuevo o sumarte a alguno."
     },
     {
       "seccion": "proyectos",
@@ -16,15 +16,15 @@
     },
     {
       "seccion": "lineas",
-      "es": "Todos estos proyectos vuelven, una y otra vez, a cinco temas. Son nuestras líneas de trabajo. La primera, una inteligencia artificial local y responsable: modelos que funcionan en el equipo de cada persona, sin cuentas ni pagos por uso. La segunda, mundos que viven solos, que siguen avanzando aunque nadie mire. La tercera, información que se puede comprobar, que explica por qué algo merece confianza en lugar de dictar un veredicto. La cuarta, llevar una idea desde el prototipo hasta las manos de quien la va a usar. Y la quinta, el método: cómo trabajar semanas con agentes de inteligencia artificial sin perder el hilo."
+      "es": "Todos estos proyectos vuelven, una y otra vez, a cinco temas. Son nuestras líneas de trabajo. La primera, una inteligencia artificial local y responsable: modelos que funcionan en el equipo de cada persona, sin cuentas ni pagos por uso, y que probamos hasta en una Steam Deck. La segunda, mundos que viven solos, que siguen avanzando aunque nadie mire. La tercera, información que se puede comprobar, que explica por qué algo merece confianza en lugar de dictar un veredicto. La cuarta, llevar una idea desde el prototipo hasta las manos de quien la va a usar. Y la quinta, el método: cómo trabajar semanas con agentes de inteligencia artificial sin perder el hilo."
     },
     {
       "seccion": "sobre",
-      "es": "¿Y cómo trabajamos? Galivelop es un taller, no un escaparate. Aquí no solo se programa: se investiga, se prueban ideas y se aprende en cada paso. Cada proyecto se enseña como está, con lo que ya funciona y con lo que aún falta. Nos guían cuatro principios. Elegimos problemas que importan. Trabajamos en el límite de lo que sabemos. Enseñamos el proceso, no solo el resultado. Y aprendemos con generosidad, porque nadie empieza sabiéndolo todo. Por cierto, el nombre une Galicia, de donde venimos, y Develop, lo que hacemos."
+      "es": "¿Y cómo trabajamos? Galivelop es un taller, no un escaparate. Aquí no solo se programa: se investiga, se prueban ideas y se aprende en cada paso. Cada proyecto se enseña como está, con lo que ya funciona y con lo que aún falta, porque lo que falta se cuenta igual que lo que funciona. Nos guían cuatro principios. Elegimos problemas que importan. Trabajamos en el límite de lo que sabemos. Enseñamos el proceso, no solo el resultado. Y aprendemos con generosidad, porque nadie empieza sabiéndolo todo. Por cierto, el nombre une Galicia, de donde venimos, y Develop, lo que hacemos."
     },
     {
       "seccion": "participa",
-      "es": "Para terminar, una pregunta: ¿creamos juntos? Galivelop crece con las personas que se suman. No pedimos experiencia: pedimos ganas de construir, de aprender y de hacerlo en equipo. Hay tres caminos. Puedes colaborar en un proyecto abierto, con código, arte, textos, pruebas o investigación. Puedes proponernos ese proyecto que parece imposible. O puedes venir a aprender, que el mejor sitio para hacerlo es un proyecto de verdad. Funciona así: nos escribes, hablamos para ver dónde encajas, empiezas con una tarea pequeña y, desde ahí, creces a tu ritmo. Si tienes un proyecto propio, algunos miembros del equipo aceptan encargos, cada uno por su cuenta: en su perfil ves su trabajo y cómo escribirle. También nos encuentras en Discord. Gracias por escuchar."
+      "es": "Para terminar, una pregunta: ¿creamos juntos? Galivelop crece con las personas que se suman. No pedimos experiencia: pedimos ganas de construir, de aprender y de hacerlo en equipo. Hay tres caminos. Puedes colaborar en un proyecto abierto, con código, arte, textos, pruebas o investigación. Puedes proponernos ese proyecto que parece imposible. O puedes venir a aprender, que el mejor sitio para hacerlo es un proyecto de verdad. Funciona así: nos escribes, hablamos para ver dónde encajas, empiezas con una tarea pequeña y, desde ahí, creces a tu ritmo. Si tienes un proyecto propio, algunos miembros del equipo aceptan encargos, cada uno por su cuenta: en su perfil ves su trabajo y cómo escribirle. Y si quieres conocernos antes, o solo lanzar una idea, te esperamos en Discord. Gracias por escuchar."
     }
   ]
 }
