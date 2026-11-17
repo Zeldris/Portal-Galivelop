@@ -17,6 +17,7 @@
     "auditar:html": "node tools/qa/auditar-html.cjs",
     "auditar:rendimiento": "node tools/qa/auditar-rendimiento.cjs",
     "capturas": "node tools/qa/capturas.cjs",
+    "probar:lector": "node tools/qa/probar-lector.cjs",
     "auditar:seguridad": "node tools/qa/auditar-seguridad.cjs",
     "auditar:a11y": "node tools/qa/auditar-accesibilidad.cjs",
     "seo": "python3 .claude/skills/gw-seo/scripts/comprobar.py dist"

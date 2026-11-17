@@ -4,12 +4,14 @@ import { useIdioma } from '../i18n/Idioma';
 import {
   buscarSeccion,
   claveDeGuion,
+  desplazamiento,
   enfoqueEn,
   gestoPausa,
   rutaAudio,
   rutaNormal,
   teclaPausa,
   type Guion,
+  type ZonaLibre,
 } from '../utils/guion';
 import { Icono } from './Icono';
 import { ChevronLeft, ChevronRight, Pause, Play, X } from 'lucide-react';
@@ -27,13 +29,31 @@ function quitarResaltado() {
 
 const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/** Centra el elemento en la ventana; si es más alto que ella, deja visible su inicio. */
-function mostrar(el: HTMLElement, centrar: boolean) {
-  const cabe = el.getBoundingClientRect().height <= window.innerHeight * 0.9;
-  el.scrollIntoView({
-    behavior: sinMovimiento() ? 'auto' : 'smooth',
-    block: centrar && cabe ? 'center' : 'start',
-  });
+/** Alto que se reserva abajo para la barra del lector mientras aún no está en la página (al abrirlo). */
+const RESERVA_BARRA = 76;
+
+/**
+ * La parte de la ventana que no tapan las barras fijas: la cabecera, la barra de grupos de una ficha (si el elemento
+ * va tras ella, se queda pegada bajo la cabecera) y la barra del lector.
+ */
+function zonaLibre(el: HTMLElement): ZonaLibre {
+  let arriba = document.querySelector('.cabecera')?.getBoundingClientRect().bottom ?? 0;
+  const nav = document.querySelector('.nav-ficha');
+  if (nav && nav.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)
+    arriba += nav.getBoundingClientRect().height;
+  const barra = document.querySelector('.lector')?.getBoundingClientRect().top;
+  const abajo = Math.min(
+    window.innerHeight - RESERVA_BARRA,
+    barra === undefined ? Infinity : barra - 8,
+  );
+  return { arriba, abajo };
+}
+
+/** Lleva el elemento a la zona libre: centrado si cabe; si no, su inicio. Si ya se ve entero, no mueve la vista. */
+function mostrar(el: HTMLElement) {
+  const r = el.getBoundingClientRect();
+  const d = desplazamiento(r.top, r.height, zonaLibre(el));
+  if (d !== 0) window.scrollBy({ top: d, behavior: sinMovimiento() ? 'auto' : 'smooth' });
 }
 
 /**
@@ -115,7 +135,7 @@ export function Lector() {
       const el = buscarSeccion(enfoque.ver);
       if (!el) return false;
       el.classList.add(ENFOCADO);
-      mostrar(el, true);
+      mostrar(el);
       return true;
     },
     [trozos],
@@ -136,7 +156,7 @@ export function Lector() {
       const el = buscarSeccion(trozo.seccion);
       el?.classList.add(RESALTADO);
       enCurso.current = { i, ver: null };
-      if (!colocar(i, 0) && el) mostrar(el, false);
+      if (!colocar(i, 0) && el) mostrar(el);
       const a = (audio.current ??= new Audio());
       a.src = rutaAudio(BASE, idioma, clave, i, trozo.seccion);
       void a.play().then(
@@ -220,7 +240,7 @@ export function Lector() {
         Number.isFinite(a.duration) && a.duration > 0 ? a.currentTime / a.duration : 0;
       const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
       const el = buscarSeccion(enfoque?.ver ?? trozo.seccion);
-      if (el) mostrar(el, !!enfoque);
+      if (el) mostrar(el);
       void a.play().then(
         () => setSonando(true),
         () => setSonando(false),

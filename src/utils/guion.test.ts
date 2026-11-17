@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  desplazamiento,
   enfoqueEn,
   gestoPausa,
   posicionDeFrase,
@@ -61,5 +62,20 @@ describe('gestos que pausan el lector', () => {
   it('rutaNormal quita la barra final salvo en la raíz', () => {
     expect(rutaNormal('/equipo/')).toBe('/equipo');
     expect(rutaNormal('/')).toBe('/');
+  });
+});
+
+describe('desplazamiento', () => {
+  const zona = { arriba: 70, abajo: 770 };
+  it('no mueve la vista si el elemento ya se ve entero', () => {
+    expect(desplazamiento(100, 600, zona)).toBe(0);
+  });
+  it('centra en la zona libre lo que cabe y no se ve entero (también lo que tapa la barra de abajo)', () => {
+    expect(desplazamiento(500, 400, zona)).toBe(500 - (70 + 150));
+    expect(desplazamiento(-300, 100, zona)).toBe(-300 - (70 + 300));
+  });
+  it('deja el inicio bajo las barras de arriba si no cabe', () => {
+    expect(desplazamiento(900, 1500, zona)).toBe(900 - 86);
+    expect(desplazamiento(70, 701, zona)).toBe(-16);
   });
 });

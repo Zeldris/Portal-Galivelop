@@ -18,8 +18,12 @@ export interface Enfoque {
   ver: string;
 }
 
-/** Margen (fracción del audio) con el que el enfoque se adelanta a la frase, para que el scroll llegue a tiempo. */
-export const ADELANTO_ENFOQUE = 0.015;
+/**
+ * Margen (fracción del audio) con el que el enfoque se adelanta a la frase. A cero: medido con `silencedetect` sobre
+ * los MP3 (2026-11-17), el cálculo por posición en el texto ya salta antes de que suene la frase (unos 0,7 s de
+ * media), lo justo para el scroll; con 0,015 se adelantaba entre 1 y 2,5 s.
+ */
+export const ADELANTO_ENFOQUE = 0;
 
 /** Fracción (0 a 1) del texto en que empieza la frase; -1 si no está. Las voces van a ritmo casi constante: vale como tiempo. */
 export function posicionDeFrase(es: string, frase: string): number {
@@ -83,4 +87,27 @@ const TECLAS_SCROLL = new Set([' ', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'
 /** Una ruta sin la barra final (salvo `/`), para comparar con la `pagina` del guion. */
 export function rutaNormal(ruta: string): string {
   return ruta.length > 1 ? ruta.replace(/\/+$/, '') || '/' : ruta;
+}
+
+/** Zona de la ventana que no tapan las barras fijas: de `arriba` a `abajo`, en px desde el borde superior. */
+export interface ZonaLibre {
+  arriba: number;
+  abajo: number;
+}
+
+/** Hueco entre el elemento y el borde de la zona libre cuando no cabe y se muestra su inicio. */
+const HUECO = 16;
+
+/**
+ * Cuánto bajar (o subir, si es negativo) para que un elemento (`top` y `alto` en px de la ventana) se vea en la zona
+ * libre: si ya se ve entero, nada (`0`, así no tiembla al pasar de un enfoque a otro que ya está en pantalla); si
+ * cabe, centrado en ella; si no cabe, con su inicio justo bajo las barras de arriba.
+ */
+export function desplazamiento(top: number, alto: number, zona: ZonaLibre): number {
+  const libre = zona.abajo - zona.arriba;
+  if (alto <= libre) {
+    if (top >= zona.arriba && top + alto <= zona.abajo) return 0;
+    return Math.round(top - (zona.arriba + (libre - alto) / 2));
+  }
+  return Math.round(top - (zona.arriba + HUECO));
 }

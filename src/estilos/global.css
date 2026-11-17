@@ -6159,8 +6159,6 @@ body:has(dialog[open]) {
 
 .guion-activo,
 .guion-enfoque {
-  scroll-margin-top: 96px;
-  scroll-margin-bottom: 96px;
   outline: 3px solid var(--celeste-intenso);
   outline-offset: -3px;
   transition: outline-color var(--transicion);

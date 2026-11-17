@@ -170,8 +170,9 @@ resalta cada sección: el lector flotante (`src/components/Lector.tsx`).
   tiene, un nombre fijo (`cabecera`, `vistazo`, `participar`). Cada uno lleva `es` (a mano); `gl` y `en`, traducidos.
 - `enfoques` (opcional, por trozo): en una sección más alta que la pantalla, o que recorre varios elementos (tarjetas,
   apartados, hitos, campos), `[{ "frase": "<texto literal y único del `es` del trozo>", "ver": "<id o data-guion>" }]`.
-  Cuando el audio llega a esa frase, el lector centra ese elemento (si es más alto que la ventana, deja visible su
-  inicio) y lo contornea. El momento sale de la posición de la frase en el texto (`audio.duration` × posición / longitud),
+  Cuando el audio llega a esa frase, el lector contornea ese elemento y lo lleva a la parte de la ventana que no tapan
+  la cabecera, la barra de grupos de la ficha ni la barra del lector: centrado si cabe, su inicio si no, y sin mover
+  la vista si ya se ve entero (así no tiembla en móvil al pasar de una tarjeta a la de al lado). El momento sale de la posición de la frase en el texto (`audio.duration` × posición / longitud),
   así que no hay tiempos a mano y vale si se regraba. Los elementos llevan `data-guion` derivado de los datos
   (`proyecto-<slug>`, `producto-<slug>`, `linea-<id>`, `hito-<n>`, `decision-<n>`, `paso-<n>`, `campo-<x>`; los apartados, su
   `ap-<id>`).
@@ -298,6 +299,7 @@ npm run check    # tipos, formato (prettier), tests y ganchos
 npm run build    # genera dist/ (con 404.html para las rutas en GitHub Pages)
 npm run medir    # tras el build: alto, desbordes, cortes, zonas táctiles y columnas de las rejillas, en texto
 npm run capturas -- <ruta> [selector | --menu]   # tras el build: captura de una página, sección o menú móvil, con medidas
+npm run probar:lector [-- <ruta>…]   # tras el build: recorre el lector en escritorio y móvil; captura y comprueba cada trozo y enfoque
 node tools/qa/recorrido.cjs [--url <base>] [--anchos 320,768]   # tras el build: 7 anchos x tema claro/oscuro, foco con Tab y enlaces internos, en texto
 ```
 
