@@ -1,10 +1,10 @@
 {
   "pagina": "/proyectos/galivelop-image-generator",
-  "narra": "2026-11-15",
+  "narra": "2026-11-17",
   "notas": [
     "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Steam Deck» a la inglesa (estim dek); «FLUX» a la inglesa (flacs); «Vulkan» a la inglesa (vál-kan); «World-Maker-Fantasy» a la inglesa (uérld méiker fántasi); «Python» a la inglesa (páizon); «MIT» no se lee: se dice «licencia abierta».",
     "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión y lo que falta, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
-    "Envejece con cada versión (hoy la cero punto cinco, próxima la cero punto seis, montaje) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
+    "Envejece con cada versión (hoy la cero punto seis, próxima la pieza de marca) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
   ],
   "trozos": [
     {
@@ -13,7 +13,7 @@
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto cinco, con el código abierto. La próxima es la cero punto seis, el montaje por capas. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto seis, con el código abierto. La próxima es la pieza de marca, dentro del proceso de marca. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo."
     },
     {
       "seccion": "resumen",
@@ -57,16 +57,17 @@
     },
     {
       "seccion": "avance",
-      "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Falta el montaje por capas, colocar el texto antes de generar, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana.",
+      "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Ahora está en curso el proceso de marca: pieza de marca e imagen libre, tandas, recortar un intento y entrega por carpetas. Falta el montaje por capas, colocar el texto antes de generar, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana.",
       "enfoques": [
         { "frase": "Ya funcionan el núcleo", "ver": "hito-1" },
         { "frase": "la interfaz y las funciones", "ver": "hito-2" },
         { "frase": "borrar y editar texto", "ver": "hito-3" },
-        { "frase": "Falta el montaje por capas", "ver": "hito-4" },
-        { "frase": "colocar el texto antes de generar", "ver": "hito-5" },
-        { "frase": "el piloto con el juego", "ver": "hito-7" },
-        { "frase": "un director local", "ver": "hito-8" },
-        { "frase": "Y que funcione en cualquier equipo", "ver": "hito-9" },
+        { "frase": "Ahora está en curso el proceso de marca", "ver": "hito-4" },
+        { "frase": "Falta el montaje por capas", "ver": "hito-5" },
+        { "frase": "colocar el texto antes de generar", "ver": "hito-6" },
+        { "frase": "el piloto con el juego", "ver": "hito-8" },
+        { "frase": "un director local", "ver": "hito-9" },
+        { "frase": "Y que funcione en cualquier equipo", "ver": "hito-10" },
         { "frase": "Debajo están las novedades", "ver": "novedades" }
       ]
     },
