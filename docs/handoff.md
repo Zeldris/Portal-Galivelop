@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-17 (portada provisional de Galivelop-workflow con las boyas) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 094e610, 2026-11-17) |
-| **Tarea en curso** | Portada provisional de Galivelop-workflow (boyas de la 24, q1157) en la ficha y la tarjeta del inicio; el esquema pasa a la galería. Falta: fase 1 y, con confirmación de la persona, `main` |
-| **Siguiente paso** | Tras subir a `main`: refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`). Después, lo que había: P7 de X lista en `docs/media/2026-11-15/01-fichas-al-dia/`; P1, P3, P5 y P6 guardadas en `docs/media/proposals/2026-11-14.md`. En el generador: portada 31 de workflow (pedido nuevo dado a la persona el 2026-11-17, misma composición que q1157) y la OG 24 de Developer (pedido rehecho, q1146 en `pendiente/`) |
+| **Actualizado** | 2026-11-17 (cinco auditorías nuevas de la web, `ccr-8e0862c2-niq1xt`) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, 6eb3739, 2026-11-17) |
+| **Tarea en curso** | Auditorías del 2026-11-17 hechas (`docs/records/auditoria-2026-11-17.md`, scripts `npm run auditar:*`); falta que la persona elija qué se arregla y decida el chaflán de las tarjetas |
+| **Siguiente paso** | La persona elige qué arreglar de `docs/records/auditoria-2026-11-17.md` (propuesta: los 3 graves de rendimiento, impresión, cabecera y pie sin JS, 2.5.3 de /equipo, `npm audit fix` y la doc vieja); antes de `main`, `/code-review` de los scripts nuevos (`ecbd18e`, bloque de 1.229 líneas). Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
 | **En `main`** | **Vistas previas en redes del portal, workflow e IG sobre las placas 24 del generador** (4c4f082, 2026-11-17, la persona: «adelante para ir a main»; CI y publicación en verde). Antes, la ficha de Galivelop-workflow contrastada con su repo (b17058f). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Cinco auditorías nuevas** (`ccr-8e0862c2-niq1xt`; la persona: «todas las auditorías posibles… añádela y ejecútala» y una de conformidad con lo escrito): scripts `tools/qa/auditar-{accesibilidad,rendimiento,seguridad,html}.cjs` (`npm run auditar:a11y|rendimiento|seguridad|html`), axe-core de desarrollo, e informe `docs/records/auditoria-2026-11-17.md`. Sin `/code-review` todavía: no va a `main` hasta pasarlo.
 
 - 2026-11-17 · **Portada provisional de Galivelop-workflow** (`ccr-47f8fddd-o5ek6p`; la persona: «los proyectos galivelop deberían tener el banner», «Usar ya la de boyas»): `portada.webp` y `-mini` pasan a ser un recorte 16:9 de la OG 24 (q1157), alt nuevo en es/gl/en; la ficha deja `presentacion` y la tarjeta del inicio usa la portada; el esquema del flujo pasa a `flujo.webp` (primera de la galería; `scripts/diagramas-webp.mjs flujo`, que ya no regenera og.jpg). `presentacion.webp` no se borra (piezas de `docs/media/`). Fila en `docs/marca.md`. Cuando llegue la 31 del generador, se cambia el archivo. Sin cambio de rutas de páginas.
 
@@ -41,7 +43,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (21 entradas); se añade y se quita allí.
+Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (22 entradas); se añade y se quita allí.
 
 ## Comprobar el estado
 
