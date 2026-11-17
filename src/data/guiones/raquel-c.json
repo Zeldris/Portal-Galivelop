@@ -1,0 +1,39 @@
+{
+  "pagina": "/equipo/raquel-c",
+  "narra": "2026-11-17",
+  "notas": [
+    "Pronunciación: «Galivelop» como ga-li-ve-LOP; «toVeriAI» como «tu-veri-ei-ai»; «Spring Boot» a la inglesa (spring but); «full stack» a la inglesa; «Seidor» como se escribe (sei-DOR); «IBM» letra a letra (i-be-eme); «ArgaQuest» a la inglesa (arga-cuest); «Fernando Wirtz» como «uirtz»; «Big Data» a la inglesa; «JUnit» como «yei-iunit»; «Mockito» como «mo-kí-to»; «Vitest» como «vai-test»; «Ollama» como «o-la-ma»; «Qwen» como «chuen».",
+    "Lo narra un narrador en tercera persona, como el guion de /equipo (la persona, 2026-11-17).",
+    "Envejece cuando cambia en `equipo.json` su rol, su trayectoria (un trabajo nuevo), su formación en curso, sus proyectos o el texto de `colabora`; y si un día lleva productos, se añade su trozo. Sin años ni cifras que cambian solas."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "Esta es la página de Raquel Comesaña Carrera, fundadora de toVeriAI. Es desarrolladora full stack, trabaja con Java, Spring Boot y React, y vive en A Coruña."
+    },
+    {
+      "seccion": "sobre",
+      "es": "Llegó a la programación desde la Educación Social, y de ahí le viene querer entender para quién construye y cuidar la comunicación con el equipo. Fundó toVeriAI, la plataforma que analiza la credibilidad de las noticias con inteligencia artificial, y la llevó de la idea a producción. Lo hizo con pruebas desde el principio, con la seguridad bien cuidada y decidiendo con datos: por ejemplo, eligió los proveedores de inteligencia artificial probándolos con noticias falsas."
+    },
+    {
+      "seccion": "proyectos",
+      "es": "En el taller, su proyecto es toVeriAI, que creó ella. En su ficha tienes en qué punto está y cómo funciona."
+    },
+    {
+      "seccion": "trayectoria",
+      "es": "En su trayectoria hay proyectos muy distintos. En Seidor modernizó aplicaciones de gestión sobre sistemas IBM, llevando pantallas de terminal a React. Desarrolló toVeriAI. Y fue jefa de proyecto de ArgaQuest, una plataforma educativa que ganó el primer premio de Innovación Educativa de la Xunta."
+    },
+    {
+      "seccion": "formacion",
+      "es": "Y sigue formándose: ahora cursa la especialización en Inteligencia Artificial y Big Data en el instituto Fernando Wirtz, donde terminó antes el ciclo superior de Desarrollo de Aplicaciones Web. Antes de todo eso, estudió el grado en Educación Social en la Universidade da Coruña."
+    },
+    {
+      "seccion": "tecnologias",
+      "es": "Su base es Java con Spring Boot en el servidor y React en la parte que se ve, con bases de datos como MySQL u Oracle. Prueba su código con JUnit, Mockito y Vitest, y con la inteligencia artificial trabaja en local, con Ollama y Qwen."
+    },
+    {
+      "seccion": "colabora",
+      "es": "Además de toVeriAI, Raquel colabora de vez en cuando en proyectos de otras personas, por su cuenta: desarrollo full stack con Java, Spring Boot y React. El botón de esta sección abre un correo para escribirle, y en la página tienes también sus redes y su portafolio. Gracias por escuchar."
+    }
+  ]
+}

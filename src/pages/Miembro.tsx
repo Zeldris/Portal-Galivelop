@@ -78,7 +78,7 @@ function Ficha({ p }: { p: Persona }) {
           <ArrowLeft size={16} /> {t('equipo.volver')}
         </Link>
 
-        <header className="miembro-cabecera">
+        <header className="miembro-cabecera" data-guion="cabecera">
           <Retrato nombre={p.nombre} foto={p.foto} clase="miembro-foto" lado={128} />
           <div>
             <p className="miembro-antetitulo">{t('equipo.titulo')}</p>
@@ -100,20 +100,20 @@ function Ficha({ p }: { p: Persona }) {
 
         <div className="miembro-rejilla">
           <div className="miembro-columna">
-            <section className="miembro-caja">
+            <section className="miembro-caja" data-guion="sobre">
               <h2>{t('equipo.sobre', { nombre })}</h2>
               <p className="persona-bio">{tx(p.bio)}</p>
             </section>
 
             {p.proyectos.length > 0 && (
-              <section className="miembro-caja">
+              <section className="miembro-caja" data-guion="proyectos">
                 <h2>{t('equipo.enGalivelop')}</h2>
                 <ul className="miembro-proyectos">
                   {p.proyectos.map((slug) => {
                     const proyecto = buscarProyecto(slug);
                     const papel = p.papeles?.[slug];
                     return proyecto ? (
-                      <li key={slug}>
+                      <li key={slug} data-guion={`proyecto-${slug}`}>
                         <Link to={`/proyectos/${slug}`}>
                           <strong>
                             {proyecto.nombre}
@@ -131,14 +131,14 @@ function Ficha({ p }: { p: Persona }) {
             )}
 
             {!!perfil?.trayectoria?.length && (
-              <section className="miembro-caja">
+              <section className="miembro-caja" data-guion="trayectoria">
                 <h2>{t('equipo.trayectoria')}</h2>
                 <Etapas etapas={perfil.trayectoria} visibles={movil ? LUGARES_MOVIL : undefined} />
               </section>
             )}
 
             {!!perfil?.formacion?.length && (
-              <Pliegue titulo={t('equipo.formacion')} plegado={movil}>
+              <Pliegue titulo={t('equipo.formacion')} plegado={movil} guion="formacion">
                 <Etapas etapas={perfil.formacion} />
               </Pliegue>
             )}
@@ -146,7 +146,7 @@ function Ficha({ p }: { p: Persona }) {
 
           <aside className="miembro-columna">
             {!!perfil?.tecnologias?.length && (
-              <section className="miembro-caja">
+              <section className="miembro-caja" data-guion="tecnologias">
                 <h2>{t('equipo.tecnologias')}</h2>
                 <Grupos grupos={perfil.tecnologias} />
               </section>
@@ -185,7 +185,11 @@ function Ficha({ p }: { p: Persona }) {
 
         {/* Los productos que lleva, como responsable o colaborador (ADR 0004); sin ninguno, no hay sección. */}
         {suyos.length > 0 && (
-          <section className="miembro-productos" aria-labelledby="miembro-productos-titulo">
+          <section
+            className="miembro-productos"
+            aria-labelledby="miembro-productos-titulo"
+            data-guion="productos"
+          >
             <header>
               <h2 id="miembro-productos-titulo">{t('productos.titulo')}</h2>
               <p>{t('equipo.productos.texto', { nombre })}</p>
@@ -199,7 +203,7 @@ function Ficha({ p }: { p: Persona }) {
         )}
 
         {p.colabora && (
-          <aside className="miembro-colabora">
+          <aside className="miembro-colabora" data-guion="colabora">
             <div>
               <h2>{t('equipo.colabora.titulo')}</h2>
               <p>{tx(p.colabora.texto)}</p>
@@ -218,26 +222,28 @@ function Ficha({ p }: { p: Persona }) {
   );
 }
 
-/** Una caja con título; en móvil, plegada (el título abre y cierra). */
+/** Una caja con título; en móvil, plegada (el título abre y cierra). `guion`: su `data-guion`, si el lector la lee. */
 function Pliegue({
   titulo,
   plegado,
+  guion,
   children,
 }: {
   titulo: string;
   plegado: boolean;
+  guion?: string;
   children: ReactNode;
 }) {
   if (!plegado) {
     return (
-      <section className="miembro-caja">
+      <section className="miembro-caja" data-guion={guion}>
         <h2>{titulo}</h2>
         {children}
       </section>
     );
   }
   return (
-    <details className="miembro-caja miembro-pliegue">
+    <details className="miembro-caja miembro-pliegue" data-guion={guion}>
       <summary>
         <h2>{titulo}</h2>
         <ChevronDown size={18} aria-hidden="true" />

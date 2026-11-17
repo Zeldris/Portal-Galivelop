@@ -32,7 +32,11 @@ export function TarjetaProducto({
     .filter((x) => x !== undefined);
   const proyecto = buscarProyecto(p.proyecto);
   return (
-    <article className="tarjeta-producto" style={estiloAcento(p.acento)}>
+    <article
+      className="tarjeta-producto"
+      data-guion={`producto-${p.slug}`}
+      style={estiloAcento(p.acento)}
+    >
       <div className="proxima-cabeza">
         <span className="proxima-icono">
           <Icono nombre={p.icono} tamano={22} />

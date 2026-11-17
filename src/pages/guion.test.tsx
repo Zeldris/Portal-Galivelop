@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
+import { Route, Routes, StaticRouter } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import { ProveedorIdioma } from '../i18n/Idioma';
 import galileo from '../data/proyectos/galivelop-image-generator.json';
@@ -11,6 +11,7 @@ import type { Proyecto as TipoProyecto } from '../data/tipos';
 import type { Guion } from '../utils/guion';
 import { Equipo } from './Equipo';
 import { Inicio } from './Inicio';
+import { Miembro } from './Miembro';
 import { Novedades } from './Novedades';
 import { Proponer } from './Proponer';
 import { FichaProyecto } from './Proyecto';
@@ -26,9 +27,9 @@ function faltan(html: string, g: Guion) {
   return [...new Set(pedidos)].filter((v) => !hay(v));
 }
 
-const envolver = (pagina: React.ReactNode) =>
+const envolver = (pagina: React.ReactNode, ubicacion = '/') =>
   renderToString(
-    <StaticRouter location="/">
+    <StaticRouter location={ubicacion}>
       <ProveedorIdioma idioma="es" cambiarIdioma={() => {}}>
         {pagina}
       </ProveedorIdioma>
@@ -51,5 +52,15 @@ describe('secciones y enfoques de los guiones en la página', () => {
   ];
   it.each(paginas)('%s', (clave, pagina) => {
     expect(faltan(envolver(pagina), guion(clave))).toEqual([]);
+  });
+
+  // La página de un miembro sale de su `id` en la ruta: se monta con la ruta de la app.
+  it.each(['alvaro-garcia-grana', 'raquel-c'])('miembro %s', (clave) => {
+    const pagina = (
+      <Routes>
+        <Route path="/equipo/:id" element={<Miembro />} />
+      </Routes>
+    );
+    expect(faltan(envolver(pagina, guion(clave).pagina), guion(clave))).toEqual([]);
   });
 });

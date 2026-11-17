@@ -161,7 +161,8 @@ Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaro
 ## Guiones de lectura
 
 Un guion por página de contenido, escrito para el oído, en `src/data/guiones/<página>.json` (`inicio`, el slug de
-cada ficha…); legales y 404 no llevan. Lo leerá la voz `lectora-es` (audio pregrabado) mientras la página baja y
+cada ficha, el `id` de cada miembro…); legales y 404 no llevan. Lo cuenta un narrador en tercera persona, también en
+la página de cada miembro. Lo leerá la voz `lectora-es` (audio pregrabado) mientras la página baja y
 resalta cada sección: el lector flotante (`src/components/Lector.tsx`).
 
 - `narra`: la fecha de lo que cuenta (en una ficha, su `actualizado`). Si la página cambia, se revisa el guion y la fecha.
@@ -172,7 +173,8 @@ resalta cada sección: el lector flotante (`src/components/Lector.tsx`).
   Cuando el audio llega a esa frase, el lector centra ese elemento (si es más alto que la ventana, deja visible su
   inicio) y lo contornea. El momento sale de la posición de la frase en el texto (`audio.duration` × posición / longitud),
   así que no hay tiempos a mano y vale si se regraba. Los elementos llevan `data-guion` derivado de los datos
-  (`proyecto-<slug>`, `linea-<id>`, `hito-<n>`, `decision-<n>`, `paso-<n>`, `campo-<x>`; los apartados, su `ap-<id>`).
+  (`proyecto-<slug>`, `producto-<slug>`, `linea-<id>`, `hito-<n>`, `decision-<n>`, `paso-<n>`, `campo-<x>`; los apartados, su
+  `ap-<id>`).
   Un test comprueba que cada frase está una vez en su trozo y que cada `seccion` y `ver` existe en la página.
 - `audio`: idiomas con audio grabado (`"audio": ["es"]`); sin el campo, el guion no tiene audio. Solo con él aparece el
   lector (botón flotante, solo en ese idioma) en su página; un test comprueba que existe el MP3 de cada trozo y que

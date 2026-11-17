@@ -1,0 +1,51 @@
+{
+  "pagina": "/equipo/alvaro-garcia-grana",
+  "narra": "2026-11-17",
+  "notas": [
+    "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Orienteed» a la inglesa (orien-tid); «Plexus Tech» a la inglesa (plé-xus tek); «Claude Code» a la inglesa (clod coud); «OpenCode» a la inglesa (ou-pen coud); «Ollama» como «o-la-ma»; «Node» a la inglesa (noud); «Docker» a la inglesa (dó-ker); «Voice Generator» a la inglesa (vois yé-ne-rei-ter); «full stack» a la inglesa.",
+    "Lo narra un narrador en tercera persona, como el guion de /equipo (la persona, 2026-11-17).",
+    "Envejece cuando cambia en `equipo.json` su rol, su empresa actual, sus proyectos o sus papeles, sus tecnologías, sus productos (y si pasan de «próximamente» a disponibles) o el texto de `colabora`. Sin años trabajados ni cifras que cambian solas."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "Esta es la página de Álvaro García Graña, fundador de Galivelop. Es arquitecto de software e ingeniero de sistemas de inteligencia artificial, y vive en A Coruña. Le interesa sobre todo la infraestructura que funciona en local y los sistemas que dan siempre el mismo resultado."
+    },
+    {
+      "seccion": "sobre",
+      "es": "Programa full stack desde 2017, y hoy es desarrollador sénior en Orienteed. Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir. Le mueven el aprendizaje continuo y adaptarse a lo que cambia, y hoy eso incluye trabajar cada día con inteligencia artificial."
+    },
+    {
+      "seccion": "proyectos",
+      "es": "En el taller está en cuatro proyectos. Creó Tarkor, Galivelop-workflow y Galivelop IG, y forma parte del equipo de toVeriAI. Cada uno tiene su ficha: pulsa en el que te interese.",
+      "enfoques": [
+        { "frase": "Creó Tarkor", "ver": "proyecto-tarkor" },
+        { "frase": "Galivelop-workflow y", "ver": "proyecto-galivelop-workflow" },
+        { "frase": "Galivelop IG, y", "ver": "proyecto-galivelop-image-generator" },
+        { "frase": "equipo de toVeriAI", "ver": "proyecto-toveriai" }
+      ]
+    },
+    {
+      "seccion": "trayectoria",
+      "es": "Su trayectoria empieza en 2017 con el desarrollo web. Pasó por Grupo Aluman, Servicio Móvil y Plexus Tech, con clientes como Inditex o el Sergas, y desde 2021 está en Orienteed, en proyectos para marcas como Luxottica, Pladur o Mayoral."
+    },
+    {
+      "seccion": "tecnologias",
+      "es": "Trabaja en todo el recorrido: React, Angular y TypeScript en la parte que se ve; Java, Spring, Python y Node en el servidor; y bases de datos como MySQL, Oracle o MongoDB. Para desarrollar con inteligencia artificial usa Claude Code, OpenCode y Ollama, y se apoya en Git, Docker y Linux."
+    },
+    {
+      "seccion": "productos",
+      "es": "Del taller también salen productos, y Álvaro los lleva. Galivelop-workflow, el flujo para desarrollar con agentes de inteligencia artificial, y Galivelop IG, el generador de imágenes, ya están disponibles, con su código abierto. Galivelop Developer, un agente que programa contigo en tu máquina, y Galivelop Voice Generator, voces generadas en local, llegan pronto. Para cualquiera de ellos, se habla con él por correo.",
+      "enfoques": [
+        { "frase": "Galivelop-workflow, el flujo", "ver": "producto-galivelop-workflow" },
+        { "frase": "Galivelop IG, el generador", "ver": "producto-galivelop-image-generator" },
+        { "frase": "Galivelop Developer", "ver": "producto-galivelop-developer" },
+        { "frase": "Galivelop Voice Generator", "ver": "producto-galivelop-voice-generator" }
+      ]
+    },
+    {
+      "seccion": "colabora",
+      "es": "Además del taller, Álvaro colabora de vez en cuando en proyectos de otras personas, por su cuenta: desarrollo full stack con React, TypeScript, Java y Spring. Si te interesa, el botón de esta sección abre un correo para escribirle, y en la página tienes también sus redes. Gracias por escuchar."
+    }
+  ]
+}

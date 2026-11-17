@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-17 (`/gw-portal` en modo aplicar, fusión de `main` y paso a `main`, `claude/siguiente-fy7bji`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `claude/siguiente-fy7bji` (con `main` fusionado, e16880e, 2026-11-17) |
-| **Tarea en curso** | Ninguna: `/gw-portal` modo aplicar (2026-11-17) cerrado y en `main` (db75c2f). |
-| **Siguiente paso** | Lo de la retro del lector: P4 `/clear`, P1 `tools/qa/probar-lector.cjs`, P2 línea en `gw-portal`, P3 leves del lector; aprobar y grabar los siete guiones nuevos; refrescar tarjetas compartidas; pedidos al generador (23c, 24c, 31f, «lectora-es», OG 24 de Developer) |
+| **Tarea en curso** | Guiones de la página de cada miembro (`claude/siguiente-fy7bji`): texto escrito, a falta de que lo revise la persona; sin audio; `/code-review` del cambio de código pendiente antes del domingo. |
+| **Siguiente paso** | Que la persona revise el texto de los guiones de los dos miembros; lo de la retro del lector: P4 `/clear`, P1 `tools/qa/probar-lector.cjs`, P2 línea en `gw-portal`, P3 leves del lector; aprobar y grabar los nueve guiones sin audio; refrescar tarjetas compartidas; pedidos al generador (23c, 24c, 31f, «lectora-es», OG 24 de Developer) |
 | **En `main`** | **`/gw-portal` del 2026-11-17 y barrido de `paginas-estaticas.mjs`** (db75c2f, confirmado por la persona). Antes, **Lector de la página** (e16880e, retro aprobada). Antes, **guiones y audio de inicio y Tarkor, icono de Tarkor** (f507753) y **auditorías del 2026-11-17** (041c5cd). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Guiones de la página de cada miembro** (`claude/siguiente-fy7bji`, contenido y código pequeño; la persona: «solo con la 1», narrador en tercera persona, solo texto): `src/data/guiones/{alvaro-garcia-grana,raquel-c}.json` (cabecera, sobre, proyectos, trayectoria, tecnologías, productos o formación, colabora; enfoques en proyectos y productos). `Miembro.tsx` lleva `data-guion` en sus secciones (también en el `Pliegue`) y `TarjetaProducto`, `producto-<slug>`; test de secciones de los dos miembros en `guion.test.tsx`. Sin audio (el lector no aparece aún) y sin cambio de rutas. Falta: revisión del texto por la persona y `/code-review` del código antes del domingo.
 
 - 2026-11-17 · **(en `main`, db75c2f) `/gw-portal` en modo aplicar** (`claude/siguiente-fy7bji`, contenido): Tarkor, novedad del 2026-11-16 (marca en la interfaz, instalador más accesible, v0.1.0); Galivelop-workflow a la 0.7.1 (fase, descripción, enlace, producto, novedad y versión publicada); generador de imágenes a la 0.6.0 (novedades del 16 y 17, fase, enlace, hito «Proceso de marca» y «4 / 9» fases). toVeriAI y próximamente sin cambios. Guiones: workflow (02-vistazo) e IG (02-vistazo, 07-avance) con `narra` 2026-11-17; audio pendiente de esos trozos. Avisos: hitos 0.1-0.3 de Tarkor en curso en la ficha y pendientes en su roadmap (manda su bitácora; heredado); hitos 0.6-0.9 del generador con numeración vieja (decide la persona).
 
