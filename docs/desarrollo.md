@@ -173,6 +173,9 @@ resalta cada sección; aún no se usa en la web.
   (`~/.local/share/galivelop-voice/proyectos/portal/final/<idioma>/<página>/`), que no se suben:
   `ffmpeg -i <nn>-<seccion>.wav -ac 1 -codec:a libmp3lame -b:a 48k <nn>-<seccion>.mp3`. Si cambia un trozo, se
   regenera su audio.
+- **Al día con la página:** cuando `gw-portal` (también la tarea semanal) cambia una ficha o los proyectos del inicio,
+  reescribe los trozos de su guion que ya no sean verdad y apunta su «audio pendiente» en la bitácora; el audio lo graba
+  la persona. Una página o sección nueva la añade una sesión.
 - Para el oído: frases cortas, sin paréntesis, siglas ni símbolos (`d20`, `%`, `NPC`); números con letra cuando se
   leen raro. Sin cifras que cambian cada semana: las novedades se invitan a leer, no se narran. Se respeta [«Mensaje»](#mensaje).
 
