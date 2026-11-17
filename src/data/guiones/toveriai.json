@@ -25,15 +25,60 @@
       "gl": "A desinformación non sempre é unha mentira evidente. Ás veces é unha cifra sen fonte, un ton alarmista ou uns expertos que ninguén identifica. Dicir verdadeiro ou falso queda curto, e moitas veces só xera máis desconfianza. Por iso toVeriAI analiza o texto en sete dimensións de contido. Se lle das unha ligazón, suma dúas máis sobre o medio. Marca sobre o propio texto os fragmentos problemáticos e péchase cun resumo que explica o resultado. A metodoloxía parte de NewsGuard e complétase con criterios de dous referentes en verificación e transparencia xornalística. Funciona así. Envías un texto ou unha ligazón. A intelixencia artificial identifica que tipo de texto é. Analiza cada dimensión. E calcula o índice e explícao. Hai uso gratuíto sen conta, contas con historial e estatísticas, un feed público, cinco idiomas e un plan Premium en beta. E en paralelo adestrase VeriAI, un modelo propio que aprende de cada análise.",
       "en": "Disinformation is not always an obvious lie. Sometimes it is a figure with no source, an alarmist tone or experts nobody can identify. Saying true or false falls short, and often only creates more distrust. That is why toVeriAI analyses the text across seven content dimensions. If you give it a link, it adds two more about the outlet. It marks the problematic passages right on the text itself and closes with a summary that explains the result. The methodology starts from NewsGuard and is completed with criteria from two benchmarks in fact-checking and journalistic transparency. It works like this. You send a text or a link. The artificial intelligence identifies what kind of text it is. It analyses each dimension. And it calculates the index and explains it. There is free use without an account, accounts with history and statistics, a public feed, five languages and a Premium plan in beta. And in parallel, VeriAI is being trained, a model of our own that learns from every analysis.",
       "enfoques": [
-        { "frase": "analiza el texto en siete dimensiones", "ver": "caracteristica-1" },
-        { "frase": "Si le das un enlace", "ver": "caracteristica-3" },
-        { "frase": "Marca sobre el propio texto", "ver": "caracteristica-2" },
-        { "frase": "Envías un texto o un enlace", "ver": "paso-1" },
-        { "frase": "identifica qué tipo de texto es", "ver": "paso-2" },
-        { "frase": "Analiza cada dimensión", "ver": "paso-3" },
-        { "frase": "calcula el índice y lo explica", "ver": "paso-4" },
-        { "frase": "Hay uso gratuito sin cuenta", "ver": "caracteristica-5" },
-        { "frase": "Y en paralelo se entrena VeriAI", "ver": "caracteristica-6" }
+        {
+          "frase": "analiza el texto en siete dimensiones",
+          "gl": "toVeriAI analiza o texto en sete dimensións",
+          "en": "toVeriAI analyses the text across seven",
+          "ver": "caracteristica-1"
+        },
+        {
+          "frase": "Si le das un enlace",
+          "gl": "Se lle das unha ligazón",
+          "en": "If you give it a link",
+          "ver": "caracteristica-3"
+        },
+        {
+          "frase": "Marca sobre el propio texto",
+          "gl": "Marca sobre o propio texto",
+          "en": "It marks the problematic",
+          "ver": "caracteristica-2"
+        },
+        {
+          "frase": "Envías un texto o un enlace",
+          "gl": "Envías un texto ou unha ligazón",
+          "en": "You send a text or a link",
+          "ver": "paso-1"
+        },
+        {
+          "frase": "identifica qué tipo de texto es",
+          "gl": "identifica que tipo de texto é",
+          "en": "identifies what kind of text it is",
+          "ver": "paso-2"
+        },
+        {
+          "frase": "Analiza cada dimensión",
+          "gl": "Analiza cada dimensión",
+          "en": "It analyses each dimension",
+          "ver": "paso-3"
+        },
+        {
+          "frase": "calcula el índice y lo explica",
+          "gl": "calcula o índice e explícao",
+          "en": "calculates the index and explains it",
+          "ver": "paso-4"
+        },
+        {
+          "frase": "Hay uso gratuito sin cuenta",
+          "gl": "Hai uso gratuíto sen conta",
+          "en": "There is free use without an account",
+          "ver": "caracteristica-5"
+        },
+        {
+          "frase": "Y en paralelo se entrena VeriAI",
+          "gl": "E en paralelo adestrase VeriAI",
+          "en": "And in parallel, VeriAI is being trained",
+          "ver": "caracteristica-6"
+        }
       ]
     },
     {
@@ -54,11 +99,36 @@
       "gl": "E como está feito? Unha decisión manda: métricas, non veredictos. O índice non di se algo é verdade ou mentira. Explica o que falla e onde, para que saques as túas propias conclusións. Outra decisión: varios provedores de intelixencia artificial alternan, con control de cota, así que o servizo segue funcionando aínda que un falle. E VeriAI, o modelo propio, repite cada análise en segundo plano. As diferenzas coa nube serven para adestrar a seguinte versión. Na ficha técnica ves as ferramentas de cada capa. Polo camiño aprendemos a converter criterios xornalísticos en métricas que unha máquina aplica e unha persoa entende, e a deseñar para cinco idiomas desde o principio.",
       "en": "And how is it built? One decision rules: metrics, not verdicts. The index does not say whether something is true or false. It explains what fails and where, so you can draw your own conclusions. Another decision: several artificial intelligence providers take turns, with quota control, so the service keeps working even if one fails. And VeriAI, our own model, repeats each analysis in the background. The differences with the cloud are used to train the next version. In the Tech stack section you can see the tools of each layer. Along the way we have learned to turn journalistic criteria into metrics that a machine applies and a person understands, and to design for five languages from the start.",
       "enfoques": [
-        { "frase": "Una decisión manda", "ver": "decision-1" },
-        { "frase": "Otra decisión", "ver": "decision-2" },
-        { "frase": "Y VeriAI, el modelo propio, repite", "ver": "decision-3" },
-        { "frase": "En la ficha técnica", "ver": "ficha" },
-        { "frase": "Por el camino hemos aprendido", "ver": "aprendizajes" }
+        {
+          "frase": "Una decisión manda",
+          "gl": "Unha decisión manda",
+          "en": "One decision rules",
+          "ver": "decision-1"
+        },
+        {
+          "frase": "Otra decisión",
+          "gl": "Outra decisión",
+          "en": "Another decision",
+          "ver": "decision-2"
+        },
+        {
+          "frase": "Y VeriAI, el modelo propio, repite",
+          "gl": "E VeriAI, o modelo propio, repite",
+          "en": "And VeriAI, our own model, repeats",
+          "ver": "decision-3"
+        },
+        {
+          "frase": "En la ficha técnica",
+          "gl": "Na ficha técnica",
+          "en": "In the Tech stack section",
+          "ver": "ficha"
+        },
+        {
+          "frase": "Por el camino hemos aprendido",
+          "gl": "Polo camiño aprendemos",
+          "en": "Along the way we have learned",
+          "ver": "aprendizajes"
+        }
       ]
     },
     {
@@ -67,15 +137,60 @@
       "gl": "No avance ves o camiño. Xa están feitos a análise de texto, a publicación, a análise de ligazóns, as contas e o feed, e dúas roldas de melloras de seguridade e de erros visibles. Agora púlese a web. O que vén: volver analizar capturas de forma estable, gardar menos datos para adestrar o modelo propio e revisar os provedores. Debaixo están as novidades, semana a semana, e o equipo.",
       "en": "In the progress section you see the road so far. Text analysis, publishing, link analysis, accounts and the feed are already done, along with two rounds of security improvements and visible bug fixes. Now the website is being polished. What comes next: analysing screenshots again in a stable way, storing less data to train our own model, and reviewing the providers. Below you will find the news, week by week, and the team.",
       "enfoques": [
-        { "frase": "Ya están hechos el análisis de texto", "ver": "hito-1" },
-        { "frase": "la publicación", "ver": "hito-2" },
-        { "frase": "el análisis de enlaces", "ver": "hito-3" },
-        { "frase": "las cuentas y el feed", "ver": "hito-4" },
-        { "frase": "dos rondas de mejoras", "ver": "hito-5" },
-        { "frase": "Ahora se pule la web", "ver": "hito-7" },
-        { "frase": "guardar menos datos", "ver": "hito-8" },
-        { "frase": "revisar los proveedores", "ver": "hito-9" },
-        { "frase": "Debajo están las novedades", "ver": "novedades" }
+        {
+          "frase": "Ya están hechos el análisis de texto",
+          "gl": "Xa están feitos a análise de texto",
+          "en": "Text analysis, publishing",
+          "ver": "hito-1"
+        },
+        {
+          "frase": "la publicación",
+          "gl": "a publicación",
+          "en": "publishing, link analysis",
+          "ver": "hito-2"
+        },
+        {
+          "frase": "el análisis de enlaces",
+          "gl": "a análise de ligazóns",
+          "en": "link analysis, accounts",
+          "ver": "hito-3"
+        },
+        {
+          "frase": "las cuentas y el feed",
+          "gl": "as contas e o feed",
+          "en": "accounts and the feed",
+          "ver": "hito-4"
+        },
+        {
+          "frase": "dos rondas de mejoras",
+          "gl": "dúas roldas de melloras",
+          "en": "two rounds of security",
+          "ver": "hito-5"
+        },
+        {
+          "frase": "Ahora se pule la web",
+          "gl": "Agora púlese a web",
+          "en": "Now the website is being polished",
+          "ver": "hito-7"
+        },
+        {
+          "frase": "guardar menos datos",
+          "gl": "gardar menos datos",
+          "en": "storing less data",
+          "ver": "hito-8"
+        },
+        {
+          "frase": "revisar los proveedores",
+          "gl": "revisar os provedores",
+          "en": "reviewing the providers",
+          "ver": "hito-9"
+        },
+        {
+          "frase": "Debajo están las novedades",
+          "gl": "Debaixo están as novidades",
+          "en": "Below you will find the news",
+          "ver": "novedades"
+        }
       ]
     },
     {

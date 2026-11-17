@@ -26,15 +26,60 @@
       "gl": "Xógase como nunha mesa de rol. Escribes o que fai o teu personaxe, por exemplo: «sigo as pegadas cara ao norte». O motor comproba que a acción encaixa co mundo, tira os dados á vista e fixa o resultado. Despois, un narrador cóntao co ton do mundo. Mentres tanto, o mundo segue: as faccións comercian, cazan e fan a guerra, os rumores viaxan dunha rexión a outra e os personaxes lembran o que lles fixeches. Xogas como Gorhorn, o último superviviente do Clan Maktor, en Berig, un continente sen humanos onde cada morte deixa cicatriz. Todo o que pasa queda apuntado coa súa causa, e de aí nacen as lendas e as consecuencias que chegan días despois. O teu reino medra xeración tras xeración, con súbditos que teñen nome, familia e liñaxe. E é privado por deseño: sen contas, sen telemetría e sen conexión durante a partida.",
       "en": "You play it like a tabletop role-playing game. You write what your character does, for example: \"I follow the tracks north.\" The engine checks that the action fits the world, rolls the dice in plain sight and sets the result. Then a narrator tells it in the tone of the world. Meanwhile, the world goes on: the factions trade, hunt and make war, rumors travel from one region to another and the characters remember what you did to them. You play as Gorhorn, the last survivor of the Maktor Clan, in Berig, a continent without humans where every death leaves a scar. Everything that happens is recorded with its cause, and from that come the legends and the consequences that arrive days later. Your kingdom grows generation after generation, with subjects who have a name, a family and a lineage. And it is private by design: no accounts, no telemetry and no connection during the game.",
       "enfoques": [
-        { "frase": "Escribes lo que hace tu personaje", "ver": "paso-1" },
-        { "frase": "El motor comprueba", "ver": "paso-2" },
-        { "frase": "tira los dados", "ver": "paso-3" },
-        { "frase": "un narrador lo cuenta", "ver": "paso-4" },
-        { "frase": "Mientras tanto, el mundo sigue", "ver": "paso-5" },
-        { "frase": "Juegas como Gorhorn", "ver": "descripcion" },
-        { "frase": "Todo lo que pasa queda apuntado", "ver": "caracteristica-2" },
-        { "frase": "Tu reino crece", "ver": "caracteristica-4" },
-        { "frase": "Y es privado por diseño", "ver": "caracteristica-8" }
+        {
+          "frase": "Escribes lo que hace tu personaje",
+          "gl": "Escribes o que fai o teu personaxe",
+          "en": "You write what your character does",
+          "ver": "paso-1"
+        },
+        {
+          "frase": "El motor comprueba",
+          "gl": "O motor comproba",
+          "en": "The engine checks",
+          "ver": "paso-2"
+        },
+        {
+          "frase": "tira los dados",
+          "gl": "tira os dados",
+          "en": "rolls the dice",
+          "ver": "paso-3"
+        },
+        {
+          "frase": "un narrador lo cuenta",
+          "gl": "un narrador cóntao",
+          "en": "a narrator tells it",
+          "ver": "paso-4"
+        },
+        {
+          "frase": "Mientras tanto, el mundo sigue",
+          "gl": "Mentres tanto, o mundo segue",
+          "en": "Meanwhile, the world goes on",
+          "ver": "paso-5"
+        },
+        {
+          "frase": "Juegas como Gorhorn",
+          "gl": "Xogas como Gorhorn",
+          "en": "You play as Gorhorn",
+          "ver": "descripcion"
+        },
+        {
+          "frase": "Todo lo que pasa queda apuntado",
+          "gl": "Todo o que pasa queda apuntado",
+          "en": "Everything that happens is recorded",
+          "ver": "caracteristica-2"
+        },
+        {
+          "frase": "Tu reino crece",
+          "gl": "O teu reino medra",
+          "en": "Your kingdom grows",
+          "ver": "caracteristica-4"
+        },
+        {
+          "frase": "Y es privado por diseño",
+          "gl": "E é privado por deseño",
+          "en": "And it is private by design",
+          "ver": "caracteristica-8"
+        }
       ]
     },
     {
@@ -49,16 +94,51 @@
       "gl": "Se queres entrar a fondo, o mundo chámase Helek Sirik. É unha fantasía épica e tráxica, pero con base científica: todo ten unha causa física, e nada é maxia sen mecanismo. Hoxe xógase nas Chairas do Vento Vermello, unha estepa de arxila vermella con volcáns, costa e tormentas de area magnética. O resto de Berig chegará rexión a rexión. Nestes apartados coñeces os seus lugares, as súas razas e as súas faccións, os primeiros personaxes, as clases, o bestiario, a flora e os oficios, como medra o teu reino e as preguntas máis frecuentes.",
       "en": "If you want to go deeper, the world is called Helek Sirik. It is an epic and tragic fantasy, but with a scientific basis: everything has a physical cause, and nothing is magic without a mechanism. Today the game is played in the Red Wind Plains, a steppe of red clay with volcanoes, coast and magnetic sandstorms. The rest of Berig will arrive region by region. In these sections you get to know its places, its races and its factions, the first characters, the classes, the bestiary, the flora and the trades, how your kingdom grows, and the frequently asked questions.",
       "enfoques": [
-        { "frase": "el mundo se llama Helek Sirik", "ver": "ap-mundo" },
-        { "frase": "Hoy se juega en las Llanuras", "ver": "ap-lugares" },
-        { "frase": "sus razas", "ver": "ap-razas" },
-        { "frase": "sus facciones", "ver": "ap-facciones" },
-        { "frase": "los primeros personajes", "ver": "ap-personajes" },
-        { "frase": "las clases", "ver": "ap-clases" },
-        { "frase": "el bestiario", "ver": "ap-bestiario" },
-        { "frase": "la flora", "ver": "ap-flora" },
-        { "frase": "cómo crece tu reino", "ver": "ap-reino" },
-        { "frase": "las preguntas más frecuentes", "ver": "ap-preguntas" }
+        {
+          "frase": "el mundo se llama Helek Sirik",
+          "gl": "o mundo chámase Helek Sirik",
+          "en": "the world is called Helek Sirik",
+          "ver": "ap-mundo"
+        },
+        {
+          "frase": "Hoy se juega en las Llanuras",
+          "gl": "Hoxe xógase nas Chairas",
+          "en": "Today the game is played in the Red Wind Plains",
+          "ver": "ap-lugares"
+        },
+        { "frase": "sus razas", "gl": "as súas razas", "en": "its races", "ver": "ap-razas" },
+        {
+          "frase": "sus facciones",
+          "gl": "as súas faccións",
+          "en": "its factions",
+          "ver": "ap-facciones"
+        },
+        {
+          "frase": "los primeros personajes",
+          "gl": "os primeiros personaxes",
+          "en": "the first characters",
+          "ver": "ap-personajes"
+        },
+        { "frase": "las clases", "gl": "as clases", "en": "the classes", "ver": "ap-clases" },
+        {
+          "frase": "el bestiario",
+          "gl": "o bestiario",
+          "en": "the bestiary",
+          "ver": "ap-bestiario"
+        },
+        { "frase": "la flora", "gl": "a flora", "en": "the flora", "ver": "ap-flora" },
+        {
+          "frase": "cómo crece tu reino",
+          "gl": "como medra o teu reino",
+          "en": "how your kingdom grows",
+          "ver": "ap-reino"
+        },
+        {
+          "frase": "las preguntas más frecuentes",
+          "gl": "as preguntas máis frecuentes",
+          "en": "the frequently asked questions",
+          "ver": "ap-preguntas"
+        }
       ]
     },
     {
@@ -67,10 +147,30 @@
       "gl": "E como está feito? A decisión máis importante é esta: o mundo funciona con regras, e a intelixencia artificial só narra. A economía, as faccións e as tiradas son sistemas que se poden probar, así que o xogo é xusto e coherente. A intelixencia artificial conta o que xa pasou, pero non decide os números. Ademais, o narrador funciona no teu equipo: sen pagar por partida e sen que as túas partidas saian de casa. E ningún suceso sae dun temporizador: cada asalto, caravana ou crise nace do estado do mundo. Polo camiño estamos aprendendo a darlle memoria ao narrador sen saturalo, e a que todo responda con fluidez mesmo nunha Steam Deck.",
       "en": "And how is it built? The most important decision is this: the world runs on rules, and the artificial intelligence only narrates. The economy, the factions and the dice rolls are systems that can be tested, so the game is fair and consistent. The artificial intelligence tells what has already happened, but it does not decide the numbers. Also, the narrator runs on your computer: no paying per game and no games leaving your home. And no event comes from a timer: every raid, caravan or crisis is born from the state of the world. Along the way we are learning how to give the narrator memory without overloading it, and how to make everything respond smoothly even on a Steam Deck.",
       "enfoques": [
-        { "frase": "el mundo funciona con reglas", "ver": "decision-2" },
-        { "frase": "Además, el narrador funciona en tu equipo", "ver": "decision-1" },
-        { "frase": "Y ningún suceso sale de un temporizador", "ver": "decision-3" },
-        { "frase": "Por el camino estamos aprendiendo", "ver": "aprendizajes" }
+        {
+          "frase": "el mundo funciona con reglas",
+          "gl": "o mundo funciona con regras",
+          "en": "the world runs on rules",
+          "ver": "decision-2"
+        },
+        {
+          "frase": "Además, el narrador funciona en tu equipo",
+          "gl": "Ademais, o narrador funciona no teu equipo",
+          "en": "Also, the narrator runs on your computer",
+          "ver": "decision-1"
+        },
+        {
+          "frase": "Y ningún suceso sale de un temporizador",
+          "gl": "E ningún suceso sae dun temporizador",
+          "en": "And no event comes from a timer",
+          "ver": "decision-3"
+        },
+        {
+          "frase": "Por el camino estamos aprendiendo",
+          "gl": "Polo camiño estamos aprendendo",
+          "en": "Along the way we are learning",
+          "ver": "aprendizajes"
+        }
       ]
     },
     {
@@ -79,13 +179,48 @@
       "gl": "No avance ves o camiño completo. Primeiro, rematar as Chairas e o reino. Despois, abrir Berig rexión a rexión: o Cristal Xeado, o Cenagal Troncal, a Marxe Silenciosa e a Meseta da Orde. A beta traerá o instalador público para Windows e Linux, coa Steam Deck como obxectivo. Máis adiante chegará Vaelira, o segundo continente, e a posibilidade de crear o teu propio personaxe. Debaixo están as novidades, semana a semana.",
       "en": "In the progress section you see the whole road. First, finish the Plains and the kingdom. Then, open Berig region by region: the Frozen Crystal, the Trunk Marsh, the Silent Margin and the Plateau of Order. The beta will bring the public installer for Windows and Linux, with the Steam Deck as a target. Later on comes Vaelira, the second continent, and the chance to create your own character. Below is the news, week by week.",
       "enfoques": [
-        { "frase": "Primero, terminar las Llanuras", "ver": "hito-4" },
-        { "frase": "el Cristal Helado", "ver": "hito-5" },
-        { "frase": "la Ciénaga Troncal", "ver": "hito-6" },
-        { "frase": "el Margen Silencioso", "ver": "hito-7" },
-        { "frase": "La beta traerá", "ver": "hito-8" },
-        { "frase": "Más adelante llegará Vaelira", "ver": "hito-9" },
-        { "frase": "Debajo están las novedades", "ver": "novedades" }
+        {
+          "frase": "Primero, terminar las Llanuras",
+          "gl": "Primeiro, rematar as Chairas",
+          "en": "First, finish the Plains",
+          "ver": "hito-4"
+        },
+        {
+          "frase": "el Cristal Helado",
+          "gl": "o Cristal Xeado",
+          "en": "the Frozen Crystal",
+          "ver": "hito-5"
+        },
+        {
+          "frase": "la Ciénaga Troncal",
+          "gl": "o Cenagal Troncal",
+          "en": "the Trunk Marsh",
+          "ver": "hito-6"
+        },
+        {
+          "frase": "el Margen Silencioso",
+          "gl": "a Marxe Silenciosa",
+          "en": "the Silent Margin",
+          "ver": "hito-7"
+        },
+        {
+          "frase": "La beta traerá",
+          "gl": "A beta traerá",
+          "en": "The beta will bring",
+          "ver": "hito-8"
+        },
+        {
+          "frase": "Más adelante llegará Vaelira",
+          "gl": "Máis adiante chegará Vaelira",
+          "en": "Later on comes Vaelira",
+          "ver": "hito-9"
+        },
+        {
+          "frase": "Debajo están las novedades",
+          "gl": "Debaixo están as novidades",
+          "en": "Below is the news",
+          "ver": "novedades"
+        }
       ]
     },
     {

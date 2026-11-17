@@ -25,17 +25,67 @@
       "gl": "Traballar semanas cun axente ten un problema pouco visible. Cada sesión pode rematar en calquera momento, por falta de tokens, por un contedor reciclado ou por un relevo de conta. E o que non quedou escrito pérdese. Ademais, cada proxecto acaba inventando as súas regras e copiándoas a man. Este fluxo saca o método de Tarkor, deste portal e doutros proxectos do obradoiro, onde xa funciona. Déixao nun repositorio con versións: regras, skills, scripts, ganchos e modelos nun só sitio. Unha mellora faise unha vez e chega a todos. Tráballase así. A sesión retoma lendo a bitácora e sabe por onde ía. Elixe que skill e que modelo pide a tarefa. Pensa antes, se fai falta. Traballa, reparte o mecánico a subaxentes e sube en cada punto estable. Antes de publicar, revisa o código e mellora o contorno, e só coa confirmación da persoa se publica. E o aprendido volve ao fluxo. Hoxe un axente aplica o fluxo lendo o repositorio. Máis adiante fará o un instalador, sen intelixencia artificial. O repositorio é público e está aberto a colaborar.",
       "en": "Working for weeks with an agent has a problem you rarely notice. Any session can end at any moment, from running out of tokens, from a recycled container, or from an account handover. And whatever was not written down is lost. On top of that, every project ends up inventing its own rules and copying them by hand. This workflow takes the method from Tarkor, from this portal and from other workshop projects, where it already works. It keeps it in a versioned repository: rules, skills, scripts, hooks and templates in one place. An improvement is made once and reaches everyone. This is how it works. The session picks up by reading the logbook, and knows where it left off. It chooses which skill and which model the task needs. It thinks first, if needed. It works, hands the mechanical parts to subagents, and pushes at every stable point. Before publishing, it reviews the code and improves the environment, and it publishes only with the person's confirmation. And what was learned goes back into the workflow. Today an agent applies the workflow by reading the repository. Later, an installer will do it, without artificial intelligence. The repository is public and open to collaboration.",
       "enfoques": [
-        { "frase": "Cada sesión puede acabarse", "ver": "caracteristica-1" },
-        { "frase": "cada proyecto acaba inventando sus reglas", "ver": "caracteristica-5" },
-        { "frase": "Una mejora se hace una vez", "ver": "caracteristica-6" },
-        { "frase": "La sesión retoma leyendo la bitácora", "ver": "paso-1" },
-        { "frase": "Elige qué skill", "ver": "paso-2" },
-        { "frase": "Piensa antes", "ver": "paso-3" },
-        { "frase": "Trabaja, reparte lo mecánico", "ver": "paso-4" },
-        { "frase": "Antes de publicar, revisa el código", "ver": "paso-5" },
-        { "frase": "y mejora el entorno", "ver": "paso-6" },
-        { "frase": "solo con la confirmación de la persona se publica", "ver": "paso-7" },
-        { "frase": "Y lo aprendido vuelve al flujo", "ver": "paso-8" }
+        {
+          "frase": "Cada sesión puede acabarse",
+          "gl": "Cada sesión pode rematar",
+          "en": "Any session can end",
+          "ver": "caracteristica-1"
+        },
+        {
+          "frase": "cada proyecto acaba inventando sus reglas",
+          "gl": "cada proxecto acaba inventando as súas regras",
+          "en": "every project ends up inventing",
+          "ver": "caracteristica-5"
+        },
+        {
+          "frase": "Una mejora se hace una vez",
+          "gl": "Unha mellora faise unha vez",
+          "en": "An improvement is made once",
+          "ver": "caracteristica-6"
+        },
+        {
+          "frase": "La sesión retoma leyendo la bitácora",
+          "gl": "A sesión retoma lendo a bitácora",
+          "en": "The session picks up by reading",
+          "ver": "paso-1"
+        },
+        {
+          "frase": "Elige qué skill",
+          "gl": "Elixe que skill",
+          "en": "It chooses which skill",
+          "ver": "paso-2"
+        },
+        { "frase": "Piensa antes", "gl": "Pensa antes", "en": "It thinks first", "ver": "paso-3" },
+        {
+          "frase": "Trabaja, reparte lo mecánico",
+          "gl": "Traballa, reparte o mecánico",
+          "en": "It works, hands the mechanical",
+          "ver": "paso-4"
+        },
+        {
+          "frase": "Antes de publicar, revisa el código",
+          "gl": "Antes de publicar, revisa o código",
+          "en": "Before publishing, it reviews the code",
+          "ver": "paso-5"
+        },
+        {
+          "frase": "y mejora el entorno",
+          "gl": "e mellora o contorno",
+          "en": "and improves the environment",
+          "ver": "paso-6"
+        },
+        {
+          "frase": "solo con la confirmación de la persona se publica",
+          "gl": "só coa confirmación da persoa se publica",
+          "en": "it publishes only with the person's confirmation",
+          "ver": "paso-7"
+        },
+        {
+          "frase": "Y lo aprendido vuelve al flujo",
+          "gl": "E o aprendido volve ao fluxo",
+          "en": "And what was learned goes back",
+          "ver": "paso-8"
+        }
       ]
     },
     {
@@ -50,13 +100,48 @@
       "gl": "Se queres entrar a fondo, hai varios apartados. Que se impón e que se aconsella: un gancho execútase sempre, e unha instrución o axente pode saltarse. Que fallo evita cada peza. As skills e os scripts propios. As skills de Matt Pocock, que usamos coa súa licenza e das que aprendemos moito. Como se configura cada proxecto. Cando encaixa o fluxo e canto custa, que tamén o contamos. E as versións publicadas.",
       "en": "If you want to go deeper, there are several sections. What is enforced and what is only advised: a hook always runs, while an instruction the agent can skip. Which failure each piece prevents. The skills and scripts we wrote ourselves. Matt Pocock's skills, which we use under his license and from which we have learned a lot. How each project is configured. When the workflow fits and what it costs, which we also tell you. And the published versions.",
       "enfoques": [
-        { "frase": "Qué se impone y qué se aconseja", "ver": "ap-garantias" },
-        { "frase": "Qué fallo evita cada pieza", "ver": "ap-fallos" },
-        { "frase": "Las skills y los scripts propios", "ver": "ap-skills-propias" },
-        { "frase": "Las skills de Matt Pocock", "ver": "ap-matt-pocock" },
-        { "frase": "Cómo se configura cada proyecto", "ver": "ap-configuracion" },
-        { "frase": "Cuándo encaja el flujo", "ver": "ap-cuando-encaja" },
-        { "frase": "Y las versiones publicadas", "ver": "ap-versiones-publicadas" }
+        {
+          "frase": "Qué se impone y qué se aconseja",
+          "gl": "Que se impón e que se aconsella",
+          "en": "What is enforced and what is only advised",
+          "ver": "ap-garantias"
+        },
+        {
+          "frase": "Qué fallo evita cada pieza",
+          "gl": "Que fallo evita cada peza",
+          "en": "Which failure each piece prevents",
+          "ver": "ap-fallos"
+        },
+        {
+          "frase": "Las skills y los scripts propios",
+          "gl": "As skills e os scripts propios",
+          "en": "The skills and scripts we wrote",
+          "ver": "ap-skills-propias"
+        },
+        {
+          "frase": "Las skills de Matt Pocock",
+          "gl": "As skills de Matt Pocock",
+          "en": "Matt Pocock's skills",
+          "ver": "ap-matt-pocock"
+        },
+        {
+          "frase": "Cómo se configura cada proyecto",
+          "gl": "Como se configura cada proxecto",
+          "en": "How each project is configured",
+          "ver": "ap-configuracion"
+        },
+        {
+          "frase": "Cuándo encaja el flujo",
+          "gl": "Cando encaixa o fluxo",
+          "en": "When the workflow fits",
+          "ver": "ap-cuando-encaja"
+        },
+        {
+          "frase": "Y las versiones publicadas",
+          "gl": "E as versións publicadas",
+          "en": "And the published versions",
+          "ver": "ap-versiones-publicadas"
+        }
       ]
     },
     {
@@ -65,11 +150,36 @@
       "gl": "E como está feito? As regras que se poden comprobar fainas cumprir un script, non a opinión dun axente. As skills quedan co que pide criterio. As regras viven nun estándar aberto que entende calquera axente, non só un. E o fluxo cópiase a cada proxecto coa súa versión, para que funcione en calquera contorno, tamén na nube. Quince das súas skills son de Matt Pocock, coa súa licenza e a súa mención. Polo camiño aprendemos que o estado vai en arquivos, non na conversa. Que os ganchos deben fallar pechados. E que hai que medir onde se gastan os tokens antes de recortar, porque un aforro que empeora o resultado non é aforro.",
       "en": "And how is it built? The rules that can be checked are enforced by a script, not by an agent's opinion. The skills keep what needs judgment. The rules live in an open standard that any agent understands, not just one. And the workflow is copied into each project with its version, so it works in any environment, including the cloud. Fifteen of its skills are Matt Pocock's, with his license and credit. Along the way we learned that state belongs in files, not in the conversation. That hooks must fail closed. And that you should measure where tokens are spent before cutting, because a saving that makes the result worse is no saving.",
       "enfoques": [
-        { "frase": "Las reglas que se pueden comprobar", "ver": "decision-2" },
-        { "frase": "Las reglas viven en un estándar abierto", "ver": "decision-4" },
-        { "frase": "el flujo se copia a cada proyecto", "ver": "decision-3" },
-        { "frase": "Quince de sus skills", "ver": "decision-1" },
-        { "frase": "Por el camino hemos aprendido", "ver": "aprendizajes" }
+        {
+          "frase": "Las reglas que se pueden comprobar",
+          "gl": "As regras que se poden comprobar",
+          "en": "The rules that can be checked",
+          "ver": "decision-2"
+        },
+        {
+          "frase": "Las reglas viven en un estándar abierto",
+          "gl": "As regras viven nun estándar aberto",
+          "en": "The rules live in an open standard",
+          "ver": "decision-4"
+        },
+        {
+          "frase": "el flujo se copia a cada proyecto",
+          "gl": "o fluxo cópiase a cada proxecto",
+          "en": "the workflow is copied into each project",
+          "ver": "decision-3"
+        },
+        {
+          "frase": "Quince de sus skills",
+          "gl": "Quince das súas skills",
+          "en": "Fifteen of its skills",
+          "ver": "decision-1"
+        },
+        {
+          "frase": "Por el camino hemos aprendido",
+          "gl": "Polo camiño aprendemos",
+          "en": "Along the way we learned",
+          "ver": "aprendizajes"
+        }
       ]
     },
     {
@@ -78,14 +188,54 @@
       "gl": "No avance ves o camiño. As primeiras versións e os pilotos xa están feitos, e tamén as que engadiron a base, a medida do gasto e as preguntas. O que falta: a versión cero punto oito, coas preguntas á persoa máis claras, un modo prudente e probas de interface. Despois unha versión estable, cunha revisión da documentación e da seguridade. E a un punto cero chegará co Management Center, un panel local para consultar e configurar. Debaixo están as novidades, semana a semana.",
       "en": "In the progress section you see the road. The first versions and the pilots are done, and so are the ones that added the foundation, the spending measurement and the questions. What is missing: version zero point eight, with clearer questions to the person, a cautious mode and interface tests. Then a stable version, with a review of the documentation and security. And version one point zero will arrive with the Management Center, a local panel to browse and configure. Below is the news, week by week.",
       "enfoques": [
-        { "frase": "Las primeras versiones y los pilotos", "ver": "hito-1" },
-        { "frase": "la base", "ver": "hito-2" },
-        { "frase": "la medida del gasto", "ver": "hito-5" },
-        { "frase": "y las preguntas", "ver": "hito-8" },
-        { "frase": "Lo que falta: la versión cero punto ocho", "ver": "hito-9" },
-        { "frase": "Luego una versión estable", "ver": "hito-10" },
-        { "frase": "la uno punto cero llegará", "ver": "hito-11" },
-        { "frase": "Debajo están las novedades", "ver": "novedades" }
+        {
+          "frase": "Las primeras versiones y los pilotos",
+          "gl": "As primeiras versións e os pilotos",
+          "en": "The first versions and the pilots",
+          "ver": "hito-1"
+        },
+        {
+          "frase": "la base",
+          "gl": "a base, a medida",
+          "en": "the foundation, the spending",
+          "ver": "hito-2"
+        },
+        {
+          "frase": "la medida del gasto",
+          "gl": "a medida do gasto",
+          "en": "the spending measurement",
+          "ver": "hito-5"
+        },
+        {
+          "frase": "y las preguntas",
+          "gl": "e as preguntas",
+          "en": "and the questions",
+          "ver": "hito-8"
+        },
+        {
+          "frase": "Lo que falta: la versión cero punto ocho",
+          "gl": "O que falta: a versión cero punto oito",
+          "en": "What is missing: version zero point eight",
+          "ver": "hito-9"
+        },
+        {
+          "frase": "Luego una versión estable",
+          "gl": "Despois unha versión estable",
+          "en": "Then a stable version",
+          "ver": "hito-10"
+        },
+        {
+          "frase": "la uno punto cero llegará",
+          "gl": "a un punto cero chegará",
+          "en": "version one point zero will arrive",
+          "ver": "hito-11"
+        },
+        {
+          "frase": "Debajo están las novedades",
+          "gl": "Debaixo están as novidades",
+          "en": "Below is the news",
+          "ver": "novedades"
+        }
       ]
     },
     {

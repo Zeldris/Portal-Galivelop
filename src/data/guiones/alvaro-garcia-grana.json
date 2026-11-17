@@ -25,10 +25,30 @@
       "gl": "No obradoiro está en catro proxectos. Creou Tarkor, Galivelop-workflow e Galivelop IG, e forma parte do equipo de toVeriAI. Cada un ten a súa ficha: preme no que che interese.",
       "en": "In the workshop he is in four projects. He created Tarkor, Galivelop-workflow and Galivelop IG, and he is part of the toVeriAI team. Each one has its own page: click the one you are interested in.",
       "enfoques": [
-        { "frase": "Creó Tarkor", "ver": "proyecto-tarkor" },
-        { "frase": "Galivelop-workflow y", "ver": "proyecto-galivelop-workflow" },
-        { "frase": "Galivelop IG, y", "ver": "proyecto-galivelop-image-generator" },
-        { "frase": "equipo de toVeriAI", "ver": "proyecto-toveriai" }
+        {
+          "frase": "Creó Tarkor",
+          "gl": "Creou Tarkor",
+          "en": "He created Tarkor",
+          "ver": "proyecto-tarkor"
+        },
+        {
+          "frase": "Galivelop-workflow y",
+          "gl": "Galivelop-workflow e",
+          "en": "Galivelop-workflow and",
+          "ver": "proyecto-galivelop-workflow"
+        },
+        {
+          "frase": "Galivelop IG, y",
+          "gl": "Galivelop IG, e forma",
+          "en": "Galivelop IG, and he is",
+          "ver": "proyecto-galivelop-image-generator"
+        },
+        {
+          "frase": "equipo de toVeriAI",
+          "gl": "equipo de toVeriAI",
+          "en": "the toVeriAI team",
+          "ver": "proyecto-toveriai"
+        }
       ]
     },
     {
@@ -49,10 +69,30 @@
       "gl": "Do obradoiro tamén saen produtos, e Álvaro lévaos el. Galivelop-workflow, o fluxo para desenvolver con axentes de intelixencia artificial, e Galivelop IG, o xerador de imaxes, xa están dispoñibles, co seu código aberto. Galivelop Developer, un axente que programa contigo na túa máquina, e Galivelop Voice Generator, voces xeradas en local, chegan pronto. Para calquera deles, fálase con el por correo.",
       "en": "The workshop also produces products, and Álvaro leads them. Galivelop-workflow, the workflow for developing with artificial intelligence agents, and Galivelop IG, the image generator, are already available, with open source code. Galivelop Developer, an agent that programs with you on your machine, and Galivelop Voice Generator, voices generated locally, are coming soon. For any of them, you can talk to him by email.",
       "enfoques": [
-        { "frase": "Galivelop-workflow, el flujo", "ver": "producto-galivelop-workflow" },
-        { "frase": "Galivelop IG, el generador", "ver": "producto-galivelop-image-generator" },
-        { "frase": "Galivelop Developer", "ver": "producto-galivelop-developer" },
-        { "frase": "Galivelop Voice Generator", "ver": "producto-galivelop-voice-generator" }
+        {
+          "frase": "Galivelop-workflow, el flujo",
+          "gl": "Galivelop-workflow, o fluxo",
+          "en": "Galivelop-workflow, the workflow",
+          "ver": "producto-galivelop-workflow"
+        },
+        {
+          "frase": "Galivelop IG, el generador",
+          "gl": "Galivelop IG, o xerador",
+          "en": "Galivelop IG, the image",
+          "ver": "producto-galivelop-image-generator"
+        },
+        {
+          "frase": "Galivelop Developer",
+          "gl": "Galivelop Developer",
+          "en": "Galivelop Developer",
+          "ver": "producto-galivelop-developer"
+        },
+        {
+          "frase": "Galivelop Voice Generator",
+          "gl": "Galivelop Voice Generator",
+          "en": "Galivelop Voice Generator",
+          "ver": "producto-galivelop-voice-generator"
+        }
       ]
     },
     {

@@ -18,12 +18,42 @@
       "gl": "Pedímosche o teu nome e o teu correo. Logo elixes en que che gustaría participar: nun proxecto aberto, no que faga falta ou en proxectos novos. Tamén marcas como queres achegar, por exemplo con programación, deseño, textos, probas, investigación ou, sobre todo, aprendendo. E cóntasnos sobre ti: que sabes facer, que che gustaría aprender e por que che interesa. Opcionalmente, a túa dispoñibilidade aproximada e unha ligazón ao teu portfolio. Ao terminar, ábrese a túa aplicación de correo coa mensaxe xa preparada. Ti revísala e envíala, e se non se abre, podes copiala. Grazas por escoitar.",
       "en": "We ask for your name and your email. Then you choose where you would like to take part: in an open project, in whatever is needed, or in new projects. You also mark how you want to contribute, for example with programming, design, writing, testing, research or, above all, learning. And you tell us about yourself: what you can do, what you would like to learn and why it interests you. Optionally, your rough availability and a link to your portfolio. When you finish, your email app opens with the message already prepared. You review it and send it, and if it does not open, you can copy it. Thanks for listening.",
       "enfoques": [
-        { "frase": "Te pedimos tu nombre", "ver": "campo-nombre" },
-        { "frase": "Luego eliges en qué te gustaría participar", "ver": "campo-proyecto" },
-        { "frase": "También marcas cómo quieres aportar", "ver": "campo-areas" },
-        { "frase": "Y nos cuentas sobre ti", "ver": "campo-sobreti" },
-        { "frase": "Opcionalmente, tu disponibilidad", "ver": "campo-disponibilidad" },
-        { "frase": "un enlace a tu portfolio", "ver": "campo-enlace" }
+        {
+          "frase": "Te pedimos tu nombre",
+          "gl": "Pedímosche o teu nome",
+          "en": "We ask for your name",
+          "ver": "campo-nombre"
+        },
+        {
+          "frase": "Luego eliges en qué te gustaría participar",
+          "gl": "Logo elixes en que che gustaría participar",
+          "en": "Then you choose where you would like to take part",
+          "ver": "campo-proyecto"
+        },
+        {
+          "frase": "También marcas cómo quieres aportar",
+          "gl": "Tamén marcas como queres achegar",
+          "en": "You also mark how you want to contribute",
+          "ver": "campo-areas"
+        },
+        {
+          "frase": "Y nos cuentas sobre ti",
+          "gl": "E cóntasnos sobre ti",
+          "en": "And you tell us about yourself",
+          "ver": "campo-sobreti"
+        },
+        {
+          "frase": "Opcionalmente, tu disponibilidad",
+          "gl": "Opcionalmente, a túa dispoñibilidade",
+          "en": "Optionally, your rough availability",
+          "ver": "campo-disponibilidad"
+        },
+        {
+          "frase": "un enlace a tu portfolio",
+          "gl": "unha ligazón ao teu portfolio",
+          "en": "a link to your portfolio",
+          "ver": "campo-enlace"
+        }
       ]
     }
   ]

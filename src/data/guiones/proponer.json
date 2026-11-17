@@ -18,12 +18,42 @@
       "gl": "Pedímosche o teu nome e o teu correo, o nome do proxecto e de que trata: que é, que problema resolve ou que queres crear. Tamén nos dis en que punto está: unha idea, un deseño, un prototipo ou algo xa en marcha. Se queres, engade que papel che gustaría ter e unha ligazón, se a hai. Eses dous son opcionais. Cando premas o botón, non se envía nada a ningún servidor: ábrese a túa aplicación de correo coa mensaxe preparada. Ti revísala e envíala. Se non se abre, podes copiar a mensaxe e mandala a man. Grazas por escoitar.",
       "en": "We ask for your name and your email, the name of the project and what it is about: what it is, what problem it solves or what you want to create. You also tell us where it stands: an idea, a design, a prototype or something already underway. If you want, add what role you would like to have and a link, if there is one. Those two are optional. When you press the button, nothing is sent to any server: your email app opens with the message ready. You review it and send it. If it does not open, you can copy the message and send it by hand. Thanks for listening.",
       "enfoques": [
-        { "frase": "Te pedimos tu nombre", "ver": "campo-nombre" },
-        { "frase": "el nombre del proyecto", "ver": "campo-proyecto" },
-        { "frase": "de qué trata", "ver": "campo-descripcion" },
-        { "frase": "en qué punto está", "ver": "campo-fase" },
-        { "frase": "añade qué papel", "ver": "campo-papel" },
-        { "frase": "un enlace, si lo hay", "ver": "campo-enlace" }
+        {
+          "frase": "Te pedimos tu nombre",
+          "gl": "Pedímosche o teu nome",
+          "en": "We ask for your name",
+          "ver": "campo-nombre"
+        },
+        {
+          "frase": "el nombre del proyecto",
+          "gl": "o nome do proxecto",
+          "en": "the name of the project",
+          "ver": "campo-proyecto"
+        },
+        {
+          "frase": "de qué trata",
+          "gl": "de que trata",
+          "en": "what it is about",
+          "ver": "campo-descripcion"
+        },
+        {
+          "frase": "en qué punto está",
+          "gl": "en que punto está",
+          "en": "where it stands",
+          "ver": "campo-fase"
+        },
+        {
+          "frase": "añade qué papel",
+          "gl": "engade que papel",
+          "en": "add what role",
+          "ver": "campo-papel"
+        },
+        {
+          "frase": "un enlace, si lo hay",
+          "gl": "unha ligazón, se a hai",
+          "en": "a link, if there is one",
+          "ver": "campo-enlace"
+        }
       ]
     }
   ]
