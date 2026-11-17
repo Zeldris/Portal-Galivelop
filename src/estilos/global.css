@@ -21,7 +21,8 @@
   --datos: 500 0.75rem/1.4 var(--fuente-datos);
   --datos-espaciado: 0.06em;
 
-  /* Esquinas: ningún redondeo; lo grande lleva chaflán (`.chaflan`), lo pequeño se queda recto. */
+  /* Esquinas: ningún redondeo; las fichas llevan chaflán de `--chaflan`, lo grande el de `--chaflan-grande`, lo pequeño se queda recto. */
+  --chaflan: 14px; /* fichas y tarjetas */
   --chaflan-grande: 28px;
   --chaflan-pequeno: 10px; /* botones */
   --reticula-paso: 24px;
@@ -465,6 +466,44 @@ button {
   .idiomas button {
     padding: 4px 8px;
   }
+}
+
+/* ---------- Chaflán de las fichas (regla 3 de docs/marca.md) ----------
+   El clip-path corta la esquina superior derecha y se llevaría el borde de la diagonal: `::before` la dibuja con
+   una línea girada 45° del color del borde (`--borde-chaflan`, que sigue al hover). Los enlaces internos llevan su foco
+   dentro de la tarjeta, así que el recorte no lo toca. */
+.tarjeta,
+.tarjeta-proxima,
+.persona,
+.tarjeta-producto {
+  --borde-chaflan: var(--borde);
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+.tarjeta::before,
+.tarjeta-proxima::before,
+.persona::before,
+.tarjeta-producto::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% - var(--chaflan) - 1px);
+  width: calc(var(--chaflan) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-chaflan);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+  --borde-chaflan: var(--tinta);
+}
+
+.persona:target {
+  --borde-chaflan: var(--tinta);
 }
 
 /* ---------- Botones y piezas comunes ---------- */
