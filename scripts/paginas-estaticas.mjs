@@ -413,7 +413,8 @@ const activo = (re) => ACTIVOS.find((f) => re.test(f));
 const FUENTES = [/^literata-latin-wght-normal-.*\.woff2$/, /^big-shoulders-display-latin-wght-normal-.*\.woff2$/].map(activo).filter(Boolean);
 // Qué chunk de src/paginas.ts lleva cada ruta (el nombre del chunk es el del componente de la página).
 const CHUNK_DE_RUTA = (ruta) =>
-  ruta.startsWith('proyectos/') ? 'Proyecto'
+  ruta === '' ? 'Inicio'
+  : ruta.startsWith('proyectos/') ? 'Proyecto'
     : ruta.startsWith('equipo/') ? 'Miembro'
       : { equipo: 'Equipo', muro: 'Muro', novedades: 'Novedades', 'participa/proponer': 'Proponer', 'participa/unirse': 'Unirse' }[ruta]
         ?? (legales.some((d) => d.slug === ruta) ? 'Legal' : undefined);
@@ -421,6 +422,8 @@ const CHUNK_DE_RUTA = (ruta) =>
 // (`color`) o las isobatas (`captura`).
 const imagenLcp = (pg) => {
   if (pg.ruta === '') return 'marca/isobatas.svg';
+  // La ilustración del formulario tiene versión clara y oscura (src/components/ImagenTema.tsx): el tema claro es el de por defecto.
+  if (pg.ruta === 'participa/unirse') return 'marca/como-funciona.webp';
   const p = pg.proyecto;
   if (!p) return undefined;
   const modo = p.cabecera ?? 'ilustracion';
