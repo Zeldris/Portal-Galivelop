@@ -40,8 +40,7 @@ describe('audio de los guiones', () => {
   });
 
   it('la clave del guion sale de su ruta', () => {
-    for (const clave of claves)
-      expect(claveDeGuion(leer(clave).pagina)).toBe(clave === 'inicio' ? 'inicio' : clave);
+    for (const clave of claves) expect(claveDeGuion(leer(clave).pagina), clave).toBe(clave);
   });
 
   it('cada `frase` de un enfoque aparece una sola vez en el `es` de su trozo', () => {

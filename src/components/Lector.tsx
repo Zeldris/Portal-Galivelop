@@ -1,7 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useIdioma } from '../i18n/Idioma';
-import { buscarSeccion, claveDeGuion, enfoqueEn, rutaAudio, type Guion } from '../utils/guion';
+import {
+  buscarSeccion,
+  claveDeGuion,
+  enfoqueEn,
+  gestoPausa,
+  rutaAudio,
+  rutaNormal,
+  teclaPausa,
+  type Guion,
+} from '../utils/guion';
 import { Icono } from './Icono';
 import { ChevronLeft, ChevronRight, Pause, Play, X } from 'lucide-react';
 
@@ -9,9 +18,6 @@ const BASE = import.meta.env.BASE_URL;
 const RESALTADO = 'guion-activo';
 const ENFOCADO = 'guion-enfoque';
 const guiones = import.meta.glob<{ default: Guion }>('../data/guiones/*.json');
-
-/** Teclas con las que la persona recorre la página por su cuenta: la lectura se pausa. */
-const TECLAS_SCROLL = new Set([' ', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End']);
 
 function quitarResaltado() {
   document
@@ -56,14 +62,27 @@ export function Lector() {
     carga().then(
       (m) => {
         const g = m.default;
-        if (vigente && g.audio?.includes(idioma) && g.trozos.length > 0) setGuion(g);
+        if (
+          vigente &&
+          rutaNormal(g.pagina) === rutaNormal(pathname) &&
+          g.audio?.includes(idioma) &&
+          g.trozos.length > 0
+        )
+          setGuion(g);
       },
       () => undefined,
     );
     return () => {
       vigente = false;
     };
-  }, [clave, idioma]);
+  }, [clave, idioma, pathname]);
+
+  const liberar = useCallback(() => {
+    if (precarga.current) {
+      precarga.current.removeAttribute('src');
+      precarga.current.load();
+    }
+  }, []);
 
   const parar = useCallback(() => {
     audio.current?.pause();
@@ -73,9 +92,10 @@ export function Lector() {
 
   const cerrar = useCallback(() => {
     parar();
+    liberar();
     setAbierto(false);
     setIndice(0);
-  }, [parar]);
+  }, [parar, liberar]);
 
   // Cambiar de página o de idioma cierra el lector.
   useEffect(() => cerrar, [pathname, idioma, cerrar]);
@@ -84,18 +104,19 @@ export function Lector() {
   const enCurso = useRef<{ i: number; ver: string | null }>({ i: 0, ver: null });
   // Coloca la vista según el instante del trozo `i` (fracción del audio): el elemento del enfoque que toca, centrado.
   const colocar = useCallback(
-    (i: number, fraccion: number) => {
+    (i: number, fraccion: number): boolean => {
       const trozo = trozos[i];
-      if (!trozo) return;
+      if (!trozo) return false;
       const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
-      if (!enfoque) return;
-      if (enCurso.current.i === i && enCurso.current.ver === enfoque.ver) return;
+      if (!enfoque) return false;
+      if (enCurso.current.i === i && enCurso.current.ver === enfoque.ver) return true;
       enCurso.current = { i, ver: enfoque.ver };
       document.querySelectorAll('.' + ENFOCADO).forEach((e) => e.classList.remove(ENFOCADO));
       const el = buscarSeccion(enfoque.ver);
-      if (!el) return;
+      if (!el) return false;
       el.classList.add(ENFOCADO);
       mostrar(el, true);
+      return true;
     },
     [trozos],
   );
@@ -115,9 +136,7 @@ export function Lector() {
       const el = buscarSeccion(trozo.seccion);
       el?.classList.add(RESALTADO);
       enCurso.current = { i, ver: null };
-      const primero = enfoqueEn(trozo.es, trozo.enfoques, 0);
-      if (primero) colocar(i, 0);
-      else if (el) mostrar(el, false);
+      if (!colocar(i, 0) && el) mostrar(el, false);
       const a = (audio.current ??= new Audio());
       a.src = rutaAudio(BASE, idioma, clave, i, trozo.seccion);
       void a.play().then(
@@ -144,11 +163,19 @@ export function Lector() {
     const fin = () => alAcabar.current();
     const avance = () => alActualizar.current();
     a.addEventListener('ended', fin);
+    a.addEventListener('error', fin);
     a.addEventListener('timeupdate', avance);
     return () => {
       a.removeEventListener('ended', fin);
+      a.removeEventListener('error', fin);
       a.removeEventListener('timeupdate', avance);
       a.pause();
+      a.removeAttribute('src');
+      a.load();
+      if (precarga.current) {
+        precarga.current.removeAttribute('src');
+        precarga.current.load();
+      }
     };
   }, []);
 
@@ -159,15 +186,18 @@ export function Lector() {
       audio.current?.pause();
       setSonando(false);
     };
-    const tecla = (e: KeyboardEvent) => {
-      if (TECLAS_SCROLL.has(e.key) && !(e.target as HTMLElement).closest('.lector')) pausar();
+    const gesto = (e: Event) => {
+      if (gestoPausa(e.target as Element | null)) pausar();
     };
-    window.addEventListener('wheel', pausar, { passive: true });
-    window.addEventListener('touchmove', pausar, { passive: true });
+    const tecla = (e: KeyboardEvent) => {
+      if (teclaPausa(e.key, e.target as Element | null)) pausar();
+    };
+    window.addEventListener('wheel', gesto, { passive: true });
+    window.addEventListener('touchmove', gesto, { passive: true });
     window.addEventListener('keydown', tecla);
     return () => {
-      window.removeEventListener('wheel', pausar);
-      window.removeEventListener('touchmove', pausar);
+      window.removeEventListener('wheel', gesto);
+      window.removeEventListener('touchmove', gesto);
       window.removeEventListener('keydown', tecla);
     };
   }, [abierto, sonando]);
@@ -191,7 +221,10 @@ export function Lector() {
       const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
       const el = buscarSeccion(enfoque?.ver ?? trozo.seccion);
       if (el) mostrar(el, !!enfoque);
-      void a.play().then(() => setSonando(true));
+      void a.play().then(
+        () => setSonando(true),
+        () => setSonando(false),
+      );
     } else reproducir(indice);
   };
   const ir = (i: number) => i >= 0 && i < trozos.length && reproducir(i);

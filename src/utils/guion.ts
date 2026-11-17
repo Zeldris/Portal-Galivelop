@@ -62,3 +62,25 @@ export function buscarSeccion(seccion: string, raiz: ParentNode = document): HTM
   const id = raiz instanceof Document ? raiz.getElementById(seccion) : null;
   return id ?? raiz.querySelector<HTMLElement>(`[data-guion="${CSS.escape(seccion)}"]`);
 }
+
+const CONTROLES = 'input, textarea, select, button, a, [contenteditable], .lector, .lector-boton';
+const PROPIO = '.lector, .lector-boton';
+type Objetivo = { closest(selector: string): unknown } | null;
+
+/** ¿Esta tecla, pulsada sobre `objetivo`, es un gesto de scroll de la persona (y no escribir o activar un control)? */
+export function teclaPausa(key: string, objetivo: Objetivo): boolean {
+  if (!TECLAS_SCROLL.has(key)) return false;
+  return !objetivo?.closest(CONTROLES);
+}
+
+/** ¿Un gesto de rueda o táctil sobre `objetivo` es scroll de la página (no sobre la barra del lector ni su botón)? */
+export function gestoPausa(objetivo: Objetivo): boolean {
+  return !objetivo?.closest(PROPIO);
+}
+
+const TECLAS_SCROLL = new Set([' ', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End']);
+
+/** Una ruta sin la barra final (salvo `/`), para comparar con la `pagina` del guion. */
+export function rutaNormal(ruta: string): string {
+  return ruta.length > 1 ? ruta.replace(/\/+$/, '') || '/' : ruta;
+}

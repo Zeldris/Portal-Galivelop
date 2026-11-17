@@ -6168,9 +6168,7 @@ body:has(dialog[open]) {
 
 /* El elemento que se está leyendo dentro de una sección alta: solo contorno, sin fondo que tape el texto. */
 .guion-enfoque {
-  outline: 3px solid var(--celeste-intenso);
   outline-offset: 4px;
-  transition: outline-color var(--transicion);
 }
 
 @media (prefers-reduced-motion: reduce) {

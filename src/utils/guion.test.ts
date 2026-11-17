@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest';
-import { enfoqueEn, posicionDeFrase, type Enfoque } from './guion';
+import {
+  enfoqueEn,
+  gestoPausa,
+  posicionDeFrase,
+  rutaNormal,
+  teclaPausa,
+  type Enfoque,
+} from './guion';
 
 const es = 'Uno dos tres cuatro cinco seis siete ocho nueve diez';
 const enfoques: Enfoque[] = [
@@ -32,5 +39,27 @@ describe('enfoqueEn', () => {
     const revuelto = [enfoques[2], { frase: 'no está', ver: 'x' }, enfoques[0]];
     expect(enfoqueEn(es, revuelto, 0.95)?.ver).toBe('c');
     expect(enfoqueEn(es, revuelto, 0.3)?.ver).toBe('a');
+  });
+});
+
+describe('gestos que pausan el lector', () => {
+  const en = (selectores: string[]) => ({
+    closest: (s: string) => selectores.some((x) => s.split(', ').includes(x)),
+  });
+  it('la tecla pausa sobre la página, no sobre controles ni editables', () => {
+    expect(teclaPausa(' ', null)).toBe(true);
+    expect(teclaPausa(' ', en([]))).toBe(true);
+    for (const c of ['input', 'textarea', 'select', 'button', 'a', '[contenteditable]', '.lector'])
+      expect(teclaPausa(' ', en([c])), c).toBe(false);
+    expect(teclaPausa('a', null)).toBe(false);
+  });
+  it('rueda y táctil no pausan sobre la barra o el botón del lector', () => {
+    expect(gestoPausa(null)).toBe(true);
+    expect(gestoPausa(en(['.lector']))).toBe(false);
+    expect(gestoPausa(en(['.lector-boton']))).toBe(false);
+  });
+  it('rutaNormal quita la barra final salvo en la raíz', () => {
+    expect(rutaNormal('/equipo/')).toBe('/equipo');
+    expect(rutaNormal('/')).toBe('/');
   });
 });
