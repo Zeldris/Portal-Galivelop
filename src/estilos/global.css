@@ -5966,3 +5966,110 @@ body:has(dialog[open]) {
 .carga-pagina {
   min-height: 70vh;
 }
+
+/* ---------- Impresión ---------- */
+/* Solo contenido: sin cabecera, menús, botones, galerías ni adornos; texto oscuro sobre blanco en cualquier tema
+   (se fuerzan los tokens del tema claro) y los enlaces externos con su dirección tras el texto. */
+@media print {
+  :root,
+  :root[data-tema='claro'],
+  :root[data-tema='oscuro'] {
+    color-scheme: light;
+    --papel: var(--blanco);
+    --reticula: #ffffff;
+    --celeste-hondo: #0072a8;
+    --tinta: #13212b;
+    --tinta-2: #4a5c69;
+    --alga: #5d7a6a;
+    --filete: #b9cbd6;
+    --fondo: #ffffff;
+    --fondo-alterno: #ffffff;
+    --superficie: #ffffff;
+    --superficie-2: #ffffff;
+    --borde: #b9cbd6;
+    --texto: #13212b;
+    --texto-2: #4a5c69;
+    --texto-3: #4a5c69;
+    --enlace: #0072a8;
+    --tinte: transparent;
+    --sombra: none;
+    --ok-texto: #3f5a4b;
+  }
+
+  html,
+  body {
+    background: var(--blanco);
+    color: var(--texto);
+  }
+
+  .cabecera,
+  .saltar,
+  .pie-rosa,
+  .pie nav,
+  .boton,
+  button,
+  dialog,
+  .galeria,
+  .hero-fondo,
+  .hero-collage,
+  .proyecto-isobatas {
+    display: none !important;
+  }
+
+  /* Bandas de color con texto blanco: sin fondo y con la tinta del texto. */
+  .hero,
+  .cabecera-captura,
+  .cabecera-color,
+  .destacado {
+    background: var(--blanco) !important;
+    color: var(--texto) !important;
+  }
+
+  .hero :is(h1, h2, p, dt, dd, span, a, div),
+  .cabecera-captura :is(h1, h2, p, dt, dd, span, a, div),
+  .cabecera-color :is(h1, h2, p, dt, dd, span, a, div) {
+    color: var(--texto) !important;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .tarjeta,
+  .tarjeta-proxima,
+  .tarjeta-producto,
+  .persona,
+  .hito,
+  .bloque,
+  figure,
+  li {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  main a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+
+  .tarjeta-enlace::after {
+    position: static;
+  }
+}
