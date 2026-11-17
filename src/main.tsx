@@ -4,10 +4,10 @@ import '@fontsource-variable/jetbrains-mono';
 import { StrictMode, startTransition, useCallback, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { App } from './App';
+import { App, cargarInicio } from './App';
 import type { Idioma } from './data/tipos';
 import './estilos/global.css';
-import { precargarRuta } from './paginas';
+import { paginaDeRuta, precargarRuta } from './paginas';
 import {
   baseDeIdioma,
   guardarIdioma,
@@ -84,7 +84,10 @@ window.addEventListener('vite:preloadError', (evento) => {
 
 // La página y la ficha que toca se esperan antes del primer render: así el HTML prerenderizado de #root no se
 // sustituye por un hueco vacío mientras llegan (entrar directo a /proyectos/tarkor/).
-void precargarRuta(location.pathname).then(() => {
+void Promise.allSettled([
+  precargarRuta(location.pathname),
+  paginaDeRuta(location.pathname) === undefined ? cargarInicio() : undefined,
+]).then(() => {
   createRoot(document.getElementById('root')!).render(
     <StrictMode>
       <Raiz />

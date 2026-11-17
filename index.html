@@ -28,6 +28,7 @@
     <meta name="twitter:image:alt" content="Portada de Galivelop: «Hacemos reales los proyectos que parecen imposibles», junto a una rosa de los vientos flotando en el mar grabado" />
     <script>
       // Aplica el tema guardado antes de pintar, para evitar un parpadeo.
+      document.documentElement.classList.add('js');
       try {
         var t = localStorage.getItem('galivelop.tema');
         // Claro por defecto (regla 1 de docs/marca.md): solo oscuro si la persona lo eligió.
@@ -37,6 +38,20 @@
         document.querySelector('meta[name="theme-color"]').content = t === 'oscuro' ? '#111f29' : '#ffffff';
       } catch (e) {}
     </script>
+    <!-- El contenido estático (main y pie de scripts/paginas-estaticas.mjs) se oculta mientras carga React: se ve igual
+         que la app solo en la cabecera, y así al montar no se mueve nada (CLS). Sin JavaScript, o si React no llega
+         a montar en 6 s, se muestra. -->
+    <style>
+      @keyframes gv-revelar {
+        to {
+          visibility: visible;
+        }
+      }
+      html.js [data-estatico] {
+        visibility: hidden;
+        animation: gv-revelar 0s 6s forwards;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

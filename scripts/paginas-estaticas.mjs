@@ -4,6 +4,8 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { MARCA, PORTADA_ESTADO } from '../src/data/marca.ts';
+import { textos } from '../src/i18n/textos.ts';
 import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
 
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
@@ -246,6 +248,87 @@ const TIPO = {
   'galivelop-image-generator': { '@type': 'SoftwareApplication', applicationCategory: 'MultimediaApplication', operatingSystem: 'Linux' },
 };
 
+// ---------- Cabecera y pie estáticos ----------
+// Las mismas clases y la misma estructura que src/components/Cabecera.tsx, MenuProyectos.tsx y Pie.tsx, con los textos de
+// src/i18n/textos.ts: sin JavaScript hay menú, selector de idioma y pie con enlaces reales; con JavaScript se ven igual
+// y React los sustituye al montar (el contenido estático se oculta hasta entonces: ver `data-estatico` en index.html).
+const T = (i, clave) => textos[i][clave];
+const hrefDe = (i, ruta) => `${BASE_404}${prefijo(i)}${ruta ? ruta + '/' : ''}`;
+const enlace = (href, texto, extra = '') => `<a${extra} href="${href}">${esc(texto)}</a>`;
+// Monograma GV de src/components/Logo.tsx.
+const LOGO = (tamano) =>
+  `<span class="logo"><svg width="${tamano}" height="${tamano}" viewBox="0 0 128 128" aria-hidden="true" class="marca-gd"><path d="M0 0H100L128 28V128H0Z" fill="var(--celeste, #1aa6df)"/><g fill="none" stroke="var(--blanco, #fff)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M55.4 45.6 A24 24 0 1 0 64 64"/><path d="M50 64 H80"/><path d="M71 40 L89.5 88 L108 40"/></g></svg><span class="logo-texto"><span class="logo-gali">Gali</span>velop</span></span>`;
+// Iconos de lucide-react (los mismos que usan la cabecera y el pie).
+const ICONO = (tamano, trazos) =>
+  `<svg xmlns="http://www.w3.org/2000/svg" width="${tamano}" height="${tamano}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${trazos}</svg>`;
+const ICONOS = {
+  chevron: ICONO(15, '<path d="m6 9 6 6 6-6"/>'),
+  luna: ICONO(18, '<path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>'),
+  menu: ICONO(18, '<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>'),
+  correo: ICONO(18, '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>'),
+};
+// Discord y GitHub: los de src/components/IconoDiscord.tsx e IconoGitHub.tsx.
+const leerIcono = (archivo) =>
+  readFileSync(`src/components/${archivo}`, 'utf8')
+    .match(/<svg[\s\S]*?<\/svg>/)[0]
+    .replace(/width=\{tamano\} height=\{tamano\}/, 'width="18" height="18"')
+    .replace(/\s+/g, ' ');
+const ICONO_DISCORD = leerIcono('IconoDiscord.tsx');
+const ICONO_GITHUB = leerIcono('IconoGitHub.tsx');
+
+function cabecera(i, ruta) {
+  const proyectosMenu = proyectos
+    .map((p) => `<li><a href="${hrefDe(i, `proyectos/${p.slug}`)}" class="submenu-proyecto"><img src="${BASE_404}${p.portada.mini}" alt="" loading="lazy" decoding="async" /><span class="submenu-texto"><strong>${esc(p.nombre)}</strong><span>${esc(p.categoria[i])}</span></span></a></li>`)
+    .join('');
+  const idiomas = IDIOMAS.map((j) => `<a lang="${j}"${j === i ? ' aria-current="page"' : ''} href="${hrefDe(j, ruta)}">${j.toUpperCase()}</a>`).join('');
+  return `<header class="cabecera"><a class="saltar" href="#contenido">${esc(T(i, 'nav.saltar'))}</a><div class="contenedor cabecera-fila">`
+    + `<a class="cabecera-logo" aria-label="Galivelop" href="${hrefDe(i, '')}">${LOGO(36)}</a>`
+    + `<nav id="menu-principal" class="cabecera-nav" aria-label="${esc(T(i, 'nav.menu'))}"><div class="nav-grupo nav-taller" role="group" aria-labelledby="nav-taller-etiqueta"><span class="nav-etiqueta" id="nav-taller-etiqueta">${esc(T(i, 'nav.taller'))}</span>`
+    + `<div class="submenu"><button type="button" class="submenu-boton" aria-expanded="false" aria-controls="submenu-proyectos">${esc(T(i, 'nav.proyectos'))} ${ICONOS.chevron}</button><div id="submenu-proyectos" class="submenu-panel"><ul>${proyectosMenu}</ul><a class="submenu-todos" href="${hrefDe(i, '')}#proyectos">${esc(T(i, 'nav.proyectos.todos'))}</a></div></div>`
+    + enlace(`${hrefDe(i, '')}#lineas`, T(i, 'nav.lineas'))
+    + enlace(`${hrefDe(i, '')}#sobre`, T(i, 'nav.sobre'))
+    + enlace(hrefDe(i, 'novedades'), T(i, 'sec.novedades'))
+    + enlace(hrefDe(i, 'equipo'), T(i, 'nav.equipo'))
+    + enlace(`${hrefDe(i, '')}#participa`, T(i, 'nav.contacto'))
+    + `</div></nav><div class="cabecera-ajustes"><div class="idiomas" role="group" aria-label="${esc(T(i, 'idioma.etiqueta'))}">${idiomas}</div>`
+    + `<button type="button" class="boton-icono" aria-label="${esc(T(i, 'tema.oscuro'))}">${ICONOS.luna}</button>`
+    + `<button type="button" class="boton-icono boton-menu" aria-expanded="false" aria-controls="menu-principal" aria-label="${esc(T(i, 'nav.menu'))}">${ICONOS.menu}</button></div></div></header>`;
+}
+
+function pie(i) {
+  const columna = (id, titulo, items) => `<nav class="pie-columna" aria-labelledby="${id}"><h2 id="${id}">${esc(titulo)}</h2><ul>${items.map((x) => `<li>${x}</li>`).join('')}</ul></nav>`;
+  const externo = (href, etiqueta, icono) => `<a href="${href}" target="_blank" rel="noreferrer" aria-label="${etiqueta}" title="${etiqueta}">${icono}</a>`;
+  return `<footer class="pie" data-estatico><img class="pie-rosa" src="${BASE_404}marca/rosa-vientos.webp" alt="" width="280" height="280" loading="lazy" /><div class="contenedor pie-rejilla"><div class="pie-marca">${LOGO(30)}<p>${esc(T(i, 'pie.hecho'))}</p><div class="pie-redes">`
+    + externo(MARCA.discord, 'Discord', ICONO_DISCORD)
+    + externo(MARCA.github, 'GitHub', ICONO_GITHUB)
+    + `<a href="mailto:${MARCA.correo}" aria-label="${MARCA.correo}" title="${MARCA.correo}">${ICONOS.correo}</a></div></div>`
+    + columna('pie-taller', T(i, 'nav.taller'), proyectos.map((p) => enlace(hrefDe(i, `proyectos/${p.slug}`), p.nombre)))
+    + columna('pie-galivelop', 'Galivelop', [
+      enlace(hrefDe(i, 'equipo'), T(i, 'nav.equipo')),
+      enlace(`${hrefDe(i, '')}#sobre`, T(i, 'nav.sobre')),
+      enlace(hrefDe(i, 'novedades'), T(i, 'sec.novedades')),
+      ...(publicaciones.length > 0 ? [enlace(hrefDe(i, 'muro'), T(i, 'nav.muro'))] : []),
+    ])
+    + columna('pie-participa', T(i, 'nav.contacto'), [enlace(hrefDe(i, 'participa/proponer'), T(i, 'prop.titulo')), enlace(hrefDe(i, 'participa/unirse'), T(i, 'unir.titulo'))])
+    + columna('pie-legal', T(i, 'pie.legal'), legales.map((d) => enlace(hrefDe(i, d.slug), d.titulo[i])))
+    + `</div><div class="contenedor pie-base"><p>© ${new Date().getFullYear()} Galivelop · ${esc(MARCA.titular)}</p><p>${esc(T(i, 'pie.codigo'))}: <a href="${MARCA.repositorio}/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT</a> · ${esc(T(i, 'pie.contenido'))}: <a href="${MARCA.licenciaContenido}" target="_blank" rel="noreferrer">CC BY 4.0</a></p></div></footer>`;
+}
+
+// Estilos de la cabecera estática: el selector de idioma son enlaces (en la app, botones: `.idiomas button`) y, sin
+// JavaScript, el menú móvil no se abre, así que se muestra desplegado en la fila y el submenú se abre al pasar o enfocar.
+const ESTILO_ESTATICO = `<style>.idiomas a{padding:4px 10px;font:var(--datos);font-size:.72rem;letter-spacing:var(--datos-espaciado);text-transform:uppercase;color:var(--texto-3);text-decoration:none}.idiomas a[aria-current=page]{background:var(--tinta);color:var(--papel)}@media(max-width:26.875em){.idiomas a{padding:4px 8px}}</style>
+    <noscript><style>.cabecera-ajustes .boton-icono{display:none}.submenu:hover .submenu-panel,.submenu:focus-within .submenu-panel{opacity:1;visibility:visible;transform:none}.submenu-boton{pointer-events:none}@media(max-width:68.75em){.cabecera-fila{flex-wrap:wrap;height:auto;padding-block:8px}.cabecera-nav{display:flex;position:static;order:3;width:100%;flex-direction:row;flex-wrap:wrap;margin:0;padding:0;border:0;box-shadow:none;max-height:none;overflow:visible;background:none}.cabecera-nav a{padding:8px 9px;font-size:.8rem}.submenu{display:none}}</style></noscript>`;
+
+// h1 de la app en las páginas cuyo título del <title> lleva «· Galivelop» (src/pages/Inicio, Equipo, Muro, Proponer, Unirse).
+const H1 = {
+  '': (i) => `${T(i, 'hero.titulo1')} ${T(i, 'hero.titulo2')}`,
+  equipo: (i) => T(i, 'equipo.titulo'),
+  muro: (i) => T(i, 'muro.titulo'),
+  'participa/proponer': (i) => T(i, 'prop.titulo'),
+  'participa/unirse': (i) => T(i, 'unir.titulo'),
+};
+const h1De = (pg) => esc(H1[pg.ruta]?.(pg.idioma) ?? pg.titulo);
+
 /** Texto de la página en HTML simple (lo sustituye React al cargar; lo leen buscadores sin JS). */
 function cuerpo(pg) {
   const enlaces = proyectos.map((p) => `<li><a href="${urlDe(pg.idioma, `proyectos/${p.slug}`)}">${esc(p.nombre)}</a>: ${esc(p.lema[pg.idioma])}</li>`).join('');
@@ -253,12 +336,12 @@ function cuerpo(pg) {
   if (pg.ruta === 'muro') {
     const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
     const posts = publicaciones.map((x) => `<article><h2>${esc(x.titulo[pg.idioma])}</h2><p>${esc(nombre(x.proyecto))} · ${x.fecha}</p><p>${esc(x.texto[pg.idioma])}</p>${(x.cuerpo ?? []).map((c) => `<p>${esc(c[pg.idioma])}</p>`).join('')}</article>`).join('');
-    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p>${posts}<ul>${enlaces}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p>${posts}<ul>${enlaces}</ul></main>`;
   }
   if (pg.ruta === 'novedades') {
     const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
     const lista = novedadesTodas.map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro ? `${urlDe(pg.idioma, 'muro')}?proyecto=${x.proyecto}` : urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
-    return `<main><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
   }
   const legal = legales.find((d) => d.slug === pg.ruta);
   if (legal) {
@@ -270,11 +353,11 @@ function cuerpo(pg) {
       + (x.lista ? `<ul>${x.lista.map((t) => `<li>${esc(t[i])}</li>`).join('')}</ul>` : '')
       + (x.enlaces ? `<ul>${x.enlaces.map((e) => `<li>${a(e.url, e.etiqueta[i])}</li>`).join('')}</ul>` : '')
       + '</section>').join('');
-    return `<main><h1>${esc(legal.titulo[i])}</h1><p>${legal.actualizado}</p>${secciones}<ul>${enlaces}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(legal.titulo[i])}</h1><p>${legal.actualizado}</p>${secciones}<ul>${enlaces}</ul></main>`;
   }
   if (pg.ruta === 'equipo') {
     const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
-    return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${miembros}</ul><ul>${enlaces}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${miembros}</ul><ul>${enlaces}</ul></main>`;
   }
   const m = pg.persona;
   if (m) {
@@ -283,13 +366,13 @@ function cuerpo(pg) {
     const productosSuyos = productosDe(m.id)
       .map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
     const colabora = m.colabora ? `<p>${esc(m.colabora.texto[pg.idioma])} <a href="mailto:${m.colabora.correo}">${esc(m.colabora.correo)}</a></p>` : '';
-    return `<main><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
   }
-  if (!p) return `<main><h1>${esc(pg.titulo)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
+  if (!p) return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
   const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
   // Animaciones paso a paso: sin JS no hay dibujo, pero cada paso queda leído (título y narración) en una lista.
   const anim = (p.animaciones ?? []).map((a) => `<section><h2>${esc(a.titulo[pg.idioma])}</h2><ol>${a.pasos.map((x) => `<li><strong>${esc(x.titulo[pg.idioma])}</strong>: ${esc(x.narracion[pg.idioma])}</li>`).join('')}</ol></section>`).join('');
-  return `<main><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
+  return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
 }
 
 function datos(pg, url) {
@@ -305,7 +388,7 @@ function datos(pg, url) {
       mainEntity: { '@type': 'Person', name: m.nombre, jobTitle: m.rol[pg.idioma], description: m.bio[pg.idioma], ...(m.foto ? { image: `${SITIO}/${m.foto}` } : {}), sameAs: m.redes.filter((r) => r.tipo !== 'correo').map((r) => r.url), memberOf: ORG },
     };
   }
-  if (!p) return { '@context': 'https://schema.org', '@graph': [ORG, { '@type': 'WebSite', name: 'Galivelop', url: urlDe(pg.idioma, ''), inLanguage: pg.idioma, publisher: { '@type': 'Organization', name: 'Galivelop' } }] };
+  if (!p) return { '@context': 'https://schema.org', '@graph': [ORG, { '@type': 'WebSite', name: 'Galivelop', url: urlDe(pg.idioma, ''), inLanguage: pg.idioma, publisher: { '@type': 'Organization', name: 'Galivelop', url: `${SITIO}/` } }] };
   return {
     '@context': 'https://schema.org',
     '@type': 'CreativeWork',
@@ -320,6 +403,39 @@ function datos(pg, url) {
     ...(p.enlaces[0] ? { sameAs: p.enlaces.map((e) => e.url) } : {}),
     creator: ORG,
   };
+}
+
+// ---------- Precargas ----------
+// Lo que se ve primero (LCP) no espera al JavaScript: la imagen de cabecera de cada página, el trozo de JS de la página
+// (y su ficha) van como <link rel=preload|modulepreload> en el HTML de cada página. Las fuentes no se precargan: medido
+// (2026-11-17, móvil con 4G lento), compiten con el JS por el ancho de banda y retrasan el FCP y el LCP unos 100-150 ms.
+const ACTIVOS = readdirSync('dist/assets');
+const activo = (re) => ACTIVOS.find((f) => re.test(f));
+// Qué chunk de src/paginas.ts lleva cada ruta (el nombre del chunk es el del componente de la página).
+const CHUNK_DE_RUTA = (ruta) =>
+  ruta === '' ? 'Inicio'
+  : ruta.startsWith('proyectos/') ? 'Proyecto'
+    : ruta.startsWith('equipo/') ? 'Miembro'
+      : { equipo: 'Equipo', muro: 'Muro', novedades: 'Novedades', 'participa/proponer': 'Proponer', 'participa/unirse': 'Unirse' }[ruta]
+        ?? (legales.some((d) => d.slug === ruta) ? 'Legal' : undefined);
+// Imagen de la cabecera de cada ficha, como src/pages/Proyecto.tsx: la portada (`ilustracion`), el fondo por estado
+// (`color`) o las isobatas (`captura`).
+const imagenLcp = (pg) => {
+  if (pg.ruta === '') return 'marca/isobatas.svg';
+  // La ilustración del formulario tiene versión clara y oscura (src/components/ImagenTema.tsx): el tema claro es el de por defecto.
+  if (pg.ruta === 'participa/unirse') return 'marca/como-funciona.webp';
+  const p = pg.proyecto;
+  if (!p) return undefined;
+  const modo = p.cabecera ?? 'ilustracion';
+  return modo === 'color' ? PORTADA_ESTADO[p.estado] : modo === 'captura' ? 'marca/isobatas.svg' : p.portada.src;
+};
+function precargas(pg) {
+  const lineas = [];
+  const img = imagenLcp(pg);
+  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}" fetchpriority="high" />`);
+  const modulos = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
+  for (const m of modulos) if (m) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
+  return lineas.join('\n    ');
 }
 
 for (const pg of paginas) {
@@ -346,8 +462,8 @@ for (const pg of paginas) {
   html = conImagen(html, pg.imagen, pg.vista?.alt ?? ALT_PORTAL[pg.idioma]);
   if (pg.vista && !pg.vista.medidas) html = html.replace(/\s*<meta property="og:image:(width|height|type)"[^>]*>/g, '');
   html = html
-    .replace('</head>', `  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root">${cuerpo(pg)}</div>`);
+    .replace('</head>', `  ${precargas(pg)}\n    ${ESTILO_ESTATICO}\n  <script type="application/ld+json">${JSON.stringify(datos(pg, url)).replace(/</g, '\\u003c')}</script>\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${cabecera(pg.idioma, pg.ruta)}${cuerpo(pg)}${pie(pg.idioma)}</div>`);
   const dir = `dist/${prefijo(pg.idioma)}${pg.ruta}`.replace(/\/$/, '');
   mkdirSync(dir, { recursive: true });
   writeFileSync(`${dir}/index.html`, html);
