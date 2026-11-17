@@ -9,31 +9,45 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "Esta es la página de Raquel Comesaña Carrera, fundadora de toVeriAI. Es desarrolladora full stack, trabaja con Java, Spring Boot y React, y vive en A Coruña."
+      "es": "Esta es la página de Raquel Comesaña Carrera, fundadora de toVeriAI. Es desarrolladora full stack, trabaja con Java, Spring Boot y React, y vive en A Coruña.",
+      "gl": "Esta é a páxina de Raquel Comesaña Carrera, fundadora de toVeriAI. É desenvolvedora full stack, traballa con Java, Spring Boot e React, e vive na Coruña.",
+      "en": "This is the page of Raquel Comesaña Carrera, founder of toVeriAI. She is a full stack developer, works with Java, Spring Boot and React, and lives in A Coruña."
     },
     {
       "seccion": "sobre",
-      "es": "Llegó a la programación desde la Educación Social, y de ahí le viene querer entender para quién construye y cuidar la comunicación con el equipo. Fundó toVeriAI, la plataforma que analiza la credibilidad de las noticias con inteligencia artificial, y la llevó de la idea a producción. Lo hizo con pruebas desde el principio, con la seguridad bien cuidada y decidiendo con datos: por ejemplo, eligió los proveedores de inteligencia artificial probándolos con noticias falsas."
+      "es": "Llegó a la programación desde la Educación Social, y de ahí le viene querer entender para quién construye y cuidar la comunicación con el equipo. Fundó toVeriAI, la plataforma que analiza la credibilidad de las noticias con inteligencia artificial, y la llevó de la idea a producción. Lo hizo con pruebas desde el principio, con la seguridad bien cuidada y decidiendo con datos: por ejemplo, eligió los proveedores de inteligencia artificial probándolos con noticias falsas.",
+      "gl": "Chegou á programación desde a Educación Social, e de aí lle vén querer entender para quen constrúe e coidar a comunicación co equipo. Fundou toVeriAI, a plataforma que analiza a credibilidade das noticias con intelixencia artificial, e levouna da idea á produción. Fíxoo con probas desde o principio, coa seguridade ben coidada e decidindo con datos: por exemplo, elixiu os provedores de intelixencia artificial probándoos con noticias falsas.",
+      "en": "She came to programming from Social Education, and that is why she wants to understand who she is building for and to look after communication with the team. She founded toVeriAI, the platform that analyses the credibility of news using artificial intelligence, and took it from idea to production. She did it with tests from the start, with security well taken care of, and by deciding with data: for example, she chose the artificial intelligence providers by testing them with fake news."
     },
     {
       "seccion": "proyectos",
-      "es": "En el taller, su proyecto es toVeriAI, que creó ella. En su ficha tienes en qué punto está y cómo funciona."
+      "es": "En el taller, su proyecto es toVeriAI, que creó ella. En su ficha tienes en qué punto está y cómo funciona.",
+      "gl": "No obradoiro, o seu proxecto é toVeriAI, que creou ela. Na súa ficha tes en que punto está e como funciona.",
+      "en": "In the workshop, her project is toVeriAI, which she created. Its page tells you where it stands and how it works."
     },
     {
       "seccion": "trayectoria",
-      "es": "En su trayectoria hay proyectos muy distintos. En Seidor modernizó aplicaciones de gestión sobre sistemas IBM, llevando pantallas de terminal a React. Desarrolló toVeriAI. Y fue jefa de proyecto de ArgaQuest, una plataforma educativa que ganó el primer premio de Innovación Educativa de la Xunta."
+      "es": "En su trayectoria hay proyectos muy distintos. En Seidor modernizó aplicaciones de gestión sobre sistemas IBM, llevando pantallas de terminal a React. Desarrolló toVeriAI. Y fue jefa de proyecto de ArgaQuest, una plataforma educativa que ganó el primer premio de Innovación Educativa de la Xunta.",
+      "gl": "Na súa traxectoria hai proxectos moi distintos. En Seidor modernizou aplicacións de xestión sobre sistemas IBM, levando pantallas de terminal a React. Desenvolveu toVeriAI. E foi xefa de proxecto de ArgaQuest, unha plataforma educativa que gañou o primeiro premio de Innovación Educativa da Xunta.",
+      "en": "Her career includes very different projects. At Seidor she modernised management applications on IBM systems, moving terminal screens to React. She developed toVeriAI. And she was project lead of ArgaQuest, an educational platform that won the Xunta's first Educational Innovation prize."
     },
     {
       "seccion": "formacion",
-      "es": "Y sigue formándose: ahora cursa la especialización en Inteligencia Artificial y Big Data en el instituto Fernando Wirtz, donde terminó antes el ciclo superior de Desarrollo de Aplicaciones Web. Antes de todo eso, estudió el grado en Educación Social en la Universidade da Coruña."
+      "es": "Y sigue formándose: ahora cursa la especialización en Inteligencia Artificial y Big Data en el instituto Fernando Wirtz, donde terminó antes el ciclo superior de Desarrollo de Aplicaciones Web. Antes de todo eso, estudió el grado en Educación Social en la Universidade da Coruña.",
+      "gl": "E segue formándose: agora cursa a especialización en Intelixencia Artificial e Big Data no instituto Fernando Wirtz, onde terminou antes o ciclo superior de Desenvolvemento de Aplicacións Web. Antes de todo iso, estudou o grao en Educación Social na Universidade da Coruña.",
+      "en": "And she keeps training: she is now taking the specialisation in Artificial Intelligence and Big Data at the Fernando Wirtz institute, where she previously finished the higher-level course in Web Application Development. Before all that, she studied the degree in Social Education at the Universidade da Coruña."
     },
     {
       "seccion": "tecnologias",
-      "es": "Su base es Java con Spring Boot en el servidor y React en la parte que se ve, con bases de datos como MySQL u Oracle. Prueba su código con JUnit, Mockito y Vitest, y con la inteligencia artificial trabaja en local, con Ollama y Qwen."
+      "es": "Su base es Java con Spring Boot en el servidor y React en la parte que se ve, con bases de datos como MySQL u Oracle. Prueba su código con JUnit, Mockito y Vitest, y con la inteligencia artificial trabaja en local, con Ollama y Qwen.",
+      "gl": "A súa base é Java con Spring Boot no servidor e React na parte que se ve, con bases de datos como MySQL ou Oracle. Proba o seu código con JUnit, Mockito e Vitest, e coa intelixencia artificial traballa en local, con Ollama e Qwen.",
+      "en": "Her foundation is Java with Spring Boot on the server and React on the visible side, with databases such as MySQL or Oracle. She tests her code with JUnit, Mockito and Vitest, and she works with artificial intelligence locally, with Ollama and Qwen."
     },
     {
       "seccion": "colabora",
-      "es": "Además de toVeriAI, Raquel colabora de vez en cuando en proyectos de otras personas, por su cuenta: desarrollo full stack con Java, Spring Boot y React. El botón de esta sección abre un correo para escribirle, y en la página tienes también sus redes y su portafolio. Gracias por escuchar."
+      "es": "Además de toVeriAI, Raquel colabora de vez en cuando en proyectos de otras personas, por su cuenta: desarrollo full stack con Java, Spring Boot y React. El botón de esta sección abre un correo para escribirle, y en la página tienes también sus redes y su portafolio. Gracias por escuchar.",
+      "gl": "Ademais de toVeriAI, Raquel colabora de cando en vez en proxectos doutras persoas, pola súa conta: desenvolvemento full stack con Java, Spring Boot e React. O botón desta sección abre un correo para escribirlle, e na páxina tes tamén as súas redes e o seu portfolio. Grazas por escoitar.",
+      "en": "Besides toVeriAI, Raquel occasionally collaborates on other people's projects, on her own: full stack development with Java, Spring Boot and React. The button in this section opens an email to write to her, and on the page you also have her social links and her portfolio. Thanks for listening."
     }
   ]
 }

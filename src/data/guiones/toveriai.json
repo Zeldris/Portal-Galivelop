@@ -9,15 +9,21 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "¿Y si una noticia no fuera ni verdadera ni falsa? Eso es toVeriAI, y parte de una idea: la verdad no es binaria. Es una plataforma web que analiza noticias, enlaces y capturas con inteligencia artificial. Y te devuelve un índice de credibilidad, de cero a cien, que explica cuánto puedes fiarte de lo que lees."
+      "es": "¿Y si una noticia no fuera ni verdadera ni falsa? Eso es toVeriAI, y parte de una idea: la verdad no es binaria. Es una plataforma web que analiza noticias, enlaces y capturas con inteligencia artificial. Y te devuelve un índice de credibilidad, de cero a cien, que explica cuánto puedes fiarte de lo que lees.",
+      "gl": "E se unha noticia non fose nin verdadeira nin falsa? Iso é toVeriAI, e parte dunha idea: a verdade non é binaria. É unha plataforma web que analiza noticias, ligazóns e capturas con intelixencia artificial. E devólvelle un índice de credibilidade, de cero a cen, que explica canto podes fiarte do que lees.",
+      "en": "What if a piece of news were neither true nor false? That is toVeriAI, and it starts from an idea: truth is not binary. It is a web platform that analyses news, links and screenshots with artificial intelligence. And it gives you back a credibility index, from zero to one hundred, that explains how far you can trust what you read."
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? toVeriAI ya está en producción, y puedes usarlo hoy en su web. Ahora mismo toca pulir: el móvil, los textos en los cinco idiomas, las cuentas y la accesibilidad. Y aún falta algo, y lo contamos tal cual: el análisis de capturas está en pausa mientras se arregla. Después llegará volver a analizarlas de forma estable y poner al día las herramientas sobre las que funciona la web. Lo último que ha cambiado lo tienes en las novedades, más abajo."
+      "es": "¿En qué punto está? toVeriAI ya está en producción, y puedes usarlo hoy en su web. Ahora mismo toca pulir: el móvil, los textos en los cinco idiomas, las cuentas y la accesibilidad. Y aún falta algo, y lo contamos tal cual: el análisis de capturas está en pausa mientras se arregla. Después llegará volver a analizarlas de forma estable y poner al día las herramientas sobre las que funciona la web. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? toVeriAI xa está en produción, e podes usalo hoxe na súa web. Agora toca pulir: o móbil, os textos nos cinco idiomas, as contas e a accesibilidade. E aínda falta algo, e contámolo tal cal: a análise de capturas está en pausa mentres se arranxa. Despois chegará volver analizalas de forma estable e poñer ao día as ferramentas sobre as que funciona a web. O último que cambiou tesno nas novidades, máis abaixo.",
+      "en": "Where does it stand? toVeriAI is already in production, and you can use it today on its website. Right now it is time to polish: mobile, the texts in the five languages, accounts and accessibility. And something is still missing, and we say so plainly: screenshot analysis is paused while it gets fixed. Next will come analysing them again in a stable way and updating the tools the website runs on. The latest changes are in the What's new section, further down."
     },
     {
       "seccion": "resumen",
       "es": "La desinformación no siempre es una mentira evidente. A veces es una cifra sin fuente, un tono alarmista o unos expertos que nadie identifica. Decir verdadero o falso se queda corto, y muchas veces solo genera más desconfianza. Por eso toVeriAI analiza el texto en siete dimensiones de contenido. Si le das un enlace, suma dos más sobre el medio. Marca sobre el propio texto los fragmentos problemáticos y cierra con un resumen que explica el resultado. La metodología parte de NewsGuard y se completa con criterios de dos referentes en verificación y transparencia periodística. Funciona así. Envías un texto o un enlace. La inteligencia artificial identifica qué tipo de texto es. Analiza cada dimensión. Y calcula el índice y lo explica. Hay uso gratuito sin cuenta, cuentas con historial y estadísticas, un feed público, cinco idiomas y un plan Premium en beta. Y en paralelo se entrena VeriAI, un modelo propio que aprende de cada análisis.",
+      "gl": "A desinformación non sempre é unha mentira evidente. Ás veces é unha cifra sen fonte, un ton alarmista ou uns expertos que ninguén identifica. Dicir verdadeiro ou falso queda curto, e moitas veces só xera máis desconfianza. Por iso toVeriAI analiza o texto en sete dimensións de contido. Se lle das unha ligazón, suma dúas máis sobre o medio. Marca sobre o propio texto os fragmentos problemáticos e péchase cun resumo que explica o resultado. A metodoloxía parte de NewsGuard e complétase con criterios de dous referentes en verificación e transparencia xornalística. Funciona así. Envías un texto ou unha ligazón. A intelixencia artificial identifica que tipo de texto é. Analiza cada dimensión. E calcula o índice e explícao. Hai uso gratuíto sen conta, contas con historial e estatísticas, un feed público, cinco idiomas e un plan Premium en beta. E en paralelo adestrase VeriAI, un modelo propio que aprende de cada análise.",
+      "en": "Disinformation is not always an obvious lie. Sometimes it is a figure with no source, an alarmist tone or experts nobody can identify. Saying true or false falls short, and often only creates more distrust. That is why toVeriAI analyses the text across seven content dimensions. If you give it a link, it adds two more about the outlet. It marks the problematic passages right on the text itself and closes with a summary that explains the result. The methodology starts from NewsGuard and is completed with criteria from two benchmarks in fact-checking and journalistic transparency. It works like this. You send a text or a link. The artificial intelligence identifies what kind of text it is. It analyses each dimension. And it calculates the index and explains it. There is free use without an account, accounts with history and statistics, a public feed, five languages and a Premium plan in beta. And in parallel, VeriAI is being trained, a model of our own that learns from every analysis.",
       "enfoques": [
         { "frase": "analiza el texto en siete dimensiones", "ver": "caracteristica-1" },
         { "frase": "Si le das un enlace", "ver": "caracteristica-3" },
@@ -32,15 +38,21 @@
     },
     {
       "seccion": "galeria",
-      "es": "En la galería tienes capturas de la web funcionando, para que veas cómo se ve un análisis antes de probarlo."
+      "es": "En la galería tienes capturas de la web funcionando, para que veas cómo se ve un análisis antes de probarlo.",
+      "gl": "Na galería tes capturas da web funcionando, para que vexas como se ve unha análise antes de probala.",
+      "en": "In the gallery you have screenshots of the website at work, so you can see what an analysis looks like before trying it."
     },
     {
       "seccion": "afondo",
-      "es": "Si quieres entrar a fondo, aquí conoces las dimensiones que mide el índice. Cada una pesa de forma distinta. Cuentan sobre todo la verificación de los hechos y la coherencia del texto. Después, las fuentes, el sesgo, el tono, el lenguaje y las cifras. Y con un enlace se suman la transparencia del medio y la autoría. Los pesos parten del marco de NewsGuard."
+      "es": "Si quieres entrar a fondo, aquí conoces las dimensiones que mide el índice. Cada una pesa de forma distinta. Cuentan sobre todo la verificación de los hechos y la coherencia del texto. Después, las fuentes, el sesgo, el tono, el lenguaje y las cifras. Y con un enlace se suman la transparencia del medio y la autoría. Los pesos parten del marco de NewsGuard.",
+      "gl": "Se queres entrar a fondo, aquí coñeces as dimensións que mide o índice. Cada unha pesa de forma distinta. Contan sobre todo a verificación dos feitos e a coherencia do texto. Despois, as fontes, o sesgo, o ton, a linguaxe e as cifras. E cunha ligazón súmanse a transparencia do medio e a autoría. Os pesos parten do marco de NewsGuard.",
+      "en": "If you want to go deeper, here you can see the dimensions the index measures. Each one weighs differently. What counts most are fact verification and the coherence of the text. Then come sources, bias, tone, language and figures. And with a link, the transparency of the outlet and authorship are added. The weights start from the NewsGuard framework."
     },
     {
       "seccion": "tecnica",
       "es": "¿Y cómo está hecho? Una decisión manda: métricas, no veredictos. El índice no dice si algo es verdad o mentira. Explica qué falla y dónde, para que saques tus propias conclusiones. Otra decisión: varios proveedores de inteligencia artificial se alternan, con control de cuota, así que el servicio sigue funcionando aunque uno falle. Y VeriAI, el modelo propio, repite cada análisis en segundo plano. Las diferencias con la nube sirven para entrenar la siguiente versión. En la ficha técnica ves las herramientas de cada capa. Por el camino hemos aprendido a convertir criterios periodísticos en métricas que una máquina aplica y una persona entiende, y a diseñar para cinco idiomas desde el principio.",
+      "gl": "E como está feito? Unha decisión manda: métricas, non veredictos. O índice non di se algo é verdade ou mentira. Explica o que falla e onde, para que saques as túas propias conclusións. Outra decisión: varios provedores de intelixencia artificial alternan, con control de cota, así que o servizo segue funcionando aínda que un falle. E VeriAI, o modelo propio, repite cada análise en segundo plano. As diferenzas coa nube serven para adestrar a seguinte versión. Na ficha técnica ves as ferramentas de cada capa. Polo camiño aprendemos a converter criterios xornalísticos en métricas que unha máquina aplica e unha persoa entende, e a deseñar para cinco idiomas desde o principio.",
+      "en": "And how is it built? One decision rules: metrics, not verdicts. The index does not say whether something is true or false. It explains what fails and where, so you can draw your own conclusions. Another decision: several artificial intelligence providers take turns, with quota control, so the service keeps working even if one fails. And VeriAI, our own model, repeats each analysis in the background. The differences with the cloud are used to train the next version. In the Tech stack section you can see the tools of each layer. Along the way we have learned to turn journalistic criteria into metrics that a machine applies and a person understands, and to design for five languages from the start.",
       "enfoques": [
         { "frase": "Una decisión manda", "ver": "decision-1" },
         { "frase": "Otra decisión", "ver": "decision-2" },
@@ -52,6 +64,8 @@
     {
       "seccion": "avance",
       "es": "En el avance ves el camino. Ya están hechos el análisis de texto, la publicación, el análisis de enlaces, las cuentas y el feed, y dos rondas de mejoras de seguridad y de errores visibles. Ahora se pule la web. Lo que viene: volver a analizar capturas de forma estable, guardar menos datos para entrenar el modelo propio y revisar los proveedores. Debajo están las novedades, semana a semana, y el equipo.",
+      "gl": "No avance ves o camiño. Xa están feitos a análise de texto, a publicación, a análise de ligazóns, as contas e o feed, e dúas roldas de melloras de seguridade e de erros visibles. Agora púlese a web. O que vén: volver analizar capturas de forma estable, gardar menos datos para adestrar o modelo propio e revisar os provedores. Debaixo están as novidades, semana a semana, e o equipo.",
+      "en": "In the progress section you see the road so far. Text analysis, publishing, link analysis, accounts and the feed are already done, along with two rounds of security improvements and visible bug fixes. Now the website is being polished. What comes next: analysing screenshots again in a stable way, storing less data to train our own model, and reviewing the providers. Below you will find the news, week by week, and the team.",
       "enfoques": [
         { "frase": "Ya están hechos el análisis de texto", "ver": "hito-1" },
         { "frase": "la publicación", "ver": "hito-2" },
@@ -66,7 +80,9 @@
     },
     {
       "seccion": "participar",
-      "es": "toVeriAI es un desarrollo propio, pero las propuestas y las ideas son bienvenidas. También si quieres sumarte a Galivelop en otros proyectos. Escríbenos y te contamos cómo. Gracias por escuchar."
+      "es": "toVeriAI es un desarrollo propio, pero las propuestas y las ideas son bienvenidas. También si quieres sumarte a Galivelop en otros proyectos. Escríbenos y te contamos cómo. Gracias por escuchar.",
+      "gl": "toVeriAI é un desenvolvemento propio, pero as propostas e as ideas son benvidas. Tamén se queres sumarte a Galivelop noutros proxectos. Escríbenos e cóntámosche como. Grazas por escoitar.",
+      "en": "toVeriAI is our own development, but proposals and ideas are welcome. So is your interest if you want to join Galivelop on other projects. Write to us and we will tell you how. Thanks for listening."
     }
   ]
 }

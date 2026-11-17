@@ -9,19 +9,27 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "¿Quién hay detrás de Galivelop? Esta es la página del equipo: las personas que hacen el taller. Cada una con su camino, y todas con ganas de construir y aprender."
+      "es": "¿Quién hay detrás de Galivelop? Esta es la página del equipo: las personas que hacen el taller. Cada una con su camino, y todas con ganas de construir y aprender.",
+      "gl": "Quen hai detrás de Galivelop? Esta é a páxina do equipo: as persoas que fan o obradoiro. Cada unha co seu camiño, e todas con ganas de construír e aprender.",
+      "en": "Who is behind Galivelop? This is the team page: the people who make the workshop. Each with their own path, and all eager to build and learn."
     },
     {
       "seccion": "alvaro-garcia-grana",
-      "es": "Empezamos por Álvaro García Graña, fundador del taller. Es arquitecto de software e ingeniero de sistemas de inteligencia artificial, y le interesa sobre todo la infraestructura que funciona en local. Creó Tarkor, Galivelop-workflow y Galivelop IG, y forma parte del equipo de toVeriAI. Pulsa Ver perfil para conocer más de él."
+      "es": "Empezamos por Álvaro García Graña, fundador del taller. Es arquitecto de software e ingeniero de sistemas de inteligencia artificial, y le interesa sobre todo la infraestructura que funciona en local. Creó Tarkor, Galivelop-workflow y Galivelop IG, y forma parte del equipo de toVeriAI. Pulsa Ver perfil para conocer más de él.",
+      "gl": "Comezamos por Álvaro García Graña, fundador do obradoiro. É arquitecto de software e enxeñeiro de sistemas de intelixencia artificial, e interésalle sobre todo a infraestrutura que funciona en local. Creou Tarkor, Galivelop-workflow e Galivelop IG, e forma parte do equipo de toVeriAI. Preme Ver perfil para coñecer máis del.",
+      "en": "We start with Álvaro García Graña, founder of the workshop. He is a software architect and an artificial intelligence systems engineer, and he is especially interested in infrastructure that runs locally. He created Tarkor, Galivelop-workflow and Galivelop IG, and he is part of the toVeriAI team. Click View profile to find out more about him."
     },
     {
       "seccion": "raquel-c",
-      "es": "Raquel Comesaña Carrera es la fundadora de toVeriAI y desarrolla full stack. Llegó a la programación desde la Educación Social, y por eso piensa mucho en para quién se construye y en cuidar la comunicación del equipo. Su proyecto en el taller es toVeriAI, que ella llevó de la idea a producción. En su perfil tienes el detalle."
+      "es": "Raquel Comesaña Carrera es la fundadora de toVeriAI y desarrolla full stack. Llegó a la programación desde la Educación Social, y por eso piensa mucho en para quién se construye y en cuidar la comunicación del equipo. Su proyecto en el taller es toVeriAI, que ella llevó de la idea a producción. En su perfil tienes el detalle.",
+      "gl": "Raquel Comesaña Carrera é a fundadora de toVeriAI e desenvolve full stack. Chegou á programación desde a Educación Social, e por iso pensa moito en para quen se constrúe e en coidar a comunicación do equipo. O seu proxecto no obradoiro é toVeriAI, que ela levou da idea á produción. No seu perfil tes o detalle.",
+      "en": "Raquel Comesaña Carrera is the founder of toVeriAI and works as a full stack developer. She came to programming from Social Education, and that is why she thinks a lot about who things are built for and about caring for the team's communication. Her project in the workshop is toVeriAI, which she took from idea to production. Her profile has the details."
     },
     {
       "seccion": "unete",
-      "es": "Y al final hay un hueco: ¿quieres aparecer aquí? Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar. Hay un botón que te lleva al formulario para unirte. Gracias por escuchar."
+      "es": "Y al final hay un hueco: ¿quieres aparecer aquí? Quien se suma al taller pasa a formar parte del equipo. Cuéntanos quién eres y en qué te gustaría participar. Hay un botón que te lleva al formulario para unirte. Gracias por escuchar.",
+      "gl": "E ao final hai un oco: queres aparecer aquí? Quen se suma ao obradoiro pasa a formar parte do equipo. Cóntanos quen es e en que che gustaría participar. Hai un botón que te leva ao formulario para unirte. Grazas por escoitar.",
+      "en": "And at the end there is a spot: would you like to appear here? Whoever joins the workshop becomes part of the team. Tell us who you are and what you would like to take part in. There is a button that takes you to the form to join. Thanks for listening."
     }
   ]
 }
