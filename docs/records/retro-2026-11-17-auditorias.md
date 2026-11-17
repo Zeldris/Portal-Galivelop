@@ -1,6 +1,6 @@
 # Retro: auditorías del 2026-11-17 y sus arreglos (2026-11-17)
 
-**Estado:** aprobada por la persona (2026-11-17, «Apruebo todo»): P2 aplicada; P3 decidida como siguiente tarea (entrada en `pending.md`); P1 decidida para el flujo, en «For Galivelop-workflow».
+**Estado:** aprobada por la persona (2026-11-17, «Apruebo todo»): P2 aplicada con un cambio (el contador lo exige el aviso de `handoff.py`: se queda, pero lo escribe `handoff.py move-pending`, no la mano); P3 decidida como siguiente tarea (entrada en `pending.md`); P1 decidida para el flujo, en «For Galivelop-workflow».
 
 Lo revisado: los 18 commits de `ccr-8e0862c2-niq1xt` que no están en `main` (af4f431..221c6c1: cuatro auditorías
 como scripts, informe, chaflán, impresión, «Ver perfil», cabecera y pie estáticos, JS inicial 538 → 183 kB, vite
@@ -17,7 +17,7 @@ entrada; en total 39M de entrada.
   no arrastraría el contexto de los otros (~30-40k medio en vez de 102k): ahorro estimado ~4M. Lo cambia
   `gw-orchestrate-dealer` (un encargo por arreglo cuando son independientes y pasan de tres), no `AGENTS.md`.
   Riesgo: dos arreglos que tocan el mismo archivo chocan al fusionar; contrapeso, `merge-branch.sh` corre el check.
-- **P2 (proyecto) — quitar la cifra de entradas de la línea de «Pendiente» de la bitácora.** `docs/handoff.md` se
+- **P2 (proyecto; aplicada con un cambio, ver «Estado») — quitar la cifra de entradas de la línea de «Pendiente» de la bitácora.** `docs/handoff.md` se
   leyó 28 veces y `docs/records/pending.md` 20 (~520k arrastrados entre las dos), y hubo un commit solo para poner
   el contador a 23 (221c6c1). La línea queda «Lo pendiente está en `docs/records/pending.md`»; quien quiera la cifra
   la cuenta con `grep -c '^- ' docs/records/pending.md`. Ahorro: un commit y una lectura de `pending.md` por cambio.
@@ -36,6 +36,8 @@ Observación sin propuesta: la sesión encadenó `/gw-update` (subido a `main` e
 cada tarea; no hace falta otra regla.
 
 ## For Galivelop-workflow
+
+- `handoff.py move-pending` pone al día el contador de «Pendiente», pero el `commit-msg` solo avisa cuando falta la línea, no cuando la cifra no cuadra con `pendingFile`: que avise también entonces y diga la orden (en el portal se corrigió a mano con un commit propio, 221c6c1).
 
 - `gw-orchestrate-dealer`: cuando un lote trae más de tres arreglos independientes, un encargo por arreglo (P1;
   medido: un `gw-worker` con cuatro arreglos, 73 llamadas y 102k de contexto medio, 7,5M de entrada).

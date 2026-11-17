@@ -43,7 +43,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-Lo pendiente está en [`docs/records/pending.md`](records/pending.md); se añade y se quita allí (sin cifra: retro del 2026-11-17, P2).
+Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (24 entradas); se añade y se quita allí.
 
 ## Comprobar el estado
 
