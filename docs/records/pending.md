@@ -4,6 +4,10 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
 
 ## Pendiente
 
+- **Tarkor sin anillo** (2026-11-17, la persona: «realmente encaja un anillo con tarkor?», «un colmillo flotando en el agua?»): la OG 24 (q932) y el icono 23 son un anillo que no sale del juego. Pedidos al generador 24c (colmillos atados con cordón y cuenta `#E0703A`, a la deriva) y 23c (colmillo en línea simple; provisional hasta el logo propio de Tarkor; el banner se queda). Al llegar: `tools/og/fuentes/tarkor/og-base.png`, `ogAlt` y alt de la vista previa en es/gl/en, `icono.svg` y fila en `docs/marca.md`.
+
+- **Voz de lectura** (2026-11-17, la persona: «no me gusta nada de nada para leer los textos»): pedida al generador de voces una femenina de castellano de España, limpia (`lectora-es`, Qwen3-TTS VoiceDesign). El generador está en F5 y aún no entrega voces (F3).
+
 - **Leves de la auditoría completa del 2026-11-14** (informe: `docs/records/auditoria-2026-11-14.md`): imágenes sin `srcset`; tema sin `prefers-color-scheme` cuando no hay uno guardado, sin `forced-colors` ni `prefers-contrast`; celdas huérfanas, collage del hero a 768 px y safe areas; /muro sin página estática; zonas de Tarkor en gallego (contrastar con su glosario); contar de verdad los tests de Tarkor e IG; scroll al cambiar de idioma aproximado; sin medir el foco de la galería y el visor ni el submenú con toque real; tests nuevos sin `red-without-fix.sh`; Safari, Firefox y un dispositivo real, a comprobar por la persona. Leves del `/code-review` del bloque (2026-11-14, no se vuelven a revisar en este cambio): el título de Inicio repite el de `FIJAS` de `scripts/paginas-estaticas.mjs` en vez de una sola fuente; varios tests de `accesibilidad.test.tsx` leen el texto del fuente en vez de probar el comportamiento (sin jsdom).
 
 - **Diagramas de workflow con la 0.6.0** (2026-11-14, `/gw-portal`): `gw-subagentes`, `gw-sesion` y `gw-pre-push` piden rehacer su estructura (piezas nuevas de la 0.6.0); pide código o imagen, no hecho.
