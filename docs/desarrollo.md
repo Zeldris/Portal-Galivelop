@@ -168,6 +168,11 @@ resalta cada sección; aún no se usa en la web.
 - `trozos`: uno por sección, en orden; `seccion` es el `id` del elemento (`proyectos`, `resumen`, `avance`…) o, si no
   tiene, un nombre fijo (`cabecera`, `vistazo`, `participar`). Cada uno lleva `es` (a mano); `gl` y `en`, traducidos.
 - `notas`: pronunciación de los nombres y qué hace envejecer el guion.
+- **Audio:** un MP3 por trozo en `public/audio/<idioma>/<página>/<nn>-<seccion>.mp3` (`nn`, el orden del trozo desde
+  `01`), mono a 48 kbps. Sale de los WAV aprobados del generador de voces
+  (`~/.local/share/galivelop-voice/proyectos/portal/final/<idioma>/<página>/`), que no se suben:
+  `ffmpeg -i <nn>-<seccion>.wav -ac 1 -codec:a libmp3lame -b:a 48k <nn>-<seccion>.mp3`. Si cambia un trozo, se
+  regenera su audio.
 - Para el oído: frases cortas, sin paréntesis, siglas ni símbolos (`d20`, `%`, `NPC`); números con letra cuando se
   leen raro. Sin cifras que cambian cada semana: las novedades se invitan a leer, no se narran. Se respeta [«Mensaje»](#mensaje).
 
