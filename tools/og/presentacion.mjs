@@ -1,7 +1,7 @@
 // Renderiza la imagen de presentación compuesta de un proyecto (tools/og/<slug>-presentacion.html, 1200×630) a
 // tools/og/fuentes/<slug>/og-fuente.png (vista previa en redes; después, `python3 tools/og/generar.py`) y a
-// og-fuente-gl.png y og-fuente-en.png (?l=gl|en, la vista previa de las páginas en gallego e inglés), y a
-// presentacion.webp (1600×840) + presentacion-mini.webp (720×378), la imagen del collage de la portada.
+// og-fuente-gl.png y og-fuente-en.png (?l=gl|en, la vista previa de las páginas en gallego e inglés), salvo si existe
+// tools/og/<slug>-og.html (entonces la vista previa sale de traducir.mjs), y a presentacion.webp (1600×840) + presentacion-mini.webp (720×378), la imagen del collage de la portada.
 // Uso: node tools/og/presentacion.mjs galivelop-workflow
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync } from 'node:fs';
@@ -27,8 +27,10 @@ const fuente = `tools/og/fuentes/${slug}`;
 mkdirSync(fuente, { recursive: true });
 const navegador = await chromium.launch();
 try {
-  const tomas = [[1, '', `${fuente}/og-fuente.png`], [1, '?l=gl', `${fuente}/og-fuente-gl.png`],
-    [1, '?l=en', `${fuente}/og-fuente-en.png`], [4 / 3, '', `${carpeta}/presentacion.png`]];
+  // Con tools/og/<slug>-og.html (placa del generador, recurso 24), la vista previa sale de traducir.mjs y aquí no se pisa.
+  const conPlaca = existsSync(resolve(`tools/og/${slug}-og.html`));
+  const tomas = [...(conPlaca ? [] : [[1, '', `${fuente}/og-fuente.png`], [1, '?l=gl', `${fuente}/og-fuente-gl.png`],
+    [1, '?l=en', `${fuente}/og-fuente-en.png`]]), [4 / 3, '', `${carpeta}/presentacion.png`]];
   for (const [escala, idioma, destino] of tomas) {
     const pagina = await navegador.newPage({ viewport: { width: 1200, height: 630 }, deviceScaleFactor: escala });
     await pagina.goto(`file://${html}${idioma}`);

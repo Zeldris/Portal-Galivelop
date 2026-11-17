@@ -41,26 +41,20 @@
     "en": "In development · v0.7.0 · next up: 0.8 “Front end and other agents”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
+  "ogAlt": {
+    "es": "Vista previa de Galivelop-workflow: «Relevos sin perder nada», junto a una cadena de boyas blancas en el mar grabado que acaba en una azul con un visto",
+    "gl": "Vista previa de Galivelop-workflow: «Relevos sen perder nada», xunto a unha cadea de boias brancas no mar gravado que remata nunha azul cun visto",
+    "en": "Galivelop-workflow preview: “Hand-offs, nothing lost”, beside a chain of white buoys in an engraved sea ending in a blue one with a tick"
+  },
   "portada": {
     "src": "proyectos/galivelop-workflow/portada.webp",
     "mini": "proyectos/galivelop-workflow/portada-mini.webp",
     "ancho": 1600,
-    "alto": 1000,
+    "alto": 900,
     "alt": {
-      "es": "Esquema del flujo de una tarea: bitácora, gw-selector, gw-orchestrate-dealer, commit y push con sus ganchos, /code-review, /gw-opt-tokens y /retro, marca de revisado y main; abajo, gw-harvest y gw-update llevan las mejoras de los proyectos a una versión nueva. Las piezas propias van en azul y las skills de Matt Pocock, en ámbar",
-      "gl": "Esquema do fluxo dunha tarefa: bitácora, gw-selector, gw-orchestrate-dealer, commit e push cos seus ganchos, /code-review, /gw-opt-tokens e /retro, marca de revisado e main; abaixo, gw-harvest e gw-update levan as melloras dos proxectos a unha versión nova. As pezas propias van en azul e as skills de Matt Pocock, en ámbar",
-      "en": "Diagram of a task’s flow: log, gw-selector, gw-orchestrate-dealer, commit and push with their hooks, /code-review, /gw-opt-tokens and /retro, review mark and main; below, gw-harvest and gw-update carry the projects’ improvements into a new version. Our own pieces are in blue and Matt Pocock’s skills in amber"
-    }
-  },
-  "presentacion": {
-    "src": "proyectos/galivelop-workflow/presentacion.webp",
-    "mini": "proyectos/galivelop-workflow/presentacion-mini.webp",
-    "ancho": 1600,
-    "alto": 840,
-    "alt": {
-      "es": "Presentación de Galivelop-workflow: «Relevos sin perder nada», con cinco fichas escalonadas (handoff.md, /gw-selector, check, /code-review y main) sobre una carta náutica celeste",
-      "gl": "Presentación de Galivelop-workflow: «Relevos sen perder nada», con cinco fichas escalonadas (handoff.md, /gw-selector, check, /code-review e main) sobre unha carta náutica celeste",
-      "en": "Galivelop-workflow presentation: “Hand-offs, nothing lost”, with five stepped cards (handoff.md, /gw-selector, check, /code-review and main) on a sky-blue nautical chart"
+      "es": "Portada de Galivelop-workflow: una cadena de boyas blancas unidas por un cabo cruza el mar grabado y acaba en una boya azul con un visto",
+      "gl": "Portada de Galivelop-workflow: unha cadea de boias brancas unidas por un cabo cruza o mar gravado e remata nunha boia azul cun visto",
+      "en": "Galivelop-workflow cover: a chain of white buoys joined by a rope crosses an engraved sea and ends in a blue buoy with a tick"
     }
   },
   "enlaces": [
@@ -85,8 +79,8 @@
   ],
   "galeria": [
     {
-      "src": "proyectos/galivelop-workflow/portada.webp",
-      "mini": "proyectos/galivelop-workflow/portada-mini.webp",
+      "src": "proyectos/galivelop-workflow/flujo.webp",
+      "mini": "proyectos/galivelop-workflow/flujo-mini.webp",
       "ancho": 1600,
       "alto": 1000,
       "alt": {

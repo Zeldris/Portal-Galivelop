@@ -1,5 +1,5 @@
 // Saca los webp de los diagramas del flujo (docs/diagramas/*.svg) con las fuentes de la marca (docs/marca.md).
-// Uso: node scripts/diagramas-webp.mjs [arquitectura versiones …]   (sin nombres, todos; «portada» = galivelop-workflow.svg)
+// Uso: node scripts/diagramas-webp.mjs [arquitectura versiones …]   (sin nombres, todos; «flujo» = galivelop-workflow.svg, el esquema de la galería)
 // Deja public/proyectos/galivelop-workflow/<n>.webp (1600 de ancho) y <n>-mini.webp (720), con PIL.
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
@@ -15,7 +15,7 @@ try {
   ({ chromium } = require('/opt/node-tools/node_modules/playwright')); // sesiones en la nube
 }
 
-const NOMBRES = { portada: 'galivelop-workflow', arquitectura: 'gw-arquitectura', fases: 'gw-fases', 'pre-push': 'gw-pre-push', sesion: 'gw-sesion', subagentes: 'gw-subagentes', versiones: 'gw-versiones' };
+const NOMBRES = { flujo: 'galivelop-workflow', arquitectura: 'gw-arquitectura', fases: 'gw-fases', 'pre-push': 'gw-pre-push', sesion: 'gw-sesion', subagentes: 'gw-subagentes', versiones: 'gw-versiones' };
 const pedidos = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(NOMBRES);
 const fuentes = 'node_modules/@fontsource-variable';
 const b64 = (r) => 'data:font/woff2;base64,' + readFileSync(`${fuentes}/${r}`).toString('base64');
@@ -68,5 +68,3 @@ im.resize((720,round(im.height*720/1600)),Image.LANCZOS).save(o+'-mini.webp',qua
   await navegador.close();
   rmSync(tmp, { recursive: true });
 }
-// La portada es el origen de og.jpg (src/data/og.test.ts comprueba su huella): se regenera con ella.
-if (pedidos.includes('portada')) execFileSync('python3', ['tools/og/generar.py'], { stdio: 'inherit' });
