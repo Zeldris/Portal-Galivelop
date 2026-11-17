@@ -21,12 +21,7 @@ beforeAll(() => {
   );
   writeFileSync(join(tmp, 'dist/index.html'), base);
   writeFileSync(join(tmp, 'dist/404.html'), base);
-  for (const f of [
-    'literata-latin-wght-normal-AbCd1234.woff2',
-    'big-shoulders-display-latin-wght-normal-AbCd1234.woff2',
-    'Proyecto-AbCd1234.js',
-    'tarkor-AbCd1234.js',
-  ])
+  for (const f of ['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js'])
     writeFileSync(join(tmp, 'dist/assets', f), '');
   execFileSync('node', [join(RAIZ, 'scripts/paginas-estaticas.mjs')], { cwd: tmp, stdio: 'pipe' });
 }, 60_000);
@@ -72,16 +67,13 @@ describe('páginas estáticas', () => {
     expect(web.publisher.url).toBe('https://zeldris.github.io/Portal-Galivelop/');
   });
 
-  it('precargan la imagen de cabecera, el trozo de la ficha y las fuentes', () => {
+  it('precargan la imagen de cabecera, y el trozo de la ficha', () => {
     const ficha = leer('proyectos/tarkor');
     expect(ficha).toContain(
       '<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/tarkor/portada.webp" fetchpriority="high" />',
     );
     expect(ficha).toContain('href="/Portal-Galivelop/assets/Proyecto-AbCd1234.js"');
     expect(ficha).toContain('href="/Portal-Galivelop/assets/tarkor-AbCd1234.js"');
-    expect(ficha).toContain(
-      'href="/Portal-Galivelop/assets/literata-latin-wght-normal-AbCd1234.woff2"',
-    );
     expect(leer('')).toContain(
       '<link rel="preload" as="image" href="/Portal-Galivelop/marca/isobatas.svg" fetchpriority="high" />',
     );

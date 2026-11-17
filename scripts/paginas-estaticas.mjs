@@ -407,10 +407,10 @@ function datos(pg, url) {
 
 // ---------- Precargas ----------
 // Lo que se ve primero (LCP) no espera al JavaScript: la imagen de cabecera de cada página, el trozo de JS de la página
-// (y su ficha) y las dos fuentes principales van como <link rel=preload|modulepreload> en el HTML de cada página.
+// (y su ficha) van como <link rel=preload|modulepreload> en el HTML de cada página. Las fuentes no se precargan: medido
+// (2026-11-17, móvil con 4G lento), compiten con el JS por el ancho de banda y retrasan el FCP y el LCP unos 100-150 ms.
 const ACTIVOS = readdirSync('dist/assets');
 const activo = (re) => ACTIVOS.find((f) => re.test(f));
-const FUENTES = [/^literata-latin-wght-normal-.*\.woff2$/, /^big-shoulders-display-latin-wght-normal-.*\.woff2$/].map(activo).filter(Boolean);
 // Qué chunk de src/paginas.ts lleva cada ruta (el nombre del chunk es el del componente de la página).
 const CHUNK_DE_RUTA = (ruta) =>
   ruta === '' ? 'Inicio'
@@ -430,7 +430,7 @@ const imagenLcp = (pg) => {
   return modo === 'color' ? PORTADA_ESTADO[p.estado] : modo === 'captura' ? 'marca/isobatas.svg' : p.portada.src;
 };
 function precargas(pg) {
-  const lineas = FUENTES.map((f) => `<link rel="preload" as="font" type="font/woff2" crossorigin href="${BASE_404}assets/${f}" />`);
+  const lineas = [];
   const img = imagenLcp(pg);
   if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}" fetchpriority="high" />`);
   const modulos = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
