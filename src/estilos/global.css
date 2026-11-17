@@ -21,7 +21,8 @@
   --datos: 500 0.75rem/1.4 var(--fuente-datos);
   --datos-espaciado: 0.06em;
 
-  /* Esquinas: ningún redondeo; lo grande lleva chaflán (`.chaflan`), lo pequeño se queda recto. */
+  /* Esquinas: ningún redondeo; las fichas llevan chaflán de `--chaflan`, lo grande el de `--chaflan-grande`, lo pequeño se queda recto. */
+  --chaflan: 14px; /* fichas y tarjetas */
   --chaflan-grande: 28px;
   --chaflan-pequeno: 10px; /* botones */
   --reticula-paso: 24px;
@@ -465,6 +466,55 @@ button {
   .idiomas button {
     padding: 4px 8px;
   }
+}
+
+/* ---------- Chaflán de las fichas (regla 3 de docs/marca.md) ----------
+   El clip-path corta la esquina superior derecha y se llevaría el borde de la diagonal: `::before` la dibuja con
+   una línea girada 45° del color del borde (`--borde-chaflan`, que sigue al hover). Los enlaces internos llevan su foco
+   dentro de la tarjeta, así que el recorte no lo toca. */
+.tarjeta,
+.tarjeta-proxima,
+.persona,
+.tarjeta-producto {
+  --borde-chaflan: var(--borde);
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+.tarjeta::before,
+.tarjeta-proxima::before,
+.persona::before,
+.tarjeta-producto::before {
+  content: '';
+  position: absolute;
+  /* Respecto a la caja de relleno: se compensa el ancho del borde para caer sobre el corte del clip-path. */
+  top: calc(-1 * var(--borde-sup, 1px));
+  left: calc(100% + 1px - var(--chaflan));
+  width: calc(var(--chaflan) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-chaflan);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.tarjeta-proxima::before {
+  background: none;
+  border-top: 1px dashed var(--borde-chaflan);
+  height: 0;
+}
+
+.tarjeta-producto {
+  --borde-sup: 3px;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+  --borde-chaflan: var(--tinta);
+}
+
+.persona:target {
+  --borde-chaflan: var(--tinta);
 }
 
 /* ---------- Botones y piezas comunes ---------- */
@@ -3304,7 +3354,8 @@ button {
 
 .persona:target {
   border-color: var(--tinta);
-  box-shadow: 0 0 0 1px var(--tinta);
+  /* Contorno hacia dentro: el clip-path del chaflán recortaría una sombra exterior. */
+  box-shadow: inset 0 0 0 1px var(--tinta);
 }
 
 .persona-cabecera {
@@ -5926,4 +5977,115 @@ body:has(dialog[open]) {
 /* Hueco sin texto mientras llega el chunk de una página o la ficha de un proyecto. */
 .carga-pagina {
   min-height: 70vh;
+}
+
+/* ---------- Impresión ---------- */
+/* Solo contenido: sin cabecera, menús, botones, galerías ni adornos; texto oscuro sobre blanco en cualquier tema
+   (se fuerzan los tokens del tema claro) y los enlaces externos con su dirección tras el texto. */
+@media print {
+  :root,
+  :root[data-tema='claro'],
+  :root[data-tema='oscuro'] {
+    color-scheme: light;
+    --papel: var(--blanco);
+    --reticula: #ffffff;
+    --celeste-hondo: #0072a8;
+    --tinta: #13212b;
+    --tinta-2: #4a5c69;
+    --alga: #5d7a6a;
+    --filete: #b9cbd6;
+    --fondo: #ffffff;
+    --fondo-alterno: #ffffff;
+    --superficie: #ffffff;
+    --superficie-2: #ffffff;
+    --borde: #b9cbd6;
+    --texto: #13212b;
+    --texto-2: #4a5c69;
+    --texto-3: #4a5c69;
+    --enlace: #0072a8;
+    --tinte: transparent;
+    --sombra: none;
+    --ok-texto: #3f5a4b;
+  }
+
+  html,
+  body {
+    background: var(--blanco);
+    color: var(--texto);
+  }
+
+  .cabecera,
+  .saltar,
+  .pie-rosa,
+  .pie nav,
+  .boton,
+  button,
+  dialog,
+  .galeria,
+  .hero-fondo,
+  .hero-collage,
+  .proyecto-isobatas {
+    display: none !important;
+  }
+
+  /* Bandas de color con texto blanco: sin fondo y con la tinta del texto. */
+  .hero,
+  .cabecera-captura,
+  .cabecera-color,
+  .destacado {
+    background: var(--blanco) !important;
+    color: var(--texto) !important;
+  }
+
+  .hero :is(h1, h2, p, dt, dd, span, a, div),
+  .cabecera-captura :is(h1, h2, p, dt, dd, span, a, div),
+  .cabecera-color :is(h1, h2, p, dt, dd, span, a, div) {
+    color: var(--texto) !important;
+  }
+
+  html.js [data-estatico] {
+    visibility: visible !important;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .tarjeta,
+  .tarjeta-proxima,
+  .tarjeta-producto,
+  .persona,
+  .hito,
+  .bloque,
+  figure,
+  li {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  main a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+
+  .tarjeta-enlace::after {
+    position: static;
+  }
 }

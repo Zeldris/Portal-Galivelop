@@ -4,9 +4,9 @@ import { Cabecera } from './components/Cabecera';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Pie } from './components/Pie';
 import { buscarLegal } from './data/legal';
-import { Inicio } from './pages/Inicio';
 import {
   Equipo,
+  Inicio,
   Legal,
   Miembro,
   Muro,

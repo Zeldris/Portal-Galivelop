@@ -11,7 +11,11 @@
     "test": "vitest run",
     "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" \"tools/vite/**/*.ts\" && vitest run && bash tools/qa/tests/test-ganchos.sh",
     "medir": "node tools/qa/medir-paginas.cjs",
+    "auditar:html": "node tools/qa/auditar-html.cjs",
+    "auditar:rendimiento": "node tools/qa/auditar-rendimiento.cjs",
     "capturas": "node tools/qa/capturas.cjs",
+    "auditar:seguridad": "node tools/qa/auditar-seguridad.cjs",
+    "auditar:a11y": "node tools/qa/auditar-accesibilidad.cjs",
     "seo": "python3 .claude/skills/gw-seo/scripts/comprobar.py dist"
   },
   "dependencies": {
@@ -33,6 +37,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",
+    "axe-core": "^4.14.1",
     "prettier": "^3.9.10",
     "typescript": "^7.0.2",
     "vite": "^8.3.2",

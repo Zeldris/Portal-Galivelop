@@ -6,17 +6,21 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-17 (portada provisional de Galivelop-workflow en `main`) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 094e610, 2026-11-17) |
-| **Tarea en curso** | Ninguna: la portada provisional de workflow está en `main` |
-| **Siguiente paso** | Tras subir a `main`: refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`). Después, lo que había: P7 de X lista en `docs/media/2026-11-15/01-fichas-al-dia/`; P1, P3, P5 y P6 guardadas en `docs/media/proposals/2026-11-14.md`. En el generador (pedido dado el 2026-11-17): 31e portada de workflow, 24c OG y 23c icono de Tarkor (colmillos en vez del anillo); en el de voces, la voz «lectora-es» y la OG 24 de Developer (pedido rehecho, q1146 en `pendiente/`) |
-| **En `main`** | **Portada provisional de Galivelop-workflow (boyas)** (6eb3739, 2026-11-17, la persona: «vamos a main entonces»). Antes, **vistas previas en redes del portal, workflow e IG sobre las placas 24 del generador** (4c4f082, 2026-11-17, la persona: «adelante para ir a main»; CI y publicación en verde). Antes, la ficha de Galivelop-workflow contrastada con su repo (b17058f). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Actualizado** | 2026-11-17 (icono de Tarkor q1417, `ccr-47f8fddd-o5ek6p`) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 041c5cd, 2026-11-17) |
+| **Tarea en curso** | Ninguna: icono de Tarkor q1417 puesto en la rama (contenido; no en `main`) |
+| **Siguiente paso** | Barrido de leves de `scripts/paginas-estaticas.mjs` (retro del 2026-11-17, P3; entrada en `pending.md`). Refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`). Idea de la persona por decidir: guion propio por página para la voz de lectura (2026-11-17). En el generador (pedido dado el 2026-11-17): 23c retrazado sin escalones, 24c OG de Tarkor otra vez, 31f portada de workflow (en cola, pausada); en el de voces, «lectora-es»; OG 24 de Developer (q1146 en `pendiente/`). P7 de X lista; P1, P3, P5 y P6 en `docs/media/proposals/2026-11-14.md` |
+| **En `main`** | **Auditorías del 2026-11-17 y sus arreglos, chaflán y retro** (041c5cd, `ccr-8e0862c2-niq1xt`). Antes, **portada provisional de Galivelop-workflow (boyas)** (6eb3739, 2026-11-17) y **vistas previas en redes sobre las placas 24** (4c4f082). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 227/227 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Icono de Tarkor: colmillo con cordón (q1417)** (`ccr-47f8fddd-o5ek6p`, solo contenido; la persona lo eligió en el generador): `public/proyectos/tarkor/icono.svg` pasa del anillo provisional al SVG del generador con el `viewBox` recortado al dibujo (`101 105 308 308`). El trazo tiene escalones de píxel visibles solo en grande; retrazado pedido al generador. Fila en `docs/marca.md`. Sin cambio de rutas.
+
+- 2026-11-17 · **(en `main`, 041c5cd) Cinco auditorías nuevas** (`ccr-8e0862c2-niq1xt`; la persona: «todas las auditorías posibles… añádela y ejecútala» y una de conformidad con lo escrito): scripts `tools/qa/auditar-{accesibilidad,rendimiento,seguridad,html}.cjs` (`npm run auditar:a11y|rendimiento|seguridad|html`), axe-core de desarrollo, e informe `docs/records/auditoria-2026-11-17.md`. Sin `/code-review` todavía: no va a `main` hasta pasarlo. **Arreglos** (la persona: «Arregla todo lo que propones y pon el chaflán»): CLS 0, JS inicial 538 → 183 kB, cabecera y pie sin JS, `h1` estático, `publisher.url`, impresión, «Ver perfil» (WCAG 2.5.3), vite 8.3.8, chaflán de 14 px en las tarjetas, doc vieja al día; el `main` estático se oculta con JS hasta montar (LCP de páginas de texto 1,8-2,4 s, aceptado). Detalle y cifras en el informe. Sin cambio de rutas (`npm run seo` igual).
 
 - 2026-11-17 · **(en `main`, 6eb3739) Portada provisional de Galivelop-workflow** (`ccr-47f8fddd-o5ek6p`; la persona: «los proyectos galivelop deberían tener el banner», «Usar ya la de boyas»): `portada.webp` y `-mini` pasan a ser un recorte 16:9 de la OG 24 (q1157), alt nuevo en es/gl/en; la ficha deja `presentacion` y la tarjeta del inicio usa la portada; el esquema del flujo pasa a `flujo.webp` (primera de la galería; `scripts/diagramas-webp.mjs flujo`, que ya no regenera og.jpg). `presentacion.webp` no se borra (piezas de `docs/media/`). Fila en `docs/marca.md`. Cuando llegue la 31 del generador, se cambia el archivo. Sin cambio de rutas de páginas.
 
@@ -41,7 +45,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Pendiente
 
-Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (21 entradas); se añade y se quita allí.
+Lo pendiente está en [`docs/records/pending.md`](records/pending.md) (24 entradas); se añade y se quita allí.
 
 ## Comprobar el estado
 

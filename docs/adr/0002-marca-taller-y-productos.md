@@ -7,6 +7,8 @@
   la 0001.
   **Sustituida en parte por la [0003](0003-codigo-abierto-e-implantacion.md)** (2026-11-02): lo maduro, con el
   repo público; Productos ofrece implantación y servicio en vez de descarga, y va debajo de los proyectos.
+  **Sustituida en parte por la [0004](0004-productos-en-el-perfil.md)** (2026-11-10): los productos ya no tienen página
+  `/productos/<slug>` ni catálogo, enlace en el menú ni franja en la portada; se ven en el perfil de cada miembro.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto

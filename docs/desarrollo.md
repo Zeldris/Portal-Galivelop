@@ -33,7 +33,8 @@ cuando su repositorio es público; si es privado, no se enlaza. Además, el port
 - Logo: monograma **GV** en `public/marca/gv-logo.svg` (también como componente en
   `src/components/Logo.tsx`). El travesaño de la G se prolonga hasta el brazo de la V.
 - Colores: el azul celeste y el blanco de la bandera gallega, sin su composición:
-  `#1AA6DF` (celeste), `#0083C1` (celeste intenso), `#FFFFFF`.
+  `#1AA6DF` (celeste, `--celeste`), el celeste hondo `#0072a8` en claro y `#0b5e88` en oscuro (`--celeste-hondo`, que es
+  también `--celeste-intenso` en claro; el `#0083C1` de la primera versión ya no se usa) y `#FFFFFF`. Todos los tokens: [`marca.md`](marca.md).
 - Tipografías: Big Shoulders Display (títulos, `--fuente-titulos`), Literata (texto, `--fuente-texto`) y JetBrains
   Mono (datos: etiquetas, fechas, cifras; `--fuente-datos`), servidas desde el propio sitio (`@fontsource-variable`).
   La hoja de estilos de la marca completa: [`marca.md`](marca.md).

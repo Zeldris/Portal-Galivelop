@@ -18,12 +18,29 @@ describe('cargarPagina (fallo de un chunk)', () => {
   });
 });
 
+describe('Inicio (reintento tras un fallo)', () => {
+  it('olvidarFallos permite reintentar el import de Inicio', async () => {
+    vi.doMock('./pages/Inicio', () => {
+      throw new Error('red cortada');
+    });
+    const primera = cargarPagina('Inicio');
+    await expect(primera).rejects.toThrow(/error when mocking/);
+    expect(cargarPagina('Inicio')).toBe(primera);
+    olvidarFallos();
+    vi.doUnmock('./pages/Inicio');
+    const segunda = cargarPagina('Inicio');
+    expect(segunda).not.toBe(primera);
+    await expect(segunda).resolves.toBeTypeOf('function');
+  });
+});
+
 const BASE = import.meta.env.BASE_URL;
 
 describe('paginaDeRuta (qué chunk se espera antes del primer render)', () => {
   it.each([
-    ['', undefined],
-    ['gl/', undefined],
+    ['', 'Inicio'],
+    ['gl/', 'Inicio'],
+    ['en/', 'Inicio'],
     ['proyectos/tarkor/', 'Proyecto'],
     ['proyectos/tarkor', 'Proyecto'],
     ['gl/proyectos/tarkor/', 'Proyecto'],
