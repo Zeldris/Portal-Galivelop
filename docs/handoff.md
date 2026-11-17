@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-16 (0.7.0 a `main` desde `ccr-8e0862c2-niq1xt`) |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, c926bcc, 2026-11-15) |
-| **Tarea en curso** | `/gw-update` 0.6.0 → 0.7.0 en `ccr-8e0862c2-niq1xt`: fase 1 (0 hallazgos), fase 2 (retro `docs/records/retro-2026-11-16-gw-update-0.7.md`, aprobada entera por la persona) y fase 3 hechas; la persona confirmó subir a `main` (2026-11-16) |
-| **Siguiente paso** | Publicaciones en X: **P7 lista para publicar** en `docs/media/2026-11-15/01-fichas-al-dia/` (la persona la publica y apunta el enlace en `## Published` de su `sheet.md`); **P1, P3, P5 y P6 guardadas** en `docs/media/proposals/2026-11-14.md` hasta que la persona las pida (texto en castellano ≤280 y 4 imágenes 1200×675). Reddit del 2026-11-14 publicado; `check.py` no admite guiones en `r/u_…` (a reportar a Galivelop-workflow). En cola en el generador: portada 31 de workflow (31d q974, sin aprobar) |
+| **Actualizado** | 2026-11-17 (vistas previas en redes del portal, workflow e IG con las placas 24 del generador) |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-47f8fddd-o5ek6p` (al día con `main`, 094e610, 2026-11-17) |
+| **Tarea en curso** | Vistas previas 24 del portal, workflow e IG (`ccr-47f8fddd-o5ek6p`): hechas y con el check en verde; falta la revisión de fase 1 (toca `tools/og/presentacion.mjs`) y la marca antes de `main` |
+| **Siguiente paso** | Revisión de fase 1 de `tools/og/` y, con la confirmación de la persona, a `main`. Después, lo que había: P7 de X lista en `docs/media/2026-11-15/01-fichas-al-dia/`; P1, P3, P5 y P6 guardadas en `docs/media/proposals/2026-11-14.md`. En el generador: portada 31 de workflow (31d q974) y la OG 24 de Developer (pedido rehecho, q1146 en `pendiente/`) |
 | **En `main`** | **Ficha de Galivelop-workflow contrastada con su repo** (b17058f, 2026-11-15, la persona: «Llévalo a main cuando el CI esté en verde»; CI en verde en 82104ca; solo contenido). Antes, **Galivelop-workflow 0.7.0 en su ficha** (2026-11-15). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-17 · **Vistas previas en redes con las placas 24 del generador** (`ccr-47f8fddd-o5ek6p`; la persona: «Sustituir las dos», y la de IG): portal (rosa en el mar, q1150), Galivelop-workflow (cadena de boyas, q1157) e IG (fila de casillas, q1148) pasan al esquema de Tarkor: `og-base.png` en `tools/og/fuentes/<slug|portal>/` y el texto en es/gl/en encima (`tools/og/portal.html`, `galivelop-workflow-og.html`, `galivelop-image-generator-og.html`); `ogAlt` nuevos en las dos fichas y el alt de la portada en `index.html` y `paginas-estaticas.mjs`; `presentacion.mjs` ya no pisa la og-fuente de un proyecto con `-og.html` (código: falta la revisión de fase 1). Sin cambio de rutas. Se quedan fuera: la 24 de Voice (sin ficha), la de Developer (pendiente en el generador) y toda la marca de Evaluator (sigue en `ignorar`; la persona: «Guardarla», 2026-11-17). Tras publicar, refrescar las tarjetas ya compartidas (Sharing Debugger, Post Inspector, `@WebpageBot`).
 
 - 2026-11-16 · **Flujo Galivelop-workflow 0.7.0** (`ccr-8e0862c2-niq1xt`, código del flujo, no de la web): `apply.py --update` (scripts, skills, `.githooks/`, agente `gw-reviewer`), `AGENTS.md` con los cambios de la plantilla, «Pendiente» en `docs/records/pending.md` y `ci-local.py --validate` en el check. Fases 1-3 hechas; a `main` con confirmación de la persona (2026-11-16).
 

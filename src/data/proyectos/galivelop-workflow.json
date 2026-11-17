@@ -41,6 +41,11 @@
     "en": "In development · v0.7.0 · next up: 0.8 “Front end and other agents”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
+  "ogAlt": {
+    "es": "Vista previa de Galivelop-workflow: «Relevos sin perder nada», junto a una cadena de boyas blancas en el mar grabado que acaba en una azul con un visto",
+    "gl": "Vista previa de Galivelop-workflow: «Relevos sen perder nada», xunto a unha cadea de boias brancas no mar gravado que remata nunha azul cun visto",
+    "en": "Galivelop-workflow preview: “Hand-offs, nothing lost”, beside a chain of white buoys in an engraved sea ending in a blue one with a tick"
+  },
   "portada": {
     "src": "proyectos/galivelop-workflow/portada.webp",
     "mini": "proyectos/galivelop-workflow/portada-mini.webp",

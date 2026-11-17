@@ -15,9 +15,9 @@ const IMAGEN = {
   en: imagenDe('marca/galivelop-portal-en.jpg'),
 };
 const ALT_PORTAL = {
-  es: 'Portada de Galivelop sobre carta náutica celeste: «Hacemos reales los proyectos que parecen imposibles»',
-  gl: 'Portada de Galivelop sobre carta náutica celeste: «Facemos reais os proxectos que semellan imposibles»',
-  en: 'Galivelop cover on a sky-blue nautical chart: “We make seemingly impossible projects real”',
+  es: 'Portada de Galivelop: «Hacemos reales los proyectos que parecen imposibles», junto a una rosa de los vientos flotando en el mar grabado',
+  gl: 'Portada de Galivelop: «Facemos reais os proxectos que semellan imposibles», xunto a unha rosa dos ventos flotando no mar gravado',
+  en: 'Galivelop cover: “We make seemingly impossible projects real”, beside a compass rose floating in an engraved sea',
 };
 const conImagen = (html, url, alt) => {
   html = html

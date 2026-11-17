@@ -47,6 +47,11 @@
     "Steam Deck",
     "CLI"
   ],
+  "ogAlt": {
+    "es": "Vista previa de Galivelop IG: «Pide, prueba, elige», junto a una fila de cinco casillas flotando en el mar grabado, la del centro marcada en violeta",
+    "gl": "Vista previa de Galivelop IG: «Pide, proba, elixe», xunto a unha fila de cinco caixas flotando no mar gravado, a do centro marcada en violeta",
+    "en": "Galivelop IG preview: “Ask, try, choose”, beside a row of five boxes floating in an engraved sea, the middle one checked in violet"
+  },
   "portada": {
     "src": "proyectos/galivelop-image-generator/portada.webp",
     "mini": "proyectos/galivelop-image-generator/portada-mini.webp",
