@@ -6,19 +6,19 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-17 (cinco auditorías nuevas de la web, `ccr-8e0862c2-niq1xt`) |
+| **Actualizado** | 2026-11-17 (arreglos de las auditorías y chaflán, `ccr-8e0862c2-niq1xt`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-8e0862c2-niq1xt` (al día con `main`, 6eb3739, 2026-11-17) |
-| **Tarea en curso** | Auditorías del 2026-11-17 hechas (`docs/records/auditoria-2026-11-17.md`, scripts `npm run auditar:*`); falta que la persona elija qué se arregla y decida el chaflán de las tarjetas |
-| **Siguiente paso** | La persona elige qué arreglar de `docs/records/auditoria-2026-11-17.md` (propuesta: los 3 graves de rendimiento, impresión, cabecera y pie sin JS, 2.5.3 de /equipo, `npm audit fix` y la doc vieja); antes de `main`, `/code-review` de los scripts nuevos (`ecbd18e`, bloque de 1.229 líneas). Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
+| **Tarea en curso** | Arreglos de las auditorías del 2026-11-17 y chaflán de 14 px hechos (informe, sección «Arreglos»); falta el `/code-review` del bloque (desde `origin/main`, más de 1.000 líneas) |
+| **Siguiente paso** | `/code-review --max-findings all` del diff contra `origin/main` (scripts de auditoría, rendimiento, HTML estático, CSS), arreglos con `Findings: <n>`; luego proponer a la persona ir a `main` (fase 2 aplica: cambio grande de componentes, estilos y build). Después, lo que había: P7 de X lista; portada 31 de workflow y OG 24 de Developer en el generador |
 | **En `main`** | **Vistas previas en redes del portal, workflow e IG sobre las placas 24 del generador** (4c4f082, 2026-11-17, la persona: «adelante para ir a main»; CI y publicación en verde). Antes, la ficha de Galivelop-workflow contrastada con su repo (b17058f). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 216/216 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest 225/225 y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (42 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- 2026-11-17 · **Cinco auditorías nuevas** (`ccr-8e0862c2-niq1xt`; la persona: «todas las auditorías posibles… añádela y ejecútala» y una de conformidad con lo escrito): scripts `tools/qa/auditar-{accesibilidad,rendimiento,seguridad,html}.cjs` (`npm run auditar:a11y|rendimiento|seguridad|html`), axe-core de desarrollo, e informe `docs/records/auditoria-2026-11-17.md`. Sin `/code-review` todavía: no va a `main` hasta pasarlo.
+- 2026-11-17 · **Cinco auditorías nuevas** (`ccr-8e0862c2-niq1xt`; la persona: «todas las auditorías posibles… añádela y ejecútala» y una de conformidad con lo escrito): scripts `tools/qa/auditar-{accesibilidad,rendimiento,seguridad,html}.cjs` (`npm run auditar:a11y|rendimiento|seguridad|html`), axe-core de desarrollo, e informe `docs/records/auditoria-2026-11-17.md`. Sin `/code-review` todavía: no va a `main` hasta pasarlo. **Arreglos** (la persona: «Arregla todo lo que propones y pon el chaflán»): CLS 0, JS inicial 538 → 183 kB, cabecera y pie sin JS, `h1` estático, `publisher.url`, impresión, «Ver perfil» (WCAG 2.5.3), vite 8.3.8, chaflán de 14 px en las tarjetas, doc vieja al día; el `main` estático se oculta con JS hasta montar (LCP de páginas de texto 1,8-2,4 s, aceptado). Detalle y cifras en el informe. Sin cambio de rutas (`npm run seo` igual).
 
 - 2026-11-17 · **Portada provisional de Galivelop-workflow** (`ccr-47f8fddd-o5ek6p`; la persona: «los proyectos galivelop deberían tener el banner», «Usar ya la de boyas»): `portada.webp` y `-mini` pasan a ser un recorte 16:9 de la OG 24 (q1157), alt nuevo en es/gl/en; la ficha deja `presentacion` y la tarjeta del inicio usa la portada; el esquema del flujo pasa a `flujo.webp` (primera de la galería; `scripts/diagramas-webp.mjs flujo`, que ya no regenera og.jpg). `presentacion.webp` no se borra (piezas de `docs/media/`). Fila en `docs/marca.md`. Cuando llegue la 31 del generador, se cambia el archivo. Sin cambio de rutas de páginas.
 

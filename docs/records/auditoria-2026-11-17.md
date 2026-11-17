@@ -116,6 +116,41 @@ igual a la primera novedad, `enlaces` solo a repos públicos); tabla de tokens d
 «Entregados»; y en el render, solo las tres familias, sin `border-radius` salvo `.estado-punto` y sin
 `backdrop-filter`.
 
+## Arreglos del 2026-11-17
+
+La persona: «Arregla todo lo que propones y pon el chaflán». Medido de nuevo con los mismos scripts tras `npm run build`
+(móvil con 4G lento, laboratorio).
+
+| | Antes | Después |
+|---|---|---|
+| CLS (fichas, legales, miembros) | 0,12-0,57 | 0 (toVeriAI 0,058) |
+| LCP fichas, móvil | 4,2-4,5 s | 2,9-3,9 s (sigue alto: portada sin `srcset`) |
+| LCP inicio, móvil | 2,7 s | 2,5-2,6 s |
+| LCP páginas de texto, móvil | ~0,7 s | 1,8-2,4 s (ver abajo) |
+| JS+CSS inicial | 538 kB el trozo principal | 183 kB de JS (gzip 138 kB con el CSS) |
+| `auditar:html` | 4 graves | 0 graves (46 medios, 286 leves) |
+| `npm audit` | vite 8.3.0-8.3.2 | 0 vulnerabilidades (vite 8.3.8) |
+| `npm run seo` | — | idéntico al de antes |
+
+Hecho: precarga de la imagen principal y de los trozos de la ruta; react, router e iconos en trozos propios y la
+portada diferida; cabecera y pie estáticos con las clases de la app; `h1` estático igual al de la app; `publisher.url`
+en el JSON-LD; hoja `@media print`; `aria-label` de «Ver perfil» que empieza por el texto visible; chaflán de 14 px
+(`--chaflan`) arriba a la derecha en tarjetas de proyecto, próximamente, producto y miembro, con la diagonal del borde
+dibujada (`::before`), revisado en claro y oscuro, móvil y escritorio; documentación al día (`desarrollo.md`, tabla de
+tokens de `marca.md` con test que la compara con `:root`, recursos cancelados, ADR 0002 sustituida en parte,
+`gw-portal/proyectos.md`). El grave de impresión que quedaba era un falso positivo del script (leía
+`color(srgb 1 1 1 / 0.55)` como negro): corregido en `auditar-html.cjs`.
+
+**Compromiso aceptado:** con JavaScript, el `main` y el pie estáticos se ocultan hasta que monta React (o 6 s) para
+que no se mueva nada; eso sube el LCP de las páginas de texto de ~0,7 s a 1,8-2,4 s, dentro del límite. Sin JavaScript
+se ve todo.
+
+Sin hacer: `srcset` o miniaturas de portada (LCP de las fichas); prioridad de la ilustración de Unirse (pasa por
+`Formulario.tsx` e `ImagenTema`); subset latino de fuentes en el CSS (ya solo se descargan los latinos por
+`unicode-range`; la precarga de fuentes se probó y empeoraba FCP y LCP); datos legales, `equipo.json` y SVG de
+`IconoMarca` fuera del trozo principal; `width`/`height` de las miniaturas del menú estático (leve); en impresión, la
+cabecera con foto de las fichas sigue con texto claro sobre velo oscuro; CSP por meta, créditos y `security.txt`.
+
 ## No comprobado
 
 Safari, Firefox y un dispositivo real; las cifras de rendimiento en GitHub Pages (solo laboratorio); la configuración

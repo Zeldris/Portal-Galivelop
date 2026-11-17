@@ -315,7 +315,8 @@ async function impresion(navegador) {
           return getComputedStyle(e).display !== 'none' && getComputedStyle(e).visibility !== 'hidden' && r.width > 0 && r.height > 0;
         }).length;
         const lum = (c) => {
-          const m = c.match(/[\d.]+/g)?.map(Number) || [0, 0, 0];
+          // color(srgb r g b / a) trae los canales de 0 a 1, no de 0 a 255.
+          const m = (c.match(/[\d.]+/g)?.map(Number) || [0, 0, 0]).map((v, i) => (c.startsWith('color(srgb') && i < 3 ? v * 255 : v));
           const f = (v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
           return 0.2126 * f(m[0]) + 0.7152 * f(m[1]) + 0.0722 * f(m[2]);
         };
@@ -356,7 +357,7 @@ async function impresion(navegador) {
       if (m.botones) h('leve', 'impresion', id, `${m.botones} <button> visibles al imprimir (tema, idioma, menú, copiar…)`);
       if (m.pie > 1) h('leve', 'impresion', id, `${m.pie} pies visibles`);
       if (m.enlaceSalto) h('leve', 'impresion', id, 'enlace de salto visible al imprimir');
-      const f = m.fondo.match(/[\d.]+/g).map(Number);
+      const f = m.fondo.match(/[\d.]+/g).map(Number).map((v, i) => (m.fondo.startsWith('color(srgb') && i < 3 ? v * 255 : v));
       const fondoOscuro = f[0] + f[1] + f[2] < 300 && f[3] !== 0;
       if (fondoOscuro || m.oscuroSobreOscuro) h('grave', 'impresion', id, `texto ${m.colorTexto} sobre fondo ${m.fondo} al imprimir (${m.oscuroSobreOscuro} textos ilegibles): el tema oscuro se imprime`);
       if (m.ancho > m.ventana + 2) h('leve', 'impresion', id, `desborda en horizontal al imprimir (${m.ancho}px)`);
