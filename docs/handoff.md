@@ -18,7 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-  - 2026-11-17 · **Frase de cada enfoque en gl y en** (`ccr-b2d381ed-e10ez8`, código pequeño y contenido): `Enfoque` lleva `gl` y `en`; `enfoqueDelTrozo` (`src/utils/guion.ts`) busca la frase en el texto del idioma activo y el lector lo usa; los 154 enfoques rellenados (subagente `sonnet`) y un test exige cada frase una sola vez en su texto. Prepara grabar gl y en. Falta: `/code-review`.
+  - 2026-11-17 · **Frase de cada enfoque en gl y en** (`ccr-b2d381ed-e10ez8`, código pequeño y contenido): `Enfoque` lleva `gl` y `en`; `enfoqueDelTrozo` (`src/utils/guion.ts`) busca la frase en el texto del idioma activo y el lector lo usa; los 154 enfoques rellenados (subagente `sonnet`) y un test exige cada frase una sola vez en su texto. Prepara grabar gl y en. `/code-review` (2026-11-17): sin graves ni medios, 6 leves a `docs/records/pending.md`.
 
 - 2026-11-17 · **Guiones en gallego e inglés** (`ccr-b2d381ed-e10ez8`, contenido y un test): los once guiones de `src/data/guiones/` llevan `gl` y `en` en cada trozo, con los términos de la web; `src/data/guiones.test.ts` exige los dos, distintos del `es`. Aún sin uso (el lector solo sale en `es`) y sin audio. Falta: lectura de la persona.
 
