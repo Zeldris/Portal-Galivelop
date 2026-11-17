@@ -17,10 +17,30 @@ export interface Trozo {
   enfoques?: Enfoque[];
 }
 
-/** Cuando el texto llega a `frase` (literal, dentro del `es` del trozo), la vista se centra en `ver` (`id` o `data-guion`). */
+/**
+ * Cuando el texto llega a `frase` (literal, dentro del `es` del trozo), la vista se centra en `ver` (`id` o
+ * `data-guion`). `gl` y `en` son esa misma frase, literal dentro del texto del trozo en ese idioma.
+ */
 export interface Enfoque {
   frase: string;
+  gl?: string;
+  en?: string;
   ver: string;
+}
+
+/** El enfoque que toca en el trozo con `fraccion` del audio en `idioma`: busca su frase en el texto de ese idioma. */
+export function enfoqueDelTrozo(
+  trozo: Trozo,
+  idioma: string,
+  fraccion: number,
+  adelanto = ADELANTO_ENFOQUE,
+): Enfoque | null {
+  if (idioma !== 'gl' && idioma !== 'en')
+    return enfoqueEn(trozo.es, trozo.enfoques, fraccion, adelanto);
+  const enfoques = trozo.enfoques ?? [];
+  const traducidos = enfoques.map((e, i) => ({ frase: e[idioma] ?? '', ver: String(i) }));
+  const elegido = enfoqueEn(trozo[idioma] ?? '', traducidos, fraccion, adelanto);
+  return elegido && enfoques[Number(elegido.ver)];
 }
 
 /**
@@ -32,6 +52,7 @@ export const ADELANTO_ENFOQUE = 0;
 
 /** Fracción (0 a 1) del texto en que empieza la frase; -1 si no está. Las voces van a ritmo casi constante: vale como tiempo. */
 export function posicionDeFrase(es: string, frase: string): number {
+  if (!frase) return -1;
   const i = es.indexOf(frase);
   return i < 0 || es.length === 0 ? -1 : i / es.length;
 }

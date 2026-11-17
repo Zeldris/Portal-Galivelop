@@ -3,6 +3,7 @@ import {
   desplazamiento,
   enfoqueEn,
   gestoPausa,
+  enfoqueDelTrozo,
   posicionDeFrase,
   rutaNormal,
   teclaPausa,
@@ -83,5 +84,27 @@ describe('desplazamiento', () => {
     expect(desplazamiento(100, 1500, zona)).toBe(0);
     expect(desplazamiento(70 + 175, 1500, zona)).toBe(0);
     expect(desplazamiento(70 + 176, 1500, zona)).toBe(70 + 176 - 86);
+  });
+});
+
+describe('enfoqueDelTrozo', () => {
+  const trozo = {
+    seccion: 's',
+    es: 'Primero el uno y luego el dos.',
+    gl: 'Primeiro o un e despois o dous.',
+    en: 'First one, then two.',
+    enfoques: [
+      { frase: 'el uno', gl: 'o un', en: 'one', ver: 'a' },
+      { frase: 'el dos', gl: 'o dous', en: 'two', ver: 'b' },
+    ],
+  };
+  it('busca la frase en el texto del idioma activo', () => {
+    expect(enfoqueDelTrozo(trozo, 'es', 0.5)?.ver).toBe('a');
+    expect(enfoqueDelTrozo(trozo, 'en', 0.9)?.ver).toBe('b');
+    expect(enfoqueDelTrozo(trozo, 'gl', 0.3)?.ver).toBe('a');
+  });
+  it('sin la frase del idioma no hay enfoque', () => {
+    const sinGl = { ...trozo, enfoques: [{ frase: 'el uno', ver: 'a' }] };
+    expect(enfoqueDelTrozo(sinGl, 'gl', 1)).toBeNull();
   });
 });

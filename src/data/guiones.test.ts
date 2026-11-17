@@ -74,4 +74,20 @@ describe('audio de los guiones', () => {
         }
     expect(mal).toEqual([]);
   });
+
+  it('cada enfoque lleva su frase en gallego e inglés, una sola vez en el texto de ese idioma', () => {
+    const mal: string[] = [];
+    for (const clave of claves)
+      for (const t of leer(clave).trozos)
+        for (const e of t.enfoques ?? [])
+          for (const idioma of ['gl', 'en'] as const) {
+            const frase = e[idioma];
+            const veces = frase ? (t[idioma] ?? '').split(frase).length - 1 : 0;
+            if (veces !== 1)
+              mal.push(
+                `${clave}/${t.seccion}/${e.ver}: «${idioma}» ${frase ? `aparece ${veces} veces` : 'falta'}`,
+              );
+          }
+    expect(mal).toEqual([]);
+  });
 });

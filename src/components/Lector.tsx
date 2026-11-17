@@ -5,7 +5,7 @@ import {
   buscarSeccion,
   claveDeGuion,
   desplazamiento,
-  enfoqueEn,
+  enfoqueDelTrozo,
   gestoPausa,
   rutaAudio,
   rutaNormal,
@@ -153,7 +153,7 @@ export function Lector() {
     (i: number, fraccion: number): boolean => {
       const trozo = trozos[i];
       if (!trozo) return false;
-      const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
+      const enfoque = enfoqueDelTrozo(trozo, idioma, fraccion);
       if (!enfoque) return false;
       if (enCurso.current.i === i && enCurso.current.ver === enfoque.ver) return true;
       enCurso.current = { i, ver: enfoque.ver };
@@ -164,7 +164,7 @@ export function Lector() {
       mostrar(el);
       return true;
     },
-    [trozos],
+    [trozos, idioma],
   );
   const colocarAhora = () => {
     const a = audio.current;
@@ -264,7 +264,7 @@ export function Lector() {
       const a = audio.current;
       const fraccion =
         Number.isFinite(a.duration) && a.duration > 0 ? a.currentTime / a.duration : 0;
-      const enfoque = enfoqueEn(trozo.es, trozo.enfoques, fraccion);
+      const enfoque = enfoqueDelTrozo(trozo, idioma, fraccion);
       const el = buscarSeccion(enfoque?.ver ?? trozo.seccion);
       if (el) mostrar(el);
       void a.play().then(
