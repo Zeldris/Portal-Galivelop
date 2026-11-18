@@ -73,7 +73,7 @@ unset CLAUDECODE
   cp "$raiz/.githooks/pre-push" "$raiz/.githooks/pre-commit" .githooks/; cp -R "$raiz/.claude/gw/scripts" "$raiz/.claude/gw/schema" .claude/gw/; cp "$raiz/.claude/gw.json" .claude/
   printf '#!/bin/sh\nexit 0\n' > bin/npm; chmod +x bin/npm
   echo bin/ > .gitignore
-  echo a > src/data/a.json; printf '# Pendiente\n' > docs/records/pending.md; echo d > docs/d.md; git add -A; git commit -qm base; git tag base
+  echo a > src/data/a.json; printf '# Pendiente\n\n## Pendiente\n' > docs/records/pending.md; echo d > docs/d.md; git add -A; git commit -qm base; git tag base
   echo x > src/codigo.ts; git add -A; git commit -qm codigo; git tag codigo
   git rev-parse HEAD > docs/records/reviewed.txt; git add -A; git commit -qm marca
   echo y >> docs/d.md; git commit -qam contenido; git tag marcado
@@ -158,7 +158,7 @@ precommit_clave "clave con su forma"          1 "const k = '$clave';"
 precommit_clave "palabra que acaba en prefijo" 0 "const u = 'https://x.com/mu$clave';"
 # commit-msg: sin `logRows` (el portal), comprueba la bitácora solo si el commit la lleva y solo avisa (una celda de más
 # de 800 caracteres): nunca corta el commit, tampoco el de la tarea semanal.
-bitacora() { printf '# Bitácora\n\n## Estado actual\n\n| | |\n|---|---|\n| **Actualizado** | 2026-11-02 |\n| **Siguiente paso** | %s |\n\n## Pendiente\n\nLo pendiente está en [`docs/records/pending.md`](records/pending.md) (0 entradas); se añade y se quita allí.\n' "$1" > docs/handoff.md; git add docs/handoff.md; }
+bitacora() { printf '# Bitácora\n\n## Estado actual\n\n| | |\n|---|---|\n| **Actualizado** | 2026-11-02 |\n| **Siguiente paso** | %s |\n\n## Pendiente\n\nLo pendiente está en [`docs/records/pending.md`](records/pending.md); se añade y se quita allí.\n' "$1" > docs/handoff.md; git add docs/handoff.md; }
 commitmsg() {  # commitmsg <nombre> <sale 0|1> <aviso esperado, o «-» si no debe avisar>
   local salida r
   echo "x" > .git/COMMIT_EDITMSG

@@ -1,16 +1,17 @@
-<!-- galivelop-workflow v0.7.0 -->
+<!-- galivelop-workflow v0.8.0 -->
 # Portal-Galivelop — instrucciones para agentes
 
 Este proyecto se trabaja por relevos: una sesión puede acabarse en cualquier momento (tokens, contenedor, cambio de
 cuenta) y la siguiente tiene que seguir **sin perder nada y sin preguntar por dónde iba**. Todo lo de este archivo
-existe para eso. El flujo es Galivelop-workflow v0.7.0; sus scripts están en `.claude/gw/scripts/`, sus skills
+existe para eso. El flujo es Galivelop-workflow v0.8.0; sus scripts están en `.claude/gw/scripts/`, sus skills
 en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.claude/gw/scripts/config.py`).
 
 ## Al empezar cualquier sesión
 
 1. Lee la bitácora, `docs/handoff.md`: rama, tarea en curso, qué falta y siguiente paso.
-2. `git fetch origin <rama>` y comprueba que el último commit coincide con lo que dice la bitácora.
-3. Comprueba que el check está en verde antes de tocar nada: `npm run check`.
+2. `git fetch origin <rama>`; `python3 .claude/gw/scripts/recover.py --state` dice en «Remote» si vas al día con
+   `origin/<rama>`, y el último commit tiene que coincidir con lo que dice la bitácora.
+3. Comprueba que el check está en verde antes de tocar nada: `npm run check`, `python3 .claude/gw/scripts/ci-local.py --validate`.
 4. Sigue por el **siguiente paso** de la bitácora, salvo que la persona pida otra cosa.
 5. Al empezar cada tarea, trae la rama protegida: `git fetch origin main` y, si trae commits,
    `git merge origin/main` (merge, nunca rebase: las ramas están subidas). Si el conflicto toca la
@@ -33,11 +34,13 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
   está haciendo. Una tarea a medias dice qué está hecho y qué falta.
 - Si hay que parar con algo a medias o en rojo: commit igualmente con `WIP:` al principio del mensaje y, en la
   bitácora, qué falla y por qué. Nunca dejar trabajo solo en local.
-- Push a la rama de trabajo (`git push -u origin <rama>`); si falla por red, reintentar con espera 2, 4, 8 y 16 s.
-  El push y el check largo se lanzan en segundo plano y se espera su aviso, sin bucles de espera.
+- Push a la rama de trabajo con `bash .claude/gw/scripts/push.sh <rama>` (reintenta si falla por red, `pushRetryDelays`, y
+  da por subido solo lo que `git ls-remote` confirma). El push y el check largo, en segundo plano, sin bucles de espera.
 - **Tras una llamada interrumpida o rechazada, `git status` y `git diff` antes de repetirla**: el cambio puede
   haberse guardado, o incluso subido, y repetirlo lo duplica.
 - Si la persona dice que se para, se para: se sube lo que haya, se deja la bitácora al día y no se sigue con nada más.
+- **Las preguntas a la persona**: lista numerada, cada una con su recomendación (`questions.py add`; un subagente las
+  devuelve a la sesión principal); responde por número y `questions.py answer "5. a, 6. ok"` lo apunta.
 - **Al cerrar cada tarea o PR** (y cada fase), con todo subido y la bitácora al día, se pide a la persona un `/clear` en
   una línea, con el porqué: el contexto largo es casi todo el gasto, y la bitácora basta para retomar.
 - **Al cerrar cada bloque o fase, mira el CI de la última subida** con
@@ -48,7 +51,7 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
 
 ## Comprobar
 
-- **El check del proyecto:** `npm run check`. `.githooks/pre-push` lo corre sobre el commit que se sube a
+- **El check del proyecto:** `npm run check`, `python3 .claude/gw/scripts/ci-local.py --validate`. `.githooks/pre-push` lo corre sobre el commit que se sube a
   `main` o que cambia el entorno; a otra rama, solo los tests relacionados (`branchCheck`). El CI
   (`.github/workflows/check.yml`) lo corre entero en cada pull request y, salvo con `ciOnPush: false`, en cada
   push fuera de `main`.

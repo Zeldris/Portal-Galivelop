@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.7.0
+# galivelop-workflow v0.8.0
 # Merges a subagent's branch into the current one (merge, never rebase: branches are pushed), runs the config's
 # `check` commands and the related tests (`relatedTests`) on the result and, if they pass, cleans up the subagent's
 # worktree and branch.
 #   bash merge-branch.sh <branch> "<merge message>" [--reviewed] [--defer-check]   (flags in any order)
+#  - C12: refuses (exit 2, nothing merged) an exploration branch (`spikeBranch` prefix, default spike/) or a branch
+#    that carries a spike's commits (config.py spike-check) unless the current branch is a spike too (a remote-tracking
+#    name such as origin/spike/x counts by its branch; an answer it cannot read stops it too), and says what to do instead: a task record and the work redone with tests on a working branch, or the spike thrown away.
 #  - Before merging it reads `check` (at least one command) and `checkWrapper` from the config; if it cannot, it
 #    merges nothing and exits 2 (D77).
 #  - `git merge --no-ff`. On conflict it stops, lists the files and leaves the merge open (resolve it, or abort
@@ -33,8 +36,13 @@
 #    otherwise); without it the script stops before merging (exit 2). GW_NO_NEXT=1 skips that requirement.
 #  - --reviewed = the main session already had the diff reviewed; without it, it reminds you.
 #  - --defer-check (D117) = for every branch of a wave but the last: it merges (same conflict handling, same Refs)
-#    and cleans up, but runs neither the check nor the related tests, records no green and says so, with the full
-#    check to run after the last merge of the wave (or: merge the last branch without the flag). It still fails
+#    and cleans up, but runs neither the check nor the related tests, records no green and says so. The first one
+#    records the wave base (HEAD before it) in <git common dir>/gw/merge-wave-<current branch> (B41); the next merge
+#    without the flag closes the wave: its related tests cover every file changed since that base, not only its own
+#    merge, and the record is removed once check and related tests are green (after a failure it stays, so a rerun
+#    closes it). "Nothing to merge" without the flag and with a wave open (the last branch was already merged, or
+#    the rerun after a fix) runs that check and those tests; with no wave open it warns that nothing ran. A base
+#    no longer in HEAD's history is dropped. It still fails
 #    closed before merging on what it reads today, `check` and `checkWrapper` included: that full check needs them,
 #    and finding out at the first merge beats finding out after the last one. A missing check.sh or related-tests.sh
 #    does not stop it (nothing runs them here).
@@ -105,7 +113,68 @@ glob_match() {  # glob_match <name> <globs, one per line>: 0 if the name matches
 }
 
 git rev-parse --verify --quiet "$branch^{commit}" >/dev/null || { echo "merge-branch: no branch $branch; list them: git branch -a" >&2; exit 2; }
+# C12: an exploration branch (spikeBranch) is never merged into a working branch: neither by its name nor through a
+# branch that carries its commits (config.py spike-check). Merging into another spike branch is allowed.
+spike_prefix="$(python3 "$config" --root "$root" spike-branch --prefix 2>/dev/null)" || {
+  echo "merge-branch: cannot read 'spikeBranch' from .claude/gw.json, so nothing was merged; fix the config: python3 $config --root $root validate" >&2; exit 2; }
+current_branch="$(git branch --show-current)"
+spike_todo="turn what it taught into a task record and redo it with tests on a working branch (python3 $here/task.py new <id>), or throw it away: git branch -D $branch"
+is_spike() {  # is_spike <name>: 0 spike, 1 not; any other answer of config.py stops before merging (fails closed)
+  local rc=0
+  python3 "$config" --root "$root" spike-branch "$1" || rc=$?
+  [ "$rc" -le 1 ] || { echo "merge-branch: cannot tell whether $1 is an exploration branch (config.py exit $rc), so nothing was merged; fix the config: python3 $config --root $root validate" >&2; exit 2; }
+  return "$rc"
+}
+if [ -n "$spike_prefix" ] && ! is_spike "$current_branch"; then
+  # A remote-tracking name (origin/spike/x) counts by the branch it tracks.
+  names="$branch"
+  full="$(git rev-parse --symbolic-full-name "$branch" 2>/dev/null)" || full=""
+  case "$full" in refs/remotes/*/*) short="${full#refs/remotes/}"; names="$names ${short#*/}" ;; esac
+  for name in $names; do
+    if is_spike "$name"; then
+      echo "merge-branch: $branch is an exploration branch (spikeBranch: $spike_prefix), which is never merged into ${current_branch:-a detached HEAD}, so nothing was merged; $spike_todo" >&2
+      exit 2
+    fi
+  done
+  incoming="$(git rev-list "HEAD..$branch")" || {
+    echo "merge-branch: cannot list the commits $branch brings, so nothing was merged; fetch and retry: git fetch --all" >&2; exit 2; }
+  if ! printf '%s\n' "$incoming" | python3 "$config" --root "$root" spike-check --commits -; then
+    echo "merge-branch: $branch carries an exploration branch's commits (above, or the reason it could not read them), which never go into ${current_branch:-a detached HEAD}, so nothing was merged; $spike_todo" >&2
+    exit 2
+  fi
+fi
 before="$(git rev-parse HEAD)"
+# What a failure after the merge says about it (the wave-closing rerun below merges nothing and changes them).
+done_note="The merge is ALREADY done in the current branch; branch and worktree stay."
+undo=", or undo the merge with: git reset --hard HEAD^1"
+
+# B41: the wave of --defer-check merges. Its base (HEAD before the first deferred merge) is kept per branch in
+# <git common dir>/gw/merge-wave-<branch>, so the merge that closes the wave runs the related tests of every branch
+# of it, not only of its own. A base that is no longer in HEAD's history (reset, other branch) is dropped. A new wave
+# is written only once its first merge is in (done, or left open by a conflict), never on an earlier failure.
+if ! common="$(git rev-parse --git-common-dir 2>/dev/null)" || ! common="$(cd "$common" && pwd)"; then
+  echo "merge-branch: cannot find the git common dir; run it inside the repository: cd $root" >&2; exit 2
+fi
+wave_file="$common/gw/merge-wave-$(printf '%s' "$(git branch --show-current)" | tr -c 'A-Za-z0-9._-' '_')"
+wave_base=""
+if [ -f "$wave_file" ]; then
+  wave_base="$(head -n 1 "$wave_file")"
+  if [ -z "$wave_base" ] || ! git merge-base --is-ancestor "$wave_base" HEAD 2>/dev/null; then
+    rm -f "$wave_file"; wave_base=""
+  fi
+fi
+new_wave=""
+if [ -n "$defer_check" ] && [ -z "$wave_base" ]; then
+  new_wave=1; wave_base="$before"
+fi
+open_wave() {  # records a new wave's base; fails closed, since without it the last merge would miss its related tests
+  [ -n "$new_wave" ] || return 0
+  { mkdir -p "$common/gw" && printf '%s\n' "$wave_base" > "$wave_file"; } 2>/dev/null || {
+    echo "merge-branch: cannot record the wave base in $wave_file, so the last merge of the wave would miss its related tests; free space or fix its permissions, then run: mkdir -p $(printf '%q' "$common/gw") && echo $wave_base > $(printf '%q' "$wave_file")" >&2; exit 2; }
+}
+# The files the related tests look at: the whole open wave, or this merge alone.
+diff_base="${wave_base:-$before}"
+related_cmd="f=\$(mktemp) && git diff --name-only --no-renames ${diff_base:0:7} HEAD > \"\$f\" && bash $here/related-tests.sh \"\$f\""
 
 # The ids the merge message carries as ONE `Refs:` trailer: the message's own, then the branch name's, then the
 # `Refs:` of the commits the branch brings (oldest first). Values split on commas and whitespace; order kept, no repeats.
@@ -185,34 +254,56 @@ EOF_CONFLICTS
     # What this script would do after the merge (see cleanup_branch below): worktree only if there is one, branch only if it is not protected, claude/* or the current one.
     # With --defer-check the check is left for the end of the wave, so the commands are only the cleanup.
     after=""
-    [ -n "$defer_check" ] || after="bash $here/check.sh --quiet"
+    [ -z "$defer_check" ] || open_wave
+    if [ -z "$defer_check" ]; then
+      after="bash $here/check.sh --quiet"
+      # B41: an open wave is closed by this merge, so its related tests (all of its branches) go too.
+      [ -z "$wave_base" ] || after="$after && $related_cmd && rm -f $(printf '%q' "$wave_file")"
+    fi
     [ "$merge_cleanup" != "true" ] || [ -z "$wt" ] || [ "$wt" = "$root" ] || after="${after:+$after && }git worktree remove $(printf '%q' "$wt")"
     if [ "$merge_cleanup" = "true" ] && [ "$branch" != "$protected" ] && ! glob_match "$branch" "$keep_globs" && [ "$branch" != "$(git branch --show-current)" ]; then
       after="${after:+$after && }git branch -d $(printf '%q' "$branch")"
     fi
     [ -n "$after" ] && echo "  Closing it by hand skips what this script does after a merge (re-running it says \"nothing to merge\"); then run: $after"
   else
+    [ -z "$defer_check" ] || open_wave
     echo "merge-branch: CONFLICT (the merge stays open; resolve it and commit, or abort with: git merge --abort):"
     printf '%s\n' "${conflicts:-$(tail -n 5 "$logs/merge.log")}" | sed 's/^/  /'
   fi
   exit 1
 fi
 if [ "$(git rev-parse HEAD)" = "$before" ]; then
-  echo "merge-branch: nothing to merge, $branch is already in the current branch."
-  exit 0
+  if [ -n "$defer_check" ]; then
+    if [ -n "$new_wave" ]; then
+      echo "merge-branch: nothing to merge, $branch is already in the current branch; no wave was opened (nothing ran)."
+    else
+      echo "merge-branch: nothing to merge, $branch is already in the current branch; the wave stays open (since ${wave_base:0:7})."
+    fi
+    exit 0
+  elif [ -z "$wave_base" ]; then
+    echo "merge-branch: nothing to merge, $branch is already in the current branch: no check, related tests or cleanup ran. If it was merged by hand, run the check: bash $here/check.sh"
+    exit 0
+  fi
+  # B41: the last branch of a wave was already merged (by hand, or a rerun after a failed check): close the wave.
+  # Nothing is merged now, so a failure below must not offer to undo HEAD (it may be the fix itself).
+  done_note="Nothing was merged now (the wave is being closed); branch and worktree stay."; undo=""
+  echo "merge-branch: nothing to merge, $branch is already in the current branch; closing the open wave of --defer-check (since ${wave_base:0:7}): check and related tests of the whole wave."
+else
+  echo "merge-branch: merged $branch into $(git branch --show-current) at $(git rev-parse --short HEAD)"
+  [ -n "$defer_check" ] || [ -z "$wave_base" ] || echo "merge-branch: this merge closes the open wave of --defer-check (since ${wave_base:0:7}): check and related tests of the whole wave."
 fi
-echo "merge-branch: merged $branch into $(git branch --show-current) at $(git rev-parse --short HEAD)"
 
 if [ -n "$defer_check" ]; then
-  echo "merge-branch: CHECK DEFERRED (--defer-check): neither the check nor the related tests ran on this merge and no green was recorded. After the LAST merge of the wave run one full check: bash $here/check.sh (or merge the last branch without --defer-check)."
+  open_wave
+  echo "merge-branch: CHECK DEFERRED (--defer-check): neither the check nor the related tests ran on this merge and no green was recorded. Wave open since ${wave_base:0:7}: merge the LAST branch without --defer-check, which runs the full check and the related tests of the whole wave (if it is already merged, rerun this script on it without --defer-check)."
 else
   # The check is scripts/check.sh --quiet (E20): one registry per sha in <git common dir>/gw/check-<sha>.log that stays
   # after the run, a lock against a second check, a closing `CHECK <ok|FAILED>: ...` line, and the green recorded for
   # the pre-push (check-green.sh) so the push does not repeat it. Only its summary is shown here, never the tail.
   check_script="$here/check.sh"
   if [ ! -f "$check_script" ]; then
-    echo "merge-branch: CHECK CANNOT RUN: $check_script is not installed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-    echo "merge-branch: reinstall the workflow with: /gw-update, or undo the merge with: git reset --hard HEAD^1" >&2
+    echo "merge-branch: CHECK CANNOT RUN: $check_script is not installed. $done_note" >&2
+    echo "merge-branch: reinstall the workflow with: /gw-update$undo" >&2
     exit 1
   fi
   bash "$check_script" --quiet > "$logs/check.out" 2> "$logs/check.err" < /dev/null
@@ -230,13 +321,14 @@ else
       cat "$logs/check.err" >&2
       tail -n 5 "$logs/check.out" >&2
     fi
-    echo "merge-branch: the check did not pass. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+    echo "merge-branch: the check did not pass. $done_note" >&2
     [ -z "$check_log" ] || echo "merge-branch: full log: $check_log" >&2
     if [ "$check_rc" -eq 3 ]; then
-      echo "merge-branch: another check holds the lock; once it ends rerun the check with: bash $check_script --quiet (or undo the merge with: git reset --hard HEAD^1)" >&2
+      echo "merge-branch: another check holds the lock; once it ends rerun the check with: bash $check_script --quiet${undo:+ (}${undo#, }${undo:+)}" >&2
     else
-      echo "merge-branch: fix it and commit, or undo the merge with: git reset --hard HEAD^1" >&2
+      echo "merge-branch: fix it and commit$undo" >&2
     fi
+    [ -z "$wave_base" ] || echo "merge-branch: the wave of --defer-check (since ${wave_base:0:7}) stays open: once fixed and committed, rerun this script on $branch without --defer-check to close it." >&2
     exit 1
   fi
 
@@ -249,26 +341,29 @@ else
   done
   if [ ! -f "$here/related-tests.sh" ]; then
     if [ -n "$related_configured" ]; then
-      echo "merge-branch: RELATED TESTS CANNOT RUN: relatedTests is configured but $here/related-tests.sh is not installed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-      echo "merge-branch: reinstall the workflow with: /gw-update (then run the related tests), or undo the merge with: git reset --hard HEAD^1" >&2
+      echo "merge-branch: RELATED TESTS CANNOT RUN: relatedTests is configured but $here/related-tests.sh is not installed. $done_note" >&2
+      echo "merge-branch: reinstall the workflow with: /gw-update (then run the related tests)$undo" >&2
       exit 1
     fi
   else
-    rerun="f=\$(mktemp) && git diff --name-only --no-renames ${before:0:7} HEAD > \"\$f\" && bash $here/related-tests.sh \"\$f\""
-    git diff --name-only --no-renames "$before" HEAD > "$logs/changed" || {
-      echo "merge-branch: cannot list the files the merge changed. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
+    rerun="$related_cmd"
+    git diff --name-only --no-renames "$diff_base" HEAD > "$logs/changed" || {
+      echo "merge-branch: cannot list the files the merge changed. $done_note" >&2
       echo "merge-branch: run the related tests by hand: $rerun" >&2
       exit 1; }
     if bash "$here/related-tests.sh" "$logs/changed" > "$logs/related.log" 2>&1 < /dev/null; then
-      echo "merge-branch: related tests OK"
+      if [ -n "$wave_base" ]; then echo "merge-branch: related tests OK (whole wave since ${wave_base:0:7})"; else echo "merge-branch: related tests OK"; fi
     else
       tail -n 20 "$logs/related.log" >&2
-      echo "merge-branch: RELATED TESTS FAILED. The merge is ALREADY done in the current branch; branch and worktree stay." >&2
-      echo "merge-branch: fix it and commit, or undo the merge with: git reset --hard HEAD^1" >&2
+      echo "merge-branch: RELATED TESTS FAILED. $done_note" >&2
+      echo "merge-branch: fix it and commit$undo" >&2
       echo "merge-branch: rerun them with: $rerun" >&2
+      [ -z "$wave_base" ] || echo "merge-branch: the wave of --defer-check (since ${wave_base:0:7}) stays open: once fixed and committed, rerun this script on $branch without --defer-check to close it." >&2
       exit 1
     fi
   fi
+  # The wave is closed only once its check and related tests are green: after a failure a rerun closes it.
+  [ -z "$wave_base" ] || rm -f "$wave_file"
 fi  # --defer-check
 
 cleanup_branch() {

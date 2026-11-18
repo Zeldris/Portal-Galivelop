@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.7.0
+# galivelop-workflow v0.8.0
 """Stop hook: do not let Claude finish with commits that are not pushed, or with changes the log does not mention.
 
 "What is not pushed does not exist" (AGENTS.md) is the workflow's most important rule and, until this hook, only the
@@ -7,7 +7,7 @@ agent remembered it. It blocks the stop when:
 
   a. the current branch has commits its upstream does not (`git rev-list @{u}..HEAD --not <remote>/<protectedBranch>`,
      the upstream's remote: what a merged-in `main` brings is already pushed; without that ref, just `@{u}..HEAD`);
-     with no upstream, commits no remote branch has (`git rev-list HEAD --not --remotes`). The reason names `git push -u origin <branch>`. On the
+     with no upstream, commits no remote branch has (`git rev-list HEAD --not --remotes`). The reason names `bash <root>/.claude/gw/scripts/push.sh <branch>` (config.push_command). On the
      protected branch (`protectedBranch`) it does not: AGENTS.md says a push there needs the user's confirmation and
      the three phases, so Claude cannot fix it alone and a block would only make it push without asking. There it is a
      warning to the user (`systemMessage`: the commits are not pushed, and pushing needs their confirmation), never
@@ -31,6 +31,16 @@ agent remembered it. It blocks the stop when:
      `.claude/worktrees/`, where Claude Code keeps its isolated worktrees, nor the token ledger `metrics.ledger`,
      which the metrics.py Stop hook rewrites on every stop) and the log (`log` in .claude/gw.json) is
      not among them. The reason says to commit the log, updated, in the same commit as the work.
+
+B31: it also blocks once BEFORE the next compaction: when the task's compaction budget in the log is already spent
+(or passed) and the context of the stretch reaches `contextGuard.nearRatio` of the compaction cutoff (a known
+window: context_guard.window_known), a one-line reason tells Claude to close the step (log, commit and push, then
+recommend /clear to the user; or, when the system weighs most, D122, that /clear will not lower it). A block,
+because a `systemMessage` reaches only the user; once per stretch of each session (<git dir>/gw-context-warn, one line
+per transcript, so two sessions in one worktree do not overwrite each other's), and the continued
+turn comes back with stop_hook_active, which never blocks, so it cannot loop. Its reason joins the others on its own
+line. Silent if the transcript cannot be read (context_guard.near_cutoff_once). The Stop hook fires at the end of
+every turn, so it comes before the compaction; recover.py --state comes after it.
 
 Output format (https://code.claude.com/docs/en/hooks.md, "Stop decision control"): a block is a JSON object on stdout
 with exit 0, `{"decision": "block", "reason": "..."}`; Claude Code feeds `reason` back to Claude as the explanation
@@ -371,6 +381,24 @@ def changed_paths(root, ignore=()):
     return paths
 
 
+def near_compaction(root, cfg, transcript):
+    """B31: context_guard.near_cutoff_once for this branch and transcript (the hook's transcript_path), remembered in
+    <git dir>/gw-context-warn (per transcript) so it blocks once per stretch; None when there is nothing to say or
+    anything fails (a missing context_guard.py, no git dir, an unreadable transcript): silent, never a block."""
+    if not transcript:
+        return None
+    try:
+        import context_guard
+        branch = git(root, "rev-parse", "--abbrev-ref", "HEAD")[1].strip()
+        gitdir = git(root, "rev-parse", "--absolute-git-dir")[1].strip()
+        if not gitdir:  # never a marker relative to the current directory
+            return None
+        state = os.path.join(gitdir, "gw-context-warn")
+        return context_guard.near_cutoff_once(root, cfg, branch, transcript, state)
+    except Exception:
+        return None
+
+
 def main():
     global GIT_TIMEOUT, PUSH_MARKER_MAX_AGE
     doctor = f"python3 {os.path.join(HERE, 'doctor.py')}"
@@ -413,24 +441,24 @@ def main():
                     if checking is not None and _same_tree_head(root, checking[2]):
                         notes.append(f"A check of this commit is running (pid {checking[0]}, log {checking[1] or '-'}); "
                                      f"branch '{branch}' has {plural(count, 'commit')} not pushed ({where}) until it "
-                                     f"ends. Do not push meanwhile: wait for CHECK ok, then push: git push -u origin "
-                                     f"{branch}")
+                                     f"ends. Do not push meanwhile: wait for CHECK ok, then push: "
+                                     f"{config.push_command(root, branch)}")
                     elif pushing is None and (agents := running_subagents(
                             event.get("transcript_path"), cfg["stopTranscriptBytes"],
                             cfg["stopSubagentMaxAge"])):
                         notes.append(f"{plural(len(agents), 'background subagent')} of this session "
                                      f"{'is' if len(agents) == 1 else 'are'} still running ({', '.join(agents)}); "
                                      f"branch '{branch}' has {plural(count, 'commit')} not pushed ({where}). Wait for "
-                                     f"the subagent{'' if len(agents) == 1 else 's'} to report and push after: git "
-                                     f"push -u origin {branch}")
+                                     f"the subagent{'' if len(agents) == 1 else 's'} to report and push after: "
+                                     f"{config.push_command(root, branch)}")
                         if checking is not None:
                             notes.append(f"A check of another commit or worktree is running (pid {checking[0]}, log "
                                          f"{checking[1] or '-'}, sha {checking[2] or '-'}); it does not cover this "
                                          f"HEAD.")
                     elif pushing is None:
                         unpushed_to.append(f"Branch '{branch}' has {plural(count, 'commit')} not pushed ({where}). What is "
-                                      f"not pushed does not exist for the next session; push it now: git push -u "
-                                      f"origin {branch}")
+                                      f"not pushed does not exist for the next session; push it now: "
+                                      f"{config.push_command(root, branch)}")
                         if checking is not None:  # a check of another commit or worktree: it does not push this one
                             notes.append(f"A check of another commit or worktree is running (pid {checking[0]}, log "
                                          f"{checking[1] or '-'}, sha {checking[2] or '-'}); it does not cover this "
@@ -450,6 +478,9 @@ def main():
                               f"commit it in the same commit as the work: git add {log} <files> && git commit")
         except GitError as exc:
             warns.append(str(exc))
+        near = near_compaction(root, cfg, event.get("transcript_path"))
+        if near:  # a block: only `reason` reaches Claude; once per stretch, and stop_hook_active ends it
+            blocks.append(near)
 
     answer = {}
     if blocks:

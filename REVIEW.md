@@ -1,4 +1,4 @@
-<!-- galivelop-workflow v0.7.0 -->
+<!-- galivelop-workflow v0.8.0 -->
 # Guía de revisión
 
 Lo que el revisor (`/code-review`, o cualquier agente que revise un diff) comprueba en cada diff del portal, además
@@ -13,6 +13,11 @@ de git; aquí está lo que pide criterio. Cada regla acaba en `(check: …)`, co
 - Los hallazgos se escriben también en un archivo fuera del árbol (el scratchpad, o
   `"$(git rev-parse --git-dir)/review.md"`), no solo en la conversación: una compactación o un relevo se los lleva, y
   de ese archivo salen los encargos de los arreglos y los leves que se apuntan en la bitácora. (criterio)
+- Cada hallazgo cita su **ancla**: una regla de `REVIEW.md` o de `AGENTS.md`, un criterio de aceptación de la ficha
+  de la tarea (`docs/tasks/<id>.md`), una línea del plan o un fallo demostrado. Formato:
+  `ruta:línea | severidad | ancla | problema. arreglo.` (criterio)
+- Lo que no tiene ancla no es un hallazgo: va aparte, en una sección «Observaciones», sin severidad, y no bloquea el
+  veredicto. (criterio)
 - Un dato que caduca (una versión, un precio, una cuota, un límite de un servicio externo) escrito en el diff lleva su
   fecha y su fuente; si no, es un hallazgo. (criterio)
 - La revisión acaba con un veredicto, uno de tres: `SHIP` (nada que arreglar), `SHIP WITH FIXES` (hay arreglos, ninguno
@@ -45,6 +50,8 @@ de git; aquí está lo que pide criterio. Cada regla acaba en `(check: …)`, co
   todos los sitios a la vez. (criterio)
 - La configuración del flujo vive solo en `.claude/gw.json` y solo la lee `.claude/gw/scripts/config.py`. (criterio)
 - `valor` de un elemento de apartado es texto igual en los tres idiomas, nunca un objeto (React no lo pinta). (criterio)
+- Un cambio que toca una invariante (un dato en un solo sitio, un orden de pasos, un estado que no puede darse) se
+  revisa buscando **los demás sitios que la sostienen**: el cambio no debe romper ninguno. (criterio)
 
 ## Rutas y SEO
 
@@ -59,6 +66,8 @@ de git; aquí está lo que pide criterio. Cada regla acaba en `(check: …)`, co
 
 - Navegadores: los del objetivo por defecto de Vite 8 (`baseline-widely-available`: Safari e iOS 16.4+, Chrome y Edge
   111+, Firefox 114+). Una API que solo falta en versiones anteriores no es un hallazgo. (criterio)
+- Lo que se mira en varios navegadores y en el móvil: APIs que no están en Safari, `100vh` (barra del navegador
+  móvil), foco y teclado. (criterio)
 - Nada desborda en horizontal a 320-390 px, ni con el texto agrandado (cortes en `em` en la cabecera). (criterio)
 - Los botones solo con icono llevan `aria-label`; lo que se mueve solo (la galería) se puede pausar y respeta
   «reducir movimiento». (criterio)

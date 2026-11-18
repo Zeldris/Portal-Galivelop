@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# galivelop-workflow v0.7.0
+# galivelop-workflow v0.8.0
 # Git pre-commit hook (copied into projects as .githooks/pre-commit; enable with: git config core.hooksPath .githooks).
 #   - No secrets in a commit: by file (.env except .env.example/.sample/.template, *.pem, *.key, *.p12, *.pfx, *.jks,
 #     id_rsa and friends, .netrc, and the local private list .claude/gw.local.json) and by added content (well-known
@@ -25,6 +25,9 @@
 #     has changes (metrics.py stage-ledger: metrics.record and metrics.commitLedger on, not ignored, something else
 #     staged, no merge/cherry-pick/revert/rebase in progress, not git commit <paths>/--only). Fails closed without
 #     python3 or metrics.py; an unreadable gw.json warns and skips it.
+#   - C13 (scopeGuard, not off): staged files outside `## Files` of the current task's record (branch agent/<id>-..., else
+#     the mark gw/current-task) are warned about, or refused in block mode (scope-guard.py --staged; outside Claude Code
+#     too). Skipped while closing a merge/cherry-pick/rebase, and with no task, no record or no Files section.
 #   - With logRows on, while concluding a merge: it does not keep two different tasks under one task id, one from each
 #     side (handoff.py clash --merging; the pre-push checks every new merge and the protected branch).
 # CI mode: pre-commit --range BASE..HEAD scans what the range adds instead of the staged changes (run the base
@@ -206,9 +209,11 @@ fi
 # Tasks closed in the plan, recorded in the log's "Done" before the commit exists (not after, with --amend).
 if [ "$ci" = "0" ]; then
   if [ -d "$root/.claude/gw/scripts" ]; then scripts="$root/.claude/gw/scripts"; else scripts="$root/scripts"; fi
-  for f in handoff.py config.py; do
+  for f in handoff.py config.py scope-guard.py questions-guard.py questions.py task.py; do
     [ -f "$scripts/$f" ] || { echo "pre-commit: $scripts/$f is missing; reinstall the workflow scripts: /gw-update" >&2; exit 1; }
   done
+  # C13: staged files outside `## Files` of the current task's record (scopeGuard: warn, or refuse in block mode).
+  python3 "$scripts/scope-guard.py" --staged --root "$root" || exit 1
   python3 "$scripts/handoff.py" --root "$root" closed --staged >&2 || exit 1
   python3 "$scripts/handoff.py" --root "$root" own-row --staged >&2 || exit 1
   python3 "$scripts/handoff.py" --root "$root" clash --merging >&2 || exit 1

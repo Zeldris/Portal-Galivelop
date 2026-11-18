@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.7.0
+# galivelop-workflow v0.8.0
 """The test files a change calls for, from `testMap` in .claude/gw.json (E21).
 
   python3 tests-for.py FILE [...]          # the test files, one per line (repo-relative, sorted, no repeats)
@@ -31,7 +31,14 @@ and config: config.find_root and config.load. Fails closed: no config, an invali
 group for, or --run with an empty `testMap.command` -> exit 2 with what fixes it. With --run the exit code is the
 command's, except a plain `python3 [-B] -m unittest {files}` (optionally with a PYTHONPATH=<dir> prefix, no other env prefix or interpreter): that runs
 through test-run.py (one test class per process, `testJobs`), exit 0 passed, 1 failed, 2 cannot run (test-run.py
-does not load, or a requested file is not a test_*.py it can discover). Python 3.8+ standard library only.
+does not load, or a requested file is not a test_*.py it can discover).
+
+B42: in that parallel mode each unit runs in a session of its own with its output in a temp file, not a pipe, so a
+process a test leaves behind holding that output cannot keep the run waiting; a unit that has not ended after
+`testUnitTimeout` seconds (0 = no limit) is killed with its process group and fails, naming the unit and the command
+that runs it alone with -v (each test named as it starts, so the one that hangs shows). When a unit ends, what it
+left in its group is killed too. Stopped itself (SIGINT, SIGTERM, SIGHUP), it starts no more units and kills the
+groups of those still running before it exits. Python 3.8+ standard library only.
 """
 import argparse
 import importlib.util
@@ -39,8 +46,12 @@ import os
 import re
 import shlex
 import shutil
+import signal
 import subprocess
 import sys
+import tempfile
+import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
@@ -144,6 +155,61 @@ def diff_files(root, rev):
 PLAIN_UNITTEST = re.compile(r"^\s*(?:PYTHONPATH=([\w./:-]+)\s+)?python3\s+(?:-B\s+)?-m\s+unittest\s+\{files\}\s*$")
 
 
+LIVE = set()  # the units running now (their Popen), killed with their groups if tests-for is stopped
+LOCK = threading.Lock()  # LIVE and STOPPING change together: no unit starts after the stop has killed the others
+STOPPING = threading.Event()
+
+
+def kill_group(proc):
+    try:
+        os.killpg(proc.pid, signal.SIGKILL)  # the unit and every child it left in its group
+    except OSError:
+        pass
+
+
+def stopped(signum, _frame):
+    raise SystemExit(128 + signum)  # unwinds run_parallel, whose `finally` kills the units still running
+
+
+def unit_command(unit):
+    """The command test-run.py runs for `unit` (its run_unit: one file, or one class with -k)."""
+    folder, file, cls, _ = unit
+    return [sys.executable, "-B", "-m", "unittest", "discover", "-s", folder, "-p", file] + (
+        ["-k", f"*.{cls}.*"] if cls else [])
+
+
+def run_unit(root, unit, limit, ran_re):
+    """B42: run `unit` as test-run.py does, but in its own session, with its output in a temp file (a process it
+    leaves behind holding the output cannot keep us waiting) and at most `limit` seconds (0 = no limit). Returns
+    (unit, exit code or None when it timed out, seconds, tests ran, output)."""
+    start = time.time()
+    with tempfile.TemporaryFile() as out:
+        with LOCK:
+            if STOPPING.is_set():
+                return unit, -1, 0.0, 0, "not started: tests-for was stopped"
+            proc = subprocess.Popen(unit_command(unit), cwd=str(root), stdout=out, stderr=subprocess.STDOUT,
+                                    stdin=subprocess.DEVNULL, start_new_session=True)
+            LIVE.add(proc)
+        try:
+            code = proc.wait(timeout=limit or None)
+        except subprocess.TimeoutExpired:
+            code = None
+        finally:
+            kill_group(proc)  # timed out, stopped or ended: nothing it started outlives it in its group
+            proc.wait()
+            with LOCK:
+                LIVE.discard(proc)
+        out.seek(0)
+        text = out.read().decode("utf-8", errors="replace")
+    return unit, code, time.time() - start, sum(int(n) for n in ran_re.findall(text)), text
+
+
+def alone(unit, pythonpath=None):
+    """The command that runs `unit` alone, verbose, from the root (shell-quoted), with testMap.command's PYTHONPATH."""
+    prefix = [f"PYTHONPATH={shlex.quote(pythonpath)}"] if pythonpath else []
+    return " ".join(prefix + [shlex.quote(a) for a in ["python3"] + unit_command(unit)[1:] + ["-v"]])
+
+
 def run_parallel(root, cfg, tests, pythonpath=None):
     """Run the test files through scripts/test-run.py (units, `testJobs`); exit 0 all passed, 1 some failed, 2 cannot run."""
     try:
@@ -160,6 +226,11 @@ def run_parallel(root, cfg, tests, pythonpath=None):
         print("tests-for: testJobs must be an integer >= 0 (0 = one per CPU); fix .claude/gw.json", file=sys.stderr)
         return 2
     jobs = jobs or os.cpu_count() or 1
+    try:
+        limit = config.test_unit_timeout(cfg)
+    except config.ConfigError as exc:
+        print(f"tests-for: {exc}", file=sys.stderr)
+        return 2
     wanted = {}
     for t in tests:
         wanted.setdefault(str(Path(t).parent.as_posix()), set()).add(Path(t).name)
@@ -177,12 +248,27 @@ def run_parallel(root, cfg, tests, pythonpath=None):
         return 2
     print(f"tests-for: test-run.py: {len(tests)} test files, {len(units)} units, {jobs} jobs", flush=True)
     failed, ran_total = [], 0
+    STOPPING.clear()
+    for sig in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):  # SIGINT too: a background `cmd &` ignores it
+        signal.signal(sig, stopped)
     with ThreadPoolExecutor(max_workers=jobs) as pool:
-        for unit, code, _secs, ran, output in pool.map(lambda u: tr.run_unit(root, sys.executable, u), units):
-            ran_total += ran
-            if code != 0:
-                failed.append(tr.unit_name(unit))
-                print(f"---- {tr.unit_name(unit)} (exit {code})\n{output.rstrip()}", flush=True)
+        try:
+            for unit, code, _secs, ran, output in pool.map(lambda u: run_unit(root, u, limit, tr.RAN), units):
+                ran_total += ran
+                if code is None:
+                    failed.append(f"{tr.unit_name(unit)} timed out")
+                    print(f"---- {tr.unit_name(unit)} (stopped: not ended within {limit}s, testUnitTimeout)\n"
+                          f"{output.rstrip()}\n"
+                          f"tests-for: {tr.unit_name(unit)} did not end within {limit}s (testUnitTimeout in "
+                          f".claude/gw.json); run it alone to see which test hangs: {alone(unit, pythonpath)}", flush=True)
+                elif code != 0:
+                    failed.append(tr.unit_name(unit))
+                    print(f"---- {tr.unit_name(unit)} (exit {code})\n{output.rstrip()}", flush=True)
+        finally:
+            with LOCK:  # stopped (or failed) here: no unit outlives tests-for in its own session, none starts
+                STOPPING.set()
+                for proc in list(LIVE):
+                    kill_group(proc)
     expected = sum(u[3] for u in units)
     if not failed and not any(u[2] is None for u in units) and ran_total != expected:
         failed.append(f"ran {ran_total} tests, discovered {expected}: a -k pattern missed or repeated a test")

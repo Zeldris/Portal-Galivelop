@@ -3,7 +3,7 @@ name: retro
 description: "Conduct a retrospective on a coding session. Use before each push or PR to the protected branch (after /code-review and /gw-opt-tokens), when a phase or milestone closes, or when the user asks for a retro."
 license: MIT (see LICENSE-mattpocock-skills)
 metadata:
-  version: "0.7.0"
+  version: "0.8.0"
   source: "mattpocock/skills@5beb35b"
 ---
 
@@ -55,6 +55,7 @@ You have access to several files in the repo:
 This section is the only change to the upstream skill.
 
 - The reviewer's standards file is `REVIEW.md`, not `CODING_STANDARDS.md`; the hand-off log path is `log` in `.claude/gw.json` (`python3 .claude/gw/scripts/config.py get log`); its pending items live in `pendingFile` when set (else in the log's Pending section): read them too.
+- Read the deviations log, `python3 .claude/gw/scripts/task.py deviations` (`<git common dir>/gw/deviations.jsonl`: each edit or commit the scope guard let through outside a task's `## Files`, C13): a path or rule that repeats across tasks is a candidate to change the rule or the planning, and goes into the proposals.
 - Save the retro as a dated file in the records folder, `python3 .claude/gw/scripts/config.py get recordsDir` (`<recordsDir>/retro-YYYY-MM-DD-<topic>.md`) with a `**Estado:**`/`**Status:**` line; `reviewed.sh` may require one when `requireRetro` is set.
 - The exact form of that line, which `reviewed.sh` reads: it starts the line (`**Estado:** …` / `**Status:** …`) and its paragraph (up to the next blank line) holds a whole word among `aplicad*`, `rechazad*`, `aplazad*`, `decidid*`, `aprobad*` (`applied`, `rejected`, `deferred`, `decided`, `approved`), for example `**Estado:** aprobada y aplicada (P1, P2); P3 rechazada`. The words `pendiente`, `pending`, `undecided`, `sin decidir`, `aún no` and `not yet` anywhere in that paragraph cancel it, so write the decisions that are still open in another paragraph. The retro file must be new on the branch.
 - Sort each candidate into one of two outlets and say which:
