@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-15",
+  "actualizado": "2026-11-16",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -699,6 +699,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-16",
+      "texto": {
+        "es": "Trabajo de fondo: reorganización de los proveedores de inteligencia artificial que hacen los análisis, para que el servicio siga estable y no dependa de uno que ya no encaja.",
+        "gl": "Traballo de fondo: reorganización dos provedores de intelixencia artificial que fan as análises, para que o servizo siga estable e non dependa dun que xa non encaixa.",
+        "en": "Behind the scenes: the AI providers that run the analyses were reorganised, so the service stays stable and doesn't rely on one that no longer fits."
+      }
+    },
     {
       "fecha": "2026-11-15",
       "texto": {

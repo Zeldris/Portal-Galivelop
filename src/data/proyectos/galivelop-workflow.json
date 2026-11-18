@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-17",
+  "actualizado": "2026-11-18",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.7.1 · próxima la 0.8 «Front y otros agentes»",
-    "gl": "En desenvolvemento · v0.7.1 · próxima a 0.8 «Front e outros axentes»",
-    "en": "In development · v0.7.1 · next up: 0.8 “Front end and other agents”"
+    "es": "En desarrollo · v0.8.0 · próxima la 0.9 «Front»",
+    "gl": "En desenvolvemento · v0.8.0 · próxima a 0.9 «Front»",
+    "en": "In development · v0.8.0 · next up: 0.9 “Front”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "ogAlt": {
@@ -69,11 +69,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.7.1",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.8.0",
       "etiqueta": {
-        "es": "Ver la versión 0.7.1",
-        "gl": "Ver a versión 0.7.1",
-        "en": "View version 0.7.1"
+        "es": "Ver la versión 0.8.0",
+        "gl": "Ver a versión 0.8.0",
+        "en": "View version 0.8.0"
       }
     }
   ],
@@ -130,9 +130,9 @@
       "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.7.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las doce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as doce skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the twelve skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las trece skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as trece skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the thirteen skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
     }
   ],
   "lineas": ["metodo"],
@@ -1292,9 +1292,9 @@
         "en": "Our own skills"
       },
       "intro": {
-        "es": "Las doce skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las seis primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
-        "gl": "As doce skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As seis primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, e as dúas últimas preparan contido para redes a partir do traballo feito.",
-        "en": "The twelve skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first six serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, and the last two turn finished work into content for social media."
+        "es": "Las trece skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las siete primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
+        "gl": "As trece skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As sete primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, e as dúas últimas preparan contido para redes a partir do traballo feito.",
+        "en": "The thirteen skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first seven serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, and the last two turn finished work into content for social media."
       },
       "items": [
         {
@@ -1369,6 +1369,18 @@
             "es": "Informes de tokens y coste por periodo, modelo, agente y tarea, con comparaciones entre periodos, para ver dónde se va el gasto y si la calidad lo acompaña.",
             "gl": "Informes de tokens e custo por período, modelo, axente e tarefa, con comparacións entre períodos, para ver onde vai o gasto e se a calidade o acompaña.",
             "en": "Reports of tokens and cost by period, model, agent and task, with comparisons between periods, to see where the spend goes and whether quality keeps up."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-mode",
+            "gl": "gw-mode",
+            "en": "gw-mode"
+          },
+          "texto": {
+            "es": "Cambia los modos del flujo, como el de preguntas, con un solo interruptor, y dice en qué estado está cada uno.",
+            "gl": "Cambia os modos do fluxo, como o de preguntas, cun só interruptor, e di en que estado está cada un.",
+            "en": "Switches the workflow’s modes, such as questions, with a single switch, and says what state each one is in."
           }
         },
         {
@@ -1508,6 +1520,58 @@
             "es": "Pide la misma marca de revisión antes de crear o fusionar un pull request hacia la rama protegida, en los proyectos que publican así.",
             "gl": "Pide a mesma marca de revisión antes de crear ou fusionar un pull request cara á rama protexida, nos proxectos que publican así.",
             "en": "Asks for the same review mark before a pull request into the protected branch is created or merged, in projects that publish that way."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Guarda de preguntas",
+            "gl": "Guarda de preguntas",
+            "en": "Guarda de preguntas"
+          },
+          "valor": "Claude Code",
+          "texto": {
+            "es": "Con el modo de preguntas activo, impide cerrar un turno con preguntas sueltas: obliga a hacerlas en una lista numerada con su recomendación. Si el modo está apagado, solo avisa.",
+            "gl": "Co modo de preguntas activo, impide pechar un turno con preguntas soltas: obriga a facelas nunha lista numerada coa súa recomendación. Se o modo está apagado, só avisa.",
+            "en": "With the questions mode on, it stops a turn from ending with loose questions: they must come as a numbered list with a recommendation. With the mode off, it only warns."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Modo prudente",
+            "gl": "Modo prudente",
+            "en": "Modo prudente"
+          },
+          "valor": "Claude Code",
+          "texto": {
+            "es": "Antes de una orden destructiva pide confirmación a la persona. Está activo por defecto y se puede acotar con excepciones.",
+            "gl": "Antes dunha orde destrutiva pide confirmación á persoa. Está activo por defecto e pódese acotar con excepcións.",
+            "en": "Before a destructive command it asks the person for confirmation. It is on by default and can be narrowed with exceptions."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Guarda de alcance",
+            "gl": "Guarda de alcance",
+            "en": "Guarda de alcance"
+          },
+          "valor": "Claude Code · pre-commit",
+          "texto": {
+            "es": "Avisa o bloquea al tocar un archivo que la ficha de la tarea no prevé, y el pre-commit lo repite como respaldo. Las desviaciones quedan apuntadas para la retro.",
+            "gl": "Avisa ou bloquea ao tocar un ficheiro que a ficha da tarefa non prevé, e o pre-commit repíteo como respaldo. As desviacións quedan apuntadas para a retro.",
+            "en": "Warns or blocks when a file the task sheet does not list is touched, and the pre-commit repeats it as a backstop. Deviations are logged for the retro."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Aviso de CI en rojo",
+            "gl": "Aviso de CI en rojo",
+            "en": "Aviso de CI en rojo"
+          },
+          "valor": "pre-push",
+          "texto": {
+            "es": "Al subir avisa, sin bloquear, si el último CI de la rama está en rojo.",
+            "gl": "Ao subir avisa, sen bloquear, se o último CI da rama está en vermello.",
+            "en": "When pushing it warns, without blocking, if the branch’s last CI run is red."
           }
         },
         {
@@ -2035,6 +2099,61 @@
         "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The full release notes are in the project’s repository."
       },
       "items": [
+        {
+          "nombre": {
+            "es": "Preguntas, modos y otros agentes",
+            "gl": "Preguntas, modos e outros axentes",
+            "en": "Questions, modes and other agents"
+          },
+          "valor": "0.8.0 · 2026-11-18",
+          "texto": {
+            "es": "Versión con las preguntas a la persona, un modo prudente, una ficha por tarea y el uso con otros agentes además de Claude Code.",
+            "gl": "Versión coas preguntas á persoa, un modo prudente, unha ficha por tarefa e o uso con outros axentes ademais de Claude Code.",
+            "en": "A release with questions to the person, a cautious mode, a sheet for each task and use with agents other than Claude Code."
+          },
+          "detalle": [
+            {
+              "es": "Las preguntas van en una lista numerada, cada una con su recomendación, y se responde por número; una pregunta ya vista no se repite.",
+              "gl": "As preguntas van nunha lista numerada, cada unha coa súa recomendación, e respóndese por número; unha pregunta xa vista non se repite.",
+              "en": "Questions come in a numbered list, each with its recommendation, and you answer by number; a question already seen is not repeated."
+            },
+            {
+              "es": "Un modo prudente pide confirmación antes de una orden destructiva, y un solo interruptor cambia los modos.",
+              "gl": "Un modo prudente pide confirmación antes dunha orde destrutiva, e un só interruptor cambia os modos.",
+              "en": "A cautious mode asks for confirmation before a destructive command, and a single switch changes the modes."
+            },
+            {
+              "es": "Cada tarea tiene su ficha con criterios de aceptación y un registro de decisiones, y no se cierra sin comprobar sus criterios.",
+              "gl": "Cada tarefa ten a súa ficha con criterios de aceptación e un rexistro de decisións, e non se pecha sen comprobar os seus criterios.",
+              "en": "Each task has its sheet with acceptance criteria and a decision log, and it is not closed without checking its criteria."
+            },
+            {
+              "es": "El alcance de la tarea queda congelado: si se toca algo fuera de lo previsto, se avisa y la desviación se apunta para la retro.",
+              "gl": "O alcance da tarefa queda conxelado: se se toca algo fóra do previsto, avísase e a desviación apúntase para a retro.",
+              "en": "A task’s scope is frozen: if something outside the plan is touched, it warns and the deviation is logged for the retro."
+            },
+            {
+              "es": "Las ramas de exploración, sin ficha, no se pueden fusionar en una rama de trabajo por error.",
+              "gl": "As ramas de exploración, sen ficha, non se poden fusionar nunha rama de traballo por erro.",
+              "en": "Exploration branches, without a sheet, cannot be merged into a working branch by mistake."
+            },
+            {
+              "es": "El flujo se instala también para opencode y Codex, con una guía de lo que funciona fuera de Claude Code.",
+              "gl": "O fluxo instálase tamén para opencode e Codex, cunha guía do que funciona fóra de Claude Code.",
+              "en": "The workflow is also installed for opencode and Codex, with a guide to what works outside Claude Code."
+            },
+            {
+              "es": "Si una prueba falla a veces, se reintenta, se apunta como inestable y se propone arreglarla.",
+              "gl": "Se unha proba falla ás veces, reintentase, apúntase como inestable e propónse arranxala.",
+              "en": "If a test fails now and then, it is retried, logged as flaky and a fix is proposed."
+            },
+            {
+              "es": "Al subir, se avisa si el último CI de la rama está en rojo.",
+              "gl": "Ao subir, avísase se o último CI da rama está en vermello.",
+              "en": "When pushing, it warns if the branch’s last CI run is red."
+            }
+          ]
+        },
         {
           "nombre": {
             "es": "Parche de la recogida",
@@ -2850,27 +2969,41 @@
       },
       "estado": "hecho",
       "detalle": {
-        "es": "Publicada el 15 de noviembre con lo hecho: quién firma cada commit, CI validado, libro de tokens sin commits propios y subagentes ligeros en cada peldaño. Lo que faltaba (preguntas, modos, ficha de cada tarea, idiomas configurables) pasa a la 0.8.",
-        "gl": "Publicada o 15 de novembro co feito: quen asina cada commit, CI validado, libro de tokens sen commits propios e subaxentes lixeiros en cada chanzo. O que faltaba (preguntas, modos, ficha de cada tarefa, idiomas configurables) pasa á 0.8.",
-        "en": "Released on 15 November with what was done: who signs each commit, a validated CI, a token ledger without its own commits and lightweight subagents at every rung. What was left (questions, modes, a sheet for each task, configurable languages) moves to 0.8."
+        "es": "Publicada el 15 de noviembre con lo hecho: quién firma cada commit, CI validado, libro de tokens sin commits propios y subagentes ligeros en cada peldaño. Lo que faltaba (preguntas, modos, ficha de cada tarea) llegó en la 0.8.",
+        "gl": "Publicada o 15 de novembro co feito: quen asina cada commit, CI validado, libro de tokens sen commits propios e subaxentes lixeiros en cada chanzo. O que faltaba (preguntas, modos, ficha de cada tarefa) chegou na 0.8.",
+        "en": "Released on 15 November with what was done: who signs each commit, a validated CI, a token ledger without its own commits and lightweight subagents at every rung. What was left (questions, modes, a sheet for each task) arrived in 0.8."
       }
     },
     {
       "version": "0.8",
       "nombre": {
-        "es": "Front y otros agentes",
-        "gl": "Front e outros axentes",
-        "en": "Front end and other agents"
+        "es": "Preguntas y otros agentes",
+        "gl": "Preguntas e outros axentes",
+        "en": "Questions and other agents"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "detalle": {
-        "es": "Las preguntas a la persona, numeradas, con una recomendación y sin repetirse, y un modo prudente con un solo interruptor; una ficha por tarea con sus criterios de aceptación e idiomas configurables; pruebas de interfaz, perfiles de instalación (mínimo, base y completo) y uso con otros agentes y modelos.",
-        "gl": "As preguntas á persoa, numeradas, cunha recomendación e sen repetirse, e un modo prudente cun só interruptor; unha ficha por tarefa cos seus criterios de aceptación e idiomas configurables; probas de interface, perfís de instalación (mínimo, base e completo) e uso con outros axentes e modelos.",
-        "en": "Questions to the person, numbered, with a recommendation and never repeated, and a cautious mode with a single switch; a sheet for each task with its acceptance criteria, and configurable languages; interface tests, install profiles (minimal, core and full) and use with other agents and models."
+        "es": "Publicada el 18 de noviembre: las preguntas a la persona, numeradas y con una recomendación; modo prudente que pide confirmación antes de una orden destructiva; una ficha por tarea con sus criterios y su registro de decisiones; alcance congelado con aviso y ramas de exploración; pruebas inestables detectadas; y uso con opencode y Codex.",
+        "gl": "Publicada o 18 de novembro: as preguntas á persoa, numeradas e cunha recomendación; modo prudente que pide confirmación antes dunha orde destrutiva; unha ficha por tarefa cos seus criterios e o seu rexistro de decisións; alcance conxelado con aviso e ramas de exploración; probas inestables detectadas; e uso con opencode e Codex.",
+        "en": "Released on 18 November: questions to the person, numbered and with a recommendation; a cautious mode that asks for confirmation before a destructive command; a sheet for each task with its criteria and decision log; frozen scope with a warning and exploration branches; flaky tests detected; and use with opencode and Codex."
       }
     },
     {
       "version": "0.9",
+      "nombre": {
+        "es": "Front",
+        "gl": "Front",
+        "en": "Front"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Idiomas configurables para el código, la documentación y lo público, perfiles de instalación (mínimo, base y completo) y pruebas de interfaz.",
+        "gl": "Idiomas configurables para o código, a documentación e o público, perfís de instalación (mínimo, base e completo) e probas de interface.",
+        "en": "Configurable languages for code, documentation and public texts, install profiles (minimal, core and full) and interface tests."
+      }
+    },
+    {
+      "version": "0.10",
       "nombre": {
         "es": "Estable",
         "gl": "Estable",
@@ -2935,6 +3068,22 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-18",
+      "texto": {
+        "es": "Publicada la 0.8.0: el agente pregunta en una lista numerada con su recomendación y se responde por número; hay un modo prudente que confirma antes de una orden destructiva; cada tarea tiene su ficha de criterios y un alcance que avisa si el trabajo se sale; y las ramas de exploración no se fusionan por error.",
+        "gl": "Publicada a 0.8.0: o axente pregunta nunha lista numerada coa súa recomendación e respóndese por número; hai un modo prudente que confirma antes dunha orde destrutiva; cada tarefa ten a súa ficha de criterios e un alcance que avisa se o traballo se sae; e as ramas de exploración non se fusionan por erro.",
+        "en": "Version 0.8.0 is out: the agent asks in a numbered list with its recommendation and you answer by number; a cautious mode confirms before a destructive command; each task has its sheet of criteria and a scope that warns if the work strays; and exploration branches are not merged by mistake."
+      }
+    },
+    {
+      "fecha": "2026-11-18",
+      "texto": {
+        "es": "El flujo también se instala para opencode y Codex, con una guía de lo que funciona fuera de Claude Code y lo que no.",
+        "gl": "O fluxo tamén se instala para opencode e Codex, cunha guía do que funciona fóra de Claude Code e do que non.",
+        "en": "The workflow can now also be installed for opencode and Codex, with a guide to what works outside Claude Code and what does not."
+      }
+    },
     {
       "fecha": "2026-11-16",
       "texto": {
@@ -3002,7 +3151,7 @@
   ],
   "cifras": [
     {
-      "valor": "12",
+      "valor": "13",
       "etiqueta": {
         "es": "skills propias",
         "gl": "skills propias",
@@ -3018,7 +3167,7 @@
       }
     },
     {
-      "valor": "+2.700",
+      "valor": "+3.300",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",
@@ -3098,9 +3247,9 @@
         "en": "Open since 0.4; 1.0 with the Management Center"
       },
       "texto": {
-        "es": "El repositorio es público y admite colaboración desde la 0.4. La 1.0 llega con el Management Center, después de la 0.9 «Estable»; para darla por madura, el flujo tiene que funcionar al menos cuatro semanas en tres proyectos de tecnologías distintas.",
-        "gl": "O repositorio é público e admite colaboración desde a 0.4. A 1.0 chega co Management Center, despois da 0.9 «Estable»; para dala por madura, o fluxo ten que funcionar polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
-        "en": "The repository has been public and open to collaboration since 0.4. 1.0 comes with the Management Center, after 0.9 “Stable”; to count as mature, the workflow has to run for at least four weeks on three projects built with different technologies."
+        "es": "El repositorio es público y admite colaboración desde la 0.4. La 1.0 llega con el Management Center, después de la 0.10 «Estable»; para darla por madura, el flujo tiene que funcionar al menos cuatro semanas en tres proyectos de tecnologías distintas.",
+        "gl": "O repositorio é público e admite colaboración desde a 0.4. A 1.0 chega co Management Center, despois da 0.10 «Estable»; para dala por madura, o fluxo ten que funcionar polo menos catro semanas en tres proxectos de tecnoloxías distintas.",
+        "en": "The repository has been public and open to collaboration since 0.4. 1.0 comes with the Management Center, after 0.10 “Stable”; to count as mature, the workflow has to run for at least four weeks on three projects built with different technologies."
       }
     },
     {

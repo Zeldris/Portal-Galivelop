@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#E0703A",
   "icono": "proyectos/tarkor/icono.svg",
-  "actualizado": "2026-11-17",
+  "actualizado": "2026-11-18",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -4024,6 +4024,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-18",
+      "texto": {
+        "es": "Se investiga qué modelos de generación de imágenes pueden correr en una Steam Deck para ilustrar el mundo con un estilo propio; falta la prueba real en la consola. El juego y su instalador ponen además al día su flujo de trabajo y sus pruebas automáticas.",
+        "gl": "Investígase que modelos de xeración de imaxes poden correr nunha Steam Deck para ilustrar o mundo cun estilo propio; falta a proba real na consola. O xogo e o seu instalador poñen ademais ao día o seu fluxo de traballo e as súas probas automáticas.",
+        "en": "We are researching which image-generation models can run on a Steam Deck to illustrate the world in a style of its own; the real test on the console is still missing. The game and its installer also update their workflow and automated tests."
+      }
+    },
     {
       "fecha": "2026-11-16",
       "texto": {

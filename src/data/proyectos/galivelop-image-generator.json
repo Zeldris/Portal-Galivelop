@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-17",
+  "actualizado": "2026-11-18",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -1038,58 +1038,90 @@
       }
     },
     {
-      "version": "0.6–0.11",
-      "nombre": {
-        "es": "Proceso de marca",
-        "gl": "Proceso de marca",
-        "en": "Brand process"
-      },
-      "estado": "curso",
-      "detalle": {
-        "es": "Pieza de marca e imagen libre, tandas, contador de fallos, recortar un intento (ya en la 0.6), taller enlazado, entrega por carpetas y nota de marca. Va antes del piloto y de los pasos siguientes.",
-        "gl": "Peza de marca e imaxe libre, quendas, contador de fallos, recortar un intento (xa na 0.6), obradoiro enlazado, entrega por cartafoles e nota de marca. Vai antes do piloto e dos pasos seguintes.",
-        "en": "Brand piece and free image, batches, failure counter, cropping an attempt (already in 0.6), linked workshop, delivery by folders and brand note. It comes before the pilot and the later steps."
-      }
-    },
-    {
       "version": "0.6",
       "nombre": {
-        "es": "Montaje",
-        "gl": "Montaxe",
-        "en": "Assembly"
+        "es": "Recortar",
+        "gl": "Recortar",
+        "en": "Cropping"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "detalle": {
-        "es": "Un formato se compone por capas con piezas del proyecto y archivos propios, y el motor lo encaja en una sola imagen.",
-        "gl": "Un formato compónse por capas con pezas do proxecto e arquivos propios, e o motor encáixao nunha soa imaxe.",
-        "en": "A format is built in layers from the project’s pieces and your own files, and the engine blends it into a single image."
+        "es": "Recortar un intento sin tocar archivos a mano: las portadas y los iconos de una hoja de cuatro salen ya recortados, y el resultado puede llevarse a otro pedido.",
+        "gl": "Recortar un intento sen tocar arquivos a man: as portadas e as iconas dunha folla de catro saen xa recortadas, e o resultado pódese levar a outro pedido.",
+        "en": "Crop an attempt without touching files by hand: covers and icons from a four-up sheet now come out cropped, and the result can be moved to another request."
       }
     },
     {
       "version": "0.7",
       "nombre": {
-        "es": "Cajas de texto antes de generar",
-        "gl": "Caixas de texto antes de xerar",
-        "en": "Text boxes before generating"
+        "es": "Hoja de marca como datos",
+        "gl": "Folla de marca como datos",
+        "en": "Brand sheet as data"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "detalle": {
-        "es": "El texto se coloca antes de generar, para que la imagen le deje sitio y se lea bien.",
-        "gl": "O texto colócase antes de xerar, para que a imaxe lle deixe sitio e se lea ben.",
-        "en": "Text is placed before generating, so the image leaves room for it and it reads well."
+        "es": "Cada proyecto describe su marca en una hoja con datos; el servicio arma el texto de cada pieza y avisa si incumple los vetos. Con pestaña Marca en la interfaz y el Portal y sus productos ya migrados.",
+        "gl": "Cada proxecto describe a súa marca nunha folla con datos; o servizo arma o texto de cada peza e avisa se incumpre os vetos. Con lapela Marca na interface e o Portal e os seus produtos xa migrados.",
+        "en": "Each project describes its brand in a data sheet; the service builds the text of each piece and warns if it breaks the vetoes. With a Brand tab in the interface and the Portal and its products already migrated."
       }
     },
     {
       "version": "0.8",
       "nombre": {
-        "es": "Borrar pedidos desde la interfaz",
-        "gl": "Borrar pedidos desde a interface",
-        "en": "Delete requests from the interface"
+        "es": "Pieza de marca",
+        "gl": "Peza de marca",
+        "en": "Brand piece"
       },
-      "estado": "pendiente"
+      "estado": "curso",
+      "detalle": {
+        "es": "Un pedido de marca hecho de principio a fin desde la interfaz, sin escribir el texto entero: montaje y comprobación, tandas agrupadas y un contador de fallos que para a tiempo.",
+        "gl": "Un pedido de marca feito de principio a fin desde a interface, sen escribir o texto enteiro: montaxe e comprobación, quendas agrupadas e un contador de fallos que para a tempo.",
+        "en": "A brand request made from start to finish in the interface, without writing the whole text: assembly and checking, grouped batches and a failure counter that stops in time."
+      }
     },
     {
       "version": "0.9",
+      "nombre": {
+        "es": "Nota y descarte",
+        "gl": "Nota e descarte",
+        "en": "Score and discard"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Cada intento recibe una nota con su desglose y el servicio propone descartar los peores, de forma recuperable.",
+        "gl": "Cada intento recibe unha nota co seu desglose e o servizo propón descartar os peores, de forma recuperable.",
+        "en": "Each attempt gets a score with a breakdown and the service suggests discarding the worst ones, in a recoverable way."
+      }
+    },
+    {
+      "version": "0.10",
+      "nombre": {
+        "es": "Taller, recursos y entrega",
+        "gl": "Obradoiro, recursos e entrega",
+        "en": "Workshop, resources and delivery"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Pasos del taller por tipo de pieza, recursos del proyecto como referencia, edición de la hoja desde la interfaz y entrega por carpetas.",
+        "gl": "Pasos do obradoiro por tipo de peza, recursos do proxecto como referencia, edición da folla desde a interface e entrega por cartafoles.",
+        "en": "Workshop steps for each type of piece, project resources as references, sheet editing from the interface and delivery by folders."
+      }
+    },
+    {
+      "version": "0.11",
+      "nombre": {
+        "es": "Bandeja",
+        "gl": "Bandexa",
+        "en": "Inbox"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Una bandeja donde el servicio deja los juicios que necesita y se contestan sin salir de la interfaz.",
+        "gl": "Unha bandexa onde o servizo deixa os xuízos que precisa e se contestan sen saír da interface.",
+        "en": "An inbox where the service leaves the judgments it needs and they are answered without leaving the interface."
+      }
+    },
+    {
       "nombre": {
         "es": "Piloto con World-Maker-Fantasy",
         "gl": "Piloto con World-Maker-Fantasy",
@@ -1130,6 +1162,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-18",
+      "texto": {
+        "es": "Hoja de marca como datos: cada proyecto describe su marca en una hoja con datos, que puede heredar de otra. El servicio arma el texto de cada tipo de pieza y avisa si incumple los vetos o el rango de palabras. Desde la línea de órdenes se crea, se prueba y se genera la hoja, y la pestaña Marca la enseña. El Portal y sus cuatro productos ya están migrados; llega con la 0.7.",
+        "gl": "Folla de marca como datos: cada proxecto describe a súa marca nunha folla con datos, que pode herdar doutra. O servizo arma o texto de cada tipo de peza e avisa se incumpre os vetos ou o rango de palabras. Desde a liña de ordes créase, próbase e xérase a folla, e a lapela Marca ensínaa. O Portal e os seus catro produtos xa están migrados; chega coa 0.7.",
+        "en": "Brand sheet as data: each project describes its brand in a data sheet, which can inherit from another. The service builds the text for each type of piece and warns if it breaks the vetoes or the word range. From the command line the sheet is created, tested and generated, and the Brand tab shows it. The Portal and its four products are already migrated; it arrives with 0.7."
+      }
+    },
     {
       "fecha": "2026-11-17",
       "texto": {
@@ -1221,7 +1261,7 @@
       }
     },
     {
-      "valor": "4 / 9",
+      "valor": "5 / 12",
       "etiqueta": {
         "es": "fases hechas",
         "gl": "fases feitas",

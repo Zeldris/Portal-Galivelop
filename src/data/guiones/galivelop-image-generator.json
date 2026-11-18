@@ -1,11 +1,11 @@
 {
   "pagina": "/proyectos/galivelop-image-generator",
   "audio": ["es"],
-  "narra": "2026-11-17",
+  "narra": "2026-11-18",
   "notas": [
     "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Steam Deck» a la inglesa (estim dek); «FLUX» a la inglesa (flacs); «Vulkan» a la inglesa (vál-kan); «World-Maker-Fantasy» a la inglesa (uérld méiker fántasi); «Python» a la inglesa (páizon); «MIT» no se lee: se dice «licencia abierta».",
     "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión y lo que falta, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
-    "Envejece con cada versión (hoy la cero punto seis, próxima la pieza de marca) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
+    "Envejece con cada versión (hoy la cero punto seis publicada, con la hoja de marca ya hecha; próxima, la pieza de marca) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
   ],
   "trozos": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto seis, con el código abierto. La próxima es la pieza de marca, dentro del proceso de marca. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
-      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto seis, co código aberto. A próxima é a peza de marca, dentro do proceso de marca. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
-      "en": "Where does it stand? It is in development, at version zero point six, with open code. The next one is the brand piece, within the brand process. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the What's new section, further down."
+      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto seis publicada, con el código abierto. La hoja de marca como datos ya está hecha y llega con la cero punto siete. La próxima es la pieza de marca, dentro del proceso de marca. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto seis publicada, co código aberto. A folla de marca como datos xa está feita e chega coa cero punto sete. A próxima é a peza de marca, dentro do proceso de marca. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, at published version zero point six, with open code. The brand sheet as data is already done and arrives with zero point seven. The next one is the brand piece, within the brand process. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the What's new section, further down."
     },
     {
       "seccion": "resumen",
@@ -155,9 +155,9 @@
     },
     {
       "seccion": "avance",
-      "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Ahora está en curso el proceso de marca: pieza de marca e imagen libre, tandas, recortar un intento y entrega por carpetas. Falta el montaje por capas, colocar el texto antes de generar, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana.",
-      "gl": "No avance ves o camiño. Xa funcionan o núcleo, o motor real, a interface e as funcións de borrar e editar texto. Agora está en curso o proceso de marca: peza de marca e imaxe libre, quendas, recortar un intento e entrega por cartafoles. Falta a montaxe por capas, colocar o texto antes de xerar, o piloto co xogo, e un director local cun modelo de linguaxe que axude a redactar pedidos. E que funcione en calquera equipo, non só no noso. Debaixo están as novidades, semana a semana.",
-      "en": "In the progress section you see the road. The core, the real engine, the interface and the delete and edit text functions already work. The brand process is now underway: brand piece and free image, batches, cropping an attempt, and delivery by folders. Still missing are layered composition, placing the text before generating, the pilot with the game, and a local director with a language model that helps write requests. And making it work on any computer, not just ours. Below is the news, week by week.",
+      "es": "En el avance ves el camino. Ya funcionan el núcleo, el motor real, la interfaz y las funciones de borrar y editar texto. Ahora está en curso el proceso de marca: ya se puede recortar un intento y la hoja de marca es un dato; sigue la pieza de marca. Falta la nota y el descarte, el taller con la entrega por carpetas, la bandeja de juicios, el piloto con el juego, y un director local con un modelo de lenguaje que ayude a redactar pedidos. Y que funcione en cualquier equipo, no solo en el nuestro. Debajo están las novedades, semana a semana.",
+      "gl": "No avance ves o camiño. Xa funcionan o núcleo, o motor real, a interface e as funcións de borrar e editar texto. Agora está en curso o proceso de marca: xa se pode recortar un intento e a folla de marca é un dato; segue a peza de marca. Falta a nota e o descarte, o obradoiro coa entrega por cartafoles, a bandexa de xuízos, o piloto co xogo, e un director local cun modelo de linguaxe que axude a redactar pedidos. E que funcione en calquera equipo, non só no noso. Debaixo están as novidades, semana a semana.",
+      "en": "In the progress section you see the road. The core, the real engine, the interface and the delete and edit text functions already work. The brand process is now underway: an attempt can already be cropped and the brand sheet is data; the brand piece comes next. Still missing are the score and discard, the workshop with delivery by folders, the judgment inbox, the pilot with the game, and a local director with a language model that helps write requests. And making it work on any computer, not just ours. Below is the news, week by week.",
       "enfoques": [
         {
           "frase": "Ya funcionan el núcleo",
@@ -181,25 +181,43 @@
           "frase": "Ahora está en curso el proceso de marca",
           "gl": "Agora está en curso o proceso de marca",
           "en": "The brand process is now underway",
-          "ver": "hito-0-6-0-11-proceso-de-marca"
+          "ver": "hito-0-7-hoja-de-marca-como-datos"
         },
         {
-          "frase": "Falta el montaje por capas",
-          "gl": "Falta a montaxe por capas",
-          "en": "Still missing are layered composition",
-          "ver": "hito-0-6-montaje"
+          "frase": "ya se puede recortar un intento",
+          "gl": "xa se pode recortar un intento",
+          "en": "an attempt can already be cropped",
+          "ver": "hito-0-6-recortar"
         },
         {
-          "frase": "colocar el texto antes de generar",
-          "gl": "colocar o texto antes de xerar",
-          "en": "placing the text before generating",
-          "ver": "hito-0-7-cajas-de-texto-antes-de-generar"
+          "frase": "sigue la pieza de marca",
+          "gl": "segue a peza de marca",
+          "en": "the brand piece comes next",
+          "ver": "hito-0-8-pieza-de-marca"
+        },
+        {
+          "frase": "Falta la nota y el descarte",
+          "gl": "Falta a nota e o descarte",
+          "en": "Still missing are the score and discard",
+          "ver": "hito-0-9-nota-y-descarte"
+        },
+        {
+          "frase": "el taller con la entrega por carpetas",
+          "gl": "o obradoiro coa entrega por cartafoles",
+          "en": "the workshop with delivery by folders",
+          "ver": "hito-0-10-taller-recursos-y-entrega"
+        },
+        {
+          "frase": "la bandeja de juicios",
+          "gl": "a bandexa de xuízos",
+          "en": "the judgment inbox",
+          "ver": "hito-0-11-bandeja"
         },
         {
           "frase": "el piloto con el juego",
           "gl": "o piloto co xogo",
           "en": "the pilot with the game",
-          "ver": "hito-0-9-piloto-con-world-maker-fantasy"
+          "ver": "hito-piloto-con-world-maker-fantasy"
         },
         {
           "frase": "un director local",
