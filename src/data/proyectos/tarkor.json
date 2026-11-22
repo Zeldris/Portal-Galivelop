@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#E0703A",
   "icono": "proyectos/tarkor/icono.svg",
-  "actualizado": "2026-11-18",
+  "actualizado": "2026-11-22",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -4024,6 +4024,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-20",
+      "texto": {
+        "es": "Segunda ronda de pruebas jugando con la IA en el propio equipo: los personajes responden con lo que saben del mundo sin desvelar secretos, el combate ya no da por bueno un golpe que no llegó y entiende mejor las esquivas y los escudos, y el lore se encuentra también por nombres cortos, como «los Maktor». El juego y su instalador ponen además al día su flujo de trabajo.",
+        "gl": "Segunda rolda de probas xogando coa IA no propio equipo: os personaxes responden co que saben do mundo sen desvelar segredos, o combate xa non dá por bo un golpe que non chegou e entende mellor as esquivas e os escudos, e o lore atópase tamén por nomes curtos, como «os Maktor». O xogo e o seu instalador poñen ademais ao día o seu fluxo de traballo.",
+        "en": "Second round of play-testing with the AI running on your own machine: characters answer with what they know about the world without giving away secrets, combat no longer counts a blow that never landed and handles dodges and shields better, and lore can also be found by short names, such as “the Maktor”. The game and its installer also update their workflow."
+      }
+    },
     {
       "fecha": "2026-11-18",
       "texto": {

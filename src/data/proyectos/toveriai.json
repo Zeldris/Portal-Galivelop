@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-16",
+  "actualizado": "2026-11-22",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -699,6 +699,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-21",
+      "texto": {
+        "es": "La web se usa ya con comodidad desde el móvil: el menú, el pie y las tablas se adaptan a las pantallas pequeñas, y los botones y enlaces son más fáciles de pulsar con el dedo.",
+        "gl": "A web xa se usa con comodidade desde o móbil: o menú, o pé e as táboas adáptanse ás pantallas pequenas, e os botóns e ligazóns son máis doados de premer co dedo.",
+        "en": "The website is now comfortable to use on a phone: the menu, footer and tables adapt to small screens, and buttons and links are easier to tap with a finger."
+      }
+    },
     {
       "fecha": "2026-11-16",
       "texto": {

@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-18",
+  "actualizado": "2026-11-22",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.8.0 · próxima la 0.9 «Front»",
-    "gl": "En desenvolvemento · v0.8.0 · próxima a 0.9 «Front»",
-    "en": "In development · v0.8.0 · next up: 0.9 “Front”"
+    "es": "En desarrollo · v0.8.2 · próxima la 0.9 «Front»",
+    "gl": "En desenvolvemento · v0.8.2 · próxima a 0.9 «Front»",
+    "en": "In development · v0.8.2 · next up: 0.9 “Front”"
   },
   "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
   "ogAlt": {
@@ -69,11 +69,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.8.0",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.8.2",
       "etiqueta": {
-        "es": "Ver la versión 0.8.0",
-        "gl": "Ver a versión 0.8.0",
-        "en": "View version 0.8.0"
+        "es": "Ver la versión 0.8.2",
+        "gl": "Ver a versión 0.8.2",
+        "en": "View version 0.8.2"
       }
     }
   ],
@@ -2101,6 +2101,101 @@
       "items": [
         {
           "nombre": {
+            "es": "Modelo a la vista",
+            "gl": "Modelo á vista",
+            "en": "Model in sight"
+          },
+          "valor": "0.8.2 · 2026-11-22",
+          "texto": {
+            "es": "Parche de la 0.8: el agente avisa cuando el modelo o el esfuerzo no son los adecuados, la medición y el diagnóstico afinan, y la revisión pide pruebas con datos reales.",
+            "gl": "Parche da 0.8: o axente avisa cando o modelo ou o esforzo non son os axeitados, a medición e o diagnóstico afinan, e a revisión pide probas con datos reais.",
+            "en": "A 0.8 patch: the agent warns when the model or effort isn't the right one, measurement and diagnosis get sharper, and the review asks for tests with real data."
+          },
+          "detalle": [
+            {
+              "es": "El agente se para si el modelo o el esfuerzo recomendados para la tarea no son los de la sesión, y avisa al arrancar si el modelo cambió.",
+              "gl": "O axente detense se o modelo ou o esforzo recomendados para a tarefa non son os da sesión, e avisa ao arrancar se o modelo cambiou.",
+              "en": "The agent stops if the model or effort recommended for the task isn't the session's, and warns at start-up if the model changed."
+            },
+            {
+              "es": "La medición de tokens mide la sesión en curso y no mezcla registros de otras ramas.",
+              "gl": "A medición de tokens mide a sesión en curso e non mestura rexistros doutras ramas.",
+              "en": "Token measurement measures the current session and doesn't mix in records from other branches."
+            },
+            {
+              "es": "El diagnóstico avisa si falta la copia del flujo o si los agentes propios quedan fuera del repositorio.",
+              "gl": "O diagnóstico avisa se falta a copia do fluxo ou se os axentes propios quedan fóra do repositorio.",
+              "en": "The diagnosis warns if the workflow copy is missing or if its own agents are left out of the repository."
+            },
+            {
+              "es": "La bitácora pone sola la fecha de actualización al cambiar una fila.",
+              "gl": "A bitácora pon soa a data de actualización ao cambiar unha fila.",
+              "en": "The log sets its update date by itself when a row changes."
+            },
+            {
+              "es": "El revisor ya no lanza otros agentes, y cada test nuevo se prueba en rojo sin su arreglo.",
+              "gl": "O revisor xa non lanza outros axentes, e cada test novo próbase en vermello sen o seu arranxo.",
+              "en": "The reviewer no longer launches other agents, and each new test is checked to fail without its fix."
+            },
+            {
+              "es": "El aviso de arreglos de una revisión solo salta con frases completas, no con palabras sueltas.",
+              "gl": "O aviso de arranxos dunha revisión só salta con frases completas, non con palabras soltas.",
+              "en": "The review-fixes warning only fires on full phrases, not on loose words."
+            },
+            {
+              "es": "El CI no corre cuando una subida solo toca el registro de métricas, y la revisión pide un test con una muestra real para el código que lee lo que escribe un agente o una persona.",
+              "gl": "O CI non corre cando unha subida só toca o rexistro de métricas, e a revisión pide un test cunha mostra real para o código que le o que escribe un axente ou unha persoa.",
+              "en": "CI doesn't run when a push only touches the metrics record, and the review asks for a test with a real sample for code that reads what an agent or a person writes."
+            }
+          ]
+        },
+        {
+          "nombre": {
+            "es": "Instalación sin tropiezos",
+            "gl": "Instalación sen tropezos",
+            "en": "Smoother installation"
+          },
+          "valor": "0.8.1 · 2026-11-19",
+          "texto": {
+            "es": "Parche de arreglos de la 0.8: actualizar el flujo deja la instalación limpia, la revisión distingue el proyecto de la copia del flujo y la bitácora se protege mejor.",
+            "gl": "Parche de arranxos da 0.8: actualizar o fluxo deixa a instalación limpa, a revisión distingue o proxecto da copia do fluxo e a bitácora protéxese mellor.",
+            "en": "A fix patch for 0.8: updating the workflow leaves a clean installation, the review tells the project apart from the workflow copy and the log is better protected."
+          },
+          "detalle": [
+            {
+              "es": "Actualizar el flujo ya no deja un gancho repetido, y el diagnóstico avisa si lo hay.",
+              "gl": "Actualizar o fluxo xa non deixa un gancho repetido, e o diagnóstico avisa se o hai.",
+              "en": "Updating the workflow no longer leaves a duplicated hook, and the diagnosis warns if there is one."
+            },
+            {
+              "es": "Al migrar la bitácora se guarda en la configuración dónde van los pendientes, o se dice cómo hacerlo.",
+              "gl": "Ao migrar a bitácora gárdase na configuración onde van os pendentes, ou dise como facelo.",
+              "en": "When the log is migrated, where pending items go is saved in the settings, or you are told how to do it."
+            },
+            {
+              "es": "La revisión busca sola la copia del flujo para no revisarla, en vez de tomar el proyecto por el flujo.",
+              "gl": "A revisión busca soa a copia do fluxo para non revisala, en vez de tomar o proxecto polo fluxo.",
+              "en": "The review finds the workflow copy on its own so it isn't reviewed, instead of mistaking the project for the workflow."
+            },
+            {
+              "es": "Los arreglos de una revisión que llegan con una fusión cierran su bloque y cuentan en las métricas.",
+              "gl": "Os arranxos dunha revisión que chegan cunha fusión pechan o seu bloque e contan nas métricas.",
+              "en": "Review fixes that arrive with a merge close their block and count in the metrics."
+            },
+            {
+              "es": "La bitácora no deja perder la fila de la tarea en curso sin cerrar su rama, y sus errores dicen cómo corregirlos.",
+              "gl": "A bitácora non deixa perder a fila da tarefa en curso sen pechar a súa rama, e os seus erros din como corrixilos.",
+              "en": "The log won't let the in-progress task row be lost without closing its branch, and its errors say how to fix them."
+            },
+            {
+              "es": "La fusión de la rama de un subagente espera a que termine en vez de fallar, y la medición de tokens empieza en el último /clear.",
+              "gl": "A fusión da rama dun subaxente agarda a que remate en vez de fallar, e a medición de tokens empeza no último /clear.",
+              "en": "Merging a subagent's branch waits for it to finish instead of failing, and token measurement starts at the last /clear."
+            }
+          ]
+        },
+        {
+          "nombre": {
             "es": "Preguntas, modos y otros agentes",
             "gl": "Preguntas, modos e outros axentes",
             "en": "Questions, modes and other agents"
@@ -2989,6 +3084,34 @@
       }
     },
     {
+      "version": "0.8.1",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 19 de noviembre.",
+        "gl": "Publicada o 19 de novembro.",
+        "en": "Released on 19 November."
+      }
+    },
+    {
+      "version": "0.8.2",
+      "nombre": {
+        "es": "Parche",
+        "gl": "Parche",
+        "en": "Patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 22 de noviembre.",
+        "gl": "Publicada o 22 de novembro.",
+        "en": "Released on 22 November."
+      }
+    },
+    {
       "version": "0.9",
       "nombre": {
         "es": "Front",
@@ -3068,6 +3191,22 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-22",
+      "texto": {
+        "es": "Publicada la 0.8.2: el agente se para si el modelo o el esfuerzo de la sesión no son los que pide la tarea, y avisa al arrancar; la medición de tokens mide la sesión en curso; el diagnóstico detecta más fallos de instalación; y la revisión pide un test con una muestra real para el código que lee lo que escribe un agente o una persona.",
+        "gl": "Publicada a 0.8.2: o axente detense se o modelo ou o esforzo da sesión non son os que pide a tarefa, e avisa ao arrancar; a medición de tokens mide a sesión en curso; o diagnóstico detecta máis fallos de instalación; e a revisión pide un test cunha mostra real para o código que le o que escribe un axente ou unha persoa.",
+        "en": "Version 0.8.2 is out: the agent stops if the session's model or effort isn't what the task calls for, and warns at start-up; token measurement measures the current session; the diagnosis spots more installation faults; and the review asks for a test with a real sample for code that reads what an agent or a person writes."
+      }
+    },
+    {
+      "fecha": "2026-11-19",
+      "texto": {
+        "es": "Publicada la 0.8.1, un parche de arreglos: actualizar el flujo ya no duplica ganchos ni pierde ajustes, la revisión encuentra sola la copia del flujo para no revisarla, y la bitácora protege la fila de la tarea en curso.",
+        "gl": "Publicada a 0.8.1, un parche de arranxos: actualizar o fluxo xa non duplica ganchos nin perde axustes, a revisión atopa soa a copia do fluxo para non revisala, e a bitácora protexe a fila da tarefa en curso.",
+        "en": "Version 0.8.1 is out, a fix patch: updating the workflow no longer duplicates hooks or loses settings, the review finds the workflow copy on its own so it isn't reviewed, and the log protects the row of the task in progress."
+      }
+    },
     {
       "fecha": "2026-11-18",
       "texto": {
@@ -3167,7 +3306,7 @@
       }
     },
     {
-      "valor": "+3.300",
+      "valor": "3418",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",

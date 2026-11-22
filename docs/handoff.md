@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-22 (`/gw-update` 0.8.0 → 0.8.2, aprobado por la persona) |
+| **Actualizado** | 2026-11-22 (`/gw-portal` aplicado: fichas al día con los repos) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-b2d381ed-e10ez8` (sigue a `claude/siguiente-fy7bji`, 6dd7795) |
 | **Tarea en curso** | Ninguna. **Guiones en gl y en, guiones de miembros y auditoría del lector en móvil**, cerrados: la persona, 2026-11-18, «todos ok» (textos) y «todo ok» (lector en su móvil). Audio `es` de nueve guiones en `main` (9c2c23e, otra sesión); faltan los de los dos miembros y todo `gl`/`en`, «en camino» del generador (la persona, 2026-11-18). |
 | **Siguiente paso** | Esperar el audio del generador (miembros en `es`; `gl` y `en` de todos) y, cuando llegue, añadirlo al `audio` de cada guion y comprobar el lector; refrescar tarjetas compartidas; pedidos al generador (23c, 24c, 31f, «lectora-es», OG 24 de Developer); o un pendiente de `docs/records/pending.md` si la persona lo pide |
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-22 · **`/gw-portal` (aplicar)** (`ccr-b2d381ed-e10ez8`, solo contenido): novedades de toVeriAI (web en el móvil, 11-21), generador de imágenes (trabajo de fondo, 11-19), Tarkor (ronda local 2, 11-20) y Galivelop-workflow (0.8.1 y 0.8.2); workflow con fase, hitos 0.8.1/0.8.2, «Versiones publicadas», cifra 3418 pruebas, enlace y producto a 0.8.2 y diagrama `flujo` regenerado; Developer en próximamente 4 / 10, siguiente «el núcleo del agente». **Audio pendiente: galivelop-workflow/02-vistazo** (es, gl, en; dice ahora «cero punto ocho punto dos»). Avisos para la persona: toVeriAI quizá ya no tiene «5 proveedores de IA» (salió Cerebras); generador con 0.7.0 en `main` sin etiqueta ni release; Developer se renombra en su repo a «GalivelopCode» (nombre y lema, decisión de la persona; también `guiones/alvaro-garcia-grana.json`); hitos 0.1-0.3 de Tarkor «en curso» frente a su roadmap (los sostiene su bitácora); las fichas de toVeriAI, generador y Tarkor pasan de 8 novedades y no se han recortado (borrar contenido publicado espera a la persona).
 
 - 2026-11-22 · **(en `main`) Flujo Galivelop-workflow 0.8.2** (`ccr-b2d381ed-e10ez8`, `/gw-update`; la persona aprobó Q-1..Q-6 de `docs/questions.md`): `apply.py --update` (scripts, skills `gw-*`, agentes, ganchos, esquema; `version` 0.8.2); a mano, en `AGENTS.md` los trailers `Findings:`/`Retries:` en el último párrafo y no hacer un commit solo para el ledger, en `REVIEW.md` el criterio de test con muestra real, y en `check.yml` (del portal) `paths-ignore` del ledger. `workflowClone` por defecto (`../Galivelop-workflow`, el clon local; en la nube `doctor.py` avisa) y avisos de nombres viejos sin tocar. Revisión de lo fusionado a mano en la sesión (diff trivial), sin hallazgos; subido a `main` con confirmación de la persona.
 
@@ -55,6 +57,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- 2026-11-22 · **`/gw-portal` (informe y aplicar)** (`ccr-b2d381ed-e10ez8`): toVeriAI, generador, Tarkor y Galivelop-workflow (0.8.1 y 0.8.2) con novedades; Developer 4 / 10; voice sin cambios; muro sin piezas listas; detalle en «Para la próxima publicación».
 - 2026-11-18 · **`/gw-portal` (informe y aplicar)** (`ccr-b2d381ed-e10ez8`): generador de imágenes (novedad, hitos con el plan del repo, 5 / 12), Tarkor y toVeriAI (una novedad cada uno); próximamente sin cambios; `galivelop-client-catcher` oculto en `fuentes.json` como el evaluator (la persona); Galivelop-workflow 0.8.0 (fase, cifras, versión, novedades, hitos, diagramas). Audio pendiente de 02-vistazo y 07-avance en el generador y el workflow.
 - 2026-11-15 · **`/gw-portal` (aplicar): Galivelop-workflow 0.7.0** (`ccr-8e0862c2-niq1xt`): ficha con fase, enlace a la versión, descripción, hitos (0.7 hecha; las preguntas pasan a la 0.8), novedad del 2026-11-15, cifra de pruebas 2767, «Versiones publicadas» (Autores y subagentes), garantías y piezas (autores no permitidos, aviso de copia generada); producto a 0.7.0; diagramas de portada y arquitectura a v0.7.0. Sin cambios: Tarkor (auditorías y versiones del instalador son internas), toVeriAI, generador de imágenes, World-Maker-Fantasy, voz y developer. Sin repos nuevos.
 - 2026-11-14 · **Pieza de Reddit** `docs/media/2026-11-14/04-novedades-reddit/` publicada en el perfil u/Alvaro-Garcia-Grana (la persona: «siempre en el mío»; sin enlace apuntado), en inglés, con una imagen oscura de todos los proyectos (`media/1-changelog.webp`).

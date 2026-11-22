@@ -34,13 +34,13 @@
       "en": "Local AI development agent that works without relying on the cloud."
     },
     "fases": {
-      "hechas": 1,
-      "total": 6
+      "hechas": 4,
+      "total": 10
     },
     "siguiente": {
-      "es": "la instalación",
-      "gl": "a instalación",
-      "en": "installation"
+      "es": "el núcleo del agente",
+      "gl": "o núcleo do axente",
+      "en": "the agent core"
     }
   }
 ]

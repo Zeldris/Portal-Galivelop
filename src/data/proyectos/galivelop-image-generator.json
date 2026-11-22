@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-18",
+  "actualizado": "2026-11-22",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -1162,6 +1162,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-19",
+      "texto": {
+        "es": "Trabajo de fondo: el servicio pone al día su forma de trabajar con la nueva versión del flujo del taller; quien lo usa no nota cambios.",
+        "gl": "Traballo de fondo: o servizo pon ao día a súa forma de traballar coa nova versión do fluxo do obradoiro; quen o usa non nota cambios.",
+        "en": "Behind the scenes: the service brings its way of working up to date with the new version of the workshop's workflow; nothing changes for those who use it."
+      }
+    },
     {
       "fecha": "2026-11-18",
       "texto": {
