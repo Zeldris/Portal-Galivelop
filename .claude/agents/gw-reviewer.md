@@ -1,8 +1,8 @@
 ---
-# galivelop-workflow v0.8.0
+# galivelop-workflow v0.8.2
 name: gw-reviewer
 description: Reviewer for the briefs of gw-orchestrate-dealer and the phases before the protected branch. Runs /code-review on one diff in a clean context and returns the findings; no MCP tools. Use it for each review instead of general-purpose.
-tools: Read, Glob, Grep, Bash, Write, Skill, Agent, ToolSearch, Monitor, TaskStop
+tools: Read, Glob, Grep, Bash, Write, Skill, ToolSearch, Monitor, TaskStop
 model: opus
 effort: medium
 ---

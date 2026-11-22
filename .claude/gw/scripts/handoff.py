@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# galivelop-workflow v0.8.0
+# galivelop-workflow v0.8.2
 """Hand-off log rules. The branch-row rules need `"logRows": true` in .claude/gw.json (a no-op otherwise); the
 size and "Done" rules of `check`, and the `done` subcommand, work on any log.
 
@@ -11,7 +11,10 @@ contradicting "Next" lines, so each branch writes only in its own row and the ro
                                                  with logRows: rows well formed, one per branch, <= 600 characters;
                                                  with --date, the "Updated" row is not older than that day; a "Task
                                                  in progress" row with no `branch` fails even if the other rows are
-                                                 fine. On any log: every value cell of the state table (first
+                                                 fine; and (D135) a "Task in progress" row of HEAD's log (at commit time
+                                                 only, not with --at push) that is gone, not even renamed (its branch has no
+                                                 row left), fails, unless the commit closes that branch (its row
+                                                 says "merged, branch finished", close-row) or is a merge. On any log: every value cell of the state table (first
                                                  "Estado actual" / "Current state" section) <= 800 characters, and
                                                  the "Hecho (5 últimas)" / "Done (last 5)" section has <= 5 items,
                                                  numbered 1..n, each on its own line ("N. "). These last rules only
@@ -79,7 +82,8 @@ contradicting "Next" lines, so each branch writes only in its own row and the ro
   handoff.py set-row TEXT [--branch BRANCH]     rewrite the text of BRANCH's row (default: the current branch) without
                                                  closing it; fails, and writes nothing, if the row is missing, TEXT is
                                                  empty or has a newline, or it passes 600 characters; prints the
-                                                 row as written and n/limit (set-row and close-row)
+                                                 row as written and n/limit (set-row and close-row); both also set
+                                                 today's date in the "Updated" row, if the log has one (D154)
   handoff.py closed BASE SHA                    every task closed in the plan between BASE and SHA ("- [x] **ID**"
                                                  or struck through) is also recorded in the "Done" section of SHA's
                                                  log: struck through there, or named on a line that starts with a date
@@ -116,7 +120,8 @@ contradicting "Next" lines, so each branch writes only in its own row and the ro
                                                  tree, the index or any local or remote-tracking branch, so a new task
                                                  does not take an id another branch already took (`clash` finds that
                                                  only at the push). --fetch runs `git fetch --all` first and fails if
-                                                 it fails. Works without logRows; needs a plan
+                                                 it fails. Also skips the ids named in `pendingFile` (D157). Works
+                                                 without logRows; needs a plan
 
 Common options: --root PATH (default: from this script's folder, via config.py), --plan PATH (repeatable; a file or a
 folder with the plan/roadmap; env GW_PLAN, ':'-separated; config `plan`), --id-regex REGEX (task ids; env GW_TASK_ID;
@@ -130,6 +135,7 @@ import ast
 import contextlib
 import datetime
 import errno
+import functools
 import json
 import os
 import re
@@ -462,6 +468,11 @@ def cmd_check(ctx, args):
             print(f"WARNING: handoff: the log has {len(text)} characters (cap logSize = {cap}); archive the items of "
                   f"published versions: {me} archive")
     problems = rows_problems(ctx, args, text.splitlines()) if ctx.config.get("logRows") else []
+    if ctx.config.get("logRows"):
+        for key, line in lost_task_rows(ctx, args, text):
+            problems.append(f"the \"Task in progress\" row of {key} is gone from the state table compared with the previous "
+                            f"log ({line[:60]}); restore it (git show HEAD:{ctx.log}) and, if the branch is "
+                            f"finished, close it with: {me} close-row --branch {key}")
     problems += hard_problems
     if args.strict:
         problems += soft
@@ -470,7 +481,38 @@ def cmd_check(ctx, args):
             print(f"WARNING: handoff: {w}")
     if args.at == "push":  # the commit already exists: the fix is a new commit
         return report(problems, f"edit {ctx.log} and make a new commit with the fix: git add {ctx.log} && git commit")
-    return report(problems, f"edit {ctx.log}, stage it (git add {ctx.log}) and run the commit again: git commit")
+    return report(problems, f"edit {ctx.log}, stage it (git add {ctx.log}) and repeat the same commit: git commit -m \"...\"")
+
+
+def task_row_keys(text):
+    """{key: line} of the "Task in progress" rows: the branch when the row has one (a renamed label is the same row),
+    else the label."""
+    out = {}
+    for line in text.splitlines():
+        m = TASK_ROW.match(line)
+        if m:
+            r = ROW.match(line)
+            out[r.group("branch") if r else m.group(1).lower()] = line
+    return out
+
+
+def lost_task_rows(ctx, args, text):
+    """D135: the "Task in progress" rows of HEAD's log that `text` no longer has, unless the commit closes their branch
+    (close-row keeps the row, with the closed text) or is a merge. Commit time only: at push the pre-push checks the tip
+    as a file, and a later commit may put the row back."""
+    if (args.at == "push" or closing_other_side(ctx) or squash_in_progress(ctx)
+            or os.environ.get("BITACORA_COMPARTIDA") or os.environ.get("GW_SHARED_LOG")):
+        return []
+    rev = "HEAD"
+    if ctx.git("rev-parse", "--verify", "-q", rev).returncode != 0:
+        return []  # the first commit: nothing before it
+    if ctx.git("cat-file", "-e", f"{rev}:{ctx.log}").returncode != 0:
+        return []  # the log is being created
+    before = task_row_keys(ctx.show(rev, ctx.log))
+    after = set(task_row_keys(text)) | {m.group("branch") for m in map(ROW.match, text.splitlines()) if m}  # any label
+    closed = tuple(CLOSED_TEXT.values())
+    return [(k, line) for k, line in sorted(before.items())
+            if k not in after and ROW.match(line) and not any(c in line for c in closed)]  # no branch / closed: nothing to lose
 
 
 def rows_problems(ctx, args, lines):
@@ -565,8 +607,8 @@ def squash_in_progress(ctx):
 
 
 def closing_other_side(ctx):
-    """True while a merge, cherry-pick or rebase is being closed: its closures come from the other side."""
-    for head in ("MERGE_HEAD", "CHERRY_PICK_HEAD", "REBASE_HEAD"):
+    """True while a merge, cherry-pick, revert or rebase is being closed: its closures come from the other side."""
+    for head in ("MERGE_HEAD", "CHERRY_PICK_HEAD", "REBASE_HEAD", "REVERT_HEAD"):
         path = Path(ctx.git("rev-parse", "--git-path", head).stdout.strip())
         if (path if path.is_absolute() else ctx.root / path).exists():
             return True
@@ -723,6 +765,15 @@ def worktree_ids(ctx):
     return found
 
 
+def pending_ids(ctx):
+    """D157: ids named in the pending file (`pendingFile`), so next-id never proposes one already used there."""
+    rel = gwconfig.pending_file(ctx.config)
+    path = ctx.root / rel if rel else None
+    if not path or not path.is_file():
+        return set()
+    return set(ctx.ids(path.read_text(encoding="utf-8", errors="replace")))
+
+
 def cmd_next_id(ctx, args):
     if not ctx.plans:
         raise Usage("no plan to read task ids from; set `plan` in .claude/gw.json or pass --plan PATH")
@@ -737,10 +788,15 @@ def cmd_next_id(ctx, args):
     revs = refs + ([INDEX] if ctx.git("rev-parse", "-q", "--verify", "HEAD").stdout.strip() else [])
     prefix = args.prefix
     sep = "-" if prefix.endswith("-") or (ctx.id.fullmatch(f"{prefix}-1") and not ctx.id.fullmatch(f"{prefix}1")) else ""
-    nxt = free_id(ctx, revs, prefix, worktree_ids(ctx), sep)
+    used = worktree_ids(ctx) | pending_ids(ctx)
+    nxt = free_id(ctx, revs, prefix, used, sep)
     if not ctx.id.fullmatch(nxt):
-        raise Usage(f"{nxt} does not match the task id pattern ({ctx.id.pattern}); pass the prefix the plan uses, "
-                    "for example: handoff.py next-id D")
+        known = {id_prefix(i) for i in used | {i for rev in revs for i in ctx.titles(rev)}}
+        known = sorted(k for k in known if ctx.id.fullmatch(f"{k}1") or ctx.id.fullmatch(f"{k}-1"))
+        seen = (f"the prefixes this plan accepts: {', '.join(known)}; for example: handoff.py next-id {known[0]}"
+                if known else "no id in the plan matches that pattern")
+        raise Usage(f"{nxt} does not match the task id pattern ({ctx.id.pattern}); {seen}. If the plan's ids follow "
+                    "another pattern, pass --id-regex REGEX (or set `taskId` in .claude/gw.json)")
     print(nxt)
     return 0
 
@@ -979,6 +1035,9 @@ def write_atomic(path, data):
             pass
 
 
+UPDATED_ROW = re.compile(r"(\|\s*\*\*(?:Actualizado|Updated)\*\*\s*\|\s*[`*]*)\d{4}-\d{2}-\d{2}")
+
+
 def rewrite_row(ctx, branch, text):
     """Replace the text of `branch`'s row in the log file. Returns (rows found, the new row); writes only if exactly 1."""
     path = ctx.root / ctx.log
@@ -996,6 +1055,12 @@ def rewrite_row(ctx, branch, text):
             lines[i] = new = f"| **{m.group('label')} · `{branch}`** | {text} |"
             hit += 1
     if hit == 1:
+        today = datetime.date.today().isoformat()  # D154: the commit-msg rejects a stale "Updated" row
+        for i, line in enumerate(lines):
+            m = UPDATED_ROW.match(line)
+            if m:
+                lines[i] = f"{m.group(1)}{today}{line[m.end():]}"
+                break
         with open(path, "w", encoding="utf-8", newline="") as f:  # Path.write_text(newline=) is Python 3.10+
             f.write(eol.join(lines))
     return hit, new
@@ -1570,7 +1635,14 @@ def main(argv=None):
     p.add_argument("--root")
     p.add_argument("--plan", action="append")
     p.add_argument("--id-regex")
+    # D134: the same three options after the subcommand too (`next-id B --plan docs/plan.md`); SUPPRESS keeps the
+    # global value when the subcommand does not repeat them, and the subcommand's wins when both are given.
+    common = argparse.ArgumentParser(add_help=False, argument_default=argparse.SUPPRESS)
+    common.add_argument("--root")
+    common.add_argument("--plan", action="append")
+    common.add_argument("--id-regex")
     sub = p.add_subparsers(dest="cmd", required=True)
+    sub.add_parser = functools.partial(sub.add_parser, parents=[common])
     c = sub.add_parser("check")
     c.add_argument("file", nargs="?")
     c.add_argument("--date")

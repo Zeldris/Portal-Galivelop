@@ -1,4 +1,4 @@
-<!-- galivelop-workflow v0.8.0 -->
+<!-- galivelop-workflow v0.8.2 -->
 # Guía de revisión
 
 Lo que el revisor (`/code-review`, o cualquier agente que revise un diff) comprueba en cada diff del portal, además
@@ -150,3 +150,5 @@ test. (check: `config-guard.py` pregunta antes de editarlos)
 - Lo que viene de un proyecto que sube de otra forma se adapta a cómo sube el portal: directo a `main`, no por PR, y
   la marca de revisión en el repo (`docs/records/reviewed.txt`) para que la vea la tarea semanal. (criterio)
 - Una tabla o un ejemplo de una guía que lee un script lo lee ese script en un test. (criterio)
+- El código que lee lo que escribe un agente o una persona (la línea del selector, trailers, respuestas a preguntas)
+  lleva al menos un test con una muestra real, copiada de una transcripción o de la bitácora. (criterio)
