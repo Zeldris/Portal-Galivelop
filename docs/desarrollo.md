@@ -143,8 +143,27 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 - `responsable` (id de `equipo.json`, el creador) y `colaboradores` (ids).
 - Sin precio ni forma de conseguirlo: el botón «Me interesa» abre un correo a la marca con el producto en el asunto.
 
+- `alias` (opcional): el otro nombre por el que se le conoce; sale bajo el título y en el `<title>` de su página.
+- Sin precio ni enlace al repositorio si es privado.
+
+**Su página, `/productos/<slug>`** ([ADR 0005](adr/0005-galivelopcode-unico-producto.md)): la tiene el producto con el bloque
+`pagina` en su JSON (tipo `PaginaProducto`); sin él, solo sale en el perfil y la ruta da 404. La pinta
+[`src/pages/Producto.tsx`](../src/pages/Producto.tsx) y la tarjeta del perfil la enlaza con «Ver el producto».
+
+- `actualizado` (AAAA-MM-DD; el `lastmod` del sitemap: se cambia al tocar los textos), `seo` (título y descripción),
+  `portada` (`src` de 1600 × 900 y `mini` de 720 × 405, en `public/`, con `alt`), `lema` (un texto por renglón),
+  `entrada`, `pasosTitulo`, `esquema` (rótulos de `src/components/EsquemaRama.tsx`), `pasos` (cuatro, los nodos del
+  esquema), `garantiasTitulo`, `garantias`, `contacto` y `tecnico` (`papeles`, `papelesTexto` y `datos`; `codigo: true`
+  si el valor es una orden). Todo, en los tres idiomas.
+- El estado es solo la etiqueta «Próximamente»: la página no cuenta versiones hechas ni lo que falta.
+- El botón abre un correo a `MARCA.correo` con el asunto `productos.asunto` («<nombre>: Primer contacto», traducido).
+- Su guion de lectura es `src/data/guiones/<slug>.json` (`"pagina": "/productos/<slug>"`); si cambian los pasos o las
+  garantías, se reescribe su trozo y se vuelve a grabar.
+- Un producto nuevo con página: su ruta, en `PAGINAS` de `tools/qa/medir-paginas.cjs`. El sitemap, el `<title>`, la
+  vista previa, el JSON-LD y la línea de `llms.txt` salen solos de `scripts/paginas-estaticas.mjs`.
+
 `npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` lista los
-productos en la página estática de cada miembro; `/productos` es una página de paso (`DE_PASO`) a `/equipo`.
+productos en la página estática de cada miembro; `/productos` sigue siendo una página de paso (`DE_PASO`) a `/equipo`.
 
 ## Añadir una página
 

@@ -12,6 +12,7 @@ export type PaginaDeRuta =
   | 'Novedades'
   | 'Equipo'
   | 'Productos'
+  | 'Producto'
   | 'Legal'
   | 'NoEncontrado';
 
@@ -31,6 +32,8 @@ export function paginaDeSegmentos(partes: readonly string[]): PaginaDeRuta {
   if (partes.length === 0) return 'Inicio';
   if (primera === 'proyectos' && segunda && mas.length === 0) return 'Proyecto';
   if (primera === 'equipo' && segunda && mas.length === 0) return 'Miembro';
+  // `/productos` sigue de paso a `/equipo` (ADR 0004); la página es la de cada producto (ADR 0005).
+  if (primera === 'productos' && segunda && mas.length === 0) return 'Producto';
   if (primera === 'participa' && mas.length === 0) {
     if (segunda === 'proponer') return 'Proponer';
     if (segunda === 'unirse') return 'Unirse';

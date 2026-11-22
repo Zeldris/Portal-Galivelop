@@ -31,6 +31,39 @@ export interface Producto {
   responsable: string;
   /** Ids de los miembros que colaboran. */
   colaboradores: string[];
+  /** Textos de su página, `/productos/<slug>` (ADR 0005); sin ella, el producto solo sale en el perfil. */
+  pagina?: PaginaProducto;
+}
+
+interface TituloTexto {
+  titulo: Texto;
+  texto: Texto;
+}
+
+/** Lo que cuenta la página de un producto (src/pages/Producto.tsx y `cuerpo()` de scripts/paginas-estaticas.mjs). */
+export interface PaginaProducto {
+  /** Fecha (AAAA-MM-DD) de lo que cuenta: el `lastmod` del sitemap y el `narra` de su guion. */
+  actualizado: string;
+  /** Título (tras el nombre y el alias) y descripción para buscadores y redes. */
+  seo: { titulo: Texto; descripcion: Texto };
+  portada: { src: string; mini: string; ancho: number; alto: number; alt: Texto };
+  /** El lema, partido en los renglones del rótulo. */
+  lema: Texto[];
+  entrada: Texto;
+  pasosTitulo: Texto;
+  /** Rótulos del esquema «tronco → rama aparte → revisión → vuelve» (src/components/EsquemaRama.tsx). */
+  esquema: { descripcion: Texto; rama: Texto; tronco: Texto; quieto: Texto };
+  /** Los cuatro pasos del esquema, en orden. */
+  pasos: TituloTexto[];
+  garantiasTitulo: Texto;
+  garantias: TituloTexto[];
+  contacto: TituloTexto;
+  tecnico: {
+    papeles: Texto[];
+    papelesTexto: Texto;
+    /** `codigo`: el valor es una orden o un nombre literal y va en monoespaciada. */
+    datos: { etiqueta: Texto; valor: Texto; codigo?: boolean }[];
+  };
 }
 
 const modulos = import.meta.glob<{ default: Producto }>('./productos/*.json', { eager: true });
@@ -44,6 +77,11 @@ export function buscarProducto(slug: string | undefined): Producto | undefined {
 }
 
 /** Productos que lleva un miembro, como responsable o colaborador, en el orden de siempre (ADR 0004: van en su perfil). */
+/** Dirección `mailto:` del primer contacto de un producto, con el asunto ya traducido. */
+export function correoDeProducto(correo: string, asunto: string): string {
+  return `mailto:${correo}?subject=${encodeURIComponent(asunto)}`;
+}
+
 export function productosDe(id: string): Producto[] {
   return productos.filter((p) => p.responsable === id || p.colaboradores.includes(id));
 }

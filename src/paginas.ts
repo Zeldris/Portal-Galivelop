@@ -13,6 +13,7 @@ const CARGADORES = {
   Muro: () => import('./pages/Muro').then((m) => m.Muro),
   NoEncontrado: () => import('./pages/NoEncontrado').then((m) => m.NoEncontrado),
   Novedades: () => import('./pages/Novedades').then((m) => m.Novedades),
+  Producto: () => import('./pages/Producto').then((m) => m.Producto),
   Productos: () => import('./pages/Productos').then((m) => m.Productos),
   Proponer: () => import('./pages/Proponer').then((m) => m.Proponer),
   Proyecto: () => import('./pages/Proyecto').then((m) => m.Proyecto),
@@ -81,6 +82,7 @@ export const Miembro = perezosa('Miembro');
 export const Muro = perezosa('Muro');
 export const NoEncontrado = perezosa('NoEncontrado');
 export const Novedades = perezosa('Novedades');
+export const Producto = perezosa('Producto');
 export const Productos = perezosa('Productos');
 export const Proponer = perezosa('Proponer');
 export const Proyecto = perezosa('Proyecto');

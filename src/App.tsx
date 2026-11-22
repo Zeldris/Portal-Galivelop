@@ -13,6 +13,7 @@ import {
   Muro,
   NoEncontrado,
   Novedades,
+  Producto,
   Productos,
   Proponer,
   Proyecto,
@@ -68,6 +69,7 @@ function Rutas() {
       <Route path="/equipo" element={<Equipo />} />
       <Route path="/equipo/:id" element={<Miembro />} />
       <Route path="/productos" element={<Productos />} />
+      <Route path="/productos/:slug" element={<Producto />} />
       <Route path="/participa/proponer" element={<Proponer />} />
       <Route path="/participa/unirse" element={<Unirse />} />
       <Route path="/aviso-legal" element={<Legal documento={buscarLegal('aviso-legal')!} />} />

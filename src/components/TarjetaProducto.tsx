@@ -3,7 +3,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import { Link } from './Enlace';
 import { buscarPersonaPorId } from '../data/equipo';
 import { MARCA } from '../data/marca';
-import type { Producto } from '../data/productos';
+import { correoDeProducto, type Producto } from '../data/productos';
 import { buscarProyecto } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { Icono } from './Icono';
@@ -55,6 +55,11 @@ export function TarjetaProducto({
           {t('productos.ficha')} <ArrowRight size={14} />
         </Link>
       )}
+      {p.pagina && (
+        <Link to={`/productos/${p.slug}`} className="enlace-flecha producto-ficha">
+          {t('productos.ver')} <ArrowRight size={14} />
+        </Link>
+      )}
       {!compacta && p.servicios.length > 0 && (
         <div className="producto-servicios">
           <span>{t('productos.servicios')}:</span>
@@ -95,7 +100,7 @@ export function TarjetaProducto({
         <div className="producto-acciones">
           <a
             className="boton boton-primario"
-            href={`mailto:${MARCA.correo}?subject=${encodeURIComponent(t('productos.asunto', { producto: p.nombre }))}`}
+            href={correoDeProducto(MARCA.correo, t('productos.asunto', { producto: p.nombre }))}
           >
             <Mail size={16} /> {t('productos.interesa')}
           </a>

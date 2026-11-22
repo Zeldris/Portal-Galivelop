@@ -224,6 +224,20 @@ for (const idioma of IDIOMAS) {
       proyecto: p,
     });
   }
+  // Página de cada producto que la tiene (/productos/<slug>, ADR 0005): el alias va en el título para que se encuentre
+  // por los dos nombres. La vista previa es su portada (WebP, sin medidas), como la de un proyecto sin og propia.
+  for (const x of productos.filter((x) => x.pagina)) {
+    paginas.push({
+      idioma,
+      ruta: `productos/${x.slug}`,
+      titulo: `${x.nombre}${x.alias ? ` (${x.alias})` : ''} · ${x.pagina.seo.titulo[idioma]} · Galivelop`,
+      descripcion: x.pagina.seo.descripcion[idioma],
+      imagen: imagenDe(x.pagina.portada.src),
+      vista: { imagen: imagenDe(x.pagina.portada.src), medidas: false, alt: x.pagina.portada.alt[idioma] },
+      fecha: x.pagina.actualizado,
+      producto: x,
+    });
+  }
   // Página de cada miembro (/equipo/<id>).
   for (const p of equipo) {
     paginas.push({
@@ -368,12 +382,23 @@ function cuerpo(pg) {
     const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
     return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${miembros}</ul><ul>${enlaces}</ul></main>`;
   }
+  const x = pg.producto;
+  if (x) {
+    // Lo mismo que src/pages/Producto.tsx, en HTML simple: sin precios y sin enlace al repositorio (es privado).
+    const i = pg.idioma;
+    const g = x.pagina;
+    const par = (lista) => lista.map((e) => `<li><strong>${esc(e.titulo[i])}</strong>: ${esc(e.texto[i])}</li>`).join('');
+    const asunto = encodeURIComponent(T(i, 'productos.asunto').replace('{producto}', x.nombre));
+    const tecnico = g.tecnico.datos.map((d) => `<dt>${esc(d.etiqueta[i])}</dt><dd>${esc(d.valor[i])}</dd>`).join('');
+    const responsable = equipo.find((e) => e.id === x.responsable);
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(x.nombre)}</h1><p>${x.alias ? `${esc(T(i, 'producto.alias'))}: ${esc(x.alias)} · ` : ''}${x.estado === 'proximamente' ? PROXIMAMENTE[i] : ''}</p><p>${g.lema.map((l) => esc(l[i])).join(' ')}</p><p>${esc(g.entrada[i])}</p><h2>${esc(g.pasosTitulo[i])}</h2><ol>${par(g.pasos)}</ol><h2>${esc(g.garantiasTitulo[i])}</h2><ul>${par(g.garantias)}</ul><h2>${esc(g.contacto.titulo[i])}</h2><p>${esc(g.contacto.texto[i])}</p><p><a href="mailto:${MARCA.correo}?subject=${asunto}">${esc(T(i, 'producto.interesa'))}</a> · ${esc(MARCA.correo)}</p><h2>${esc(T(i, 'producto.tecnico.titulo'))}</h2><p>${g.tecnico.papeles.map((r) => esc(r[i])).join(' · ')}. ${esc(g.tecnico.papelesTexto[i])}</p><dl>${tecnico}</dl>${responsable ? `<p><a href="${urlDe(i, `equipo/${responsable.id}`)}">${esc(responsable.nombre)}</a></p>` : ''}<ul>${enlaces}</ul></main>`;
+  }
   const m = pg.persona;
   if (m) {
     const suyos = m.proyectos.map((slug) => proyectos.find((x) => x.slug === slug)).filter(Boolean)
       .map((x) => `<li><a href="${urlDe(pg.idioma, `proyectos/${x.slug}`)}">${esc(x.nombre)}</a>: ${esc(x.lema[pg.idioma])}</li>`).join('');
     const productosSuyos = productosDe(m.id)
-      .map((x) => `<li><strong>${esc(x.nombre)}</strong>${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
+      .map((x) => `<li>${x.pagina ? `<a href="${urlDe(pg.idioma, `productos/${x.slug}`)}"><strong>${esc(x.nombre)}</strong></a>` : `<strong>${esc(x.nombre)}</strong>`}${x.estado === 'proximamente' ? ` (${PROXIMAMENTE[pg.idioma]})` : ''}: ${esc(x.queOfrece[pg.idioma])}</li>`).join('');
     const colabora = m.colabora ? `<p>${esc(m.colabora.texto[pg.idioma])} <a href="mailto:${m.colabora.correo}">${esc(m.colabora.correo)}</a></p>` : '';
     return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
   }
@@ -395,6 +420,23 @@ function datos(pg, url) {
       inLanguage: pg.idioma,
       ...(pg.fecha ? { dateModified: pg.fecha } : {}),
       mainEntity: { '@type': 'Person', name: m.nombre, jobTitle: m.rol[pg.idioma], description: m.bio[pg.idioma], ...(m.foto ? { image: `${SITIO}/${m.foto}` } : {}), sameAs: m.redes.filter((r) => r.tipo !== 'correo').map((r) => r.url), memberOf: ORG },
+    };
+  }
+  const x = pg.producto;
+  if (x) {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: x.nombre,
+      ...(x.alias ? { alternateName: x.alias } : {}),
+      description: pg.descripcion,
+      url,
+      image: pg.imagen,
+      inLanguage: pg.idioma,
+      dateModified: x.pagina.actualizado,
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Linux',
+      creator: ORG,
     };
   }
   if (!p) return { '@context': 'https://schema.org', '@graph': [ORG, { '@type': 'WebSite', name: 'Galivelop', url: urlDe(pg.idioma, ''), inLanguage: pg.idioma, publisher: { '@type': 'Organization', name: 'Galivelop', url: `${SITIO}/` } }] };
@@ -521,6 +563,9 @@ writeFileSync(
   'dist/llms.txt',
   `# Galivelop\n\n> ${FIJAS[''].es[1]}\n\n## Proyectos\n\n${proyectos
     .map((p) => `- [${p.nombre}](${urlDe('es', `proyectos/${p.slug}`)}): ${p.resumen.es}`)
+    .join('\n')}\n\n## Productos\n\n${productos
+    .filter((x) => x.pagina)
+    .map((x) => `- [${x.nombre}](${urlDe('es', `productos/${x.slug}`)}): ${x.pagina.seo.descripcion.es}`)
     .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, el producto que lleva cada una (Galivelop Developer, privado, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);

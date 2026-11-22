@@ -1,0 +1,82 @@
+{
+  "pagina": "/productos/galivelop-developer",
+  "audio": [],
+  "narra": "2026-11-22",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP); «Developer» a la inglesa. «GalivelopCode» como «Galivelop-coud».",
+    "Sin audio todavía: se graba en es, gl y en cuando la persona dé el texto por bueno.",
+    "No se lee el apartado técnico (va plegado). Si cambian los pasos o las tres fichas de la página, se reescribe su trozo."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "Esto es Galivelop Developer, también llamado GalivelopCode. Lleva tareas de programación pequeñas y bien delimitadas a una inteligencia artificial que funciona en tu propio ordenador. Todavía no está disponible: llegará próximamente.",
+      "gl": "Isto é Galivelop Developer, tamén chamado GalivelopCode. Leva tarefas de programación pequenas e ben delimitadas a unha intelixencia artificial que funciona no teu propio ordenador. Aínda non está dispoñible: chegará proximamente.",
+      "en": "This is Galivelop Developer, also known as GalivelopCode. It takes small, well-defined programming tasks to an artificial intelligence that runs on your own computer. It is not available yet: it is coming soon."
+    },
+    {
+      "seccion": "como",
+      "es": "La idea cabe en cuatro pasos. Primero encargas una tarea pequeña, con límites claros. Después el trabajo se hace en una rama aparte, sin tocar la versión buena de tu proyecto. Luego pasa la revisión: corren las comprobaciones y alguien lee el resultado. Y solo entonces vuelve al tronco.",
+      "gl": "A idea cabe en catro pasos. Primeiro encargas unha tarefa pequena, con límites claros. Despois o traballo faise nunha rama á parte, sen tocar a versión boa do teu proxecto. Logo pasa a revisión: execútanse as comprobacións e alguén le o resultado. E só entón volve ao tronco.",
+      "en": "The idea fits in four steps. First you hand over a small task, with clear limits. Then the work is done on a separate branch, without touching the good version of your project. Next it goes through review: the checks run and someone reads the result. And only then does it return to the trunk.",
+      "enfoques": [
+        {
+          "frase": "Primero encargas",
+          "gl": "Primeiro encargas",
+          "en": "First you hand over",
+          "ver": "paso-1"
+        },
+        {
+          "frase": "Después el trabajo",
+          "gl": "Despois o traballo",
+          "en": "Then the work",
+          "ver": "paso-2"
+        },
+        {
+          "frase": "Luego pasa la revisión",
+          "gl": "Logo pasa a revisión",
+          "en": "Next it goes through review",
+          "ver": "paso-3"
+        },
+        {
+          "frase": "Y solo entonces",
+          "gl": "E só entón",
+          "en": "And only then",
+          "ver": "paso-4"
+        }
+      ]
+    },
+    {
+      "seccion": "fiarse",
+      "es": "¿Por qué fiarse? Porque funciona en tu máquina, sin nube y sin depender de una API de pago. Porque los límites no dependen de la inteligencia artificial: los ponen programas, y sin las comprobaciones activas se niega a trabajar. Y porque mide sin adornos: prueba los modelos en tu equipo y distingue lo que sale alguna vez de lo que sale siempre.",
+      "gl": "Por que fiarse? Porque funciona na túa máquina, sen nube e sen depender dunha API de pago. Porque os límites non dependen da intelixencia artificial: póñenos programas, e sen as comprobacións activas négase a traballar. E porque mide sen adornos: proba os modelos no teu equipo e distingue o que sae algunha vez do que sae sempre.",
+      "en": "Why trust it? Because it runs on your machine, with no cloud and no dependence on a paid API. Because the limits do not depend on the artificial intelligence: programs set them, and without the checks switched on it refuses to work. And because it measures honestly: it tests the models on your computer and tells what works sometimes apart from what works every time.",
+      "enfoques": [
+        {
+          "frase": "Porque funciona en tu máquina",
+          "gl": "Porque funciona na túa máquina",
+          "en": "Because it runs on your machine",
+          "ver": "garantia-1"
+        },
+        {
+          "frase": "Porque los límites",
+          "gl": "Porque os límites",
+          "en": "Because the limits",
+          "ver": "garantia-2"
+        },
+        {
+          "frase": "Y porque mide",
+          "gl": "E porque mide",
+          "en": "And because it measures",
+          "ver": "garantia-3"
+        }
+      ]
+    },
+    {
+      "seccion": "contacto",
+      "es": "Si te interesa, escríbele a Álvaro. No hay precios en la web ni formulario: todo se habla por correo. El botón abre el mensaje ya preparado, y debajo tienes la dirección para copiarla. Gracias por escuchar.",
+      "gl": "Se che interesa, escríbelle a Álvaro. Non hai prezos na web nin formulario: todo se fala por correo. O botón abre a mensaxe xa preparada, e debaixo tes o enderezo para copialo. Grazas por escoitar.",
+      "en": "If you are interested, write to Álvaro. There are no prices on the site and no form: everything is discussed by email. The button opens the message ready to send, and below it you have the address to copy. Thanks for listening."
+    }
+  ]
+}

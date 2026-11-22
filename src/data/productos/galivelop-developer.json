@@ -13,5 +13,339 @@
   "servicios": [],
   "responsable": "alvaro-garcia-grana",
   "colaboradores": [],
-  "alias": "GalivelopCode"
+  "alias": "GalivelopCode",
+  "pagina": {
+    "actualizado": "2026-11-22",
+    "seo": {
+      "titulo": {
+        "es": "Programa en tu máquina con IA local",
+        "gl": "Programa na túa máquina con IA local",
+        "en": "Coding on your machine with local AI"
+      },
+      "descripcion": {
+        "es": "Galivelop Developer, alias GalivelopCode: lleva tareas de programación pequeñas a una IA local, en una rama aparte que vuelve revisada. Sin nube. Próximamente.",
+        "gl": "Galivelop Developer, alias GalivelopCode: leva tarefas de programación pequenas a unha IA local, nunha rama á parte que volve revisada. Sen nube. Proximamente.",
+        "en": "Galivelop Developer, also known as GalivelopCode: it takes small programming tasks to a local AI, on a separate branch that comes back reviewed. No cloud. Coming soon."
+      }
+    },
+    "portada": {
+      "src": "proyectos/galivelop-developer/portada.webp",
+      "mini": "proyectos/galivelop-developer/portada-mini.webp",
+      "ancho": 1600,
+      "alto": 900,
+      "alt": {
+        "es": "Un barco de papel sobre el mar, dibujado como un grabado de carta náutica.",
+        "gl": "Un barco de papel sobre o mar, debuxado como un gravado de carta náutica.",
+        "en": "A paper boat on the sea, drawn like a nautical chart engraving."
+      }
+    },
+    "lema": [
+      {
+        "es": "Una rama acotada",
+        "gl": "Unha rama acoutada",
+        "en": "A bounded branch"
+      },
+      {
+        "es": "que vuelve revisada.",
+        "gl": "que volve revisada.",
+        "en": "that comes back reviewed."
+      }
+    ],
+    "entrada": {
+      "es": "Lleva tareas de programación pequeñas y bien delimitadas a una IA que funciona en tu propio ordenador. Trabaja en una copia aparte de tu proyecto, y lo que hace no entra hasta que alguien lo ha leído.",
+      "gl": "Leva tarefas de programación pequenas e ben delimitadas a unha IA que funciona no teu propio ordenador. Traballa nunha copia á parte do teu proxecto, e o que fai non entra ata que alguén o leu.",
+      "en": "It takes small, well-defined programming tasks to an AI that runs on your own computer. It works on a separate copy of your project, and nothing it does goes in until someone has read it."
+    },
+    "pasosTitulo": {
+      "es": "La idea, en cuatro pasos",
+      "gl": "A idea, en catro pasos",
+      "en": "The idea, in four steps"
+    },
+    "esquema": {
+      "descripcion": {
+        "es": "Esquema: la tarea sale del tronco a una rama aparte, pasa la revisión y vuelve al tronco. El tronco no se toca mientras tanto.",
+        "gl": "Esquema: a tarefa sae do tronco a unha rama á parte, pasa a revisión e volve ao tronco. O tronco non se toca mentres tanto.",
+        "en": "Diagram: the task leaves the trunk for a separate branch, goes through review and returns to the trunk. The trunk stays untouched in the meantime."
+      },
+      "rama": {
+        "es": "Rama aparte",
+        "gl": "Rama á parte",
+        "en": "Separate branch"
+      },
+      "tronco": {
+        "es": "Tronco",
+        "gl": "Tronco",
+        "en": "Trunk"
+      },
+      "quieto": {
+        "es": "No se toca",
+        "gl": "Non se toca",
+        "en": "Untouched"
+      }
+    },
+    "pasos": [
+      {
+        "titulo": {
+          "es": "Encargas una tarea pequeña",
+          "gl": "Encargas unha tarefa pequena",
+          "en": "You hand over a small task"
+        },
+        "texto": {
+          "es": "Algo concreto y con límites claros: qué hay que cambiar y dónde.",
+          "gl": "Algo concreto e con límites claros: que hai que cambiar e onde.",
+          "en": "Something specific with clear limits: what needs to change, and where."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Se hace en una rama aparte",
+          "gl": "Faise nunha rama á parte",
+          "en": "It is done on a separate branch"
+        },
+        "texto": {
+          "es": "Una copia de trabajo separada. La versión buena de tu proyecto no se toca.",
+          "gl": "Unha copia de traballo separada. A versión boa do teu proxecto non se toca.",
+          "en": "A separate working copy. The good version of your project stays untouched."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Pasa la revisión",
+          "gl": "Pasa a revisión",
+          "en": "It goes through review"
+        },
+        "texto": {
+          "es": "Las comprobaciones corren y alguien lee el resultado.",
+          "gl": "As comprobacións execútanse e alguén le o resultado.",
+          "en": "The checks run and someone reads the result."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Vuelve al tronco",
+          "gl": "Volve ao tronco",
+          "en": "It returns to the trunk"
+        },
+        "texto": {
+          "es": "Solo entonces el cambio entra en tu proyecto.",
+          "gl": "Só entón o cambio entra no teu proxecto.",
+          "en": "Only then does the change go into your project."
+        }
+      }
+    ],
+    "garantiasTitulo": {
+      "es": "Por qué fiarse",
+      "gl": "Por que fiarse",
+      "en": "Why you can trust it"
+    },
+    "garantias": [
+      {
+        "titulo": {
+          "es": "En tu máquina",
+          "gl": "Na túa máquina",
+          "en": "On your machine"
+        },
+        "texto": {
+          "es": "Funciona con IA local: sin nube y sin depender de una API de pago. La nube es opcional, solo si la quieres para alguna parte.",
+          "gl": "Funciona con IA local: sen nube e sen depender dunha API de pago. A nube é opcional, só se a queres para algunha parte.",
+          "en": "It runs on local AI: no cloud and no dependence on a paid API. The cloud is optional, only if you want it for some part."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Los límites no dependen de la IA",
+          "gl": "Os límites non dependen da IA",
+          "en": "The limits do not depend on the AI"
+        },
+        "texto": {
+          "es": "Un modelo pequeño no puede leerse todas las reglas. Por eso los límites los ponen programas, y sin las comprobaciones activas se niega a trabajar.",
+          "gl": "Un modelo pequeno non pode ler todas as regras. Por iso os límites póñenos programas, e sen as comprobacións activas négase a traballar.",
+          "en": "A small model cannot read every rule. So the limits are set by programs, and without the checks switched on it refuses to work."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Mide sin adornos",
+          "gl": "Mide sen adornos",
+          "en": "It measures honestly"
+        },
+        "texto": {
+          "es": "Prueba los modelos en tu equipo y distingue «lo resuelve alguna vez» de «lo resuelve siempre». Con eso elige el que mejor rinde en cada papel.",
+          "gl": "Proba os modelos no teu equipo e distingue «resólveo algunha vez» de «resólveo sempre». Con iso escolle o que mellor rende en cada papel.",
+          "en": "It tests the models on your computer and tells “solves it sometimes” apart from “solves it every time”. With that, it picks the one that performs best in each role."
+        }
+      }
+    ],
+    "contacto": {
+      "titulo": {
+        "es": "¿Te interesa? Escríbele a Álvaro.",
+        "gl": "Interésache? Escríbelle a Álvaro.",
+        "en": "Interested? Write to Álvaro."
+      },
+      "texto": {
+        "es": "No hay precios en la web ni formulario: todo se habla por correo. Cuenta qué equipo tienes y qué te gustaría delegar, y lo hablamos.",
+        "gl": "Non hai prezos na web nin formulario: todo se fala por correo. Conta que equipo tes e que che gustaría delegar, e falámolo.",
+        "en": "There are no prices on the site and no form: everything is discussed by email. Tell us what computer you have and what you would like to delegate, and we will talk it through."
+      }
+    },
+    "tecnico": {
+      "papeles": [
+        {
+          "es": "Quien hace",
+          "gl": "Quen fai",
+          "en": "Who does the work"
+        },
+        {
+          "es": "Quien revisa",
+          "gl": "Quen revisa",
+          "en": "Who reviews"
+        },
+        {
+          "es": "Quien coordina",
+          "gl": "Quen coordina",
+          "en": "Who coordinates"
+        }
+      ],
+      "papelesTexto": {
+        "es": "Cada papel lo cubre el modelo que mejor rinde en esa máquina, elegido por mediciones.",
+        "gl": "Cada papel cúbreo o modelo que mellor rende nesa máquina, escollido por medicións.",
+        "en": "Each role is covered by the model that performs best on that machine, chosen by measurement."
+      },
+      "datos": [
+        {
+          "etiqueta": {
+            "es": "Orden de terminal",
+            "gl": "Orde de terminal",
+            "en": "Terminal command"
+          },
+          "valor": {
+            "es": "gdev",
+            "gl": "gdev",
+            "en": "gdev"
+          },
+          "codigo": true
+        },
+        {
+          "etiqueta": {
+            "es": "Motor local",
+            "gl": "Motor local",
+            "en": "Local engine"
+          },
+          "valor": {
+            "es": "Ollama (o llama-server)",
+            "gl": "Ollama (ou llama-server)",
+            "en": "Ollama (or llama-server)"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Editor",
+            "gl": "Editor",
+            "en": "Editor"
+          },
+          "valor": {
+            "es": "Aider",
+            "gl": "Aider",
+            "en": "Aider"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Modelos",
+            "gl": "Modelos",
+            "en": "Models"
+          },
+          "valor": {
+            "es": "Qwen 3.5 de 9B y de 4B",
+            "gl": "Qwen 3.5 de 9B e de 4B",
+            "en": "Qwen 3.5, 9B and 4B"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Equipo mínimo",
+            "gl": "Equipo mínimo",
+            "en": "Minimum hardware"
+          },
+          "valor": {
+            "es": "Una Steam Deck: 16 GB compartidos y GPU integrada con Vulkan",
+            "gl": "Unha Steam Deck: 16 GB compartidos e GPU integrada con Vulkan",
+            "en": "A Steam Deck: 16 GB of shared memory and an integrated GPU with Vulkan"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Sistema",
+            "gl": "Sistema",
+            "en": "System"
+          },
+          "valor": {
+            "es": "Linux, Python 3.10 o posterior",
+            "gl": "Linux, Python 3.10 ou posterior",
+            "en": "Linux, Python 3.10 or later"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Instalación",
+            "gl": "Instalación",
+            "en": "Installation"
+          },
+          "valor": {
+            "es": "Sin permisos de administrador",
+            "gl": "Sen permisos de administrador",
+            "en": "No administrator rights needed"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Banco de pruebas",
+            "gl": "Banco de probas",
+            "en": "Test bench"
+          },
+          "valor": {
+            "es": "Propio. Mide velocidad, estabilidad y calidad por papel, con tareas sacadas de historiales reales y fallos sembrados",
+            "gl": "Propio. Mide velocidade, estabilidade e calidade por papel, con tarefas sacadas de historiais reais e fallos sementados",
+            "en": "Its own. It measures speed, stability and quality per role, with tasks taken from real histories and seeded faults"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Pruebas",
+            "gl": "Probas",
+            "en": "Tests"
+          },
+          "valor": {
+            "es": "Unos 800 tests automáticos con motor simulado",
+            "gl": "Uns 800 tests automáticos con motor simulado",
+            "en": "About 800 automated tests with a simulated engine"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Flujo",
+            "gl": "Fluxo",
+            "en": "Workflow"
+          },
+          "valor": {
+            "es": "El del taller, Galivelop-workflow: bitácora, plan, fases, tareas, revisión y ganchos",
+            "gl": "O do obradoiro, Galivelop-workflow: bitácora, plan, fases, tarefas, revisión e ganchos",
+            "en": "The workshop’s own, Galivelop-workflow: log, plan, phases, tasks, review and hooks"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Código",
+            "gl": "Código",
+            "en": "Code"
+          },
+          "valor": {
+            "es": "Privado. No se publica",
+            "gl": "Privado. Non se publica",
+            "en": "Private. It is not published"
+          }
+        }
+      ]
+    }
+  }
 }

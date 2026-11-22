@@ -9,6 +9,7 @@ import { Equipo } from './Equipo';
 import { Inicio } from './Inicio';
 import { Miembro } from './Miembro';
 import { Novedades } from './Novedades';
+import { Producto } from './Producto';
 import { Proponer } from './Proponer';
 import { FichaProyecto } from './Proyecto';
 import { Unirse } from './Unirse';
@@ -64,8 +65,16 @@ function paginaDe(clave: string): string {
     );
     return envolver(pagina, g.pagina);
   }
+  if (g.pagina.startsWith('/productos/')) {
+    const pagina = (
+      <Routes>
+        <Route path="/productos/:slug" element={<Producto />} />
+      </Routes>
+    );
+    return envolver(pagina, g.pagina);
+  }
   throw new Error(
-    `El guion «${clave}» no tiene página conocida en guion.test.tsx: añádela (estática, proyecto o miembro)`,
+    `El guion «${clave}» no tiene página conocida en guion.test.tsx: añádela (estática, proyecto, miembro o producto)`,
   );
 }
 

@@ -1,7 +1,8 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { NOMBRES_ICONOS } from '../components/Icono';
 import { buscarPersonaPorId, equipo } from './equipo';
-import { ESTADOS_PRODUCTO, productos, productosDe } from './productos';
+import { correoDeProducto, ESTADOS_PRODUCTO, productos, productosDe } from './productos';
 import { proximos } from './proximamente';
 import { proyectos } from './proyectos';
 import { textosIncompletos } from './textosIncompletos';
@@ -57,6 +58,27 @@ describe('productos de cada miembro (ADR 0004)', () => {
       }
     }
   });
+  it('el correo del primer contacto lleva el asunto codificado', () => {
+    expect(correoDeProducto('persona@example.com', 'Galivelop Developer: Primer contacto')).toBe(
+      'mailto:persona@example.com?subject=Galivelop%20Developer%3A%20Primer%20contacto',
+    );
+  });
+  for (const p of productos.filter((x) => x.pagina)) {
+    it(`la página de ${p.slug} tiene sus textos en los tres idiomas, su portada y sus cuatro pasos`, () => {
+      const g = p.pagina!;
+      expect(textosIncompletos(g, p.slug)).toEqual([]);
+      expect(g.actualizado).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(g.pasos).toHaveLength(4); // los cuatro nodos de EsquemaRama
+      expect(g.lema.length).toBeGreaterThan(0);
+      for (const f of [g.portada.src, g.portada.mini])
+        expect(existsSync(`public/${f}`), f).toBe(true);
+      // Sin el signo de apertura en gallego, y sin lo que la página no cuenta: precios ni repositorios.
+      const todo = JSON.stringify(g);
+      const gallego = JSON.stringify(g, (k, v) => (k === 'es' || k === 'en' ? undefined : v));
+      expect(gallego).not.toMatch(/[¿¡]/);
+      expect(todo).not.toMatch(/github\.com|€/);
+    });
+  }
   it('quien no lleva ninguno no tiene productos (y su perfil, ninguna sección)', () => {
     expect(productosDe('nadie')).toEqual([]);
     for (const persona of equipo) {
