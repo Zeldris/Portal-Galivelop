@@ -76,12 +76,12 @@ export function buscarProducto(slug: string | undefined): Producto | undefined {
   return productos.find((p) => p.slug === slug);
 }
 
-/** Productos que lleva un miembro, como responsable o colaborador, en el orden de siempre (ADR 0004: van en su perfil). */
 /** Dirección `mailto:` del primer contacto de un producto, con el asunto ya traducido. */
 export function correoDeProducto(correo: string, asunto: string): string {
   return `mailto:${correo}?subject=${encodeURIComponent(asunto)}`;
 }
 
+/** Productos que lleva un miembro, como responsable o colaborador, en el orden de siempre (ADR 0004: van en su perfil). */
 export function productosDe(id: string): Producto[] {
   return productos.filter((p) => p.responsable === id || p.colaboradores.includes(id));
 }

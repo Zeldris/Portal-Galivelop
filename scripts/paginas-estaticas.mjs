@@ -391,7 +391,10 @@ function cuerpo(pg) {
     const asunto = encodeURIComponent(T(i, 'productos.asunto').replace('{producto}', x.nombre));
     const tecnico = g.tecnico.datos.map((d) => `<dt>${esc(d.etiqueta[i])}</dt><dd>${esc(d.valor[i])}</dd>`).join('');
     const responsable = equipo.find((e) => e.id === x.responsable);
-    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(x.nombre)}</h1><p>${x.alias ? `${esc(T(i, 'producto.alias'))}: ${esc(x.alias)} · ` : ''}${x.estado === 'proximamente' ? PROXIMAMENTE[i] : ''}</p><p>${g.lema.map((l) => esc(l[i])).join(' ')}</p><p>${esc(g.entrada[i])}</p><h2>${esc(g.pasosTitulo[i])}</h2><ol>${par(g.pasos)}</ol><h2>${esc(g.garantiasTitulo[i])}</h2><ul>${par(g.garantias)}</ul><h2>${esc(g.contacto.titulo[i])}</h2><p>${esc(g.contacto.texto[i])}</p><p><a href="mailto:${MARCA.correo}?subject=${asunto}">${esc(T(i, 'producto.interesa'))}</a> · ${esc(MARCA.correo)}</p><h2>${esc(T(i, 'producto.tecnico.titulo'))}</h2><p>${g.tecnico.papeles.map((r) => esc(r[i])).join(' · ')}. ${esc(g.tecnico.papelesTexto[i])}</p><dl>${tecnico}</dl>${responsable ? `<p><a href="${urlDe(i, `equipo/${responsable.id}`)}">${esc(responsable.nombre)}</a></p>` : ''}<ul>${enlaces}</ul></main>`;
+    const datosProducto = [x.alias ? `${esc(T(i, 'producto.alias'))}: ${esc(x.alias)}` : '', x.estado === 'proximamente' ? PROXIMAMENTE[i] : '']
+      .filter(Boolean)
+      .join(' · ');
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(x.nombre)}</h1>${datosProducto ? `<p>${datosProducto}</p>` : ''}<p>${g.lema.map((l) => esc(l[i])).join(' ')}</p><p>${esc(g.entrada[i])}</p><h2>${esc(g.pasosTitulo[i])}</h2><ol>${par(g.pasos)}</ol><h2>${esc(g.garantiasTitulo[i])}</h2><ul>${par(g.garantias)}</ul><h2>${esc(g.contacto.titulo[i])}</h2><p>${esc(g.contacto.texto[i])}</p><p><a href="mailto:${MARCA.correo}?subject=${asunto}">${esc(T(i, 'producto.interesa'))}</a> · ${esc(MARCA.correo)}</p><h2>${esc(T(i, 'producto.tecnico.titulo'))}</h2><p>${g.tecnico.papeles.map((r) => esc(r[i])).join(' · ')}. ${esc(g.tecnico.papelesTexto[i])}</p><dl>${tecnico}</dl>${responsable ? `<p><a href="${urlDe(i, `equipo/${responsable.id}`)}">${esc(responsable.nombre)}</a></p>` : ''}<ul>${enlaces}</ul></main>`;
   }
   const m = pg.persona;
   if (m) {
@@ -475,6 +478,7 @@ const imagenLcp = (pg) => {
   if (pg.ruta === '') return 'marca/isobatas.svg';
   // La ilustración del formulario tiene versión clara y oscura (src/components/ImagenTema.tsx): el tema claro es el de por defecto.
   if (pg.ruta === 'participa/unirse') return 'marca/como-funciona.webp';
+  if (pg.producto) return pg.producto.pagina.portada.src;
   const p = pg.proyecto;
   if (!p) return undefined;
   const modo = p.cabecera ?? 'ilustracion';

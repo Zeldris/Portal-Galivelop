@@ -6689,7 +6689,7 @@ body:has(dialog[open]) {
 
   .producto-fijo {
     position: fixed;
-    z-index: 20;
+    z-index: var(--z-nav-ficha);
     inset: auto 0 0;
     display: block;
     padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
