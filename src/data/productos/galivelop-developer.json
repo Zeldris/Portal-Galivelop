@@ -199,11 +199,6 @@
           "es": "Quien revisa",
           "gl": "Quen revisa",
           "en": "Who reviews"
-        },
-        {
-          "es": "Quien coordina",
-          "gl": "Quen coordina",
-          "en": "Who coordinates"
         }
       ],
       "papelesTexto": {
@@ -316,9 +311,9 @@
             "en": "Tests"
           },
           "valor": {
-            "es": "Unos 800 tests automáticos con motor simulado",
-            "gl": "Uns 800 tests automáticos con motor simulado",
-            "en": "About 800 automated tests with a simulated engine"
+            "es": "Tests automáticos con motor simulado",
+            "gl": "Tests automáticos con motor simulado",
+            "en": "Automated tests with a simulated engine"
           }
         },
         {
