@@ -65,8 +65,10 @@ Se elige por lo que diga la persona o el prompt; sin indicación, **informe**.
      .claude/skills/gw-portal/scripts/bloque.py <ficha> <campo> -` con el JSON nuevo por la entrada estándar: deja el
      resto del archivo igual (un volcado entero despliega listas y ensucia el diff).
 
-   En informe y aplicar puedes repartir la lectura con un subagente ligero por repo (`gw-orchestrate-dealer`), que
-   devuelve sus propuestas con rutas; en semanal, no. Hecho cuando cada repo del informe tiene su decisión.
+   En informe y aplicar, la lectura la hace un subagente ligero por repo (`gw-orchestrate-dealer`), que devuelve sus
+   propuestas con rutas; la sesión principal no lee el informe del script entero (retro del 2026-11-22: 8 lecturas,
+   358k arrastrados). El resumen nombra cada repo, también los que no cambian, para que no se pierda ninguno. En
+   semanal, no. Hecho cuando cada repo del informe tiene su decisión.
 5. **Informe** (los tres modos lo llevan en la respuesta):
    - **Contenido**: por proyecto, qué cambia (o «sin cambios»): novedades, campos de la ficha, imágenes y diagramas,
      trozos de guion reescritos (con su «audio pendiente») y otros archivos del portal.

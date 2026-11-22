@@ -162,3 +162,5 @@ carpeta del portal. `measure.py` y `recover.py` lo buscan también en las carpet
   `.claude/settings.local.json`; sin él, cada orden exportaba el PATH a mano y un push falló.
 - 2026-11-12, imágenes, «reutilizar» y hoja del generador sin `/clear` entre medias: 104 llamadas, 125k de contexto
   medio (techo 166k), 2 compactaciones con presupuesto 1; 3 subagentes, 3,0M de entrada.
+- **Informe de `gw-portal` leído por subagentes** (2026-11-22, retro P3): en informe y aplicar, la sesión principal recibe solo el resumen por repo (la de la ADR 0005 leyó `informe.txt` 8 veces, 358k arrastrados).
+- **Línea base 2026-11-22** (sesión de `gw-portal`, flujo 0.8.2 y ADR 0005, sin `/clear`): 215 llamadas, contexto medio 125k, techo 165k, 4 compactaciones; bitácora leída 24 veces (1,34M arrastrados).

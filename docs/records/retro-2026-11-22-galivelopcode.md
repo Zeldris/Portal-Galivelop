@@ -4,9 +4,7 @@ Lo revisado: los commits de la rama desde `origin/main` (ADR 0005, datos, págin
 leves de la revisión y cambio de texto) y la bitácora. Medida con `gw-opt-tokens` (sesión entera): 215 llamadas en la
 sesión principal, contexto medio 125k, techo 165k, 4 compactaciones; subagentes 74 llamadas (Fable 33, a 89k de media).
 
-**Estado:** propuestas presentadas a la persona el 2026-11-22; su decisión, en el párrafo siguiente.
-
-Decisión de la persona: por decidir.
+**Estado:** decidida por la persona el 2026-11-22: P1, P2 y P3 aprobadas (P1 aplicada en `AGENTS.md`, P3 aplicada en la skill `gw-portal`, P1 y P2 para el flujo en «For Galivelop-workflow»); P4 aplazada a la próxima versión en `docs/records/pending.md`; P5 aprobada (`/clear` al cerrar).
 
 ## Propuestas
 

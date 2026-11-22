@@ -166,6 +166,8 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   `gw-portal`, que también se usa en una sesión para revisar los repos (modo informe) o aplicar sus cambios.
 - **Todo texto visible, en castellano, gallego e inglés** (`visibleLanguages`); `npm run check` lo comprueba. Un
   subagente que escriba textos lo recibe en su encargo.
+- **Correos de prueba, solo `@example.com`** (retro 2026-11-22): el `pre-push` rechaza cualquier otro y arreglarlo
+  reescribe commits. Un subagente que escriba tests o documentos lo recibe en su encargo.
 - El código de cada proyecto se enlaza desde su ficha (`enlaces`, tipo `otro`) cuando su repo es público. Si el repo es privado, no se enlaza: solo su versión pública.
 - **Mensaje de la marca** (ADR [0001](docs/adr/0001-encargos-por-miembro.md), [0002](docs/adr/0002-marca-taller-y-productos.md),
   [0003](docs/adr/0003-codigo-abierto-e-implantacion.md) y [0004](docs/adr/0004-productos-en-el-perfil.md)): lee [«Mensaje»](docs/desarrollo.md#mensaje) antes de
