@@ -28,7 +28,7 @@
       "roadmap": { "ruta": "docs/plan.md", "seccion": "## Fases (aprobadas el 2026-10-25)" }
     },
     "Zeldris/galivelop-voice-generator": { "destino": "proximamente", "slug": "galivelop-voice-generator" },
-    "Zeldris/galivelop-developer": { "destino": "proximamente", "slug": "galivelop-developer" },
+    "Zeldris/galivelop-developer": { "destino": "ignorar", "motivo": "producto privado, ADR 0005, se mantiene a mano" },
     "Zeldris/Portal-Galivelop": { "destino": "ignorar", "motivo": "es este portal" },
     "Zeldris/Zeldris": { "destino": "ignorar", "motivo": "README del perfil de GitHub" },
     "Zeldris/galivelop-evaluator": { "destino": "ignorar", "motivo": "herramienta interna (mide el RAG de Tarkor); la persona no la quiere en la web por ahora (2026-11-14)" },

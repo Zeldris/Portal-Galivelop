@@ -40,7 +40,14 @@
     "gl": "En desenvolvemento · v0.8.2 · próxima a 0.9 «Front»",
     "en": "In development · v0.8.2 · next up: 0.9 “Front”"
   },
-  "etiquetas": ["Claude Code", "AGENTS.md", "Agent Skills", "Bash", "Python", "Git hooks"],
+  "etiquetas": [
+    "Claude Code",
+    "AGENTS.md",
+    "Agent Skills",
+    "Bash",
+    "Python",
+    "Git hooks"
+  ],
   "ogAlt": {
     "es": "Vista previa de Galivelop-workflow: «Relevos sin perder nada», junto a una cadena de boyas blancas en el mar grabado que acaba en una azul con un visto",
     "gl": "Vista previa de Galivelop-workflow: «Relevos sen perder nada», xunto a unha cadea de boias brancas no mar gravado que remata nunha azul cun visto",
@@ -133,9 +140,16 @@
       "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las trece skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
       "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as trece skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
       "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the thirteen skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
+    },
+    {
+      "es": "También lo implantamos en tu proyecto: escríbenos.",
+      "gl": "Tamén o implantamos no teu proxecto: escríbenos.",
+      "en": "We can also set it up in your project: write to us."
     }
   ],
-  "lineas": ["metodo"],
+  "lineas": [
+    "metodo"
+  ],
   "aprendizajes": [
     {
       "es": "Escribir el estado en archivos, no en la conversación: una bitácora al día vale más que la mejor memoria de una sesión.",
@@ -2929,7 +2943,11 @@
         "gl": "Regras e skills",
         "en": "Rules and skills"
       },
-      "tecnologias": ["AGENTS.md", "Agent Skills", "Claude Code"]
+      "tecnologias": [
+        "AGENTS.md",
+        "Agent Skills",
+        "Claude Code"
+      ]
     },
     {
       "capa": {
@@ -2937,7 +2955,11 @@
         "gl": "Ganchos e scripts",
         "en": "Hooks and scripts"
       },
-      "tecnologias": ["Bash", "Python", "Git hooks"]
+      "tecnologias": [
+        "Bash",
+        "Python",
+        "Git hooks"
+      ]
     },
     {
       "capa": {
@@ -2945,7 +2967,11 @@
         "gl": "Calidade",
         "en": "Quality"
       },
-      "tecnologias": ["GitHub Actions", "ShellCheck", "JSON Schema"]
+      "tecnologias": [
+        "GitHub Actions",
+        "ShellCheck",
+        "JSON Schema"
+      ]
     },
     {
       "capa": {
@@ -2953,7 +2979,12 @@
         "gl": "Plataformas",
         "en": "Platforms"
       },
-      "tecnologias": ["Linux", "macOS", "bash 3.2", "Python 3"]
+      "tecnologias": [
+        "Linux",
+        "macOS",
+        "bash 3.2",
+        "Python 3"
+      ]
     }
   ],
   "hitos": [

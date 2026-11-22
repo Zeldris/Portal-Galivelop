@@ -15,9 +15,9 @@
     },
     {
       "seccion": "proyectos",
-      "es": "Empezamos por los proyectos, cada uno tal y como está hoy: qué es, cómo está hecho, en qué punto se encuentra y qué viene después. Tarkor es un juego de rol por texto donde el mundo sigue adelante aunque tú te detengas. toVeriAI parte de una idea: la verdad no es binaria. Por eso da un índice que explica cuánto puedes fiarte de una noticia. Galivelop-workflow es nuestra forma de trabajar con inteligencia artificial, empaquetada para que la use cualquier proyecto. Y Galivelop IG es un servicio para generar imágenes en tu propio equipo: pides, pruebas y eliges. Justo debajo hay dos proyectos que están naciendo: un generador de voces y un agente de desarrollo, los dos con inteligencia artificial local. Tendrán su ficha cuando haya algo que enseñar.",
-      "gl": "Comezamos polos proxectos, cada un tal e como está hoxe: que é, como está feito, en que punto se atopa e que vén despois. Tarkor é un xogo de rol por texto onde o mundo segue adiante aínda que ti te deteñas. toVeriAI parte dunha idea: a verdade non é binaria. Por iso dá un índice que explica canto podes fiarte dunha noticia. Galivelop-workflow é a nosa forma de traballar con intelixencia artificial, empaquetada para que a use calquera proxecto. E Galivelop IG é un servizo para xerar imaxes no teu propio equipo: pides, probas e escolles. Xusto debaixo hai dous proxectos que están a nacer: un xerador de voces e un axente de desenvolvemento, os dous con intelixencia artificial local. Terán a súa ficha cando haxa algo que ensinar.",
-      "en": "We start with the projects, each one just as it is today: what it is, how it is built, where it stands and what comes next. Tarkor is a text role-playing game where the world keeps moving even when you stop. toVeriAI starts from one idea: truth is not binary. So it gives an index that explains how far you can trust a piece of news. Galivelop-workflow is our way of working with artificial intelligence, packaged so any project can use it. And Galivelop IG is a service for generating images on your own computer: you ask, you try and you choose. Right below are two projects that are being born: a voice generator and a development agent, both with local artificial intelligence. They will get their own page when there is something to show.",
+      "es": "Empezamos por los proyectos, cada uno tal y como está hoy: qué es, cómo está hecho, en qué punto se encuentra y qué viene después. Tarkor es un juego de rol por texto donde el mundo sigue adelante aunque tú te detengas. toVeriAI parte de una idea: la verdad no es binaria. Por eso da un índice que explica cuánto puedes fiarte de una noticia. Galivelop-workflow es nuestra forma de trabajar con inteligencia artificial, empaquetada para que la use cualquier proyecto. Y Galivelop IG es un servicio para generar imágenes en tu propio equipo: pides, pruebas y eliges. Justo debajo hay un proyecto que está naciendo: un generador de voces con inteligencia artificial local. Tendrá su ficha cuando haya algo que enseñar.",
+      "gl": "Comezamos polos proxectos, cada un tal e como está hoxe: que é, como está feito, en que punto se atopa e que vén despois. Tarkor é un xogo de rol por texto onde o mundo segue adiante aínda que ti te deteñas. toVeriAI parte dunha idea: a verdade non é binaria. Por iso dá un índice que explica canto podes fiarte dunha noticia. Galivelop-workflow é a nosa forma de traballar con intelixencia artificial, empaquetada para que a use calquera proxecto. E Galivelop IG é un servizo para xerar imaxes no teu propio equipo: pides, probas e escolles. Xusto debaixo hai un proxecto que está a nacer: un xerador de voces con intelixencia artificial local. Terá a súa ficha cando haxa algo que ensinar.",
+      "en": "We start with the projects, each one just as it is today: what it is, how it is built, where it stands and what comes next. Tarkor is a text role-playing game where the world keeps moving even when you stop. toVeriAI starts from one idea: truth is not binary. So it gives an index that explains how far you can trust a piece of news. Galivelop-workflow is our way of working with artificial intelligence, packaged so any project can use it. And Galivelop IG is a service for generating images on your own computer: you ask, you try and you choose. Right below is one project that is being born: a voice generator with local artificial intelligence. It will get its own page when there is something to show.",
       "enfoques": [
         {
           "frase": "Tarkor es un juego",
@@ -44,9 +44,9 @@
           "ver": "proyecto-galivelop-image-generator"
         },
         {
-          "frase": "Justo debajo hay dos proyectos",
-          "gl": "Xusto debaixo hai dous proxectos",
-          "en": "Right below are two projects",
+          "frase": "Justo debajo hay un proyecto",
+          "gl": "Xusto debaixo hai un proxecto",
+          "en": "Right below is one project",
           "ver": "proximamente"
         },
         {
@@ -54,12 +54,6 @@
           "gl": "un xerador de voces",
           "en": "a voice generator",
           "ver": "proxima-galivelop-voice-generator"
-        },
-        {
-          "frase": "un agente de desarrollo",
-          "gl": "un axente de desenvolvemento",
-          "en": "a development agent",
-          "ver": "proxima-galivelop-developer"
         }
       ]
     },

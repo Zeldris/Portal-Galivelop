@@ -9,6 +9,8 @@ export type EstadoProducto = (typeof ESTADOS_PRODUCTO)[number];
 export interface Producto {
   slug: string;
   nombre: string;
+  /** Otro nombre con el que se conoce (ADR 0005: GalivelopCode). */
+  alias?: string;
   /** Orden en el perfil del miembro: el menor, primero. */
   orden: number;
   /** Color de acento (hex). */

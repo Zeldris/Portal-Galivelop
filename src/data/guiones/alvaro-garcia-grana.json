@@ -66,33 +66,15 @@
     },
     {
       "seccion": "productos",
-      "es": "Del taller también salen productos, y Álvaro los lleva. Galivelop-workflow, el flujo para desarrollar con agentes de inteligencia artificial, y Galivelop IG, el generador de imágenes, ya están disponibles, con su código abierto. Galivelop Developer, un agente que programa contigo en tu máquina, y Galivelop Voice Generator, voces generadas en local, llegan pronto. Para cualquiera de ellos, se habla con él por correo.",
-      "gl": "Do obradoiro tamén saen produtos, e Álvaro lévaos el. Galivelop-workflow, o fluxo para desenvolver con axentes de intelixencia artificial, e Galivelop IG, o xerador de imaxes, xa están dispoñibles, co seu código aberto. Galivelop Developer, un axente que programa contigo na túa máquina, e Galivelop Voice Generator, voces xeradas en local, chegan pronto. Para calquera deles, fálase con el por correo.",
-      "en": "The workshop also produces products, and Álvaro leads them. Galivelop-workflow, the workflow for developing with artificial intelligence agents, and Galivelop IG, the image generator, are already available, with open source code. Galivelop Developer, an agent that programs with you on your machine, and Galivelop Voice Generator, voices generated locally, are coming soon. For any of them, you can talk to him by email.",
+      "es": "Del taller sale también un producto, y Álvaro lo lleva: Galivelop Developer, también llamado GalivelopCode. Es un programa que trabaja en tu máquina con inteligencia artificial local, siguiendo el flujo del taller, y que llega pronto. Es privado, y para saber más se habla con él por correo.",
+      "gl": "Do obradoiro sae tamén un produto, e Álvaro lévao el: Galivelop Developer, tamén chamado GalivelopCode. É un programa que traballa na túa máquina con intelixencia artificial local, seguindo o fluxo do obradoiro, e que chega pronto. É privado, e para saber máis fálase con el por correo.",
+      "en": "The workshop also produces one product, and Álvaro leads it: Galivelop Developer, also called GalivelopCode. It is a program that works on your machine with local artificial intelligence, following the workshop’s workflow, and it is coming soon. It is private, and to know more you can talk to him by email.",
       "enfoques": [
         {
-          "frase": "Galivelop-workflow, el flujo",
-          "gl": "Galivelop-workflow, o fluxo",
-          "en": "Galivelop-workflow, the workflow",
-          "ver": "producto-galivelop-workflow"
-        },
-        {
-          "frase": "Galivelop IG, el generador",
-          "gl": "Galivelop IG, o xerador",
-          "en": "Galivelop IG, the image",
-          "ver": "producto-galivelop-image-generator"
-        },
-        {
-          "frase": "Galivelop Developer",
-          "gl": "Galivelop Developer",
-          "en": "Galivelop Developer",
+          "frase": "Galivelop Developer, también llamado",
+          "gl": "Galivelop Developer, tamén chamado",
+          "en": "Galivelop Developer, also called",
           "ver": "producto-galivelop-developer"
-        },
-        {
-          "frase": "Galivelop Voice Generator",
-          "gl": "Galivelop Voice Generator",
-          "en": "Galivelop Voice Generator",
-          "ver": "producto-galivelop-voice-generator"
         }
       ]
     },

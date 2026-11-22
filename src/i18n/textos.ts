@@ -12,7 +12,7 @@ const es = {
   'hero.titulo1': 'Hacemos reales',
   'hero.titulo2': 'los proyectos que parecen imposibles',
   'hero.texto':
-    'Galivelop es un taller que crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Lo que sale de él, los productos que montamos y adaptamos en tu proyecto, está en el perfil de quien los hace.',
+    'Galivelop es un taller que crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Lo que sale de él, nuestro producto Galivelop Developer, está en el perfil de quien lo hace.',
   'hero.cta.taller': 'Conocer el taller',
   'hero.resumen.proyectos': 'proyectos',
   'hero.resumen.publicados': 'publicados',
@@ -295,7 +295,7 @@ const es = {
   'novedades.verMas': 'Ver más',
   'novedades.muro': 'En el muro',
   'equipo.productos.texto':
-    'Lo que sale del taller y lleva {nombre}, con el código abierto en cuanto está maduro: lo ponemos en marcha y lo adaptamos a tu proyecto. Sin precios en la web: todo se trata por correo.',
+    'El producto de la marca que lleva {nombre}. Es privado y no tiene precios en la web: todo se trata por correo.',
   'participa.privados':
     '{nombres} son desarrollos propios del taller, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'nav.proyectos.todos': 'Todos los proyectos',
@@ -348,7 +348,7 @@ const gl: Record<Clave, string> = {
   'hero.titulo1': 'Facemos reais',
   'hero.titulo2': 'os proxectos que semellan imposibles',
   'hero.texto':
-    'Galivelop é un obradoiro que crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. O que sae del, os produtos que montamos e adaptamos no teu proxecto, está no perfil de quen os fai.',
+    'Galivelop é un obradoiro que crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. O que sae del, o noso produto Galivelop Developer, está no perfil de quen o fai.',
   'hero.cta.taller': 'Coñecer o obradoiro',
   'hero.resumen.proyectos': 'proxectos',
   'hero.resumen.publicados': 'publicados',
@@ -631,7 +631,7 @@ const gl: Record<Clave, string> = {
   'novedades.verMas': 'Ver máis',
   'novedades.muro': 'No muro',
   'equipo.productos.texto':
-    'O que sae do obradoiro e leva {nombre}, co código aberto en canto está maduro: poñémolo en marcha e adaptámolo ao teu proxecto. Sen prezos na web: todo se trata por correo.',
+    'O produto da marca que leva {nombre}. É privado e non ten prezos na web: todo se trata por correo.',
   'participa.privados':
     '{nombres} son desenvolvementos propios do obradoiro, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'nav.proyectos.todos': 'Todos os proxectos',
@@ -682,7 +682,7 @@ const en: Record<Clave, string> = {
   'hero.titulo1': 'We make seemingly',
   'hero.titulo2': 'impossible projects real',
   'hero.texto':
-    'Galivelop is a workshop that creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. What comes out of it, the products we set up and adapt in your project, is on the profile of whoever makes them.',
+    'Galivelop is a workshop that creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. What comes out of it, our product Galivelop Developer, is on the profile of whoever makes it.',
   'hero.cta.taller': 'Meet the workshop',
   'hero.resumen.proyectos': 'projects',
   'hero.resumen.publicados': 'live',
@@ -966,7 +966,7 @@ const en: Record<Clave, string> = {
   'novedades.verMas': 'Show more',
   'novedades.muro': 'In the feed',
   'equipo.productos.texto':
-    'What comes out of the workshop and {nombre} looks after, with its code open as soon as it is mature: we set it up and adapt it to your project. No prices on the site: everything is arranged by email.',
+    'The brand’s product that {nombre} looks after. It is private and has no prices on the site: everything is arranged by email.',
   'participa.privados':
     '{nombres} are developed in-house by the workshop, but we welcome project proposals and would love to meet new people who are interested.',
   'nav.proyectos.todos': 'All projects',

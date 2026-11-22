@@ -36,10 +36,9 @@ describe('productos', () => {
         expect(p.acento).toMatch(/^#[0-9a-f]{6}$/i);
       });
 
-      it('nace de un proyecto del taller: con ficha o en «Próximamente»', () => {
+      it('si apunta a un proyecto con ficha o a «Próximamente», existe (el producto privado no apunta a ninguno, ADR 0005)', () => {
         if (p.proyecto) expect(proyectos.map((x) => x.slug)).toContain(p.proyecto);
         if (p.proximo) expect(proximos.map((x) => x.slug)).toContain(p.proximo);
-        expect(p.proyecto || p.proximo).toBeTruthy();
       });
 
       it('su responsable y sus colaboradores son miembros del equipo', () => {

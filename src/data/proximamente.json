@@ -20,27 +20,5 @@
       "gl": "o motor real de voz",
       "en": "the real voice engine"
     }
-  },
-  {
-    "slug": "galivelop-developer",
-    "nombre": "Galivelop Developer",
-    "acento": "#0E9A93",
-    "icono": "code",
-    "iconoPropio": "proyectos/galivelop-developer/icono.svg",
-    "imagen": "proyectos/galivelop-developer/portada-mini.webp",
-    "lema": {
-      "es": "Agente de desarrollo con IA local, que trabaja sin depender de la nube.",
-      "gl": "Axente de desenvolvemento con IA local, que traballa sen depender da nube.",
-      "en": "Local AI development agent that works without relying on the cloud."
-    },
-    "fases": {
-      "hechas": 4,
-      "total": 10
-    },
-    "siguiente": {
-      "es": "el núcleo del agente",
-      "gl": "o núcleo do axente",
-      "en": "the agent core"
-    }
   }
 ]

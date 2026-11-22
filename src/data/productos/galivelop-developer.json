@@ -4,14 +4,14 @@
   "orden": 4,
   "acento": "#0E9A93",
   "icono": "code",
-  "proximo": "galivelop-developer",
   "estado": "proximamente",
   "queOfrece": {
-    "es": "Agente de desarrollo con IA local: programa contigo en tu máquina, sin depender de la nube.",
-    "gl": "Axente de desenvolvemento con IA local: programa contigo na túa máquina, sen depender da nube.",
-    "en": "Local AI development agent: it codes with you on your machine, with no cloud dependency."
+    "es": "Programa en tu máquina con IA local, siguiendo el flujo del taller. Trabaja en una rama aparte que vuelve revisada. Sin nube ni API de pago.",
+    "gl": "Programa na túa máquina con IA local, seguindo o fluxo do obradoiro. Traballa nunha rama á parte que volve revisada. Sen nube nin API de pago.",
+    "en": "It codes on your machine with local AI, following the workshop’s workflow. It works on a separate branch that comes back reviewed. No cloud and no paid API."
   },
   "servicios": [],
   "responsable": "alvaro-garcia-grana",
-  "colaboradores": []
+  "colaboradores": [],
+  "alias": "GalivelopCode"
 }
