@@ -62,6 +62,11 @@ y `/productos` es una página de paso a `/equipo`. Desde la [ADR 0003](adr/0003-
 siendo posible); todo lo público admite colaboración (toVeriAI queda fuera, privado). En la portada, los proyectos
 van primero (y, desde la 0004, Productos ya no sale en ella). Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
 base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
+**Un solo producto** ([ADR 0005](adr/0005-galivelopcode-unico-producto.md), 2026-11-22): Galivelop Developer, alias
+**GalivelopCode**, privado para siempre, nacido de Galivelop-workflow; tiene página propia (`/productos/<slug>`), que
+explica en llano para qué sirve, con un apartado técnico breve, y invita a escribir. Su código no se enlaza ni se
+cuenta. Workflow, IG y Voice son proyectos de código abierto, no productos: la ficha de Workflow y la de IG dicen que
+también se implantan. Donde este párrafo y los de arriba choquen, manda este.
 **Encargos por miembro** ([ADR 0001](adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
 taller no vende, pero cada miembro puede colaborar por su cuenta en proyectos de otras personas. Se dice en la
 página de ese miembro (`colabora`), en una banda discreta de Participa, en «Cómo trabajamos» y en el README, sin

@@ -9,6 +9,8 @@
   repo público; Productos ofrece implantación y servicio en vez de descarga, y va debajo de los proyectos.
   **Sustituida en parte por la [0004](0004-productos-en-el-perfil.md)** (2026-11-10): los productos ya no tienen página
   `/productos/<slug>` ni catálogo, enlace en el menú ni franja en la portada; se ven en el perfil de cada miembro.
+  **Sustituida en parte por la [0005](0005-galivelopcode-unico-producto.md)** (2026-11-22): Galivelop Developer
+  (alias GalivelopCode), privado, es el único producto y tiene página propia; Workflow, IG y Voice quedan como proyectos.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto

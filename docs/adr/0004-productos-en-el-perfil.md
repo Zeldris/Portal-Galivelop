@@ -5,6 +5,8 @@
   página principal y la vamos a poner dentro del perfil de cada miembro, siempre que ese miembro tenga algún producto
   en desarrollo»). Sustituye en parte a la [0002](0002-marca-taller-y-productos.md) y a la
   [0003](0003-codigo-abierto-e-implantacion.md): cambia **dónde** se ven los productos, no qué se ofrece ni cómo.
+  **Sustituida en parte por la [0005](0005-galivelopcode-unico-producto.md)** (2026-11-22): Galivelop Developer
+  (alias GalivelopCode), privado, es el único producto y tiene página propia; Workflow, IG y Voice quedan como proyectos.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto

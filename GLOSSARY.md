@@ -7,15 +7,15 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
   es una sociedad: cada integrante es autónomo.
 - **Taller**: la parte de Galivelop que crea, investiga, innova y aprende; expone sus proyectos, no los vende. Es
   para aprender.
-- **Productos**: la parte de la marca que ofrece lo que sale del taller. Desde la
-  [ADR 0004](docs/adr/0004-productos-en-el-perfil.md) se ven en el perfil de cada miembro que los lleva; `/productos`
-  es una página de paso a `/equipo`.
-  Lo maduro tiene el código abierto y se ofrece como implantación y servicio de Álvaro; quien quiera comprarlo, también
-  puede ([ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md)). Sin precios: lo legal y lo financiero, por
-  correo con Álvaro. Lo que aún no está maduro se oferta como «próximamente», sin explicar su estado.
-- **Producto**: lo que la marca ofrece en Productos. Nace de un proyecto del taller; tiene un responsable (el
-  creador) y, si los hay, colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o
-  `proximamente`.
+- **Productos**: la parte de la marca que ofrece lo que se puede contratar. Desde la
+  [ADR 0005](docs/adr/0005-galivelopcode-unico-producto.md) hay **un solo producto**, Galivelop Developer (alias
+  GalivelopCode), privado, con página propia (`/productos/<slug>`) y su tarjeta en el perfil de su responsable;
+  `/productos` sigue como página de paso a `/equipo` ([ADR 0004](docs/adr/0004-productos-en-el-perfil.md)). Sin
+  precios: lo legal y lo financiero, por correo con Álvaro.
+- **Producto**: lo que la marca ofrece en Productos; código privado. Tiene un responsable (el creador) y, si los hay,
+  colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o `proximamente`. Los proyectos de
+  código abierto (Galivelop-workflow, Galivelop IG) **no** son productos: su ficha dice que también se implantan
+  ([ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md), ajustada por la 0005).
 - **Novedades**: lo último de cada proyecto (las `novedades` de su ficha) y las publicaciones del muro, juntos y lo
   más reciente primero, en `/novedades`.
 - **Encargo**: proyecto de pago que alguien contrata directamente con un miembro del taller, no con Galivelop

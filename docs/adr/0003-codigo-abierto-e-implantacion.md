@@ -4,6 +4,8 @@
 - **Estado:** **aceptada** el 2026-11-02 (decisión de la persona en la conversación); aplicada en la rama de la
   sesión, sin publicar en `main` hasta que la persona vea la vista previa y lo confirme. Sustituye en parte a la
   [0002](0002-marca-taller-y-productos.md).
+  **Sustituida en parte por la [0005](0005-galivelopcode-unico-producto.md)** (2026-11-22): Galivelop Developer
+  (alias GalivelopCode), privado, es el único producto y tiene página propia; Workflow, IG y Voice quedan como proyectos.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto
