@@ -6,9 +6,9 @@
   "icono": "code",
   "estado": "proximamente",
   "queOfrece": {
-    "es": "Programa en tu máquina con IA local, siguiendo el flujo del taller. Trabaja en una rama aparte que vuelve revisada. Sin nube ni API de pago.",
-    "gl": "Programa na túa máquina con IA local, seguindo o fluxo do obradoiro. Traballa nunha rama á parte que volve revisada. Sen nube nin API de pago.",
-    "en": "It codes on your machine with local AI, following the workshop’s workflow. It works on a separate branch that comes back reviewed. No cloud and no paid API."
+    "es": "Lleva tareas a una IA local en tu máquina, siguiendo el flujo del taller. Trabaja en una rama aparte que vuelve revisada. Sin nube ni API de pago.",
+    "gl": "Leva tarefas a unha IA local na túa máquina, seguindo o fluxo do obradoiro. Traballa nunha rama á parte que volve revisada. Sen nube nin API de pago.",
+    "en": "It hands tasks to a local AI on your machine, following the workshop’s workflow. It works on a separate branch that comes back reviewed. No cloud and no paid API."
   },
   "servicios": [],
   "responsable": "alvaro-garcia-grana",
@@ -18,9 +18,9 @@
     "actualizado": "2026-11-22",
     "seo": {
       "titulo": {
-        "es": "Programa en tu máquina con IA local",
-        "gl": "Programa na túa máquina con IA local",
-        "en": "Coding on your machine with local AI"
+        "es": "Lleva tareas a una IA local",
+        "gl": "Leva tarefas a unha IA local",
+        "en": "Hands tasks to a local AI"
       },
       "descripcion": {
         "es": "Galivelop Developer, alias GalivelopCode: lleva tareas de programación pequeñas a una IA local, en una rama aparte que vuelve revisada. Sin nube. Próximamente.",
