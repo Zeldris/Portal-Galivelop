@@ -8,9 +8,9 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-22 (fichas al día con los repos, a `main` con confirmación de la persona) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-b2d381ed-e10ez8` (sigue a `claude/siguiente-fy7bji`, 6dd7795) |
-| **Tarea en curso** | **GalivelopCode, único producto** (ADR 0005, la persona 2026-11-22): hechos ADR, glosario, «Mensaje», datos (productos de Workflow, IG y Voice borrados; implantación como frase en sus fichas), página `/productos/galivelop-developer` (variante A «Cuaderno», solo «Próximamente», asunto del correo en el idioma de la web), su guion y el de Álvaro, y `/code-review` del bloque (0 graves, 8 leves: 4 arreglados en 64ce981, el resto en `docs/records/pending.md`). Prototipo: https://claude.ai/artifact/1qqaDLoDfiKJvDFrLiaQHw. Falta: imagen OG del producto, audio de los guiones (generador externo), revisión a fondo de gl y en. |
-| **Siguiente paso** | Subir la rama a `main` (la persona lo confirmó el 2026-11-22: «Si»; CI en verde en 3f13628, retro decidida) tras `reviewed.sh` y `check.sh`; luego `/clear` |
-| **En `main`** | **Fichas al día con los repos** (`/gw-portal` 2026-11-22: toVeriAI, generador, Tarkor, Galivelop-workflow 0.8.2, Developer 4 / 10; solo contenido; check, build y CI en verde en 71ff003; confirmado por la persona). Antes, **flujo Galivelop-workflow 0.8.2** (2026-11-22). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
+| **Tarea en curso** | Ninguna: GalivelopCode (ADR 0005) publicado el 2026-11-22. |
+| **Siguiente paso** | Lo que pida la persona. Abierto: imagen OG del producto, audio de los guiones (generador externo), revisión a fondo de gl y en de la página del producto, barrido de `llms.txt` (P4) y proponer P1 y P2 de la retro al flujo |
+| **En `main`** | **GalivelopCode, único producto** (ADR 0005; página `/productos/galivelop-developer`; subido el 2026-11-22 con confirmación de la persona, marca de revisión y CI en verde en a5f3e61). Antes, fichas al día con los repos (71ff003). Lo anterior, en «Hecho» y en `git log origin/main`. https://zeldris.github.io/Portal-Galivelop/ |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (45 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
