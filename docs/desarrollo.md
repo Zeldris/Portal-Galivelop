@@ -62,9 +62,12 @@ y `/productos` es una página de paso a `/equipo`. Desde la [ADR 0003](adr/0003-
 siendo posible); todo lo público admite colaboración (toVeriAI queda fuera, privado). En la portada, los proyectos
 van primero (y, desde la 0004, Productos ya no sale en ella). Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
 base del mensaje. Marca: azul celeste y blanco de la bandera gallega, sin copiar su composición.
-**Un solo producto** ([ADR 0005](adr/0005-galivelopcode-unico-producto.md), 2026-11-22): Galivelop Developer, alias
-**GalivelopCode**, privado para siempre, nacido de Galivelop-workflow; tiene página propia (`/productos/<slug>`), que
-explica en llano para qué sirve, con un apartado técnico breve, y invita a escribir. Su código no se enlaza ni se
+**Dos productos** ([ADR 0005](adr/0005-galivelopcode-unico-producto.md), 2026-11-22, y
+[ADR 0006](adr/0006-galivelop-evaluator-segundo-producto.md), 2026-11-24, que corrige el «único producto» de la 0005):
+Galivelop Developer, alias **GalivelopCode**, nacido de Galivelop-workflow, y Galivelop Evaluator, alias **GVE**, que
+mide si un cambio en un sistema de IA lo mejora; los dos de Álvaro y privados para siempre. Cada uno tiene página propia
+(`/productos/<slug>`), que explica en llano para qué sirve (con tono de marca, sin prometer lo que no existe), con un
+apartado técnico breve, y invita a escribir. Su código no se enlaza ni se
 cuenta. Workflow, IG y Voice son proyectos de código abierto, no productos: la ficha de Workflow y la de IG dicen que
 también se implantan. Donde este párrafo y los de arriba choquen, manda este.
 **Encargos por miembro** ([ADR 0001](adr/0001-encargos-por-miembro.md), publicado el 2026-10-26): el
@@ -151,10 +154,10 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 [`src/pages/Producto.tsx`](../src/pages/Producto.tsx) y la tarjeta del perfil la enlaza con «Ver el producto».
 
 - `actualizado` (AAAA-MM-DD; el `lastmod` del sitemap: se cambia al tocar los textos), `seo` (título y descripción),
-  `portada` (`src` de 1600 × 900 y `mini` de 720 × 405, en `public/`, con `alt`), `lema` (un texto por renglón),
-  `entrada`, `pasosTitulo`, `esquema` (rótulos de `src/components/EsquemaRama.tsx`), `pasos` (cuatro, los nodos del
-  esquema), `garantiasTitulo`, `garantias`, `contacto` y `tecnico` (`papeles`, `papelesTexto` y `datos`; `codigo: true`
-  si el valor es una orden). Todo, en los tres idiomas.
+  `portada` (opcional: `src` de 1600 × 900 y `mini` de 720 × 405, en `public/`, con `alt`; sin ella la cabecera es solo
+  texto), `lema` (un texto por renglón), `entrada`, `problema`, `beneficios` (`titulo` e `items`), `pasosTitulo`,
+  `pasos` (cuatro), `figuras` (diagramas bajo los pasos: `src`, `mini`, `ancho`, `alto`, `alt` y `pie`, este opcional), `garantiasTitulo`, `garantias`, `paraQuien` (`titulo` e `items`), `estadoTexto`,
+  `contacto` y `tecnico` (`papeles` y `papelesTexto`, opcionales; `datos`; `codigo: true` si el valor es una orden). Todo, en los tres idiomas.
 - El estado es solo la etiqueta «Próximamente»: la página no cuenta versiones hechas ni lo que falta.
 - El botón abre un correo a `MARCA.correo` con el asunto `productos.asunto` («<nombre>: Primer contacto», traducido).
 - Su guion de lectura es `src/data/guiones/<slug>.json` (`"pagina": "/productos/<slug>"`); si cambian los pasos o las

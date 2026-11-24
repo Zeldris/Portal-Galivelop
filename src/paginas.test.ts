@@ -53,6 +53,8 @@ describe('paginaDeRuta (qué chunk se espera antes del primer render)', () => {
     ['productos/', 'Productos'],
     ['productos/galivelop-developer/', 'Producto'],
     ['gl/productos/galivelop-developer/', 'Producto'],
+    ['productos/galivelop-evaluator/', 'Producto'],
+    ['gl/productos/galivelop-evaluator/', 'Producto'],
     ['productos/galivelop-developer/otra/', 'NoEncontrado'],
     ['participa/proponer/', 'Proponer'],
     ['gl/participa/unirse/', 'Unirse'],

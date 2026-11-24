@@ -64,14 +64,23 @@ describe('productos de cada miembro (ADR 0004)', () => {
     );
   });
   for (const p of productos.filter((x) => x.pagina)) {
-    it(`la página de ${p.slug} tiene sus textos en los tres idiomas, su portada y sus cuatro pasos`, () => {
+    it(`la página de ${p.slug} tiene sus textos en los tres idiomas, sus imágenes y sus cuatro pasos`, () => {
       const g = p.pagina!;
       expect(textosIncompletos(g, p.slug)).toEqual([]);
       expect(g.actualizado).toMatch(/^\d{4}-\d{2}-\d{2}$/);
-      expect(g.pasos).toHaveLength(4); // los cuatro nodos de EsquemaRama
+      expect(g.pasos).toHaveLength(4);
       expect(g.lema.length).toBeGreaterThan(0);
-      for (const f of [g.portada.src, g.portada.mini])
-        expect(existsSync(`public/${f}`), f).toBe(true);
+      if (g.portada)
+        for (const f of [g.portada.src, g.portada.mini])
+          expect(existsSync(`public/${f}`), f).toBe(true);
+      // Las figuras se dibujan en otra tarea: hasta que exista `public/productos/`, solo se comprueba que estén declaradas.
+      for (const fig of g.figuras ?? []) {
+        expect(fig.ancho).toBeGreaterThan(0);
+        expect(fig.alto).toBeGreaterThan(0);
+        if (existsSync('public/productos'))
+          for (const f of [fig.src, fig.mini])
+            expect(existsSync(`public${f.startsWith('/') ? '' : '/'}${f}`), f).toBe(true);
+      }
       // Sin el signo de apertura en gallego, y sin lo que la página no cuenta: precios ni repositorios.
       const todo = JSON.stringify(g);
       const gallego = JSON.stringify(g, (k, v) => (k === 'es' || k === 'en' ? undefined : v));

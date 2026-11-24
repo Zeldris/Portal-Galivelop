@@ -31,7 +31,7 @@
     "Zeldris/galivelop-developer": { "destino": "ignorar", "motivo": "producto privado, ADR 0005, se mantiene a mano" },
     "Zeldris/Portal-Galivelop": { "destino": "ignorar", "motivo": "es este portal" },
     "Zeldris/Zeldris": { "destino": "ignorar", "motivo": "README del perfil de GitHub" },
-    "Zeldris/galivelop-evaluator": { "destino": "ignorar", "motivo": "herramienta interna (mide el RAG de Tarkor); la persona no la quiere en la web por ahora (2026-11-14)" },
+    "Zeldris/galivelop-evaluator": { "destino": "ignorar", "motivo": "producto privado de Álvaro (ADR 0006); su página se mantiene a mano" },
     "Zeldris/galivelop-client-catcher": { "destino": "ignorar", "motivo": "inteligencia comercial B2B, en desarrollo (0.1.0); la persona lo quiere oculto por ahora, como el evaluator (2026-11-18)" }
   }
 }

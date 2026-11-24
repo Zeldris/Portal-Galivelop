@@ -3,7 +3,8 @@
 - **Fecha:** 2026-11-22
 - **Estado:** **aceptada** el 2026-11-22 (decisión de la persona en la conversación). Sustituye en parte a la
   [0002](0002-marca-taller-y-productos.md), la [0003](0003-codigo-abierto-e-implantacion.md) y la
-  [0004](0004-productos-en-el-perfil.md).
+  [0004](0004-productos-en-el-perfil.md). La [0006](0006-galivelop-evaluator-segundo-producto.md) corrige el «único
+  producto»: son dos.
 - **Decide:** Álvaro García Graña (fundador)
 
 ## Contexto

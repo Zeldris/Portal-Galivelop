@@ -35,6 +35,15 @@ export interface Producto {
   pagina?: PaginaProducto;
 }
 
+/** Imagen con su versión pequeña (720 px), sus medidas y su texto alternativo. */
+export interface Imagen {
+  src: string;
+  mini: string;
+  ancho: number;
+  alto: number;
+  alt: Texto;
+}
+
 interface TituloTexto {
   titulo: Texto;
   texto: Texto;
@@ -46,21 +55,31 @@ export interface PaginaProducto {
   actualizado: string;
   /** Título (tras el nombre y el alias) y descripción para buscadores y redes. */
   seo: { titulo: Texto; descripcion: Texto };
-  portada: { src: string; mini: string; ancho: number; alto: number; alt: Texto };
+  /** Imagen de la cabecera; sin ella, la cabecera es solo texto. */
+  portada?: Imagen;
   /** El lema, partido en los renglones del rótulo. */
   lema: Texto[];
   entrada: Texto;
+  /** El problema que resuelve, tras la cabecera. */
+  problema?: TituloTexto;
+  /** Lo que te da (distinto de `garantias`, que son el «por qué fiarse»). */
+  beneficios?: { titulo: Texto; items: TituloTexto[] };
   pasosTitulo: Texto;
-  /** Rótulos del esquema «tronco → rama aparte → revisión → vuelve» (src/components/EsquemaRama.tsx). */
-  esquema: { descripcion: Texto; rama: Texto; tronco: Texto; quieto: Texto };
-  /** Los cuatro pasos del esquema, en orden. */
+  /** Los cuatro pasos, en orden. */
   pasos: TituloTexto[];
+  /** Diagramas bajo los pasos (WebP en `public/`, con su `mini` de 720 px de ancho). */
+  figuras?: (Imagen & { pie?: Texto })[];
   garantiasTitulo: Texto;
   garantias: TituloTexto[];
+  /** Para quién es, tras «por qué fiarse». */
+  paraQuien?: { titulo: Texto; items: Texto[] };
+  /** Frase de estado junto al contacto («está en desarrollo…»), sin cifras. */
+  estadoTexto?: Texto;
   contacto: TituloTexto;
   tecnico: {
-    papeles: Texto[];
-    papelesTexto: Texto;
+    /** Los papeles del flujo (quien hace, quien revisa…); sin ellos, no sale el apartado. */
+    papeles?: Texto[];
+    papelesTexto?: Texto;
     /** `codigo`: el valor es una orden o un nombre literal y va en monoespaciada. */
     datos: { etiqueta: Texto; valor: Texto; codigo?: boolean }[];
   };

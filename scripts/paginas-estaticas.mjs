@@ -232,8 +232,9 @@ for (const idioma of IDIOMAS) {
       ruta: `productos/${x.slug}`,
       titulo: `${x.nombre}${x.alias ? ` (${x.alias})` : ''} · ${x.pagina.seo.titulo[idioma]} · Galivelop`,
       descripcion: x.pagina.seo.descripcion[idioma],
-      imagen: imagenDe(x.pagina.portada.src),
-      vista: { imagen: imagenDe(x.pagina.portada.src), medidas: false, alt: x.pagina.portada.alt[idioma] },
+      // Sin portada, la vista previa es la del portal.
+      imagen: x.pagina.portada ? imagenDe(x.pagina.portada.src) : IMAGEN[idioma],
+      vista: x.pagina.portada ? { imagen: imagenDe(x.pagina.portada.src), medidas: false, alt: x.pagina.portada.alt[idioma] } : undefined,
       fecha: x.pagina.actualizado,
       producto: x,
     });
@@ -394,7 +395,14 @@ function cuerpo(pg) {
     const datosProducto = [x.alias ? `${esc(T(i, 'producto.alias'))}: ${esc(x.alias)}` : '', x.estado === 'proximamente' ? PROXIMAMENTE[i] : '']
       .filter(Boolean)
       .join(' · ');
-    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(x.nombre)}</h1>${datosProducto ? `<p>${datosProducto}</p>` : ''}<p>${g.lema.map((l) => esc(l[i])).join(' ')}</p><p>${esc(g.entrada[i])}</p><h2>${esc(g.pasosTitulo[i])}</h2><ol>${par(g.pasos)}</ol><h2>${esc(g.garantiasTitulo[i])}</h2><ul>${par(g.garantias)}</ul><h2>${esc(g.contacto.titulo[i])}</h2><p>${esc(g.contacto.texto[i])}</p><p><a href="mailto:${MARCA.correo}?subject=${asunto}">${esc(T(i, 'producto.interesa'))}</a> · ${esc(MARCA.correo)}</p><h2>${esc(T(i, 'producto.tecnico.titulo'))}</h2><p>${g.tecnico.papeles.map((r) => esc(r[i])).join(' · ')}. ${esc(g.tecnico.papelesTexto[i])}</p><dl>${tecnico}</dl>${responsable ? `<p><a href="${urlDe(i, `equipo/${responsable.id}`)}">${esc(responsable.nombre)}</a></p>` : ''}<ul>${enlaces}</ul></main>`;
+    const lista = (t, items) => `<h2>${esc(t[i])}</h2><ul>${items.map((e) => `<li>${esc(e[i])}</li>`).join('')}</ul>`;
+    const problema = g.problema ? `<h2>${esc(g.problema.titulo[i])}</h2><p>${esc(g.problema.texto[i])}</p>` : '';
+    const beneficios = g.beneficios ? `<h2>${esc(g.beneficios.titulo[i])}</h2><ul>${par(g.beneficios.items)}</ul>` : '';
+    const figuras = (g.figuras ?? []).map((f) => `<figure><img src="${SITIO}/${f.src.replace(/^\//, '')}" width="${f.ancho}" height="${f.alto}" alt="${esc(f.alt[i])}" loading="lazy">${f.pie ? `<figcaption>${esc(f.pie[i])}</figcaption>` : ''}</figure>`).join('');
+    const paraQuien = g.paraQuien ? lista(g.paraQuien.titulo, g.paraQuien.items) : '';
+    const estado = g.estadoTexto ? `<p>${esc(g.estadoTexto[i])}</p>` : '';
+    const papeles = g.tecnico.papeles?.length ? `<p>${g.tecnico.papeles.map((r) => esc(r[i])).join(' · ')}.${g.tecnico.papelesTexto ? ` ${esc(g.tecnico.papelesTexto[i])}` : ''}</p>` : '';
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(x.nombre)}</h1>${datosProducto ? `<p>${datosProducto}</p>` : ''}<p>${g.lema.map((l) => esc(l[i])).join(' ')}</p><p>${esc(g.entrada[i])}</p>${problema}${beneficios}<h2>${esc(g.pasosTitulo[i])}</h2><ol>${par(g.pasos)}</ol>${figuras}<h2>${esc(g.garantiasTitulo[i])}</h2><ul>${par(g.garantias)}</ul>${paraQuien}<h2>${esc(g.contacto.titulo[i])}</h2>${estado}<p>${esc(g.contacto.texto[i])}</p><p><a href="mailto:${MARCA.correo}?subject=${asunto}">${esc(T(i, 'producto.interesa'))}</a> · ${esc(MARCA.correo)}</p><h2>${esc(T(i, 'producto.tecnico.titulo'))}</h2>${papeles}<dl>${tecnico}</dl>${responsable ? `<p><a href="${urlDe(i, `equipo/${responsable.id}`)}">${esc(responsable.nombre)}</a></p>` : ''}<ul>${enlaces}</ul></main>`;
   }
   const m = pg.persona;
   if (m) {
@@ -478,7 +486,7 @@ const imagenLcp = (pg) => {
   if (pg.ruta === '') return 'marca/isobatas.svg';
   // La ilustración del formulario tiene versión clara y oscura (src/components/ImagenTema.tsx): el tema claro es el de por defecto.
   if (pg.ruta === 'participa/unirse') return 'marca/como-funciona.webp';
-  if (pg.producto) return pg.producto.pagina.portada.src;
+  if (pg.producto) return pg.producto.pagina.portada?.src;
   const p = pg.proyecto;
   if (!p) return undefined;
   const modo = p.cabecera ?? 'ilustracion';
@@ -570,7 +578,7 @@ writeFileSync(
     .join('\n')}\n\n## Productos\n\n${productos
     .filter((x) => x.pagina)
     .map((x) => `- [${x.nombre}](${urlDe('es', `productos/${x.slug}`)}): ${x.pagina.seo.descripcion.es}`)
-    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, el producto que lleva cada una (Galivelop Developer, privado, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);

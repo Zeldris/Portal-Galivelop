@@ -1,0 +1,82 @@
+{
+  "pagina": "/productos/galivelop-evaluator",
+  "audio": [],
+  "narra": "2026-11-24",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP); «Evaluator» a la inglesa; «GVE» letra a letra («ye-ve-e» en gallego y castellano: «yi-vi-i» en inglés).",
+    "Sin audio todavía: se graba en es, gl y en cuando la persona dé el texto por bueno.",
+    "No se lee el apartado técnico (va plegado). Si cambian los pasos o las fichas de la página, se reescribe su trozo."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "Esto es Galivelop Evaluator, también llamado GVE. Mide si un cambio en tu sistema de inteligencia artificial lo mejora de verdad: antes y después, con las mismas preguntas, y te cuenta sin adornos qué ha mejorado y qué ha empeorado. Todavía no está disponible: llegará próximamente.",
+      "gl": "Isto é Galivelop Evaluator, tamén chamado GVE. Mide se un cambio no teu sistema de intelixencia artificial o mellora de verdade: antes e despois, coas mesmas preguntas, e cóntache sen adornos que mellorou e que empeorou. Aínda non está dispoñible: chegará proximamente.",
+      "en": "This is Galivelop Evaluator, also known as GVE. It measures whether a change to your artificial intelligence system really improves it: before and after, with the same questions, and it tells you plainly what got better and what got worse. It is not available yet: it is coming soon."
+    },
+    {
+      "seccion": "como",
+      "es": "La idea cabe en cuatro pasos. Primero se mide cómo está hoy, con un conjunto de preguntas y una primera medida guardada. Después se prueba el cambio, aparte y con las mismas preguntas. Luego se comparan los dos resultados: qué sube, qué baja y qué se queda igual. Y por último recibes un informe que se entiende.",
+      "gl": "A idea cabe en catro pasos. Primeiro mídese como está hoxe, cun conxunto de preguntas e unha primeira medida gardada. Despois próbase o cambio, á parte e coas mesmas preguntas. Logo compáranse os dous resultados: que sobe, que baixa e que queda igual. E por último recibes un informe que se entende.",
+      "en": "The idea fits in four steps. First you measure where you are today, with a set of questions and a first measurement kept on record. Then the change is tested, separately and with the same questions. Next the two results are compared: what goes up, what goes down and what stays the same. And finally you get a report you can follow.",
+      "enfoques": [
+        {
+          "frase": "Primero se mide",
+          "gl": "Primeiro mídese",
+          "en": "First you measure",
+          "ver": "paso-1"
+        },
+        {
+          "frase": "Después se prueba",
+          "gl": "Despois próbase",
+          "en": "Then the change is tested",
+          "ver": "paso-2"
+        },
+        {
+          "frase": "Luego se comparan",
+          "gl": "Logo compáranse",
+          "en": "Next the two results",
+          "ver": "paso-3"
+        },
+        {
+          "frase": "Y por último",
+          "gl": "E por último",
+          "en": "And finally",
+          "ver": "paso-4"
+        }
+      ]
+    },
+    {
+      "seccion": "fiarse",
+      "es": "¿Por qué fiarse? Porque cada resultado se puede repetir: cada prueba guarda con qué configuración se hizo. Porque lo que falta no cuenta como acierto: si un dato no está, se dice. Y porque se guarda una parte de las preguntas sin mirar, para confirmar la mejora y no ajustar la prueba a la respuesta.",
+      "gl": "Por que fiarse? Porque cada resultado pódese repetir: cada proba garda con que configuración se fixo. Porque o que falta non conta como acerto: se un dato non está, dise. E porque se garda unha parte das preguntas sen mirar, para confirmar a mellora e non axustar a proba á resposta.",
+      "en": "Why trust it? Because every result can be repeated: each test records the configuration it was run with. Because a missing result is never a pass: if a piece of data is missing, we say so. And because part of the questions is kept unseen, to confirm the improvement and never tune the test to the answer.",
+      "enfoques": [
+        {
+          "frase": "Porque cada resultado",
+          "gl": "Porque cada resultado",
+          "en": "Because every result",
+          "ver": "garantia-1"
+        },
+        {
+          "frase": "Porque lo que falta",
+          "gl": "Porque o que falta",
+          "en": "Because a missing result",
+          "ver": "garantia-2"
+        },
+        {
+          "frase": "Y porque se guarda",
+          "gl": "E porque se garda",
+          "en": "And because part",
+          "ver": "garantia-3"
+        }
+      ]
+    },
+    {
+      "seccion": "contacto",
+      "es": "Si te interesa, escríbele a Álvaro. No hay precios en la web ni formulario: todo se habla por correo. Cuéntanos qué sistema de inteligencia artificial quieres medir y qué te gustaría mejorar. El botón abre el mensaje ya preparado, y debajo tienes la dirección para copiarla. Gracias por escuchar.",
+      "gl": "Se che interesa, escríbelle a Álvaro. Non hai prezos na web nin formulario: todo se fala por correo. Conta que sistema de intelixencia artificial queres medir e que che gustaría mellorar. O botón abre a mensaxe xa preparada, e debaixo tes o enderezo para copialo. Grazas por escoitar.",
+      "en": "If you are interested, write to Álvaro. There are no prices on the site and no form: everything is discussed by email. Tell us which artificial intelligence system you want to measure and what you would like to improve. The button opens the message ready to send, and below it you have the address to copy. Thanks for listening."
+    }
+  ]
+}

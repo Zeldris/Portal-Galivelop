@@ -36,7 +36,7 @@ complejos. El portal enseña cada proyecto tal y como está, con sus avances y s
 pendientes, y deja la puerta abierta a quien quiera saber más o sumarse.
 
 El código abierto del taller (Galivelop-workflow, Galivelop IG) está en GitHub y Álvaro también lo
-implanta en tu proyecto. El único producto de la marca es Galivelop Developer (GalivelopCode), privado.
+implanta en tu proyecto. Los productos de la marca son Galivelop Developer (GalivelopCode) y Galivelop Evaluator (GVE), privados.
 Sin precios: todo por correo. Todo lo público admite colaboración; toVeriAI es privado.
 
 El nombre une **Gali**cia, de donde venimos, y **Develop**, lo que hacemos.
@@ -102,14 +102,14 @@ Eso lo hace por su cuenta: el acuerdo es con esa persona, no con Galivelop.
 **Galivelop é un obradoiro independente de software.** Creamos, investigamos e aprendemos construíndo
 software ambicioso, dende un mundo de fantasía que vive pola súa conta ata unha ferramenta que mide
 a credibilidade das novas. O portal amosa cada proxecto tal e como está e deixa a porta
-aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. O código aberto do obradoiro (Galivelop-workflow, Galivelop IG) está en GitHub e Álvaro tamén o implanta no teu proxecto. O único produto da marca é Galivelop Developer (GalivelopCode), privado. Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
+aberta a quen queira participar. Algúns membros do obradoiro aceptan encargos en proxectos alleos, cada un pola súa conta. O código aberto do obradoiro (Galivelop-workflow, Galivelop IG) está en GitHub e Álvaro tamén o implanta no teu proxecto. Os produtos da marca son Galivelop Developer (GalivelopCode) e Galivelop Evaluator (GVE), privados. Sen prezos: todo por correo. Todo o público admite colaboración; toVeriAI é privado. [Visitar o portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ## English
 
 **Galivelop is an independent software workshop.** We create, research and learn by building
 ambitious software, from a fantasy world that lives on its own to a tool that measures the
 credibility of the news. The portal shows each project as it is and keeps the door
-open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. The workshop’s open source code (Galivelop-workflow, Galivelop IG) is on GitHub and Álvaro also sets it up in your project. The brand’s only product is Galivelop Developer (GalivelopCode), private. No prices: everything by email. Everything public welcomes contributions; toVeriAI is private. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
+open to anyone who wants to take part. Some members of the workshop take on commissions for other people's projects, each on their own account. The workshop’s open source code (Galivelop-workflow, Galivelop IG) is on GitHub and Álvaro also sets it up in your project. The brand’s products are Galivelop Developer (GalivelopCode) and Galivelop Evaluator (GVE), both private. No prices: everything by email. Everything public welcomes contributions; toVeriAI is private. [Visit the portal →](https://zeldris.github.io/Portal-Galivelop/)
 
 ---
 

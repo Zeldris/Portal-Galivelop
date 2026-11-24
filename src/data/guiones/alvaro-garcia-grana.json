@@ -66,15 +66,21 @@
     },
     {
       "seccion": "productos",
-      "es": "Del taller sale también un producto, y Álvaro lo lleva: Galivelop Developer, también llamado GalivelopCode. Es un programa que trabaja en tu máquina con inteligencia artificial local, siguiendo el flujo del taller, y que llega pronto. Es privado, y para saber más se habla con él por correo.",
-      "gl": "Do obradoiro sae tamén un produto, e Álvaro lévao el: Galivelop Developer, tamén chamado GalivelopCode. É un programa que traballa na túa máquina con intelixencia artificial local, seguindo o fluxo do obradoiro, e que chega pronto. É privado, e para saber máis fálase con el por correo.",
-      "en": "The workshop also produces one product, and Álvaro leads it: Galivelop Developer, also called GalivelopCode. It is a program that works on your machine with local artificial intelligence, following the workshop’s workflow, and it is coming soon. It is private, and to know more you can talk to him by email.",
+      "es": "Del taller salen también dos productos, y Álvaro los lleva. Galivelop Developer, también llamado GalivelopCode, conecta el flujo del taller con agentes de inteligencia artificial que funcionan en tu máquina. Y Galivelop Evaluator, o GVE, mide si un cambio en un sistema de inteligencia artificial lo mejora de verdad. Los dos llegan pronto, son privados, y para saber más se habla con él por correo.",
+      "gl": "Do obradoiro saen tamén dous produtos, e Álvaro lévaos el. Galivelop Developer, tamén chamado GalivelopCode, conecta o fluxo do obradoiro con axentes de intelixencia artificial que funcionan na túa máquina. E Galivelop Evaluator, ou GVE, mide se un cambio nun sistema de intelixencia artificial o mellora de verdade. Os dous chegan pronto, son privados, e para saber máis fálase con el por correo.",
+      "en": "The workshop also produces two products, and Álvaro leads them. Galivelop Developer, also called GalivelopCode, connects the workshop’s workflow to artificial intelligence agents that run on your machine. And Galivelop Evaluator, or GVE, measures whether a change to an artificial intelligence system really improves it. Both are coming soon, both are private, and to know more you can talk to him by email.",
       "enfoques": [
         {
           "frase": "Galivelop Developer, también llamado",
           "gl": "Galivelop Developer, tamén chamado",
           "en": "Galivelop Developer, also called",
           "ver": "producto-galivelop-developer"
+        },
+        {
+          "frase": "Galivelop Evaluator, o",
+          "gl": "Galivelop Evaluator, ou",
+          "en": "Galivelop Evaluator, or",
+          "ver": "producto-galivelop-evaluator"
         }
       ]
     },

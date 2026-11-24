@@ -6177,7 +6177,7 @@ body:has(dialog[open]) {
 }
 
 /* ---------- Página de un producto (ADR 0005) ----------
-   Cuaderno de taller: cabecera con portada, el esquema de la rama junto a sus pasos, tres fichas, el bloque celeste
+   Cuaderno de taller: cabecera con portada, los pasos con sus diagramas, las fichas, el bloque celeste
    del contacto y el apartado técnico plegado. El acento es el del producto (`--acento-proyecto`). */
 
 .producto-cabeza {
@@ -6288,88 +6288,6 @@ body:has(dialog[open]) {
   padding-bottom: 10px;
   border-bottom: 2px solid var(--tinta);
   font-size: clamp(1.7rem, 3.4vw, 2.2rem);
-}
-
-.producto-dos {
-  display: grid;
-  gap: 20px;
-}
-
-.producto-dos > * {
-  min-width: 0;
-}
-
-.esquema-rama {
-  margin: 0;
-  padding: 12px;
-  background: var(--superficie);
-  border: 1px solid var(--borde);
-}
-
-.esquema-rama svg {
-  display: block;
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-  margin-inline: auto;
-}
-
-.esquema-rama path {
-  fill: none;
-  stroke: var(--tinta);
-  stroke-width: 2;
-}
-
-.esquema-rama .esquema-quieto {
-  stroke: var(--texto-2);
-  stroke-width: 1.5;
-  stroke-dasharray: 3 5;
-}
-
-.esquema-rama .esquema-desvio {
-  stroke: var(--acento-bloque);
-  stroke-width: 3;
-}
-
-.esquema-rotulo {
-  font: 500 9.5px var(--fuente-datos);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  fill: var(--texto-2);
-}
-
-.esquema-rotulo-rama {
-  fill: var(--acento-texto);
-}
-
-.esquema-nodo rect {
-  fill: var(--superficie);
-  stroke: var(--tinta);
-  stroke-width: 1.5;
-}
-
-.esquema-nodo text {
-  font: 500 12px var(--fuente-datos);
-  fill: var(--tinta);
-}
-
-.esquema-nodo-2 rect,
-.esquema-nodo-3 rect {
-  fill: var(--acento-bloque);
-  stroke: var(--acento-bloque);
-}
-
-.esquema-nodo-2 text,
-.esquema-nodo-3 text {
-  fill: var(--blanco);
-}
-
-.esquema-nodo-4 rect {
-  fill: var(--tinta);
-}
-
-.esquema-nodo-4 text {
-  fill: var(--papel);
 }
 
 .producto-pasos {
@@ -6722,16 +6640,81 @@ body:has(dialog[open]) {
     align-items: center;
   }
 
-  .producto-dos {
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-
   .producto-garantias {
     grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
+
+  .producto-cabeza-sola {
+    grid-template-columns: 1fr;
+  }
+
+  .producto-beneficios {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Problema, beneficios, figuras y «para quién es» (ADR 0006). */
+.producto-problema {
+  max-width: 62ch;
+}
+
+.producto-problema p {
+  color: var(--texto-2);
+  font-size: 1.1rem;
+}
+
+.producto-beneficios {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.producto-figuras {
+  display: grid;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.producto-figura {
+  margin: 0;
+  padding: 12px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.producto-figura img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.producto-figura figcaption {
+  margin-top: 8px;
+  color: var(--texto-2);
+  font-size: 0.9rem;
+}
+
+.producto-paraquien {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.producto-paraquien li {
+  padding: 12px 16px;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 3px solid var(--acento-bloque);
+}
+
+.producto-estado {
+  max-width: 60ch;
+  margin: 0;
+  font-weight: 600;
 }
 
 @media print {

@@ -1,7 +1,6 @@
 import { ArrowDown, Check, Copy, Mail } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { EsquemaRama } from '../components/EsquemaRama';
 import { buscarPersonaPorId } from '../data/equipo';
 import { MARCA } from '../data/marca';
 import {
@@ -80,7 +79,10 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
 
   return (
     <div className="producto-pagina" style={estiloAcento(p.acento)}>
-      <section className="contenedor producto-cabeza" data-guion="cabecera">
+      <section
+        className={`contenedor producto-cabeza${pagina.portada ? '' : ' producto-cabeza-sola'}`}
+        data-guion="cabecera"
+      >
         <div className="producto-cabeza-texto">
           <p className="antetitulo">
             {t('producto.etiqueta')}
@@ -107,43 +109,78 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
             </a>
           </div>
         </div>
-        <img
-          className="producto-portada"
-          src={ruta(pagina.portada.src)}
-          srcSet={`${ruta(pagina.portada.mini)} 720w, ${ruta(pagina.portada.src)} ${pagina.portada.ancho}w`}
-          sizes="(min-width: 860px) 560px, 100vw"
-          width={pagina.portada.ancho}
-          height={pagina.portada.alto}
-          alt={tx(pagina.portada.alt)}
-          fetchPriority="high"
-        />
+        {pagina.portada && (
+          <img
+            className="producto-portada"
+            src={ruta(pagina.portada.src)}
+            srcSet={`${ruta(pagina.portada.mini)} 720w, ${ruta(pagina.portada.src)} ${pagina.portada.ancho}w`}
+            sizes="(min-width: 860px) 560px, 100vw"
+            width={pagina.portada.ancho}
+            height={pagina.portada.alto}
+            alt={tx(pagina.portada.alt)}
+            fetchPriority="high"
+          />
+        )}
       </section>
+
+      {pagina.problema && (
+        <section className="contenedor producto-bloque" data-guion="problema">
+          <div className="producto-problema">
+            <h2 className="producto-titulo">{tx(pagina.problema.titulo)}</h2>
+            <p>{tx(pagina.problema.texto)}</p>
+          </div>
+        </section>
+      )}
+
+      {pagina.beneficios && (
+        <section className="seccion-alterna producto-franja" data-guion="beneficios">
+          <div className="contenedor">
+            <h2 className="producto-titulo">{tx(pagina.beneficios.titulo)}</h2>
+            <div className="producto-beneficios">
+              {pagina.beneficios.items.map((b, i) => (
+                <article key={i} className="producto-garantia" data-guion={`beneficio-${i + 1}`}>
+                  <h3>{tx(b.titulo)}</h3>
+                  <p>{tx(b.texto)}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="contenedor producto-bloque" id="como">
         <h2 className="producto-titulo">{tx(pagina.pasosTitulo)}</h2>
-        <div className="producto-dos">
-          <EsquemaRama
-            rotulos={{
-              descripcion: tx(pagina.esquema.descripcion),
-              rama: tx(pagina.esquema.rama),
-              tronco: tx(pagina.esquema.tronco),
-              quieto: tx(pagina.esquema.quieto),
-            }}
-          />
-          <ol className="producto-pasos">
-            {pagina.pasos.map((paso, i) => (
-              <li key={i} data-guion={`paso-${i + 1}`}>
-                <span className="producto-paso-num" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <div>
-                  <strong>{tx(paso.titulo)}</strong>
-                  <span>{tx(paso.texto)}</span>
-                </div>
-              </li>
+        <ol className="producto-pasos">
+          {pagina.pasos.map((paso, i) => (
+            <li key={i} data-guion={`paso-${i + 1}`}>
+              <span className="producto-paso-num" aria-hidden="true">
+                {i + 1}
+              </span>
+              <div>
+                <strong>{tx(paso.titulo)}</strong>
+                <span>{tx(paso.texto)}</span>
+              </div>
+            </li>
+          ))}
+        </ol>
+        {pagina.figuras && pagina.figuras.length > 0 && (
+          <div className="producto-figuras">
+            {pagina.figuras.map((f, i) => (
+              <figure key={i} className="producto-figura">
+                <img
+                  src={ruta(f.src)}
+                  srcSet={`${ruta(f.mini)} 720w, ${ruta(f.src)} ${f.ancho}w`}
+                  sizes="(min-width: 1100px) 1100px, 100vw"
+                  width={f.ancho}
+                  height={f.alto}
+                  alt={tx(f.alt)}
+                  loading="lazy"
+                />
+                {f.pie && <figcaption>{tx(f.pie)}</figcaption>}
+              </figure>
             ))}
-          </ol>
-        </div>
+          </div>
+        )}
       </section>
 
       <section className="seccion-alterna producto-franja" data-guion="fiarse">
@@ -160,10 +197,22 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
         </div>
       </section>
 
+      {pagina.paraQuien && (
+        <section className="contenedor producto-bloque" data-guion="para-quien">
+          <h2 className="producto-titulo">{tx(pagina.paraQuien.titulo)}</h2>
+          <ul className="producto-paraquien">
+            {pagina.paraQuien.items.map((item, i) => (
+              <li key={i}>{tx(item)}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section className="hero producto-contacto" data-guion="contacto" ref={contacto}>
         <img className="hero-fondo" src={ruta('/marca/isobatas.svg')} alt="" aria-hidden="true" />
         <div className="contenedor producto-contacto-dentro">
           <h2>{tx(pagina.contacto.titulo)}</h2>
+          {pagina.estadoTexto && <p className="producto-estado">{tx(pagina.estadoTexto)}</p>}
           <p className="producto-contacto-texto">{tx(pagina.contacto.texto)}</p>
           {botonContacto}
           <p className="producto-correo">
@@ -189,18 +238,24 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
             <span className="producto-plegable-titulo">{t('producto.tecnico.titulo')}</span>
           </summary>
           <div className="producto-plegable-cuerpo">
-            <h3>{t('producto.papeles')}</h3>
-            <ul className="producto-papeles">
-              {pagina.tecnico.papeles.map((papel, i) => (
-                <li key={i}>
-                  <span>
-                    {t('producto.papel')} {i + 1}
-                  </span>
-                  <strong>{tx(papel)}</strong>
-                </li>
-              ))}
-            </ul>
-            <p className="producto-papeles-texto">{tx(pagina.tecnico.papelesTexto)}</p>
+            {pagina.tecnico.papeles && pagina.tecnico.papeles.length > 0 && (
+              <>
+                <h3>{t('producto.papeles')}</h3>
+                <ul className="producto-papeles">
+                  {pagina.tecnico.papeles.map((papel, i) => (
+                    <li key={i}>
+                      <span>
+                        {t('producto.papel')} {i + 1}
+                      </span>
+                      <strong>{tx(papel)}</strong>
+                    </li>
+                  ))}
+                </ul>
+                {pagina.tecnico.papelesTexto && (
+                  <p className="producto-papeles-texto">{tx(pagina.tecnico.papelesTexto)}</p>
+                )}
+              </>
+            )}
             <dl className="producto-datos">
               {pagina.tecnico.datos.map((d, i) => (
                 <div key={i}>

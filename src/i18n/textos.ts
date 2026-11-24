@@ -12,7 +12,7 @@ const es = {
   'hero.titulo1': 'Hacemos reales',
   'hero.titulo2': 'los proyectos que parecen imposibles',
   'hero.texto':
-    'Galivelop es un taller que crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Lo que sale de él, nuestro producto Galivelop Developer, está en el perfil de quien lo hace.',
+    'Galivelop es un taller que crea, investiga y aprende a la vista y con la puerta abierta: puedes seguir cada proyecto, proponer uno nuevo o sumarte. Lo que sale de él, nuestros productos Galivelop Developer y Galivelop Evaluator, están en el perfil de quien los hace.',
   'hero.cta.taller': 'Conocer el taller',
   'hero.resumen.proyectos': 'proyectos',
   'hero.resumen.publicados': 'publicados',
@@ -295,7 +295,7 @@ const es = {
   'novedades.verMas': 'Ver más',
   'novedades.muro': 'En el muro',
   'equipo.productos.texto':
-    'El producto de la marca que lleva {nombre}. Es privado y no tiene precios en la web: todo se trata por correo.',
+    'Lo que la marca ofrece y lleva {nombre}. Son privados y no tienen precios en la web: todo se trata por correo.',
   'participa.privados':
     '{nombres} son desarrollos propios del taller, pero escuchamos propuestas de proyectos y nos encantará conocer a nuevas personas interesadas.',
   'nav.proyectos.todos': 'Todos los proyectos',
@@ -643,7 +643,7 @@ const gl: Record<Clave, string> = {
   'novedades.verMas': 'Ver máis',
   'novedades.muro': 'No muro',
   'equipo.productos.texto':
-    'O produto da marca que leva {nombre}. É privado e non ten prezos na web: todo se trata por correo.',
+    'O que a marca ofrece e leva {nombre}. Son privados e non teñen prezos na web: todo se trata por correo.',
   'participa.privados':
     '{nombres} son desenvolvementos propios do obradoiro, pero escoitamos propostas de proxectos e encantaranos coñecer novas persoas interesadas.',
   'nav.proyectos.todos': 'Todos os proxectos',
@@ -706,7 +706,7 @@ const en: Record<Clave, string> = {
   'hero.titulo1': 'We make seemingly',
   'hero.titulo2': 'impossible projects real',
   'hero.texto':
-    'Galivelop is a workshop that creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. What comes out of it, our product Galivelop Developer, is on the profile of whoever makes it.',
+    'Galivelop is a workshop that creates, researches and learns in the open, with the door open: you can follow every project, propose a new one or join in. What comes out of it, our products Galivelop Developer and Galivelop Evaluator, are on the profile of whoever makes them.',
   'hero.cta.taller': 'Meet the workshop',
   'hero.resumen.proyectos': 'projects',
   'hero.resumen.publicados': 'live',
@@ -990,7 +990,7 @@ const en: Record<Clave, string> = {
   'novedades.verMas': 'Show more',
   'novedades.muro': 'In the feed',
   'equipo.productos.texto':
-    'The brand’s product that {nombre} looks after. It is private and has no prices on the site: everything is arranged by email.',
+    'What the brand offers and {nombre} look after. They are private and have no prices on the site: everything is arranged by email.',
   'participa.privados':
     '{nombres} are developed in-house by the workshop, but we welcome project proposals and would love to meet new people who are interested.',
   'nav.proyectos.todos': 'All projects',

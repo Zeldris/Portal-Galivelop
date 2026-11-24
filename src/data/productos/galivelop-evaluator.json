@@ -1,0 +1,266 @@
+{
+  "slug": "galivelop-evaluator",
+  "nombre": "Galivelop Evaluator",
+  "orden": 5,
+  "acento": "#C27A1A",
+  "icono": "chart",
+  "estado": "proximamente",
+  "queOfrece": {
+    "es": "Mide si un cambio en tu sistema de IA lo mejora de verdad. Guarda cada prueba y te enseña qué sube y qué baja, con pruebas que se pueden repetir.",
+    "gl": "Mide se un cambio no teu sistema de IA o mellora de verdade. Garda cada proba e móstrache que sobe e que baixa, con probas que se poden repetir.",
+    "en": "It measures whether a change to your AI system really improves it. It keeps every test and shows you what goes up and what goes down, with results you can repeat."
+  },
+  "servicios": [],
+  "responsable": "alvaro-garcia-grana",
+  "colaboradores": [],
+  "alias": "GVE",
+  "pagina": {
+    "actualizado": "2026-11-24",
+    "seo": {
+      "titulo": {
+        "es": "Mide si tu IA mejora de verdad",
+        "gl": "Mide se a túa IA mellora de verdade",
+        "en": "Measure whether your AI really improves"
+      },
+      "descripcion": {
+        "es": "Galivelop Evaluator, alias GVE: mide si un cambio en un sistema de IA lo mejora, con pruebas que se pueden repetir y un informe claro de lo que sube y de lo que baja. Próximamente.",
+        "gl": "Galivelop Evaluator, alias GVE: mide se un cambio nun sistema de IA o mellora, con probas que se poden repetir e un informe claro do que sobe e do que baixa. Proximamente.",
+        "en": "Galivelop Evaluator, also known as GVE: it measures whether a change to an AI system improves it, with repeatable tests and a clear report of what goes up and what goes down. Coming soon."
+      }
+    },
+    "lema": [
+      {
+        "es": "Medir antes,",
+        "gl": "Medir antes,",
+        "en": "Measure first,"
+      },
+      {
+        "es": "mejorar con pruebas.",
+        "gl": "mellorar con probas.",
+        "en": "improve with proof."
+      }
+    ],
+    "entrada": {
+      "es": "Cambias un prompt, un modelo o la forma de buscar, y parece que va mejor. Galivelop Evaluator lo comprueba: mide antes y después con las mismas preguntas y te cuenta, sin adornos, qué ha mejorado y qué ha empeorado.",
+      "gl": "Cambias un prompt, un modelo ou a forma de buscar, e parece que vai mellor. Galivelop Evaluator compróbao: mide antes e despois coas mesmas preguntas e cóntache, sen adornos, que mellorou e que empeorou.",
+      "en": "You change a prompt, a model or the way it searches, and it seems to work better. Galivelop Evaluator checks: it measures before and after with the same questions and tells you plainly what got better and what got worse."
+    },
+    "pasosTitulo": {
+      "es": "La idea, en cuatro pasos",
+      "gl": "A idea, en catro pasos",
+      "en": "The idea, in four steps"
+    },
+    "pasos": [
+      {
+        "titulo": {
+          "es": "Se mide cómo está hoy",
+          "gl": "Mídese como está hoxe",
+          "en": "We measure where you are today"
+        },
+        "texto": {
+          "es": "Un conjunto de preguntas con su respuesta esperada, en castellano y en inglés, y una primera medida que queda guardada.",
+          "gl": "Un conxunto de preguntas coa súa resposta esperada, en castelán e en inglés, e unha primeira medida que queda gardada.",
+          "en": "A set of questions with their expected answers, in Spanish and in English, and a first measurement that is kept on record."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Se prueba el cambio",
+          "gl": "Próbase o cambio",
+          "en": "The change is tested"
+        },
+        "texto": {
+          "es": "Lo nuevo se mide aparte, con las mismas preguntas y la misma configuración anotada.",
+          "gl": "O novo mídese á parte, coas mesmas preguntas e a mesma configuración anotada.",
+          "en": "The new version is measured separately, with the same questions and the configuration written down."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Se comparan los dos resultados",
+          "gl": "Compáranse os dous resultados",
+          "en": "The two results are compared"
+        },
+        "texto": {
+          "es": "Qué sube, qué baja y qué se queda igual. Lo que empeora se enseña junto a lo que mejora.",
+          "gl": "Que sobe, que baixa e que queda igual. O que empeora móstrase xunto ao que mellora.",
+          "en": "What goes up, what goes down and what stays the same. What gets worse is shown next to what gets better."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Recibes un informe que se entiende",
+          "gl": "Recibes un informe que se entende",
+          "en": "You get a report you can follow"
+        },
+        "texto": {
+          "es": "Un veredicto claro, sus límites y cómo repetir la prueba. Solo se da por buena una mejora demostrada.",
+          "gl": "Un veredicto claro, os seus límites e como repetir a proba. Só se dá por boa unha mellora demostrada.",
+          "en": "A clear verdict, its limits and how to repeat the test. Only a proven improvement counts."
+        }
+      }
+    ],
+    "figuras": [
+      {
+        "src": "/productos/galivelop-evaluator/gve-evaluacion.webp",
+        "mini": "/productos/galivelop-evaluator/gve-evaluacion-mini.webp",
+        "ancho": 1600,
+        "alto": 900,
+        "alt": {
+          "es": "Diagrama: se mide cómo está hoy, se prueba el cambio, se comparan los dos resultados y se lee un informe con lo que sube y lo que baja.",
+          "gl": "Diagrama: mídese como está hoxe, próbase o cambio, compáranse os dous resultados e lese un informe co que sobe e co que baixa.",
+          "en": "Diagram: you measure where you are today, test the change, compare the two results and read a report of what goes up and what goes down."
+        }
+      }
+    ],
+    "garantiasTitulo": {
+      "es": "Por qué fiarse",
+      "gl": "Por que fiarse",
+      "en": "Why you can trust it"
+    },
+    "garantias": [
+      {
+        "titulo": {
+          "es": "Cada resultado se puede repetir",
+          "gl": "Cada resultado pódese repetir",
+          "en": "Every result can be repeated"
+        },
+        "texto": {
+          "es": "Cada prueba guarda con qué configuración se hizo. Cualquiera puede volver a correrla y comprobar que sale lo mismo.",
+          "gl": "Cada proba garda con que configuración se fixo. Calquera pode volver correla e comprobar que sae o mesmo.",
+          "en": "Each test records the configuration it was run with. Anyone can run it again and check that the result is the same."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Lo que falta no cuenta como acierto",
+          "gl": "O que falta non conta como acerto",
+          "en": "A missing result is never a pass"
+        },
+        "texto": {
+          "es": "Si un dato no está, se dice. Nunca se rellena con un éxito para que el resultado quede mejor.",
+          "gl": "Se un dato non está, dise. Nunca se enche cun éxito para que o resultado quede mellor.",
+          "en": "If a piece of data is missing, we say so. It is never filled in with a success to make the result look better."
+        }
+      },
+      {
+        "titulo": {
+          "es": "Se guarda una parte sin mirar",
+          "gl": "Gárdase unha parte sen mirar",
+          "en": "Part of it is kept unseen"
+        },
+        "texto": {
+          "es": "Una parte de las preguntas no se usa para diseñar la mejora y solo sirve para confirmarla. Así no se ajusta la prueba a la respuesta.",
+          "gl": "Unha parte das preguntas non se usa para deseñar a mellora e só serve para confirmala. Así non se axusta a proba á resposta.",
+          "en": "A share of the questions is not used to design the improvement and only serves to confirm it. That way the test is never tuned to the answer."
+        }
+      }
+    ],
+    "contacto": {
+      "titulo": {
+        "es": "¿Te interesa? Escríbele a Álvaro.",
+        "gl": "Interésache? Escríbelle a Álvaro.",
+        "en": "Interested? Write to Álvaro."
+      },
+      "texto": {
+        "es": "No hay precios en la web ni formulario: todo se habla por correo. Cuéntanos qué sistema de IA quieres medir y qué te gustaría mejorar, y lo hablamos.",
+        "gl": "Non hai prezos na web nin formulario: todo se fala por correo. Conta que sistema de IA queres medir e que che gustaría mellorar, e falámolo.",
+        "en": "There are no prices on the site and no form: everything is discussed by email. Tell us which AI system you want to measure and what you would like to improve, and we will talk it through."
+      }
+    },
+    "tecnico": {
+      "papeles": [
+        {
+          "es": "Quien mide",
+          "gl": "Quen mide",
+          "en": "Who measures"
+        },
+        {
+          "es": "Quien decide",
+          "gl": "Quen decide",
+          "en": "Who decides"
+        }
+      ],
+      "papelesTexto": {
+        "es": "El evaluador mide y compara; la persona lee el informe y decide qué cambio se queda.",
+        "gl": "O avaliador mide e compara; a persoa le o informe e decide que cambio se queda.",
+        "en": "The evaluator measures and compares; a person reads the report and decides which change stays."
+      },
+      "datos": [
+        {
+          "etiqueta": {
+            "es": "Orden de terminal",
+            "gl": "Orde de terminal",
+            "en": "Terminal command"
+          },
+          "valor": {
+            "es": "gve",
+            "gl": "gve",
+            "en": "gve"
+          },
+          "codigo": true
+        },
+        {
+          "etiqueta": {
+            "es": "Qué mide",
+            "gl": "Que mide",
+            "en": "What it measures"
+          },
+          "valor": {
+            "es": "Sistemas de IA sobre texto, empezando por la búsqueda de información",
+            "gl": "Sistemas de IA sobre texto, comezando pola busca de información",
+            "en": "AI systems working on text, starting with information retrieval"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Idiomas",
+            "gl": "Idiomas",
+            "en": "Languages"
+          },
+          "valor": {
+            "es": "Castellano e inglés, con las mismas preguntas en los dos",
+            "gl": "Castelán e inglés, coas mesmas preguntas nos dous",
+            "en": "Spanish and English, with the same questions in both"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Informe",
+            "gl": "Informe",
+            "en": "Report"
+          },
+          "valor": {
+            "es": "En castellano, en Markdown",
+            "gl": "En castelán, en Markdown",
+            "en": "In Spanish, in Markdown"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Sistema",
+            "gl": "Sistema",
+            "en": "System"
+          },
+          "valor": {
+            "es": "Python 3.10 o posterior, sin dependencias externas",
+            "gl": "Python 3.10 ou posterior, sen dependencias externas",
+            "en": "Python 3.10 or later, no external dependencies"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Código",
+            "gl": "Código",
+            "en": "Code"
+          },
+          "valor": {
+            "es": "Privado. No se publica",
+            "gl": "Privado. Non se publica",
+            "en": "Private. It is not published"
+          }
+        }
+      ]
+    }
+  }
+}
