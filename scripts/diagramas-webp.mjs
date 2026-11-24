@@ -17,8 +17,14 @@ try {
 }
 
 const NOMBRES = { flujo: 'galivelop-workflow', arquitectura: 'gw-arquitectura', fases: 'gw-fases', 'pre-push': 'gw-pre-push', sesion: 'gw-sesion', subagentes: 'gw-subagentes', versiones: 'gw-versiones' };
-// Diagramas de las páginas de producto: nombre del svg → slug del producto.
-const PRODUCTOS = { 'gd-harness': 'galivelop-developer', 'gve-evaluacion': 'galivelop-evaluator' };
+// Diagramas de las páginas de producto: nombre del svg → slug del producto. Cada uno, con su versión del tema oscuro
+// (<nombre>-oscuro.svg, que también dibuja scripts/diagramas/productos.py).
+const PRODUCTOS = {
+  'gd-harness': 'galivelop-developer',
+  'gd-harness-oscuro': 'galivelop-developer',
+  'gve-evaluacion': 'galivelop-evaluator',
+  'gve-evaluacion-oscuro': 'galivelop-evaluator',
+};
 for (const n of Object.keys(PRODUCTOS)) NOMBRES[n] = n;
 const destino = (n) => (PRODUCTOS[n] ? `public/productos/${PRODUCTOS[n]}` : 'public/proyectos/galivelop-workflow');
 const pedidos = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(NOMBRES);

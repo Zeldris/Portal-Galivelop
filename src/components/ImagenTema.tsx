@@ -8,6 +8,8 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'className' | 'al
   oscuro: string;
   className: string;
   alt?: string;
+  /** `srcSet` de cada versión, cuando la imagen tiene varios anchos (rutas ya resueltas con `ruta`). */
+  srcSets?: { claro: string; oscuro: string };
 };
 
 /**
@@ -15,7 +17,7 @@ type Props = Omit<ImgHTMLAttributes<HTMLImageElement>, 'src' | 'className' | 'al
  * tema. Van con `loading="lazy"`: el navegador no descarga una imagen diferida oculta con `display: none`, así que
  * solo baja la del tema.
  */
-export function ImagenTema({ claro, oscuro, className, alt = '', ...resto }: Props) {
+export function ImagenTema({ claro, oscuro, className, alt = '', srcSets, ...resto }: Props) {
   return (
     <>
       {(
@@ -30,6 +32,7 @@ export function ImagenTema({ claro, oscuro, className, alt = '', ...resto }: Pro
           {...resto}
           className={`${className} solo-${tema}`}
           src={ruta(src)}
+          srcSet={srcSets?.[tema]}
           alt={alt}
         />
       ))}

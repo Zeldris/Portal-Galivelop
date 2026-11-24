@@ -9,6 +9,7 @@ import {
   type PaginaProducto,
   type Producto as TipoProducto,
 } from '../data/productos';
+import { ImagenTema } from '../components/ImagenTema';
 import { ruta } from '../data/proyectos';
 import { estiloAcento } from '../data/tonos';
 import { useIdioma } from '../i18n/Idioma';
@@ -167,9 +168,14 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
           <div className="producto-figuras">
             {pagina.figuras.map((f, i) => (
               <figure key={i} className="producto-figura">
-                <img
-                  src={ruta(f.src)}
-                  srcSet={`${ruta(f.mini)} 720w, ${ruta(f.src)} ${f.ancho}w`}
+                <ImagenTema
+                  className="producto-figura-imagen"
+                  claro={f.src}
+                  oscuro={f.srcOscuro}
+                  srcSets={{
+                    claro: `${ruta(f.mini)} 720w, ${ruta(f.src)} ${f.ancho}w`,
+                    oscuro: `${ruta(f.miniOscuro)} 720w, ${ruta(f.srcOscuro)} ${f.ancho}w`,
+                  }}
                   sizes="(min-width: 1100px) 1100px, 100vw"
                   width={f.ancho}
                   height={f.alto}

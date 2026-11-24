@@ -104,6 +104,8 @@
       {
         "src": "/productos/galivelop-evaluator/gve-evaluacion.webp",
         "mini": "/productos/galivelop-evaluator/gve-evaluacion-mini.webp",
+        "srcOscuro": "/productos/galivelop-evaluator/gve-evaluacion-oscuro.webp",
+        "miniOscuro": "/productos/galivelop-evaluator/gve-evaluacion-oscuro-mini.webp",
         "ancho": 1600,
         "alto": 940,
         "alt": {

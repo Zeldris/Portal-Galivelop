@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940">
+<!-- Galivelop Evaluator (GVE): cómo mide un cambio, antes y después, con evidencia. Hoja de estilos de docs/marca.md (papel, retícula de 24 px, tinta, celeste, chaflanes; sin círculos).
+     Lo dibuja scripts/diagramas/productos.py (tema claro y oscuro): no se edita a mano.
+     Se exporta con scripts/diagramas-webp.mjs a public/productos/<slug>/<nombre>.webp (1600) y -mini.webp (720).
+     Fuentes: Big Shoulders Display (títulos), Literata (frases) y JetBrains Mono (datos), las de la web. -->
+<defs>
+  <pattern id="rejilla" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M24 0H0V24" fill="none" stroke="#121e27" stroke-width="1"/>
+  </pattern>
+  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1aa6df"/></marker>
+  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#e6eef3"/></marker>
+  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8fb09e"/></marker>
+</defs>
+<style>
+  .t { font-family: 'Big Shoulders Display Variable', 'Big Shoulders Display', sans-serif; font-weight: 800; letter-spacing: 0.01em; }
+  .s { font-family: 'Literata Variable', Literata, serif; font-weight: 500; }
+  .m { font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 500; }
+  .b { font-weight: 700; }
+</style>
+<rect width="1600" height="940" fill="#0d171e"/>
+<rect width="1600" height="940" fill="url(#rejilla)"/>
+<text x="62" y="66" class="m b" font-size="22" fill="#5cc8f2" text-anchor="start" letter-spacing="0.08em">GALIVELOP EVALUATOR · GVE</text>
+<text x="60" y="132" class="t" font-size="64" fill="#e6eef3" text-anchor="start">¿ESE CAMBIO MEJORA TU IA DE VERDAD?</text>
+<text x="62" y="176" class="s" font-size="27" fill="#9fb2bf" text-anchor="start">Mide antes y después con las mismas preguntas. Enseña qué sube y qué baja.</text>
+<path d="M60 230H386L400 244V430H60Z" fill="#111f29" stroke="#9fb2bf" stroke-width="2"/>
+<path d="M84 250H114V255H84Z" fill="#9fb2bf"/>
+<text x="84" y="300" class="t" font-size="38" fill="#e6eef3" text-anchor="start">TU SISTEMA DE IA</text>
+<text x="84" y="338" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">búsqueda en documentos</text>
+<text x="84" y="370" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">asistentes</text>
+<text x="84" y="402" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">modelos locales</text>
+<path d="M60 490H386L400 504V690H60Z" fill="#111f29" stroke="#1aa6df" stroke-width="2"/>
+<path d="M84 510H114V515H84Z" fill="#1aa6df"/>
+<text x="84" y="560" class="t" font-size="38" fill="#e6eef3" text-anchor="start">UN CAMBIO</text>
+<text x="84" y="598" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">otro prompt</text>
+<text x="84" y="630" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">otro modelo</text>
+<text x="84" y="662" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">otra forma de buscar</text>
+<path d="M230 430V490" fill="none" stroke="#9fb2bf" stroke-width="3"/>
+<rect x="213" y="443" width="34" height="34" fill="#0d171e" stroke="#9fb2bf" stroke-width="2.5"/><path d="M221 460H239M230 451V469" stroke="#e6eef3" stroke-width="3"/>
+<path d="M470 230H956L970 244V430H470Z" fill="#111f29" stroke="#1aa6df" stroke-width="2"/>
+<path d="M470 380H970V430H470Z" fill="#1aa6df" fill-opacity="0.16" stroke="#1aa6df" stroke-width="2"/>
+<text x="494" y="286" class="t" font-size="42" fill="#e6eef3" text-anchor="start">ANTES</text>
+<text x="946" y="284" class="s" font-size="25" fill="#9fb2bf" text-anchor="end">medida de partida</text>
+<rect x="494" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="517" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="552" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="575" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="610" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="633" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✗</text>
+<rect x="668" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="691" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="726" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="749" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✗</text>
+<rect x="784" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="807" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✗</text>
+<rect x="842" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="865" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="900" y="308" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="923" y="341" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<text x="720" y="414" class="m b" font-size="20" fill="#5cc8f2" text-anchor="middle" letter-spacing="0.04em">GUARDADA CON SU CONFIGURACIÓN</text>
+<path d="M470 490H956L970 504V690H470Z" fill="#111f29" stroke="#1aa6df" stroke-width="2"/>
+<path d="M470 640H970V690H470Z" fill="#1aa6df" fill-opacity="0.16" stroke="#1aa6df" stroke-width="2"/>
+<text x="494" y="546" class="t" font-size="42" fill="#e6eef3" text-anchor="start">DESPUÉS</text>
+<text x="946" y="544" class="s" font-size="25" fill="#9fb2bf" text-anchor="end">con el cambio</text>
+<rect x="494" y="568" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="517" y="601" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="552" y="568" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="575" y="601" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="610" y="568" width="46" height="46" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="633" y="601" class="m b" font-size="26" fill="#ffffff" text-anchor="middle">✓</text>
+<rect x="668" y="568" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="691" y="601" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<rect x="726" y="568" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="749" y="601" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✗</text>
+<rect x="784" y="568" width="46" height="46" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="807" y="601" class="m b" font-size="26" fill="#ffffff" text-anchor="middle">✓</text>
+<rect x="842" y="568" width="46" height="46" fill="#e6eef3" stroke="#e6eef3" stroke-width="2"/>
+<text x="865" y="601" class="m b" font-size="26" fill="#0d171e" text-anchor="middle">✗</text>
+<rect x="900" y="568" width="46" height="46" fill="#16242e" stroke="#2b3d49" stroke-width="2"/>
+<text x="923" y="601" class="m b" font-size="26" fill="#9fb2bf" text-anchor="middle">✓</text>
+<text x="720" y="674" class="m b" font-size="20" fill="#5cc8f2" text-anchor="middle" letter-spacing="0.04em">GUARDADA CON SU CONFIGURACIÓN</text>
+<text x="720" y="470" class="m b" font-size="22" fill="#e6eef3" text-anchor="middle">↓  las mismas preguntas  ↓</text>
+<path d="M403 330H462" fill="none" stroke="#1aa6df" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M403 590H462" fill="none" stroke="#1aa6df" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M1050 230H1526L1540 244V690H1050Z" fill="#111f29" stroke="#e6eef3" stroke-width="2.5"/>
+<text x="1074" y="286" class="t" font-size="42" fill="#e6eef3" text-anchor="start">EL INFORME</text>
+<rect x="1074" y="316" width="72" height="72" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="1110" y="366" class="m b" font-size="38" fill="#ffffff" text-anchor="middle">↑</text>
+<text x="1166" y="350" class="t" font-size="34" fill="#e6eef3" text-anchor="start">MEJORA</text>
+<text x="1166" y="382" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">fallaba y ahora acierta</text>
+<text x="1516" y="348" class="m b" font-size="24" fill="#e6eef3" text-anchor="end">✗ → ✓</text>
+<rect x="1074" y="416" width="72" height="72" fill="#e6eef3" stroke="#e6eef3" stroke-width="2"/>
+<text x="1110" y="466" class="m b" font-size="38" fill="#0d171e" text-anchor="middle">↓</text>
+<text x="1166" y="450" class="t" font-size="34" fill="#e6eef3" text-anchor="start">EMPEORA</text>
+<text x="1166" y="482" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">acertaba y ahora falla</text>
+<text x="1516" y="448" class="m b" font-size="24" fill="#e6eef3" text-anchor="end">✓ → ✗</text>
+<rect x="1074" y="516" width="72" height="72" fill="#111f29" stroke="#9fb2bf" stroke-width="2"/>
+<text x="1110" y="566" class="m b" font-size="38" fill="#9fb2bf" text-anchor="middle">=</text>
+<text x="1166" y="550" class="t" font-size="34" fill="#e6eef3" text-anchor="start">SIGUE IGUAL</text>
+<text x="1166" y="582" class="s" font-size="24" fill="#9fb2bf" text-anchor="start">sin cambios</text>
+<text x="1516" y="548" class="m b" font-size="24" fill="#e6eef3" text-anchor="end"></text>
+<path d="M1050 620H1540V690H1050Z" fill="#e6eef3"/>
+<text x="1074" y="668" class="t" font-size="36" fill="#0d171e" text-anchor="start">DECIDES CON EVIDENCIA</text>
+<path d="M973 330C1010 330 1005 400 1042 400" fill="none" stroke="#1aa6df" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M973 590C1010 590 1005 520 1042 520" fill="none" stroke="#1aa6df" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M60 750H398L412 764V890H60Z" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="86" y="812" class="t" font-size="40" fill="#ffffff" text-anchor="start">MISMAS PREGUNTAS</text>
+<text x="86" y="856" class="s" font-size="24" fill="#ffffff" text-anchor="start">Antes y después, sin trampas.</text>
+<path d="M436 750H774L788 764V890H436Z" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="462" y="812" class="t" font-size="40" fill="#ffffff" text-anchor="start">TODO GUARDADO</text>
+<text x="462" y="856" class="s" font-size="24" fill="#ffffff" text-anchor="start">Con su configuración exacta.</text>
+<path d="M812 750H1150L1164 764V890H812Z" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="838" y="812" class="t" font-size="40" fill="#ffffff" text-anchor="start">SUBE Y BAJA</text>
+<text x="838" y="856" class="s" font-size="24" fill="#ffffff" text-anchor="start">Qué mejora y qué empeora.</text>
+<path d="M1188 750H1526L1540 764V890H1188Z" fill="#0b5e88" stroke="#0b5e88" stroke-width="2"/>
+<text x="1214" y="812" class="t" font-size="40" fill="#ffffff" text-anchor="start">SE PUEDE REPETIR</text>
+<text x="1214" y="856" class="s" font-size="24" fill="#ffffff" text-anchor="start">Evidencia, no impresiones.</text>
+</svg>

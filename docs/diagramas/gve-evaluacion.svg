@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940">
-<!-- Galivelop Evaluator (GVE): cómo mide un cambio, antes y después, con evidencia. Hoja de estilos de docs/marca.md (papel, retícula de 24 px, tinta, celeste hondo, chaflanes).
+<!-- Galivelop Evaluator (GVE): cómo mide un cambio, antes y después, con evidencia. Hoja de estilos de docs/marca.md (papel, retícula de 24 px, tinta, celeste, chaflanes; sin círculos).
+     Lo dibuja scripts/diagramas/productos.py (tema claro y oscuro): no se edita a mano.
      Se exporta con scripts/diagramas-webp.mjs a public/productos/<slug>/<nombre>.webp (1600) y -mini.webp (720).
      Fuentes: Big Shoulders Display (títulos), Literata (frases) y JetBrains Mono (datos), las de la web. -->
 <defs>
   <pattern id="rejilla" width="24" height="24" patternUnits="userSpaceOnUse">
-    <path d="M24 0H0V24" fill="none" stroke="#e3edf3" stroke-width="1"/>
+    <path d="M24 0H0V24" fill="none" stroke="#eef3f6" stroke-width="1"/>
   </pattern>
   <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0072a8"/></marker>
   <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#13212b"/></marker>
@@ -34,7 +35,7 @@
 <text x="84" y="630" class="s" font-size="24" fill="#4a5c69" text-anchor="start">otro modelo</text>
 <text x="84" y="662" class="s" font-size="24" fill="#4a5c69" text-anchor="start">otra forma de buscar</text>
 <path d="M230 430V490" fill="none" stroke="#4a5c69" stroke-width="3"/>
-<circle cx="230" cy="460" r="17" fill="#fbfcfd" stroke="#4a5c69" stroke-width="2.5"/><path d="M221 460H239M230 451V469" stroke="#13212b" stroke-width="3"/>
+<rect x="213" y="443" width="34" height="34" fill="#fbfcfd" stroke="#4a5c69" stroke-width="2.5"/><path d="M221 460H239M230 451V469" stroke="#13212b" stroke-width="3"/>
 <path d="M470 230H956L970 244V430H470Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
 <path d="M470 380H970V430H470Z" fill="#1aa6df" fill-opacity="0.16" stroke="#0072a8" stroke-width="2"/>
 <text x="494" y="286" class="t" font-size="42" fill="#13212b" text-anchor="start">ANTES</text>

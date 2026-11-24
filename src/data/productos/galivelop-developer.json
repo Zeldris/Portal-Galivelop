@@ -184,6 +184,8 @@
       {
         "src": "/productos/galivelop-developer/gd-harness.webp",
         "mini": "/productos/galivelop-developer/gd-harness-mini.webp",
+        "srcOscuro": "/productos/galivelop-developer/gd-harness-oscuro.webp",
+        "miniOscuro": "/productos/galivelop-developer/gd-harness-oscuro-mini.webp",
         "ancho": 1600,
         "alto": 1050,
         "alt": {

@@ -67,8 +67,11 @@ export interface PaginaProducto {
   pasosTitulo: Texto;
   /** Los cuatro pasos, en orden. */
   pasos: TituloTexto[];
-  /** Diagramas bajo los pasos (WebP en `public/`, con su `mini` de 720 px de ancho). */
-  figuras?: (Imagen & { pie?: Texto })[];
+  /**
+   * Diagramas bajo los pasos (WebP en `public/`, con su `mini` de 720 px de ancho) y su versión del tema oscuro
+   * (`srcOscuro` y `miniOscuro`, con las mismas medidas: fondo noche, nunca el papel claro).
+   */
+  figuras?: (Imagen & { srcOscuro: string; miniOscuro: string; pie?: Texto })[];
   garantiasTitulo: Texto;
   garantias: TituloTexto[];
   /** Para quién es, tras «por qué fiarse». */
