@@ -105,11 +105,11 @@
         "src": "/productos/galivelop-evaluator/gve-evaluacion.webp",
         "mini": "/productos/galivelop-evaluator/gve-evaluacion-mini.webp",
         "ancho": 1600,
-        "alto": 900,
+        "alto": 940,
         "alt": {
-          "es": "Diagrama: se mide cómo está hoy, se prueba el cambio, se comparan los dos resultados y se lee un informe con lo que sube y lo que baja.",
-          "gl": "Diagrama: mídese como está hoxe, próbase o cambio, compáranse os dous resultados e lese un informe co que sobe e co que baixa.",
-          "en": "Diagram: you measure where you are today, test the change, compare the two results and read a report of what goes up and what goes down."
+          "es": "Esquema de Galivelop Evaluator: tu sistema de IA se mide antes y después de un cambio con las mismas preguntas, cada prueba se guarda con su configuración y el informe enseña qué mejora, qué empeora y qué sigue igual.",
+          "gl": "Esquema de Galivelop Evaluator: o teu sistema de IA mídese antes e despois dun cambio coas mesmas preguntas, cada proba gárdase coa súa configuración e o informe mostra que mellora, que empeora e que segue igual.",
+          "en": "Diagram of Galivelop Evaluator: your AI system is measured before and after a change with the same questions, each test is saved with its configuration, and the report shows what improves, what gets worse and what stays the same."
         }
       }
     ],

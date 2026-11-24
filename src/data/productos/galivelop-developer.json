@@ -185,11 +185,11 @@
         "src": "/productos/galivelop-developer/gd-harness.webp",
         "mini": "/productos/galivelop-developer/gd-harness-mini.webp",
         "ancho": 1600,
-        "alto": 900,
+        "alto": 1050,
         "alt": {
-          "es": "Diagrama: tu flujo de trabajo marca las tareas, un agente local las hace en una copia aparte, se revisan y tú decides qué entra en el proyecto.",
-          "gl": "Diagrama: o teu fluxo de traballo marca as tarefas, un axente local fainas nunha copia á parte, revísanse e ti decides que entra no proxecto.",
-          "en": "Diagram: your workflow sets the tasks, a local agent does them in a separate copy, they are reviewed and you decide what goes into the project."
+          "es": "Esquema de Galivelop Developer: dentro de tu máquina, el flujo del taller marca el trabajo de tres papeles con modelo local (quien organiza, quien hace y quien revisa) y tú das el visto bueno antes de que el cambio entre en tu proyecto.",
+          "gl": "Esquema de Galivelop Developer: dentro da túa máquina, o fluxo do obradoiro marca o traballo de tres papeis con modelo local (quen organiza, quen fai e quen revisa) e ti dás o visto e prace antes de que o cambio entre no teu proxecto.",
+          "en": "Diagram of Galivelop Developer: inside your machine, the workshop's workflow sets the work of three roles running local models (organiser, doer and reviewer), and you give the final say before the change goes into your project."
         }
       }
     ],
