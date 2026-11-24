@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
-<!-- Galivelop Developer: cómo funciona el harness local de punta a punta. Hoja de estilos de docs/marca.md (papel, retícula de 24 px, tinta, celeste hondo, chaflanes).
+<!-- Galivelop Developer: cómo funciona el harness local de punta a punta. Hoja de estilos de docs/marca.md (papel, retícula de 24 px, tinta, celeste, chaflanes; sin círculos).
+     Lo dibuja scripts/diagramas/productos.py (tema claro y oscuro): no se edita a mano.
      Se exporta con scripts/diagramas-webp.mjs a public/productos/<slug>/<nombre>.webp (1600) y -mini.webp (720).
      Fuentes: Big Shoulders Display (títulos), Literata (frases) y JetBrains Mono (datos), las de la web. -->
 <defs>
   <pattern id="rejilla" width="24" height="24" patternUnits="userSpaceOnUse">
-    <path d="M24 0H0V24" fill="none" stroke="#e3edf3" stroke-width="1"/>
+    <path d="M24 0H0V24" fill="none" stroke="#eef3f6" stroke-width="1"/>
   </pattern>
   <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0072a8"/></marker>
   <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#13212b"/></marker>
@@ -83,8 +84,8 @@
 <path d="M90 784H1500" fill="none" stroke="#13212b" stroke-width="4" marker-end="url(#fk)"/>
 <path d="M640 784C680 784 680 744 720 744H1240C1290 744 1300 784 1349 784" fill="none" stroke="#0072a8" stroke-width="4" stroke-dasharray="10 7"/>
 <text x="980" y="732" class="m b" font-size="21" fill="#0072a8" text-anchor="middle">copia aparte</text>
-<path d="M1349 642V770" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
-<circle cx="640" cy="784" r="8" fill="#fbfcfd" stroke="#13212b" stroke-width="3"/><circle cx="1349" cy="784" r="9" fill="#0072a8"/>
+<path d="M1349 642V768" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M629 784L640 773L651 784L640 795Z" fill="#fbfcfd" stroke="#13212b" stroke-width="3"/><path d="M1337 784L1349 772L1361 784L1349 796Z" fill="#0072a8"/>
 <text x="1372" y="762" class="m b" font-size="22" fill="#0072a8" text-anchor="start">✓ entra</text>
 <path d="M60 860H398L412 874V1000H60Z" fill="#0072a8" stroke="#0072a8" stroke-width="2"/>
 <text x="86" y="922" class="t" font-size="40" fill="#ffffff" text-anchor="start">PRIVADO</text>
