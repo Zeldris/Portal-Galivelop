@@ -11,7 +11,8 @@ import sys
 #   SOBRE_TINTA / SOBRE_TINTA_2 texto sobre un bloque de tinta (en oscuro la tinta es clara y lleva texto oscuro)
 #   ACENTO_TINTA acento sobre el bloque de tinta · SOBRE_CEL texto sobre --celeste (regla 10: solo tinta oscura).
 TEMAS={
- 'claro': dict(PAPEL='#fbfcfd',RET='#eef3f6',SUP='#ffffff',SUP2='#ffffff',FIL='#b9cbd6',TINTA='#13212b',T2='#4a5c69',
+ 'claro': dict(PAPEL='#fbfcfd',RET='#eef3f6',SUP='#ffffff',SUP2='#ffffff',  # en claro, blanco a propósito (no --superficie-2): casillas de los carriles de GVE
+               FIL='#b9cbd6',TINTA='#13212b',T2='#4a5c69',
                ALGA='#5d7a6a',CEL='#1aa6df',LINEA='#0072a8',ACENTO='#0072a8',BLOQUE='#0072a8',SOBRE='#ffffff',
                SOBRE_TINTA='#ffffff',SOBRE_TINTA_2='#e6eef3',ACENTO_TINTA='#1aa6df',SOBRE_CEL='#13212b'),
  'oscuro': dict(PAPEL='#0d171e',RET='#121e27',SUP='#111f29',SUP2='#16242e',FIL='#2b3d49',TINTA='#e6eef3',T2='#9fb2bf',

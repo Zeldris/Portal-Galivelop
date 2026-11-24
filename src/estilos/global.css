@@ -6538,6 +6538,12 @@ body:has(dialog[open]) {
   );
 }
 
+/* El chaflán recorta el contorno exterior del foco: se dibuja dentro, como en .boton, librando --chaflan-pequeno. */
+.producto-copiar:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+
 /* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en .boton-secundario. */
 .producto-copiar::before {
   content: '';

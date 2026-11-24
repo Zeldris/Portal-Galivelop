@@ -10,9 +10,9 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "Esto es Galivelop Developer, también llamado GalivelopCode. Nace del flujo de trabajo del taller, Galivelop-workflow. Conecta el flujo de trabajo del taller con agentes de inteligencia artificial que funcionan en tu propio ordenador. Ellos llevan el trabajo del proyecto, y tú decides qué entra. Todavía no está disponible: llegará próximamente.",
-      "gl": "Isto é Galivelop Developer, tamén chamado GalivelopCode. Nace do fluxo de traballo do obradoiro, Galivelop-workflow. Conecta o fluxo de traballo do obradoiro con axentes de intelixencia artificial que funcionan no teu propio ordenador. Eles levan o traballo do proxecto, e ti decides que entra. Aínda non está dispoñible: chegará proximamente.",
-      "en": "This is Galivelop Developer, also known as GalivelopCode. It grew out of the workshop’s workflow, Galivelop-workflow. It connects the workshop’s workflow to artificial intelligence agents that run on your own computer. They carry the project’s work, and you decide what goes in. It is not available yet: it is coming soon."
+      "es": "Esto es Galivelop Developer, también llamado GalivelopCode. Nace del flujo de trabajo del taller, Galivelop-workflow. Lo conecta con agentes de inteligencia artificial que funcionan en tu propio ordenador. Ellos llevan el trabajo del proyecto, y tú decides qué entra. Todavía no está disponible: llegará próximamente.",
+      "gl": "Isto é Galivelop Developer, tamén chamado GalivelopCode. Nace do fluxo de traballo do obradoiro, Galivelop-workflow. Conéctao con axentes de intelixencia artificial que funcionan no teu propio ordenador. Eles levan o traballo do proxecto, e ti decides que entra. Aínda non está dispoñible: chegará proximamente.",
+      "en": "This is Galivelop Developer, also known as GalivelopCode. It grew out of the workshop’s workflow, Galivelop-workflow. It connects it to artificial intelligence agents that run on your own computer. They carry the project’s work, and you decide what goes in. It is not available yet: it is coming soon."
     },
     {
       "seccion": "beneficios",
