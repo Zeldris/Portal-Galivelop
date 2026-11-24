@@ -4,7 +4,9 @@ Rama `ccr-b2d381ed-e10ez8`, de b4afcc3 a c19efdf: workflow 0.9.0 e image-generat
 Galivelop Evaluator, Developer ampliada, índice `/productos`, cabecera y banda del inicio. Incluye la pasada de
 `gw-opt-tokens`.
 
-**Estado:** pendiente de la persona
+**Estado:** P6 aplazada (apuntada como tarea en `docs/records/pending.md`).
+
+P1-P5, por decidir.
 
 ## Medida (`measure.py --hours 0`)
 
