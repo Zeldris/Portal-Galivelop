@@ -18,9 +18,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- 2026-11-24 · **Guiones G3, G4 y G12** (contenido, es/gl/en): implantación en `participar` de workflow e IG, coma e «interfaz» en `avance` de workflow, productos de Álvaro en equipo. Audio pendiente (`docs/records/pedido-voces-2026-11-24.md`).
-
-- 2026-11-24 · **Guion del generador al día** (`ccr-1c3b5b63-tdttd6`, contenido): el trozo `vistazo` (es, gl, en) y su nota decían «la cero punto siete publicada»; en su repo la 0.7.0 está en `main`, pero sin release (la última es v0.6.0). Ahora: 0.6 publicada, 0.7 terminada. Audio sin grabar.
+- 2026-11-24 · **Guiones G1, G3, G4 y G12** (`ccr-1c3b5b63-tdttd6`, contenido, es/gl/en): IG con la 0.6 publicada y la 0.7 terminada (no hay release v0.7.0); implantación en `participar`; «interfaz» en `avance` de workflow; productos de Álvaro en equipo. Audio: `docs/records/pedido-voces-2026-11-24.md`.
 
 - 2026-11-24 · **Segunda pasada de diseño en oscuro, D10-D13** (`ccr-1c3b5b63-tdttd6`, código pequeño; revisión en la sesión, 6 líneas, sin hallazgos): `.producto-figura` con fondo `--papel` (sin banda clara alrededor de la figura en oscuro), bordes de 1,5/2 px a 1 px (punto «en diseño», punto de etapa y caja del flujo), `--letra-90` en `.producto-datos code` y la excepción del `filter: invert` anotada en `docs/marca.md`. `npm run check` (270) y `front.py run full` (48) en verde.
 
