@@ -571,9 +571,25 @@ button {
 }
 
 .boton-secundario {
+  --borde-boton: var(--tinta);
+  position: relative;
   background: var(--superficie);
   color: var(--texto);
-  border-color: var(--tinta);
+  border-color: var(--borde-boton);
+}
+
+/* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en las tarjetas. */
+.boton-secundario::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% + 1px - var(--chaflan-pequeno));
+  width: calc(var(--chaflan-pequeno) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-boton);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
 }
 
 .boton-secundario:hover {
@@ -763,7 +779,7 @@ button {
 .hero .boton-secundario {
   background: transparent;
   color: var(--blanco);
-  border-color: rgb(255 255 255 / 0.7);
+  --borde-boton: rgb(255 255 255 / 0.7);
 }
 
 .hero .boton-secundario:hover {
@@ -5927,6 +5943,8 @@ body:has(dialog[open]) {
 }
 
 .producto-acciones {
+  display: grid;
+  gap: 8px;
   padding-top: 4px;
 }
 

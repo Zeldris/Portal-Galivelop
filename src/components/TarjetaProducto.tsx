@@ -55,11 +55,6 @@ export function TarjetaProducto({
           {t('productos.ficha')} <ArrowRight size={14} />
         </Link>
       )}
-      {p.pagina && (
-        <Link to={`/productos/${p.slug}`} className="enlace-flecha producto-ficha">
-          {t('productos.ver')} <ArrowRight size={14} />
-        </Link>
-      )}
       {!compacta && p.servicios.length > 0 && (
         <div className="producto-servicios">
           <span>{t('productos.servicios')}:</span>
@@ -98,6 +93,11 @@ export function TarjetaProducto({
           </dl>
         )}
         <div className="producto-acciones">
+          {p.pagina && (
+            <Link to={`/productos/${p.slug}`} className="boton boton-secundario">
+              {t('productos.ver')} <ArrowRight size={16} />
+            </Link>
+          )}
           <a
             className="boton boton-primario"
             href={correoDeProducto(MARCA.correo, t('productos.asunto', { producto: p.nombre }))}

@@ -67,9 +67,11 @@ export function Productos() {
                     </p>
                   )}
                   {p.pagina && (
-                    <Link to={`/productos/${p.slug}`} className="enlace-flecha producto-ficha">
-                      {t('productos.verProducto')} <ArrowRight size={14} />
-                    </Link>
+                    <div className="producto-acciones">
+                      <Link to={`/productos/${p.slug}`} className="boton boton-secundario">
+                        {t('productos.verProducto')} <ArrowRight size={16} />
+                      </Link>
+                    </div>
                   )}
                 </article>
               </li>
