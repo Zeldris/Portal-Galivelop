@@ -3,7 +3,7 @@
 Pedida por la persona el 2026-11-24 (ver «Auditoría de marca» en `docs/records/pending.md`). Tres partes, revisadas
 por subagentes de solo lectura; nada aplicado hasta que la persona decida.
 
-**Estado:** partes 1 y 3 recogidas; parte 2 (diseños) en curso.
+**Estado:** las tres partes recogidas; decisiones de la persona en `docs/questions.md` (auditoría de marca). La parte 2 solo cubrió lo nuevo (productos); lo anterior queda para una segunda pasada.
 
 ## 1. Hoja para pedir imágenes (GVE y GalivelopCode)
 
@@ -50,6 +50,35 @@ por subagentes de solo lectura; nada aplicado hasta que la persona decida.
 
 - (c) Convención: los `alt` van en `src/data/productos/<slug>.json`; los archivos de producto, en `public/productos/<slug>/`.
 - (d) En `:211`, cambiar la frase de Developer y Evaluator por una referencia a la sección G.
+
+## 2. Diseños
+
+**Cobertura:** `docs/marca.md`, CSS de producto, `/productos`, banda del inicio, `scripts/diagramas/productos.py` y
+`src/pages/Producto.tsx`; capturas en claro de `/productos` y de Evaluator. **Sin revisar:** tema oscuro en captura y
+las páginas anteriores (inicio, fichas, equipo, unirse, proponer, novedades, 404).
+
+En general cumple: sin `border-radius` salvo `.estado-punto`, sin `backdrop-filter` ni degradados fuera de los
+permitidos, `--sombra` solo en panel, hoja y lector, y chaflanes de producto según la hoja.
+
+| # | Gravedad | Dónde | Qué pasa | Arreglo propuesto |
+|---|---|---|---|---|
+| D1 | medio | figuras `gd-harness` y `gve-evaluacion`; `src/pages/Producto.tsx:169` | Una sola imagen, en claro: en tema oscuro sale un recuadro de papel `#fbfcfd` sobre la noche (marca: «El oscuro existe y se cuida», `:21`, y versiones oscuras sin papel claro, `:217`) | Variante oscura en `productos.py` (parametrizar papel, tinta y filete) y servirla con `ImagenTema` |
+| D2 | leve | `scripts/diagramas/productos.py:13` | Retícula `#e3edf3` en vez de `--reticula` `#eef3f6` | Usar el token, o anotar la excepción |
+| D3 | leve | `productos.py:82-83` y nodo «+» de `gve()` | Nodos circulares; la hoja solo admite redondo en `.estado-punto` (`:25`) | Nodos cuadrados o rombos, o anotar la excepción de nodos de historial |
+| D4 | leve | `global.css` (`.producto-paso-num`, `.producto-copiar`) | Borde de 1,5 px; la hoja pide 1 px (`:27`) | 1 px |
+| D5 | leve | `global.css` (`.producto-copiar`) | Botón sin chaflán de 10 px (`:26`) | `clip-path` con `--chaflan-pequeno` y filete en el pseudoelemento, como `.boton` |
+| D6 | leve | `global.css` (`.producto-plegable summary::after`, `.producto-datos code`) | `1.5rem` y `0.9em` fuera de la escala `--letra-*` | Tokens de la escala |
+| D7 | leve | `global.css` (`.producto-figura`) | Marco recto, cuando las garantías llevan chaflán | Chaflán de 14 px |
+| D8 | leve | `global.css` (`.proxima-icono`) | `filter: saturate(0.7)` no está en la hoja | Quitarlo o anotarlo |
+| D9 | leve | `global.css` (`.lector`) | Sombra en el lector flotante; la hoja dice «única sombra: la del panel» (`:28`) | Añadir «o flotante» a la regla 4 |
+
+La página de Evaluator no tiene portada (ver parte 1); la de Developer sí la tiene.
+
+**Huecos de la hoja** (la web los hace de forma coherente y la hoja no los recoge): la página de producto (cabecera,
+título con filete de 2 px, filete superior de 3 px en el acento, `.producto-franja`, bloque de contacto sobre celeste
+hondo con isobatas); el uso de `--acento-proyecto` en producto; las convenciones de los diagramas (✓ y ✗ en cuadrados
+de 46 px, discontinuo para «opcional», caja oscura para la decisión humana, etiquetas en mono mayúsculas); `.migas`,
+`.nav-productos` y `.productos-nota`; la banda `banda-productos`.
 
 ## 3. Guiones de voz
 

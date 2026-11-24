@@ -92,3 +92,45 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: sí, capturas antes/después antes de subir
 - Answer: ok
 - Answered: 2026-11-24
+
+## Q-11
+- Refs: auditoria-marca
+- Status: open
+- Asked: 2026-11-24
+- Question: Auditoría de marca, parte 1: ¿se añade a docs/marca.md la sección G de productos propuesta en el informe?
+- Recommendation: Sí: sección G con acentos, portada, OG e icono de Evaluator, OG de Developer y regla de figuras; quitar la frase de «ignorar»
+
+## Q-12
+- Refs: auditoria-marca
+- Status: open
+- Asked: 2026-11-24
+- Question: ¿Qué motivo lleva la portada (y la OG) de Galivelop Evaluator?
+- Recommendation: La balanza en el agua con dos boyas (grabado), como propone el informe
+
+## Q-13
+- Refs: auditoria-marca
+- Status: open
+- Asked: 2026-11-24
+- Question: Diseños D1-D3: ¿se hace la versión oscura de las figuras de producto y se ajustan retícula y nodos?
+- Recommendation: Sí, variante oscura de las figuras (D1) y con ella D2 y D3, de una vez en productos.py
+
+## Q-14
+- Refs: auditoria-marca
+- Status: open
+- Asked: 2026-11-24
+- Question: Diseños D4-D9 (bordes, chaflanes, letra y excepciones de la hoja): ¿se aplican?
+- Recommendation: Sí a D4-D7 (CSS de producto, cambio pequeño); D8 y D9, anotarlos en la hoja como excepciones
+
+## Q-15
+- Refs: auditoria-marca
+- Status: open
+- Asked: 2026-11-24
+- Question: Guiones G1-G14: ¿qué se aplica ahora y qué espera a la tanda de grabación?
+- Recommendation: Aplicar ya G1 y los guiones sin audio (G5-G11, G14); dejar G2, G3, G4, G12 y G13 para una sola tanda de grabación
+
+## Q-16
+- Refs: auditoria-marca
+- Status: open
+- Asked: 2026-11-24
+- Question: ¿Una segunda pasada de diseño sobre las páginas anteriores (inicio, fichas, equipo, unirse, proponer, novedades, 404) y el tema oscuro?
+- Recommendation: Sí, una segunda pasada de diseño, con capturas en oscuro, sobre las páginas anteriores
