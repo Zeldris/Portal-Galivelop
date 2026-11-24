@@ -10,6 +10,7 @@ import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
 import { MARCA } from '../data/marca';
+import { productos } from '../data/productos';
 import { proximos } from '../data/proximamente';
 import { proyectos, ruta } from '../data/proyectos';
 import type { EstadoProyecto } from '../data/tipos';
@@ -386,6 +387,25 @@ export function Inicio() {
           )}
         </div>
       </section>
+
+      {productos.length > 0 && (
+        <section className="banda-productos">
+          <div className="contenedor banda-productos-fila">
+            <div>
+              <h2>{t('productos.banda.titulo')}</h2>
+              <p>{t('productos.banda.texto')}</p>
+            </div>
+            <ul className="banda-productos-nombres">
+              {productos.map((p) => (
+                <li key={p.slug}>{p.alias ?? p.nombre}</li>
+              ))}
+            </ul>
+            <Link to="/productos" className="enlace-flecha">
+              {t('productos.banda.ver')} <ArrowRight size={14} />
+            </Link>
+          </div>
+        </section>
+      )}
     </>
   );
 }

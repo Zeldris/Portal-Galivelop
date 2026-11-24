@@ -127,6 +127,11 @@ const FIJAS = {
     gl: ['Equipo · Galivelop', 'As persoas que fan Galivelop. Cada unha co seu camiño, todas con ganas de construír e aprender.'],
     en: ['Team · Galivelop', 'The people who make Galivelop. Each with their own path, all eager to build and learn.'],
   },
+  productos: {
+    es: ['Productos · Galivelop', 'Lo que hacen por su cuenta quienes forman el taller de Galivelop: Galivelop Developer (GalivelopCode) y Galivelop Evaluator (GVE). El taller no los vende; cada responsable los atiende.'],
+    gl: ['Produtos · Galivelop', 'O que fan pola súa conta quen forma o obradoiro de Galivelop: Galivelop Developer (GalivelopCode) e Galivelop Evaluator (GVE). O obradoiro non os vende; cada responsable atende os seus.'],
+    en: ['Products · Galivelop', 'What the people who make up the Galivelop workshop do on their own: Galivelop Developer (GalivelopCode) and Galivelop Evaluator (GVE). The workshop does not sell them; each lead looks after theirs.'],
+  },
   'participa/proponer': {
     es: ['Propón un proyecto · Galivelop', '¿Tienes una idea que parece demasiado grande? Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.'],
     gl: ['Propón un proxecto · Galivelop', 'Tes unha idea que semella demasiado grande? Cóntanola. Lemos todas as propostas e, se encaixa no obradoiro, escribímosche para darlle forma xuntos.'],
@@ -158,9 +163,10 @@ const FIJAS = {
     en: ['Terms of use · Galivelop', 'Terms for using the Galivelop portal and for reusing its code and content.'],
   },
 };
-// Páginas de paso (ADR 0004): rutas ya compartidas que llevan a otra. Noindex, fuera del sitemap y con la canónica en
-// el destino; sin JS, un meta refresh; con JS, el `<Navigate>` de su página en src/pages/.
-const DE_PASO = { productos: 'equipo' };
+// Páginas de paso: rutas ya compartidas que llevan a otra. Noindex, fuera del sitemap y con la canónica en el destino;
+// sin JS, un meta refresh; con JS, el `<Navigate>` de su página en src/pages/. Hoy no hay ninguna (`/productos` lo fue
+// de ADR 0004 a 2026-11-24, y ahora es el índice de los productos).
+const DE_PASO = {};
 // El muro solo tiene página (y entra en el sitemap) cuando ya hay alguna publicación.
 if (publicaciones.length > 0) {
   FIJAS.muro = {
@@ -177,6 +183,7 @@ const D = 'src/data/';
 const FECHA_FIJA = {
   '': masReciente(fechaGit(`${D}proyectos`, `${D}proximamente.json`, `${D}lineas.ts`, `${D}marca.ts`), ...proyectos.map((p) => p.actualizado)),
   equipo: fechaGit(`${D}equipo.json`, `${D}proyectos`),
+  productos: masReciente(...productos.map((x) => x.pagina?.actualizado)),
   'participa/proponer': fechaGit(`${D}marca.ts`),
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
   novedades: masReciente(...novedadesTodas.map((n) => n.fecha)),
@@ -347,6 +354,7 @@ const ESTILO_ESTATICO = `<style>.idiomas a{padding:4px 10px;font:var(--datos);fo
 const H1 = {
   '': (i) => `${T(i, 'hero.titulo1')} ${T(i, 'hero.titulo2')}`,
   equipo: (i) => T(i, 'equipo.titulo'),
+  productos: (i) => T(i, 'productos.titulo'),
   muro: (i) => T(i, 'muro.titulo'),
   'participa/proponer': (i) => T(i, 'prop.titulo'),
   'participa/unirse': (i) => T(i, 'unir.titulo'),
@@ -382,6 +390,15 @@ function cuerpo(pg) {
   if (pg.ruta === 'equipo') {
     const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
     return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${miembros}</ul><ul>${enlaces}</ul></main>`;
+  }
+  if (pg.ruta === 'productos') {
+    const i = pg.idioma;
+    const tarjetas = productos.map((x) => {
+      const r = equipo.find((e) => e.id === x.responsable);
+      const nombre = `${x.nombre}${x.alias ? ` · ${x.alias}` : ''}`;
+      return `<li><h2>${x.pagina ? `<a href="${urlDe(i, `productos/${x.slug}`)}">${esc(nombre)}</a>` : esc(nombre)}</h2>${x.estado === 'proximamente' ? `<p>${esc(PROXIMAMENTE[i])}</p>` : ''}<p>${esc(x.queOfrece[i])}</p>${r ? `<p>${esc(T(i, 'productos.responsable'))}: <a href="${urlDe(i, `equipo/${r.id}`)}">${esc(r.nombre)}</a></p>` : ''}</li>`;
+    }).join('');
+    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'productos.inicio'))}</a> / ${esc(T(i, 'productos.titulo'))}</nav><h1>${h1De(pg)}</h1><p>${esc(T(i, 'productos.intro'))}</p><ul>${tarjetas}</ul><p>${esc(T(i, 'productos.nota'))}</p></main>`;
   }
   const x = pg.producto;
   if (x) {
@@ -431,6 +448,21 @@ function datos(pg, url) {
       inLanguage: pg.idioma,
       ...(pg.fecha ? { dateModified: pg.fecha } : {}),
       mainEntity: { '@type': 'Person', name: m.nombre, jobTitle: m.rol[pg.idioma], description: m.bio[pg.idioma], ...(m.foto ? { image: `${SITIO}/${m.foto}` } : {}), sameAs: m.redes.filter((r) => r.tipo !== 'correo').map((r) => r.url), memberOf: ORG },
+    };
+  }
+  if (pg.ruta === 'productos') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: pg.titulo,
+      description: pg.descripcion,
+      url,
+      inLanguage: pg.idioma,
+      ...(pg.fecha ? { dateModified: pg.fecha } : {}),
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: productos.filter((x) => x.pagina).map((x, n) => ({ '@type': 'ListItem', position: n + 1, name: x.nombre, url: urlDe(pg.idioma, `productos/${x.slug}`) })),
+      },
     };
   }
   const x = pg.producto;
@@ -578,7 +610,7 @@ writeFileSync(
     .join('\n')}\n\n## Productos\n\n${productos
     .filter((x) => x.pagina)
     .map((x) => `- [${x.nombre}](${urlDe('es', `productos/${x.slug}`)}): ${x.pagina.seo.descripcion.es}`)
-    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Productos](${urlDe('es', 'productos')}): lo que hacen por su cuenta quienes forman el taller, sin precios\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);

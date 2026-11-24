@@ -1,0 +1,30 @@
+{
+  "pagina": "/productos",
+  "audio": [],
+  "narra": "2026-11-24",
+  "notas": [
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP). «GalivelopCode» como «Galivelop-coud»; «GVE» letra a letra.",
+    "Sin audio todavía: se graba en es, gl y en cuando la persona dé el texto por bueno.",
+    "Si entra o sale un producto, se reescribe su trozo y el de «cabecera»."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "Esta es la página de productos: lo que hacen por su cuenta quienes forman el taller. El taller no los vende; cada responsable los atiende. No hay precios: para saber más, se escribe a quien lleva cada producto.",
+      "gl": "Esta é a páxina de produtos: o que fan pola súa conta quen forma o obradoiro. O obradoiro non os vende; cada responsable atende os seus. Non hai prezos: para saber máis, escríbeselle a quen leva cada produto.",
+      "en": "This is the products page: what the people who make up the workshop do on their own. The workshop does not sell them; each lead looks after theirs. There are no prices: to find out more, you write to whoever leads each product."
+    },
+    {
+      "seccion": "producto-galivelop-developer",
+      "es": "Galivelop Developer, también conocido como GalivelopCode, conecta el flujo de trabajo del taller con agentes de inteligencia artificial que funcionan en tu ordenador. Es de Álvaro García Graña y está próximamente. Pulsa Ver producto para conocerlo.",
+      "gl": "Galivelop Developer, tamén coñecido como GalivelopCode, conecta o fluxo de traballo do obradoiro con axentes de intelixencia artificial que funcionan no teu ordenador. É de Álvaro García Graña e está proximamente. Preme Ver produto para coñecelo.",
+      "en": "Galivelop Developer, also known as GalivelopCode, connects the workshop's workflow to artificial intelligence agents that run on your computer. It is by Álvaro García Graña and it is coming soon. Click See product to find out more."
+    },
+    {
+      "seccion": "producto-galivelop-evaluator",
+      "es": "Galivelop Evaluator, o GVE, mide si un cambio en un sistema de inteligencia artificial lo mejora. También es de Álvaro García Graña y está próximamente. Pulsa Ver producto para conocerlo.",
+      "gl": "Galivelop Evaluator, ou GVE, mide se un cambio nun sistema de intelixencia artificial o mellora. Tamén é de Álvaro García Graña e está proximamente. Preme Ver produto para coñecelo.",
+      "en": "Galivelop Evaluator, or GVE, measures whether a change to an artificial intelligence system improves it. It is also by Álvaro García Graña and it is coming soon. Click See product to find out more."
+    }
+  ]
+}

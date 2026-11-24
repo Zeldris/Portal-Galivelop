@@ -42,7 +42,8 @@ export function Cabecera() {
           className={`cabecera-nav${menuAbierto ? ' abierta' : ''}`}
           aria-label={t('nav.menu')}
         >
-          {/* El taller, con su etiqueta (ADR 0002); los productos viven en el perfil de cada miembro (ADR 0004). */}
+          {/* El taller, con su etiqueta (ADR 0002). Los productos son de cada miembro, no del taller (ADR 0004): van aparte,
+              en gris, tras un filete y sin la etiqueta del taller; su índice es /productos. */}
           <div className="nav-grupo nav-taller" role="group" aria-labelledby="nav-taller-etiqueta">
             <span className="nav-etiqueta" id="nav-taller-etiqueta">
               {t('nav.taller')}
@@ -64,6 +65,9 @@ export function Cabecera() {
               {t('nav.contacto')}
             </Link>
           </div>
+          <Link to="/productos" className="nav-productos" onClick={() => setMenuAbierto(false)}>
+            {t('productos.titulo')}
+          </Link>
         </nav>
         <div className="cabecera-ajustes">
           <div className="idiomas" role="group" aria-label={t('idioma.etiqueta')}>

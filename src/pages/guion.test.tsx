@@ -10,6 +10,7 @@ import { Inicio } from './Inicio';
 import { Miembro } from './Miembro';
 import { Novedades } from './Novedades';
 import { Producto } from './Producto';
+import { Productos } from './Productos';
 import { Proponer } from './Proponer';
 import { FichaProyecto } from './Proyecto';
 import { Unirse } from './Unirse';
@@ -44,6 +45,7 @@ const estaticas: Record<string, React.ReactNode> = {
   inicio: <Inicio />,
   novedades: <Novedades />,
   equipo: <Equipo />,
+  productos: <Productos />,
   proponer: <Proponer />,
   unirse: <Unirse />,
 };

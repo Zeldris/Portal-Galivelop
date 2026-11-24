@@ -11,7 +11,7 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
   [ADR 0006](docs/adr/0006-galivelop-evaluator-segundo-producto.md) hay **dos productos**, los dos de Álvaro y privados:
   Galivelop Developer (alias GalivelopCode) y Galivelop Evaluator (alias GVE), cada uno con página propia
   (`/productos/<slug>`) y su tarjeta en el perfil de su responsable;
-  `/productos` sigue como página de paso a `/equipo` ([ADR 0004](docs/adr/0004-productos-en-el-perfil.md)). Sin
+  `/productos` es el índice de los productos (desde el 2026-11-24; antes, paso a `/equipo`; [ADR 0004](docs/adr/0004-productos-en-el-perfil.md)). Sin
   precios: lo legal y lo financiero, por correo con Álvaro.
 - **Producto**: lo que la marca ofrece en Productos; código privado. Tiene un responsable (el creador) y, si los hay,
   colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o `proximamente`. Los proyectos de

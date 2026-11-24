@@ -57,7 +57,7 @@ Mensaje de la marca (2026-10-04, ampliado el 2026-10-27 con la [ADR 0002](adr/00
 sin vender: expone los proyectos) y **Productos** (lo que sale del taller; sin precios, todo por correo
 con Álvaro; cada integrante es autónomo). Desde la [ADR 0004](adr/0004-productos-en-el-perfil.md) (2026-11-10), los
 productos no tienen página, enlace en el menú ni franja en la portada: se ven en el perfil de cada miembro que los lleva,
-y `/productos` es una página de paso a `/equipo`. Desde la [ADR 0003](adr/0003-codigo-abierto-e-implantacion.md)
+y `/productos` era una página de paso a `/equipo` (desde el 2026-11-24 es el índice de los productos, con enlace discreto en la cabecera y una banda al final del inicio, sin tocar que cada producto es de su responsable). Desde la [ADR 0003](adr/0003-codigo-abierto-e-implantacion.md)
 (2026-11-02), lo maduro tiene el repo público y se ofrece como implantación y servicio de Álvaro (comprarlo sigue
 siendo posible); todo lo público admite colaboración (toVeriAI queda fuera, privado). En la portada, los proyectos
 van primero (y, desde la 0004, Productos ya no sale en ella). Lo que aún no está maduro se oferta limpio como «próximamente», sin explicar en la web cómo va. Galicia es solo una mención (el nombre), no la
@@ -166,7 +166,7 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
   vista previa, el JSON-LD y la línea de `llms.txt` salen solos de `scripts/paginas-estaticas.mjs`.
 
 `npm run check` comprueba todo esto (`src/data/productos.test.ts`) y `scripts/paginas-estaticas.mjs` lista los
-productos en la página estática de cada miembro; `/productos` sigue siendo una página de paso (`DE_PASO`) a `/equipo`.
+productos en la página estática de cada miembro; `/productos` (2026-11-24) es el índice de los productos, con un enlace gris en la cabecera y una banda al final del inicio; `DE_PASO` quedó vacío.
 
 ## Añadir una página
 

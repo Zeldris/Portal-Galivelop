@@ -6722,3 +6722,124 @@ body:has(dialog[open]) {
     display: none !important;
   }
 }
+
+/* ---------- Productos visibles sin invadir el taller (ADR 0004: son de cada miembro) ---------- */
+
+/* Cabecera: «Productos» en gris, tras un filete vertical y sin la etiqueta del taller. En el menú móvil, tras un filete horizontal. */
+.cabecera-nav a.nav-productos {
+  margin-left: 6px;
+  padding-left: 14px;
+  border-left: 1px solid var(--borde);
+  border-radius: 0;
+  color: var(--texto-3);
+}
+
+.cabecera-nav a.nav-productos:hover {
+  color: var(--enlace);
+}
+
+@media (max-width: 68.75em) {
+  .cabecera-nav a.nav-productos {
+    margin: 6px 0 0;
+    padding: 12px 14px;
+    border-left: 0;
+    border-top: 1px solid var(--borde);
+  }
+}
+
+/* Índice /productos. */
+.migas ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+
+.migas li + li::before {
+  content: '/';
+  margin-right: 8px;
+}
+
+.migas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--texto-2);
+}
+
+.productos-indice {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.productos-indice > li {
+  display: flex;
+}
+
+.productos-indice .tarjeta-producto {
+  flex: 1;
+  min-width: 0;
+}
+
+.producto-responsable {
+  color: var(--texto-2);
+  font-size: 0.95rem;
+}
+
+.productos-nota {
+  margin-top: 28px;
+  max-width: 68ch;
+  padding-left: 12px;
+  border-left: 3px solid var(--borde);
+  color: var(--texto-2);
+  font-size: 0.95rem;
+}
+
+/* Banda al final del inicio: sobria, con un filete arriba. */
+.banda-productos {
+  padding-block: 32px 40px;
+}
+
+.banda-productos-fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--borde);
+}
+
+.banda-productos h2 {
+  font-size: 1.4rem;
+}
+
+.banda-productos p {
+  margin-top: 4px;
+  color: var(--texto-2);
+}
+
+.banda-productos-nombres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.banda-productos-nombres li + li::before {
+  content: '·';
+  margin-right: 16px;
+  color: var(--texto-3);
+}

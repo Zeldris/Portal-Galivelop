@@ -41,6 +41,24 @@ describe('páginas estáticas', () => {
     expect(html).toContain('<a lang="en" href="/Portal-Galivelop/en/equipo/">EN</a>');
   });
 
+  it('/productos es una página real (índice indexable, no un paso a /equipo) con sus productos y su lista JSON-LD', () => {
+    for (const [prefijo, idioma] of [
+      ['', 'es'],
+      ['gl/', 'gl'],
+      ['en/', 'en'],
+    ] as const) {
+      const html = leer(`${prefijo}productos`);
+      expect(html).not.toContain('noindex');
+      expect(html).not.toContain('http-equiv="refresh"');
+      expect(html).toContain(`<h1>${textos[idioma]['productos.titulo']}</h1>`);
+      expect(html).toContain(textos[idioma]['productos.nota']);
+      expect(html).toContain(`/${prefijo}productos/galivelop-developer/">`);
+      expect(html).toContain(`/${prefijo}productos/galivelop-evaluator/">`);
+      expect(html).toContain(`href="/Portal-Galivelop/${prefijo}productos/"`); // el enlace de la cabecera
+      expect(html).toContain('"@type":"ItemList"');
+    }
+  });
+
   it('llevan el pie con los enlaces legales y de participa en su idioma', () => {
     const html = leer('en/participa/unirse');
     expect(html).toContain('<footer class="pie" data-estatico>');
