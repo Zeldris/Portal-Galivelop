@@ -25,7 +25,7 @@ Lo que nos separa de las webs genéricas hechas con IA. Cada regla pasa a compro
 3. **Esquinas rectas o con chaflán** (una esquina cortada a 45°), nunca redondeadas: casa con las letras cuadradas y
    con las etiquetas náuticas. Chaflán estándar: 14 px en fichas, 10 px en botones (`--chaflan-pequeno`) y 28 px en bloques grandes.
 4. **Líneas antes que sombras.** Borde de 1 px (`--filete`), filete de 2 px bajo cabeceras, filete discontinuo para
-   separar metadatos. Una sola sombra permitida: la del panel desplegado sobre el contenido.
+   separar metadatos. Una sola sombra permitida: la del panel desplegado sobre el contenido (también la del lector flotante y su botón, `.lector`).
 5. **Los datos, en monoespaciada y en mayúsculas pequeñas con tracking:** número de proyecto, estado, fechas,
    coordenadas, tipo. Lo que se lee de corrido va en la serif.
 6. **El celeste en bloques.** Cabecera de portada, cabeceras de sección destacadas y el fondo de la ficha de proyecto
@@ -73,6 +73,11 @@ voice `#D9467A` → hondo `#ce3c71`, oscura `#db487b`; developer `#0E9A93` → h
 
 Acentos de producto (`src/data/productos/*.json`, la persona, 2026-11-12): workflow manda `#3D6FD9` (el de su ficha de
 proyecto; el `#1AA6DF` era el celeste del Portal) y voice pasa a `#D9467A` (también en `proximamente.json`).
+
+Acentos de los productos (la persona, 2026-11-24; hondo y variante oscura de `estiloAcento`): **Developer** `#0E9A93`
+(hondo `#16827c`; en oscuro el vivo ya cumple, `#0e9a93`) y **Evaluator** `#C27A1A`, ámbar (hondo `#a66504`; en oscuro el
+vivo ya cumple, `#c27a1a`). El ámbar puro da 3,36:1 sobre el papel: el texto de acento va en el hondo. `filter:
+saturate(0.7)` en `.proxima-icono` (icono de la tarjeta «Próximamente») es una excepción anotada de la regla 2.
 
 ## Tokens
 
@@ -208,7 +213,7 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 32 (mar de plantilla) | 2026-11-14 | `public/proyectos/galivelop-image-generator/portada.webp` (1600×900, `cwebp -q 75 -m 6`) y `-mini.webp` (720×405), de `32-portada-gvig.png` (mar q984 + cuatro tarjetas con perspectiva: faro q628 en la central, barco q311, rosa 04b y sello 05b; pinza `#7C5CD6`) | Sustituye a la de q922 (su mar no seguía la línea de los otros proyectos); mismo uso |
 | 23 (línea simple) | 2026-11-14 | `icono.svg` de IG (q966), Voice (q968), Developer (q947, `#0E9A93`) y Tarkor (provisional, redibujado a mano, `#E0703A`), con el `viewBox` recortado al dibujo | `icono` de las fichas de IG y Tarkor (Tarkor no tenía) e `iconoPropio` de Voice y Developer en `proximamente.json`. Sustituyen a q930 y q926. El de Tarkor, hasta que tenga el suyo |
 | 24 (Tarkor y toVeriAI) | 2026-11-14 | `tools/og/fuentes/tarkor/og-base.png` (q932, anillo en el mar) y `tools/og/fuentes/toveriai/og-base.png` (q935, boya de medida) | Placa de su vista previa: `tools/og/<slug>-og.html` pone el texto en la mitad izquierda (la zona limpia) sobre un velo oscuro y `node tools/og/traducir.mjs <slug> --es` saca las tres `og-fuente` y los `og*.jpg`. La de toVeriAI sustituye a la hecha a mano sobre papel |
-| 24 (portal, workflow e IG) | 2026-11-17 | `tools/og/fuentes/portal/og-base.png` (q1150, rosa de los vientos en el mar), `galivelop-workflow/og-base.png` (q1157, cadena de boyas con el visto) y `galivelop-image-generator/og-base.png` (q1148, fila de casillas) | Como Tarkor: `tools/og/portal.html` (con `node tools/og/portal.mjs`) y `tools/og/<slug>-og.html` (con `traducir.mjs <slug> --es`) ponen el texto sobre un velo oscuro, a la izquierda (abajo en workflow, porque la cadena cruza la mitad izquierda). Sustituyen a las placas tipográficas del portal y de workflow y a la de cristal morado de IG (la persona, 2026-11-17); `presentacion.mjs` ya no pisa la vista previa de un proyecto con placa. La 24 de Voice (q1153) espera a que Voice tenga ficha; la de Developer (q1146), pendiente en el generador; la marca de Evaluator, guardada en `src/img/galivelop-evaluator/` mientras siga en `ignorar` |
+| 24 (portal, workflow e IG) | 2026-11-17 | `tools/og/fuentes/portal/og-base.png` (q1150, rosa de los vientos en el mar), `galivelop-workflow/og-base.png` (q1157, cadena de boyas con el visto) y `galivelop-image-generator/og-base.png` (q1148, fila de casillas) | Como Tarkor: `tools/og/portal.html` (con `node tools/og/portal.mjs`) y `tools/og/<slug>-og.html` (con `traducir.mjs <slug> --es`) ponen el texto sobre un velo oscuro, a la izquierda (abajo en workflow, porque la cadena cruza la mitad izquierda). Sustituyen a las placas tipográficas del portal y de workflow y a la de cristal morado de IG (la persona, 2026-11-17); `presentacion.mjs` ya no pisa la vista previa de un proyecto con placa. La 24 de Voice (q1153) espera a que Voice tenga ficha; la de Developer y la marca de Evaluator (producto desde la ADR 0006), en la sección G |
 | 23c (Tarkor) | 2026-11-17 | `public/proyectos/tarkor/icono.svg` (q1417, colmillo hueco con cordón y cuenta, `#E0703A`; SVG del generador con `brand trace` y el `viewBox` recortado al dibujo, `101 105 308 308`) | `icono` de la ficha de Tarkor y `MenuProyectos`. Sustituye al anillo provisional (la persona: el anillo no sale del juego). El trazo tiene escalones de píxel; retrazado pedido al generador |
 | 31 (provisional, de la 24) | 2026-11-17 | `public/proyectos/galivelop-workflow/portada.webp` (1600×900, `cwebp -q 80 -m 6`) y `-mini.webp` (720×405), recorte 16:9 (x 40-1160) de `24-og-workflow.png` (q1157, cadena de boyas que acaba en una azul con visto) | `portada` de la ficha y tarjeta del inicio (sin `presentacion`); el esquema del flujo pasa a la galería como `flujo.webp` (`scripts/diagramas-webp.mjs flujo`). Sale de 1200 px: se sustituye cuando llegue la 31 del generador. `presentacion.webp` se queda (la usan piezas de `docs/media/`) |
 
@@ -401,6 +406,44 @@ pedido. Llegan a `src/img/galivelop-workflow/31-portada-workflow.png` y
 |---|---|---|---|---|---|
 | 31 | **Portada de Galivelop-workflow** | 1600×900 y `-mini` 720×405 (perfil `portada`), tercio inferior de agua tranquila; acento `#3D6FD9` | Tarjeta del proyecto y portada de su ficha; el esquema del flujo pasa a la galería | El esquema del flujo | El relevo: el historial de commits como una fila de boyas unidas por un cabo que cruza el agua; la última, con un banderín en el acento (grabado) |
 | 32 | **Portada de Galivelop IG** | Igual que la 31; acento `#7C5CD6` | Tarjeta del proyecto y portada de su ficha; el banner actual pasa a la galería | El banner de producto de la persona | «Pide, prueba, elige»: hojas de papel con marco, en blanco, flotando en abanico sobre el agua; una, con el borde más grueso en el acento (grabado) |
+
+### G. Productos (Developer y Evaluator)
+
+Los dos productos de Álvaro (ADR 0004 y 0006) llevan su portada, su vista previa y su icono, con el acento del producto
+donde el Portal usa el alga (ver «Acento de cada proyecto»). Los archivos de producto nuevos van en
+`public/productos/<slug>/`, y los `alt` de sus imágenes, en `src/data/productos/<slug>.json` (es, gl y en); la portada
+de Developer sigue en `public/proyectos/galivelop-developer/` hasta que se mueva. Aprobado por la persona (2026-11-24).
+
+| # | Recurso | Medidas y forma | Dónde va | Hasta entonces | Motivo (registro) |
+|---|---|---|---|---|---|
+| 33 | **Portada de Evaluator** | 1600×900 y `-mini` 720×405, tercio inferior de agua tranquila; acento `#C27A1A` | `public/productos/galivelop-evaluator/portada.webp` y `-mini`; `portada` del JSON con `alt` es/gl/en | Ninguna | Balanza de dos brazos en el agua, con dos boyas a distinta altura y la banderola en el acento sobre la que mejora (grabado). Sin texto ni números |
+| 34 | **OG de Evaluator** | 1200×630, tercio izquierdo de agua tranquila | `tools/og/fuentes/galivelop-evaluator/og-base.png` y `node tools/og/traducir.mjs galivelop-evaluator --es` | La portada | La misma balanza a la derecha (grabado) |
+| 35 | **OG de Developer** (q1146) | Igual que la 34 | `tools/og/fuentes/galivelop-developer/og-base.png` | La portada | El barco de papel de su portada, a la derecha, con banderín `#0E9A93` (grabado) |
+| 36 | **Icono de Evaluator** | SVG 512, línea simple, `#C27A1A` | `public/productos/galivelop-evaluator/icono.svg` | `chart` de lucide | Dos barras de distinta altura con una marca de visto en la mayor |
+| 37 | **Figuras de producto** | SVG de 1600 de ancho, a mano | `docs/diagramas/<nombre>.svg` → `scripts/diagramas-webp.mjs` → `public/productos/<slug>/<nombre>.webp` y `-mini` | Las actuales | Regla 11. Salen de `scripts/diagramas/productos.py`, no del generador. Versión clara y oscura (fondo noche, nunca el papel claro). Texto dentro del dibujo, en castellano: excepción a «sin texto» (alt es/gl/en en el JSON). Retícula con el token `--reticula`; nodos cuadrados, sin círculos; el acento solo en el rótulo |
+
+Convenciones de los diagramas de producto: ✓ y ✗ en cuadrados de 46 px; trazo discontinuo para «opcional» y «copia
+aparte»; caja oscura (tinta con celeste) para la decisión humana; etiquetas en mono mayúsculas.
+
+#### Huecos: la página de producto y su entorno
+
+Lo que hace hoy el CSS (`src/estilos/global.css`) y la hoja no recogía:
+
+- **Cabecera** (`.producto-cabeza`): texto con lema y, si la hay, la portada a la derecha (`.producto-portada`, chaflán
+  grande de 28 px).
+- **Título de bloque** (`.producto-titulo`): filete de 2 px de tinta debajo (regla 4).
+- **Filete superior de 3 px en el acento** (`--acento-bloque`) en `.tarjeta-producto`, `.producto-garantia` y
+  `.producto-papeles`, con chaflán de 14 px; el filete del chaflán se repite en un pseudoelemento.
+- **`.producto-franja`**: banda de `--fondo-alterno` que separa los bloques.
+- **Contacto** (`.producto-contacto`): bloque de celeste hondo con isobatas y texto blanco; el correo en mono mayúsculas
+  con el botón `.producto-copiar` (borde de 1 px y chaflán de 10 px, `--chaflan-pequeno`).
+- **Figuras** (`.producto-figura`): marco con chaflán de 14 px, como las garantías.
+- **`.migas`**: ruta en mono mayúsculas con `/` entre niveles y enlaces en `--texto-2`.
+- **`.nav-productos`**: «Productos» en gris (`--texto-3`) tras un filete vertical de 1 px; en el menú móvil, tras un
+  filete horizontal.
+- **`.productos-nota`**: nota de 68 caracteres de ancho con filete izquierdo de 3 px.
+- **`banda-productos`** (final del inicio): fila sobria con filete superior de 1 px, título, texto y los nombres de los
+  productos en Big Shoulders separados por «·».
 
 Orden de trabajo: lo que más se ve primero: 7-9 (iconos de la portada), 6 «diseno» y «publicado», la 15 de Developer y
 las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.
