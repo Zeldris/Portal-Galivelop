@@ -8,8 +8,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 |---|---|
 | **Actualizado** | 2026-11-24 (productos en `main`, e2c9b9b) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
-| **Tarea en curso** | Ninguna. Herramientas de front del flujo 0.9.0 (retro P6) hechas en la rama, revisadas (3 medios arreglados) y con las decisiones de la persona (2026-11-24) |
-| **Siguiente paso** | `/clear` y elegir: el audio de los guiones pendientes (Developer, Evaluator, `productos`, trozo `productos` de Álvaro y «vistazo»/«avance» del workflow, en es, gl y en; lo graba la persona) o una tarea de `docs/records/pending.md` (escala de tokens de espaciado, webkit y firefox) |
+| **Tarea en curso** | 2026-11-24 · (2) escala de tokens de espaciado y letra en `front/tokens.json` y `global.css` a ella; (3) webkit y firefox en las pruebas de front. Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | (2) esperar las respuestas a Q-7..Q-10 de `docs/questions.md` y repartir el barrido de `global.css` a un `gw-worker`. (3) bloqueado: el proxy niega `cdn.playwright.dev` y `playwright.download.prss.microsoft.com`; la tarjeta para permitirlos no se puede aprobar desde el móvil (la persona la aprueba desde el ordenador o añade los hosts en los ajustes del entorno) |
 | **En `main`** | **Productos** (subido el 2026-11-24 con confirmación de la persona: marca de revisión y CI en verde en e2c9b9b): Galivelop Evaluator (ADR 0006), Developer ampliada con diagramas de Fable, índice `/productos` con enlace en la cabecera y banda en el inicio; workflow 0.9.0 e image-generator al día. Retro aprobada: `docs/records/retro-2026-11-24-productos.md` |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (270) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
