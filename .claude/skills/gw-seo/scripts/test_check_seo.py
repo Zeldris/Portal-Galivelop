@@ -1,4 +1,4 @@
-"""Tests for comprobar.py. Run: python3 -m unittest discover -s .claude/skills/gw-seo/scripts"""
+"""Tests for check_seo.py. Run: python3 -B -m unittest discover -s skills/gw-seo/scripts -p 'test_check_seo.py'"""
 import datetime as dt
 import json
 import subprocess
@@ -7,9 +7,9 @@ import tempfile
 import unittest
 from pathlib import Path
 
-import comprobar
+import check_seo
 
-SCRIPT = Path(comprobar.__file__).resolve()
+SCRIPT = Path(check_seo.__file__).resolve()
 SITE = "https://example.test/Site/"
 TODAY = dt.date(2026, 11, 5)
 LD = '{"@context":"https://schema.org","@type":"Organization","name":"Acme"}'
@@ -49,8 +49,8 @@ def page(url, lang, alts, title, desc, **kw):
 
 ES_URL, EN_URL = SITE, SITE + "en/"
 ALTS = [("es", ES_URL), ("en", EN_URL), ("x-default", ES_URL)]
-ES_T, EN_T = "Portal de ejemplo para pruebas SEO", "Example portal for SEO tests"
-ES_D = "Descripcion de prueba en castellano para comprobar la longitud correcta del texto."
+ES_T, EN_T = "Sitio de ejemplo para pruebas SEO", "Example site for SEO tests"
+ES_D = "Descripcion de prueba en castellano para check_seo la longitud correcta del texto."
 EN_D = "Test description in English used to check that the length of the text is correct."
 
 
@@ -91,7 +91,7 @@ class Base(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             ignore = kw.pop("ignore", ())
             build(d, **kw)
-            _, found = comprobar.check(Path(d), SITE, ignore=ignore, today=TODAY)
+            _, found = check_seo.check(Path(d), SITE, ignore=ignore, today=TODAY)
         return found
 
     def codes(self, **kw):
@@ -116,7 +116,7 @@ class TestPageChecks(Base):
             t = ES_T if title is UNSET else title
             ds = ES_D if desc is UNSET else desc
             (root / "index.html").write_text(page(ES_URL, "es", ALTS, t, ds), "utf-8")
-            return {f["code"] for f in comprobar.check(root, SITE, today=TODAY)[1]}
+            return {f["code"] for f in check_seo.check(root, SITE, today=TODAY)[1]}
 
     def test_description(self):
         self.assertIn("description-missing", self._with(desc=None))
@@ -188,7 +188,7 @@ class TestPageChecks(Base):
         with tempfile.TemporaryDirectory() as d:
             build(d)
             (Path(d) / "index.html").write_text(page(ES_URL, None, ALTS, ES_T, ES_D), "utf-8")
-            codes = {f["code"] for f in comprobar.check(Path(d), SITE, today=TODAY)[1]}
+            codes = {f["code"] for f in check_seo.check(Path(d), SITE, today=TODAY)[1]}
         self.assertIn("lang-missing", codes)
 
     def test_html_too_large(self):
@@ -229,7 +229,7 @@ class TestHreflang(Base):
     def test_missing_expected_lang(self):
         with tempfile.TemporaryDirectory() as d:
             build(d)
-            _, found = comprobar.check(Path(d), SITE, langs={"es", "en", "gl"}, today=TODAY)
+            _, found = check_seo.check(Path(d), SITE, langs={"es", "en", "gl"}, today=TODAY)
         self.assertIn("hreflang-missing-lang", {f["code"] for f in found})
 
 
@@ -250,7 +250,7 @@ class TestSiteLevel(Base):
         with tempfile.TemporaryDirectory() as d:
             build(d)
             (Path(d) / "sitemap.xml").write_text("<urlset>", "utf-8")
-            return {f["code"] for f in comprobar.check(Path(d), SITE, today=TODAY)[1]}
+            return {f["code"] for f in check_seo.check(Path(d), SITE, today=TODAY)[1]}
 
     def test_sitemap_url_not_built_and_outside(self):
         e = [(ES_URL, "2026-11-01"), (EN_URL, "2026-11-01"), (SITE + "nada/", None),
@@ -323,6 +323,128 @@ class TestIgnore(Base):
         self.assertEqual(self.codes(files=files, ignore=("borrador/*",)), set())
 
 
+class TestReviewFindings(Base):
+    """E42 review: every case reproduces a failure of the first version."""
+
+    def test_sitemap_index_children_are_read(self):
+        idx = (f'<?xml version="1.0"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+               f'<sitemap><loc>{SITE}sitemap-0.xml</loc></sitemap></sitemapindex>')
+        with tempfile.TemporaryDirectory() as d:
+            build(d)
+            Path(d, "sitemap.xml").write_text(idx, "utf-8")
+            Path(d, "sitemap-0.xml").write_text(
+                sitemap([(ES_URL, "2026-11-01"), (EN_URL, "2026-11-02"), (SITE + "gone/", None)]), "utf-8")
+            found = check_seo.check(Path(d), SITE, today=TODAY)[1]
+        codes = {f["code"] for f in found}
+        self.assertNotIn("sitemap-missing-page", codes)
+        self.assertIn("sitemap-url-not-built", codes)
+
+    def test_sitemap_index_missing_child(self):
+        idx = (f'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
+               f'<sitemap><loc>{SITE}nope.xml</loc></sitemap></sitemapindex>')
+        with tempfile.TemporaryDirectory() as d:
+            build(d)
+            Path(d, "sitemap.xml").write_text(idx, "utf-8")
+            codes = {f["code"] for f in check_seo.check(Path(d), SITE, today=TODAY)[1]}
+        self.assertIn("sitemap-missing", codes)
+
+    def test_several_sitemap_lines_all_read(self):
+        robots = f"User-agent: *\nAllow: /\nSitemap: {SITE}a.xml\nSitemap: {SITE}b.xml\n"
+        with tempfile.TemporaryDirectory() as d:
+            build(d, robots=robots, entries=False)
+            Path(d, "a.xml").write_text(sitemap([(ES_URL, "2026-11-01")]), "utf-8")
+            Path(d, "b.xml").write_text(sitemap([(EN_URL, "2026-11-01")]), "utf-8")
+            found = check_seo.check(Path(d), SITE, today=TODAY)[1]
+        self.assertEqual(found, [])
+
+    def test_clean_urls_without_html_extension(self):
+        about = SITE + "about"
+        alts = [("es", about), ("x-default", about)]
+        extras = {"about.html": (about, dict(alts=alts))}
+        es = dict(head=f'<link rel="alternate" hreflang="es" href="{about}">')
+        with tempfile.TemporaryDirectory() as d:
+            build(d, extras=extras, entries=[(ES_URL, "2026-11-01"), (EN_URL, "2026-11-02"), (about, "2026-11-03")])
+            codes = {f["code"] for f in check_seo.check(Path(d), SITE, today=TODAY)[1]}
+        for bad in ("sitemap-url-not-built", "canonical-not-self", "hreflang-target-missing", "sitemap-missing-page"):
+            self.assertNotIn(bad, codes)
+
+    def test_sitemap_in_a_subfolder_does_not_change_the_site(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = SITE.split("/Site/")[0] + "/"
+            build(d, robots=f"Sitemap: {root}sitemaps/sitemap.xml\n",
+                  es=dict(canonical=root, og={"og:url": root}), en=dict(canonical=root + "en/", og={"og:url": root + "en/"}))
+            self.assertEqual(check_seo.resolve_site(Path(d), None), root)
+
+    def test_partial_lastmod_dates_are_valid(self):
+        for lm in ("2026", "2026-11"):
+            self.assertNotIn("lastmod-invalid", self.codes(entries=[(ES_URL, lm), (EN_URL, "2026-11-02")]), lm)
+
+    def test_regional_hreflang_satisfies_language(self):
+        alts = [("es-ES", ES_URL), ("en-GB", EN_URL), ("x-default", ES_URL)]
+        with tempfile.TemporaryDirectory() as d:
+            build(d)
+            Path(d, "index.html").write_text(page(ES_URL, "es", alts, ES_T, ES_D), "utf-8")
+            Path(d, "en/index.html").write_text(page(EN_URL, "en", alts, EN_T, EN_D), "utf-8")
+            found = check_seo.check(Path(d), SITE, langs={"es", "en"}, today=TODAY)[1]
+        self.assertNotIn("hreflang-missing-lang", {f["code"] for f in found})
+
+    def test_lang_fix_is_neutral(self):
+        msg = next(f["message"] for f in self.run_site(files={"index.html": page(ES_URL, None, ALTS, ES_T, ES_D)}) if f["code"] == "lang-missing")
+        self.assertNotIn('"es"', msg)
+        self.assertIn('lang="<code>"', msg)
+
+    def test_folder_named_like_a_page_is_skipped(self):
+        with tempfile.TemporaryDirectory() as d:
+            build(d)
+            Path(d, "x.html").mkdir()
+            r = subprocess.run([sys.executable, str(SCRIPT), d, "--today", "2026-11-05"], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+
+    def test_relative_sitemap_line_message(self):
+        with tempfile.TemporaryDirectory() as d:
+            build(d, robots="Sitemap: /sitemap.xml\n")
+            r = subprocess.run([sys.executable, str(SCRIPT), d], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 2)
+        self.assertIn("absolute", r.stderr)
+        self.assertIn("--site", r.stderr)
+
+    def test_empty_build_is_an_error(self):
+        with tempfile.TemporaryDirectory() as d:
+            n, found = check_seo.check(Path(d), SITE, today=TODAY)
+        self.assertEqual(n, 0)
+        self.assertIn(("ERROR", "no-pages"), {(f["level"], f["code"]) for f in found})
+
+    def test_limits_are_flags_with_defaults(self):
+        def run(*extra):
+            with tempfile.TemporaryDirectory() as d:
+                build(d, es=dict(h1=1))
+                r = subprocess.run([sys.executable, str(SCRIPT), d, "--today", "2026-11-05", "--json", *extra],
+                                   capture_output=True, text=True)
+            return {f["code"] for f in json.loads(r.stdout)["findings"]}
+        self.assertEqual(run(), set())
+        self.assertIn("title-long", run("--title-max", "20"))
+        self.assertIn("title-short", run("--title-min", "60"))
+        self.assertIn("description-long", run("--description-max", "20"))
+        self.assertIn("description-short", run("--description-min", "150"))
+        self.assertIn("html-too-large", run("--max-html-bytes", "100"))
+
+    def test_lastmod_same_threshold_flag(self):
+        entries = [(ES_URL, "2026-11-01"), (EN_URL, "2026-11-01")]
+        with tempfile.TemporaryDirectory() as d:
+            build(d, entries=entries)
+            limits = check_seo.Limits(lastmod_same_min=2)
+            codes = {f["code"] for f in check_seo.check(Path(d), SITE, today=TODAY, limits=limits)[1]}
+        self.assertIn("lastmod-all-same", codes)
+
+    def test_default_ignore_can_be_replaced(self):
+        files = {"google123.html": "<html></html>"}
+        self.assertEqual(self.codes(files=files), set())
+        with tempfile.TemporaryDirectory() as d:
+            build(d, files=files)
+            found = check_seo.check(Path(d), SITE, today=TODAY, default_ignore=())[1]
+        self.assertIn("title-missing", {f["code"] for f in found})
+
+
 class TestCli(unittest.TestCase):
     def run_cli(self, *args):
         return subprocess.run([sys.executable, str(SCRIPT), *args], capture_output=True, text=True)
@@ -330,7 +452,7 @@ class TestCli(unittest.TestCase):
     def test_site_derived_from_robots(self):
         with tempfile.TemporaryDirectory() as d:
             build(d)
-            self.assertEqual(comprobar.resolve_site(Path(d), None), SITE)
+            self.assertEqual(check_seo.resolve_site(Path(d), None), SITE)
             r = self.run_cli(d, "--today", "2026-11-05")
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn("2 pages, 0 errors, 0 warnings, 0 info", r.stdout)

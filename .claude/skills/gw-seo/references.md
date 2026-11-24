@@ -1,8 +1,8 @@
 # gw-seo references
 
 Each entry says where it comes from and when it was read:
-- **read** means the primary source was read on that date (Portal-Galivelop's research note,
-  `docs/investigacion/seo-indexacion-previews.md`, 2026-10-30).
+- **read** means the primary source was read on that date (2026-10-30, in the research note of the
+  project this skill was born in).
 - **via claude-seo** means it comes from claude-seo@6be93f4 (2026-10-22), which cites the source named, and has not
   been re-read here. Re-read it before you rely on it for a decision.
 
@@ -31,7 +31,7 @@ Each entry says where it comes from and when it was read:
 - **Googlebot reads only the first 2 MB of an HTML file.** Keep the content and the JSON-LD within that.
   (via claude-seo, `seo-technical`)
 - **Title and description lengths:** around 60 and 160 characters are where results usually get cut off. These are
-  display limits, not rules, so `comprobar.py` only warns. (via claude-seo, `quality-gates.md`)
+  display limits, not rules, so `check_seo.py` only warns. (via claude-seo, `quality-gates.md`)
 
 ## Structured data
 
@@ -50,7 +50,7 @@ Use only types from Google's search gallery, and only for what the page really s
 | `ClaimReview`, `VehicleListing`, `EstimatedSalary`, `LearningVideo`, Course Info | Retired in June 2025 (<https://developers.google.com/search/blog/2025/06/simplifying-search-results>). Course list (Course + ItemList) is still supported. (via claude-seo) |
 | `SpecialAnnouncement` | Retired in July 2025. (via claude-seo) |
 
-`comprobar.py` warns on a retired type (`jsonld-retired-type`). It fails on JSON-LD that does not parse and on
+`check_seo.py` warns on a retired type (`jsonld-retired-type`). It fails on JSON-LD that does not parse and on
 placeholder text (`[Business Name]`, `lorem ipsum`, `TODO`, `example.com`), as claude-seo's schema hook does.
 
 ## Link previews
@@ -62,8 +62,9 @@ placeholder text (`[Business Name]`, `lorem ipsum`, `TODO`, `example.com`), as c
   the URL changes"). <https://developers.facebook.com/docs/sharing/webmasters> (read 2026-10-30)
 - **LinkedIn** recommends at least 1200×627 at about 1.91:1, under 5 MB.
   <https://www.linkedin.com/help/linkedin/answer/a521928> (read 2026-10-30)
-- **X** `summary_large_image`: 2:1, from 300×157 to 4096×4096, under 5 MB. (Read through a search result: the page
-  returned 402.) A 1200×630 JPEG fits Facebook, LinkedIn and X.
+- **X** `summary_large_image`: 2:1, from 300×157 to 4096×4096, under 5 MB. Source: the X cards documentation as
+  cited by claude-seo, with no URL kept: via claude-seo@6be93f4 (2026-10-22), unverified (the page returned 402 when
+  read on 2026-10-30, so the figures were only seen in a search result). A 1200×630 JPEG fits Facebook, LinkedIn and X.
 - Putting a hash in the image URL (`?v=<hash>`) refreshes the image when it changes. It does not refresh a card that
   was already shared: that needs the manual refresh tools below.
 
@@ -74,11 +75,11 @@ This is the user's decision. None of these tokens affects Google Search ranking.
 | Token | Owner | What blocking it stops |
 |---|---|---|
 | `Google-Extended` | Google | Gemini training and grounding. It is not a crawler, and Search inclusion is unaffected. <https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers> (read 2026-10-30) |
-| `GPTBot` | OpenAI | Training only |
-| `OAI-SearchBot` | OpenAI | Appearing in ChatGPT search |
+| `GPTBot` | OpenAI | Training only. <https://developers.openai.com/api/docs/bots> (read 2026-10-30) |
+| `OAI-SearchBot` | OpenAI | Appearing in ChatGPT search. <https://developers.openai.com/api/docs/bots> (read 2026-10-30) |
 | `ChatGPT-User` | OpenAI | Fetches a user asked for. OpenAI says `robots.txt` may not apply. <https://developers.openai.com/api/docs/bots> (read 2026-10-30) |
-| `ClaudeBot` | Anthropic | Training only |
-| `Claude-SearchBot` | Anthropic | Appearing in Claude's search |
+| `ClaudeBot` | Anthropic | Training only. <https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler> (read 2026-10-30) |
+| `Claude-SearchBot` | Anthropic | Appearing in Claude's search. <https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler> (read 2026-10-30) |
 | `Claude-User` | Anthropic | Fetches a user asked for. All three Anthropic bots honour `robots.txt`. <https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler> (read 2026-10-30) |
 | `PerplexityBot` | Perplexity | Perplexity search (via claude-seo) |
 | `CCBot` | Common Crawl | Open training dataset (via claude-seo) |
@@ -103,4 +104,4 @@ Only the user can do these. List them in the report when they apply.
 | A new site, or a sitemap that moved | Submit `sitemap.xml`; read the Pages report | Google Search Console |
 | A new or important page | Ask Google to index the URL (daily quota per property; nothing is guaranteed) | Search Console, URL inspection (<https://support.google.com/webmasters/answer/9012289>, read 2026-10-30) |
 | Bing and DuckDuckGo | Import the site from Search Console and submit the sitemap | Bing Webmaster Tools |
-| A preview's text or image changed after it was shared | Force a new scrape | Facebook Sharing Debugger; LinkedIn Post Inspector; `@WebpageBot` on Telegram; a new `?v=` on the shared URL for Discord and WhatsApp (third-party guides, unverified) |
+| A preview's text or image changed after it was shared | Force a new scrape | Facebook Sharing Debugger (<https://developers.facebook.com/tools/debug/>, not re-read; via claude-seo@6be93f4, unverified); LinkedIn Post Inspector (<https://www.linkedin.com/post-inspector/>, not re-read; via claude-seo@6be93f4, unverified); `@WebpageBot` on Telegram and a new `?v=` on the shared URL for Discord and WhatsApp (third-party guides, via claude-seo@6be93f4, unverified, no URL kept) |

@@ -1,4 +1,4 @@
-The checks in scripts/comprobar.py and parts of references.md are adapted from
+The checks in scripts/check_seo.py and parts of references.md are adapted from
 claude-seo (https://github.com/AgriciDaniel/claude-seo, commit 6be93f4), whose licence follows.
 
 MIT License

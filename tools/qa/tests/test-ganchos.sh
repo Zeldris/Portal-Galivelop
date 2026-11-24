@@ -17,7 +17,7 @@ done
 # Tests de los scripts de las skills nacidas en el portal: siempre, lleven o no versión (retro 2026-11-05, R2: con
 # «version:» se saltaban en silencio). Las del flujo (con «version:» y fuera de esta lista) se saltan: sus tests esperan
 # el árbol del repo del flujo y se corren allí. Una skill con tests que no es de ninguno de los dos grupos, falla.
-PROPIAS=" gw-portal gw-seo "
+PROPIAS=" gw-portal "
 for d in "$raiz"/.claude/skills/*/scripts; do
   ls "$d"/test_*.py > /dev/null 2>&1 || continue
   skill="$(basename "${d%/scripts}")"

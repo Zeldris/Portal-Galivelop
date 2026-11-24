@@ -1,13 +1,23 @@
 {
   "$schema": "gw/schema/gw.schema.json",
-  "version": "0.8.2",
-  "schemaVersion": 1,
-  "language": "es",
-  "visibleLanguages": [
-    "es",
-    "gl",
-    "en"
-  ],
+  "version": "0.9.0",
+  "schemaVersion": 2,
+  "languages": {
+    "code": "es",
+    "docs": {
+      "primary": "es",
+      "others": []
+    },
+    "public": {
+      "primary": "es",
+      "others": []
+    },
+    "ui": [
+      "es",
+      "gl",
+      "en"
+    ]
+  },
   "logRows": false,
   "protectedBranch": "main",
   "pushToProtected": "direct",

@@ -1,9 +1,9 @@
-<!-- galivelop-workflow v0.8.2 -->
+<!-- galivelop-workflow v0.9.0 -->
 # Portal-Galivelop — instrucciones para agentes
 
 Este proyecto se trabaja por relevos: una sesión puede acabarse en cualquier momento (tokens, contenedor, cambio de
 cuenta) y la siguiente tiene que seguir **sin perder nada y sin preguntar por dónde iba**. Todo lo de este archivo
-existe para eso. El flujo es Galivelop-workflow v0.8.2; sus scripts están en `.claude/gw/scripts/`, sus skills
+existe para eso. El flujo es Galivelop-workflow v0.9.0; sus scripts están en `.claude/gw/scripts/`, sus skills
 en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.claude/gw/scripts/config.py`).
 
 ## Al empezar cualquier sesión
@@ -13,9 +13,9 @@ en `.claude/skills/` y su configuración en `.claude/gw.json` (solo la lee `.cla
    `origin/<rama>`, y el último commit tiene que coincidir con lo que dice la bitácora.
 3. Comprueba que el check está en verde antes de tocar nada: `npm run check`, `python3 .claude/gw/scripts/ci-local.py --validate`.
 4. Sigue por el **siguiente paso** de la bitácora, salvo que la persona pida otra cosa.
-5. Al empezar cada tarea, trae la rama protegida: `git fetch origin main` y, si trae commits,
-   `git merge origin/main` (merge, nunca rebase: las ramas están subidas). Si el conflicto toca la
-   misma lógica por los dos lados, se para y se consulta a la persona.
+5. Al empezar cada tarea, trae la rama protegida con `python3 .claude/gw/scripts/merge-main.py` (fetch, commit del
+   ledger de métricas, se niega con más cambios sin commit y `git merge origin/main`; merge, nunca
+   rebase: ramas subidas). Si el conflicto toca la misma lógica por los dos lados, se para y se consulta a la persona.
 6. **La sesión se abre con el repo como carpeta de trabajo.** Abierta en otra (una que contiene varios repos, la
    carpeta personal), no carga `.claude/settings.json`: ni el tope de compactación, ni el gancho de inicio, ni el que
    vigila la subida a la rama protegida. Si pasa, dilo a la persona para que la reabra desde el repo; mientras tanto,
@@ -35,14 +35,14 @@ Cada sesión puede correr en un contenedor temporal: **lo que no está subido no
 - Si hay que parar con algo a medias o en rojo: commit igualmente con `WIP:` al principio del mensaje y, en la
   bitácora, qué falla y por qué. Nunca dejar trabajo solo en local.
 - Push a la rama de trabajo con `bash .claude/gw/scripts/push.sh <rama>` (reintenta si falla por red, `pushRetryDelays`, y
-  da por subido solo lo que `git ls-remote` confirma). El push y el check largo, en segundo plano, sin bucles de espera.
+  da por subido solo lo que `git ls-remote` confirma). El push y el check largo, en segundo plano con `timeout` de 5400000 ms (90 min), sin bucles de espera.
 - **Tras una llamada interrumpida o rechazada, `git status` y `git diff` antes de repetirla**: el cambio puede
   haberse guardado, o incluso subido, y repetirlo lo duplica.
 - Si la persona dice que se para, se para: se sube lo que haya, se deja la bitácora al día y no se sigue con nada más.
 - **Las preguntas a la persona**: lista numerada, cada una con su recomendación (`questions.py add`; un subagente las
   devuelve a la sesión principal); responde por número y `questions.py answer "5. a, 6. ok"` lo apunta.
-- **Al cerrar cada tarea o PR** (y cada fase), con todo subido y la bitácora al día, se pide a la persona un `/clear` en
-  una línea, con el porqué: el contexto largo es casi todo el gasto, y la bitácora basta para retomar.
+- **Al cerrar cada tarea o PR** (y cada fase), con todo subido y la bitácora al día, se pide un `/clear` en una línea,
+  con el porqué (el contexto largo es casi todo el gasto); un «Siguiente» tras un cierre se contesta igual.
 - **Al cerrar cada bloque o fase, mira el CI de la última subida** con
   `python3 .claude/gw/scripts/ci-status.py` (un rojo se lee con `--failed`, no con el registro entero del job). Un CI que no arranca (sin cuota, sin runners)
   cuenta como rojo: se dice a la persona y no se da nada por comprobado en el CI. Entonces vale el check pasado en
@@ -164,7 +164,7 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
   su marca antes del domingo, y lo hecho entre semana va a «Para la próxima publicación» de la bitácora. Detalle y
   cómo añadir un proyecto: [`docs/runbooks/tarea-semanal.md`](docs/runbooks/tarea-semanal.md#reglas); lo hace la skill
   `gw-portal`, que también se usa en una sesión para revisar los repos (modo informe) o aplicar sus cambios.
-- **Todo texto visible, en castellano, gallego e inglés** (`visibleLanguages`); `npm run check` lo comprueba. Un
+- **Todo texto visible, en castellano, gallego e inglés** (`languages.ui`); `npm run check` lo comprueba. Un
   subagente que escriba textos lo recibe en su encargo.
 - **Correos de prueba, solo `@example.com`** (retro 2026-11-22): el `pre-push` rechaza cualquier otro y arreglarlo
   reescribe commits. Un subagente que escriba tests o documentos lo recibe en su encargo.
@@ -178,8 +178,9 @@ cómo añadir un proyecto y cómo se publica: [`docs/desarrollo.md`](docs/desarr
 
 ### Notas del portal para las skills
 
-Las skills de `.claude/skills/` son copia del flujo y no se editan aquí (las pisa `/gw-update`), salvo las nacidas en
-el portal (`gw-portal`, `gw-seo`), que `/gw-update` no toca y `gw-harvest` recoge desde el flujo; lo propio del portal
+Las skills de `.claude/skills/` son copia del flujo y no se editan aquí (las pisa `/gw-update`), salvo la nacida en
+el portal (`gw-portal`), que `/gw-update` no toca y `gw-harvest` recoge desde el flujo (`gw-seo` nació aquí y ya es
+del flujo desde la 0.9.0); lo propio del portal
 va aquí, en `.claude/gw.json` (`selector.cases`) o en `.claude/gw/gw-opt-tokens.md`.
 
 - `research`: cada afirmación con su fuente primaria y la fecha de consulta; las notas, en `docs/investigacion/<tema>.md`.

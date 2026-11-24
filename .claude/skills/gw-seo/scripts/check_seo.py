@@ -2,14 +2,22 @@
 """Offline SEO checker for a statically built site.
 
 Usage:
-    comprobar.py <build_dir> [--site URL] [--langs es,gl,en] [--ignore GLOB ...]
-                 [--json] [--strict] [--today YYYY-MM-DD]
+    check_seo.py <build_dir> [--site URL] [--langs en,es] [--ignore GLOB ...]
+                 [--default-ignore GLOB ...] [--title-min N] [--title-max N]
+                 [--description-min N] [--description-max N] [--max-html-bytes N]
+                 [--lastmod-same-min N] [--json] [--strict] [--today YYYY-MM-DD]
 
---site    absolute base URL ending in "/". Default: the directory of the
-          "Sitemap:" URL in <build_dir>/robots.txt.
+--site    absolute base URL ending in "/". Default: derived from the first
+          absolute "Sitemap:" URL in <build_dir>/robots.txt (the longest
+          folder of it that is a prefix of the home page canonical).
 --langs   expected hreflang languages. Default: those found in the build.
---ignore  globs on the path relative to build_dir (always ignored:
-          404.html, google*.html, assets/*).
+--ignore  globs on the path relative to build_dir, added to the default ones.
+--default-ignore  replaces the default globs (404.html, google*.html, assets/*);
+          pass it once per glob, or "" for none.
+Thresholds (defaults in brackets): --title-min [10], --title-max [60],
+          --description-min [50], --description-max [160], --max-html-bytes
+          [2097152], --lastmod-same-min [4: warns when at least that many
+          lastmod values are all equal].
 --json    machine-readable output.
 --strict  warnings also make the exit code 1.
 --today   override today's date (tests only).
@@ -42,10 +50,20 @@ RETIRED_TYPES = {"FAQPage", "HowTo", "SpecialAnnouncement", "ClaimReview",
 PLACEHOLDER = re.compile(
     r"\[(business name|city|state|phone|address|your [^\]]+)\]|lorem ipsum"
     r"|(?-i:\bTODO\b)|example\.com", re.I)  # TODO in capitals only: «todo» is a Spanish word
-LASTMOD = re.compile(r"^(\d{4}-\d{2}-\d{2})(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?"
+LASTMOD = re.compile(r"^(\d{4}(?:-\d{2}(?:-\d{2})?)?)(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?"
                      r"(Z|[+-]\d{2}:\d{2}))?$")
 MAX_HTML = 2 * 1024 * 1024
 ABSOLUTE = re.compile(r"^https?://", re.I)
+
+
+class Limits:
+    """Thresholds of the checks; the defaults are the documented ones (flags override them)."""
+
+    def __init__(self, title_min=10, title_max=60, description_min=50, description_max=160,
+                 max_html_bytes=MAX_HTML, lastmod_same_min=4) -> None:
+        self.title_min, self.title_max = title_min, title_max
+        self.description_min, self.description_max = description_min, description_max
+        self.max_html_bytes, self.lastmod_same_min = max_html_bytes, lastmod_same_min
 
 
 class UsageError(Exception):
@@ -111,6 +129,11 @@ class PageParser(HTMLParser):
 class Page:
     def __init__(self, rel: str, url: str, path: Path) -> None:
         self.rel, self.url = rel, url
+        self.urls = {url}
+        if rel.endswith(".html") and not rel.endswith("index.html"):
+            self.urls.add(url[: -len(".html")])  # clean URL: about.html served as /about
+        elif url.endswith("/") and rel != "index.html":
+            self.urls.add(url.rstrip("/"))
         self.size = path.stat().st_size
         p = PageParser()
         p.feed(path.read_bytes().decode("utf-8", "replace"))
@@ -201,14 +224,34 @@ def parse_robots(text: str) -> tuple[list[str], bool]:
     return sitemaps, blocks_all
 
 
+def home_canonical(build: Path) -> str | None:
+    home = build / "index.html"
+    if not home.is_file():
+        return None
+    parser = PageParser()
+    parser.feed(home.read_bytes().decode("utf-8", "replace"))
+    return parser.canonicals[0] if parser.canonicals else None
+
+
 def resolve_site(build: Path, site: str | None) -> str:
     if site is None:
         robots = build / "robots.txt"
-        if robots.is_file():
-            for sm in parse_robots(robots.read_text("utf-8", "replace"))[0]:
-                if ABSOLUTE.match(sm):
-                    site = sm.rsplit("/", 1)[0] + "/"
-                    break
+        listed = parse_robots(robots.read_text("utf-8", "replace"))[0] if robots.is_file() else []
+        absolute = [sm for sm in listed if ABSOLUTE.match(sm)]
+        if listed and not absolute:
+            raise UsageError("the 'Sitemap:' line of robots.txt is not an absolute URL; make it absolute or pass "
+                             "--site https://host/base/")
+        if absolute:
+            sm = absolute[0]
+            host = re.match(r"^https?://[^/]+/", sm + "/")
+            folders = []
+            if host:
+                base = host.group(0)
+                parts = sm[len(base):].split("/")[:-1]
+                folders = [base + "/".join(parts[:i]) + ("/" if i else "") for i in range(len(parts), -1, -1)]
+            canonical = home_canonical(build)
+            site = next((f for f in folders if canonical and canonical.startswith(f)), None) or \
+                (folders[0] if folders else sm.rsplit("/", 1)[0] + "/")
     if site is None:
         raise UsageError("cannot tell the site URL: pass --site https://host/base/ "
                          "(no 'Sitemap:' line found in robots.txt)")
@@ -220,6 +263,8 @@ def resolve_site(build: Path, site: str | None) -> str:
 def load_pages(build: Path, site: str, ignore) -> dict[str, Page]:
     pages: dict[str, Page] = {}
     for f in sorted(build.rglob("*.html")):
+        if not f.is_file():
+            continue
         rel = f.relative_to(build).as_posix()
         if any(fnmatch.fnmatch(rel, g) for g in ignore):
             continue
@@ -233,21 +278,21 @@ class Findings(list):
         self.append({"level": level, "code": code, "page": page, "message": msg})
 
 
-def check_basics(p: Page, site: str, out: Findings) -> None:
+def check_basics(p: Page, site: str, out: Findings, lim: Limits) -> None:
     r, e, w = p.rel, "ERROR", "WARN"
     if not p.p.title:
-        out.add(e, "title-missing", r, "no <title>; add a unique title of 10-60 characters")
-    elif len(p.p.title) > 60:
-        out.add(w, "title-long", r, f"title has {len(p.p.title)} chars (>60); shorten it")
-    elif len(p.p.title) < 10:
-        out.add(w, "title-short", r, f"title has {len(p.p.title)} chars (<10); make it descriptive")
+        out.add(e, "title-missing", r, f"no <title>; add a unique title of {lim.title_min}-{lim.title_max} characters")
+    elif len(p.p.title) > lim.title_max:
+        out.add(w, "title-long", r, f"title has {len(p.p.title)} chars (>{lim.title_max}); shorten it")
+    elif len(p.p.title) < lim.title_min:
+        out.add(w, "title-short", r, f"title has {len(p.p.title)} chars (<{lim.title_min}); make it descriptive")
     d = p.description
     if not d:
-        out.add(e, "description-missing", r, 'no meta description; add <meta name="description"> of 50-160 characters')
-    elif len(d) > 160:
-        out.add(w, "description-long", r, f"description has {len(d)} chars (>160); shorten it")
-    elif len(d) < 50:
-        out.add(w, "description-short", r, f"description has {len(d)} chars (<50); expand it")
+        out.add(e, "description-missing", r, f'no meta description; add <meta name="description"> of {lim.description_min}-{lim.description_max} characters')
+    elif len(d) > lim.description_max:
+        out.add(w, "description-long", r, f"description has {len(d)} chars (>{lim.description_max}); shorten it")
+    elif len(d) < lim.description_min:
+        out.add(w, "description-short", r, f"description has {len(d)} chars (<{lim.description_min}); expand it")
     cans = p.p.canonicals
     if not cans:
         out.add(e, "canonical-missing", r, 'no canonical; add <link rel="canonical" href="<absolute page URL>">')
@@ -259,23 +304,23 @@ def check_basics(p: Page, site: str, out: Findings) -> None:
             out.add(e, "canonical-relative", r, f"canonical '{c}' is not absolute; use the full URL")
         elif not c.startswith(site):
             out.add(e, "canonical-other-site", r, f"canonical '{c}' is outside {site}; point it at this site")
-        elif c != p.url:
+        elif c not in p.urls:
             out.add(w, "canonical-not-self", r, f"canonical '{c}' differs from page URL {p.url}; make it self-referencing unless intended")
     if p.noindex:
         out.add("INFO", "noindex", r, "page has noindex; it will not be indexed")
     if not p.p.lang:
-        out.add(w, "lang-missing", r, 'no <html lang>; add lang="es" (or the page language)')
+        out.add(w, "lang-missing", r, 'no <html lang>; add lang="<code>" with the page language (for example lang="en")')
     if p.p.h1 == 0:
         out.add(w, "h1-missing", r, "no <h1>; add one main heading")
     elif p.p.h1 > 1:
         out.add(w, "h1-multiple", r, f"{p.p.h1} <h1> elements; keep one")
     if p.p.imgs_no_alt:
         out.add(w, "img-alt-missing", r, f"{p.p.imgs_no_alt} img without alt; add alt (alt=\"\" if decorative)")
-    if p.size > MAX_HTML:
-        out.add(w, "html-too-large", r, f"HTML is {p.size} bytes (>2 MB): Googlebot reads only the first 2 MB; split or trim it")
+    if p.size > lim.max_html_bytes:
+        out.add(w, "html-too-large", r, f"HTML is {p.size} bytes (>{lim.max_html_bytes}): Googlebot reads only the first 2 MB; split or trim it")
 
 
-def check_hreflang(p: Page, pages: dict[str, Page], langs: set[str],
+def check_hreflang(p: Page, index: dict[str, Page], langs: set[str],
                     site: str, out: Findings) -> None:
     if not p.alternates:
         return
@@ -287,7 +332,7 @@ def check_hreflang(p: Page, pages: dict[str, Page], langs: set[str],
         if lang.lower() in seen and seen[lang.lower()] != href:
             out.add("ERROR", "hreflang-duplicate", r, f"hreflang {lang} appears twice with different URLs; keep one")
         seen[lang.lower()] = href
-    selfs = [lg for lg, h in p.alternates if h == p.url]
+    selfs = [lg for lg, h in p.alternates if h in p.urls]
     if not selfs:
         out.add("ERROR", "hreflang-no-self", r, "no hreflang alternate points at the page itself; add a self-referencing entry")
     elif p.p.lang:
@@ -295,19 +340,20 @@ def check_hreflang(p: Page, pages: dict[str, Page], langs: set[str],
         if real and all(primary(lg) != primary(p.p.lang) for lg in real):
             out.add("WARN", "hreflang-lang-mismatch", r, f"self hreflang '{real[0]}' does not match <html lang=\"{p.p.lang}\"; align them")
     for lang, href in p.alternates:
-        if href == p.url or not ABSOLUTE.match(href):
+        if href in p.urls or not ABSOLUTE.match(href):
             continue
-        tgt = pages.get(href)
+        tgt = index.get(href)
         if tgt is None:
             if href.startswith(site):
                 out.add("ERROR", "hreflang-target-missing", r, f"hreflang {lang} target {href} is not in the build; fix or remove the link")
-        elif not any(h == p.url and lg.lower() != "x-default" for lg, h in tgt.alternates):
+        elif not any(h in p.urls and lg.lower() != "x-default" for lg, h in tgt.alternates):
             # x-default alone is not a return link: each version must list the others by language.
             out.add("ERROR", "hreflang-not-reciprocal", r, f"lists {href} but {tgt.rel} does not link back; add the return hreflang")
     found = {lg.lower() for lg, _ in p.alternates}
     if "x-default" not in found:
         out.add("WARN", "hreflang-no-x-default", r, "no x-default alternate; add one pointing at the default language")
-    missing = sorted(langs - found)
+    have = {primary(lg) for lg in found - {"x-default"}}
+    missing = sorted(lg for lg in langs if primary(lg) not in have)
     if missing:
         out.add("WARN", "hreflang-missing-lang", r, f"hreflang lacks {', '.join(missing)}; add those alternates")
 
@@ -349,10 +395,37 @@ def check_jsonld(p: Page, out: Findings) -> None:
         out.add("WARN", "jsonld-retired-type", r, f"Google no longer shows a rich result for {t}; see references.md")
 
 
-def check_robots_sitemap(build: Path, site: str, pages: dict[str, Page],
-                         today: dt.date, out: Findings) -> None:
+def sitemap_entries(build: Path, site: str, rel: str, out: Findings, seen: set[str]):
+    """Yield (loc, lastmod) of a sitemap file; a sitemap index is followed into its children of this site."""
+    if rel in seen:
+        return
+    seen.add(rel)
+    smap = build / rel
+    if not smap.is_file():
+        out.add("ERROR", "sitemap-missing", "site", f"no {rel}; generate a sitemap")
+        return
+    try:
+        root = ET.fromstring(smap.read_bytes())
+    except ET.ParseError as exc:
+        out.add("ERROR", "sitemap-invalid", "site", f"{rel} is not valid XML ({exc}); regenerate it")
+        return
+    local = lambda el: el.tag.rsplit("}", 1)[-1]
+    for node in (e for e in root.iter() if local(e) in ("url", "sitemap")):
+        loc = next((c.text.strip() for c in node if local(c) == "loc" and c.text), "")
+        if local(node) == "sitemap":
+            if loc.startswith(site):
+                yield from sitemap_entries(build, site, loc[len(site):], out, seen)
+            else:
+                out.add("ERROR", "sitemap-url-outside-site", "site", f"sitemap index entry {loc} is outside {site}; remove or fix it")
+            continue
+        lm = next((c.text.strip() for c in node if local(c) == "lastmod" and c.text), None)
+        yield loc, lm
+
+
+def check_robots_sitemap(build: Path, site: str, pages: dict[str, Page], index: dict[str, Page],
+                         today: dt.date, out: Findings, lim: Limits) -> None:
     robots = build / "robots.txt"
-    sitemap_rel = "sitemap.xml"
+    starts = []
     if not robots.is_file():
         out.add("ERROR", "robots-missing", "site", "no robots.txt; add one with a Sitemap: line")
     else:
@@ -361,32 +434,18 @@ def check_robots_sitemap(build: Path, site: str, pages: dict[str, Page],
             out.add("ERROR", "robots-blocks-all", "site", "'User-agent: *' has 'Disallow: /'; remove it or the site is not crawled")
         if not sitemaps:
             out.add("WARN", "robots-no-sitemap", "site", "robots.txt has no Sitemap: line; add the sitemap URL")
-        for sm in sitemaps:
-            if sm.startswith(site):
-                sitemap_rel = sm[len(site):]
-                break
-    smap = build / sitemap_rel
-    if not smap.is_file():
-        out.add("ERROR", "sitemap-missing", "site", f"no {sitemap_rel}; generate a sitemap")
-        return
-    try:
-        root = ET.fromstring(smap.read_bytes())
-    except ET.ParseError as exc:
-        out.add("ERROR", "sitemap-invalid", "site", f"{sitemap_rel} is not valid XML ({exc}); regenerate it")
-        return
-    local = lambda el: el.tag.rsplit("}", 1)[-1]
+        starts = [sm[len(site):] for sm in sitemaps if sm.startswith(site)]
     listed: set[str] = set()
     lastmods: list[str] = []
-    for url in (e for e in root.iter() if local(e) == "url"):
-        loc = next((c.text.strip() for c in url if local(c) == "loc" and c.text), "")
-        lm = next((c.text.strip() for c in url if local(c) == "lastmod" and c.text), None)
+    seen_files: set[str] = set()
+    for loc, lm in (e for rel in (starts or ["sitemap.xml"]) for e in sitemap_entries(build, site, rel, out, seen_files)):
         listed.add(loc)
         if not loc.startswith(site):
             out.add("ERROR", "sitemap-url-outside-site", "site", f"sitemap URL {loc} is outside {site}; remove or fix it")
-        elif loc not in pages:
+        elif loc not in index:
             out.add("ERROR", "sitemap-url-not-built", "site", f"sitemap URL {loc} matches no built page; remove it or build the page")
         else:
-            pg = pages[loc]
+            pg = index[loc]
             if pg.noindex:
                 out.add("ERROR", "sitemap-noindex", "site", f"sitemap lists {loc} which is noindex; remove it from the sitemap")
             if pg.canonical and pg.canonical != loc:
@@ -394,23 +453,24 @@ def check_robots_sitemap(build: Path, site: str, pages: dict[str, Page],
         if lm is not None:
             m = LASTMOD.match(lm)
             try:
-                day = dt.date.fromisoformat(m.group(1)) if m else None
+                parts = [int(x) for x in m.group(1).split("-")] if m else None
+                day = dt.date(parts[0], parts[1] if len(parts) > 1 else 1, parts[2] if len(parts) > 2 else 1) if parts else None
             except ValueError:
                 day = None
             if day is None:
-                out.add("ERROR", "lastmod-invalid", "site", f"lastmod '{lm}' of {loc} is not a W3C date; use YYYY-MM-DD")
+                out.add("ERROR", "lastmod-invalid", "site", f"lastmod '{lm}' of {loc} is not a W3C date; use YYYY-MM-DD (YYYY and YYYY-MM are also valid)")
             else:
-                lastmods.append(day.isoformat())
+                lastmods.append(m.group(1))
                 if day > today + dt.timedelta(days=1):
                     out.add("ERROR", "lastmod-future", "site", f"lastmod {lm} of {loc} is in the future; fix the date")
-    if len(lastmods) > 3 and len(set(lastmods)) == 1:
+    if len(lastmods) >= lim.lastmod_same_min and len(set(lastmods)) == 1:
         out.add("WARN", "lastmod-all-same", "site", f"all {len(lastmods)} lastmod values are {lastmods[0]}: looks like the build date and Google stops trusting it; use real change dates")
     for pg in pages.values():
-        if not pg.noindex and pg.canonical == pg.url and pg.url not in listed:
+        if not pg.noindex and pg.canonical in pg.urls and pg.canonical not in listed:
             out.add("WARN", "sitemap-missing-page", pg.rel, "indexable page is not in the sitemap; add it")
 
 
-def clusters(pages: dict[str, Page]) -> list[list[Page]]:
+def clusters(pages: dict[str, Page], index: dict[str, Page]) -> list[list[Page]]:
     parent = {u: u for u in pages}
 
     def find(u):
@@ -421,8 +481,8 @@ def clusters(pages: dict[str, Page]) -> list[list[Page]]:
 
     for u, pg in pages.items():
         for h in pg.alt_urls():
-            if h in pages:
-                parent[find(u)] = find(h)
+            if h in index:
+                parent[find(u)] = find(index[h].url)
     groups: dict[str, list[Page]] = {}
     for u, pg in pages.items():
         groups.setdefault(find(u), []).append(pg)
@@ -459,20 +519,24 @@ def check_duplicates(pages: dict[str, Page], groups: list[list[Page]], out: Find
                 out.add("WARN", code, "site", f"same {label} '{value[:60]}' on {names}; write a unique {label} for each page")
 
 
-def check(build: Path, site: str, langs=None, ignore=(), today=None):
+def check(build: Path, site: str, langs=None, ignore=(), today=None, limits=None, default_ignore=DEFAULT_IGNORE):
     """Run every check; return (page count, findings)."""
     today = today or dt.date.today()
-    pages = load_pages(build, site, tuple(DEFAULT_IGNORE) + tuple(ignore))
+    lim = limits or Limits()
+    pages = load_pages(build, site, tuple(default_ignore) + tuple(ignore))
+    index = {u: pg for pg in pages.values() for u in pg.urls}
     if langs is None:
         langs = {lg.lower() for pg in pages.values() for lg, _ in pg.alternates} - {"x-default"}
     out = Findings()
+    if not pages:
+        out.add("ERROR", "no-pages", "site", "no HTML pages found in the build folder; run the project's build first")
     for pg in pages.values():
-        check_basics(pg, site, out)
-        check_hreflang(pg, pages, set(langs), site, out)
+        check_basics(pg, site, out, lim)
+        check_hreflang(pg, index, set(langs), site, out)
         check_social(pg, out)
         check_jsonld(pg, out)
-    check_robots_sitemap(build, site, pages, today, out)
-    groups = clusters(pages)
+    check_robots_sitemap(build, site, pages, index, today, out, lim)
+    groups = clusters(pages, index)
     check_parity(groups, out)
     check_duplicates(pages, groups, out)
     out.sort(key=lambda f: (f["page"], f["code"], f["message"]))
@@ -487,6 +551,11 @@ def main(argv=None) -> int:
     ap.add_argument("--langs")
     ap.add_argument("--ignore", action="append", default=[], metavar="GLOB",
                     help="glob to skip, relative to build_dir (repeat the flag for several)")
+    ap.add_argument("--default-ignore", action="append", default=None, metavar="GLOB",
+                    help=f"replace the default ignored globs {list(DEFAULT_IGNORE)} (once per glob; \"\" for none)")
+    for flag, default in (("title-min", 10), ("title-max", 60), ("description-min", 50), ("description-max", 160),
+                          ("max-html-bytes", MAX_HTML), ("lastmod-same-min", 4)):
+        ap.add_argument(f"--{flag}", type=int, default=default, metavar="N", help=f"default {default}")
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--today")
@@ -502,7 +571,10 @@ def main(argv=None) -> int:
         except ValueError:
             raise UsageError("--today must be YYYY-MM-DD")
         ignore = list(args.ignore)
-        npages, findings = check(build, site, langs, ignore, today)
+        limits = Limits(args.title_min, args.title_max, args.description_min, args.description_max,
+                        args.max_html_bytes, args.lastmod_same_min)
+        default_ignore = DEFAULT_IGNORE if args.default_ignore is None else [g for g in args.default_ignore if g]
+        npages, findings = check(build, site, langs, ignore, today, limits, default_ignore)
     except UsageError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
