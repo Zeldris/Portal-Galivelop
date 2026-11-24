@@ -25,5 +25,5 @@ export default defineConfig({
     },
   },
   // Los worktrees de subagentes (.claude/worktrees/) traen su propia copia de los tests: no se corren desde aquí.
-  test: { exclude: [...configDefaults.exclude, '.claude/**'] },
+  test: { exclude: [...configDefaults.exclude, '.claude/**', 'front/**'] },
 });

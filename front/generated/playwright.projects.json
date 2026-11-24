@@ -1,0 +1,26 @@
+[
+  {
+    "browser": "chromium",
+    "name": "chromium-movil",
+    "viewport": {
+      "height": 844,
+      "width": 390
+    }
+  },
+  {
+    "browser": "chromium",
+    "name": "chromium-tableta",
+    "viewport": {
+      "height": 1024,
+      "width": 768
+    }
+  },
+  {
+    "browser": "chromium",
+    "name": "chromium-escritorio",
+    "viewport": {
+      "height": 800,
+      "width": 1280
+    }
+  }
+]

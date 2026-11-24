@@ -1,0 +1,42 @@
+{
+  "plugins": [
+    "stylelint-declaration-strict-value"
+  ],
+  "rules": {
+    "scale-unlimited/declaration-strict-value": [
+      [
+        "color",
+        "background-color",
+        "border-color",
+        "border-top-color",
+        "border-right-color",
+        "border-bottom-color",
+        "border-left-color",
+        "outline-color",
+        "fill",
+        "stroke"
+      ],
+      {
+        "disableFix": true,
+        "expandShorthand": true,
+        "ignoreFunctions": false,
+        "ignoreValues": [
+          "inherit",
+          "initial",
+          "unset",
+          "revert",
+          "none",
+          "transparent",
+          "currentColor",
+          "currentcolor",
+          "0",
+          "auto",
+          "/^rgb\\(/",
+          "/^color-mix\\(/",
+          "/^linear-gradient\\(/",
+          "#fff"
+        ]
+      }
+    ]
+  }
+}

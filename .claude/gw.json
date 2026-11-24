@@ -26,6 +26,7 @@
   ],
   "check": [
     "npm run check",
+    "python3 .claude/gw/scripts/generated-check.py",
     "python3 .claude/gw/scripts/ci-local.py --validate"
   ],
   "requireRetro": false,
@@ -101,5 +102,52 @@
   "ownedFiles": [
     ".github/workflows/check.yml"
   ],
-  "agentsSkillsDir": ""
+  "agentsSkillsDir": "",
+  "front": {
+    "tokens": "front/tokens.json",
+    "out": "front/generated",
+    "dir": "front",
+    "mainBreakpoints": [
+      "movil",
+      "escritorio"
+    ],
+    "stylelintFiles": [
+      "src/**/*.css"
+    ],
+    "snapshotGlob": "front/**/*-snapshots/*.png",
+    "stylelint": {
+      "spacingProperties": [],
+      "sizeProperties": [],
+      "ignoreValues": [
+        "inherit",
+        "initial",
+        "unset",
+        "revert",
+        "none",
+        "transparent",
+        "currentColor",
+        "currentcolor",
+        "0",
+        "auto",
+        "/^rgb\\(/",
+        "/^color-mix\\(/",
+        "/^linear-gradient\\(/",
+        "#fff"
+      ]
+    },
+    "browsers": {
+      "all": [
+        "chromium"
+      ],
+      "main": []
+    }
+  },
+  "generated": [
+    {
+      "command": "python3 .claude/gw/scripts/front.py generate",
+      "paths": [
+        "front/generated"
+      ]
+    }
+  ]
 }

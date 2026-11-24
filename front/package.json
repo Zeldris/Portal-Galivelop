@@ -1,0 +1,21 @@
+{
+  "name": "gw-front-tests",
+  "private": true,
+  "description": "Front-end tests of Galivelop-workflow (E5): Playwright, axe and Stylelint, fed by the files front.py generates",
+  "scripts": {
+    "test:layout": "playwright test --trace off",
+    "lint:css": "stylelint \"**/*.{css,scss}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.63.0",
+    "@types/node": "22.20.5",
+    "playwright-core": "1.63.0",
+    "postcss": "8.5.33",
+    "stylelint": "18.1.0",
+    "stylelint-config-standard-scss": "18.0.0",
+    "stylelint-declaration-strict-value": "1.13.0",
+    "typescript": "5.9.3"
+  }
+}
