@@ -149,28 +149,36 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-17
 - Refs: auditoria-marca
-- Status: open
+- Status: answered
 - Asked: 2026-11-24
 - Question: D10 (medio): la figura de producto tiene un filo más claro en oscuro (marco --superficie, figura --papel). ¿Se pone el fondo del marco a --papel?
 - Recommendation: Sí: background: var(--papel) en .producto-figura (una línea); el filete de 1 px queda pegado al dibujo
+- Answer: ok
+- Answered: 2026-11-24
 
 ## Q-18
 - Refs: auditoria-marca
-- Status: open
+- Status: answered
 - Asked: 2026-11-24
 - Question: D11 (leve): el separador se oscurece con filter invert en vez de tener su propia versión oscura. ¿Se anota como excepción en la hoja o se hace una variante?
 - Recommendation: Anotar la excepción en docs/marca.md (el invert del separador funciona y no pide imagen nueva)
+- Answer: ok
+- Answered: 2026-11-24
 
 ## Q-19
 - Refs: auditoria-marca
-- Status: open
+- Status: answered
 - Asked: 2026-11-24
 - Question: D12 (leve): bordes de 1,5 y 2 px en .estado-diseno, la caja del flujo y el punto de línea. ¿Se pasan a 1 px o se anotan como excepción?
 - Recommendation: Pasar a 1 px los tres bordes; son puntos y cajas pequeñas, sin motivo de marca para ser más gruesos
+- Answer: ok
+- Answered: 2026-11-24
 
 ## Q-20
 - Refs: auditoria-marca
-- Status: open
+- Status: answered
 - Asked: 2026-11-24
 - Question: D13 (leve): .producto-datos code sigue con 0.9em fuera de la escala. ¿Se pasa a un token --letra-*?
 - Recommendation: Sí, token --letra-* (cierra lo que dejó D6)
+- Answer: ok
+- Answered: 2026-11-24
