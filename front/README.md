@@ -40,6 +40,9 @@ baselines from `-darwin`/`-win32` and about large ones outside Git LFS. Take or 
 `python3 .claude/gw/scripts/front.py run full --update-snapshots` (Linux, or Docker elsewhere): the new or changed
 baselines come back to the tree and the stamp is written; review them with `git diff` before the commit.
 
+`GW_PORTAL_PORT` sets the port of the `vite preview` that `playwright.config.ts` starts (default 4181; 4173-4177 are
+taken by `vite preview` and `tools/qa`).
+
 `GW_PLAYWRIGHT_PROJECTS` overrides the path of `playwright.projects.json` (default: `front/generated/` next to
 `gw-config.ts`, the default `front.out`). `.stylelintrc.json` extends `./front/generated/stylelint.tokens.json` and
 ignores `front/generated/**` (generated, not hand-written): change both if `front.out` is elsewhere.

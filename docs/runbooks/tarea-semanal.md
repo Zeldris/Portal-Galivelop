@@ -22,6 +22,10 @@ Solo toca contenido (los `.json` de `src/data/`, imágenes `webp|png|jpg|svg|ico
 todo código que entre en ella lleva su `/code-review` y su marca antes del domingo. Entre semana, lo hecho se
 apunta en «Para la próxima publicación» de la bitácora. Fuera de esa tarea, `main` sigue necesitando confirmación.
 
+La tarea arranca en un contenedor nuevo y el `pre-push` a `main` corre `front.py run`, que necesita Chromium: el
+`install` de `.claude/gw.json` ya lo trae (`python3 .claude/gw/scripts/front.py install --browsers chromium`, tras
+`npm ci`). Si la tarea falla por falta de navegador, lanza esa orden a mano.
+
 ## Texto de la tarea
 
 Texto de la tarea programada que cada domingo a las 20:45 (hora de Madrid) pone al día las fichas de todos los

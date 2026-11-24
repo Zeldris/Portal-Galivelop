@@ -2,7 +2,7 @@
 // repo (la copia temporal de `front.py run` solo trae lo que git sigue, así que instala y construye ella misma).
 import { gwConfig } from './gw-config';
 
-const port = Number(process.env.GW_PORTAL_PORT ?? 4173);
+const port = Number(process.env.GW_PORTAL_PORT ?? 4181)  // 4173-4177 los usan vite preview y tools/qa;
 const base = '/Portal-Galivelop/';
 
 export default gwConfig({

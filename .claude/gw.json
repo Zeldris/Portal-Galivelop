@@ -22,7 +22,8 @@
   "protectedBranch": "main",
   "pushToProtected": "direct",
   "install": [
-    "npm ci"
+    "npm ci",
+    "python3 .claude/gw/scripts/front.py install --browsers chromium"
   ],
   "check": [
     "npm run check",
