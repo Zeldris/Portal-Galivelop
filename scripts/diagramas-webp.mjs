@@ -1,7 +1,8 @@
-// Saca los webp de los diagramas del flujo (docs/diagramas/*.svg) con las fuentes de la marca (docs/marca.md).
+// Saca los webp de los diagramas (docs/diagramas/*.svg) con las fuentes de la marca (docs/marca.md).
 // Uso: node scripts/diagramas-webp.mjs [arquitectura versiones …]   (sin nombres, todos; «flujo» = galivelop-workflow.svg, el esquema de la galería)
-// Deja public/proyectos/galivelop-workflow/<n>.webp (1600 de ancho) y <n>-mini.webp (720), con PIL.
-import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
+// Deja <destino>/<n>.webp (1600 de ancho) y <n>-mini.webp (720), con PIL. Los del flujo van a
+// public/proyectos/galivelop-workflow/; los de un producto (PRODUCTOS), a public/productos/<slug>/.
+import { readFileSync, writeFileSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -16,6 +17,10 @@ try {
 }
 
 const NOMBRES = { flujo: 'galivelop-workflow', arquitectura: 'gw-arquitectura', fases: 'gw-fases', 'pre-push': 'gw-pre-push', sesion: 'gw-sesion', subagentes: 'gw-subagentes', versiones: 'gw-versiones' };
+// Diagramas de las páginas de producto: nombre del svg → slug del producto.
+const PRODUCTOS = { 'gd-harness': 'galivelop-developer', 'gve-evaluacion': 'galivelop-evaluator' };
+for (const n of Object.keys(PRODUCTOS)) NOMBRES[n] = n;
+const destino = (n) => (PRODUCTOS[n] ? `public/productos/${PRODUCTOS[n]}` : 'public/proyectos/galivelop-workflow');
 const pedidos = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(NOMBRES);
 const fuentes = 'node_modules/@fontsource-variable';
 const b64 = (r) => 'data:font/woff2;base64,' + readFileSync(`${fuentes}/${r}`).toString('base64');
@@ -52,10 +57,11 @@ for (const n of pedidos) {
   const alto = Number(caja[1]);
   const pagina = await navegador.newPage({ viewport: { width: 1600, height: alto }, deviceScaleFactor: 1 });
   await pagina.setContent(`<!doctype html><html><head><style>${css}</style></head><body>${svg}</body></html>`);
-  await pagina.evaluate(() => Promise.all(["800 40px 'Big Shoulders Display Variable'", "400 20px 'JetBrains Mono Variable'", "700 20px 'JetBrains Mono Variable'"].map((f) => document.fonts.load(f))));
+  await pagina.evaluate(() => Promise.all(["800 40px 'Big Shoulders Display Variable'", "400 20px 'JetBrains Mono Variable'", "700 20px 'JetBrains Mono Variable'", "500 20px 'Literata Variable'"].map((f) => document.fonts.load(f))));
   const png = join(tmp, `${n}.png`);
   await pagina.screenshot({ path: png, clip: { x: 0, y: 0, width: 1600, height: alto } });
-  const salida = `public/proyectos/galivelop-workflow/${n}`;
+  mkdirSync(destino(n), { recursive: true });
+  const salida = `${destino(n)}/${n}`;
   execFileSync('python3', ['-c', `import sys
 from PIL import Image
 im=Image.open(sys.argv[1]).convert('RGB'); o=sys.argv[2]

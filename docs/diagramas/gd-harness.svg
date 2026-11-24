@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+<!-- Galivelop Developer: cómo funciona el harness local de punta a punta. Hoja de estilos de docs/marca.md (papel, retícula de 24 px, tinta, celeste hondo, chaflanes).
+     Se exporta con scripts/diagramas-webp.mjs a public/productos/<slug>/<nombre>.webp (1600) y -mini.webp (720).
+     Fuentes: Big Shoulders Display (títulos), Literata (frases) y JetBrains Mono (datos), las de la web. -->
+<defs>
+  <pattern id="rejilla" width="24" height="24" patternUnits="userSpaceOnUse">
+    <path d="M24 0H0V24" fill="none" stroke="#e3edf3" stroke-width="1"/>
+  </pattern>
+  <marker id="fa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0072a8"/></marker>
+  <marker id="fk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#13212b"/></marker>
+  <marker id="fm" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5d7a6a"/></marker>
+</defs>
+<style>
+  .t { font-family: 'Big Shoulders Display Variable', 'Big Shoulders Display', sans-serif; font-weight: 800; letter-spacing: 0.01em; }
+  .s { font-family: 'Literata Variable', Literata, serif; font-weight: 500; }
+  .m { font-family: 'JetBrains Mono Variable', 'JetBrains Mono', monospace; font-weight: 500; }
+  .b { font-weight: 700; }
+</style>
+<rect width="1600" height="1050" fill="#fbfcfd"/>
+<rect width="1600" height="1050" fill="url(#rejilla)"/>
+<text x="62" y="66" class="m b" font-size="22" fill="#0072a8" text-anchor="start" letter-spacing="0.08em">GALIVELOP DEVELOPER · HARNESS LOCAL</text>
+<text x="60" y="132" class="t" font-size="64" fill="#13212b" text-anchor="start">TU FLUJO DE TRABAJO, CON IA EN TU MÁQUINA</text>
+<text x="62" y="176" class="s" font-size="27" fill="#4a5c69" text-anchor="start">Agentes locales llevan el trabajo del proyecto. Tú decides qué entra.</text>
+<path d="M60 262H1512L1540 290V826H60Z" fill="#1aa6df" fill-opacity="0.07" stroke="#0072a8" stroke-width="3"/>
+<path d="M60 210H346L360 224V262H60Z" fill="#0072a8"/>
+<text x="84" y="250" class="t" font-size="38" fill="#ffffff" text-anchor="start">TU MÁQUINA</text>
+<text x="388" y="246" class="m" font-size="22" fill="#4a5c69" text-anchor="start">tu código y tus datos no salen de aquí</text>
+<path d="M1180 206H1530L1540 216V250H1180Z" fill="#fbfcfd" stroke="#4a5c69" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="1360" y="236" class="m" font-size="20" fill="#4a5c69" text-anchor="middle">nube: opcional, por papel</text>
+<path d="M90 290H1496L1510 304V374H90Z" fill="#ffffff" stroke="#5d7a6a" stroke-width="2.5"/>
+<path d="M112 306H142V311H112Z" fill="#5d7a6a"/>
+<text x="112" y="352" class="t" font-size="34" fill="#13212b" text-anchor="start">EL FLUJO DEL TALLER MARCA EL TRABAJO</text>
+<path d="M700 312H773L783 322V354H700Z" fill="#5d7a6a" stroke="#5d7a6a" stroke-width="1.5" fill-opacity="0.1"/>
+<text x="741.5" y="341" class="m" font-size="22" fill="#13212b" text-anchor="middle">plan</text>
+<path d="M797 312H897L907 322V354H797Z" fill="#5d7a6a" stroke="#5d7a6a" stroke-width="1.5" fill-opacity="0.1"/>
+<text x="852.0" y="341" class="m" font-size="22" fill="#13212b" text-anchor="middle">tareas</text>
+<path d="M921 312H1034L1044 322V354H921Z" fill="#5d7a6a" stroke="#5d7a6a" stroke-width="1.5" fill-opacity="0.1"/>
+<text x="982.5" y="341" class="m" font-size="22" fill="#13212b" text-anchor="middle">límites</text>
+<path d="M1058 312H1184L1194 322V354H1058Z" fill="#5d7a6a" stroke="#5d7a6a" stroke-width="1.5" fill-opacity="0.1"/>
+<text x="1126.0" y="341" class="m" font-size="22" fill="#13212b" text-anchor="middle">revisión</text>
+<path d="M1208 312H1414L1424 322V354H1208Z" fill="#5d7a6a" stroke="#5d7a6a" stroke-width="1.5" fill-opacity="0.1"/>
+<text x="1316.0" y="341" class="m" font-size="22" fill="#13212b" text-anchor="middle">comprobaciones</text>
+<path d="M251 374V404" fill="none" stroke="#5d7a6a" stroke-width="2.5" marker-end="url(#fm)"/>
+<path d="M90 412H398L412 426V642H90Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M90 590H412V642H90Z" fill="#1aa6df" fill-opacity="0.16" stroke="#0072a8" stroke-width="2"/>
+<text x="114" y="452" class="m b" font-size="22" fill="#0072a8" text-anchor="start">01</text>
+<text x="114" y="500" class="t" font-size="42" fill="#13212b" text-anchor="start">QUIEN ORGANIZA</text>
+<text x="114" y="538" class="s" font-size="25" fill="#4a5c69" text-anchor="start">Reparte la tarea</text>
+<text x="114" y="570" class="s" font-size="25" fill="#4a5c69" text-anchor="start">y fija los límites.</text>
+<text x="114" y="625" class="m b" font-size="21" fill="#0072a8" text-anchor="start" letter-spacing="0.06em">MODELO LOCAL</text>
+<path d="M617 374V404" fill="none" stroke="#5d7a6a" stroke-width="2.5" marker-end="url(#fm)"/>
+<path d="M456 412H764L778 426V642H456Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M456 590H778V642H456Z" fill="#1aa6df" fill-opacity="0.16" stroke="#0072a8" stroke-width="2"/>
+<text x="480" y="452" class="m b" font-size="22" fill="#0072a8" text-anchor="start">02</text>
+<text x="480" y="500" class="t" font-size="42" fill="#13212b" text-anchor="start">QUIEN HACE</text>
+<text x="480" y="538" class="s" font-size="25" fill="#4a5c69" text-anchor="start">Hace el cambio</text>
+<text x="480" y="570" class="s" font-size="25" fill="#4a5c69" text-anchor="start">en una copia aparte.</text>
+<text x="480" y="625" class="m b" font-size="21" fill="#0072a8" text-anchor="start" letter-spacing="0.06em">MODELO LOCAL</text>
+<path d="M983 374V404" fill="none" stroke="#5d7a6a" stroke-width="2.5" marker-end="url(#fm)"/>
+<path d="M822 412H1130L1144 426V642H822Z" fill="#ffffff" stroke="#0072a8" stroke-width="2"/>
+<path d="M822 590H1144V642H822Z" fill="#1aa6df" fill-opacity="0.16" stroke="#0072a8" stroke-width="2"/>
+<text x="846" y="452" class="m b" font-size="22" fill="#0072a8" text-anchor="start">03</text>
+<text x="846" y="500" class="t" font-size="42" fill="#13212b" text-anchor="start">QUIEN REVISA</text>
+<text x="846" y="538" class="s" font-size="25" fill="#4a5c69" text-anchor="start">Pruebas y revisión</text>
+<text x="846" y="570" class="s" font-size="25" fill="#4a5c69" text-anchor="start">antes de integrar.</text>
+<text x="846" y="625" class="m b" font-size="21" fill="#0072a8" text-anchor="start" letter-spacing="0.06em">MODELO LOCAL</text>
+<path d="M1188 412H1496L1510 426V642H1188Z" fill="#13212b" stroke="#13212b" stroke-width="2"/>
+<path d="M1188 590H1510V642H1188Z" fill="#1aa6df" stroke="#1aa6df" stroke-width="2"/>
+<text x="1212" y="452" class="m b" font-size="22" fill="#1aa6df" text-anchor="start">04</text>
+<text x="1212" y="500" class="t" font-size="42" fill="#ffffff" text-anchor="start">TÚ DECIDES</text>
+<text x="1212" y="538" class="s" font-size="25" fill="#e6eef3" text-anchor="start">Das el visto bueno</text>
+<text x="1212" y="570" class="s" font-size="25" fill="#e6eef3" text-anchor="start">y el cambio entra.</text>
+<text x="1212" y="625" class="m b" font-size="21" fill="#13212b" text-anchor="start" letter-spacing="0.06em">LA ÚLTIMA PALABRA</text>
+<path d="M415 500H449" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M781 478H815" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M819 532H785" fill="none" stroke="#13212b" stroke-width="3" marker-end="url(#fk)"/>
+<text x="800.0" y="570" class="m b" font-size="28" fill="#13212b" text-anchor="middle">✗</text>
+<path d="M1147 500H1181" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<path d="M90 654V664H1144V654" fill="none" stroke="#0072a8" stroke-width="2"/>
+<text x="617" y="698" class="s" font-size="25" fill="#13212b" text-anchor="middle">Cada papel, el modelo local que mejor rinde en tu equipo: medido, no a ojo.</text>
+<text x="90" y="756" class="m b" font-size="21" fill="#13212b" text-anchor="start" letter-spacing="0.06em">TU PROYECTO</text>
+<text x="262" y="756" class="m" font-size="21" fill="#4a5c69" text-anchor="start">la versión buena no se toca</text>
+<path d="M90 784H1500" fill="none" stroke="#13212b" stroke-width="4" marker-end="url(#fk)"/>
+<path d="M640 784C680 784 680 744 720 744H1240C1290 744 1300 784 1349 784" fill="none" stroke="#0072a8" stroke-width="4" stroke-dasharray="10 7"/>
+<text x="980" y="732" class="m b" font-size="21" fill="#0072a8" text-anchor="middle">copia aparte</text>
+<path d="M1349 642V770" fill="none" stroke="#0072a8" stroke-width="3" marker-end="url(#fa)"/>
+<circle cx="640" cy="784" r="8" fill="#fbfcfd" stroke="#13212b" stroke-width="3"/><circle cx="1349" cy="784" r="9" fill="#0072a8"/>
+<text x="1372" y="762" class="m b" font-size="22" fill="#0072a8" text-anchor="start">✓ entra</text>
+<path d="M60 860H398L412 874V1000H60Z" fill="#0072a8" stroke="#0072a8" stroke-width="2"/>
+<text x="86" y="922" class="t" font-size="40" fill="#ffffff" text-anchor="start">PRIVADO</text>
+<text x="86" y="966" class="s" font-size="24" fill="#ffffff" text-anchor="start">Tu código no sale de casa.</text>
+<path d="M436 860H774L788 874V1000H436Z" fill="#0072a8" stroke="#0072a8" stroke-width="2"/>
+<text x="462" y="922" class="t" font-size="40" fill="#ffffff" text-anchor="start">SIN FACTURA POR USO</text>
+<text x="462" y="966" class="s" font-size="24" fill="#ffffff" text-anchor="start">Trabaja tu propio equipo.</text>
+<path d="M812 860H1150L1164 874V1000H812Z" fill="#0072a8" stroke="#0072a8" stroke-width="2"/>
+<text x="838" y="922" class="t" font-size="40" fill="#ffffff" text-anchor="start">CON MÉTODO</text>
+<text x="838" y="966" class="s" font-size="24" fill="#ffffff" text-anchor="start">Plan, revisión y pruebas.</text>
+<path d="M1188 860H1526L1540 874V1000H1188Z" fill="#0072a8" stroke="#0072a8" stroke-width="2"/>
+<text x="1214" y="922" class="t" font-size="40" fill="#ffffff" text-anchor="start">TÚ MANDAS</text>
+<text x="1214" y="966" class="s" font-size="24" fill="#ffffff" text-anchor="start">Nada entra sin tu sí.</text>
+</svg>
