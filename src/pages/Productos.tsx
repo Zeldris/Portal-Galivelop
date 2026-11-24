@@ -60,7 +60,7 @@ export function Productos() {
                   <p className="producto-texto">{tx(p.queOfrece)}</p>
                   {responsable && (
                     <p className="producto-responsable">
-                      {t('productos.responsable')}:
+                      {t('productos.responsable')}:{' '}
                       <Link to={`/equipo/${responsable.id}`} className="chip-enlace">
                         {responsable.nombre}
                       </Link>

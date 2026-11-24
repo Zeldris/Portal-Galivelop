@@ -54,7 +54,10 @@ describe('páginas estáticas', () => {
       expect(html).toContain(textos[idioma]['productos.nota']);
       expect(html).toContain(`/${prefijo}productos/galivelop-developer/">`);
       expect(html).toContain(`/${prefijo}productos/galivelop-evaluator/">`);
-      expect(html).toContain(`href="/Portal-Galivelop/${prefijo}productos/"`); // el enlace de la cabecera
+      // El enlace de la cabecera, en cualquier página estática.
+      expect(leer(`${prefijo}equipo`)).toContain(
+        `<a class="nav-productos" href="/Portal-Galivelop/${prefijo}productos/">`,
+      );
       expect(html).toContain('"@type":"ItemList"');
     }
   });

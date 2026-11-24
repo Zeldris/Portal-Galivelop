@@ -369,7 +369,7 @@ const gl: Record<Clave, string> = {
   'hero.titulo1': 'Facemos reais',
   'hero.titulo2': 'os proxectos que semellan imposibles',
   'hero.texto':
-    'Galivelop é un obradoiro que crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. O que sae del, o noso produto Galivelop Developer, está no perfil de quen o fai.',
+    'Galivelop é un obradoiro que crea, investiga e aprende á vista e coa porta aberta: podes seguir cada proxecto, propor un novo ou sumarte. O que sae del, os nosos produtos Galivelop Developer e Galivelop Evaluator, están no perfil de quen os fai.',
   'hero.cta.taller': 'Coñecer o obradoiro',
   'hero.resumen.proyectos': 'proxectos',
   'hero.resumen.publicados': 'publicados',
@@ -1008,7 +1008,7 @@ const en: Record<Clave, string> = {
   'novedades.verMas': 'Show more',
   'novedades.muro': 'In the feed',
   'equipo.productos.texto':
-    'What the brand offers and {nombre} look after. They are private and have no prices on the site: everything is arranged by email.',
+    'What the brand offers and {nombre} looks after. They are private and have no prices on the site: everything is arranged by email.',
   'participa.privados':
     '{nombres} are developed in-house by the workshop, but we welcome project proposals and would love to meet new people who are interested.',
   'nav.proyectos.todos': 'All projects',

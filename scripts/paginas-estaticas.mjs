@@ -319,7 +319,8 @@ function cabecera(i, ruta) {
     + enlace(hrefDe(i, 'novedades'), T(i, 'sec.novedades'))
     + enlace(hrefDe(i, 'equipo'), T(i, 'nav.equipo'))
     + enlace(`${hrefDe(i, '')}#participa`, T(i, 'nav.contacto'))
-    + `</div></nav><div class="cabecera-ajustes"><div class="idiomas" role="group" aria-label="${esc(T(i, 'idioma.etiqueta'))}">${idiomas}</div>`
+    + '</div>' + enlace(hrefDe(i, 'productos'), T(i, 'productos.titulo'), ' class="nav-productos"')
+    + `</nav><div class="cabecera-ajustes"><div class="idiomas" role="group" aria-label="${esc(T(i, 'idioma.etiqueta'))}">${idiomas}</div>`
     // Los dos estados del botón; el CSS de index.html muestra el que toca según html[data-tema] (lo fija el script inline).
     + `<button type="button" class="boton-icono tema-estatico tema-estatico-oscuro" aria-label="${esc(T(i, 'tema.oscuro'))}">${ICONOS.luna}</button>`
     + `<button type="button" class="boton-icono tema-estatico tema-estatico-claro" aria-label="${esc(T(i, 'tema.claro'))}">${ICONOS.sol}</button>`

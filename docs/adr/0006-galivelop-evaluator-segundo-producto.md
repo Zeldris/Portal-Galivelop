@@ -28,11 +28,13 @@ también privado, junto a Developer.
 5. **`gw-portal` sigue ignorando el repo** `Zeldris/galivelop-evaluator` (`fuentes.json`), ahora con el motivo «producto
    privado de Álvaro (ADR 0006); su página se mantiene a mano».
 6. Lo demás de la 0002–0005 sigue: sin precios, todo por correo, el producto se ve también en el perfil de su
-   responsable y `/productos` sigue como página de paso.
+   responsable. `/productos` deja de ser página de paso: es el índice de los productos (indexable, enlazado en gris
+   desde la cabecera y con una banda en el inicio).
 
 ## Consecuencias
 
 - Ruta nueva `/productos/galivelop-evaluator`: sitemap, `llms.txt` y página estática salen de los datos; test de rutas.
 - Los textos que decían «único producto» (hero, README, «Mensaje» de `docs/desarrollo.md`, `GLOSSARY.md`, perfil de
   Álvaro y su guion) pasan a plural.
-- Pendiente de otras tareas: los diagramas, y la visibilidad de Productos (cabecera, banda del inicio, índice).
+- Cada producto lleva su diagrama (figuras opcionales); Productos se ve en la cabecera, en una banda del inicio y en
+  su índice `/productos`, con su JSON-LD `CollectionPage`.

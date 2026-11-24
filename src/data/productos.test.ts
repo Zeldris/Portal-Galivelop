@@ -73,13 +73,11 @@ describe('productos de cada miembro (ADR 0004)', () => {
       if (g.portada)
         for (const f of [g.portada.src, g.portada.mini])
           expect(existsSync(`public/${f}`), f).toBe(true);
-      // Las figuras se dibujan en otra tarea: hasta que exista `public/productos/`, solo se comprueba que estén declaradas.
       for (const fig of g.figuras ?? []) {
         expect(fig.ancho).toBeGreaterThan(0);
         expect(fig.alto).toBeGreaterThan(0);
-        if (existsSync('public/productos'))
-          for (const f of [fig.src, fig.mini])
-            expect(existsSync(`public${f.startsWith('/') ? '' : '/'}${f}`), f).toBe(true);
+        for (const f of [fig.src, fig.mini])
+          expect(existsSync(`public${f.startsWith('/') ? '' : '/'}${f}`), f).toBe(true);
       }
       // Sin el signo de apertura en gallego, y sin lo que la página no cuenta: precios ni repositorios.
       const todo = JSON.stringify(g);
