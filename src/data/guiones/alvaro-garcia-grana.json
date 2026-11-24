@@ -1,10 +1,10 @@
 {
   "pagina": "/equipo/alvaro-garcia-grana",
   "audio": [],
-  "narra": "2026-11-17",
+  "narra": "2026-11-24",
   "notas": [
-    "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Orienteed» a la inglesa (orien-tid); «Plexus Tech» a la inglesa (plé-xus tek); «Claude Code» a la inglesa (clod coud); «OpenCode» a la inglesa (ou-pen coud); «Ollama» como «o-la-ma»; «Node» a la inglesa (noud); «Docker» a la inglesa (dó-ker); «Voice Generator» a la inglesa (vois yé-ne-rei-ter); «full stack» a la inglesa.",
-    "Lo narra un narrador en tercera persona, como el guion de /equipo (la persona, 2026-11-17).",
+    "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Orienteed» a la inglesa (orien-tid); «Plexus Tech» a la inglesa (plé-xus tek); «Claude Code» a la inglesa (clod coud); «OpenCode» a la inglesa (ou-pen coud); «Ollama» como «o-la-ma»; «Node» a la inglesa (noud); «Docker» a la inglesa (dó-ker); «Voice Generator» a la inglesa (vois yé-ne-rei-ter); «full stack» a la inglesa (ful stak); «Sergas» como una palabra, «sér-gas».",
+    "Lo narra un narrador en tercera persona, como el guion de /equipo (la persona, 2026-11-17; revisado 2026-11-24).",
     "Envejece cuando cambia en `equipo.json` su rol, su empresa actual, sus proyectos o sus papeles, sus tecnologías, sus productos (y si pasan de «próximamente» a disponibles) o el texto de `colabora`. Sin años trabajados ni cifras que cambian solas."
   ],
   "trozos": [
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "sobre",
-      "es": "Programa full stack desde 2017, y hoy es desarrollador sénior en Orienteed. Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir. Le mueven el aprendizaje continuo y adaptarse a lo que cambia, y hoy eso incluye trabajar cada día con inteligencia artificial.",
-      "gl": "Programa full stack desde 2017, e hoxe é desenvolvedor sénior en Orienteed. Fundou Galivelop para dar forma a proxectos ambiciosos e abrilos a quen queira aprender e construír. Móvenlle a aprendizaxe continua e adaptarse ao que cambia, e hoxe iso inclúe traballar cada día con intelixencia artificial.",
-      "en": "He has been programming full stack since 2017, and today he is a senior developer at Orienteed. He founded Galivelop to shape ambitious projects and open them to anyone who wants to learn and build. He is driven by continuous learning and adapting to change, and today that includes working with artificial intelligence every day."
+      "es": "Programa full stack desde dos mil diecisiete, y hoy es desarrollador sénior en Orienteed. Fundó Galivelop para dar forma a proyectos ambiciosos y abrirlos a quien quiera aprender y construir. Le mueven el aprendizaje continuo y adaptarse a lo que cambia, y hoy eso incluye trabajar cada día con inteligencia artificial.",
+      "gl": "Programa full stack desde dous mil dezasete, e hoxe é desenvolvedor sénior en Orienteed. Fundou Galivelop para dar forma a proxectos ambiciosos e abrilos a quen queira aprender e construír. Móvenlle a aprendizaxe continua e adaptarse ao que cambia, e hoxe iso inclúe traballar cada día con intelixencia artificial.",
+      "en": "He has been programming full stack since twenty seventeen, and today he is a senior developer at Orienteed. He founded Galivelop to shape ambitious projects and open them to anyone who wants to learn and build. He is driven by continuous learning and adapting to change, and today that includes working with artificial intelligence every day."
     },
     {
       "seccion": "proyectos",
@@ -54,9 +54,9 @@
     },
     {
       "seccion": "trayectoria",
-      "es": "Su trayectoria empieza en 2017 con el desarrollo web. Pasó por Grupo Aluman, por Servicio Móvil, con clientes como Inditex o el Sergas, y por Plexus Tech; desde 2021 está en Orienteed, en proyectos para marcas como Luxottica, Pladur o Mayoral.",
-      "gl": "A súa traxectoria comeza en 2017 co desenvolvemento web. Pasou por Grupo Aluman, por Servicio Móvil, con clientes como Inditex ou o Sergas, e por Plexus Tech; desde 2021 está en Orienteed, en proxectos para marcas como Luxottica, Pladur ou Mayoral.",
-      "en": "His career begins in 2017 with web development. He worked at Grupo Aluman, at Servicio Móvil, with clients such as Inditex or Sergas, and at Plexus Tech; since 2021 he has been at Orienteed, on projects for brands such as Luxottica, Pladur and Mayoral."
+      "es": "Su trayectoria empieza en dos mil diecisiete con el desarrollo web. Pasó por Grupo Aluman, por Servicio Móvil, con clientes como Inditex o el Sergas, y por Plexus Tech; desde dos mil veintiuno está en Orienteed, en proyectos para marcas como Luxottica, Pladur o Mayoral.",
+      "gl": "A súa traxectoria comeza en dous mil dezasete co desenvolvemento web. Pasou por Grupo Aluman, por Servicio Móvil, con clientes como Inditex ou o Sergas, e por Plexus Tech; desde dous mil vinteún está en Orienteed, en proxectos para marcas como Luxottica, Pladur ou Mayoral.",
+      "en": "His career begins in twenty seventeen with web development. He worked at Grupo Aluman, at Servicio Móvil, with clients such as Inditex or Sergas, and at Plexus Tech; since twenty twenty-one he has been at Orienteed, on projects for brands such as Luxottica, Pladur and Mayoral."
     },
     {
       "seccion": "tecnologias",

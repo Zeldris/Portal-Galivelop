@@ -10,9 +10,9 @@
   "trozos": [
     {
       "seccion": "cabecera",
-      "es": "Esto es Galivelop Developer, también llamado GalivelopCode. Conecta el flujo de trabajo del taller con agentes de inteligencia artificial que funcionan en tu propio ordenador. Ellos llevan el trabajo del proyecto, y tú decides qué entra. Todavía no está disponible: llegará próximamente.",
-      "gl": "Isto é Galivelop Developer, tamén chamado GalivelopCode. Conecta o fluxo de traballo do obradoiro con axentes de intelixencia artificial que funcionan no teu propio ordenador. Eles levan o traballo do proxecto, e ti decides que entra. Aínda non está dispoñible: chegará proximamente.",
-      "en": "This is Galivelop Developer, also known as GalivelopCode. It connects the workshop’s workflow to artificial intelligence agents that run on your own computer. They carry the project’s work, and you decide what goes in. It is not available yet: it is coming soon."
+      "es": "Esto es Galivelop Developer, también llamado GalivelopCode. Nace del flujo de trabajo del taller, Galivelop-workflow. Conecta el flujo de trabajo del taller con agentes de inteligencia artificial que funcionan en tu propio ordenador. Ellos llevan el trabajo del proyecto, y tú decides qué entra. Todavía no está disponible: llegará próximamente.",
+      "gl": "Isto é Galivelop Developer, tamén chamado GalivelopCode. Nace do fluxo de traballo do obradoiro, Galivelop-workflow. Conecta o fluxo de traballo do obradoiro con axentes de intelixencia artificial que funcionan no teu propio ordenador. Eles levan o traballo do proxecto, e ti decides que entra. Aínda non está dispoñible: chegará proximamente.",
+      "en": "This is Galivelop Developer, also known as GalivelopCode. It grew out of the workshop’s workflow, Galivelop-workflow. It connects the workshop’s workflow to artificial intelligence agents that run on your own computer. They carry the project’s work, and you decide what goes in. It is not available yet: it is coming soon."
     },
     {
       "seccion": "beneficios",
@@ -48,9 +48,9 @@
     },
     {
       "seccion": "como",
-      "es": "Así funciona, en cuatro pasos. Primero, tu flujo marca el trabajo: el plan y las tareas de tu proyecto dicen qué toca hacer. Después, un agente local lo hace aparte, en una copia separada, sin tocar la versión buena. Luego se revisa antes de entrar: corren las comprobaciones y el flujo pide una revisión antes de integrar el cambio. Y por último, tú das el visto bueno.",
-      "gl": "Así funciona, en catro pasos. Primeiro, o teu fluxo marca o traballo: o plan e as tarefas do teu proxecto din que toca facer. Despois, un axente local fai o traballo á parte, nunha copia separada, sen tocar a versión boa. Logo revísase antes de entrar: execútanse as comprobacións e o fluxo pide unha revisión antes de integrar o cambio. E por último, ti dás o visto e prace.",
-      "en": "This is how it works, in four steps. First, your workflow sets the work: your project’s plan and tasks say what comes next. Then a local agent does it separately, in a separate copy, without touching the good version. Next it is reviewed before it goes in: the checks run and the workflow asks for a review before the change is merged. And finally, you give the final say.",
+      "es": "Así funciona, en cuatro pasos. Primero, tu flujo marca el trabajo: el plan y las tareas de tu proyecto dicen qué toca hacer. Después, un agente local lo hace en una copia separada, sin tocar la versión buena. Luego se revisa antes de entrar: corren las comprobaciones y el flujo pide una revisión antes de integrar el cambio. Y por último, tú das el visto bueno.",
+      "gl": "Así funciona, en catro pasos. Primeiro, o teu fluxo marca o traballo: o plan e as tarefas do teu proxecto din que toca facer. Despois, un axente local fai o traballo nunha copia separada, sen tocar a versión boa. Logo revísase antes de entrar: execútanse as comprobacións e o fluxo pide unha revisión antes de integrar o cambio. E por último, ti dás o visto e prace.",
+      "en": "This is how it works, in four steps. First, your workflow sets the work: your project’s plan and tasks say what comes next. Then a local agent does it in a separate copy, without touching the good version. Next it is reviewed before it goes in: the checks run and the workflow asks for a review before the change is merged. And finally, you give the final say.",
       "enfoques": [
         {
           "frase": "Primero, tu flujo",
@@ -80,9 +80,9 @@
     },
     {
       "seccion": "fiarse",
-      "es": "¿Por qué fiarse? Porque funciona en tu máquina, sin nube obligatoria y sin depender de una API de pago. Porque tiene reglas que no se saltan: lo que el agente no puede tocar lo impide el sistema, no una petición amable al modelo. Y porque elige el modelo adecuado para cada papel: los prueba en tu equipo y se queda con el que mejor rinde, con datos y no a ojo. Es para equipos y personas que programan con método y no quieren que su código salga de casa.",
-      "gl": "Por que fiarse? Porque funciona na túa máquina, sen nube obrigatoria e sen depender dunha API de pago. Porque ten regras que non se saltan: o que o axente non pode tocar impídeo o sistema, non unha petición amable ao modelo. E porque escolle o modelo axeitado para cada papel: próbaos no teu equipo e quédase co que mellor rende, con datos e non a ollo. É para equipos e persoas que programan con método e non queren que o seu código saia da casa.",
-      "en": "Why trust it? Because it runs on your machine, with no mandatory cloud and no dependence on a paid API. Because it has rules that cannot be skipped: what the agent must not touch is blocked by the system, not by politely asking the model. And because it picks the right model for each role: it tests them on your hardware and keeps the one that does best, by evidence rather than by eye. It is for teams and people who code with a method and do not want their code leaving the house.",
+      "es": "¿Por qué fiarse? Porque funciona en tu máquina, sin nube obligatoria y sin depender de un servicio de pago por uso. Porque tiene reglas que no se saltan: lo que el agente no puede tocar lo impide el sistema, no una petición amable al modelo. Y porque elige el modelo adecuado para cada papel: los prueba en tu equipo y se queda con el que mejor rinde, con datos y no a ojo. Es para equipos y personas que programan con método y no quieren que su código salga de casa.",
+      "gl": "Por que fiarse? Porque funciona na túa máquina, sen nube obrigatoria e sen depender dun servizo de pago por uso. Porque ten regras que non se saltan: o que o axente non pode tocar impídeo o sistema, non unha petición amable ao modelo. E porque escolle o modelo axeitado para cada papel: próbaos no teu equipo e quédase co que mellor rende, con datos e non a ollo. É para equipos e persoas que programan con método e non queren que o seu código saia da casa.",
+      "en": "Why trust it? Because it runs on your machine, with no mandatory cloud and no dependence on a pay-per-use service. Because it has rules that cannot be skipped: what the agent must not touch is blocked by the system, not by politely asking the model. And because it picks the right model for each role: it tests them on your hardware and keeps the one that does best, by evidence rather than by eye. It is for teams and people who code with a method and do not want their code leaving the house.",
       "enfoques": [
         {
           "frase": "Porque funciona en tu máquina",
@@ -112,9 +112,9 @@
     },
     {
       "seccion": "contacto",
-      "es": "Si te interesa, escríbele a Álvaro. Sin precios en la web ni formulario: lo hablamos por correo. Cuéntanos qué proyecto llevas y qué te gustaría que hiciera tu inteligencia artificial local. El botón abre el mensaje ya preparado, y debajo tienes la dirección para copiarla. Gracias por escuchar.",
-      "gl": "Se che interesa, escríbelle a Álvaro. Sen prezos na web nin formulario: falámolo por correo. Conta que proxecto levas e que che gustaría que fixese a túa intelixencia artificial local. O botón abre a mensaxe xa preparada, e debaixo tes o enderezo para copialo. Grazas por escoitar.",
-      "en": "If you are interested, write to Álvaro. No prices on the site and no form: we talk by email. Tell us about your project and what you would like your local artificial intelligence to do. The button opens the message ready to send, and below it you have the address to copy. Thanks for listening."
+      "es": "Si te interesa, escríbele a Álvaro. Sin precios en la web ni formulario: se habla por correo. Cuéntale qué proyecto llevas y qué te gustaría que hiciera tu inteligencia artificial local. El botón abre el mensaje ya preparado, y debajo tienes la dirección para copiarla. Gracias por escuchar.",
+      "gl": "Se che interesa, escríbelle a Álvaro. Sen prezos na web nin formulario: fálase por correo. Cóntalle que proxecto levas e que che gustaría que fixese a túa intelixencia artificial local. O botón abre a mensaxe xa preparada, e debaixo tes o enderezo para copialo. Grazas por escoitar.",
+      "en": "If you are interested, write to Álvaro. No prices on the site and no form: it is all done by email. Tell him about your project and what you would like your local artificial intelligence to do. The button opens the message ready to send, and below it you have the address to copy. Thanks for listening."
     }
   ]
 }
