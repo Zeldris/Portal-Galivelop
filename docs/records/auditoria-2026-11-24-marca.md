@@ -143,3 +143,5 @@ bordes y tokens según la hoja.
 (inicio, Tarkor, toVeriAI), `.../capturas/h2/hoja.png` (equipo, Álvaro, unirse, proponer, novedades, 404) y
 `.../capturas/h3/hoja.png` (workflow, image-generator, Developer, Evaluator); detalle:
 `.../capturas/h4/productos-galivelop-evaluator-producto-figura-escritorio.png`.
+
+**Aplicado (2026-11-24, Q-17 a Q-20 con la recomendación):** D10 `background: var(--papel)` en `.producto-figura` (captura en oscuro: sin banda clara alrededor); D11 excepción del `filter: invert` anotada en `docs/marca.md`; D12 bordes a 1 px; D13 `--letra-90`. `npm run check` (270) y `front.py run full` (48) en verde.

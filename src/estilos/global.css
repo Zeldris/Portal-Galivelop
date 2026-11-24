@@ -751,7 +751,7 @@ button {
 /* En diseño: punto hueco, del color del texto de la píldora (aún no hay nada que señalar en color). */
 .estado-diseno .estado-punto {
   background: transparent;
-  border: 1.5px solid currentColor;
+  border: 1px solid currentColor;
 }
 
 @keyframes latido {
@@ -3683,7 +3683,7 @@ img.perfil-logo {
   top: 7px;
   width: 8px;
   height: 8px;
-  border: 2px solid var(--celeste);
+  border: 1px solid var(--celeste);
   background: var(--superficie);
 }
 
@@ -4437,7 +4437,7 @@ img.perfil-logo {
   align-items: flex-start;
   justify-content: center;
   text-align: left;
-  border: 2px solid var(--borde);
+  border: 1px solid var(--borde);
   background: var(--superficie);
   color: var(--texto);
   cursor: pointer;
@@ -6703,7 +6703,7 @@ body:has(dialog[open]) {
 
 .producto-datos code {
   font-family: var(--fuente-datos);
-  font-size: 0.9em;
+  font-size: var(--letra-90);
 }
 
 /* Contacto siempre a mano en el móvil; se retira cuando el bloque celeste ya está en pantalla. */
@@ -6792,7 +6792,7 @@ body:has(dialog[open]) {
   position: relative;
   margin: 0;
   padding: var(--espacio-12);
-  background: var(--superficie);
+  background: var(--papel);
   border: 1px solid var(--borde);
   clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
 }

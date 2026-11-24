@@ -219,7 +219,7 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 
 Por CSS, sin imagen (cancelados en el generador, 2026-11-11): 11, 16, 20 y 21 (el pie, cerúleo liso); la 22 no sale de gimg y el fondo sigue en color plano. La 14 se rehízo y llegó el 2026-11-12.
 
-Las imágenes llegan a `src/img/<slug>/` (fuera de git; `portal` para las de la marca), con sus SVG en `svg/`, lo aprobado sin sitio en la web en `aprobadas/` y lo rechazado en `descartes/`, y se convierten aquí con `cwebp -q 80`. Las series 25 y 26 llegaron completas (2026-11-13) y las versiones oscuras de 10, 18, 19, 27 y 28, el 2026-11-14 (fondo noche, nunca el papel claro).
+Las imágenes llegan a `src/img/<slug>/` (fuera de git; `portal` para las de la marca), con sus SVG en `svg/`, lo aprobado sin sitio en la web en `aprobadas/` y lo rechazado en `descartes/`, y se convierten aquí con `cwebp -q 80`. Las series 25 y 26 llegaron completas (2026-11-13) y las versiones oscuras de 10, 18, 19, 27 y 28, el 2026-11-14 (fondo noche, nunca el papel claro). **Excepción:** las de una sola tinta sobre transparente —el separador (12), la rosa (4) y el sello (5)— no tienen versión oscura: se invierten por CSS (`filter: invert(1) hue-rotate(180deg)` en `.separador`, `.pie-rosa` y `.sobre-sello`), que da tinta clara sobre noche sin otro archivo (auditoría D11, 2026-11-24).
 
 ### Cómo pedirlas
 

@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-24 (productos en `main`, e2c9b9b) |
+| **Actualizado** | 2026-11-24 (segunda pasada de diseño aplicada, D10-D13) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
-| **Tarea en curso** | 2026-11-24 · **segunda pasada de diseño (Q-16) hecha**: sección 4 de `docs/records/auditoria-2026-11-24-marca.md`. La persona aprobó Q-17 a Q-20 con la recomendación (2026-11-24); **falta aplicarlas**: D10 `background: var(--papel)` en `.producto-figura`; D11 anotar en `docs/marca.md` la excepción del `filter: invert` del separador; D12 bordes de 1,5/2 px a 1 px (`global.css` ~754, ~3686, ~4440); D13 `0.9em` de `.producto-datos code` a un token `--letra-*`. Código pequeño: `/code-review` en la sesión y captura en oscuro de la figura. (3) webkit y firefox, bloqueado. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Auditoría de marca aplicada (Q-11 a Q-16, informe `docs/records/auditoria-2026-11-24-marca.md`): hoja de marca, guiones G1 y G5-G11, CSS D4-D7 y figuras oscuras D1-D3, con su `/code-review` (3337edb). Siguiente: la **segunda pasada de diseño** (Q-16) en tema oscuro; lo que queda, en «Auditoría de marca» de `docs/records/pending.md`. (3) bloqueado: el proxy niega `cdn.playwright.dev` y `playwright.download.prss.microsoft.com`; la persona los añade en los ajustes del entorno (Network access → Allowed domains) |
+| **Tarea en curso** | Ninguna. Auditoría de marca cerrada en código (D1-D13); lo que queda (grabación, generador, comprobaciones) en «Auditoría de marca» de `docs/records/pending.md`. (3) webkit y firefox, bloqueado. Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | Lo que la persona elija de «Auditoría de marca» en `docs/records/pending.md` (tanda de grabación G2-G4, G12, G13; pedir al generador las filas 33-36). (3) bloqueado: el proxy niega `cdn.playwright.dev` y `playwright.download.prss.microsoft.com`; la persona los añade en los ajustes del entorno (Network access → Allowed domains) |
 | **En `main`** | **Productos** (subido el 2026-11-24 con confirmación de la persona: marca de revisión y CI en verde en e2c9b9b): Galivelop Evaluator (ADR 0006), Developer ampliada con diagramas de Fable, índice `/productos` con enlace en la cabecera y banda en el inicio; workflow 0.9.0 e image-generator al día. Retro aprobada: `docs/records/retro-2026-11-24-productos.md` |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (270) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-24 · **Segunda pasada de diseño en oscuro, D10-D13** (`ccr-1c3b5b63-tdttd6`, código pequeño; revisión en la sesión, 6 líneas, sin hallazgos): `.producto-figura` con fondo `--papel` (sin banda clara alrededor de la figura en oscuro), bordes de 1,5/2 px a 1 px (punto «en diseño», punto de etapa y caja del flujo), `--letra-90` en `.producto-datos code` y la excepción del `filter: invert` anotada en `docs/marca.md`. `npm run check` (270) y `front.py run full` (48) en verde.
 
 - 2026-11-24 · **Escala de tokens de espaciado y letra** (`ccr-1c3b5b63-tdttd6`, **código**; `/code-review` 2026-11-24: 3 medios arreglados —Stylelint no miraba `rem` en font-size, `.nav-ficha` a −36 px con `--espacio-neg-36`, h2 vuelve a 2.25rem con `--letra-225`—, leves en pending.md): `front/tokens.json` con grupos `espacio` (de 2 en 2 px hasta 20, luego 24, 28, 32, 40, 48, 56 y 72; negativos y fluidos con nombre: `--espacio-seccion`, `-hero`, `-bloque`…) y `letra` (11 pasos de 0.7 a 2rem y fluidos `--letra-hero`, `-titulo-1..5`, `-entrada`, `-lema`); `global.css` entero sobre ellos (133 valores redondeados; el h1 de la página de producto pasa a `--letra-hero`, la entradilla llega a 1.2rem); Stylelint exige los tokens en margin, padding, gap y font-size. Capturas antes/después vistas por la persona (Q-10, ok) y 4 @visual regeneradas. `npm run check` y `front.py run full` (48) en verde.
 
