@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-22",
+  "actualizado": "2026-11-24",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.8.2 · próxima la 0.9 «Front»",
-    "gl": "En desenvolvemento · v0.8.2 · próxima a 0.9 «Front»",
-    "en": "In development · v0.8.2 · next up: 0.9 “Front”"
+    "es": "En desarrollo · v0.9.0 · próxima la 0.10 «Estable»",
+    "gl": "En desenvolvemento · v0.9.0 · próxima a 0.10 «Estable»",
+    "en": "In development · v0.9.0 · next up: 0.10 “Stable”"
   },
   "etiquetas": [
     "Claude Code",
@@ -76,11 +76,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.8.2",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.9.0",
       "etiqueta": {
-        "es": "Ver la versión 0.8.2",
-        "gl": "Ver a versión 0.8.2",
-        "en": "View version 0.8.2"
+        "es": "Ver la versión 0.9.0",
+        "gl": "Ver a versión 0.9.0",
+        "en": "View version 0.9.0"
       }
     }
   ],
@@ -132,14 +132,14 @@
       "en": "Galivelop-workflow extracts that method from Tarkor, this portal and other workshop projects, where it already works, and turns it into a versioned repository: rules in AGENTS.md (an open standard any agent understands), plus skills, scripts, hooks and templates in one place. An improvement is made once and reaches every project, and each one declares its own details in a small config file."
     },
     {
-      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.7.1, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
-      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.7.1, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
-      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.7.1, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
+      "es": "Va en dos etapas. En la primera, un agente de IA aplica el flujo a un proyecto leyendo este repositorio; hoy está en ella, con la versión 0.9.0, que ya recoge lo aprendido en los pilotos de este mismo portal, de Tarkor y de su instalador y en los proyectos nuevos. En la segunda, un instalador lo hará sin IA. El repositorio es público y abierto a colaborar; la 1.0 llegará con el Management Center, tras la serie 0.x.",
+      "gl": "Vai en dúas etapas. Na primeira, un axente de IA aplica o fluxo a un proxecto lendo este repositorio; hoxe está nela, coa versión 0.9.0, que xa recolle o aprendido nos pilotos deste mesmo portal, de Tarkor e do seu instalador e nos proxectos novos. Na segunda, un instalador farao sen IA. O repositorio é público e aberto a colaborar; a 1.0 chegará co Management Center, tras a serie 0.x.",
+      "en": "It comes in two stages. In the first, an AI agent applies the workflow to a project by reading this repository; that’s where it is today, with version 0.9.0, which already takes in what we learned from the pilots on this very portal, on Tarkor and on its installer and from the new projects. In the second, an installer will do it without AI. The repository is public and open to collaboration; 1.0 will arrive with the Management Center, after the 0.x series."
     },
     {
-      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las trece skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
-      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as trece skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
-      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the thirteen skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
+      "es": "Lo propio y lo que reutilizamos, separados. Es desarrollo del taller el método (relevos, bitácora, tres fases antes de publicar), las catorce skills propias, los ganchos y scripts que hacen cumplir las reglas, las plantillas y la forma de aplicarlo y actualizarlo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, diseñar módulos, hacer la retro) incluye quince skills de Matt Pocock, sin cambios en lo que hacen y con su licencia: de ellas aprendimos a trabajar así.",
+      "gl": "O propio e o que reutilizamos, separados. É desenvolvemento do obradoiro o método (relevos, bitácora, tres fases antes de publicar), as catorce skills propias, os ganchos e scripts que fan cumprir as regras, as prantillas e a forma de aplicalo e actualizalo. Para pensar antes de programar (interrogar un plan, investigar, prototipar, diagnosticar, deseñar módulos, facer a retro) inclúe quince skills de Matt Pocock, sen cambios no que fan e coa súa licenza: delas aprendemos a traballar así.",
+      "en": "What’s ours and what we reuse, kept apart. The workshop built the method (handoffs, the log, three phases before publishing), the fourteen skills of our own, the hooks and scripts that enforce the rules, the templates and the way it is applied and updated. For thinking before coding (grilling a plan, research, prototyping, diagnosing, designing modules, the retro) it includes fifteen skills by Matt Pocock, without changing what they do and under their licence: they taught us to work this way."
     },
     {
       "es": "También lo implantamos en tu proyecto: escríbenos.",
@@ -1306,9 +1306,9 @@
         "en": "Our own skills"
       },
       "intro": {
-        "es": "Las trece skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las siete primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
-        "gl": "As trece skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As sete primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, e as dúas últimas preparan contido para redes a partir do traballo feito.",
-        "en": "The thirteen skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first seven serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, and the last two turn finished work into content for social media."
+        "es": "Las catorce skills que hemos escrito para el flujo, sacadas de Tarkor, de este portal y de otros proyectos del taller. Las siete primeras sirven en el trabajo diario (dos son opcionales); gw-init, gw-update, gw-doctor y gw-harvest llevan el flujo a cada proyecto y lo mantienen al día, gw-seo ayuda con el SEO de las webs y las dos últimas preparan contenido para redes a partir del trabajo hecho.",
+        "gl": "As catorce skills que escribimos para o fluxo, sacadas de Tarkor, deste portal e doutros proxectos do obradoiro. As sete primeiras serven no traballo diario (dúas son opcionais); gw-init, gw-update, gw-doctor e gw-harvest levan o fluxo a cada proxecto e mantéñeno ao día, gw-seo axuda co SEO das webs e as dúas últimas preparan contido para redes a partir do traballo feito.",
+        "en": "The fourteen skills we wrote for the workflow, drawn from Tarkor, this portal and other workshop projects. The first seven serve day-to-day work (two are optional); gw-init, gw-update, gw-doctor and gw-harvest bring the workflow to each project and keep it up to date, gw-seo helps with web SEO and the last two turn finished work into content for social media."
       },
       "items": [
         {
@@ -1443,6 +1443,18 @@
             "es": "Recoge, como propuestas, lo que los proyectos cambiaron o inventaron sobre el flujo desde la última vez: de ahí sale cada versión nueva.",
             "gl": "Recolle, como propostas, o que os proxectos cambiaron ou inventaron sobre o fluxo desde a última vez: de aí sae cada versión nova.",
             "en": "Gathers, as proposals, what the projects changed or invented in the workflow since last time: every new version comes from there."
+          }
+        },
+        {
+          "nombre": {
+            "es": "gw-seo",
+            "gl": "gw-seo",
+            "en": "gw-seo"
+          },
+          "texto": {
+            "es": "Prepara y revisa el SEO de una web: títulos, descripciones, datos estructurados y páginas que los buscadores puedan leer, con una lista de lo que falta.",
+            "gl": "Prepara e revisa o SEO dunha web: títulos, descricións, datos estruturados e páxinas que os buscadores poidan ler, cunha lista do que falta.",
+            "en": "Prepares and reviews a website's SEO: titles, descriptions, structured data and pages search engines can read, with a list of what is missing."
           }
         },
         {
@@ -2113,6 +2125,51 @@
         "en": "What each version brings, newest first, and under “See the details”, its changes one by one. The full release notes are in the project’s repository."
       },
       "items": [
+        {
+          "nombre": {
+            "es": "Front",
+            "gl": "Front",
+            "en": "Front"
+          },
+          "valor": "0.9.0 · 2026-11-24",
+          "texto": {
+            "es": "Pruebas de interfaz, idiomas configurables y perfiles de instalación. El flujo aprende a probar la parte visible de una web, a trabajar en el idioma de cada proyecto y a instalarse a la medida de cada persona.",
+            "gl": "Probas de interface, idiomas configurables e perfís de instalación. O fluxo aprende a probar a parte visible dunha web, a traballar no idioma de cada proxecto e a instalarse á medida de cada persoa.",
+            "en": "Interface tests, configurable languages and install profiles. The workflow learns to test the visible side of a website, to work in each project's language and to install itself to fit each person."
+          },
+          "detalle": [
+            {
+              "es": "El idioma del código, el de la documentación, el de lo público y el del agente se configuran por separado, y los ajustes antiguos se migran solos al actualizar.",
+              "gl": "O idioma do código, o da documentación, o do público e o do axente configúranse por separado, e os axustes antigos migran sós ao actualizar.",
+              "en": "The language of the code, the documentation, public texts and the agent are set separately, and old settings migrate by themselves when updating."
+            },
+            {
+              "es": "Hay perfiles de instalación por persona y por cargo; el CI siempre usa el de por defecto.",
+              "gl": "Hai perfís de instalación por persoa e por cargo; o CI usa sempre o por defecto.",
+              "en": "There are install profiles per person and per role; the CI always uses the default one."
+            },
+            {
+              "es": "Las pruebas de interfaz sacan capturas, comprueban la accesibilidad y recorren una matriz de navegadores y tamaños, con su guía y con la versión de las capturas fijada.",
+              "gl": "As probas de interface sacan capturas, comproban a accesibilidade e percorren unha matriz de navegadores e tamaños, coa súa guía e coa versión das capturas fixada.",
+              "en": "Interface tests take screenshots, check accessibility and run through a matrix of browsers and sizes, with their own guide and a pinned version for the screenshots."
+            },
+            {
+              "es": "Una skill nueva ayuda con el SEO de las webs, y el agente avisa si va a leer capturas sueltas en vez de la hoja entera.",
+              "gl": "Unha skill nova axuda co SEO das webs, e o axente avisa se vai ler capturas soltas en vez da folla enteira.",
+              "en": "A new skill helps with web SEO, and the agent warns if it is about to read loose screenshots instead of the whole sheet."
+            },
+            {
+              "es": "Al cerrar una tarea o una fila de la bitácora sale el aviso de limpiar el contexto con /clear, y tras compactar el agente avisa si el modelo no es el que pide la tarea.",
+              "gl": "Ao pechar unha tarefa ou unha fila da bitácora sae o aviso de limpar o contexto con /clear, e tras compactar o axente avisa se o modelo non é o que pide a tarefa.",
+              "en": "Closing a task or a log row shows a warning to clear the context with /clear, and after compacting the agent warns if the model isn't the one the task calls for."
+            },
+            {
+              "es": "La revisión se reparte entre varios revisores cuando el cambio es grande, y traer la rama protegida anota antes las métricas pendientes.",
+              "gl": "A revisión repártese entre varios revisores cando o cambio é grande, e traer a rama protexida anota antes as métricas pendentes.",
+              "en": "The review is split among several reviewers when the change is large, and bringing in the protected branch first records pending metrics."
+            }
+          ]
+        },
         {
           "nombre": {
             "es": "Modelo a la vista",
@@ -3149,11 +3206,11 @@
         "gl": "Front",
         "en": "Front"
       },
-      "estado": "pendiente",
+      "estado": "hecho",
       "detalle": {
-        "es": "Idiomas configurables para el código, la documentación y lo público, perfiles de instalación (mínimo, base y completo) y pruebas de interfaz.",
-        "gl": "Idiomas configurables para o código, a documentación e o público, perfís de instalación (mínimo, base e completo) e probas de interface.",
-        "en": "Configurable languages for code, documentation and public texts, install profiles (minimal, core and full) and interface tests."
+        "es": "Publicada el 24 de noviembre: idiomas configurables para el código, la documentación y lo público; perfiles de instalación por persona y por cargo; pruebas de interfaz con capturas, accesibilidad y matriz; una skill para el SEO de webs; y avisos de limpiar el contexto y de modelo tras compactar.",
+        "gl": "Publicada o 24 de novembro: idiomas configurables para o código, a documentación e o público; perfís de instalación por persoa e por cargo; probas de interface con capturas, accesibilidade e matriz; unha skill para o SEO de webs; e avisos de limpar o contexto e de modelo tras compactar.",
+        "en": "Released on 24 November: configurable languages for code, documentation and public texts; install profiles per person and per role; interface tests with screenshots, accessibility and a matrix; a skill for web SEO; and warnings to clear the context and about the model after compacting."
       }
     },
     {
@@ -3222,6 +3279,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-24",
+      "texto": {
+        "es": "Publicada la 0.9 «Front»: idiomas configurables para el código, la documentación y lo público; perfiles de instalación por persona y por cargo; pruebas de interfaz con capturas, accesibilidad y matriz; una skill para el SEO de webs; avisos de /clear al cerrar tareas y de modelo tras compactar; y la revisión se reparte entre varios revisores.",
+        "gl": "Publicada a 0.9 «Front»: idiomas configurables para o código, a documentación e o público; perfís de instalación por persoa e por cargo; probas de interface con capturas, accesibilidade e matriz; unha skill para o SEO de webs; avisos de /clear ao pechar tarefas e de modelo tras compactar; e a revisión repártese entre varios revisores.",
+        "en": "Version 0.9 “Front” is out: configurable languages for code, documentation and public texts; install profiles per person and per role; interface tests with screenshots, accessibility and a matrix; a skill for web SEO; /clear warnings when closing tasks and a model warning after compacting; and the review is split among several reviewers."
+      }
+    },
     {
       "fecha": "2026-11-22",
       "texto": {
@@ -3321,7 +3386,7 @@
   ],
   "cifras": [
     {
-      "valor": "13",
+      "valor": "14",
       "etiqueta": {
         "es": "skills propias",
         "gl": "skills propias",
@@ -3337,7 +3402,7 @@
       }
     },
     {
-      "valor": "3418",
+      "valor": "3935",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",

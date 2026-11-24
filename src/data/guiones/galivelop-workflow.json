@@ -1,11 +1,11 @@
 {
   "pagina": "/proyectos/galivelop-workflow",
   "audio": ["es"],
-  "narra": "2026-11-22",
+  "narra": "2026-11-24",
   "notas": [
     "Pronunciación: «Galivelop» como ga-li-ve-LOP; «workflow» a la inglesa (uórk-flou); «Matt Pocock» a la inglesa (mat po-cok); «Dex Horthy» a la inglesa; «Claude» a la francesa (clod); «GitHub» a la inglesa (guit-jab); «Management Center» a la inglesa (ma-nach-ment sen-ter). Los nombres de skills y archivos (gw-selector, AGENTS.md, bitácora) no se leen: se describen con palabras.",
     "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión en curso y la siguiente, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
-    "Envejece con cada versión publicada (hoy la cero punto ocho punto dos, próxima la cero punto nueve) y con la hoja de ruta. Sin número de tests ni de pruebas."
+    "Envejece con cada versión publicada (hoy la cero punto nueve, próxima la cero punto diez) y con la hoja de ruta. Sin número de tests ni de pruebas."
   ],
   "trozos": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto ocho punto dos. La próxima, la cero punto nueve, se llama «Front». Falta mucho todavía, y lo decimos claro: un instalador que lo ponga sin inteligencia artificial, un panel para ver y configurar los proyectos, y la versión uno punto cero. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
-      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto oito punto dous. A próxima, a cero punto nove, chámase «Front». Falta moito aínda, e dicímolo claro: un instalador que o poña sen intelixencia artificial, un panel para ver e configurar os proxectos, e a versión un punto cero. O último que cambiou tenolo nas novidades, máis abaixo.",
-      "en": "Where does it stand? It is in development, at version zero point eight point two. The next one, zero point nine, is called «Front». A lot is still missing, and we say so plainly: an installer that sets it up without artificial intelligence, a panel to view and configure projects, and version one point zero. What changed most recently is in the What's new section, further down."
+      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto nueve. La próxima, la cero punto diez, se llama «Estable». Falta mucho todavía, y lo decimos claro: un repaso a fondo de la documentación y la seguridad, un instalador que lo ponga sin inteligencia artificial, un panel para ver y configurar los proyectos, y la versión uno punto cero. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto nove. A próxima, a cero punto dez, chámase «Estable». Falta moito aínda, e dicímolo claro: un repaso a fondo da documentación e da seguridade, un instalador que o poña sen intelixencia artificial, un panel para ver e configurar os proxectos, e a versión un punto cero. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, at version zero point nine. The next one, zero point ten, is called «Stable». A lot is still missing, and we say so plainly: a thorough review of documentation and security, an installer that sets it up without artificial intelligence, a panel to view and configure projects, and version one point zero. What changed most recently is in the What's new section, further down."
     },
     {
       "seccion": "resumen",
@@ -185,9 +185,9 @@
     },
     {
       "seccion": "avance",
-      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto y las preguntas con otros agentes. Lo que falta: la versión cero punto nueve, con idiomas configurables, perfiles de instalación y pruebas de interfaz. Luego la cero punto diez, una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con el Management Center, un panel local para consultar y configurar. Debajo están las novedades, semana a semana.",
-      "gl": "No avance ves o camiño. As primeiras versións e os pilotos xa están feitos, e tamén as que engadiron a base, a medida do gasto e as preguntas con outros axentes. O que falta: a versión cero punto nove, con idiomas configurables, perfís de instalación e probas de interface. Despois a cero punto dez, unha versión estable, cunha revisión da documentación e da seguridade. E a un punto cero chegará co Management Center, un panel local para consultar e configurar. Debaixo están as novidades, semana a semana.",
-      "en": "In the progress section you see the road. The first versions and the pilots are done, and so are the ones that added the foundation, the spending measurement and the questions with other agents. What is missing: version zero point nine, with configurable languages, install profiles and interface tests. Then zero point ten, a stable version, with a review of the documentation and security. And version one point zero will arrive with the Management Center, a local panel to browse and configure. Below is the news, week by week.",
+      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto las preguntas con otros agentes y, la última, el front, con idiomas configurables, perfiles de instalación y pruebas de interfaz. Lo que falta: la versión cero punto diez, una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con el Management Center, un panel local para consultar y configurar. Debajo están las novedades, semana a semana.",
+      "gl": "No avance ves o camiño. As primeiras versións e os pilotos xa están feitos, e tamén as que engadiron a base, a medida do gasto as preguntas con outros axentes e, a última, o front, con idiomas configurables, perfís de instalación e probas de interface. O que falta: a versión cero punto dez, unha versión estable, cunha revisión da documentación e da seguridade. E a un punto cero chegará co Management Center, un panel local para consultar e configurar. Debaixo están as novidades, semana a semana.",
+      "en": "In the progress section you see the road. The first versions and the pilots are done, and so are the ones that added the foundation, the spending measurement and the questions with other agents and, the latest, the front, with configurable languages, install profiles and interface tests. What is missing: version zero point ten, a stable version, with a review of the documentation and security. And version one point zero will arrive with the Management Center, a local panel to browse and configure. Below is the news, week by week.",
       "enfoques": [
         {
           "frase": "Las primeras versiones y los pilotos",
@@ -208,21 +208,21 @@
           "ver": "hito-0-6-medir"
         },
         {
-          "frase": "y las preguntas",
-          "gl": "e as preguntas",
+          "frase": "las preguntas",
+          "gl": "as preguntas",
           "en": "and the questions",
           "ver": "hito-0-7-preguntar"
         },
         {
-          "frase": "Lo que falta: la versión cero punto nueve",
-          "gl": "O que falta: a versión cero punto nove",
-          "en": "What is missing: version zero point nine",
+          "frase": "el front",
+          "gl": "o front",
+          "en": "the front",
           "ver": "hito-0-9-front"
         },
         {
-          "frase": "Luego la cero punto diez",
-          "gl": "Despois a cero punto dez",
-          "en": "Then zero point ten",
+          "frase": "Lo que falta: la versión cero punto diez",
+          "gl": "O que falta: a versión cero punto dez",
+          "en": "What is missing: version zero point ten",
           "ver": "hito-0-10-estable"
         },
         {

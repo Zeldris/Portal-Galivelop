@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-22",
+  "actualizado": "2026-11-24",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -1177,6 +1177,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-24",
+      "texto": {
+        "es": "Trabajo de fondo: el servicio se pone al día con las versiones 0.8.2 y 0.9 del flujo del taller; quien lo usa no nota cambios.",
+        "gl": "Traballo de fondo: o servizo ponse ao día coas versións 0.8.2 e 0.9 do fluxo do obradoiro; quen o usa non nota cambios.",
+        "en": "Behind the scenes: the service catches up with versions 0.8.2 and 0.9 of the workshop's workflow; nothing changes for those who use it."
+      }
+    },
     {
       "fecha": "2026-11-19",
       "texto": {
