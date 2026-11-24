@@ -6,6 +6,12 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 
 ## Herramientas que ya ahorran
 
+- **Diagramas con `gw-worker` y Fable** (2026-11-24, retro P1): fila de `selector.cases`; el `general-purpose` de los
+  diagramas de productos arrancó con 79k (un `gw-worker`, 24k): ~0,9M de entrada por encargo. El generador de los
+  de productos está en `scripts/diagramas/productos.py` (P2): retocar un texto no obliga a redibujar.
+- **Capturas de prototipo en hoja de contacto** (2026-11-24, retro P5): el subagente del `prototype` devuelve una
+  sola imagen de miniaturas (o la URL del Artifact), no una captura por variante; la principal leyó tres (153k
+  arrastrados). La grande se abre solo si la hoja no basta.
 - **Contador de «Pendiente» con `handoff.py move-pending`** (2026-11-17, retro P2): la cifra de la bitácora la escribe el script tras tocar `pending.md`; contarla a mano costó un commit (221c6c1) y relecturas de `pending.md`.
 - **`/gw-update` con el flujo leído en un subagente** (2026-11-16, retro P3, propuesto al flujo): el ensayo de `apply.py`, el CHANGELOG y el diff de plantillas los resume un subagente barato; en la 0.7.0 entraron en la sesión principal (~520k arrastrados).
 

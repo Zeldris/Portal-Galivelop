@@ -62,6 +62,22 @@ describe('páginas estáticas', () => {
     }
   });
 
+  it('llevan en la cabecera todos los enlaces de la cabecera de React', () => {
+    // Cada `<Link to>` de Cabecera.tsx tiene su enlace en la cabecera estática (a Productos le faltó, retro 2026-11-24 P3).
+    const rutas = [
+      ...readFileSync(join(RAIZ, 'src/components/Cabecera.tsx'), 'utf8').matchAll(
+        /<Link to="([^"]+)"/g,
+      ),
+    ].map((m) => m[1]);
+    expect(rutas.length).toBeGreaterThan(5);
+    const cab = leer('equipo').split('</header>')[0];
+    for (const r of rutas) {
+      const [camino, ancla] = r.split('#');
+      const href = `/Portal-Galivelop/${camino.replace(/^\//, '')}${camino === '/' ? '' : '/'}${ancla ? `#${ancla}` : ''}`;
+      expect(cab, r).toContain(`href="${href}"`);
+    }
+  });
+
   it('llevan el pie con los enlaces legales y de participa en su idioma', () => {
     const html = leer('en/participa/unirse');
     expect(html).toContain('<footer class="pie" data-estatico>');

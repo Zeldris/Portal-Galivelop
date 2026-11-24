@@ -71,6 +71,12 @@
         "subagentModel": "light"
       },
       {
+        "case": "Diagrama o figura de una página (SVG con la hoja de docs/marca.md y sus webp): un gw-worker con model fable, no un general-purpose (arranca con 24k en vez de 79k; retro 2026-11-24 P1); el generador, en scripts/diagramas/",
+        "skill": "orchestrate-dealer",
+        "sessionModel": "medium",
+        "subagentModel": "light"
+      },
+      {
         "case": "Cambio acotado: un componente, un estilo o un texto visible (en es, gl y en)",
         "skill": "none",
         "sessionModel": "medium",

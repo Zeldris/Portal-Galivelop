@@ -156,7 +156,8 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 - `actualizado` (AAAA-MM-DD; el `lastmod` del sitemap: se cambia al tocar los textos), `seo` (título y descripción),
   `portada` (opcional: `src` de 1600 × 900 y `mini` de 720 × 405, en `public/`, con `alt`; sin ella la cabecera es solo
   texto), `lema` (un texto por renglón), `entrada`, `problema`, `beneficios` (`titulo` e `items`), `pasosTitulo`,
-  `pasos` (cuatro), `figuras` (diagramas bajo los pasos: `src`, `mini`, `ancho`, `alto`, `alt` y `pie`, este opcional), `garantiasTitulo`, `garantias`, `paraQuien` (`titulo` e `items`), `estadoTexto`,
+  `pasos` (cuatro), `figuras` (diagramas bajo los pasos: `src`, `mini`, `ancho`, `alto`, `alt` y `pie`, este opcional; los SVG de
+  Developer y Evaluator salen de `scripts/diagramas/productos.py` y sus webp, de `node scripts/diagramas-webp.mjs gd-harness gve-evaluacion`), `garantiasTitulo`, `garantias`, `paraQuien` (`titulo` e `items`), `estadoTexto`,
   `contacto` y `tecnico` (`papeles` y `papelesTexto`, opcionales; `datos`; `codigo: true` si el valor es una orden). Todo, en los tres idiomas.
 - El estado es solo la etiqueta «Próximamente»: la página no cuenta versiones hechas ni lo que falta.
 - El botón abre un correo a `MARCA.correo` con el asunto `productos.asunto` («<nombre>: Primer contacto», traducido).

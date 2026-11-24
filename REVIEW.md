@@ -142,6 +142,9 @@ test. (check: `config-guard.py` pregunta antes de editarlos)
   real: arrancarlo y hacer una llamada de punta a punta. Se omite en local si falta el real y falla en el CI.
   (criterio)
 
+- Un test no se condiciona a que exista lo que comprueba (`if (existsSync(…))` «hasta que exista»): así se apaga sin
+  avisar. Si aún falta, va como `it.todo` o como pendiente en `docs/records/pending.md`. (retro 2026-11-24 P4)
+
 ## Traído de otro repo: se adapta a los contratos de este
 
 - El código, los scripts o las reglas traídos de otro repositorio se comprueban contra **este** repo, no contra el

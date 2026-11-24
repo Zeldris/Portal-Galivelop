@@ -4,9 +4,9 @@ Rama `ccr-b2d381ed-e10ez8`, de b4afcc3 a c19efdf: workflow 0.9.0 e image-generat
 Galivelop Evaluator, Developer ampliada, índice `/productos`, cabecera y banda del inicio. Incluye la pasada de
 `gw-opt-tokens`.
 
-**Estado:** P6 aplazada (apuntada como tarea en `docs/records/pending.md`).
-
-P1-P5, por decidir.
+**Estado:** aprobada por la persona (2026-11-24): P1-P5 aplicadas; P6 aplazada y apuntada como tarea en
+`docs/records/pending.md`. Dudas de los diagramas: «Sin factura por uso», «nube: opcional, por papel» y las casillas
+✓/✗ de GVE se quedan.
 
 ## Medida (`measure.py --hours 0`)
 
