@@ -185,9 +185,9 @@
     },
     {
       "seccion": "avance",
-      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto las preguntas con otros agentes y, la última, el front, con idiomas configurables, perfiles de instalación y pruebas de interfaz. Lo que falta: la versión cero punto diez, una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con el Management Center, un panel local para consultar y configurar. Debajo están las novedades, semana a semana.",
-      "gl": "No avance ves o camiño. As primeiras versións e os pilotos xa están feitos, e tamén as que engadiron a base, a medida do gasto as preguntas con outros axentes e, a última, o front, con idiomas configurables, perfís de instalación e probas de interface. O que falta: a versión cero punto dez, unha versión estable, cunha revisión da documentación e da seguridade. E a un punto cero chegará co Management Center, un panel local para consultar e configurar. Debaixo están as novidades, semana a semana.",
-      "en": "In the progress section you see the road. The first versions and the pilots are done, and so are the ones that added the foundation, the spending measurement and the questions with other agents and, the latest, the front, with configurable languages, install profiles and interface tests. What is missing: version zero point ten, a stable version, with a review of the documentation and security. And version one point zero will arrive with the Management Center, a local panel to browse and configure. Below is the news, week by week.",
+      "es": "En el avance ves el camino. Las primeras versiones y los pilotos ya están hechos, y también las que añadieron la base, la medida del gasto, las preguntas con otros agentes y, la última, la interfaz, con idiomas configurables, perfiles de instalación y pruebas de interfaz. Lo que falta: la versión cero punto diez, una versión estable, con un repaso de la documentación y la seguridad. Y la uno punto cero llegará con un panel local, el Management Center, para consultar y configurar. Debajo están las novedades, semana a semana.",
+      "gl": "No avance ves o camiño. As primeiras versións e os pilotos xa están feitos, e tamén as que engadiron a base, a medida do gasto, as preguntas con outros axentes e, a última, a interface, con idiomas configurables, perfís de instalación e probas de interface. O que falta: a versión cero punto dez, unha versión estable, cunha revisión da documentación e da seguridade. E a un punto cero chegará cun panel local, o Management Center, para consultar e configurar. Debaixo están as novidades, semana a semana.",
+      "en": "In the progress section you see the road. The first versions and the pilots are done, and so are the ones that added the foundation, the spending measurement and the questions with other agents and, the latest, the interface, with configurable languages, install profiles and interface tests. What is missing: version zero point ten, a stable version, with a review of the documentation and security. And version one point zero will arrive with a local panel, the Management Center, to browse and configure. Below is the news, week by week.",
       "enfoques": [
         {
           "frase": "Las primeras versiones y los pilotos",
@@ -214,9 +214,9 @@
           "ver": "hito-0-7-preguntar"
         },
         {
-          "frase": "el front",
-          "gl": "o front",
-          "en": "the front",
+          "frase": "la última, la interfaz",
+          "gl": "a última, a interface",
+          "en": "the latest, the interface",
           "ver": "hito-0-9-front"
         },
         {
@@ -241,9 +241,9 @@
     },
     {
       "seccion": "participar",
-      "es": "Galivelop-workflow está abierto a colaboración, y el código es público. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar.",
-      "gl": "Galivelop-workflow está aberto á colaboración, e o código é público. Se queres achegar, aprender ou simplemente saber máis, escríbenos e cóntámosche como. Grazas por escoitar.",
-      "en": "Galivelop-workflow is open to collaboration, and the code is public. If you want to contribute, learn, or simply find out more, write to us and we will tell you how. Thanks for listening."
+      "es": "Galivelop-workflow está abierto a colaboración, y el código es público. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Y si quieres que lo implantemos en tu proyecto, cuéntanoslo también. Gracias por escuchar.",
+      "gl": "Galivelop-workflow está aberto á colaboración, e o código é público. Se queres achegar, aprender ou simplemente saber máis, escríbenos e cóntámosche como. E se queres que o implantemos no teu proxecto, cóntanolo tamén. Grazas por escoitar.",
+      "en": "Galivelop-workflow is open to collaboration, and the code is public. If you want to contribute, learn, or simply find out more, write to us and we will tell you how. And if you would like us to set it up in your project, tell us that too. Thanks for listening."
     }
   ]
 }

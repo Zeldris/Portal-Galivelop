@@ -3,7 +3,7 @@
   "audio": ["es"],
   "narra": "2026-11-17",
   "notas": [
-    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP).",
+    "Pronunciación: «Galivelop» como se escribe, con acento en la o final (ga-li-ve-LOP); «Developer» y «Evaluator» a la inglesa (diveloper, ivaliueitor).",
     "Nombres de personas: Álvaro García Graña, Raquel Comesaña Carrera. «toVeriAI» como «tu-veri-ei-ai». «Spring Boot» y «full stack» a la inglesa.",
     "Si entra o sale un miembro, o cambia su rol o sus proyectos, se reescribe su trozo y el de «cabecera» o «unete»."
   ],
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "alvaro-garcia-grana",
-      "es": "Empezamos por Álvaro García Graña, fundador del taller. Es arquitecto de software e ingeniero de sistemas de inteligencia artificial, y le interesa sobre todo la infraestructura que funciona en local. Creó Tarkor, Galivelop-workflow y Galivelop IG, y forma parte del equipo de toVeriAI. Pulsa Ver perfil para conocer más de él.",
-      "gl": "Comezamos por Álvaro García Graña, fundador do obradoiro. É arquitecto de software e enxeñeiro de sistemas de intelixencia artificial, e interésalle sobre todo a infraestrutura que funciona en local. Creou Tarkor, Galivelop-workflow e Galivelop IG, e forma parte do equipo de toVeriAI. Preme Ver perfil para coñecer máis del.",
-      "en": "We start with Álvaro García Graña, founder of the workshop. He is a software architect and an artificial intelligence systems engineer, and he is especially interested in infrastructure that runs locally. He created Tarkor, Galivelop-workflow and Galivelop IG, and he is part of the toVeriAI team. Click View profile to find out more about him."
+      "es": "Empezamos por Álvaro García Graña, fundador del taller. Es arquitecto de software e ingeniero de sistemas de inteligencia artificial, y le interesa sobre todo la infraestructura que funciona en local. Creó Tarkor, Galivelop-workflow y Galivelop IG, y forma parte del equipo de toVeriAI. Además, lleva dos productos del taller: Galivelop Developer y Galivelop Evaluator. Pulsa Ver perfil para conocer más de él.",
+      "gl": "Comezamos por Álvaro García Graña, fundador do obradoiro. É arquitecto de software e enxeñeiro de sistemas de intelixencia artificial, e interésalle sobre todo a infraestrutura que funciona en local. Creou Tarkor, Galivelop-workflow e Galivelop IG, e forma parte do equipo de toVeriAI. Ademais, leva dous produtos do obradoiro: Galivelop Developer e Galivelop Evaluator. Preme Ver perfil para coñecer máis del.",
+      "en": "We start with Álvaro García Graña, founder of the workshop. He is a software architect and an artificial intelligence systems engineer, and he is especially interested in infrastructure that runs locally. He created Tarkor, Galivelop-workflow and Galivelop IG, and he is part of the toVeriAI team. He also leads two of the workshop's products: Galivelop Developer and Galivelop Evaluator. Click View profile to find out more about him."
     },
     {
       "seccion": "raquel-c",
