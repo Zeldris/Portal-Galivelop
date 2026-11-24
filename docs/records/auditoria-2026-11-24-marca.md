@@ -111,3 +111,35 @@ alvaro-garcia-grana y raquel-c. gl y en no tienen audio en ninguno.
 
 Orden recomendado: G1; luego los de sin audio (G5-G11 y G14), que no cuestan grabación; y G2, G3, G4 y G12 juntos
 en una sola tanda de regrabación.
+
+## 4. Diseños, segunda pasada
+
+**Cobertura:** inicio, fichas de Tarkor, toVeriAI, workflow e image-generator, fichas de producto (Developer y
+Evaluator), `/equipo` y la página de Álvaro, `/participa/unirse`, `/participa/proponer`, `/novedades` y el 404, en
+escritorio y móvil, claro y oscuro (hojas de captura), más una captura de `.producto-figura` de Evaluator; cruzado con
+`src/estilos/global.css` y `docs/marca.md`. **Sin revisar:** contraste medido con herramienta (solo a ojo en hoja),
+páginas legales, `/muro`, el resto de estados (menú abierto, foco, galería ampliada).
+
+En general cumple en oscuro: sin papel claro en cabeceras, tarjetas, formularios, diagramas de producto ni 404; las
+capturas blancas de toVeriAI y Tarkor son la excepción de «lo que enseña cada proyecto» (`docs/marca.md:51`).
+
+**Causa del filo de `.producto-figura`** (`global.css:6791-6798`): el marco es `--superficie` con 12 px de
+`padding`, y el SVG pinta su propio fondo `--papel` (`productos.py:18`). En oscuro el marco `#111f29` es más claro que
+la figura `#0d171e`, así que rodea la figura una banda más clara; en claro es `#fff` frente a `#fbfcfd` y apenas se
+nota. Arreglo: D10.
+
+| # | Gravedad | Dónde | Qué pasa | Arreglo propuesto |
+|---|---|---|---|---|
+| D10 | medio | `global.css:6791-6798` (`.producto-figura`); `/productos/galivelop-evaluator` y `-developer`, oscuro (y claro, leve) | Marco `--superficie` y figura `--papel`: banda de 12 px más clara alrededor del dibujo; el borde de 1 px (`marca.md:27`) queda lejos de la figura | `background: var(--papel)` en `.producto-figura` (el filete del marco ya la delimita); o `--superficie` en `PAPEL` del SVG |
+| D11 | leve | `global.css:1224` y `:2831` (`.separador`) | Imagen oscura por `filter: invert(1) hue-rotate(180deg)` en vez de variante propia; no está en la hoja (`marca.md:217`: versiones oscuras propias) | Anotar la excepción en la hoja o servir variante con `ImagenTema` |
+| D12 | leve | `global.css:754`, `:4440`, `:3686` | Bordes de 1,5 px y 2 px (`.estado-diseno .estado-punto`, caja del flujo, punto de línea); la hoja pide 1 px (`marca.md:27`) salvo el filete de 2 px bajo cabeceras | 1 px, o anotar los puntos y marcadores como excepción (como D4) |
+| D13 | leve | `global.css:6706` (`.producto-datos code`, `0.9em`) | Restos de D6: `em` fuera de la escala `--letra-*` (el `0.8em` de `:6166` es de impresión y vale) | Token `--letra-*` |
+
+Sin hallazgos en `/equipo`, miembro, `/unirse`, `/proponer`, `/novedades` ni 404 en oscuro (ni en móvil): formas,
+bordes y tokens según la hoja.
+
+**Hojas de captura** (en el scratchpad):
+`/tmp/claude-0/-home-user-Portal-Galivelop/afa10dbc-8543-473b-a20b-5a9500b80083/scratchpad/capturas/hoja.png`
+(inicio, Tarkor, toVeriAI), `.../capturas/h2/hoja.png` (equipo, Álvaro, unirse, proponer, novedades, 404) y
+`.../capturas/h3/hoja.png` (workflow, image-generator, Developer, Evaluator); detalle:
+`.../capturas/h4/productos-galivelop-evaluator-producto-figura-escritorio.png`.
