@@ -163,7 +163,7 @@
         "/^linear-gradient\\(/",
         "#fff",
         "/%$/",
-        "/em$/",
+        "/^-?[\\d.]+em$/",
         "/env\\(safe-area-inset-/"
       ]
     },

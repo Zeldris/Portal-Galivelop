@@ -55,6 +55,7 @@
   --espacio-neg-20: calc(var(--espacio-20) * -1);
   --espacio-neg-24: calc(var(--espacio-24) * -1);
   --espacio-neg-28: calc(var(--espacio-28) * -1);
+  --espacio-neg-36: calc((var(--espacio-32) + var(--espacio-4)) * -1);
   --espacio-neg-40: calc(var(--espacio-40) * -1);
   /* Espaciado fluido, por papel. */
   --espacio-seccion: clamp(56px, 8vw, 96px); /* relleno vertical de una sección */
@@ -77,6 +78,7 @@
   --letra-125: 1.25rem;
   --letra-150: 1.5rem;
   --letra-200: 2rem;
+  --letra-225: 2.25rem;
   /* Letra fluida, por papel. */
   --letra-hero: clamp(2.75rem, 7.5vw, 5.25rem); /* h1 del hero y de la cabeza de producto */
   --letra-titulo-1: clamp(2.75rem, 9vw, 6rem); /* h1 por defecto */
@@ -246,7 +248,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--letra-200);
+  font-size: var(--letra-225);
 }
 
 h3 {
@@ -5178,14 +5180,14 @@ body:has(dialog[open]) {
 
 .nav-ficha::before {
   left: 0;
-  margin-right: var(--espacio-neg-40);
+  margin-right: var(--espacio-neg-36);
   /* marca: permitido, fundido funcional de desplazamiento de la pestaña, no decorativo. */
   background: linear-gradient(to left, transparent, var(--fondo));
 }
 
 .nav-ficha::after {
   right: 0;
-  margin-left: var(--espacio-neg-40);
+  margin-left: var(--espacio-neg-36);
   /* marca: permitido, fundido funcional de desplazamiento de la pestaña, no decorativo. */
   background: linear-gradient(to right, transparent, var(--fondo));
 }
