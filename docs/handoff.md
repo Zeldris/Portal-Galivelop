@@ -9,7 +9,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-24 (segunda pasada de diseño aplicada, D10-D13) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
 | **Tarea en curso** | Ninguna. Auditoría de marca cerrada en código (D1-D13); lo que queda (grabación, generador, comprobaciones) en «Auditoría de marca» de `docs/records/pending.md`. (3) webkit y firefox, bloqueado. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Esperar Q-21 (qué sigue de «Auditoría de marca»; rec. a + c: comprobar la release del generador y redactar el pedido de las filas 33-36) y Q-22 (sesión nueva sin conectores sobrantes) en `docs/questions.md`; luego lo elegido de `docs/records/pending.md` (tanda de grabación G2-G4, G12, G13; pedir al generador las filas 33-36). (3) bloqueado: el proxy niega `cdn.playwright.dev` y `playwright.download.prss.microsoft.com`; la persona los añade en los ajustes del entorno (Network access → Allowed domains) |
+| **Siguiente paso** | La persona pasa al generador el pedido de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36). Luego, de «Auditoría de marca» en `docs/records/pending.md`: la tanda de grabación (G1-G4, G12, G13). Como los conectores no se pueden desactivar en la nube (Q-22), conviene abrir una sesión nueva para cada tanda. (3) sigue bloqueado: el proxy niega `cdn.playwright.dev` y `playwright.download.prss.microsoft.com`; la persona los añade en los ajustes del entorno (Network access → Allowed domains) |
 | **En `main`** | **Productos** (subido el 2026-11-24 con confirmación de la persona: marca de revisión y CI en verde en e2c9b9b): Galivelop Evaluator (ADR 0006), Developer ampliada con diagramas de Fable, índice `/productos` con enlace en la cabecera y banda en el inicio; workflow 0.9.0 e image-generator al día. Retro aprobada: `docs/records/retro-2026-11-24-productos.md` |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (270) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
@@ -17,6 +17,8 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
+
+- 2026-11-24 · **Guion del generador al día** (`ccr-1c3b5b63-tdttd6`, contenido): el trozo `vistazo` (es, gl, en) y su nota decían «la cero punto siete publicada»; en su repo la 0.7.0 está en `main`, pero sin release (la última es v0.6.0). Ahora dice que la publicada es la 0.6 y que la 0.7 está terminada a falta de publicarse. El audio del `vistazo` sigue sin grabar.
 
 - 2026-11-24 · **Segunda pasada de diseño en oscuro, D10-D13** (`ccr-1c3b5b63-tdttd6`, código pequeño; revisión en la sesión, 6 líneas, sin hallazgos): `.producto-figura` con fondo `--papel` (sin banda clara alrededor de la figura en oscuro), bordes de 1,5/2 px a 1 px (punto «en diseño», punto de etapa y caja del flujo), `--letra-90` en `.producto-datos code` y la excepción del `filter: invert` anotada en `docs/marca.md`. `npm run check` (270) y `front.py run full` (48) en verde.
 

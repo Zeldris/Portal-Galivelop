@@ -185,14 +185,18 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-21
 - Refs: auditoria-marca
-- Status: open
+- Status: answered
 - Asked: 2026-11-24
 - Question: ¿Qué sigue de «Auditoría de marca»? a) comprobar (b2) en el repo del generador, solo lectura (¿0.7 publicada? ¿la ficha debe enlazar otra release?); b) preparar la tanda de grabación (G2: data-guion en la banda de productos y lista de trozos G2-G4, G12, G13, G1 para grabar); c) redactar el pedido al generador de las filas 33-36 (portada, OG e icono de Evaluator; OG de Developer); d) otra cosa de pending.md
 - Recommendation: a + c: las dos se hacen aquí y ya; a desbloquea la grabación de G1 y c es solo el texto del pedido que tú das al generador
+- Answer: a + c (ok a la recomendación)
+- Answered: 2026-11-24
 
 ## Q-22
 - Refs: auditoria-marca
-- Status: open
+- Status: answered
 - Asked: 2026-11-24
 - Question: La sesión lleva 2 compactaciones con presupuesto 1 y arranca ya al 64 % del tope, casi todo sistema y MCP (84k). ¿Desactivas los conectores que no usas y abrimos sesión nueva tras esta tanda?
 - Recommendation: Sí: al acabar esta tanda, sesión nueva con Claude Docs y los MCP que no usas desactivados (/context los muestra)
+- Answer: ok; los conectores no se pueden desactivar en Claude en la nube
+- Answered: 2026-11-24

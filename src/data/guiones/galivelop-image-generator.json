@@ -5,7 +5,7 @@
   "notas": [
     "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Steam Deck» a la inglesa (estim dek); «FLUX» a la inglesa (flacs); «Vulkan» a la inglesa (vál-kan); «World-Maker-Fantasy» a la inglesa (uérld méiker fántasi); «Python» a la inglesa (páizon); «MIT» no se lee: se dice «licencia abierta».",
     "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión y lo que falta, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
-    "Envejece con cada versión (hoy la cero punto siete publicada, con la hoja de marca ya hecha; en curso, la pieza de marca, la cero punto ocho) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
+    "Envejece con cada versión (hoy la cero punto seis publicada y la cero punto siete terminada, con la hoja de marca, pero aún sin publicar; en curso, la pieza de marca, la cero punto ocho) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
   ],
   "trozos": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto siete publicada, con el código abierto. La hoja de marca como datos ya está hecha. Ahora trabaja en la pieza de marca, la versión cero punto ocho. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
-      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto sete publicada, co código aberto. A folla de marca como datos xa está feita. Agora traballa na peza de marca, a versión cero punto oito. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
-      "en": "Where does it stand? It is in development, at published version zero point seven, with open code. The brand sheet as data is already done. It is now working on the brand piece, version zero point eight. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the What's new section, further down."
+      "es": "¿En qué punto está? Está en desarrollo, con el código abierto. La última versión publicada es la cero punto seis, y la cero punto siete, con la hoja de marca como datos, ya está terminada y a falta de publicarse. Ahora trabaja en la pieza de marca, la versión cero punto ocho. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? Está en desenvolvemento, co código aberto. A última versión publicada é a cero punto seis, e a cero punto sete, coa folla de marca como datos, xa está rematada e á espera de publicarse. Agora traballa na peza de marca, a versión cero punto oito. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, with open code. The latest published version is zero point six, and zero point seven, with the brand sheet as data, is already finished and waiting to be published. It is now working on the brand piece, version zero point eight. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the What's new section, further down."
     },
     {
       "seccion": "resumen",
