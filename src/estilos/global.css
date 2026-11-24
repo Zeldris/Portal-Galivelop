@@ -6414,7 +6414,7 @@ body:has(dialog[open]) {
   font: var(--datos);
   color: var(--tinta);
   background: var(--superficie);
-  border: 1.5px solid var(--tinta);
+  border: 1px solid var(--tinta);
 }
 
 .producto-pasos li:nth-child(2) .producto-paso-num,
@@ -6514,6 +6514,8 @@ body:has(dialog[open]) {
 }
 
 .producto-copiar {
+  --borde-boton: currentColor;
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--espacio-6);
@@ -6525,14 +6527,35 @@ body:has(dialog[open]) {
   text-transform: uppercase;
   color: inherit;
   background: transparent;
-  border: 1px solid currentColor;
+  border: 1px solid var(--borde-boton);
   cursor: pointer;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-pequeno)) 0,
+    100% var(--chaflan-pequeno),
+    100% 100%,
+    0 100%
+  );
+}
+
+/* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en .boton-secundario. */
+.producto-copiar::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% + 1px - var(--chaflan-pequeno));
+  width: calc(var(--chaflan-pequeno) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-boton);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
 }
 
 .producto-copiar:hover {
+  --borde-boton: var(--blanco);
   color: var(--celeste-hondo);
   background: var(--blanco);
-  border-color: var(--blanco);
 }
 
 .producto-copia-fallo:empty {
@@ -6568,7 +6591,7 @@ body:has(dialog[open]) {
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  font: 500 1.5rem/1 var(--fuente-datos);
+  font: 500 var(--letra-150) / 1 var(--fuente-datos);
   color: var(--acento-texto);
 }
 
@@ -6760,10 +6783,26 @@ body:has(dialog[open]) {
 }
 
 .producto-figura {
+  position: relative;
   margin: 0;
   padding: var(--espacio-12);
   background: var(--superficie);
   border: 1px solid var(--borde);
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+/* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en .producto-garantia. */
+.producto-figura::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% + 1px - var(--chaflan));
+  width: calc(var(--chaflan) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
 }
 
 .producto-figura img {
