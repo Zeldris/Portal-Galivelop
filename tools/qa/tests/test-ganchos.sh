@@ -41,7 +41,7 @@ fijar() {  # fijar <clave> <valor esperado> [--json]
   [ "$real" = "$2" ] || { echo "test-ganchos: $1 de .claude/gw.json cambió; si es a propósito, cámbialo también aquí: $real"; fallos=1; }
 }
 fijar content '["^docs/", "^src/data/.*\\.json$", "^public/.*\\.(webp|png|jpe?g|svg|ico)$", "^(README|GLOSSARY|REVIEW|CLAUDE|AGENTS)\\.md$", "^\\.claude/skills/.*\\.md$"]' --json
-fijar check '["npm run check", "python3 .claude/gw/scripts/ci-local.py --validate"]' --json
+fijar check '["npm run check", "python3 .claude/gw/scripts/generated-check.py", "python3 .claude/gw/scripts/ci-local.py --validate"]' --json
 fijar reviewMark docs/records/reviewed.txt
 fijar protectedBranch main
 fijar pushToProtected direct
@@ -71,6 +71,8 @@ unset CLAUDECODE
   git config user.email t@t; git config user.name t; git config commit.gpgsign false; git config core.hooksPath /dev/null
   mkdir -p .githooks .claude/gw docs/records src/data public bin
   cp "$raiz/.githooks/pre-push" "$raiz/.githooks/pre-commit" .githooks/; cp -R "$raiz/.claude/gw/scripts" "$raiz/.claude/gw/schema" .claude/gw/; cp "$raiz/.claude/gw.json" .claude/
+  # Sin front/ en el repo de prueba: ni tokens ni generados que comprobar (generated-check.py sale en 0).
+  python3 -c 'import json,sys; p=sys.argv[1]; c=json.load(open(p)); c["front"]["tokens"]=None; c["generated"]=[]; json.dump(c,open(p,"w"),indent=2)' .claude/gw.json
   printf '#!/bin/sh\nexit 0\n' > bin/npm; chmod +x bin/npm
   echo bin/ > .gitignore
   echo a > src/data/a.json; printf '# Pendiente\n\n## Pendiente\n' > docs/records/pending.md; echo d > docs/d.md; git add -A; git commit -qm base; git tag base
