@@ -308,3 +308,10 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: GoatCounter: sin cookies ni banner
 - Answer: ok (GoatCounter)
 - Answered: 2026-11-25
+
+## Q-35
+- Refs: R-3
+- Status: open
+- Asked: 2026-11-25
+- Question: ¿Pintamos la imagen de cabecera de la ficha ya en el HTML estático, antes de que cargue el JS (R-3b), para bajar el LCP móvil de ~4 s?
+- Recommendation: sí, como tarea aparte después de R-6
