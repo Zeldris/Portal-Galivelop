@@ -170,6 +170,75 @@
         "en": "There are no prices on the site and no form: everything is discussed by email. Tell us which AI system you want to measure and what you would like to improve, and we will talk it through."
       }
     },
+    "requisitos": {
+      "intro": {
+        "es": "Lo previsto para la primera versión; puede ajustarse antes de que salga.",
+        "gl": "O previsto para a primeira versión; pode axustarse antes de que saia.",
+        "en": "What the first version is planned to need; it may change before release."
+      },
+      "items": [
+        {
+          "etiqueta": {
+            "es": "Software",
+            "gl": "Software",
+            "en": "Software"
+          },
+          "valor": {
+            "es": "Python 3.10 o posterior, sin dependencias externas, y git",
+            "gl": "Python 3.10 ou posterior, sen dependencias externas, e git",
+            "en": "Python 3.10 or later, no external dependencies, and git"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Equipo",
+            "gl": "Equipo",
+            "en": "Hardware"
+          },
+          "valor": {
+            "es": "El que pida el sistema que mides: el evaluador solo lanza la medida, compara e informa",
+            "gl": "O que pida o sistema que mides: o avaliador só lanza a medida, compara e informa",
+            "en": "Whatever the system you measure needs: the evaluator only runs the measurement, compares and reports"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Para medir",
+            "gl": "Para medir",
+            "en": "To measure"
+          },
+          "valor": {
+            "es": "El sistema medido en marcha, con lo que necesite (por ejemplo, su motor de IA local)",
+            "gl": "O sistema medido en marcha, co que precise (por exemplo, o seu motor de IA local)",
+            "en": "The measured system up and running, with whatever it needs (for example, its local AI engine)"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Conexión",
+            "gl": "Conexión",
+            "en": "Connection"
+          },
+          "valor": {
+            "es": "Ninguna para comparar e informar; para medir, la que pida el sistema medido",
+            "gl": "Ningunha para comparar e informar; para medir, a que pida o sistema medido",
+            "en": "None to compare and report; to measure, whatever the measured system needs"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Cuentas",
+            "gl": "Contas",
+            "en": "Accounts"
+          },
+          "valor": {
+            "es": "Ninguna",
+            "gl": "Ningunha",
+            "en": "None"
+          }
+        }
+      ]
+    },
     "tecnico": {
       "papeles": [
         {
@@ -236,18 +305,6 @@
             "es": "En castellano, en Markdown",
             "gl": "En castelán, en Markdown",
             "en": "In Spanish, in Markdown"
-          }
-        },
-        {
-          "etiqueta": {
-            "es": "Sistema",
-            "gl": "Sistema",
-            "en": "System"
-          },
-          "valor": {
-            "es": "Python 3.10 o posterior, sin dependencias externas",
-            "gl": "Python 3.10 ou posterior, sen dependencias externas",
-            "en": "Python 3.10 or later, no external dependencies"
           }
         },
         {

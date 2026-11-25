@@ -279,6 +279,99 @@
         "en": "No prices on the site and no form: we talk by email. Tell us about your project and what you would like your local AI to do."
       }
     },
+    "requisitos": {
+      "intro": {
+        "es": "Lo previsto para la primera versión, probada en una Steam Deck; puede ajustarse antes de que salga.",
+        "gl": "O previsto para a primeira versión, probada nunha Steam Deck; pode axustarse antes de que saia.",
+        "en": "What the first version is planned to need, tested on a Steam Deck; it may change before release."
+      },
+      "items": [
+        {
+          "etiqueta": {
+            "es": "Sistema",
+            "gl": "Sistema",
+            "en": "System"
+          },
+          "valor": {
+            "es": "Linux de 64 bits (x86-64); también SteamOS",
+            "gl": "Linux de 64 bits (x86-64); tamén SteamOS",
+            "en": "64-bit Linux (x86-64); SteamOS too"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Memoria",
+            "gl": "Memoria",
+            "en": "Memory"
+          },
+          "valor": {
+            "es": "9 GB libres para el modelo (5 GB con el modelo de reserva); probado con 16 GB compartidos con la gráfica",
+            "gl": "9 GB libres para o modelo (5 GB co modelo de reserva); probado con 16 GB compartidos coa gráfica",
+            "en": "9 GB free for the model (5 GB with the fallback model); tested with 16 GB shared with the graphics"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Gráfica",
+            "gl": "Gráfica",
+            "en": "Graphics"
+          },
+          "valor": {
+            "es": "Con Vulkan; vale la integrada",
+            "gl": "Con Vulkan; vale a integrada",
+            "en": "Vulkan-capable; integrated graphics are fine"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Software",
+            "gl": "Software",
+            "en": "Software"
+          },
+          "valor": {
+            "es": "Python 3.10 o posterior y git; el motor de IA local, el asistente y los modelos los instala él",
+            "gl": "Python 3.10 ou posterior e git; o motor de IA local, o asistente e os modelos instálaos el",
+            "en": "Python 3.10 or later and git; it installs the local AI engine, the assistant and the models itself"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Conexión",
+            "gl": "Conexión",
+            "en": "Connection"
+          },
+          "valor": {
+            "es": "Internet para instalar y descargar los modelos; después, la IA trabaja en tu equipo",
+            "gl": "Internet para instalar e descargar os modelos; despois, a IA traballa no teu equipo",
+            "en": "Internet to install and download the models; after that, the AI works on your machine"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Permisos",
+            "gl": "Permisos",
+            "en": "Permissions"
+          },
+          "valor": {
+            "es": "Sin permisos de administrador: todo queda en tu carpeta personal",
+            "gl": "Sen permisos de administrador: todo queda no teu cartafol persoal",
+            "en": "No administrator rights: everything stays in your home folder"
+          }
+        },
+        {
+          "etiqueta": {
+            "es": "Cuentas",
+            "gl": "Contas",
+            "en": "Accounts"
+          },
+          "valor": {
+            "es": "Ninguna para trabajar en local",
+            "gl": "Ningunha para traballar en local",
+            "en": "None to work locally"
+          }
+        }
+      ]
+    },
     "tecnico": {
       "papeles": [
         {
@@ -303,30 +396,6 @@
         "en": "Each role is covered by the local model that performs best on your hardware, measured, and it can be mixed with the cloud only if you want that."
       },
       "datos": [
-        {
-          "etiqueta": {
-            "es": "Sistema",
-            "gl": "Sistema",
-            "en": "System"
-          },
-          "valor": {
-            "es": "Linux",
-            "gl": "Linux",
-            "en": "Linux"
-          }
-        },
-        {
-          "etiqueta": {
-            "es": "Instalación",
-            "gl": "Instalación",
-            "en": "Installation"
-          },
-          "valor": {
-            "es": "Sin permisos de administrador",
-            "gl": "Sen permisos de administrador",
-            "en": "No administrator rights needed"
-          }
-        },
         {
           "etiqueta": {
             "es": "IA",

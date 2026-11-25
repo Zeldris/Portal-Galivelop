@@ -238,6 +238,27 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
       </section>
 
       <section className="contenedor producto-bloque producto-estrecho">
+        {pagina.requisitos && pagina.requisitos.items.length > 0 && (
+          <details className="producto-plegable" data-guion="requisitos">
+            <summary>
+              <span className="producto-plegable-ante">{t('producto.requisitos.ante')}</span>
+              <span className="producto-plegable-titulo">{t('producto.requisitos.titulo')}</span>
+            </summary>
+            <div className="producto-plegable-cuerpo">
+              {pagina.requisitos.intro && (
+                <p className="producto-papeles-texto">{tx(pagina.requisitos.intro)}</p>
+              )}
+              <dl className="producto-datos">
+                {pagina.requisitos.items.map((d, i) => (
+                  <div key={i}>
+                    <dt>{tx(d.etiqueta)}</dt>
+                    <dd>{d.codigo ? <code>{tx(d.valor)}</code> : tx(d.valor)}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </details>
+        )}
         <details className="producto-plegable" data-guion="tecnico">
           <summary>
             <span className="producto-plegable-ante">{t('producto.tecnico.ante')}</span>

@@ -79,6 +79,15 @@ export interface PaginaProducto {
   /** Frase de estado junto al contacto («está en desarrollo…»), sin cifras. */
   estadoTexto?: Texto;
   contacto: TituloTexto;
+  /**
+   * Ficha de requisitos mínimos para instalarlo o implantarlo, plegada antes del apartado técnico. Solo lo que afirma
+   * el repo del producto: lo que no consta no se escribe.
+   */
+  requisitos?: {
+    /** Frase de entrada (para qué versión vale, que puede cambiar…). */
+    intro?: Texto;
+    items: { etiqueta: Texto; valor: Texto; codigo?: boolean }[];
+  };
   tecnico: {
     /** Los papeles del flujo (quien hace, quien revisa…); sin ellos, no sale el apartado. */
     papeles?: Texto[];
