@@ -98,6 +98,7 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
                   pathname.replace(/\/$/, '') === `/proyectos/${p.slug}` ? 'page' : undefined
                 }
               >
+                {/* 56×40: la caja de la miniatura en global.css (.submenu-proyecto img), no las medidas de la imagen. */}
                 <img
                   src={ruta(p.portada.mini)}
                   width={56}

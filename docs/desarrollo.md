@@ -95,7 +95,9 @@ página de ese miembro (`colabora`), en una banda discreta de Participa, en «C�
    - `colaboracion`: `abierta` (se puede participar) o `privada` (solo se aceptan propuestas e
      interesados; hoy, solo toVeriAI).
    - `cabecera`: `"captura"` si la portada es una captura de web o app (se enmarca en una ventana);
-     sin el campo, la portada se usa de fondo.
+     sin el campo, la portada se usa de fondo. La portada de una ficha (`ilustracion` o `color`) y cada
+     `marca/portada-*` necesitan su `<nombre>-movil.webp` de 960 px (`node scripts/miniatura-webp.mjs <portada.webp>`):
+     el `srcset` de la cabecera y el preload lo piden; un test lo comprueba.
    - `galeria` (ilustraciones) y `capturas` (capturas reales de la interfaz; `[]` si no hay) se
      muestran juntas en la galería de arriba: primero las capturas, luego las ilustraciones, con una
      pestaña por grupo si hay los dos. Rota sola cada 6 s en bucle; al usarla a mano se para y
@@ -154,7 +156,7 @@ La invitación de Discord se crea con «Caducar: nunca»: una de 7 o 30 días de
 [`src/pages/Producto.tsx`](../src/pages/Producto.tsx) y la tarjeta del perfil la enlaza con «Ver el producto».
 
 - `actualizado` (AAAA-MM-DD; el `lastmod` del sitemap: se cambia al tocar los textos), `seo` (título y descripción),
-  `portada` (opcional: `src` de 1600 × 900 y `mini` de 720 × 405, en `public/`, con `alt`; sin ella la cabecera es solo
+  `portada` (opcional: `src` de 1600 × 900 y `mini` de 720 × 405 y `-movil` de 960 (`node scripts/miniatura-webp.mjs <portada.webp>`), en `public/`, con `alt`; sin ella la cabecera es solo
   texto), `lema` (un texto por renglón), `entrada`, `problema`, `beneficios` (`titulo` e `items`), `pasosTitulo`,
   `pasos` (cuatro), `figuras` (diagramas bajo los pasos: `src`, `mini`, `srcOscuro`, `miniOscuro` (la versión del tema oscuro), `ancho`, `alto`, `alt` y `pie`, este opcional; los SVG de
   Developer y Evaluator salen de `scripts/diagramas/productos.py` y sus webp, de `node scripts/diagramas-webp.mjs gd-harness gd-harness-oscuro gve-evaluacion gve-evaluacion-oscuro`), `garantiasTitulo`, `garantias`, `paraQuien` (`titulo` e `items`), `estadoTexto`,

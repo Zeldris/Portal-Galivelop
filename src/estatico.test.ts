@@ -1,8 +1,18 @@
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, readFileSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import {
+  mkdirSync,
+  mkdtempSync,
+  readdirSync,
+  readFileSync,
+  rmSync,
+  symlinkSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { ANCHO_ESTADO, PORTADA_ESTADO } from './data/marca';
+import type { EstadoProyecto } from './data/tipos';
 import { textos } from './i18n/textos';
 
 // Corre scripts/paginas-estaticas.mjs sobre un dist/ mínimo (el index.html del repo y unos «chunks» de mentira) y mira el
@@ -148,5 +158,30 @@ describe('páginas estáticas', () => {
       expect(miniaturas.length).toBeGreaterThan(0);
       for (const [img] of miniaturas) expect(img).toContain('width="56" height="40"');
     }
+  });
+
+  it('toda cabecera con srcsetCabecera tiene su -movil.webp de 960 px y declara el ancho real del original', () => {
+    const anchoWebp = (ruta: string) => {
+      const b = readFileSync(join(RAIZ, 'public', ruta));
+      const tipo = b.toString('ascii', 12, 16);
+      if (tipo === 'VP8X') return 1 + b.readUIntLE(24, 3);
+      if (tipo === 'VP8L') return 1 + (b.readUInt32LE(21) & 0x3fff);
+      return b.readUInt16LE(26) & 0x3fff; // VP8
+    };
+    const comprueba = (src: string, ancho: number) => {
+      expect(anchoWebp(src), `${src}: ancho declarado`).toBe(ancho);
+      expect(anchoWebp(src.replace('.webp', '-movil.webp')), `${src}: versión móvil`).toBe(960);
+    };
+    const dir = join(RAIZ, 'src/data/proyectos');
+    let fichas = 0;
+    for (const f of readdirSync(dir).filter((n) => n.endsWith('.json'))) {
+      const p = JSON.parse(readFileSync(join(dir, f), 'utf8'));
+      const modo = p.cabecera ?? 'ilustracion';
+      if (modo === 'ilustracion') comprueba(p.portada.src, p.portada.ancho);
+      if (modo === 'color') comprueba(PORTADA_ESTADO[p.estado as EstadoProyecto], ANCHO_ESTADO);
+      fichas++;
+    }
+    expect(fichas).toBeGreaterThan(0);
+    for (const src of Object.values(PORTADA_ESTADO)) comprueba(src, ANCHO_ESTADO);
   });
 });
