@@ -49,7 +49,7 @@ describe('productos', () => {
 
       it('si tiene página, lleva su ficha de requisitos mínimos en los tres idiomas', () => {
         if (!p.pagina) return;
-        expect(p.pagina.requisitos?.items.length ?? 0).toBeGreaterThan(0);
+        expect(p.pagina.requisitos.items.length).toBeGreaterThan(0);
         expect(textosIncompletos({ requisitos: p.pagina.requisitos }, p.slug)).toEqual([]);
       });
     });

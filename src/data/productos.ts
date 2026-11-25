@@ -81,9 +81,9 @@ export interface PaginaProducto {
   contacto: TituloTexto;
   /**
    * Ficha de requisitos mínimos para instalarlo o implantarlo, plegada antes del apartado técnico. Solo lo que afirma
-   * el repo del producto: lo que no consta no se escribe.
+   * el repo del producto: lo que no consta no se escribe. Obligatoria en toda página de producto.
    */
-  requisitos?: {
+  requisitos: {
     /** Frase de entrada (para qué versión vale, que puede cambiar…). */
     intro?: Texto;
     items: { etiqueta: Texto; valor: Texto; codigo?: boolean }[];

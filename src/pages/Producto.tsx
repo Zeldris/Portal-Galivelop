@@ -238,7 +238,7 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
       </section>
 
       <section className="contenedor producto-bloque producto-estrecho">
-        {pagina.requisitos && pagina.requisitos.items.length > 0 && (
+        {pagina.requisitos.items.length > 0 && (
           <details className="producto-plegable" data-guion="requisitos">
             <summary>
               <span className="producto-plegable-ante">{t('producto.requisitos.ante')}</span>

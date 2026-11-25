@@ -6584,6 +6584,11 @@ body:has(dialog[open]) {
   border: 1px solid var(--borde);
 }
 
+/* Requisitos mínimos y apartado técnico, uno tras otro: separados, sin borde doble. */
+.producto-plegable + .producto-plegable {
+  margin-top: var(--espacio-16);
+}
+
 .producto-plegable summary {
   position: relative;
   display: flex;
