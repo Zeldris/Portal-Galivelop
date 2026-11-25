@@ -120,7 +120,7 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 | `--sombra` | `0 12px 32px -18px` tinta al 35 % | negro al 70 % | La única sombra: el panel desplegado |
 | `--curva`, `--transicion`, escala `--z-*` | como ahora | | Sin cambios |
 | Escala `--espacio-*` | `--espacio-2` … `--espacio-20` de 2 en 2 px, luego `-24`, `-28`, `-32`, `-40`, `-48`, `-56`, `-72` (y `--espacio-1`, 1 px, para filetes y ajustes finos de relleno o hueco; `--espacio-neg-N` es el negativo, para márgenes hacia fuera) | igual | Márgenes, rellenos y huecos: el nombre es el valor en px |
-| Espaciado fluido: `--espacio-seccion`, `--espacio-hero`, `--espacio-bloque`, `--espacio-bloque-corto`, `--espacio-columnas`, `--espacio-tarjeta`, `--espacio-salto`, `--espacio-lateral` | `clamp()` por papel | igual | Rellenos y huecos que crecen con el ancho |
+| Espaciado fluido: `--espacio-seccion`, `--espacio-hero`, `--espacio-bloque`, `--espacio-bloque-corto`, `--espacio-columnas`, `--espacio-tarjeta`, `--espacio-cabeza-producto` (arriba y abajo), `--espacio-salto`, `--espacio-lateral` | `clamp()` por papel | igual | Rellenos y huecos que crecen con el ancho |
 | Escala `--letra-*` | `--letra-60` … `--letra-225`: 0,6 / 0,7 / 0,75 / 0,8 / 0,85 / 0,9 / 0,95 / 1 / 1,0625 (cuerpo, 17 px) / 1,1 / 1,25 / 1,5 / 2 / 2,25 rem | igual | Tamaños de letra: el nombre es el tamaño en centésimas de rem |
 | Letra fluida: `--letra-hero`, `--letra-titulo-1`, `--letra-titulo-2`, `--letra-titulo-3`, `--letra-titulo-4`, `--letra-titulo-5`, `--letra-entrada`, `--letra-lema` | `clamp()` por papel | igual | Títulos y entradas que crecen con el ancho |
 

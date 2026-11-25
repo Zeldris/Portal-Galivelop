@@ -71,6 +71,7 @@
   --espacio-bloque-corto: clamp(32px, 5vw, 56px); /* bloque más bajo */
   --espacio-columnas: clamp(32px, 5vw, 64px); /* hueco entre columnas grandes */
   --espacio-tarjeta: clamp(20px, 4vw, 32px); /* relleno de tarjetas y hueco de rejillas medias */
+  --espacio-cabeza-producto: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 32px); /* relleno vertical (arriba, abajo) de la cabecera de producto */
   --espacio-salto: clamp(40px, 8vw, 110px); /* salto bajo un bloque de cabecera */
   --espacio-lateral: clamp(16px, 8vw, 96px); /* margen lateral de un panel a sangre */
   /* Letra: el nombre es el tamaño en centésimas de rem. */
@@ -6274,7 +6275,7 @@ body:has(dialog[open]) {
 .producto-cabeza {
   display: grid;
   gap: var(--espacio-28);
-  padding-block: var(--espacio-bloque-corto);
+  padding-block: var(--espacio-cabeza-producto);
 }
 
 .producto-cabeza > * {
