@@ -16,7 +16,7 @@ import { ListaRedes } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
 import { buscarPersona } from '../data/equipo';
-import { PORTADA_ESTADO } from '../data/marca';
+import { ANCHO_ESTADO, PORTADA_ESTADO, SIZES_CABECERA, srcsetCabecera } from '../data/marca';
 import { hayMuro, idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
 import { progreso, proyectos, ruta, useFicha } from '../data/proyectos';
@@ -207,10 +207,24 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
         className={`proyecto-cabecera cabecera-${modoCabecera}${fondoEstado ? ' cabecera-velada' : ''}`}
       >
         {modoCabecera === 'ilustracion' && (
-          <img className="proyecto-fondo" src={ruta(p.portada.src)} alt="" fetchPriority="high" />
+          <img
+            className="proyecto-fondo"
+            src={ruta(p.portada.src)}
+            srcSet={srcsetCabecera(p.portada.src, p.portada.ancho, ruta)}
+            sizes={SIZES_CABECERA}
+            alt=""
+            fetchPriority="high"
+          />
         )}
         {fondoEstado && (
-          <img className="proyecto-fondo" src={ruta(fondoEstado)} alt="" fetchPriority="high" />
+          <img
+            className="proyecto-fondo"
+            src={ruta(fondoEstado)}
+            srcSet={srcsetCabecera(fondoEstado, ANCHO_ESTADO, ruta)}
+            sizes={SIZES_CABECERA}
+            alt=""
+            fetchPriority="high"
+          />
         )}
         {modoCabecera === 'captura' && (
           <img

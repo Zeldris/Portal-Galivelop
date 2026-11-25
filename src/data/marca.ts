@@ -19,3 +19,14 @@ export const PORTADA_ESTADO: Record<EstadoProyecto, string> = {
   diseno: 'marca/portada-diseno.webp',
   publicado: 'marca/portada-publicado.webp',
 };
+
+/** Ancho de las portadas por estado (`PORTADA_ESTADO`). */
+export const ANCHO_ESTADO = 1600;
+/** Ancho de la versión móvil de una portada de cabecera (`<nombre>-movil.webp`, de `scripts/miniatura-webp.mjs`). */
+export const ANCHO_MOVIL = 960;
+/** La cabecera de la ficha ocupa todo el ancho de la pantalla. */
+export const SIZES_CABECERA = '100vw';
+/** `srcset` de una imagen de cabecera: su versión móvil (960 px) y el original (`ancho` px). `ruta` da la URL pública. */
+export function srcsetCabecera(src: string, ancho: number, ruta: (s: string) => string): string {
+  return `${ruta(src.replace(/\.webp$/, '-movil.webp'))} ${ANCHO_MOVIL}w, ${ruta(src)} ${ancho}w`;
+}

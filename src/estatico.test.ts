@@ -107,12 +107,46 @@ describe('páginas estáticas', () => {
   it('precargan la imagen de cabecera, y el trozo de la ficha', () => {
     const ficha = leer('proyectos/tarkor');
     expect(ficha).toContain(
-      '<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/tarkor/portada.webp" fetchpriority="high" />',
+      '<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/tarkor/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/tarkor/portada-movil.webp 960w, /Portal-Galivelop/proyectos/tarkor/portada.webp 1600w" imagesizes="100vw" fetchpriority="high" />',
     );
     expect(ficha).toContain('href="/Portal-Galivelop/assets/Proyecto-AbCd1234.js"');
     expect(ficha).toContain('href="/Portal-Galivelop/assets/tarkor-AbCd1234.js"');
     expect(leer('')).toContain(
       '<link rel="preload" as="image" href="/Portal-Galivelop/marca/isobatas.svg" fetchpriority="high" />',
     );
+  });
+
+  it('la portada de cada ficha lleva su versión móvil en el preload (es, gl, en), y el archivo existe', () => {
+    for (const prefijo of ['', 'gl/', 'en/']) {
+      for (const [slug, original] of [
+        ['tarkor', 'proyectos/tarkor/portada.webp'],
+        ['galivelop-image-generator', 'proyectos/galivelop-image-generator/portada.webp'],
+        ['galivelop-workflow', 'marca/portada-desarrollo.webp'],
+      ]) {
+        const movil = original.replace('.webp', '-movil.webp');
+        const html = leer(`${prefijo}proyectos/${slug}`);
+        expect(html).toMatch(
+          new RegExp(
+            `<link rel="preload" as="image" href="/Portal-Galivelop/${original}" imagesrcset="/Portal-Galivelop/${movil} 960w, /Portal-Galivelop/${original} \\d+w" imagesizes="100vw"`,
+          ),
+        );
+        expect(() => readFileSync(join(RAIZ, 'public', movil))).not.toThrow();
+      }
+    }
+  });
+
+  it('el ancho que declara el preload es el del original (no el de la versión móvil)', () => {
+    const ficha = leer('proyectos/galivelop-image-generator');
+    expect(ficha).toContain('portada.webp 1600w"');
+  });
+
+  it('las miniaturas del menú de proyectos llevan width y height (sin saltos de maquetación)', () => {
+    for (const prefijo of ['', 'gl/', 'en/']) {
+      const miniaturas = [
+        ...leer(`${prefijo}equipo`).matchAll(/<img src="[^"]*portada-mini\.webp"[^>]*>/g),
+      ];
+      expect(miniaturas.length).toBeGreaterThan(0);
+      for (const [img] of miniaturas) expect(img).toContain('width="56" height="40"');
+    }
   });
 });

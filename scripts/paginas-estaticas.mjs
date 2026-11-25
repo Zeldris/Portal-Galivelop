@@ -4,7 +4,7 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import { MARCA, PORTADA_ESTADO } from '../src/data/marca.ts';
+import { ANCHO_ESTADO, MARCA, PORTADA_ESTADO, SIZES_CABECERA, srcsetCabecera } from '../src/data/marca.ts';
 import { muroVisible } from '../src/data/muro-umbral.ts';
 import { textos } from '../src/i18n/textos.ts';
 import { paginaDeSegmentos } from '../src/rutas.ts';
@@ -313,7 +313,7 @@ const ICONO_GITHUB = leerIcono('IconoGitHub.tsx');
 
 function cabecera(i, ruta) {
   const proyectosMenu = proyectos
-    .map((p) => `<li><a href="${hrefDe(i, `proyectos/${p.slug}`)}" class="submenu-proyecto"><img src="${BASE_404}${p.portada.mini}" alt="" loading="lazy" decoding="async" /><span class="submenu-texto"><strong>${esc(p.nombre)}</strong><span>${esc(p.categoria[i])}</span></span></a></li>`)
+    .map((p) => `<li><a href="${hrefDe(i, `proyectos/${p.slug}`)}" class="submenu-proyecto"><img src="${BASE_404}${p.portada.mini}" width="56" height="40" alt="" loading="lazy" decoding="async" /><span class="submenu-texto"><strong>${esc(p.nombre)}</strong><span>${esc(p.categoria[i])}</span></span></a></li>`)
     .join('');
   const idiomas = IDIOMAS.map((j) => `<a lang="${j}"${j === i ? ' aria-current="page"' : ''} href="${hrefDe(j, ruta)}">${j.toUpperCase()}</a>`).join('');
   return `<header class="cabecera"><a class="saltar" href="#contenido">${esc(T(i, 'nav.saltar'))}</a><div class="contenedor cabecera-fila">`
@@ -532,10 +532,20 @@ const imagenLcp = (pg) => {
   const modo = p.cabecera ?? 'ilustracion';
   return modo === 'color' ? PORTADA_ESTADO[p.estado] : modo === 'captura' ? 'marca/isobatas.svg' : p.portada.src;
 };
+// Ancho del original cuando la imagen de la cabecera tiene versión móvil (las portadas de ficha y las de estado).
+const imagenLcpAncho = (pg) => {
+  const p = pg.proyecto;
+  if (!p || pg.producto) return undefined;
+  const modo = p.cabecera ?? 'ilustracion';
+  return modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
+};
 function precargas(pg) {
   const lineas = [];
   const img = imagenLcp(pg);
-  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}" fetchpriority="high" />`);
+  const conVersiones = imagenLcpAncho(pg);
+  // Con `imagesrcset` el navegador elige la misma versión que el `<img srcset>` de la ficha (src/pages/Proyecto.tsx).
+  const versiones = conVersiones ? ` imagesrcset="${srcsetCabecera(img, conVersiones, (s) => BASE_404 + s)}" imagesizes="${SIZES_CABECERA}"` : '';
+  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versiones} fetchpriority="high" />`);
   const modulos = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
   for (const m of modulos) if (m) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
   return lineas.join('\n    ');
