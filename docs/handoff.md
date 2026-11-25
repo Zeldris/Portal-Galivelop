@@ -6,19 +6,19 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-25 (fases 1-3 hacia `main`; retro aprobada) |
+| **Actualizado** | 2026-11-25 (ficha de requisitos mínimos de los productos, a `main`) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
-| **Tarea en curso** | Ficha de requisitos mínimos de los productos: hecha y subida; falta `/code-review`, marca y confirmación para `main`. Presupuesto de compactaciones: 1 |
+| **Tarea en curso** | Ninguna. Presupuesto de compactaciones: 1 |
 | **Siguiente paso** | La persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`, en una sesión nueva por tanda (Q-22). Hecho el 2026-11-25: `main` en 40bb629 (CI verde tras Q-29) y `claude/galivelop-dev-portal-1h89ci` al día con `main` (R3, avance rápido) |
-| **En `main`** | **Auditoría de marca, front y tokens** (2026-11-25, con confirmación de la persona: «a, haz las tres fases y sube a main»): herramientas de front del flujo 0.9.0 (tokens DTCG, Stylelint, Playwright en Chromium), escala de tokens de espaciado, letra y foco, «Ver producto» como botón, figuras de producto en oscuro y D1-D13, guiones G1, G3-G12 y G14 (textos). Revisiones de bloque b0ec28c, 38f84d9, 3337edb y 8ee884e; retro `docs/records/retro-2026-11-25-main.md`. Antes: Productos (e2c9b9b, 2026-11-24) |
-| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (270) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
+| **En `main`** | **Ficha de requisitos mínimos de los productos** (2026-11-25, con confirmación de la persona: «sí, revisa y sube a main»; fases 1 y 3, sin retro por ser cambio pequeño): plegable «Requisitos mínimos» en `/productos/<slug>`, revisión de bloque ffb39c4 (2 leves arreglados, 1 a pendientes). Antes: **Auditoría de marca, front y tokens** (2026-11-25, con confirmación de la persona: «a, haz las tres fases y sube a main»): herramientas de front del flujo 0.9.0 (tokens DTCG, Stylelint, Playwright en Chromium), escala de tokens de espaciado, letra y foco, «Ver producto» como botón, figuras de producto en oscuro y D1-D13, guiones G1, G3-G12 y G14 (textos). Revisiones de bloque b0ec28c, 38f84d9, 3337edb y 8ee884e; retro `docs/records/retro-2026-11-25-main.md`. Antes: Productos (e2c9b9b, 2026-11-24) |
+| **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (272) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
-- **Ficha de requisitos mínimos de los productos** (`ccr-1c3b5b63-tdttd6`, 2026-11-25, la persona: «nos falta la ficha técnica de requisitos mínimos»): plegable «Requisitos mínimos» antes del apartado técnico en `/productos/<slug>` (`pagina.requisitos`), también en las páginas estáticas, con test. Datos sacados de los repos (solo lectura): Developer con el perfil probado (Steam Deck: Linux x86-64, 9 GB libres para el modelo, Vulkan, Python 3.10 y git, sin admin); Evaluator, Python 3.10 y git. El disco no consta en ningún repo y no se escribe. «Sistema» e «Instalación» salen del apartado técnico. **Es código: falta su `/code-review` y su marca** antes de ir a `main`; no está en la rama semanal.
+- (nada: la ficha de requisitos mínimos entró en `main` el 2026-11-25; la rama semanal se pone al día con `main`)
 
 ## Hecho
 
