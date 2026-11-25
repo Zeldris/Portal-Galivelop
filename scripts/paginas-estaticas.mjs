@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { MARCA, PORTADA_ESTADO } from '../src/data/marca.ts';
+import { muroVisible } from '../src/data/muro-umbral.ts';
 import { textos } from '../src/i18n/textos.ts';
 import { paginaDeSegmentos } from '../src/rutas.ts';
 import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
@@ -91,6 +92,10 @@ const publicaciones = readdirSync('src/data/muro', { withFileTypes: true })
   .flatMap((d) => readdirSync(`src/data/muro/${d.name}`).filter((f) => f.endsWith('.json')).map((f) => JSON.parse(readFileSync(`src/data/muro/${d.name}/${f}`, 'utf8'))))
   .sort((a, b) => b.fecha.localeCompare(a.fecha) || b.pieza.localeCompare(a.pieza));
 
+// El muro solo existe con el mínimo de publicaciones (src/data/muro-umbral.ts, el mismo que usa la web). MURO_UMBRAL solo
+// lo pone el test de src/estatico-muro.test.ts para probar el caso «en el umbral» sin añadir publicaciones falsas.
+const hayMuro = muroVisible(publicaciones.length, process.env.MURO_UMBRAL === undefined ? undefined : Number(process.env.MURO_UMBRAL));
+
 // Productos de la marca (src/data/productos/<slug>.json), en el mismo orden que src/data/productos.ts.
 const productos = readdirSync('src/data/productos')
   .filter((f) => f.endsWith('.json'))
@@ -167,8 +172,8 @@ const FIJAS = {
 // sin JS, un meta refresh; con JS, el `<Navigate>` de su página en src/pages/. Hoy no hay ninguna (`/productos` lo fue
 // de ADR 0004 a 2026-11-24, y ahora es el índice de los productos).
 const DE_PASO = {};
-// El muro solo tiene página (y entra en el sitemap) cuando ya hay alguna publicación.
-if (publicaciones.length > 0) {
+// El muro solo tiene página (y entra en el sitemap) con el mínimo de publicaciones.
+if (hayMuro) {
   FIJAS.muro = {
     es: ['Muro · Galivelop', 'Lo que cuenta cada proyecto de Galivelop mientras avanza: pruebas, decisiones, imágenes y lo aprendido.'],
     gl: ['Muro · Galivelop', 'O que conta cada proxecto de Galivelop mentres avanza: probas, decisións, imaxes e o aprendido.'],
@@ -187,7 +192,7 @@ const FECHA_FIJA = {
   'participa/proponer': fechaGit(`${D}marca.ts`),
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
   novedades: masReciente(...novedadesTodas.map((n) => n.fecha)),
-  muro: publicaciones[0]?.fecha,
+  muro: hayMuro ? publicaciones[0]?.fecha : undefined,
   // Los textos legales: la fecha que muestran («Última actualización»).
   ...Object.fromEntries(legales.map((d) => [d.slug, d.actualizado])),
 };
@@ -339,7 +344,7 @@ function pie(i) {
       enlace(hrefDe(i, 'equipo'), T(i, 'nav.equipo')),
       enlace(`${hrefDe(i, '')}#sobre`, T(i, 'nav.sobre')),
       enlace(hrefDe(i, 'novedades'), T(i, 'sec.novedades')),
-      ...(publicaciones.length > 0 ? [enlace(hrefDe(i, 'muro'), T(i, 'nav.muro'))] : []),
+      ...(hayMuro ? [enlace(hrefDe(i, 'muro'), T(i, 'nav.muro'))] : []),
     ])
     + columna('pie-participa', T(i, 'nav.contacto'), [enlace(hrefDe(i, 'participa/proponer'), T(i, 'prop.titulo')), enlace(hrefDe(i, 'participa/unirse'), T(i, 'unir.titulo'))])
     + columna('pie-legal', T(i, 'pie.legal'), legales.map((d) => enlace(hrefDe(i, d.slug), d.titulo[i])))
@@ -373,7 +378,7 @@ function cuerpo(pg) {
   }
   if (pg.ruta === 'novedades') {
     const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
-    const lista = novedadesTodas.map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro ? `${urlDe(pg.idioma, 'muro')}?proyecto=${x.proyecto}` : urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
+    const lista = novedadesTodas.map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro && hayMuro ? `${urlDe(pg.idioma, 'muro')}?proyecto=${x.proyecto}` : urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
     return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
   }
   const legal = legales.find((d) => d.slug === pg.ruta);
@@ -612,7 +617,7 @@ writeFileSync(
     .join('\n')}\n\n## Productos\n\n${productos
     .filter((x) => x.pagina)
     .map((x) => `- [${x.nombre}](${urlDe('es', `productos/${x.slug}`)}): ${x.pagina.seo.descripcion.es}`)
-    .join('\n')}\n\n## Más\n\n${publicaciones.length > 0 ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Productos](${urlDe('es', 'productos')}): lo que hacen por su cuenta quienes forman el taller, sin precios\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
+    .join('\n')}\n\n## Más\n\n${hayMuro ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Productos](${urlDe('es', 'productos')}): lo que hacen por su cuenta quienes forman el taller, sin precios\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);

@@ -2,12 +2,18 @@ import { useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { AvisoVacio } from '../components/AvisoVacio';
 import { Publicacion } from '../components/Publicacion';
-import { publicaciones, publicacionesDe } from '../data/muro';
+import { hayMuro, publicaciones, publicacionesDe } from '../data/muro';
 import { proyectos } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
+import { NoEncontrado } from './NoEncontrado';
 
 /** El muro: lo que publica cada proyecto, lo más reciente primero, con filtro por proyecto (?proyecto=<slug>). */
 export function Muro() {
+  // Por debajo del umbral (src/data/muro-umbral.ts) el muro está oculto: /muro es una ruta que no existe (noindex).
+  return hayMuro ? <MuroPagina /> : <NoEncontrado />;
+}
+
+function MuroPagina() {
   const { t } = useIdioma();
   const [parametros] = useSearchParams();
   const navegar = useNavigate();

@@ -277,8 +277,10 @@ En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enla
 
 `/muro` es una sección tipo red social: publicaciones de todos los proyectos, de la más reciente a la más antigua,
 con un filtro por proyecto (`/muro?proyecto=<slug>`) y un ancla por publicación (`#<slug>-<pieza>`). Cada ficha
-muestra sus 3 últimas con un enlace al muro filtrado. Sin publicaciones, ni el enlace del menú ni la página
-estática existen.
+muestra sus 3 últimas con un enlace al muro filtrado. **Oculto hasta tener 3 publicaciones** (`UMBRAL_MURO` en
+[`src/data/muro-umbral.ts`](../src/data/muro-umbral.ts), que lee también `scripts/paginas-estaticas.mjs`): por debajo, ni
+enlace en el pie, ni página estática, ni sitemap, ni `llms.txt`; `/muro` da el «no encontrado» y la ficha y
+`/novedades` enseñan las publicaciones sin enlazar al muro.
 
 - **Datos:** `src/data/muro/<slug>/<pieza>.json`, con el formato `Publicacion` de
   [`src/data/tipos.ts`](../src/data/tipos.ts): `proyecto`, `pieza`, `fecha`, `titulo`, `texto` (la entradilla),

@@ -17,7 +17,7 @@ import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
 import { buscarPersona } from '../data/equipo';
 import { PORTADA_ESTADO } from '../data/marca';
-import { idPublicacion, publicacionesDe } from '../data/muro';
+import { hayMuro, idPublicacion, publicacionesDe } from '../data/muro';
 import type { Linea } from '../data/lineas';
 import { progreso, proyectos, ruta, useFicha } from '../data/proyectos';
 import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
@@ -585,18 +585,22 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
                         <li key={x.pieza}>
                           <time dateTime={x.fecha}>{fecha(x.fecha)}</time>
                           <div>
-                            <Link
-                              to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
-                              className="publicacion-enlace"
-                            >
-                              {tx(x.titulo)}
-                            </Link>
+                            {hayMuro ? (
+                              <Link
+                                to={`/muro?proyecto=${p.slug}#${idPublicacion(x)}`}
+                                className="publicacion-enlace"
+                              >
+                                {tx(x.titulo)}
+                              </Link>
+                            ) : (
+                              <strong>{tx(x.titulo)}</strong>
+                            )}
                             <p>{tx(x.texto)}</p>
                           </div>
                         </li>
                       ))}
                     </ul>
-                    {deMuro.length > PUBLICACIONES_EN_FICHA && (
+                    {hayMuro && deMuro.length > PUBLICACIONES_EN_FICHA && (
                       <Link to={`/muro?proyecto=${p.slug}`} className="vistazo-mas">
                         {t('muro.verTodas', { n: deMuro.length })}{' '}
                         <ArrowRight size={15} aria-hidden="true" />

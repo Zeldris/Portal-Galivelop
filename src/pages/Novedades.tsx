@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Link } from '../components/Enlace';
 import { AvisoVacio } from '../components/AvisoVacio';
 import { Separador } from '../components/Separador';
+import { hayMuro } from '../data/muro';
 import { entradas } from '../data/novedades';
 import { buscarProyecto, proyectos, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
@@ -118,9 +119,15 @@ export function Novedades() {
                           <p>{tx(e.texto)}</p>
                         ) : (
                           <p>
-                            <Link to={`/muro?proyecto=${e.proyecto}`}>
-                              <strong>{tx(e.publicacion.titulo)}</strong>
-                            </Link>{' '}
+                            {hayMuro ? (
+                              <Link to={`/muro?proyecto=${e.proyecto}`}>
+                                <strong>{tx(e.publicacion.titulo)}</strong>
+                              </Link>
+                            ) : (
+                              <Link to={`/proyectos/${e.proyecto}`}>
+                                <strong>{tx(e.publicacion.titulo)}</strong>
+                              </Link>
+                            )}{' '}
                             <span className="novedad-muro">· {t('novedades.muro')}</span>
                             <br />
                             {tx(e.publicacion.texto)}

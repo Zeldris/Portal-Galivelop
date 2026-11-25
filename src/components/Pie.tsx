@@ -2,7 +2,7 @@ import { Mail } from 'lucide-react';
 import { Link } from './Enlace';
 import { documentosLegales } from '../data/legal';
 import { MARCA } from '../data/marca';
-import { publicaciones } from '../data/muro';
+import { hayMuro } from '../data/muro';
 import { proyectos, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { IconoDiscord } from './IconoDiscord';
@@ -75,7 +75,7 @@ export function Pie() {
             <li>
               <Link to="/novedades">{t('sec.novedades')}</Link>
             </li>
-            {publicaciones.length > 0 && (
+            {hayMuro && (
               <li>
                 <Link to="/muro">{t('nav.muro')}</Link>
               </li>

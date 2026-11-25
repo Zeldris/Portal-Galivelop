@@ -1,9 +1,13 @@
+import { muroVisible } from './muro-umbral';
 import type { Idioma, ImagenPublicacion, Publicacion } from './tipos';
 
 // Cualquier .json de src/data/muro/<proyecto>/ entra solo en el muro; la más reciente, la primera.
 const modulos = import.meta.glob<{ default: Publicacion }>('./muro/*/*.json', { eager: true });
 
 export const publicaciones: Publicacion[] = ordenar(Object.values(modulos).map((m) => m.default));
+
+/** ¿El muro existe? Solo con el mínimo de publicaciones (src/data/muro-umbral.ts); si no, está oculto y nada lo enlaza. */
+export const hayMuro = muroVisible(publicaciones.length);
 
 /** Más reciente primero; el mismo día, por orden inverso de pieza (NN-tema más alto primero). */
 export function ordenar(lista: Publicacion[]): Publicacion[] {
