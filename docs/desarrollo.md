@@ -23,6 +23,7 @@ La presentación pública está en el [README](../README.md).
   envía desde la aplicación de correo de quien lo rellena; si no se abre, se puede copiar.
 - **Idiomas:** castellano, gallego e inglés (detecta el del navegador y recuerda la elección).
 - **Tema** claro y oscuro.
+- **Colores forzados** (Windows Alto contraste, `forced-colors: active`): el bloque final de `src/estilos/global.css` devuelve foco de campos, bordes de botones, píldoras de estado e indicadores hechos con `box-shadow`; no cambia el tema por defecto.
 
 El código de cada proyecto se enlaza desde su ficha («Ver el código en GitHub», tipo `otro` en `enlaces`)
 cuando su repositorio es público; si es privado, no se enlaza. Además, el portal lleva a su versión pública

@@ -52,3 +52,18 @@ for (const p of PAGINAS) {
     await expect(page).toHaveScreenshot(`${p.nombre}.png`, { clip: { x: 0, y, width: ancho, height: 160 }, maxDiffPixelRatio: 0.05 });
   });
 }
+
+// Colores forzados (Windows Alto contraste): el foco de un campo era un `box-shadow` con `outline: none`, que el
+// navegador descarta; el contorno tiene que seguir ahí.
+test('proponer: el foco de un campo se ve con colores forzados', async ({ page }) => {
+  await page.emulateMedia({ forcedColors: 'active' });
+  await gotoStable(page, 'participa/proponer');
+  const campo = page.locator('.campo input').first();
+  await campo.focus();
+  const contorno = await campo.evaluate((el) => {
+    const s = getComputedStyle(el);
+    return { estilo: s.outlineStyle, ancho: parseFloat(s.outlineWidth) };
+  });
+  expect(contorno.estilo).not.toBe('none');
+  expect(contorno.ancho).toBeGreaterThanOrEqual(2);
+});
