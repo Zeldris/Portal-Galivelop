@@ -1,0 +1,348 @@
+/* Galivelop — cuaderno de taller sobre carta náutica: papel con retícula, filetes finos, celeste plano en bloques,
+   chaflanes en vez de esquinas redondas y los datos en monoespaciada. Qué es cada cosa y por qué: docs/marca.md. */
+
+:root {
+  --celeste: #1aa6df;
+  --blanco: #ffffff;
+  /* Noche: fondo de los escenarios de imagen y velo plano sobre las fotos (derivados de la tinta, iguales en los dos temas). */
+  --noche: #03090f;
+  --velo: rgb(6 18 28 / 0.62);
+  --velo-medio: rgb(6 18 28 / 0.68);
+  --velo-denso: rgb(6 18 28 / 0.78);
+  /* Color de marca de Discord: ajeno a la paleta, solo en su botón. */
+  --discord: #5865f2;
+
+  --fuente-titulos:
+    'Big Shoulders Display Variable', 'Big Shoulders Display', 'Arial Narrow', sans-serif;
+  --fuente-texto: 'Literata Variable', 'Literata', Georgia, 'Times New Roman', serif;
+  --fuente-datos:
+    'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  /* Antetítulos, etiquetas, fechas, versiones y escalas: monoespaciada en versalitas con aire. */
+  --datos: 500 0.75rem/1.4 var(--fuente-datos);
+  --datos-espaciado: 0.06em;
+
+  /* Esquinas: ningún redondeo; las fichas llevan chaflán de `--chaflan`, lo grande el de `--chaflan-grande`, lo pequeño se queda recto. */
+  --chaflan: 14px; /* fichas y tarjetas */
+  --chaflan-grande: 28px;
+  --chaflan-pequeno: 10px; /* botones */
+  /* Separación del anillo de foco (outline-offset). Con chaflán, dentro y a 6 px: el clip-path recorta lo de fuera y
+     el contorno de 2 px libra --chaflan-pequeno. */
+  --foco-chaflan: -6px;
+  --foco-dentro: -3px;
+  --foco-fuera: 2px;
+  --foco-fuera-medio: 3px;
+  --foco-fuera-amplio: 4px;
+  --reticula-paso: 24px;
+  --ancho: 1180px;
+  /* Espaciado: la escala va de 2 en 2 px hasta 20 y luego a saltos; el nombre es el valor. «--espacio-1» (1 px) para filetes y ajustes finos de relleno o hueco. */
+  --espacio-1: 1px;
+  --espacio-2: 2px;
+  --espacio-4: 4px;
+  --espacio-6: 6px;
+  --espacio-8: 8px;
+  --espacio-10: 10px;
+  --espacio-12: 12px;
+  --espacio-14: 14px;
+  --espacio-16: 16px;
+  --espacio-18: 18px;
+  --espacio-20: 20px;
+  --espacio-24: 24px;
+  --espacio-28: 28px;
+  --espacio-32: 32px;
+  --espacio-40: 40px;
+  --espacio-48: 48px;
+  --espacio-56: 56px;
+  --espacio-72: 72px;
+  /* Negativos para márgenes que tiran hacia fuera. */
+  --espacio-neg-2: calc(var(--espacio-2) * -1);
+  --espacio-neg-4: calc(var(--espacio-4) * -1);
+  --espacio-neg-8: calc(var(--espacio-8) * -1);
+  --espacio-neg-16: calc(var(--espacio-16) * -1);
+  --espacio-neg-18: calc(var(--espacio-18) * -1);
+  --espacio-neg-20: calc(var(--espacio-20) * -1);
+  --espacio-neg-24: calc(var(--espacio-24) * -1);
+  --espacio-neg-28: calc(var(--espacio-28) * -1);
+  --espacio-neg-36: calc((var(--espacio-32) + var(--espacio-4)) * -1);
+  --espacio-neg-40: calc(var(--espacio-40) * -1);
+  /* Espaciado fluido, por papel. */
+  --espacio-seccion: clamp(56px, 8vw, 96px); /* relleno vertical de una sección */
+  --espacio-hero: clamp(40px, 7vw, 88px); /* relleno vertical del hero */
+  --espacio-bloque: clamp(40px, 6vw, 64px); /* relleno vertical de un bloque de producto o de cabecera */
+  --espacio-bloque-corto: clamp(32px, 5vw, 56px); /* bloque más bajo */
+  --espacio-columnas: clamp(32px, 5vw, 64px); /* hueco entre columnas grandes */
+  --espacio-tarjeta: clamp(20px, 4vw, 32px); /* relleno de tarjetas y hueco de rejillas medias */
+  --espacio-cabeza-producto: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 32px); /* relleno vertical (arriba, abajo) de la cabecera de producto */
+  --espacio-salto: clamp(40px, 8vw, 110px); /* salto bajo un bloque de cabecera */
+  --espacio-lateral: clamp(16px, 8vw, 96px); /* margen lateral de un panel a sangre */
+  /* Letra: el nombre es el tamaño en centésimas de rem. */
+  --letra-60: 0.6rem;
+  --letra-70: 0.7rem;
+  --letra-75: 0.75rem;
+  --letra-80: 0.8rem;
+  --letra-85: 0.85rem;
+  --letra-90: 0.9rem;
+  --letra-95: 0.95rem;
+  --letra-100: 1rem;
+  --letra-106: 1.0625rem; /* cuerpo de texto: 17 px */
+  --letra-110: 1.1rem;
+  --letra-125: 1.25rem;
+  --letra-150: 1.5rem;
+  --letra-200: 2rem;
+  --letra-225: 2.25rem;
+  /* Letra fluida, por papel. */
+  --letra-hero: clamp(2.75rem, 7.5vw, 5.25rem); /* h1 del hero y de la cabeza de producto */
+  --letra-titulo-1: clamp(2.75rem, 9vw, 6rem); /* h1 por defecto */
+  --letra-titulo-2: clamp(1.8rem, 4.5vw, 2.6rem); /* h1 de miembro, h2 de contacto, lema de producto */
+  --letra-titulo-3: clamp(1.7rem, 3.4vw, 2.2rem); /* título de bloque de producto */
+  --letra-titulo-4: clamp(1.4rem, 3.5vw, 1.8rem); /* título de grupo */
+  --letra-titulo-5: clamp(1.15rem, 2.4vw, 1.4rem); /* título de publicación */
+  --letra-entrada: clamp(1.05rem, 1.4vw, 1.2rem); /* párrafo de entrada */
+  --letra-lema: clamp(1.05rem, 1.8vw, 1.3rem); /* lema de proyecto */
+  /* Curva de toda transición: decelera al llegar (nada de ease/linear del navegador). 200 ms como mínimo. */
+  --curva: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --transicion: 200ms var(--curva);
+  /* Capas: un z-index nuevo sale de esta escala, no de un número suelto. */
+  --z-sobre: 1;
+  --z-enlace: 2;
+  --z-nav-ficha: 20;
+  --z-cabecera: 50;
+  --z-panel: 60;
+  --z-saltar: 100;
+
+  interpolate-size: allow-keywords;
+}
+
+/* Claro (por defecto): papel de carta náutica. */
+:root,
+:root[data-tema='claro'] {
+  color-scheme: light;
+  --papel: #fbfcfd;
+  --reticula: #eef3f6; /* muy tenue: las líneas no deben cortar el texto (2026-11-12) */
+  --celeste-hondo: #0072a8;
+  --tinta: #13212b;
+  --tinta-2: #4a5c69;
+  --alga: #5d7a6a;
+  --filete: #b9cbd6;
+  --fondo: var(--papel);
+  --fondo-alterno: #f1f6f9;
+  --superficie: #ffffff;
+  --superficie-2: #f1f6f9;
+  --borde: var(--filete);
+  --texto: var(--tinta);
+  --texto-2: var(--tinta-2);
+  --texto-3: #5a6d7a;
+  --enlace: var(--celeste-hondo);
+  --celeste-intenso: var(--celeste-hondo);
+  --sobre-intenso: var(--blanco);
+  --foco: var(--celeste-hondo);
+  --borde-campo: #6f8696; /* 3,7:1 sobre el papel (WCAG 1.4.11) */
+  /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
+  --sombra: 0 12px 32px -18px rgb(19 33 43 / 0.35);
+  /* Tinte plano del celeste para píldoras y marcas de posición. */
+  --tinte: rgb(26 166 223 / 0.12);
+  /* Puntos de estado: van sobre la píldora de tinta (oscura en claro, clara en oscuro), por eso cambian con el tema. */
+  --estado-publicado: var(--celeste);
+  --estado-desarrollo: color-mix(in srgb, var(--alga) 55%, var(--blanco));
+  /* Fallo, rechazo o bloqueo (animaciones del flujo): siempre con ✗ y texto, nunca solo color. */
+  --peligro: #a3135f;
+  --sobre-peligro: #ffffff;
+  --peligro-tinte: rgb(163 19 95 / 0.1);
+  /* Texto de «hecho» sobre el papel: el alga, con contraste de texto. */
+  --ok-texto: #3f5a4b;
+}
+
+/* Oscuro: la misma carta, de noche. */
+:root[data-tema='oscuro'] {
+  color-scheme: dark;
+  --papel: #0d171e;
+  --reticula: #121e27;
+  --celeste-hondo: #0b5e88;
+  --tinta: #e6eef3;
+  --tinta-2: #9fb2bf;
+  --alga: #8fb09e;
+  --filete: #2b3d49;
+  --fondo: var(--papel);
+  --fondo-alterno: #111f29;
+  --superficie: #111f29;
+  --superficie-2: #16242e;
+  --borde: var(--filete);
+  --texto: var(--tinta);
+  --texto-2: var(--tinta-2);
+  --texto-3: #7d919e;
+  --enlace: #5cc8f2;
+  --celeste-intenso: var(--celeste);
+  /* El celeste vivo no admite texto blanco (2,8:1): encima va el papel oscuro (6,5:1). */
+  --sobre-intenso: var(--papel);
+  --foco: var(--celeste);
+  --borde-campo: #6b8798; /* 4,8:1 sobre el papel oscuro */
+  /* marca: permitido, única sombra de la marca: la del panel desplegado o flotante sobre el contenido. */
+  --sombra: 0 12px 32px -18px rgb(0 0 0 / 0.7);
+  --tinte: rgb(26 166 223 / 0.18);
+  --estado-publicado: var(--celeste-hondo);
+  --estado-desarrollo: color-mix(in srgb, var(--alga) 60%, var(--noche));
+  --peligro: #f27ab0;
+  --sobre-peligro: #0d171e;
+  --peligro-tinte: rgb(242 122 176 / 0.16);
+  --ok-texto: #8fb09e;
+}
+
+/*
+ * Acento de cada proyecto (docs/marca.md, «Acento de cada proyecto»; src/data/tonos.ts). Entra donde el Portal usa el
+ * alga: el vivo (`--acento-proyecto`) marca filetes, puntos y tinte; el texto va en el hondo (claro) o en su variante
+ * oscura, y los bloques con texto blanco, en el hondo en los dos temas. Sin proyecto, los del Portal.
+ */
+:root {
+  --acento-texto: var(--enlace);
+  --acento-bloque: var(--celeste-hondo);
+}
+
+[style*='--acento-proyecto'] {
+  --acento-texto: var(--acento-proyecto-hondo);
+  --acento-bloque: var(--acento-proyecto-hondo);
+}
+
+:root[data-tema='oscuro'] [style*='--acento-proyecto'] {
+  --acento-texto: var(--acento-proyecto-oscuro);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  /* Papel cuadriculado: la retícula de 24 px es la del cuaderno de taller. */
+  background-color: var(--fondo);
+  background-image:
+    /* marca: permitido, retícula del papel cuadriculado (líneas de 1 px, sin degradado visible). */
+    linear-gradient(var(--reticula) 1px, transparent 1px),
+    /* marca: permitido, retícula del papel cuadriculado (líneas de 1 px, sin degradado visible). */
+    linear-gradient(90deg, var(--reticula) 1px, transparent 1px);
+  background-size: var(--reticula-paso) var(--reticula-paso);
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  font-size: var(--letra-106);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Títulos: condensada, en mayúsculas y apretada de interlineado, como el rótulo de una carta. */
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* Escala de docs/marca.md: h1 44-96 px, h2 36 px, h3 32 px. */
+h1 {
+  font-size: var(--letra-titulo-1);
+}
+
+h2 {
+  font-size: var(--letra-225);
+}
+
+h3 {
+  font-size: var(--letra-200);
+}
+
+/* Sin el margen del navegador: si no, los títulos de las tarjetas bajan respecto a su icono o su número. */
+h4 {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: var(--letra-125);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+  /* Sin palabras sueltas en la última línea (los títulos llevan balance). */
+  text-wrap: pretty;
+}
+
+a {
+  color: var(--enlace);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: var(--foco-fuera-medio);
+}
+
+/* Sobre el celeste hondo el foco va en blanco (el celeste/hondo del tema no se distingue del fondo). */
+.hero,
+.cabecera-captura,
+.cabecera-color,
+.proxima-imagen-vacia {
+  --foco: var(--blanco);
+}
+
+.contenedor {
+  width: min(100% - 32px, var(--ancho));
+  margin-inline: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
+
+/* ---------- Marca ---------- */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-10);
+}
+
+.logo-texto {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: var(--letra-150);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.logo-gali {
+  color: var(--celeste);
+}
+
+.marca-gd {
+  flex: none;
+}
+

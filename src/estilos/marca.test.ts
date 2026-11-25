@@ -102,7 +102,7 @@ const COLOR_VALIDO =
 
 describe('hojas de estilo de la marca', () => {
   it('cubre todas las hojas de src/', () => {
-    expect(HOJAS.map((h) => h.nombre)).toContain(join('estilos', 'global.css'));
+    expect(HOJAS.map((h) => h.nombre)).toContain(join('estilos', 'base.css'));
   });
 
   it('los colores salen de los tokens', () => {

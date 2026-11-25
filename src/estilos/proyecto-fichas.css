@@ -1,0 +1,1313 @@
+/* ---------- Ficha: pasos y apartados ---------- */
+
+.pasos-ficha {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: var(--espacio-14);
+  counter-reset: paso;
+}
+
+.pasos-ficha li {
+  position: relative;
+  padding: var(--espacio-20);
+  padding-top: var(--espacio-56);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  counter-increment: paso;
+}
+
+.pasos-ficha li::before {
+  content: counter(paso);
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: var(--letra-90);
+  color: var(--blanco);
+  /* Número blanco en negrita de 14 px (no es texto grande): sobre el hondo, a 4,5:1 o más. */
+  background: var(--acento-bloque);
+}
+
+.pasos-ficha h4 {
+  font-size: var(--letra-100);
+  margin-bottom: var(--espacio-6);
+}
+
+.pasos-ficha p {
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+}
+
+.pasos-ficha .pasos-ver {
+  margin-top: var(--espacio-8);
+  min-height: 44px;
+  padding: var(--espacio-6) 0;
+  text-align: left;
+}
+
+/* ---------- Ficha: animaciones paso a paso (AnimacionFlujo) ---------- */
+
+.flujo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-12);
+  min-width: 0;
+  scroll-margin-top: 96px;
+}
+
+.flujo-pestanas {
+  display: flex;
+  gap: var(--espacio-8);
+}
+
+.flujo-pestana {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 48px;
+  padding: var(--espacio-6) var(--espacio-16);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+  transition:
+    border-color var(--transicion),
+    background var(--transicion);
+}
+
+.flujo-pestana b {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: var(--letra-125);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+}
+
+.flujo-pestana span {
+  font: var(--datos);
+  font-size: var(--letra-75);
+  color: var(--texto-2);
+}
+
+.flujo-pestana:hover {
+  border-color: var(--celeste-intenso);
+}
+
+.flujo-pestana[aria-selected='true'] {
+  border-color: var(--celeste-intenso);
+  background: var(--tinte);
+  /* marca: permitido, filete inferior de la pestaña activa: sombra interior sin desenfoque. */
+  box-shadow: inset 0 -4px 0 var(--celeste-intenso);
+}
+
+.flujo-pieza {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  min-width: 0;
+}
+
+.flujo-pieza:focus-visible {
+  outline: 3px solid var(--enlace);
+  outline-offset: var(--foco-fuera);
+}
+
+.flujo-escena {
+  background: var(--papel);
+  border-bottom: 1px solid var(--borde);
+  min-width: 0;
+}
+
+.flujo-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* En móvil y tableta, la escena alta no pasa de 440 px de ancho: más, y ocuparía más de una pantalla. */
+.flujo-svg[data-modo='m'] {
+  max-width: 440px;
+  margin-inline: auto;
+}
+
+.flujo-debajo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio-16);
+  padding: var(--espacio-16);
+}
+
+@media (min-width: 800px) {
+  .flujo-debajo {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: var(--espacio-28);
+    padding: var(--espacio-20) var(--espacio-24) var(--espacio-24);
+  }
+}
+
+.flujo-lectura {
+  min-width: 0;
+}
+
+.flujo-posicion,
+.flujo-ayuda {
+  font: var(--datos);
+  font-size: var(--letra-75);
+  letter-spacing: var(--datos-espaciado);
+  color: var(--texto-3);
+  margin: 0;
+}
+
+.flujo-posicion {
+  text-transform: uppercase;
+  margin-bottom: var(--espacio-4);
+}
+
+.flujo-paso-titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: var(--letra-150);
+  line-height: 1.1;
+  margin: 0 0 var(--espacio-8);
+}
+
+.flujo-narracion {
+  margin: 0;
+  max-width: 62ch;
+  line-height: 1.6;
+  min-height: 6.4em;
+}
+
+.flujo-controles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-12);
+  min-width: 0;
+}
+
+.flujo-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8);
+}
+
+.flujo-boton {
+  flex: 1 1 auto;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 var(--espacio-16);
+  border: 2px solid var(--texto);
+  background: var(--superficie);
+  color: var(--texto);
+  font: var(--datos);
+  font-size: var(--letra-80);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.flujo-boton:hover:not(:disabled) {
+  background: var(--tinte);
+}
+
+.flujo-boton-primario {
+  background: var(--celeste-hondo);
+  border-color: var(--celeste-hondo);
+  color: var(--blanco);
+}
+
+.flujo-boton-primario:hover:not(:disabled) {
+  background: var(--tinta);
+  border-color: var(--tinta);
+  color: var(--papel);
+}
+
+.flujo-boton:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.flujo-progreso {
+  height: 4px;
+  background: var(--borde);
+  overflow: hidden;
+}
+
+.flujo-progreso i {
+  display: block;
+  height: 100%;
+  background: var(--celeste-intenso);
+  transform-origin: 0 50%;
+  transition: transform var(--transicion);
+}
+
+.flujo-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: var(--espacio-6);
+}
+
+.flujo-lista button {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-8);
+  padding: var(--espacio-6) var(--espacio-10);
+  border: 2px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  font-size: var(--letra-90);
+  line-height: 1.2;
+}
+
+.flujo-lista button b {
+  font: var(--datos);
+  font-size: var(--letra-80);
+  color: var(--texto-3);
+}
+
+.flujo-lista button[aria-current='step'] {
+  border-color: var(--celeste-intenso);
+  background: var(--tinte);
+  font-weight: 600;
+}
+
+.flujo-lista button[aria-current='step'] b {
+  color: var(--texto);
+}
+
+.flujo-cargando {
+  min-height: min(70vh, 760px);
+  margin: 0;
+  padding: var(--espacio-16);
+  font: var(--datos);
+  color: var(--texto-3);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+}
+
+/* Escena: cada átomo entra con opacidad y un desplazamiento corto; su retardo, en --d. */
+.flujo-svg text {
+  font-family: var(--fuente-datos);
+  fill: var(--texto);
+  white-space: pre;
+}
+.flujo-svg .ret {
+  stroke: var(--reticula);
+  stroke-width: 1;
+  fill: none;
+}
+.flujo-svg .fondo {
+  fill: var(--papel);
+}
+.flujo-svg .a {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 500ms var(--curva),
+    transform 500ms var(--curva);
+  transition-delay: var(--d, 0s);
+}
+.flujo-svg .a.on {
+  opacity: 1;
+  transform: none;
+}
+.flujo-svg .a.cae {
+  transform: translateY(-34px);
+}
+.flujo-svg .a.cae.on {
+  transform: none;
+}
+.flujo-svg .bx {
+  fill: var(--superficie);
+  stroke: var(--filete);
+  stroke-width: 1.5;
+}
+.flujo-svg .bx.cel {
+  fill: var(--tinte);
+  stroke: var(--enlace);
+  stroke-width: 2;
+}
+.flujo-svg .bx.ok {
+  stroke: var(--alga);
+  stroke-width: 2;
+}
+.flujo-svg .bx.no {
+  stroke: var(--tinta);
+  stroke-width: 2;
+  stroke-dasharray: 7 4;
+}
+.flujo-svg .bx.gh {
+  fill: none;
+  stroke: var(--tinta-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+}
+.flujo-svg .bx.bad {
+  fill: var(--peligro-tinte);
+  stroke: var(--peligro);
+  stroke-width: 3.5;
+}
+.flujo-svg .bx.band {
+  fill: var(--peligro);
+  stroke: var(--peligro);
+}
+.flujo-svg .ti {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.flujo-svg .tm {
+  font-weight: 500;
+}
+.flujo-svg .su {
+  fill: var(--tinta-2);
+}
+.flujo-svg .lb {
+  fill: var(--tinta-2);
+  letter-spacing: 0.03em;
+}
+.flujo-svg .tx {
+  font-family: var(--fuente-texto);
+}
+.flujo-svg .okt {
+  fill: var(--ok-texto);
+  font-weight: 500;
+}
+.flujo-svg .nm {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  fill: var(--enlace);
+  letter-spacing: 0.01em;
+}
+.flujo-svg .ck {
+  fill: var(--papel);
+  font-weight: 500;
+}
+.flujo-svg .ckb,
+.flujo-svg .xb {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  fill: var(--ok-texto);
+}
+.flujo-svg .xb {
+  fill: var(--peligro);
+}
+.flujo-svg .sp {
+  fill: var(--sobre-peligro);
+}
+.flujo-svg .pd {
+  fill: var(--peligro);
+}
+.flujo-svg .ln {
+  fill: none;
+  stroke: var(--tinta-2);
+  stroke-width: 2;
+}
+.flujo-svg .ln.gr {
+  stroke: var(--filete);
+  stroke-width: 5;
+}
+.flujo-svg .ln.cel {
+  stroke: var(--enlace);
+  stroke-width: 2.5;
+}
+.flujo-svg .ln.al {
+  stroke: var(--alga);
+  stroke-width: 2.5;
+  stroke-dasharray: 7 5;
+}
+.flujo-svg .ln.no {
+  stroke: var(--tinta);
+  stroke-width: 2;
+  stroke-dasharray: 7 5;
+}
+.flujo-svg .ln.fino {
+  stroke-width: 1.5;
+}
+.flujo-svg .mk-cel {
+  fill: var(--enlace);
+}
+.flujo-svg .mk-al {
+  fill: var(--alga);
+}
+.flujo-svg .mk-no {
+  fill: var(--tinta);
+}
+.flujo-svg .cm {
+  fill: var(--alga);
+  stroke: var(--papel);
+  stroke-width: 2;
+}
+.flujo-svg .cm.nuevo {
+  fill: var(--enlace);
+}
+.flujo-svg .ring {
+  fill: none;
+  stroke: var(--enlace);
+  stroke-width: 2.5;
+}
+.flujo-svg .mo {
+  fill: var(--superficie);
+  stroke: var(--tinta-2);
+  stroke-width: 1.5;
+}
+/* Medidor de contexto: se llena hasta --nivel (lo pone el componente según el paso). */
+.flujo-svg .mf {
+  fill: var(--celeste-hondo);
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(var(--nivel, 0.1));
+  transition: transform 500ms var(--curva);
+  transition-delay: var(--d, 0s);
+}
+:root[data-tema='oscuro'] .flujo-svg .mf {
+  fill: var(--celeste);
+}
+.flujo-svg .mg {
+  fill: none;
+  stroke: var(--tinta-2);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+/* La persona, en celeste hondo (el de los enlaces, que en oscuro se aclara). */
+.flujo-svg .pf {
+  fill: var(--enlace);
+}
+.flujo-svg .so {
+  fill: var(--superficie);
+  stroke: var(--tinta-2);
+  stroke-width: 2;
+  stroke-dasharray: 4 3;
+}
+.flujo-svg .sn {
+  fill: var(--ok-texto);
+}
+/* Tamaños del SVG del flujo: unidades del viewBox (no rem), por eso quedan fuera de la escala de letra. */
+/* stylelint-disable scale-unlimited/declaration-strict-value */
+.flujo-svg[data-modo='d'] .ti {
+  font-size: 24px;
+}
+.flujo-svg[data-modo='d'] .tm {
+  font-size: 16px;
+}
+.flujo-svg[data-modo='d'] .su,
+.flujo-svg[data-modo='d'] .lb {
+  font-size: 15px;
+}
+.flujo-svg[data-modo='d'] .tx {
+  font-size: 17px;
+}
+.flujo-svg[data-modo='d'] .nm {
+  font-size: 44px;
+}
+.flujo-svg[data-modo='d'] .ck {
+  font-size: 20px;
+}
+.flujo-svg[data-modo='d'] .ckb,
+.flujo-svg[data-modo='d'] .xb {
+  font-size: 40px;
+}
+.flujo-svg[data-modo='m'] .ti {
+  font-size: 22px;
+}
+.flujo-svg[data-modo='m'] .tm,
+.flujo-svg[data-modo='m'] .su,
+.flujo-svg[data-modo='m'] .lb,
+.flujo-svg[data-modo='m'] .tx {
+  font-size: 13px;
+}
+.flujo-svg[data-modo='m'] .nm {
+  font-size: 26px;
+}
+.flujo-svg[data-modo='m'] .ck {
+  font-size: 15px;
+}
+.flujo-svg[data-modo='m'] .ckb,
+.flujo-svg[data-modo='m'] .xb {
+  font-size: 30px;
+}
+/* stylelint-enable scale-unlimited/declaration-strict-value */
+
+@media (max-width: 560px) {
+  .flujo-pestana {
+    padding: var(--espacio-6) var(--espacio-8);
+  }
+  .flujo-pestana b {
+    font-size: var(--letra-100);
+  }
+  .flujo-pestana span {
+    display: none;
+  }
+  .flujo-paso-titulo {
+    font-size: var(--letra-150);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flujo-svg .a {
+    transform: none !important;
+  }
+  .flujo-svg .mf {
+    transition: none;
+  }
+}
+
+.apartado-intro {
+  color: var(--texto-2);
+  max-width: 75ch;
+  margin-bottom: var(--espacio-18);
+}
+
+.apartado-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: var(--espacio-12);
+}
+
+/* Solo los hijos directos son tarjetas: la lista de «Ver el detalle» va dentro. */
+.apartado-items > li {
+  padding: var(--espacio-16) var(--espacio-18);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+}
+
+.apartado-cabecera {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  /* Una etiqueta larga baja a su línea en vez de salirse de la tarjeta; el título le deja sitio al lado mientras
+     quepa en 6rem, así que en escritorio la etiqueta sigue arriba a la derecha. */
+  flex-wrap: wrap;
+  gap: var(--espacio-4) var(--espacio-12);
+  margin-bottom: var(--espacio-6);
+}
+
+.apartado-cabecera h3 {
+  flex: 1 1 6rem;
+  font-size: var(--letra-100);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.apartado-valor {
+  flex: none;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-80);
+  font-weight: 700;
+  padding: var(--espacio-2) var(--espacio-8);
+  color: var(--acento-texto);
+  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 15%, transparent);
+}
+
+.apartado-items p {
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+}
+
+/* Lista de «Ver el detalle»: más pequeña que el resumen, con viñetas. */
+.apartado-items .apartado-detalle ul {
+  margin: var(--espacio-10) 0 0;
+  padding-left: var(--espacio-18);
+  list-style: disc;
+  display: grid;
+  gap: var(--espacio-6);
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+}
+
+/* Tarjeta con imagen: la imagen ocupa la cabecera de la tarjeta, de borde a borde. */
+.apartado-items li.con-imagen {
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.apartado-items .tarjeta-imagen {
+  display: block;
+  width: calc(100% + 36px);
+  margin: 0 var(--espacio-neg-18) var(--espacio-14);
+  padding: 0;
+  border: 0;
+  aspect-ratio: 5 / 2;
+  background: var(--noche);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.apartado-items .tarjeta-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms var(--curva);
+}
+
+.apartado-items .tarjeta-imagen:hover img {
+  transform: scale(1.04);
+}
+
+.apartado-intro + .galeria {
+  margin-bottom: var(--espacio-18);
+}
+
+/* ---------- Ficha: «De un vistazo», barra de grupos y grupos ---------- */
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.vistazo {
+  position: relative;
+  margin-top: var(--espacio-neg-28);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--espacio-12);
+}
+
+.vistazo-ahora,
+.vistazo-novedad {
+  padding: var(--espacio-20) var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  min-width: 0;
+}
+
+.vistazo-etiqueta {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-3);
+  margin-bottom: var(--espacio-6);
+}
+
+.vistazo-fase {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: var(--letra-110);
+  color: var(--texto);
+}
+
+.vistazo-avance {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-12);
+  margin-top: var(--espacio-12);
+}
+
+.vistazo-avance .barra {
+  flex: 1;
+  height: 8px;
+}
+
+.vistazo-avance strong {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-100);
+}
+
+.vistazo-nota {
+  margin-top: var(--espacio-4);
+  font-size: var(--letra-85);
+  color: var(--texto-2);
+}
+
+.vistazo-proximo {
+  margin-top: var(--espacio-12);
+  padding-top: var(--espacio-12);
+  border-top: 1px solid var(--borde);
+  display: grid;
+  gap: var(--espacio-2);
+  font-size: var(--letra-85);
+  color: var(--texto-2);
+}
+
+.vistazo-proximo strong {
+  color: var(--texto);
+  font-size: var(--letra-95);
+}
+
+.vistazo-proximo .hito-version {
+  margin-right: var(--espacio-6);
+}
+
+.vistazo-texto {
+  color: var(--texto-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.vistazo-mas {
+  display: inline-flex;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8) */
+  align-items: center;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-10);
+  font-size: var(--letra-90);
+  font-weight: 600;
+  color: var(--enlace);
+  text-decoration: none;
+}
+
+.vistazo-mas:hover {
+  text-decoration: underline;
+}
+
+/* La barra de grupos se queda bajo la cabecera fija mientras se baja por la ficha. */
+.nav-ficha {
+  position: sticky;
+  top: 68px;
+  z-index: var(--z-nav-ficha);
+  display: flex;
+  gap: var(--espacio-4);
+  margin-top: var(--espacio-28);
+  padding: var(--espacio-8) 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--fondo);
+  border-bottom: 1px solid var(--borde);
+}
+
+.nav-ficha::-webkit-scrollbar {
+  display: none;
+}
+
+/* Móvil horizontal o zoom alto: cabecera y barra pegadas se comerían un tercio de la pantalla; la barra deja de seguir. */
+@media (max-height: 520px) {
+  .nav-ficha {
+    position: static;
+  }
+}
+
+/* Si los grupos no caben, un degradado en el borde avisa de que hay más a ese lado (lo marca NavFicha en data-mas).
+   Los márgenes negativos compensan el ancho y el hueco de la barra: no mueven las pestañas. La barra no lleva
+   relleno a los lados (en el móvil va en las pestañas de los extremos): el degradado pegajoso se queda dentro del
+   relleno y dejaría ver las pestañas sin difuminar entre él y el borde. */
+.nav-ficha::before,
+.nav-ficha::after {
+  content: '';
+  position: sticky;
+  z-index: var(--z-sobre);
+  flex: none;
+  width: 32px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transicion);
+}
+
+.nav-ficha::before {
+  left: 0;
+  margin-right: var(--espacio-neg-36);
+  /* marca: permitido, fundido funcional de desplazamiento de la pestaña, no decorativo. */
+  background: linear-gradient(to left, transparent, var(--fondo));
+}
+
+.nav-ficha::after {
+  right: 0;
+  margin-left: var(--espacio-neg-36);
+  /* marca: permitido, fundido funcional de desplazamiento de la pestaña, no decorativo. */
+  background: linear-gradient(to right, transparent, var(--fondo));
+}
+
+.nav-ficha[data-mas~='izquierda']::before,
+.nav-ficha[data-mas~='derecha']::after {
+  opacity: 1;
+}
+
+.nav-ficha a {
+  flex: none;
+  padding: var(--espacio-8) var(--espacio-14);
+  font-size: var(--letra-90);
+  font-weight: 600;
+  color: var(--texto-2);
+  text-decoration: none;
+  transition:
+    background var(--transicion),
+    color var(--transicion);
+}
+
+.nav-ficha a:hover {
+  color: var(--texto);
+  background: var(--superficie-2);
+}
+
+.nav-ficha a[aria-current='location'] {
+  color: var(--blanco);
+  /* El hondo del acento: con el vivo, el blanco sobre el naranja de Tarkor se quedaba en 3,2:1. */
+  background: var(--acento-bloque);
+}
+
+.grupo {
+  padding-top: var(--espacio-48);
+  scroll-margin-top: 120px;
+}
+
+.grupo-titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-12);
+  font-size: var(--letra-titulo-4);
+  margin-bottom: var(--espacio-18);
+}
+
+/* Iconos de los grupos (recurso 25), en el título y en el índice. */
+.grupo-titulo svg {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  color: var(--acento-texto);
+}
+
+.nav-ficha a svg {
+  width: 16px;
+  height: 16px;
+  margin-right: var(--espacio-6);
+  vertical-align: -3px;
+}
+
+.grupo-texto {
+  color: var(--texto-2);
+  max-width: 75ch;
+  margin: var(--espacio-neg-8) 0 var(--espacio-18);
+}
+
+.grupo .bloque + .bloque,
+.grupo-columnas + .bloque {
+  margin-top: var(--espacio-32);
+}
+
+.bloque {
+  min-width: 0;
+  scroll-margin-top: 130px;
+}
+
+.bloque-titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-10);
+  font-size: var(--letra-110);
+  margin-bottom: var(--espacio-14);
+}
+
+.bloque-extra {
+  font-size: var(--letra-80);
+  font-weight: 600;
+  padding: var(--espacio-2) var(--espacio-10);
+  color: var(--texto-2);
+  background: var(--superficie-2);
+}
+
+.grupo-columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: var(--espacio-32);
+  align-items: start;
+}
+
+.grupo-columnas > .bloque + .bloque {
+  margin-top: 0;
+}
+
+.bloque > .boton-texto {
+  margin-top: var(--espacio-8);
+}
+
+/* Mosaico de apartados: una pieza por apartado, que abre su hoja. */
+.mosaico {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--espacio-12);
+}
+
+.mosaico li {
+  scroll-margin-top: 130px;
+}
+
+/* Rejillas de fichas sin celdas huérfanas (.mosaico, .caracteristicas): 12 subcolumnas; cada pieza ocupa 12 / n y
+   las de la última fila se reparten el ancho entero, así todas las filas quedan parejas con cualquier número de piezas.
+   Cada tramo de ancho lleva su propia regla (con `width` entre dos límites) para que la de un tramo no se cuele en el
+   siguiente. En móvil (hasta 700px) `.mosaico` es de 2 columnas fijas (más abajo): ahí no se le aplica nada. */
+.caracteristicas > li {
+  grid-column: span 12;
+}
+
+@media (520px <= width <= 700px) {
+  .caracteristicas > li {
+    grid-column: span 6;
+  }
+
+  .caracteristicas > li:last-child:nth-child(odd) {
+    grid-column: span 12;
+  }
+}
+
+@media (700px < width < 760px) {
+  :is(.mosaico, .caracteristicas) > li {
+    grid-column: span 6;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(odd) {
+    grid-column: span 12;
+  }
+}
+
+@media (760px <= width < 1000px) {
+  :is(.mosaico, .caracteristicas) > li {
+    grid-column: span 4;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(3n + 1) {
+    grid-column: span 12;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(2):nth-child(3n + 1),
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(3n + 2) {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 1000px) {
+  :is(.mosaico, .caracteristicas) > li {
+    grid-column: span 3;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(4n + 1) {
+    grid-column: span 12;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(2):nth-child(4n + 1),
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(4n + 2) {
+    grid-column: span 6;
+  }
+
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(3):nth-child(4n + 1),
+  :is(.mosaico, .caracteristicas) > li:nth-last-child(2):nth-child(4n + 2),
+  :is(.mosaico, .caracteristicas) > li:last-child:nth-child(4n + 3) {
+    grid-column: span 4;
+  }
+}
+
+.mosaico-pieza {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--espacio-14);
+  padding: var(--espacio-10) var(--espacio-14) var(--espacio-10) var(--espacio-10);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+  transition:
+    border-color var(--transicion),
+    transform var(--transicion);
+}
+
+.mosaico-pieza:hover {
+  border-color: var(--acento-proyecto, var(--celeste));
+  transform: translateY(-1px);
+}
+
+.mosaico-pieza img,
+.mosaico-inicial {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
+.mosaico-inicial {
+  display: grid;
+  place-items: center;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: var(--letra-150);
+  color: var(--acento-texto);
+  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
+}
+
+.mosaico-texto {
+  display: grid;
+  gap: var(--espacio-2);
+  min-width: 0;
+}
+
+.mosaico-texto strong {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-100);
+}
+
+.mosaico-texto span {
+  font-size: var(--letra-80);
+  color: var(--texto-2);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.mosaico-flecha {
+  color: var(--texto-3);
+}
+
+.mosaico-pieza:hover .mosaico-flecha {
+  color: var(--acento-texto);
+}
+
+/* Hoja de un apartado: panel ancho y centrado en escritorio, pantalla completa en móvil. */
+.hoja {
+  width: min(1100px, calc(100vw - 48px));
+  max-width: none;
+  height: min(88dvh, 900px);
+  max-height: none;
+  padding: 0;
+  border: 1px solid var(--borde);
+  background: var(--fondo);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+.hoja:focus,
+.hoja:focus-visible {
+  outline: none;
+}
+
+.hoja::backdrop {
+  background: rgb(3 9 15 / 0.7);
+}
+
+.hoja-caja {
+  height: 100%;
+  display: grid;
+  /* La columna no crece con el título en una línea: sin esto, un título largo ensancha la hoja y todo lo de
+     dentro sale cortado por la derecha en el móvil. */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.hoja-cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-12);
+  padding: var(--espacio-14) var(--espacio-16) var(--espacio-14) var(--espacio-24);
+  border-bottom: 1px solid var(--borde);
+  background: var(--superficie);
+}
+
+.hoja-cabecera h2 {
+  font-size: var(--letra-125);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hoja-posicion {
+  font-size: var(--letra-85);
+  color: var(--texto-3);
+  white-space: nowrap;
+}
+
+.hoja-botones {
+  margin-left: auto;
+  display: flex;
+  gap: var(--espacio-6);
+}
+
+.hoja-cuerpo {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--espacio-24);
+}
+
+.hoja-siguiente {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-8);
+  width: 100%;
+  margin-top: var(--espacio-24);
+  padding: var(--espacio-16) var(--espacio-20);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-2);
+  font: inherit;
+  font-size: var(--letra-90);
+  cursor: pointer;
+}
+
+.hoja-siguiente strong {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  color: var(--texto);
+  font-family: var(--fuente-titulos);
+}
+
+.hoja-siguiente:hover {
+  border-color: var(--acento-proyecto, var(--celeste));
+}
+
+/* En móvil, las listas de tarjetas pasan a filas compactas: icono o número a la izquierda y texto al lado. */
+@media (max-width: 700px) {
+  .caracteristicas,
+  .pasos-ficha {
+    gap: var(--espacio-8);
+  }
+  .caracteristicas li {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: var(--espacio-12);
+    padding: var(--espacio-14);
+  }
+  .caracteristica-icono {
+    grid-row: span 2;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+  }
+  .caracteristica-icono svg {
+    width: 18px;
+    height: 18px;
+  }
+  .caracteristicas h4,
+  .pasos-ficha h4,
+  .decisiones h4 {
+    font-size: var(--letra-95);
+    margin-bottom: var(--espacio-2);
+  }
+  .caracteristicas p,
+  .pasos-ficha p,
+  .decisiones p {
+    font-size: var(--letra-90);
+  }
+  .pasos-ficha li {
+    padding: var(--espacio-14) var(--espacio-14) var(--espacio-14) var(--espacio-56);
+  }
+  .pasos-ficha li::before {
+    top: 14px;
+    left: 14px;
+    width: 28px;
+    height: 28px;
+  }
+  .decisiones li {
+    padding: var(--espacio-14) var(--espacio-16);
+  }
+  .mosaico {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--espacio-8);
+  }
+  .mosaico-pieza {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: var(--espacio-10);
+    padding: var(--espacio-8);
+  }
+  .mosaico-pieza img,
+  .mosaico-inicial {
+    width: 40px;
+    height: 40px;
+    /* 19,2 px en negrita: texto grande para WCAG, que con el acento de cada ficha pide 3:1 y no 4,5:1. */
+    font-size: var(--letra-125);
+  }
+  .mosaico-texto strong {
+    font-size: var(--letra-90);
+    line-height: 1.2;
+  }
+  .mosaico-texto span {
+    font-size: var(--letra-75);
+  }
+  .mosaico-flecha {
+    display: none;
+  }
+  .grupo-columnas {
+    gap: var(--espacio-28);
+  }
+}
+
+/* Por debajo de 380px dos columnas cortan el nombre de cada pieza («configuración», «dimensiones»); `npm run medir`
+   lo mide (columna `cortes`). */
+@media (max-width: 23.6875em) {
+  .mosaico {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .vistazo {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: var(--espacio-neg-20);
+  }
+  .vistazo-ahora,
+  .vistazo-novedad {
+    padding: var(--espacio-16) var(--espacio-18);
+  }
+  .vistazo-texto {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  .nav-ficha {
+    margin-left: var(--espacio-neg-16);
+    margin-right: var(--espacio-neg-16);
+  }
+  .nav-ficha a:first-of-type {
+    margin-left: var(--espacio-12);
+  }
+  .nav-ficha a:last-of-type {
+    margin-right: var(--espacio-12);
+  }
+  .nav-ficha a {
+    padding: var(--espacio-8) var(--espacio-12);
+    font-size: var(--letra-85);
+  }
+  .grupo {
+    padding-top: var(--espacio-40);
+  }
+  .hoja {
+    width: 100vw;
+    height: 100dvh;
+    border: 0;
+  }
+  .hoja-cabecera {
+    padding: var(--espacio-10) var(--espacio-10) var(--espacio-10) var(--espacio-16);
+    gap: var(--espacio-8);
+  }
+  .hoja-cabecera h2 {
+    font-size: var(--letra-100);
+  }
+  .hoja-posicion {
+    display: none;
+  }
+  .hoja-cuerpo {
+    padding: var(--espacio-16);
+  }
+}
+

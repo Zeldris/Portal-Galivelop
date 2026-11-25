@@ -111,7 +111,7 @@ const parar = (hijo) => {
 /**
  * Corre en la página. En móvil busca el texto que no cabe en su caja (scrollWidth > clientWidth, salvo las cajas que
  * se desplazan a propósito) y los controles visibles con zona táctil por debajo de `tactil`; la zona cuenta el
- * `::after` absoluto con que `global.css` agranda los enlaces sueltos. Los enlaces dentro de un párrafo no cuentan
+ * `::after` absoluto con que las hojas de `src/estilos` agrandan los enlaces sueltos. Los enlaces dentro de un párrafo no cuentan
  * (WCAG 2.5.8 los exime). Devuelve como mucho 5 de cada, con un nombre corto para encontrarlos. Con `raiz` (un
  * selector), mide solo esa caja y lo que tiene dentro: una capa abierta, como la hoja de un apartado.
  */
@@ -185,7 +185,7 @@ function medirPagina({ movil, tactil, raiz }) {
 /**
  * En móvil, abre lo que la página esconde hasta que se toca (el menú, cada hoja de apartado, la vista ampliada de una
  * imagen) y lo mide como la página. Devuelve los cortes y los controles pequeños con la capa delante, para saber dónde
- * mirar. Las capas se miden sin animaciones (`global.css` las anula con movimiento reducido), ya quietas al abrirse; la
+ * mirar. Las capas se miden sin animaciones (`src/estilos` las anula con movimiento reducido), ya quietas al abrirse; la
  * página, con ellas, como la ve casi todo el mundo.
  */
 async function medirCapas(pagina) {

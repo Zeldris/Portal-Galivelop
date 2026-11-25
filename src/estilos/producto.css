@@ -1,0 +1,597 @@
+/* ---------- Página de un producto (ADR 0005) ----------
+   Cuaderno de taller: cabecera con portada, los pasos con sus diagramas, las fichas, el bloque celeste
+   del contacto y el apartado técnico plegado. El acento es el del producto (`--acento-proyecto`). */
+
+.producto-cabeza {
+  display: grid;
+  gap: var(--espacio-28);
+  padding-block: var(--espacio-cabeza-producto);
+}
+
+.producto-cabeza > * {
+  min-width: 0;
+}
+
+.producto-cabeza-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-16);
+}
+
+.producto-cabeza .antetitulo {
+  color: var(--texto-2);
+}
+
+.producto-cabeza .antetitulo::before {
+  width: 8px;
+  height: 8px;
+  background: var(--acento-bloque);
+}
+
+.producto-cabeza h1 {
+  font-size: var(--letra-hero);
+  line-height: 0.95;
+}
+
+.producto-alias {
+  font: var(--datos);
+  font-size: var(--letra-95);
+  color: var(--texto);
+}
+
+.producto-alias span {
+  margin-right: var(--espacio-4);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.producto-lema {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-4);
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: var(--letra-titulo-2);
+  text-transform: uppercase;
+}
+
+.producto-lema .destacado {
+  margin-top: 0;
+}
+
+.producto-entrada {
+  max-width: 34em;
+  font-size: var(--letra-entrada);
+}
+
+.producto-botones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-12) var(--espacio-24);
+  margin-top: var(--espacio-8);
+}
+
+.producto-botones .enlace-flecha {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.producto-portada {
+  display: block;
+  width: 100%;
+  height: auto;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-grande)) 0,
+    100% var(--chaflan-grande),
+    100% 100%,
+    0 100%
+  );
+}
+
+.producto-bloque {
+  padding-block: var(--espacio-bloque-corto);
+}
+
+.producto-franja {
+  padding-block: var(--espacio-bloque);
+}
+
+.producto-titulo {
+  margin-bottom: var(--espacio-24);
+  padding-bottom: var(--espacio-10);
+  border-bottom: 2px solid var(--tinta);
+  font-size: var(--letra-titulo-3);
+}
+
+.producto-pasos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.producto-pasos li {
+  display: flex;
+  gap: var(--espacio-14);
+  padding-block: var(--espacio-14);
+  border-bottom: 1px dashed var(--borde);
+}
+
+.producto-pasos li:last-child {
+  border-bottom: 0;
+}
+
+.producto-pasos li > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  min-width: 0;
+}
+
+.producto-pasos strong {
+  font-weight: 600;
+}
+
+.producto-pasos li > div > span {
+  color: var(--texto-2);
+}
+
+.producto-paso-num {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-top: var(--espacio-1);
+  font: var(--datos);
+  color: var(--tinta);
+  background: var(--superficie);
+  border: 1px solid var(--tinta);
+}
+
+.producto-pasos li:nth-child(2) .producto-paso-num,
+.producto-pasos li:nth-child(3) .producto-paso-num {
+  color: var(--blanco);
+  background: var(--acento-bloque);
+  border-color: var(--acento-bloque);
+}
+
+.producto-pasos li:nth-child(4) .producto-paso-num {
+  color: var(--papel);
+  background: var(--tinta);
+}
+
+.producto-franja {
+  background: var(--fondo-alterno);
+}
+
+.producto-garantias {
+  display: grid;
+  gap: var(--espacio-16);
+}
+
+.producto-garantia {
+  --borde-chaflan: var(--acento-bloque);
+  position: relative;
+  padding: var(--espacio-20);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-top: 3px solid var(--acento-bloque);
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+.producto-garantia::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: calc(100% + 1px - var(--chaflan));
+  width: calc(var(--chaflan) * 1.4142);
+  height: 3px;
+  pointer-events: none;
+  background: var(--borde-chaflan);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.producto-garantia h3 {
+  margin-bottom: var(--espacio-8);
+  font-size: var(--letra-125);
+  line-height: 1.1;
+}
+
+.producto-garantia p {
+  color: var(--texto-2);
+}
+
+.producto-contacto {
+  margin-top: 0;
+}
+
+.producto-contacto-dentro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-20);
+  padding-block: var(--espacio-bloque);
+}
+
+.producto-contacto h2 {
+  font-size: var(--letra-titulo-2);
+}
+
+.producto-contacto-texto {
+  max-width: 34em;
+}
+
+.producto-correo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-6) var(--espacio-12);
+}
+
+.producto-correo-rotulo {
+  flex-basis: 100%;
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+}
+
+.producto-correo-direccion {
+  font: var(--datos);
+  font-size: var(--letra-95);
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.producto-copiar {
+  --borde-boton: currentColor;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  min-height: 28px;
+  padding: var(--espacio-4) var(--espacio-10);
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: inherit;
+  background: transparent;
+  border: 1px solid var(--borde-boton);
+  cursor: pointer;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-pequeno)) 0,
+    100% var(--chaflan-pequeno),
+    100% 100%,
+    0 100%
+  );
+}
+
+/* El chaflán recorta el contorno exterior del foco: se dibuja dentro con --foco-chaflan, como en .boton. */
+.producto-copiar:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: var(--foco-chaflan);
+}
+
+/* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en .boton-secundario. */
+.producto-copiar::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% + 1px - var(--chaflan-pequeno));
+  width: calc(var(--chaflan-pequeno) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-boton);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.producto-copiar:hover {
+  --borde-boton: var(--blanco);
+  color: var(--celeste-hondo);
+  background: var(--blanco);
+}
+
+.producto-copia-fallo:empty {
+  display: none;
+}
+
+.producto-estrecho {
+  max-width: 760px;
+}
+
+.producto-plegable {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+/* Requisitos mínimos y apartado técnico, uno tras otro: separados, sin borde doble. */
+.producto-plegable + .producto-plegable {
+  margin-top: var(--espacio-16);
+}
+
+.producto-plegable summary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  padding: var(--espacio-16) var(--espacio-48) var(--espacio-16) var(--espacio-18);
+  list-style: none;
+  cursor: pointer;
+}
+
+.producto-plegable summary::-webkit-details-marker {
+  display: none;
+}
+
+.producto-plegable summary::after {
+  content: '+';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font: 500 var(--letra-150) / 1 var(--fuente-datos);
+  color: var(--acento-texto);
+}
+
+.producto-plegable[open] summary::after {
+  content: '−';
+}
+
+.producto-plegable[open] summary {
+  border-bottom: 1px dashed var(--borde);
+}
+
+.producto-plegable-ante {
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.producto-plegable-titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 800;
+  font-size: var(--letra-150);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.producto-plegable-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-16);
+  padding: var(--espacio-18);
+}
+
+.producto-plegable-cuerpo h3 {
+  font-size: var(--letra-125);
+}
+
+.producto-papeles {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-8);
+  margin: 0;
+  padding: 0;
+}
+
+.producto-papeles li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  min-width: 0;
+  padding: var(--espacio-10);
+  font-size: var(--letra-95);
+  line-height: 1.25;
+  border: 1px solid var(--borde);
+  border-top: 3px solid var(--acento-bloque);
+}
+
+.producto-papeles span {
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.producto-papeles strong {
+  font-weight: 600;
+}
+
+.producto-papeles-texto {
+  font-size: var(--letra-95);
+  color: var(--texto-2);
+}
+
+.producto-datos {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.producto-datos > div {
+  display: grid;
+  gap: var(--espacio-2);
+  padding-block: var(--espacio-10);
+  border-top: 1px dashed var(--borde);
+}
+
+.producto-datos dt {
+  font: var(--datos);
+  font-size: var(--letra-75);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.producto-datos dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.producto-datos code {
+  font-family: var(--fuente-datos);
+  font-size: var(--letra-90);
+}
+
+/* Contacto siempre a mano en el móvil; se retira cuando el bloque celeste ya está en pantalla. */
+.producto-fijo {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .producto-pagina {
+    padding-bottom: var(--espacio-72);
+  }
+
+  .producto-fijo {
+    position: fixed;
+    z-index: var(--z-nav-ficha);
+    inset: auto 0 0;
+    display: block;
+    padding: var(--espacio-10) var(--espacio-16) calc(var(--espacio-10) + env(safe-area-inset-bottom));
+    background: var(--papel);
+    border-top: 1px solid var(--tinta);
+  }
+
+  .producto-fijo[hidden] {
+    display: none;
+  }
+
+  .producto-fijo .boton {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 620px) {
+  .producto-datos > div {
+    grid-template-columns: 190px 1fr;
+    gap: var(--espacio-16);
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 860px) {
+  .producto-cabeza {
+    grid-template-columns: 1.05fr 1fr;
+    gap: var(--espacio-56);
+    align-items: center;
+  }
+
+  .producto-garantias {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--espacio-24);
+  }
+
+  .producto-cabeza-sola {
+    grid-template-columns: 1fr;
+  }
+
+  .producto-beneficios {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacio-24);
+  }
+}
+
+/* Problema, beneficios, figuras y «para quién es» (ADR 0006). */
+.producto-problema {
+  max-width: 62ch;
+}
+
+.producto-problema p {
+  color: var(--texto-2);
+  font-size: var(--letra-110);
+}
+
+.producto-beneficios {
+  display: grid;
+  gap: var(--espacio-16);
+  margin-bottom: var(--espacio-8);
+}
+
+.producto-figuras {
+  display: grid;
+  gap: var(--espacio-24);
+  margin-top: var(--espacio-28);
+}
+
+.producto-figura {
+  position: relative;
+  margin: 0;
+  padding: var(--espacio-12);
+  background: var(--papel);
+  border: 1px solid var(--borde);
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+/* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en .producto-garantia. */
+.producto-figura::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% + 1px - var(--chaflan));
+  width: calc(var(--chaflan) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.producto-figura img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.producto-figura figcaption {
+  margin-top: var(--espacio-8);
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+}
+
+.producto-paraquien {
+  display: grid;
+  gap: var(--espacio-10);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.producto-paraquien li {
+  padding: var(--espacio-12) var(--espacio-16);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 3px solid var(--acento-bloque);
+}
+
+.producto-estado {
+  max-width: 60ch;
+  margin: 0;
+  font-weight: 600;
+}
+
+@media print {
+  .producto-fijo {
+    display: none !important;
+  }
+}
+

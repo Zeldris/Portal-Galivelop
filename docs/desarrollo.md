@@ -23,7 +23,8 @@ La presentación pública está en el [README](../README.md).
   envía desde la aplicación de correo de quien lo rellena; si no se abre, se puede copiar.
 - **Idiomas:** castellano, gallego e inglés (detecta el del navegador y recuerda la elección).
 - **Tema** claro y oscuro.
-- **Colores forzados** (Windows Alto contraste, `forced-colors: active`): el bloque final de `src/estilos/global.css` devuelve foco de campos, bordes de botones, píldoras de estado e indicadores hechos con `box-shadow`; no cambia el tema por defecto.
+- **Colores forzados** (Windows Alto contraste, `forced-colors: active`): el bloque final (`src/estilos/colores-forzados.css`, la última hoja) devuelve foco de campos, bordes de botones, píldoras de estado e indicadores hechos con `box-shadow`; no cambia el tema por defecto.
+- **Estilos:** `src/estilos/global.css` es solo la lista ordenada de `@import` de las hojas por área (`base.css`: tokens, temas y reglas generales; `componentes.css`, una por página o zona…, y `colores-forzados.css` al final). Vite las junta en un solo CSS en ese orden, y **el orden importa** (la cascada): una regla que se mueve de hoja puede cambiar el resultado. Los tests leen todo con `leerEstilos()` de `src/estilos/leer-estilos.ts`.
 
 El código de cada proyecto se enlaza desde su ficha («Ver el código en GitHub», tipo `otro` en `enlaces`)
 cuando su repositorio es público; si es privado, no se enlaza. Además, el portal lleva a su versión pública

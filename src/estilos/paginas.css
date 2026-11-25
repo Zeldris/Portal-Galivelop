@@ -1,0 +1,476 @@
+/* ---------- 404 ---------- */
+
+.no-encontrado .contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-16);
+  text-align: center;
+  padding-block: var(--espacio-56);
+}
+
+.no-encontrado p {
+  color: var(--texto-2);
+}
+
+/* Ilustraciones sobre papel (404, error de carga, lista vacía, formularios, equipo): enmarcadas, a su tamaño o menos. */
+.no-encontrado-imagen,
+.aviso-error-imagen,
+.vacio-imagen,
+.formulario-ilustracion,
+.formulario-listo-imagen,
+.banda-cabecera {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--borde);
+}
+
+.no-encontrado-imagen {
+  max-width: 480px;
+}
+
+.formulario-ilustracion {
+  margin: var(--espacio-4) 0 var(--espacio-24);
+}
+
+.aviso-error-imagen,
+.vacio-imagen,
+.formulario-listo-imagen {
+  max-width: 240px;
+}
+
+.formulario-listo-imagen {
+  margin-bottom: var(--espacio-16);
+}
+
+/* Imagen con versión por tema: solo se ve la del tema activo. */
+:root[data-tema='claro'] .solo-oscuro,
+:root:not([data-tema='claro']) .solo-claro {
+  display: none;
+}
+
+.banda-cabecera {
+  margin-bottom: var(--espacio-tarjeta);
+}
+
+/* Cabecera de ficha con captura enmarcada (proyectos web o app) */
+
+.cabecera-captura,
+.cabecera-color {
+  align-items: center;
+  /* Celeste hondo: con isobatas detrás de la captura; en color, bajo la portada por estado velada (recurso 6). */
+  background: var(--celeste-hondo);
+}
+
+.proyecto-isobatas {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+  pointer-events: none;
+}
+
+.cabecera-captura .proyecto-cabecera-contenido {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: var(--espacio-columnas);
+  align-items: center;
+}
+
+.cabecera-captura .volver,
+.cabecera-color .volver {
+  margin-bottom: var(--espacio-40);
+}
+
+.ventana {
+  margin: 0 0 var(--espacio-40);
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgb(255 255 255 / 0.6);
+}
+
+.ventana-barra {
+  display: flex;
+  gap: var(--espacio-6);
+  padding: var(--espacio-10) var(--espacio-12);
+  background: var(--superficie-2);
+}
+
+.ventana-barra i {
+  width: 10px;
+  height: 10px;
+  background: var(--filete);
+}
+
+@media (max-width: 860px) {
+  .cabecera-captura .proyecto-cabecera-contenido {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Relleno desenfocado para imágenes que no llenan el carrusel */
+
+.galeria-fondo {
+  position: absolute;
+  inset: -40px;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
+  object-fit: cover;
+  /* Plano, sin desenfoque: solo oscurece el hueco que la imagen no llena. */
+  filter: brightness(0.25) saturate(0.4);
+}
+
+.galeria-imagen {
+  position: relative;
+}
+
+/* ---------- Ajustes para móvil ---------- */
+
+@media (max-width: 600px) {
+  .tarjeta-cuerpo {
+    padding: var(--espacio-4) var(--espacio-18) var(--espacio-20);
+  }
+  .tarjeta h3 {
+    font-size: var(--letra-150);
+  }
+  .tarjeta-pie {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--espacio-12);
+  }
+  .tarjeta-ver {
+    align-self: end;
+  }
+  .cifras li {
+    padding: var(--espacio-12) var(--espacio-10);
+  }
+  .cifras strong {
+    font-size: var(--letra-125);
+  }
+  .cifras span {
+    font-size: var(--letra-75);
+  }
+  .hito {
+    gap: var(--espacio-12);
+  }
+  .valores li {
+    padding: var(--espacio-18);
+  }
+  .proyecto-cabecera {
+    min-height: 0;
+  }
+  .volver {
+    margin-bottom: var(--espacio-48);
+  }
+}
+
+/* ---------- Contacto: correos ---------- */
+
+.contacto-proyectos {
+  margin-top: var(--espacio-28);
+  padding-top: var(--espacio-24);
+  border-top: 1px solid var(--borde);
+  width: min(100%, 520px);
+}
+
+.contacto-proyectos h3 {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-3);
+  margin-bottom: var(--espacio-12);
+}
+
+.contacto-proyectos ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espacio-8);
+}
+
+.contacto-proyectos li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--espacio-4) var(--espacio-12);
+}
+
+.contacto-proyectos span {
+  font-weight: 600;
+}
+
+.contacto-proyectos a {
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.boton-cristal {
+  /* Más velo, menos contraste con el texto blanco: a 0,12 se quedaba en 4,25:1. */
+  background: rgb(255 255 255 / 0.06);
+  border-color: rgb(255 255 255 / 0.3);
+  color: var(--blanco);
+}
+
+.boton-cristal:hover {
+  background: rgb(255 255 255 / 0.2);
+}
+
+/* ---------- Colaboración y participación ---------- */
+
+.colab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  align-self: start;
+  font-size: var(--letra-80);
+  font-weight: 600;
+  padding: var(--espacio-4) var(--espacio-10);
+  border: 1px solid;
+}
+
+.colab-abierta {
+  color: var(--enlace);
+  border-color: color-mix(in srgb, var(--celeste) 45%, transparent);
+  background: var(--tinte);
+}
+
+.colab-privada {
+  color: var(--texto-2);
+  border-color: var(--borde);
+  background: var(--superficie-2);
+}
+
+.proyecto-meta .colab {
+  background: var(--velo-denso);
+  color: var(--blanco);
+  border-color: rgb(255 255 255 / 0.2);
+}
+
+.vias {
+  list-style: none;
+  margin: var(--espacio-12) 0 var(--espacio-8);
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: var(--espacio-14);
+  text-align: left;
+}
+
+.vias li {
+  padding: 0;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.via > svg:first-child {
+  width: 44px;
+  height: 44px;
+  padding: var(--espacio-10);
+  color: var(--celeste);
+  background: var(--tinte);
+  margin-bottom: var(--espacio-12);
+}
+
+.vias h3 {
+  font-size: var(--letra-100);
+  margin-bottom: var(--espacio-4);
+}
+
+.contacto .vias p {
+  font-size: var(--letra-95);
+  margin: 0;
+}
+
+.contacto p.nota-privado {
+  display: flex;
+  gap: var(--espacio-10);
+  align-items: flex-start;
+  text-align: left;
+  max-width: 70ch;
+  padding: var(--espacio-14) var(--espacio-18);
+  border: 1px dashed var(--borde);
+  font-size: var(--letra-90);
+}
+
+.nota-privado svg {
+  flex: none;
+  margin-top: var(--espacio-4);
+  color: var(--texto-3);
+}
+
+.participar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--espacio-20);
+  margin-top: var(--espacio-28);
+  padding: var(--espacio-24);
+  border: 1px solid color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 40%, var(--borde));
+  background: var(--superficie);
+}
+
+.participar-icono svg {
+  width: 26px;
+  height: 26px;
+}
+
+.participar-icono {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: var(--acento-texto);
+  background: color-mix(in srgb, var(--acento-proyecto, var(--celeste)) 16%, transparent);
+}
+
+.participar h2 {
+  font-size: var(--letra-125);
+  margin-bottom: var(--espacio-4);
+}
+
+.participar p {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+@media (max-width: 700px) {
+  .participar {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-14);
+  }
+  .participar .boton {
+    justify-self: start;
+  }
+}
+
+/* Rosa y sello en el tema oscuro: en negativo (tinta clara, relleno noche). */
+:root:not([data-tema='claro']) .pie-rosa,
+:root:not([data-tema='claro']) .sobre-sello {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* Banda de la marca (recurso 29), con su versión para cada tema: mide 4:1 y deja el cabo en la mitad derecha, así
+   que el texto va en la izquierda. */
+.participar-banda {
+  display: none;
+}
+
+.participar-abierta {
+  position: relative;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  gap: var(--espacio-16) var(--espacio-20);
+  aspect-ratio: 4 / 1;
+  padding: var(--espacio-24) 48% var(--espacio-24) var(--espacio-24);
+  overflow: hidden;
+}
+
+.participar-abierta > :not(.participar-banda) {
+  position: relative;
+}
+
+.participar-abierta .boton {
+  grid-column: 2;
+  justify-self: start;
+}
+
+/* Si el texto pide más alto que el 4:1, la banda crece y recorta papel vacío por la izquierda, nunca el cabo. */
+:root[data-tema='claro'] .participar-banda-claro,
+:root:not([data-tema='claro']) .participar-banda-oscuro {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+/* Por debajo de 900 px el texto ya no cabe en el 4:1 y el cover recortaría el cabo: la banda pasa encima del texto,
+   de borde a borde, y recorta solo papel de la izquierda. */
+@media (max-width: 900px) {
+  .participar-abierta {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+    padding: 0 var(--espacio-24) var(--espacio-24);
+  }
+  .participar-abierta .boton {
+    grid-column: auto;
+  }
+  :root[data-tema='claro'] .participar-banda-claro,
+  :root:not([data-tema='claro']) .participar-banda-oscuro {
+    position: static;
+    width: calc(100% + 48px);
+    max-width: none;
+    height: 120px;
+    margin: 0 var(--espacio-neg-24);
+  }
+}
+
+/* ---------- Vías de participación como enlaces ---------- */
+
+.via {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--espacio-24);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color var(--transicion),
+    transform var(--transicion);
+}
+
+.vias li:has(.via:hover) {
+  border-color: var(--celeste);
+}
+
+.via:hover {
+  transform: translateY(-2px);
+}
+
+.via-ir {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  margin-top: auto;
+  padding-top: var(--espacio-14);
+  font-weight: 600;
+  font-size: var(--letra-90);
+  color: var(--enlace);
+}
+
+.contacto p.contacto-otros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-4) var(--espacio-8);
+  margin-top: var(--espacio-6);
+  font-size: var(--letra-90);
+}
+
+/* En el móvil cada enlace cae en su línea o junto a otro; los puntos sobran y quedaban al final de la línea. */
+@media (max-width: 700px) {
+  .contacto p.contacto-otros {
+    gap: var(--espacio-10) var(--espacio-18);
+  }
+  .contacto-sep {
+    display: none;
+  }
+}
+
+.contacto-otros a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-all;
+}
+

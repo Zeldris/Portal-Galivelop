@@ -4,7 +4,7 @@ import type { CSSProperties } from 'react';
 // docs/marca.md, «Acento de cada proyecto»). El hex de la ficha es el vivo; el hondo (tema claro) y la variante
 // oscura se calculan en OKLCH, no se eligen a ojo.
 
-/** Papel claro y papel oscuro del Portal (`--papel` de global.css). */
+/** Papel claro y papel oscuro del Portal (`--papel` de base.css). */
 export const PAPEL_CLARO = '#fbfcfd';
 export const PAPEL_OSCURO = '#0d171e';
 const MINIMO = 4.5;
@@ -118,7 +118,7 @@ export function tonosAcento(vivo: string): Tonos {
   return tonos;
 }
 
-/** Variables CSS del acento de un proyecto para su `style` (las usa global.css: `--acento-proyecto*`). */
+/** Variables CSS del acento de un proyecto para su `style` (las usan las hojas de src/estilos: `--acento-proyecto*`). */
 export function estiloAcento(vivo: string): CSSProperties {
   const t = tonosAcento(vivo);
   return {

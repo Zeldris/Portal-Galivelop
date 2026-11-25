@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { renderToString } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import { Muro } from '../paginas';
+import { leerEstilos } from '../estilos/leer-estilos';
 import { ProveedorIdioma } from '../i18n/Idioma';
 import { ImagenAmpliable } from './ImagenAmpliable';
 
@@ -37,7 +38,7 @@ describe('fuentes con comprobación de texto', () => {
     expect(src).not.toContain('aria-current="true"');
     expect(src).toContain('aria-current="location"');
     // Y la hoja de estilos pinta la pestaña activa con ese mismo valor.
-    const css = readFileSync('src/estilos/global.css', 'utf8');
+    const css = leerEstilos();
     expect(css).toContain(".nav-ficha a[aria-current='location']");
     expect(css).not.toContain(".nav-ficha a[aria-current='true']");
   });

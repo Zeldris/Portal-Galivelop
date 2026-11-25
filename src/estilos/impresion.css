@@ -1,0 +1,197 @@
+/* ---------- Impresión ---------- */
+/* Solo contenido: sin cabecera, menús, botones, galerías ni adornos; texto oscuro sobre blanco en cualquier tema
+   (se fuerzan los tokens del tema claro) y los enlaces externos con su dirección tras el texto. */
+@media print {
+  :root,
+  :root[data-tema='claro'],
+  :root[data-tema='oscuro'] {
+    color-scheme: light;
+    --papel: var(--blanco);
+    --reticula: #ffffff;
+    --celeste-hondo: #0072a8;
+    --tinta: #13212b;
+    --tinta-2: #4a5c69;
+    --alga: #5d7a6a;
+    --filete: #b9cbd6;
+    --fondo: #ffffff;
+    --fondo-alterno: #ffffff;
+    --superficie: #ffffff;
+    --superficie-2: #ffffff;
+    --borde: #b9cbd6;
+    --texto: #13212b;
+    --texto-2: #4a5c69;
+    --texto-3: #4a5c69;
+    --enlace: #0072a8;
+    --tinte: transparent;
+    --sombra: none;
+    --ok-texto: #3f5a4b;
+  }
+
+  html,
+  body {
+    background: var(--blanco);
+    color: var(--texto);
+  }
+
+  .cabecera,
+  .saltar,
+  .pie-rosa,
+  .pie nav,
+  .boton,
+  button,
+  dialog,
+  .galeria,
+  .hero-fondo,
+  .hero-collage,
+  .proyecto-isobatas {
+    display: none !important;
+  }
+
+  /* Bandas de color con texto blanco: sin fondo y con la tinta del texto. */
+  .hero,
+  .cabecera-captura,
+  .cabecera-color,
+  .destacado {
+    background: var(--blanco) !important;
+    color: var(--texto) !important;
+  }
+
+  .hero :is(h1, h2, p, dt, dd, span, a, div),
+  .cabecera-captura :is(h1, h2, p, dt, dd, span, a, div),
+  .cabecera-color :is(h1, h2, p, dt, dd, span, a, div) {
+    color: var(--texto) !important;
+  }
+
+  html.js [data-estatico] {
+    visibility: visible !important;
+  }
+
+  * {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .tarjeta,
+  .tarjeta-proxima,
+  .tarjeta-producto,
+  .persona,
+  .hito,
+  .bloque,
+  figure,
+  li {
+    break-inside: avoid;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  main a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 0.8em;
+    word-break: break-all;
+  }
+
+  .tarjeta-enlace::after {
+    position: static;
+  }
+}
+
+/* Lector de la página (src/components/Lector.tsx): botón flotante y barra fija abajo; resalta la sección que lee. */
+.lector-boton,
+.lector button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  cursor: pointer;
+}
+
+.lector-boton {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: var(--z-panel);
+  width: 52px;
+  height: 52px;
+  background: var(--celeste-intenso);
+  border-color: var(--celeste-intenso);
+  color: var(--sobre-intenso);
+  box-shadow: var(--sombra);
+}
+
+.lector {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  z-index: var(--z-panel);
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  max-width: calc(100vw - 24px);
+  padding: var(--espacio-6) var(--espacio-8);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+}
+
+.lector button {
+  width: 44px;
+  height: 44px;
+}
+
+.lector button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.lector-boton:focus-visible,
+.lector button:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: var(--foco-fuera);
+}
+
+.lector-posicion {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  margin: 0 var(--espacio-6);
+  font: var(--datos);
+  white-space: nowrap;
+}
+
+.guion-activo,
+.guion-enfoque {
+  outline: 3px solid var(--celeste-intenso);
+  outline-offset: var(--foco-dentro);
+  transition: outline-color var(--transicion);
+}
+
+/* El elemento que se está leyendo dentro de una sección alta: solo contorno, sin fondo que tape el texto. */
+.guion-enfoque {
+  outline-offset: var(--foco-fuera-amplio);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guion-activo,
+  .guion-enfoque {
+    transition: none;
+  }
+}
+

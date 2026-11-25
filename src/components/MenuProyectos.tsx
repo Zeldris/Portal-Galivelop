@@ -11,7 +11,7 @@ import { EstadoEtiqueta } from './EstadoEtiqueta';
  * «Proyectos» con submenú: un enlace a la página de cada proyecto y otro a la lista completa.
  * En escritorio se despliega al pasar el ratón o al pulsar; en el menú móvil se muestra abierto.
  */
-/** El ancho del menú móvil (el mismo `@media` de global.css): ahí el submenú va siempre abierto. */
+/** El ancho del menú móvil (el mismo `@media` de submenu-proyectos.css): ahí el submenú va siempre abierto. */
 const MOVIL = '(max-width: 68.75em)'; // 1100 px
 const suscribir = (aviso: () => void) => {
   const m = window.matchMedia(MOVIL);
@@ -98,7 +98,7 @@ export function MenuProyectos({ alNavegar }: { alNavegar: () => void }) {
                   pathname.replace(/\/$/, '') === `/proyectos/${p.slug}` ? 'page' : undefined
                 }
               >
-                {/* 56×40: la caja de la miniatura en global.css (.submenu-proyecto img), no las medidas de la imagen. */}
+                {/* 56×40: la caja de la miniatura en submenu-proyectos.css (.submenu-proyecto img), no las medidas de la imagen. */}
                 <img
                   src={ruta(p.portada.mini)}
                   width={56}

@@ -81,7 +81,7 @@ saturate(0.7)` en `.proxima-icono` (icono de la tarjeta «Próximamente») es un
 
 ## Tokens
 
-Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se añaden; `--brillo` pasó a ser
+Los nombres actuales de `global.css` (hoy `base.css`) se conservan donde coinciden; los nuevos se añaden; `--brillo` pasó a ser
 `--tinte` (un plano, no un resplandor) y `--sombra` queda solo para el panel.
 
 | Token | Claro | Oscuro | Uso |
@@ -125,7 +125,7 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 | Letra fluida: `--letra-hero`, `--letra-titulo-1`, `--letra-titulo-2`, `--letra-titulo-3`, `--letra-titulo-4`, `--letra-titulo-5`, `--letra-entrada`, `--letra-lema` | `clamp()` por papel | igual | Títulos y entradas que crecen con el ancho |
 
 Escala de espaciado y de letra (2026-11-24, decisión de la persona): espaciado de 2 en 2 px y letra en 14 pasos; Stylelint
-rechaza en `global.css` un `margin`, `padding`, `gap` o `font-size` con valor suelto. Los `font-size` en px del SVG del flujo
+rechaza en `src/estilos/*.css` un `margin`, `padding`, `gap` o `font-size` con valor suelto. Los `font-size` en px del SVG del flujo
 (unidades del `viewBox`) quedan fuera de la escala.
 
 Chaflán en CSS: `clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%)`.
@@ -142,7 +142,7 @@ Tres papeles: **títulos** (condensada o cuadrada, mayúsculas, tracking corto),
 | C | IBM Plex Sans Condensed 500/700 | IBM Plex Serif 400/600 | IBM Plex Mono 400/500 |
 
 Decisión de la persona: **B** (2026-11-08, «Tipografia b»); en el código, `--fuente-titulos`, `--fuente-texto` y
-`--fuente-datos` de `src/estilos/global.css` (paquetes `@fontsource-variable/*`). Escala: texto 17 px / 1.6; datos 12 px con tracking `.06em` (`--datos-espaciado`; manda el código); h3 32 px, h2 36 px,
+`--fuente-datos` de `src/estilos/base.css` (paquetes `@fontsource-variable/*`). Escala: texto 17 px / 1.6; datos 12 px con tracking `.06em` (`--datos-espaciado`; manda el código); h3 32 px, h2 36 px,
 h1 `clamp(44px, 9vw, 96px)` con interlineado 1.02 (más apretado monta las cajas de color; visto en el prototipo).
 
 ## Recursos de imagen para el generador (Galivelop IG)
@@ -207,7 +207,7 @@ La vista previa (`og`) de un proyecto es siempre `tools/og/fuentes/<slug>/og-fue
 | 4 (geométrica) | 2026-11-13 | `public/marca/rosa-vientos.webp` (280 px, `cwebp -q 90 -alpha_q 100`, desde `04b-rosa-vientos.png`, 1024 px con transparencia; dibujada por código con `gimg brand rose`, ocho puntas, un solo grosor) | El mismo sitio que la fila anterior (`.pie-rosa`); sustituye a la rosa provisional |
 | 10b | 2026-11-14 | `public/marca/como-funciona.webp` (1200×450, de `10-como-funciona.png`, q798: cuatro nodos con sobre, bocadillos, casilla y rama) | Banda de `/participa/unirse`; sustituye a la de las cuatro bolas. Su versión oscura (q886) se pidió rehecha: fondo y colores fuera de la paleta; llegó la 10c (q955) |
 | 15v (voz) | 2026-11-14 | `public/proyectos/galivelop-voice-generator/proxima.webp` (720×405, de `15v-portada-voz-q909.png`, 1600×900: boya de campana con ondas y banderín `#D9467A`, en grabado) | `imagen` de su entrada en `proximamente.json`; sustituye a la q331 (fondo de papel). Servirá de portada cuando Voice tenga ficha |
-| 19 (oscura) | 2026-11-14 | `public/marca/enviado-oscura.webp` (480×360, de `19-enviado-oscura.png`, q892) | `form.listo` de los formularios en el tema oscuro (`.solo-claro`/`.solo-oscuro` de `global.css`) |
+| 19 (oscura) | 2026-11-14 | `public/marca/enviado-oscura.webp` (480×360, de `19-enviado-oscura.png`, q892) | `form.listo` de los formularios en el tema oscuro (`.solo-claro`/`.solo-oscuro` de `paginas.css`) |
 | 10c, 18b, 27b, 28b (oscuras) | 2026-11-14 | `public/marca/como-funciona-oscura.webp` (1200×450, q955), `no-encontrado-oscura.webp` (900×600, de 1200×800, q957), `estado-vacio-oscura.webp` y `aviso-error-oscura.webp` (480×360, q961 y q962); sustituyen a las primeras oscuras (q886, q887, q896 y q901, en `aprobadas/`) | Las mismas que su versión clara, en el tema oscuro: `ImagenTema.tsx` pinta las dos y el CSS (`.solo-claro`/`.solo-oscuro`) muestra la del tema; también la 19 |
 | 32 | 2026-11-14 | `public/proyectos/galivelop-image-generator/portada.webp` (1600×900) y `-mini.webp` (720×405), de `32-portada-gvig.png` (q922 + montaje: hojas de papel en el mar con barco, ondas, rosa y sello, pinza `#7C5CD6`) | `portada` de la ficha de Galivelop IG, ahora también fondo de su cabecera (sin `cabecera: "color"`); el banner anterior ya estaba en la galería (ronda 7) |
 | 23 (IG y Voice) | 2026-11-14 | `public/proyectos/galivelop-image-generator/icono.svg` (q930 corregido, `#7C5CD6`) y `public/proyectos/galivelop-voice-generator/icono.svg` (q926, `#D9467A`), con el `viewBox` recortado al dibujo | `icono` de la ficha de IG (sustituye a `icono.png`) e `iconoPropio` de Voice en `proximamente.json` (su tarjeta «Próximamente»). El de Voice en contorno y el provisional de Tarkor, en cola en el generador |
@@ -428,7 +428,7 @@ aparte»; caja oscura (tinta con celeste) para la decisión humana; etiquetas en
 
 #### Huecos: la página de producto y su entorno
 
-Lo que hace hoy el CSS (`src/estilos/global.css`) y la hoja no recogía:
+Lo que hace hoy el CSS (`src/estilos/*.css`) y la hoja no recogía:
 
 - **Cabecera** (`.producto-cabeza`): texto con lema y, si la hay, la portada a la derecha (`.producto-portada`, chaflán
   grande de 28 px).
@@ -452,7 +452,7 @@ las versiones oscuras; luego A y el resto de C según se vaya aplicando la hoja.
 ## Pasos para aplicarlo
 
 1. Elegir la tipografía (persona). Instalar los tres paquetes `@fontsource` y quitar Inter y Sora.
-2. Reescribir `:root` de `global.css` con los tokens de arriba y el claro por defecto; sustituir `border-radius` por
+2. Reescribir `:root` de `base.css` con los tokens de arriba y el claro por defecto; sustituir `border-radius` por
    chaflán donde proceda; retirar los resplandores, degradados y `backdrop-filter`.
 3. Generar las isobatas reales (recurso 2) y el logo (recurso 1).
 4. Revisar en móvil y escritorio, con capturas antes/después; `npm run check` y `npm run build`.

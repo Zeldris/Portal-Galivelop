@@ -1,0 +1,63 @@
+/* ---------- Colores forzados (Windows Alto contraste, `forced-colors: active`) ----------
+   El navegador sustituye los colores por los del sistema y descarta `box-shadow`; el fondo de un pseudoelemento
+   pasa a ser el del lienzo. Solo se recupera lo que se perdería: el tema (Tema.tsx) no se toca. Las imágenes
+   (`<img>` de la marca y las capturas) conservan sus colores sin `forced-color-adjust`. */
+@media (forced-colors: active) {
+  /* Botones: el borde transparente se vuelve invisible; con el fondo forzado, el botón solo se ve por su borde. */
+  .boton {
+    border: 1px solid ButtonBorder;
+  }
+
+  /* Campos: el foco era un `box-shadow` con `outline: none`, que desaparece; el contorno lo sustituye. */
+  .campo input:focus,
+  .campo textarea:focus,
+  .campo select:focus {
+    outline: 2px solid Highlight;
+    outline-offset: var(--foco-fuera);
+  }
+
+  /* Diagonal del chaflán: era un `background`, que queda en lienzo; pasa a ser del color del texto. */
+  .tarjeta::before,
+  .persona::before,
+  .tarjeta-producto::before {
+    background: CanvasText;
+  }
+
+  .tarjeta-proxima::before {
+    border-top: 1px dashed CanvasText;
+  }
+
+  /* Píldora de estado: el punto y la barra de avance eran solo fondo; la píldora, solo su fondo de tinta. */
+  .estado {
+    border: 1px solid CanvasText;
+  }
+
+  .estado-punto,
+  .estado-publicado .estado-punto,
+  .estado-desarrollo .estado-punto {
+    background: CanvasText;
+  }
+
+  .barra > span {
+    background: Highlight;
+  }
+
+  /* Indicadores hechos con `box-shadow` (pestaña activa, submenú actual, tarjeta señalada, cifras): contorno o subrayado. */
+  .flujo-pestana[aria-selected='true'],
+  .persona:target,
+  .perfil-lugar-actual > .perfil-logo {
+    outline: 2px solid Highlight;
+    outline-offset: var(--foco-dentro);
+  }
+
+  .submenu-boton:hover,
+  .submenu.abierto .submenu-boton,
+  .submenu-boton.actual {
+    text-decoration: underline;
+  }
+
+  .cifras li {
+    outline: 1px solid CanvasText;
+    outline-offset: 0;
+  }
+}

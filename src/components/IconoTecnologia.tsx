@@ -130,7 +130,7 @@ export function luminancia(hex: string): number {
 
 /**
  * Luminancia del fondo de las píldoras (`var(--tinte)` sobre la superficie), en el caso que menos contrasta: en el
- * oscuro y en el claro, sobre `--superficie`. Si cambian esos colores en global.css, recalcúlala (lo vigila un test).
+ * oscuro y en el claro, sobre `--superficie`. Si cambian esos colores en base.css (tokens de cada tema), recalcúlala (lo vigila un test).
  */
 export const FONDO_PILDORA = { oscuro: 0.0337, claro: 0.8816 };
 

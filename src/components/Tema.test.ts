@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { leerEstilos } from '../estilos/leer-estilos';
 import { describe, expect, it } from 'vitest';
 
 const RAIZ = join(__dirname, '../..');
@@ -10,11 +11,11 @@ function superficieDe(css: string, selector: RegExp, tema: string): string {
   const bloque = new RegExp(`${selector.source}\\s*\\{([^}]*)\\}`).exec(css);
   const valor = bloque && /--superficie:\s*(#[0-9a-fA-F]{3,8})\s*;/.exec(bloque[1]);
   if (!valor)
-    throw new Error(`No se encontró --superficie del tema ${tema} en src/estilos/global.css`);
+    throw new Error(`No se encontró --superficie del tema ${tema} en src/estilos (global.css)`);
   return valor[1].toLowerCase();
 }
 
-const css = leer('src/estilos/global.css');
+const css = leerEstilos();
 const claro = superficieDe(css, /:root,\s*:root\[data-tema='claro'\]/, 'claro');
 const oscuro = superficieDe(css, /:root\[data-tema='oscuro'\]/, 'oscuro');
 

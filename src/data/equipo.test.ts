@@ -1,6 +1,7 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { leerEstilos } from '../estilos/leer-estilos';
 import { agruparPorLugar, anosTrabajados, equipo, type Etapa } from './equipo';
 import { FONDO_PILDORA, luminancia, tieneIcono, tonoIcono } from '../components/IconoTecnologia';
 
@@ -101,8 +102,8 @@ describe('perfil de cada miembro', () => {
 });
 
 describe('fondo de las píldoras de tecnología', () => {
-  const css = readFileSync(join(__dirname, '../estilos/global.css'), 'utf8');
-  /** `--tinte` (un rgb con alfa) mezclado sobre `--superficie`, leídos del bloque de cada tema en global.css. */
+  const css = leerEstilos();
+  /** `--tinte` (un rgb con alfa) mezclado sobre `--superficie`, leídos del bloque de cada tema en base.css. */
   function fondo(selector: string): number {
     const bloque = css.slice(css.indexOf(selector)).split('}')[0];
     const superficie = /--superficie:\s*#([0-9a-f]{6});/i.exec(bloque)?.[1];
@@ -116,7 +117,7 @@ describe('fondo de las píldoras de tecnología', () => {
     return luminancia(mezcla.map((c) => c.toString(16).padStart(2, '0')).join(''));
   }
 
-  it('FONDO_PILDORA coincide con los tokens de global.css (si falla, recalcúlalo en IconoTecnologia.tsx)', () => {
+  it('FONDO_PILDORA coincide con los tokens de base.css (si falla, recalcúlalo en IconoTecnologia.tsx)', () => {
     expect(FONDO_PILDORA.oscuro).toBeCloseTo(fondo(":root[data-tema='oscuro']"), 3);
     expect(FONDO_PILDORA.claro).toBeCloseTo(fondo(":root[data-tema='claro']"), 3);
   });

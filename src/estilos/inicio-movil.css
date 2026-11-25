@@ -1,0 +1,214 @@
+/* ---------- Inicio: proyectos de un vistazo y bloques compactos en móvil ---------- */
+
+@media (min-width: 900px) {
+  .rejilla-proyectos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  /* El collage repite las imágenes de las tarjetas que vienen justo después. */
+  .hero-collage {
+    display: none;
+  }
+  .lineas,
+  .valores,
+  .vias {
+    gap: var(--espacio-8);
+  }
+  .lineas > li,
+  .valores li,
+  .via {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    column-gap: var(--espacio-14);
+    align-content: start;
+    padding: var(--espacio-16);
+  }
+  .lineas > li > *,
+  .valores li > *,
+  .via > * {
+    grid-column: 2;
+  }
+  .lineas > li > svg,
+  .valores svg,
+  .via > svg:first-child {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 36px;
+    height: 36px;
+    padding: var(--espacio-8);
+    margin: 0;
+  }
+  .lineas h3,
+  .valores h3,
+  .vias h3 {
+    font-size: var(--letra-100);
+    margin-bottom: var(--espacio-2);
+  }
+  .lineas > li > p,
+  .valores p,
+  .contacto .vias p {
+    font-size: var(--letra-90);
+  }
+  .lineas-proyectos {
+    padding-top: var(--espacio-10);
+  }
+  .via-ir {
+    margin-top: var(--espacio-8);
+  }
+  .participa-guia > div {
+    padding: var(--espacio-18);
+  }
+  /* Tarjeta de proyecto: lo esencial (qué es, en qué punto está) sin tener que bajar tres pantallas. */
+  .tarjeta-imagen {
+    aspect-ratio: 16 / 6;
+  }
+  .tarjeta-cuerpo {
+    gap: var(--espacio-8);
+  }
+  .tarjeta-resumen {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    font-size: var(--letra-90);
+  }
+  .tarjeta .chips {
+    display: none;
+  }
+  .tarjeta-pie {
+    padding-top: var(--espacio-10);
+  }
+}
+
+/* Muro: publicaciones de los proyectos, una columna como en una red social. */
+.muro-contenedor {
+  max-width: 760px;
+  display: grid;
+  gap: var(--espacio-24);
+}
+
+.muro-lista {
+  display: grid;
+  gap: var(--espacio-20);
+}
+
+.publicacion {
+  display: grid;
+  gap: var(--espacio-12);
+  padding: var(--espacio-24);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--acento-proyecto, var(--celeste));
+  background: var(--superficie);
+  scroll-margin-top: 96px;
+}
+
+.publicacion:target {
+  border-color: var(--acento-proyecto, var(--celeste));
+}
+
+.publicacion-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-8) var(--espacio-16);
+  font-size: var(--letra-90);
+}
+
+.publicacion-autor {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-10);
+  font-weight: 600;
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.publicacion-autor img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  /* Como en la tarjeta y la ficha: un icono de tinta sin fondo no se vería en el tema oscuro. */
+  background: var(--blanco);
+  padding: var(--espacio-2);
+}
+
+.publicacion-autor:hover {
+  color: var(--enlace);
+}
+
+.publicacion-cabecera time {
+  color: var(--texto-3);
+}
+
+.publicacion .publicacion-titulo {
+  font-size: var(--letra-titulo-5);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.publicacion p {
+  margin: 0;
+  color: var(--texto-2);
+}
+
+.publicacion .publicacion-entradilla {
+  color: var(--texto);
+}
+
+.publicacion-imagenes {
+  display: grid;
+  gap: var(--espacio-8);
+  margin-top: var(--espacio-4);
+}
+
+.publicacion-imagenes-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.publicacion-imagenes-3 {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.publicacion-imagen {
+  padding: 0;
+  border: 1px solid var(--borde);
+  overflow: hidden;
+  background: var(--superficie-2);
+  cursor: zoom-in;
+}
+
+.publicacion-imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.publicaciones-ficha .publicacion-enlace {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.publicaciones-ficha .publicacion-enlace:hover {
+  color: var(--enlace);
+}
+
+@media (max-width: 640px) {
+  .publicacion {
+    padding: var(--espacio-18);
+  }
+
+  .publicacion-imagenes-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Una sola imagen se ve entera, con su proporción. */
+.publicacion-imagenes-1 img {
+  aspect-ratio: auto;
+  max-height: 70vh;
+  object-fit: contain;
+}
+

@@ -1,0 +1,275 @@
+/* ---------- Líneas de trabajo ---------- */
+
+.lineas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--espacio-16);
+}
+
+/* En escritorio, todas las líneas de trabajo en una fila (--lineas lo pone Inicio.tsx con LINEAS.length): con el
+   mínimo de 250 px, la última quedaba sola en otra fila. Desde 67.5em caben cinco de ~200 px. */
+@media (min-width: 67.5em) {
+  .lineas {
+    grid-template-columns: repeat(var(--lineas, 4), minmax(0, 1fr));
+  }
+}
+
+.lineas > li {
+  display: flex;
+  flex-direction: column;
+  padding: var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.lineas > li > svg {
+  width: 44px;
+  height: 44px;
+  padding: var(--espacio-10);
+  color: var(--celeste);
+  background: var(--tinte);
+  margin-bottom: var(--espacio-14);
+}
+
+.lineas h3 {
+  font-size: var(--letra-110);
+  margin-bottom: var(--espacio-6);
+}
+
+.lineas > li > p {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+.lineas-proyectos {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-6);
+  margin: auto 0 0;
+  padding: var(--espacio-16) 0 0;
+}
+
+.lineas-proyectos a,
+.chip-enlace {
+  display: inline-block;
+  font-size: var(--letra-80);
+  font-weight: 600;
+  padding: var(--espacio-4) var(--espacio-10);
+  text-decoration: none;
+  color: var(--enlace);
+  border: 1px solid color-mix(in srgb, var(--celeste) 40%, transparent);
+  background: var(--tinte);
+}
+
+.lineas-proyectos a:hover,
+.chip-enlace:hover {
+  border-color: var(--celeste);
+}
+
+/* ---------- Participa: para quién y cómo funciona ---------- */
+
+.participa-guia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-16);
+  width: 100%;
+  text-align: left;
+}
+
+.participa-guia > div {
+  padding: var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.participa-guia h3 {
+  font-size: var(--letra-110);
+  margin-bottom: var(--espacio-12);
+}
+
+.lista-check,
+.pasos {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espacio-10);
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+.lista-check {
+  list-style: none;
+}
+
+.lista-check li {
+  display: flex;
+  gap: var(--espacio-10);
+}
+
+.lista-check svg {
+  flex: none;
+  margin-top: var(--espacio-4);
+  color: var(--celeste);
+}
+
+.pasos {
+  list-style: none;
+  counter-reset: paso;
+}
+
+.pasos li {
+  display: flex;
+  gap: var(--espacio-12);
+  counter-increment: paso;
+}
+
+.pasos li::before {
+  content: counter(paso);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-80);
+  font-weight: 700;
+  color: var(--blanco);
+  background: var(--celeste-hondo);
+}
+
+@media (max-width: 760px) {
+  .participa-guia {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Ficha: líneas y aprendizajes ---------- */
+
+.proyecto-lineas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-8);
+  margin-top: var(--espacio-20);
+  padding-top: var(--espacio-16);
+  border-top: 1px solid var(--borde);
+}
+
+.proyecto-lineas > span {
+  font-size: var(--letra-85);
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.aprendizajes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espacio-10);
+}
+
+.aprendizajes li {
+  display: flex;
+  gap: var(--espacio-12);
+  padding: var(--espacio-14) var(--espacio-16);
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+}
+
+.aprendizajes svg {
+  flex: none;
+  margin-top: var(--espacio-4);
+  color: var(--acento-texto);
+}
+
+/* ---------- Discord ---------- */
+
+.discord {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--espacio-18);
+  width: 100%;
+  padding: var(--espacio-20) var(--espacio-24);
+  text-align: left;
+  text-decoration: none;
+  color: var(--texto);
+  border: 1px solid color-mix(in srgb, var(--discord) 45%, var(--borde));
+  background: var(--superficie);
+  transition:
+    transform var(--transicion),
+    border-color var(--transicion);
+}
+
+.discord:hover {
+  transform: translateY(-2px);
+  border-color: var(--discord);
+}
+
+.discord-icono {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  color: var(--blanco);
+  background: var(--discord);
+}
+
+.discord-texto {
+  display: grid;
+  gap: var(--espacio-2);
+}
+
+.discord-texto strong {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-110);
+}
+
+.discord-texto span {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+.boton-discord {
+  background: var(--discord);
+  color: var(--blanco);
+}
+
+.pie-redes {
+  display: flex;
+  gap: var(--espacio-8);
+}
+
+.pie-redes a {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--texto-2);
+  border: 1px solid var(--borde);
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
+}
+
+.pie-redes a:hover {
+  color: var(--texto);
+  border-color: var(--celeste);
+}
+
+@media (max-width: 640px) {
+  .discord {
+    grid-template-columns: auto 1fr;
+  }
+  .boton-discord {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+

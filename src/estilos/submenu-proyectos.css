@@ -1,0 +1,183 @@
+/* ---------- Submenú de proyectos ---------- */
+
+.submenu {
+  position: relative;
+}
+
+.submenu-boton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  color: var(--texto-2);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: var(--espacio-8) var(--espacio-12);
+  transition:
+    color var(--transicion),
+    background var(--transicion);
+}
+
+.submenu-boton:hover,
+.submenu.abierto .submenu-boton,
+.submenu-boton.actual {
+  color: var(--tinta);
+  background: none;
+  box-shadow: inset 0 -2px 0 var(--celeste-hondo);
+}
+
+.submenu-boton svg {
+  transition: transform var(--transicion);
+}
+
+.submenu.abierto .submenu-boton svg {
+  transform: rotate(180deg);
+}
+
+.submenu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  translate: -50% 0;
+  width: 460px;
+  padding: var(--espacio-10);
+  margin-top: var(--espacio-6);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  box-shadow: var(--sombra);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition:
+    opacity var(--transicion),
+    transform var(--transicion),
+    visibility var(--transicion);
+  z-index: var(--z-panel);
+}
+
+/* Puente invisible para no perder el hover al bajar al panel. */
+.submenu-panel::before {
+  content: '';
+  position: absolute;
+  inset: -10px 0 auto;
+  height: 10px;
+}
+
+.submenu.abierto .submenu-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.submenu-panel ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--espacio-4);
+}
+
+.cabecera-nav .submenu-proyecto {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: var(--espacio-12);
+  padding: var(--espacio-8);
+  color: var(--texto);
+}
+
+.cabecera-nav .submenu-proyecto:hover,
+.cabecera-nav .submenu-proyecto[aria-current='page'] {
+  background: var(--superficie-2);
+}
+
+.submenu-proyecto img {
+  width: 56px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.submenu-texto {
+  display: grid;
+  min-width: 0;
+}
+
+.submenu-texto strong {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-100);
+}
+
+.submenu-texto span {
+  font-size: var(--letra-80);
+  color: var(--texto-3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.submenu-proyecto .estado {
+  font-size: var(--letra-70);
+  padding: var(--espacio-2) var(--espacio-8);
+}
+
+.cabecera-nav .submenu-todos {
+  display: block;
+  margin-top: var(--espacio-6);
+  padding: var(--espacio-10) var(--espacio-8) var(--espacio-4);
+  border-top: 1px solid var(--borde);
+  font-size: var(--letra-90);
+  font-weight: 600;
+  color: var(--enlace);
+}
+
+.cabecera-nav .submenu-todos:hover {
+  background: none;
+  color: var(--texto);
+}
+
+@media (max-width: 68.75em) {
+  .submenu-boton {
+    width: 100%;
+    justify-content: space-between;
+    padding: var(--espacio-12) var(--espacio-14);
+    font-size: var(--letra-100);
+  }
+  .submenu-boton svg {
+    display: none;
+  }
+  /* En el menú móvil el submenú va siempre abierto, dentro del flujo. */
+  .submenu-panel,
+  .submenu.abierto .submenu-panel {
+    position: static;
+    translate: none;
+    width: auto;
+    margin: 0 0 var(--espacio-4) var(--espacio-8);
+    padding: var(--espacio-4) 0 var(--espacio-4) var(--espacio-8);
+    border: 0;
+    border-left: 2px solid var(--borde);
+    box-shadow: none;
+    background: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .cabecera-nav .submenu-proyecto {
+    grid-template-columns: 44px 1fr;
+    padding: var(--espacio-8);
+  }
+  .submenu-proyecto img {
+    width: 44px;
+    height: 32px;
+  }
+  .submenu-proyecto .estado {
+    display: none;
+  }
+  /* En móvil, la categoría parte en dos líneas en vez de cortarse con «…». */
+  .submenu-texto span {
+    white-space: normal;
+  }
+}
+

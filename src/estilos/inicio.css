@@ -1,0 +1,568 @@
+/* ---------- Portada ---------- */
+
+/* Bloque celeste plano con las isobatas de la carta (regla 6 de docs/marca.md). */
+.hero {
+  position: relative;
+  margin-top: var(--espacio-24);
+  background: var(--celeste-hondo);
+  color: var(--blanco);
+  overflow: hidden;
+}
+
+.hero > .contenedor {
+  position: relative;
+}
+
+.hero-fondo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+  pointer-events: none;
+}
+
+.hero-rejilla {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--espacio-columnas);
+  align-items: center;
+  padding-block: var(--espacio-hero);
+}
+
+.hero .antetitulo {
+  color: rgb(255 255 255 / 0.94);
+}
+
+.hero h1 {
+  /* Excepción a la escala (h1 hasta 96 px): el titular comparte el ancho con el collage y a 96 px pasa a seis líneas. */
+  font-size: var(--letra-hero);
+  margin: var(--espacio-14) 0 var(--espacio-24);
+}
+
+/* La segunda parte del título va en su propia línea, como un rótulo de tinta sobre la carta. */
+.destacado {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 0.08em;
+  padding: 0.04em 0.14em 0;
+  line-height: 1;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.hero-parrafo {
+  font-size: var(--letra-entrada);
+  max-width: 54ch;
+}
+
+.hero-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-12);
+  margin-top: var(--espacio-28);
+}
+
+.hero .boton-primario {
+  background: var(--blanco);
+  color: var(--celeste-hondo);
+}
+
+.hero .boton-primario:hover {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.hero .boton-secundario {
+  background: transparent;
+  color: var(--blanco);
+  --borde-boton: rgb(255 255 255 / 0.7);
+}
+
+.hero .boton-secundario:hover {
+  background: var(--blanco);
+  color: var(--celeste-hondo);
+}
+
+.hero-resumen {
+  display: flex;
+  /* Sin salto, «en desenvolvemento» (gl) sacaba la fila de la caja a 320 px. */
+  flex-wrap: wrap;
+  gap: var(--espacio-16) var(--espacio-tarjeta);
+  margin: var(--espacio-40) 0 0;
+  padding-top: var(--espacio-20);
+  border-top: 1px solid rgb(255 255 255 / 0.4);
+}
+
+.hero-resumen div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.hero-resumen dt {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.hero-resumen dd {
+  margin: 0;
+  font-family: var(--fuente-datos);
+  font-size: var(--letra-200);
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* Capturas de los proyectos, pinchadas rectas sobre la carta. */
+.hero-collage {
+  position: relative;
+  aspect-ratio: 1 / 0.95;
+}
+
+.collage-pieza {
+  position: absolute;
+  aspect-ratio: 40 / 21; /* la proporción de las imágenes de presentación (1200×630): se ven enteras */
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.85);
+  background: var(--superficie);
+  transition: transform 400ms var(--curva);
+}
+
+.collage-pieza img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms var(--curva);
+}
+
+.collage-pieza img.activa {
+  opacity: 1;
+}
+
+.collage-pieza span {
+  animation: collage-rotulo 900ms var(--curva);
+}
+
+@keyframes collage-rotulo {
+  from {
+    opacity: 0;
+  }
+}
+
+.collage-pieza span {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: var(--espacio-4) var(--espacio-10);
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.collage-0 {
+  width: 82%;
+  left: 0;
+  top: 2%;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-grande)) 0,
+    100% var(--chaflan-grande),
+    100% 100%,
+    0 100%
+  );
+}
+
+.collage-1 {
+  width: 72%;
+  right: 0;
+  top: 38%;
+}
+
+.collage-2 {
+  width: 46%;
+  left: 0;
+  top: 76%;
+}
+
+.hero-collage:hover .collage-0,
+.hero-collage:hover .collage-1 {
+  transform: translateY(-6px);
+}
+
+@media (max-width: 900px) {
+  .hero-rejilla {
+    grid-template-columns: 1fr;
+  }
+  .hero-collage {
+    max-width: 520px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+
+/* ---------- Secciones ---------- */
+
+.seccion {
+  padding: var(--espacio-seccion) 0;
+}
+
+.seccion-alterna {
+  background: var(--superficie);
+  border-block: 1px solid var(--borde);
+}
+
+.seccion-cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--espacio-20);
+  margin-bottom: var(--espacio-40);
+}
+
+.seccion-cabecera p {
+  color: var(--texto-2);
+  margin-top: var(--espacio-8);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8);
+}
+
+.filtros button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-8);
+  padding: var(--espacio-8) var(--espacio-12);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-2);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color var(--transicion),
+    color var(--transicion),
+    background var(--transicion);
+}
+
+.filtros button:hover {
+  border-color: var(--celeste);
+  color: var(--texto);
+}
+
+.filtros button[aria-pressed='true'] {
+  background: var(--texto);
+  color: var(--fondo);
+  border-color: var(--texto);
+}
+
+.filtro-cuenta {
+  padding: 0 var(--espacio-6);
+  border: 1px solid currentColor;
+}
+
+.vacio {
+  padding: var(--espacio-40);
+  text-align: center;
+  color: var(--texto-3);
+  border: 1px dashed var(--borde);
+}
+
+/* Aviso vacío de las listas (muro, novedades): la ventana en blanco sobre la carta (recurso 27) encima del texto. */
+.vacio-ilustrado {
+  /* La imagen ya va enmarcada: sin el borde discontinuo de .vacio. */
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--espacio-16);
+}
+
+/* ---------- Tarjetas de proyecto ---------- */
+
+.rejilla-proyectos {
+  display: grid;
+  /* Tres proyectos en una fila cuando caben; desde 900 px, dos columnas (más abajo): con 4 proyectos, 2×2 sin tarjeta huérfana. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: var(--espacio-24);
+}
+
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  overflow: hidden;
+  transition:
+    transform var(--transicion),
+    border-color var(--transicion);
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--tinta);
+}
+
+.tarjeta-imagen {
+  position: relative;
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+}
+
+.tarjeta-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 600ms var(--curva);
+}
+
+.tarjeta:hover .tarjeta-imagen img {
+  transform: scale(1.04);
+}
+
+.tarjeta-imagen::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: var(--borde);
+}
+
+.tarjeta-imagen .estado {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  z-index: var(--z-sobre);
+}
+
+.tarjeta-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-12);
+  padding: var(--espacio-6) var(--espacio-24) var(--espacio-24);
+  flex: 1;
+}
+
+.tarjeta-categoria {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.tarjeta h3 {
+  font-size: var(--letra-200);
+}
+
+.tarjeta-enlace {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-10);
+  color: var(--texto);
+  text-decoration: none;
+}
+
+/* Toda la tarjeta es clicable a través del enlace del título. */
+.tarjeta-enlace::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-enlace);
+}
+
+.tarjeta-icono {
+  width: 32px;
+  height: 32px;
+  background: var(--blanco);
+  padding: var(--espacio-4);
+}
+
+.tarjeta-resumen {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+  /* El resumen completo está en la ficha: aquí basta para saber qué es. */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  overflow: hidden;
+}
+
+.tarjeta-pie {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--espacio-20);
+  margin-top: auto;
+  padding-top: var(--espacio-14);
+  border-top: 1px solid var(--borde);
+}
+
+.tarjeta-fase {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-8);
+  flex: 1;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+}
+
+.tarjeta-ver {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-4);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--enlace);
+  white-space: nowrap;
+}
+
+/* ---------- Próximamente: proyectos sin ficha todavía ---------- */
+
+.proximamente {
+  margin-top: var(--espacio-48);
+}
+
+/* Separador de la marca (recurso 12): filete con rosa de ocho puntas, entre bloques largos de una sección. */
+.separador {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: var(--espacio-32) auto;
+}
+
+/* Mismo aire arriba y abajo: el margen de «Próximamente» cede al del separador. */
+.separador + .proximamente {
+  margin-top: 0;
+}
+
+:root:not([data-tema='claro']) .separador {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.proximamente header {
+  margin-bottom: var(--espacio-20);
+}
+
+.proximamente h3 {
+  font-size: var(--letra-125);
+}
+
+.proximamente header p {
+  color: var(--texto-2);
+  margin-top: var(--espacio-6);
+}
+
+.rejilla-proximos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--espacio-16);
+}
+
+/* Atenuada y sin hover: no se puede abrir. El texto mantiene su contraste. */
+.tarjeta-proxima {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-10);
+  padding: var(--espacio-20);
+  border: 1px dashed var(--borde);
+  background: color-mix(in srgb, var(--superficie) 55%, transparent);
+  cursor: default;
+}
+
+/* Ilustración a sangre arriba de la tarjeta, atenuada como el resto. */
+.proxima-imagen {
+  display: block;
+  width: calc(100% + 40px);
+  max-width: none;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  margin: var(--espacio-neg-20) var(--espacio-neg-20) var(--espacio-4);
+  filter: saturate(0.75);
+}
+
+.proxima-imagen-vacia {
+  overflow: hidden;
+  background: var(--celeste-hondo);
+}
+
+.proxima-imagen-vacia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+}
+
+.proxima-cabeza {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-12);
+}
+
+.proxima-icono {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: var(--acento-texto);
+  background: color-mix(in srgb, var(--acento-proyecto) 14%, transparent);
+  filter: saturate(0.7);
+}
+
+.proxima-etiqueta {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: var(--espacio-4) var(--espacio-10);
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+}
+
+.tarjeta-proxima h4 {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-125);
+  line-height: 1.1;
+  color: var(--texto-2);
+}
+
+.proxima-lema {
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+}
+
+.tarjeta-proxima .tarjeta-fase {
+  flex: none;
+  margin-top: auto;
+  padding-top: var(--espacio-12);
+  border-top: 1px solid var(--borde);
+  font-size: var(--letra-80);
+}
+
+.tarjeta-proxima .barra > span {
+  filter: saturate(0.6);
+}
+

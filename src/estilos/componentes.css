@@ -1,0 +1,424 @@
+/* ---------- Cabecera ---------- */
+
+.saltar {
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  transform: translateY(-200%);
+  opacity: 0;
+  pointer-events: none;
+  padding: var(--espacio-8) var(--espacio-14);
+  background: var(--celeste-intenso);
+  color: var(--sobre-intenso);
+  z-index: var(--z-saltar);
+}
+
+.saltar:focus {
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-cabecera);
+  background: var(--superficie);
+  border-bottom: 1px solid var(--filete);
+}
+
+.cabecera-fila {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-24);
+  height: 68px;
+}
+
+.cabecera-logo {
+  text-decoration: none;
+}
+
+.cabecera-nav {
+  display: flex;
+  gap: var(--espacio-6);
+  margin-left: auto;
+}
+
+.cabecera-nav a {
+  color: var(--texto-2);
+  text-decoration: none;
+  font: var(--datos);
+  font-size: var(--letra-80);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: var(--espacio-8) var(--espacio-12);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
+}
+
+.cabecera-nav a:hover {
+  color: var(--texto);
+  border-bottom-color: var(--celeste);
+}
+
+.cabecera-ajustes {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-8);
+}
+
+.idiomas {
+  display: flex;
+  padding: var(--espacio-4);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+}
+
+.idiomas button {
+  border: 0;
+  background: transparent;
+  padding: var(--espacio-4) var(--espacio-10);
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-3);
+  cursor: pointer;
+  transition:
+    background var(--transicion),
+    color var(--transicion);
+}
+
+.idiomas button[aria-pressed='true'] {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.boton-icono {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+  color: var(--texto-2);
+  cursor: pointer;
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
+}
+
+.boton-icono:hover {
+  color: var(--texto);
+  border-color: var(--celeste);
+}
+
+.boton-menu {
+  display: none;
+}
+
+@media (max-width: 62.5em) {
+  .cabecera-fila {
+    gap: var(--espacio-12);
+  }
+  .cabecera-nav {
+    gap: var(--espacio-2);
+  }
+  .cabecera-nav a {
+    padding: var(--espacio-8) var(--espacio-8);
+  }
+}
+
+@media (max-width: 68.75em) {
+  .cabecera-fila {
+    gap: var(--espacio-12);
+  }
+  .cabecera-ajustes {
+    margin-left: auto;
+  }
+  .boton-menu {
+    display: grid;
+  }
+  .cabecera-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: var(--espacio-2);
+    margin: 0;
+    padding: var(--espacio-10) var(--espacio-16) var(--espacio-16);
+    background: var(--fondo);
+    border-bottom: 1px solid var(--borde);
+    box-shadow: var(--sombra);
+    /* Si no cabe en altura (móvil horizontal, zoom), el panel hace scroll y no se sale de la pantalla. */
+    max-height: calc(100vh - 69px); /* respaldo sin dvh */
+    max-height: calc(100dvh - 69px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .cabecera-nav.abierta {
+    display: flex;
+  }
+  .cabecera-nav a {
+    padding: var(--espacio-12) var(--espacio-14);
+    font-size: var(--letra-100);
+  }
+}
+
+/* Con poco ancho (o el texto del móvil agrandado) el logo queda solo en el símbolo GV. */
+@media (max-width: 22.6em) {
+  .cabecera .logo-texto {
+    display: none;
+  }
+}
+
+/* Hasta 430px (móviles grandes incluidos) la fila de la cabecera no cabe con los huecos de escritorio. */
+@media (max-width: 26.875em) {
+  .cabecera .logo-texto {
+    font-size: var(--letra-110);
+  }
+  .cabecera-fila,
+  .cabecera-ajustes {
+    gap: var(--espacio-6);
+  }
+  .idiomas button {
+    padding: var(--espacio-4) var(--espacio-8);
+  }
+}
+
+/* ---------- Chaflán de las fichas (regla 3 de docs/marca.md) ----------
+   El clip-path corta la esquina superior derecha y se llevaría el borde de la diagonal: `::before` la dibuja con
+   una línea girada 45° del color del borde (`--borde-chaflan`, que sigue al hover). Los enlaces internos llevan su foco
+   dentro de la tarjeta, así que el recorte no lo toca. */
+.tarjeta,
+.tarjeta-proxima,
+.persona,
+.tarjeta-producto {
+  --borde-chaflan: var(--borde);
+  position: relative;
+  clip-path: polygon(0 0, calc(100% - var(--chaflan)) 0, 100% var(--chaflan), 100% 100%, 0 100%);
+}
+
+.tarjeta::before,
+.tarjeta-proxima::before,
+.persona::before,
+.tarjeta-producto::before {
+  content: '';
+  position: absolute;
+  /* Respecto a la caja de relleno: se compensa el ancho del borde para caer sobre el corte del clip-path. */
+  top: calc(-1 * var(--borde-sup, 1px));
+  left: calc(100% + 1px - var(--chaflan));
+  width: calc(var(--chaflan) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-chaflan);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.tarjeta-proxima::before {
+  background: none;
+  border-top: 1px dashed var(--borde-chaflan);
+  height: 0;
+}
+
+.tarjeta-producto {
+  --borde-sup: 3px;
+}
+
+.tarjeta:hover,
+.tarjeta:focus-within {
+  --borde-chaflan: var(--tinta);
+}
+
+.persona:target {
+  --borde-chaflan: var(--tinta);
+}
+
+/* ---------- Botones y piezas comunes ---------- */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-8);
+  padding: var(--espacio-12) var(--espacio-20);
+  font: var(--datos);
+  font-size: var(--letra-80);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--chaflan-pequeno)) 0,
+    100% var(--chaflan-pequeno),
+    100% 100%,
+    0 100%
+  );
+  transition:
+    transform var(--transicion),
+    background var(--transicion),
+    border-color var(--transicion);
+}
+
+.boton:hover {
+  transform: translateY(-1px);
+}
+
+/* El clip-path del chaflán recorta un contorno exterior: el foco se dibuja dentro, en el color del texto del botón
+   (que ya contrasta con su fondo en todas las variantes), a 6 px para librar el chaflán de 10 px. */
+.boton:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: var(--foco-chaflan);
+}
+
+/* Respuesta al pulsar. */
+.boton:active,
+.boton-icono:active,
+.boton-cristal:active {
+  transform: scale(0.98);
+}
+
+.boton-primario {
+  background: var(--celeste-hondo);
+  color: var(--blanco);
+}
+
+.boton-primario:hover {
+  background: var(--tinta);
+}
+
+.boton-secundario {
+  --borde-boton: var(--tinta);
+  position: relative;
+  background: var(--superficie);
+  color: var(--texto);
+  border-color: var(--borde-boton);
+}
+
+/* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en las tarjetas. */
+.boton-secundario::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: calc(100% + 1px - var(--chaflan-pequeno));
+  width: calc(var(--chaflan-pequeno) * 1.4142);
+  height: 1px;
+  pointer-events: none;
+  background: var(--borde-boton);
+  transform: rotate(45deg);
+  transform-origin: 0 50%;
+}
+
+.boton-secundario:hover {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.boton-texto {
+  border: 0;
+  background: none;
+  color: var(--enlace);
+  font-weight: 600;
+  font-size: var(--letra-90);
+  cursor: pointer;
+  padding: var(--espacio-6) var(--espacio-2);
+}
+
+.antetitulo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-10);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--celeste-hondo);
+}
+
+.antetitulo::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+}
+
+.chips {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-6);
+  padding: 0;
+  margin: 0;
+}
+
+.chips li {
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: var(--espacio-4) var(--espacio-8);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+}
+
+.barra {
+  display: block;
+  height: 4px;
+  background: var(--reticula);
+  border: 1px solid var(--borde);
+  overflow: hidden;
+}
+
+.barra > span {
+  display: block;
+  height: 100%;
+  background: var(--celeste);
+}
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-8);
+  font: var(--datos);
+  font-size: var(--letra-70);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  padding: var(--espacio-4) var(--espacio-8);
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.estado-punto {
+  width: 8px;
+  height: 8px;
+  /* marca: permitido, punto de estado circular, excepción de la regla 3. */
+  border-radius: 50%;
+}
+
+.estado-publicado .estado-punto {
+  background: var(--estado-publicado);
+}
+
+.estado-desarrollo .estado-punto {
+  background: var(--estado-desarrollo);
+  animation: latido 2s var(--curva) infinite;
+}
+
+/* En diseño: punto hueco, del color del texto de la píldora (aún no hay nada que señalar en color). */
+.estado-diseno .estado-punto {
+  background: transparent;
+  border: 1px solid currentColor;
+}
+
+@keyframes latido {
+  50% {
+    opacity: 0.45;
+  }
+}
+

@@ -1,5 +1,4 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { leerEstilos } from '../estilos/leer-estilos';
 import { describe, expect, it } from 'vitest';
 import { PAPEL_CLARO, PAPEL_OSCURO, contraste, tonosAcento } from './tonos';
 import { proyectos } from './proyectos';
@@ -37,8 +36,8 @@ describe('tonos del acento', () => {
     expect(() => tonosAcento('#e0703aff')).toThrow(/no es un hex de 6 cifras/);
   });
 
-  it('los papeles coinciden con --papel de global.css (si falla, cámbialos en tonos.ts)', () => {
-    const css = readFileSync(join(__dirname, '../estilos/global.css'), 'utf8');
+  it('los papeles coinciden con --papel de base.css (si falla, cámbialos en tonos.ts)', () => {
+    const css = leerEstilos();
     const papeles = [...css.matchAll(/^\s*--papel:\s*(#[0-9a-f]{6})/gim)].map((m) =>
       m[1].toLowerCase(),
     );

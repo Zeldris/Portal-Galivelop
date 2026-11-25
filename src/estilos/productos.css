@@ -1,0 +1,177 @@
+/* ---------- Productos: en el perfil de cada miembro (ADR 0004) ---------- */
+
+/* En la cabecera, el taller es un bloque con su etiqueta. */
+.nav-grupo {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-6);
+}
+
+.nav-etiqueta {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-3);
+  padding: 0 var(--espacio-6) 0 var(--espacio-2);
+}
+
+@media (max-width: 68.75em) {
+  .nav-grupo {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--espacio-2);
+  }
+  .nav-etiqueta {
+    padding: var(--espacio-8) var(--espacio-14) var(--espacio-4);
+  }
+}
+
+/* El taller se etiqueta con un antetítulo neutro, para que se vea que es la otra parte de la marca. */
+.antetitulo-taller {
+  color: var(--texto-3);
+}
+
+.seccion-nota {
+  color: var(--texto-3);
+  font-size: var(--letra-95);
+}
+
+/* Cuatro productos caben en una fila en escritorio; en móvil, uno por fila. */
+.rejilla-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: var(--espacio-18);
+}
+
+.tarjeta-producto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-12);
+  padding: var(--espacio-24);
+  border: 1px solid var(--borde);
+  border-top: 3px solid var(--acento-proyecto);
+  background: var(--superficie);
+}
+
+.tarjeta-producto .proxima-icono {
+  width: 44px;
+  height: 44px;
+  filter: none;
+}
+
+.tarjeta-producto :is(h2, h3) {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-150);
+  line-height: 1.1;
+}
+
+.producto-version {
+  margin-top: var(--espacio-neg-8);
+  font-size: var(--letra-85);
+  font-weight: 600;
+  color: var(--enlace);
+}
+
+.producto-texto {
+  color: var(--texto-2);
+}
+
+.producto-servicios > span {
+  font-size: var(--letra-85);
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.producto-servicios ul {
+  margin: var(--espacio-6) 0 0;
+  padding-left: var(--espacio-18);
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+}
+
+.producto-personas {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--espacio-8) var(--espacio-12);
+  margin: 0;
+  padding-top: var(--espacio-12);
+  border-top: 1px solid var(--borde);
+}
+
+.producto-personas dt {
+  font-size: var(--letra-85);
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.producto-personas dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-6);
+  margin: 0;
+}
+
+/* Personas y botón van al pie de la tarjeta, y el botón ocupa el ancho: en toda la rejilla queda a la misma altura. */
+.producto-pie {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-12);
+  margin-top: auto;
+}
+
+.producto-acciones {
+  display: grid;
+  gap: var(--espacio-8);
+  padding-top: var(--espacio-4);
+}
+
+.producto-acciones .boton {
+  width: 100%;
+  justify-content: center;
+}
+
+.producto-ficha {
+  margin-top: var(--espacio-neg-4);
+}
+
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8): en móvil se quedaba en 23 px */
+  gap: var(--espacio-4);
+  font-size: var(--letra-90);
+  font-weight: 500;
+  color: var(--enlace);
+  text-decoration: none;
+}
+
+.enlace-flecha:hover {
+  text-decoration: underline;
+}
+
+/* En el perfil, los productos van a todo el ancho, bajo las dos columnas. */
+.miembro-productos {
+  margin-top: var(--espacio-32);
+}
+
+.miembro-productos > header {
+  margin-bottom: var(--espacio-18);
+}
+
+.miembro-productos > header p {
+  color: var(--texto-2);
+  max-width: 70ch;
+}
+
+@media (max-width: 640px) {
+  .tarjeta-producto {
+    padding: var(--espacio-20);
+  }
+}
+
+/* Hueco sin texto mientras llega el chunk de una página o la ficha de un proyecto. */
+.carga-pagina {
+  min-height: 70vh;
+}
+

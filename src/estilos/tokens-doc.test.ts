@@ -1,10 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { expect, it } from 'vitest';
+import { leerEstilos } from './leer-estilos';
 
-// Los tokens que declara `:root` en global.css (antes de la primera regla de componente) tienen que estar en la
+// Los tokens que declara `:root` en las hojas de estilos (antes de la primera regla de componente) tienen que estar en la
 // tabla de tokens de docs/marca.md. Habría cazado el `--chaflan` que faltaba. Las escalas `--z-*`, `--espacio-N`, `--espacio-neg-N` y `--letra-N` se documentan juntas.
-const css = readFileSync(join(__dirname, 'global.css'), 'utf8');
+const css = leerEstilos();
 const marca = readFileSync(join(__dirname, '../../docs/marca.md'), 'utf8');
 
 it('docs/marca.md documenta todos los tokens de :root', () => {

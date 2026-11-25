@@ -71,7 +71,7 @@ describe('animaciones paso a paso', () => {
 const MONO = 0.6;
 const TITULOS = 0.44;
 const TEXTO = 0.52;
-/** Clase del texto → [tamaño en escritorio, tamaño en móvil, ancho por carácter en em]; como en global.css. */
+/** Clase del texto → [tamaño en escritorio, tamaño en móvil, ancho por carácter en em]; como en las hojas de src/estilos (global.css). */
 const LETRA: Record<string, [number, number, number]> = {
   ti: [24, 22, TITULOS],
   tm: [16, 13, MONO],

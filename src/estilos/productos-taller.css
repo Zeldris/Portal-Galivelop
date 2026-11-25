@@ -1,0 +1,121 @@
+/* ---------- Productos visibles sin invadir el taller (ADR 0004: son de cada miembro) ---------- */
+
+/* Cabecera: «Productos» en gris, tras un filete vertical y sin la etiqueta del taller. En el menú móvil, tras un filete horizontal. */
+.cabecera-nav a.nav-productos {
+  margin-left: var(--espacio-6);
+  padding-left: var(--espacio-14);
+  border-left: 1px solid var(--borde);
+  border-radius: 0;
+  color: var(--texto-3);
+}
+
+.cabecera-nav a.nav-productos:hover {
+  color: var(--enlace);
+}
+
+@media (max-width: 68.75em) {
+  .cabecera-nav a.nav-productos {
+    margin: var(--espacio-6) 0 0;
+    padding: var(--espacio-12) var(--espacio-14);
+    border-left: 0;
+    border-top: 1px solid var(--borde);
+  }
+}
+
+/* Índice /productos. */
+.migas ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8);
+  margin: 0 0 var(--espacio-24);
+  padding: 0;
+  list-style: none;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+
+.migas li + li::before {
+  content: '/';
+  margin-right: var(--espacio-8);
+}
+
+.migas a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--texto-2);
+}
+
+.productos-indice {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.productos-indice > li {
+  display: flex;
+}
+
+.productos-indice .tarjeta-producto {
+  flex: 1;
+  min-width: 0;
+}
+
+.producto-responsable {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+.productos-nota {
+  margin-top: var(--espacio-28);
+  max-width: 68ch;
+  padding-left: var(--espacio-12);
+  border-left: 3px solid var(--borde);
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+/* Banda al final del inicio: sobria, con un filete arriba. */
+.banda-productos {
+  padding-block: var(--espacio-32) var(--espacio-40);
+}
+
+.banda-productos-fila {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espacio-16) var(--espacio-28);
+  padding-top: var(--espacio-24);
+  border-top: 1px solid var(--borde);
+}
+
+.banda-productos h2 {
+  font-size: var(--letra-150);
+}
+
+.banda-productos p {
+  margin-top: var(--espacio-4);
+  color: var(--texto-2);
+}
+
+.banda-productos-nombres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-4) var(--espacio-16);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-110);
+  font-weight: 800;
+}
+
+.banda-productos-nombres li + li::before {
+  content: '·';
+  margin-right: var(--espacio-16);
+  color: var(--texto-3);
+}
+

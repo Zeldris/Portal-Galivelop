@@ -3,7 +3,7 @@ import { ruta } from '../data/proyectos';
 
 /**
  * Foto (o iniciales) de un miembro dentro del marco de carta náutica (recurso 17 de `docs/marca.md`). El marco es una
- * máscara (en `global.css`): toma el color del texto, así que sirve en los dos temas.
+ * máscara (en `equipo.css`): toma el color del texto, así que sirve en los dos temas.
  */
 export function Retrato({
   nombre,

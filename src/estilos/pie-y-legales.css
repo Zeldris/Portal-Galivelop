@@ -1,0 +1,297 @@
+/* ---------- Sobre Galivelop ---------- */
+
+.sobre-rejilla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-columnas);
+  align-items: start;
+}
+
+.sobre-rejilla > div > p {
+  color: var(--texto-2);
+  margin-top: var(--espacio-16);
+  max-width: 58ch;
+}
+
+.sobre-rejilla > div > p.sobre-nombre {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--espacio-4) var(--espacio-16);
+  margin-top: var(--espacio-24);
+  padding-top: var(--espacio-18);
+  border-top: 1px solid var(--borde);
+  font-size: var(--letra-95);
+  color: var(--texto-3);
+}
+
+.sobre-sello {
+  grid-row: span 2;
+  width: 72px;
+  height: 72px;
+}
+
+.sobre-marca {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-110);
+  font-weight: 600;
+  color: var(--texto-2);
+}
+
+.sobre-marca b {
+  color: var(--enlace); /* hondo en claro (5,2:1), celeste claro en oscuro */
+  font-weight: inherit;
+}
+
+.valores {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: var(--espacio-14);
+}
+
+.valores li {
+  padding: var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.valores svg {
+  margin-bottom: var(--espacio-12);
+  width: 44px;
+  height: 44px;
+  padding: var(--espacio-10);
+  color: var(--celeste);
+  background: var(--tinte);
+}
+
+.valores h3 {
+  font-size: var(--letra-110);
+}
+
+.valores p {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+  margin-top: var(--espacio-4);
+}
+
+@media (max-width: 860px) {
+  .sobre-rejilla {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Contacto ---------- */
+
+.contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--espacio-16);
+}
+
+.contacto p {
+  color: var(--texto-2);
+  max-width: 52ch;
+  margin-bottom: var(--espacio-8);
+}
+
+/* ---------- Pie ---------- */
+
+.pie {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--borde);
+  padding: var(--espacio-48) 0 var(--espacio-28);
+  background: var(--fondo-alterno);
+}
+
+/* Rosa de los vientos (recurso 4): marca de agua tenue, medio fuera por la esquina, detrás de todo el pie. */
+.pie-rosa {
+  position: absolute;
+  z-index: 0;
+  right: -60px;
+  bottom: -60px;
+  width: 280px;
+  height: 280px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* Marca y cuatro columnas en escritorio; por debajo, la marca arriba y las columnas de dos en dos. */
+.pie-rejilla {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
+  gap: var(--espacio-32) var(--espacio-24);
+}
+
+.pie-marca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--espacio-14);
+  color: var(--texto-3);
+  font-size: var(--letra-90);
+}
+
+.pie-marca p {
+  margin: 0;
+}
+
+.pie-columna h2 {
+  margin: 0 0 var(--espacio-16);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.pie-columna ul {
+  display: grid;
+  /* 20px entre filas: la zona táctil de cada enlace (::after) sale 10px por arriba y por abajo. */
+  gap: var(--espacio-20);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pie-columna a {
+  color: var(--texto-2);
+  text-decoration: none;
+  font-size: var(--letra-90);
+}
+
+.pie-columna a:hover {
+  color: var(--texto);
+}
+
+.pie-base {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--espacio-8) var(--espacio-24);
+  margin-top: var(--espacio-40);
+  padding-top: var(--espacio-20);
+  border-top: 1px solid var(--borde);
+  color: var(--texto-3);
+  font-size: var(--letra-85);
+}
+
+.pie-base p {
+  margin: 0;
+}
+
+.pie-base a {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+.pie-base a:hover {
+  color: var(--texto);
+}
+
+@media (max-width: 62.5em) {
+  .pie-rejilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .pie-marca {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------- Textos legales ---------- */
+
+.legal-contenedor {
+  max-width: 76ch;
+}
+
+.legal-fecha {
+  margin-top: var(--espacio-10);
+  color: var(--texto-3);
+  font-size: var(--letra-90);
+}
+
+.legal-seccion {
+  margin-top: var(--espacio-40);
+}
+
+.legal-seccion h2 {
+  margin-bottom: var(--espacio-14);
+  font-size: var(--letra-125);
+}
+
+.legal-seccion p,
+.legal-seccion li {
+  color: var(--texto-2);
+  line-height: 1.65;
+}
+
+.legal-seccion p + p {
+  margin-top: var(--espacio-12);
+}
+
+.legal-seccion ul {
+  display: grid;
+  gap: var(--espacio-8);
+  margin: var(--espacio-14) 0 0;
+  padding-left: 1.2em;
+}
+
+.legal-datos {
+  display: grid;
+  gap: var(--espacio-10);
+  margin: var(--espacio-16) 0 0;
+  padding: var(--espacio-16) var(--espacio-18);
+  border: 1px solid var(--borde);
+  background: var(--fondo-alterno);
+}
+
+.legal-datos div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: var(--espacio-12);
+}
+
+.legal-datos dt {
+  color: var(--texto-3);
+}
+
+.legal-datos dd {
+  margin: 0;
+  color: var(--texto);
+  overflow-wrap: anywhere;
+}
+
+/* El correo y la web van solos en su fila: 2px arriba y abajo los llevan a los 24px del mínimo táctil. */
+.legal-datos a {
+  display: inline-block;
+  padding: var(--espacio-2) 0;
+}
+
+.legal-seccion .legal-enlaces {
+  gap: var(--espacio-20);
+  margin-top: var(--espacio-18);
+  padding-left: 0;
+  list-style: none;
+}
+
+.legal-otros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-20) var(--espacio-18);
+  margin-top: var(--espacio-8);
+  color: var(--texto-3);
+}
+
+@media (max-width: 26.875em) {
+  .legal-datos div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--espacio-2);
+  }
+}
+

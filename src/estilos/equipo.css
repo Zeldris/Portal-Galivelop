@@ -1,0 +1,766 @@
+/* ---------- Equipo ---------- */
+
+.personas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: var(--espacio-20);
+}
+
+.persona {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-14);
+  padding: var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  scroll-margin-top: 96px;
+}
+
+.persona:target {
+  border-color: var(--tinta);
+  /* Contorno hacia dentro: el clip-path del chaflán recortaría una sombra exterior. */
+  box-shadow: inset 0 0 0 1px var(--tinta);
+}
+
+.persona-cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-16);
+}
+
+.persona-cabecera > div {
+  min-width: 0;
+}
+
+.persona-foto {
+  flex: none;
+  width: 64px;
+  height: 64px;
+}
+
+/* Retrato con marco en el equipo de cada ficha. */
+.equipo-retrato {
+  flex: none;
+  width: 52px;
+  height: 52px;
+}
+
+.equipo-retrato .persona-iniciales {
+  font-size: var(--letra-85);
+}
+
+/* Marco de carta náutica alrededor de la foto (recurso 17): una máscara pintada con el color del texto, para que
+   valga en los dos temas. La foto va dentro, con la esquina cortada al ras de la diagonal del marco. */
+.retrato {
+  position: relative;
+  display: block;
+}
+
+/* `inset` en % se mide contra el propio retrato; un `padding` en % se mediría contra el ancho del padre. */
+.retrato > * {
+  position: absolute;
+  inset: 6%;
+  width: 88%;
+  height: 88%;
+  clip-path: polygon(0 0, 90% 0, 100% 10%, 100% 100%, 0 100%);
+}
+
+.retrato > img {
+  object-fit: cover;
+}
+
+.retrato::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--texto);
+  -webkit-mask: url('/marca/marco-retrato.webp') center / 100% 100% no-repeat;
+  mask: url('/marca/marco-retrato.webp') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.persona-iniciales {
+  display: grid;
+  place-items: center;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: var(--letra-125);
+  color: var(--blanco);
+  background: var(--celeste-hondo);
+}
+
+.persona :is(h2, h3) {
+  font-size: var(--letra-125);
+}
+
+.persona-rol {
+  font-size: var(--letra-90);
+  font-weight: 600;
+  color: var(--enlace);
+  margin-top: var(--espacio-2);
+  /* Cargos largos: parten en el espacio o, si no hay, en cualquier punto; nunca desbordan la tarjeta. */
+  min-width: 0;
+  overflow-wrap: anywhere;
+  text-wrap: pretty;
+  line-height: 1.35;
+}
+
+.persona-bio {
+  color: var(--texto-2);
+  font-size: var(--letra-95);
+}
+
+.persona-proyectos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-8);
+}
+
+.persona-proyectos > span {
+  font-size: var(--letra-85);
+  font-weight: 600;
+  color: var(--texto-3);
+}
+
+.persona-redes {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8);
+  margin: auto 0 0;
+  padding: var(--espacio-14) 0 0;
+  border-top: 1px solid var(--borde);
+}
+
+.persona-redes a,
+.equipo-redes a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-8);
+  padding: var(--espacio-8) var(--espacio-14);
+  border: 1px solid var(--borde);
+  color: var(--texto-2);
+  font-size: var(--letra-90);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color var(--transicion),
+    border-color var(--transicion);
+}
+
+.persona-redes a:hover,
+.equipo-redes a:hover {
+  color: var(--texto);
+  border-color: var(--celeste);
+}
+
+.persona-ubicacion {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  margin-top: var(--espacio-4);
+  font-size: var(--letra-85);
+  color: var(--texto-3);
+}
+
+.perfil-lugares {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-20);
+}
+
+.perfil-lugares > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: var(--espacio-14);
+}
+
+/* La línea que une los logos, de una empresa a la siguiente. */
+.perfil-lugares > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 52px;
+  bottom: -14px;
+  width: 2px;
+  background: var(--borde);
+}
+
+.perfil-logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--borde);
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-85);
+  font-weight: 700;
+}
+
+span.perfil-logo {
+  background: var(--superficie-2);
+  color: var(--enlace);
+}
+
+img.perfil-logo {
+  padding: var(--espacio-6);
+  object-fit: contain;
+  background: var(--blanco);
+}
+
+.perfil-lugar-actual > .perfil-logo {
+  border-color: var(--celeste-hondo);
+  box-shadow: 0 0 0 2px var(--celeste-hondo);
+}
+
+.perfil-lugares h3 {
+  margin: 0 0 var(--espacio-6);
+  font-size: var(--letra-100);
+  line-height: 1.35;
+}
+
+.perfil-negocio {
+  margin-left: var(--espacio-8);
+  padding: var(--espacio-1) var(--espacio-8);
+  border: 1px solid var(--borde);
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--texto-2);
+  vertical-align: 2px;
+}
+
+.perfil-clientes {
+  margin: var(--espacio-neg-2) 0 var(--espacio-8);
+  font-size: var(--letra-90);
+  color: var(--texto-2);
+}
+
+.perfil-clientes span {
+  font-weight: 600;
+}
+
+.perfil-clientes span::after {
+  content: ':';
+}
+
+.perfil-etapas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-10);
+}
+
+.perfil-etapas li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+}
+
+.perfil-etapas-varias li {
+  padding-left: var(--espacio-16);
+}
+
+.perfil-etapas-varias li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--celeste);
+  background: var(--superficie);
+}
+
+.perfil-etapas-varias .perfil-etapa-actual::before {
+  background: var(--celeste);
+}
+
+.perfil-etapas strong {
+  font-size: var(--letra-95);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.perfil-etapas .perfil-fechas {
+  font-size: var(--letra-80);
+  color: var(--texto-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.perfil-etapas p {
+  margin: var(--espacio-4) 0 0;
+  font-size: var(--letra-90);
+  line-height: 1.55;
+  color: var(--texto-2);
+}
+
+.perfil-tecnologias {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-12);
+}
+
+.perfil-tecnologias dt {
+  font-size: var(--letra-85);
+  font-weight: 600;
+  color: var(--texto-2);
+  margin-bottom: var(--espacio-6);
+}
+
+.perfil-tecnologias dd {
+  margin: 0;
+}
+
+.perfil-tecnologias ul,
+.perfil-fortalezas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-6);
+}
+
+.perfil-tecnologias li,
+.perfil-fortalezas li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  padding: var(--espacio-4) var(--espacio-10);
+  font-size: var(--letra-80);
+  background: var(--tinte);
+  color: var(--texto);
+}
+
+.perfil-fortalezas li {
+  background: transparent;
+  border: 1px solid var(--celeste);
+}
+
+.perfil-idiomas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8) var(--espacio-20);
+  font-size: var(--letra-90);
+  color: var(--texto-2);
+}
+
+.perfil-idiomas strong {
+  color: var(--texto);
+  margin-right: var(--espacio-4);
+}
+
+.persona-ver {
+  align-self: flex-start;
+}
+
+/* ---------- Página de cada miembro (/equipo/<id>) ---------- */
+
+.miembro-volver {
+  color: var(--enlace);
+  margin-bottom: var(--espacio-24);
+}
+
+.miembro-volver:hover {
+  color: var(--texto);
+}
+
+.miembro-cabecera {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-28);
+  padding: var(--espacio-tarjeta);
+  margin-bottom: var(--espacio-24);
+  border: 1px solid var(--borde);
+  background: var(--superficie);
+}
+
+.miembro-foto {
+  flex: none;
+  width: 128px;
+  height: 128px;
+}
+
+.miembro-foto .persona-iniciales {
+  font-size: var(--letra-200);
+}
+
+.miembro-antetitulo {
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+  color: var(--enlace);
+}
+
+.miembro-cabecera h1 {
+  /* Excepción a la escala: el nombre va al lado de la foto y a 96 px parte en dos o tres líneas. */
+  font-size: var(--letra-titulo-2);
+  margin: var(--espacio-4) 0 var(--espacio-2);
+}
+
+.miembro-cabecera .persona-rol {
+  font-size: var(--letra-100);
+}
+
+.miembro-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-4) var(--espacio-18);
+  margin-top: var(--espacio-8);
+  font-size: var(--letra-90);
+  color: var(--texto-3);
+}
+
+.miembro-datos span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-6);
+}
+
+.miembro-rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: var(--espacio-20);
+  align-items: start;
+}
+
+.miembro-columna {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-20);
+  min-width: 0;
+}
+
+.miembro-caja {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-14);
+  padding: var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+}
+
+.miembro-caja h2 {
+  font-size: var(--letra-110);
+}
+
+.miembro-caja ul,
+.miembro-caja ol,
+.miembro-caja dl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.miembro-proyectos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-10);
+}
+
+.miembro-proyectos a {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-4);
+  padding: var(--espacio-14) var(--espacio-16);
+  border: 1px solid var(--borde);
+  color: var(--texto);
+  text-decoration: none;
+  transition: border-color var(--transicion);
+}
+
+.miembro-proyectos a:hover {
+  border-color: var(--celeste);
+}
+
+.miembro-proyectos a > span {
+  font-size: var(--letra-90);
+  color: var(--texto-2);
+}
+
+.miembro-proyectos .miembro-papel {
+  font-size: var(--letra-80);
+  font-weight: 600;
+  color: var(--enlace);
+}
+
+/* Logos de tecnologías (Simple Icons) con su color de marca; ver IconoTecnologia.tsx. */
+.icono-tec {
+  flex: none;
+  color: var(--marca);
+}
+
+:root:not([data-tema='claro']) .icono-tec-oscuro,
+:root[data-tema='claro'] .icono-tec-claro {
+  color: var(--texto);
+}
+
+.icono-tec-monograma {
+  display: inline-grid;
+  place-items: center;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 var(--espacio-2);
+  background: var(--texto-3);
+  color: var(--superficie);
+  font-size: var(--letra-60);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.miembro-cifras {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-8) var(--espacio-24);
+  margin: var(--espacio-14) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--letra-90);
+  color: var(--texto-2);
+}
+
+.miembro-cifras strong {
+  font-family: var(--fuente-titulos);
+  font-size: var(--letra-125);
+  color: var(--texto);
+}
+
+.miembro-redes {
+  margin: 0;
+  padding: 0;
+  border-top: 0;
+}
+
+.miembro-mas > summary,
+.miembro-pliegue > summary,
+.apartado-detalle > summary {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-6);
+  cursor: pointer;
+  list-style: none;
+  min-height: 24px; /* zona táctil mínima (WCAG 2.5.8) */
+}
+
+.miembro-mas > summary::-webkit-details-marker,
+.miembro-pliegue > summary::-webkit-details-marker,
+.apartado-detalle > summary::-webkit-details-marker {
+  display: none;
+}
+
+.miembro-mas > summary,
+.apartado-detalle > summary {
+  margin-top: var(--espacio-10);
+  font-size: var(--letra-90);
+  font-weight: 600;
+  color: var(--enlace);
+}
+
+.miembro-mas[open] > summary {
+  margin-bottom: var(--espacio-14);
+}
+
+.miembro-pliegue > summary {
+  justify-content: space-between;
+}
+
+.miembro-mas[open] > summary svg,
+.miembro-pliegue[open] > summary svg,
+.apartado-detalle[open] > summary svg {
+  transform: rotate(180deg);
+}
+
+.miembro-pliegue:not([open]) {
+  padding-block: var(--espacio-16);
+}
+
+.miembro-colabora {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--espacio-20) var(--espacio-32);
+  margin-top: var(--espacio-20);
+  padding: var(--espacio-24);
+  border: 1px dashed var(--celeste);
+  background: var(--superficie);
+}
+
+.miembro-colabora h2 {
+  font-size: var(--letra-125);
+  margin-bottom: var(--espacio-6);
+}
+
+.miembro-colabora p {
+  color: var(--texto-2);
+  max-width: 68ch;
+}
+
+.miembro-colabora .miembro-colabora-nota {
+  margin-top: var(--espacio-8);
+  font-size: var(--letra-85);
+  color: var(--texto-3);
+}
+
+@media (max-width: 860px) {
+  .miembro-rejilla {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .miembro-cabecera {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--espacio-14);
+  }
+  .miembro-foto {
+    width: 112px;
+    height: 112px;
+  }
+  .miembro-datos,
+  .miembro-cifras {
+    justify-content: center;
+  }
+  .miembro-caja {
+    padding: var(--espacio-18);
+  }
+  .miembro-colabora {
+    grid-template-columns: minmax(0, 1fr);
+    padding: var(--espacio-20);
+  }
+  .miembro-colabora .boton {
+    justify-content: center;
+  }
+}
+
+/* Banda «¿Tienes un proyecto propio?» de #participa: discreta, aparte de las vías del taller. */
+.proyecto-propio {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--espacio-20);
+  width: 100%;
+  padding: var(--espacio-24);
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  text-align: left;
+}
+
+.proyecto-propio-icono {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: var(--celeste);
+  background: var(--tinte);
+}
+
+.proyecto-propio-icono svg {
+  width: 22px;
+  height: 22px;
+}
+
+.proyecto-propio h3 {
+  font-size: var(--letra-110);
+  margin-bottom: var(--espacio-4);
+}
+
+.contacto .proyecto-propio p {
+  max-width: none;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .proyecto-propio {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-14);
+  }
+  .proyecto-propio .boton {
+    justify-self: start;
+  }
+}
+
+.persona-unete {
+  align-items: flex-start;
+  border-style: dashed;
+  background: transparent;
+}
+
+.persona-hueco {
+  display: grid;
+  padding: 18%;
+  place-items: center;
+  color: var(--celeste);
+  background: var(--tinte);
+}
+
+.persona-unete .boton {
+  margin-top: auto;
+}
+
+.equipo-enlace {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-14);
+  color: inherit;
+  text-decoration: none;
+}
+
+.equipo > li:has(.equipo-enlace:hover) {
+  border-color: var(--celeste);
+}
+
+/* Con resumen y tecnologías la tarjeta crece: la foto, alineada con el nombre. */
+.equipo > li:has(.equipo-destacadas),
+.equipo > li:has(.equipo-destacadas) .equipo-enlace {
+  align-items: flex-start;
+}
+
+.equipo-resumen {
+  font-size: var(--letra-80);
+  color: var(--texto-3);
+  margin-top: var(--espacio-2);
+}
+
+.equipo .equipo-destacadas {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-4);
+  margin: var(--espacio-8) 0 0;
+  padding: 0;
+}
+
+.equipo .equipo-destacadas li {
+  padding: var(--espacio-1) var(--espacio-8);
+  font-size: var(--letra-75);
+  background: var(--tinte);
+}
+
+/* Redes del miembro, repartidas a lo ancho bajo la tarjeta (fuera de su enlace); el borde y el color, los de
+   .persona-redes. */
+.equipo > li {
+  flex-wrap: wrap;
+}
+
+.equipo .equipo-redes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
+  gap: var(--espacio-8);
+  flex-basis: 100%;
+  margin: 0;
+  padding: var(--espacio-10) 0 0;
+  border-top: 1px solid var(--borde);
+}
+
+.equipo-redes a {
+  justify-content: center;
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+}
+
