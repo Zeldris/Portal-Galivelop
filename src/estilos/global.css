@@ -25,6 +25,13 @@
   --chaflan: 14px; /* fichas y tarjetas */
   --chaflan-grande: 28px;
   --chaflan-pequeno: 10px; /* botones */
+  /* Separación del anillo de foco (outline-offset). Con chaflán, dentro y a 6 px: el clip-path recorta lo de fuera y
+     el contorno de 2 px libra --chaflan-pequeno. */
+  --foco-chaflan: -6px;
+  --foco-dentro: -3px;
+  --foco-fuera: 2px;
+  --foco-fuera-medio: 3px;
+  --foco-fuera-amplio: 4px;
   --reticula-paso: 24px;
   --ancho: 1180px;
   /* Espaciado: la escala va de 2 en 2 px hasta 20 y luego a saltos; el nombre es el valor. «--espacio-1» solo para filetes. */
@@ -283,7 +290,7 @@ button {
 
 :focus-visible {
   outline: 2px solid var(--foco);
-  outline-offset: 3px;
+  outline-offset: var(--foco-fuera-medio);
 }
 
 /* Sobre el celeste hondo el foco va en blanco (el celeste/hondo del tema no se distingue del fondo). */
@@ -612,7 +619,7 @@ button {
    (que ya contrasta con su fondo en todas las variantes), a 6 px para librar el chaflán de 10 px. */
 .boton:focus-visible {
   outline: 2px solid currentColor;
-  outline-offset: -6px;
+  outline-offset: var(--foco-chaflan);
 }
 
 /* Respuesta al pulsar. */
@@ -4480,7 +4487,7 @@ img.perfil-logo {
 
 .flujo-pieza:focus-visible {
   outline: 3px solid var(--enlace);
-  outline-offset: 2px;
+  outline-offset: var(--foco-fuera);
 }
 
 .flujo-escena {
@@ -6227,7 +6234,7 @@ body:has(dialog[open]) {
 .lector-boton:focus-visible,
 .lector button:focus-visible {
   outline: 2px solid var(--foco);
-  outline-offset: 2px;
+  outline-offset: var(--foco-fuera);
 }
 
 .lector-posicion {
@@ -6242,13 +6249,13 @@ body:has(dialog[open]) {
 .guion-activo,
 .guion-enfoque {
   outline: 3px solid var(--celeste-intenso);
-  outline-offset: -3px;
+  outline-offset: var(--foco-dentro);
   transition: outline-color var(--transicion);
 }
 
 /* El elemento que se está leyendo dentro de una sección alta: solo contorno, sin fondo que tape el texto. */
 .guion-enfoque {
-  outline-offset: 4px;
+  outline-offset: var(--foco-fuera-amplio);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6538,10 +6545,10 @@ body:has(dialog[open]) {
   );
 }
 
-/* El chaflán recorta el contorno exterior del foco: se dibuja dentro, como en .boton, librando --chaflan-pequeno. */
+/* El chaflán recorta el contorno exterior del foco: se dibuja dentro con --foco-chaflan, como en .boton. */
 .producto-copiar:focus-visible {
   outline: 2px solid currentColor;
-  outline-offset: -4px;
+  outline-offset: var(--foco-chaflan);
 }
 
 /* El clip-path corta el borde en el chaflán: esta línea lo cierra, como en .boton-secundario. */

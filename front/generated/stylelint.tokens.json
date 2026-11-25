@@ -40,6 +40,7 @@
         "padding-block-end",
         "padding-inline-start",
         "padding-inline-end",
+        "outline-offset",
         "font-size"
       ],
       {

@@ -6,6 +6,13 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 
 ## Herramientas que ya ahorran
 
+- **Hoja claro/oscuro de una figura** (2026-11-25, retro T2): `python3 tools/qa/hoja-figura.py <figura-clara>`
+  (busca la `-oscuro` al lado; deja `capturas/hoja-<nombre>.png`) da las dos versiones en una imagen; abrirlas por
+  separado, tres lecturas, costó ~380k arrastrados. La grande solo si la hoja no basta.
+- **Entradas de `pending.md` y de la bitácora en sub-viñetas cortas** (2026-11-25, retro T1): la entrada de la
+  auditoría de marca era una línea de ~2k caracteres y `pending.md` se leyó 22 veces (1,1M arrastrados); se mira con
+  `grep -n '^- ' docs/records/pending.md | cut -c1-160` y se lee solo la entrada con `sed -n '<n>,<m>p'`. Una entrada
+  que pasa de ~3 líneas se parte en sub-viñetas.
 - **Diagramas con `gw-worker` y Fable** (2026-11-24, retro P1): fila de `selector.cases`; el `general-purpose` de los
   diagramas de productos arrancó con 79k (un `gw-worker`, 24k): ~0,9M de entrada por encargo. El generador de los
   de productos está en `scripts/diagramas/productos.py` (P2): retocar un texto no obliga a redibujar.
@@ -108,6 +115,10 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 
 ## Costes conocidos
 
+- **Arranque fijo de ~86k por llamada en la nube** (2026-11-25, retro T3; Q-22): sistema, herramientas y MCP (Claude
+  Docs, GitHub, remoto) son el 73 % de la entrada (22M de 30M en 254 llamadas) y los conectores no se pueden
+  desactivar en la nube. Solo baja con menos llamadas: órdenes juntas, `/clear` entre tareas y subagentes para lo
+  que lee mucho.
 - **Repos hermanos en `/home/user`** (2026-10-26): cada repo que se añade con `add_repo` en la sesión principal mete
   su `CLAUDE.md`/`AGENTS.md` y su lista de skills en cada llamada (~15k con cuatro repos; suelo de 114k en la página
   de miembro) y encarece el arranque de cada subagente (74k). Para leer otro repo, un subagente lo clona en el
@@ -170,3 +181,4 @@ carpeta del portal. `measure.py` y `recover.py` lo buscan también en las carpet
   medio (techo 166k), 2 compactaciones con presupuesto 1; 3 subagentes, 3,0M de entrada.
 - **Informe de `gw-portal` leído por subagentes** (2026-11-22, retro P3): en informe y aplicar, la sesión principal recibe solo el resumen por repo (la de la ADR 0005 leyó `informe.txt` 8 veces, 358k arrastrados).
 - **Línea base 2026-11-22** (sesión de `gw-portal`, flujo 0.8.2 y ADR 0005, sin `/clear`): 215 llamadas, contexto medio 125k, techo 165k, 4 compactaciones; bitácora leída 24 veces (1,34M arrastrados).
+- **Línea base 2026-11-25** (auditoría de marca, D1-D13, guiones y camino a `main`, desde e2c9b9b): 254 llamadas, contexto medio 119k (suelo 95k, techo 165k), 2 compactaciones con presupuesto 1; 7 subagentes, 5,7M de entrada; `pending.md` 22 lecturas (1,1M), bitácora 36 (787k).

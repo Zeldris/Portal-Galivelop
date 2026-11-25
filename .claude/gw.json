@@ -142,7 +142,8 @@
         "padding-block-start",
         "padding-block-end",
         "padding-inline-start",
-        "padding-inline-end"
+        "padding-inline-end",
+        "outline-offset"
       ],
       "sizeProperties": [
         "font-size"

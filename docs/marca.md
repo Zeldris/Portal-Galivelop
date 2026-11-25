@@ -114,6 +114,7 @@ Los nombres actuales de `global.css` se conservan donde coinciden; los nuevos se
 | `--ok-texto` | `#3f5a4b` | `#8fb09e` | Texto y ✓ de «hecho» sobre el papel |
 | `--discord` | `#5865f2` | igual | Color de marca de Discord, solo en su botón |
 | `--chaflan` / `--chaflan-grande` / `--chaflan-pequeno` | `14px` / `28px` / `10px` | igual | Esquina cortada: fichas / bloques grandes / botones |
+| `--foco-chaflan` / `--foco-dentro` / `--foco-fuera` / `--foco-fuera-medio` / `--foco-fuera-amplio` | `-6px` / `-3px` / `2px` / `3px` / `4px` | igual | `outline-offset` del anillo de foco; con chaflán, siempre `--foco-chaflan` (el `clip-path` recorta lo de fuera). Stylelint exige el token |
 | `--reticula-paso` | `24px` | igual | Paso de la cuadrícula |
 | `--datos` / `--datos-espaciado` | JetBrains Mono 500 a 12 px / `0.06em` | igual | Tipografía de los datos y su tracking |
 | `--sombra` | `0 12px 32px -18px` tinta al 35 % | negro al 70 % | La única sombra: el panel desplegado |

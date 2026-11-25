@@ -203,42 +203,54 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-23
 - Refs: retro-main-2026-11-25
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: T1. ¿Entradas largas de pending.md y de «Para la próxima publicación» partidas en sub-viñetas cortas, y nota de leerlas con grep -n '^- ' | cut -c1-160?
 - Recommendation: Sí
+- Answer: ok
+- Answered: 2026-11-25
 
 ## Q-24
 - Refs: retro-main-2026-11-25
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: T2. ¿Hoja claro/oscuro de una figura en una sola imagen (como npm run capturas --hoja) para no abrir las dos por separado?
 - Recommendation: Sí
+- Answer: ok
+- Answered: 2026-11-25
 
 ## Q-25
 - Refs: retro-main-2026-11-25
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: T3. ¿Apuntar en gw-opt-tokens.md el arranque fijo de ~86k por llamada (73 %) como coste conocido sin arreglo en la nube?
 - Recommendation: Sí
+- Answer: ok
+- Answered: 2026-11-25
 
 ## Q-26
 - Refs: retro-main-2026-11-25
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: R1. ¿Token --foco-chaflan (−6px) para outline-offset de los elementos con chaflán, Stylelint que lo exija y arreglar ya .producto-copiar?
 - Recommendation: Sí, ahora en esta rama
+- Answer: ok
+- Answered: 2026-11-25
 
 ## Q-27
 - Refs: retro-main-2026-11-25
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: R2. ¿Tarea de barrido de los 5 leves de global.css para la próxima versión?
 - Recommendation: Sí
+- Answer: ok
+- Answered: 2026-11-25
 
 ## Q-28
 - Refs: retro-main-2026-11-25
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: R3. ¿Tras subir a main, merge de main en claude/galivelop-dev-portal-1h89ci (parada en el 2026-11-15, 57 commits por detrás) para que la tarea semanal no publique una rama vieja?
 - Recommendation: Sí
+- Answer: ok
+- Answered: 2026-11-25

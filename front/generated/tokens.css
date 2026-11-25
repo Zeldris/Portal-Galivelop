@@ -42,6 +42,11 @@
   --espacio-6: 6px;
   --espacio-72: 72px;
   --espacio-8: 8px;
+  --foco-chaflan: -6px;
+  --foco-dentro: -3px;
+  --foco-fuera: 2px;
+  --foco-fuera-amplio: 4px;
+  --foco-fuera-medio: 3px;
   --font-family-datos: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-family-texto: "Literata Variable", Literata, Georgia, "Times New Roman", serif;
   --font-family-titulos: "Big Shoulders Display Variable", "Big Shoulders Display", "Arial Narrow", sans-serif;
