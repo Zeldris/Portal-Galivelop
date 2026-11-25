@@ -317,3 +317,12 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: sí, como tarea aparte después de R-6
 - Answer: sí
 - Answered: 2026-11-25
+
+## Q-36
+- Refs: R-5
+- Status: answered
+- Asked: 2026-11-25
+- Question: R-5 choca con la regla 1 de docs/marca.md («Tema claro por defecto»; Tema.tsx da claro aunque el sistema pida oscuro). ¿a) seguir el tema del sistema cuando no hay uno guardado, cambiando la regla 1, o b) mantener el claro por defecto y hacer solo forced-colors?
+- Recommendation: b: seguir con el claro por defecto (regla 1 de la marca) y hacer solo forced-colors
+- Answer: b
+- Answered: 2026-11-25
