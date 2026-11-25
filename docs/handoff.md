@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-24 (segunda pasada de diseño aplicada, D10-D13) |
+| **Actualizado** | 2026-11-25 (bloque cerrado: /code-review desde 38f84d9, 0 graves o medios) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
 | **Tarea en curso** | Ninguna. Auditoría de marca cerrada en código (D1-D13); lo que queda (grabación, generador, comprobaciones) en «Auditoría de marca» de `docs/records/pending.md`. (3) webkit y firefox, bloqueado. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | **Cerrar el bloque** (la persona, 2026-11-24): `/code-review --max-findings all` del diff desde 38f84d9 (último `Findings:`, >1000 líneas) con el criterio de `REVIEW.md`, arreglos y commit con `Findings: <n>`; en sesión nueva. Después: La persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`. Como los conectores no se pueden desactivar en la nube (Q-22), conviene abrir una sesión nueva para cada tanda. (3) webkit y firefox, bloqueado por el proxy (detalle en «Herramientas de front» de abajo) |
+| **Siguiente paso** | Bloque cerrado (2026-11-25, `/code-review` del diff desde 38f84d9: 1 leve y 2 observaciones a `docs/records/pending.md`). La persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`. Como los conectores no se pueden desactivar en la nube (Q-22), conviene abrir una sesión nueva para cada tanda. (3) webkit y firefox, bloqueado por el proxy (detalle en «Herramientas de front» de abajo) |
 | **En `main`** | **Productos** (subido el 2026-11-24 con confirmación de la persona: marca de revisión y CI en verde en e2c9b9b): Galivelop Evaluator (ADR 0006), Developer ampliada con diagramas de Fable, índice `/productos` con enlace en la cabecera y banda en el inicio; workflow 0.9.0 e image-generator al día. Retro aprobada: `docs/records/retro-2026-11-24-productos.md` |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (270) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
