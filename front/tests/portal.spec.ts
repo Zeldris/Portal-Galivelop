@@ -47,6 +47,8 @@ for (const p of PAGINAS) {
     const caja = await page.locator('h1').first().boundingBox();
     // La ficha ya cambia en la cabecera y su h1 cae sobre una imagen pesada: se queda la franja de arriba.
     const y = p.nombre === 'ficha' ? 0 : Math.max(0, Math.floor((caja?.y ?? 0) - 40));
-    await expect(page).toHaveScreenshot(`${p.nombre}.png`, { clip: { x: 0, y, width: ancho, height: 160 }, maxDiffPixelRatio: 0.02 });
+    // Margen del 5 % (Q-29): el Chromium del runner de CI suaviza el texto distinto del contenedor donde se generan las
+    // capturas y difiere hasta un 3 %; un fallo de maquetación en esta franja de 160 px mueve mucho más.
+    await expect(page).toHaveScreenshot(`${p.nombre}.png`, { clip: { x: 0, y, width: ancho, height: 160 }, maxDiffPixelRatio: 0.05 });
   });
 }

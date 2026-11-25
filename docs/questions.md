@@ -257,7 +257,9 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-29
 - Refs:
-- Status: open
+- Status: answered
 - Asked: 2026-11-25
 - Question: CI en rojo desde 437e5ad: 7 de 12 capturas @visual de cabecera difieren un 3 % (máx. 2 %) entre el Chromium del runner y el del contenedor donde se generaron; fuentes ya esperadas. ¿Qué hago? a) subir maxDiffPixelRatio a 0.05 en esa prueba, con comentario del porqué (un fallo de maquetación en la franja de 160 px mueve mucho más); b) regenerarlas en el runner: hace falta que el CI suba las capturas (archivo copiado del flujo: propuesta al flujo y espera); c) otra.
 - Recommendation: a
+- Answer: a
+- Answered: 2026-11-25
