@@ -181,6 +181,7 @@ Una ruta nueva toca siempre los mismos sitios; al hacer `/productos` se olvidaro
   `perezosa(...)` y `PAGINA_DE_PRIMER_SEGMENTO` de `src/paginas.ts` (ver «Carga por partes»).
 - `src/components/Cabecera.tsx` si va en el menú (y `Pie.tsx` si va en el pie).
 - `FIJAS` de `scripts/paginas-estaticas.mjs`: título y descripción en es/gl/en (página estática, sitemap y `llms.txt`).
+- Cabecera de la ficha (R-3b): `scripts/paginas-estaticas.mjs` emite su portada como `<img>` con las mismas clases, `srcset` y `sizes` que `src/pages/Proyecto.tsx`, fuera de `data-estatico`, para que pinte antes del JS. Si cambia el markup de la cabecera de `Proyecto.tsx`, cámbialo en los dos. Medir siempre con barra final (`proyectos/tarkor/`): sin ella `vite preview` sirve el `index.html` sin contenido estático.
 - Si tiene contenido propio, su rama en `cuerpo()` de `scripts/paginas-estaticas.mjs`; sin ella, la página estática
   solo lleva título y descripción (se olvidó con los textos legales, 2026-10-31).
 - `PAGINAS` de `tools/qa/medir-paginas.cjs`, para que `npm run medir` la mida; si trae una rejilla nueva, sus

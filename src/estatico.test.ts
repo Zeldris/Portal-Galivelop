@@ -114,6 +114,21 @@ describe('páginas estáticas', () => {
     expect(web.publisher.url).toBe('https://zeldris.github.io/Portal-Galivelop/');
   });
 
+  it('la portada de la ficha va en el HTML fuera de lo oculto, con el markup de la app', () => {
+    const ficha = leer('proyectos/tarkor');
+    const cab = ficha.slice(
+      ficha.indexOf('<header data-guion="cabecera"'),
+      ficha.indexOf('</header>', ficha.indexOf('<header data-guion="cabecera"')),
+    );
+    expect(cab).toContain(
+      '<img class="proyecto-fondo" src="/Portal-Galivelop/proyectos/tarkor/portada.webp" srcset="/Portal-Galivelop/proyectos/tarkor/portada-movil.webp 960w, /Portal-Galivelop/proyectos/tarkor/portada.webp 1600w" sizes="100vw" alt="" fetchpriority="high" />',
+    );
+    // La imagen no está dentro de ningún trozo oculto; el texto de la cabecera sí.
+    expect(cab.indexOf('data-estatico')).toBeGreaterThan(cab.indexOf('<img'));
+    expect(cab).toContain('data-cabecera-estatica class="proyecto-cabecera cabecera-ilustracion"');
+    expect(ficha).toContain('<article class="proyecto" style="--acento-proyecto:');
+  });
+
   it('precargan la imagen de cabecera, y el trozo de la ficha', () => {
     const ficha = leer('proyectos/tarkor');
     expect(ficha).toContain(

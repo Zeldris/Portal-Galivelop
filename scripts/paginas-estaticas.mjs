@@ -4,6 +4,7 @@
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { estiloAcento } from '../src/data/tonos.ts';
 import { ANCHO_ESTADO, MARCA, PORTADA_ESTADO, SIZES_CABECERA, srcsetCabecera } from '../src/data/marca.ts';
 import { muroVisible } from '../src/data/muro-umbral.ts';
 import { textos } from '../src/i18n/textos.ts';
@@ -442,7 +443,18 @@ function cuerpo(pg) {
   const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
   // Animaciones paso a paso: sin JS no hay dibujo, pero cada paso queda leído (título y narración) en una lista.
   const anim = (p.animaciones ?? []).map((a) => `<section><h2>${esc(a.titulo[pg.idioma])}</h2><ol>${a.pasos.map((x) => `<li><strong>${esc(x.titulo[pg.idioma])}</strong>: ${esc(x.narracion[pg.idioma])}</li>`).join('')}</ol></section>`).join('');
-  return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(p.nombre)}</h1><p>${esc(p.lema[pg.idioma])}</p><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></main>`;
+  // La imagen de la cabecera va FUERA de lo oculto (`data-estatico`) y con la misma estructura y clases que la de
+  // src/pages/Proyecto.tsx: pinta sin esperar al JS y, al montar React, no se mueve ni se vuelve a bajar (mismo src/srcset).
+  const modo = p.cabecera ?? 'ilustracion';
+  const fondo = modo === 'color' ? PORTADA_ESTADO[p.estado] : undefined;
+  const srcFondo = modo === 'ilustracion' ? p.portada.src : fondo;
+  const ancho = modo === 'ilustracion' ? p.portada.ancho : ANCHO_ESTADO;
+  const imgFondo = srcFondo
+    ? `<img class="proyecto-fondo" src="${BASE_404}${srcFondo}" srcset="${srcsetCabecera(srcFondo, ancho, (x) => BASE_404 + x)}" sizes="${SIZES_CABECERA}" alt="" fetchpriority="high" />`
+    : `<img class="proyecto-isobatas" src="${BASE_404}marca/isobatas.svg" alt="" aria-hidden="true" />`;
+  const acento = Object.entries(estiloAcento(p.acento)).map(([k, v]) => `${k}:${v}`).join(';');
+  const cab = `<header data-guion="cabecera" data-cabecera-estatica class="proyecto-cabecera cabecera-${modo}${fondo ? ' cabecera-velada' : ''}">${imgFondo}<div class="contenedor proyecto-cabecera-contenido" data-estatico><div class="proyecto-cabecera-texto"><h1>${esc(p.nombre)}</h1><p class="proyecto-lema">${esc(p.lema[pg.idioma])}</p></div></div></header>`;
+  return `<main id="contenido"><article class="proyecto" style="${acento}">${cab}<div class="contenedor proyecto-cuerpo" data-estatico><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></div></article></main>`;
 }
 
 function datos(pg, url) {
