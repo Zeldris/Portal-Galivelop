@@ -263,3 +263,48 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: a
 - Answer: a
 - Answered: 2026-11-25
+
+## Q-30
+- Refs:
+- Status: answered
+- Asked: 2026-11-25
+- Question: Roadmap: ¿dominio propio sí o no, y cuándo?
+- Recommendation: decidirlo ya aunque se aplique más tarde
+- Answer: sí, pero aún queda mucho: no se aplica por ahora
+- Answered: 2026-11-25
+
+## Q-31
+- Refs:
+- Status: answered
+- Asked: 2026-11-25
+- Question: Roadmap: ¿bloque Ahora (LCP de fichas en móvil, barrido y partición de global.css, tema del sistema y forced-colors, aviso del check por fecha del guion)?
+- Recommendation: sí, una tarea con su revisión
+- Answer: sí
+- Answered: 2026-11-25
+
+## Q-32
+- Refs:
+- Status: answered
+- Asked: 2026-11-25
+- Question: Roadmap: ¿diario del taller (artículos largos sobre cómo se construye)?
+- Recommendation: prototipo de una entrada con el storyboard aprobado
+- Answer: ok (prototipo)
+- Answered: 2026-11-25
+
+## Q-33
+- Refs:
+- Status: answered
+- Asked: 2026-11-25
+- Question: Roadmap: muro, ¿llenarlo u ocultarlo?
+- Recommendation: ocultarlo hasta tener 3 piezas o más
+- Answer: ocultar
+- Answered: 2026-11-25
+
+## Q-34
+- Refs:
+- Status: answered
+- Asked: 2026-11-25
+- Question: Roadmap: ¿analítica sin cookies?
+- Recommendation: GoatCounter: sin cookies ni banner
+- Answer: ok (GoatCounter)
+- Answered: 2026-11-25

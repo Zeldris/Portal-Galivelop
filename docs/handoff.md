@@ -6,10 +6,10 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-25 (ficha de requisitos mínimos de los productos, a `main`) |
+| **Actualizado** | 2026-11-25 (roadmap de la web; bloque «Ahora» en curso) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
-| **Tarea en curso** | Ninguna. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | La persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`, en una sesión nueva por tanda (Q-22). Hecho el 2026-11-25: `main` en 40bb629 (CI verde tras Q-29) y `claude/galivelop-dev-portal-1h89ci` al día con `main` (R3, avance rápido) |
+| **Tarea en curso** | Bloque «Ahora» del roadmap (R-1 a R-6, ver «Roadmap de la web» en `docs/records/pending.md`), repartido a subagentes en serie en `ccr-1c3b5b63-tdttd6`. Hecho: — . Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | R-1 (aviso del check por fecha del guion), luego R-2…R-6 en orden; con el bloque cerrado, `/code-review` y marca antes del domingo. En paralelo, la persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`, en una sesión nueva por tanda (Q-22). Hecho el 2026-11-25: `main` en 40bb629 (CI verde tras Q-29) y `claude/galivelop-dev-portal-1h89ci` al día con `main` (R3, avance rápido) |
 | **En `main`** | **Ficha de requisitos mínimos de los productos** (2026-11-25, con confirmación de la persona: «sí, revisa y sube a main»; fases 1 y 3, sin retro por ser cambio pequeño): plegable «Requisitos mínimos» en `/productos/<slug>`, revisión de bloque ffb39c4 (2 leves arreglados, 1 a pendientes). Antes: **Auditoría de marca, front y tokens** (2026-11-25, con confirmación de la persona: «a, haz las tres fases y sube a main»): herramientas de front del flujo 0.9.0 (tokens DTCG, Stylelint, Playwright en Chromium), escala de tokens de espaciado, letra y foco, «Ver producto» como botón, figuras de producto en oscuro y D1-D13, guiones G1, G3-G12 y G14 (textos). Revisiones de bloque b0ec28c, 38f84d9, 3337edb y 8ee884e; retro `docs/records/retro-2026-11-25-main.md`. Antes: Productos (e2c9b9b, 2026-11-24) |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (272) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
