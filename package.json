@@ -12,7 +12,7 @@
     "build": "tsc -b && vite build && cp dist/index.html dist/404.html && node scripts/paginas-estaticas.mjs",
     "preview": "vite preview",
     "test": "vitest run",
-    "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" \"tools/vite/**/*.ts\" && vitest run && bash tools/qa/tests/test-ganchos.sh",
+    "check": "tsc -b && prettier --check \"src/**/*.{ts,tsx}\" \"tools/vite/**/*.ts\" && vitest run --reporter=default && bash tools/qa/tests/test-ganchos.sh",
     "medir": "node tools/qa/medir-paginas.cjs",
     "auditar:html": "node tools/qa/auditar-html.cjs",
     "auditar:rendimiento": "node tools/qa/auditar-rendimiento.cjs",

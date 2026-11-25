@@ -194,6 +194,8 @@ la página de cada miembro. Lo leerá la voz `lectora-es` (audio pregrabado) mie
 resalta cada sección: el lector flotante (`src/components/Lector.tsx`).
 
 - `narra`: la fecha de lo que cuenta (en una ficha, su `actualizado`). Si la página cambia, se revisa el guion y la fecha.
+  `npm run check` **avisa** (línea `AVISO guion «…»`, nunca falla; `src/data/guiones.test.ts`, `src/data/guionFecha.ts`) de cada guion
+  con `narra` anterior al `actualizado` de su ficha o producto; inicio y productos, contra el más nuevo de los que listan. Equipo, proponer, unirse, novedades y los miembros no tienen fecha en los datos y se omiten.
 - `trozos`: uno por sección, en orden; `seccion` es el `id` del elemento (`proyectos`, `resumen`, `avance`…) o, si no
   tiene, un nombre fijo (`cabecera`, `vistazo`, `participar`). Cada uno lleva `es` (a mano); `gl` y `en`, traducidos.
 - `enfoques` (opcional, por trozo): en una sección más alta que la pantalla, o que recorre varios elementos (tarjetas,

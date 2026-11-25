@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { claveDeGuion, rutaAudio, type Guion } from '../utils/guion';
+import { estadoGuion, fechaMasNueva } from './guionFecha';
 
 const RAIZ = join(__dirname, '..', '..');
 const DIR = join(__dirname, 'guiones');
@@ -107,5 +108,40 @@ describe('audio de los guiones', () => {
             mal.push(`${clave}/${t.seccion}: «${f}» repetida en «${idioma}»`);
         }
     expect(mal).toEqual([]);
+  });
+});
+
+/** `actualizado` de cada JSON de una carpeta de datos, por slug. */
+function fechas(carpeta: string): Record<string, string> {
+  const dir = join(__dirname, carpeta);
+  const r: Record<string, string> = {};
+  for (const f of readdirSync(dir).filter((f) => f.endsWith('.json')))
+    r[f.replace(/\.json$/, '')] = (
+      JSON.parse(readFileSync(join(dir, f), 'utf8')) as { actualizado: string }
+    ).actualizado;
+  return r;
+}
+
+describe('fecha de los guiones', () => {
+  it('avisa (sin fallar) de cada guion más viejo que la página que narra', () => {
+    const proy = fechas('proyectos');
+    const prod = fechas('productos');
+    // Ficha de proyecto o producto: su `actualizado`; inicio y productos: el más nuevo de lo que listan. Sin fecha
+    // en los datos (equipo, proponer, unirse, novedades y los miembros): se omiten.
+    const fechaDe = (clave: string): string | undefined =>
+      clave === 'inicio'
+        ? fechaMasNueva(Object.values(proy))
+        : clave === 'productos'
+          ? fechaMasNueva(Object.values(prod))
+          : (proy[clave] ?? prod[clave]);
+    const avisos = claves.flatMap((c) => {
+      const narra = (leer(c) as Guion & { narra?: string }).narra;
+      const f = fechaDe(c);
+      return narra && estadoGuion(narra, f) === 'desfasado'
+        ? [`AVISO guion «${c}»: narra ${narra} y la página es de ${f}; revisa el guion y su fecha`]
+        : [];
+    });
+    for (const a of avisos) console.warn(a);
+    expect(true).toBe(true);
   });
 });
