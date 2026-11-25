@@ -93,8 +93,9 @@ const publicaciones = readdirSync('src/data/muro', { withFileTypes: true })
   .sort((a, b) => b.fecha.localeCompare(a.fecha) || b.pieza.localeCompare(a.pieza));
 
 // El muro solo existe con el mínimo de publicaciones (src/data/muro-umbral.ts, el mismo que usa la web). MURO_UMBRAL solo
-// lo pone el test de src/estatico-muro.test.ts para probar el caso «en el umbral» sin añadir publicaciones falsas.
-const hayMuro = muroVisible(publicaciones.length, process.env.MURO_UMBRAL === undefined ? undefined : Number(process.env.MURO_UMBRAL));
+// se honra bajo vitest (src/estatico-muro.test.ts) y si es un entero >= 1: en el build real no cambia nada.
+const umbralDeTest = /^[1-9]\d*$/.test(process.env.MURO_UMBRAL ?? '') && process.env.VITEST ? Number(process.env.MURO_UMBRAL) : undefined;
+const hayMuro = muroVisible(publicaciones.length, umbralDeTest);
 
 // Productos de la marca (src/data/productos/<slug>.json), en el mismo orden que src/data/productos.ts.
 const productos = readdirSync('src/data/productos')
