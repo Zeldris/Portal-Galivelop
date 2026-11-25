@@ -34,7 +34,7 @@
   --foco-fuera-amplio: 4px;
   --reticula-paso: 24px;
   --ancho: 1180px;
-  /* Espaciado: la escala va de 2 en 2 px hasta 20 y luego a saltos; el nombre es el valor. «--espacio-1» solo para filetes. */
+  /* Espaciado: la escala va de 2 en 2 px hasta 20 y luego a saltos; el nombre es el valor. «--espacio-1» (1 px) para filetes y ajustes finos de relleno o hueco. */
   --espacio-1: 1px;
   --espacio-2: 2px;
   --espacio-4: 4px;
@@ -74,6 +74,7 @@
   --espacio-salto: clamp(40px, 8vw, 110px); /* salto bajo un bloque de cabecera */
   --espacio-lateral: clamp(16px, 8vw, 96px); /* margen lateral de un panel a sangre */
   /* Letra: el nombre es el tamaño en centésimas de rem. */
+  --letra-60: 0.6rem;
   --letra-70: 0.7rem;
   --letra-75: 0.75rem;
   --letra-80: 0.8rem;
@@ -81,6 +82,7 @@
   --letra-90: 0.9rem;
   --letra-95: 0.95rem;
   --letra-100: 1rem;
+  --letra-106: 1.0625rem; /* cuerpo de texto: 17 px */
   --letra-110: 1.1rem;
   --letra-125: 1.25rem;
   --letra-150: 1.5rem;
@@ -225,7 +227,7 @@ body {
   background-size: var(--reticula-paso) var(--reticula-paso);
   color: var(--texto);
   font-family: var(--fuente-texto);
-  font-size: var(--letra-110);
+  font-size: var(--letra-106);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -3923,7 +3925,7 @@ img.perfil-logo {
   padding: 0 var(--espacio-2);
   background: var(--texto-3);
   color: var(--superficie);
-  font-size: var(--letra-70);
+  font-size: var(--letra-60);
   font-weight: 700;
   line-height: 1;
 }
@@ -6272,7 +6274,7 @@ body:has(dialog[open]) {
 .producto-cabeza {
   display: grid;
   gap: var(--espacio-28);
-  padding-block: var(--espacio-columnas) var(--espacio-tarjeta);
+  padding-block: var(--espacio-bloque-corto);
 }
 
 .producto-cabeza > * {

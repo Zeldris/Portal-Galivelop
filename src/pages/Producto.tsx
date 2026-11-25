@@ -180,7 +180,6 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
                   width={f.ancho}
                   height={f.alto}
                   alt={tx(f.alt)}
-                  loading="lazy"
                 />
                 {f.pie && <figcaption>{tx(f.pie)}</figcaption>}
               </figure>
