@@ -8,12 +8,16 @@
 // Las cifras de un contenedor son orientativas (CPU y red compartidas): sirven para comparar antes/después.
 // Pide Playwright, que no es dependencia del portal (`npm i --no-save playwright`). Uso, tras `npm run build`:
 //   npm run auditar:rendimiento [ruta ...]      (rutas como `equipo` o `/equipo`; por defecto, las del sitemap)
+// Cada ruta se pide con barra final (`equipo/`, la de su página estática) y, antes de medir, se comprueba que el
+// servidor devuelve esa página (`data-estatico` y su `canonical`); si no, sale con 2 y el motivo: sin barra,
+// `vite preview` sirve la portada y las cifras serían de otra página.
 //   BASE=http://localhost:4175/Portal-Galivelop/ node tools/qa/auditar-rendimiento.cjs
 // Sin BASE, si no hay nada en el puerto 4175, arranca `vite preview` y lo para al acabar.
 const { spawn } = require('node:child_process');
 const { existsSync, readFileSync, readdirSync, statSync } = require('node:fs');
 const { join } = require('node:path');
 const zlib = require('node:zlib');
+const { normalizarRuta, motivoNoEstatica } = require('./pagina-estatica.cjs');
 let chromium;
 try {
   ({ chromium } = require('playwright'));
@@ -36,7 +40,7 @@ function rutasSitemap() {
   const rutas = [...xml.matchAll(/<loc>[^<]*?\/Portal-Galivelop\/([^<]*)<\/loc>/g)].map((m) => m[1]);
   return rutas.filter((r) => !/^(gl|en)\/./.test(r));
 }
-const RUTAS = (process.argv.slice(2).length ? process.argv.slice(2) : rutasSitemap()).map((r) => r.replace(/^\//, ''));
+const RUTAS = (process.argv.slice(2).length ? process.argv.slice(2) : rutasSitemap()).map(normalizarRuta);
 
 const responde = () => fetch(BASE, { signal: AbortSignal.timeout(2000) }).then((r) => r.ok, () => false);
 let vista = null;
@@ -60,6 +64,19 @@ async function servidor() {
   }
   parar(hijo);
   console.error('auditar-rendimiento: vite preview did not start on port 4175');
+  process.exit(2);
+}
+/** Sale con 2 si alguna ruta no sirve su página estática (ver tools/qa/pagina-estatica.cjs). */
+async function comprobarEstaticas() {
+  const motivos = [];
+  for (const ruta of RUTAS) {
+    const resp = await fetch(BASE + ruta);
+    const motivo = resp.ok ? motivoNoEstatica(await resp.text(), ruta) : `/${ruta}: HTTP ${resp.status}`;
+    if (motivo) motivos.push(motivo);
+  }
+  if (!motivos.length) return;
+  console.error(`auditar-rendimiento: not measuring, these routes do not serve their static page:\n  ${motivos.join('\n  ')}`);
+  if (vista) parar(vista);
   process.exit(2);
 }
 for (const senal of ['SIGINT', 'SIGTERM']) {
@@ -177,13 +194,14 @@ function estatico() {
 
 (async () => {
   await servidor();
+  await comprobarEstaticas();
   const navegador = await chromium.launch();
   const todas = [];
   let fallos = 0;
   for (const perfil of PERFILES) {
     console.log(`\n== ${perfil.nombre} ==`);
     console.log('ruta\tLCP_ms\tCLS\tFCP_ms\tTTFB_ms\tTBT_ms\tINP~_ms\tpeticiones\tKB js/css/img/font\tbloquean\tLCP elemento\tmueve');
-    for (const ruta of [...RUTAS, ...(process.argv.slice(2).length ? [] : [])]) {
+    for (const ruta of RUTAS) {
       const r = await medir(navegador, perfil, ruta);
       todas.push(r);
       const b = r.bytes;
