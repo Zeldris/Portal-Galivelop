@@ -107,6 +107,26 @@ const productos = readdirSync('src/data/productos')
   .sort((a, b) => a.orden - b.orden);
 // Los de un miembro, como responsable o colaborador (ADR 0004), como `productosDe` de src/data/productos.ts.
 const productosDe = (id) => productos.filter((x) => x.responsable === id || x.colaboradores.includes(id));
+// Entradas del diario del taller (src/data/diario/<slug>.json), de la más nueva a la más vieja, como src/data/diario.ts.
+const entradas = readdirSync('src/data/diario')
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => JSON.parse(readFileSync(`src/data/diario/${f}`, 'utf8')))
+  .sort((a, b) => b.fecha.localeCompare(a.fecha) || a.slug.localeCompare(b.slug));
+// Minutos de lectura, como `minutosLectura` de src/data/diario.ts (src/estatico.test.ts comprueba que coinciden): palabras
+// de títulos, bajada y bloques del idioma / 200, hacia arriba, mínimo 1.
+const minutosLectura = (e, i) => {
+  const t = [e.titulo[i], e.bajada[i]];
+  for (const s of e.secciones) {
+    t.push(s.etiqueta[i], s.titulo[i]);
+    for (const b of s.bloques) {
+      if (b.tipo === 'parrafo') t.push(b.texto[i]);
+      else if (b.tipo === 'decision') t.push(b.texto[i], b.cita[i]);
+      else if (b.tipo === 'lista') t.push(b.titulo[i], ...b.items.map((x) => x[i]));
+      else t.push(b.pie[i]);
+    }
+  }
+  return Math.max(1, Math.ceil(t.reduce((n, x) => n + x.split(/\s+/).filter(Boolean).length, 0) / 200));
+};
 const PROXIMAMENTE = { es: 'Próximamente', gl: 'Proximamente', en: 'Coming soon' };
 const TITULO_PRODUCTOS = { es: 'Productos', gl: 'Produtos', en: 'Products' };
 
@@ -200,6 +220,7 @@ const FECHA_FIJA = {
   '': masReciente(fechaGit(`${D}proyectos`, `${D}proximamente.json`, `${D}lineas.ts`, `${D}marca.ts`), ...proyectos.map((p) => p.actualizado)),
   equipo: fechaGit(`${D}equipo.json`, `${D}proyectos`),
   productos: masReciente(...productos.map((x) => x.pagina?.actualizado)),
+  diario: masReciente(...entradas.map((e) => e.fecha)),
   'participa/proponer': fechaGit(`${D}marca.ts`),
   'participa/unirse': fechaGit(`${D}marca.ts`, `${D}proyectos`),
   novedades: masReciente(...novedadesTodas.map((n) => n.fecha)),
@@ -267,6 +288,18 @@ for (const idioma of IDIOMAS) {
       vista,
       fecha: x.pagina.actualizado,
       producto: x,
+    });
+  }
+  // Página de cada entrada del diario (/diario/<slug>): su fecha es la `fecha` de la entrada (lastmod y datePublished).
+  for (const e of entradas) {
+    paginas.push({
+      idioma,
+      ruta: `diario/${e.slug}`,
+      titulo: `${e.titulo[idioma]} · Galivelop`,
+      descripcion: e.descripcion[idioma],
+      imagen: IMAGEN[idioma],
+      fecha: e.fecha,
+      entrada: e,
     });
   }
   // Página de cada miembro (/equipo/<id>).
@@ -425,6 +458,36 @@ function cuerpo(pg) {
     }).join('');
     return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'productos.inicio'))}</a> / ${esc(T(i, 'productos.titulo'))}</nav><h1>${h1De(pg)}</h1><p>${esc(T(i, 'productos.intro'))}</p><ul>${tarjetas}</ul><p>${esc(T(i, 'productos.nota'))}</p></main>`;
   }
+  if (pg.ruta === 'diario') {
+    const i = pg.idioma;
+    const tarjetas = entradas.map((e) => {
+      const a = equipo.find((m) => m.id === e.autor);
+      return `<li><article><p><time datetime="${e.fecha}">${e.fecha}</time>${a ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${a.id}`)}">${esc(a.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(e, i)))}</p><h2><a href="${urlDe(i, `diario/${e.slug}`)}">${esc(e.titulo[i])}</a></h2><p>${esc(e.bajada[i])}</p></article></li>`;
+    }).join('');
+    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / ${esc(T(i, 'diario.titulo'))}</nav><h1>${esc(T(i, 'diario.titulo'))}</h1><p>${esc(T(i, 'diario.intro'))}</p>${entradas.length ? `<ul>${tarjetas}</ul>` : `<p>${esc(T(i, 'diario.vacio'))}</p>`}</main>`;
+  }
+  const entrada = pg.entrada;
+  if (entrada) {
+    // Lo mismo que src/pages/EntradaDiario.tsx, en HTML simple. `código` entre comillas invertidas es <code> (src/utils/codigo.tsx).
+    const i = pg.idioma;
+    const conCodigo = (t) => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>');
+    const autor = equipo.find((m) => m.id === entrada.autor);
+    const ficha = proyectos.find((x) => x.slug === entrada.proyecto);
+    const bloque = (b) => {
+      if (b.tipo === 'parrafo') return `<p>${conCodigo(b.texto[i])}</p>`;
+      if (b.tipo === 'decision') return `<blockquote><p><strong>${esc(T(i, 'diario.decision'))}</strong></p><p>${conCodigo(b.texto[i])}</p><cite>${esc(b.cita[i])}</cite></blockquote>`;
+      if (b.tipo === 'lista') return `<p><strong>${esc(b.titulo[i])}</strong></p><ul>${b.items.map((t) => `<li>${conCodigo(t[i])}</li>`).join('')}</ul>`;
+      // La animación de una ficha: como en la ficha, sin JS cada paso queda leído (título y narración) en una lista.
+      const a = proyectos.find((x) => x.slug === b.proyecto)?.animaciones?.find((x) => x.id === b.id);
+      return `<figure>${a ? `<ol>${a.pasos.map((x) => `<li><strong>${esc(x.titulo[i])}</strong>: ${esc(x.narracion[i])}</li>`).join('')}</ol>` : ''}<figcaption>${esc(b.pie[i])}</figcaption></figure>`;
+    };
+    const secciones = entrada.secciones.map((s) => `<section><h2>${esc(s.etiqueta[i])}: ${esc(s.titulo[i])}</h2>${s.bloques.map(bloque).join('')}</section>`).join('');
+    const n = entradas.findIndex((e) => e.slug === entrada.slug);
+    const vecina = (e, t) => (e ? `<li><a href="${urlDe(i, `diario/${e.slug}`)}">${esc(T(i, t))} ${esc(e.titulo[i])}</a></li>` : '');
+    const pie = [vecina(entradas[n + 1], 'diario.anterior'), vecina(entradas[n - 1], 'diario.siguiente'), ficha ? `<li><a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(T(i, 'diario.verFicha').replace('{proyecto}', ficha.nombre))}</a></li>` : ''].join('');
+    const meta = `<p><time datetime="${entrada.fecha}">${entrada.fecha}</time>${autor ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${autor.id}`)}">${esc(autor.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(entrada, i)))}${ficha ? ` · ${esc(T(i, 'diario.proyecto'))}: <a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(ficha.nombre)}</a>` : ''}</p>`;
+    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / <a href="${urlDe(i, 'diario')}">${esc(T(i, 'diario.titulo'))}</a> / ${esc(entrada.titulo[i])}</nav><article><h1>${esc(entrada.titulo[i])}</h1><p>${esc(entrada.bajada[i])}</p>${meta}${secciones}</article><ul>${pie}</ul></main>`;
+  }
   const x = pg.producto;
   if (x) {
     // Lo mismo que src/pages/Producto.tsx, en HTML simple: sin precios y sin enlace al repositorio (es privado).
@@ -500,6 +563,36 @@ function datos(pg, url) {
         '@type': 'ItemList',
         itemListElement: productos.filter((x) => x.pagina).map((x, n) => ({ '@type': 'ListItem', position: n + 1, name: x.nombre, url: urlDe(pg.idioma, `productos/${x.slug}`) })),
       },
+    };
+  }
+  if (pg.ruta === 'diario') {
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: pg.titulo,
+      description: pg.descripcion,
+      url,
+      inLanguage: pg.idioma,
+      ...(pg.fecha ? { dateModified: pg.fecha } : {}),
+      publisher: ORG,
+      blogPost: entradas.map((e) => ({ '@type': 'BlogPosting', headline: e.titulo[pg.idioma], url: urlDe(pg.idioma, `diario/${e.slug}`), datePublished: e.fecha })),
+    };
+  }
+  const e = pg.entrada;
+  if (e) {
+    const autor = equipo.find((m) => m.id === e.autor);
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: e.titulo[pg.idioma],
+      description: pg.descripcion,
+      datePublished: e.fecha,
+      ...(autor ? { author: { '@type': 'Person', name: autor.nombre, url: urlDe(pg.idioma, `equipo/${autor.id}`) } } : {}),
+      inLanguage: pg.idioma,
+      publisher: ORG,
+      url,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+      image: pg.imagen,
     };
   }
   const x = pg.producto;
@@ -596,6 +689,7 @@ for (const pg of paginas) {
         .map((i) => `\n    <meta property="og:locale:alternate" content="${LOCALE[i]}" />`)
         .join('')}`,
     )
+    .replace(/(property="og:type" content=")[^"]*/, `$1${pg.entrada ? 'article' : 'website'}`)
     .replace(/(property="og:url" content=")[^"]*/, `$1${url}`)
     .replace(/(property="og:title" content=")[^"]*/, `$1${esc(pg.titulo)}`)
     .replace(/(name="twitter:title" content=")[^"]*/, `$1${esc(pg.titulo)}`);
@@ -658,6 +752,8 @@ writeFileSync(
     .join('\n')}\n\n## Productos\n\n${productos
     .filter((x) => x.pagina)
     .map((x) => `- [${x.nombre}](${urlDe('es', `productos/${x.slug}`)}): ${x.pagina.seo.descripcion.es}`)
+    .join('\n')}\n\n## Diario\n\n${entradas
+    .map((e) => `- [${e.titulo.es}](${urlDe('es', `diario/${e.slug}`)}): ${e.descripcion.es}`)
     .join('\n')}\n\n## Más\n\n${hayMuro ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Productos](${urlDe('es', 'productos')}): lo que hacen por su cuenta quienes forman el taller, sin precios\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 // Feed Atom de /novedades por idioma, con lo mismo que la página y en su orden. Los `id` son URI `tag:` que no

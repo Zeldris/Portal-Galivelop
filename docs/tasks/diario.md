@@ -86,7 +86,14 @@ la del portal. `npm run seo` sin errores. **Cambio de rutas: afecta al SEO** (ru
   `diario` en `PAGINAS` de `tools/qa/medir-paginas.cjs`. La cabecera de escritorio no cabía en 1280 px con el enlace nuevo:
   enlaces más juntos entre 1101 y 1440 px (`diario.css`).
 
+- Trozo 3 (2026-11-26): `scripts/paginas-estaticas.mjs` lee `src/data/diario/*.json` (como productos; `minutosLectura` repetido porque
+  `diario.ts` usa `import.meta.glob`, y `src/estatico.test.ts` comprueba que coinciden) y genera `/diario/<slug>/` por idioma: cuerpo
+  en HTML simple (migas, h1, bajada, fecha, firma enlazada a `/equipo/<id>`, lectura, h2 por sección, bloques; `animacion` como `<ol>`
+  de pasos dentro de `<figure>`), JSON-LD `BlogPosting`, `og:type` `article`, `lastmod` = `fecha`. El índice lista las entradas y lleva `Blog` con
+  `blogPost`. `llms.txt` con sección «Diario». El sitemap no lleva `hreflang` (ninguna página lo lleva ahí: van en el `<head>`). El feed
+  Atom no cambia (el plan no lo pide). `diario/como-dibujamos-el-relevo` en `medir-paginas.cjs`, `docs/desarrollo.md#diario-del-taller` y
+  `GLOSSARY.md`. Tests en `src/estatico.test.ts` («diario del taller»); `npm run seo`: 0 errores, sin avisos del diario.
+
 ## Falta
 
-- El trozo 3 (la entrada no tiene aún página estática: `scripts/paginas-estaticas.mjs` solo genera `/diario/`; JSON-LD,
-  sitemap, `llms.txt`, `og:type`, documentación y glosario); luego la revisión del bloque (`/code-review`) antes del domingo.
+- La revisión del bloque (`/code-review`) antes del domingo.

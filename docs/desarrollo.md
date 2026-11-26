@@ -278,6 +278,27 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
 
 En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su página.
 
+## Diario del taller
+
+`/diario` es el diario del taller (Q-32): artículos largos sobre cómo se construye lo que hace Galivelop (decisiones, lo que
+se probó, lo que cambió), con el tono de [«Mensaje»](#mensaje): en llano, sin prometer lo que no existe. Cada entrada es
+`src/data/diario/<slug>.json` (el slug es su dirección, `/diario/<slug>`), que carga `src/data/diario.ts`; no hace falta tocar
+código. La más nueva sale primero. Campos:
+
+- `slug`, `fecha` (AAAA-MM-DD: sale en la página, es el `lastmod` del sitemap y el `datePublished`), `autor` (id de
+  `src/data/equipo.json`; la firma enlaza a su perfil), `proyecto` (opcional, slug de una ficha), `titulo`, `bajada`
+  (entradilla) y `descripcion` (para buscadores y redes, 160 caracteres como máximo).
+- `secciones`: cada una con `etiqueta`, `titulo` (el `h2`) y `bloques`. Tipos de bloque: `parrafo` (`texto`; `` `código` `` se
+  pinta como `<code>`), `decision` (`texto` y `cita`), `lista` (`titulo` e `items`) y `animacion` (`proyecto`, `id` de una
+  de las `animaciones` de su ficha, y `pie`; se ve quieta y se puede reproducir).
+- **Tres idiomas:** todo texto lleva `es`, `gl` y `en`; `src/data/diario.test.ts` lo comprueba, y también que el autor y el
+  proyecto existen, que los slugs no se repiten y que la animación está en la ficha.
+- **Lectura:** los minutos se calculan (palabras del idioma / 200, hacia arriba, mínimo 1); no se escriben.
+- **Estática y SEO:** `scripts/paginas-estaticas.mjs` genera una página por entrada e idioma (`og:type` `article`, JSON-LD
+  `BlogPosting` con autor, `datePublished` y editor), el índice lleva `Blog` con `blogPost`, el sitemap pone `lastmod` = `fecha`
+  y `llms.txt` tiene una sección «Diario». Tests: `src/estatico.test.ts`, «diario del taller». La tarea semanal no toca
+  `src/data/diario/`; una entrada nueva es código y lleva su `/code-review`.
+
 ## Feed de novedades
 
 `scripts/paginas-estaticas.mjs` escribe al construir un feed Atom por idioma con lo mismo que `/novedades` y en su orden

@@ -11,6 +11,7 @@ import {
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { entradas, minutosLectura } from './data/diario';
 import { ANCHO_ESTADO, PORTADA_ESTADO } from './data/marca';
 import type { EstadoProyecto } from './data/tipos';
 import { textos } from './i18n/textos';
@@ -31,7 +32,7 @@ beforeAll(() => {
   );
   writeFileSync(join(tmp, 'dist/index.html'), base);
   writeFileSync(join(tmp, 'dist/404.html'), base);
-  for (const f of ['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js'])
+  for (const f of ['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js', 'EntradaDiario-AbCd1234.js'])
     writeFileSync(join(tmp, 'dist/assets', f), '');
   execFileSync('node', [join(RAIZ, 'scripts/paginas-estaticas.mjs')], { cwd: tmp, stdio: 'pipe' });
 }, 60_000);
@@ -255,5 +256,96 @@ describe('feed Atom de novedades', () => {
     expect(leer('novedades')).toContain(
       `<a href="https://zeldris.github.io/Portal-Galivelop/novedades/feed.xml" type="application/atom+xml">${textos.es['novedades.feed']}</a>`,
     );
+  });
+});
+
+describe('diario del taller', () => {
+  const ld = (ruta: string) =>
+    JSON.parse(
+      leer(ruta)
+        .match(/<script type="application\/ld\+json">([^<]*)<\/script>/)![1]
+        .replace(/\\u003c/g, '<'),
+    );
+  const idiomas = [
+    ['', 'es'],
+    ['gl/', 'gl'],
+    ['en/', 'en'],
+  ] as const;
+  const e = entradas[0];
+  const SITIO = 'https://zeldris.github.io/Portal-Galivelop/';
+
+  it('cada entrada tiene su página por idioma, con su cuerpo, h2 por sección, autor enlazado y lectura', () => {
+    expect(entradas.length).toBeGreaterThan(0);
+    for (const [prefijo, i] of idiomas) {
+      for (const x of entradas) {
+        const html = leer(`${prefijo}diario/${x.slug}`);
+        expect(html).toContain(`<h1>${x.titulo[i]}</h1>`);
+        expect(html).toContain(
+          `<link rel="canonical" href="${SITIO}${prefijo}diario/${x.slug}/" />`,
+        );
+        expect(html).toContain(`<time datetime="${x.fecha}">`);
+        expect(html).toContain(`href="${SITIO}${prefijo}equipo/${x.autor}/"`);
+        expect(html).toContain(
+          textos[i]['diario.lecturaMin'].replace('{min}', String(minutosLectura(x, i))),
+        );
+        expect(html.match(/<h2>/g)).toHaveLength(x.secciones.length);
+        expect(html).toContain('modulepreload');
+        expect(html).toContain('EntradaDiario-AbCd1234.js');
+      }
+    }
+  });
+
+  it('el cuerpo estático lleva la animación como lista ordenada de pasos y `código` como <code>', () => {
+    const html = leer(`diario/${e.slug}`);
+    expect(html).toMatch(/<figure><ol><li><strong>/);
+    expect(html).toContain('<code>');
+    expect(html).not.toContain('`');
+  });
+
+  it('og:type es article en la entrada y website en el índice', () => {
+    expect(leer(`diario/${e.slug}`)).toContain('<meta property="og:type" content="article" />');
+    expect(leer('diario')).toContain('<meta property="og:type" content="website" />');
+  });
+
+  it('BlogPosting de la entrada: titular, descripción, fecha, autor con url, idioma, editor y dirección', () => {
+    for (const [prefijo, i] of idiomas) {
+      const d = ld(`${prefijo}diario/${e.slug}`);
+      expect(d['@type']).toBe('BlogPosting');
+      expect(d.headline).toBe(e.titulo[i]);
+      expect(d.description).toBe(e.descripcion[i]);
+      expect(d.datePublished).toBe(e.fecha);
+      expect(d.author['@type']).toBe('Person');
+      expect(d.author.name).toBeTruthy();
+      expect(d.author.url).toBe(`${SITIO}${prefijo}equipo/${e.autor}/`);
+      expect(d.inLanguage).toBe(i);
+      expect(d.publisher['@type']).toBe('Organization');
+      expect(d.url).toBe(`${SITIO}${prefijo}diario/${e.slug}/`);
+      expect(d.mainEntityOfPage['@id']).toBe(d.url);
+    }
+  });
+
+  it('el índice es un Blog con un blogPost por entrada y las lista en el HTML', () => {
+    for (const [prefijo, i] of idiomas) {
+      const d = ld(`${prefijo}diario`);
+      expect(d['@type']).toBe('Blog');
+      expect(d.blogPost).toHaveLength(entradas.length);
+      expect(d.blogPost[0].url).toBe(`${SITIO}${prefijo}diario/${e.slug}/`);
+      expect(d.blogPost[0].datePublished).toBe(e.fecha);
+      expect(leer(`${prefijo}diario`)).toContain(
+        `<a href="${SITIO}${prefijo}diario/${e.slug}/">${e.titulo[i]}</a>`,
+      );
+    }
+  });
+
+  it('sitemap con lastmod = fecha de la entrada, y llms.txt con su sección', () => {
+    const sitemap = readFileSync(join(tmp, 'dist/sitemap.xml'), 'utf8');
+    for (const [prefijo] of idiomas)
+      expect(sitemap).toContain(
+        `<loc>${SITIO}${prefijo}diario/${e.slug}/</loc><lastmod>${e.fecha}</lastmod>`,
+      );
+    expect(sitemap).toContain(`<loc>${SITIO}diario/</loc><lastmod>${entradas[0].fecha}</lastmod>`);
+    const llms = readFileSync(join(tmp, 'dist/llms.txt'), 'utf8');
+    expect(llms).toContain('## Diario');
+    expect(llms).toContain(`- [${e.titulo.es}](${SITIO}diario/${e.slug}/): ${e.descripcion.es}`);
   });
 });
