@@ -9,7 +9,7 @@ import { equipo } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 
-// Un solo icono de la marca: importarlo suelto evita cargar los 21 de IconoMarca (~55 KB gzip) antes de pintar la
+// Un solo icono de la marca: importarlo suelto evita cargar los 21 iconos juntos (~55 KB gzip) antes de pintar la
 // página en móvil (LCP de /equipo/, 2026-11-26).
 const RAMAS = trazadoSvg(ramas, 'ramas');
 

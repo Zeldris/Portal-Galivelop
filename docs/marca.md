@@ -163,7 +163,7 @@ Al recibir una imagen, se copia a su destino y se ejecuta la orden. Cada imagen 
 | 3 | `public/marca/galivelop-portal.jpg` (1200×630, referenciada en `index.html`) | Copiar y comprobar la referencia de `og:image` |
 | 4, 5 | `public/marca/rosa-vientos.svg`, `public/marca/sello.svg` | Vectorizar |
 | 6 | `public/marca/portada-<estado>.webp`, una por estado | Convertir a WebP (1600×900); sin `-mini`: ninguna tarjeta la usa |
-| 7, 8, 9 | `src/assets/iconos/<nombre>.svg`, pintados en línea por `IconoMarca.tsx` | Vectorizar la hoja y recortar cada icono; luego `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (tinta a `currentColor`, recorte del `viewBox` y un contorno proporcional que acerca su grosor al de lucide a 24 px) y añadirlo a `ICONOS` de `IconoMarca.tsx` |
+| 7, 8, 9 | `src/assets/iconos/<nombre>.svg`, pintados en línea con `IconoSvg.tsx` | Vectorizar la hoja y recortar cada icono; luego `node tools/marca/limpiar-iconos.cjs <icono.svg>...` (tinta a `currentColor`, recorte del `viewBox` y un contorno proporcional que acerca su grosor al de lucide a 24 px) e importarlo suelto (`?raw`) en la página que lo use, con `trazadoSvg()` |
 | 10, 13, 18, 19 | `public/marca/<nombre>.webp` (+ `-mini.webp`) | Convertir a WebP; el tema oscuro, aparte si va sobre papel. **11, 16, 21 y 22 canceladas** (por CSS, sin imagen; véase abajo) |
 | 12 | `public/marca/separador.webp` | Convertir a WebP con transparencia (`cwebp -q 90 -alpha_q 100`) |
 | 17 | `public/marca/<nombre>.svg` | Vectorizar. **La 20 está cancelada** (por CSS) |

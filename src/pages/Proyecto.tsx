@@ -11,7 +11,7 @@ import { EtiquetaColaboracion } from '../components/Colaboracion';
 import { EstadoEtiqueta } from '../components/EstadoEtiqueta';
 import { Galeria } from '../components/Galeria';
 import { Icono } from '../components/Icono';
-import { IconoMarca, type NombreIcono } from '../components/IconoMarca';
+import { IconoSvg, trazadoSvg } from '../components/IconoSvg';
 import { ListaRedes } from '../components/IconoRed';
 import { Retrato } from '../components/Retrato';
 import { Separador } from '../components/Separador';
@@ -24,6 +24,15 @@ import type { EstadoHito, Proyecto as TipoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
 import { anclaGuion } from '../utils/guion';
 import { NoEncontrado } from './NoEncontrado';
+import aFondo from '../assets/iconos/a-fondo.svg?raw';
+import avance from '../assets/iconos/avance.svg?raw';
+import comoEstaHecho from '../assets/iconos/como-esta-hecho.svg?raw';
+import galeria from '../assets/iconos/galeria.svg?raw';
+import hitoCurso from '../assets/iconos/hito-curso.svg?raw';
+import hitoHecho from '../assets/iconos/hito-hecho.svg?raw';
+import hitoPendiente from '../assets/iconos/hito-pendiente.svg?raw';
+import ramas from '../assets/iconos/ramas.svg?raw';
+import resumen from '../assets/iconos/resumen.svg?raw';
 
 // La ficha se lee de arriba abajo en cinco grupos, como un caso de estudio: qué es y qué lo hace distinto
 // (resumen), cómo se ve (galería), su mundo o su metodología (a fondo, los apartados propios), cómo está hecho y en
@@ -36,20 +45,22 @@ const PUBLICACIONES_EN_FICHA = 3;
 const AnimacionFlujo = lazy(() => import('../components/AnimacionFlujo'));
 
 /** Marcadores del avance (recurso 26 de `docs/marca.md`): el mismo aro con visto, con «…» o vacío. */
-const ICONO_HITO: Record<EstadoHito, NombreIcono> = {
-  hecho: 'hito-hecho',
-  curso: 'hito-curso',
-  pendiente: 'hito-pendiente',
+type IconoTrazado = { viewBox: string; trazado: string };
+const ICONO_HITO: Record<EstadoHito, IconoTrazado> = {
+  hecho: trazadoSvg(hitoHecho, 'hito-hecho'),
+  curso: trazadoSvg(hitoCurso, 'hito-curso'),
+  pendiente: trazadoSvg(hitoPendiente, 'hito-pendiente'),
 };
 
 /** Iconos de los grupos de la ficha (recurso 25), en su título y en el índice. */
-const ICONO_GRUPO: Record<Grupo, NombreIcono> = {
-  resumen: 'resumen',
-  galeria: 'galeria',
-  afondo: 'a-fondo',
-  tecnica: 'como-esta-hecho',
-  avance: 'avance',
+const ICONO_GRUPO: Record<Grupo, IconoTrazado> = {
+  resumen: trazadoSvg(resumen, 'resumen'),
+  galeria: trazadoSvg(galeria, 'galeria'),
+  afondo: trazadoSvg(aFondo, 'a-fondo'),
+  tecnica: trazadoSvg(comoEstaHecho, 'como-esta-hecho'),
+  avance: trazadoSvg(avance, 'avance'),
 };
+const ICONO_RAMAS = trazadoSvg(ramas, 'ramas');
 
 /** Grupos con contenido en este proyecto (los vacíos no se muestran). */
 function gruposDe(p: TipoProyecto): Grupo[] {
@@ -145,7 +156,7 @@ function NavFicha({ grupos }: { grupos: { id: Grupo; titulo: string }[] }) {
     <nav className="nav-ficha" aria-label={t('proyecto.indice')} ref={barra}>
       {grupos.map((g) => (
         <a key={g.id} href={`#${g.id}`} aria-current={activo === g.id ? 'location' : undefined}>
-          <IconoMarca nombre={ICONO_GRUPO[g.id]} />
+          <IconoSvg icono={ICONO_GRUPO[g.id]} />
           {g.titulo}
         </a>
       ))}
@@ -358,7 +369,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
 
         <section id="resumen" className="grupo" aria-labelledby="titulo-resumen">
           <h2 id="titulo-resumen" className="grupo-titulo">
-            <IconoMarca nombre={ICONO_GRUPO.resumen} />
+            <IconoSvg icono={ICONO_GRUPO.resumen} />
             {t('grupo.resumen')}
           </h2>
           {p.descripcion.length > 0 && (
@@ -442,7 +453,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('galeria') && (
           <section id="galeria" className="grupo" aria-labelledby="titulo-galeria">
             <h2 id="titulo-galeria" className="grupo-titulo">
-              <IconoMarca nombre={ICONO_GRUPO.galeria} />
+              <IconoSvg icono={ICONO_GRUPO.galeria} />
               {t('sec.galeria')}
             </h2>
             <Galeria
@@ -457,7 +468,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('afondo') && (
           <section id="afondo" className="grupo" aria-labelledby="titulo-afondo">
             <h2 id="titulo-afondo" className="grupo-titulo">
-              <IconoMarca nombre={ICONO_GRUPO.afondo} />
+              <IconoSvg icono={ICONO_GRUPO.afondo} />
               {t('grupo.afondo')}
             </h2>
             <p className="grupo-texto">{t('afondo.texto')}</p>
@@ -468,7 +479,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
         {grupos.includes('tecnica') && (
           <section id="tecnica" className="grupo" aria-labelledby="titulo-tecnica">
             <h2 id="titulo-tecnica" className="grupo-titulo">
-              <IconoMarca nombre={ICONO_GRUPO.tecnica} />
+              <IconoSvg icono={ICONO_GRUPO.tecnica} />
               {t('grupo.tecnica')}
             </h2>
             <div className="grupo-columnas">
@@ -529,7 +540,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
             <Separador />
             <section id="avance" className="grupo" aria-labelledby="titulo-avance">
               <h2 id="titulo-avance" className="grupo-titulo">
-                <IconoMarca nombre={ICONO_GRUPO.avance} />
+                <IconoSvg icono={ICONO_GRUPO.avance} />
                 {t('grupo.avance')}
               </h2>
               <div className="grupo-columnas">
@@ -547,7 +558,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
                             data-guion={anclaGuion('hito', h.version, h.nombre.es)}
                           >
                             <span className="hito-marca" aria-hidden="true">
-                              <IconoMarca nombre={ICONO_HITO[h.estado]} />
+                              <IconoSvg icono={ICONO_HITO[h.estado]} />
                             </span>
                             <div>
                               <p className="hito-titulo">
@@ -710,7 +721,7 @@ export function FichaProyecto({ p }: { p: TipoProyecto }) {
               );
             })}
           <span className="participar-icono" aria-hidden="true">
-            {p.colaboracion === 'abierta' ? <IconoMarca nombre="ramas" /> : <Lock />}
+            {p.colaboracion === 'abierta' ? <IconoSvg icono={ICONO_RAMAS} /> : <Lock />}
           </span>
           <div>
             <h2>{t(`participa.${p.colaboracion}.titulo`, { nombre: p.nombre })}</h2>

@@ -3,7 +3,7 @@ import { useEffect, useState, type ComponentType, type CSSProperties } from 'rea
 import { Link } from '../components/Enlace';
 import { IconoDiscord } from '../components/IconoDiscord';
 import { IconoGitHub } from '../components/IconoGitHub';
-import { IconoMarca, iconoMarca } from '../components/IconoMarca';
+import { IconoSvg, iconoDe, trazadoSvg } from '../components/IconoSvg';
 import { MarcaGV } from '../components/Logo';
 import { Separador } from '../components/Separador';
 import { TarjetaProxima } from '../components/TarjetaProxima';
@@ -16,25 +16,54 @@ import { proximos } from '../data/proximamente';
 import { proyectos, ruta } from '../data/proyectos';
 import type { EstadoProyecto } from '../data/tipos';
 import { useIdioma } from '../i18n/Idioma';
+import bombilla from '../assets/iconos/bombilla.svg?raw';
+import candado from '../assets/iconos/candado.svg?raw';
+import codigo from '../assets/iconos/codigo.svg?raw';
+import compas from '../assets/iconos/compas.svg?raw';
+import documentoCheck from '../assets/iconos/documento-check.svg?raw';
+import historial from '../assets/iconos/historial.svg?raw';
+import implantacion from '../assets/iconos/implantacion.svg?raw';
+import mira from '../assets/iconos/mira.svg?raw';
+import mundos from '../assets/iconos/mundos.svg?raw';
+import papelVentana from '../assets/iconos/papel-ventana.svg?raw';
+import ramasUnidas from '../assets/iconos/ramas-unidas.svg?raw';
+import ramas from '../assets/iconos/ramas.svg?raw';
+import terminal from '../assets/iconos/terminal.svg?raw';
 
 const FILTROS: (EstadoProyecto | 'todos')[] = ['todos', 'publicado', 'desarrollo', 'diseno'];
 /** Con pocos proyectos se ven todos de un vistazo y los filtros sobran. */
 const FILTRAR_DESDE = 5;
-/** Iconos de lucide y propios de la marca (`iconoMarca`) en el mismo hueco. */
+/** Iconos propios de la marca, importados sueltos (no los 21 juntos). */
+const ICONOS = {
+  bombilla: trazadoSvg(bombilla, 'bombilla'),
+  candado: trazadoSvg(candado, 'candado'),
+  codigo: trazadoSvg(codigo, 'codigo'),
+  compas: trazadoSvg(compas, 'compas'),
+  'documento-check': trazadoSvg(documentoCheck, 'documento-check'),
+  historial: trazadoSvg(historial, 'historial'),
+  implantacion: trazadoSvg(implantacion, 'implantacion'),
+  mira: trazadoSvg(mira, 'mira'),
+  mundos: trazadoSvg(mundos, 'mundos'),
+  'papel-ventana': trazadoSvg(papelVentana, 'papel-ventana'),
+  'ramas-unidas': trazadoSvg(ramasUnidas, 'ramas-unidas'),
+  ramas: trazadoSvg(ramas, 'ramas'),
+  terminal: trazadoSvg(terminal, 'terminal'),
+};
+/** Iconos de lucide y propios de la marca (`iconoDe`) en el mismo hueco. */
 type Icono = ComponentType<{ 'aria-hidden'?: 'true' }>;
 
 const ICONO_LINEA: Record<Linea, Icono> = {
-  'ia-local': iconoMarca('codigo'),
-  mundos: iconoMarca('mundos'),
-  informacion: iconoMarca('documento-check'),
-  producto: iconoMarca('papel-ventana'),
-  metodo: iconoMarca('compas'),
+  'ia-local': iconoDe(ICONOS.codigo),
+  mundos: iconoDe(ICONOS.mundos),
+  informacion: iconoDe(ICONOS['documento-check']),
+  producto: iconoDe(ICONOS['papel-ventana']),
+  metodo: iconoDe(ICONOS.compas),
 };
 const PRINCIPIOS: [Icono, 'valor1' | 'valor2' | 'valor3' | 'valor4'][] = [
-  [iconoMarca('candado'), 'valor1'],
-  [iconoMarca('mira'), 'valor2'],
-  [iconoMarca('historial'), 'valor3'],
-  [iconoMarca('ramas-unidas'), 'valor4'],
+  [iconoDe(ICONOS.candado), 'valor1'],
+  [iconoDe(ICONOS.mira), 'valor2'],
+  [iconoDe(ICONOS.historial), 'valor3'],
+  [iconoDe(ICONOS['ramas-unidas']), 'valor4'],
 ];
 
 /** «A, B y C» en el idioma de la página; sin Intl.ListFormat (navegadores viejos), con comas. */
@@ -263,7 +292,7 @@ export function Inicio() {
           <ul className="vias">
             <li data-guion="via-unirse">
               <Link to="/participa/unirse" className="via">
-                <IconoMarca nombre="ramas" />
+                <IconoSvg icono={ICONOS.ramas} />
                 <h3>{t('via1.titulo')}</h3>
                 <p>{t('via1.texto')}</p>
                 <span className="via-ir">
@@ -273,7 +302,7 @@ export function Inicio() {
             </li>
             <li data-guion="via-proponer">
               <Link to="/participa/proponer" className="via">
-                <IconoMarca nombre="bombilla" />
+                <IconoSvg icono={ICONOS.bombilla} />
                 <h3>{t('via2.titulo')}</h3>
                 <p>{t('via2.texto')}</p>
                 <span className="via-ir">
@@ -283,7 +312,7 @@ export function Inicio() {
             </li>
             <li data-guion="via-aprender">
               <Link to="/participa/unirse?modo=aprender" className="via">
-                <IconoMarca nombre="terminal" />
+                <IconoSvg icono={ICONOS.terminal} />
                 <h3>{t('via3.titulo')}</h3>
                 <p>{t('via3.texto')}</p>
                 <span className="via-ir">
@@ -294,7 +323,7 @@ export function Inicio() {
           </ul>
           <aside className="proyecto-propio" data-guion="proyecto-propio">
             <span className="proyecto-propio-icono" aria-hidden="true">
-              <IconoMarca nombre="implantacion" />
+              <IconoSvg icono={ICONOS.implantacion} />
             </span>
             <div>
               <h3>{t('proyectoPropio.titulo')}</h3>
