@@ -193,7 +193,7 @@ describe('páginas estáticas', () => {
     }
   });
 
-  it('toda cabecera con srcsetCabecera tiene su -movil.webp de 960 px y declara el ancho real del original', () => {
+  it('toda cabecera y portada de producto con srcsetCabecera tiene su -movil.webp de 960 px y declara el ancho real del original', () => {
     const anchoWebp = (ruta: string) => {
       const b = readFileSync(join(RAIZ, 'public', ruta));
       const tipo = b.toString('ascii', 12, 16);
@@ -216,6 +216,17 @@ describe('páginas estáticas', () => {
     }
     expect(fichas).toBeGreaterThan(0);
     for (const src of Object.values(PORTADA_ESTADO)) comprueba(src, ANCHO_ESTADO);
+    // La portada de un producto (Producto.tsx y su preload) también pasa por srcsetCabecera; la original, más ancha.
+    const dirProductos = join(RAIZ, 'src/data/productos');
+    let portadas = 0;
+    for (const f of readdirSync(dirProductos).filter((n) => n.endsWith('.json'))) {
+      const portada = JSON.parse(readFileSync(join(dirProductos, f), 'utf8')).pagina?.portada;
+      if (!portada) continue;
+      comprueba(portada.src, portada.ancho);
+      expect(portada.ancho, `${portada.src}: más ancha que su versión móvil`).toBeGreaterThan(960);
+      portadas++;
+    }
+    expect(portadas).toBeGreaterThan(0);
   });
 });
 

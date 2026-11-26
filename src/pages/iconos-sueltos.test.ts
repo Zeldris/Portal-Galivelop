@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 // Los 21 iconos juntos (IconoMarca) pesaban ~55 KB gzip en la portada y las fichas: cada página importa los suyos sueltos.
+// Que cada `?raw` exista ya lo comprueba el build (un import roto no compila).
 function archivos(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((e) =>
     e.isDirectory()
@@ -21,17 +22,5 @@ describe('iconos sueltos', () => {
     );
     expect(malos).toEqual([]);
     expect(existsSync('src/components/IconoMarca.tsx')).toBe(false);
-  });
-
-  it('cada ?raw de assets/iconos/ existe', () => {
-    const importados = fuentes.flatMap((f) =>
-      [
-        ...readFileSync(f, 'utf8').matchAll(
-          /from '((?:\.\.?\/)+assets\/iconos\/[^']+\.svg)\?raw'/g,
-        ),
-      ].map((m) => join(f, '..', m[1])),
-    );
-    expect(importados.length).toBeGreaterThan(0);
-    expect(importados.filter((r) => !existsSync(r))).toEqual([]);
   });
 });

@@ -2,7 +2,7 @@ import { existsSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 // LCP de /equipo/ en móvil (2026-11-26): la página pintaba tarde porque su trozo arrastraba los 21 iconos de
-// los 21 iconos para usar uno y bajaba la cabecera de 1600 px en un móvil de 390.
+// IconoMarca para usar uno y bajaba la cabecera de 1600 px en un móvil de 390.
 const fuente = readFileSync('src/pages/Equipo.tsx', 'utf8');
 
 describe('página Equipo, ligera en móvil', () => {
