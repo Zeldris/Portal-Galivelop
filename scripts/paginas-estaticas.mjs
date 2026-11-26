@@ -24,6 +24,8 @@ const ALT_PORTAL = {
   gl: 'Portada de Galivelop: «Facemos reais os proxectos que semellan imposibles», xunto a unha rosa dos ventos flotando no mar gravado',
   en: 'Galivelop cover: “We make seemingly impossible projects real”, beside a compass rose floating in an engraved sea',
 };
+// Texto alternativo de la vista previa de un producto (tools/og/producto.html): «<nombre> (<alias>), <esto>: «<lema>»», con las comillas de cada idioma.
+const ALT_PRODUCTO = { es: ['producto de Galivelop', '«', '»'], gl: ['produto de Galivelop', '«', '»'], en: ['a Galivelop product', '“', '”'] };
 const conImagen = (html, url, alt) => {
   html = html
     .replace(/(property="og:image" content=")[^"]*/, `$1${url}`)
@@ -241,16 +243,23 @@ for (const idioma of IDIOMAS) {
     });
   }
   // Página de cada producto que la tiene (/productos/<slug>, ADR 0005): el alias va en el título para que se encuentre
-  // por los dos nombres. La vista previa es su portada (WebP, sin medidas), como la de un proyecto sin og propia.
+  // por los dos nombres. La vista previa es su og.jpg (og-gl.jpg, og-en.jpg; las genera tools/og/producto.mjs) y, sin
+  // ella, su portada (WebP, sin medidas) o la del portal.
   for (const x of productos.filter((x) => x.pagina)) {
+    const og = [`productos/${x.slug}/og-${idioma}.jpg`, `productos/${x.slug}/og.jpg`].find((f) => existsSync(`public/${f}`));
+    const vista = og
+      ? { imagen: imagenDe(og), medidas: true, alt: `${x.nombre}${x.alias ? ` (${x.alias})` : ''}, ${ALT_PRODUCTO[idioma][0]}: ${ALT_PRODUCTO[idioma][1]}${x.pagina.lema.map((t) => t[idioma]).join(' ')}${ALT_PRODUCTO[idioma][2]}` }
+      : x.pagina.portada
+        ? { imagen: imagenDe(x.pagina.portada.src), medidas: false, alt: x.pagina.portada.alt[idioma] }
+        : undefined;
     paginas.push({
       idioma,
       ruta: `productos/${x.slug}`,
       titulo: `${x.nombre}${x.alias ? ` (${x.alias})` : ''} · ${x.pagina.seo.titulo[idioma]} · Galivelop`,
       descripcion: x.pagina.seo.descripcion[idioma],
-      // Sin portada, la vista previa es la del portal.
-      imagen: x.pagina.portada ? imagenDe(x.pagina.portada.src) : IMAGEN[idioma],
-      vista: x.pagina.portada ? { imagen: imagenDe(x.pagina.portada.src), medidas: false, alt: x.pagina.portada.alt[idioma] } : undefined,
+      // Sin og ni portada, la vista previa es la del portal.
+      imagen: vista?.imagen ?? IMAGEN[idioma],
+      vista,
       fecha: x.pagina.actualizado,
       producto: x,
     });

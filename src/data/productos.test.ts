@@ -47,6 +47,15 @@ describe('productos', () => {
         for (const id of p.colaboradores) expect(buscarPersonaPorId(id)).toBeDefined();
       });
 
+      it('si tiene página, lleva su vista previa en redes en los tres idiomas (node tools/og/producto.mjs)', () => {
+        if (!p.pagina) return;
+        for (const f of ['og.jpg', 'og-gl.jpg', 'og-en.jpg'])
+          expect(
+            existsSync(`public/productos/${p.slug}/${f}`),
+            `public/productos/${p.slug}/${f}`,
+          ).toBe(true);
+      });
+
       it('si tiene página, lleva su ficha de requisitos mínimos en los tres idiomas', () => {
         if (!p.pagina) return;
         expect(p.pagina.requisitos.items.length).toBeGreaterThan(0);

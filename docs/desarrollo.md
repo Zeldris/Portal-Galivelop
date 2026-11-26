@@ -415,6 +415,11 @@ ruta nueva se añade en ese script. La dirección del portal y la clave están e
   `presentacion` (o el de la portada), en el idioma de la página. Una
   tarjeta ya compartida no se refresca sola: Facebook (Sharing Debugger), LinkedIn (Post Inspector), Telegram
   (`@WebpageBot`); en Discord y WhatsApp solo cambia si cambia la URL.
+  La de cada **producto con página** es `public/productos/<slug>/og.jpg` (`og-gl.jpg`, `og-en.jpg`): nombre, alias y
+  lema de su JSON con su acento, sobre su portada o, sin ella, junto a su primera figura (versión oscura). La pinta
+  `tools/og/producto.html` y la renderiza `node tools/og/producto.mjs [slug]`; se vuelve a correr al cambiar el lema,
+  el estado, la portada o la figura. Su texto alternativo lo compone el generador («<nombre> (<alias>), producto de
+  Galivelop: «<lema>»»); `src/data/productos.test.ts` exige las tres.
 - **Título y descripción:** los de cada página van en `FIJAS` del script; los de un proyecto salen de su lema y su
   resumen, salvo que la ficha traiga `seo` (`titulo`, `descripcion`), más cortos: Google corta el título a unos 60
   caracteres y la descripción a unos 160 (`src/data/proyectos.test.ts` lo comprueba para `seo`).
