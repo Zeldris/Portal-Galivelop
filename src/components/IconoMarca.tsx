@@ -1,4 +1,5 @@
 import type { ComponentType } from 'react';
+import { IconoSvg, trazadoSvg } from './IconoSvg';
 import aFondo from '../assets/iconos/a-fondo.svg?raw';
 import avance from '../assets/iconos/avance.svg?raw';
 import bombilla from '../assets/iconos/bombilla.svg?raw';
@@ -49,25 +50,12 @@ export type NombreIcono = keyof typeof FUENTES;
 
 /** `viewBox` y contenido de cada SVG, leídos una vez al cargar el módulo. */
 const ICONOS = Object.fromEntries(
-  Object.entries(FUENTES).map(([nombre, svg]) => {
-    const m = /<svg\b[^>]*\sviewBox="([^"]+)"[^>]*>([\s\S]*)<\/svg>/.exec(svg);
-    if (!m) throw new Error(`IconoMarca: ${nombre}.svg sin <svg viewBox> legible`);
-    return [nombre, { viewBox: m[1], trazado: m[2] }];
-  }),
+  Object.entries(FUENTES).map(([nombre, svg]) => [nombre, trazadoSvg(svg, nombre)]),
 ) as Record<NombreIcono, { viewBox: string; trazado: string }>;
 
 /** Se pinta en línea (no con `<img>`) para que tome el color del texto y casen las reglas de `svg` del CSS. */
 export function IconoMarca({ nombre }: { nombre: NombreIcono }) {
-  const { viewBox, trazado } = ICONOS[nombre];
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox={viewBox}
-      aria-hidden="true"
-      focusable="false"
-      dangerouslySetInnerHTML={{ __html: trazado }}
-    />
-  );
+  return <IconoSvg icono={ICONOS[nombre]} />;
 }
 
 /** El icono como componente, para ponerlo en los mismos huecos que un icono de lucide (siempre decorativo). */

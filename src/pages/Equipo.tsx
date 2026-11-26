@@ -2,11 +2,16 @@ import { ArrowRight, MapPin } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
 import { ListaRedes } from '../components/IconoRed';
-import { IconoMarca } from '../components/IconoMarca';
+import ramas from '../assets/iconos/ramas.svg?raw';
+import { IconoSvg, trazadoSvg } from '../components/IconoSvg';
 import { Retrato } from '../components/Retrato';
 import { equipo } from '../data/equipo';
 import { buscarProyecto, ruta } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
+
+// Un solo icono de la marca: importarlo suelto evita cargar los 21 de IconoMarca (~55 KB gzip) antes de pintar la
+// página en móvil (LCP de /equipo/, 2026-11-26).
+const RAMAS = trazadoSvg(ramas, 'ramas');
 
 export function Equipo() {
   const { t, tx } = useIdioma();
@@ -24,6 +29,8 @@ export function Equipo() {
         <img
           className="banda-cabecera"
           src={ruta('marca/cabecera-equipo.webp')}
+          srcSet={`${ruta('marca/cabecera-equipo-mini.webp')} 800w, ${ruta('marca/cabecera-equipo.webp')} 1600w`}
+          sizes="(max-width: 1200px) 100vw, 1200px"
           alt=""
           width={1600}
           height={500}
@@ -81,7 +88,7 @@ export function Equipo() {
           <li className="persona persona-unete" data-guion="unete">
             <span className="retrato persona-foto" aria-hidden="true">
               <span className="persona-hueco">
-                <IconoMarca nombre="ramas" />
+                <IconoSvg icono={RAMAS} />
               </span>
             </span>
             <h2>{t('equipo.unete.titulo')}</h2>
