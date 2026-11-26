@@ -142,6 +142,18 @@ describe('páginas estáticas', () => {
     );
   });
 
+  it('la portada de un producto se precarga con su mini y los sizes del <img> (el móvil no baja las dos)', () => {
+    const fuente = readFileSync('src/pages/Producto.tsx', 'utf8');
+    const sizes = /className="producto-portada"[\s\S]*?sizes="([^"]+)"/.exec(fuente)?.[1];
+    expect(sizes).toBeTruthy();
+    for (const ruta of ['productos/galivelop-developer', 'gl/productos/galivelop-developer']) {
+      expect(leer(ruta)).toContain(
+        `<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/galivelop-developer/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/galivelop-developer/portada-mini.webp 720w, /Portal-Galivelop/proyectos/galivelop-developer/portada.webp `,
+      );
+      expect(leer(ruta)).toContain(`imagesizes="${sizes}" fetchpriority="high" />`);
+    }
+  });
+
   it('la portada de cada ficha lleva su versión móvil en el preload (es, gl, en), y el archivo existe', () => {
     for (const prefijo of ['', 'gl/', 'en/']) {
       for (const [slug, original] of [

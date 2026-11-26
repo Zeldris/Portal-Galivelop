@@ -662,12 +662,19 @@ const imagenLcpAncho = (pg) => {
   const modo = p.cabecera ?? 'ilustracion';
   return modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
 };
+// Los mismos `sizes` que la portada de src/pages/Producto.tsx.
+const SIZES_PORTADA_PRODUCTO = '(min-width: 860px) 560px, 100vw';
 function precargas(pg) {
   const lineas = [];
   const img = imagenLcp(pg);
   const conVersiones = imagenLcpAncho(pg);
   // Con `imagesrcset` el navegador elige la misma versión que el `<img srcset>` de la ficha (src/pages/Proyecto.tsx).
-  const versiones = conVersiones ? ` imagesrcset="${srcsetCabecera(img, conVersiones, (s) => BASE_404 + s)}" imagesizes="${SIZES_CABECERA}"` : '';
+  // La portada de un producto tiene su versión de 720 px (`mini`) y los `sizes` de src/pages/Producto.tsx: sin ellos el
+  // móvil precargaba el original y luego el `<img>` bajaba también la mini (LCP de galivelop-developer, 2026-11-26).
+  const portada = pg.producto?.pagina.portada;
+  const versiones = portada
+    ? ` imagesrcset="${BASE_404}${portada.mini} 720w, ${BASE_404}${portada.src} ${portada.ancho}w" imagesizes="${SIZES_PORTADA_PRODUCTO}"`
+    : conVersiones ? ` imagesrcset="${srcsetCabecera(img, conVersiones, (s) => BASE_404 + s)}" imagesizes="${SIZES_CABECERA}"` : '';
   if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versiones} fetchpriority="high" />`);
   const modulos = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
   for (const m of modulos) if (m) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
