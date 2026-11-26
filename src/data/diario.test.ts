@@ -125,6 +125,22 @@ describe('diario', () => {
   }
 });
 
+// El diario lo cuenta el taller en primera persona del plural: «la persona» es vocabulario interno del flujo (quien
+// decide en la sesión) y no va en el texto público (revisión del bloque del diario, 6e28d10; retro 2026-11-26, P1).
+describe('vocabulario del diario', () => {
+  const INTERNO = /\b(la persona|a persoa|da persoa|the person)\b/i;
+  it('ninguna entrada dice «la persona» en ningún idioma', () => {
+    const malas = readdirSync(CARPETA)
+      .filter((f) => f.endsWith('.json'))
+      .flatMap((f) =>
+        (readFileSync(join(CARPETA, f), 'utf8').match(new RegExp(INTERNO, 'gi')) ?? []).map(
+          (m) => `${f}: «${m}»`,
+        ),
+      );
+    expect(malas).toEqual([]);
+  });
+});
+
 describe('minutosLectura', () => {
   // 2 (título) + 3 (bajada) + 1 + 1 (sección) + 4 (párrafo) + 1 + 2 (decisión) + 1 + 2 (lista) + 3 (pie) = palabras
   const base: EntradaDiario = {

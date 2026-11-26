@@ -9,6 +9,11 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   - `hojasDeEstilos()` acepta `@import` con comillas dobles (hoy se salta sin aviso);
   - falla con 0 hojas;
   - falla si una hoja de `src/estilos/` no está en `global.css` (comparar con `readdirSync`).
+- **R-8 barrido de `tools/qa/`** (retro 2026-11-26, P2, aplazada a la próxima versión): cierra los leves de la
+  auditoría sobre la estática (entrada siguiente), las `@font-face` solo del primer CSS en `auditar-rendimiento.cjs`,
+  `src/` dos veces en `auditar-seguridad.cjs` y el verde sin probar nada de `probar-lector.cjs`.
+- **Tope de 400 caracteres por línea en `pending.md`** (retro 2026-11-26, P3, aplazada con R-8): test que falle con
+  una línea más larga y partir las que hay (la de «Guiones de lectura» pasa de 1,5k).
 - **Leves de la revisión de la auditoría sobre la estática** (c2531c1, 2026-11-26; no se vuelven a revisar en este
   cambio): `normalizarRuta` añade la barra también a `404.html` (sale con 2: no es ruta de página); la regex del
   canonical exige `rel` antes de `href` y `/Portal-Galivelop/` va fijo (sacarlo de `BASE`); `auditar-accesibilidad.cjs`,

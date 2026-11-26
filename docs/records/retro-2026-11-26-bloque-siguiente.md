@@ -5,7 +5,7 @@ producto, diario del taller (Q-32, trozos 1-3) y auditoría de rendimiento sobre
 Revisiones de bloque: 6e28d10 (`Findings: 9`) y f5b5cba (`Findings: 3`). Sin desviaciones apuntadas (`task.py
 deviations` vacío).
 
-**Estado:** pendiente de la decisión de la persona.
+**Estado:** aprobada (la persona, 2026-11-26: «Apruebo todo»): P1 aplicada, con el alcance reducido al diario (los textos legales y la ficha del workflow usan «la persona» con razón); P2 y P3 aplazadas a la próxima versión, en `pending.md`.
 
 ## Medida (`gw-opt-tokens`, desde 17320a6)
 
