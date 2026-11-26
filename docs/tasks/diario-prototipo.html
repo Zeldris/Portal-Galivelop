@@ -1,0 +1,201 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Diario del taller</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=JetBrains+Mono:wght@400;500&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+/* Prototipo: entrada del diario del taller. Carta náutica: papel claro con retícula, filetes, chaflán, datos en mono. */
+:root{
+  --papel:#fbfcfd; --reticula:#eef3f6; --celeste:#1aa6df; --celeste-hondo:#0072a8;
+  --tinta:#13212b; --tinta-2:#4a5c69; --texto-3:#5a6d7a; --alga:#5d7a6a; --ok:#3f5a4b;
+  --filete:#b9cbd6; --superficie:#ffffff; --superficie-2:#f1f6f9; --enlace:#0072a8;
+  --peligro:#a3135f; --peligro-tinte:rgba(163,19,95,.1); --tinte:rgba(26,166,223,.12);
+  --sobre-hondo:#ffffff;
+  --f-tit:'Big Shoulders Display','Arial Narrow',sans-serif;
+  --f-txt:'Literata',Georgia,'Times New Roman',serif;
+  --f-dat:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --chaflan:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--papel:#0d171e;--reticula:#121e27;--celeste-hondo:#0b5e88;--tinta:#e6eef3;--tinta-2:#9fb2bf;
+  --texto-3:#7d919e;--alga:#8fb09e;--ok:#8fb09e;--filete:#2b3d49;--superficie:#111f29;--superficie-2:#16242e;--enlace:#5cc8f2;
+  --peligro:#f27ab0;--peligro-tinte:rgba(242,122,176,.16);--tinte:rgba(26,166,223,.18)}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--papel:#0d171e;--reticula:#121e27;--celeste-hondo:#0b5e88;--tinta:#e6eef3;--tinta-2:#9fb2bf;
+  --texto-3:#7d919e;--alga:#8fb09e;--ok:#8fb09e;--filete:#2b3d49;--superficie:#111f29;--superficie-2:#16242e;--enlace:#5cc8f2;
+  --peligro:#f27ab0;--peligro-tinte:rgba(242,122,176,.16);--tinte:rgba(26,166,223,.18)}
+*{box-sizing:border-box}
+body{background-color:var(--papel);color:var(--tinta);font-family:var(--f-txt);font-size:1.0625rem;line-height:1.7;
+  background-image:linear-gradient(var(--reticula) 1px,transparent 1px),linear-gradient(90deg,var(--reticula) 1px,transparent 1px);
+  background-size:24px 24px;margin:0}
+.wrap{max-width:46rem;margin-inline:auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px));padding-block:1.25rem 3rem}
+a{color:var(--enlace);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--celeste-hondo);outline-offset:3px}
+.dat{font:500 .75rem/1.4 var(--f-dat);letter-spacing:.06em;text-transform:uppercase}
+.migas{display:flex;flex-wrap:wrap;gap:.25rem .5rem;color:var(--texto-3);margin:0 0 1.5rem;padding:0;list-style:none}
+.migas li+li::before{content:"/";margin-right:.5rem;color:var(--filete)}
+.migas a{color:var(--tinta-2)}
+.migas [aria-current]{color:var(--tinta)}
+header.cab{background:var(--celeste-hondo);color:var(--sobre-hondo);padding:1.5rem 1.25rem 1.25rem;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 28px),calc(100% - 28px) 100%,0 100%);padding-bottom:2.25rem}
+.cab .dat{color:#fff;opacity:.9;margin:0 0 .75rem}
+.cab h1{font:800 clamp(2.4rem,9vw,3.6rem)/.95 var(--f-tit);letter-spacing:.005em;margin:0 0 1rem;text-wrap:balance;text-transform:uppercase}
+.cab .bajada{font-size:1.1rem;line-height:1.5;margin:0 0 1.25rem;max-width:36rem}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:0;padding-top:.9rem;border-top:1px dashed rgba(255,255,255,.55)}
+.meta div{min-width:0}
+.meta dt{opacity:.8}.meta dd{margin:0;font:500 .8rem/1.4 var(--f-dat)}
+.meta a{color:#fff}
+article{margin-top:2.25rem}
+article h2{font:800 1.9rem/1.05 var(--f-tit);text-transform:uppercase;letter-spacing:.01em;margin:2.5rem 0 .75rem;
+  padding-top:.9rem;border-top:2px solid var(--tinta);text-wrap:balance}
+article h2 .dat{display:block;color:var(--texto-3);font-weight:400;margin-bottom:.25rem;font-family:var(--f-dat);letter-spacing:.06em}
+article p{margin:0 0 1.1rem;max-width:40rem}
+code{font:.85em var(--f-dat);background:var(--superficie-2);padding:.05em .35em;border:1px solid var(--filete)}
+.decision{margin:1.75rem 0;padding:1.1rem 1.25rem;background:var(--superficie);border:1px solid var(--filete);border-left:6px solid var(--celeste-hondo);
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
+.decision .dat{color:var(--texto-3);margin:0 0 .4rem}
+.decision p{font-style:italic;font-size:1.15rem;line-height:1.5;margin:0}
+.decision cite{display:block;font:400 .75rem var(--f-dat);letter-spacing:.06em;text-transform:uppercase;color:var(--texto-3);margin-top:.6rem;font-style:normal}
+.peligro-ej{display:inline-block;padding:0 .4em;color:var(--peligro);background:var(--peligro-tinte);border:1px solid var(--peligro);font:500 .8rem/1.6 var(--f-dat)}
+figure{margin:2rem 0;padding:1rem;background:var(--superficie);border:1px solid var(--filete);
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
+figure svg{display:block;width:100%;max-width:440px;height:auto;margin-inline:auto}
+figcaption{font-size:.9rem;line-height:1.5;color:var(--tinta-2);margin-top:.75rem}
+.ctl{display:flex;justify-content:center;margin-top:.5rem}
+.ctl button{font:500 .75rem var(--f-dat);letter-spacing:.06em;text-transform:uppercase;background:var(--celeste-hondo);color:#fff;border:0;padding:.6rem 1rem;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%)}
+.s-t{font:500 10px var(--f-dat);letter-spacing:.06em;fill:var(--texto-3);text-transform:uppercase}
+.s-b{font:500 11px var(--f-dat);fill:var(--tinta)}
+.s-box{fill:var(--superficie-2);stroke:var(--filete);stroke-width:1.2}
+.s-git{fill:var(--tinte);stroke:var(--celeste-hondo);stroke-width:1.4}
+.s-lin{stroke:var(--celeste-hondo);stroke-width:1.6;fill:none}
+.s-pel{fill:var(--peligro-tinte);stroke:var(--peligro);stroke-width:1.4;stroke-dasharray:5 3}
+.s-pelt{font:500 11px var(--f-dat);fill:var(--peligro)}
+.s-ok{fill:var(--ok)}
+.fila{opacity:1}
+.play .fila{animation:ap .6s both}
+.play .f2{animation-delay:.9s}.play .f3{animation-delay:1.8s}.play .f4{animation-delay:2.7s}
+@keyframes ap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.play .fila{animation:none}.ctl{display:none}}
+.cambio{background:var(--superficie);border:1px solid var(--filete);padding:1rem 1.25rem;margin:1.25rem 0}
+.cambio ul{margin:0;padding-left:1.1rem}.cambio li{margin:.4rem 0}
+.cambio .dat{margin:0 0 .5rem;color:var(--texto-3)}
+.pie{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pie a{display:block;min-width:0;padding:.9rem 1rem;background:var(--superficie);border:1px solid var(--filete);text-decoration:none;color:var(--tinta);line-height:1.35}
+.pie a:hover{border-color:var(--celeste-hondo)}
+.pie .dat{display:block;color:var(--texto-3);margin-bottom:.25rem}
+.pie .sig{text-align:right}
+.pie .ficha{grid-column:1/-1;background:var(--celeste-hondo);color:#fff;border-color:var(--celeste-hondo)}
+.pie .ficha .dat{color:#fff;opacity:.85}
+@media (max-width:480px){.pie{grid-template-columns:1fr}.pie .sig{text-align:left}}
+</style>
+<div class="wrap">
+<nav aria-label="Migas"><ol class="migas dat">
+  <li><a href="#">Inicio</a></li><li><a href="#">Diario</a></li><li aria-current="page">Cómo dibujamos el relevo</li></ol></nav>
+
+<header class="cab">
+  <p class="dat">Diario del taller</p>
+  <h1>Cómo dibujamos el relevo entre sesiones</h1>
+  <p class="bajada">Del diseño a tres variantes, de ahí a un storyboard con la marca, y lo que cambiamos al verlo en un móvil.</p>
+  <dl class="meta dat">
+    <div><dt>Fecha</dt><dd>9 nov 2026</dd></div>
+    <div><dt>Escribe</dt><dd>Álvaro</dd></div>
+    <div><dt>Lectura</dt><dd>5 min</dd></div>
+    <div><dt>Proyecto</dt><dd><a href="#">Galivelop-workflow</a></dd></div>
+  </dl>
+</header>
+
+<article>
+<h2><span class="dat">El encargo</span>Contar un relevo sin leer un manual</h2>
+<p>Galivelop-workflow existe para que una sesión de trabajo con un agente pueda acabarse en cualquier momento y la siguiente siga sin preguntar por dónde iba. La idea es sencilla de decir y difícil de ver: lo que no está subido a git no existe. En la ficha del proyecto había siete imágenes fijas que intentaban explicarlo y ninguna lo conseguía.</p>
+<p>Nos propusimos dos animaciones paso a paso: una para el relevo entre sesiones y otra para el camino hasta <code>main</code>. Antes de dibujar nada, un diseño por escrito, con un guion de pasos y lo que se ve en cada uno.</p>
+
+<h2><span class="dat">Del diseño a las variantes</span>Primero el guion, después el dibujo</h2>
+<p>El diseño fijó dos carriles: arriba la sesión, que es desechable, y abajo el carril de git, donde los commits no desaparecen. Todo lo que pasa arriba puede perderse; lo que baja al carril, no. Con eso claro, publicamos variantes de prototipo para que la persona eligiera forma y ritmo, y se redujo la galería de siete imágenes a tres.</p>
+<p>El reparto del trabajo también se decidió entonces: el guion y la lógica de la animación, con el modelo grande; el dibujo y los textos en tres idiomas, con el barato.</p>
+
+<figure>
+  <svg id="fig" viewBox="0 0 360 400" role="img" aria-labelledby="ft fd">
+    <title id="ft">Relevo entre sesiones en cuatro pasos</title>
+    <desc id="fd">Retomar: la sesión A lee el último commit. Subir: la sesión A baja su trabajo a git. Corte: la sesión A se acaba y git sigue intacto. Relevo: la sesión B lee el último commit y sigue.</desc>
+    <text class="s-t" x="20" y="14">sesión</text><text class="s-t" x="200" y="14">git</text>
+
+    <g class="fila f1">
+      <text class="s-t" x="20" y="38">1 · Retomar</text>
+      <rect class="s-box" x="20" y="46" width="140" height="48"/><text class="s-b" x="30" y="66">sesión A</text><text class="s-b" x="30" y="83" style="fill:var(--texto-3)">lee la bitácora</text>
+      <rect class="s-git" x="200" y="46" width="140" height="48"/><text class="s-b" x="210" y="66">último commit</text><text class="s-b" x="210" y="83" style="fill:var(--texto-3)">Siguiente: …</text>
+      <path class="s-lin" d="M200 70H168"/><path d="M168 70l7-4v8z" fill="var(--celeste-hondo)"/>
+    </g>
+    <g class="fila f2">
+      <text class="s-t" x="20" y="132">2 · Subir</text>
+      <rect class="s-box" x="20" y="140" width="140" height="48"/><text class="s-b" x="30" y="160">trabajo</text><text class="s-b" x="30" y="177" style="fill:var(--texto-3)">+ bitácora</text>
+      <rect class="s-git" x="200" y="140" width="140" height="48"/><text class="s-b" x="210" y="160">commit nuevo</text><text class="s-b s-ok" x="210" y="177">✓ subido</text>
+      <path class="s-lin" d="M160 164H192"/><path d="M192 164l-7-4v8z" fill="var(--celeste-hondo)"/>
+    </g>
+    <g class="fila f3">
+      <text class="s-t" x="20" y="226">3 · Corte</text>
+      <rect class="s-pel" x="20" y="234" width="140" height="48"/><text class="s-pelt" x="30" y="254">✗ sesión A</text><text class="s-pelt" x="30" y="271" style="fill:var(--texto-3)">sin tokens</text>
+      <rect class="s-git" x="200" y="234" width="140" height="48"/><text class="s-b" x="210" y="254">git</text><text class="s-b" x="210" y="271" style="fill:var(--texto-3)">sigue intacto</text>
+    </g>
+    <g class="fila f4">
+      <text class="s-t" x="20" y="320">4 · Relevo</text>
+      <rect class="s-box" x="20" y="328" width="140" height="48" style="stroke:var(--ok)"/><text class="s-b" x="30" y="348">sesión B</text><text class="s-b s-ok" x="30" y="365">sigue sin preguntar</text>
+      <rect class="s-git" x="200" y="328" width="140" height="48"/><text class="s-b" x="210" y="348">último commit</text><text class="s-b" x="210" y="365" style="fill:var(--texto-3)">Siguiente: …</text>
+      <path class="s-lin" d="M200 352H168"/><path d="M168 352l7-4v8z" fill="var(--celeste-hondo)"/>
+    </g>
+  </svg>
+  <div class="ctl"><button type="button" id="play">Reproducir una vez</button></div>
+  <figcaption>Esquema del relevo, simplificado para esta entrada. Con movimiento reducido se ve siempre entero, en su reposo.</figcaption>
+</figure>
+
+<h2><span class="dat">El storyboard</span>Probarlo con la hoja de la marca</h2>
+<p>Un diseño en abstracto engaña. Pedimos que el storyboard se rehiciera con los tokens, las fuentes y las formas de la hoja de estilos: papel con retícula, cajas con chaflán, datos en monoespaciada. Los pasos pasaron a ser pestañas con un botón de reproducir y un reposo al final. La persona respondió a las preguntas abiertas y esas respuestas son las que dieron forma a la figura.</p>
+
+<div class="decision">
+  <p class="dat">Decisión</p>
+  <p>«El fallo sin rojo no se leía.» Se añadió un token nuevo, <span class="peligro-ej">✗ --peligro</span>, el magenta con el que las cartas náuticas marcan los peligros.</p>
+  <cite>La persona, 9 nov 2026</cite>
+</div>
+
+<p>Otras respuestas, más cortas: la figura va en celeste hondo; el fallo siempre lleva el símbolo ✗ y texto, nunca solo color; la curva de coste de la sesión larga se dibuja sin cifras, porque cambiarían cada semana y no son una medida.</p>
+
+<h2><span class="dat">La versión 3</span>Lo que mostró el móvil</h2>
+<p>Al verlo en el móvil aparecieron cortes que en escritorio no se veían. Rehicimos la composición: más margen interior, ninguna línea cruzando un texto, los commits de git rotulados, y la primera animación partida en dos, «Trabajar» y «Relevo», de cuatro pasos cada una. Con la del camino a <code>main</code>, quedaron tres pestañas.</p>
+<p>La persona lo aprobó el mismo día: «Me convence… lo aplicas», con las pestañas.</p>
+
+<h2><span class="dat">Para llevarse</span>Qué cambió y qué aprendimos</h2>
+<div class="cambio">
+  <p class="dat">Qué cambió</p>
+  <ul>
+    <li>Siete imágenes fijas pasan a tres animaciones con pasos y reposo.</li>
+    <li>La marca gana un token para los fallos, con su pareja en tema oscuro.</li>
+    <li>El storyboard aprobado es el plano de la implementación.</li>
+  </ul>
+</div>
+<div class="cambio">
+  <p class="dat">Qué aprendimos</p>
+  <ul>
+    <li>Ver el diseño con la marca puesta saca decisiones que el boceto esconde.</li>
+    <li>Un móvil real enseña cortes que el escritorio no enseña.</li>
+    <li>Partir la implementación en lógica y contenido abarata el trabajo sin cambiar el resultado.</li>
+  </ul>
+</div>
+</article>
+
+<nav class="pie" aria-label="Más entradas">
+  <a href="#"><span class="dat">← Entrada anterior</span>Título de la entrada anterior</a>
+  <a href="#" class="sig"><span class="dat">Entrada siguiente →</span>Título de la entrada siguiente</a>
+  <a href="#" class="ficha"><span class="dat">Proyecto relacionado</span>Ver la ficha de Galivelop-workflow</a>
+</nav>
+</div>
+<script>
+(function(){
+  var f=document.getElementById('fig'),b=document.getElementById('play');
+  b.addEventListener('click',function(){
+    f.classList.remove('play');void f.getBoundingClientRect();f.classList.add('play');
+  });
+})();
+</script>
+
+</body></html>
