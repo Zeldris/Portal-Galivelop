@@ -143,6 +143,11 @@ const FIJAS = {
     gl: ['Produtos · Galivelop', 'O que fan pola súa conta quen forma o obradoiro de Galivelop: Galivelop Developer (GalivelopCode) e Galivelop Evaluator (GVE). O obradoiro non os vende; cada responsable atende os seus.'],
     en: ['Products · Galivelop', 'What the people who make up the Galivelop workshop do on their own: Galivelop Developer (GalivelopCode) and Galivelop Evaluator (GVE). The workshop does not sell them; each lead looks after theirs.'],
   },
+  diario: {
+    es: ['Diario del taller · Galivelop', 'Artículos largos sobre cómo se construye lo que hace Galivelop: las decisiones del taller, lo que se probó y lo que cambió.'],
+    gl: ['Diario do taller · Galivelop', 'Artigos longos sobre como se constrúe o que fai Galivelop: as decisións do taller, o que se probou e o que cambiou.'],
+    en: ['Workshop journal · Galivelop', 'Long reads on how Galivelop builds what it makes: the workshop’s decisions, what was tried and what changed.'],
+  },
   'participa/proponer': {
     es: ['Propón un proyecto · Galivelop', '¿Tienes una idea que parece demasiado grande? Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.'],
     gl: ['Propón un proxecto · Galivelop', 'Tes unha idea que semella demasiado grande? Cóntanola. Lemos todas as propostas e, se encaixa no obradoiro, escribímosche para darlle forma xuntos.'],
@@ -338,6 +343,7 @@ function cabecera(i, ruta) {
     + enlace(hrefDe(i, 'equipo'), T(i, 'nav.equipo'))
     + enlace(`${hrefDe(i, '')}#participa`, T(i, 'nav.contacto'))
     + '</div>' + enlace(hrefDe(i, 'productos'), T(i, 'productos.titulo'), ' class="nav-productos"')
+    + enlace(hrefDe(i, 'diario'), T(i, 'nav.diario'), ' class="nav-diario"')
     + `</nav><div class="cabecera-ajustes"><div class="idiomas" role="group" aria-label="${esc(T(i, 'idioma.etiqueta'))}">${idiomas}</div>`
     // Los dos estados del botón; el CSS de index.html muestra el que toca según html[data-tema] (lo fija el script inline).
     + `<button type="button" class="boton-icono tema-estatico tema-estatico-oscuro" aria-label="${esc(T(i, 'tema.oscuro'))}">${ICONOS.luna}</button>`

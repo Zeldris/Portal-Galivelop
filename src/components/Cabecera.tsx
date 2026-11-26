@@ -68,6 +68,9 @@ export function Cabecera() {
           <Link to="/productos" className="nav-productos" onClick={() => setMenuAbierto(false)}>
             {t('productos.titulo')}
           </Link>
+          <Link to="/diario" className="nav-diario" onClick={() => setMenuAbierto(false)}>
+            {t('nav.diario')}
+          </Link>
         </nav>
         <div className="cabecera-ajustes">
           <div className="idiomas" role="group" aria-label={t('idioma.etiqueta')}>

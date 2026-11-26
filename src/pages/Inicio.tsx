@@ -10,6 +10,7 @@ import { TarjetaProxima } from '../components/TarjetaProxima';
 import { TarjetaProyecto } from '../components/TarjetaProyecto';
 import { LINEAS, type Linea } from '../data/lineas';
 import { MARCA } from '../data/marca';
+import { entradas } from '../data/diario';
 import { productos } from '../data/productos';
 import { proximos } from '../data/proximamente';
 import { proyectos, ruta } from '../data/proyectos';
@@ -44,7 +45,8 @@ function listar(nombres: string[], idioma: string) {
 }
 
 export function Inicio() {
-  const { t, idioma } = useIdioma();
+  const { t, tx, idioma } = useIdioma();
+  const ultimaEntrada = entradas[0];
   const [filtro, setFiltro] = useState<EstadoProyecto | 'todos'>('todos');
 
   const conContacto = proyectos.filter((p) => p.contacto);
@@ -402,6 +404,25 @@ export function Inicio() {
             </ul>
             <Link to="/productos" className="enlace-flecha">
               {t('productos.banda.ver')} <ArrowRight size={14} />
+            </Link>
+          </div>
+        </section>
+      )}
+
+      {ultimaEntrada && (
+        <section className="banda-diario" data-guion="diario">
+          <div className="contenedor banda-diario-fila">
+            <div>
+              <p className="banda-diario-etiqueta">{t('diario.titulo')}</p>
+              <h2>{t('diario.banda.titulo')}</h2>
+              <p>
+                {t('diario.banda.texto')}{' '}
+                <Link to={`/diario/${ultimaEntrada.slug}`}>{tx(ultimaEntrada.titulo)}</Link>
+              </p>
+              <p className="banda-diario-bajada">{tx(ultimaEntrada.bajada)}</p>
+            </div>
+            <Link to="/diario" className="enlace-flecha">
+              {t('diario.banda.ver')} <ArrowRight size={14} />
             </Link>
           </div>
         </section>

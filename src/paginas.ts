@@ -7,6 +7,8 @@ import { leerAncla } from './utils/ancla';
 // el punto de entrada pueda esperarlos antes del primer render (src/main.tsx) y la página reutilice la misma carga.
 const CARGADORES = {
   Inicio: () => import('./pages/Inicio').then((m) => m.Inicio),
+  Diario: () => import('./pages/Diario').then((m) => m.Diario),
+  EntradaDiario: () => import('./pages/EntradaDiario').then((m) => m.EntradaDiario),
   Equipo: () => import('./pages/Equipo').then((m) => m.Equipo),
   Legal: () => import('./pages/Legal').then((m) => m.Legal),
   Miembro: () => import('./pages/Miembro').then((m) => m.Miembro),
@@ -76,6 +78,8 @@ function perezosa<N extends NombrePagina>(nombre: N) {
 }
 
 export const Inicio = perezosa('Inicio');
+export const Diario = perezosa('Diario');
+export const EntradaDiario = perezosa('EntradaDiario');
 export const Equipo = perezosa('Equipo');
 export const Legal = perezosa('Legal');
 export const Miembro = perezosa('Miembro');

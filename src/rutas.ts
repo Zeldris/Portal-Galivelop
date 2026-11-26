@@ -13,6 +13,8 @@ export type PaginaDeRuta =
   | 'Equipo'
   | 'Productos'
   | 'Producto'
+  | 'Diario'
+  | 'EntradaDiario'
   | 'Legal'
   | 'NoEncontrado';
 
@@ -21,6 +23,7 @@ const PAGINA_DE_PRIMER_SEGMENTO: Record<string, PaginaDeRuta> = {
   novedades: 'Novedades',
   equipo: 'Equipo',
   productos: 'Productos',
+  diario: 'Diario',
   'aviso-legal': 'Legal',
   privacidad: 'Legal',
   terminos: 'Legal',
@@ -34,6 +37,7 @@ export function paginaDeSegmentos(partes: readonly string[]): PaginaDeRuta {
   if (primera === 'equipo' && segunda && mas.length === 0) return 'Miembro';
   // `/productos` es el índice (fija, abajo); `/productos/<slug>` es la página de cada producto (ADR 0005).
   if (primera === 'productos' && segunda && mas.length === 0) return 'Producto';
+  if (primera === 'diario' && segunda && mas.length === 0) return 'EntradaDiario';
   if (primera === 'participa' && mas.length === 0) {
     if (segunda === 'proponer') return 'Proponer';
     if (segunda === 'unirse') return 'Unirse';

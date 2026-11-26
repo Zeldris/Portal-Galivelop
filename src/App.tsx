@@ -6,7 +6,9 @@ import { LectorCarga } from './components/LectorCarga';
 import { Pie } from './components/Pie';
 import { buscarLegal } from './data/legal';
 import {
+  Diario,
   Equipo,
+  EntradaDiario,
   Inicio,
   Legal,
   Miembro,
@@ -70,6 +72,8 @@ function Rutas() {
       <Route path="/equipo/:id" element={<Miembro />} />
       <Route path="/productos" element={<Productos />} />
       <Route path="/productos/:slug" element={<Producto />} />
+      <Route path="/diario" element={<Diario />} />
+      <Route path="/diario/:slug" element={<EntradaDiario />} />
       <Route path="/participa/proponer" element={<Proponer />} />
       <Route path="/participa/unirse" element={<Unirse />} />
       <Route path="/aviso-legal" element={<Legal documento={buscarLegal('aviso-legal')!} />} />

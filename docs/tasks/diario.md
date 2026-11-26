@@ -79,6 +79,14 @@ la del portal. `npm run seo` sin errores. **Cambio de rutas: afecta al SEO** (ru
   `nav.diario` en `src/i18n/textos.ts`. Para las migas, la página reutiliza `productos.migas`; para el antetítulo de la
   banda, `diario.titulo` (`textos.test.ts` rechaza claves con el mismo texto en los tres idiomas).
 
+- Trozo 2 (2026-11-26): `Diario` y `EntradaDiario` (`src/pages/`), rutas en `src/rutas.ts`, `src/paginas.ts` y `src/App.tsx`,
+  enlace «Diario» en la cabecera (también en el menú móvil), banda `banda-diario` en el inicio, `src/estilos/diario.css`,
+  `conCodigo` (`src/utils/codigo.tsx`) y `src/pages/diario.test.tsx`. Lo que el check exigió del trozo 3 y se hizo en lo
+  mínimo: `FIJAS.diario` (título y descripción) y el enlace de la cabecera estática en `scripts/paginas-estaticas.mjs`, y
+  `diario` en `PAGINAS` de `tools/qa/medir-paginas.cjs`. La cabecera de escritorio no cabía en 1280 px con el enlace nuevo:
+  enlaces más juntos entre 1101 y 1440 px (`diario.css`).
+
 ## Falta
 
-- Los trozos 2 y 3; luego la revisión del bloque (`/code-review`) antes del domingo.
+- El trozo 3 (la entrada no tiene aún página estática: `scripts/paginas-estaticas.mjs` solo genera `/diario/`; JSON-LD,
+  sitemap, `llms.txt`, `og:type`, documentación y glosario); luego la revisión del bloque (`/code-review`) antes del domingo.
