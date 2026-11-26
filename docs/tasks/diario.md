@@ -73,8 +73,12 @@ la del portal. `npm run seo` sin errores. **Cambio de rutas: afecta al SEO** (ru
 
 ## Hecho
 
-- (nada aún)
+- Trozo 1 (2026-11-26): `src/data/diario.ts` (`entradas`, `buscarEntrada`, `textosDe`, `minutosLectura`), primera entrada
+  `src/data/diario/como-dibujamos-el-relevo.json` en es/gl/en (corregida con la retro de 2026-11-09 y `git log`: sin
+  citas atribuidas a la persona, porque ninguna está literal en el repo), `src/data/diario.test.ts` y claves `diario.*` y
+  `nav.diario` en `src/i18n/textos.ts`. Para las migas, la página reutiliza `productos.migas`; para el antetítulo de la
+  banda, `diario.titulo` (`textos.test.ts` rechaza claves con el mismo texto en los tres idiomas).
 
 ## Falta
 
-- Los tres trozos; luego la revisión del bloque (`/code-review`) antes del domingo.
+- Los trozos 2 y 3; luego la revisión del bloque (`/code-review`) antes del domingo.

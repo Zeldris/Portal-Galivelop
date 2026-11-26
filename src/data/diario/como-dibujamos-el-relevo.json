@@ -1,0 +1,214 @@
+{
+  "slug": "como-dibujamos-el-relevo",
+  "fecha": "2026-11-26",
+  "autor": "alvaro-garcia-grana",
+  "proyecto": "galivelop-workflow",
+  "titulo": {
+    "es": "Cómo dibujamos el relevo entre sesiones",
+    "gl": "Como debuxamos o relevo entre sesións",
+    "en": "How we drew the handover between sessions"
+  },
+  "bajada": {
+    "es": "Del diseño a un storyboard con la marca, y lo que cambiamos al verlo en un móvil: así pasamos de siete imágenes fijas a tres animaciones.",
+    "gl": "Do deseño a un storyboard coa marca, e o que cambiamos ao velo nun móbil: así pasamos de sete imaxes fixas a tres animacións.",
+    "en": "From a written design to a storyboard in the brand's style, and what we changed after seeing it on a phone: how seven still images became three animations."
+  },
+  "descripcion": {
+    "es": "Cómo pasamos de siete imágenes fijas a tres animaciones paso a paso para explicar el relevo entre sesiones de Galivelop-workflow.",
+    "gl": "Como pasamos de sete imaxes fixas a tres animacións paso a paso para explicar o relevo entre sesións de Galivelop-workflow.",
+    "en": "How seven still images became three step-by-step animations that explain the handover between sessions in Galivelop-workflow."
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "El encargo",
+        "gl": "O encargo",
+        "en": "The brief"
+      },
+      "titulo": {
+        "es": "Contar un relevo sin leer un manual",
+        "gl": "Contar un relevo sen ler un manual",
+        "en": "Explaining a handover without a manual"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Galivelop-workflow existe para que una sesión de trabajo con un agente pueda acabarse en cualquier momento y la siguiente siga sin preguntar por dónde iba. La idea es sencilla de decir y difícil de ver: lo que no está subido a git no existe. En la ficha del proyecto había siete imágenes fijas que intentaban explicarlo y ninguna lo conseguía del todo.",
+            "gl": "Galivelop-workflow existe para que unha sesión de traballo cun axente poida acabar en calquera momento e a seguinte continúe sen preguntar polo que quedaba. A idea é doada de dicir e difícil de ver: o que non está subido a git non existe. Na ficha do proxecto había sete imaxes fixas que tentaban explicalo e ningunha o conseguía de todo.",
+            "en": "Galivelop-workflow exists so that a working session with an agent can end at any moment and the next one carries on without asking where things stood. The idea is easy to say and hard to show: what is not pushed to git does not exist. The project page had seven still images trying to explain it, and none of them quite managed."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Nos propusimos dos animaciones paso a paso: una para el relevo entre sesiones y otra para el camino hasta `main`. El 4 de noviembre de 2026 escribimos el diseño antes de dibujar nada: qué se ve en cada paso y qué texto lo acompaña.",
+            "gl": "Propuxémonos dúas animacións paso a paso: unha para o relevo entre sesións e outra para o camiño ata `main`. O 4 de novembro de 2026 escribimos o deseño antes de debuxar nada: que se ve en cada paso e que texto o acompaña.",
+            "en": "We set out to make two step-by-step animations: one for the handover between sessions and one for the road to `main`. On 4 November 2026 we wrote the design before drawing anything: what is visible at each step and which text goes with it."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Del diseño al dibujo",
+        "gl": "Do deseño ao debuxo",
+        "en": "From design to drawing"
+      },
+      "titulo": {
+        "es": "Primero el guion, después el dibujo",
+        "gl": "Primeiro o guion, despois o debuxo",
+        "en": "Script first, drawing second"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "El diseño fijó dos carriles: arriba la sesión, que es desechable, y abajo el carril de git, donde los commits no desaparecen. Todo lo que pasa arriba puede perderse; lo que baja al carril, no. Con esa imagen clara, el diseño propuso dejar la galería de la ficha en tres imágenes y que la explicación la llevaran las animaciones.",
+            "gl": "O deseño fixou dous carrís: arriba a sesión, que é desbotable, e abaixo o carril de git, onde os commits non desaparecen. Todo o que pasa arriba pode perderse; o que baixa ao carril, non. Con esa imaxe clara, o deseño propuxo deixar a galería da ficha en tres imaxes e que a explicación a levasen as animacións.",
+            "en": "The design set out two lanes: the session on top, which is disposable, and the git lane below, where commits do not disappear. Whatever happens on top can be lost; whatever drops into the lane cannot. With that picture clear, the design proposed leaving the gallery on the project page at three images and letting the animations carry the explanation."
+          }
+        },
+        {
+          "tipo": "animacion",
+          "proyecto": "galivelop-workflow",
+          "id": "relevo",
+          "pie": {
+            "es": "La animación «Relevo» de la ficha de Galivelop-workflow, en reposo. Se puede reproducir paso a paso; con movimiento reducido se ve siempre entera.",
+            "gl": "A animación «Relevo» da ficha de Galivelop-workflow, en repouso. Pódese reproducir paso a paso; con movemento reducido vese sempre enteira.",
+            "en": "The “Relevo” (handover) animation from the Galivelop-workflow page, at rest. You can play it step by step; with reduced motion it always shows in full."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "El storyboard",
+        "gl": "O storyboard",
+        "en": "The storyboard"
+      },
+      "titulo": {
+        "es": "Probarlo con la hoja de la marca",
+        "gl": "Probalo coa folla da marca",
+        "en": "Trying it with the brand's style sheet"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Un diseño en abstracto engaña. El 9 de noviembre pedimos rehacer el storyboard con los tokens, las fuentes y las formas de la hoja de estilos: papel con retícula, cajas con chaflán, datos en monoespaciada. Los pasos pasaron a ser pestañas, cada una con su botón de reproducir y un reposo al final, y las dudas abiertas del diseño se contestaron antes de seguir.",
+            "gl": "Un deseño en abstracto engana. O 9 de novembro pedimos refacer o storyboard cos tokens, as fontes e as formas da folla de estilos: papel con retícula, caixas con chanfro, datos en monoespazada. Os pasos pasaron a ser lapelas, cada unha co seu botón de reproducir e un repouso ao final, e as dúbidas abertas do deseño contestáronse antes de seguir.",
+            "en": "A design on paper can mislead. On 9 November we asked for the storyboard to be redone with the tokens, fonts and shapes of the style sheet: gridded paper, boxes with a cut corner, data in monospace. The steps became tabs, each with a play button and a resting state at the end, and the open questions in the design were answered before going on."
+          }
+        },
+        {
+          "tipo": "decision",
+          "texto": {
+            "es": "El fallo no se leía sin un color propio. Se añadió un token nuevo, `--peligro`, un magenta con su pareja en tema oscuro, y un fallo siempre lleva el símbolo ✗ y texto, nunca solo color.",
+            "gl": "O fallo non se lía sen unha cor propia. Engadiuse un token novo, `--peligro`, un maxenta coa súa parella en tema escuro, e un fallo sempre leva o símbolo ✗ e texto, nunca só cor.",
+            "en": "A failure could not be read without a colour of its own. A new token was added, `--peligro`, a magenta with its dark-theme pair, and a failure always carries the ✗ symbol and text, never colour alone."
+          },
+          "cita": {
+            "es": "Respuestas de la persona a las dudas del storyboard, 9 de noviembre de 2026",
+            "gl": "Respostas da persoa ás dúbidas do storyboard, 9 de novembro de 2026",
+            "en": "The person's answers to the storyboard questions, 9 November 2026"
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "La versión 3",
+        "gl": "A versión 3",
+        "en": "Version 3"
+      },
+      "titulo": {
+        "es": "Lo que mostró el móvil",
+        "gl": "O que amosou o móbil",
+        "en": "What the phone showed"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Al verlo en el móvil aparecieron arreglos que en escritorio no se veían. En la versión 3, la primera animación se partió en dos, «Trabajar» y «Relevo», y con la del camino a `main` quedaron tres, en pestañas. La persona aprobó esa versión el mismo día, el 9 de noviembre.",
+            "gl": "Ao velo no móbil apareceron arranxos que en escritorio non se vían. Na versión 3, a primeira animación partiuse en dúas, «Traballar» e «Relevo», e coa do camiño a `main` quedaron tres, en lapelas. A persoa aprobou esa versión o mesmo día, o 9 de novembro.",
+            "en": "Seeing it on a phone turned up fixes that the desktop view had hidden. In version 3 the first animation was split in two, “Working” and “Relevo”, and with the one for the road to `main` there were three, in tabs. The person approved that version the same day, 9 November."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La implementación, en cambio, fue entera a un solo modelo grande: lógica, datos, textos en tres idiomas y documentación. La retro del 9 de noviembre midió el coste y sacó la lección.",
+            "gl": "A implementación, en cambio, foi enteira a un só modelo grande: lóxica, datos, textos en tres idiomas e documentación. A retro do 9 de novembro mediu o custo e sacou a lección.",
+            "en": "The implementation, however, went entirely to a single large model: logic, data, texts in three languages and documentation. The retro of 9 November measured the cost and drew the lesson."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Para llevarse",
+        "gl": "Para levar",
+        "en": "Takeaways"
+      },
+      "titulo": {
+        "es": "Qué cambió y qué aprendimos",
+        "gl": "Que cambiou e que aprendemos",
+        "en": "What changed and what we learned"
+      },
+      "bloques": [
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Qué cambió",
+            "gl": "Que cambiou",
+            "en": "What changed"
+          },
+          "items": [
+            {
+              "es": "La galería pasa de siete imágenes fijas a tres, y la explicación la llevan las animaciones con pasos y reposo.",
+              "gl": "A galería pasa de sete imaxes fixas a tres, e a explicación lévanna as animacións con pasos e repouso.",
+              "en": "The gallery goes from seven still images to three, and the animations, with steps and a resting state, carry the explanation."
+            },
+            {
+              "es": "La marca gana un token para los fallos, con su pareja en tema oscuro.",
+              "gl": "A marca gaña un token para os fallos, coa súa parella en tema escuro.",
+              "en": "The brand gains a token for failures, with its dark-theme pair."
+            },
+            {
+              "es": "El storyboard aprobado es el plano de la implementación.",
+              "gl": "O storyboard aprobado é o plano da implementación.",
+              "en": "The approved storyboard is the blueprint for the implementation."
+            }
+          ]
+        },
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Qué aprendimos",
+            "gl": "Que aprendemos",
+            "en": "What we learned"
+          },
+          "items": [
+            {
+              "es": "Ver el diseño con la marca puesta saca decisiones que el boceto esconde.",
+              "gl": "Ver o deseño coa marca posta saca decisións que o bosquexo agocha.",
+              "en": "Seeing the design in the brand's style brings out decisions that a sketch hides."
+            },
+            {
+              "es": "Un móvil real enseña arreglos que el escritorio no enseña.",
+              "gl": "Un móbil real ensina arranxos que o escritorio non ensina.",
+              "en": "A real phone shows fixes that a desktop does not."
+            },
+            {
+              "es": "Con el diseño ya aprobado, la lógica va al modelo grande y los datos y textos al barato; hacerlo todo con el grande fue lo que más gastó.",
+              "gl": "Co deseño xa aprobado, a lóxica vai ao modelo grande e os datos e textos ao barato; facelo todo co grande foi o que máis gastou.",
+              "en": "Once the design is approved, the logic goes to the large model and the data and texts to the cheap one; doing it all with the large one was what cost the most."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
