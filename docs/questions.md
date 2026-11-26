@@ -380,3 +380,31 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: aprobar el prototipo con las respuestas de arriba
 - Answer: ok
 - Answered: 2026-11-26
+
+## Q-43
+- Refs:
+- Status: open
+- Asked: 2026-11-26
+- Question: ¿Seguimos bajando el LCP móvil del resto de rutas (13 de 22 pasan de 2,5 s) en esta rama? a) sí, como bloque propio; b) no, solo /equipo/ y a main
+- Recommendation: a: un bloque «LCP móvil» propio, con /code-review y marca, antes del domingo
+
+## Q-44
+- Refs:
+- Status: open
+- Asked: 2026-11-26
+- Question: ¿Partimos IconoMarca en un import por icono para la portada (3,0 s) y las fichas? a) sí; b) no
+- Recommendation: a: partir IconoMarca en un módulo por icono (la portada y las fichas cargan los 21 para usar unos pocos); es el mismo arreglo que en /equipo/
+
+## Q-45
+- Refs:
+- Status: open
+- Asked: 2026-11-26
+- Question: ¿Versión móvil de la portada de productos/galivelop-developer (3,3 s, img.producto-portada sin srcset)? a) sí; b) no
+- Recommendation: a: versión móvil (srcset) de la portada de galivelop-developer y precarga de isobatas.svg ya está; medir de nuevo tras a
+
+## Q-46
+- Refs:
+- Status: open
+- Asked: 2026-11-26
+- Question: ¿Dejamos ver el texto estático sin esperar a React (cota de ~2,0-2,4 s en toda página de texto)? a) sí, con el riesgo de parpadeo y CLS al montar; b) no, se queda oculto
+- Recommendation: b: no mostrar el texto estático antes de que monte React; se queda el ocultado (lo aceptado el 2026-11-17), porque mostrarlo da parpadeo y salto al montar
