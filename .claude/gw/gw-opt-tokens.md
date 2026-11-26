@@ -9,6 +9,9 @@ las crea una vez; desde entonces son del proyecto. (Antes vivían en `.claude/sk
 - **Hoja claro/oscuro de una figura** (2026-11-25, retro T2): `python3 tools/qa/hoja-figura.py <figura-clara>`
   (busca la `-oscuro` al lado; deja `capturas/hoja-<nombre>.png`) da las dos versiones en una imagen; abrirlas por
   separado, tres lecturas, costó ~380k arrastrados. La grande solo si la hoja no basta.
+- **El diff de un subagente no se lee entero en la principal** (2026-11-26, retro P4): `git show --stat <sha>` y el
+  resumen del subagente; si un punto ofrece duda, `git show <sha> -- <archivo>` solo de ese archivo. Leer el de R-4
+  con `git show | head -120` costó 80k arrastrados, y lo cubre la revisión de bloque.
 - **Entradas de `pending.md` y de la bitácora en sub-viñetas cortas** (2026-11-25, retro T1): la entrada de la
   auditoría de marca era una línea de ~2k caracteres y `pending.md` se leyó 22 veces (1,1M arrastrados); se mira con
   `grep -n '^- ' docs/records/pending.md | cut -c1-160` y se lee solo la entrada con `sed -n '<n>,<m>p'`. Una entrada
@@ -182,3 +185,4 @@ carpeta del portal. `measure.py` y `recover.py` lo buscan también en las carpet
 - **Informe de `gw-portal` leído por subagentes** (2026-11-22, retro P3): en informe y aplicar, la sesión principal recibe solo el resumen por repo (la de la ADR 0005 leyó `informe.txt` 8 veces, 358k arrastrados).
 - **Línea base 2026-11-22** (sesión de `gw-portal`, flujo 0.8.2 y ADR 0005, sin `/clear`): 215 llamadas, contexto medio 125k, techo 165k, 4 compactaciones; bitácora leída 24 veces (1,34M arrastrados).
 - **Línea base 2026-11-25** (auditoría de marca, D1-D13, guiones y camino a `main`, desde e2c9b9b): 254 llamadas, contexto medio 119k (suelo 95k, techo 165k), 2 compactaciones con presupuesto 1; 7 subagentes, 5,7M de entrada; `pending.md` 22 lecturas (1,1M), bitácora 36 (787k).
+- **Línea base 2026-11-26** (bloque «Ahora», R-1 a R-6 y R-3b, desde d80f965): 119 llamadas, contexto medio 131k (suelo 104k, techo 165k), 2 compactaciones con presupuesto 1; 10 subagentes `sonnet`, 197 llamadas, 8,6M de entrada; arranque fijo 69 %.

@@ -3,9 +3,8 @@
 **Fecha:** 2026-11-26 · **Rama:** `ccr-1c3b5b63-tdttd6` (d80f965..bbc061a, 18 commits, 67 archivos) ·
 **Revisión:** bloque sin graves ni medios (ea2f08e, `Findings: 0`), marca bbc061a, CI en verde.
 
-**Estado:** sin decidir; la decisión de la persona se apunta en el párrafo siguiente.
-
-Decisión: (la escribe la sesión con lo que conteste la persona).
+**Estado:** aprobada (2026-11-26, la persona: «Seguimos tus recomendaciones»); P3, P4 y P5 aplicadas; P1 y P2 aplazadas a
+tareas apuntadas en `pending.md`; la propuesta para el flujo, decidida, queda abajo para `gw-harvest`.
 
 ## Medida (`gw-opt-tokens`, desde d80f965)
 
