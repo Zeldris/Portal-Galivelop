@@ -9,6 +9,12 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   - `hojasDeEstilos()` acepta `@import` con comillas dobles (hoy se salta sin aviso);
   - falla con 0 hojas;
   - falla si una hoja de `src/estilos/` no está en `global.css` (comparar con `readdirSync`).
+- **Leves de la revisión de la auditoría sobre la estática** (c2531c1, 2026-11-26; no se vuelven a revisar en este
+  cambio): `normalizarRuta` añade la barra también a `404.html` (sale con 2: no es ruta de página); la regex del
+  canonical exige `rel` antes de `href` y `/Portal-Galivelop/` va fijo (sacarlo de `BASE`); `auditar-accesibilidad.cjs`,
+  `capturas.cjs` y `medir-paginas.cjs` siguen midiendo la portada si la ruta va sin barra final (usar
+  `pagina-estatica.cjs`); `BASE` sin barra final forma mal las URL (`new URL(ruta, BASE)`); el filtro del sitemap deja
+  las portadas `gl/` y `en/` (confirmar si es a propósito).
 - **LCP de `/equipo/` en móvil: 2,7 s** (2026-11-26, primera medida sobre la página estática con
   `auditar:rendimiento`; límite 2,5 s; elemento LCP `p.persona-bio`). `/proyectos/tarkor/` da 2,0 s. Falta medir el
   resto de rutas sobre la estática y rehacer las cifras de R-3, que se tomaron sobre la portada servida en su lugar.

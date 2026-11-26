@@ -1,6 +1,7 @@
 // Comprueba que lo que sirve el servidor para una ruta es su página estática (la de scripts/paginas-estaticas.mjs) y
-// no la de otra ruta: sin barra final, `vite preview` devuelve la portada, que también trae `data-estatico`, y las
-// cifras saldrían de otra página. Lo usan las auditorías de tools/qa antes de medir.
+// no la de otra ruta: sin barra final, `vite preview` devuelve la portada y las cifras saldrían de otra página.
+// `data-estatico` solo dice que es una página generada (el pie lo trae en todas, también la portada); lo que distingue
+// la ruta es el `canonical`. Solo para rutas de página (no `404.html`). Hoy lo usa `auditar-rendimiento.cjs`.
 
 /** `equipo`, `/equipo` o `equipo/` → `equipo/`; la portada se queda en `''`. */
 function normalizarRuta(ruta) {

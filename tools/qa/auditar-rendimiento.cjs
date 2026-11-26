@@ -70,8 +70,10 @@ async function servidor() {
 async function comprobarEstaticas() {
   const motivos = [];
   for (const ruta of RUTAS) {
-    const resp = await fetch(BASE + ruta);
-    const motivo = resp.ok ? motivoNoEstatica(await resp.text(), ruta) : `/${ruta}: HTTP ${resp.status}`;
+    const motivo = await fetch(BASE + ruta, { signal: AbortSignal.timeout(10000) }).then(
+      async (resp) => (resp.ok ? motivoNoEstatica(await resp.text(), ruta) : `/${ruta}: HTTP ${resp.status}`),
+      (e) => `/${ruta}: ${e.message}`,
+    );
     if (motivo) motivos.push(motivo);
   }
   if (!motivos.length) return;
