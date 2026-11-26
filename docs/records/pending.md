@@ -20,9 +20,14 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   `capturas.cjs` y `medir-paginas.cjs` siguen midiendo la portada si la ruta va sin barra final (usar
   `pagina-estatica.cjs`); `BASE` sin barra final forma mal las URL (`new URL(ruta, BASE)`); el filtro del sitemap deja
   las portadas `gl/` y `en/` (confirmar si es a propósito).
-- **LCP de `/equipo/` en móvil: 2,7 s** (2026-11-26, primera medida sobre la página estática con
-  `auditar:rendimiento`; límite 2,5 s; elemento LCP `p.persona-bio`). `/proyectos/tarkor/` da 2,0 s. Falta medir el
-  resto de rutas sobre la estática y rehacer las cifras de R-3, que se tomaron sobre la portada servida en su lugar.
+- **LCP en móvil por encima de 2,5 s** (2026-11-26, `auditar:rendimiento` sobre la estática, una pasada, tras bajar
+  `/equipo/` de 2,7 a 0,9 s con las tarjetas estáticas a la vista y el `modulepreload` de lo que importa cada trozo):
+  `/` 2,74 s (`/gl/` 2,73, `/en/` 2,77), `/novedades/` 2,69, `/proyectos/galivelop-image-generator/` 3,14,
+  `/proyectos/toveriai/` 2,97 (CLS 0,055) y `/productos/galivelop-developer/` 3,31. Mejoran el resto (inicio 3,16 → 2,74,
+  miembros 2,6 → 2,4-2,5, legales 2,0-2,1 → 1,9); image-generator (2,97 → 3,14) y novedades (2,58 → 2,69) suben algo,
+  dentro del ruido de una pasada o por el `modulepreload` compitiendo con la imagen LCP: medir tres pasadas. Escritorio,
+  todo por debajo de 0,3 s (toveriai, CLS 0,096). La misma receta de `/equipo/` (contenido estático visible con el
+  markup de la app) es la candidata para inicio y novedades.
 - **Leves de R-3b** (1611842): el `min-height` fijo de 575 px de la cabecera estática en móvil es una aproximación (la de React mide 464-572 px y 835 en toveriai; copiar el texto de la cabecera lo haría exacto); sin medir las cabeceras `captura` y `color` ni el resto de rutas con `auditar:rendimiento`; image-generator y workflow siguen por encima de 2,5 s.
 - **Leves de la revisión del bloque «Ahora»** (2026-11-25, sin graves ni medios): (1) `src/pages/Novedades.tsx:122`, con el muro oculto la etiqueta «· En el muro» (`novedades.muro`) sigue saliendo: mostrarla solo con `hayMuro`; hoy no se ve (0 publicaciones). (2) El guion de Novedades (`src/data/guiones/novedades.json:12`, es/gl/en) y la meta description de `FIJAS.novedades` (`scripts/paginas-estaticas.mjs:153-154`) hablan del muro aunque esté oculto: condicionarlo al umbral o revisarlo al llegar a 3 piezas. (3) `hojasDeEstilos()` no falla con 0 hojas ni detecta una hoja de `src/estilos/` olvidada en `global.css`: test que compare `readdirSync` con la lista. (4) R-1 omite sin aviso los guiones de páginas sin fecha en los datos (equipo, proponer, unirse, novedades, miembros). Además, `Producto.tsx:183` quita un `loading="lazy"` que `ImagenTema.tsx:31` vuelve a poner (sin efecto).
 - **Leves de R-6** (8168504): `hojasDeEstilos()` solo reconoce `@import './x.css';` con comillas simples; un `@import` con dobles se saltaría sin aviso y los tests leerían menos CSS. Cargar el CSS por ruta (rutas perezosas) queda como posible tarea aparte.
