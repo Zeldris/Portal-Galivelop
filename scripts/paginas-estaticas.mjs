@@ -123,6 +123,8 @@ const IDIOMAS = ['es', 'gl', 'en'];
 const recorta = (t, max) => (t.length <= max ? t : `${t.slice(0, max - 1).replace(/[\s·,;:]+\S*$/, '')}…`);
 const prefijo = (i) => (i === 'es' ? '' : `${i}/`);
 const urlDe = (i, ruta) => `${SITIO}/${prefijo(i)}${ruta ? ruta + '/' : ''}`;
+// Feed Atom de /novedades, uno por idioma (lo escribe el final de este script).
+const feedDe = (i) => `${urlDe(i, 'novedades')}feed.xml`;
 const FIJAS = {
   '': {
     es: ['Galivelop · Marca de software, un taller abierto', 'Galivelop es un taller abierto de software que crea, investiga y aprende a la vista. Lo maduro tiene el código abierto y se puede montar en tu proyecto.'],
@@ -381,7 +383,7 @@ function cuerpo(pg) {
   if (pg.ruta === 'novedades') {
     const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
     const lista = novedadesTodas.map((x) => `<li><time datetime="${x.fecha}">${x.fecha}</time> · <a href="${x.muro && hayMuro ? `${urlDe(pg.idioma, 'muro')}?proyecto=${x.proyecto}` : urlDe(pg.idioma, `proyectos/${x.proyecto}`)}">${esc(nombre(x.proyecto))}</a>: ${x.titulo ? `<strong>${esc(x.titulo[pg.idioma])}</strong> ` : ''}${esc(x.texto[pg.idioma])}</li>`).join('');
-    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(pg.titulo.split(' · ')[0])}</h1><p>${esc(pg.descripcion)}</p><p><a href="${feedDe(pg.idioma)}" type="application/atom+xml">${esc(T(pg.idioma, 'novedades.feed'))}</a></p><ul>${lista}</ul><ul>${enlaces}</ul></main>`;
   }
   const legal = legales.find((d) => d.slug === pg.ruta);
   if (legal) {
@@ -568,6 +570,7 @@ for (const pg of paginas) {
   const alternas = [
     ...IDIOMAS.map((i) => `<link rel="alternate" hreflang="${i}" href="${urlDe(i, pg.ruta)}" />`),
     `<link rel="alternate" hreflang="x-default" href="${urlDe('es', pg.ruta)}" />`,
+    `<link rel="alternate" type="application/atom+xml" title="${esc(FIJAS.novedades[pg.idioma][0])}" href="${feedDe(pg.idioma)}" />`,
   ].join('\n    ');
   let html = base
     .replace(/<html lang="[^"]*"/, `<html lang="${pg.idioma}"`)
@@ -642,6 +645,31 @@ writeFileSync(
     .map((x) => `- [${x.nombre}](${urlDe('es', `productos/${x.slug}`)}): ${x.pagina.seo.descripcion.es}`)
     .join('\n')}\n\n## Más\n\n${hayMuro ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Productos](${urlDe('es', 'productos')}): lo que hacen por su cuenta quienes forman el taller, sin precios\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
+// Feed Atom de /novedades por idioma, con lo mismo que la página y en su orden. Los `id` son URI `tag:` que no
+// dependen de la dirección del sitio (no cambian con un dominio propio): proyecto, fecha y orden de la entrada entre
+// las de ese proyecto y día. Una entrada que se cuela delante de otra del mismo proyecto y día le cambia el id.
+const ID_FEED = 'tag:zeldris.github.io,2026:novedades';
+const vistas = new Map();
+const idsFeed = novedadesTodas.map((x) => {
+  const clave = `${x.muro ? 'muro' : 'novedad'}/${x.proyecto}/${x.fecha}`;
+  const k = vistas.get(clave) ?? 0;
+  vistas.set(clave, k + 1);
+  return `${clave}/${k}`;
+});
+for (const i of IDIOMAS) {
+  const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
+  const entradasFeed = novedadesTodas.map((x, n) => {
+    const enlace = x.muro && hayMuro ? `${urlDe(i, 'muro')}?proyecto=${x.proyecto}` : urlDe(i, `proyectos/${x.proyecto}`);
+    const titulo = `${nombre(x.proyecto)} · ${x.titulo ? x.titulo[i] : recorta(x.texto[i], 90)}`;
+    return `  <entry>\n    <title>${esc(titulo)}</title>\n    <id>${ID_FEED}/${i}/${idsFeed[n]}</id>\n    <link rel="alternate" type="text/html" href="${esc(enlace)}" />\n    <updated>${x.fecha}T00:00:00Z</updated>\n    <summary>${esc(x.texto[i])}</summary>\n  </entry>\n`;
+  });
+  const [titulo, descripcion] = FIJAS.novedades[i];
+  mkdirSync(`dist/${prefijo(i)}novedades`, { recursive: true });
+  writeFileSync(
+    `dist/${prefijo(i)}novedades/feed.xml`,
+    `<?xml version="1.0" encoding="utf-8"?>\n<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="${i}">\n  <title>${esc(titulo)}</title>\n  <subtitle>${esc(descripcion)}</subtitle>\n  <id>${ID_FEED}/${i}</id>\n  <link rel="self" type="application/atom+xml" href="${feedDe(i)}" />\n  <link rel="alternate" type="text/html" hreflang="${i}" href="${urlDe(i, 'novedades')}" />\n  <updated>${FECHA_FIJA.novedades}T00:00:00Z</updated>\n  <author>\n    <name>Galivelop</name>\n    <uri>${SITIO}/</uri>\n  </author>\n${entradasFeed.join('')}</feed>\n`,
+  );
+}
 writeFileSync(`dist/${INDEXNOW_CLAVE}.txt`, INDEXNOW_CLAVE);
 writeFileSync('dist/robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITIO}/sitemap.xml\n`);
-console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml, robots.txt y llms.txt`);
+console.log(`Páginas estáticas: ${paginas.length}, sitemap.xml, robots.txt, llms.txt y feed de novedades (${IDIOMAS.length} idiomas)`);

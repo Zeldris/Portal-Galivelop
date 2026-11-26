@@ -6,15 +6,15 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-26 (bloque «Ahora» en `main`) |
+| **Actualizado** | 2026-11-26 (feed Atom de Novedades, primer punto del bloque «Siguiente») |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
-| **Tarea en curso** | Ninguna. Bloque «Ahora» (R-1 a R-6 y R-3b) cerrado y en `main`. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | Bloque «Siguiente» del roadmap (`docs/records/pending.md`): feed RSS/Atom de Novedades, diario del taller (prototipo, Q-32) e imagen OG de cada producto; antes, si la persona quiere, la tarea «LCP medido sobre la página estática» (retro 2026-11-26, P1). En paralelo, la persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`, en una sesión nueva por tanda (Q-22). |
+| **Tarea en curso** | Bloque «Siguiente» del roadmap. **Hecho:** feed Atom de Novedades (es/gl/en, `docs/desarrollo.md#feed-de-novedades`). **Falta:** diario del taller (prototipo, Q-32) e imagen OG de cada producto; la revisión del bloque (`/code-review`) antes del domingo. Presupuesto de compactaciones: 1 |
+| **Siguiente paso** | Bloque «Siguiente» del roadmap (`docs/records/pending.md`): diario del taller (prototipo de una entrada sobre el storyboard aprobado, Q-32) e imagen OG de cada producto; si la persona quiere, la tarea «LCP medido sobre la página estática» (retro 2026-11-26, P1). En paralelo, la persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md` (tanda de grabación); al llegar el audio, MP3 y G2 en `inicio.json`, en una sesión nueva por tanda (Q-22). |
 | **En `main`** | **Bloque «Ahora» del roadmap** (2026-11-26, con confirmación de la persona: «1. Si»; fases 1, 2 y 3): R-1 a R-6 y R-3b, revisión de bloque ea2f08e (`Findings: 0`), retro `docs/records/retro-2026-11-26-bloque-ahora.md`. Antes: requisitos mínimos de los productos y auditoría de marca, front y tokens (2026-11-25, retro `docs/records/retro-2026-11-25-main.md`); productos (e2c9b9b, 2026-11-24) |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest (272) y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (51 páginas estáticas, sitemap, robots y llms) |
 
 ### Para la próxima publicación
-- Nada: todo lo de la rama está en `main` (2026-11-26).
+- **Feed Atom de Novedades** (2026-11-26): `novedades/feed.xml` por idioma desde `scripts/paginas-estaticas.mjs`, anunciado en el `<head>` de cada página y enlazado en `/novedades` (texto `novedades.feed` es/gl/en). Código: lleva `/code-review` y marca antes del domingo.
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.

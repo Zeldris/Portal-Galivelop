@@ -743,6 +743,14 @@
   justify-self: center;
 }
 
+/* Enlace al feed Atom en la cabecera de /novedades (lo genera scripts/paginas-estaticas.mjs). */
+.enlace-feed {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-8);
+  font-size: var(--letra-90);
+}
+
 .decisiones {
   list-style: none;
   margin: 0;

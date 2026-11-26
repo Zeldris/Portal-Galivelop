@@ -200,3 +200,60 @@ describe('páginas estáticas', () => {
     for (const src of Object.values(PORTADA_ESTADO)) comprueba(src, ANCHO_ESTADO);
   });
 });
+
+describe('feed Atom de novedades', () => {
+  const feed = (prefijo: string) =>
+    readFileSync(join(tmp, 'dist', prefijo, 'novedades/feed.xml'), 'utf8');
+  const proyectos = readdirSync(join(RAIZ, 'src/data/proyectos'))
+    .filter((f) => f.endsWith('.json'))
+    .map((f) => JSON.parse(readFileSync(join(RAIZ, 'src/data/proyectos', f), 'utf8')));
+  const totalNovedades = proyectos.reduce((n, p) => n + (p.novedades?.length ?? 0), 0);
+
+  it('hay uno por idioma, con su enlace a sí mismo, a la página y una entrada por novedad', () => {
+    for (const [prefijo, idioma] of [
+      ['', 'es'],
+      ['gl/', 'gl'],
+      ['en/', 'en'],
+    ] as const) {
+      const xml = feed(prefijo);
+      expect(xml).toMatch(
+        /^<\?xml version="1.0" encoding="utf-8"\?>\n<feed xmlns="http:\/\/www.w3.org\/2005\/Atom"/,
+      );
+      expect(xml).toContain(`xml:lang="${idioma}"`);
+      expect(xml).toContain(
+        `<link rel="self" type="application/atom+xml" href="https://zeldris.github.io/Portal-Galivelop/${prefijo}novedades/feed.xml" />`,
+      );
+      expect(xml).toContain(
+        `href="https://zeldris.github.io/Portal-Galivelop/${prefijo}novedades/" />`,
+      );
+      // Al menos las novedades de las fichas (el muro suma las suyas).
+      expect((xml.match(/<entry>/g) ?? []).length).toBeGreaterThanOrEqual(totalNovedades);
+      expect(xml.endsWith('</feed>\n')).toBe(true);
+    }
+  });
+
+  it('los id de las entradas son únicos y no dependen de la dirección del sitio', () => {
+    const ids = [
+      ...feed('').matchAll(/<entry>\n {4}<title>[^<]*<\/title>\n {4}<id>([^<]+)<\/id>/g),
+    ].map((m) => m[1]);
+    expect(ids.length).toBeGreaterThanOrEqual(totalNovedades);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const id of ids) expect(id).toMatch(/^tag:zeldris\.github\.io,2026:novedades\/es\//);
+  });
+
+  it('el texto va escapado: ningún & suelto ni etiqueta dentro de un título o resumen', () => {
+    const xml = feed('en/');
+    for (const m of xml.matchAll(/<(title|summary)>([^]*?)<\/\1>/g)) {
+      expect(m[2]).not.toMatch(/<|&(?!amp;|quot;|lt;)/);
+    }
+  });
+
+  it('cada página lo anuncia en su idioma y /novedades lo enlaza sin JavaScript', () => {
+    expect(leer('gl/equipo')).toContain(
+      '<link rel="alternate" type="application/atom+xml" title="Novidades · Galivelop" href="https://zeldris.github.io/Portal-Galivelop/gl/novedades/feed.xml" />',
+    );
+    expect(leer('novedades')).toContain(
+      `<a href="https://zeldris.github.io/Portal-Galivelop/novedades/feed.xml" type="application/atom+xml">${textos.es['novedades.feed']}</a>`,
+    );
+  });
+});

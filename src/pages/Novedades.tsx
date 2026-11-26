@@ -1,3 +1,4 @@
+import { Rss } from 'lucide-react';
 import { estiloAcento } from '../data/tonos';
 import { Fragment, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
@@ -17,7 +18,7 @@ export const POR_TANDA = 20;
  * por proyecto (?proyecto=<slug>), como el muro.
  */
 export function Novedades() {
-  const { t, tx, fecha } = useIdioma();
+  const { t, tx, fecha, idioma } = useIdioma();
   const [parametros] = useSearchParams();
   const navegar = useNavigate();
   const { hash } = useLocation();
@@ -61,6 +62,15 @@ export function Novedades() {
             <h1>{t('sec.novedades')}</h1>
             <p>{t('novedades.intro')}</p>
           </div>
+          {/* El feed lo escribe scripts/paginas-estaticas.mjs al construir: en `npm run dev` no existe. */}
+          <a
+            className="enlace-feed"
+            href={`${import.meta.env.BASE_URL}${idioma === 'es' ? '' : `${idioma}/`}novedades/feed.xml`}
+            type="application/atom+xml"
+          >
+            <Rss size={18} aria-hidden="true" />
+            {t('novedades.feed')}
+          </a>
         </header>
 
         {conNovedades.length > 1 && (

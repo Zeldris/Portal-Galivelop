@@ -294,6 +294,7 @@ const es = {
   'novedades.vacio': 'Todavía no hay novedades.',
   'novedades.verMas': 'Ver más',
   'novedades.muro': 'En el muro',
+  'novedades.feed': 'Seguir las novedades por RSS',
   'equipo.productos.texto':
     'Lo que la marca ofrece y lleva {nombre}. Son privados y no tienen precios en la web: todo se trata por correo.',
   'participa.privados':
@@ -653,6 +654,7 @@ const gl: Record<Clave, string> = {
   'novedades.vacio': 'Aínda non hai novidades.',
   'novedades.verMas': 'Ver máis',
   'novedades.muro': 'No muro',
+  'novedades.feed': 'Seguir as novidades por RSS',
   'equipo.productos.texto':
     'O que a marca ofrece e leva {nombre}. Son privados e non teñen prezos na web: todo se trata por correo.',
   'participa.privados':
@@ -1011,6 +1013,7 @@ const en: Record<Clave, string> = {
   'novedades.vacio': 'No news yet.',
   'novedades.verMas': 'Show more',
   'novedades.muro': 'In the feed',
+  'novedades.feed': 'Follow the updates via RSS',
   'equipo.productos.texto':
     'What the brand offers and {nombre} looks after. They are private and have no prices on the site: everything is arranged by email.',
   'participa.privados':

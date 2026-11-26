@@ -278,6 +278,17 @@ La página **Equipo** (`/equipo`) y la **página de cada miembro** (`/equipo/<id
 
 En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enlaza a su página.
 
+## Feed de novedades
+
+`scripts/paginas-estaticas.mjs` escribe al construir un feed Atom por idioma con lo mismo que `/novedades` y en su orden
+(novedades de las fichas y publicaciones del muro): `novedades/feed.xml`, `gl/novedades/feed.xml` y
+`en/novedades/feed.xml`. Cada página lo anuncia en su `<head>` (`rel="alternate"`, el de su idioma) y `/novedades`
+lo enlaza («Seguir las novedades por RSS»). Sale solo de los datos: una novedad nueva entra en el feed en el siguiente
+build. Los `id` son URI `tag:zeldris.github.io,2026:novedades/<idioma>/…`, que no cambian con un dominio propio;
+llevan proyecto, fecha y orden entre las de ese proyecto y día, así que una novedad que se cuela **delante** de otra
+del mismo proyecto y día le cambia el id (el lector la ve como nueva): las nuevas, al final de las de su día. En
+`npm run dev` el feed no existe (lo genera el build). Tests: `src/estatico.test.ts`, «feed Atom de novedades».
+
 ## El muro
 
 `/muro` es una sección tipo red social: publicaciones de todos los proyectos, de la más reciente a la más antigua,
