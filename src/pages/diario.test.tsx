@@ -4,6 +4,9 @@ import { beforeAll, describe, expect, it } from 'vitest';
 import { Cabecera } from '../components/Cabecera';
 import { buscarEntrada, entradas, minutosLectura } from '../data/diario';
 import { buscarPersonaPorId } from '../data/equipo';
+import flujo from '../data/proyectos/galivelop-workflow.json';
+import type { Animacion } from '../data/tipos';
+import AnimacionFlujo from '../components/AnimacionFlujo';
 import { ProveedorIdioma } from '../i18n/Idioma';
 import { cargarPagina } from '../paginas';
 import { Diario } from './Diario';
@@ -64,6 +67,38 @@ describe('EntradaDiario', () => {
   it('lleva un h2 por sección y el recuadro de decisión', () => {
     expect(html.match(/<h2[ >]/g)?.length).toBe(entrada.secciones.length);
     expect(html).toContain('class="decision"');
+  });
+
+  it('la decisión es un recuadro del taller, no una cita atribuida: sin blockquote ni cite', () => {
+    expect(html).not.toContain('<blockquote');
+    expect(html).not.toContain('<cite');
+  });
+
+  it('la figura abre en el paso 1 aunque la ficha dejara guardado otro (no lee ni pisa su posición)', () => {
+    const guardado = new Map([['galivelop.flujo', JSON.stringify({ id: 'relevo', paso: 3 })]]);
+    const almacen = {
+      getItem: (k: string) => guardado.get(k) ?? null,
+      setItem: (k: string, v: string) => void guardado.set(k, v),
+    };
+    const g = globalThis as { window?: unknown; document?: unknown };
+    const antes = { window: g.window, document: g.document };
+    g.window = { sessionStorage: almacen };
+    g.document = { documentElement: { clientWidth: 1280 } };
+    try {
+      const anim = (flujo.animaciones as unknown as Animacion[]).find((a) => a.id === 'relevo')!;
+      const pinta = (recordar: boolean) =>
+        envolver(<AnimacionFlujo animaciones={[anim]} recordar={recordar} />, '/');
+      expect(pinta(false)).not.toBe(pinta(true));
+      expect(pinta(false)).toBe(
+        envolver(<AnimacionFlujo animaciones={[anim]} recordar={false} />, '/'),
+      );
+    } finally {
+      if (antes.window === undefined) delete g.window;
+      else g.window = antes.window;
+      if (antes.document === undefined) delete g.document;
+      else g.document = antes.document;
+    }
+    expect(guardado.get('galivelop.flujo')).toBe(JSON.stringify({ id: 'relevo', paso: 3 }));
   });
 
   it('enlaza en el pie a la ficha del proyecto relacionado', () => {

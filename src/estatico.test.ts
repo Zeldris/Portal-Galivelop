@@ -242,6 +242,28 @@ describe('feed Atom de novedades', () => {
     for (const id of ids) expect(id).toMatch(/^tag:zeldris\.github\.io,2026:novedades\/es\//);
   });
 
+  it('los id no dependen del orden: reordenar las novedades de un mismo día no los cambia', async () => {
+    const { idsFeed } = (await import(join(RAIZ, 'scripts/id-feed.mjs'))) as {
+      idsFeed: (
+        l: { muro: boolean; proyecto: string; fecha: string; texto: { es: string } }[],
+      ) => string[];
+    };
+    const n = (texto: string) => ({
+      muro: false,
+      proyecto: 'tarkor',
+      fecha: '2026-11-22',
+      texto: { es: texto },
+    });
+    const lista = [n('Uno'), n('Dos'), n('Tres')];
+    const antes = new Map(lista.map((x, i) => [x.texto.es, idsFeed(lista)[i]]));
+    const revuelta = [lista[2], lista[0], lista[1]];
+    const despues = idsFeed(revuelta);
+    revuelta.forEach((x, i) => expect(despues[i]).toBe(antes.get(x.texto.es)));
+    expect(new Set(despues).size).toBe(3);
+    // Una nueva delante no le roba el id a la vieja.
+    expect(idsFeed([n('Nueva'), ...lista]).slice(1)).toEqual(idsFeed(lista));
+  });
+
   it('el texto va escapado: ningún & suelto ni etiqueta dentro de un título o resumen', () => {
     const xml = feed('en/');
     for (const m of xml.matchAll(/<(title|summary)>([^]*?)<\/\1>/g)) {

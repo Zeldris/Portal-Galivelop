@@ -10,6 +10,7 @@ import { muroVisible } from '../src/data/muro-umbral.ts';
 import { textos } from '../src/i18n/textos.ts';
 import { paginaDeSegmentos } from '../src/rutas.ts';
 import { INDEXNOW_CLAVE, SITIO } from './sitio.mjs';
+import { idsFeed as idsDelFeed } from './id-feed.mjs';
 
 // ?v= es el hash de la imagen: las redes (Discord, X…) guardan la vista previa por su dirección.
 const imagenDe = (src) => `${SITIO}/${src}?v=${createHash('sha1').update(readFileSync(`public/${src}`)).digest('hex').slice(0, 8)}`;
@@ -165,7 +166,7 @@ const FIJAS = {
   },
   diario: {
     es: ['Diario del taller · Galivelop', 'Artículos largos sobre cómo se construye lo que hace Galivelop: las decisiones del taller, lo que se probó y lo que cambió.'],
-    gl: ['Diario do taller · Galivelop', 'Artigos longos sobre como se constrúe o que fai Galivelop: as decisións do taller, o que se probou e o que cambiou.'],
+    gl: ['Diario do obradoiro · Galivelop', 'Artigos longos sobre como se constrúe o que fai Galivelop: as decisións do obradoiro, o que se probou e o que cambiou.'],
     en: ['Workshop journal · Galivelop', 'Long reads on how Galivelop builds what it makes: the workshop’s decisions, what was tried and what changed.'],
   },
   'participa/proponer': {
@@ -475,7 +476,7 @@ function cuerpo(pg) {
     const ficha = proyectos.find((x) => x.slug === entrada.proyecto);
     const bloque = (b) => {
       if (b.tipo === 'parrafo') return `<p>${conCodigo(b.texto[i])}</p>`;
-      if (b.tipo === 'decision') return `<blockquote><p><strong>${esc(T(i, 'diario.decision'))}</strong></p><p>${conCodigo(b.texto[i])}</p><cite>${esc(b.cita[i])}</cite></blockquote>`;
+      if (b.tipo === 'decision') return `<div><p><strong>${esc(T(i, 'diario.decision'))}</strong></p><p>${conCodigo(b.texto[i])}</p><p>${esc(b.cita[i])}</p></div>`;
       if (b.tipo === 'lista') return `<p><strong>${esc(b.titulo[i])}</strong></p><ul>${b.items.map((t) => `<li>${conCodigo(t[i])}</li>`).join('')}</ul>`;
       // La animación de una ficha: como en la ficha, sin JS cada paso queda leído (título y narración) en una lista.
       const a = proyectos.find((x) => x.slug === b.proyecto)?.animaciones?.find((x) => x.id === b.id);
@@ -757,16 +758,10 @@ writeFileSync(
     .join('\n')}\n\n## Más\n\n${hayMuro ? `- [Muro](${urlDe('es', 'muro')}): publicaciones de los proyectos\n` : ''}- [Novedades](${urlDe('es', 'novedades')}): lo último de cada proyecto\n- [Productos](${urlDe('es', 'productos')}): lo que hacen por su cuenta quienes forman el taller, sin precios\n- [Equipo](${urlDe('es', 'equipo')}): las personas y, en su perfil, los productos que lleva cada una (Galivelop Developer y Galivelop Evaluator, privados, sin precios)\n- [Únete al taller](${urlDe('es', 'participa/unirse')})\n- [Propón un proyecto](${urlDe('es', 'participa/proponer')})\n- Versiones: [galego](${urlDe('gl', '')}), [English](${urlDe('en', '')})\n`,
 );
 // Feed Atom de /novedades por idioma, con lo mismo que la página y en su orden. Los `id` son URI `tag:` que no
-// dependen de la dirección del sitio (no cambian con un dominio propio): proyecto, fecha y orden de la entrada entre
-// las de ese proyecto y día. Una entrada que se cuela delante de otra del mismo proyecto y día le cambia el id.
+// dependen de la dirección del sitio (no cambian con un dominio propio) ni del orden: salen del contenido de cada
+// novedad (scripts/id-feed.mjs). Corregir el texto en castellano de una novedad le cambia el id.
 const ID_FEED = 'tag:zeldris.github.io,2026:novedades';
-const vistas = new Map();
-const idsFeed = novedadesTodas.map((x) => {
-  const clave = `${x.muro ? 'muro' : 'novedad'}/${x.proyecto}/${x.fecha}`;
-  const k = vistas.get(clave) ?? 0;
-  vistas.set(clave, k + 1);
-  return `${clave}/${k}`;
-});
+const idsFeed = idsDelFeed(novedadesTodas);
 for (const i of IDIOMAS) {
   const nombre = (slug) => proyectos.find((x) => x.slug === slug)?.nombre ?? slug;
   const entradasFeed = novedadesTodas.map((x, n) => {

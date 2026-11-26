@@ -32,7 +32,7 @@ function Animacion({ bloque }: { bloque: Extract<Bloque, { tipo: 'animacion' }> 
               </p>
             }
           >
-            <AnimacionFlujo animaciones={[animacion]} />
+            <AnimacionFlujo animaciones={[animacion]} recordar={false} />
           </Suspense>
         </ErrorBoundary>
       ) : estado.estado === 'cargando' ? (
@@ -52,11 +52,11 @@ function BloqueDiario({ bloque }: { bloque: Bloque }) {
       return <p>{conCodigo(tx(bloque.texto))}</p>;
     case 'decision':
       return (
-        <blockquote className="decision">
+        <div className="decision">
           <p className="diario-etiqueta">{t('diario.decision')}</p>
           <p>{conCodigo(tx(bloque.texto))}</p>
-          <cite>{tx(bloque.cita)}</cite>
-        </blockquote>
+          <p className="decision-fuente">{tx(bloque.cita)}</p>
+        </div>
       );
     case 'lista':
       return (

@@ -215,11 +215,10 @@
 .diario-articulo .decision p:not(.diario-etiqueta) {
   margin: 0;
   font-size: var(--letra-110);
-  font-style: italic;
   line-height: 1.5;
 }
 
-.decision cite {
+.diario-articulo .decision p.decision-fuente {
   display: block;
   margin-top: var(--espacio-10);
   font: var(--datos);

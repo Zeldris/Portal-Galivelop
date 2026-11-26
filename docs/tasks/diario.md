@@ -94,6 +94,12 @@ la del portal. `npm run seo` sin errores. **Cambio de rutas: afecta al SEO** (ru
   Atom no cambia (el plan no lo pide). `diario/como-dibujamos-el-relevo` en `medir-paginas.cjs`, `docs/desarrollo.md#diario-del-taller` y
   `GLOSSARY.md`. Tests en `src/estatico.test.ts` («diario del taller»); `npm run seo`: 0 errores, sin avisos del diario.
 
+- Revisión del bloque (2026-11-26, `Findings: 9`): la decisión de la entrada pasa a recuadro del taller (sin `blockquote` ni
+  `cite`, redactada como decisión nuestra), el pie de la animación ya no dice que con movimiento reducido se ve entera,
+  `AnimacionFlujo` gana `recordar` (la figura del diario ni lee ni pisa la posición de la ficha), foco e impresión de la
+  cabecera, ids del feed por contenido (`scripts/id-feed.mjs`), «Handover» en inglés, «obradoiro» en gallego y sin «la
+  persona» en el texto público. Leves a `docs/records/pending.md`.
+
 ## Falta
 
-- La revisión del bloque (`/code-review`) antes del domingo.
+- La marca de revisión (`reviewed.sh`) antes del domingo, tras la fase 3.

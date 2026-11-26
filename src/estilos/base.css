@@ -300,6 +300,7 @@ button {
 .hero,
 .cabecera-captura,
 .cabecera-color,
+.diario-cabecera,
 .proxima-imagen-vacia {
   --foco: var(--blanco);
 }

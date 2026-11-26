@@ -74,9 +74,9 @@
           "proyecto": "galivelop-workflow",
           "id": "relevo",
           "pie": {
-            "es": "La animación «Relevo» de la ficha de Galivelop-workflow, en reposo. Se puede reproducir paso a paso; con movimiento reducido se ve siempre entera.",
-            "gl": "A animación «Relevo» da ficha de Galivelop-workflow, en repouso. Pódese reproducir paso a paso; con movemento reducido vese sempre enteira.",
-            "en": "The “Relevo” (handover) animation from the Galivelop-workflow page, at rest. You can play it step by step; with reduced motion it always shows in full."
+            "es": "La animación «Relevo» de la ficha de Galivelop-workflow, en reposo. Se puede reproducir paso a paso; con movimiento reducido, cada paso cambia sin transición.",
+            "gl": "A animación «Relevo» da ficha de Galivelop-workflow, en repouso. Pódese reproducir paso a paso; con movemento reducido, cada paso cambia sen transición.",
+            "en": "The “Handover” animation from the Galivelop-workflow page, at rest. You can play it step by step; with reduced motion, each step changes without a transition."
           }
         }
       ]
@@ -104,14 +104,14 @@
         {
           "tipo": "decision",
           "texto": {
-            "es": "El fallo no se leía sin un color propio. Se añadió un token nuevo, `--peligro`, un magenta con su pareja en tema oscuro, y un fallo siempre lleva el símbolo ✗ y texto, nunca solo color.",
-            "gl": "O fallo non se lía sen unha cor propia. Engadiuse un token novo, `--peligro`, un maxenta coa súa parella en tema escuro, e un fallo sempre leva o símbolo ✗ e texto, nunca só cor.",
-            "en": "A failure could not be read without a colour of its own. A new token was added, `--peligro`, a magenta with its dark-theme pair, and a failure always carries the ✗ symbol and text, never colour alone."
+            "es": "Decidimos que el fallo necesitaba un color propio y añadimos un token nuevo, `--peligro`, un magenta con su pareja en tema oscuro. Y un fallo llevará siempre el símbolo ✗ y texto, nunca solo color.",
+            "gl": "Decidimos que o fallo precisaba unha cor propia e engadimos un token novo, `--peligro`, un maxenta coa súa parella en tema escuro. E un fallo levará sempre o símbolo ✗ e texto, nunca só cor.",
+            "en": "We decided that a failure needed a colour of its own and added a new token, `--peligro`, a magenta with its dark-theme pair. And a failure will always carry the ✗ symbol and text, never colour alone."
           },
           "cita": {
-            "es": "Respuestas de la persona a las dudas del storyboard, 9 de noviembre de 2026",
-            "gl": "Respostas da persoa ás dúbidas do storyboard, 9 de novembro de 2026",
-            "en": "The person's answers to the storyboard questions, 9 November 2026"
+            "es": "Decisión del storyboard, 9 de noviembre de 2026",
+            "gl": "Decisión do storyboard, 9 de novembro de 2026",
+            "en": "Storyboard decision, 9 November 2026"
           }
         }
       ]
@@ -131,9 +131,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Al verlo en el móvil aparecieron arreglos que en escritorio no se veían. En la versión 3, la primera animación se partió en dos, «Trabajar» y «Relevo», y con la del camino a `main` quedaron tres, en pestañas. La persona aprobó esa versión el mismo día, el 9 de noviembre.",
-            "gl": "Ao velo no móbil apareceron arranxos que en escritorio non se vían. Na versión 3, a primeira animación partiuse en dúas, «Traballar» e «Relevo», e coa do camiño a `main` quedaron tres, en lapelas. A persoa aprobou esa versión o mesmo día, o 9 de novembro.",
-            "en": "Seeing it on a phone turned up fixes that the desktop view had hidden. In version 3 the first animation was split in two, “Working” and “Relevo”, and with the one for the road to `main` there were three, in tabs. The person approved that version the same day, 9 November."
+            "es": "Al verlo en el móvil aparecieron arreglos que en escritorio no se veían. En la versión 3, la primera animación se partió en dos, «Trabajar» y «Relevo», y con la del camino a `main` quedaron tres, en pestañas. Álvaro aprobó esa versión el mismo día, el 9 de noviembre.",
+            "gl": "Ao velo no móbil apareceron arranxos que en escritorio non se vían. Na versión 3, a primeira animación partiuse en dúas, «Traballar» e «Relevo», e coa do camiño a `main` quedaron tres, en lapelas. Álvaro aprobou esa versión o mesmo día, o 9 de novembro.",
+            "en": "Seeing it on a phone turned up fixes that the desktop view had hidden. In version 3 the first animation was split in two, “Working” and “Handover”, and with the one for the road to `main` there were three, in tabs. Álvaro approved that version the same day, 9 November."
           }
         },
         {

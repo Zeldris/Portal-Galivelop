@@ -51,6 +51,8 @@
   .hero,
   .cabecera-captura,
   .cabecera-color,
+  .diario-cabecera,
+  .diario-pie-ficha,
   .destacado {
     background: var(--blanco) !important;
     color: var(--texto) !important;
@@ -58,7 +60,9 @@
 
   .hero :is(h1, h2, p, dt, dd, span, a, div),
   .cabecera-captura :is(h1, h2, p, dt, dd, span, a, div),
-  .cabecera-color :is(h1, h2, p, dt, dd, span, a, div) {
+  .cabecera-color :is(h1, h2, p, dt, dd, span, a, div),
+  .diario-cabecera :is(h1, h2, p, dt, dd, span, a, div, time),
+  .diario-pie-ficha :is(h1, h2, p, dt, dd, span, a, div) {
     color: var(--texto) !important;
   }
 

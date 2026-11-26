@@ -134,9 +134,12 @@ function dibujo(
 export default function AnimacionFlujo({
   animaciones,
   destino,
+  recordar = true,
 }: {
   animaciones: Animacion[];
   destino?: Destino | null;
+  /** `false`: ni lee ni guarda la posición (la figura del diario, siempre en reposo). */
+  recordar?: boolean;
 }) {
   const { t, tx } = useIdioma();
   const ids = 'flujo' + useId().replace(/[^a-zA-Z0-9_-]/g, '');
@@ -145,7 +148,9 @@ export default function AnimacionFlujo({
   const [inicio] = useState(() => {
     const i = destino ? lista.findIndex((a) => a.id === destino.id) : -1;
     if (destino && i >= 0) return { actual: i, paso: destino.paso };
-    const guardada = leerPosicion((id) => lista.find((a) => a.id === id)?.pasos.length);
+    const guardada = !recordar
+      ? null
+      : leerPosicion((id) => lista.find((a) => a.id === id)?.pasos.length);
     const j = guardada ? lista.findIndex((a) => a.id === guardada.id) : -1;
     return j >= 0 && guardada ? { actual: j, paso: guardada.paso } : { actual: 0, paso: 1 };
   });
@@ -178,8 +183,9 @@ export default function AnimacionFlujo({
   }, []);
 
   useEffect(() => {
-    if (anim) guardarPosicion({ id: anim.id, paso: Math.min(Math.max(1, paso), total) });
-  }, [anim, paso, total]);
+    if (anim && recordar)
+      guardarPosicion({ id: anim.id, paso: Math.min(Math.max(1, paso), total) });
+  }, [anim, paso, total, recordar]);
 
   // Reproducir: un paso cada 5,5 s (8 s con movimiento reducido) y se para en el último.
   useEffect(() => {
