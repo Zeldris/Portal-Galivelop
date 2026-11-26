@@ -32,8 +32,22 @@ beforeAll(() => {
   );
   writeFileSync(join(tmp, 'dist/index.html'), base);
   writeFileSync(join(tmp, 'dist/404.html'), base);
-  for (const f of ['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js', 'EntradaDiario-AbCd1234.js'])
+  for (const f of [
+    'Proyecto-AbCd1234.js',
+    'tarkor-AbCd1234.js',
+    'EntradaDiario-AbCd1234.js',
+    'iconos-AbCd1234.js',
+  ])
     writeFileSync(join(tmp, 'dist/assets', f), '');
+  // El trozo de /equipo importa otros: el script precarga también esos (sin esperar a que el navegador los descubra).
+  writeFileSync(
+    join(tmp, 'dist/assets/Equipo-AbCd1234.js'),
+    'import{j as e}from"./iconos-AbCd1234.js";import"./IconoMarca-AbCd1234.js";',
+  );
+  writeFileSync(
+    join(tmp, 'dist/assets/IconoMarca-AbCd1234.js'),
+    'import{a}from"./iconos-AbCd1234.js";',
+  );
   execFileSync('node', [join(RAIZ, 'scripts/paginas-estaticas.mjs')], { cwd: tmp, stdio: 'pipe' });
 }, 60_000);
 
@@ -140,6 +154,29 @@ describe('páginas estáticas', () => {
     expect(leer('')).toContain(
       '<link rel="preload" as="image" href="/Portal-Galivelop/marca/isobatas.svg" fetchpriority="high" />',
     );
+  });
+
+  it('/equipo precarga su trozo y lo que este importa, una vez cada uno', () => {
+    const html = leer('equipo');
+    for (const f of ['Equipo', 'IconoMarca', 'iconos'])
+      expect(
+        html.split(`modulepreload" crossorigin href="/Portal-Galivelop/assets/${f}-AbCd1234.js"`),
+      ).toHaveLength(2);
+  });
+
+  it('/equipo lleva las tarjetas de las personas a la vista (fuera de lo oculto), con el markup de la app', () => {
+    for (const prefijo of ['', 'gl/', 'en/']) {
+      const html = leer(`${prefijo}equipo`);
+      const lista = html.slice(
+        html.indexOf('<ul class="personas">'),
+        html.indexOf('</ul>', html.indexOf('<ul class="personas">')),
+      );
+      expect(lista).not.toContain('data-estatico');
+      expect(html).toContain('<section class="seccion equipo-pagina">');
+      expect(lista).toContain('<p class="persona-bio">');
+      expect(lista).toContain('<h2>');
+      expect(html).toContain('cabecera-equipo-movil.webp 960w');
+    }
   });
 
   it('la portada de cada ficha lleva su versión móvil en el preload (es, gl, en), y el archivo existe', () => {

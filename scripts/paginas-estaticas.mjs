@@ -138,6 +138,8 @@ const novedadesTodas = [
   ...proyectos.flatMap((p) => (p.novedades ?? []).map((n) => ({ muro: false, proyecto: p.slug, fecha: n.fecha, texto: n.texto }))),
 ].sort((a, b) => b.fecha.localeCompare(a.fecha) || Number(b.muro) - Number(a.muro) || (a.muro ? 0 : a.proyecto < b.proyecto ? -1 : a.proyecto > b.proyecto ? 1 : 0));
 
+// Las iniciales del retrato sin foto, como `iniciales()` de src/data/equipo.ts (que importa un JSON y Node no lo carga así).
+const iniciales = (nombre) => nombre.split(' ').filter((x) => /^\p{L}/u.test(x)).slice(0, 2).map((x) => x[0]).join('');
 // En el mismo orden que src/data/equipo.ts.
 const equipo = JSON.parse(readFileSync('src/data/equipo.json', 'utf8')).sort((a, b) => a.orden - b.orden);
 
@@ -348,6 +350,9 @@ const ICONOS = {
   sol: ICONO(18, '<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>'),
   menu: ICONO(18, '<path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/>'),
   correo: ICONO(18, '<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/>'),
+  // MapPin y ArrowRight de src/pages/Equipo.tsx.
+  lugar: ICONO(14, '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>'),
+  flecha: ICONO(16, '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>'),
 };
 // Discord y GitHub: los de src/components/IconoDiscord.tsx e IconoGitHub.tsx.
 // Si el componente cambia y lo extraído deja de ser un SVG limpio (JSX que se cuela), el build falla en vez de publicarlo.
@@ -447,8 +452,23 @@ function cuerpo(pg) {
     return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(legal.titulo[i])}</h1><p>${legal.actualizado}</p>${secciones}<ul>${enlaces}</ul></main>`;
   }
   if (pg.ruta === 'equipo') {
-    const miembros = equipo.map((x) => `<li><a href="${urlDe(pg.idioma, `equipo/${x.id}`)}">${esc(x.nombre)}</a>: ${esc(x.rol[pg.idioma])}</li>`).join('');
-    return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${miembros}</ul><ul>${enlaces}</ul></main>`;
+    // Con el markup y las clases de src/pages/Equipo.tsx y FUERA de lo oculto (`data-estatico`): la banda, la cabecera y
+    // las tarjetas pintan sin esperar al JS (el LCP en móvil es la bio de la primera tarjeta) y React las sustituye por
+    // lo mismo al montar. Sin la tarjeta «Únete» ni las redes, que van al final de cada tarjeta o de la lista.
+    const i = pg.idioma;
+    const tarjetas = equipo.map((x) => {
+      const foto = x.foto
+        ? `<img src="${BASE_404}${x.foto}" alt="" width="88" height="88" />`
+        : `<span class="persona-iniciales" aria-hidden="true">${esc(iniciales(x.nombre))}</span>`;
+      const lugar = x.perfil?.ubicacion ? `<p class="persona-ubicacion">${ICONOS.lugar} ${esc(x.perfil.ubicacion[i])}</p>` : '';
+      const chips = x.proyectos.map((slug) => proyectos.find((y) => y.slug === slug)).filter(Boolean)
+        .map((y) => `<a class="chip-enlace" href="${urlDe(i, `proyectos/${y.slug}`)}">${esc(y.nombre)}</a>`).join('');
+      const suyos = chips ? `<div class="persona-proyectos"><span>${esc(T(i, 'equipo.proyectos'))}:</span>${chips}</div>` : '';
+      const ver = `<a class="boton boton-primario persona-ver" aria-label="${esc(T(i, 'equipo.verPerfilDe').replace('{nombre}', x.nombre))}" href="${urlDe(i, `equipo/${x.id}`)}">${esc(T(i, 'equipo.ver'))} ${ICONOS.flecha}</a>`;
+      return `<li id="${x.id}" class="persona"><div class="persona-cabecera"><span class="retrato persona-foto">${foto}</span><div><h2>${esc(x.nombre)}</h2><p class="persona-rol">${esc(x.rol[i])}</p>${lugar}</div></div><p class="persona-bio">${esc(x.bio[i])}</p>${suyos}${ver}</li>`;
+    }).join('');
+    const banda = `<img class="banda-cabecera" src="${BASE_404}marca/cabecera-equipo.webp" srcset="${BASE_404}marca/cabecera-equipo-movil.webp 960w, ${BASE_404}marca/cabecera-equipo.webp 1600w" sizes="(max-width: 1200px) 100vw, 1200px" alt="" width="1600" height="500" fetchpriority="high" />`;
+    return `<main id="contenido"><section class="seccion equipo-pagina"><div class="contenedor">${banda}<header class="seccion-cabecera" data-guion="cabecera"><div><h1>${h1De(pg)}</h1><p>${esc(T(i, 'equipo.intro'))}</p></div></header><ul class="personas">${tarjetas}</ul><ul data-estatico>${enlaces}</ul></div></section></main>`;
   }
   if (pg.ruta === 'productos') {
     const i = pg.idioma;
@@ -662,6 +682,22 @@ const imagenLcpAncho = (pg) => {
   const modo = p.cabecera ?? 'ilustracion';
   return modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
 };
+// Los trozos y, detrás, todo lo que importan sin `import()` (IconoMarca, iconos, Retrato…): sin precargarlos, el
+// navegador los descubre al ejecutar el trozo de la página, ya bajado el de entrada, y React monta una cascada más tarde
+// (medido el 2026-11-26 en /equipo/ con 4G lento: IconoMarca llegaba a los 3,0 s). Fuera, lo que ya lleva index.html.
+const EN_INDEX = new Set([...readFileSync('dist/index.html', 'utf8').matchAll(/assets\/([\w-]+\.js)/g)].map((m) => m[1]));
+const importaciones = (archivo) =>
+  [...readFileSync(`dist/assets/${archivo}`, 'utf8').matchAll(/(?:^|[;}])import(?:[\w${},\s*]*from)?\s*"\.\/([\w-]+\.js)"/g)].map((m) => m[1]);
+function conImportaciones(trozos) {
+  const vistos = new Set();
+  const visitar = (f) => {
+    if (vistos.has(f) || EN_INDEX.has(f)) return;
+    vistos.add(f);
+    importaciones(f).forEach(visitar);
+  };
+  trozos.forEach(visitar);
+  return [...vistos];
+}
 function precargas(pg) {
   const lineas = [];
   const img = imagenLcp(pg);
@@ -670,7 +706,7 @@ function precargas(pg) {
   const versiones = conVersiones ? ` imagesrcset="${srcsetCabecera(img, conVersiones, (s) => BASE_404 + s)}" imagesizes="${SIZES_CABECERA}"` : '';
   if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versiones} fetchpriority="high" />`);
   const modulos = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
-  for (const m of modulos) if (m) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
+  for (const m of conImportaciones(modulos.filter(Boolean))) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
   return lineas.join('\n    ');
 }
 

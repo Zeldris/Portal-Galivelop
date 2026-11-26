@@ -7,14 +7,14 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | | |
 |---|---|
 | **Actualizado** | 2026-11-26 (bloque «Siguiente» y auditoría sobre la estática en `main`, con confirmación de la persona: «llevemos ya los cambios a main») |
-| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-1c3b5b63-tdttd6` (sigue a `ccr-b2d381ed-e10ez8`, d77eb6d) |
-| **Tarea en curso** | Ninguna. Presupuesto de compactaciones: 1 |
+| **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-c9246f37-t9o35a` (sigue a `ccr-1c3b5b63-tdttd6`, 3b46928) |
+| **Tarea en curso** | LCP de `/equipo/` en móvil: tarjetas estáticas a la vista con el markup de la app, banda de 960 px y `modulepreload` de lo que importa el trozo de cada ruta (`scripts/paginas-estaticas.mjs`). Medido: `/equipo/` 2,7 s → 0,9 s (CLS 0,008); falta la auditoría completa (en curso), `npm run check`, `pending.md` y `/code-review` antes del domingo. Presupuesto de compactaciones: 1 (gastado) |
 | **Siguiente paso** | En una sesión nueva: medir el resto de rutas con `npm run auditar:rendimiento` y bajar el LCP de `/equipo/` en móvil (2,7 s; `pending.md`). Para la próxima versión, R-8 (barrido de `tools/qa/`) y el tope de líneas de `pending.md` (retro 2026-11-26, P2 y P3). En paralelo, la persona pasa los pedidos de `docs/records/pedido-generador-2026-11-24.md` (filas 34-36) y `docs/records/pedido-voces-2026-11-24.md`; al llegar el audio, MP3 y G2 en `inicio.json`, en una sesión nueva por tanda (Q-22). |
 | **En `main`** | **Bloque «Siguiente» del roadmap** (2026-11-26, con confirmación de la persona; fases 1, 2 y 3): feed Atom de Novedades, imagen OG de cada producto, diario del taller (Q-32) y auditoría de rendimiento sobre la página estática; revisiones de bloque 6e28d10 (`Findings: 9`) y f5b5cba (`Findings: 3`), retro `docs/records/retro-2026-11-26-bloque-siguiente.md`. Antes: **Bloque «Ahora» del roadmap** (2026-11-26, con confirmación de la persona: «1. Si»; fases 1, 2 y 3): R-1 a R-6 y R-3b, revisión de bloque ea2f08e (`Findings: 0`), retro `docs/records/retro-2026-11-26-bloque-ahora.md`. Antes: requisitos mínimos de los productos y auditoría de marca, front y tokens (2026-11-25, retro `docs/records/retro-2026-11-25-main.md`); productos (e2c9b9b, 2026-11-24) |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (57 páginas estáticas, sitemap, robots, llms y feeds) |
 
 ### Para la próxima publicación
-- Nada: lo de la rama está en `main` (2026-11-26).
+- LCP de `/equipo/` (en curso, sin revisar): cambia `scripts/paginas-estaticas.mjs` (SEO: HTML estático de `/equipo/` y precargas de todas las rutas).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.

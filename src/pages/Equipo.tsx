@@ -24,6 +24,8 @@ export function Equipo() {
         <img
           className="banda-cabecera"
           src={ruta('marca/cabecera-equipo.webp')}
+          srcSet={`${ruta('marca/cabecera-equipo-movil.webp')} 960w, ${ruta('marca/cabecera-equipo.webp')} 1600w`}
+          sizes="(max-width: 1200px) 100vw, 1200px"
           alt=""
           width={1600}
           height={500}
