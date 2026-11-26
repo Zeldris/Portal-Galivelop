@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readdirSync,
@@ -142,13 +143,17 @@ describe('páginas estáticas', () => {
     );
   });
 
-  it('la portada de un producto se precarga con su mini y los sizes del <img> (el móvil no baja las dos)', () => {
+  it('la portada de un producto se precarga con su mini, su versión móvil y los sizes del <img> (el móvil no baja la grande)', () => {
+    expect(existsSync('public/proyectos/galivelop-developer/portada-movil.webp')).toBe(true);
+    expect(readFileSync('src/pages/Producto.tsx', 'utf8')).toMatch(
+      /srcsetCabecera\(pagina\.portada\.src/,
+    );
     const fuente = readFileSync('src/pages/Producto.tsx', 'utf8');
     const sizes = /className="producto-portada"[\s\S]*?sizes="([^"]+)"/.exec(fuente)?.[1];
     expect(sizes).toBeTruthy();
     for (const ruta of ['productos/galivelop-developer', 'gl/productos/galivelop-developer']) {
       expect(leer(ruta)).toContain(
-        `<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/galivelop-developer/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/galivelop-developer/portada-mini.webp 720w, /Portal-Galivelop/proyectos/galivelop-developer/portada.webp `,
+        `<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/galivelop-developer/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/galivelop-developer/portada-mini.webp 720w, /Portal-Galivelop/proyectos/galivelop-developer/portada-movil.webp 960w, /Portal-Galivelop/proyectos/galivelop-developer/portada.webp 1600w"`,
       );
       expect(leer(ruta)).toContain(`imagesizes="${sizes}" fetchpriority="high" />`);
     }

@@ -2,7 +2,7 @@ import { ArrowDown, Check, Copy, Mail } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { buscarPersonaPorId } from '../data/equipo';
-import { MARCA } from '../data/marca';
+import { MARCA, srcsetCabecera } from '../data/marca';
 import {
   buscarProducto,
   correoDeProducto,
@@ -114,7 +114,7 @@ function Pagina({ p, pagina }: { p: TipoProducto; pagina: PaginaProducto }) {
           <img
             className="producto-portada"
             src={ruta(pagina.portada.src)}
-            srcSet={`${ruta(pagina.portada.mini)} 720w, ${ruta(pagina.portada.src)} ${pagina.portada.ancho}w`}
+            srcSet={`${ruta(pagina.portada.mini)} 720w, ${srcsetCabecera(pagina.portada.src, pagina.portada.ancho, ruta)}`}
             sizes="(min-width: 860px) 560px, 100vw"
             width={pagina.portada.ancho}
             height={pagina.portada.alto}

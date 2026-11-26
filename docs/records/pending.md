@@ -20,15 +20,18 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   `capturas.cjs` y `medir-paginas.cjs` siguen midiendo la portada si la ruta va sin barra final (usar
   `pagina-estatica.cjs`); `BASE` sin barra final forma mal las URL (`new URL(ruta, BASE)`); el filtro del sitemap deja
   las portadas `gl/` y `en/` (confirmar si es a propósito).
-- **LCP en móvil sobre la estática** (2026-11-26, `auditar:rendimiento` de las 22 rutas; límite 2,5 s). `/equipo/`
-  bajó de 2,76 s a 2,45-2,60 s (c8e9335: sin `IconoMarca`, cabecera de 800 px; JS 258→205 KB, imágenes 289→149 KB);
-  el ruido entre pasadas es de ~250 ms. Pasan del límite: `/` 3,0 s, `/gl/` 3,0, `/en/` 2,9 (`img.hero-fondo`
-  isobatas.svg), `productos/galivelop-developer` 3,3 (`img.producto-portada`, sin versión móvil), `proyectos/toveriai`
-  3,1 (isobatas.svg; CLS 0,055 por `section.vistazo`), `proyectos/galivelop-image-generator` 3,0,
-  `proyectos/galivelop-workflow` 2,5, `/novedades/` 2,6-2,8, perfiles `equipo/<id>` 2,6-2,7 (`p.persona-bio`). Las
-  páginas de solo texto dan ~2,0-2,4 s: el texto espera a que monte React (`html.js [data-estatico]` oculto), así que
-  esa es la cota de cualquier página cuyo LCP sea texto. La portada, `galivelop-developer` y las fichas cargan
-  `IconoMarca` (`Inicio.tsx`, `Proyecto.tsx`). Escritorio: todas por debajo de 0,3 s.
+- **LCP en móvil sobre la estática** (2026-11-26, `auditar:rendimiento`; límite 2,5 s; ruido entre pasadas ~250 ms).
+  Bloque «LCP móvil» (Q-43 a Q-46): `/equipo/` sin `IconoMarca` y cabecera de 800 px (c8e9335), iconos sueltos en la
+  portada y las fichas (b3be536: JS de la página ~59→35 KB gzip) y portada de `galivelop-developer` con su versión de
+  960 px en `srcset` y preload. Medida tras el bloque (antes → después, ms): `/` 3000→2880, `/gl/` 3000→2904, `/en/`
+  2900→2844 (`img.hero-fondo` isobatas.svg), `productos/galivelop-developer` 3300→2788-2932 (imágenes 298→168 KB),
+  `proyectos/toveriai` 3100→3028 (isobatas.svg; CLS 0,055 por `section.vistazo`), `galivelop-image-generator`
+  3000→2980, `galivelop-workflow` 2500→2680, `/equipo/` 2760→2432, `/novedades/` 2600-2800→2556, tarkor 2092.
+  **Queda por encima** la portada, toveriai, image-generator, workflow y developer: su LCP espera al montaje de React
+  (`html.js [data-estatico]` oculto; Q-46 b: se mantiene). En la portada (`img.hero-fondo`) y en developer
+  (`img.producto-portada`) la imagen ni siquiera está en el HTML estático: pintarla fuera de `data-estatico`, como la
+  portada de las fichas en R-3b, es el siguiente arreglo posible (tarea aparte, a decidir). Perfiles
+  `equipo/<id>` 2,6 s sin medir de nuevo. Escritorio: todas por debajo de 0,3 s.
 - **Leves de R-3b** (1611842): el `min-height` fijo de 575 px de la cabecera estática en móvil es una aproximación (la de React mide 464-572 px y 835 en toveriai; copiar el texto de la cabecera lo haría exacto); sin medir las cabeceras `captura` y `color` ni el resto de rutas con `auditar:rendimiento`; image-generator y workflow siguen por encima de 2,5 s.
 - **Leves de la revisión del bloque «Ahora»** (2026-11-25, sin graves ni medios): (1) `src/pages/Novedades.tsx:122`, con el muro oculto la etiqueta «· En el muro» (`novedades.muro`) sigue saliendo: mostrarla solo con `hayMuro`; hoy no se ve (0 publicaciones). (2) El guion de Novedades (`src/data/guiones/novedades.json:12`, es/gl/en) y la meta description de `FIJAS.novedades` (`scripts/paginas-estaticas.mjs:153-154`) hablan del muro aunque esté oculto: condicionarlo al umbral o revisarlo al llegar a 3 piezas. (3) `hojasDeEstilos()` no falla con 0 hojas ni detecta una hoja de `src/estilos/` olvidada en `global.css`: test que compare `readdirSync` con la lista. (4) R-1 omite sin aviso los guiones de páginas sin fecha en los datos (equipo, proponer, unirse, novedades, miembros). Además, `Producto.tsx:183` quita un `loading="lazy"` que `ImagenTema.tsx:31` vuelve a poner (sin efecto).
 - **Leves de R-6** (8168504): `hojasDeEstilos()` solo reconoce `@import './x.css';` con comillas simples; un `@import` con dobles se saltaría sin aviso y los tests leerían menos CSS. Cargar el CSS por ruta (rutas perezosas) queda como posible tarea aparte.
