@@ -416,3 +416,17 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: b: no mostrar el texto estático antes de que monte React; se queda el ocultado (lo aceptado el 2026-11-17), porque mostrarlo da parpadeo y salto al montar
 - Answer: b
 - Answered: 2026-11-26
+
+## Q-47
+- Refs:
+- Status: open
+- Asked: 2026-11-26
+- Question: ¿Hacemos la fase 2 (/gw-opt-tokens y /retro) del bloque «LCP móvil» antes de main? a) sí; b) no
+- Recommendation: b: el cambio toca componentes y el script de páginas, pero es pequeño y mecánico (iconos sueltos, srcset, un preload): basta con la fase 1 ya hecha y la 3
+
+## Q-48
+- Refs:
+- Status: open
+- Asked: 2026-11-26
+- Question: ¿Subo el bloque «LCP móvil» a main en cuanto el CI esté en verde? a) sí; b) no, espero
+- Recommendation: a: con el CI en verde, reviewed.sh, check.sh y push a main; si no, queda listo y marcado para la publicación del domingo
