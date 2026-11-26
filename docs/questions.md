@@ -329,42 +329,54 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-37
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-26
 - Question: Diario del taller (prototipo https://claude.ai/artifact/QHa1FGPtHzvaZZd9AY32Pz): ¿dónde vive en la navegación?
 - Recommendation: /diario con enlace discreto en la cabecera (como Productos) y una banda al final del inicio
+- Answer: ok
+- Answered: 2026-11-26
 
 ## Q-38
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-26
 - Question: Diario: ¿cabecera en bloque celeste hondo con chaflán, o sobria sobre papel?
 - Recommendation: bloque celeste hondo con chaflán y metadatos en mono; tiempo de lectura calculado
+- Answer: ok
+- Answered: 2026-11-26
 
 ## Q-39
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-26
 - Question: Diario: ¿quién firma y cómo?
 - Recommendation: firma enlazada al perfil del miembro; puede firmar cualquier miembro
+- Answer: ok
+- Answered: 2026-11-26
 
 ## Q-40
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-26
 - Question: Diario: ¿figura animada o fija?
 - Recommendation: figura estática con reposo en cada entrada; animación solo opcional
+- Answer: ok
+- Answered: 2026-11-26
 
 ## Q-41
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-26
 - Question: Diario: ¿entradas en es, gl y en, o solo castellano con excepción a la regla de tres idiomas?
 - Recommendation: traducir cada entrada a gl y en, como el resto de la web (sin excepción a la regla)
+- Answer: ok
+- Answered: 2026-11-26
 
 ## Q-42
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-26
 - Question: Diario: ¿el prototipo vale como base para construirlo?
 - Recommendation: aprobar el prototipo con las respuestas de arriba
+- Answer: ok
+- Answered: 2026-11-26
