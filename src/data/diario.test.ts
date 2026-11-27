@@ -1,11 +1,21 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { buscarEntrada, entradas, minutosLectura, textosDe, type EntradaDiario } from './diario';
+import {
+  buscarEntrada,
+  entradas,
+  minutosLectura,
+  miniDe,
+  textosDe,
+  TIPOS_ENTRADA,
+  type EntradaDiario,
+  type ImagenDiario,
+} from './diario';
 import { equipo } from './equipo';
 import { IDIOMAS, type Proyecto, type Texto } from './tipos';
 
 const CARPETA = join(__dirname, 'diario');
+const PUBLIC = join(__dirname, '..', '..', 'public');
 const FICHAS = join(__dirname, 'proyectos');
 const ficha = (slug: string): Proyecto | undefined => {
   try {
@@ -15,6 +25,20 @@ const ficha = (slug: string): Proyecto | undefined => {
   }
 };
 
+/** Toda imagen de una entrada (portada, bloques `imagen` y `galeria`), con su ruta para el mensaje de error. */
+export function imagenesDe(e: EntradaDiario): [string, ImagenDiario][] {
+  const r: [string, ImagenDiario][] = e.portada ? [['portada', e.portada]] : [];
+  e.secciones.forEach((s, i) =>
+    s.bloques.forEach((b, j) => {
+      const p = `secciones[${i}].bloques[${j}]`;
+      if (b.tipo === 'imagen') r.push([p, b]);
+      else if (b.tipo === 'galeria')
+        b.imagenes.forEach((g, k) => r.push([`${p}.imagenes[${k}]`, g]));
+    }),
+  );
+  return r;
+}
+
 /** Todos los `Texto` de una entrada, con su ruta para el mensaje de error. */
 function textos(e: EntradaDiario): [string, Texto][] {
   const r: [string, Texto][] = [
@@ -22,6 +46,10 @@ function textos(e: EntradaDiario): [string, Texto][] {
     ['bajada', e.bajada],
     ['descripcion', e.descripcion],
   ];
+  for (const [p, im] of imagenesDe(e)) {
+    r.push([`${p}.alt`, im.alt]);
+    if (im.pie) r.push([`${p}.pie`, im.pie]);
+  }
   e.secciones.forEach((s, i) => {
     r.push([`secciones[${i}].etiqueta`, s.etiqueta], [`secciones[${i}].titulo`, s.titulo]);
     s.bloques.forEach((b, j) => {
@@ -31,7 +59,7 @@ function textos(e: EntradaDiario): [string, Texto][] {
       else if (b.tipo === 'lista') {
         r.push([`${p}.titulo`, b.titulo]);
         b.items.forEach((t, k) => r.push([`${p}.items[${k}]`, t]));
-      } else r.push([`${p}.pie`, b.pie]);
+      } else if (b.tipo === 'animacion') r.push([`${p}.pie`, b.pie]);
     });
   });
   return r;
@@ -112,6 +140,22 @@ describe('diario', () => {
         }
       });
 
+      it('toda imagen (portada, imagen, galería) existe en public/, y la portada tiene su miniatura', () => {
+        for (const [ruta, im] of imagenesDe(e)) {
+          expect(existsSync(join(PUBLIC, im.src)), `${ruta}.src «${im.src}»`).toBe(true);
+        }
+        if (e.portada) {
+          expect(
+            existsSync(join(PUBLIC, miniDe(e.portada.src))),
+            `miniatura de «${e.portada.src}»`,
+          ).toBe(true);
+        }
+      });
+
+      it('su tipo, si lo tiene, es taller, proyecto o relato', () => {
+        if (e.tipo) expect(TIPOS_ENTRADA).toContain(e.tipo);
+      });
+
       it('la descripción no pasa de 160 caracteres en ningún idioma', () => {
         for (const i of IDIOMAS) {
           expect(e.descripcion[i].length, `descripcion.${i}`).toBeLessThanOrEqual(160);
@@ -142,7 +186,7 @@ describe('vocabulario del diario', () => {
 });
 
 describe('minutosLectura', () => {
-  // 2 (título) + 3 (bajada) + 1 + 1 (sección) + 4 (párrafo) + 1 + 2 (decisión) + 1 + 2 (lista) + 3 (pie) = palabras
+  // 2 (título) + 3 (bajada) + 1 + 1 (sección) + 4 (párrafo) + 1 + 2 (decisión) + 1 + 2 (lista) + 3 (pie) + 2 + 1 (pies de imagen y galería) = palabras
   const base: EntradaDiario = {
     slug: 'x',
     fecha: '2026-01-01',
@@ -159,6 +203,15 @@ describe('minutosLectura', () => {
           { tipo: 'decision', texto: entrada(1), cita: entrada(2) },
           { tipo: 'lista', titulo: entrada(1), items: [entrada(2)] },
           { tipo: 'animacion', proyecto: 'p', id: 'i', pie: entrada(3) },
+          { tipo: 'imagen', src: 'a.webp', alt: entrada(9), pie: entrada(2) },
+          { tipo: 'imagen', src: 'b.webp', alt: entrada(9) },
+          {
+            tipo: 'galeria',
+            imagenes: [
+              { src: 'c.webp', alt: entrada(9), pie: entrada(1) },
+              { src: 'd.webp', alt: entrada(9) },
+            ],
+          },
         ],
       },
     ],
@@ -166,7 +219,7 @@ describe('minutosLectura', () => {
 
   it('cuenta las palabras de títulos, bajada y bloques del idioma, sin la descripción', () => {
     expect(textosDe(base, 'es').join(' ').split(/\s+/).length).toBe(
-      2 + 3 + 1 + 1 + 4 + 1 + 2 + 1 + 2 + 3,
+      2 + 3 + 1 + 1 + 4 + 1 + 2 + 1 + 2 + 3 + 2 + 1, // los pies cuentan; el alt no
     );
   });
 

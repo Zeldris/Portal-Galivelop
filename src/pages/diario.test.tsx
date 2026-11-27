@@ -2,15 +2,20 @@ import { renderToString } from 'react-dom/server';
 import { Route, Routes, StaticRouter } from 'react-router-dom';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { Cabecera } from '../components/Cabecera';
-import { buscarEntrada, entradas, minutosLectura } from '../data/diario';
+import {
+  buscarEntrada,
+  entradas,
+  minutosLectura,
+  type EntradaDiario as Entrada,
+} from '../data/diario';
 import { buscarPersonaPorId } from '../data/equipo';
 import flujo from '../data/proyectos/galivelop-workflow.json';
 import type { Animacion } from '../data/tipos';
 import AnimacionFlujo from '../components/AnimacionFlujo';
 import { ProveedorIdioma } from '../i18n/Idioma';
 import { cargarPagina } from '../paginas';
-import { Diario } from './Diario';
-import { EntradaDiario } from './EntradaDiario';
+import { Diario, TarjetaEntrada } from './Diario';
+import { EntradaDiario, VistaEntrada } from './EntradaDiario';
 import { Inicio } from './Inicio';
 import { NoEncontrado } from './NoEncontrado';
 
@@ -134,5 +139,91 @@ describe('enlaces al diario', () => {
     expect(html).toContain('class="banda-diario"');
     expect(html).toContain(`href="/diario/${entradas[0].slug}/"`);
     expect(html).toContain('href="/diario/"');
+  });
+});
+
+describe('imágenes, portada y tipo', () => {
+  const t = (es: string, gl = es, en = es) => ({ es, gl, en });
+  const prueba: Entrada = {
+    slug: 'entrada-de-prueba',
+    fecha: '2026-01-02',
+    autor: entrada.autor,
+    tipo: 'relato',
+    titulo: t('Título de prueba'),
+    bajada: t('Bajada de prueba'),
+    descripcion: t('Descripción de prueba'),
+    portada: {
+      src: 'proyectos/p/portada.webp',
+      alt: t('Alt de la portada', 'Alt da portada', 'Cover alt'),
+    },
+    secciones: [
+      {
+        etiqueta: t('Uno'),
+        titulo: t('Sección de prueba'),
+        bloques: [
+          {
+            tipo: 'imagen',
+            src: 'proyectos/p/una.webp',
+            alt: t('Alt de la imagen'),
+            pie: t('Pie de la imagen'),
+          },
+          {
+            tipo: 'galeria',
+            imagenes: [
+              { src: 'proyectos/p/g1.webp', alt: t('Alt g1'), pie: t('Pie g1') },
+              { src: 'proyectos/p/g2.webp', alt: t('Alt g2') },
+            ],
+          },
+        ],
+      },
+    ],
+  };
+  const vista = envolver(<VistaEntrada entrada={prueba} />, '/diario/entrada-de-prueba');
+
+  it('la entrada pinta la portada con su alt, bajo la cabecera', () => {
+    expect(vista).toContain('class="diario-portada"');
+    expect(vista).toContain('src="/proyectos/p/portada.webp"');
+    expect(vista).toContain('alt="Alt de la portada"');
+    expect(vista.indexOf('diario-portada')).toBeGreaterThan(vista.indexOf('diario-cabecera'));
+  });
+
+  it('el bloque imagen es un figure con img perezosa y figcaption', () => {
+    expect(vista).toMatch(
+      /<figure class="diario-imagen"><img src="\/proyectos\/p\/una\.webp" alt="Alt de la imagen" loading="lazy" decoding="async"\/><figcaption>Pie de la imagen<\/figcaption><\/figure>/,
+    );
+  });
+
+  it('la galería pinta cada imagen, con pie solo si lo tiene', () => {
+    expect(vista).toContain('class="diario-galeria"');
+    expect(vista).toContain('src="/proyectos/p/g1.webp"');
+    expect(vista).toContain('src="/proyectos/p/g2.webp"');
+    expect(vista).toContain('<figcaption>Pie g1</figcaption>');
+    expect(vista.match(/diario-galeria-figura/g)?.length).toBe(2);
+    expect(vista.match(/<figcaption>/g)?.length).toBe(2);
+  });
+
+  it('la etiqueta de tipo sale en los tres idiomas; sin tipo, «Taller»', () => {
+    expect(vista).toContain('<span class="diario-tipo">Relato</span>');
+    const gl = envolver(<VistaEntrada entrada={{ ...prueba, tipo: 'taller' }} />, '/', 'gl');
+    expect(gl).toContain('>Obradoiro<');
+    const en = envolver(<VistaEntrada entrada={{ ...prueba, tipo: 'proyecto' }} />, '/', 'en');
+    expect(en).toContain('>Project<');
+    const sin = envolver(<VistaEntrada entrada={{ ...prueba, tipo: undefined }} />, '/');
+    expect(sin).toContain('<span class="diario-tipo">Taller</span>');
+  });
+
+  it('sin portada no hay figura de portada', () => {
+    const sin = envolver(<VistaEntrada entrada={{ ...prueba, portada: undefined }} />, '/');
+    expect(sin).not.toContain('diario-portada');
+  });
+
+  it('la tarjeta del índice lleva la miniatura -mini.webp, el alt y la etiqueta', () => {
+    const html = envolver(<TarjetaEntrada e={prueba} />, '/diario');
+    expect(html).toContain('src="/proyectos/p/portada-mini.webp"');
+    expect(html).toContain('alt="Alt de la portada"');
+    expect(html).toContain('<span class="diario-tipo">Relato</span>');
+    expect(
+      envolver(<TarjetaEntrada e={{ ...prueba, portada: undefined }} />, '/diario'),
+    ).not.toContain('<img');
   });
 });

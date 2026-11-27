@@ -123,6 +123,8 @@ const minutosLectura = (e, i) => {
       if (b.tipo === 'parrafo') t.push(b.texto[i]);
       else if (b.tipo === 'decision') t.push(b.texto[i], b.cita[i]);
       else if (b.tipo === 'lista') t.push(b.titulo[i], ...b.items.map((x) => x[i]));
+      else if (b.tipo === 'imagen') { if (b.pie) t.push(b.pie[i]); }
+      else if (b.tipo === 'galeria') { for (const g of b.imagenes) if (g.pie) t.push(g.pie[i]); }
       else t.push(b.pie[i]);
     }
   }
@@ -298,7 +300,9 @@ for (const idioma of IDIOMAS) {
       ruta: `diario/${e.slug}`,
       titulo: `${e.titulo[idioma]} · Galivelop`,
       descripcion: e.descripcion[idioma],
-      imagen: IMAGEN[idioma],
+      // La portada de la entrada, si la hay (URL absoluta con ?v=, como las fichas); si no, la del portal.
+      imagen: e.portada ? imagenDe(e.portada.src) : IMAGEN[idioma],
+      vista: e.portada ? { imagen: imagenDe(e.portada.src), medidas: false, alt: e.portada.alt[idioma] } : undefined,
       fecha: e.fecha,
       entrada: e,
     });
@@ -463,7 +467,7 @@ function cuerpo(pg) {
     const i = pg.idioma;
     const tarjetas = entradas.map((e) => {
       const a = equipo.find((m) => m.id === e.autor);
-      return `<li><article><p><time datetime="${e.fecha}">${e.fecha}</time>${a ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${a.id}`)}">${esc(a.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(e, i)))}</p><h2><a href="${urlDe(i, `diario/${e.slug}`)}">${esc(e.titulo[i])}</a></h2><p>${esc(e.bajada[i])}</p></article></li>`;
+      return `<li><article><p><time datetime="${e.fecha}">${e.fecha}</time> · ${esc(T(i, `diario.tipo.${e.tipo ?? 'taller'}`))}${a ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${a.id}`)}">${esc(a.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(e, i)))}</p><h2><a href="${urlDe(i, `diario/${e.slug}`)}">${esc(e.titulo[i])}</a></h2><p>${esc(e.bajada[i])}</p></article></li>`;
     }).join('');
     return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / ${esc(T(i, 'diario.titulo'))}</nav><h1>${esc(T(i, 'diario.titulo'))}</h1><p>${esc(T(i, 'diario.intro'))}</p>${entradas.length ? `<ul>${tarjetas}</ul>` : `<p>${esc(T(i, 'diario.vacio'))}</p>`}</main>`;
   }
@@ -474,7 +478,10 @@ function cuerpo(pg) {
     const conCodigo = (t) => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>');
     const autor = equipo.find((m) => m.id === entrada.autor);
     const ficha = proyectos.find((x) => x.slug === entrada.proyecto);
+    const figura = (g) => `<figure><img src="${BASE_404}${g.src}" alt="${esc(g.alt[i])}" loading="lazy" decoding="async" />${g.pie ? `<figcaption>${esc(g.pie[i])}</figcaption>` : ''}</figure>`;
     const bloque = (b) => {
+      if (b.tipo === 'imagen') return figura(b);
+      if (b.tipo === 'galeria') return b.imagenes.map(figura).join('');
       if (b.tipo === 'parrafo') return `<p>${conCodigo(b.texto[i])}</p>`;
       if (b.tipo === 'decision') return `<div><p><strong>${esc(T(i, 'diario.decision'))}</strong></p><p>${conCodigo(b.texto[i])}</p><p>${esc(b.cita[i])}</p></div>`;
       if (b.tipo === 'lista') return `<p><strong>${esc(b.titulo[i])}</strong></p><ul>${b.items.map((t) => `<li>${conCodigo(t[i])}</li>`).join('')}</ul>`;
@@ -486,8 +493,8 @@ function cuerpo(pg) {
     const n = entradas.findIndex((e) => e.slug === entrada.slug);
     const vecina = (e, t) => (e ? `<li><a href="${urlDe(i, `diario/${e.slug}`)}">${esc(T(i, t))} ${esc(e.titulo[i])}</a></li>` : '');
     const pie = [vecina(entradas[n + 1], 'diario.anterior'), vecina(entradas[n - 1], 'diario.siguiente'), ficha ? `<li><a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(T(i, 'diario.verFicha').replace('{proyecto}', ficha.nombre))}</a></li>` : ''].join('');
-    const meta = `<p><time datetime="${entrada.fecha}">${entrada.fecha}</time>${autor ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${autor.id}`)}">${esc(autor.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(entrada, i)))}${ficha ? ` · ${esc(T(i, 'diario.proyecto'))}: <a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(ficha.nombre)}</a>` : ''}</p>`;
-    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / <a href="${urlDe(i, 'diario')}">${esc(T(i, 'diario.titulo'))}</a> / ${esc(entrada.titulo[i])}</nav><article><h1>${esc(entrada.titulo[i])}</h1><p>${esc(entrada.bajada[i])}</p>${meta}${secciones}</article><ul>${pie}</ul></main>`;
+    const meta = `<p><time datetime="${entrada.fecha}">${entrada.fecha}</time> · ${esc(T(i, `diario.tipo.${entrada.tipo ?? 'taller'}`))}${autor ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${autor.id}`)}">${esc(autor.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(entrada, i)))}${ficha ? ` · ${esc(T(i, 'diario.proyecto'))}: <a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(ficha.nombre)}</a>` : ''}</p>`;
+    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / <a href="${urlDe(i, 'diario')}">${esc(T(i, 'diario.titulo'))}</a> / ${esc(entrada.titulo[i])}</nav><article><h1>${esc(entrada.titulo[i])}</h1><p>${esc(entrada.bajada[i])}</p>${entrada.portada ? figura(entrada.portada) : ''}${meta}${secciones}</article><ul>${pie}</ul></main>`;
   }
   const x = pg.producto;
   if (x) {

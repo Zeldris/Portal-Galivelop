@@ -265,6 +265,81 @@
   color: var(--texto-2);
 }
 
+/* Etiqueta de tipo (taller, proyecto, relato) junto a la fecha. */
+.diario-tipo {
+  padding: var(--espacio-1) var(--espacio-6);
+  border: 1px solid currentcolor;
+  font: var(--datos);
+  letter-spacing: var(--datos-espaciado);
+  text-transform: uppercase;
+}
+
+/* Imágenes: el hueco se reserva con aspect-ratio (sin salto de maquetación). */
+.diario-portada {
+  margin: 0 0 var(--espacio-40);
+}
+
+.diario-portada img,
+.diario-miniatura,
+.diario-galeria-figura img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: var(--superficie-2);
+  border: 1px solid var(--borde);
+}
+
+.diario-portada img {
+  aspect-ratio: 16 / 9;
+}
+
+.diario-miniatura {
+  aspect-ratio: 16 / 9;
+  margin-bottom: var(--espacio-12);
+}
+
+.diario-imagen {
+  margin: var(--espacio-32) 0;
+}
+
+.diario-imagen img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--borde);
+}
+
+.diario-imagen figcaption,
+.diario-galeria-figura figcaption {
+  margin-top: var(--espacio-8);
+  font-size: var(--letra-90);
+  line-height: 1.5;
+  color: var(--texto-2);
+}
+
+.diario-galeria {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--espacio-12);
+  margin: var(--espacio-32) 0;
+}
+
+.diario-galeria-figura {
+  min-width: 0;
+  margin: 0;
+}
+
+.diario-galeria-figura img {
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 48em) {
+  .diario-galeria {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* Pie: anterior, siguiente y la ficha del proyecto */
 .diario-pie {
   display: grid;

@@ -1,13 +1,51 @@
 import { ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { Link } from '../components/Enlace';
-import { entradas, minutosLectura } from '../data/diario';
+import { entradas, minutosLectura, rutaMini, tipoDe, type EntradaDiario } from '../data/diario';
 import { buscarPersonaPorId } from '../data/equipo';
 import { useIdioma } from '../i18n/Idioma';
 
+/** Tarjeta de una entrada en el índice: miniatura de la portada (si la tiene), datos, título y bajada. */
+export function TarjetaEntrada({ e }: { e: EntradaDiario }) {
+  const { t, tx, idioma, fecha } = useIdioma();
+  const autor = buscarPersonaPorId(e.autor);
+  return (
+    <article className="diario-tarjeta" data-guion={`entrada-${e.slug}`}>
+      {e.portada && (
+        <img
+          className="diario-miniatura"
+          src={rutaMini(e.portada.src)}
+          alt={tx(e.portada.alt)}
+          loading="lazy"
+          decoding="async"
+        />
+      )}
+      <p className="diario-datos">
+        <time dateTime={e.fecha}>{fecha(e.fecha)}</time>
+        <span className="diario-tipo">{t(`diario.tipo.${tipoDe(e)}`)}</span>
+        {autor && (
+          <span>
+            {t('diario.escribe')}: <Link to={`/equipo/${autor.id}`}>{autor.nombre}</Link>
+          </span>
+        )}
+        <span>
+          {t('diario.lectura')}: {t('diario.lecturaMin', { min: minutosLectura(e, idioma) })}
+        </span>
+      </p>
+      <h2>
+        <Link to={`/diario/${e.slug}`}>{tx(e.titulo)}</Link>
+      </h2>
+      <p>{tx(e.bajada)}</p>
+      <Link to={`/diario/${e.slug}`} className="enlace-flecha">
+        {t('diario.leer')} <ArrowRight size={14} />
+      </Link>
+    </article>
+  );
+}
+
 /** Índice del diario del taller, `/diario`: una tarjeta por entrada, de la más nueva a la más vieja. */
 export function Diario() {
-  const { t, tx, idioma, fecha } = useIdioma();
+  const { t } = useIdioma();
 
   useEffect(() => {
     document.title = `${t('diario.titulo')} · Galivelop`;
@@ -37,35 +75,11 @@ export function Diario() {
           <p>{t('diario.vacio')}</p>
         ) : (
           <ul className="diario-indice">
-            {entradas.map((e) => {
-              const autor = buscarPersonaPorId(e.autor);
-              return (
-                <li key={e.slug}>
-                  <article className="diario-tarjeta" data-guion={`entrada-${e.slug}`}>
-                    <p className="diario-datos">
-                      <time dateTime={e.fecha}>{fecha(e.fecha)}</time>
-                      {autor && (
-                        <span>
-                          {t('diario.escribe')}:{' '}
-                          <Link to={`/equipo/${autor.id}`}>{autor.nombre}</Link>
-                        </span>
-                      )}
-                      <span>
-                        {t('diario.lectura')}:{' '}
-                        {t('diario.lecturaMin', { min: minutosLectura(e, idioma) })}
-                      </span>
-                    </p>
-                    <h2>
-                      <Link to={`/diario/${e.slug}`}>{tx(e.titulo)}</Link>
-                    </h2>
-                    <p>{tx(e.bajada)}</p>
-                    <Link to={`/diario/${e.slug}`} className="enlace-flecha">
-                      {t('diario.leer')} <ArrowRight size={14} />
-                    </Link>
-                  </article>
-                </li>
-              );
-            })}
+            {entradas.map((e) => (
+              <li key={e.slug}>
+                <TarjetaEntrada e={e} />
+              </li>
+            ))}
           </ul>
         )}
       </div>

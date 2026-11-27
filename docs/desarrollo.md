@@ -300,7 +300,13 @@ código. La más nueva sale primero. Campos:
   (entradilla) y `descripcion` (para buscadores y redes, 160 caracteres como máximo).
 - `secciones`: cada una con `etiqueta`, `titulo` (el `h2`) y `bloques`. Tipos de bloque: `parrafo` (`texto`; `` `código` `` se
   pinta como `<code>`), `decision` (`texto` y `cita`), `lista` (`titulo` e `items`) y `animacion` (`proyecto`, `id` de una
-  de las `animaciones` de su ficha, y `pie`; se ve quieta y se puede reproducir).
+  de las `animaciones` de su ficha, y `pie`; se ve quieta y se puede reproducir), `imagen` (`src`, `alt` y `pie` opcional:
+  un `<figure>`) y `galeria` (`imagenes`: lista de `{ src, alt, pie? }`; rejilla de 2 columnas en móvil y 3 en escritorio).
+- Imágenes: `src` es una ruta bajo `public/` sin barra inicial (`proyectos/tarkor/portada.webp`) y `alt` un texto en los tres
+  idiomas. `portada` (opcional, `{ src, alt }`) sale bajo la cabecera, como miniatura en la tarjeta del índice y como
+  `og:image` e `image` del `BlogPosting`; la miniatura es su hermana `<nombre>-mini.webp`, que tiene que existir (el test lo
+  comprueba). Sin medidas en el HTML: el CSS reserva el hueco con `aspect-ratio` (16/9 la portada, 4/3 la galería).
+- `tipo` (opcional): `taller` (por defecto), `proyecto` o `relato`; sale como etiqueta junto a la fecha.
 - **Tres idiomas:** todo texto lleva `es`, `gl` y `en`; `src/data/diario.test.ts` lo comprueba, y también que el autor y el
   proyecto existen, que los slugs no se repiten y que la animación está en la ficha.
 - **Lectura:** los minutos se calculan (palabras del idioma / 200, hacia arriba, mínimo 1); no se escriben.

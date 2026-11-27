@@ -2,9 +2,17 @@ import { lazy, Suspense, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import { Link } from '../components/Enlace';
-import { buscarEntrada, entradas, minutosLectura, type Bloque } from '../data/diario';
+import {
+  buscarEntrada,
+  entradas,
+  minutosLectura,
+  tipoDe,
+  type Bloque,
+  type EntradaDiario as Entrada,
+  type ImagenDiario,
+} from '../data/diario';
 import { buscarPersonaPorId } from '../data/equipo';
-import { buscarProyecto, useFicha } from '../data/proyectos';
+import { buscarProyecto, ruta, useFicha } from '../data/proyectos';
 import { useIdioma } from '../i18n/Idioma';
 import { leerAncla } from '../utils/ancla';
 import { conCodigo } from '../utils/codigo';
@@ -45,6 +53,17 @@ function Animacion({ bloque }: { bloque: Extract<Bloque, { tipo: 'animacion' }> 
   );
 }
 
+/** Una imagen del diario con su pie opcional. `aspect-ratio` en el CSS reserva el hueco (sin salto de maquetación). */
+function Figura({ imagen, clase }: { imagen: ImagenDiario; clase: string }) {
+  const { tx } = useIdioma();
+  return (
+    <figure className={clase}>
+      <img src={ruta(imagen.src)} alt={tx(imagen.alt)} loading="lazy" decoding="async" />
+      {imagen.pie && <figcaption>{tx(imagen.pie)}</figcaption>}
+    </figure>
+  );
+}
+
 function BloqueDiario({ bloque }: { bloque: Bloque }) {
   const { t, tx } = useIdioma();
   switch (bloque.tipo) {
@@ -71,6 +90,16 @@ function BloqueDiario({ bloque }: { bloque: Bloque }) {
       );
     case 'animacion':
       return <Animacion bloque={bloque} />;
+    case 'imagen':
+      return <Figura imagen={bloque} clase="diario-imagen" />;
+    case 'galeria':
+      return (
+        <div className="diario-galeria">
+          {bloque.imagenes.map((g) => (
+            <Figura key={g.src} imagen={g} clase="diario-galeria-figura" />
+          ))}
+        </div>
+      );
   }
 }
 
@@ -78,18 +107,20 @@ function BloqueDiario({ bloque }: { bloque: Bloque }) {
 export function EntradaDiario() {
   const { slug } = useParams();
   const entrada = buscarEntrada(slug ? leerAncla(slug) : undefined);
+  return entrada ? <VistaEntrada entrada={entrada} /> : <NoEncontrado />;
+}
+
+/** El contenido de una entrada ya encontrada (aparte para poder pintar una de prueba en los tests). */
+export function VistaEntrada({ entrada }: { entrada: Entrada }) {
   const { t, tx, idioma, fecha } = useIdioma();
-  const titulo = entrada ? tx(entrada.titulo) : '';
+  const titulo = tx(entrada.titulo);
 
   useEffect(() => {
-    if (!titulo) return;
     document.title = `${titulo} · Galivelop`;
     return () => {
       document.title = 'Galivelop';
     };
   }, [titulo]);
-
-  if (!entrada) return <NoEncontrado />;
 
   const autor = buscarPersonaPorId(entrada.autor);
   const proyecto = buscarProyecto(entrada.proyecto);
@@ -120,7 +151,8 @@ export function EntradaDiario() {
             <div>
               <dt className="diario-etiqueta">{t('diario.fecha')}</dt>
               <dd>
-                <time dateTime={entrada.fecha}>{fecha(entrada.fecha)}</time>
+                <time dateTime={entrada.fecha}>{fecha(entrada.fecha)}</time>{' '}
+                <span className="diario-tipo">{t(`diario.tipo.${tipoDe(entrada)}`)}</span>
               </dd>
             </div>
             {autor && (
@@ -145,6 +177,11 @@ export function EntradaDiario() {
             )}
           </dl>
         </header>
+        {entrada.portada && (
+          <figure className="diario-portada">
+            <img src={ruta(entrada.portada.src)} alt={tx(entrada.portada.alt)} decoding="async" />
+          </figure>
+        )}
         <article className="diario-articulo">
           {entrada.secciones.map((s) => (
             <section key={tx(s.titulo)}>
