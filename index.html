@@ -53,12 +53,17 @@
       }
       /* Cabecera estática (ficha y portada): su imagen se ve sin esperar al JS. En móvil la cabecera de la app mide lo
          que su texto (464-835 px); con la pantalla entera de alto, la imagen estática ya ocupa todo lo visible que
-         ocupará la de React y el LCP no salta a la imagen que la sustituye. Desaparece con el montaje. */
-      @media (max-width: 68.75em) {
+         ocupará la de React y el LCP no salta a la imagen que la sustituye. Desaparece con el montaje. Solo en pantalla:
+         al imprimir sin JS daría una primera página vacía. */
+      @media screen and (max-width: 68.75em) {
         .proyecto-cabecera[data-cabecera-estatica],
         .hero[data-cabecera-estatica] {
           min-height: 100svh;
         }
+      }
+      /* Sin JS, los enlaces del hero estático van sobre el celeste: con el color del texto, no el azul de enlace. */
+      .hero[data-cabecera-estatica] a {
+        color: inherit;
       }
       html.js [data-estatico] {
         visibility: hidden;
