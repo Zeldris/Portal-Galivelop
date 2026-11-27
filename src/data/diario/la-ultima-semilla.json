@@ -1,0 +1,235 @@
+{
+  "slug": "la-ultima-semilla",
+  "fecha": "2026-11-27",
+  "autor": "alvaro-garcia-grana",
+  "tipo": "relato",
+  "proyecto": "tarkor",
+  "titulo": {
+    "es": "La última Semilla",
+    "gl": "A última Semente",
+    "en": "The last Seed"
+  },
+  "bajada": {
+    "es": "Un corto del Génesis de Tarkor: cómo empezó su mundo, quién fue la última de las trece Semillas y por qué el juego lleva su nombre.",
+    "gl": "Unha curta do Xénese de Tarkor: como empezou o seu mundo, quen foi a última das trece Sementes e por que o xogo leva o seu nome.",
+    "en": "A short from the Genesis of Tarkor: how its world began, who the last of the thirteen Seeds was, and why the game bears his name."
+  },
+  "descripcion": {
+    "es": "Un corto del Génesis de Tarkor, nuestro juego de rol: Madre, las trece Semillas y la pregunta que trajo la magia al mundo.",
+    "gl": "Unha curta do Xénese de Tarkor, o noso xogo de rol: Nai, as trece Sementes e a pregunta que trouxo a maxia ao mundo.",
+    "en": "A short from the Genesis of Tarkor, our role-playing game: Mother, the thirteen Seeds and the question that brought magic into the world."
+  },
+  "portada": {
+    "src": "proyectos/tarkor/arte/item-esquirla-celeste-caida.webp",
+    "alt": {
+      "es": "Una esquirla de luz azulada caída en un desierto rojo y agrietado, bajo una tormenta con relámpagos",
+      "gl": "Unha esquirla de luz azulada caída nun deserto vermello e fendido, baixo unha tormenta con lóstregos",
+      "en": "A shard of bluish light fallen on a red, cracked desert, under a storm with lightning"
+    }
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "El origen",
+        "gl": "A orixe",
+        "en": "The origin"
+      },
+      "titulo": {
+        "es": "Trece Semillas",
+        "gl": "Trece Sementes",
+        "en": "Thirteen Seeds"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Antes de que nadie contara los años, había un mundo azul recién hecho y nadie en él.",
+            "gl": "Antes de que ninguén contase os anos, había un mundo azul acabado de facer e ninguén nel.",
+            "en": "Before anyone counted the years, there was a blue world, newly made, and no one in it."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Entonces llegó Madre. Nadie sabe de dónde. Uno de sus muchos nombres era Helek, que quiere decir «origen», y al mundo se le quedó el nombre: Helek Sirik, el Origen Azul.",
+            "gl": "Entón chegou Nai. Ninguén sabe de onde. Un dos seus moitos nomes era Helek, que quere dicir «orixe», e ao mundo quedoulle o nome: Helek Sirik, a Orixe Azul.",
+            "en": "Then Mother came. No one knows from where. One of her many names was Helek, which means “origin”, and the name stayed with the world: Helek Sirik, the Blue Origin."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Madre no trabajó sola. Formó trece Semillas y a cada una le dio una tarea. Una modeló la materia. Otra puso cada cosa en su sitio. Una hizo brotar lo que crece despacio, y otra hizo nacer lo que corre y caza. Otra se ocupó de que todo lo que termina terminase del todo.",
+            "gl": "Nai non traballou soa. Formou trece Sementes e a cada unha deulle unha tarefa. Unha modelou a materia. Outra puxo cada cousa no seu sitio. Unha fixo brotar o que medra a modo, e outra fixo nacer o que corre e caza. Outra ocupouse de que todo o que remata rematase de vez.",
+            "en": "Mother did not work alone. She formed thirteen Seeds and gave each one a task. One shaped matter. Another put each thing in its place. One made the slow-growing things sprout, and another gave birth to what runs and hunts. Another saw to it that everything that ends, ends completely."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La decimotercera tardó. Mientras sus hermanas ya trabajaban, ella no tenía poder ninguno, ni siquiera forma. Madre había puesto en ella un poco de todas las demás, y algo más que ni ella misma entendía. Cuando por fin despertó, sabía hacer un poco de lo que hacía cada hermana. La llamaron Tarkor.",
+            "gl": "A décimo terceira tardou. Mentres as súas irmás xa traballaban, ela non tiña poder ningún, nin sequera forma. Nai puxera nela un pouco de todas as demais, e algo máis que nin ela mesma entendía. Cando por fin espertou, sabía facer un pouco do que facía cada irmá. Chamáronlle Tarkor.",
+            "en": "The thirteenth was slow. While its sisters were already at work, it had no power at all, not even a shape. Mother had put into it a little of all the others, and something more that not even she understood. When it woke at last, it could do a little of what each sister did. They called him Tarkor."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "La duda",
+        "gl": "A dúbida",
+        "en": "The doubt"
+      },
+      "titulo": {
+        "es": "La luz morada",
+        "gl": "A luz morada",
+        "en": "The purple light"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Madre le tenía miedo, porque no entendía lo que había hecho. Hablaba poco con sus Semillas, y con Tarkor menos. Él respondió como responde un hijo: obedeciendo más que nadie. Iba de hermana en hermana, ayudando donde hiciera falta, y esperaba.",
+            "gl": "Nai tíñalle medo, porque non entendía o que fixera. Falaba pouco coas súas Sementes, e con Tarkor menos. El respondeu como responde un fillo: obedecendo máis ca ninguén. Ía de irmá en irmá, axudando onde fixese falta, e agardaba.",
+            "en": "Mother was afraid of him, because she did not understand what she had made. She spoke little with her Seeds, and less with Tarkor. He answered the way a son does: by obeying more than anyone. He went from sister to sister, helping wherever he was needed, and he waited."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "En uno de esos viajes vio una luz morada que venía de más allá del mundo. Era tenue y fría, y no se parecía a nada de lo que Madre había hecho. Voló hasta ella. La luz se deshizo y le entró en el pecho. Tarkor pensó que sería otra obra de Madre, y siguió trabajando.",
+            "gl": "Nunha desas viaxes viu unha luz morada que viña de máis alá do mundo. Era tenue e fría, e non se parecía a nada do que Nai fixera. Voou ata ela. A luz desfíxose e entroulle no peito. Tarkor pensou que sería outra obra de Nai, e seguiu traballando.",
+            "en": "On one of those journeys he saw a purple light coming from beyond the world. It was faint and cold, and like nothing Mother had made. He flew to it. The light came apart and went into his chest. Tarkor took it for another of Mother's works, and went on working."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Pasó muchísimo tiempo. Un día oyó una voz dentro de sí. Primero fue un susurro, luego palabras sueltas, y al final una frase entera: Madre os oculta algo.",
+            "gl": "Pasou moitísimo tempo. Un día oíu unha voz dentro de si. Primeiro foi un murmurio, logo palabras soltas, e ao final unha frase enteira: Nai ocúltavos algo.",
+            "en": "A very long time passed. One day he heard a voice inside himself. First it was a whisper, then loose words, and at last a whole sentence: Mother is hiding something from you."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Tarkor hizo lo que haría alguien que se fía. Fue a Madre y le pidió la verdad.",
+            "gl": "Tarkor fixo o que faría alguén que se fía. Foi onda Nai e pediulle a verdade.",
+            "en": "Tarkor did what someone who trusts would do. He went to Mother and asked her for the truth."
+          }
+        },
+        {
+          "tipo": "decision",
+          "texto": {
+            "es": "Madre no se la dio. No fue por maldad. Fue por miedo.",
+            "gl": "Nai non lla deu. Non foi por maldade. Foi por medo.",
+            "en": "Mother did not give it to him. It was not out of malice. It was out of fear."
+          },
+          "cita": {
+            "es": "El Génesis de Tarkor",
+            "gl": "O Xénese de Tarkor",
+            "en": "The Genesis of Tarkor"
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "El regreso",
+        "gl": "O regreso",
+        "en": "The return"
+      },
+      "titulo": {
+        "es": "Lo que nació sin Semilla",
+        "gl": "O que naceu sen Semente",
+        "en": "What was born without a Seed"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Tarkor se marchó a buscar la verdad por su cuenta. Nadie sabe cuánto tiempo estuvo fuera. Sus hermanas dejaron de decir su nombre. Nadie se lo ordenó.",
+            "gl": "Tarkor marchou buscar a verdade pola súa conta. Ninguén sabe canto tempo estivo fóra. As súas irmás deixaron de dicir o seu nome. Ninguén llelo ordenou.",
+            "en": "Tarkor left to look for the truth on his own. No one knows how long he was gone. His sisters stopped saying his name. No one ordered them to."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Cuando volvió, ya no era el mismo. Era frío y oscuro, y solo quería una cosa: deshacer la obra de Madre. Traía consigo algo que el mundo no había tenido nunca. Lo llamamos magia.",
+            "gl": "Cando volveu, xa non era o mesmo. Era frío e escuro, e só quería unha cousa: desfacer a obra de Nai. Traía consigo algo que o mundo non tivera nunca. Chamámoslle maxia.",
+            "en": "When he came back, he was no longer the same. He was cold and dark, and he wanted one thing only: to undo Mother's work. He brought with him something the world had never had. We call it magic."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La magia se derramó sin control. A aquello se le llama el Estallido. Su parte más salvaje cayó sobre el continente de Berig y se quedó allí, cambiando la tierra, las plantas y las bestias.",
+            "gl": "A maxia derramouse sen control. A aquilo chámaselle o Estalido. A súa parte máis salvaxe caeu sobre o continente de Berig e quedou alí, cambiando a terra, as plantas e as bestas.",
+            "en": "The magic spilled out of control. That is called the Blast. Its wildest part fell on the continent of Berig and stayed there, changing the land, the plants and the beasts."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Mil años después, de esa magia salvaje nacieron los primeros orcos. Ninguna Semilla los diseñó. Nadie les preparó un sitio. Son el pueblo más joven del mundo, y con ellos empieza el juego.",
+            "gl": "Mil anos despois, desa maxia salvaxe naceron os primeiros orcos. Ningunha Semente os deseñou. Ninguén lles preparou un sitio. Son o pobo máis novo do mundo, e con eles empeza o xogo.",
+            "en": "A thousand years later, the first orcs were born from that wild magic. No Seed designed them. No one made a place ready for them. They are the youngest people in the world, and the game begins with them."
+          }
+        },
+        {
+          "tipo": "imagen",
+          "src": "proyectos/tarkor/arte/raza-orcos-llanuras-hembra.webp",
+          "alt": {
+            "es": "Guerrera orca de las Llanuras del Viento Rojo, con un hacha en cada mano, sobre un campamento en el desierto rojo",
+            "gl": "Guerreira orca das Chairas do Vento Vermello, cun machado en cada man, sobre un campamento no deserto vermello",
+            "en": "Orc warrior of the Red Wind Plains, an axe in each hand, above a camp in the red desert"
+          },
+          "pie": {
+            "es": "Una orca de las Llanuras del Viento Rojo. Arte del juego.",
+            "gl": "Unha orca das Chairas do Vento Vermello. Arte do xogo.",
+            "en": "An orc of the Red Wind Plains. Art from the game."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Nota",
+        "gl": "Nota",
+        "en": "Note"
+      },
+      "titulo": {
+        "es": "Qué es del juego y qué no",
+        "gl": "Que é do xogo e que non",
+        "en": "What comes from the game and what does not"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Todo lo que cuenta este corto es canon de Tarkor: Madre, las trece Semillas, la luz morada, la voz, la pregunta, la negativa, el regreso, el Estallido y el nacimiento de los orcos. Lo he resumido mucho. Mías son solo las palabras, y la frase que dice la voz, que en el juego no está escrita así.",
+            "gl": "Todo o que conta esta curta é canon de Tarkor: Nai, as trece Sementes, a luz morada, a voz, a pregunta, a negativa, o regreso, o Estalido e o nacemento dos orcos. Resumino moito. Miñas son só as palabras, e a frase que di a voz, que no xogo non está escrita así.",
+            "en": "Everything this short tells is Tarkor canon: Mother, the thirteen Seeds, the purple light, the voice, the question, the refusal, the return, the Blast and the birth of the orcs. I have shortened it a great deal. Only the wording is mine, and the sentence the voice speaks, which is not written that way in the game."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Dos cosas quedan fuera a propósito: qué oculta Madre y qué encontró Tarkor mientras estuvo fuera. El juego las guarda para más adelante.",
+            "gl": "Dúas cousas quedan fóra á mantenta: que oculta Nai e que atopou Tarkor mentres estivo fóra. O xogo gárdaas para máis adiante.",
+            "en": "Two things are left out on purpose: what Mother hides and what Tarkor found while he was away. The game keeps them for later."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La imagen de arriba no es del Génesis. Es una esquirla celeste caída en las Llanuras, un objeto del juego. La he elegido porque también es una luz que llega de fuera.",
+            "gl": "A imaxe de arriba non é do Xénese. É unha esquirla celeste caída nas Chairas, un obxecto do xogo. Escollina porque tamén é unha luz que chega de fóra.",
+            "en": "The image at the top is not from the Genesis. It is a fallen sky shard on the Plains, an item from the game. I chose it because it, too, is a light that arrives from outside."
+          }
+        }
+      ]
+    }
+  ]
+}

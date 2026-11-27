@@ -103,8 +103,8 @@ la del portal. `npm run seo` sin errores. **Cambio de rutas: afecta al SEO** (ru
 - **Diario nuevo (2026-11-27, la persona):** se retiran las siete entradas (`como-dibujamos-el-relevo` incluida; sus
   direcciones dejan de existir) y entran cinco, todas con `portada`: `railes-no-solo-instrucciones` (taller, con la
   animación `relevo`), `escribir-para-el-oido` y `una-consola-como-vara-de-medir` (proyecto),
-  `lo-que-el-generador-pinto-antes-de-acertar` (proyecto, galerías del piloto) y `hueso-sin-profanar` (relato de
-  Tarkor, con su «Nota»). Imágenes nuevas: `public/marca/diario-turnos.webp` (dibujada con la marca) y la miniatura de
+  `lo-que-el-generador-pinto-antes-de-acertar` (proyecto, galerías del piloto) y `la-ultima-semilla` (relato de
+  Tarkor: un corto del Génesis, con su «Nota» y solo arte del juego; sustituye a `hueso-sin-profanar`). Imágenes nuevas: `public/marca/diario-turnos.webp` (dibujada con la marca) y la miniatura de
   `galivelop-voice-generator/proxima`. Normas ampliadas en `docs/desarrollo.md#diario-del-taller` (tres tipos, relato).
 
 ## Falta
