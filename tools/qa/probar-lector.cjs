@@ -17,6 +17,7 @@ try {
   require('node:module')._initPaths();
 }
 const { chromium, devices } = require('playwright');
+const { normalizarRuta, motivoSinCasos } = require('./pagina-estatica.cjs');
 const { BASE, VENTANAS, servidor, parar } = require('./medir-paginas.cjs');
 
 const RAIZ = join(__dirname, '..', '..');
@@ -99,7 +100,7 @@ async function probar(navegador, guion, ventana, width, height) {
     };
   });
   const pagina = await contexto.newPage();
-  const ruta = guion.pagina.replace(/^\//, '');
+  const ruta = normalizarRuta(guion.pagina);
   await pagina.goto(BASE + ruta, { waitUntil: 'networkidle' });
   await pagina.locator('.lector-boton').click();
   const nombre = (ruta.replace(/\//g, '-') || 'inicio') + '-' + ventana;
@@ -140,6 +141,12 @@ async function probar(navegador, guion, ventana, width, height) {
 let vista = null;
 (async () => {
   vista = await servidor();
+  const sinCasos = motivoSinCasos(elegidos, pedidas);
+  if (sinCasos) {
+    console.error(`probar-lector: ${sinCasos}`);
+    if (vista) parar(vista);
+    process.exit(2);
+  }
   mkdirSync(carpeta, { recursive: true });
   const navegador = await chromium.launch();
   let malos = 0;

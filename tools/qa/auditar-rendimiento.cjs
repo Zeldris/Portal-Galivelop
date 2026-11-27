@@ -17,7 +17,7 @@ const { spawn } = require('node:child_process');
 const { existsSync, readFileSync, readdirSync, statSync } = require('node:fs');
 const { join } = require('node:path');
 const zlib = require('node:zlib');
-const { normalizarRuta, motivoNoEstatica } = require('./pagina-estatica.cjs');
+const { normalizarRuta, normalizarBase, rutasDelSitemap, motivoNoEstatica, cssEnlazados, resumenFuentes } = require('./pagina-estatica.cjs');
 let chromium;
 try {
   ({ chromium } = require('playwright'));
@@ -26,7 +26,7 @@ try {
   process.exit(2);
 }
 
-const BASE = process.env.BASE || 'http://localhost:4175/Portal-Galivelop/';
+const BASE = normalizarBase(process.env.BASE || 'http://localhost:4175/Portal-Galivelop/');
 const RAIZ = join(__dirname, '..', '..');
 const DIST = join(RAIZ, 'dist');
 const LIMITES = { lcp: 2500, cls: 0.1, tbt: 200 };
@@ -37,7 +37,8 @@ const PERFILES = [
 
 function rutasSitemap() {
   const xml = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
-  const rutas = [...xml.matchAll(/<loc>[^<]*?\/Portal-Galivelop\/([^<]*)<\/loc>/g)].map((m) => m[1]);
+  const rutas = rutasDelSitemap(xml, BASE);
+  // A propósito: gallego e inglés, solo el inicio (`gl/`, `en/`); sus demás páginas no se miden (ver la cabecera).
   return rutas.filter((r) => !/^(gl|en)\/./.test(r));
 }
 const RUTAS = (process.argv.slice(2).length ? process.argv.slice(2) : rutasSitemap()).map(normalizarRuta);
@@ -71,7 +72,7 @@ async function comprobarEstaticas() {
   const motivos = [];
   for (const ruta of RUTAS) {
     const motivo = await fetch(BASE + ruta, { signal: AbortSignal.timeout(10000) }).then(
-      async (resp) => (resp.ok ? motivoNoEstatica(await resp.text(), ruta) : `/${ruta}: HTTP ${resp.status}`),
+      async (resp) => (resp.ok ? motivoNoEstatica(await resp.text(), ruta, BASE) : `/${ruta}: HTTP ${resp.status}`),
       (e) => `/${ruta}: ${e.message}`,
     );
     if (motivo) motivos.push(motivo);
@@ -183,8 +184,9 @@ function estatico() {
   console.log(`  bruto ${kb(iniciales.reduce((s, f) => s + peso(f, 1), 0))} KB, gzip ${kb(iniciales.reduce((s, f) => s + peso(f, 2), 0))} KB, brotli ${kb(iniciales.reduce((s, f) => s + peso(f, 3), 0))} KB`);
   console.log('Cabecera de index.html:', [...html.matchAll(/<link rel="(preload|preconnect|modulepreload|dns-prefetch)"[^>]*>/g)].map((m) => m[0]).join(' ') || 'sin preload/preconnect');
   const fuentes = readdirSync(dir).filter((f) => f.endsWith('.woff2'));
-  const css = readFileSync(join(dir, ficheros.find((f) => f.endsWith('.css'))), 'utf8');
-  console.log(`\nFuentes: ${fuentes.length} woff2 (${kb(fuentes.reduce((s, f) => s + statSync(join(dir, f)).size, 0))} KB), @font-face ${(css.match(/@font-face/g) || []).length}, font-display: ${[...new Set(css.match(/font-display:[a-z]+/g))].join(',')}, preload de fuentes en index.html: ${/rel="preload"[^>]*font/.test(html) ? 'sí' : 'no'}`);
+  const enlazados = cssEnlazados(html);
+  const { fontFace, fontDisplay } = resumenFuentes((enlazados.length ? enlazados : ficheros.filter((f) => f.endsWith('.css'))).map((f) => readFileSync(join(dir, f), 'utf8')));
+  console.log(`\nFuentes: ${fuentes.length} woff2 (${kb(fuentes.reduce((s, f) => s + statSync(join(dir, f)).size, 0))} KB), @font-face ${fontFace}, font-display: ${fontDisplay.join(',')}, preload de fuentes en index.html: ${/rel="preload"[^>]*font/.test(html) ? 'sí' : 'no'}`);
   console.log('Con hash en el nombre:', ficheros.every((f) => /-[\w-]{8}\.(js|css)$/.test(f)) ? 'todos los JS/CSS' : 'NO todos');
   const imgs = [];
   const recorre = (d) => readdirSync(d, { withFileTypes: true }).forEach((e) => (e.isDirectory() ? recorre(join(d, e.name)) : /\.(webp|png|jpe?g|svg)$/.test(e.name) && imgs.push([join(d, e.name), statSync(join(d, e.name)).size])));

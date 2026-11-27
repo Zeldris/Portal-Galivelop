@@ -11,15 +11,7 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   - `hojasDeEstilos()` acepta `@import` con comillas dobles (hoy se salta sin aviso);
   - falla con 0 hojas;
   - falla si una hoja de `src/estilos/` no está en `global.css` (comparar con `readdirSync`).
-- **R-8 barrido de `tools/qa/`** (retro 2026-11-26, P2, aplazada a la próxima versión): cierra los leves de la
-  auditoría sobre la estática (entrada siguiente), las `@font-face` solo del primer CSS en `auditar-rendimiento.cjs`,
-  `src/` dos veces en `auditar-seguridad.cjs` y el verde sin probar nada de `probar-lector.cjs`.
-- **Leves de la revisión de la auditoría sobre la estática** (c2531c1, 2026-11-26; no se vuelven a revisar en este
-  cambio): `normalizarRuta` añade la barra también a `404.html` (sale con 2: no es ruta de página); la regex del
-  canonical exige `rel` antes de `href` y `/Portal-Galivelop/` va fijo (sacarlo de `BASE`); `auditar-accesibilidad.cjs`,
-  `capturas.cjs` y `medir-paginas.cjs` siguen midiendo la portada si la ruta va sin barra final (usar
-  `pagina-estatica.cjs`); `BASE` sin barra final forma mal las URL (`new URL(ruta, BASE)`); el filtro del sitemap deja
-  las portadas `gl/` y `en/` (confirmar si es a propósito).
+- **`recorrido.cjs` con `/Portal-Galivelop/` fijo** (R-8, leve): al leer el sitemap usar `rutasDelSitemap` de `tools/qa/pagina-estatica.cjs`.
 - **LCP móvil por encima de 2,5 s** (2026-11-27, `auditar:rendimiento` sobre la estática, móvil con 4G lento). Arreglado
   el mismo día: portada `/` (y gl, en) 2,7 → 0,95 s y toveriai 3,0 → 0,96 s (hero estático y cabecera estática de
   pantalla completa en móvil), Developer 3,3 → 2,7 s (precarga con el `srcset` de la app y versión móvil de 960 px).

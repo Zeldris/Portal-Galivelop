@@ -23,7 +23,9 @@ try {
   process.exit(2);
 }
 
-const BASE = (process.env.BASE || 'http://localhost:4174/Portal-Galivelop/').replace(/\/?$/, '/');
+const { normalizarRuta, normalizarBase } = require('./pagina-estatica.cjs');
+
+const BASE = normalizarBase(process.env.BASE || 'http://localhost:4174/Portal-Galivelop/');
 const RAIZ = join(__dirname, '..', '..');
 const AXE = join(RAIZ, 'node_modules', 'axe-core', 'axe.min.js');
 const ETIQUETAS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'];
@@ -36,7 +38,7 @@ const EXTRA = ['', 'proyectos/tarkor', 'equipo', 'participa/proponer'];
 const CLAVE_TEMA = 'galivelop.tema';
 
 function rutas() {
-  if (process.argv.slice(2).length) return process.argv.slice(2).map((r) => r.replace(/^\//, ''));
+  if (process.argv.slice(2).length) return process.argv.slice(2).map(normalizarRuta);
   const xml = readFileSync(join(RAIZ, 'dist', 'sitemap.xml'), 'utf8');
   const locs = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   const base = locs[0].replace(/^(https?:\/\/[^/]+\/[^/]*\/?).*$/, '$1').replace(/\/?$/, '/');
