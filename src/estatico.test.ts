@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
 import {
+  existsSync,
   mkdirSync,
   mkdtempSync,
   readdirSync,
@@ -12,13 +13,22 @@ import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { entradas, minutosLectura } from './data/diario';
-import { ANCHO_ESTADO, PORTADA_ESTADO } from './data/marca';
+import { ANCHO_ESTADO, PORTADA_ESTADO, cuadradaDe } from './data/marca';
 import type { EstadoProyecto } from './data/tipos';
 import { textos } from './i18n/textos';
 
 // Corre scripts/paginas-estaticas.mjs sobre un dist/ mínimo (el index.html del repo y unos «chunks» de mentira) y mira el
 // HTML que genera: cabecera y pie sin JavaScript, h1 igual que el de la app, publisher con url y precargas.
 const RAIZ = resolve(__dirname, '..');
+
+/** Ancho en píxeles de un WebP de public/ (VP8X, VP8L o VP8), leído de su cabecera. */
+const anchoWebp = (ruta: string) => {
+  const b = readFileSync(join(RAIZ, 'public', ruta));
+  const tipo = b.toString('ascii', 12, 16);
+  if (tipo === 'VP8X') return 1 + b.readUIntLE(24, 3);
+  if (tipo === 'VP8L') return 1 + (b.readUInt32LE(21) & 0x3fff);
+  return b.readUInt16LE(26) & 0x3fff; // VP8
+};
 let tmp = '';
 const leer = (ruta: string) => readFileSync(join(tmp, 'dist', ruta, 'index.html'), 'utf8');
 
@@ -236,13 +246,6 @@ describe('páginas estáticas', () => {
   });
 
   it('toda cabecera con srcsetCabecera tiene su -movil.webp de 960 px y declara el ancho real del original', () => {
-    const anchoWebp = (ruta: string) => {
-      const b = readFileSync(join(RAIZ, 'public', ruta));
-      const tipo = b.toString('ascii', 12, 16);
-      if (tipo === 'VP8X') return 1 + b.readUIntLE(24, 3);
-      if (tipo === 'VP8L') return 1 + (b.readUInt32LE(21) & 0x3fff);
-      return b.readUInt16LE(26) & 0x3fff; // VP8
-    };
     const comprueba = (src: string, ancho: number) => {
       expect(anchoWebp(src), `${src}: ancho declarado`).toBe(ancho);
       expect(anchoWebp(src.replace('.webp', '-movil.webp')), `${src}: versión móvil`).toBe(960);
@@ -258,6 +261,20 @@ describe('páginas estáticas', () => {
     }
     expect(fichas).toBeGreaterThan(0);
     for (const src of Object.values(PORTADA_ESTADO)) comprueba(src, ANCHO_ESTADO);
+  });
+
+  it('toda portada con "cuadrada": true tiene su -cuadrada.webp de 540 px', () => {
+    const dir = join(RAIZ, 'src/data/proyectos');
+    let cuadradas = 0;
+    for (const f of readdirSync(dir).filter((n) => n.endsWith('.json'))) {
+      const p = JSON.parse(readFileSync(join(dir, f), 'utf8'));
+      if (!p.portada?.cuadrada) continue;
+      const src = cuadradaDe(p.portada.src);
+      expect(existsSync(join(RAIZ, 'public', src)), `${f}: falta ${src}`).toBe(true);
+      expect(anchoWebp(src), `${src}: ancho`).toBe(540);
+      cuadradas++;
+    }
+    expect(cuadradas).toBeGreaterThan(0);
   });
 });
 

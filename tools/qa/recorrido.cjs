@@ -21,6 +21,8 @@ try {
   process.exit(2);
 }
 
+const { rutasDelSitemap } = require('./pagina-estatica.cjs');
+
 const RAIZ = join(__dirname, '..', '..');
 const arg = (nombre) => {
   const i = process.argv.indexOf(nombre);
@@ -40,12 +42,8 @@ const CLAVE_TEMA = 'galivelop.tema';
 function rutas() {
   const mapa = join(RAIZ, 'dist', 'sitemap.xml');
   const fija = ['', 'equipo/', 'novedades/', 'productos/', 'muro/', 'proyectos/tarkor/'];
-  let base = existsSync(mapa)
-    ? [...readFileSync(mapa, 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) =>
-        new URL(m[1]).pathname.replace(/^\/Portal-Galivelop\//, ''),
-      )
-    : fija;
-  return [...new Set(base)];
+  const lista = existsSync(mapa) ? rutasDelSitemap(readFileSync(mapa, 'utf8'), BASE) : fija;
+  return [...new Set(lista)];
 }
 
 const responde = () =>
