@@ -193,9 +193,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "El cambio grande fue otro. El diseño ya avisaba de que la primera animación, con ocho pasos y cuatro ideas, podía quedar cargada, y dejaba escrita la salida: partirla. En la versión 3 se partió en «Trabajar» y «Relevo», de cuatro pasos cada una, y con «Camino a main» quedaron tres, en pestañas. Álvaro aprobó esa versión el mismo 9 de noviembre.",
-            "gl": "O cambio grande foi outro. O deseño xa avisaba de que a primeira animación, con oito pasos e catro ideas, podía quedar cargada, e deixaba escrita a saída: partila. Na versión 3 partiuse en «Traballar» e «Relevo», de catro pasos cada unha, e con «Camiño a main» quedaron tres, en lapelas. Álvaro aprobou esa versión o mesmo 9 de novembro.",
-            "en": "The big change was a different one. The design had already warned that the first animation, with eight steps and four ideas, might be overloaded, and had written down the way out: split it. In version 3 it was split into “Working” and “Handover”, four steps each, and with “Path to main” there were three, in tabs. Álvaro approved that version that same 9 November."
+            "es": "El cambio grande fue otro. El diseño ya avisaba de que la primera animación, con ocho pasos y cuatro ideas, podía quedar cargada, y dejaba escrita la salida: partirla. En la versión 3 se partió en «Trabajar» y «Relevo», de cuatro pasos cada una, y con «Camino a main» quedaron tres, en pestañas. Las animaciones llegaron a `main` el 8 y el 9 de noviembre.",
+            "gl": "O cambio grande foi outro. O deseño xa avisaba de que a primeira animación, con oito pasos e catro ideas, podía quedar cargada, e deixaba escrita a saída: partila. Na versión 3 partiuse en «Traballar» e «Relevo», de catro pasos cada unha, e con «Camiño a main» quedaron tres, en lapelas. As animacións chegaron a `main` o 8 e o 9 de novembro.",
+            "en": "The big change was a different one. The design had already warned that the first animation, with eight steps and four ideas, might be overloaded, and had written down the way out: split it. In version 3 it was split into “Working” and “Handover”, four steps each, and with “Path to main” there were three, in tabs. The animations reached `main` on 8 and 9 November."
           }
         }
       ]
@@ -240,9 +240,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "El rechazo es un paso más del camino a `main`, no un final: la subida se rechaza, la última línea dice la orden que lo arregla y la animación sigue hasta el éxito. Tampoco lo cuenta todo: el diseño resumió en cinco compuertas un `pre-push` que tiene ocho comprobaciones, y lo dejó dicho en vez de fingir que el dibujo era el gancho entero.",
-            "gl": "O rexeitamento é un paso máis do camiño a `main`, non un final: a subida rexéitase, a última liña di a orde que o arranxa e a animación segue ata o éxito. Tampouco o conta todo: o deseño resumiu en cinco comportas un `pre-push` que ten oito comprobacións, e deixouno dito en vez de finxir que o debuxo era o gancho enteiro.",
-            "en": "The rejection is one more step on the road to `main`, not an ending: the push is rejected, the last line gives the command that fixes it, and the animation goes on to success. Nor does it tell everything: the design summed up in five gates a `pre-push` that has eight checks, and said so instead of pretending the drawing was the whole hook."
+            "es": "El rechazo es un paso más del camino a `main`, no un final: la subida se rechaza, la última línea dice la orden que lo arregla y la animación sigue hasta el éxito. Tampoco lo cuenta todo: el diseño resumió en cinco compuertas un `pre-push` que entonces tenía ocho comprobaciones (hoy son once), y lo dejó dicho en vez de fingir que el dibujo era el gancho entero.",
+            "gl": "O rexeitamento é un paso máis do camiño a `main`, non un final: a subida rexéitase, a última liña di a orde que o arranxa e a animación segue ata o éxito. Tampouco o conta todo: o deseño resumiu en cinco comportas un `pre-push` que daquela tiña oito comprobacións (hoxe son once), e deixouno dito en vez de finxir que o debuxo era o gancho enteiro.",
+            "en": "The rejection is one more step on the road to `main`, not an ending: the push is rejected, the last line gives the command that fixes it, and the animation goes on to success. Nor does it tell everything: the design summed up in five gates a `pre-push` that then had eight checks (eleven today), and said so instead of pretending the drawing was the whole hook."
           }
         },
         {
