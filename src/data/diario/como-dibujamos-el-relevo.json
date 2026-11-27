@@ -34,17 +34,25 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Galivelop-workflow existe para que una sesión de trabajo con un agente pueda acabarse en cualquier momento y la siguiente siga sin preguntar por dónde iba. La idea es sencilla de decir y difícil de ver: lo que no está subido a git no existe. En la ficha del proyecto había siete imágenes fijas que intentaban explicarlo y ninguna lo conseguía del todo.",
-            "gl": "Galivelop-workflow existe para que unha sesión de traballo cun axente poida acabar en calquera momento e a seguinte continúe sen preguntar polo que quedaba. A idea é doada de dicir e difícil de ver: o que non está subido a git non existe. Na ficha do proxecto había sete imaxes fixas que tentaban explicalo e ningunha o conseguía de todo.",
-            "en": "Galivelop-workflow exists so that a working session with an agent can end at any moment and the next one carries on without asking where things stood. The idea is easy to say and hard to show: what is not pushed to git does not exist. The project page had seven still images trying to explain it, and none of them quite managed."
+            "es": "Galivelop-workflow existe para que una sesión de trabajo con un agente pueda acabarse en cualquier momento y la siguiente siga sin preguntar por dónde iba. La idea es sencilla de decir y difícil de ver: lo que no está subido a git no existe. La ficha del proyecto lo intentaba con siete diagramas fijos, en inglés y repetidos en dos sitios: la galería y un apartado de diagramas.",
+            "gl": "Galivelop-workflow existe para que unha sesión de traballo cun axente poida acabar en calquera momento e a seguinte continúe sen preguntar polo que quedaba. A idea é doada de dicir e difícil de ver: o que non está subido a git non existe. A ficha do proxecto tentábao con sete diagramas fixos, en inglés e repetidos en dous sitios: a galería e un apartado de diagramas.",
+            "en": "Galivelop-workflow exists so that a working session with an agent can end at any moment and the next one carries on without asking where things stood. The idea is easy to say and hard to show: what is not pushed to git does not exist. The project page tried with seven still diagrams, in English and repeated in two places: the gallery and a section of diagrams."
           }
         },
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Nos propusimos dos animaciones paso a paso: una para el relevo entre sesiones y otra para el camino hasta `main`. El 4 de noviembre de 2026 escribimos el diseño antes de dibujar nada: qué se ve en cada paso y qué texto lo acompaña.",
-            "gl": "Propuxémonos dúas animacións paso a paso: unha para o relevo entre sesións e outra para o camiño ata `main`. O 4 de novembro de 2026 escribimos o deseño antes de debuxar nada: que se ve en cada paso e que texto o acompaña.",
-            "en": "We set out to make two step-by-step animations: one for the handover between sessions and one for the road to `main`. On 4 November 2026 we wrote the design before drawing anything: what is visible at each step and which text goes with it."
+            "es": "En el móvil, además, no se leían: un diagrama de 1600 px de ancho encogido a 358 px deja un texto de 22 px en unos 5 px. Y cuatro de los siete contaban una secuencia (la sesión, el reparto a subagentes, las fases antes de `main`, el gancho `pre-push`), que es justo lo que una imagen fija cuenta peor.",
+            "gl": "No móbil, ademais, non se lían: un diagrama de 1600 px de ancho encollido a 358 px deixa un texto de 22 px nuns 5 px. E catro dos sete contaban unha secuencia (a sesión, o reparto a subaxentes, as fases antes de `main`, o gancho `pre-push`), que é xusto o que unha imaxe fixa conta peor.",
+            "en": "On a phone they could not be read either: a diagram 1600 px wide shrunk to 358 px leaves 22 px text at about 5 px. And four of the seven told a sequence (the session, the hand-off to subagents, the phases before `main`, the `pre-push` hook), which is exactly what a still image tells worst."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Nos propusimos dos animaciones paso a paso, en SVG dentro de la página y en castellano, gallego e inglés: una para una tarea de principio a fin, con el relevo entre sesiones, y otra para el camino hasta `main`. El 4 de noviembre de 2026 escribimos el diseño antes de dibujar nada: qué se ve en cada paso, qué se mueve y qué texto lo acompaña.",
+            "gl": "Propuxémonos dúas animacións paso a paso, en SVG dentro da páxina e en castelán, galego e inglés: unha para unha tarefa de principio a fin, co relevo entre sesións, e outra para o camiño ata `main`. O 4 de novembro de 2026 escribimos o deseño antes de debuxar nada: que se ve en cada paso, que se move e que texto o acompaña.",
+            "en": "We set out to make two step-by-step animations, as SVG inside the page and in Spanish, Galician and English: one for a task from start to finish, including the handover between sessions, and one for the road to `main`. On 4 November 2026 we wrote the design before drawing anything: what is visible at each step, what moves and which text goes with it."
           }
         }
       ]
@@ -64,9 +72,17 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "El diseño fijó dos carriles: arriba la sesión, que es desechable, y abajo el carril de git, donde los commits no desaparecen. Todo lo que pasa arriba puede perderse; lo que baja al carril, no. Con esa imagen clara, el diseño propuso dejar la galería de la ficha en tres imágenes y que la explicación la llevaran las animaciones.",
-            "gl": "O deseño fixou dous carrís: arriba a sesión, que é desbotable, e abaixo o carril de git, onde os commits non desaparecen. Todo o que pasa arriba pode perderse; o que baixa ao carril, non. Con esa imaxe clara, o deseño propuxo deixar a galería da ficha en tres imaxes e que a explicación a levasen as animacións.",
-            "en": "The design set out two lanes: the session on top, which is disposable, and the git lane below, where commits do not disappear. Whatever happens on top can be lost; whatever drops into the lane cannot. With that picture clear, the design proposed leaving the gallery on the project page at three images and letting the animations carry the explanation."
+            "es": "El diseño fijó dos carriles: arriba la sesión, que es desechable, con su medidor de contexto, y abajo el carril de git, donde los commits no desaparecen. Todo lo que pasa arriba puede perderse; lo que baja al carril, no. Para el camino a `main`, la imagen fue una vía con cinco estaciones (las tres fases de revisión, el `pre-push` y `main`) que se encienden según se avanza.",
+            "gl": "O deseño fixou dous carrís: arriba a sesión, que é desbotable, co seu medidor de contexto, e abaixo o carril de git, onde os commits non desaparecen. Todo o que pasa arriba pode perderse; o que baixa ao carril, non. Para o camiño a `main`, a imaxe foi unha vía con cinco estacións (as tres fases de revisión, o `pre-push` e `main`) que se acenden segundo se avanza.",
+            "en": "The design set out two lanes: the session on top, which is disposable, with its context gauge, and the git lane below, where commits do not disappear. Whatever happens on top can be lost; whatever drops into the lane cannot. For the road to `main`, the picture was a track with five stations (the three review phases, `pre-push` and `main`) that light up as you move along."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "También fijó cómo se usa: pasos con botones, flechas del teclado y un «Reproducir» opcional que avanza una sola vez y se para al final. La animación empieza quieta en el reposo, el último paso, que tiene que entenderse sin moverse. Y la narración de cada paso vive fuera del dibujo, como texto de la página.",
+            "gl": "Tamén fixou como se usa: pasos con botóns, frechas do teclado e un «Reproducir» opcional que avanza unha soa vez e para ao final. A animación empeza queda no repouso, o último paso, que ten que entenderse sen moverse. E a narración de cada paso vive fóra do debuxo, como texto da páxina.",
+            "en": "It also set how it is used: steps with buttons, arrow keys and an optional “Play” that advances once and stops at the end. The animation starts still at the resting state, the last step, which has to make sense without moving. And the narration of each step lives outside the drawing, as text on the page."
           }
         },
         {
@@ -78,6 +94,36 @@
             "gl": "A animación «Relevo» da ficha de Galivelop-workflow, en repouso. Pódese reproducir paso a paso; con movemento reducido, cada paso cambia sen transición.",
             "en": "The “Handover” animation from the Galivelop-workflow page, at rest. You can play it step by step; with reduced motion, each step changes without a transition."
           }
+        },
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Qué descartamos y por qué",
+            "gl": "Que descartamos e por que",
+            "en": "What we ruled out, and why"
+          },
+          "items": [
+            {
+              "es": "El bucle automático: cambia el texto mientras se lee, obliga a un control de pausa (WCAG 2.2.2) y gasta batería y atención aunque nadie lo mire.",
+              "gl": "O bucle automático: cambia o texto mentres se le, obriga a un control de pausa (WCAG 2.2.2) e gasta batería e atención aínda que ninguén o mire.",
+              "en": "The automatic loop: it changes the text while you read, requires a pause control (WCAG 2.2.2) and uses battery and attention even when nobody is looking."
+            },
+            {
+              "es": "La animación ligada al scroll: en el móvil es frágil, obliga a secuestrar el scroll y con movimiento reducido habría que rehacerla igual como pasos.",
+              "gl": "A animación ligada ao scroll: no móbil é fráxil, obriga a secuestrar o scroll e con movemento reducido habería que refacela igual como pasos.",
+              "en": "Scroll-linked animation: it is fragile on a phone, it hijacks scrolling, and with reduced motion it would have to be rebuilt as steps anyway."
+            },
+            {
+              "es": "La composición de escritorio encogida: el móvil lleva la suya, en vertical, con git como una columna a la izquierda.",
+              "gl": "A composición de escritorio encollida: o móbil leva a súa, en vertical, con git como unha columna á esquerda.",
+              "en": "The desktop layout shrunk down: the phone gets its own, vertical, with git as a column on the left."
+            },
+            {
+              "es": "Una curva de gasto con ejes y cifras: solo había un piloto medido, así que se dibuja como esquema y lleva el rótulo «esquema, no medida».",
+              "gl": "Unha curva de gasto con eixes e cifras: só había un piloto medido, así que se debuxa como esquema e leva o rótulo «esquema, non medida».",
+              "en": "A cost curve with axes and figures: only one pilot had been measured, so it is drawn as a sketch and labelled “sketch, not measured”."
+            }
+          ]
         }
       ]
     },
@@ -96,17 +142,25 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Un diseño en abstracto engaña. El 9 de noviembre pedimos rehacer el storyboard con los tokens, las fuentes y las formas de la hoja de estilos: papel con retícula, cajas con chaflán, datos en monoespaciada. Los pasos pasaron a ser pestañas, cada una con su botón de reproducir y un reposo al final, y las dudas abiertas del diseño se contestaron antes de seguir.",
-            "gl": "Un deseño en abstracto engana. O 9 de novembro pedimos refacer o storyboard cos tokens, as fontes e as formas da folla de estilos: papel con retícula, caixas con chanfro, datos en monoespazada. Os pasos pasaron a ser lapelas, cada unha co seu botón de reproducir e un repouso ao final, e as dúbidas abertas do deseño contestáronse antes de seguir.",
-            "en": "A design on paper can mislead. On 9 November we asked for the storyboard to be redone with the tokens, fonts and shapes of the style sheet: gridded paper, boxes with a cut corner, data in monospace. The steps became tabs, each with a play button and a resting state at the end, and the open questions in the design were answered before going on."
+            "es": "Un diseño en abstracto engaña. El 9 de noviembre rehicimos el storyboard con los tokens, las fuentes y las formas de la hoja de estilos: papel con retícula, cajas con chaflán, datos en monoespaciada. Dejó de ser una tira de viñetas: los pasos se podían pulsar de verdad, con su «Reproducir» y su reposo al final, y el móvil tenía ya su propia composición.",
+            "gl": "Un deseño en abstracto engana. O 9 de novembro refixemos o storyboard cos tokens, as fontes e as formas da folla de estilos: papel con retícula, caixas con chanfro, datos en monoespazada. Deixou de ser unha tira de viñetas: os pasos podíanse premer de verdade, co seu «Reproducir» e o seu repouso ao final, e o móbil tiña xa a súa propia composición.",
+            "en": "A design on paper can mislead. On 9 November we redid the storyboard with the tokens, fonts and shapes of the style sheet: gridded paper, boxes with a cut corner, data in monospace. It stopped being a strip of frames: the steps could actually be pressed, with their “Play” button and a resting state at the end, and the phone already had its own layout."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Con la marca puesta, las diez preguntas que el diseño había dejado abiertas se contestaron ese mismo día. La figura de quien confirma la subida iba a ser ámbar, un color que la paleta no tiene: quedó en celeste hondo. La fase 2 se enseña como opcional en cambios pequeños. Las animaciones van en pestañas y no una tras otra, porque en el móvil ahorran una pantalla entera de altura. Y la variante por pull request no se anima: basta una línea de texto.",
+            "gl": "Coa marca posta, as dez preguntas que o deseño deixara abertas contestáronse ese mesmo día. A figura de quen confirma a subida ía ser ámbar, unha cor que a paleta non ten: quedou en celeste fondo. A fase 2 ensínase como opcional en cambios pequenos. As animacións van en lapelas e non unha tras outra, porque no móbil aforran unha pantalla enteira de altura. E a variante por pull request non se anima: abonda cunha liña de texto.",
+            "en": "With the brand's style in place, the ten questions the design had left open were answered that same day. The figure of whoever confirms the push was going to be amber, a colour the palette does not have: it ended up deep sky blue. Phase 2 is shown as optional for small changes. The animations sit in tabs rather than one after another, because on a phone that saves a whole screen of height. And the pull-request variant is not animated: one line of text is enough."
           }
         },
         {
           "tipo": "decision",
           "texto": {
-            "es": "Decidimos que el fallo necesitaba un color propio y añadimos un token nuevo, `--peligro`, un magenta con su pareja en tema oscuro. Y un fallo llevará siempre el símbolo ✗ y texto, nunca solo color.",
-            "gl": "Decidimos que o fallo precisaba unha cor propia e engadimos un token novo, `--peligro`, un maxenta coa súa parella en tema escuro. E un fallo levará sempre o símbolo ✗ e texto, nunca só cor.",
-            "en": "We decided that a failure needed a colour of its own and added a new token, `--peligro`, a magenta with its dark-theme pair. And a failure will always carry the ✗ symbol and text, never colour alone."
+            "es": "Decidimos que el fallo necesitaba un color propio. La marca no tiene rojo y, sin él, un rechazo no se leía; añadimos un token nuevo, `--peligro`, el magenta con el que las cartas náuticas marcan los peligros: `#a3135f` en tema claro y `#f27ab0` en oscuro. Y un fallo llevará siempre el símbolo ✗ y texto, nunca solo color.",
+            "gl": "Decidimos que o fallo precisaba unha cor propia. A marca non ten vermello e, sen el, un rexeitamento non se lía; engadimos un token novo, `--peligro`, o maxenta co que as cartas náuticas marcan os perigos: `#a3135f` en tema claro e `#f27ab0` en escuro. E un fallo levará sempre o símbolo ✗ e texto, nunca só cor.",
+            "en": "We decided that a failure needed a colour of its own. The brand has no red and, without one, a rejection could not be read; we added a new token, `--peligro`, the magenta that nautical charts use to mark dangers: `#a3135f` in the light theme and `#f27ab0` in the dark one. And a failure will always carry the ✗ symbol and text, never colour alone."
           },
           "cita": {
             "es": "Decisión del storyboard, 9 de noviembre de 2026",
@@ -131,17 +185,110 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Al verlo en el móvil aparecieron arreglos que en escritorio no se veían. En la versión 3, la primera animación se partió en dos, «Trabajar» y «Relevo», y con la del camino a `main` quedaron tres, en pestañas. Álvaro aprobó esa versión el mismo día, el 9 de noviembre.",
-            "gl": "Ao velo no móbil apareceron arranxos que en escritorio non se vían. Na versión 3, a primeira animación partiuse en dúas, «Traballar» e «Relevo», e coa do camiño a `main` quedaron tres, en lapelas. Álvaro aprobou esa versión o mesmo día, o 9 de novembro.",
-            "en": "Seeing it on a phone turned up fixes that the desktop view had hidden. In version 3 the first animation was split in two, “Working” and “Handover”, and with the one for the road to `main` there were three, in tabs. Álvaro approved that version the same day, 9 November."
+            "es": "Al verlo en un móvil aparecieron cortes que en escritorio no se veían. La versión 3 añadió un margen interior en el móvil, movió las líneas para que ninguna cruzase un texto y rotuló los commits del carril de git. Se comprobó en un Pixel 5, un iPhone SE y a 320 px de ancho.",
+            "gl": "Ao velo nun móbil apareceron cortes que en escritorio non se vían. A versión 3 engadiu unha marxe interior no móbil, moveu as liñas para que ningunha cruzase un texto e rotulou os commits do carril de git. Comprobouse nun Pixel 5, nun iPhone SE e a 320 px de ancho.",
+            "en": "Seeing it on a phone turned up clipping that the desktop view had hidden. Version 3 added an inner margin on phones, moved the lines so that none crossed a text, and labelled the commits in the git lane. It was checked on a Pixel 5, an iPhone SE and at 320 px wide."
           }
         },
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "La implementación, en cambio, fue entera a un solo modelo grande: lógica, datos, textos en tres idiomas y documentación. La retro del 9 de noviembre midió el coste y sacó la lección.",
-            "gl": "A implementación, en cambio, foi enteira a un só modelo grande: lóxica, datos, textos en tres idiomas e documentación. A retro do 9 de novembro mediu o custo e sacou a lección.",
-            "en": "The implementation, however, went entirely to a single large model: logic, data, texts in three languages and documentation. The retro of 9 November measured the cost and drew the lesson."
+            "es": "El cambio grande fue otro. El diseño ya avisaba de que la primera animación, con ocho pasos y cuatro ideas, podía quedar cargada, y dejaba escrita la salida: partirla. En la versión 3 se partió en «Trabajar» y «Relevo», de cuatro pasos cada una, y con «Camino a main» quedaron tres, en pestañas. Álvaro aprobó esa versión el mismo 9 de noviembre.",
+            "gl": "O cambio grande foi outro. O deseño xa avisaba de que a primeira animación, con oito pasos e catro ideas, podía quedar cargada, e deixaba escrita a saída: partila. Na versión 3 partiuse en «Traballar» e «Relevo», de catro pasos cada unha, e con «Camiño a main» quedaron tres, en lapelas. Álvaro aprobou esa versión o mesmo 9 de novembro.",
+            "en": "The big change was a different one. The design had already warned that the first animation, with eight steps and four ideas, might be overloaded, and had written down the way out: split it. In version 3 it was split into “Working” and “Handover”, four steps each, and with “Path to main” there were three, in tabs. Álvaro approved that version that same 9 November."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo publicado",
+        "gl": "O publicado",
+        "en": "What shipped"
+      },
+      "titulo": {
+        "es": "Qué cuenta cada animación",
+        "gl": "Que conta cada animación",
+        "en": "What each animation tells"
+      },
+      "bloques": [
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Las tres animaciones",
+            "gl": "As tres animacións",
+            "en": "The three animations"
+          },
+          "items": [
+            {
+              "es": "«Trabajar», cuatro pasos: la sesión lee la bitácora y comprueba el último commit; gw-selector dice qué skill y qué modelo pide la tarea; lo mecánico se reparte a subagentes de contexto limpio; y cada punto estable baja al carril de git con su commit y su push.",
+              "gl": "«Traballar», catro pasos: a sesión le a bitácora e comproba o último commit; gw-selector di que skill e que modelo pide a tarefa; o mecánico repártese entre subaxentes de contexto limpo; e cada punto estable baixa ao carril de git co seu commit e o seu push.",
+              "en": "“Working”, four steps: the session reads the log and checks the last commit; gw-selector says which skill and which model the task needs; mechanical work is handed to subagents with a clean context; and every stable point drops into the git lane with its commit and push."
+            },
+            {
+              "es": "«Relevo», cuatro pasos: el contexto crece y cada llamada cuesta más; al llegar al tope la conversación se compacta y `recover.py` devuelve el estado desde git; la sesión se corta (sin tokens, contenedor reciclado u otra cuenta); y otra sesión lee la bitácora y sigue por «Siguiente:».",
+              "gl": "«Relevo», catro pasos: o contexto medra e cada chamada custa máis; ao chegar ao tope a conversa compáctase e `recover.py` devolve o estado desde git; a sesión córtase (sen tokens, contedor reciclado ou outra conta); e outra sesión le a bitácora e segue por «Siguiente:».",
+              "en": "“Handover”, four steps: context grows and every call costs more; at the limit the conversation is compacted and `recover.py` brings the state back from git; the session is cut off (out of tokens, recycled container or another account); and another session reads the log and carries on from “Siguiente:”."
+            },
+            {
+              "es": "«Camino a main», ocho pasos: la rama lista, la revisión del código, la del entorno, la marca de revisión, la confirmación de quien decide, el gancho `pre-push`, qué pasa si falta algo y, con el CI en verde en Linux y macOS, `main`.",
+              "gl": "«Camiño a main», oito pasos: a rama lista, a revisión do código, a do contorno, a marca de revisión, a confirmación de quen decide, o gancho `pre-push`, que pasa se falta algo e, co CI en verde en Linux e macOS, `main`.",
+              "en": "“Path to main”, eight steps: the branch ready, the code review, the environment review, the review mark, the confirmation from whoever decides, the `pre-push` hook, what happens if something is missing and, with CI green on Linux and macOS, `main`."
+            }
+          ]
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "El rechazo es un paso más del camino a `main`, no un final: la subida se rechaza, la última línea dice la orden que lo arregla y la animación sigue hasta el éxito. Tampoco lo cuenta todo: el diseño resumió en cinco compuertas un `pre-push` que tiene ocho comprobaciones, y lo dejó dicho en vez de fingir que el dibujo era el gancho entero.",
+            "gl": "O rexeitamento é un paso máis do camiño a `main`, non un final: a subida rexéitase, a última liña di a orde que o arranxa e a animación segue ata o éxito. Tampouco o conta todo: o deseño resumiu en cinco comportas un `pre-push` que ten oito comprobacións, e deixouno dito en vez de finxir que o debuxo era o gancho enteiro.",
+            "en": "The rejection is one more step on the road to `main`, not an ending: the push is rejected, the last line gives the command that fixes it, and the animation goes on to success. Nor does it tell everything: the design summed up in five gates a `pre-push` that has eight checks, and said so instead of pretending the drawing was the whole hook."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "«Reproducir» pasa de paso cada 5,5 segundos y se para en el último; con movimiento reducido, cada 8 segundos y sin transición. Sin JavaScript, la página estática lleva los mismos pasos como una lista ordenada con sus narraciones.",
+            "gl": "«Reproducir» pasa de paso cada 5,5 segundos e para no último; con movemento reducido, cada 8 segundos e sen transición. Sen JavaScript, a páxina estática leva os mesmos pasos como unha lista ordenada coas súas narracións.",
+            "en": "“Play” moves on every 5.5 seconds and stops at the last step; with reduced motion, every 8 seconds and without a transition. Without JavaScript, the static page carries the same steps as an ordered list with their narrations."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "El coste",
+        "gl": "O custo",
+        "en": "The cost"
+      },
+      "titulo": {
+        "es": "Lo que midió la retro",
+        "gl": "O que mediu a retro",
+        "en": "What the retro measured"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "El storyboard aprobado era un plano cerrado, y aun así la implementación fue en un solo encargo al modelo grande: lógica del componente, datos, textos en tres idiomas, página estática y documentación. La retro del 9 de noviembre midió el trabajo entero: 197 llamadas y 24 millones de tokens de entrada. Ese único encargo se llevó 116 llamadas y 14,2 millones, cerca del 60 % del gasto; la revisión del código, 3,1 millones.",
+            "gl": "O storyboard aprobado era un plano pechado, e aínda así a implementación foi nun só encargo ao modelo grande: lóxica do compoñente, datos, textos en tres idiomas, páxina estática e documentación. A retro do 9 de novembro mediu o traballo enteiro: 197 chamadas e 24 millóns de tokens de entrada. Ese único encargo levou 116 chamadas e 14,2 millóns, preto do 60 % do gasto; a revisión do código, 3,1 millóns.",
+            "en": "The approved storyboard was a closed blueprint, and even so the implementation went as a single brief to the large model: component logic, data, texts in three languages, static page and documentation. The retro of 9 November measured the whole job: 197 calls and 24 million input tokens. That single brief took 116 calls and 14.2 million, close to 60% of the spend; the code review took 3.1 million."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La regla de mandar al modelo barato lo que tiene un plan cerrado ya existía; lo que falló fue no partir el encargo. La retro estimó que, con los datos, los textos y la documentación en el barato y solo la lógica (estado, temporización, accesibilidad, medida del contenedor) en el grande, se habrían ahorrado entre 5 y 7 de esos 14,2 millones. El riesgo de partir es la costura entre las dos mitades, y para eso ya había tests que comprueban que el guion y la ficha casan.",
+            "gl": "A regra de mandar ao modelo barato o que ten un plan pechado xa existía; o que fallou foi non partir o encargo. A retro estimou que, cos datos, os textos e a documentación no barato e só a lóxica (estado, temporización, accesibilidade, medida do contedor) no grande, aforraríanse entre 5 e 7 deses 14,2 millóns. O risco de partir é a costura entre as dúas metades, e para iso xa había tests que comproban que o guion e a ficha casan.",
+            "en": "The rule of sending anything with a closed plan to the cheap model already existed; what went wrong was not splitting the brief. The retro estimated that, with the data, texts and documentation on the cheap model and only the logic (state, timing, accessibility, measuring the container) on the large one, between 5 and 7 of those 14.2 million would have been saved. The risk of splitting is the seam between the two halves, and there were already tests checking that the script and the project page match."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Hubo dos gastos menores con la misma forma. Las capturas de pantalla: cada una pesa unos 38.000 tokens en el contexto, y muchas solo servían para saber si un rótulo se cortaba, algo que ya dicen un script de medida y un test. Y esa medida, `npm run medir`, daba por cortado el texto de un SVG que no lo estaba: un falso positivo que se arregló en la misma rama.",
+            "gl": "Houbo dous gastos menores coa mesma forma. As capturas de pantalla: cada unha pesa uns 38.000 tokens no contexto, e moitas só servían para saber se un rótulo se cortaba, algo que xa din un script de medida e un test. E esa medida, `npm run medir`, daba por cortado o texto dun SVG que non o estaba: un falso positivo que se arranxou na mesma rama.",
+            "en": "There were two smaller costs of the same shape. Screenshots: each one weighs about 38,000 tokens in the context, and many only served to find out whether a label was clipped, which a measuring script and a test already tell. And that measurement, `npm run medir`, reported an SVG text as clipped when it was not: a false positive fixed on the same branch."
           }
         }
       ]
@@ -167,19 +314,24 @@
           },
           "items": [
             {
-              "es": "La galería pasa de siete imágenes fijas a tres, y la explicación la llevan las animaciones con pasos y reposo.",
-              "gl": "A galería pasa de sete imaxes fixas a tres, e a explicación lévanna as animacións con pasos e repouso.",
-              "en": "The gallery goes from seven still images to three, and the animations, with steps and a resting state, carry the explanation."
+              "es": "La galería pasa de siete imágenes a tres (el mapa del flujo, la arquitectura y el ciclo de versiones), y las cuatro que contaban una secuencia pasan a las animaciones.",
+              "gl": "A galería pasa de sete imaxes a tres (o mapa do fluxo, a arquitectura e o ciclo de versións), e as catro que contaban unha secuencia pasan ás animacións.",
+              "en": "The gallery goes from seven images to three (the map of the workflow, the architecture and the release loop), and the four that told a sequence move into the animations."
             },
             {
-              "es": "La marca gana un token para los fallos, con su pareja en tema oscuro.",
-              "gl": "A marca gaña un token para os fallos, coa súa parella en tema escuro.",
-              "en": "The brand gains a token for failures, with its dark-theme pair."
+              "es": "La explicación está en castellano, gallego e inglés, se lee en un móvil y funciona sin JavaScript como lista de pasos.",
+              "gl": "A explicación está en castelán, galego e inglés, lese nun móbil e funciona sen JavaScript como lista de pasos.",
+              "en": "The explanation is in Spanish, Galician and English, can be read on a phone and works without JavaScript as a list of steps."
             },
             {
-              "es": "El storyboard aprobado es el plano de la implementación.",
-              "gl": "O storyboard aprobado é o plano da implementación.",
-              "en": "The approved storyboard is the blueprint for the implementation."
+              "es": "La marca gana un token para los fallos, `--peligro`, con su pareja en tema oscuro.",
+              "gl": "A marca gaña un token para os fallos, `--peligro`, coa súa parella en tema escuro.",
+              "en": "The brand gains a token for failures, `--peligro`, with its dark-theme pair."
+            },
+            {
+              "es": "El storyboard aprobado, con la marca puesta y probado en móvil, es el plano de la implementación.",
+              "gl": "O storyboard aprobado, coa marca posta e probado en móbil, é o plano da implementación.",
+              "en": "The approved storyboard, in the brand's style and tried on a phone, is the blueprint for the implementation."
             }
           ]
         },
@@ -192,19 +344,29 @@
           },
           "items": [
             {
-              "es": "Ver el diseño con la marca puesta saca decisiones que el boceto esconde.",
-              "gl": "Ver o deseño coa marca posta saca decisións que o bosquexo agocha.",
-              "en": "Seeing the design in the brand's style brings out decisions that a sketch hides."
+              "es": "Ver el diseño con la marca puesta saca decisiones que el boceto esconde: aquí, que la paleta no tenía color para un fallo.",
+              "gl": "Ver o deseño coa marca posta saca decisións que o bosquexo agocha: aquí, que a paleta non tiña cor para un fallo.",
+              "en": "Seeing the design in the brand's style brings out decisions that a sketch hides: here, that the palette had no colour for a failure."
             },
             {
-              "es": "Un móvil real enseña arreglos que el escritorio no enseña.",
-              "gl": "Un móbil real ensina arranxos que o escritorio non ensina.",
-              "en": "A real phone shows fixes that a desktop does not."
+              "es": "Un móvil real enseña cortes que el escritorio no enseña, y el móvil pide su propia composición, no la de escritorio encogida.",
+              "gl": "Un móbil real ensina cortes que o escritorio non ensina, e o móbil pide a súa propia composición, non a de escritorio encollida.",
+              "en": "A real phone shows clipping that a desktop does not, and a phone needs its own layout, not the desktop one shrunk down."
             },
             {
-              "es": "Con el diseño ya aprobado, la lógica va al modelo grande y los datos y textos al barato; hacerlo todo con el grande fue lo que más gastó.",
-              "gl": "Co deseño xa aprobado, a lóxica vai ao modelo grande e os datos e textos ao barato; facelo todo co grande foi o que máis gastou.",
-              "en": "Once the design is approved, the logic goes to the large model and the data and texts to the cheap one; doing it all with the large one was what cost the most."
+              "es": "Ocho pasos con cuatro ideas son demasiados para una animación: dos de cuatro pasos se siguen mejor.",
+              "gl": "Oito pasos con catro ideas son demasiados para unha animación: dúas de catro pasos séguense mellor.",
+              "en": "Eight steps with four ideas are too many for one animation: two of four steps each are easier to follow."
+            },
+            {
+              "es": "Con el diseño ya aprobado, la lógica va al modelo grande y los datos y textos al barato; hacerlo todo con el grande fue cerca del 60 % del gasto.",
+              "gl": "Co deseño xa aprobado, a lóxica vai ao modelo grande e os datos e textos ao barato; facelo todo co grande foi preto do 60 % do gasto.",
+              "en": "Once the design is approved, the logic goes to the large model and the data and texts to the cheap one; doing it all with the large one was close to 60% of the spend."
+            },
+            {
+              "es": "Lo que un script ya mide no hace falta mirarlo en una captura: una captura final por pantalla, no una por intento.",
+              "gl": "O que un script xa mide non fai falta miralo nunha captura: unha captura final por pantalla, non unha por intento.",
+              "en": "What a script already measures does not need a screenshot: one final screenshot per screen, not one per attempt."
             }
           ]
         }

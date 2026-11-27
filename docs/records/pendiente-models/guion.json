@@ -1,0 +1,158 @@
+{
+  "pagina": "/proyectos/galivelop-models",
+  "audio": [],
+  "narra": "2026-11-27",
+  "notas": [
+    "Pronunciación: «Galivelop» como ga-li-ve-LOP; «Model Atlas» a la inglesa (módel átlas); «Steam Deck» a la inglesa (estim dek); «Linux» (línux); «Windows» a la inglesa (uíndous); «Python» a la inglesa (páizon); «Evaluator» a la inglesa (evaliuéitor); «hardware» a la inglesa (járdgüer). El paquete «gmod» no se nombra en el guion.",
+    "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión y lo que falta, no la última novedad; las novedades se invitan a leer, no se narran.",
+    "Envejece con cada versión (hoy la cero punto uno publicada; lo siguiente, los esquemas y el encaje, la cero punto dos), con el número de modelos y de máquinas del catálogo (trece y dos) y con la prueba real pendiente en la Steam Deck y en Windows."
+  ],
+  "trozos": [
+    {
+      "seccion": "cabecera",
+      "es": "¿Qué modelo de inteligencia artificial cabe en tu equipo? Esa es la pregunta que quiere responder Model Atlas. Es un catálogo único de los modelos locales que usa el taller, y de las máquinas donde corren. Versionado, y que se puede comprobar.",
+      "gl": "Que modelo de intelixencia artificial cabe no teu equipo? Esa é a pregunta que quere responder Model Atlas. É un catálogo único dos modelos locais que usa o obradoiro, e das máquinas onde corren. Versionado, e que se pode comprobar.",
+      "en": "Which artificial intelligence model fits on your computer? That is the question Model Atlas wants to answer. It is a single catalogue of the local models the workshop uses, and of the machines they run on. Versioned, and open to checking."
+    },
+    {
+      "seccion": "vistazo",
+      "es": "¿En qué punto está? Está en desarrollo, con el código abierto. La versión publicada es la cero punto uno. Trae el catálogo inicial, con trece modelos y dos máquinas, y la detección del hardware del equipo. Lo siguiente son los esquemas y el encaje, la versión cero punto dos. Y falta algo importante, y lo contamos igual: probar la detección de verdad en la Steam Deck y en Windows. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? Está en desenvolvemento, co código aberto. A versión publicada é a cero punto un. Trae o catálogo inicial, con trece modelos e dúas máquinas, e a detección do hardware do equipo. O seguinte son os esquemas e o encaixe, a versión cero punto dous. E falta algo importante, e contámolo igual: probar a detección de verdade na Steam Deck e en Windows. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, with open code. The published version is zero point one. It brings the initial catalogue, with thirteen models and two machines, and detection of the computer's hardware. Next come the schemas and the fit, version zero point two. And something important is still missing, and we tell you anyway: testing detection for real on the Steam Deck and on Windows. What changed most recently is in the What's new section, further down."
+    },
+    {
+      "seccion": "resumen",
+      "es": "Las herramientas del taller que usan inteligencia artificial local llevaban cada una su propia lista de modelos. Los mismos modelos, descritos varias veces, y no siempre igual. Model Atlas los reúne en un solo catálogo. De cada modelo dice con qué variante se descarga, de dónde sale y con qué licencia. Cada máquina es un perfil con nombre, y la Steam Deck es el mínimo de referencia. El atlas también lee el hardware de tu equipo, en Linux y en Windows. Todo se puede comprobar, porque cada origen queda fijado a una revisión concreta. Y está en camino el veredicto de si un modelo cabe o no cabe en una máquina. El atlas no descarga, no ejecuta y no mide modelos: eso sigue siendo cosa de cada herramienta.",
+      "gl": "As ferramentas do obradoiro que usan intelixencia artificial local levaban cada unha a súa propia lista de modelos. Os mesmos modelos, descritos varias veces, e non sempre igual. Model Atlas xúntaos nun só catálogo. De cada modelo di con que variante se descarga, de onde sae e con que licenza. Cada máquina é un perfil con nome, e a Steam Deck é o mínimo de referencia. O atlas tamén le o hardware do teu equipo, en Linux e en Windows. Todo se pode comprobar, porque cada orixe queda fixada a unha revisión concreta. E está en camiño o veredicto de se un modelo cabe ou non cabe nunha máquina. O atlas non descarga, non executa e non mide modelos: iso segue sendo cousa de cada ferramenta.",
+      "en": "The workshop tools that use local artificial intelligence each carried their own list of models. The same models, described several times, and not always the same way. Model Atlas brings them together in one catalogue. For each model it says which variant it is downloaded as, where it comes from and under which licence. Each machine is a named profile, and the Steam Deck is the reference minimum. The atlas also reads the hardware of your computer, on Linux and on Windows. Everything can be checked, because every source is pinned to a specific revision. And the verdict on whether a model fits or does not fit on a machine is on the way. The atlas does not download, run or measure models: that is still each tool's job.",
+      "enfoques": [
+        {
+          "frase": "los reúne en un solo catálogo",
+          "gl": "xúntaos nun só catálogo",
+          "en": "brings them together in one catalogue",
+          "ver": "caracteristica-un-solo-catalogo"
+        },
+        {
+          "frase": "Cada máquina es un perfil con nombre",
+          "gl": "Cada máquina é un perfil con nome",
+          "en": "Each machine is a named profile",
+          "ver": "caracteristica-maquinas-con-nombre"
+        },
+        {
+          "frase": "lee el hardware de tu equipo",
+          "gl": "le o hardware do teu equipo",
+          "en": "reads the hardware of your computer",
+          "ver": "caracteristica-detecta-tu-equipo"
+        },
+        {
+          "frase": "Todo se puede comprobar",
+          "gl": "Todo se pode comprobar",
+          "en": "Everything can be checked",
+          "ver": "caracteristica-verificable"
+        },
+        {
+          "frase": "cabe o no cabe en una máquina",
+          "gl": "cabe ou non cabe nunha máquina",
+          "en": "fits or does not fit on a machine",
+          "ver": "caracteristica-cabe-o-no-cabe"
+        }
+      ]
+    },
+    {
+      "seccion": "afondo",
+      "es": "Si quieres ir a fondo, hay tres apartados. El primero cuenta qué hay hoy en el catálogo: modelos de texto, de imagen y de voz, las máquinas, los orígenes y las licencias. El segundo es el vocabulario del atlas: modelo, variante, máquina, encaje, medida y recomendación. Y el tercero dice dónde acaba, lo que el atlas no hace.",
+      "gl": "Se queres ir a fondo, hai tres apartados. O primeiro conta que hai hoxe no catálogo: modelos de texto, de imaxe e de voz, as máquinas, as orixes e as licenzas. O segundo é o vocabulario do atlas: modelo, variante, máquina, encaixe, medida e recomendación. E o terceiro di onde acaba, o que o atlas non fai.",
+      "en": "If you want to go deeper, there are three sections. The first tells what is in the catalogue today: text, image and voice models, the machines, the sources and the licences. The second is the atlas vocabulary: model, variant, machine, fit, measurement and recommendation. And the third says where it stops, what the atlas does not do.",
+      "enfoques": [
+        {
+          "frase": "El primero cuenta qué hay hoy",
+          "gl": "O primeiro conta que hai hoxe",
+          "en": "The first tells what is in the catalogue today",
+          "ver": "ap-catalogo"
+        },
+        {
+          "frase": "El segundo es el vocabulario",
+          "gl": "O segundo é o vocabulario",
+          "en": "The second is the atlas vocabulary",
+          "ver": "ap-vocabulario"
+        },
+        {
+          "frase": "Y el tercero dice dónde acaba",
+          "gl": "E o terceiro di onde acaba",
+          "en": "And the third says where it stops",
+          "ver": "ap-limites"
+        }
+      ]
+    },
+    {
+      "seccion": "tecnica",
+      "es": "¿Y cómo está hecho? Cada herramienta trabajará con una copia del catálogo, con una huella que dice de qué versión sale. Sin red y sin servidor. El atlas no mide: las medidas las hace Galivelop Evaluator, y el atlas solo las cita. Una licencia sin confirmar no permite ningún uso, hasta que se confirme. Y cada origen apunta a una revisión concreta, para que lo que se descarga mañana sea lo mismo que hoy. Está escrito solo con la biblioteca estándar de Python. Por el camino aprendimos que antes de unificar hay que comparar. Y que el nombre con el que se descarga un modelo no dice todo lo que hay detrás.",
+      "gl": "E como está feito? Cada ferramenta traballará cunha copia do catálogo, cunha pegada que di de que versión sae. Sen rede e sen servidor. O atlas non mide: as medidas fainas Galivelop Evaluator, e o atlas só as cita. Unha licenza sen confirmar non permite ningún uso, ata que se confirme. E cada orixe apunta a unha revisión concreta, para que o que se descarga mañá sexa o mesmo ca hoxe. Está escrito só coa biblioteca estándar de Python. Polo camiño aprendemos que antes de unificar hai que comparar. E que o nome co que se descarga un modelo non di todo o que hai detrás.",
+      "en": "And how is it built? Each tool will work from a copy of the catalogue, with a fingerprint that says which version it comes from. No network and no server. The atlas does not measure: measurements are made by Galivelop Evaluator, and the atlas only cites them. An unconfirmed licence allows no use at all, until it is confirmed. And every source points to a specific revision, so that what is downloaded tomorrow is the same as today. It is written with the Python standard library alone. Along the way we learned that before unifying you have to compare. And that the name a model is downloaded under does not say everything that is behind it.",
+      "enfoques": [
+        {
+          "frase": "Cada herramienta trabajará con una copia",
+          "gl": "Cada ferramenta traballará cunha copia",
+          "en": "Each tool will work from a copy",
+          "ver": "decision-1"
+        },
+        {
+          "frase": "El atlas no mide",
+          "gl": "O atlas non mide",
+          "en": "The atlas does not measure",
+          "ver": "decision-2"
+        },
+        {
+          "frase": "Una licencia sin confirmar",
+          "gl": "Unha licenza sen confirmar",
+          "en": "An unconfirmed licence",
+          "ver": "decision-4"
+        },
+        {
+          "frase": "cada origen apunta a una revisión concreta",
+          "gl": "cada orixe apunta a unha revisión concreta",
+          "en": "every source points to a specific revision",
+          "ver": "decision-5"
+        }
+      ]
+    },
+    {
+      "seccion": "avance",
+      "es": "En el avance ves el camino. Ya están hechos el diseño y la primera versión, con el catálogo y la detección. Después vienen los esquemas y el encaje, que dirán si un modelo cabe. Luego, la exportación para cada herramienta, con la línea de órdenes. Y al final, las medidas reales. Debajo están las novedades, semana a semana.",
+      "gl": "No avance ves o camiño. Xa están feitos o deseño e a primeira versión, co catálogo e a detección. Despois veñen os esquemas e o encaixe, que dirán se un modelo cabe. Logo, a exportación para cada ferramenta, coa liña de ordes. E ao final, as medidas reais. Debaixo están as novidades, semana a semana.",
+      "en": "In the progress section you see the road. The design and the first version, with the catalogue and detection, are already done. After that come the schemas and the fit, which will say whether a model fits. Then, the export for each tool, with the command line. And at the end, the real measurements. Below is the news, week by week.",
+      "enfoques": [
+        {
+          "frase": "con el catálogo y la detección",
+          "gl": "co catálogo e a detección",
+          "en": "with the catalogue and detection",
+          "ver": "hito-0-1-catalogo-y-deteccion"
+        },
+        {
+          "frase": "los esquemas y el encaje",
+          "gl": "os esquemas e o encaixe",
+          "en": "the schemas and the fit",
+          "ver": "hito-0-2-esquemas-y-encaje"
+        },
+        {
+          "frase": "la exportación para cada herramienta",
+          "gl": "a exportación para cada ferramenta",
+          "en": "the export for each tool",
+          "ver": "hito-0-3-exportacion-y-ordenes"
+        },
+        {
+          "frase": "las medidas reales",
+          "gl": "as medidas reais",
+          "en": "the real measurements",
+          "ver": "hito-0-4-medidas"
+        }
+      ]
+    },
+    {
+      "seccion": "participar",
+      "es": "Model Atlas está abierto a colaboración, y el código es público. Si quieres aportar, aprender o simplemente saber más, escríbenos y te contamos cómo. Gracias por escuchar.",
+      "gl": "Model Atlas está aberto á colaboración, e o código é público. Se queres achegar, aprender ou simplemente saber máis, escríbenos e contámosche como. Grazas por escoitar.",
+      "en": "Model Atlas is open to collaboration, and the code is public. If you want to contribute, learn, or simply find out more, write to us and we will tell you how. Thanks for listening."
+    }
+  ]
+}

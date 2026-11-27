@@ -1,0 +1,730 @@
+{
+  "slug": "galivelop-models",
+  "nombre": "Model Atlas",
+  "orden": 5,
+  "colaboracion": "abierta",
+  "estado": "desarrollo",
+  "acento": "#8A6A3B",
+  "actualizado": "2026-11-27",
+  "categoria": {
+    "es": "Catálogo de modelos de IA local",
+    "gl": "Catálogo de modelos de IA local",
+    "en": "Catalogue of local AI models"
+  },
+  "lema": {
+    "es": "Qué modelo cabe en qué máquina.",
+    "gl": "Que modelo cabe en que máquina.",
+    "en": "Which model fits on which machine."
+  },
+  "resumen": {
+    "es": "Un catálogo único, versionado y verificable de los modelos de IA local que usa el taller y de las máquinas donde corren. Nace para responder a una pregunta: qué variante de qué modelo cabe en este equipo.",
+    "gl": "Un catálogo único, versionado e verificable dos modelos de IA local que usa o obradoiro e das máquinas onde corren. Nace para responder a unha pregunta: que variante de que modelo cabe neste equipo.",
+    "en": "A single, versioned and verifiable catalogue of the local AI models the workshop uses and the machines they run on. It exists to answer one question: which variant of which model fits on this computer."
+  },
+  "seo": {
+    "descripcion": {
+      "es": "Catálogo único y verificable de modelos de IA local y de las máquinas donde corren: qué variante de qué modelo cabe en cada equipo. Código abierto.",
+      "gl": "Catálogo único e verificable de modelos de IA local e das máquinas onde corren: que variante de que modelo cabe en cada equipo. Código aberto.",
+      "en": "A single, verifiable catalogue of local AI models and the machines they run on: which variant of which model fits on each computer. Open source."
+    }
+  },
+  "fase": {
+    "es": "En desarrollo · v0.1.0 · próxima: esquemas y encaje",
+    "gl": "En desenvolvemento · v0.1.0 · próxima: esquemas e encaixe",
+    "en": "In development · v0.1.0 · next: schemas and fit"
+  },
+  "etiquetas": [
+    {
+      "es": "IA local",
+      "gl": "IA local",
+      "en": "Local AI"
+    },
+    {
+      "es": "Catálogo de modelos",
+      "gl": "Catálogo de modelos",
+      "en": "Model catalogue"
+    },
+    "Python",
+    "Steam Deck",
+    "Ollama",
+    "Hugging Face"
+  ],
+  "portada": {
+    "src": "proyectos/galivelop-models/portada.webp",
+    "mini": "proyectos/galivelop-models/portada-mini.webp",
+    "ancho": 1600,
+    "alto": 900,
+    "alt": {
+      "es": "Portada de Model Atlas: un atlas de cartas encuadernado, abierto y flotando en un mar grabado, con dos boyas pequeñas que marcan páginas.",
+      "gl": "Portada de Model Atlas: un atlas de cartas encadernado, aberto e aboiando nun mar gravado, con dúas boias pequenas que marcan páxinas.",
+      "en": "Model Atlas cover: a bound atlas of charts, open and floating on an engraved sea, with two small buoys marking pages."
+    }
+  },
+  "enlaces": [
+    {
+      "tipo": "otro",
+      "url": "https://github.com/Zeldris/galivelop-models",
+      "etiqueta": {
+        "es": "Ver el código en GitHub",
+        "gl": "Ver o código en GitHub",
+        "en": "View the code on GitHub"
+      }
+    }
+  ],
+  "galeria": [],
+  "capturas": [],
+  "descripcion": [
+    {
+      "es": "Las herramientas del taller que usan IA local (el instalador del juego, el generador de imágenes, el de voces) llevaban cada una su propia lista de modelos y su propia idea de lo que aguanta una máquina. Los mismos modelos, descritos varias veces y no siempre igual.",
+      "gl": "As ferramentas do obradoiro que usan IA local (o instalador do xogo, o xerador de imaxes, o de voces) levaban cada unha a súa propia lista de modelos e a súa propia idea do que aguanta unha máquina. Os mesmos modelos, descritos varias veces e non sempre igual.",
+      "en": "The workshop tools that use local AI (the game installer, the image generator, the voice generator) each carried their own list of models and their own idea of what a machine can take. The same models, described several times and not always the same way."
+    },
+    {
+      "es": "Model Atlas reúne esos datos en un solo catálogo: cada modelo, cada variante concreta con la que se descarga y se ejecuta, de dónde sale, con qué licencia y qué máquina necesita. Las herramientas trabajarán con una copia de ese catálogo, con su huella, en vez de mantener la suya.",
+      "gl": "Model Atlas xunta eses datos nun só catálogo: cada modelo, cada variante concreta coa que se descarga e se executa, de onde sae, con que licenza e que máquina necesita. As ferramentas traballarán cunha copia dese catálogo, coa súa pegada, en vez de manter a súa.",
+      "en": "Model Atlas brings that data together in one catalogue: each model, each specific variant it is downloaded and run as, where it comes from, under which licence and what machine it needs. The tools will work from a copy of that catalogue, with its fingerprint, instead of maintaining their own."
+    },
+    {
+      "es": "El atlas no descarga, no ejecuta y no mide modelos. Dice de dónde sale cada uno y con qué huella; las medidas de velocidad y calidad las recogerá de quien mide, y los ajustes de cada herramienta se quedan en cada herramienta.",
+      "gl": "O atlas non descarga, non executa e non mide modelos. Di de onde sae cada un e con que pegada; as medidas de velocidade e calidade recolleraas de quen mide, e os axustes de cada ferramenta quedan en cada ferramenta.",
+      "en": "The atlas does not download, run or measure models. It says where each one comes from and with which fingerprint; speed and quality measurements will be collected from whoever measures, and each tool’s settings stay in that tool."
+    },
+    {
+      "es": "Hoy está publicada la versión 0.1.0: el catálogo inicial, con trece modelos y dos máquinas, y la detección del hardware del equipo en Linux y Windows. La respuesta a si un modelo cabe y la recomendación por tarea llegan en las versiones siguientes.",
+      "gl": "Hoxe está publicada a versión 0.1.0: o catálogo inicial, con trece modelos e dúas máquinas, e a detección do hardware do equipo en Linux e Windows. A resposta a se un modelo cabe e a recomendación por tarefa chegan nas versións seguintes.",
+      "en": "Version 0.1.0 is published today: the initial catalogue, with thirteen models and two machines, and detection of the computer’s hardware on Linux and Windows. The answer to whether a model fits, and the recommendation by task, arrive in the following versions."
+    }
+  ],
+  "lineas": ["ia-local"],
+  "aprendizajes": [
+    {
+      "es": "Antes de unificar, comparar: los mismos modelos estaban descritos en cuatro sitios y no decían lo mismo. Primero se hizo la tabla de diferencias y después la migración.",
+      "gl": "Antes de unificar, comparar: os mesmos modelos estaban descritos en catro sitios e non dicían o mesmo. Primeiro fíxose a táboa de diferenzas e despois a migración.",
+      "en": "Compare before unifying: the same models were described in four places and did not say the same thing. The table of differences came first, the migration after."
+    },
+    {
+      "es": "El nombre con el que se descarga un modelo no dice qué hay detrás: la compresión real de cada variante se apunta, no se deja implícita.",
+      "gl": "O nome co que se descarga un modelo non di que hai detrás: a compresión real de cada variante apúntase, non se deixa implícita.",
+      "en": "The name a model is downloaded under does not say what is behind it: the real compression of each variant is written down, not left implicit."
+    },
+    {
+      "es": "Detectar el hardware se puede probar sin la máquina delante, con sus fuentes simuladas; lo que no sustituye es la prueba real en el equipo, que sigue pendiente.",
+      "gl": "Detectar o hardware pódese probar sen a máquina diante, coas súas fontes simuladas; o que non substitúe é a proba real no equipo, que segue pendente.",
+      "en": "Hardware detection can be tested without the machine at hand, with its sources simulated; what that does not replace is the real test on the device, which is still pending."
+    }
+  ],
+  "caracteristicas": [
+    {
+      "icono": "book",
+      "titulo": {
+        "es": "Un solo catálogo",
+        "gl": "Un só catálogo",
+        "en": "One catalogue"
+      },
+      "texto": {
+        "es": "Modelos, variantes, orígenes y licencias en un único sitio, en lugar de una lista distinta en cada herramienta.",
+        "gl": "Modelos, variantes, orixes e licenzas nun único sitio, en lugar dunha lista distinta en cada ferramenta.",
+        "en": "Models, variants, sources and licences in one place, instead of a different list in each tool."
+      }
+    },
+    {
+      "icono": "cpu",
+      "titulo": {
+        "es": "Máquinas con nombre",
+        "gl": "Máquinas con nome",
+        "en": "Named machines"
+      },
+      "texto": {
+        "es": "Cada máquina es un perfil de hardware: procesador, memoria, gráfica y sistema. La Steam Deck es el mínimo de referencia.",
+        "gl": "Cada máquina é un perfil de hardware: procesador, memoria, gráfica e sistema. A Steam Deck é o mínimo de referencia.",
+        "en": "Each machine is a hardware profile: processor, memory, graphics and system. The Steam Deck is the reference minimum."
+      }
+    },
+    {
+      "icono": "gauge",
+      "titulo": {
+        "es": "Detecta tu equipo",
+        "gl": "Detecta o teu equipo",
+        "en": "Detects your computer"
+      },
+      "texto": {
+        "es": "Lee el hardware del equipo en Linux y en Windows. Lo que no consigue leer lo deja sin dato, no lo inventa.",
+        "gl": "Le o hardware do equipo en Linux e en Windows. O que non consegue ler déixao sen dato, non o inventa.",
+        "en": "It reads the computer’s hardware on Linux and Windows. What it cannot read is left blank, not made up."
+      }
+    },
+    {
+      "icono": "shield",
+      "titulo": {
+        "es": "Verificable",
+        "gl": "Verificable",
+        "en": "Verifiable"
+      },
+      "texto": {
+        "es": "Cada origen queda fijado a una revisión concreta, y cada licencia dice qué usos permite. Una licencia sin confirmar no permite ninguno.",
+        "gl": "Cada orixe queda fixada a unha revisión concreta, e cada licenza di que usos permite. Unha licenza sen confirmar non permite ningún.",
+        "en": "Every source is pinned to a specific revision, and every licence says which uses it allows. An unconfirmed licence allows none."
+      }
+    },
+    {
+      "icono": "chart",
+      "titulo": {
+        "es": "Cabe o no cabe",
+        "gl": "Cabe ou non cabe",
+        "en": "Fits or does not fit"
+      },
+      "texto": {
+        "es": "En camino: un veredicto por variante y máquina (cabe, justo, no cabe o falta un dato), con su motivo, y una recomendación por tarea.",
+        "gl": "En camiño: un veredicto por variante e máquina (cabe, xusto, non cabe ou falta un dato), co seu motivo, e unha recomendación por tarefa.",
+        "en": "On the way: a verdict per variant and machine (fits, tight, does not fit, or data missing), with its reason, and a recommendation by task."
+      }
+    },
+    {
+      "icono": "code",
+      "titulo": {
+        "es": "Sin dependencias",
+        "gl": "Sen dependencias",
+        "en": "No dependencies"
+      },
+      "texto": {
+        "es": "Está escrito solo con la biblioteca estándar de Python, y el catálogo son archivos de datos que cualquiera puede leer.",
+        "gl": "Está escrito só coa biblioteca estándar de Python, e o catálogo son ficheiros de datos que calquera pode ler.",
+        "en": "It is written with the Python standard library alone, and the catalogue is data files anyone can read."
+      }
+    }
+  ],
+  "pasos": [
+    {
+      "titulo": {
+        "es": "Detectar la máquina",
+        "gl": "Detectar a máquina",
+        "en": "Detect the machine"
+      },
+      "texto": {
+        "es": "El atlas lee el hardware del equipo, o se le indica una máquina del catálogo por su nombre. Ya funciona.",
+        "gl": "O atlas le o hardware do equipo, ou indícaselle unha máquina do catálogo polo seu nome. Xa funciona.",
+        "en": "The atlas reads the computer’s hardware, or is given a machine from the catalogue by name. This already works."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Consultar el catálogo",
+        "gl": "Consultar o catálogo",
+        "en": "Look up the catalogue"
+      },
+      "texto": {
+        "es": "Cada modelo tiene su ficha de datos: variante, archivos, origen fijado y licencia. Los datos ya están publicados.",
+        "gl": "Cada modelo ten a súa ficha de datos: variante, ficheiros, orixe fixada e licenza. Os datos xa están publicados.",
+        "en": "Each model has its data sheet: variant, files, pinned source and licence. The data is already published."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Comprobar el encaje",
+        "gl": "Comprobar o encaixe",
+        "en": "Check the fit"
+      },
+      "texto": {
+        "es": "Con la memoria que necesita la variante y la que tiene la máquina, un veredicto con su motivo. Llega en la próxima versión.",
+        "gl": "Coa memoria que necesita a variante e a que ten a máquina, un veredicto co seu motivo. Chega na próxima versión.",
+        "en": "From the memory the variant needs and the memory the machine has, a verdict with its reason. It arrives in the next version."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Recomendar",
+        "gl": "Recomendar",
+        "en": "Recommend"
+      },
+      "texto": {
+        "es": "Para una tarea y una máquina, la lista ordenada de variantes que caben, filtrada por licencia. También en camino.",
+        "gl": "Para unha tarefa e unha máquina, a lista ordenada de variantes que caben, filtrada por licenza. Tamén en camiño.",
+        "en": "For a task and a machine, the ordered list of variants that fit, filtered by licence. Also on the way."
+      }
+    }
+  ],
+  "apartados": [
+    {
+      "id": "catalogo",
+      "titulo": {
+        "es": "Qué hay en el catálogo",
+        "gl": "Que hai no catálogo",
+        "en": "What is in the catalogue"
+      },
+      "intro": {
+        "es": "El catálogo inicial, tal como se publicó en la versión 0.1.0. Su forma es provisional hasta que lleguen los esquemas.",
+        "gl": "O catálogo inicial, tal como se publicou na versión 0.1.0. A súa forma é provisional ata que cheguen os esquemas.",
+        "en": "The initial catalogue, as published in version 0.1.0. Its shape is provisional until the schemas arrive."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Modelos",
+            "gl": "Modelos",
+            "en": "Models"
+          },
+          "valor": "13",
+          "texto": {
+            "es": "De texto, de imagen, de voz y de búsqueda por significado, con una variante cada uno por ahora.",
+            "gl": "De texto, de imaxe, de voz e de busca por significado, cunha variante cada un polo de agora.",
+            "en": "For text, image, voice and search by meaning, with one variant each for now."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Máquinas",
+            "gl": "Máquinas",
+            "en": "Machines"
+          },
+          "valor": "2",
+          "texto": {
+            "es": "La Steam Deck, como mínimo de referencia, y un equipo con gráfica de doce gigas.",
+            "gl": "A Steam Deck, como mínimo de referencia, e un equipo con gráfica de doce xigas.",
+            "en": "The Steam Deck, as the reference minimum, and a computer with a twelve-gigabyte graphics card."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Orígenes",
+            "gl": "Orixes",
+            "en": "Sources"
+          },
+          "texto": {
+            "es": "De dónde se descarga cada variante, fijado a una revisión o a una huella concreta para que mañana sea el mismo archivo.",
+            "gl": "De onde se descarga cada variante, fixado a unha revisión ou a unha pegada concreta para que mañá sexa o mesmo ficheiro.",
+            "en": "Where each variant is downloaded from, pinned to a specific revision or fingerprint so that tomorrow it is the same file."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Licencias",
+            "gl": "Licenzas",
+            "en": "Licences"
+          },
+          "texto": {
+            "es": "Cada una con sus usos permitidos: comercial, redistribuir, derivar. Uno de los modelos sigue con la licencia sin confirmar.",
+            "gl": "Cada unha cos seus usos permitidos: comercial, redistribuír, derivar. Un dos modelos segue coa licenza sen confirmar.",
+            "en": "Each with its permitted uses: commercial, redistribution, derivatives. One of the models still has an unconfirmed licence."
+          }
+        }
+      ]
+    },
+    {
+      "id": "vocabulario",
+      "titulo": {
+        "es": "El vocabulario del atlas",
+        "gl": "O vocabulario do atlas",
+        "en": "The atlas vocabulary"
+      },
+      "intro": {
+        "es": "Las palabras con las que el atlas habla de modelos y máquinas.",
+        "gl": "As palabras coas que o atlas fala de modelos e máquinas.",
+        "en": "The words the atlas uses to talk about models and machines."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "Modelo",
+            "gl": "Modelo",
+            "en": "Model"
+          },
+          "texto": {
+            "es": "Un modelo publicado, con independencia de cómo se empaqueta.",
+            "gl": "Un modelo publicado, con independencia de como se empaqueta.",
+            "en": "A published model, regardless of how it is packaged."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Variante",
+            "gl": "Variante",
+            "en": "Variant"
+          },
+          "texto": {
+            "es": "Una forma concreta de obtenerlo y ejecutarlo: formato, compresión, origen y archivos.",
+            "gl": "Unha forma concreta de obtelo e executalo: formato, compresión, orixe e ficheiros.",
+            "en": "One specific way to get and run it: format, compression, source and files."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Máquina",
+            "gl": "Máquina",
+            "en": "Machine"
+          },
+          "texto": {
+            "es": "Un perfil de hardware, sin ajustes de ninguna aplicación.",
+            "gl": "Un perfil de hardware, sen axustes de ningunha aplicación.",
+            "en": "A hardware profile, with no application settings."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Encaje",
+            "gl": "Encaixe",
+            "en": "Fit"
+          },
+          "texto": {
+            "es": "El veredicto de una variante en una máquina: cabe, justo, no cabe o falta un dato.",
+            "gl": "O veredicto dunha variante nunha máquina: cabe, xusto, non cabe ou falta un dato.",
+            "en": "The verdict for a variant on a machine: fits, tight, does not fit, or data missing."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Medida",
+            "gl": "Medida",
+            "en": "Measurement"
+          },
+          "texto": {
+            "es": "Un resultado de velocidad, memoria o calidad de una variante en una máquina. El atlas la cita; no la hace.",
+            "gl": "Un resultado de velocidade, memoria ou calidade dunha variante nunha máquina. O atlas cítaa; non a fai.",
+            "en": "A speed, memory or quality result for a variant on a machine. The atlas cites it; it does not produce it."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Recomendación",
+            "gl": "Recomendación",
+            "en": "Recommendation"
+          },
+          "texto": {
+            "es": "Para una tarea y una máquina, las variantes que caben, en orden y con su motivo.",
+            "gl": "Para unha tarefa e unha máquina, as variantes que caben, en orde e co seu motivo.",
+            "en": "For a task and a machine, the variants that fit, in order and with their reason."
+          }
+        }
+      ]
+    },
+    {
+      "id": "limites",
+      "titulo": {
+        "es": "Lo que el atlas no hace",
+        "gl": "O que o atlas non fai",
+        "en": "What the atlas does not do"
+      },
+      "intro": {
+        "es": "Tan importante como lo que hace: dónde acaba.",
+        "gl": "Tan importante como o que fai: onde acaba.",
+        "en": "As important as what it does: where it stops."
+      },
+      "items": [
+        {
+          "nombre": {
+            "es": "No descarga",
+            "gl": "Non descarga",
+            "en": "It does not download"
+          },
+          "texto": {
+            "es": "Da el origen y las huellas; descargar lo sigue haciendo cada herramienta.",
+            "gl": "Dá a orixe e as pegadas; descargar ségueo facendo cada ferramenta.",
+            "en": "It gives the source and the fingerprints; each tool still does the downloading."
+          }
+        },
+        {
+          "nombre": {
+            "es": "No mide ni ejecuta",
+            "gl": "Non mide nin executa",
+            "en": "It does not measure or run"
+          },
+          "texto": {
+            "es": "Las medidas vienen de fuera y se citan con su fecha y su procedencia.",
+            "gl": "As medidas veñen de fóra e cítanse coa súa data e a súa procedencia.",
+            "en": "Measurements come from outside and are cited with their date and origin."
+          }
+        },
+        {
+          "nombre": {
+            "es": "No decide por cada herramienta",
+            "gl": "Non decide por cada ferramenta",
+            "en": "It does not decide for each tool"
+          },
+          "texto": {
+            "es": "Los ajustes de ejecución, la memoria que se reserva y qué modelo hace cada papel siguen siendo de cada herramienta.",
+            "gl": "Os axustes de execución, a memoria que se reserva e que modelo fai cada papel seguen sendo de cada ferramenta.",
+            "en": "Run settings, reserved memory and which model plays each role still belong to each tool."
+          }
+        },
+        {
+          "nombre": {
+            "es": "Sin servidor",
+            "gl": "Sen servidor",
+            "en": "No server"
+          },
+          "texto": {
+            "es": "No hay un servicio en línea ni precios de modelos en la nube: es un catálogo de archivos.",
+            "gl": "Non hai un servizo en liña nin prezos de modelos na nube: é un catálogo de ficheiros.",
+            "en": "There is no online service and no cloud model pricing: it is a catalogue of files."
+          }
+        }
+      ]
+    }
+  ],
+  "ficha": [
+    {
+      "capa": {
+        "es": "Catálogo",
+        "gl": "Catálogo",
+        "en": "Catalogue"
+      },
+      "tecnologias": [
+        {
+          "es": "Un archivo JSON por modelo y por máquina",
+          "gl": "Un ficheiro JSON por modelo e por máquina",
+          "en": "One JSON file per model and per machine"
+        },
+        {
+          "es": "Orígenes: Hugging Face, Ollama o enlace directo",
+          "gl": "Orixes: Hugging Face, Ollama ou ligazón directa",
+          "en": "Sources: Hugging Face, Ollama or direct link"
+        }
+      ]
+    },
+    {
+      "capa": {
+        "es": "Paquete",
+        "gl": "Paquete",
+        "en": "Package"
+      },
+      "tecnologias": [
+        {
+          "es": "Python 3.10 o superior (biblioteca estándar)",
+          "gl": "Python 3.10 ou superior (biblioteca estándar)",
+          "en": "Python 3.10 or later (standard library)"
+        },
+        {
+          "es": "Paquete gmod",
+          "gl": "Paquete gmod",
+          "en": "gmod package"
+        }
+      ]
+    },
+    {
+      "capa": {
+        "es": "Detección",
+        "gl": "Detección",
+        "en": "Detection"
+      },
+      "tecnologias": ["Linux", "Windows", "Steam Deck"]
+    },
+    {
+      "capa": {
+        "es": "Licencia",
+        "gl": "Licenza",
+        "en": "Licence"
+      },
+      "tecnologias": [
+        {
+          "es": "MIT (código)",
+          "gl": "MIT (código)",
+          "en": "MIT (code)"
+        },
+        {
+          "es": "CC BY-NC-SA 4.0 (contenido)",
+          "gl": "CC BY-NC-SA 4.0 (contido)",
+          "en": "CC BY-NC-SA 4.0 (content)"
+        }
+      ]
+    }
+  ],
+  "hitos": [
+    {
+      "version": "0.0",
+      "nombre": {
+        "es": "Diseño",
+        "gl": "Deseño",
+        "en": "Design"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "El diseño del atlas, su vocabulario y el inventario de las herramientas que lo usarán.",
+        "gl": "O deseño do atlas, o seu vocabulario e o inventario das ferramentas que o usarán.",
+        "en": "The design of the atlas, its vocabulary and the inventory of the tools that will use it."
+      }
+    },
+    {
+      "version": "0.1",
+      "nombre": {
+        "es": "Catálogo y detección",
+        "gl": "Catálogo e detección",
+        "en": "Catalogue and detection"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "El catálogo inicial, con trece modelos y dos máquinas, y la detección del hardware en Linux y Windows. Falta la prueba real en la Steam Deck y en Windows.",
+        "gl": "O catálogo inicial, con trece modelos e dúas máquinas, e a detección do hardware en Linux e Windows. Falta a proba real na Steam Deck e en Windows.",
+        "en": "The initial catalogue, with thirteen models and two machines, and hardware detection on Linux and Windows. The real test on the Steam Deck and on Windows is still to do."
+      }
+    },
+    {
+      "version": "0.2",
+      "nombre": {
+        "es": "Esquemas y encaje",
+        "gl": "Esquemas e encaixe",
+        "en": "Schemas and fit"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Los esquemas que validan el catálogo, el veredicto de si una variante cabe en una máquina y la recomendación por tarea y licencia.",
+        "gl": "Os esquemas que validan o catálogo, o veredicto de se unha variante cabe nunha máquina e a recomendación por tarefa e licenza.",
+        "en": "The schemas that validate the catalogue, the verdict on whether a variant fits on a machine, and the recommendation by task and licence."
+      }
+    },
+    {
+      "version": "0.3",
+      "nombre": {
+        "es": "Exportación y órdenes",
+        "gl": "Exportación e ordes",
+        "en": "Export and commands"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "La copia con huella para cada herramienta, la línea de órdenes y la página del atlas en este portal.",
+        "gl": "A copia con pegada para cada ferramenta, a liña de ordes e a páxina do atlas neste portal.",
+        "en": "The fingerprinted copy for each tool, the command line and the atlas page on this portal."
+      }
+    },
+    {
+      "version": "0.4",
+      "nombre": {
+        "es": "Medidas",
+        "gl": "Medidas",
+        "en": "Measurements"
+      },
+      "estado": "pendiente",
+      "detalle": {
+        "es": "Recoger medidas reales de cada variante en cada máquina y compararlas con lo estimado.",
+        "gl": "Recoller medidas reais de cada variante en cada máquina e comparalas co estimado.",
+        "en": "Collecting real measurements of each variant on each machine and comparing them with the estimate."
+      }
+    }
+  ],
+  "novedades": [
+    {
+      "fecha": "2026-11-27",
+      "texto": {
+        "es": "Publicada la versión 0.1.0: el catálogo inicial, con trece modelos y dos máquinas, y la detección del hardware del equipo en Linux y Windows.",
+        "gl": "Publicada a versión 0.1.0: o catálogo inicial, con trece modelos e dúas máquinas, e a detección do hardware do equipo en Linux e Windows.",
+        "en": "Version 0.1.0 published: the initial catalogue, with thirteen models and two machines, and detection of the computer’s hardware on Linux and Windows."
+      }
+    }
+  ],
+  "cifras": [
+    {
+      "valor": "13",
+      "etiqueta": {
+        "es": "modelos en el catálogo",
+        "gl": "modelos no catálogo",
+        "en": "models in the catalogue"
+      }
+    },
+    {
+      "valor": "2",
+      "etiqueta": {
+        "es": "máquinas de referencia",
+        "gl": "máquinas de referencia",
+        "en": "reference machines"
+      }
+    },
+    {
+      "valor": "4",
+      "etiqueta": {
+        "es": "catálogos reunidos en uno",
+        "gl": "catálogos xuntados nun",
+        "en": "catalogues merged into one"
+      }
+    },
+    {
+      "valor": "2 / 5",
+      "etiqueta": {
+        "es": "fases hechas",
+        "gl": "fases feitas",
+        "en": "phases done"
+      }
+    }
+  ],
+  "decisiones": [
+    {
+      "titulo": {
+        "es": "Un catálogo, varias copias",
+        "gl": "Un catálogo, varias copias",
+        "en": "One catalogue, several copies"
+      },
+      "texto": {
+        "es": "Cada herramienta trabajará con una copia del catálogo dentro de su propio repositorio, con una huella que dice de qué versión sale. Sin red y sin servidor.",
+        "gl": "Cada ferramenta traballará cunha copia do catálogo dentro do seu propio repositorio, cunha pegada que di de que versión sae. Sen rede e sen servidor.",
+        "en": "Each tool will work from a copy of the catalogue inside its own repository, with a fingerprint that says which version it comes from. No network and no server."
+      }
+    },
+    {
+      "titulo": {
+        "es": "El atlas no mide",
+        "gl": "O atlas non mide",
+        "en": "The atlas does not measure"
+      },
+      "texto": {
+        "es": "Las medidas de velocidad, memoria y calidad las hace Galivelop Evaluator; el atlas solo las recoge y las cita.",
+        "gl": "As medidas de velocidade, memoria e calidade fainas Galivelop Evaluator; o atlas só as recolle e as cita.",
+        "en": "Speed, memory and quality measurements are made by Galivelop Evaluator; the atlas only collects and cites them."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Lo de cada herramienta, en cada herramienta",
+        "gl": "O de cada ferramenta, en cada ferramenta",
+        "en": "Each tool keeps what is its own"
+      },
+      "texto": {
+        "es": "Los ajustes de ejecución, la reserva de memoria y la elección de modelo por papel no entran en el atlas: citan sus modelos y máquinas por su identificador.",
+        "gl": "Os axustes de execución, a reserva de memoria e a elección de modelo por papel non entran no atlas: citan os seus modelos e máquinas polo seu identificador.",
+        "en": "Run settings, memory reservation and the choice of model per role stay out of the atlas: they cite its models and machines by identifier."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Sin confirmar es que no",
+        "gl": "Sen confirmar é que non",
+        "en": "Unconfirmed means no"
+      },
+      "texto": {
+        "es": "Una licencia sin confirmar es una licencia explícita que no permite ningún uso, hasta que se confirme.",
+        "gl": "Unha licenza sen confirmar é unha licenza explícita que non permite ningún uso, ata que se confirme.",
+        "en": "An unconfirmed licence is an explicit licence that allows no use at all, until it is confirmed."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Orígenes fijados",
+        "gl": "Orixes fixadas",
+        "en": "Pinned sources"
+      },
+      "texto": {
+        "es": "Cada origen apunta a una revisión o a una huella concreta, no a «la última»: lo que se descarga mañana es lo mismo que hoy.",
+        "gl": "Cada orixe apunta a unha revisión ou a unha pegada concreta, non á «última»: o que se descarga mañá é o mesmo ca hoxe.",
+        "en": "Every source points to a specific revision or fingerprint, not to “the latest”: what is downloaded tomorrow is the same as today."
+      }
+    },
+    {
+      "titulo": {
+        "es": "Una sola unidad",
+        "gl": "Unha soa unidade",
+        "en": "A single unit"
+      },
+      "texto": {
+        "es": "Los tamaños van en bytes y la memoria siempre en la misma unidad, para que dos datos se puedan comparar sin convertir.",
+        "gl": "Os tamaños van en bytes e a memoria sempre na mesma unidade, para que dous datos se poidan comparar sen converter.",
+        "en": "Sizes are in bytes and memory always in the same unit, so that two figures can be compared without converting."
+      }
+    }
+  ],
+  "equipo": [
+    {
+      "nombre": "Álvaro García Graña",
+      "rol": {
+        "es": "Creador",
+        "gl": "Creador",
+        "en": "Creator"
+      }
+    }
+  ]
+}

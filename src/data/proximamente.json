@@ -20,5 +20,85 @@
       "gl": "o motor real de voz",
       "en": "the real voice engine"
     }
+  },
+  {
+    "slug": "galivelop-forge",
+    "nombre": "Galivelop Forge",
+    "acento": "#d9532b",
+    "icono": "sparkles",
+    "lema": {
+      "es": "Fábrica de datos y ajuste fino para los modelos locales del taller.",
+      "gl": "Fábrica de datos e axuste fino para os modelos locais do obradoiro.",
+      "en": "A data and fine-tuning factory for the workshop’s local models."
+    },
+    "fases": {
+      "hechas": 1,
+      "total": 8
+    },
+    "siguiente": {
+      "es": "los datos de entrenamiento",
+      "gl": "os datos de adestramento",
+      "en": "the training data"
+    }
+  },
+  {
+    "slug": "galivelop-runtime",
+    "nombre": "Galivelop Runtime",
+    "acento": "#5a6c80",
+    "icono": "cpu",
+    "lema": {
+      "es": "El núcleo común de los generadores locales: cola, turnos y un candado de máquina compartido.",
+      "gl": "O núcleo común dos xeradores locais: cola, quendas e un cadeado de máquina compartido.",
+      "en": "The shared core of the local generators: queue, turns and a shared machine lock."
+    },
+    "fases": {
+      "hechas": 2,
+      "total": 7
+    },
+    "siguiente": {
+      "es": "la copia para cada generador",
+      "gl": "a copia para cada xerador",
+      "en": "the copy for each generator"
+    }
+  },
+  {
+    "slug": "galivelop-worlds",
+    "nombre": "Galivelop Worlds",
+    "acento": "#2f8f4e",
+    "icono": "globe",
+    "lema": {
+      "es": "Un kit para crear mundos de ficción vivos con IA local.",
+      "gl": "Un kit para crear mundos de ficción vivos con IA local.",
+      "en": "A kit for making living fictional worlds with local AI."
+    },
+    "fases": {
+      "hechas": 2,
+      "total": 7
+    },
+    "siguiente": {
+      "es": "los mapas por semilla",
+      "gl": "os mapas por semente",
+      "en": "seed-based maps"
+    }
+  },
+  {
+    "slug": "galivelop-models",
+    "nombre": "Model Atlas",
+    "acento": "#8a6a3b",
+    "icono": "chart",
+    "lema": {
+      "es": "Qué modelo cabe en qué máquina.",
+      "gl": "Que modelo cabe en que máquina.",
+      "en": "Which model fits on which machine."
+    },
+    "fases": {
+      "hechas": 2,
+      "total": 5
+    },
+    "siguiente": {
+      "es": "los esquemas y el encaje",
+      "gl": "os esquemas e o encaixe",
+      "en": "the schemas and the fit"
+    }
   }
 ]

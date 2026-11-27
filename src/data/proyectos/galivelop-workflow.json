@@ -7,7 +7,7 @@
   "acento": "#3D6FD9",
   "icono": "proyectos/galivelop-workflow/icono.svg",
   "cabecera": "color",
-  "actualizado": "2026-11-24",
+  "actualizado": "2026-11-26",
   "categoria": {
     "es": "Herramienta · Flujo de trabajo para agentes de IA",
     "gl": "Ferramenta · Fluxo de traballo para axentes de IA",
@@ -36,9 +36,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.9.0 · próxima la 0.10 «Estable»",
-    "gl": "En desenvolvemento · v0.9.0 · próxima a 0.10 «Estable»",
-    "en": "In development · v0.9.0 · next up: 0.10 “Stable”"
+    "es": "En desarrollo · v0.9.1 · próxima la 0.10 «Estable»",
+    "gl": "En desenvolvemento · v0.9.1 · próxima a 0.10 «Estable»",
+    "en": "In development · v0.9.1 · next up: 0.10 “Stable”"
   },
   "etiquetas": [
     "Claude Code",
@@ -76,11 +76,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.9.0",
+      "url": "https://github.com/Zeldris/Galivelop-workflow/releases/tag/v0.9.1",
       "etiqueta": {
-        "es": "Ver la versión 0.9.0",
-        "gl": "Ver a versión 0.9.0",
-        "en": "View version 0.9.0"
+        "es": "Ver la versión 0.9.1",
+        "gl": "Ver a versión 0.9.1",
+        "en": "View version 0.9.1"
       }
     }
   ],
@@ -2127,6 +2127,61 @@
       "items": [
         {
           "nombre": {
+            "es": "Parche de la recogida",
+            "gl": "Parche da recollida",
+            "en": "Harvest patch"
+          },
+          "valor": "0.9.1 · 2026-11-26",
+          "texto": {
+            "es": "Parche de la 0.9: el flujo encuentra su copia también en la nube, el gancho de parada avisa de un CI sin resolver y la revisión y el diagnóstico avisan de más casos. Arregla 17 hallazgos de la revisión, cada uno con su test.",
+            "gl": "Parche da 0.9: o fluxo atopa a súa copia tamén na nube, o gancho de parada avisa dun CI sen resolver e a revisión e o diagnóstico avisan de máis casos. Arranxa 17 achados da revisión, cada un co seu test.",
+            "en": "A 0.9 patch: the workflow finds its copy in the cloud too, the stop hook warns about an unresolved CI, and the review and the diagnosis warn about more cases. It fixes 17 review findings, each with its test."
+          },
+          "detalle": [
+            {
+              "es": "El flujo busca su propia copia también en la disposición de la nube, sin distinguir mayúsculas, acepta direcciones SSH y el diagnóstico dice qué carpetas probó.",
+              "gl": "O fluxo busca a súa propia copia tamén na disposición da nube, sen distinguir maiúsculas, acepta enderezos SSH e o diagnóstico di que cartafoles probou.",
+              "en": "The workflow looks for its own copy in the cloud layout too, ignoring case, accepts SSH addresses, and the diagnosis says which folders it tried."
+            },
+            {
+              "es": "El gancho de parada avisa, una vez por commit, cuando el último commit subido tiene el CI sin resolver.",
+              "gl": "O gancho de parada avisa, unha vez por commit, cando o último commit subido ten o CI sen resolver.",
+              "en": "The stop hook warns, once per commit, when the last pushed commit has its CI unresolved."
+            },
+            {
+              "es": "gw-update se para si la rama va por detrás de la protegida y comprueba que una clave existe antes de recomendarla.",
+              "gl": "gw-update detense se a rama vai por detrás da protexida e comproba que unha clave existe antes de recomendala.",
+              "en": "gw-update stops if the branch is behind the protected one and checks that a key exists before recommending it."
+            },
+            {
+              "es": "El diagnóstico avisa si ninguna entrada del plan casa con la tarea, y los identificadores se leen en cualquier celda de una fila de la bitácora.",
+              "gl": "O diagnóstico avisa se ningunha entrada do plan casa coa tarefa, e os identificadores lense en calquera cela dunha fila da bitácora.",
+              "en": "The diagnosis warns if no plan entry matches the task, and ids are read in any cell of a log row."
+            },
+            {
+              "es": "La comprobación de que un test falla sin su arreglo decide por la ruta del archivo y no por su contenido.",
+              "gl": "A comprobación de que un test falla sen o seu arranxo decide pola ruta do arquivo e non polo seu contido.",
+              "en": "The check that a test fails without its fix decides by the file's path, not by its content."
+            },
+            {
+              "es": "La revisión avisa de un árbol sin confirmar, también con archivos sin seguimiento, y puede mirar el árbol de trabajo.",
+              "gl": "A revisión avisa dunha árbore sen confirmar, tamén con arquivos sen seguimento, e pode mirar a árbore de traballo.",
+              "en": "The review warns about an uncommitted tree, untracked files included, and can look at the working tree."
+            },
+            {
+              "es": "La caché del check ignora el registro de métricas, así que un registro escrito durante el check no obliga a repetirlo al subir.",
+              "gl": "A caché do check ignora o rexistro de métricas, así que un rexistro escrito durante o check non obriga a repetilo ao subir.",
+              "en": "The check cache ignores the metrics ledger, so a ledger written during the check does not force a repeat when pushing."
+            },
+            {
+              "es": "17 hallazgos de la revisión quedan arreglados, cada uno con su test.",
+              "gl": "17 achados da revisión quedan arranxados, cada un co seu test.",
+              "en": "17 review findings are fixed, each with its test."
+            }
+          ]
+        },
+        {
+          "nombre": {
             "es": "Front",
             "gl": "Front",
             "en": "Front"
@@ -3214,6 +3269,20 @@
       }
     },
     {
+      "version": "0.9.1",
+      "nombre": {
+        "es": "Parche de la recogida",
+        "gl": "Parche da recollida",
+        "en": "Harvest patch"
+      },
+      "estado": "hecho",
+      "detalle": {
+        "es": "Publicada el 26 de noviembre.",
+        "gl": "Publicada o 26 de novembro.",
+        "en": "Released on 26 November."
+      }
+    },
+    {
       "version": "0.10",
       "nombre": {
         "es": "Estable",
@@ -3279,6 +3348,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-26",
+      "texto": {
+        "es": "Publicado el parche 0.9.1: el flujo encuentra su propia copia también en la nube, el gancho de parada avisa de un CI sin resolver del último commit subido, gw-update se para si la rama va por detrás, el diagnóstico avisa si ningún id casa con la tarea, la revisión avisa de un árbol sin confirmar y 17 hallazgos de revisión quedan arreglados, cada uno con su test.",
+        "gl": "Publicado o parche 0.9.1: o fluxo atopa a súa propia copia tamén na nube, o gancho de parada avisa dun CI sen resolver do último commit subido, gw-update detense se a rama vai por detrás, o diagnóstico avisa se ningún id casa coa tarefa, a revisión avisa dunha árbore sen confirmar e 17 achados de revisión quedan arranxados, cada un co seu test.",
+        "en": "Patch 0.9.1 is out: the workflow finds its own copy in the cloud too, the stop hook warns about an unresolved CI on the last pushed commit, gw-update stops if the branch is behind, the diagnosis warns if no id matches the task, the review warns about an uncommitted tree, and 17 review findings are fixed, each with its test."
+      }
+    },
     {
       "fecha": "2026-11-24",
       "texto": {
@@ -3402,7 +3479,7 @@
       }
     },
     {
-      "valor": "3935",
+      "valor": "3981",
       "etiqueta": {
         "es": "pruebas automáticas",
         "gl": "probas automáticas",

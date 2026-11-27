@@ -1,11 +1,11 @@
 {
   "pagina": "/proyectos/galivelop-workflow",
   "audio": ["es"],
-  "narra": "2026-11-24",
+  "narra": "2026-11-26",
   "notas": [
     "Pronunciación: «Galivelop» como ga-li-ve-LOP; «workflow» a la inglesa (uórk-flou); «Matt Pocock» a la inglesa (mat po-cok); «Dex Horthy» a la inglesa; «Claude» a la francesa (clod); «GitHub» a la inglesa (guit-jab); «Management Center» a la inglesa (ma-nach-ment sen-ter). Los nombres de skills y archivos (gw-selector, AGENTS.md, bitácora) no se leen: se describen con palabras.",
     "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión en curso y la siguiente, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
-    "Envejece con cada versión publicada (hoy la cero punto nueve, próxima la cero punto diez) y con la hoja de ruta. Sin número de tests ni de pruebas."
+    "Envejece con cada versión publicada (hoy la cero punto nueve punto uno, próxima la cero punto diez) y con la hoja de ruta. Sin número de tests ni de pruebas."
   ],
   "trozos": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto nueve. La próxima, la cero punto diez, se llama «Estable». Falta mucho todavía, y lo decimos claro: un repaso a fondo de la documentación y la seguridad, un instalador que lo ponga sin inteligencia artificial, un panel para ver y configurar los proyectos, y la versión uno punto cero. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
-      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto nove. A próxima, a cero punto dez, chámase «Estable». Falta moito aínda, e dicímolo claro: un repaso a fondo da documentación e da seguridade, un instalador que o poña sen intelixencia artificial, un panel para ver e configurar os proxectos, e a versión un punto cero. O último que cambiou tenolo nas novidades, máis abaixo.",
-      "en": "Where does it stand? It is in development, at version zero point nine. The next one, zero point ten, is called «Stable». A lot is still missing, and we say so plainly: a thorough review of documentation and security, an installer that sets it up without artificial intelligence, a panel to view and configure projects, and version one point zero. What changed most recently is in the What's new section, further down."
+      "es": "¿En qué punto está? Está en desarrollo, en la versión cero punto nueve punto uno. La próxima, la cero punto diez, se llama «Estable». Falta mucho todavía, y lo decimos claro: un repaso a fondo de la documentación y la seguridad, un instalador que lo ponga sin inteligencia artificial, un panel para ver y configurar los proyectos, y la versión uno punto cero. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? Está en desenvolvemento, na versión cero punto nove punto un. A próxima, a cero punto dez, chámase «Estable». Falta moito aínda, e dicímolo claro: un repaso a fondo da documentación e da seguridade, un instalador que o poña sen intelixencia artificial, un panel para ver e configurar os proxectos, e a versión un punto cero. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, at version zero point nine point one. The next one, zero point ten, is called «Stable». A lot is still missing, and we say so plainly: a thorough review of documentation and security, an installer that sets it up without artificial intelligence, a panel to view and configure projects, and version one point zero. What changed most recently is in the What's new section, further down."
     },
     {
       "seccion": "resumen",

@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#E0703A",
   "icono": "proyectos/tarkor/icono.svg",
-  "actualizado": "2026-11-22",
+  "actualizado": "2026-11-26",
   "categoria": {
     "es": "Videojuego · RPG narrativo con IA local",
     "gl": "Videoxogo · RPG narrativo con IA local",
@@ -4024,6 +4024,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-26",
+      "texto": {
+        "es": "Sigue la ronda de pruebas jugando, con arreglos comprobados: el aviso de «objetivo cumplido» dice cuál fue, en una escena abierta el campo de texto explica qué puedes hacer, sin energía para una habilidad el combate lo avisa con texto visible y Gistera ya no nombra el clan Maktor al presentarse. El juego y su instalador ponen además al día su flujo de trabajo y sus dependencias.",
+        "gl": "Segue a rolda de probas xogando, con arranxos comprobados: o aviso de «obxectivo cumprido» di cal foi, nunha escena aberta o campo de texto explica que podes facer, sen enerxía para unha habilidade o combate avísao con texto visible e Gistera xa non nomea o clan Maktor ao presentarse. O xogo e o seu instalador poñen ademais ao día o seu fluxo de traballo e as súas dependencias.",
+        "en": "The play-testing round goes on, with fixes checked in play: the “objective achieved” notice says which one, in an open scene the text field explains what you can do, with no energy for a skill combat says so in visible text, and Gistera no longer names the Maktor clan when introducing herself. The game and its installer also update their workflow and dependencies."
+      }
+    },
     {
       "fecha": "2026-11-20",
       "texto": {

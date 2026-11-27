@@ -27,7 +27,34 @@
       "bitacora": "docs/traspaso.md",
       "roadmap": { "ruta": "docs/plan.md", "seccion": "## Fases (aprobadas el 2026-10-25)" }
     },
+    "Zeldris/galivelop-models": {
+      "destino": "proximamente",
+      "slug": "galivelop-models",
+      "roadmap": { "ruta": "docs/roadmap.md", "seccion": "# Roadmap" },
+      "etiquetas": true
+    },
     "Zeldris/galivelop-voice-generator": { "destino": "proximamente", "slug": "galivelop-voice-generator" },
+    "Zeldris/galivelop-forge": {
+      "destino": "proximamente",
+      "slug": "galivelop-forge",
+      "bitacora": "docs/handoff.md",
+      "roadmap": { "ruta": "docs/roadmap.md", "seccion": "# Roadmap de galivelop-forge" },
+      "etiquetas": true
+    },
+    "Zeldris/galivelop-runtime": {
+      "destino": "proximamente",
+      "slug": "galivelop-runtime",
+      "bitacora": "docs/handoff.md",
+      "roadmap": { "ruta": "docs/roadmap.md", "seccion": "# Roadmap: versiones de `grun`" },
+      "etiquetas": true
+    },
+    "Zeldris/galivelop-worlds": {
+      "destino": "proximamente",
+      "slug": "galivelop-worlds",
+      "bitacora": "docs/handoff.md",
+      "roadmap": { "ruta": "docs/plan.md", "seccion": "# Plan: versiones de galivelop-worlds" }
+    },
+    "Zeldris/galivelop-artifacts": { "destino": "ignorar", "motivo": "validador y formato común de artefactos (gart), solo en diseño: sin rama main, sin código y sin versión (rama claude/arranque, 2026-11-27); se reconsidera cuando publique su validador" },
     "Zeldris/galivelop-developer": { "destino": "ignorar", "motivo": "producto privado, ADR 0005, se mantiene a mano" },
     "Zeldris/Portal-Galivelop": { "destino": "ignorar", "motivo": "es este portal" },
     "Zeldris/Zeldris": { "destino": "ignorar", "motivo": "README del perfil de GitHub" },
