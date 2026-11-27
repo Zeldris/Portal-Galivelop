@@ -34,6 +34,19 @@ beforeAll(() => {
   writeFileSync(join(tmp, 'dist/404.html'), base);
   for (const f of ['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js', 'EntradaDiario-AbCd1234.js'])
     writeFileSync(join(tmp, 'dist/assets', f), '');
+  // Equipo importa IconoMarca, que importa Retrato; Lector va con import() y no se precarga.
+  const chunks: Record<string, string> = {
+    'Equipo-AbCd1234.js':
+      'import{a}from"./IconoMarca-AbCd1234.js";const l=()=>import("./Lector-AbCd1234.js");',
+    'IconoMarca-AbCd1234.js': 'import"./Retrato-AbCd1234.js";export const a=1;',
+    'Retrato-AbCd1234.js': 'export const r=1;',
+    'Lector-AbCd1234.js': '',
+  };
+  for (const [f, js] of Object.entries(chunks)) writeFileSync(join(tmp, 'dist/assets', f), js);
+  writeFileSync(
+    join(tmp, 'dist/assets/Proyecto-AbCd1234.js'),
+    'import{a}from"./IconoMarca-AbCd1234.js";',
+  );
   execFileSync('node', [join(RAIZ, 'scripts/paginas-estaticas.mjs')], { cwd: tmp, stdio: 'pipe' });
 }, 60_000);
 
@@ -315,6 +328,19 @@ describe('diario del taller', () => {
         expect(html).toContain('EntradaDiario-AbCd1234.js');
       }
     }
+  });
+
+  it('una página con LCP de texto precarga las dependencias estáticas de su chunk; una con imagen LCP, no', () => {
+    const precargados = (ruta: string) =>
+      [
+        ...leer(ruta).matchAll(/rel="modulepreload" crossorigin href="[^"]*assets\/([\w-]+\.js)"/g),
+      ].map((m) => m[1]);
+    expect(precargados('equipo')).toEqual([
+      'Equipo-AbCd1234.js',
+      'IconoMarca-AbCd1234.js',
+      'Retrato-AbCd1234.js',
+    ]);
+    expect(precargados('proyectos/tarkor')).toEqual(['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js']);
   });
 
   it('el cuerpo estático lleva la animación como lista ordenada de pasos y `código` como <code>', () => {

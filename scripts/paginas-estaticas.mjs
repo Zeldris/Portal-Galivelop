@@ -662,6 +662,26 @@ const imagenLcpAncho = (pg) => {
   const modo = p.cabecera ?? 'ilustracion';
   return modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
 };
+// Los chunks que importa de forma estática el de la página (y los de esos), salvo los que ya precarga index.html, en las
+// páginas cuyo LCP es texto pintado por React: sin
+// ellos el navegador los descubre al analizar el de la página, en una segunda vuelta de red (medido 2026-11-27 en
+// /equipo/, móvil con 4G lento: `IconoMarca`, `Retrato` e `iconos` llegaban después y el LCP esperaba). Los `import()`
+// dinámicos no entran: se cargan cuando hacen falta.
+const EN_INDEX = new Set([...base.matchAll(/assets\/([\w-]+\.js)/g)].map((m) => m[1]));
+const importsDe = (archivo) =>
+  [...readFileSync(`dist/assets/${archivo}`, 'utf8').matchAll(/(?:from|import)\s*["']\.\/([\w-]+\.js)["']/g)].map((m) => m[1]);
+function cierreModulos(raices) {
+  const vistos = new Set();
+  const pila = [...raices];
+  while (pila.length) {
+    const m = pila.pop();
+    if (vistos.has(m) || EN_INDEX.has(m)) continue;
+    vistos.add(m);
+    pila.push(...importsDe(m));
+  }
+  // Las raíces primero, en su orden; luego sus dependencias.
+  return [...raices.filter((r) => vistos.has(r)), ...[...vistos].filter((m) => !raices.includes(m)).sort()];
+}
 function precargas(pg) {
   const lineas = [];
   const img = imagenLcp(pg);
@@ -669,8 +689,11 @@ function precargas(pg) {
   // Con `imagesrcset` el navegador elige la misma versión que el `<img srcset>` de la ficha (src/pages/Proyecto.tsx).
   const versiones = conVersiones ? ` imagesrcset="${srcsetCabecera(img, conVersiones, (s) => BASE_404 + s)}" imagesizes="${SIZES_CABECERA}"` : '';
   if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versiones} fetchpriority="high" />`);
-  const modulos = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
-  for (const m of modulos) if (m) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
+  const raices = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
+  // Con imagen LCP precargada, solo los chunks de la página: más JS a la vez le quita ancho de banda a la imagen (medido
+  // 2026-11-27: la ficha de image-generator pasaba de 2,97 a 3,5 s con el cierre entero).
+  const modulos = img ? raices.filter(Boolean) : cierreModulos(raices.filter(Boolean));
+  for (const m of modulos) lineas.push(`<link rel="modulepreload" crossorigin href="${BASE_404}assets/${m}" />`);
   return lineas.join('\n    ');
 }
 
