@@ -283,8 +283,15 @@ En la ficha de un proyecto, quien figure en su `equipo` con el mismo nombre enla
 
 ## Diario del taller
 
-`/diario` es el diario del taller (Q-32): artículos largos sobre cómo se construye lo que hace Galivelop (decisiones, lo que
-se probó, lo que cambió), con el tono de [«Mensaje»](#mensaje): en llano, sin prometer lo que no existe. Cada entrada es
+`/diario` es el diario del taller (Q-32): entradas que **cualquiera puede leer**, sobre por qué hacemos las cosas como las
+hacemos, con el tono de [«Mensaje»](#mensaje): en llano, sin prometer lo que no existe. Lo técnico vive en la ficha de
+cada proyecto, no aquí. Normas (la persona, 2026-11-27; fuentes en [`investigacion/tono-del-diario.md`](investigacion/tono-del-diario.md)):
+
+- En primera persona y firmada; una sola idea por entrada; de 2 a 5 minutos de lectura.
+- Sin jerga, sin cifras de rendimiento y sin nombres de versiones ni de archivos. La única fecha es la de publicación.
+- Cuenta el porqué y lo que salió mal, no la lista de lo hecho; no vende. El detalle, con un enlace a la ficha.
+- Solo hechos que consten en el repo (ADR, retros, bitácora): no se inventan anécdotas ni citas de quien firma.
+ Cada entrada es
 `src/data/diario/<slug>.json` (el slug es su dirección, `/diario/<slug>`), que carga `src/data/diario.ts`; no hace falta tocar
 código. La más nueva sale primero. Campos:
 

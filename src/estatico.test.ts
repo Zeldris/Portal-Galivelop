@@ -369,7 +369,8 @@ describe('diario del taller', () => {
     ['gl/', 'gl'],
     ['en/', 'en'],
   ] as const;
-  const e = entradas[0];
+  // La entrada con animación: las demás son solo texto.
+  const e = entradas.find((x) => x.slug === 'como-dibujamos-el-relevo')!;
   const SITIO = 'https://zeldris.github.io/Portal-Galivelop/';
 
   it('cada entrada tiene su página por idioma, con su cuerpo, h2 por sección, autor enlazado y lectura', () => {
@@ -406,10 +407,9 @@ describe('diario del taller', () => {
     expect(precargados('proyectos/tarkor')).toEqual(['Proyecto-AbCd1234.js', 'tarkor-AbCd1234.js']);
   });
 
-  it('el cuerpo estático lleva la animación como lista ordenada de pasos y `código` como <code>', () => {
+  it('el cuerpo estático lleva la animación como lista ordenada de pasos, sin acentos graves sueltos', () => {
     const html = leer(`diario/${e.slug}`);
     expect(html).toMatch(/<figure><ol><li><strong>/);
-    expect(html).toContain('<code>');
     expect(html).not.toContain('`');
   });
 
@@ -440,11 +440,13 @@ describe('diario del taller', () => {
       const d = ld(`${prefijo}diario`);
       expect(d['@type']).toBe('Blog');
       expect(d.blogPost).toHaveLength(entradas.length);
-      expect(d.blogPost[0].url).toBe(`${SITIO}${prefijo}diario/${e.slug}/`);
-      expect(d.blogPost[0].datePublished).toBe(e.fecha);
-      expect(leer(`${prefijo}diario`)).toContain(
-        `<a href="${SITIO}${prefijo}diario/${e.slug}/">${e.titulo[i]}</a>`,
-      );
+      const nueva = entradas[0];
+      expect(d.blogPost[0].url).toBe(`${SITIO}${prefijo}diario/${nueva.slug}/`);
+      expect(d.blogPost[0].datePublished).toBe(nueva.fecha);
+      for (const x of entradas)
+        expect(leer(`${prefijo}diario`)).toContain(
+          `<a href="${SITIO}${prefijo}diario/${x.slug}/">${x.titulo[i]}</a>`,
+        );
     }
   });
 

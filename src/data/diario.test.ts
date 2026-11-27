@@ -125,7 +125,7 @@ describe('diario', () => {
   }
 });
 
-// El diario lo cuenta el taller en primera persona del plural: «la persona» es vocabulario interno del flujo (quien
+// El diario lo cuenta quien firma, en primera persona: «la persona» es vocabulario interno del flujo (quien
 // decide en la sesión) y no va en el texto público (revisión del bloque del diario, 6e28d10; retro 2026-11-26, P1).
 describe('vocabulario del diario', () => {
   const INTERNO = /\b(la persona|a persoa|da persoa|the person)\b/i;

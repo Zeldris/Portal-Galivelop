@@ -17,7 +17,7 @@ Vocabulario del portal Galivelop. Los términos de cada proyecto (Tarkor, toVeri
   colaboradores. Datos en `src/data/productos/<slug>.json`; estado `disponible` o `proximamente`. Los proyectos de
   código abierto (Galivelop-workflow, Galivelop IG) **no** son productos: su ficha dice que también se implantan
   ([ADR 0003](docs/adr/0003-codigo-abierto-e-implantacion.md), ajustada por la 0005).
-- **Diario**: el diario del taller (`/diario`), artículos largos sobre cómo se construye lo que hace Galivelop. Cada
+- **Diario**: el diario del taller (`/diario`), entradas en llano, para cualquier lector, sobre por qué se hacen las cosas como se hacen (lo técnico vive en las fichas). Cada
   **entrada** es un `src/data/diario/<slug>.json` (en `/diario/<slug>`), con autor del equipo, fecha, secciones y
   bloques, y los tres idiomas; no es una novedad ni una publicación del muro. Cómo añadir una: `docs/desarrollo.md#diario-del-taller`.
 - **Entrada** (del diario): ver «Diario».

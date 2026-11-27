@@ -14,7 +14,8 @@ import { EntradaDiario } from './EntradaDiario';
 import { Inicio } from './Inicio';
 import { NoEncontrado } from './NoEncontrado';
 
-const entrada = entradas[0];
+// La entrada con proyecto y animación: las demás no llevan ninguna de las dos cosas.
+const entrada = entradas.find((x) => x.slug === 'como-dibujamos-el-relevo')!;
 const autor = buscarPersonaPorId(entrada.autor)!;
 
 const envolver = (pagina: React.ReactNode, ubicacion: string, idioma: 'es' | 'gl' | 'en' = 'es') =>
@@ -131,7 +132,7 @@ describe('enlaces al diario', () => {
   it('la banda del inicio enlaza a la última entrada y al índice', () => {
     const html = envolver(<Inicio />, '/');
     expect(html).toContain('class="banda-diario"');
-    expect(html).toContain(`href="/diario/${entrada.slug}/"`);
+    expect(html).toContain(`href="/diario/${entradas[0].slug}/"`);
     expect(html).toContain('href="/diario/"');
   });
 });
