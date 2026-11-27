@@ -415,3 +415,10 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: ok, dejar galivelop-workflow (2,52 s) y los que rozan como están: el margen es de centésimas y cada arreglo cuesta una sesión
 - Answer: ok
 - Answered: 2026-11-27
+
+## Q-47
+- Refs: R-3
+- Status: open
+- Asked: 2026-11-27
+- Question: ¿Fusiono el LCP de image-generator y Developer (recorte cuadrado y sizes de la portada de producto, a403305) en claude/galivelop-dev-portal-1h89ci?
+- Recommendation: Sí, en cuanto el CI de la marca salga en verde: el diff está revisado, con check en verde, y la publicación del domingo lo recoge.
