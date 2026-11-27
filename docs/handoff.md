@@ -9,12 +9,12 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 | **Actualizado** | 2026-11-27 (precarga de las dependencias del chunk en las páginas con LCP de texto, en la rama) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-b5664d58-ozb4cv` (sigue a `ccr-1c3b5b63-tdttd6`, 3b46928) |
 | **Tarea en curso** | Ninguna. Presupuesto de compactaciones: 1 |
-| **Siguiente paso** | El LCP de las páginas con imagen (`pending.md`: portada, developer, toveriai, image-generator) y el CLS por cambio de fuente (lo prueba la persona). Para la próxima versión, R-8 y el tope de líneas de `pending.md`. En paralelo, los pedidos de audio e imágenes de 2026-11-24 (Q-22). |
+| **Siguiente paso** | El LCP de las páginas con imagen (`pending.md`: portada, developer, toveriai, image-generator) y el CLS por cambio de fuente (lo prueba la persona después del domingo). Para la próxima versión, R-8 y el tope de líneas de `pending.md`. En paralelo, los pedidos de audio e imágenes de 2026-11-24 (Q-22). |
 | **En `main`** | **Bloque «Siguiente» del roadmap** (2026-11-26, con confirmación de la persona; fases 1, 2 y 3): feed Atom de Novedades, imagen OG de cada producto, diario del taller (Q-32) y auditoría de rendimiento sobre la página estática; revisiones de bloque 6e28d10 (`Findings: 9`) y f5b5cba (`Findings: 3`), retro `docs/records/retro-2026-11-26-bloque-siguiente.md`. Antes: **Bloque «Ahora» del roadmap** (2026-11-26, con confirmación de la persona: «1. Si»; fases 1, 2 y 3): R-1 a R-6 y R-3b, revisión de bloque ea2f08e (`Findings: 0`), retro `docs/records/retro-2026-11-26-bloque-ahora.md`. Antes: requisitos mínimos de los productos y auditoría de marca, front y tokens (2026-11-25, retro `docs/records/retro-2026-11-25-main.md`); productos (e2c9b9b, 2026-11-24) |
 | **Tests** | `npm run check`: tsc 0 errores, `prettier --check` de `src/`, vitest y `tools/qa/tests/test-ganchos.sh`. `npm run build` correcto (57 páginas estáticas, sitemap, robots, llms y feeds) |
 
 ### Para la próxima publicación
-- 2026-11-27 · Precarga de las dependencias del chunk en las páginas con LCP de texto (código; revisado en la sesión, sin hallazgos de peso; con su marca).
+- 2026-11-27 · Precarga de las dependencias del chunk en las páginas con LCP de texto (código; revisado en la sesión, sin hallazgos de peso; con su marca; CI en verde en 6df673f; fusionado en `claude/galivelop-dev-portal-1h89ci` con confirmación de la persona, 2026-11-27: «1. Si»). CLS por cambio de fuente: lo prueba la persona después del domingo («2. Ok»).
 
 La web se publica los domingos a las 20:45 (hora de Madrid) con la tarea programada «Proyectos semanal» (ver `AGENTS.md`).
 Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
