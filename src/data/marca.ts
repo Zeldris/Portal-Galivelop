@@ -30,3 +30,17 @@ export const SIZES_CABECERA = '100vw';
 export function srcsetCabecera(src: string, ancho: number, ruta: (s: string) => string): string {
   return `${ruta(src.replace(/\.webp$/, '-movil.webp'))} ${ANCHO_MOVIL}w, ${ruta(src)} ${ancho}w`;
 }
+/** Ancho de la miniatura de una portada (`<nombre>-mini.webp`). */
+export const ANCHO_MINI = 720;
+/** La portada de la página de producto: columna de 560 px en escritorio, todo el ancho en móvil. */
+export const SIZES_PORTADA_PRODUCTO = '(min-width: 860px) 560px, 100vw';
+/**
+ * `srcset` de la portada de una página de producto: su miniatura (720 px), su versión móvil (960 px, la que elige un móvil
+ * de doble densidad; sin ella bajaba el original) y el original (`ancho` px).
+ */
+export function srcsetPortadaProducto(
+  portada: { src: string; mini: string; ancho: number },
+  ruta: (s: string) => string,
+): string {
+  return `${ruta(portada.mini)} ${ANCHO_MINI}w, ${srcsetCabecera(portada.src, portada.ancho, ruta)}`;
+}

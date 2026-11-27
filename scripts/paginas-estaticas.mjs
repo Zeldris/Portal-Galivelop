@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { estiloAcento } from '../src/data/tonos.ts';
-import { ANCHO_ESTADO, MARCA, PORTADA_ESTADO, SIZES_CABECERA, srcsetCabecera } from '../src/data/marca.ts';
+import { ANCHO_ESTADO, MARCA, PORTADA_ESTADO, SIZES_CABECERA, SIZES_PORTADA_PRODUCTO, srcsetCabecera, srcsetPortadaProducto } from '../src/data/marca.ts';
 import { muroVisible } from '../src/data/muro-umbral.ts';
 import { textos } from '../src/i18n/textos.ts';
 import { paginaDeSegmentos } from '../src/rutas.ts';
@@ -520,6 +520,10 @@ function cuerpo(pg) {
     const colabora = m.colabora ? `<p>${esc(m.colabora.texto[pg.idioma])} <a href="mailto:${m.colabora.correo}">${esc(m.colabora.correo)}</a></p>` : '';
     return `<main id="contenido" class="contenedor" data-estatico><h1>${esc(m.nombre)}</h1><p>${esc(m.rol[pg.idioma])}</p><p>${esc(m.bio[pg.idioma])}</p>${suyos ? `<ul>${suyos}</ul>` : ''}${productosSuyos ? `<h2>${esc(TITULO_PRODUCTOS[pg.idioma])}</h2><ul>${productosSuyos}</ul>` : ''}${colabora}<p><a href="${urlDe(pg.idioma, 'equipo')}">${esc(FIJAS.equipo[pg.idioma][0])}</a></p><ul>${enlaces}</ul></main>`;
   }
+  // Portada: el bloque celeste con sus isobatas, como src/pages/Inicio.tsx, fuera de lo oculto (ver la ficha, abajo).
+  if (pg.ruta === '') {
+    return `<main id="contenido"><section class="hero" data-guion="cabecera" data-cabecera-estatica><img class="hero-fondo" src="${BASE_404}marca/isobatas.svg" alt="" aria-hidden="true" /><div class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></div></section></main>`;
+  }
   if (!p) return `<main id="contenido" class="contenedor" data-estatico><h1>${h1De(pg)}</h1><p>${esc(pg.descripcion)}</p><ul>${enlaces}</ul></main>`;
   const ext = p.enlaces.map((e) => `<li><a href="${e.url}">${esc(e.etiqueta[pg.idioma])}</a></li>`).join('');
   // Animaciones paso a paso: sin JS no hay dibujo, pero cada paso queda leído (título y narración) en una lista.
@@ -655,12 +659,18 @@ const imagenLcp = (pg) => {
   const modo = p.cabecera ?? 'ilustracion';
   return modo === 'color' ? PORTADA_ESTADO[p.estado] : modo === 'captura' ? 'marca/isobatas.svg' : p.portada.src;
 };
-// Ancho del original cuando la imagen de la cabecera tiene versión móvil (las portadas de ficha y las de estado).
-const imagenLcpAncho = (pg) => {
+// `imagesrcset`/`imagesizes` de la precarga: los mismos que el `<img>` de la app, para que el navegador baje la misma
+// versión (las portadas de ficha y las de estado, src/pages/Proyecto.tsx; la de producto, src/pages/Producto.tsx).
+// Sin ellos, en /productos/galivelop-developer/ se precargaba el original (245 KB) y React pintaba la miniatura.
+const versionesLcp = (pg, img) => {
+  const enBase = (s) => BASE_404 + s;
+  const portada = pg.producto?.pagina.portada;
+  if (portada) return ` imagesrcset="${srcsetPortadaProducto(portada, enBase)}" imagesizes="${SIZES_PORTADA_PRODUCTO}"`;
   const p = pg.proyecto;
-  if (!p || pg.producto) return undefined;
+  if (!p) return '';
   const modo = p.cabecera ?? 'ilustracion';
-  return modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
+  const ancho = modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
+  return ancho ? ` imagesrcset="${srcsetCabecera(img, ancho, enBase)}" imagesizes="${SIZES_CABECERA}"` : '';
 };
 // Los chunks que importa de forma estática el de la página (y los de esos), salvo los que ya precarga index.html, en las
 // páginas cuyo LCP es texto pintado por React: sin ellos el navegador los descubre al analizar el de la página, en una
@@ -684,10 +694,7 @@ function cierreModulos(raices) {
 function precargas(pg) {
   const lineas = [];
   const img = imagenLcp(pg);
-  const conVersiones = imagenLcpAncho(pg);
-  // Con `imagesrcset` el navegador elige la misma versión que el `<img srcset>` de la ficha (src/pages/Proyecto.tsx).
-  const versiones = conVersiones ? ` imagesrcset="${srcsetCabecera(img, conVersiones, (s) => BASE_404 + s)}" imagesizes="${SIZES_CABECERA}"` : '';
-  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versiones} fetchpriority="high" />`);
+  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versionesLcp(pg, img)} fetchpriority="high" />`);
   const raices = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
   // Con imagen LCP precargada, solo los chunks de la página: más JS a la vez le quita ancho de banda a la imagen (medido
   // 2026-11-27: la ficha de image-generator pasaba de 2,97 a 3,5 s con el cierre entero).

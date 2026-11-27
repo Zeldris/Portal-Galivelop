@@ -51,12 +51,13 @@
       html:not([data-tema='oscuro']) .tema-estatico-claro {
         display: none;
       }
-      /* Cabecera estática de la ficha: su portada se ve sin esperar al JS. En móvil la cabecera de la app mide lo que su
-         texto (464-572 px en las fichas con más contenido); con esta altura mínima la portada estática ya ocupa lo que
+      /* Cabecera estática (ficha y portada): su imagen se ve sin esperar al JS. En móvil la cabecera de la app mide lo
+         que su texto (464-835 px); con la pantalla entera de alto, la imagen estática ya ocupa todo lo visible que
          ocupará la de React y el LCP no salta a la imagen que la sustituye. Desaparece con el montaje. */
       @media (max-width: 68.75em) {
-        .proyecto-cabecera[data-cabecera-estatica] {
-          min-height: 575px;
+        .proyecto-cabecera[data-cabecera-estatica],
+        .hero[data-cabecera-estatica] {
+          min-height: 100svh;
         }
       }
       html.js [data-estatico] {

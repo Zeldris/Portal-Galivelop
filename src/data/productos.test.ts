@@ -86,7 +86,11 @@ describe('productos de cada miembro (ADR 0004)', () => {
       expect(g.pasos).toHaveLength(4);
       expect(g.lema.length).toBeGreaterThan(0);
       if (g.portada)
-        for (const f of [g.portada.src, g.portada.mini])
+        for (const f of [
+          g.portada.src,
+          g.portada.mini,
+          g.portada.src.replace(/\.webp$/, '-movil.webp'),
+        ])
           expect(existsSync(`public/${f}`), f).toBe(true);
       for (const fig of g.figuras ?? []) {
         expect(fig.ancho).toBeGreaterThan(0);

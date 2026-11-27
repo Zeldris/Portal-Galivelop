@@ -143,6 +143,27 @@ describe('páginas estáticas', () => {
     expect(ficha).toContain('<article class="proyecto" style="--acento-proyecto:');
   });
 
+  it('la portada lleva el hero con sus isobatas fuera de lo oculto, con el markup de la app', () => {
+    for (const prefijo of ['', 'gl', 'en']) {
+      const html = leer(prefijo);
+      const hero = html.slice(
+        html.indexOf('<section class="hero"'),
+        html.indexOf('</section>', html.indexOf('<section class="hero"')),
+      );
+      expect(hero, prefijo).toContain('data-cabecera-estatica');
+      expect(hero).toContain(
+        '<img class="hero-fondo" src="/Portal-Galivelop/marca/isobatas.svg" alt="" aria-hidden="true" />',
+      );
+      expect(hero.indexOf('data-estatico')).toBeGreaterThan(hero.indexOf('<img'));
+    }
+  });
+
+  it('la precarga de la portada de producto lleva el mismo srcset y sizes que la app', () => {
+    expect(leer('productos/galivelop-developer')).toContain(
+      '<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/galivelop-developer/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/galivelop-developer/portada-mini.webp 720w, /Portal-Galivelop/proyectos/galivelop-developer/portada-movil.webp 960w, /Portal-Galivelop/proyectos/galivelop-developer/portada.webp 1600w" imagesizes="(min-width: 860px) 560px, 100vw" fetchpriority="high" />',
+    );
+  });
+
   it('precargan la imagen de cabecera, y el trozo de la ficha', () => {
     const ficha = leer('proyectos/tarkor');
     expect(ficha).toContain(

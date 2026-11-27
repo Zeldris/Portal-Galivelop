@@ -20,11 +20,14 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   `capturas.cjs` y `medir-paginas.cjs` siguen midiendo la portada si la ruta va sin barra final (usar
   `pagina-estatica.cjs`); `BASE` sin barra final forma mal las URL (`new URL(ruta, BASE)`); el filtro del sitemap deja
   las portadas `gl/` y `en/` (confirmar si es a propósito).
-- **LCP móvil por encima de 2,5 s** (2026-11-27, todas las rutas con `auditar:rendimiento` sobre la estática; las de texto
-  bajaron al precargar las dependencias de su chunk, ver bitácora). Siguen por encima, todas con imagen LCP: portada
-  `/` 2,7-2,9 s (y `/gl/`, `/en/`; `isobatas.svg`), `/productos/galivelop-developer/` 3,3 s (`portada.webp` sin versión
-  móvil; TBT 356 ms, el único por encima de 200), `/proyectos/toveriai/` 3,0 s (isobatas; CLS 0,055) y
-  `/proyectos/galivelop-image-generator/` 3,0 s. Rozan: `/equipo/alvaro-garcia-grana/` 2,4-2,5 s, novedades 2,3-2,5 s.
+- **LCP móvil por encima de 2,5 s** (2026-11-27, `auditar:rendimiento` sobre la estática, móvil con 4G lento). Arreglado
+  el mismo día: portada `/` (y gl, en) 2,7 → 0,95 s y toveriai 3,0 → 0,96 s (hero estático y cabecera estática de
+  pantalla completa en móvil), Developer 3,3 → 2,7 s (precarga con el `srcset` de la app y versión móvil de 960 px).
+  Siguen por encima: `/proyectos/galivelop-image-generator/` 3,0 s (ancho de banda: su `portada-movil.webp` pesa 138 KB;
+  bajaría con un recorte vertical para móvil o menos calidad, decisión de imagen de la persona),
+  `/productos/galivelop-developer/` 2,7 s (la portada la pinta React: haría falta su cabecera en el HTML estático con el
+  mismo alto de texto, o la imagen se mueve al montar) y `/proyectos/galivelop-workflow/` 2,52 s. Rozan: perfiles del
+  equipo 2,3-2,4 s, novedades y unirse 2,4 s.
 - **CLS por cambio de fuente** (2026-11-27): con React montando antes, el texto se pinta con la de respaldo y salta al
   llegar Literata (`/equipo/` 0,046, `/productos/` 0,043; límite 0,1; antes 0). Arreglo propuesto: `@font-face` de
   respaldo con `size-adjust`/`ascent-override` sobre Georgia; depende de las fuentes de cada equipo y no se prueba en el
