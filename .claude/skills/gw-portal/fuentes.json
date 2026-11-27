@@ -25,7 +25,8 @@
       "destino": "ficha",
       "slug": "galivelop-image-generator",
       "bitacora": "docs/traspaso.md",
-      "roadmap": { "ruta": "docs/plan.md", "seccion": "## Fases (aprobadas el 2026-10-25)" }
+      "roadmap": { "ruta": "docs/plan.md", "seccion": "## Fases (aprobadas el 2026-10-25)" },
+      "etiquetas": true
     },
     "Zeldris/galivelop-models": {
       "destino": "proximamente",
@@ -33,7 +34,12 @@
       "roadmap": { "ruta": "docs/roadmap.md", "seccion": "# Roadmap" },
       "etiquetas": true
     },
-    "Zeldris/galivelop-voice-generator": { "destino": "proximamente", "slug": "galivelop-voice-generator" },
+    "Zeldris/galivelop-voice-generator": {
+      "destino": "proximamente",
+      "slug": "galivelop-voice-generator",
+      "bitacora": "docs/handoff.md",
+      "roadmap": { "ruta": "docs/plan.md", "seccion": "## Versiones (aprobadas el 2026-11-17)" }
+    },
     "Zeldris/galivelop-forge": {
       "destino": "proximamente",
       "slug": "galivelop-forge",
@@ -54,7 +60,8 @@
       "bitacora": "docs/handoff.md",
       "roadmap": { "ruta": "docs/plan.md", "seccion": "# Plan: versiones de galivelop-worlds" }
     },
-    "Zeldris/galivelop-artifacts": { "destino": "ignorar", "motivo": "validador y formato común de artefactos (gart), solo en diseño: sin rama main, sin código y sin versión (rama claude/arranque, 2026-11-27); se reconsidera cuando publique su validador" },
+    "Zeldris/galivelop-artifacts": { "destino": "ignorar", "motivo": "validador y formato común de artefactos (gart), solo en diseño: main solo con la plantilla y el ADR, sin código y sin versión; el diseño avanza en la rama claude/arranque (2026-11-27); se reconsidera cuando publique su validador" },
+    "Zeldris/galivelop-watch": { "destino": "ignorar", "motivo": "gvwatch, informe de los registros de vigilancia de gvc: solo diseño (README y borrador del DDD), sin código ni versión (2026-11-27); se reconsidera cuando tenga código o versión" },
     "Zeldris/galivelop-developer": { "destino": "ignorar", "motivo": "producto privado, ADR 0005, se mantiene a mano" },
     "Zeldris/Portal-Galivelop": { "destino": "ignorar", "motivo": "es este portal" },
     "Zeldris/Zeldris": { "destino": "ignorar", "motivo": "README del perfil de GitHub" },

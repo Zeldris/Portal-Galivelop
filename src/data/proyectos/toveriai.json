@@ -8,7 +8,7 @@
   "cabecera": "captura",
   "icono": "proyectos/toveriai/icono.png",
   "contacto": "web.admin.toveriai@gmail.com",
-  "actualizado": "2026-11-22",
+  "actualizado": "2026-11-27",
   "categoria": {
     "es": "Plataforma web · Verificación de noticias con IA",
     "gl": "Plataforma web · Verificación de novas con IA",
@@ -699,6 +699,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-25",
+      "texto": {
+        "es": "Trabajo de fondo: puesta al día de las herramientas internas de trabajo y barrido de pequeños fallos pendientes, para mantener el proyecto ordenado y estable.",
+        "gl": "Traballo de fondo: posta ao día das ferramentas internas de traballo e varrido de pequenos fallos pendentes, para manter o proxecto ordenado e estable.",
+        "en": "Behind the scenes: the internal working tools were brought up to date and small pending bugs were swept up, to keep the project tidy and stable."
+      }
+    },
     {
       "fecha": "2026-11-21",
       "texto": {

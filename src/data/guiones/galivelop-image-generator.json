@@ -1,11 +1,11 @@
 {
   "pagina": "/proyectos/galivelop-image-generator",
   "audio": ["es"],
-  "narra": "2026-11-26",
+  "narra": "2026-11-27",
   "notas": [
     "Pronunciación: «Galivelop» como ga-li-ve-LOP; «IG» letra a letra, «i-ge»; «Steam Deck» a la inglesa (estim dek); «FLUX» a la inglesa (flacs); «Vulkan» a la inglesa (vál-kan); «World-Maker-Fantasy» a la inglesa (uérld méiker fántasi); «Python» a la inglesa (páizon); «MIT» no se lee: se dice «licencia abierta».",
     "«narra» es el «actualizado» de la ficha. El trozo «vistazo» cuenta la versión y lo que falta, no la última novedad (cambia cada semana); las novedades se invitan a leer, no se narran.",
-    "Envejece con cada versión (hoy la cero punto seis publicada y la cero punto ocho terminada, con la pieza de marca, pero aún sin publicar; lo siguiente, la nota y el descarte, la cero punto nueve) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
+    "Envejece con cada versión (hoy la cero punto ocho publicada, con la hoja de marca y la pieza de marca; lo siguiente, la nota y el descarte, la cero punto nueve) y con lo que falta comprobar a mano. Sin número de tests ni de rondas."
   ],
   "trozos": [
     {
@@ -16,9 +16,9 @@
     },
     {
       "seccion": "vistazo",
-      "es": "¿En qué punto está? Está en desarrollo, con el código abierto. La última versión publicada es la cero punto seis, y la cero punto ocho, con la hoja de marca y la pieza de marca, ya está terminada y a falta de publicarse. Lo siguiente es la nota y el descarte, la versión cero punto nueve. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
-      "gl": "En que punto está? Está en desenvolvemento, co código aberto. A última versión publicada é a cero punto seis, e a cero punto oito, coa folla de marca e a peza de marca, xa está rematada e á espera de publicarse. O seguinte é a nota e o descarte, a versión cero punto nove. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
-      "en": "Where does it stand? It is in development, with open code. The latest published version is zero point six, and zero point eight, with the brand sheet and the brand piece, is already finished and waiting to be published. Next comes the note and discard, version zero point nine. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the What's new section, further down."
+      "es": "¿En qué punto está? Está en desarrollo, con el código abierto. La última versión publicada es la cero punto ocho, con la hoja de marca y la pieza de marca. Lo siguiente es la nota y el descarte, la versión cero punto nueve. Y faltan cosas importantes, y lo contamos igual: comprobar a mano en la Steam Deck el recorrido completo de la interfaz, y probar el servicio con el juego World-Maker-Fantasy. Lo último que ha cambiado lo tienes en las novedades, más abajo.",
+      "gl": "En que punto está? Está en desenvolvemento, co código aberto. A última versión publicada é a cero punto oito, coa folla de marca e a peza de marca. O seguinte é a nota e o descarte, a versión cero punto nove. E faltan cousas importantes, e contámolo igual: comprobar a man na Steam Deck o percorrido completo da interface, e probar o servizo co xogo World-Maker-Fantasy. O último que cambiou tenolo nas novidades, máis abaixo.",
+      "en": "Where does it stand? It is in development, with open code. The latest published version is zero point eight, with the brand sheet and the brand piece. Next comes the note and discard, version zero point nine. Important things are still missing, and we tell you anyway: checking by hand on the Steam Deck the full path through the interface, and testing the service with the game World-Maker-Fantasy. What changed most recently is in the What's new section, further down."
     },
     {
       "seccion": "resumen",

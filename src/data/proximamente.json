@@ -52,13 +52,13 @@
       "en": "The shared core of the local generators: queue, turns and a shared machine lock."
     },
     "fases": {
-      "hechas": 2,
+      "hechas": 4,
       "total": 7
     },
     "siguiente": {
-      "es": "la copia para cada generador",
-      "gl": "a copia para cada xerador",
-      "en": "the copy for each generator"
+      "es": "el turno compartido de Ollama",
+      "gl": "a quenda compartida de Ollama",
+      "en": "the shared Ollama turn"
     }
   },
   {
@@ -76,9 +76,9 @@
       "total": 7
     },
     "siguiente": {
-      "es": "los mapas por semilla",
-      "gl": "os mapas por semente",
-      "en": "seed-based maps"
+      "es": "los mapas importados, con su topología",
+      "gl": "os mapas importados, coa súa topoloxía",
+      "en": "imported maps with their topology"
     }
   },
   {

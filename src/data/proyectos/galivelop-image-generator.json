@@ -6,7 +6,7 @@
   "estado": "desarrollo",
   "acento": "#7C5CD6",
   "icono": "proyectos/galivelop-image-generator/icono.svg",
-  "actualizado": "2026-11-26",
+  "actualizado": "2026-11-27",
   "categoria": {
     "es": "Servicio local de generación de imágenes",
     "gl": "Servizo local de xeración de imaxes",
@@ -30,9 +30,9 @@
     }
   },
   "fase": {
-    "es": "En desarrollo · v0.6.0 · próxima: nota y descarte",
-    "gl": "En desenvolvemento · v0.6.0 · próxima: nota e descarte",
-    "en": "In development · v0.6.0 · next: note and discard"
+    "es": "En desarrollo · v0.8.0 · próxima: nota y descarte",
+    "gl": "En desenvolvemento · v0.8.0 · próxima: nota e descarte",
+    "en": "In development · v0.8.0 · next: note and discard"
   },
   "etiquetas": [
     {
@@ -76,11 +76,11 @@
     },
     {
       "tipo": "otro",
-      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.6.0",
+      "url": "https://github.com/Zeldris/galivelop-image-generator/releases/tag/v0.8.0",
       "etiqueta": {
-        "es": "Ver la versión 0.6.0",
-        "gl": "Ver a versión 0.6.0",
-        "en": "View version 0.6.0"
+        "es": "Ver la versión 0.8.0",
+        "gl": "Ver a versión 0.8.0",
+        "en": "View version 0.8.0"
       }
     }
   ],
@@ -1178,6 +1178,14 @@
     }
   ],
   "novedades": [
+    {
+      "fecha": "2026-11-27",
+      "texto": {
+        "es": "Publicadas las versiones 0.7.0 y 0.8.0: la hoja de marca como datos y la pieza de marca ya se pueden descargar desde GitHub.",
+        "gl": "Publicadas as versións 0.7.0 e 0.8.0: a folla de marca como datos e a peza de marca xa se poden descargar desde GitHub.",
+        "en": "Versions 0.7.0 and 0.8.0 are out: the brand sheet as data and the brand piece can now be downloaded from GitHub."
+      }
+    },
     {
       "fecha": "2026-11-26",
       "texto": {
