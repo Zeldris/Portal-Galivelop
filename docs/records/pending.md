@@ -27,7 +27,7 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
   bajaría con un recorte vertical para móvil o menos calidad, decisión de imagen de la persona),
   `/productos/galivelop-developer/` 2,7 s (la portada la pinta React: haría falta su cabecera en el HTML estático con el
   mismo alto de texto, o la imagen se mueve al montar) y `/proyectos/galivelop-workflow/` 2,52 s. Rozan: perfiles del
-  equipo 2,3-2,4 s, novedades y unirse 2,4 s. Decidido (Q-44 a Q-46, 2026-11-27): cabecera estática de Developer y recorte vertical de image-generator; workflow y los que rozan se dejan.
+  equipo 2,3-2,4 s, novedades y unirse 2,4 s. Decidido (Q-44 a Q-46, 2026-11-27): cabecera estática de Developer y recorte vertical de image-generator; workflow y los que rozan se dejan. Hecho (2026-11-27, `ccr-b5664d58-ozb4cv`): image-generator 3,0 → 2,32 s con `portada-cuadrada.webp` (540 × 540, 79 KB) para teléfonos; Developer 2,72 → 2,65 s con `sizes` de `calc(100vw - 32px)` (baja la miniatura de 63 KB). La cabecera estática de Developer se probó y se quitó: 2,71 frente a 2,72 s (sin ganancia) y CLS 0,018 al llegar Literata. Developer sigue en 2,65 s (JS y fuentes compiten por la red).
 - **CLS por cambio de fuente** (2026-11-27): con React montando antes, el texto se pinta con la de respaldo y salta al
   llegar Literata (`/equipo/` 0,046, `/productos/` 0,043; límite 0,1; antes 0). Arreglo propuesto: `@font-face` de
   respaldo con `size-adjust`/`ascent-override` sobre Georgia; depende de las fuentes de cada equipo y no se prueba en el

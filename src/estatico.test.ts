@@ -160,7 +160,7 @@ describe('páginas estáticas', () => {
 
   it('la precarga de la portada de producto lleva el mismo srcset y sizes que la app', () => {
     expect(leer('productos/galivelop-developer')).toContain(
-      '<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/galivelop-developer/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/galivelop-developer/portada-mini.webp 720w, /Portal-Galivelop/proyectos/galivelop-developer/portada-movil.webp 960w, /Portal-Galivelop/proyectos/galivelop-developer/portada.webp 1600w" imagesizes="(min-width: 860px) 560px, 100vw" fetchpriority="high" />',
+      '<link rel="preload" as="image" href="/Portal-Galivelop/proyectos/galivelop-developer/portada.webp" imagesrcset="/Portal-Galivelop/proyectos/galivelop-developer/portada-mini.webp 720w, /Portal-Galivelop/proyectos/galivelop-developer/portada-movil.webp 960w, /Portal-Galivelop/proyectos/galivelop-developer/portada.webp 1600w" imagesizes="(min-width: 860px) 560px, calc(100vw - 32px)" fetchpriority="high" />',
     );
   });
 
@@ -193,6 +193,31 @@ describe('páginas estáticas', () => {
         expect(() => readFileSync(join(RAIZ, 'public', movil))).not.toThrow();
       }
     }
+  });
+
+  it('la portada con recorte cuadrado lo da a los teléfonos en el <picture> y en una precarga aparte, y el archivo es de 540 × 540', () => {
+    for (const prefijo of ['', 'gl/', 'en/']) {
+      const html = leer(`${prefijo}proyectos/galivelop-image-generator`);
+      const cuadrada =
+        '/Portal-Galivelop/proyectos/galivelop-image-generator/portada-cuadrada.webp';
+      expect(html, prefijo).toContain(
+        `<picture><source media="(max-width: 480px)" srcset="${cuadrada}" /><img class="proyecto-fondo"`,
+      );
+      expect(html).toContain(
+        `<link rel="preload" as="image" href="${cuadrada}" media="(max-width: 480px)" fetchpriority="high" />`,
+      );
+      // La otra precarga se excluye en los teléfonos: si no, bajarían las dos.
+      expect(html).toContain(
+        'imagesizes="100vw" media="not all and (max-width: 480px)" fetchpriority="high" />',
+      );
+    }
+    const b = readFileSync(
+      join(RAIZ, 'public/proyectos/galivelop-image-generator/portada-cuadrada.webp'),
+    );
+    expect(b.toString('ascii', 12, 16)).toBe('VP8 ');
+    expect([b.readUInt16LE(26) & 0x3fff, b.readUInt16LE(28) & 0x3fff]).toEqual([540, 540]);
+    // Sin `cuadrada`, ni <source> ni `media`.
+    expect(leer('proyectos/tarkor')).not.toMatch(/<source|media="/);
   });
 
   it('el ancho que declara el preload es el del original (no el de la versión móvil)', () => {
