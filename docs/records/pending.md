@@ -7,10 +7,6 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
 - **Roadmap de la web** (la persona, 2026-11-25, Q-30 a Q-34). **Ahora** (Q-31, hecho y en `main` el 2026-11-26): R-1 aviso del check por fecha del guion; R-2 muro oculto hasta 3 piezas (Q-33); R-3 LCP de fichas en móvil (`srcset`/miniatura de portada, `width`/`height` del menú); R-4 barrido de `global.css` (R2 de la retro); R-5 colores forzados (`forced-colors`;
   seguir el tema del sistema descartado, Q-36: b); R-6 `global.css` partido por página. **Siguiente:** ~~feed RSS/Atom de Novedades~~ (hecho el 2026-11-26, Atom por idioma, en la rama); ~~diario del taller~~ (Q-32, hecho el 2026-11-26 según el prototipo aprobado con Q-37 a Q-42, en la rama; `docs/tasks/diario.md`); ~~imagen OG propia de cada producto~~ (hecho el 2026-11-26, en la rama).
   **Más adelante:** analítica sin cookies con GoatCounter (Q-34; falta que la persona cree la cuenta y el código del sitio, y el texto de privacidad); CSP, `security.txt` y créditos; calidad del front (webkit/firefox, paridad de tokens). **Dominio propio** (Q-30): sí, pero aún queda mucho; no se aplica por ahora.
-- **R-7 barrido de `src/estilos/leer-estilos.ts`** (retro 2026-11-26, P2, para la próxima versión), cierra:
-  - `hojasDeEstilos()` acepta `@import` con comillas dobles (hoy se salta sin aviso);
-  - falla con 0 hojas;
-  - falla si una hoja de `src/estilos/` no está en `global.css` (comparar con `readdirSync`).
 - **`recorrido.cjs` con `/Portal-Galivelop/` fijo** (R-8, leve): al leer el sitemap usar `rutasDelSitemap` de `tools/qa/pagina-estatica.cjs`.
 - **LCP móvil por encima de 2,5 s** (2026-11-27, `auditar:rendimiento` sobre la estática, móvil con 4G lento). Arreglado
   el mismo día: portada `/` (y gl, en) 2,7 → 0,95 s y toveriai 3,0 → 0,96 s (hero estático y cabecera estática de
