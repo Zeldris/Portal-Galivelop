@@ -391,21 +391,27 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-44
 - Refs: R-3
-- Status: open
+- Status: answered
 - Asked: 2026-11-27
 - Question: Siguiente del LCP: ¿cabecera de /productos/galivelop-developer/ en el HTML estático (a) o se deja en 2,7 s (b)?
 - Recommendation: a) empezar ya la cabecera estática de Developer, en una sesión nueva (esta ya gastó su presupuesto de compactaciones)
+- Answer: a
+- Answered: 2026-11-27
 
 ## Q-45
 - Refs: R-3
-- Status: open
+- Status: answered
 - Asked: 2026-11-27
 - Question: image-generator (3,0 s, portada-movil.webp de 138 KB): ¿recorte vertical para móvil (a), menos calidad (b) o se deja (c)?
 - Recommendation: a) recorte vertical para móvil de portada-movil.webp (mejor que bajar calidad: la imagen se ve igual de nítida)
+- Answer: a
+- Answered: 2026-11-27
 
 ## Q-46
 - Refs: R-3
-- Status: open
+- Status: answered
 - Asked: 2026-11-27
 - Question: ¿Se dejan galivelop-workflow (2,52 s) y las páginas que rozan (2,3-2,4 s) sin tocar?
 - Recommendation: ok, dejar galivelop-workflow (2,52 s) y los que rozan como están: el margen es de centésimas y cada arreglo cuesta una sesión
+- Answer: ok
+- Answered: 2026-11-27
