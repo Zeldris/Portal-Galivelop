@@ -436,7 +436,9 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 
 ## Q-49
 - Refs: Q-32
-- Status: open
+- Status: answered
 - Asked: 2026-11-27
 - Question: Diario: ¿doy por buenas las siete entradas (seis nuevas y la del relevo reescrita) para publicarlas a tu nombre?
 - Recommendation: Leerlas antes (están en castellano en un solo archivo) y contestar «ok» o qué cambia: van en primera persona y a tu nombre. Con el ok, las fusiono en la rama de publicación y salen el domingo; si las quieres hoy, dilo y las subo a main.
+- Answer: Sí: se fusionan en la rama de publicación y salen el domingo
+- Answered: 2026-11-27
