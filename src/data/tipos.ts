@@ -18,6 +18,11 @@ export interface Imagen {
   ancho: number;
   alto: number;
   alt: Texto;
+  /**
+   * Hay `<nombre>-cuadrada.webp` (el centro, 540 × 540; `node scripts/miniatura-webp.mjs --cuadrada <portada.webp>`):
+   * en la cabecera de la ficha la eligen los teléfonos (`MEDIA_CUADRADA`), que solo ven ese trozo y bajan la mitad.
+   */
+  cuadrada?: boolean;
 }
 
 export interface Enlace {

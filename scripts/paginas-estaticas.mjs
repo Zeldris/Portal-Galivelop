@@ -5,7 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { estiloAcento } from '../src/data/tonos.ts';
-import { ANCHO_ESTADO, MARCA, PORTADA_ESTADO, SIZES_CABECERA, SIZES_PORTADA_PRODUCTO, srcsetCabecera, srcsetPortadaProducto } from '../src/data/marca.ts';
+import { ANCHO_ESTADO, MARCA, MEDIA_CUADRADA, PORTADA_ESTADO, SIZES_CABECERA, SIZES_PORTADA_PRODUCTO, cuadradaDe, srcsetCabecera, srcsetPortadaProducto } from '../src/data/marca.ts';
 import { muroVisible } from '../src/data/muro-umbral.ts';
 import { textos } from '../src/i18n/textos.ts';
 import { paginaDeSegmentos } from '../src/rutas.ts';
@@ -534,9 +534,12 @@ function cuerpo(pg) {
   const fondo = modo === 'color' ? PORTADA_ESTADO[p.estado] : undefined;
   const srcFondo = modo === 'ilustracion' ? p.portada.src : fondo;
   const ancho = modo === 'ilustracion' ? p.portada.ancho : ANCHO_ESTADO;
-  const imgFondo = srcFondo
-    ? `<img class="proyecto-fondo" src="${BASE_404}${srcFondo}" srcset="${srcsetCabecera(srcFondo, ancho, (x) => BASE_404 + x)}" sizes="${SIZES_CABECERA}" alt="" fetchpriority="high" />`
-    : `<img class="proyecto-isobatas" src="${BASE_404}marca/isobatas.svg" alt="" aria-hidden="true" />`;
+  const img = () => `<img class="proyecto-fondo" src="${BASE_404}${srcFondo}" srcset="${srcsetCabecera(srcFondo, ancho, (x) => BASE_404 + x)}" sizes="${SIZES_CABECERA}" alt="" fetchpriority="high" />`;
+  // La portada va en un <picture> (con su recorte cuadrado para teléfonos si lo tiene), como en la app.
+  const cuadrada = modo === 'ilustracion' && p.portada.cuadrada ? `<source media="${MEDIA_CUADRADA}" srcset="${BASE_404}${cuadradaDe(srcFondo)}" />` : '';
+  const imgFondo = !srcFondo
+    ? `<img class="proyecto-isobatas" src="${BASE_404}marca/isobatas.svg" alt="" aria-hidden="true" />`
+    : modo === 'ilustracion' ? `<picture>${cuadrada}${img()}</picture>` : img();
   const acento = Object.entries(estiloAcento(p.acento)).map(([k, v]) => `${k}:${v}`).join(';');
   const cab = `<header data-guion="cabecera" data-cabecera-estatica class="proyecto-cabecera cabecera-${modo}${fondo ? ' cabecera-velada' : ''}">${imgFondo}<div class="contenedor proyecto-cabecera-contenido" data-estatico><div class="proyecto-cabecera-texto"><h1>${esc(p.nombre)}</h1><p class="proyecto-lema">${esc(p.lema[pg.idioma])}</p></div></div></header>`;
   return `<main id="contenido"><article class="proyecto" style="${acento}">${cab}<div class="contenedor proyecto-cuerpo" data-estatico><p>${esc(p.resumen[pg.idioma])}</p>${p.descripcion.map((d) => `<p>${esc(d[pg.idioma])}</p>`).join('')}<ul>${p.caracteristicas.map((c) => `<li><strong>${esc(c.titulo[pg.idioma])}</strong>: ${esc(c.texto[pg.idioma])}</li>`).join('')}</ul>${anim}${ext ? `<ul>${ext}</ul>` : ''}<p><a href="${urlDe(pg.idioma, '')}">Galivelop</a></p><ul>${enlaces}</ul></div></article></main>`;
@@ -694,7 +697,11 @@ function cierreModulos(raices) {
 function precargas(pg) {
   const lineas = [];
   const img = imagenLcp(pg);
-  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versionesLcp(pg, img)} fetchpriority="high" />`);
+  // Con recorte cuadrado, dos precargas que se excluyen por `media`, las mismas condiciones que el <picture>: cada
+  // pantalla baja solo la que va a pintar.
+  const cuadrada = pg.proyecto && (pg.proyecto.cabecera ?? 'ilustracion') === 'ilustracion' && pg.proyecto.portada.cuadrada;
+  if (cuadrada) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${cuadradaDe(img)}" media="${MEDIA_CUADRADA}" fetchpriority="high" />`);
+  if (img) lineas.push(`<link rel="preload" as="image" href="${BASE_404}${img}"${versionesLcp(pg, img)}${cuadrada ? ` media="not all and ${MEDIA_CUADRADA}"` : ''} fetchpriority="high" />`);
   const raices = [CHUNK_DE_RUTA(pg.ruta), pg.proyecto?.slug].filter(Boolean).map((n) => activo(new RegExp(`^${n}-[\\w-]{8}\\.js$`)));
   // Con imagen LCP precargada, solo los chunks de la página: más JS a la vez le quita ancho de banda a la imagen (medido
   // 2026-11-27: la ficha de image-generator pasaba de 2,97 a 3,5 s con el cierre entero).

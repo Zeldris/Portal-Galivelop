@@ -30,10 +30,22 @@ export const SIZES_CABECERA = '100vw';
 export function srcsetCabecera(src: string, ancho: number, ruta: (s: string) => string): string {
   return `${ruta(src.replace(/\.webp$/, '-movil.webp'))} ${ANCHO_MOVIL}w, ${ruta(src)} ${ancho}w`;
 }
+/**
+ * Teléfonos en vertical, los que eligen `<nombre>-cuadrada.webp` (ver `Imagen.cuadrada`): ahí la cabecera de la ficha
+ * mide 320-480 × ~465 px en la app (proporción 0,6-1,03) y la pantalla entera en la estática; de la portada apaisada
+ * solo se ve el centro. El cuadrado de 540 px se ve con la misma nitidez que la versión móvil de 960 × 540.
+ */
+export const MEDIA_CUADRADA = '(max-width: 480px)';
+/** Ruta del recorte cuadrado de una portada. */
+export const cuadradaDe = (src: string): string => src.replace(/\.webp$/, '-cuadrada.webp');
 /** Ancho de la miniatura de una portada (`<nombre>-mini.webp`). */
 export const ANCHO_MINI = 720;
-/** La portada de la página de producto: columna de 560 px en escritorio, todo el ancho en móvil. */
-export const SIZES_PORTADA_PRODUCTO = '(min-width: 860px) 560px, 100vw';
+/**
+ * La portada de la página de producto: columna de 560 px en escritorio y, en móvil, el ancho menos los 16 px de margen
+ * de cada lado. Con `100vw`, un móvil de 390 px y doble densidad pedía 780 px y bajaba la versión de 960 (118 KB en
+ * Developer); a 716 px le basta la miniatura de 720 (63 KB).
+ */
+export const SIZES_PORTADA_PRODUCTO = '(min-width: 860px) 560px, calc(100vw - 32px)';
 /**
  * `srcset` de la portada de una página de producto: su miniatura (720 px), su versión móvil (960 px, la que elige un móvil
  * de doble densidad; sin ella bajaba el original) y el original (`ancho` px).

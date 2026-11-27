@@ -100,6 +100,9 @@ página de ese miembro (`colabora`), en una banda discreta de Participa, en «C�
      sin el campo, la portada se usa de fondo. La portada de una ficha (`ilustracion` o `color`) y cada
      `marca/portada-*` necesitan su `<nombre>-movil.webp` de 960 px (`node scripts/miniatura-webp.mjs <portada.webp>`):
      el `srcset` de la cabecera y el preload lo piden; un test lo comprueba.
+     Con `"cuadrada": true` en `portada`, los teléfonos (hasta 480 px) bajan `<nombre>-cuadrada.webp` (el centro,
+     540 × 540; `node scripts/miniatura-webp.mjs --cuadrada <portada.webp>`): solo ven ese trozo y pesa la mitad
+     (image-generator, 138 → 79 KB).
    - `galeria` (ilustraciones) y `capturas` (capturas reales de la interfaz; `[]` si no hay) se
      muestran juntas en la galería de arriba: primero las capturas, luego las ilustraciones, con una
      pestaña por grupo si hay los dos. Rota sola cada 6 s en bucle; al usarla a mano se para y
