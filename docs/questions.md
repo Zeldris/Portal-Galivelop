@@ -442,3 +442,24 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: Leerlas antes (están en castellano en un solo archivo) y contestar «ok» o qué cambia: van en primera persona y a tu nombre. Con el ok, las fusiono en la rama de publicación y salen el domingo; si las quieres hoy, dilo y las subo a main.
 - Answer: Sí: se fusionan en la rama de publicación y salen el domingo
 - Answered: 2026-11-27
+
+## Q-50
+- Refs: Q-32
+- Status: open
+- Asked: 2026-11-27
+- Question: Diario: ¿qué entrada sustituye a «Dijimos único y eran dos»? a) «Por qué nos llamamos Galivelop» (Galicia + Develop), b) «No enseñamos una sala vacía» (el muro no aparece hasta tener tres piezas), c) «Lo que aún no está también se enseña» (los proyectos de próximamente, con su avance tal cual), d) «Claro por defecto» (por qué la web nace en tema claro), e) ninguna: se borra sin sustituta
+- Recommendation: b: es la que mejor cuenta una decisión del taller sin jerga (no abrir una sección hasta tener qué enseñar) y consta en la bitácora (R-2)
+
+## Q-51
+- Refs: Q-32
+- Status: open
+- Asked: 2026-11-27
+- Question: Diario: ¿qué entrada sustituye a «Cómo dibujamos el relevo entre sesiones»? a) «Quién decide cuando trabajas con una IA» (preguntas con número y recomendación; publicar, solo con tu sí), b) «Nada sale sin que alguien lo mire» (la revisión antes de publicar), c) «Lo que no está probado se dice» (no dar por comprobado lo que depende de otra máquina), d) ninguna: se borra sin sustituta
+- Recommendation: a: sigue hablando de trabajar con una IA, que es lo que perdería el diario al quitar la del relevo, pero desde quién decide y no desde un dibujo
+
+## Q-52
+- Refs: Q-32
+- Status: open
+- Asked: 2026-11-27
+- Question: Diario: ¿imágenes en las entradas? a) una portada por entrada, reutilizando las de la marca donde encajen y con pedido al generador para el resto, b) solo las que ya tenemos (unas tres entradas con portada, el resto sin ella), c) además de la portada, imágenes dentro del texto
+- Recommendation: a: una portada por entrada (arriba, en la tarjeta del índice y como imagen al compartir); reutilizar las de la marca donde encajen y pedir al generador las que falten, con el estilo grabado sobre mar

@@ -8,14 +8,14 @@
     "en": "The website that updates itself"
   },
   "bajada": {
-    "es": "Cada domingo por la noche, esta web se actualiza sin que nadie esté delante. Le dimos permiso para eso, y solo para eso.",
-    "gl": "Cada domingo pola noite, esta web actualízase sen que ninguén estea diante. Démoslle permiso para iso, e só para iso.",
-    "en": "Every Sunday night this website updates without anyone watching. We gave it permission for that, and only for that."
+    "es": "Cada vez que se juntan cambios en los proyectos, esta web se actualiza, a veces sin que nadie esté delante. Le dimos permiso para eso, y solo para eso.",
+    "gl": "Cada vez que se xuntan cambios nos proxectos, esta web actualízase, ás veces sen que ninguén estea diante. Démoslle permiso para iso, e só para iso.",
+    "en": "Whenever changes pile up in the projects, this website updates, sometimes with nobody watching. We gave it permission for that, and only for that."
   },
   "descripcion": {
-    "es": "Cada domingo por la noche la web de Galivelop se pone al día sin nadie delante. Qué le dejamos hacer y qué no.",
-    "gl": "Cada domingo pola noite a web de Galivelop ponse ao día sen ninguén diante. Que lle deixamos facer e que non.",
-    "en": "Every Sunday night the Galivelop website updates with nobody watching. What we let it do and what we do not."
+    "es": "Cuando se juntan cambios en los proyectos, la web de Galivelop se pone al día, a veces sin nadie delante. Qué le dejamos hacer y qué no.",
+    "gl": "Cando se xuntan cambios nos proxectos, a web de Galivelop ponse ao día, ás veces sen ninguén diante. Que lle deixamos facer e que non.",
+    "en": "When changes pile up in the projects, the Galivelop website updates, sometimes with nobody watching. What we let it do and what we do not."
   },
   "secciones": [
     {
@@ -33,9 +33,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Una web de proyectos envejece deprisa. Los proyectos avanzan cada semana, y lo que cuenta la web se queda atrás si alguien no se acuerda de cambiarlo. Y nadie se acuerda: siempre hay algo más urgente.",
-            "gl": "Unha web de proxectos envellece á présa. Os proxectos avanzan cada semana, e o que conta a web queda atrás se alguén non se lembra de cambialo. E ninguén se lembra: sempre hai algo máis urxente.",
-            "en": "A website about projects grows old quickly. The projects move forward every week, and what the site says falls behind unless someone remembers to change it. And nobody remembers: there is always something more urgent."
+            "es": "Una web de proyectos envejece deprisa. Los proyectos avanzan casi a diario, y lo que cuenta la web se queda atrás si alguien no se acuerda de cambiarlo. Y nadie se acuerda: siempre hay algo más urgente.",
+            "gl": "Unha web de proxectos envellece á présa. Os proxectos avanzan case a diario, e o que conta a web queda atrás se alguén non se lembra de cambialo. E ninguén se lembra: sempre hai algo máis urxente.",
+            "en": "A website about projects grows old quickly. The projects move forward almost daily, and what the site says falls behind unless someone remembers to change it. And nobody remembers: there is always something more urgent."
           }
         },
         {
@@ -55,17 +55,17 @@
         "en": "The job"
       },
       "titulo": {
-        "es": "Los domingos, a última hora",
-        "gl": "Os domingos, á última hora",
-        "en": "Sundays, late in the day"
+        "es": "Cuando se juntan cambios",
+        "gl": "Cando se xuntan cambios",
+        "en": "When changes pile up"
       },
       "bloques": [
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Así que le dimos ese trabajo a una tarea automática. Cada domingo por la noche mira qué ha cambiado en cada proyecto durante la semana, pone al día su página y publica la web. No pregunta a nadie.",
-            "gl": "Así que lle demos ese traballo a unha tarefa automática. Cada domingo pola noite mira que cambiou en cada proxecto durante a semana, pon ao día a súa páxina e publica a web. Non lle pregunta a ninguén.",
-            "en": "So we gave that job to an automatic task. Every Sunday night it looks at what changed in each project during the week, updates its page and publishes the site. It asks nobody."
+            "es": "Así que le dimos ese trabajo a una tarea automática. No espera a un día fijo: cada vez que se acumulan cambios en los proyectos, mira qué es nuevo en cada uno, pone al día su página y publica la web. Unas veces la lanzamos nosotros y otras salta ella sola, sin nadie delante.",
+            "gl": "Así que lle demos ese traballo a unha tarefa automática. Non agarda a un día fixo: cada vez que se acumulan cambios nos proxectos, mira que é novo en cada un, pon ao día a súa páxina e publica a web. Unhas veces lanzámola nós e outras salta ela soa, sen ninguén diante.",
+            "en": "So we gave that job to an automatic task. It does not wait for a fixed day: whenever changes pile up in the projects, it looks at what is new in each one, updates its page and publishes the site. Sometimes we start it ourselves and sometimes it runs by itself, with nobody watching."
           }
         },
         {
@@ -114,9 +114,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "A cambio, nos obliga a una disciplina. Todo lo que hacemos entre semana tiene que quedar listo para publicarse, porque el domingo sale lo que haya. No se puede dejar nada a medias pensando que nadie lo verá.",
-            "gl": "A cambio, obríganos a unha disciplina. Todo o que facemos entre semana ten que quedar listo para publicarse, porque o domingo sae o que haxa. Non se pode deixar nada a medias pensando que ninguén o verá.",
-            "en": "In return, it holds us to a discipline. Everything we do during the week has to be ready to publish, because on Sunday whatever is there goes out. Nothing can be left half done on the assumption that nobody will see it."
+            "es": "A cambio, nos obliga a una disciplina. Todo lo que hacemos tiene que quedar listo para publicarse, porque en cualquier momento sale lo que haya. No se puede dejar nada a medias pensando que nadie lo verá.",
+            "gl": "A cambio, obríganos a unha disciplina. Todo o que facemos ten que quedar listo para publicarse, porque en calquera momento sae o que haxa. Non se pode deixar nada a medias pensando que ninguén o verá.",
+            "en": "In return, it holds us to a discipline. Everything we do has to be ready to publish, because whatever is there can go out at any moment. Nothing can be left half done on the assumption that nobody will see it."
           }
         },
         {
