@@ -478,7 +478,8 @@ function cuerpo(pg) {
     const conCodigo = (t) => esc(t).replace(/`([^`]+)`/g, '<code>$1</code>');
     const autor = equipo.find((m) => m.id === entrada.autor);
     const ficha = proyectos.find((x) => x.slug === entrada.proyecto);
-    const figura = (g) => `<figure><img src="${BASE_404}${g.src}" alt="${esc(g.alt[i])}" loading="lazy" decoding="async" />${g.pie ? `<figcaption>${esc(g.pie[i])}</figcaption>` : ''}</figure>`;
+    // La portada es la imagen LCP: sin lazy y con prioridad alta; las del cuerpo, lazy. Con width/height, como en la app.
+    const figura = (g, portada = false) => `<figure><img src="${BASE_404}${g.src}" width="${g.ancho}" height="${g.alto}" alt="${esc(g.alt[i])}"${portada ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async" />${g.pie ? `<figcaption>${esc(g.pie[i])}</figcaption>` : ''}</figure>`;
     const bloque = (b) => {
       if (b.tipo === 'imagen') return figura(b);
       if (b.tipo === 'galeria') return b.imagenes.map(figura).join('');
@@ -494,7 +495,7 @@ function cuerpo(pg) {
     const vecina = (e, t) => (e ? `<li><a href="${urlDe(i, `diario/${e.slug}`)}">${esc(T(i, t))} ${esc(e.titulo[i])}</a></li>` : '');
     const pie = [vecina(entradas[n + 1], 'diario.anterior'), vecina(entradas[n - 1], 'diario.siguiente'), ficha ? `<li><a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(T(i, 'diario.verFicha').replace('{proyecto}', ficha.nombre))}</a></li>` : ''].join('');
     const meta = `<p><time datetime="${entrada.fecha}">${entrada.fecha}</time> · ${esc(T(i, `diario.tipo.${entrada.tipo ?? 'taller'}`))}${autor ? ` · ${esc(T(i, 'diario.escribe'))}: <a href="${urlDe(i, `equipo/${autor.id}`)}">${esc(autor.nombre)}</a>` : ''} · ${esc(T(i, 'diario.lectura'))}: ${esc(T(i, 'diario.lecturaMin').replace('{min}', minutosLectura(entrada, i)))}${ficha ? ` · ${esc(T(i, 'diario.proyecto'))}: <a href="${urlDe(i, `proyectos/${ficha.slug}`)}">${esc(ficha.nombre)}</a>` : ''}</p>`;
-    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / <a href="${urlDe(i, 'diario')}">${esc(T(i, 'diario.titulo'))}</a> / ${esc(entrada.titulo[i])}</nav><article><h1>${esc(entrada.titulo[i])}</h1><p>${esc(entrada.bajada[i])}</p>${entrada.portada ? figura(entrada.portada) : ''}${meta}${secciones}</article><ul>${pie}</ul></main>`;
+    return `<main id="contenido" class="contenedor" data-estatico><nav aria-label="${esc(T(i, 'productos.migas'))}"><a href="${urlDe(i, '')}">${esc(T(i, 'diario.inicio'))}</a> / <a href="${urlDe(i, 'diario')}">${esc(T(i, 'diario.titulo'))}</a> / ${esc(entrada.titulo[i])}</nav><article><h1>${esc(entrada.titulo[i])}</h1><p>${esc(entrada.bajada[i])}</p>${entrada.portada ? figura(entrada.portada, true) : ''}${meta}${secciones}</article><ul>${pie}</ul></main>`;
   }
   const x = pg.producto;
   if (x) {
@@ -664,6 +665,7 @@ const imagenLcp = (pg) => {
   // La ilustración del formulario tiene versión clara y oscura (src/components/ImagenTema.tsx): el tema claro es el de por defecto.
   if (pg.ruta === 'participa/unirse') return 'marca/como-funciona.webp';
   if (pg.producto) return pg.producto.pagina.portada?.src;
+  if (pg.entrada) return pg.entrada.portada?.src;
   const p = pg.proyecto;
   if (!p) return undefined;
   const modo = p.cabecera ?? 'ilustracion';

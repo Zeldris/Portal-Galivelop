@@ -154,6 +154,8 @@ describe('imágenes, portada y tipo', () => {
     descripcion: t('Descripción de prueba'),
     portada: {
       src: 'proyectos/p/portada.webp',
+      ancho: 1600,
+      alto: 900,
       alt: t('Alt de la portada', 'Alt da portada', 'Cover alt'),
     },
     secciones: [
@@ -164,14 +166,22 @@ describe('imágenes, portada y tipo', () => {
           {
             tipo: 'imagen',
             src: 'proyectos/p/una.webp',
+            ancho: 800,
+            alto: 600,
             alt: t('Alt de la imagen'),
             pie: t('Pie de la imagen'),
           },
           {
             tipo: 'galeria',
             imagenes: [
-              { src: 'proyectos/p/g1.webp', alt: t('Alt g1'), pie: t('Pie g1') },
-              { src: 'proyectos/p/g2.webp', alt: t('Alt g2') },
+              {
+                src: 'proyectos/p/g1.webp',
+                ancho: 400,
+                alto: 300,
+                alt: t('Alt g1'),
+                pie: t('Pie g1'),
+              },
+              { src: 'proyectos/p/g2.webp', ancho: 400, alto: 300, alt: t('Alt g2') },
             ],
           },
         ],
@@ -184,12 +194,15 @@ describe('imágenes, portada y tipo', () => {
     expect(vista).toContain('class="diario-portada"');
     expect(vista).toContain('src="/proyectos/p/portada.webp"');
     expect(vista).toContain('alt="Alt de la portada"');
+    expect(vista).toMatch(
+      /<img src="\/proyectos\/p\/portada\.webp" width="1600" height="900" alt="Alt de la portada" fetchPriority="high" decoding="async"\/>/i,
+    );
     expect(vista.indexOf('diario-portada')).toBeGreaterThan(vista.indexOf('diario-cabecera'));
   });
 
   it('el bloque imagen es un figure con img perezosa y figcaption', () => {
     expect(vista).toMatch(
-      /<figure class="diario-imagen"><img src="\/proyectos\/p\/una\.webp" alt="Alt de la imagen" loading="lazy" decoding="async"\/><figcaption>Pie de la imagen<\/figcaption><\/figure>/,
+      /<figure class="diario-imagen"><img src="\/proyectos\/p\/una\.webp" width="800" height="600" alt="Alt de la imagen" loading="lazy" decoding="async"\/><figcaption>Pie de la imagen<\/figcaption><\/figure>/,
     );
   });
 

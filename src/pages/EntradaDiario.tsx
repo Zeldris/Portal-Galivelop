@@ -53,12 +53,19 @@ function Animacion({ bloque }: { bloque: Extract<Bloque, { tipo: 'animacion' }> 
   );
 }
 
-/** Una imagen del diario con su pie opcional. `aspect-ratio` en el CSS reserva el hueco (sin salto de maquetación). */
+/** Una imagen del diario con su pie opcional. `width`/`height` reservan el hueco (sin salto de maquetación). */
 function Figura({ imagen, clase }: { imagen: ImagenDiario; clase: string }) {
   const { tx } = useIdioma();
   return (
     <figure className={clase}>
-      <img src={ruta(imagen.src)} alt={tx(imagen.alt)} loading="lazy" decoding="async" />
+      <img
+        src={ruta(imagen.src)}
+        width={imagen.ancho}
+        height={imagen.alto}
+        alt={tx(imagen.alt)}
+        loading="lazy"
+        decoding="async"
+      />
       {imagen.pie && <figcaption>{tx(imagen.pie)}</figcaption>}
     </figure>
   );
@@ -179,7 +186,15 @@ export function VistaEntrada({ entrada }: { entrada: Entrada }) {
         </header>
         {entrada.portada && (
           <figure className="diario-portada">
-            <img src={ruta(entrada.portada.src)} alt={tx(entrada.portada.alt)} decoding="async" />
+            {/* Es la imagen más grande de la página (LCP): sin lazy y con prioridad alta. */}
+            <img
+              src={ruta(entrada.portada.src)}
+              width={entrada.portada.ancho}
+              height={entrada.portada.alto}
+              alt={tx(entrada.portada.alt)}
+              fetchPriority="high"
+              decoding="async"
+            />
           </figure>
         )}
         <article className="diario-articulo">

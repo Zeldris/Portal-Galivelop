@@ -5,8 +5,8 @@ import { entradas, minutosLectura, rutaMini, tipoDe, type EntradaDiario } from '
 import { buscarPersonaPorId } from '../data/equipo';
 import { useIdioma } from '../i18n/Idioma';
 
-/** Tarjeta de una entrada en el índice: miniatura de la portada (si la tiene), datos, título y bajada. */
-export function TarjetaEntrada({ e }: { e: EntradaDiario }) {
+/** Tarjeta de una entrada en el índice: miniatura de la portada (si la tiene; la de la primera tarjeta no es lazy, es la que se ve al abrir), datos, título y bajada. */
+export function TarjetaEntrada({ e, primera = false }: { e: EntradaDiario; primera?: boolean }) {
   const { t, tx, idioma, fecha } = useIdioma();
   const autor = buscarPersonaPorId(e.autor);
   return (
@@ -16,7 +16,7 @@ export function TarjetaEntrada({ e }: { e: EntradaDiario }) {
           className="diario-miniatura"
           src={rutaMini(e.portada.src)}
           alt={tx(e.portada.alt)}
-          loading="lazy"
+          loading={primera ? undefined : 'lazy'}
           decoding="async"
         />
       )}
@@ -75,9 +75,9 @@ export function Diario() {
           <p>{t('diario.vacio')}</p>
         ) : (
           <ul className="diario-indice">
-            {entradas.map((e) => (
+            {entradas.map((e, n) => (
               <li key={e.slug}>
-                <TarjetaEntrada e={e} />
+                <TarjetaEntrada e={e} primera={n === 0} />
               </li>
             ))}
           </ul>

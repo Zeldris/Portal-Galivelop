@@ -20,6 +20,8 @@
   },
   "portada": {
     "src": "proyectos/galivelop-voice-generator/proxima.webp",
+    "ancho": 720,
+    "alto": 405,
     "alt": {
       "es": "Una boya de campana en el mar, con ondas que se abren a su alrededor",
       "gl": "Unha boia de campá no mar, con ondas que se abren arredor",

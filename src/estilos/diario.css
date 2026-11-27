@@ -274,7 +274,8 @@
   text-transform: uppercase;
 }
 
-/* Imágenes: el hueco se reserva con aspect-ratio (sin salto de maquetación). */
+/* Imágenes: portada, bloque imagen y galería se ven enteras (sin recorte); width/height del <img> reservan el hueco.
+   Solo la miniatura de la tarjeta, que alinea la cuadrícula, conserva 16/9 con cover. */
 .diario-portada {
   margin: 0 0 var(--espacio-40);
 }
@@ -285,17 +286,13 @@
   display: block;
   width: 100%;
   height: auto;
-  object-fit: cover;
   background: var(--superficie-2);
   border: 1px solid var(--borde);
 }
 
-.diario-portada img {
-  aspect-ratio: 16 / 9;
-}
-
 .diario-miniatura {
   aspect-ratio: 16 / 9;
+  object-fit: cover;
   margin-bottom: var(--espacio-12);
 }
 
@@ -328,10 +325,6 @@
 .diario-galeria-figura {
   min-width: 0;
   margin: 0;
-}
-
-.diario-galeria-figura img {
-  aspect-ratio: 4 / 3;
 }
 
 @media (min-width: 48em) {

@@ -4,9 +4,14 @@ import { ruta } from './proyectos';
 // Diario del taller (Q-32, Q-37 a Q-42). Cada entrada vive en src/data/diario/<slug>.json, con todo su texto en
 // castellano, gallego e inglés. Cómo añadir una: docs/desarrollo.md («Diario del taller»).
 
-/** Una imagen de public/ (`src` sin barra inicial, p. ej. `proyectos/tarkor/portada.webp`) con su texto alternativo. */
+/**
+ * Una imagen de public/ (`src` sin barra inicial, p. ej. `proyectos/tarkor/portada.webp`) con su texto alternativo y las
+ * medidas reales del archivo (px): van en `width`/`height` del `<img>` y reservan el hueco sin recortar la imagen.
+ */
 export interface ImagenDiario {
   src: string;
+  ancho: number;
+  alto: number;
   alt: Texto;
   pie?: Texto;
 }
@@ -50,7 +55,7 @@ export interface EntradaDiario {
   /** Para buscadores y redes, ≤ 160 caracteres. */
   descripcion: Texto;
   /** Imagen de cabecera (bajo la bajada), miniatura de la tarjeta y vista previa en redes. */
-  portada?: { src: string; alt: Texto };
+  portada?: Omit<ImagenDiario, 'pie'>;
   secciones: SeccionDiario[];
 }
 

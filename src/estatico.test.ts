@@ -413,6 +413,29 @@ describe('diario del taller', () => {
     expect(html).not.toContain('`');
   });
 
+  it('la portada de la entrada: sin lazy, con medidas y fetchpriority, y precargada; las del cuerpo, lazy', () => {
+    const p = e.portada!;
+    for (const [prefijo] of idiomas) {
+      const html = leer(`${prefijo}diario/${e.slug}`);
+      const figura = html.match(/<article><h1>[^]*?<\/p>(<figure><img [^>]*>)/)![1];
+      expect(figura).toContain(`src="/Portal-Galivelop/${p.src}"`);
+      expect(figura).toContain(`width="${p.ancho}" height="${p.alto}"`);
+      expect(figura).toContain('fetchpriority="high"');
+      expect(figura).not.toContain('loading="lazy"');
+      expect(html).toContain(
+        `<link rel="preload" as="image" href="/Portal-Galivelop/${p.src}" fetchpriority="high" />`,
+      );
+    }
+    // Las imágenes del cuerpo siguen lazy y también llevan medidas.
+    const cuerpo = leer(`diario/${e.slug}`)
+      .match(/<figure><img [^>]*>/g)!
+      .slice(1);
+    for (const img of cuerpo) {
+      expect(img).toContain('loading="lazy"');
+      expect(img).toMatch(/width="\d+" height="\d+"/);
+    }
+  });
+
   it('og:type es article en la entrada y website en el índice', () => {
     expect(leer(`diario/${e.slug}`)).toContain('<meta property="og:type" content="article" />');
     expect(leer('diario')).toContain('<meta property="og:type" content="website" />');

@@ -25,6 +25,18 @@ const ficha = (slug: string): Proyecto | undefined => {
   }
 };
 
+/** Ancho y alto en píxeles de un WebP de public/ (VP8X, VP8L o VP8), leídos de su cabecera RIFF. */
+export function medidasWebp(ruta: string): { ancho: number; alto: number } {
+  const b = readFileSync(join(PUBLIC, ruta));
+  const tipo = b.toString('ascii', 12, 16);
+  if (tipo === 'VP8X') return { ancho: 1 + b.readUIntLE(24, 3), alto: 1 + b.readUIntLE(27, 3) };
+  if (tipo === 'VP8L') {
+    const bits = b.readUInt32LE(21);
+    return { ancho: 1 + (bits & 0x3fff), alto: 1 + ((bits >> 14) & 0x3fff) };
+  }
+  return { ancho: b.readUInt16LE(26) & 0x3fff, alto: b.readUInt16LE(28) & 0x3fff }; // VP8
+}
+
 /** Toda imagen de una entrada (portada, bloques `imagen` y `galeria`), con su ruta para el mensaje de error. */
 export function imagenesDe(e: EntradaDiario): [string, ImagenDiario][] {
   const r: [string, ImagenDiario][] = e.portada ? [['portada', e.portada]] : [];
@@ -152,6 +164,16 @@ describe('diario', () => {
         }
       });
 
+      it('toda imagen lleva ancho y alto enteros que coinciden con los del archivo', () => {
+        for (const [ruta, im] of imagenesDe(e)) {
+          expect(Number.isInteger(im.ancho) && im.ancho > 0, `${ruta}.ancho`).toBe(true);
+          expect(Number.isInteger(im.alto) && im.alto > 0, `${ruta}.alto`).toBe(true);
+          expect({ ancho: im.ancho, alto: im.alto }, `${ruta} «${im.src}»`).toEqual(
+            medidasWebp(im.src),
+          );
+        }
+      });
+
       it('su tipo, si lo tiene, es taller, proyecto o relato', () => {
         if (e.tipo) expect(TIPOS_ENTRADA).toContain(e.tipo);
       });
@@ -203,13 +225,13 @@ describe('minutosLectura', () => {
           { tipo: 'decision', texto: entrada(1), cita: entrada(2) },
           { tipo: 'lista', titulo: entrada(1), items: [entrada(2)] },
           { tipo: 'animacion', proyecto: 'p', id: 'i', pie: entrada(3) },
-          { tipo: 'imagen', src: 'a.webp', alt: entrada(9), pie: entrada(2) },
-          { tipo: 'imagen', src: 'b.webp', alt: entrada(9) },
+          { tipo: 'imagen', src: 'a.webp', ancho: 1, alto: 1, alt: entrada(9), pie: entrada(2) },
+          { tipo: 'imagen', src: 'b.webp', ancho: 1, alto: 1, alt: entrada(9) },
           {
             tipo: 'galeria',
             imagenes: [
-              { src: 'c.webp', alt: entrada(9), pie: entrada(1) },
-              { src: 'd.webp', alt: entrada(9) },
+              { src: 'c.webp', ancho: 1, alto: 1, alt: entrada(9), pie: entrada(1) },
+              { src: 'd.webp', ancho: 1, alto: 1, alt: entrada(9) },
             ],
           },
         ],

@@ -21,6 +21,8 @@
   },
   "portada": {
     "src": "proyectos/galivelop-workflow/portada.webp",
+    "ancho": 1600,
+    "alto": 900,
     "alt": {
       "es": "Portada de Galivelop-workflow, el método con el que trabajamos",
       "gl": "Portada de Galivelop-workflow, o método co que traballamos",
@@ -156,6 +158,8 @@
         {
           "tipo": "imagen",
           "src": "productos/galivelop-developer/gd-harness.webp",
+          "ancho": 1600,
+          "alto": 1050,
           "alt": {
             "es": "Esquema: el trabajo pasa por quien organiza, quien hace y quien revisa, y al final decides tú",
             "gl": "Esquema: o traballo pasa por quen organiza, quen fai e quen revisa, e ao final decides ti",

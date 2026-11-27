@@ -21,6 +21,8 @@
   },
   "portada": {
     "src": "proyectos/tarkor/arte/item-esquirla-celeste-caida.webp",
+    "ancho": 1600,
+    "alto": 640,
     "alt": {
       "es": "Una esquirla de luz azulada caída en un desierto rojo y agrietado, bajo una tormenta con relámpagos",
       "gl": "Unha esquirla de luz azulada caída nun deserto vermello e fendido, baixo unha tormenta con lóstregos",
@@ -180,6 +182,8 @@
         {
           "tipo": "imagen",
           "src": "proyectos/tarkor/arte/raza-orcos-llanuras-hembra.webp",
+          "ancho": 1600,
+          "alto": 640,
           "alt": {
             "es": "Guerrera orca de las Llanuras del Viento Rojo, con un hacha en cada mano, sobre un campamento en el desierto rojo",
             "gl": "Guerreira orca das Chairas do Vento Vermello, cun machado en cada man, sobre un campamento no deserto vermello",

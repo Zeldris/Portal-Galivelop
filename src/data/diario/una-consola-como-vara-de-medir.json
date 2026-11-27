@@ -20,6 +20,8 @@
   },
   "portada": {
     "src": "proyectos/galivelop-image-generator/piloto/portal-r3.webp",
+    "ancho": 1280,
+    "alto": 640,
     "alt": {
       "es": "Una puerta oscura con luz turquesa y tres esferas de color: una imagen generada en la consola",
       "gl": "Unha porta escura con luz turquesa e tres esferas de cor: unha imaxe xerada na consola",
@@ -80,6 +82,8 @@
         {
           "tipo": "imagen",
           "src": "marca/diario-turnos.webp",
+          "ancho": 1600,
+          "alto": 900,
           "alt": {
             "es": "Dibujo de una consola portátil con tres fichas en fila: una imagen, una onda de voz y unas líneas de texto. Solo una está dentro de la consola",
             "gl": "Debuxo dunha consola portátil con tres fichas en fila: unha imaxe, unha onda de voz e unhas liñas de texto. Só unha está dentro da consola",
