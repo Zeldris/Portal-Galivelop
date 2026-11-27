@@ -663,10 +663,9 @@ const imagenLcpAncho = (pg) => {
   return modo === 'color' ? ANCHO_ESTADO : modo === 'ilustracion' ? p.portada.ancho : undefined;
 };
 // Los chunks que importa de forma estática el de la página (y los de esos), salvo los que ya precarga index.html, en las
-// páginas cuyo LCP es texto pintado por React: sin
-// ellos el navegador los descubre al analizar el de la página, en una segunda vuelta de red (medido 2026-11-27 en
-// /equipo/, móvil con 4G lento: `IconoMarca`, `Retrato` e `iconos` llegaban después y el LCP esperaba). Los `import()`
-// dinámicos no entran: se cargan cuando hacen falta.
+// páginas cuyo LCP es texto pintado por React: sin ellos el navegador los descubre al analizar el de la página, en una
+// segunda vuelta de red (medido 2026-11-27 en /equipo/, móvil con 4G lento: `IconoMarca`, `Retrato` e `iconos` llegaban
+// después y el LCP esperaba). Los `import()` dinámicos no entran: se cargan cuando hacen falta.
 const EN_INDEX = new Set([...base.matchAll(/assets\/([\w-]+\.js)/g)].map((m) => m[1]));
 const importsDe = (archivo) =>
   [...readFileSync(`dist/assets/${archivo}`, 'utf8').matchAll(/(?:from|import)\s*["']\.\/([\w-]+\.js)["']/g)].map((m) => m[1]);
