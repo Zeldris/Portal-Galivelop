@@ -8,14 +8,14 @@
     "en": "The sea in the colours"
   },
   "bajada": {
-    "es": "De dónde salen el azul, las líneas de la portada y el magenta de los avisos. Casi todo viene de mirar una carta de navegación.",
-    "gl": "De onde saen o azul, as liñas da portada e o maxenta dos avisos. Case todo vén de mirar unha carta de navegación.",
-    "en": "Where the blue, the lines on the home page and the magenta of the warnings come from. Nearly all of it comes from looking at a nautical chart."
+    "es": "De dónde salen el azul, las líneas de la portada y el magenta de los fallos. Casi todo viene de mirar una carta de navegación.",
+    "gl": "De onde saen o azul, as liñas da portada e o maxenta dos fallos. Case todo vén de mirar unha carta de navegación.",
+    "en": "Where the blue, the lines on the home page and the magenta of the failures come from. Nearly all of it comes from looking at a nautical chart."
   },
   "descripcion": {
-    "es": "De dónde salen el azul celeste, las líneas de la portada y el magenta de los avisos de Galivelop: de una bandera y de las cartas de navegación.",
-    "gl": "De onde saen o azul celeste, as liñas da portada e o maxenta dos avisos de Galivelop: dunha bandeira e das cartas de navegación.",
-    "en": "Where Galivelop's sky blue, home page lines and magenta warnings come from: a flag and nautical charts."
+    "es": "De dónde salen el azul celeste, las líneas de la portada y el magenta de los fallos de Galivelop: de una bandera y de las cartas de navegación.",
+    "gl": "De onde saen o azul celeste, as liñas da portada e o maxenta dos fallos de Galivelop: dunha bandeira e das cartas de navegación.",
+    "en": "Where Galivelop's sky blue, home page lines and magenta failures come from: a flag and nautical charts."
   },
   "secciones": [
     {
@@ -71,9 +71,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "De ahí vienen las líneas curvas del fondo de la portada: son líneas de profundidad, como las de una carta. Y de ahí viene el fondo claro. Una carta se lee a plena luz, y esta web también.",
-            "gl": "De aí veñen as liñas curvas do fondo da portada: son liñas de profundidade, coma as dunha carta. E de aí vén o fondo claro. Unha carta lese a plena luz, e esta web tamén.",
-            "en": "That is where the curved lines in the background of the home page come from: they are depth lines, like those on a chart. And that is where the light background comes from. A chart is read in full daylight, and so is this website."
+            "es": "De ahí vienen las líneas curvas del fondo de la portada: son líneas de profundidad, como las de una carta.",
+            "gl": "De aí veñen as liñas curvas do fondo da portada: son liñas de profundidade, coma as dunha carta.",
+            "en": "That is where the curved lines in the background of the home page come from: they are depth lines, like those on a chart."
           }
         },
         {
@@ -114,9 +114,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "La respuesta estaba en la misma carta: los peligros para la navegación se marcan en magenta. Ese es el color que verás aquí cuando algo va mal.",
-            "gl": "A resposta estaba na mesma carta: os perigos para a navegación márcanse en maxenta. Esa é a cor que verás aquí cando algo vai mal.",
-            "en": "The answer was on the same chart: dangers to navigation are marked in magenta. That is the colour you will see here when something goes wrong."
+            "es": "La respuesta estaba en la misma carta: los peligros para la navegación se marcan en magenta. Ese es el color que verás en nuestros dibujos cuando algo sale mal.",
+            "gl": "A resposta estaba na mesma carta: os perigos para a navegación márcanse en maxenta. Esa é a cor que verás nos nosos debuxos cando algo sae mal.",
+            "en": "The answer was on the same chart: dangers to navigation are marked in magenta. That is the colour you will see in our drawings when something goes wrong."
           }
         },
         {

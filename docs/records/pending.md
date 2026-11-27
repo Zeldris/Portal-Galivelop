@@ -4,6 +4,12 @@ Lo que queda abierto; la bitácora solo apunta aquí. Se añade y se quita en es
 
 ## Pendiente
 
+- **Leves de la revisión del diario en llano** (b271cd7, 2026-11-27):
+  (1) `conCodigo` de `scripts/paginas-estaticas.mjs` se queda sin test en el estático, porque ninguna entrada lleva ya
+  `código` (el de React lo cubre `src/utils/codigo.test.tsx`); hace falta una entrada de prueba, y `src/estatico.test.ts`
+  enlaza `src` entero. (2) Seis entradas comparten fecha y el orden lo decide el slug: la «última» de la banda del inicio
+  es `dijimos-unico-y-eran-dos`; si la persona quiere otra delante, se cambia una fecha.
+
 - **Roadmap de la web** (la persona, 2026-11-25, Q-30 a Q-34). **Ahora** (Q-31, hecho y en `main` el 2026-11-26): R-1 aviso del check por fecha del guion; R-2 muro oculto hasta 3 piezas (Q-33); R-3 LCP de fichas en móvil (`srcset`/miniatura de portada, `width`/`height` del menú); R-4 barrido de `global.css` (R2 de la retro); R-5 colores forzados (`forced-colors`;
   seguir el tema del sistema descartado, Q-36: b); R-6 `global.css` partido por página. **Siguiente:** ~~feed RSS/Atom de Novedades~~ (hecho el 2026-11-26, Atom por idioma, en la rama); ~~diario del taller~~ (Q-32, hecho el 2026-11-26 según el prototipo aprobado con Q-37 a Q-42, en la rama; `docs/tasks/diario.md`); ~~imagen OG propia de cada producto~~ (hecho el 2026-11-26, en la rama).
   **Más adelante:** analítica sin cookies con GoatCounter (Q-34; falta que la persona cree la cuenta y el código del sitio, y el texto de privacidad); CSP, `security.txt` y créditos; calidad del front (webkit/firefox, paridad de tokens). **Dominio propio** (Q-30): sí, pero aún queda mucho; no se aplica por ahora.

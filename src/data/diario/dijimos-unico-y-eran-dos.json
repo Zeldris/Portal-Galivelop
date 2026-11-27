@@ -27,7 +27,7 @@
       "titulo": {
         "es": "«El único producto»",
         "gl": "«O único produto»",
-        "en": "\"The only product\""
+        "en": "“The only product”"
       },
       "bloques": [
         {
@@ -35,15 +35,15 @@
           "texto": {
             "es": "Un día decidí que Galivelop tenía un solo producto, y lo escribimos así por toda la web. «El único producto.» Sonaba rotundo.",
             "gl": "Un día decidín que Galivelop tiña un só produto, e escribímolo así por toda a web. «O único produto.» Soaba rotundo.",
-            "en": "One day I decided Galivelop had a single product, and we wrote it that way all over the website. \"The only product.\" It sounded firm."
+            "en": "One day I decided Galivelop had a single product, and we wrote it that way all over the website. “The only product.” It sounded firm."
           }
         },
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Dos días después, una herramienta que habíamos hecho para uso propio resultó ser útil para más gente, y pasó a ser el segundo producto.",
-            "gl": "Dous días despois, unha ferramenta que fixeramos para uso propio resultou ser útil para máis xente, e pasou a ser o segundo produto.",
-            "en": "Two days later, a tool we had built for our own use turned out to be useful to more people, and it became the second product."
+            "es": "Dos días después, una herramienta que habíamos hecho para uso propio pasó a ser el segundo producto.",
+            "gl": "Dous días despois, unha ferramenta que fixeramos para uso propio pasou a ser o segundo produto.",
+            "en": "Two days later, a tool we had built for our own use became the second product."
           }
         }
       ]
@@ -65,7 +65,7 @@
           "texto": {
             "es": "Tocó buscar «único» por toda la web y cambiarlo, frase a frase y en tres idiomas. No era grave. Pero una palabra rotunda se mete en muchos sitios, y cuando deja de ser verdad hay que ir a sacarla de todos.",
             "gl": "Tocou buscar «único» por toda a web e cambialo, frase a frase e en tres idiomas. Non era grave. Pero unha palabra rotunda métese en moitos sitios, e cando deixa de ser verdade hai que ir sacala de todos.",
-            "en": "We had to hunt for \"only\" across the whole site and change it, sentence by sentence and in three languages. It was not serious. But a firm word gets into many places, and when it stops being true you have to go and take it out of all of them."
+            "en": "We had to hunt for “only” across the whole site and change it, sentence by sentence and in three languages. It was not serious. But a firm word gets into many places, and when it stops being true you have to go and take it out of all of them."
           }
         },
         {
@@ -108,7 +108,7 @@
           "texto": {
             "es": "Prefiero contar lo que hay hoy. «Tenemos dos productos» seguirá siendo una frase honrada el día que sean tres: bastará con cambiar un número.",
             "gl": "Prefiro contar o que hai hoxe. «Temos dous produtos» seguirá sendo unha frase honrada o día que sexan tres: abondará con cambiar un número.",
-            "en": "I would rather say what is true today. \"We have two products\" will still be an honest sentence the day there are three: changing a number will be enough."
+            "en": "I would rather say what is true today. “We have two products” will still be an honest sentence the day there are three: changing a number will be enough."
           }
         },
         {

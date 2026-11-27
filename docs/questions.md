@@ -433,3 +433,10 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: a y b: son las dos con más cifras ya medidas en el repo (LCP 3324 → 2008 ms; páginas estáticas e indexación) y no dependen de nada pendiente. Una por semana, para que la publicación del domingo lleve entrada nueva.
 - Answer: Ninguna de la lista técnica: el diario pasa a ser para cualquier lector (normas en docs/desarrollo.md#diario-del-taller). «El taller no vende», descartada. Escritas a nombre de Álvaro seis entradas nuevas y reescrita la del relevo.
 - Answered: 2026-11-27
+
+## Q-49
+- Refs: Q-32
+- Status: open
+- Asked: 2026-11-27
+- Question: Diario: ¿doy por buenas las siete entradas (seis nuevas y la del relevo reescrita) para publicarlas a tu nombre?
+- Recommendation: Leerlas antes (están en castellano en un solo archivo) y contestar «ok» o qué cambia: van en primera persona y a tu nombre. Con el ok, las fusiono en la rama de publicación y salen el domingo; si las quieres hoy, dilo y las subo a main.

@@ -33,9 +33,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Al principio, lo que hacíamos en el taller se iba a entregar por correo, solo a quien lo pidiera. Parecía lo prudente.",
-            "gl": "Ao principio, o que faciamos no taller íase entregar por correo, só a quen o pedise. Parecía o prudente.",
-            "en": "At first, what we made in the workshop was going to be handed over by email, only to whoever asked for it. It seemed the prudent thing."
+            "es": "Al principio, lo que hacíamos en el taller se iba a entregar por correo, solo a quien lo pidiera.",
+            "gl": "Ao principio, o que faciamos no taller íase entregar por correo, só a quen o pedise.",
+            "en": "At first, what we made in the workshop was going to be handed over by email, only to whoever asked for it."
           }
         },
         {
@@ -98,9 +98,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Tener el código no es tenerlo funcionando. Hay que instalarlo, adaptarlo a cada caso y estar ahí cuando algo falla. Eso es lo que ofrezco con los proyectos abiertos: ponerlos en marcha en tu proyecto y acompañarte.",
-            "gl": "Ter o código non é telo funcionando. Hai que instalalo, adaptalo a cada caso e estar aí cando algo falla. Iso é o que ofrezo cos proxectos abertos: poñelos en marcha no teu proxecto e acompañarte.",
-            "en": "Having the code is not the same as having it working. It has to be installed, adapted to each case, and someone has to be there when something fails. That is what I offer with the open projects: setting them up in your project and staying with you."
+            "es": "Tener el código no es tenerlo funcionando. Hay que instalarlo, adaptarlo a cada caso y estar ahí cuando algo falla. Eso es lo que ofrezco con los que ya están maduros: ponerlos en marcha en tu proyecto y acompañarte.",
+            "gl": "Ter o código non é telo funcionando. Hai que instalalo, adaptalo a cada caso e estar aí cando algo falla. Iso é o que ofrezo cos que xa están maduros: poñelos en marcha no teu proxecto e acompañarte.",
+            "en": "Having the code is not the same as having it working. It has to be installed, adapted to each case, and someone has to be there when something fails. That is what I offer with the ones that are already mature: setting them up in your project and staying with you."
           }
         },
         {

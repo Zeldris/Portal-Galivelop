@@ -8,9 +8,9 @@
     "en": "Three languages, no exceptions"
   },
   "bajada": {
-    "es": "Todo lo que lees aquí está en castellano, en gallego y en inglés. También lo pequeño. Es la regla que más trabajo nos da y la última que quitaría.",
-    "gl": "Todo o que les aquí está en castelán, en galego e en inglés. Tamén o pequeno. É a regra que máis traballo nos dá e a última que quitaría.",
-    "en": "Everything you read here is in Spanish, Galician and English. The small things too. It is the rule that costs us the most work and the last one I would drop."
+    "es": "Todo lo que lees aquí está en castellano, en gallego y en inglés. También lo pequeño.",
+    "gl": "Todo o que les aquí está en castelán, en galego e en inglés. Tamén o pequeno.",
+    "en": "Everything you read here is in Spanish, Galician and English. The small things too."
   },
   "descripcion": {
     "es": "Por qué todo en Galivelop sale en castellano, gallego e inglés, también lo pequeño, y qué nos cuesta mantenerlo.",
@@ -41,9 +41,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Galivelop lleva a Galicia en el nombre. Una web con ese nombre tenía que poder leerse en gallego. El castellano y el inglés están porque queremos que nos entienda cuanta más gente, mejor.",
-            "gl": "Galivelop leva a Galicia no nome. Unha web con ese nome tiña que poder lerse en galego. O castelán e o inglés están porque queremos que nos entenda canta máis xente, mellor.",
-            "en": "Galivelop carries Galicia in its name. A site with that name had to be readable in Galician. Spanish and English are there because we want as many people as possible to understand us."
+            "es": "Galivelop lleva a Galicia en el nombre. Una web con ese nombre tenía que poder leerse en gallego.",
+            "gl": "Galivelop leva a Galicia no nome. Unha web con ese nome tiña que poder lerse en galego.",
+            "en": "Galivelop carries Galicia in its name. A site with that name had to be readable in Galician."
           }
         }
       ]
