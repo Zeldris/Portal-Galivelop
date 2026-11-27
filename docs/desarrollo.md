@@ -290,7 +290,14 @@ cada proyecto, no aquí. Normas (la persona, 2026-11-27; fuentes en [`investigac
 - En primera persona y firmada; una sola idea por entrada; de 2 a 5 minutos de lectura.
 - Sin jerga, sin cifras de rendimiento y sin nombres de versiones ni de archivos. La única fecha es la de publicación.
 - Cuenta el porqué y lo que salió mal, no la lista de lo hecho; no vende. El detalle, con un enlace a la ficha.
-- Solo hechos que consten en el repo (ADR, retros, bitácora): no se inventan anécdotas ni citas de quien firma.
+- Solo hechos que consten en el repo o en el del proyecto (ADR, retros, bitácora, sus documentos): no se inventan
+  anécdotas ni citas de quien firma, y lo que no se ha medido se dice que no se ha medido.
+- **Tres tipos** (la persona, 2026-11-27: proyectos y curiosidades, no solo desarrollo): `taller` (cómo trabajamos),
+  `proyecto` (algo de un proyecto concreto: una muestra, unos consejos, una máquina) y `relato` (ficción ambientada en
+  el mundo de un proyecto). Un `relato` es la única excepción a «solo hechos»: usa el canon del proyecto y acaba con una
+  sección «Nota» que dice qué existía ya y qué se inventó para el diario; no toca tramas ni misterios reservados.
+- **Todas llevan `portada`**, del propio proyecto o de la marca; una imagen que no existe se dibuja con la marca
+  ([`marca.md`](marca.md)) o se pide al generador, nunca de fuera.
  Cada entrada es
 `src/data/diario/<slug>.json` (el slug es su dirección, `/diario/<slug>`), que carga `src/data/diario.ts`; no hace falta tocar
 código. La más nueva sale primero. Campos:

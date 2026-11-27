@@ -167,9 +167,9 @@ const FIJAS = {
     en: ['Products · Galivelop', 'What the people who make up the Galivelop workshop do on their own: Galivelop Developer (GalivelopCode) and Galivelop Evaluator (GVE). The workshop does not sell them; each lead looks after theirs.'],
   },
   diario: {
-    es: ['Diario del taller · Galivelop', 'Artículos largos sobre cómo se construye lo que hace Galivelop: las decisiones del taller, lo que se probó y lo que cambió.'],
-    gl: ['Diario do obradoiro · Galivelop', 'Artigos longos sobre como se constrúe o que fai Galivelop: as decisións do obradoiro, o que se probou e o que cambiou.'],
-    en: ['Workshop journal · Galivelop', 'Long reads on how Galivelop builds what it makes: the workshop’s decisions, what was tried and what changed.'],
+    es: ['Diario del taller · Galivelop', 'El diario de Galivelop: cómo trabajamos, qué probamos en cada proyecto y alguna curiosidad, de un consejo de voz a un relato de Tarkor.'],
+    gl: ['Diario do obradoiro · Galivelop', 'O diario de Galivelop: como traballamos, que probamos en cada proxecto e algunha curiosidade, dun consello de voz a un relato de Tarkor.'],
+    en: ['Workshop journal · Galivelop', 'The Galivelop journal: how we work, what we try on each project and the odd curiosity, from a voice tip to a tale from Tarkor.'],
   },
   'participa/proponer': {
     es: ['Propón un proyecto · Galivelop', '¿Tienes una idea que parece demasiado grande? Cuéntanosla. Leemos todas las propuestas y, si encaja en el taller, te escribimos para darle forma juntos.'],

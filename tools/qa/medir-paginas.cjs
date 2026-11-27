@@ -28,7 +28,7 @@ const { normalizarRuta, normalizarBase } = require('./pagina-estatica.cjs');
 
 const BASE = normalizarBase(process.env.BASE || 'http://localhost:4173/Portal-Galivelop/');
 const RAIZ = join(__dirname, '..', '..');
-const PAGINAS = ['', 'proyectos/tarkor', 'proyectos/toveriai', 'proyectos/galivelop-workflow', 'novedades', 'equipo', 'equipo/alvaro-garcia-grana', 'productos', 'productos/galivelop-developer', 'productos/galivelop-evaluator', 'diario', 'diario/como-dibujamos-el-relevo', 'participa/proponer', 'participa/unirse', 'muro', 'aviso-legal', 'privacidad', 'terminos'];
+const PAGINAS = ['', 'proyectos/tarkor', 'proyectos/toveriai', 'proyectos/galivelop-workflow', 'novedades', 'equipo', 'equipo/alvaro-garcia-grana', 'productos', 'productos/galivelop-developer', 'productos/galivelop-evaluator', 'diario', 'diario/railes-no-solo-instrucciones', 'participa/proponer', 'participa/unirse', 'muro', 'aviso-legal', 'privacidad', 'terminos'];
 const RUTAS = (
   process.argv.slice(2).length
     ? process.argv.slice(2)

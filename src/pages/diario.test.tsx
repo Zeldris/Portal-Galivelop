@@ -20,7 +20,7 @@ import { Inicio } from './Inicio';
 import { NoEncontrado } from './NoEncontrado';
 
 // La entrada con proyecto y animación: las demás no llevan ninguna de las dos cosas.
-const entrada = entradas.find((x) => x.slug === 'como-dibujamos-el-relevo')!;
+const entrada = entradas.find((x) => x.slug === 'railes-no-solo-instrucciones')!;
 const autor = buscarPersonaPorId(entrada.autor)!;
 
 const envolver = (pagina: React.ReactNode, ubicacion: string, idioma: 'es' | 'gl' | 'en' = 'es') =>

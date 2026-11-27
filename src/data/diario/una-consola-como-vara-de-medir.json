@@ -1,0 +1,176 @@
+{
+  "slug": "una-consola-como-vara-de-medir",
+  "fecha": "2026-11-27",
+  "autor": "alvaro-garcia-grana",
+  "tipo": "proyecto",
+  "titulo": {
+    "es": "Una consola como vara de medir",
+    "gl": "Unha consola como vara de medir",
+    "en": "A games console as our yardstick"
+  },
+  "bajada": {
+    "es": "Nuestra máquina de referencia para la inteligencia artificial no es un servidor: es una Steam Deck. Si algo funciona ahí, funciona en casi cualquier equipo.",
+    "gl": "A nosa máquina de referencia para a intelixencia artificial non é un servidor: é unha Steam Deck. Se algo funciona aí, funciona en case calquera equipo.",
+    "en": "Our reference machine for artificial intelligence is not a server: it is a Steam Deck. If something works there, it works on almost any computer."
+  },
+  "descripcion": {
+    "es": "Por qué probamos nuestros modelos de IA en una Steam Deck, qué hemos hecho de verdad en ella y qué nos enseña una máquina pequeña.",
+    "gl": "Por que probamos os nosos modelos de IA nunha Steam Deck, que fixemos de verdade nela e que nos ensina unha máquina pequena.",
+    "en": "Why we test our AI models on a Steam Deck, what we have actually done on it and what a small machine teaches us."
+  },
+  "portada": {
+    "src": "proyectos/galivelop-image-generator/piloto/portal-r3.webp",
+    "alt": {
+      "es": "Una puerta oscura con luz turquesa y tres esferas de color: una imagen generada en la consola",
+      "gl": "Unha porta escura con luz turquesa e tres esferas de cor: unha imaxe xerada na consola",
+      "en": "A dark doorway with turquoise light and three coloured spheres: an image generated on the console"
+    }
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "El porqué",
+        "gl": "O porqué",
+        "en": "The why"
+      },
+      "titulo": {
+        "es": "Por qué una consola",
+        "gl": "Por que unha consola",
+        "en": "Why a console"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Casi todo lo que se cuenta sobre inteligencia artificial pasa en centros de datos enormes. A nosotros nos interesa lo contrario: la que corre en tu propio equipo, sin mandar nada fuera.",
+            "gl": "Case todo o que se conta sobre intelixencia artificial pasa en centros de datos enormes. A nós interésanos o contrario: a que corre no teu propio equipo, sen mandar nada fóra.",
+            "en": "Almost everything you hear about artificial intelligence happens in huge data centres. We care about the opposite: the kind that runs on your own machine, sending nothing out."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Para saber si algo cabe en un equipo normal hace falta un equipo normal. El nuestro es una Steam Deck, una consola portátil pensada para jugar. Es el escalón más bajo de nuestra lista de «qué modelo cabe en qué máquina»: lo que funciona en ella, funciona en casi todo lo demás.",
+            "gl": "Para saber se algo cabe nun equipo normal cómpre un equipo normal. O noso é unha Steam Deck, unha consola portátil pensada para xogar. É o chanzo máis baixo da nosa lista de «que modelo cabe en que máquina»: o que funciona nela, funciona en case todo o demais.",
+            "en": "To know whether something fits on an ordinary machine you need an ordinary machine. Ours is a Steam Deck, a handheld console built for games. It is the bottom rung of our list of “which model fits on which machine”: what works on it works on almost everything else."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo hecho",
+        "gl": "O feito",
+        "en": "What we did"
+      },
+      "titulo": {
+        "es": "Lo que sí ha salido de ella",
+        "gl": "O que si saíu dela",
+        "en": "What has actually come out of it"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "No es una idea sobre el papel. Cuando pusimos a prueba nuestro generador de imágenes, todas las rondas se hicieron en la consola: ocho en total, con imágenes para cada proyecto del taller.",
+            "gl": "Non é unha idea sobre o papel. Cando puxemos a proba o noso xerador de imaxes, todas as roldas se fixeron na consola: oito en total, con imaxes para cada proxecto do obradoiro.",
+            "en": "This is not an idea on paper. When we put our image generator to the test, every round was done on the console: eight in all, with images for each workshop project."
+          }
+        },
+        {
+          "tipo": "imagen",
+          "src": "marca/diario-turnos.webp",
+          "alt": {
+            "es": "Dibujo de una consola portátil con tres fichas en fila: una imagen, una onda de voz y unas líneas de texto. Solo una está dentro de la consola",
+            "gl": "Debuxo dunha consola portátil con tres fichas en fila: unha imaxe, unha onda de voz e unhas liñas de texto. Só unha está dentro da consola",
+            "en": "Drawing of a handheld console with three tokens in a row: a picture, a voice wave and some lines of text. Only one is inside the console"
+          },
+          "pie": {
+            "es": "En una máquina pequeña, imagen, voz y texto no trabajan a la vez: hacen cola.",
+            "gl": "Nunha máquina pequena, imaxe, voz e texto non traballan á vez: fan cola.",
+            "en": "On a small machine, image, voice and text do not work at once: they queue."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Las lecciones",
+        "gl": "As leccións",
+        "en": "The lessons"
+      },
+      "titulo": {
+        "es": "Lo que enseña una máquina pequeña",
+        "gl": "O que ensina unha máquina pequena",
+        "en": "What a small machine teaches"
+      },
+      "bloques": [
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Cuatro cosas que no habríamos aprendido en un servidor",
+            "gl": "Catro cousas que non aprenderiamos nun servidor",
+            "en": "Four things a server would not have taught us"
+          },
+          "items": [
+            {
+              "es": "La memoria es una sola. La consola no tiene una memoria aparte para los gráficos: todo sale del mismo sitio, y lo que gasta un modelo se lo quita a lo demás.",
+              "gl": "A memoria é unha soa. A consola non ten unha memoria á parte para os gráficos: todo sae do mesmo sitio, e o que gasta un modelo quítallo ao demais.",
+              "en": "Memory is one pool. The console has no separate memory for graphics: everything comes from the same place, and what one model uses is taken from the rest."
+            },
+            {
+              "es": "Se trabaja por turnos. Generar una imagen, una voz o un texto piden la máquina entera, así que esperan su vez en lugar de pelearse.",
+              "gl": "Trabállase por quendas. Xerar unha imaxe, unha voz ou un texto piden a máquina enteira, así que agardan a súa vez en lugar de pelexar.",
+              "en": "Work goes in turns. Generating an image, a voice or a text each wants the whole machine, so they wait their turn instead of fighting."
+            },
+            {
+              "es": "Primero, un borrador pequeño. Una imagen pequeña cuesta más o menos una quinta parte que la definitiva y basta para saber si la idea va bien.",
+              "gl": "Primeiro, un borrador pequeno. Unha imaxe pequena custa máis ou menos unha quinta parte ca a definitiva e abonda para saber se a idea vai ben.",
+              "en": "A small draft first. A small image costs roughly a fifth of the final one and is enough to tell whether the idea is working."
+            },
+            {
+              "es": "Lo más nuevo no siempre es mejor. Probamos un modelo de imagen más reciente: en la consola iba muchísimo más lento y se salía del estilo. Lo descartamos.",
+              "gl": "O máis novo non sempre é mellor. Probamos un modelo de imaxe máis recente: na consola ía moitísimo máis lento e saíase do estilo. Descartámolo.",
+              "en": "Newer is not always better. We tried a more recent image model: on the console it was far slower and drifted from the style. We dropped it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo que falta",
+        "gl": "O que falta",
+        "en": "What is missing"
+      },
+      "titulo": {
+        "es": "Lo que todavía no sabemos",
+        "gl": "O que aínda non sabemos",
+        "en": "What we do not know yet"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Me gustaría darte más datos, pero no tengo todos. No hemos medido cuánto se calienta la consola ni cuánto le dura la batería en estos trabajos. La voz está preparada para ella, pero aún no la hemos medido ahí. Y la prueba de tener imagen, voz y texto esperando turno a la vez está pendiente.",
+            "gl": "Gustaríame darche máis datos, pero non os teño todos. Non medimos canto quenta a consola nin canto lle dura a batería nestes traballos. A voz está preparada para ela, pero aínda non a medimos aí. E a proba de ter imaxe, voz e texto agardando quenda á vez está pendente.",
+            "en": "I would like to give you more data, but I do not have it all. We have not measured how hot the console gets or how long its battery lasts on these jobs. The voice is set up for it, but we have not measured it there yet. And the test with image, voice and text all waiting their turn at once is still pending."
+          }
+        },
+        {
+          "tipo": "decision",
+          "texto": {
+            "es": "Lo que no hemos medido, no lo contamos. Cuando esas pruebas estén hechas, las verás en la página de cada proyecto.",
+            "gl": "O que non medimos, non o contamos. Cando esas probas estean feitas, veralas na páxina de cada proxecto.",
+            "en": "What we have not measured, we do not claim. When those tests are done, you will see them on each project's page."
+          },
+          "cita": {
+            "es": "Una norma del taller",
+            "gl": "Unha norma do obradoiro",
+            "en": "A workshop rule"
+          }
+        }
+      ]
+    }
+  ]
+}

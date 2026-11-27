@@ -370,7 +370,7 @@ describe('diario del taller', () => {
     ['en/', 'en'],
   ] as const;
   // La entrada con animación: las demás son solo texto.
-  const e = entradas.find((x) => x.slug === 'como-dibujamos-el-relevo')!;
+  const e = entradas.find((x) => x.slug === 'railes-no-solo-instrucciones')!;
   const SITIO = 'https://zeldris.github.io/Portal-Galivelop/';
 
   it('cada entrada tiene su página por idioma, con su cuerpo, h2 por sección, autor enlazado y lectura', () => {

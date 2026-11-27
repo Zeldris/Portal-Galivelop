@@ -1,0 +1,199 @@
+{
+  "slug": "escribir-para-el-oido",
+  "fecha": "2026-11-27",
+  "autor": "alvaro-garcia-grana",
+  "tipo": "proyecto",
+  "titulo": {
+    "es": "Escribir para el oído",
+    "gl": "Escribir para o oído",
+    "en": "Writing for the ear"
+  },
+  "bajada": {
+    "es": "Esta web se puede escuchar con una voz hecha en el taller. Prepararla nos enseñó que un texto que se lee bien no siempre se escucha bien.",
+    "gl": "Esta web pódese escoitar cunha voz feita no obradoiro. Preparala ensinounos que un texto que se le ben non sempre se escoita ben.",
+    "en": "You can listen to this website in a voice made in our workshop. Preparing it taught us that a text that reads well does not always sound well."
+  },
+  "descripcion": {
+    "es": "Lo que aprendimos al poner voz sintética a esta web: frases cortas, números con letras, varias tomas y una persona que escucha antes de publicar.",
+    "gl": "O que aprendemos ao poñerlle voz sintética a esta web: frases curtas, números con letras, varias tomas e unha persoa que escoita antes de publicar.",
+    "en": "What we learned giving this website a synthetic voice: short sentences, numbers in words, several takes and a person who listens before publishing."
+  },
+  "portada": {
+    "src": "proyectos/galivelop-voice-generator/proxima.webp",
+    "alt": {
+      "es": "Una boya de campana en el mar, con ondas que se abren a su alrededor",
+      "gl": "Unha boia de campá no mar, con ondas que se abren arredor",
+      "en": "A bell buoy at sea, with ripples spreading around it"
+    }
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "El punto de partida",
+        "gl": "O punto de partida",
+        "en": "Where we started"
+      },
+      "titulo": {
+        "es": "Una web que también se escucha",
+        "gl": "Unha web que tamén se escoita",
+        "en": "A website you can also listen to"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Cada página de esta web tiene una lectura en voz alta. No la grabó nadie: es una voz sintética que generamos nosotros, en nuestros propios equipos, con una herramienta del taller que todavía está en camino.",
+            "gl": "Cada páxina desta web ten unha lectura en voz alta. Non a gravou ninguén: é unha voz sintética que xeramos nós, nos nosos propios equipos, cunha ferramenta do obradoiro que aínda vai de camiño.",
+            "en": "Every page of this website has a read-aloud version. Nobody recorded it: it is a synthetic voice we generate ourselves, on our own machines, with a workshop tool that is still on its way."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Pensaba que bastaría con darle a la voz el mismo texto que ves en pantalla. No bastó. Lo que el ojo salta sin darse cuenta, el oído se lo traga entero.",
+            "gl": "Pensaba que abondaría con darlle á voz o mesmo texto que ves na pantalla. Non abondou. O que o ollo salta sen decatarse, o oído trágao enteiro.",
+            "en": "I thought it would be enough to give the voice the same text you see on screen. It was not. What the eye skips without noticing, the ear has to swallow whole."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "El texto",
+        "gl": "O texto",
+        "en": "The text"
+      },
+      "titulo": {
+        "es": "Lo que una voz no perdona",
+        "gl": "O que unha voz non perdoa",
+        "en": "What a voice does not forgive"
+      },
+      "bloques": [
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Cinco costumbres que cogimos",
+            "gl": "Cinco costumes que collemos",
+            "en": "Five habits we picked up"
+          },
+          "items": [
+            {
+              "es": "Frases cortas. Una idea por frase, porque quien escucha no puede volver atrás con la vista.",
+              "gl": "Frases curtas. Unha idea por frase, porque quen escoita non pode volver atrás coa vista.",
+              "en": "Short sentences. One idea per sentence, because a listener cannot glance back."
+            },
+            {
+              "es": "Sin paréntesis ni símbolos. Una flecha o una barra no suenan a nada, o suenan a algo raro.",
+              "gl": "Sen parénteses nin símbolos. Unha frecha ou unha barra non soan a nada, ou soan a algo raro.",
+              "en": "No brackets or symbols. An arrow or a slash sounds like nothing, or like something odd."
+            },
+            {
+              "es": "Los números, con letras. Escribimos «cero punto seis» para que la voz no decida por su cuenta cómo leerlo.",
+              "gl": "Os números, con letras. Escribimos «cero punto seis» para que a voz non decida pola súa conta como lelo.",
+              "en": "Numbers in words. We write “zero point six” so the voice does not decide for itself how to read it."
+            },
+            {
+              "es": "Las siglas, mejor enteras. Decimos «inteligencia artificial» y no dos letras sueltas.",
+              "gl": "As siglas, mellor enteiras. Dicimos «intelixencia artificial» e non dúas letras soltas.",
+              "en": "Acronyms spelled out. We say “artificial intelligence”, not two loose letters."
+            },
+            {
+              "es": "Las palabras de otro idioma, como suenan. Para que diga bien una palabra inglesa, se la escribimos tal como la pronunciaría alguien de aquí.",
+              "gl": "As palabras doutro idioma, como soan. Para que diga ben unha palabra inglesa, escribímoslla tal como a pronunciaría alguén de aquí.",
+              "en": "Foreign words as they sound. To get an English word right in a Spanish voice, we spell it the way someone from here would pronounce it."
+            }
+          ]
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "El resultado es que cada página tiene dos textos: el que lees y el que escuchas. Dicen lo mismo, pero el segundo está escrito para el oído.",
+            "gl": "O resultado é que cada páxina ten dous textos: o que les e o que escoitas. Din o mesmo, pero o segundo está escrito para o oído.",
+            "en": "The result is that every page has two texts: the one you read and the one you hear. They say the same thing, but the second is written for the ear."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "La voz",
+        "gl": "A voz",
+        "en": "The voice"
+      },
+      "titulo": {
+        "es": "Probar antes de fiarse",
+        "gl": "Probar antes de fiarse",
+        "en": "Test before you trust"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Antes de elegir una voz la ponemos a prueba con palabras traicioneras, como «hace», «cinco» o «zona». En pocas sílabas se nota si habla como esperamos o si se va a otro acento.",
+            "gl": "Antes de escoller unha voz poñémola a proba con palabras traizoeiras en castelán, como «hace», «cinco» ou «zona». En poucas sílabas nótase se fala como agardamos ou se marcha a outro acento.",
+            "en": "Before choosing a voice we test it with treacherous Spanish words such as “hace”, “cinco” or “zona”. A few syllables are enough to hear whether it speaks the way we expect or drifts into another accent."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Tampoco nos quedamos con la primera toma. Pedimos varias de la misma frase y elegimos una, porque dos intentos con el mismo texto no suenan igual. Y hemos visto que la misma receta no siempre da la misma voz en otro equipo.",
+            "gl": "Tampouco quedamos coa primeira toma. Pedimos varias da mesma frase e escollemos unha, porque dous intentos co mesmo texto non soan igual. E temos visto que a mesma receita non sempre dá a mesma voz noutro equipo.",
+            "en": "We do not keep the first take either. We ask for several of the same sentence and pick one, because two attempts at the same text do not sound alike. And we have seen that the same recipe does not always give the same voice on another machine."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Cada apartado de una página es un audio aparte. Si cambia un párrafo, se vuelve a generar solo ese trozo y no la página entera.",
+            "gl": "Cada apartado dunha páxina é un audio á parte. Se cambia un parágrafo, vólvese xerar só ese anaco e non a páxina enteira.",
+            "en": "Each section of a page is a separate audio file. If a paragraph changes, only that piece is generated again, not the whole page."
+          }
+        },
+        {
+          "tipo": "decision",
+          "texto": {
+            "es": "Ninguna voz llega a la web sin que una persona la escuche entera y diga que sí. La máquina propone tomas; elegir es cosa nuestra.",
+            "gl": "Ningunha voz chega á web sen que unha persoa a escoite enteira e diga que si. A máquina propón tomas; escoller é cousa nosa.",
+            "en": "No voice reaches the website until a person has listened to all of it and said yes. The machine offers takes; choosing is our job."
+          },
+          "cita": {
+            "es": "Lo que no delegamos",
+            "gl": "O que non delegamos",
+            "en": "What we do not delegate"
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo aprendido",
+        "gl": "O aprendido",
+        "en": "What we learned"
+      },
+      "titulo": {
+        "es": "El oído mejora el texto",
+        "gl": "O oído mellora o texto",
+        "en": "The ear improves the text"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Lo curioso es que escribir para el oído acabó mejorando lo que se lee. Una frase que no se puede decir de un tirón suele ser una frase que tampoco se entiende a la primera.",
+            "gl": "O curioso é que escribir para o oído acabou mellorando o que se le. Unha frase que non se pode dicir dun tirón adoita ser unha frase que tampouco se entende á primeira.",
+            "en": "The funny thing is that writing for the ear ended up improving what is read. A sentence you cannot say in one breath is usually a sentence nobody understands the first time either."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Queda trabajo. De momento la voz solo habla castellano: el gallego y el inglés se leen, pero aún no se escuchan. Cuando tengan voz, pasarán por las mismas pruebas.",
+            "gl": "Queda traballo. De momento a voz só fala castelán: o galego e o inglés lense, pero aínda non se escoitan. Cando teñan voz, pasarán polas mesmas probas.",
+            "en": "There is work left. For now the voice only speaks Spanish: Galician and English can be read, but not yet heard. When they get a voice, it will go through the same tests."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+{
+  "slug": "lo-que-el-generador-pinto-antes-de-acertar",
+  "fecha": "2026-11-27",
+  "autor": "alvaro-garcia-grana",
+  "tipo": "proyecto",
+  "proyecto": "galivelop-image-generator",
+  "titulo": {
+    "es": "Lo que el generador pintó antes de acertar",
+    "gl": "O que o xerador pintou antes de acertar",
+    "en": "What the generator painted before it got there"
+  },
+  "bajada": {
+    "es": "Antes de fiarnos de nuestro generador de imágenes hicimos ocho rondas de prueba. Casi nada de aquello se usa hoy, y por eso mismo merece enseñarse.",
+    "gl": "Antes de fiarnos do noso xerador de imaxes fixemos oito roldas de proba. Case nada daquilo se usa hoxe, e por iso mesmo merece ensinarse.",
+    "en": "Before trusting our image generator we ran eight test rounds. Almost none of it is in use today, which is exactly why it is worth showing."
+  },
+  "descripcion": {
+    "es": "Una muestra de las imágenes de prueba de Galivelop Image Generator: lo que salió mal, lo que mejoró y lo que aprendimos al pedir.",
+    "gl": "Unha mostra das imaxes de proba de Galivelop Image Generator: o que saíu mal, o que mellorou e o que aprendemos ao pedir.",
+    "en": "A sample of the test images from Galivelop Image Generator: what went wrong, what got better and what we learned about asking."
+  },
+  "portada": {
+    "src": "proyectos/galivelop-image-generator/portada.webp",
+    "alt": {
+      "es": "Un mar grabado con cuatro láminas flotando: un barco de papel, un faro, una rosa de los vientos y un sello",
+      "gl": "Un mar gravado con catro láminas aboiando: un barco de papel, un faro, unha rosa dos ventos e un selo",
+      "en": "An engraved sea with four floating prints: a paper boat, a lighthouse, a compass rose and a seal"
+    }
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "El piloto",
+        "gl": "O piloto",
+        "en": "The pilot"
+      },
+      "titulo": {
+        "es": "Ocho rondas para aprender a pedir",
+        "gl": "Oito roldas para aprender a pedir",
+        "en": "Eight rounds to learn how to ask"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Galivelop Image Generator es la herramienta con la que hacemos las imágenes de nuestros proyectos. Antes de usarla en serio le pedimos lo mismo una y otra vez, cambiando cada vez una sola cosa, para ver qué pasaba.",
+            "gl": "Galivelop Image Generator é a ferramenta coa que facemos as imaxes dos nosos proxectos. Antes de usala en serio pedímoslle o mesmo unha e outra vez, cambiando cada vez unha soa cousa, para ver que pasaba.",
+            "en": "Galivelop Image Generator is the tool we make our project images with. Before using it in earnest we asked it for the same thing again and again, changing one thing each time, to see what happened."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Te enseño dos casos: la imagen de este portal y la de Tarkor, nuestro juego de rol. En los dos, la primera ronda fue un no.",
+            "gl": "Ensínoche dous casos: a imaxe deste portal e a de Tarkor, o noso xogo de rol. Nos dous, a primeira rolda foi un non.",
+            "en": "Here are two cases: the image for this portal and the one for Tarkor, our role-playing game. In both, the first round was a no."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Primer caso",
+        "gl": "Primeiro caso",
+        "en": "First case"
+      },
+      "titulo": {
+        "es": "Un portal que no parecía un portal",
+        "gl": "Un portal que non parecía un portal",
+        "en": "A portal that did not look like one"
+      },
+      "bloques": [
+        {
+          "tipo": "galeria",
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r1.webp",
+              "alt": {
+                "es": "Una esfera de luz celeste difusa con cuatro puntos de color sobre fondo azul noche",
+                "gl": "Unha esfera de luz celeste difusa con catro puntos de cor sobre fondo azul noite",
+                "en": "A hazy sphere of sky-blue light with four coloured dots on a night-blue background"
+              },
+              "pie": {
+                "es": "Ronda 1: una esfera de luz. Bonita, pero no dice «portal».",
+                "gl": "Rolda 1: unha esfera de luz. Bonita, pero non di «portal».",
+                "en": "Round 1: a sphere of light. Pretty, but it does not say “portal”."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r3.webp",
+              "alt": {
+                "es": "Una puerta oscura con luz turquesa, tres esferas de color y anillos de luz en el suelo",
+                "gl": "Unha porta escura con luz turquesa, tres esferas de cor e aneis de luz no chan",
+                "en": "A dark doorway with turquoise light, three coloured spheres and rings of light on the floor"
+              },
+              "pie": {
+                "es": "Ronda 3: pedida con más cuidado, ya es una puerta.",
+                "gl": "Rolda 3: pedida con máis coidado, xa é unha porta.",
+                "en": "Round 3: asked for with more care, it is now a door."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/portal-r7.webp",
+              "alt": {
+                "es": "Tarjeta con un marco de piedra iluminado en azul, reflejado en el agua, con el logotipo y un lema",
+                "gl": "Tarxeta cun marco de pedra iluminado en azul, reflectido na auga, co logotipo e un lema",
+                "en": "Card with a stone frame lit in blue, reflected in water, with the logo and a tagline"
+              },
+              "pie": {
+                "es": "Ronda 7: el logotipo y el lema se añaden después, encima.",
+                "gl": "Rolda 7: o logotipo e o lema engádense despois, enriba.",
+                "en": "Round 7: the logo and the tagline are added afterwards, on top."
+              }
+            }
+          ]
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La primera imagen no estaba mal hecha. Simplemente podía ser de cualquier cosa. Lo que cambió entre una ronda y otra no fue la máquina, sino lo que le pedíamos.",
+            "gl": "A primeira imaxe non estaba mal feita. Simplemente podía ser de calquera cousa. O que cambiou entre unha rolda e outra non foi a máquina, senón o que lle pediamos.",
+            "en": "The first image was not badly made. It could simply have been about anything. What changed from one round to the next was not the machine, but what we asked of it."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Segundo caso",
+        "gl": "Segundo caso",
+        "en": "Second case"
+      },
+      "titulo": {
+        "es": "Tarkor, de la postal al cuaderno",
+        "gl": "Tarkor, da postal ao caderno",
+        "en": "Tarkor, from postcard to sketchbook"
+      },
+      "bloques": [
+        {
+          "tipo": "galeria",
+          "imagenes": [
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r1.webp",
+              "alt": {
+                "es": "Columnas de piedra unidas por puentes de cuerda ante un atardecer rojo muy saturado",
+                "gl": "Columnas de pedra unidas por pontes de corda ante un solpor vermello moi saturado",
+                "en": "Stone columns joined by rope bridges against a very saturated red sunset"
+              },
+              "pie": {
+                "es": "Ronda 1: una postal de fantasía. Vistosa y genérica: dije que no.",
+                "gl": "Rolda 1: unha postal de fantasía. Vistosa e xenérica: dixen que non.",
+                "en": "Round 1: a fantasy postcard. Showy and generic: I said no."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r6.webp",
+              "alt": {
+                "es": "Una duna con empalizada, una atalaya con bandera y agujas de roca al fondo, en estilo realista",
+                "gl": "Unha duna con estacada, unha atalaia con bandeira e agullas de rocha ao fondo, en estilo realista",
+                "en": "A dune with a palisade, a watchtower with a flag and rock spires behind, in a realistic style"
+              },
+              "pie": {
+                "es": "Ronda 6: ya es su mundo, pero sigue pareciendo una foto.",
+                "gl": "Rolda 6: xa é o seu mundo, pero segue parecendo unha foto.",
+                "en": "Round 6: it is now its own world, but it still looks like a photo."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-r7.webp",
+              "alt": {
+                "es": "Dibujo a lápiz en un cuaderno: agujas de roca, piedras flotantes y un cardo",
+                "gl": "Debuxo a lapis nun caderno: agullas de rocha, pedras aboiando e un cardo",
+                "en": "Pencil drawing in a sketchbook: rock spires, floating stones and a thistle"
+              },
+              "pie": {
+                "es": "Ronda 7: probamos el lápiz. Gustó, pero no se quedó.",
+                "gl": "Rolda 7: probamos o lapis. Gustou, pero non quedou.",
+                "en": "Round 7: we tried pencil. We liked it, but it did not stay."
+              }
+            },
+            {
+              "src": "proyectos/galivelop-image-generator/piloto/tarkor-acuarela.webp",
+              "alt": {
+                "es": "Acuarela de un esqueleto gigante y un tótem de madera en un desierto de arcilla agrietada",
+                "gl": "Acuarela dun esqueleto xigante e un tótem de madeira nun deserto de arxila fendida",
+                "en": "Watercolour of a giant skeleton and a wooden totem in a desert of cracked clay"
+              },
+              "pie": {
+                "es": "Y una prueba en acuarela: el mismo mundo con otra voz.",
+                "gl": "E unha proba en acuarela: o mesmo mundo con outra voz.",
+                "en": "And a watercolour test: the same world in another voice."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo aprendido",
+        "gl": "O aprendido",
+        "en": "What we learned"
+      },
+      "titulo": {
+        "es": "Cuatro cosas sobre pedir imágenes",
+        "gl": "Catro cousas sobre pedir imaxes",
+        "en": "Four things about asking for images"
+      },
+      "bloques": [
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Lo que nos llevamos del piloto",
+            "gl": "O que levamos do piloto",
+            "en": "What we took from the pilot"
+          },
+          "items": [
+            {
+              "es": "La máquina pinta lo que nombras. Pedimos una luz «como farolillos lejanos» y dibujó un farolillo. Desde entonces no usamos comparaciones.",
+              "gl": "A máquina pinta o que nomeas. Pedimos unha luz «como farois afastados» e debuxou un farol. Desde entón non usamos comparacións.",
+              "en": "The machine paints what you name. We asked for a light “like distant lanterns” and it drew a lantern. We have not used comparisons since."
+            },
+            {
+              "es": "Las letras, después. El logotipo y los textos no los dibuja la máquina: se ponen encima al final, para que no salgan letras inventadas.",
+              "gl": "As letras, despois. O logotipo e os textos non os debuxa a máquina: póñense enriba ao final, para que non saian letras inventadas.",
+              "en": "Lettering comes later. The machine does not draw the logo or the text: they go on top at the end, so no made-up letters appear."
+            },
+            {
+              "es": "Cuatro intentos, no uno. Con un solo intento, acertar es una lotería. Con cuatro se puede comparar y elegir.",
+              "gl": "Catro intentos, non un. Cun só intento, acertar é unha lotaría. Con catro pódese comparar e escoller.",
+              "en": "Four tries, not one. With a single try, getting it right is a lottery. With four you can compare and choose."
+            },
+            {
+              "es": "Quien elige es una persona. La herramienta propone; ninguna imagen se queda sin que alguien la mire y diga que sí.",
+              "gl": "Quen escolle é unha persoa. A ferramenta propón; ningunha imaxe queda sen que alguén a mire e diga que si.",
+              "en": "A person chooses. The tool proposes; no image stays unless someone looks at it and says yes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Después",
+        "gl": "Despois",
+        "en": "Afterwards"
+      },
+      "titulo": {
+        "es": "Y luego cambiamos de estilo",
+        "gl": "E logo cambiamos de estilo",
+        "en": "And then we changed style"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Aquí viene la parte que más me gusta contar. El piloto no encontró el estilo de la marca. Semanas después decidimos otra cosa: un grabado a dos tintas, con el mar de fondo. Lo que ves hoy en la web sale de ahí.",
+            "gl": "Aquí vén a parte que máis me gusta contar. O piloto non atopou o estilo da marca. Semanas despois decidimos outra cousa: un gravado a dúas tintas, co mar de fondo. O que ves hoxe na web sae de aí.",
+            "en": "Here comes the part I most like telling. The pilot did not find the brand's style. Weeks later we decided on something else: a two-ink engraving, with the sea behind it. What you see on the website today comes from there."
+          }
+        },
+        {
+          "tipo": "imagen",
+          "src": "marca/portada-diseno.webp",
+          "alt": {
+            "es": "Grabado de una boya en el mar con una ruta de puntos que llega hasta ella",
+            "gl": "Gravado dunha boia no mar cunha ruta de puntos que chega ata ela",
+            "en": "Engraving of a buoy at sea with a dotted route leading to it"
+          },
+          "pie": {
+            "es": "El estilo de hoy: el mar grabado, hecho con la misma herramienta.",
+            "gl": "O estilo de hoxe: o mar gravado, feito coa mesma ferramenta.",
+            "en": "Today's style: the engraved sea, made with the same tool."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Las rondas no sirvieron para dar con la imagen final. Sirvieron para aprender a pedir, y eso se quedó cuando el estilo cambió.",
+            "gl": "As roldas non serviron para dar coa imaxe final. Serviron para aprender a pedir, e iso quedou cando o estilo cambiou.",
+            "en": "The rounds did not give us the final image. They taught us how to ask, and that stayed when the style changed."
+          }
+        }
+      ]
+    }
+  ]
+}

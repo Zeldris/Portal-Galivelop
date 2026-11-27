@@ -1,0 +1,241 @@
+{
+  "slug": "hueso-sin-profanar",
+  "fecha": "2026-11-27",
+  "autor": "alvaro-garcia-grana",
+  "tipo": "relato",
+  "proyecto": "tarkor",
+  "titulo": {
+    "es": "Hueso sin profanar",
+    "gl": "Óso sen profanar",
+    "en": "Bone, taken with respect"
+  },
+  "bajada": {
+    "es": "Un relato corto del mundo de Tarkor: una aprendiza del clan Serhu va por primera vez al Osario de la Manada, y aprende qué se puede coger y qué no.",
+    "gl": "Un relato curto do mundo de Tarkor: unha aprendiza do clan Serhu vai por primeira vez ao Osario da Manada, e aprende que se pode coller e que non.",
+    "en": "A short tale from the world of Tarkor: an apprentice of the Serhu clan goes to the Herd Ossuary for the first time, and learns what may be taken and what may not."
+  },
+  "descripcion": {
+    "es": "Un relato corto ambientado en Tarkor, nuestro juego de rol: una aprendiza orca, un esqueleto gigante en el desierto y una regla del clan.",
+    "gl": "Un relato curto ambientado en Tarkor, o noso xogo de rol: unha aprendiza orca, un esqueleto xigante no deserto e unha regra do clan.",
+    "en": "A short tale set in Tarkor, our role-playing game: an orc apprentice, a giant skeleton in the desert and a rule of the clan."
+  },
+  "portada": {
+    "src": "proyectos/tarkor/arte/location-osario-de-la-manada.webp",
+    "alt": {
+      "es": "Costillas enormes y blanqueadas que forman arcos sobre un desierto rojo y agrietado",
+      "gl": "Costelas enormes e branqueadas que forman arcos sobre un deserto vermello e fendido",
+      "en": "Huge bleached ribs forming arches over a red, cracked desert"
+    }
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "El camino",
+        "gl": "O camiño",
+        "en": "The road"
+      },
+      "titulo": {
+        "es": "Los arcos blancos",
+        "gl": "Os arcos brancos",
+        "en": "The white arches"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Salimos de Karot Veku antes de que el suelo quemara. Mi maestra iba delante y no hablaba. Yo llevaba el odre, la sierra de cuerda y demasiadas preguntas.",
+            "gl": "Saímos de Karot Veku antes de que o chan queimase. A miña mestra ía diante e non falaba. Eu levaba o odre, a serra de corda e demasiadas preguntas.",
+            "en": "We left Karot Veku before the ground began to burn. My teacher walked ahead and did not speak. I carried the waterskin, the cord saw and too many questions."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Los arcos se ven mucho antes de llegar. Primero parecen dientes en el horizonte. Luego entiendes que son costillas, blancas de sol, y que podrías meter la empalizada entera del clan entre dos de ellas.",
+            "gl": "Os arcos vense moito antes de chegar. Primeiro semellan dentes no horizonte. Logo entendes que son costelas, brancas de sol, e que poderías meter a estacada enteira do clan entre dúas delas.",
+            "en": "You see the arches long before you arrive. At first they look like teeth on the horizon. Then you understand they are ribs, white with sun, and that the clan's whole palisade would fit between two of them."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "—Era una Gargantúa de Ceniza —dijo mi maestra—. Murió aquí cuando mi madre era pequeña. Nadie la mató. Se tumbó y ya no se levantó.",
+            "gl": "—Era unha Gargantúa de Cinza —dixo a miña mestra—. Morreu aquí cando miña nai era pequena. Ninguén a matou. Deitouse e xa non se ergueu.",
+            "en": "“It was an Ash Gargantua,” my teacher said. “It died here when my mother was small. Nobody killed it. It lay down and did not get up again.”"
+          }
+        },
+        {
+          "tipo": "imagen",
+          "src": "proyectos/tarkor/arte/fauna-gargantua-de-ceniza.webp",
+          "alt": {
+            "es": "Una Gargantúa de Ceniza: una bestia enorme de placas grises que camina por el desierto",
+            "gl": "Unha Gargantúa de Cinza: unha besta enorme de placas grises que camiña polo deserto",
+            "en": "An Ash Gargantua: a huge beast with grey plates walking across the desert"
+          },
+          "pie": {
+            "es": "Una Gargantúa de Ceniza viva. El clan las guía; no las caza.",
+            "gl": "Unha Gargantúa de Cinza viva. O clan guíaas; non as caza.",
+            "en": "A living Ash Gargantua. The clan guides them; it does not hunt them."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "La regla",
+        "gl": "A regra",
+        "en": "The rule"
+      },
+      "titulo": {
+        "es": "Lo que se puede coger",
+        "gl": "O que se pode coller",
+        "en": "What may be taken"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Yo quería una placa del lomo. Las había visto en los petos de los mayores: anchas, curvas, del color de la ceniza. Señalé una que seguía pegada al espinazo.",
+            "gl": "Eu quería unha placa do lombo. Víraas nos petos dos maiores: anchas, curvas, da cor da cinza. Sinalei unha que seguía pegada ao espiñazo.",
+            "en": "I wanted a plate from the back. I had seen them on the elders' breastplates: wide, curved, the colour of ash. I pointed at one still joined to the spine."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "—Esa no —dijo—. Mira el suelo.",
+            "gl": "—Esa non —dixo—. Mira o chan.",
+            "en": "“Not that one,” she said. “Look at the ground.”"
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "En el suelo había placas sueltas, medio enterradas, que el viento y los años habían ido soltando. Eran más pequeñas. Alguna estaba rajada.",
+            "gl": "No chan había placas soltas, medio enterradas, que o vento e os anos foran soltando. Eran máis pequenas. Algunha estaba fendida.",
+            "en": "On the ground lay loose plates, half buried, that wind and years had worked free. They were smaller. Some were cracked."
+          }
+        },
+        {
+          "tipo": "decision",
+          "texto": {
+            "es": "Se toma hueso, no se profana. Lo que ella suelta es nuestro. Lo que todavía sujeta es suyo.",
+            "gl": "Tómase óso, non se profana. O que ela solta é noso. O que aínda suxeita é seu.",
+            "en": "We take bone; we do not desecrate. What she lets go is ours. What she still holds is hers."
+          },
+          "cita": {
+            "es": "La maestra",
+            "gl": "A mestra",
+            "en": "The teacher"
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Antes de dejarme tocar nada, vertió un poco de agua del odre sobre la arena, junto al cráneo. No explicó por qué. Yo tampoco pregunté: en el desierto, tirar agua ya lo dice todo.",
+            "gl": "Antes de deixarme tocar nada, verteu un pouco de auga do odre sobre a area, xunto ao cranio. Non explicou por que. Eu tampouco preguntei: no deserto, tirar auga xa o di todo.",
+            "en": "Before she let me touch anything, she poured a little water from the skin onto the sand, beside the skull. She did not say why. I did not ask either: in the desert, pouring water away says it all."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Tardé media mañana en desenterrar una placa entera. No era la más bonita. Era la mía.",
+            "gl": "Tardei media mañá en desenterrar unha placa enteira. Non era a máis bonita. Era a miña.",
+            "en": "It took me half the morning to dig out one whole plate. It was not the finest. It was mine."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "El aviso",
+        "gl": "O aviso",
+        "en": "The warning"
+      },
+      "titulo": {
+        "es": "El pájaro que vuela bajo",
+        "gl": "O paxaro que voa baixo",
+        "en": "The bird that flies low"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Fue ella quien lo vio. Un cruzavientos había pasado toda la mañana muy arriba, dando vueltas lentas. De pronto bajó y cruzó sobre los arcos en línea recta, sin girar ni una vez.",
+            "gl": "Foi ela quen o viu. Un cruzaventos pasara toda a mañá moi arriba, dando voltas lentas. De súpeto baixou e cruzou sobre os arcos en liña recta, sen xirar nin unha vez.",
+            "en": "She was the one who saw it. A windcrosser had spent the morning very high, turning in slow circles. Suddenly it came down and crossed over the arches in a straight line, without turning once."
+          }
+        },
+        {
+          "tipo": "imagen",
+          "src": "proyectos/tarkor/arte/fauna-cruzavientos.webp",
+          "alt": {
+            "es": "Un cruzavientos: un ave grande de alas largas planeando sobre el desierto",
+            "gl": "Un cruzaventos: unha ave grande de ás longas planando sobre o deserto",
+            "en": "A windcrosser: a large long-winged bird gliding over the desert"
+          },
+          "pie": {
+            "es": "El cruzavientos. Alto y en círculos, buen tiempo. Bajo y recto, viene tormenta.",
+            "gl": "O cruzaventos. Alto e en círculos, bo tempo. Baixo e recto, vén tormenta.",
+            "en": "The windcrosser. High and circling, fair weather. Low and straight, a storm is coming."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "—Recoge —dijo mi maestra—. Viene arena de la que zumba.",
+            "gl": "—Recolle —dixo a miña mestra—. Vén area da que zoa.",
+            "en": "“Pack up,” my teacher said. “The humming sand is coming.”"
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Volvimos deprisa, con la placa atada a mi espalda. Cuando cerraron la empalizada detrás de nosotras, el horizonte ya no estaba. Los arcos seguían allí fuera, como siempre, aguantando otra tormenta sin nosotras.",
+            "gl": "Volvemos á présa, coa placa atada ás miñas costas. Cando pecharon a estacada detrás de nós, o horizonte xa non estaba. Os arcos seguían alá fóra, coma sempre, aguantando outra tormenta sen nós.",
+            "en": "We hurried back, the plate tied to my back. By the time they closed the palisade behind us, the horizon was gone. The arches were still out there, as always, standing through another storm without us."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Esa noche, cuando el cielo se limpió y volvió a verse el cinturón de luz, mi maestra me enseñó a hacer el primer agujero en el hueso.",
+            "gl": "Esa noite, cando o ceo se limpou e volveu verse o cinto de luz, a miña mestra ensinoume a facer o primeiro burato no óso.",
+            "en": "That night, when the sky cleared and the belt of light showed again, my teacher taught me to drill the first hole in the bone."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Nota",
+        "gl": "Nota",
+        "en": "Note"
+      },
+      "titulo": {
+        "es": "De dónde sale este relato",
+        "gl": "De onde sae este relato",
+        "en": "Where this tale comes from"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Esto es ficción, y te cuento qué parte ya existía. En el mundo de Tarkor están el Osario de la Manada y su regla, las Gargantúas que el clan Serhu guía en vez de cazar, el poblado de Karot Veku y el cruzavientos que avisa de las tormentas.",
+            "gl": "Isto é ficción, e cóntoche que parte xa existía. No mundo de Tarkor están o Osario da Manada e a súa regra, as Gargantúas que o clan Serhu guía en vez de cazar, a aldea de Karot Veku e o cruzaventos que avisa das tormentas.",
+            "en": "This is fiction, and here is which part already existed. The world of Tarkor has the Herd Ossuary and its rule, the Gargantuas the Serhu clan guides instead of hunting, the settlement of Karot Veku and the windcrosser that warns of storms."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "La aprendiza, su maestra y el gesto del agua me los he inventado yo para este diario. No forman parte del juego. Las imágenes sí: son las ilustraciones de su mundo.",
+            "gl": "A aprendiza, a súa mestra e o xesto da auga inventeinos eu para este diario. Non forman parte do xogo. As imaxes si: son as ilustracións do seu mundo.",
+            "en": "The apprentice, her teacher and the gesture with the water I made up for this diary. They are not part of the game. The images are: they are the illustrations of its world."
+          }
+        }
+      ]
+    }
+  ]
+}

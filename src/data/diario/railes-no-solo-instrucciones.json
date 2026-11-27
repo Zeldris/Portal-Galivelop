@@ -1,0 +1,203 @@
+{
+  "slug": "railes-no-solo-instrucciones",
+  "fecha": "2026-11-27",
+  "autor": "alvaro-garcia-grana",
+  "proyecto": "galivelop-workflow",
+  "tipo": "taller",
+  "titulo": {
+    "es": "Raíles, no solo instrucciones",
+    "gl": "Raís, non só instrucións",
+    "en": "Rails, not just instructions"
+  },
+  "bajada": {
+    "es": "Trabajamos con inteligencias artificiales que programan. Pedirles las cosas por favor no basta: lo importante es lo que no pueden saltarse.",
+    "gl": "Traballamos con intelixencias artificiais que programan. Pedirlles as cousas por favor non abonda: o importante é o que non poden saltar.",
+    "en": "We work with artificial intelligences that write code. Asking them nicely is not enough: what matters is what they cannot skip."
+  },
+  "descripcion": {
+    "es": "Por qué a una IA que programa le ponemos raíles: comprobaciones que no se saltan, notas de relevo y una persona que decide qué se publica.",
+    "gl": "Por que a unha IA que programa lle poñemos raís: comprobacións que non se saltan, notas de relevo e unha persoa que decide que se publica.",
+    "en": "Why we put an AI that writes code on rails: checks it cannot skip, handover notes and a person who decides what gets published."
+  },
+  "portada": {
+    "src": "proyectos/galivelop-workflow/portada.webp",
+    "alt": {
+      "es": "Portada de Galivelop-workflow, el método con el que trabajamos",
+      "gl": "Portada de Galivelop-workflow, o método co que traballamos",
+      "en": "Cover of Galivelop-workflow, the method we work with"
+    }
+  },
+  "secciones": [
+    {
+      "etiqueta": {
+        "es": "La palabra",
+        "gl": "A palabra",
+        "en": "The word"
+      },
+      "titulo": {
+        "es": "Qué es un «harness»",
+        "gl": "Que é un «harness»",
+        "en": "What a “harness” is"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "En inglés, «harness» es el arnés de quien escala. No sube por ti ni te dice por dónde ir. Solo impide que una mala pisada acabe en caída.",
+            "gl": "En inglés, «harness» é o arnés de quen escala. Non sobe por ti nin che di por onde ir. Só impide que unha mala pisada remate en caída.",
+            "en": "A harness is what a climber wears. It does not climb for you or tell you where to go. It only stops one bad step from becoming a fall."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Así llamamos a todo lo que rodea a la inteligencia artificial cuando trabaja con nosotros: las normas, las comprobaciones, las notas que deja y el momento en que una persona dice sí o no. Es más aburrido que la propia IA, y es lo que hace que podamos fiarnos del resultado.",
+            "gl": "Así lle chamamos a todo o que rodea a intelixencia artificial cando traballa connosco: as normas, as comprobacións, as notas que deixa e o momento en que unha persoa di si ou non. É máis aburrido ca a propia IA, e é o que fai que nos poidamos fiar do resultado.",
+            "en": "That is our name for everything around the artificial intelligence when it works with us: the rules, the checks, the notes it leaves and the moment a person says yes or no. It is duller than the AI itself, and it is what lets us trust the result."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo que salió mal",
+        "gl": "O que saíu mal",
+        "en": "What went wrong"
+      },
+      "titulo": {
+        "es": "Una norma escrita no basta",
+        "gl": "Unha norma escrita non abonda",
+        "en": "A written rule is not enough"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Al principio lo apuntábamos todo como normas: haz esto, no hagas aquello. La IA las leía, las entendía y, de vez en cuando, se las saltaba igual. No por mala fe: a mitad de un trabajo largo, una norma es una frase más entre miles.",
+            "gl": "Ao principio apuntabámolo todo como normas: fai isto, non fagas aquilo. A IA líaas, entendíaas e, de cando en vez, saltábaas igual. Non por mala fe: a metade dun traballo longo, unha norma é unha frase máis entre miles.",
+            "en": "At first we wrote everything down as rules: do this, do not do that. The AI read them, understood them and, now and then, broke them anyway. Not out of bad faith: halfway through a long job, a rule is one more sentence among thousands."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Un ejemplo pequeño. Teníamos escrito que en las pruebas solo se usan direcciones de correo de mentira, de las reservadas para ejemplos. Un día se coló una que no lo era. Lo vimos tarde, justo antes de publicar, y arreglarlo costó deshacer trabajo ya guardado.",
+            "gl": "Un exemplo pequeno. Tiñamos escrito que nas probas só se usan enderezos de correo de mentira, dos reservados para exemplos. Un día coouse un que non o era. Vímolo tarde, xusto antes de publicar, e arranxalo custou desfacer traballo xa gardado.",
+            "en": "A small example. We had written that tests may only use fake email addresses, the kind reserved for examples. One day a different one slipped in. We saw it late, just before publishing, and fixing it meant undoing work that was already saved."
+          }
+        },
+        {
+          "tipo": "decision",
+          "texto": {
+            "es": "Si una norma se rompe más de una vez, deja de ser una norma y pasa a ser una comprobación automática. Lo que se puede comprobar lo comprueba una máquina, siempre igual, y a la IA le dejamos lo que pide criterio.",
+            "gl": "Se unha norma rompe máis dunha vez, deixa de ser unha norma e pasa a ser unha comprobación automática. O que se pode comprobar compróbao unha máquina, sempre igual, e á IA deixámoslle o que pide criterio.",
+            "en": "If a rule is broken more than once, it stops being a rule and becomes an automatic check. Whatever can be checked is checked by a machine, the same way every time, and the AI is left with what needs judgement."
+          },
+          "cita": {
+            "es": "Nuestra regla sobre las reglas",
+            "gl": "A nosa regra sobre as regras",
+            "en": "Our rule about rules"
+          }
+        },
+        {
+          "tipo": "animacion",
+          "proyecto": "galivelop-workflow",
+          "id": "relevo",
+          "pie": {
+            "es": "Un ejemplo: el relevo entre dos sesiones de trabajo. Lo que una deja escrito, la siguiente lo comprueba antes de empezar.",
+            "gl": "Un exemplo: a remuda entre dúas sesións de traballo. O que unha deixa escrito, a seguinte compróbao antes de empezar.",
+            "en": "One example: the handover between two work sessions. What one leaves written down, the next one checks before starting."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Los raíles",
+        "gl": "Os raís",
+        "en": "The rails"
+      },
+      "titulo": {
+        "es": "Cuatro cosas que no se saltan",
+        "gl": "Catro cousas que non se saltan",
+        "en": "Four things that cannot be skipped"
+      },
+      "bloques": [
+        {
+          "tipo": "lista",
+          "titulo": {
+            "es": "Lo que sostiene el trabajo",
+            "gl": "O que sostén o traballo",
+            "en": "What holds the work up"
+          },
+          "items": [
+            {
+              "es": "Lo que no está guardado no existe. La IA olvida todo al acabar la sesión, así que guarda cada poco y deja una nota para quien siga.",
+              "gl": "O que non está gardado non existe. A IA esquece todo ao rematar a sesión, así que garda cada pouco e deixa unha nota para quen siga.",
+              "en": "What is not saved does not exist. The AI forgets everything when the session ends, so it saves often and leaves a note for whoever comes next."
+            },
+            {
+              "es": "Una prueba tiene que haber fallado antes. Si nunca ha dado error, no sabemos si de verdad vigila algo.",
+              "gl": "Unha proba ten que ter fallado antes. Se nunca deu erro, non sabemos se de verdade vixía algo.",
+              "en": "A test must have failed first. If it has never gone red, we do not know whether it is really watching anything."
+            },
+            {
+              "es": "Nada se publica con las comprobaciones en rojo. Ni con prisa, ni aunque lo pida yo.",
+              "gl": "Nada se publica coas comprobacións en vermello. Nin con présa, nin aínda que o pida eu.",
+              "en": "Nothing is published while the checks are red. Not in a hurry, and not even if I ask for it."
+            },
+            {
+              "es": "Publicar lo decide una persona. La IA propone, otra mirada revisa, y la última palabra es humana.",
+              "gl": "Publicar decídeo unha persoa. A IA propón, outra ollada revisa, e a última palabra é humana.",
+              "en": "Publishing is a person's decision. The AI proposes, a second look reviews, and the last word is human."
+            }
+          ]
+        },
+        {
+          "tipo": "imagen",
+          "src": "productos/galivelop-developer/gd-harness.webp",
+          "alt": {
+            "es": "Esquema: el trabajo pasa por quien organiza, quien hace y quien revisa, y al final decides tú",
+            "gl": "Esquema: o traballo pasa por quen organiza, quen fai e quen revisa, e ao final decides ti",
+            "en": "Diagram: the work goes through whoever organises, whoever does and whoever reviews, and in the end you decide"
+          },
+          "pie": {
+            "es": "El mismo recorrido, dibujado para Galivelop Developer: organizar, hacer, revisar y, al final, decidir tú.",
+            "gl": "O mesmo percorrido, debuxado para Galivelop Developer: organizar, facer, revisar e, ao final, decidir ti.",
+            "en": "The same path, drawn for Galivelop Developer: organise, do, review and, in the end, you decide."
+          }
+        }
+      ]
+    },
+    {
+      "etiqueta": {
+        "es": "Lo aprendido",
+        "gl": "O aprendido",
+        "en": "What we learned"
+      },
+      "titulo": {
+        "es": "El arnés no quita el mérito",
+        "gl": "O arnés non quita o mérito",
+        "en": "The harness takes nothing away"
+      },
+      "bloques": [
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Nada de esto hace infalible a la IA. Sigue equivocándose, y nosotros también. La diferencia es dónde se queda el error: en una comprobación que salta a tiempo, y no en la web que tú estás leyendo.",
+            "gl": "Nada disto fai infalible a IA. Segue equivocándose, e nós tamén. A diferenza é onde queda o erro: nunha comprobación que salta a tempo, e non na web que ti estás a ler.",
+            "en": "None of this makes the AI infallible. It still gets things wrong, and so do we. The difference is where the mistake ends up: in a check that goes off in time, and not on the website you are reading."
+          }
+        },
+        {
+          "tipo": "parrafo",
+          "texto": {
+            "es": "Me gusta pensarlo así: cuanto mejor es el arnés, más lejos nos atrevemos a subir. El método está publicado y cualquiera puede verlo en la página de Galivelop-workflow.",
+            "gl": "Gústame pensalo así: canto mellor é o arnés, máis lonxe nos atrevemos a subir. O método está publicado e calquera pode velo na páxina de Galivelop-workflow.",
+            "en": "I like to think of it this way: the better the harness, the higher we dare to climb. The method is published and anyone can see it on the Galivelop-workflow page."
+          }
+        }
+      ]
+    }
+  ]
+}

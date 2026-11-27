@@ -345,7 +345,7 @@ const es = {
   'nav.diario': 'Diario',
   'diario.titulo': 'Diario del taller',
   'diario.intro':
-    'Artículos largos sobre cómo se construye lo que sale del taller: qué decidimos, qué probamos y qué aprendimos por el camino.',
+    'Cómo trabajamos, qué probamos en cada proyecto y alguna curiosidad: desde un consejo para escribir una voz hasta un relato de Tarkor.',
   'diario.inicio': 'Inicio',
   'diario.fecha': 'Fecha',
   'diario.escribe': 'Escribe',
@@ -363,8 +363,9 @@ const es = {
   'diario.siguiente': 'Entrada siguiente →',
   'diario.relacionado': 'Proyecto relacionado',
   'diario.verFicha': 'Ver la ficha de {proyecto}',
-  'diario.banda.titulo': 'Cómo se construye lo que hacemos',
-  'diario.banda.texto': 'Artículos largos sobre las decisiones del taller. La última entrada:',
+  'diario.banda.titulo': 'Del taller, de los proyectos y alguna curiosidad',
+  'diario.banda.texto':
+    'Cómo trabajamos, pruebas de cada proyecto y alguna curiosidad. La última entrada:',
   'diario.banda.ver': 'Ver el diario',
   'producto.etiqueta': 'Producto',
   'producto.alias': 'Alias',
@@ -729,7 +730,7 @@ const gl: Record<Clave, string> = {
   'nav.diario': 'Diario',
   'diario.titulo': 'Diario do obradoiro',
   'diario.intro':
-    'Artigos longos sobre como se constrúe o que sae do obradoiro: que decidimos, que probamos e que aprendemos polo camiño.',
+    'Como traballamos, que probamos en cada proxecto e algunha curiosidade: desde un consello para escribir unha voz ata un relato de Tarkor.',
   'diario.inicio': 'Inicio',
   'diario.fecha': 'Data',
   'diario.escribe': 'Escribe',
@@ -747,8 +748,9 @@ const gl: Record<Clave, string> = {
   'diario.siguiente': 'Entrada seguinte →',
   'diario.relacionado': 'Proxecto relacionado',
   'diario.verFicha': 'Ver a ficha de {proyecto}',
-  'diario.banda.titulo': 'Como se constrúe o que facemos',
-  'diario.banda.texto': 'Artigos longos sobre as decisións do obradoiro. A última entrada:',
+  'diario.banda.titulo': 'Do obradoiro, dos proxectos e algunha curiosidade',
+  'diario.banda.texto':
+    'Como traballamos, probas de cada proxecto e algunha curiosidade. A última entrada:',
   'diario.banda.ver': 'Ver o diario',
   'producto.etiqueta': 'Produto',
   'producto.alias': 'Alias',
@@ -1113,7 +1115,7 @@ const en: Record<Clave, string> = {
   'nav.diario': 'Journal',
   'diario.titulo': 'Workshop journal',
   'diario.intro':
-    'Long reads on how what comes out of the workshop gets built: what we decided, what we tried and what we learned along the way.',
+    'How we work, what we try on each project and the odd curiosity: from a tip on writing for a voice to a tale from Tarkor.',
   'diario.inicio': 'Home',
   'diario.fecha': 'Date',
   'diario.escribe': 'Written by',
@@ -1131,8 +1133,9 @@ const en: Record<Clave, string> = {
   'diario.siguiente': 'Next entry →',
   'diario.relacionado': 'Related project',
   'diario.verFicha': 'See the {proyecto} page',
-  'diario.banda.titulo': 'How we build what we make',
-  'diario.banda.texto': "Long reads on the workshop's decisions. The latest entry:",
+  'diario.banda.titulo': 'From the workshop, the projects and the odd curiosity',
+  'diario.banda.texto':
+    'How we work, tests from each project and the odd curiosity. The latest entry:',
   'diario.banda.ver': 'Read the journal',
   'producto.etiqueta': 'Product',
   'producto.alias': 'Also known as',
