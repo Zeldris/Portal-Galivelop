@@ -79,7 +79,7 @@ Acentos de los productos (la persona, 2026-11-24; hondo y variante oscura de `es
 vivo ya cumple, `#c27a1a`). El ámbar puro da 3,36:1 sobre el papel: el texto de acento va en el hondo. `filter:
 saturate(0.7)` en `.proxima-icono` (icono de la tarjeta «Próximamente») es una excepción anotada de la regla 2.
 
-Acentos de los proyectos nuevos (**propuestos, sin confirmar por la persona**, 2026-11-27; el hondo y la variante
+Acentos de los proyectos nuevos (**confirmados por la persona**, 2026-11-27; el hondo y la variante
 oscura los calcula `estiloAcento` y, si el vivo no da 4,5:1 sobre el papel, se ajusta): **Forge** `#D9532B`,
 **Runtime** `#5A6C80`, **Worlds** `#2F8F4E` y **Model Atlas** `#8A6A3B`. Lo que haya en
 `src/data/proximamente.json` y en la ficha de `galivelop-models` manda sobre esta línea.

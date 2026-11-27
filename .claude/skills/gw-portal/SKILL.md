@@ -132,8 +132,7 @@ El portal enseña más que las fichas; lo que sigue también se revisa (informe 
 - **Productos privados, equipo y legal** se mantienen a mano: se leen para avisar de lo que ya no sea verdad, no se editan.
 - **Etiquetas:** `"etiquetas": true` en `fuentes.json` para todo repo cuya ficha nombre una versión (hoy solo el
   flujo; el generador de imágenes, con la 0.6.0 publicada, también debería).
-- **Máximo de novedades:** `proyectos.md` dice 8, pero las fichas tienen entre 10 y 14 y nada lo comprueba ni se
-  recorta (borrar lo publicado espera a la persona): decisión pendiente, no se aplica por su cuenta.
+- **Máximo de novedades: 14** por ficha (la persona, 2026-11-27); con más, la más antigua sale al añadir una nueva.
 - **Mejoras de `recoger.py`** (script con test, no regla): repos archivados o sin actividad, un `ignorar` que gana
   README o etiqueta (`galivelop-artifacts`) y etiquetas de todos los repos con ficha.
 - **Tarea semanal:** su texto sigue «pendiente de pegar» (`docs/runbooks/tarea-semanal.md`); al pegarlo, que diga que
