@@ -17,6 +17,7 @@ try {
   require('node:module')._initPaths();
 }
 const { chromium } = require('playwright');
+const { normalizarRuta } = require('./pagina-estatica.cjs');
 const { BASE, TACTIL, VENTANAS, lista, servidor, parar, medirPagina } = require('./medir-paginas.cjs');
 
 const HOJA = process.argv[2] === '--hoja';
@@ -75,7 +76,7 @@ async function hoja(navegador, rutas, carpeta) {
   console.log(archivo);
 }
 
-const ruta = (process.argv[2] ?? '').replace(/^\//, '');
+const ruta = normalizarRuta(process.argv[2] ?? '');
 const menu = process.argv[3] === '--menu';
 const seccion = !menu && process.argv[3] ? process.argv[3] : null;
 if (HOJA ? process.argv.length < 4 : process.argv.length > 4) {
@@ -93,7 +94,7 @@ let vista = null;
   mkdirSync(carpeta, { recursive: true });
   const navegador = await chromium.launch();
   if (HOJA) {
-    await hoja(navegador, process.argv.slice(3).map((r) => r.replace(/^\//, '')), carpeta);
+    await hoja(navegador, process.argv.slice(3).map(normalizarRuta), carpeta);
     await navegador.close();
     if (vista) parar(vista);
     return;

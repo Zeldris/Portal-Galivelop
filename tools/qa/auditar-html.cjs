@@ -23,7 +23,7 @@ try {
 const RAIZ = join(__dirname, '..', '..');
 const DIST = join(RAIZ, 'dist');
 const PUERTO = 4177;
-const BASE = process.env.BASE || `http://localhost:${PUERTO}/Portal-Galivelop/`;
+const BASE = (process.env.BASE || `http://localhost:${PUERTO}/Portal-Galivelop/`).replace(/\/*$/, '/');
 const SITIO = 'https://zeldris.github.io/Portal-Galivelop/';
 const PDF_DIR = process.env.PDF_DIR || join(os.tmpdir(), 'auditar-html-print');
 const IDIOMAS = ['es', 'gl', 'en'];

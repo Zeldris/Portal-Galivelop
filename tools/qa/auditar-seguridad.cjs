@@ -16,6 +16,7 @@
 const { spawn, execFileSync } = require('node:child_process');
 const { existsSync, readFileSync, readdirSync, statSync } = require('node:fs');
 const { join, extname } = require('node:path');
+const { esCodigoDeSrc } = require('./pagina-estatica.cjs');
 
 const RAIZ = join(__dirname, '..', '..');
 const DIST = join(RAIZ, 'dist');
@@ -120,15 +121,17 @@ const PATRONES = [
   ['comentario TODO/FIXME/XXX', /(?:\/\/|\/\*|<!--)\s*(?:TODO|FIXME|XXX|HACK)\b/],
 ];
 const TEXTO = /\.(html|js|mjs|cjs|css|json|txt|xml|svg|md|ts|tsx|yml|yaml|sh|py|webmanifest)$/;
+/** `soloSecretos` es un booleano o una función de fichero: así `src/` se recorre una sola vez. */
 function buscar(ficheros, etiqueta, soloSecretos) {
   const publicados = correosPublicados();
   const correos = new Map();
+  const soloSecretosDe = typeof soloSecretos === 'function' ? soloSecretos : () => soloSecretos;
   for (const f of ficheros) {
     if (!TEXTO.test(f) || statSync(f).size > 3_000_000) continue;
     const txt = readFileSync(f, 'utf8');
     for (const [nombre, re] of PATRONES) {
       const soloSecreto = nombre.includes('clave') || nombre.includes('secreto');
-      if (soloSecretos && !soloSecreto && nombre !== 'ruta local') continue;
+      if (soloSecretosDe(f) && !soloSecreto && nombre !== 'ruta local') continue;
       const g = new RegExp(re.source, re.flags.replace('g', '') + 'g');
       for (const m of txt.matchAll(g)) {
         const linea = txt.slice(0, m.index).split('\n').length;
@@ -167,8 +170,7 @@ function auditarSecretos() {
     avisa('git ls-files no disponible: repo sin revisar');
   }
   // Secretos en cualquier archivo rastreado; el resto (depuración, TODO) solo en src/.
-  buscar(rastreados, 'repo', true);
-  buscar(rastreados.filter((f) => /\/src\//.test(f) && !/\.test\./.test(f)), 'repo', false);
+  buscar(rastreados, 'repo', (f) => !esCodigoDeSrc(f));
   for (const f of rastreados) {
     if (/(^|\/)\.env(\.|$)|\.(pem|key|p12|pfx)$|id_rsa/.test(f)) falla(`archivo sensible rastreado: ${rel(f)}`);
   }
