@@ -424,3 +424,10 @@ file (format: header of scripts/questions.py). Answer by number: `questions.py a
 - Recommendation: Sí, en cuanto el CI de la marca salga en verde: el diff está revisado, con check en verde, y la publicación del domingo lo recoge.
 - Answer: Si
 - Answered: 2026-11-27
+
+## Q-48
+- Refs: Q-32
+- Status: open
+- Asked: 2026-11-27
+- Question: Diario: ¿qué entradas nuevas escribo? a) la portada que tardaba (LCP móvil), b) una SPA que Google sí lee (páginas estáticas y SEO), c) el taller no vende (ADR 0001 a 0006), d) probar el lector sin la persona, e) el piloto del flujo en el portal, f) la identidad visual, g) publicar cada domingo sin nadie delante
+- Recommendation: a y b: son las dos con más cifras ya medidas en el repo (LCP 3324 → 2008 ms; páginas estáticas e indexación) y no dependen de nada pendiente. Una por semana, para que la publicación del domingo lleve entrada nueva.
