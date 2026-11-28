@@ -21,36 +21,3 @@ zeldris.github.io/Portal-Galivelop/diario
 #InteligenciaArtificial #IALocal #DesarrolloDeSoftware #CódigoAbierto
 Image: media/card.png
 
-## gl
-
-Repasando o novo do obradoiro desta semana, case todo vai do mesmo: saber parar.
-
-O xerador de imaxes xa non insiste sen fin. Ao terceiro fallo seguido detense e pide que alguén conte que pasou antes de seguir. O noso fluxo de traballo con IA fai algo parecido: se a tarefa pide un modelo e a sesión usa outro, para e pregunta antes de empezar. E Tarkor segue nunha rolda de probas xogando, que tamén é unha forma de parar: mirar o feito antes de engadir máis.
-
-Unha ferramenta que insiste sen que ninguén mire non aforra traballo, escóndeo. Preferimos que pare e pregunte.
-
-Hai máis. A web de toVeriAI xa se usa con comodidade desde o móbil. En «proximamente» entran catro proxectos, todos arredor da IA que corre nun equipo propio: Forge, Runtime, Worlds e Model Atlas. E o diario do obradoiro estrea cinco entradas, desde por que unha Steam Deck é a nosa vara de medir ata un relato do mundo de Tarkor.
-
-En que momento decidides que algo ten que pararse só?
-
-zeldris.github.io/Portal-Galivelop/gl/diario
-
-#IntelixenciaArtificial #IALocal #DesenvolvementoDeSoftware #CódigoAberto
-Image: media/card.gl.png
-
-## en
-
-Looking back at what's new in the workshop this week, almost all of it comes down to one thing: knowing when to stop.
-
-Our image generator no longer keeps trying forever. After the third failure in a row, it stops and asks someone to explain what went wrong before it carries on. Our AI workflow does something similar: if a task calls for one model and the session is running another, it stops and asks before starting. And Tarkor is still in a round of play-testing, which is also a way of stopping: looking at what's there before adding more.
-
-A tool that keeps going with nobody watching doesn't save work, it hides it. We'd rather it stopped and asked.
-
-There's more. toVeriAI's website is now comfortable to use on a phone. Four projects join "coming soon", all built around AI that runs on your own machine: Forge, Runtime, Worlds and Model Atlas. And the workshop journal has five new entries, from why a Steam Deck is our yardstick to a short story set in Tarkor's world.
-
-When do you decide something should stop on its own?
-
-zeldris.github.io/Portal-Galivelop/en/diario
-
-#ArtificialIntelligence #LocalAI #SoftwareDevelopment #OpenSource
-Image: media/card.en.png
