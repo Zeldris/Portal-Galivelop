@@ -26,7 +26,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
-- 2026-11-28 · **Tarjeta «New in the workshop»** (`ccr-b5664d58-ozb4cv`, contenido): versión en inglés de la tarjeta del post de LinkedIn para Reddit, `docs/media/2026-11-28/01-saber-parar/media/card-en.*` (fuente `source/card-en.html`). El texto del post de Reddit se dio en la conversación, sin guardar.
+- 2026-11-28 · **Tarjeta «New in the workshop»** (`ccr-b5664d58-ozb4cv`, contenido): versión en inglés de la tarjeta del post de LinkedIn para Reddit, `docs/media/2026-11-28/01-saber-parar/media/card-en.*` (fuente `source/card-en.html`). Post de Reddit en `docs/media/2026-11-28/02-novedades-reddit/`, **publicado el 2026-11-28** en u/Alvaro-Garcia-Grana.
 - 2026-11-28 · **LinkedIn «Lo nuevo del taller»** (`docs/media/2026-11-28/01-saber-parar/`): publicada.
 - 2026-11-28 · **Sin metatexto**: fuera la «Nota» de `la-ultima-semilla` y el metatexto de `lo-que-el-generador…` y `una-consola…`; en `main` (070cc3f) con confirmación de la persona; norma «Lo que no se escribe» en `docs/desarrollo.md` y `.claude/gw/gw-media-content-now.md`.
 - 2026-11-27 · **(en `main`) `/gw-portal` en modo aplicar, segunda pasada** (`ccr-b5664d58-ozb4cv`, contenido y `fuentes.json`): image-generator 0.8.0 (novedad, fase, enlace, guion), toVeriAI (novedad de trabajo de fondo), workflow 0.9.1 en el texto, runtime 4 / 7 y worlds con su siguiente paso, trozo «proyectos» del inicio con los cinco próximos; `galivelop-watch` ignorado. Detalle en «Para la próxima publicación». Check: 439 tests.

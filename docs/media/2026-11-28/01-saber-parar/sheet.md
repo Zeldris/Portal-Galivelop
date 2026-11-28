@@ -41,7 +41,7 @@ Languages: es
 |---|---|---|
 | `media/card.png` | es: Tarjeta «Lo nuevo del taller» de Galivelop: Galivelop IG se para al tercer fallo seguido, Galivelop-workflow pregunta antes de empezar, Tarkor en pruebas jugando, toVeriAI cómoda en el móvil y cuatro proyectos en próximamente | linkedin |
 | `media/card.webp` | es: Tarjeta «Lo nuevo del taller» de Galivelop: Galivelop IG se para al tercer fallo seguido, Galivelop-workflow pregunta antes de empezar, Tarkor en pruebas jugando, toVeriAI cómoda en el móvil y cuatro proyectos en próximamente | ninguno (la genera el render; sirve para X o Discord) |
-| `media/card-en.png` (y `card-en.webp`, `card-en-mini.webp`) | en: Galivelop card «New in the workshop»: Galivelop IG stops after three failures in a row, Galivelop-workflow asks before it starts, Tarkor in play-testing, a phone-friendly toVeriAI website and four projects coming soon | reddit (pedido de la persona, 2026-11-28; el texto del post de Reddit se dio en la conversación y no está guardado) |
+| `media/card-en.png` (y `card-en.webp`, `card-en-mini.webp`) | en: Galivelop card «New in the workshop»: Galivelop IG stops after three failures in a row, Galivelop-workflow asks before it starts, Tarkor in play-testing, a phone-friendly toVeriAI website and four projects coming soon | reddit (en la pieza `02-novedades-reddit`) |
 
 ## Internal use
 
