@@ -10,9 +10,9 @@
     "en": "What the generator painted before it got there"
   },
   "bajada": {
-    "es": "Antes de fiarnos de nuestro generador de imágenes hicimos ocho rondas de prueba. Casi nada de aquello se usa hoy, y por eso mismo merece enseñarse.",
-    "gl": "Antes de fiarnos do noso xerador de imaxes fixemos oito roldas de proba. Case nada daquilo se usa hoxe, e por iso mesmo merece ensinarse.",
-    "en": "Before trusting our image generator we ran eight test rounds. Almost none of it is in use today, which is exactly why it is worth showing."
+    "es": "Antes de fiarnos de nuestro generador de imágenes hicimos ocho rondas de prueba. Casi nada de aquello se usa hoy, pero nos enseñó a pedir.",
+    "gl": "Antes de fiarnos do noso xerador de imaxes fixemos oito roldas de proba. Case nada daquilo se usa hoxe, pero ensinounos a pedir.",
+    "en": "Before trusting our image generator we ran eight test rounds. Almost none of it is in use today, but it taught us how to ask."
   },
   "descripcion": {
     "es": "Una muestra de las imágenes de prueba de Galivelop Image Generator: lo que salió mal, lo que mejoró y lo que aprendimos al pedir.",
@@ -270,9 +270,9 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Aquí viene la parte que más me gusta contar. El piloto no encontró el estilo de la marca. Semanas después decidimos otra cosa: un grabado a dos tintas, con el mar de fondo. Lo que ves hoy en la web sale de ahí.",
-            "gl": "Aquí vén a parte que máis me gusta contar. O piloto non atopou o estilo da marca. Semanas despois decidimos outra cousa: un gravado a dúas tintas, co mar de fondo. O que ves hoxe na web sae de aí.",
-            "en": "Here comes the part I most like telling. The pilot did not find the brand's style. Weeks later we decided on something else: a two-ink engraving, with the sea behind it. What you see on the website today comes from there."
+            "es": "El piloto no encontró el estilo de la marca. Semanas después decidimos otra cosa: un grabado a dos tintas, con el mar de fondo. Lo que ves hoy en la web sale de ahí.",
+            "gl": "O piloto non atopou o estilo da marca. Semanas despois decidimos outra cousa: un gravado a dúas tintas, co mar de fondo. O que ves hoxe na web sae de aí.",
+            "en": "The pilot did not find the brand's style. Weeks later we decided on something else: a two-ink engraving, with the sea behind it. What you see on the website today comes from there."
           }
         },
         {

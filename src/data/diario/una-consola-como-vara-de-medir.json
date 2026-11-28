@@ -156,17 +156,17 @@
         {
           "tipo": "parrafo",
           "texto": {
-            "es": "Me gustaría darte más datos, pero no tengo todos. No hemos medido cuánto se calienta la consola ni cuánto le dura la batería en estos trabajos. La voz está preparada para ella, pero aún no la hemos medido ahí. Y la prueba de tener imagen, voz y texto esperando turno a la vez está pendiente.",
-            "gl": "Gustaríame darche máis datos, pero non os teño todos. Non medimos canto quenta a consola nin canto lle dura a batería nestes traballos. A voz está preparada para ela, pero aínda non a medimos aí. E a proba de ter imaxe, voz e texto agardando quenda á vez está pendente.",
-            "en": "I would like to give you more data, but I do not have it all. We have not measured how hot the console gets or how long its battery lasts on these jobs. The voice is set up for it, but we have not measured it there yet. And the test with image, voice and text all waiting their turn at once is still pending."
+            "es": "Aún no hemos medido cuánto se calienta la consola ni cuánto le dura la batería en estos trabajos. La voz está preparada para ella, pero aún no la hemos medido ahí. Y la prueba de tener imagen, voz y texto esperando turno a la vez está pendiente.",
+            "gl": "Aínda non medimos canto quenta a consola nin canto lle dura a batería nestes traballos. A voz está preparada para ela, pero aínda non a medimos aí. E a proba de ter imaxe, voz e texto agardando quenda á vez está pendente.",
+            "en": "We have not yet measured how hot the console gets or how long its battery lasts on these jobs. The voice is set up for it, but we have not measured it there yet. And the test with image, voice and text all waiting their turn at once is still pending."
           }
         },
         {
           "tipo": "decision",
           "texto": {
-            "es": "Lo que no hemos medido, no lo contamos. Cuando esas pruebas estén hechas, las verás en la página de cada proyecto.",
-            "gl": "O que non medimos, non o contamos. Cando esas probas estean feitas, veralas na páxina de cada proxecto.",
-            "en": "What we have not measured, we do not claim. When those tests are done, you will see them on each project's page."
+            "es": "Cuando esas pruebas estén hechas, las verás en la página de cada proyecto.",
+            "gl": "Cando esas probas estean feitas, veralas na páxina de cada proxecto.",
+            "en": "When those tests are done, you will see them on each project's page."
           },
           "cita": {
             "es": "Una norma del taller",
