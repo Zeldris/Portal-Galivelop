@@ -196,44 +196,6 @@
           }
         }
       ]
-    },
-    {
-      "etiqueta": {
-        "es": "Nota",
-        "gl": "Nota",
-        "en": "Note"
-      },
-      "titulo": {
-        "es": "Qué es del juego y qué no",
-        "gl": "Que é do xogo e que non",
-        "en": "What comes from the game and what does not"
-      },
-      "bloques": [
-        {
-          "tipo": "parrafo",
-          "texto": {
-            "es": "Todo lo que cuenta este corto es canon de Tarkor: Madre, las trece Semillas, la luz morada, la voz, la pregunta, la negativa, el regreso, el Estallido y el nacimiento de los orcos. Lo he resumido mucho. Mías son solo las palabras, y la frase que dice la voz, que en el juego no está escrita así.",
-            "gl": "Todo o que conta esta curta é canon de Tarkor: Nai, as trece Sementes, a luz morada, a voz, a pregunta, a negativa, o regreso, o Estalido e o nacemento dos orcos. Resumino moito. Miñas son só as palabras, e a frase que di a voz, que no xogo non está escrita así.",
-            "en": "Everything this short tells is Tarkor canon: Mother, the thirteen Seeds, the purple light, the voice, the question, the refusal, the return, the Blast and the birth of the orcs. I have shortened it a great deal. Only the wording is mine, and the sentence the voice speaks, which is not written that way in the game."
-          }
-        },
-        {
-          "tipo": "parrafo",
-          "texto": {
-            "es": "Dos cosas quedan fuera a propósito: qué oculta Madre y qué encontró Tarkor mientras estuvo fuera. El juego las guarda para más adelante.",
-            "gl": "Dúas cousas quedan fóra á mantenta: que oculta Nai e que atopou Tarkor mentres estivo fóra. O xogo gárdaas para máis adiante.",
-            "en": "Two things are left out on purpose: what Mother hides and what Tarkor found while he was away. The game keeps them for later."
-          }
-        },
-        {
-          "tipo": "parrafo",
-          "texto": {
-            "es": "La imagen de arriba no es del Génesis. Es una esquirla celeste caída en las Llanuras, un objeto del juego. La he elegido porque también es una luz que llega de fuera.",
-            "gl": "A imaxe de arriba non é do Xénese. É unha esquirla celeste caída nas Chairas, un obxecto do xogo. Escollina porque tamén é unha luz que chega de fóra.",
-            "en": "The image at the top is not from the Genesis. It is a fallen sky shard on the Plains, an item from the game. I chose it because it, too, is a light that arrives from outside."
-          }
-        }
-      ]
     }
   ]
 }

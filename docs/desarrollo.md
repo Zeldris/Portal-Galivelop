@@ -294,8 +294,15 @@ cada proyecto, no aquí. Normas (la persona, 2026-11-27; fuentes en [`investigac
   anécdotas ni citas de quien firma, y lo que no se ha medido se dice que no se ha medido.
 - **Tres tipos** (la persona, 2026-11-27: proyectos y curiosidades, no solo desarrollo): `taller` (cómo trabajamos),
   `proyecto` (algo de un proyecto concreto: una muestra, unos consejos, una máquina) y `relato` (ficción ambientada en
-  el mundo de un proyecto). Un `relato` es la única excepción a «solo hechos»: usa el canon del proyecto y acaba con una
-  sección «Nota» que dice qué existía ya y qué se inventó para el diario; no toca tramas ni misterios reservados.
+  el mundo de un proyecto). Un `relato` es la única excepción a «solo hechos»: usa el canon del proyecto y no toca
+  tramas ni misterios reservados. Termina con la historia: sin notas al pie.
+- **Lo que no se escribe** (la persona, 2026-11-28: «una persona no lo escribiría ni se expondría tanto»). El texto
+  habla del tema, nunca de sí mismo ni de cómo se hizo:
+  - ni qué es inventado, qué es canon o qué se ha resumido;
+  - ni por qué se eligió una imagen, una palabra o un enfoque, ni qué no es la imagen;
+  - ni lo que se deja fuera, ni avisos o disculpas sobre el propio texto.
+  Si una imagen necesita contexto, lo da su `pie` en una frase («Arte del juego»). La duda de qué contar se resuelve
+  así: si la persona que firma no lo diría en voz alta a un desconocido, no va.
 - **Todas llevan `portada`**, del propio proyecto o de la marca; una imagen que no existe se dibuja con la marca
   ([`marca.md`](marca.md)) o se pide al generador, nunca de fuera.
  Cada entrada es
