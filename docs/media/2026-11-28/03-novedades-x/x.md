@@ -9,7 +9,7 @@ one. Mark each post with `**1/**`, `**2/**`... One hashtag at most.
 Image: media/card.webp
 
 **2/** Galivelop-workflow 0.9: el agente pregunta antes de empezar y se para si la tarea pide otro modelo. Tarkor sigue en pruebas, jugando. toVeriAI ya se usa cómoda en el móvil. Y cuatro proyectos nuevos en «próximamente»: Forge, Runtime, Worlds y Model Atlas.
-https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow
+https://zeldris.github.io/Portal-Galivelop/proyectos/galivelop-workflow/
 
 **3/** Fichas, código y el diario del taller: https://zeldris.github.io/Portal-Galivelop/
 
