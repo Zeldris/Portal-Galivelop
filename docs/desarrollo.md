@@ -303,6 +303,8 @@ cada proyecto, no aquí. Normas (la persona, 2026-11-27; fuentes en [`investigac
   - ni lo que se deja fuera, ni avisos o disculpas sobre el propio texto.
   Si una imagen necesita contexto, lo da su `pie` en una frase («Arte del juego»). La duda de qué contar se resuelve
   así: si la persona que firma no lo diría en voz alta a un desconocido, no va.
+  `npm run check` bloquea las frases de este tipo que ya se colaron (`src/data/metatexto.ts`, lista ampliable en los
+  tres idiomas) en el diario y en los textos de canal de `docs/media`; una frase nueva que se cuele se añade allí.
 - **Todas llevan `portada`**, del propio proyecto o de la marca; una imagen que no existe se dibuja con la marca
   ([`marca.md`](marca.md)) o se pide al generador, nunca de fuera.
  Cada entrada es

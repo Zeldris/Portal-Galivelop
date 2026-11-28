@@ -10,3 +10,5 @@ Se leen antes que la skill. Valen para toda pieza (LinkedIn, X, web) y para las 
   proyecto con su ficha y su código público, una pregunta final y etiquetas.
 - **Antes de dar una pieza por buena**, se relee cada frase con una pregunta: ¿la diría en voz alta la persona que
   firma a un desconocido? Si no, se quita.
+- **El check lo comprueba:** `src/data/metatexto.test.ts` recorre los `.md` de canal de cada pieza (no `sheet.md`)
+  con la lista de `src/data/metatexto.ts`; si se cuela una frase nueva, se añade a la lista.
