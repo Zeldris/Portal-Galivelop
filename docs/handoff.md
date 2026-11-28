@@ -6,7 +6,7 @@ Se actualiza en cada commit. Reglas en [`CLAUDE.md`](../CLAUDE.md).
 
 | | |
 |---|---|
-| **Actualizado** | 2026-11-27 (`/gw-portal` en modo aplicar, segunda pasada del día, en la rama de la sesión) |
+| **Actualizado** | 2026-11-28 (pieza de LinkedIn «Saber parar», en la rama de la sesión) |
 | **Rama de trabajo** | `claude/galivelop-dev-portal-1h89ci` (la que publica la tarea semanal); esta sesión, `ccr-b5664d58-ozb4cv` (sigue a `ccr-1c3b5b63-tdttd6`, 3b46928) |
 | **Tarea en curso** | Diario nuevo (la persona, 2026-11-27): se retiran las siete entradas y entran cinco de proyectos y curiosidades, con imágenes: raíles (harness), consejos de voz, modelos en la Steam Deck, muestra del generador de imágenes y un relato de Tarkor (`la-ultima-semilla`, un corto del Génesis: lo pidió ella en lugar de `hueso-sin-profanar`; sin el mapa, que no está acabado, y sin imágenes dibujadas para Tarkor: solo arte del juego). Hecho: el código y las cinco entradas (las siete viejas, borradas); check en verde, build con 69 páginas. Revisión de bloque hecha (d4e3054, `Findings: 3`). La persona confirmó subir a `main` con el CI en verde (2026-11-27; se borran siete direcciones del diario viejo, lo pidió ella). Presupuesto de compactaciones: 1 (lleva 4) |
 | **Siguiente paso** | Hecho: diario nuevo en `main` (8bf49fe, 2026-11-27, CI en verde). Siguiente: elegir tarea. Siguen pendientes: audios de galivelop-image-generator/02-vistazo e inicio/02-proyectos, pedidos de audio e imágenes (Q-22 y `docs/records/pedido-*-2026-11-27.md`) y el CLS por cambio de fuente (la persona, después del domingo). |
@@ -25,6 +25,7 @@ Aquí se apunta lo que está en la rama de trabajo y aún no en `main`.
 
 ## Hecho
 
+- 2026-11-28 · **Pieza de LinkedIn «Saber parar»** (contenido): `docs/media/2026-11-28/01-saber-parar/`, es, gl y en, tono del diario; `check.py` OK. Lista para publicar (la persona rellena `## Published`).
 - 2026-11-27 · **(en `main`) `/gw-portal` en modo aplicar, segunda pasada** (`ccr-b5664d58-ozb4cv`, contenido y `fuentes.json`): image-generator 0.8.0 (novedad, fase, enlace, guion), toVeriAI (novedad de trabajo de fondo), workflow 0.9.1 en el texto, runtime 4 / 7 y worlds con su siguiente paso, trozo «proyectos» del inicio con los cinco próximos; `galivelop-watch` ignorado. Detalle en «Para la próxima publicación». Check: 439 tests.
 - 2026-11-27 · **(en `main`) Diario en llano** (`ccr-b5664d58-ozb4cv`, código; Q-48 respondida): normas nuevas, la entrada del relevo reescrita y seis entradas nuevas a nombre de Álvaro; detalle en «Para la próxima publicación». Check: 439 tests; build: 75 páginas estáticas.
 - 2026-11-27 · **R-8 y test de la portada cuadrada** (`ccr-b5664d58-ozb4cv`, código; revisado en la sesión, sin hallazgos): `recorrido.cjs` ya no fija `/Portal-Galivelop/` al leer el sitemap (usa `rutasDelSitemap` con `BASE`); `src/estatico.test.ts` comprueba en todas las fichas con `"cuadrada": true` que exista `<nombre>-cuadrada.webp` de 540 px (rojo sin la imagen de image-generator) y sube `anchoWebp` a nivel de módulo. `npm run check` en verde (397 tests).
